@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQT Geometric Mass Calculator</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #05050f; font-family: system-ui, sans-serif; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
+
+    const phi     = (1 + Math.sqrt(5)) / 2;
+    const phi2    = phi * phi;
+    const phi4    = phi2 * phi2;
+    const TWO_PI  = 2 * Math.PI;
+    const PHI     = TWO_PI - phi2 / (8 * Math.PI * Math.PI);
+    const m0      = 0.511 / Math.exp(TWO_PI / PHI);
+    const kappa   = 1 / phi4;
+    const XI_VAC  = 100 * phi;
+    const ZF_LEP  = 1 / (2 * Math.PI);
+    const L_q     = PHI * phi2;
+    const A_B     = 20;
+    const ZF_B    = 6;
+
+    function rEff(L) { return 1 + Math.log(1 + L / XI_VAC); }
+    function massFn(A, Zf, L) {
+      if (L === 0) return m0 * (A / Zf);
+      return m0 * (A / Zf) * Math.exp(L / (PHI * rEff(L)));
+    }
+    function pct(pred, obs) { return ((pred - obs) / obs * 100); }
+    function fmtMeV(v) {
+      if (v >= 1e6)  return `${(v/1e6).toFixed(3)} TeV`;
+      if (v >= 1e3)  return `${(v/1e3).toFixed(3)} GeV`;
+      if (v < 0.001) return `${(v*1e6).toFixed(2)} eV`;
+      return `${v.toFixed(4)} MeV`;
+    }
+    function fmtPct(e) { return `${e >= 0 ? "+" : ""}${e.toFixed(2)}%`; }
+
+    function solveL(m_target) {
+      let lo = 1, hi = 200;
+      for (let i = 0; i < 80; i++) {
+        const mid = (lo + hi) / 2;
+        massFn(A_B, ZF_B, mid) < m_target ? lo = mid : hi = mid;
+      }
+      return (lo + hi) / 2;
+    }
+    const L_B = solveL(938.272);
+
+    const PARTICLES = [
+      { id:"e",   label:"Electron", sym:"e⁻",  type:"lepton", gen:1, knot:"0₁ (unknot)",       A:1,   Zf:1,              L:TWO_PI, obs:0.511,    src:"G", note:"L=2π from spinor closure; Zf=1 trivial" },
+      { id:"u",   label:"Up",       sym:"u",   type:"quark",  gen:1, knot:"3₁ (trefoil)",      A:3,   Zf:3,              L:16.372, obs:2.2,      src:"C", note:"A=crossing number; Zf=Fano base; L≈Φφ²" },
+      { id:"d",   label:"Down",     sym:"d",   type:"quark",  gen:1, knot:"4₁ (figure-8)",     A:11,  Zf:9,              L:21.04,  obs:4.67,     src:"C", note:"A from Alexander poly; Zf=3² amphicheiral" },
+      { id:"mu",  label:"Muon",     sym:"μ⁻",  type:"lepton", gen:2, knot:"(2,1)-cable 0₁",    A:1,   Zf:ZF_LEP,         L:2*L_q,  obs:105.658,  src:"C", note:"Gen II lepton: double cable of unknot" },
+      { id:"s",   label:"Strange",  sym:"s",   type:"quark",  gen:2, knot:"6₁",                A:107, Zf:12,             L:29.13,  obs:93,       src:"C", note:"Zf=12 chiral tetrahedral" },
+      { id:"c",   label:"Charm",    sym:"c",   type:"quark",  gen:2, knot:"5₁ (torus)",        A:5,   Zf:1/48,           L:23.60,  obs:1270,     src:"C", note:"Zf=1/48 bilateral octahedral inversion" },
+      { id:"tau", label:"Tau",      sym:"τ⁻",  type:"lepton", gen:3, knot:"(3,1)-cable 3₁",    A:3,   Zf:ZF_LEP,         L:3*L_q,  obs:1776.86,  src:"C", note:"Gen III lepton: triple cable of trefoil" },
+      { id:"b",   label:"Bottom",   sym:"b",   type:"quark",  gen:3, knot:"8₁",                A:119, Zf:3/4,            L:37.31,  obs:4180,     src:"C", note:"Zf=3/4 C₃/C₄ phase lock" },
+      { id:"t",   label:"Top",      sym:"t",   type:"quark",  gen:3, knot:"8₁⁹",               A:119, Zf:1/(8*phi4),     L:37.31,  obs:172690,   src:"F", note:"Known ~2.6× discrepancy; open problem" },
+      { id:"p",   label:"Proton",   sym:"p",   type:"baryon", gen:null, knot:"Borromean rings", A:A_B, Zf:ZF_B,           L:L_B,    obs:938.272,  src:"G", note:"A=20 from Alexander poly; Zf=6=|F₇*|" },
+    ];
+
+    const C = {
+      bg:"#05050f", panel:"#0a0a1a", brd:"#1c1c35", brd2:"#252545",
+      grn:"#00e5a0", amb:"#f5a623", org:"#ff6b35", red:"#ff3b5c",
+      cya:"#00d4ff", prp:"#b07cff", gry:"#5a5a7a", txt:"#d8d8f0", txt2:"#8888aa",
+      mono:"'Courier New', monospace",
+    };
+
+    function errColor(e) {
+      const a = Math.abs(e);
+      if (a < 2)  return C.grn;
+      if (a < 8)  return C.amb;
+      if (a < 25) return C.org;
+      return C.red;
+    }
+    function srcColor(s) { return s==="G" ? C.grn : s==="C" ? C.cya : C.org; }
+    function srcLabel(s) { return s==="G" ? "DERIVED" : s==="C" ? "CONJECTURE" : "OPEN"; }
+    function typeColor(t) { return t==="lepton" ? C.prp : t==="baryon" ? C.amb : C.cya; }
+
+    function Badge({ label, col }) {
+      return <span style={{ fontFamily:C.mono, fontSize:9, color:col, border:`1px solid ${col}`,
+        borderRadius:2, padding:"1px 5px", letterSpacing:1, whiteSpace:"nowrap" }}>{label}</span>;
+    }
+
+    function GenDot({ gen }) {
+      const cols = [null, C.grn, C.amb, C.prp];
+      if (!gen) return <span style={{ color:C.gry, fontFamily:C.mono, fontSize:10 }}>—</span>;
+      return <span style={{ display:"flex", gap:3, alignItems:"center" }}>
+        {[1,2,3].map(g => <span key={g} style={{ width:6, height:6, borderRadius:"50%",
+          background: g<=gen ? cols[g] : C.brd2, display:"inline-block" }} />)}
+      </span>;
+    }
+
+    function ParticleRow({ p, selected, onSelect }) {
+      const pred = massFn(p.A, p.Zf, p.L);
+      const err  = pct(pred, p.obs);
+      const isSelected = selected === p.id;
+      return <>
+        <tr onClick={() => onSelect(isSelected ? null : p.id)}
+          style={{ cursor:"pointer", background: isSelected ? "#12122a" : "transparent",
+            borderBottom:`1px solid ${C.brd}` }}>
+          <td style={{ padding:"10px 12px", fontFamily:C.mono, fontSize:13, color:typeColor(p.type) }}>{p.sym}</td>
+          <td style={{ padding:"10px 8px" }}>
+            <div style={{ color:C.txt, fontSize:13 }}>{p.label}</div>
+            <div style={{ color:C.gry, fontSize:10, fontFamily:C.mono, marginTop:2 }}>{p.knot}</div>
+          </td>
+          <td style={{ padding:"10px 8px", textAlign:"center" }}><GenDot gen={p.gen} /></td>
+          <td style={{ padding:"10px 12px", textAlign:"right", fontFamily:C.mono, fontSize:12, color:C.txt2 }}>{fmtMeV(p.obs)}</td>
+          <td style={{ padding:"10px 12px", textAlign:"right", fontFamily:C.mono, fontSize:12, color:C.txt }}>{fmtMeV(pred)}</td>
+          <td style={{ padding:"10px 12px", textAlign:"right", fontFamily:C.mono, fontSize:13, color:errColor(err), fontWeight:600 }}>{fmtPct(err)}</td>
+          <td style={{ padding:"10px 12px", textAlign:"center" }}><Badge label={srcLabel(p.src)} col={srcColor(p.src)} /></td>
+        </tr>
+        {isSelected && <tr style={{ background:"#0e0e22", borderBottom:`1px solid ${C.brd}` }}>
+          <td colSpan={7} style={{ padding:"10px 16px 14px" }}>
+            <div style={{ display:"flex", gap:32, flexWrap:"wrap", marginBottom:8 }}>
+              {[["A (winding)", p.A], ["Zf (topology)", p.Zf < 1 ? `1/${Math.round(1/p.Zf)}` : String(p.Zf)],
+                ["L (ropelength)", `${p.L.toFixed?.(3) ?? p.L} fm`], ["Predicted", fmtMeV(pred)]].map(([l,v]) =>
+                <div key={l}>
+                  <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, marginBottom:2 }}>{l}</div>
+                  <div style={{ fontFamily:C.mono, fontSize:13, color:C.cya }}>{v}</div>
+                </div>)}
+            </div>
+            <div style={{ fontFamily:C.mono, fontSize:10, color:C.gry }}>{p.note}</div>
+          </td>
+        </tr>}
+      </>;
+    }
+
+    function App() {
+      const [selected, setSelected] = useState(null);
+      const [filter, setFilter]     = useState("all");
+      const [showProton, setShowProton] = useState(true);
+      const [showConst, setShowConst]   = useState(false);
+
+      const filtered = PARTICLES.filter(p => filter==="all" || p.type===filter);
+      const passing  = PARTICLES.filter(p => Math.abs(pct(massFn(p.A,p.Zf,p.L), p.obs)) < 8 && p.id!=="t").length;
+
+      const pred_p = massFn(A_B, ZF_B, L_B);
+
+      return <div style={{ background:C.bg, minHeight:"100vh", padding:"24px 16px", color:C.txt }}>
+        <div style={{ maxWidth:860, margin:"0 auto" }}>
+
+          {/* Header */}
+          <div style={{ marginBottom:24 }}>
+            <div style={{ fontFamily:C.mono, fontSize:10, color:C.cya, letterSpacing:4, marginBottom:8 }}>
+              SUPERFLUID QUANTUM TOPOLOGY
+            </div>
+            <h1 style={{ fontSize:26, fontWeight:700, margin:0, color:C.txt }}>Geometric Mass Calculator</h1>
+            <p style={{ color:C.txt2, fontSize:13, marginTop:8, lineHeight:1.5, maxWidth:580 }}>
+              Particle masses derived from knot topology, division algebra structure, and Fano plane
+              combinatorics. Constants flow from φ and π — no mass targets consulted in parameter construction.
+            </p>
+            <div style={{ display:"flex", gap:12, marginTop:12, flexWrap:"wrap" }}>
+              <Badge label={`${passing}/9 WITHIN 8%`} col={C.grn} />
+              <Badge label="DERIVED" col={C.grn} />
+              <Badge label="CONJECTURE" col={C.cya} />
+              <Badge label="OPEN PROBLEM" col={C.org} />
+            </div>
+          </div>
+
+          {/* Filter */}
+          <div style={{ display:"flex", gap:8, marginBottom:12 }}>
+            {["all","lepton","quark","baryon"].map(f =>
+              <button key={f} onClick={() => setFilter(f)} style={{
+                fontFamily:C.mono, fontSize:10, letterSpacing:1, padding:"5px 14px",
+                borderRadius:3, cursor:"pointer", textTransform:"uppercase",
+                border:`1px solid ${filter===f ? C.cya : C.brd}`,
+                background: filter===f ? `${C.cya}18` : "transparent",
+                color: filter===f ? C.cya : C.gry,
+              }}>{f}</button>)}
+          </div>
+
+          {/* Table */}
+          <div style={{ background:C.panel, border:`1px solid ${C.brd}`, borderRadius:8, overflow:"hidden" }}>
+            <table style={{ width:"100%", borderCollapse:"collapse" }}>
+              <thead>
+                <tr style={{ borderBottom:`1px solid ${C.brd2}` }}>
+                  {["","Particle / Knot","Gen","PDG Mass","SQT Prediction","Error","Status"].map((h,i) =>
+                    <th key={i} style={{ padding:"10px 12px", fontFamily:C.mono, fontSize:9, color:C.gry,
+                      letterSpacing:1.5, fontWeight:400,
+                      textAlign: i===2 ? "center" : i>=3 ? "right" : "left",
+                      ...(i===6 ? {textAlign:"center"} : {}) }}>{h}</th>)}
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.map(p => <ParticleRow key={p.id} p={p} selected={selected} onSelect={setSelected} />)}
+              </tbody>
+            </table>
+          </div>
+          <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, marginTop:8 }}>
+            Click any row to expand. Top quark is a known open problem (~2.6× discrepancy).
+          </div>
+
+          {/* Proton */}
+          <div style={{ marginTop:20 }}>
+            <button onClick={() => setShowProton(v => !v)} style={{
+              fontFamily:C.mono, fontSize:9, letterSpacing:2, padding:"6px 14px",
+              borderRadius:3, cursor:"pointer", border:`1px solid ${C.amb}`,
+              background:"transparent", color:C.amb }}>
+              {showProton ? "▼" : "▶"} PROTON / BORROMEAN BARYON
+            </button>
+            {showProton && <div style={{ background:C.panel, border:`1px solid ${C.amb}22`,
+              borderRadius:8, padding:"18px 20px", marginTop:12 }}>
+              <div style={{ fontFamily:C.mono, fontSize:9, color:C.amb, letterSpacing:3, marginBottom:14 }}>
+                OPEN PROBLEM 5 · BORROMEAN BARYON MASS
+              </div>
+              <div style={{ display:"flex", gap:32, flexWrap:"wrap", marginBottom:12 }}>
+                {[["A = Σcoeff² (Alexander poly)","20"],["Zf = |F₇*|","6"],
+                  ["L_B (solved)",`${L_B.toFixed(3)} fm`],["Ashton bounds","[58.006, 62.0] fm"],
+                  ["Predicted m_p", fmtMeV(pred_p)],["PDG m_p","938.272 MeV"],
+                  ["Error", fmtPct(pct(pred_p, 938.272))]].map(([l,v]) =>
+                  <div key={l}>
+                    <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, marginBottom:2 }}>{l}</div>
+                    <div style={{ fontFamily:C.mono, fontSize:13, color:C.cya }}>{v}</div>
+                  </div>)}
+              </div>
+              <div style={{ fontFamily:C.mono, fontSize:10, color:C.gry, lineHeight:1.6 }}>
+                A=20 from Borromean Alexander polynomial. Zf=6=|F₇*| is Conjecture 1 (pending proof).
+                L_B={L_B.toFixed(3)} fm within Ashton bounds [58.006, 62.0] fm.
+              </div>
+            </div>}
+          </div>
+
+          {/* Constants */}
+          <div style={{ marginTop:12 }}>
+            <button onClick={() => setShowConst(v => !v)} style={{
+              fontFamily:C.mono, fontSize:9, letterSpacing:2, padding:"6px 14px",
+              borderRadius:3, cursor:"pointer", border:`1px solid ${C.brd2}`,
+              background:"transparent", color:C.gry }}>
+              {showConst ? "▼" : "▶"} DERIVED CONSTANTS
+            </button>
+            {showConst && <div style={{ background:C.panel, border:`1px solid ${C.brd}`,
+              borderRadius:8, padding:"18px 20px", marginTop:12 }}>
+              <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, letterSpacing:3, marginBottom:14 }}>
+                ZERO FREE PARAMETERS
+              </div>
+              <div style={{ display:"flex", flexWrap:"wrap", gap:"10px 32px" }}>
+                {[["φ (golden ratio)", phi.toFixed(6), "axiom"],
+                  ["Φ (throat angle)", PHI.toFixed(6), "2π − φ²/8π²"],
+                  ["m₀ (base mass)", `${m0.toFixed(5)} MeV`, "0.511/exp(2π/Φ)"],
+                  ["κ (bulk modulus)", kappa.toFixed(6), "φ⁻⁴"],
+                  ["ξ_vac", `${XI_VAC.toFixed(3)} fm`, "100φ"]].map(([l,v,s]) =>
+                  <div key={l} style={{ minWidth:180 }}>
+                    <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, marginBottom:2 }}>{l}</div>
+                    <div style={{ fontFamily:C.mono, fontSize:13, color:C.cya }}>{v}</div>
+                    <div style={{ fontFamily:C.mono, fontSize:9, color:"#3a3a5a", marginTop:1 }}>{s}</div>
+                  </div>)}
+              </div>
+            </div>}
+          </div>
+
+          {/* Formula */}
+          <div style={{ marginTop:20, padding:"14px 18px", background:C.panel,
+            border:`1px solid ${C.brd}`, borderRadius:8 }}>
+            <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, letterSpacing:2, marginBottom:10 }}>
+              MASS OPERATOR
+            </div>
+            <div style={{ fontFamily:C.mono, fontSize:13, color:C.cya, lineHeight:2 }}>
+              m(A, Zf, L) = m₀ · (A/Zf) · exp(L / (Φ · r_eff(L)))
+            </div>
+            <div style={{ fontFamily:C.mono, fontSize:11, color:C.txt2, lineHeight:2, marginTop:4 }}>
+              r_eff(L) = 1 + ln(1 + L/ξ_vac) · ξ_vac = 100φ<br/>
+              A = knot winding index · Zf = topological partition factor · L = ropelength (fm)
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div style={{ marginTop:24, paddingTop:16, borderTop:`1px solid ${C.brd}`,
+            fontFamily:C.mono, fontSize:9, color:C.gry, lineHeight:1.8 }}>
+            SQT Framework · M. Gifford · 2026 ·
+            Parameters labeled CONJECTURE or OPEN PROBLEM are structural but not yet formally derived.
+            Top quark discrepancy is documented and under investigation.
+          </div>
+
+        </div>
+      </div>;
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

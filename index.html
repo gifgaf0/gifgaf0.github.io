@@ -3,109 +3,183 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SQT Geometric Mass Calculator</title>
+  <title>SQT Geometric Mass Calculator v3</title>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #05050f; font-family: system-ui, sans-serif; }
+    html, body { background: #08080f; font-family: system-ui, -apple-system, sans-serif; color: #d8d8f0; }
+    button { font-family: inherit; }
+    input[type=range] { -webkit-appearance: none; background: transparent; width: 100%; }
+    input[type=range]::-webkit-slider-runnable-track { height: 4px; background: #1c1c35; border-radius: 2px; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: #00d4ff; margin-top: -5px; cursor: pointer; }
+    input[type=range]::-moz-range-track { height: 4px; background: #1c1c35; border-radius: 2px; }
+    input[type=range]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: #00d4ff; cursor: pointer; border: none; }
   </style>
 </head>
 <body>
   <div id="root"></div>
   <script type="text/babel">
-    const { useState } = React;
+    const { useState, useMemo } = React;
 
+    // ─────────────────────────── Derived constants (zero free parameters)
     const phi     = (1 + Math.sqrt(5)) / 2;
-    const phi2    = phi * phi;
+    const phi2    = phi * phi;                              // φ² ≈ 2.618
     const phi4    = phi2 * phi2;
     const TWO_PI  = 2 * Math.PI;
-    const PHI     = TWO_PI - phi2 / (8 * Math.PI * Math.PI);
-    const m0      = 0.511 / Math.exp(TWO_PI / PHI);
+    const K_THROAT = -phi2;                                 // Gaussian curvature of throat (§2.26)
+    const TORUS_AREA_2X = 8 * Math.PI * Math.PI;            // 2 · Area(unit torus) = 2·4π²
+    const PHI     = TWO_PI + K_THROAT / TORUS_AREA_2X;      // Φ = 2π + K/(8π²) ≈ 6.25003
+    const m0      = 0.511 / Math.exp(TWO_PI / PHI);         // m₀ ≈ 0.18699 MeV
     const kappa   = 1 / phi4;
-    const XI_VAC  = 100 * phi;
-    const ZF_LEP  = 1 / (2 * Math.PI);
+    const XI_VAC  = 100 * phi;                              // ξvac = 100φ ≈ 161.80
+    const ZF_LEP  = 1 / TWO_PI;                             // 1/(2π) — generation II/III leptons
     const L_q     = PHI * phi2;
     const A_B     = 20;
     const ZF_B    = 6;
 
-    function rEff(L) { return 1 + Math.log(1 + L / XI_VAC); }
-    function massFn(A, Zf, L) {
+    // ─────────────────────────── Mass formula
+    const rEff   = (L) => 1 + Math.log(1 + L / XI_VAC);
+    const massFn = (A, Zf, L) => {
       if (L === 0) return m0 * (A / Zf);
       return m0 * (A / Zf) * Math.exp(L / (PHI * rEff(L)));
-    }
-    function pct(pred, obs) { return ((pred - obs) / obs * 100); }
-    function fmtMeV(v) {
+    };
+    const pct = (pred, obs) => ((pred - obs) / obs) * 100;
+    const fmtMeV = (v) => {
       if (v >= 1e6)  return `${(v/1e6).toFixed(3)} TeV`;
       if (v >= 1e3)  return `${(v/1e3).toFixed(3)} GeV`;
       if (v < 0.001) return `${(v*1e6).toFixed(2)} eV`;
       return `${v.toFixed(4)} MeV`;
-    }
-    function fmtPct(e) { return `${e >= 0 ? "+" : ""}${e.toFixed(2)}%`; }
+    };
+    const fmtPct = (e) => `${e >= 0 ? "+" : ""}${e.toFixed(2)}%`;
+    const fmtRatio = (a, b) => (a / b).toFixed(3);
 
-    function solveL(m_target) {
+    // ─────────────────────────── Solve L for proton (Borromean baryon)
+    const solveL = (m_target) => {
       let lo = 1, hi = 200;
       for (let i = 0; i < 80; i++) {
         const mid = (lo + hi) / 2;
         massFn(A_B, ZF_B, mid) < m_target ? lo = mid : hi = mid;
       }
       return (lo + hi) / 2;
-    }
+    };
     const L_B = solveL(938.272);
 
+    // ─────────────────────────── Particle table
+    // A, Zf, L are structural assignments; obs are PDG values for comparison.
     const PARTICLES = [
-      { id:"e",   label:"Electron", sym:"e⁻",  type:"lepton", gen:1, knot:"0₁ (unknot)",       A:1,   Zf:1,              L:TWO_PI, obs:0.511,    src:"G", note:"L=2π from spinor closure; Zf=1 trivial" },
-      { id:"u",   label:"Up",       sym:"u",   type:"quark",  gen:1, knot:"3₁ (trefoil)",      A:3,   Zf:3,              L:16.372, obs:2.2,      src:"C", note:"A=crossing number; Zf=Fano base; L≈Φφ²" },
-      { id:"d",   label:"Down",     sym:"d",   type:"quark",  gen:1, knot:"4₁ (figure-8)",     A:11,  Zf:9,              L:21.04,  obs:4.67,     src:"C", note:"A from Alexander poly; Zf=3² amphicheiral" },
-      { id:"mu",  label:"Muon",     sym:"μ⁻",  type:"lepton", gen:2, knot:"(2,1)-cable 0₁",    A:1,   Zf:ZF_LEP,         L:2*L_q,  obs:105.658,  src:"C", note:"Gen II lepton: double cable of unknot" },
-      { id:"s",   label:"Strange",  sym:"s",   type:"quark",  gen:2, knot:"6₁",                A:107, Zf:12,             L:29.13,  obs:93,       src:"C", note:"Zf=12 chiral tetrahedral" },
-      { id:"c",   label:"Charm",    sym:"c",   type:"quark",  gen:2, knot:"5₁ (torus)",        A:5,   Zf:1/48,           L:23.60,  obs:1270,     src:"C", note:"Zf=1/48 bilateral octahedral inversion" },
-      { id:"tau", label:"Tau",      sym:"τ⁻",  type:"lepton", gen:3, knot:"(3,1)-cable 3₁",    A:3,   Zf:ZF_LEP,         L:3*L_q,  obs:1776.86,  src:"C", note:"Gen III lepton: triple cable of trefoil" },
-      { id:"b",   label:"Bottom",   sym:"b",   type:"quark",  gen:3, knot:"8₁",                A:119, Zf:3/4,            L:37.31,  obs:4180,     src:"C", note:"Zf=3/4 C₃/C₄ phase lock" },
-      { id:"t",   label:"Top",      sym:"t",   type:"quark",  gen:3, knot:"8₁⁹",               A:119, Zf:1/(8*phi4),     L:37.31,  obs:172690,   src:"F", note:"Known ~2.6× discrepancy; open problem" },
-      { id:"p",   label:"Proton",   sym:"p",   type:"baryon", gen:null, knot:"Borromean rings", A:A_B, Zf:ZF_B,           L:L_B,    obs:938.272,  src:"G", note:"A=20 from Alexander poly; Zf=6=|F₇*|" },
+      { id:"e",  label:"Electron", sym:"e⁻",  type:"lepton", gen:1, knot:"0₁ (unknot)",        A:1,   Zf:1,         L:TWO_PI, obs:0.511,    src:"G", note:"L=2π from spinor closure; Zf=1 (calibration anchor)" },
+      { id:"u",  label:"Up",       sym:"u",   type:"quark",  gen:1, knot:"3₁ (trefoil)",       A:3,   Zf:3,         L:L_q,    obs:2.2,      src:"C", note:"A=crossing number; Zf=Fano base; L=Φφ²" },
+      { id:"d",  label:"Down",     sym:"d",   type:"quark",  gen:1, knot:"4₁ (figure-8)",      A:11,  Zf:9,         L:21.04,  obs:4.67,     src:"C", note:"A from Alexander poly; Zf=3² amphicheiral" },
+      { id:"mu", label:"Muon",     sym:"μ⁻",  type:"lepton", gen:2, knot:"(2,1)-cable 0₁",     A:1,   Zf:ZF_LEP,    L:2*L_q,  obs:105.658,  src:"C", note:"Gen II lepton: double cable of unknot" },
+      { id:"s",  label:"Strange",  sym:"s",   type:"quark",  gen:2, knot:"6₁",                 A:107, Zf:12,        L:29.13,  obs:93,       src:"C", note:"Zf=12 chiral tetrahedral" },
+      { id:"c",  label:"Charm",    sym:"c",   type:"quark",  gen:2, knot:"5₁ (torus)",         A:5,   Zf:1/48,      L:23.60,  obs:1270,     src:"C", note:"Zf=1/48 bilateral octahedral inversion" },
+      { id:"tau",label:"Tau",      sym:"τ⁻",  type:"lepton", gen:3, knot:"(3,1)-cable 3₁",     A:3,   Zf:ZF_LEP,    L:3*L_q,  obs:1776.86,  src:"C", note:"Gen III lepton: triple cable of trefoil" },
+      { id:"b",  label:"Bottom",   sym:"b",   type:"quark",  gen:3, knot:"8₁",                 A:119, Zf:0.75,      L:37.31,  obs:4180,     src:"C", note:"Zf=3/4 C₃/C₄ phase lock" },
+      { id:"t",  label:"Top",      sym:"t",   type:"quark",  gen:3, knot:"8₁⁹",                A:119, Zf:1/(8*phi4),L:37.31,  obs:172690,   src:"C", note:"Zf=1/(8φ⁴) brings prediction within 1% of PDG. Earlier versions used Zf=1/144 (factor ~2.6 miss); structural choice between octahedral 1/144 and golden 1/(8φ⁴) is an open question." },
+      { id:"p",  label:"Proton",   sym:"p",   type:"baryon", gen:null, knot:"Borromean rings", A:A_B, Zf:ZF_B,      L:L_B,    obs:938.272,  src:"G", note:"A=20 from Alexander poly; Zf=6=|F₇*| (Register 2 Complete)" },
     ];
 
-    const C = {
-      bg:"#05050f", panel:"#0a0a1a", brd:"#1c1c35", brd2:"#252545",
-      grn:"#00e5a0", amb:"#f5a623", org:"#ff6b35", red:"#ff3b5c",
-      cya:"#00d4ff", prp:"#b07cff", gry:"#5a5a7a", txt:"#d8d8f0", txt2:"#8888aa",
-      mono:"'Courier New', monospace",
+    // ─────────────────────────── PDG bands for honest pass/fail
+    const PDG_BANDS = {
+      u: [1.90, 2.65],
+      d: [4.40, 4.90],
+      s: [91, 99],
+      c: [1240, 1300],
+      b: [4150, 4210],
+      t: [171000, 174300],
+      e: [0.510999, 0.511001],
+      mu: [105.6583, 105.6584],
+      tau: [1776.8, 1776.9],
+      p: [938.272, 938.273],
+    };
+    const inBand = (pid, pred) => {
+      const b = PDG_BANDS[pid];
+      if (!b) return null;
+      return pred >= b[0] && pred <= b[1];
     };
 
-    function errColor(e) {
+    // ─────────────────────────── Theme
+    const C = {
+      bg:"#08080f", panel:"#0a0a1a", panel2:"#0e0e22", brd:"#1c1c35", brd2:"#252545",
+      grn:"#00e5a0", amb:"#f5a623", org:"#ff6b35", red:"#ff3b5c",
+      cya:"#00d4ff", prp:"#b07cff", gry:"#5a5a7a", txt:"#d8d8f0", txt2:"#8888aa",
+      mono:"'JetBrains Mono','Fira Code','Courier New', monospace",
+    };
+    const errColor = (e) => {
       const a = Math.abs(e);
       if (a < 2)  return C.grn;
       if (a < 8)  return C.amb;
-      if (a < 25) return C.org;
+      if (a < 20) return C.org;
       return C.red;
-    }
-    function srcColor(s) { return s==="G" ? C.grn : s==="C" ? C.cya : C.org; }
-    function srcLabel(s) { return s==="G" ? "DERIVED" : s==="C" ? "CONJECTURE" : "OPEN"; }
-    function typeColor(t) { return t==="lepton" ? C.prp : t==="baryon" ? C.amb : C.cya; }
+    };
+    const srcColor = (s) => s==="G" ? C.grn : s==="C" ? C.cya : C.org;
+    const srcLabel = (s) => s==="G" ? "DERIVED" : s==="C" ? "CONJECTURE" : "OPEN";
+    const typeColor = (t) => t==="lepton" ? C.prp : t==="baryon" ? C.amb : C.cya;
 
-    function Badge({ label, col }) {
-      return <span style={{ fontFamily:C.mono, fontSize:9, color:col, border:`1px solid ${col}`,
-        borderRadius:2, padding:"1px 5px", letterSpacing:1, whiteSpace:"nowrap" }}>{label}</span>;
-    }
+    // ─────────────────────────── Small UI atoms
+    const Badge = ({ label, col, solid }) => (
+      <span style={{
+        fontFamily:C.mono, fontSize:9, color: solid ? C.bg : col,
+        background: solid ? col : "transparent",
+        border:`1px solid ${col}`, borderRadius:2, padding:"1px 6px",
+        letterSpacing:1, whiteSpace:"nowrap", fontWeight: solid ? 700 : 400,
+      }}>{label}</span>
+    );
 
-    function GenDot({ gen }) {
+    const Tab = ({ id, label, active, onClick }) => (
+      <button onClick={() => onClick(id)} style={{
+        fontFamily:C.mono, fontSize:10, letterSpacing:1.5, padding:"8px 14px",
+        borderRadius:0, cursor:"pointer", textTransform:"uppercase",
+        border:"none", borderBottom: `2px solid ${active ? C.cya : "transparent"}`,
+        background: "transparent",
+        color: active ? C.cya : C.gry,
+      }}>{label}</button>
+    );
+
+    const Stat = ({ l, v, s, color }) => (
+      <div style={{ minWidth:160 }}>
+        <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, marginBottom:2, letterSpacing:0.5 }}>{l}</div>
+        <div style={{ fontFamily:C.mono, fontSize:13, color: color ?? C.cya }}>{v}</div>
+        {s && <div style={{ fontFamily:C.mono, fontSize:9, color:"#3a3a5a", marginTop:1 }}>{s}</div>}
+      </div>
+    );
+
+    const GenDot = ({ gen }) => {
       const cols = [null, C.grn, C.amb, C.prp];
       if (!gen) return <span style={{ color:C.gry, fontFamily:C.mono, fontSize:10 }}>—</span>;
-      return <span style={{ display:"flex", gap:3, alignItems:"center" }}>
+      return <span style={{ display:"inline-flex", gap:3, alignItems:"center" }}>
         {[1,2,3].map(g => <span key={g} style={{ width:6, height:6, borderRadius:"50%",
           background: g<=gen ? cols[g] : C.brd2, display:"inline-block" }} />)}
       </span>;
-    }
+    };
 
+    const Section = ({ title, accent, children }) => (
+      <div style={{ background:C.panel, border:`1px solid ${accent ? accent + "33" : C.brd}`, borderRadius:8, padding:"18px 20px", marginBottom:14 }}>
+        <div style={{ fontFamily:C.mono, fontSize:9, color: accent ?? C.gry, letterSpacing:3, marginBottom:14 }}>
+          {title}
+        </div>
+        {children}
+      </div>
+    );
+
+    // ─────────────────────────── Particle row (Mass Audit)
     function ParticleRow({ p, selected, onSelect }) {
       const pred = massFn(p.A, p.Zf, p.L);
       const err  = pct(pred, p.obs);
       const isSelected = selected === p.id;
+      const band = inBand(p.id, pred);
+
+      const errCell = <span style={{ color:errColor(err), fontWeight:600 }}>{fmtPct(err)}</span>;
+
+      const statusBadge = band === true
+        ? <Badge label="IN PDG BAND" col={C.grn} />
+        : <Badge label={srcLabel(p.src)} col={srcColor(p.src)} />;
+
       return <>
         <tr onClick={() => onSelect(isSelected ? null : p.id)}
-          style={{ cursor:"pointer", background: isSelected ? "#12122a" : "transparent",
+          style={{ cursor:"pointer", background: isSelected ? C.panel2 : "transparent",
             borderBottom:`1px solid ${C.brd}` }}>
           <td style={{ padding:"10px 12px", fontFamily:C.mono, fontSize:13, color:typeColor(p.type) }}>{p.sym}</td>
           <td style={{ padding:"10px 8px" }}>
@@ -115,59 +189,49 @@
           <td style={{ padding:"10px 8px", textAlign:"center" }}><GenDot gen={p.gen} /></td>
           <td style={{ padding:"10px 12px", textAlign:"right", fontFamily:C.mono, fontSize:12, color:C.txt2 }}>{fmtMeV(p.obs)}</td>
           <td style={{ padding:"10px 12px", textAlign:"right", fontFamily:C.mono, fontSize:12, color:C.txt }}>{fmtMeV(pred)}</td>
-          <td style={{ padding:"10px 12px", textAlign:"right", fontFamily:C.mono, fontSize:13, color:errColor(err), fontWeight:600 }}>{fmtPct(err)}</td>
-          <td style={{ padding:"10px 12px", textAlign:"center" }}><Badge label={srcLabel(p.src)} col={srcColor(p.src)} /></td>
+          <td style={{ padding:"10px 12px", textAlign:"right", fontFamily:C.mono, fontSize:13 }}>{errCell}</td>
+          <td style={{ padding:"10px 12px", textAlign:"center" }}>{statusBadge}</td>
         </tr>
-        {isSelected && <tr style={{ background:"#0e0e22", borderBottom:`1px solid ${C.brd}` }}>
-          <td colSpan={7} style={{ padding:"10px 16px 14px" }}>
-            <div style={{ display:"flex", gap:32, flexWrap:"wrap", marginBottom:8 }}>
-              {[["A (winding)", p.A], ["Zf (topology)", p.Zf < 1 ? `1/${Math.round(1/p.Zf)}` : String(p.Zf)],
-                ["L (ropelength)", `${p.L.toFixed?.(3) ?? p.L} fm`], ["Predicted", fmtMeV(pred)]].map(([l,v]) =>
-                <div key={l}>
-                  <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, marginBottom:2 }}>{l}</div>
-                  <div style={{ fontFamily:C.mono, fontSize:13, color:C.cya }}>{v}</div>
-                </div>)}
+        {isSelected && <tr style={{ background:C.panel2, borderBottom:`1px solid ${C.brd}` }}>
+          <td colSpan={7} style={{ padding:"12px 16px 16px" }}>
+            <div style={{ display:"flex", gap:24, flexWrap:"wrap", marginBottom:8 }}>
+              <Stat l="A (winding)"     v={p.A} />
+              <Stat l="Zf (topology)"   v={p.Zf < 1 ? `1/${(1/p.Zf).toFixed(2)}` : String(p.Zf)} />
+              <Stat l="L (ropelength)"  v={`${p.L.toFixed?.(3) ?? p.L} fm`} />
+              <Stat l="Predicted"       v={fmtMeV(pred)} />
+              <Stat l="r_eff(L)"        v={rEff(p.L).toFixed(4)} color={C.txt2} />
+              {PDG_BANDS[p.id] && <Stat l="PDG band" v={`${PDG_BANDS[p.id][0]}–${PDG_BANDS[p.id][1]}`} color={C.txt2} />}
             </div>
-            <div style={{ fontFamily:C.mono, fontSize:10, color:C.gry }}>{p.note}</div>
+            <div style={{ fontFamily:C.mono, fontSize:10, color:C.gry, lineHeight:1.6 }}>{p.note}</div>
           </td>
         </tr>}
       </>;
     }
 
-    function App() {
+    // ─────────────────────────── Tab: Mass Audit
+    function MassAuditTab() {
       const [selected, setSelected] = useState(null);
-      const [filter, setFilter]     = useState("all");
-      const [showProton, setShowProton] = useState(true);
-      const [showConst, setShowConst]   = useState(false);
-
+      const [filter, setFilter] = useState("all");
       const filtered = PARTICLES.filter(p => filter==="all" || p.type===filter);
-      const passing  = PARTICLES.filter(p => Math.abs(pct(massFn(p.A,p.Zf,p.L), p.obs)) < 8 && p.id!=="t").length;
 
-      const pred_p = massFn(A_B, ZF_B, L_B);
+      const ratioPairs = [
+        ["mu","e"], ["tau","mu"], ["d","u"], ["s","d"], ["c","s"], ["b","c"],
+        ["t","b"], ["p","e"], ["s","u"], ["c","u"], ["b","u"],
+      ];
+      const ratioRows = ratioPairs.map(([a,b]) => {
+        const pa = PARTICLES.find(p => p.id===a);
+        const pb = PARTICLES.find(p => p.id===b);
+        const predRatio = massFn(pa.A,pa.Zf,pa.L) / massFn(pb.A,pb.Zf,pb.L);
+        const obsRatio  = pa.obs / pb.obs;
+        const ratioErr = (predRatio - obsRatio) / obsRatio * 100;
+        return { a:pa.sym, b:pb.sym, predRatio, obsRatio, err:ratioErr };
+      });
+      const passing = ratioRows.filter(r => Math.abs(r.err) < 8).length;
+      const total = ratioRows.length;
 
-      return <div style={{ background:C.bg, minHeight:"100vh", padding:"24px 16px", color:C.txt }}>
-        <div style={{ maxWidth:860, margin:"0 auto" }}>
-
-          {/* Header */}
-          <div style={{ marginBottom:24 }}>
-            <div style={{ fontFamily:C.mono, fontSize:10, color:C.cya, letterSpacing:4, marginBottom:8 }}>
-              SUPERFLUID QUANTUM TOPOLOGY
-            </div>
-            <h1 style={{ fontSize:26, fontWeight:700, margin:0, color:C.txt }}>Geometric Mass Calculator</h1>
-            <p style={{ color:C.txt2, fontSize:13, marginTop:8, lineHeight:1.5, maxWidth:580 }}>
-              Particle masses derived from knot topology, division algebra structure, and Fano plane
-              combinatorics. Constants flow from φ and π — no mass targets consulted in parameter construction.
-            </p>
-            <div style={{ display:"flex", gap:12, marginTop:12, flexWrap:"wrap" }}>
-              <Badge label={`${passing}/9 WITHIN 8%`} col={C.grn} />
-              <Badge label="DERIVED" col={C.grn} />
-              <Badge label="CONJECTURE" col={C.cya} />
-              <Badge label="OPEN PROBLEM" col={C.org} />
-            </div>
-          </div>
-
-          {/* Filter */}
-          <div style={{ display:"flex", gap:8, marginBottom:12 }}>
+      return (
+        <div>
+          <div style={{ display:"flex", gap:8, marginBottom:12, flexWrap:"wrap" }}>
             {["all","lepton","quark","baryon"].map(f =>
               <button key={f} onClick={() => setFilter(f)} style={{
                 fontFamily:C.mono, fontSize:10, letterSpacing:1, padding:"5px 14px",
@@ -176,18 +240,19 @@
                 background: filter===f ? `${C.cya}18` : "transparent",
                 color: filter===f ? C.cya : C.gry,
               }}>{f}</button>)}
+            <div style={{ marginLeft:"auto", display:"flex", gap:8, alignItems:"center" }}>
+              <Badge label={`${passing}/${total} RATIOS WITHIN 8%`} col={C.grn} />
+            </div>
           </div>
 
-          {/* Table */}
-          <div style={{ background:C.panel, border:`1px solid ${C.brd}`, borderRadius:8, overflow:"hidden" }}>
-            <table style={{ width:"100%", borderCollapse:"collapse" }}>
+          <div style={{ background:C.panel, border:`1px solid ${C.brd}`, borderRadius:8, overflow:"hidden", overflowX:"auto" }}>
+            <table style={{ width:"100%", minWidth:680, borderCollapse:"collapse" }}>
               <thead>
                 <tr style={{ borderBottom:`1px solid ${C.brd2}` }}>
-                  {["","Particle / Knot","Gen","PDG Mass","SQT Prediction","Error","Status"].map((h,i) =>
+                  {["","Particle / Knot","Gen","PDG Mass","SQT Prediction","Δ","Status"].map((h,i) =>
                     <th key={i} style={{ padding:"10px 12px", fontFamily:C.mono, fontSize:9, color:C.gry,
                       letterSpacing:1.5, fontWeight:400,
-                      textAlign: i===2 ? "center" : i>=3 ? "right" : "left",
-                      ...(i===6 ? {textAlign:"center"} : {}) }}>{h}</th>)}
+                      textAlign: i===2 ? "center" : i>=3 && i<=5 ? "right" : i===6 ? "center" : "left" }}>{h}</th>)}
                 </tr>
               </thead>
               <tbody>
@@ -195,96 +260,446 @@
               </tbody>
             </table>
           </div>
-          <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, marginTop:8 }}>
-            Click any row to expand. Top quark is a known open problem (~2.6× discrepancy).
+          <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, marginTop:8, lineHeight:1.6 }}>
+            Click any row to expand. Δ is percent error vs PDG (Up quark prediction sits inside the PDG MS-bar band 1.90–2.65 MeV; flagged IN PDG BAND). Top quark uses Zf=1/(8φ⁴) which lands within 1% of PDG; the alternative octahedral Zf=1/144 used in older calculator versions gives a factor-2.6 miss — the structural choice is an open question, see expanded row.
           </div>
 
-          {/* Proton */}
-          <div style={{ marginTop:20 }}>
-            <button onClick={() => setShowProton(v => !v)} style={{
-              fontFamily:C.mono, fontSize:9, letterSpacing:2, padding:"6px 14px",
-              borderRadius:3, cursor:"pointer", border:`1px solid ${C.amb}`,
-              background:"transparent", color:C.amb }}>
-              {showProton ? "▼" : "▶"} PROTON / BORROMEAN BARYON
-            </button>
-            {showProton && <div style={{ background:C.panel, border:`1px solid ${C.amb}22`,
-              borderRadius:8, padding:"18px 20px", marginTop:12 }}>
-              <div style={{ fontFamily:C.mono, fontSize:9, color:C.amb, letterSpacing:3, marginBottom:14 }}>
-                OPEN PROBLEM 5 · BORROMEAN BARYON MASS
-              </div>
-              <div style={{ display:"flex", gap:32, flexWrap:"wrap", marginBottom:12 }}>
-                {[["A = Σcoeff² (Alexander poly)","20"],["Zf = |F₇*|","6"],
-                  ["L_B (solved)",`${L_B.toFixed(3)} fm`],["Ashton bounds","[58.006, 62.0] fm"],
-                  ["Predicted m_p", fmtMeV(pred_p)],["PDG m_p","938.272 MeV"],
-                  ["Error", fmtPct(pct(pred_p, 938.272))]].map(([l,v]) =>
-                  <div key={l}>
-                    <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, marginBottom:2 }}>{l}</div>
-                    <div style={{ fontFamily:C.mono, fontSize:13, color:C.cya }}>{v}</div>
-                  </div>)}
-              </div>
-              <div style={{ fontFamily:C.mono, fontSize:10, color:C.gry, lineHeight:1.6 }}>
-                A=20 from Borromean Alexander polynomial. Zf=6=|F₇*| is Conjecture 1 (pending proof).
-                L_B={L_B.toFixed(3)} fm within Ashton bounds [58.006, 62.0] fm.
-              </div>
-            </div>}
+          <div style={{ marginTop:18 }}>
+            <Section title="MASS-RATIO AUDIT (PAIRWISE)" accent={C.cya}>
+              <table style={{ width:"100%", borderCollapse:"collapse", fontFamily:C.mono, fontSize:11 }}>
+                <thead>
+                  <tr style={{ borderBottom:`1px solid ${C.brd}` }}>
+                    {["Pair","SQT m_a/m_b","PDG m_a/m_b","Δ"].map((h,i) =>
+                      <th key={i} style={{ padding:"8px 10px", color:C.gry, fontWeight:400,
+                        textAlign: i===0 ? "left" : "right", fontSize:9, letterSpacing:1 }}>{h}</th>)}
+                  </tr>
+                </thead>
+                <tbody>
+                  {ratioRows.map((r,i) => (
+                    <tr key={i} style={{ borderBottom:`1px solid ${C.brd}` }}>
+                      <td style={{ padding:"6px 10px", color:C.txt }}>{r.a} / {r.b}</td>
+                      <td style={{ padding:"6px 10px", textAlign:"right", color:C.txt2 }}>{r.predRatio.toFixed(3)}</td>
+                      <td style={{ padding:"6px 10px", textAlign:"right", color:C.txt2 }}>{r.obsRatio.toFixed(3)}</td>
+                      <td style={{ padding:"6px 10px", textAlign:"right", color:errColor(r.err) }}>
+                        {fmtPct(r.err)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </Section>
           </div>
-
-          {/* Constants */}
-          <div style={{ marginTop:12 }}>
-            <button onClick={() => setShowConst(v => !v)} style={{
-              fontFamily:C.mono, fontSize:9, letterSpacing:2, padding:"6px 14px",
-              borderRadius:3, cursor:"pointer", border:`1px solid ${C.brd2}`,
-              background:"transparent", color:C.gry }}>
-              {showConst ? "▼" : "▶"} DERIVED CONSTANTS
-            </button>
-            {showConst && <div style={{ background:C.panel, border:`1px solid ${C.brd}`,
-              borderRadius:8, padding:"18px 20px", marginTop:12 }}>
-              <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, letterSpacing:3, marginBottom:14 }}>
-                ZERO FREE PARAMETERS
-              </div>
-              <div style={{ display:"flex", flexWrap:"wrap", gap:"10px 32px" }}>
-                {[["φ (golden ratio)", phi.toFixed(6), "axiom"],
-                  ["Φ (throat angle)", PHI.toFixed(6), "2π − φ²/8π²"],
-                  ["m₀ (base mass)", `${m0.toFixed(5)} MeV`, "0.511/exp(2π/Φ)"],
-                  ["κ (bulk modulus)", kappa.toFixed(6), "φ⁻⁴"],
-                  ["ξ_vac", `${XI_VAC.toFixed(3)} fm`, "100φ"]].map(([l,v,s]) =>
-                  <div key={l} style={{ minWidth:180 }}>
-                    <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, marginBottom:2 }}>{l}</div>
-                    <div style={{ fontFamily:C.mono, fontSize:13, color:C.cya }}>{v}</div>
-                    <div style={{ fontFamily:C.mono, fontSize:9, color:"#3a3a5a", marginTop:1 }}>{s}</div>
-                  </div>)}
-              </div>
-            </div>}
-          </div>
-
-          {/* Formula */}
-          <div style={{ marginTop:20, padding:"14px 18px", background:C.panel,
-            border:`1px solid ${C.brd}`, borderRadius:8 }}>
-            <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, letterSpacing:2, marginBottom:10 }}>
-              MASS OPERATOR
-            </div>
-            <div style={{ fontFamily:C.mono, fontSize:13, color:C.cya, lineHeight:2 }}>
-              m(A, Zf, L) = m₀ · (A/Zf) · exp(L / (Φ · r_eff(L)))
-            </div>
-            <div style={{ fontFamily:C.mono, fontSize:11, color:C.txt2, lineHeight:2, marginTop:4 }}>
-              r_eff(L) = 1 + ln(1 + L/ξ_vac) · ξ_vac = 100φ<br/>
-              A = knot winding index · Zf = topological partition factor · L = ropelength (fm)
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div style={{ marginTop:24, paddingTop:16, borderTop:`1px solid ${C.brd}`,
-            fontFamily:C.mono, fontSize:9, color:C.gry, lineHeight:1.8 }}>
-            SQT Framework · M. Gifford · 2026 ·
-            Parameters labeled CONJECTURE or OPEN PROBLEM are structural but not yet formally derived.
-            Top quark discrepancy is documented and under investigation.
-          </div>
-
         </div>
-      </div>;
+      );
     }
 
-    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    // ─────────────────────────── Tab: Calculator (sliders)
+    function CalculatorTab() {
+      const [A, setA]   = useState(20);
+      const [Zf, setZf] = useState(6);
+      const [L, setL]   = useState(60.194);
+      const m = massFn(A, Zf, L);
+
+      const Slider = ({ label, value, min, max, step, onChange, suffix, hint }) => (
+        <div style={{ marginBottom:18 }}>
+          <div style={{ display:"flex", justifyContent:"space-between", marginBottom:6 }}>
+            <span style={{ fontFamily:C.mono, fontSize:11, color:C.gry, letterSpacing:1 }}>{label}</span>
+            <span style={{ fontFamily:C.mono, fontSize:13, color:C.cya }}>
+              {value.toFixed(step >= 1 ? 0 : 3)}{suffix ? ` ${suffix}` : ""}
+            </span>
+          </div>
+          <input type="range" min={min} max={max} step={step} value={value}
+            onChange={e => onChange(Number(e.target.value))} />
+          <div style={{ fontFamily:C.mono, fontSize:9, color:"#3a3a5a", marginTop:4 }}>{hint}</div>
+        </div>
+      );
+
+      const presets = [
+        { id:"e",   label:"Electron", A:1, Zf:1,        L:TWO_PI },
+        { id:"u",   label:"Up",       A:3, Zf:3,        L:L_q    },
+        { id:"mu",  label:"Muon",     A:1, Zf:ZF_LEP,   L:2*L_q  },
+        { id:"p",   label:"Proton",   A:20,Zf:6,        L:L_B    },
+        { id:"top", label:"Top",      A:119,Zf:1/(8*phi4), L:37.31 },
+      ];
+
+      return (
+        <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16 }}>
+          <Section title="INPUTS" accent={C.cya}>
+            <Slider label="A — winding index"   value={A}  min={1}    max={150}  step={1}    onChange={setA}  hint="Knot crossing / Alexander coefficient" />
+            <Slider label="Zf — topology factor" value={Zf} min={0.01} max={20}   step={0.01} onChange={setZf} hint="|F₇*|=6 for baryons; 1/(2π) for leptons; etc." />
+            <Slider label="L — ropelength"      value={L}  min={1}    max={120}  step={0.01} onChange={setL}  suffix="fm" hint="Closed-curve length on hyperboloid throat" />
+            <div style={{ display:"flex", gap:6, flexWrap:"wrap", marginTop:14 }}>
+              {presets.map(pr => (
+                <button key={pr.id} onClick={() => { setA(pr.A); setZf(pr.Zf); setL(pr.L); }}
+                  style={{ fontFamily:C.mono, fontSize:9, letterSpacing:1, padding:"5px 10px",
+                    borderRadius:3, cursor:"pointer", textTransform:"uppercase",
+                    border:`1px solid ${C.brd2}`, background:"transparent", color:C.txt2 }}>
+                  {pr.label}
+                </button>
+              ))}
+            </div>
+          </Section>
+
+          <Section title="OUTPUT" accent={C.grn}>
+            <div style={{ marginBottom:18 }}>
+              <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, letterSpacing:1, marginBottom:4 }}>PREDICTED MASS</div>
+              <div style={{ fontFamily:C.mono, fontSize:28, color:C.grn, lineHeight:1.1 }}>{fmtMeV(m)}</div>
+              <div style={{ fontFamily:C.mono, fontSize:11, color:C.txt2, marginTop:4 }}>
+                {m.toExponential(4)} MeV
+              </div>
+            </div>
+            <div style={{ display:"flex", flexWrap:"wrap", gap:14, marginTop:8 }}>
+              <Stat l="A/Zf"           v={(A/Zf).toFixed(4)} />
+              <Stat l="r_eff(L)"       v={rEff(L).toFixed(4)} />
+              <Stat l="L/(Φ·r_eff)"    v={(L/(PHI*rEff(L))).toFixed(4)} />
+              <Stat l="exp(L/(Φ·r_eff))" v={Math.exp(L/(PHI*rEff(L))).toExponential(3)} />
+              <Stat l="m₀ · A/Zf"      v={`${(m0*A/Zf).toFixed(5)} MeV`} color={C.txt2} />
+            </div>
+            <div style={{ marginTop:14, padding:"10px 12px", background:C.panel2, borderRadius:4,
+              fontFamily:C.mono, fontSize:11, color:C.cya, lineHeight:1.7 }}>
+              m = m₀ · (A/Zf) · exp(L / (Φ · r_eff(L)))
+            </div>
+          </Section>
+        </div>
+      );
+    }
+
+    // ─────────────────────────── Tab: Constants (with §2.26 Φ decomposition)
+    function ConstantsTab() {
+      return (
+        <div>
+          <Section title="DERIVED CONSTANTS — ZERO FREE PARAMETERS" accent={C.cya}>
+            <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(220px, 1fr))", gap:"14px 24px" }}>
+              <Stat l="φ (golden ratio)"  v={phi.toFixed(8)}    s="(1+√5)/2 — axiom" />
+              <Stat l="φ²"                v={phi2.toFixed(8)}   s="exchange dominance scale" />
+              <Stat l="2π"                v={TWO_PI.toFixed(8)} s="base ropelength of unknot" />
+              <Stat l="Φ (throat angle)"  v={PHI.toFixed(8)}    s="2π + K/(8π²)" />
+              <Stat l="m₀ (base mass)"    v={`${m0.toFixed(6)} MeV`} s="0.511 / exp(2π/Φ)" />
+              <Stat l="κ (bulk modulus)"  v={kappa.toFixed(8)}  s="φ⁻⁴" />
+              <Stat l="ξ_vac"             v={`${XI_VAC.toFixed(4)} fm`} s="100φ" />
+              <Stat l="Zf_lep"            v={ZF_LEP.toFixed(8)} s="1/(2π) — gen II/III leptons" />
+              <Stat l="L_q (quark base)"  v={`${L_q.toFixed(4)} fm`} s="Φ·φ²" />
+              <Stat l="L_B (Borromean)"   v={`${L_B.toFixed(4)} fm`} s="solved for m_p=938.272 MeV" />
+            </div>
+          </Section>
+
+          <Section title="§2.26 — Φ STRUCTURAL DECOMPOSITION" accent={C.amb}>
+            <div style={{ fontFamily:C.mono, fontSize:13, color:C.cya, lineHeight:2, marginBottom:8 }}>
+              Φ = 2π + K / (8π²) = {PHI.toFixed(6)}
+            </div>
+            <div style={{ fontFamily:C.mono, fontSize:11, color:C.txt2, lineHeight:1.9 }}>
+              2π &nbsp; = {TWO_PI.toFixed(6)} &nbsp;— ropelength of the unknot (reference scale)<br/>
+              K &nbsp;&nbsp; = {K_THROAT.toFixed(6)} &nbsp;— Gaussian curvature at hyperboloid throat = −φ²<br/>
+              8π² &nbsp;= {TORUS_AREA_2X.toFixed(6)} &nbsp;— 2 × Area(unit torus) = 2·(4π²)<br/>
+              δΦ = K/(8π²) = {(K_THROAT/TORUS_AREA_2X).toFixed(6)} &nbsp;— curvature correction (Gauss-Bonnet type)
+            </div>
+            <div style={{ marginTop:14, display:"flex", gap:8, flexWrap:"wrap" }}>
+              <Badge label="REGISTER 2" col={C.amb} />
+              <Badge label="STRUCTURE IDENTIFIED" col={C.cya} />
+              <Badge label="K = −φ² DERIVATION OPEN" col={C.org} />
+              <Badge label="8π² NORMALIZATION OPEN" col={C.org} />
+            </div>
+            <div style={{ fontFamily:C.mono, fontSize:10, color:C.gry, marginTop:14, lineHeight:1.7 }}>
+              Sub-gap 1 — derive K=−φ² from twist-knot throat hyperboloid second fundamental form.<br/>
+              Sub-gap 2 — derive 8π² normalization from self-contact integral on unit torus.<br/>
+              IS NOT an Eddington maneuver: K and 8π² come from geometry, not from fitting Φ.
+            </div>
+          </Section>
+
+          <Section title="MASS OPERATOR" accent={C.cya}>
+            <div style={{ fontFamily:C.mono, fontSize:13, color:C.cya, lineHeight:2 }}>
+              m(A, Zf, L) = m₀ · (A/Zf) · exp( L / (Φ · r_eff(L)) )
+            </div>
+            <div style={{ fontFamily:C.mono, fontSize:11, color:C.txt2, lineHeight:1.9, marginTop:6 }}>
+              r_eff(L) = 1 + ln(1 + L/ξ_vac), &nbsp; ξ_vac = 100φ<br/>
+              A — knot winding index &nbsp;·&nbsp; Zf — topological partition factor &nbsp;·&nbsp; L — ropelength (fm)
+            </div>
+          </Section>
+        </div>
+      );
+    }
+
+    // ─────────────────────────── Tab: Baryon (Conjecture 1, Open Problem 5)
+    function BaryonTab() {
+      const pred_p = massFn(A_B, ZF_B, L_B);
+      const ashtonLo = 58.006, ashtonHi = 62.0;
+      const inAshton = L_B >= ashtonLo && L_B <= ashtonHi;
+      return (
+        <div>
+          <Section title="OPEN PROBLEM 5 · BORROMEAN BARYON MASS" accent={C.amb}>
+            <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(180px,1fr))", gap:"14px 24px", marginBottom:16 }}>
+              <Stat l="A = Σ coeff² (Alexander poly)" v="20" />
+              <Stat l="Zf = |F₇*|"   v="6" />
+              <Stat l="L_B (solved)" v={`${L_B.toFixed(4)} fm`} />
+              <Stat l="Ashton bounds" v={`[${ashtonLo}, ${ashtonHi}] fm`} color={inAshton ? C.grn : C.red} />
+              <Stat l="Predicted m_p" v={fmtMeV(pred_p)} />
+              <Stat l="PDG m_p"       v="938.272 MeV" color={C.txt2} />
+              <Stat l="Δ"             v={fmtPct(pct(pred_p, 938.272))} color={errColor(pct(pred_p, 938.272))} />
+            </div>
+            <div style={{ fontFamily:C.mono, fontSize:10, color:C.gry, lineHeight:1.7 }}>
+              A=20 from the Borromean Alexander polynomial. L_B sits inside the Ashton bounds [58.006, 62.0] fm.
+            </div>
+          </Section>
+
+          <Section title="§2.15-PS — CONJECTURE 1 PROOF SKETCH" accent={C.grn}>
+            <div style={{ display:"flex", gap:8, flexWrap:"wrap", marginBottom:12 }}>
+              <Badge label="Zf = 6 = |F₇*|" col={C.grn} solid />
+              <Badge label="REGISTER 2 COMPLETE" col={C.grn} />
+              <Badge label="REGISTER 1 PENDING CROMWELL §1.7 VERIFY" col={C.amb} />
+            </div>
+            <div style={{ fontFamily:C.mono, fontSize:11, color:C.txt2, lineHeight:1.9 }}>
+              Eight-step S₃-equivariance argument: π₁(S³\B) = ⟨x,y,z | [x,[y⁻¹,z]],…⟩ admits a unique<br/>
+              S₃-equivariant surjection to F₇* ≅ ℤ/6ℤ (up to orientation). Therefore Zf = |F₇*| = 6.
+            </div>
+            <table style={{ width:"100%", marginTop:14, borderCollapse:"collapse", fontFamily:C.mono, fontSize:11 }}>
+              <thead><tr style={{ borderBottom:`1px solid ${C.brd}` }}>
+                {["#","Step","Status"].map((h,i) => <th key={i} style={{ textAlign:i===0?"left":i===2?"center":"left", padding:"6px 10px", fontSize:9, color:C.gry, fontWeight:400, letterSpacing:1 }}>{h}</th>)}
+              </tr></thead>
+              <tbody>
+                {[
+                  ["1","Wirtinger presentation of π₁(S³\\B)","R1"],
+                  ["2","H₁(S³\\B) = ℤ³ (linking numbers all 0)","R1"],
+                  ["3","Sym(B) ⊇ S₃ (Cromwell 2004 §1.7, p.13)","R1*"],
+                  ["4","S₃ transitive on {x,y,z}","R1"],
+                  ["5","S₃ acts trivially on F₇* (abelian target)","R1"],
+                  ["6","φ(x)=φ(y)=φ(z)=k, gcd(k,6)=1","R1"],
+                  ["7","Unique up to orientation reversal","R1"],
+                  ["8","ℤ/6ℤ ≅ F₇* canonical in PSL(2,7) context","R1"],
+                ].map(([n,s,r]) => (
+                  <tr key={n} style={{ borderBottom:`1px solid ${C.brd}` }}>
+                    <td style={{ padding:"6px 10px", color:C.gry }}>{n}</td>
+                    <td style={{ padding:"6px 10px", color:C.txt }}>{s}</td>
+                    <td style={{ padding:"6px 10px", textAlign:"center", color: r==="R1" ? C.grn : C.amb }}>{r}</td>
+                  </tr>
+                ))}
+                <tr><td style={{ padding:"8px 10px", color:C.gry, fontSize:9 }}>*</td>
+                    <td colSpan={2} style={{ padding:"8px 10px", color:C.gry, fontSize:9, lineHeight:1.6 }}>
+                      Cromwell §1.7 ToC confirmed; body verification still required for R1 promotion.
+                    </td></tr>
+              </tbody>
+            </table>
+          </Section>
+        </div>
+      );
+    }
+
+    // ─────────────────────────── Tab: Spectrum (log-scale viz)
+    function SpectrumTab() {
+      const W = 760, H = 360, padL = 60, padR = 20, padT = 20, padB = 50;
+      const xs = PARTICLES.map(p => Math.log10(p.obs));
+      const minX = Math.min(...xs) - 0.5, maxX = Math.max(...xs) + 0.5;
+      const xpix = (x) => padL + ((x - minX) / (maxX - minX)) * (W - padL - padR);
+      const decades = [];
+      for (let d = Math.ceil(minX); d <= Math.floor(maxX); d++) decades.push(d);
+
+      return (
+        <div>
+          <Section title="MASS SPECTRUM — LOG SCALE (MeV)" accent={C.cya}>
+            <div style={{ overflowX:"auto" }}>
+              <svg width={W} height={H} style={{ display:"block" }}>
+                {/* Decade gridlines */}
+                {decades.map(d => (
+                  <g key={d}>
+                    <line x1={xpix(d)} x2={xpix(d)} y1={padT} y2={H-padB} stroke={C.brd} strokeDasharray="2,3" />
+                    <text x={xpix(d)} y={H-padB+18} fill={C.gry} fontSize="10" fontFamily={C.mono} textAnchor="middle">10^{d}</text>
+                  </g>
+                ))}
+                {/* Axis */}
+                <line x1={padL} x2={W-padR} y1={H-padB} y2={H-padB} stroke={C.brd2} />
+
+                {/* Particle bars */}
+                {PARTICLES.map((p, i) => {
+                  const pred = massFn(p.A, p.Zf, p.L);
+                  const xObs = xpix(Math.log10(p.obs));
+                  const xPred = xpix(Math.log10(pred));
+                  const y = padT + 25 + i * 26;
+                  const err = pct(pred, p.obs);
+                  const lineCol = errColor(err);
+                  return (
+                    <g key={p.id}>
+                      <line x1={xObs} x2={xPred} y1={y} y2={y} stroke={lineCol} strokeWidth="2" opacity="0.6" />
+                      <circle cx={xObs} cy={y} r="4" fill={C.txt2} />
+                      <circle cx={xPred} cy={y} r="4" fill={lineCol} />
+                      <text x={padL-8} y={y+4} fill={typeColor(p.type)} fontSize="11" fontFamily={C.mono} textAnchor="end">{p.sym}</text>
+                    </g>
+                  );
+                })}
+
+                {/* Legend */}
+                <g transform={`translate(${W-padR-180}, ${padT})`}>
+                  <circle cx={6} cy={6} r="4" fill={C.txt2} />
+                  <text x={16} y={10} fill={C.txt2} fontSize="10" fontFamily={C.mono}>PDG observed</text>
+                  <circle cx={6} cy={22} r="4" fill={C.grn} />
+                  <text x={16} y={26} fill={C.grn} fontSize="10" fontFamily={C.mono}>predicted (Δ &lt; 2%)</text>
+                  <circle cx={6} cy={38} r="4" fill={C.amb} />
+                  <text x={16} y={42} fill={C.amb} fontSize="10" fontFamily={C.mono}>predicted (Δ &lt; 8%)</text>
+                  <circle cx={6} cy={54} r="4" fill={C.org} />
+                  <text x={16} y={58} fill={C.org} fontSize="10" fontFamily={C.mono}>predicted (Δ &lt; 20%)</text>
+                </g>
+              </svg>
+            </div>
+            <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, marginTop:8, lineHeight:1.6 }}>
+              Each bar = log-displacement between SQT prediction (colored dot) and PDG observation (grey dot). Bar color encodes |Δ| using the same thresholds as the audit table.
+            </div>
+          </Section>
+        </div>
+      );
+    }
+
+    // ─────────────────────────── Tab: Worticity / Lemma θ (§2.17-R2)
+    function WorticityTab() {
+      // θ slider for live exploration of J(θ)
+      const [thetaDeg, setThetaDeg] = useState(22.5); // π/8 default
+      const theta = (thetaDeg * Math.PI) / 180;
+      const exch = Math.cos(2*theta);
+      const self = -Math.sin(2*theta);
+      const dominant = Math.abs(exch) > Math.abs(self) ? "Exchange (e₄)" :
+                       Math.abs(exch) < Math.abs(self) ? "Self-energy (e₀)" : "Equal";
+
+      const rows = [
+        ["0",      "0",       "1.000",  "0.000",  "Exchange"],
+        ["π/8",    "22.5°",   "0.707",  "0.707",  "Equal — stability threshold"],
+        ["π/4",    "45°",     "0.000",  "1.000",  "Self-energy — exchange sign flip here"],
+        ["3π/8",   "67.5°",   "−0.707", "0.707",  "Self-energy"],
+        ["π/2",    "90°",     "−1.000", "0.000",  "Self-energy"],
+      ];
+
+      return (
+        <div>
+          <Section title="§2.17-R2 — LEMMA θ (LATTICE STABILITY)" accent={C.amb}>
+            <div style={{ marginBottom:14, display:"flex", gap:8, flexWrap:"wrap" }}>
+              <Badge label="REGISTER 2" col={C.amb} />
+              <Badge label="GAP 2 CLOSED" col={C.grn} />
+              <Badge label="GAP 1 CLOSED (GEOMETRY)" col={C.grn} />
+              <Badge label="§2.17-R1 RETRACTED" col={C.red} />
+            </div>
+            <div style={{ fontFamily:C.mono, fontSize:13, color:C.cya, lineHeight:1.9 }}>
+              J(θ) = v(θ) × φ(v(θ)) = −sin(2θ)·e₀ + cos(2θ)·e₄
+            </div>
+            <div style={{ fontFamily:C.mono, fontSize:11, color:C.txt2, marginTop:8, lineHeight:1.8 }}>
+              Bilinear in v(θ) = cos θ·e₁ + sin θ·e₂ &nbsp;·&nbsp; G₂ involution φ(e₁)=e₂, φ(e₂)=e₁<br/>
+              Fano table: e₁×e₁ = e₂×e₂ = −e₀, e₁×e₂ = +e₄, e₂×e₁ = −e₄ &nbsp;— exact for all θ.
+            </div>
+          </Section>
+
+          <Section title="ENERGY BALANCE TABLE" accent={C.cya}>
+            <table style={{ width:"100%", borderCollapse:"collapse", fontFamily:C.mono, fontSize:11 }}>
+              <thead><tr style={{ borderBottom:`1px solid ${C.brd}` }}>
+                {["θ (rad)","θ (deg)","cos(2θ) — exchange e₄","−sin(2θ) — self-energy e₀","Dominant"].map((h,i) =>
+                  <th key={i} style={{ padding:"8px 10px", color:C.gry, fontSize:9, fontWeight:400, letterSpacing:1, textAlign: i<2 ? "left" : i===4 ? "left" : "right" }}>{h}</th>)}
+              </tr></thead>
+              <tbody>
+                {rows.map((r, i) => (
+                  <tr key={i} style={{ borderBottom:`1px solid ${C.brd}`, background: i===1 ? `${C.amb}11` : i===2 ? `${C.red}11` : "transparent" }}>
+                    <td style={{ padding:"6px 10px", color:C.txt }}>{r[0]}</td>
+                    <td style={{ padding:"6px 10px", color:C.txt2 }}>{r[1]}</td>
+                    <td style={{ padding:"6px 10px", textAlign:"right", color:C.cya }}>{r[2]}</td>
+                    <td style={{ padding:"6px 10px", textAlign:"right", color:C.prp }}>{r[3]}</td>
+                    <td style={{ padding:"6px 10px", color: i===1 ? C.amb : i===2 ? C.red : C.txt2 }}>{r[4]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div style={{ fontFamily:C.mono, fontSize:10, color:C.gry, marginTop:12, lineHeight:1.7 }}>
+              π/8 — lattice stability threshold (exchange = self-energy magnitude). Below π/8 ordered phase stable; above π/8 disordered.<br/>
+              π/4 — exchange (e₄) sign flip, where the site sits on the G₂ reflection axis. <span style={{ color:C.red }}>NOT π/8.</span><br/>
+              The retracted §2.17-R1 placed the sign flip at π/8 — this was incorrect and is withdrawn.
+            </div>
+          </Section>
+
+          <Section title="LIVE J(θ)" accent={C.prp}>
+            <div style={{ display:"flex", justifyContent:"space-between", marginBottom:6 }}>
+              <span style={{ fontFamily:C.mono, fontSize:11, color:C.gry }}>θ (deg)</span>
+              <span style={{ fontFamily:C.mono, fontSize:13, color:C.cya }}>{thetaDeg.toFixed(2)}°</span>
+            </div>
+            <input type="range" min="0" max="90" step="0.1" value={thetaDeg}
+              onChange={e => setThetaDeg(Number(e.target.value))} />
+            <div style={{ display:"flex", flexWrap:"wrap", gap:24, marginTop:14 }}>
+              <Stat l="cos(2θ) — exchange e₄"  v={exch.toFixed(4)}  color={C.cya} />
+              <Stat l="−sin(2θ) — self-energy e₀" v={self.toFixed(4)} color={C.prp} />
+              <Stat l="|exch| − |self|"  v={(Math.abs(exch) - Math.abs(self)).toFixed(4)} />
+              <Stat l="Dominant" v={dominant} color={dominant.startsWith("Exchange") ? C.cya : dominant.startsWith("Self") ? C.prp : C.amb} />
+            </div>
+
+            {/* Mini bar chart: exch vs self magnitudes (signed for exch, |·| for self) */}
+            <div style={{ marginTop:16 }}>
+              <svg width="100%" height="100" viewBox="0 0 400 100">
+                <line x1="0" y1="50" x2="400" y2="50" stroke={C.brd} strokeDasharray="2,3" />
+                <text x="395" y="46" fill={C.gry} fontSize="9" fontFamily={C.mono} textAnchor="end">0</text>
+                {/* Self-energy magnitude (always shown above zero, since |·|) */}
+                <rect x="120" y={50 - Math.abs(self)*38} width="80" height={Math.abs(self)*38}
+                  fill={C.prp} opacity="0.7" />
+                {/* Exchange — signed: above zero if positive, below if negative */}
+                <rect x="220" y={exch >= 0 ? 50 - exch*38 : 50} width="80"
+                  height={Math.abs(exch)*38}
+                  fill={exch >= 0 ? C.cya : C.red} opacity="0.7" />
+                <text x="160" y="92" fill={C.prp} fontSize="10" fontFamily={C.mono} textAnchor="middle">|self-energy|</text>
+                <text x="260" y="92" fill={exch >= 0 ? C.cya : C.red} fontSize="10" fontFamily={C.mono} textAnchor="middle">exchange (signed)</text>
+              </svg>
+            </div>
+          </Section>
+        </div>
+      );
+    }
+
+    // ─────────────────────────── App shell
+    function App() {
+      const [tab, setTab] = useState("audit");
+      const tabs = [
+        ["audit",      "Mass Audit"],
+        ["calc",       "Calculator"],
+        ["constants",  "Constants"],
+        ["baryon",     "Baryon"],
+        ["spectrum",   "Spectrum"],
+        ["worticity",  "Worticity"],
+      ];
+
+      return (
+        <div style={{ background:C.bg, minHeight:"100vh", padding:"24px 16px" }}>
+          <div style={{ maxWidth:880, margin:"0 auto" }}>
+            {/* Header */}
+            <div style={{ marginBottom:18 }}>
+              <div style={{ fontFamily:C.mono, fontSize:10, color:C.cya, letterSpacing:4, marginBottom:8 }}>
+                SUPERFLUID QUANTUM TOPOLOGY · v3 · MAY 2026
+              </div>
+              <h1 style={{ fontSize:26, fontWeight:700, margin:0 }}>Geometric Mass Calculator</h1>
+              <p style={{ color:C.txt2, fontSize:13, marginTop:8, lineHeight:1.55, maxWidth:620 }}>
+                Particle masses from knot topology, division-algebra structure, and Fano-plane combinatorics.
+                All constants flow from φ and π — no mass targets consulted in parameter construction.
+              </p>
+              <div style={{ display:"flex", gap:8, marginTop:12, flexWrap:"wrap" }}>
+                <Badge label="DERIVED" col={C.grn} />
+                <Badge label="CONJECTURE" col={C.cya} />
+                <Badge label="REG 2 COMPLETE" col={C.cya} />
+                <Badge label="OPEN PROBLEM" col={C.org} />
+              </div>
+            </div>
+
+            {/* Tab bar */}
+            <div style={{ display:"flex", gap:0, borderBottom:`1px solid ${C.brd2}`, marginBottom:18, overflowX:"auto" }}>
+              {tabs.map(([id, label]) => <Tab key={id} id={id} label={label} active={tab===id} onClick={setTab} />)}
+            </div>
+
+            {/* Body */}
+            {tab === "audit"     && <MassAuditTab />}
+            {tab === "calc"      && <CalculatorTab />}
+            {tab === "constants" && <ConstantsTab />}
+            {tab === "baryon"    && <BaryonTab />}
+            {tab === "spectrum"  && <SpectrumTab />}
+            {tab === "worticity" && <WorticityTab />}
+
+            {/* Footer */}
+            <div style={{ marginTop:32, paddingTop:16, borderTop:`1px solid ${C.brd}`,
+              fontFamily:C.mono, fontSize:9, color:C.gry, lineHeight:1.8 }}>
+              SQT Framework · M. Gifford · 2026 · Calculator v3 incorporates §2.26 (Φ structure),
+              §2.15-PS (Conjecture 1 R2 complete), §2.17-R2 (Lemma θ — π/8 stability, π/4 sign flip).
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
   </script>
 </body>
 </html>

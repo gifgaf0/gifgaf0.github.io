@@ -1,0 +1,53 @@
+[project]
+name = "hybrid_kem"
+version = "0.1.0"
+description = "Research testbed for hybrid post-quantum key encapsulation"
+authors = [{ name = "M. Gifford" }]
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+dependencies = [
+    "cryptography>=42.0",
+    "gmpy2>=2.1",
+    "requests>=2.31",
+    "numpy>=1.24",
+    # liboqs-python and fips203 added once Claude Code reaches KEM brief
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=4.0",
+    "hypothesis>=6.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0",
+]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "integration: tests requiring network or hardware (skipped by default)",
+    "slow: tests that take more than 1 second",
+]
+addopts = "-v --strict-markers"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "B", "S"]
+# S101: assert is fine in tests
+# B008: function call in default arg is fine for our use
+ignore = ["S101", "B008"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_return_any = true
+warn_unused_configs = true

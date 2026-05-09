@@ -112,13 +112,17 @@ def test_toy_measure_dfr_1000(wrapper, record_property):
 
 
 @pytest.mark.slow
-@pytest.mark.xfail(
-    reason="supplied source self-reports DFR≈0.48 at (p=911,k=4); "
-           "noise > p/4 budget. See tools/BRIEF_02_SUMMARY.md.",
-    strict=False,
-)
-def test_toy_dfr_target_xfail(wrapper):
-    """Brief 02 §1 target: DFR < 0.01 over 1000 trials. Currently fails."""
+def test_toy_dfr_target(wrapper):
+    """Brief 02 §1 target: DFR < 0.01 over 1000 trials.
+
+    Was xfail in the previous revision because the supplied source
+    drew the secret `s` and encryption randomness `r` from a uniform
+    F_p^16 distribution, making <e, r>_norm wrap mod p and DFR
+    saturate at ~0.5. The Brief 02 epilogue replaces both with
+    rand_small_nonzd (CBD(η=2) with ZD-pair rejection); empirical
+    DFR is 0 over 5000 trials at both p=911 and p=8191. See
+    tools/BRIEF_02_SUMMARY.md.
+    """
     fails = 0
     for i in range(DFR_TRIALS):
         pk, sk = wrapper.keygen(_drbg(0x3000 + i))

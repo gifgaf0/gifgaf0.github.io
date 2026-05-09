@@ -44,6 +44,41 @@ from sedenion_Fp import DIM as _DIM  # noqa: E402
 P_TOY = 911
 K_TOY = 4
 
+# CBD(η) sampling weights: binomial(2η, k) for k=0..2η over the support
+# {-η, …, η}. Brief 02 epilogue Task 2 callers always pass η=2.
+_CBD_TABLES = {
+    1: ([-1, 0, 1],          [1, 2, 1]),
+    2: ([-2, -1, 0, 1, 2],   [1, 4, 6, 4, 1]),
+}
+
+
+def rand_small_nonzd(p: int, eta: int = 2, dim: int = _DIM):
+    """Sample a small CBD(η) vector that is not a basis-pair zero divisor.
+
+    Rejection-samples from the centred binomial distribution CBD(η) over
+    F_p^dim and re-rolls when the result is all-zero or has exactly two
+    non-zero entries whose indices form a known sedenion ZD pair (the
+    same definition the supplied source applies in ``rand_nonzd``).
+
+    Brief 02 epilogue Task 1 measures the rejection rate at ~10⁻⁵ for
+    CBD(η=2), so the loop terminates after one iteration overwhelmingly
+    and the resulting sampling distribution is statistically
+    indistinguishable from CBD(η).
+    """
+    import random as _r
+    values, weights = _CBD_TABLES[eta]
+    zd_pairs = _slwe.zd_pairs    # prime-independent (audit confirms)
+    while True:
+        v = [_r.choices(values, weights=weights)[0] % p for _ in range(dim)]
+        nz = [i for i, c in enumerate(v) if c != 0]
+        if not nz:
+            continue
+        if len(nz) == 2:
+            idx = (nz[0], nz[1])
+            if idx in zd_pairs:
+                continue
+        return v
+
 # Each sedenion coefficient lies in [0, p) with p = 911 < 2^10. We pack
 # coefficients as little-endian 2-byte words for clarity.
 _COEFF_BYTES = 2
@@ -138,17 +173,61 @@ def keygen(drbg: DRBG, k: int = K_TOY) -> Tuple[bytes, bytes]:
     if k < 1:
         raise ValueError(f"k must be >= 1; got {k}")
     _seed_python_random(drbg)
-    kp = _slwe.keygen(k)
+    kp = _keygen_small_sr(k)
     return _serialize_pk(kp["A"], kp["b"]), _serialize_sk(kp["sk"])
 
 
 def encaps(pk_bytes: bytes, drbg: DRBG, k: int = K_TOY) -> Tuple[bytes, bytes]:
     A, b = _deserialize_pk(pk_bytes, k)
     _seed_python_random(drbg)
-    c1, c2, m_bit = _slwe.encaps(A, b, k)
+    c1, c2, m_bit = _encaps_small_r(A, b, k)
     ct = _serialize_ct(c1, c2, k)
     ss = hashlib.sha256(bytes([m_bit & 1]) + ct).digest()
     return ct, ss
+
+
+# -- Brief 02 epilogue Task 3: surgical fix for the DFR issue ---------
+#
+# The supplied source's keygen/encaps draw the secret `s` and the
+# encryption randomness `r` from ``rand_nonzd`` — a uniform F_p^16
+# distribution with only a 2-coordinate-ZD-pair filter. The dominant
+# noise term <e, r>_norm is then O(k * dim * p), wraps mod p, and
+# pushes per-trial DFR to the noise-only ceiling of 0.5 (verified in
+# Brief 02 + parameter-fix epilogue).
+#
+# The fix is to draw `s` and `r` from ``rand_small_nonzd`` (CBD(η=2)
+# with ZD-pair rejection). The public matrix `A` stays uniform, so the
+# scheme's hardness assumption is unchanged. Empirical DFR over 5000
+# trials is 0 at both p=911 and p=8191 (k=4, η=2) — see
+# tools/BRIEF_02_SUMMARY.md.
+#
+# We re-implement keygen/encaps here rather than monkey-patching
+# ``_slwe.rand_nonzd`` because (a) it leaves the supplied source
+# untouched and (b) keeps `A` uniform, which a global rand_nonzd
+# replacement would not.
+
+
+def _keygen_small_sr(k: int) -> dict:
+    s = [rand_small_nonzd(_slwe.p, eta=2, dim=_DIM) for _ in range(k)]
+    A = [_slwe.singer_orbit(_slwe.rand_nonzd(), k) for _ in range(k)]
+    e = [_slwe.rand_small(eta=2) for _ in range(k)]
+    As = _slwe.mat_vec(A, s)
+    b = [_slwe.s_add(As[i], e[i]) for i in range(k)]
+    return {"sk": s, "A": A, "b": b}
+
+
+def _encaps_small_r(A, b_vec, k: int):
+    import random as _r
+    m_bit = _r.randint(0, 1)
+    q2 = _slwe.p // 2
+    r = [rand_small_nonzd(_slwe.p, eta=2, dim=_DIM) for _ in range(k)]
+    e1 = [_slwe.rand_small(eta=2) for _ in range(k)]
+    e2 = _r.choices([-1, 0, 0, 0, 1], weights=[1, 4, 4, 4, 1])[0] % _slwe.p
+    AH = _slwe.conj_transpose(A)
+    AHr = _slwe.mat_vec(AH, r)
+    c1 = [_slwe.s_add(AHr[i], e1[i]) for i in range(k)]
+    c2 = (_slwe.norm_inner_k(b_vec, r) + e2 + m_bit * q2) % _slwe.p
+    return c1, c2, m_bit
 
 
 def decaps(sk_bytes: bytes, ct_bytes: bytes, k: int = K_TOY) -> bytes:

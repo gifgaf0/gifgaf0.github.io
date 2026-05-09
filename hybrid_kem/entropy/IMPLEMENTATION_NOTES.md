@@ -15,16 +15,20 @@ left room, and known limitations.
 - **`h_per_byte = 7.5` default** matches the brief's recommendation.
   Production callers should drive the value from the source's actual
   measured min-entropy.
-- **HMAC-DRBG snapshot test instead of full CAVP integration.**
-  `tests/test_drbg.py::test_hmac_drbg_snapshot_stable` pins a deterministic
-  output so refactors that change byte-output break loudly. The CAVP
-  KAT driver (`test_hmac_drbg_kat`) is wired up and parses the .rsp
-  format; drop the official vectors into `tests/kat_vectors/` to enable.
-- **CTR-DRBG, no df.** §10.2.1.5.1. Callers must supply at least
-  `seedlen = 48` bytes of entropy on instantiate. We did not implement
-  the derivation function variant because the brief calls for exact
-  inputs from the QRNG side; df adds attack surface without buying
-  anything in this configuration.
+- **NIST CAVP KAT validation, no PR with reseed.** `HMAC_DRBG.rsp` and
+  `CTR_DRBG.rsp` from CAVS 14.3 are checked in under
+  `tests/kat_vectors/`. `test_hmac_drbg_kat_sha256` runs the first 100
+  SHA-256 vectors and `test_ctr_drbg_kat_aes256_no_df` runs the first 100
+  AES-256-no-df vectors. Procedure per §11.3.5 of SP 800-90A:
+  instantiate, reseed, generate(discard), generate(compare).
+- **CTR-DRBG, no df.** §10.2.1.3.1 / §10.2.1.4.1 / §10.2.1.5.1. The
+  no-df form computes `seed_material = entropy_input ⊕ pad(personalization,
+  seedlen)` (and analogously for reseed). An earlier draft naively
+  concatenated and truncated; that quietly works when personalization
+  / additional input are empty (which is most of life) but fails the CAVP
+  vectors that include non-empty additional input on reseed. The fix is
+  in the current implementation; the bug is preserved here as a tripwire
+  for anyone tempted to "simplify" the seed-material derivation again.
 - **QRNG provider injection.** `QRNGSource` takes a `fetcher` callable
   rather than depending on `requests` at import time. This lets the test
   suite mock the network without monkey-patching, and lets advanced

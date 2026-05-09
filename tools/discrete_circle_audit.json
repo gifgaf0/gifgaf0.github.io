@@ -1,0 +1,60 @@
+{
+  "modulus": 256,
+  "ratio_237": [
+    21,
+    14,
+    6
+  ],
+  "primitives_count": 128,
+  "unordered_proportional_triples_in_primitives": 0,
+  "unordered_proportional_triples_full_circle": 248,
+  "ordered_proportional_triples_in_primitives": 0,
+  "ordered_proportional_triples_full_circle": 248,
+  "total_unordered_primitive_triples": 341376,
+  "total_unordered_full_triples": 2763520,
+  "uniform_match_rate_primitives": 0.0,
+  "uniform_match_rate_full": 8.97406206577119e-05,
+  "examples_in_primitives": [],
+  "examples_full_circle": [
+    [
+      1,
+      86,
+      110
+    ],
+    [
+      2,
+      3,
+      74
+    ],
+    [
+      2,
+      7,
+      90
+    ],
+    [
+      2,
+      74,
+      131
+    ],
+    [
+      2,
+      90,
+      135
+    ],
+    [
+      2,
+      172,
+      220
+    ],
+    [
+      4,
+      6,
+      148
+    ],
+    [
+      4,
+      14,
+      180
+    ]
+  ]
+}

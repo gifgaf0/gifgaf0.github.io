@@ -148,68 +148,124 @@ def test_ctr_drbg_distinct_from_hmac():
 
 
 # ---------------------------------------------------------------------------
-# KAT vectors
+# KAT vectors (NIST CAVP "drbg_pr", PredictionResistance=False, with reseed)
 # ---------------------------------------------------------------------------
+#
+# CAVP file format groups vectors under bracketed section headers:
+#
+#   [SHA-256]                   <- algorithm selector
+#   [PredictionResistance = False]
+#   [EntropyInputLen = 256]
+#   [NonceLen = 128]
+#   [PersonalizationStringLen = 0]
+#   [AdditionalInputLen = 0]
+#   [ReturnedBitsLen = 1024]
+#
+#   COUNT = 0
+#   EntropyInput = ...
+#   Nonce = ...
+#   PersonalizationString =
+#   EntropyInputReseed = ...
+#   AdditionalInputReseed =
+#   AdditionalInput =        <-- consumed by first generate (output discarded)
+#   AdditionalInput =        <-- consumed by second generate (compared to ReturnedBits)
+#   ReturnedBits = ...
+#
+# Procedure per SP 800-90A §11.3.5: instantiate, reseed, generate(discard),
+# generate(compare). We only run vectors whose section selector matches the
+# algorithm under test.
 
 
-def _parse_rsp(text: str):
-    """Minimal NIST .rsp parser. Yields dicts of fields per ``COUNT`` block."""
-    block: dict = {}
-    fields = (
+def _parse_rsp(text: str, want_section: str):
+    """Yield ``(section, params, block)`` for each COUNT inside ``want_section``."""
+    section: str | None = None
+    params: dict = {}
+    block: dict | None = None
+    field_keys = (
         "EntropyInput", "Nonce", "PersonalizationString",
-        "AdditionalInput", "EntropyInputReseed", "AdditionalInputReseed",
-        "ReturnedBits",
+        "EntropyInputReseed", "AdditionalInputReseed", "ReturnedBits",
     )
-    for line in text.splitlines():
-        line = line.strip()
-        if not line or line.startswith("#") or line.startswith("["):
+    for raw in text.splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("[") and line.endswith("]"):
+            inner = line[1:-1].strip()
+            if "=" in inner:
+                key, _, val = inner.partition("=")
+                params[key.strip()] = val.strip()
+            else:
+                section = inner
+                params = {}
+            continue
+        if section != want_section:
             continue
         if line.startswith("COUNT"):
-            if block:
-                yield block
-            block = {"COUNT": int(line.split("=")[1].strip())}
-            block.setdefault("AdditionalInput", [])
+            if block is not None:
+                yield section, dict(params), block
+            block = {
+                "COUNT": int(line.split("=", 1)[1].strip()),
+                "AdditionalInput": [],
+            }
             continue
-        if "=" not in line:
+        if block is None or "=" not in line:
             continue
         key, _, val = line.partition("=")
         key = key.strip()
         val = val.strip()
         b = bytes.fromhex(val) if val else b""
         if key == "AdditionalInput":
-            block.setdefault("AdditionalInput", []).append(b)
-        elif key in fields:
+            block["AdditionalInput"].append(b)
+        elif key in field_keys:
             block[key] = b
-    if block:
-        yield block
+    if block is not None and section == want_section:
+        yield section, dict(params), block
 
 
 def _kat_dir() -> Path:
     return Path(__file__).parent / "kat_vectors"
 
 
-@pytest.mark.parametrize("rsp_name", ["HMAC_DRBG_SHA256.rsp"])
-def test_hmac_drbg_kat(rsp_name):
+def _run_drbg_kat(algorithm: str, rsp_name: str, section: str, limit: int = 50) -> int:
     path = _kat_dir() / rsp_name
     if not path.exists():
         pytest.skip(f"KAT vector file not present: {rsp_name}")
     text = path.read_text()
-    for block in _parse_rsp(text):
-        d = DRBG(HMAC_SHA256)
+    n_run = 0
+    for _, _params, block in _parse_rsp(text, section):
+        if "ReturnedBits" not in block or len(block["AdditionalInput"]) < 2:
+            continue
+        d = DRBG(algorithm)
         d.instantiate(
             block["EntropyInput"],
             block["Nonce"],
             block.get("PersonalizationString", b""),
         )
-        if "EntropyInputReseed" in block:
-            d.reseed(block["EntropyInputReseed"], block.get("AdditionalInputReseed", b""))
-        ai_list = block.get("AdditionalInput", [])
-        # The CAVP format has two AdditionalInput entries: discard the first
-        # output (per CAVP convention) and check the second.
-        out = b""
-        for ai in ai_list:
-            out = d.generate(len(block["ReturnedBits"]), additional_input=ai)
-        assert out == block["ReturnedBits"], f"COUNT={block.get('COUNT')}"
+        d.reseed(
+            block["EntropyInputReseed"],
+            block.get("AdditionalInputReseed", b""),
+        )
+        n_bytes = len(block["ReturnedBits"])
+        # First generate is discarded per CAVP procedure.
+        d.generate(n_bytes, additional_input=block["AdditionalInput"][0])
+        out = d.generate(n_bytes, additional_input=block["AdditionalInput"][1])
+        assert out == block["ReturnedBits"], (
+            f"{algorithm} KAT failed at section={section} COUNT={block['COUNT']}"
+        )
+        n_run += 1
+        if n_run >= limit:
+            break
+    return n_run
+
+
+def test_hmac_drbg_kat_sha256():
+    n = _run_drbg_kat(HMAC_SHA256, "HMAC_DRBG.rsp", "SHA-256", limit=100)
+    assert n > 0, "no HMAC-DRBG-SHA-256 vectors matched"
+
+
+def test_ctr_drbg_kat_aes256_no_df():
+    n = _run_drbg_kat(AES_CTR_256, "CTR_DRBG.rsp", "AES-256 no df", limit=100)
+    assert n > 0, "no CTR-DRBG-AES-256-no-df vectors matched"
 
 
 # ---------------------------------------------------------------------------

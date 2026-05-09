@@ -187,14 +187,32 @@ class _CTRDRBG:
         self._state.Key = mixed[: self.keylen]
         self._state.V = mixed[self.keylen :]
 
+    @staticmethod
+    def _pad(buf: bytes, n: int) -> bytes:
+        if len(buf) >= n:
+            return buf[:n]
+        return buf + b"\x00" * (n - len(buf))
+
+    @staticmethod
+    def _xor(a: bytes, b: bytes) -> bytes:
+        return bytes(x ^ y for x, y in zip(a, b))
+
     # Instantiate (no df, §10.2.1.3.1).
     def instantiate(self, entropy: bytes, nonce: bytes, personalization: bytes) -> None:
-        # No-df form requires entropy_input length == seedlen. Caller can pass
-        # a longer buffer; we truncate after concatenation per §10.2.1.3.1.
-        seed_material = entropy + nonce + personalization
-        if len(seed_material) < self.seedlen:
-            raise ValueError("seed material shorter than seedlen")
-        seed_material = seed_material[: self.seedlen]
+        # No-df form requires entropy_input length == seedlen and computes
+        # seed_material = entropy_input ⊕ pad(personalization, seedlen). The
+        # spec defines no ``nonce`` for the no-df form; we accept it for API
+        # symmetry and concatenate it onto the personalization side.
+        if len(entropy) < self.seedlen:
+            # Allow callers to pass entropy||nonce when total length matches.
+            if len(entropy) + len(nonce) >= self.seedlen:
+                entropy = (entropy + nonce)[: self.seedlen]
+                nonce = b""
+            else:
+                raise ValueError("entropy_input shorter than seedlen")
+        entropy = entropy[: self.seedlen]
+        perso = self._pad(nonce + personalization, self.seedlen)
+        seed_material = self._xor(entropy, perso)
         self._state = _CTRState(
             Key=b"\x00" * self.keylen,
             V=b"\x00" * self.blocklen,
@@ -206,11 +224,12 @@ class _CTRDRBG:
     def reseed(self, entropy: bytes, additional_input: bytes) -> None:
         if self._state is None:
             raise DRBGStateError("DRBG not instantiated")
-        seed = entropy + additional_input
-        if len(seed) < self.seedlen:
-            raise ValueError("seed material shorter than seedlen")
-        seed = seed[: self.seedlen]
-        self._update(seed)
+        if len(entropy) < self.seedlen:
+            raise ValueError("entropy_input shorter than seedlen")
+        entropy = entropy[: self.seedlen]
+        ai_padded = self._pad(additional_input, self.seedlen)
+        seed_material = self._xor(entropy, ai_padded)
+        self._update(seed_material)
         self._state.reseed_counter = 1
 
     # Generate (no df, §10.2.1.5.1).

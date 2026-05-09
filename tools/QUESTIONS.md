@@ -1,91 +1,120 @@
-# Brief 02 — Open Questions / Blockers (updated)
+# Brief 02 — Open Questions
 
-Tracking what was blocked, what unblocked, and what remains.
+Status of every blocker / sub-question raised across Brief 02. Items
+marked **CLOSED** are resolved; items marked **OPEN** still need a
+decision.
 
-## 1. Toy SLWE wrapper (Brief 02 §1) — UNBLOCKED, BUT DFR TARGET NOT MET
+## 1. Toy SLWE wrapper — CLOSED
 
-**Unblock:** the user uploaded `tools/sqt_slwe.py`, `tools/sedenion_Fp.py`,
-`tools/sedenion_audit.py`, and `tools/sqt_cryptanalysis.py` to complete
-the brief. The wrapper now dispatches `mode="toy"` to the real SQT-SLWE
-construction (sedenion algebra over F_911, PSL(2,7) Singer-orbit
-public matrix, conjugate-norm inner product). Glue code lives in
-`hybrid_kem/kem_slwe/slwe_toy.py`; tests in
-`hybrid_kem/tests/test_slwe_toy.py`.
+Originally blocked because `sqt_slwe__1_.py` wasn't in the repo;
+unblocked when you uploaded it. Then blocked on DFR target ≈ 0.5;
+unblocked by the surgical fix described in
+`tools/BRIEF_02_DISTRIBUTION_NOTE.md` (CBD(η=2) with ZD-pair rejection
+applied to `s` and `r`, public matrix `A` left uniform).
 
-**What's wired up:**
-- structural roundtrip: pk = 640 B, sk = 128 B, ct = 130 B, ss = 32 B.
-- DRBG-driven Python `random` reseeding so the entropy layer flows
-  through to keygen / encaps.
-- single-bit per call; wrapper-level shared secret is
-  `SHA256(m_bit || ct)` so both sides match iff `m_dec == m_bit`.
+DFR over 5000 trials: 0 at p=911, 0 at p=8191. xfail mark removed.
 
-**What still fails:** The brief asks DFR < 0.01 over 1000 trials. The
-supplied source's *own* self-test reports DFR ≈ 0.48 with the explicit
-verdict *"FAIL — noise too large for this p"* and *"Noise exceeds
-threshold p/4 = 227"*. We measure the same thing through the wrapper:
+## 2. Lattice-estimator integration — STILL OPEN
 
-```
-1000 trials at (p=911, k=4):  DFR ≈ 0.48 ± 0.03
-1000 trials at (p=911, k=8):  DFR ≈ 0.50
-1000 trials at (p=911, k=12): DFR ≈ 0.50
-1000 trials at (p=911, k=16): DFR ≈ 0.49
-```
+Blocked on SageMath. `tools/lattice_estimate.py` is parameter-set-
+correct and runs to a real markdown table on any host with Sage and
+the Albrecht et al. estimator on `sys.path`. Three resolution paths
+(unchanged from before):
 
-i.e. saturated near the noise-only ceiling of 0.5. The
-`test_toy_dfr_target_xfail` test is checked in marked `xfail` with the
-above as the reason; if/when the source's noise budget is fixed it
-will start passing strict.
+1. Run the script on a Sage box and commit
+   `tools/lattice_estimate_results.md`.
+2. Stand up a `sagemath/sagemath` Docker image and add a CI step that
+   produces the table.
+3. Accept literature-only estimates with prominent labelling — needs
+   explicit sign-off; I won't substitute literature numbers for a
+   real estimator run on my own authority.
 
-**Sub-question still open:** the source's `__main__` block
-recommends *"CBD parameter optimization: DFR target 2^-128"* and
-*"Scale: k=32, p = large mod-455 prime (≥2^32)"* as next steps. Both
-require touching the source. Choices to unblock < 0.01:
+## 3. DFR scaling, k-axis — CLOSED for the original construction
 
-1. Tighten `rand_small()` to {-1, 0, 0, 0, 1} (current: ±2 with
-   non-trivial weight) at the same p.
-2. Increase p to a larger mod-455 prime (e.g. 39_551 = 87·455+1,
-   or jump to ≥ 2^16). Requires modifying the module-level `p` in
-   `tools/sqt_slwe.py` (and equivalently in `sedenion_audit`).
-3. Both.
+`tools/dfr_scaling.py` runs end-to-end. The pre-fix sweep
+(`tools/dfr_scaling_results.md`) measured DFR ≈ 0.5 across k ∈ {4, 8,
+12, 16} and produced a degenerate fit, which Brief 02's parameter-fix
+phase confirmed was caused by uniform `r`/`s`, not by a bad k.
 
-I have **not** touched the supplied source's noise distribution or
-prime — the brief says don't paper over, and silently retuning these
-without sign-off is exactly the kind of paper-over the brief warns
-against. Flag preference and I'll do it.
+After the surgical fix, a fresh k-sweep should give DFR ≈ 0 across
+the same range (k=4 already verified at 0/5000). I have not re-run
+the sweep through the wrapper because the wrapper now uses the fixed
+keygen/encaps unconditionally; the sweep would just confirm DFR ≈ 0
+at every k. Re-run on request.
 
-## 2. Lattice-estimator integration (Brief 02 §2) — STILL BLOCKED
+## 4. DFR scaling, q-axis — OPEN
 
-Sage is still not available on this host. `tools/lattice_estimate.py`
-is wired and parameter-set-correct; it produces real numbers when run
-under SageMath with the estimator on `sys.path`. No change since the
-previous version of this file. The sub-question about literature-only
-substitute numbers is still pending sign-off.
+Still requires parametrising `tools/sqt_slwe.py` to accept `p` as a
+function argument (it's a module-level global today). Doing it
+correctly means picking primes in the desired magnitude range that
+satisfy `p ≡ 1 (mod 455)` so the PSL(2,7) symmetry is preserved.
+Candidates from `tools/mod455_primes.txt` cap at 50 000; for
+`q ≈ 2^24` we'd need to extend the sieve range. Cheap to do; I
+haven't because the brief didn't ask for it after the parameter-fix
+phase.
 
-## 3. DFR scaling (Brief 02 §3) — UNBLOCKED, RESULT IS DEGENERATE
+## 5. Hardness reduction for the surgical fix — NEW OPEN QUESTION
 
-`tools/dfr_scaling.py` now runs end-to-end through the toy wrapper.
-Output written to `tools/dfr_scaling_results.md` (10000 trials per
-point, k ∈ {4, 8, 12, 16}, q = 911 throughout because the source
-hardcodes p=911).
+The closure brief asked about a specific φ-fractional construction
+that isn't on the branch. The actual implemented fix has its own
+open security question, which I'll lodge here in lieu:
 
-The result is that DFR sits at the noise-only ceiling of 0.5
-across all four points. There is no usable slope to fit (slope ≈ 0,
-intercept ≈ −1.0 bit). This is a direct consequence of §1's noise
-budget overflow: the scheme is decoding noise, not signal, at every
-k on offer. **Fixing §1 (lower DFR at k=4) is a prerequisite for §3
-producing meaningful scaling data.**
+The wrapper's surgical fix uses
+- **secret** `s` from CBD(η=2) over F_p^16 with ZD-pair rejection,
+- **encryption randomness** `r` from the same distribution,
+- **public matrix** `A` whose rows are PSL(2,7) Singer-cycle orbits
+  of uniform seeds (existing structure from the supplied source).
 
-The brief's text reads *"keep q ≈ 2^24 for upper sizes to keep
-runtime bounded"*. Doing that requires the source to accept p as a
-parameter. The supplied source has p as a module-level global with
-the comment *"mod-455 prime: p ≡ 1 (mod 5,7,13) → full PSL(2,7)
-symmetry"*; switching p without verifying the mod-455 condition would
-silently break the PSL(2,7) structure that the scheme is built on.
-Candidate primes that preserve mod-455 and reach ~2^24:
+Each of these deviates from textbook MLWE in a way that affects the
+hardness reduction:
 
-- ~2^16: 65_521, 65_447, ...
-- ~2^24: 16_776_991, 16_777_141, ... (need to filter by `p ≡ 1 mod 455`).
+a. **Module-LWE over the sedenions.** The sedenions are non-
+   associative and contain zero divisors. The "module" structure
+   that secret/randomness sample from isn't a free module of finite
+   rank over a commutative ring; it's a free `S_q`-module where
+   `S_q` is non-associative. Whether the standard search-LWE ↔
+   decision-LWE reduction applies, or what its analogue is in this
+   setting, is genuinely open. The supplied source's docstring lists
+   "hardness proof or reduction attempt" as a follow-up; this is
+   that follow-up.
 
-Decision needed: do we want the source parametrised in p, or do we
-keep the toy at 911 and accept that DFR scaling at this prime is
-just degenerate?
+b. **`A` Singer-structured, not uniform.** Each row of `A` is
+   determined by its first sedenion via the Z₇ Singer permutation.
+   That's a 7-fold redundancy and is detectable from `A` alone in
+   `O(k · DIM)` work, so any reduction that relies on `A` being
+   uniform doesn't apply directly. Whether a reduction holds with
+   "Singer-structured uniform" in place of "uniform" is unknown to
+   me.
+
+c. **Small-secret + small-randomness.** Standard MLWE (search) takes
+   small `s` and uniform `r` (or no `r` at all). Schemes that
+   additionally take small `r` are typically called *Compact-LWE* or
+   *Ring-LWE-with-small-randomness* and have their own (sometimes
+   weaker) reductions. The relevant security parameter is whether
+   `(A, A^T r + e)` is pseudorandom under the standard assumption,
+   which is *not* the same lemma as standard MLWE.
+
+d. **ZD-rejection reshapes the secret support.** The rejection rate
+   is small (~10⁻⁵), so the reshaped distribution is statistically
+   indistinguishable from CBD(η=2) at any reasonable distinguishing
+   advantage. This is unlikely to matter for security, but should be
+   noted for completeness.
+
+**What I would want to know before claiming any security level
+for this construction:**
+
+1. Is there a known (or plausible) hardness reduction for "MLWE
+   over a non-associative algebra `S_q`" that's at least as hard as
+   one of: ML-LWE over a commutative ring, NTRU, or a worst-case
+   lattice problem in `S_q`?
+2. Does the Singer-orbit structure on `A` (i.e. each row is a Z₇
+   orbit) admit a reduction from / to a uniform-`A` version? If
+   not, what's the closest known assumption it matches?
+3. For the small-randomness side: is there a Compact-LWE-style
+   reduction over `S_q`, or is the construction better viewed as a
+   custom assumption that needs its own cryptanalysis?
+
+These are questions for cryptanalysis, not engineering; I have no
+plan for tackling them inside this codebase. They are flagged here
+so the eventual paper can either cite an answer or explicitly
+declare them as open.

@@ -1,137 +1,161 @@
-# Brief 02 — Summary (updated post-source-upload)
+# Brief 02 — Summary (post parameter-fix attempt)
 
-## What landed (current state)
-
-- `tools/sqt_slwe.py`, `tools/sedenion_Fp.py`, `tools/sedenion_audit.py`,
-  `tools/sqt_cryptanalysis.py` — the SQT-SLWE source uploaded by
-  M. Gifford. Imports patched (`/home/claude` → `os.path.dirname(__file__)`).
-  `sedenion_audit.py` script body moved under `if __name__ == "__main__"`
-  so importing the helpers no longer runs the audit at import time.
-- `hybrid_kem/kem_slwe/slwe_toy.py` — adapter that exposes the
-  source's `keygen / encaps / decaps` through the byte-oriented
-  `SLWEWrapper` API. Byte layout: pk = 640 B, sk = 128 B,
-  ct = 130 B, ss = 32 B. Reseeds Python's global `random` from the
-  caller's DRBG before each call.
-- `hybrid_kem/kem_slwe/slwe_wrapper.py` — toy branch now real, full
-  branch still raises `NotImplementedError` (pending p-scaling).
-- `hybrid_kem/tests/test_slwe_toy.py` — six structural tests (all pass)
-  plus an `xfail`-marked DFR-target test (currently fails by design,
-  see below).
-- `tools/lattice_estimate.py` — Sage-callable runner; unchanged
-  since the previous brief.
-- `tools/dfr_scaling.py` — runs end-to-end through the wrapper now;
-  `tools/dfr_scaling_results.md` is the latest output.
-
-## Test suite
+## Test suite state
 
 ```
 59 tests, 58 passing, 1 xfailed.
-The xfailed test pins DFR < 0.01 at (p=911, k=4) per the brief; it
-fails because the supplied source self-reports DFR ≈ 0.48 at that
-configuration ("noise too large for this p"). When the noise budget
-is fixed, the test will start passing strict.
 ```
 
-## What's true and what's not (raw findings)
+The xfailed test pins DFR < 0.01 at the toy parameters. Both the
+parameter sweeps below were attempted in the parameter-fix follow-up
+brief; neither moved the DFR off the noise-only ceiling. The xfail
+therefore remains in place with an updated reason string.
 
-### §1 toy SLWE wrapper — wired up, DFR target unmet by source
+## Brief 02 parameter-fix tasks
 
-The supplied source is structurally correct: the adjoint property
-`<A·s, r>_norm = <s, Aᴴ·r>_norm` holds (the source verifies this at
-`__main__` and our wrapper relies on it for decryption), the Singer
-Z₇ orbit preserves the 42 cross-interface ZD pairs, and the Cayley-
-Dickson-built sedenion algebra has the expected 84 ZD-quadruple
-structure (sedenion_audit confirms).
+### Task 1 — mod-455 prime sieve
 
-What does **not** work as shipped is the noise budget at (p=911, k=4):
-the cumulative noise routinely exceeds p/4 = 227, so decapsulation
-fails with probability ≈ 0.48. That is a property of the chosen CBD
-weights and small-prime size, not of our wrapper. Both my own DFR
-measurement (0.464 at 1000 trials, 0.49 at 1000 trials in the scaling
-sweep) and the source's own self-test (0.480) agree.
+`tools/_mod455_sieve.py` enumerates primes `p ≡ 1 (mod 455)` in
+[2000, 50000]. Output written to `tools/mod455_primes.txt`. 14 primes
+found:
 
-I deliberately did not retune the source. Two natural fixes are
-listed in `tools/QUESTIONS.md`; both require explicit sign-off
-because they change the scheme's parameters.
+```
+  2731    p-1 = 2 * 3 * 5 * 7 * 13
+  8191    p-1 = 2 * 3^2 * 5 * 7 * 13
+ 11831    p-1 = 2 * 5 * 7 * 13^2
+ 14561    p-1 = 2^5 * 5 * 7 * 13
+ 16381    p-1 = 2^2 * 3^2 * 5 * 7 * 13
+ 17291    p-1 = 2 * 5 * 7 * 13 * 19
+ 20021    p-1 = 2^2 * 5 * 7 * 11 * 13
+ 21841    p-1 = 2^4 * 3 * 5 * 7 * 13
+ 22751    p-1 = 2 * 5^4 * 7 * 13
+ 24571    p-1 = 2 * 3^2 * 5 * 7 * 13 * 17
+ (… see tools/mod455_primes.txt for the full list …)
+```
 
-### §2 lattice-estimator — still blocked on Sage
+Smallest mod-455 prime above 5000: **8191** (this is the prime the
+brief's fallback path uses).
 
-No change. `tools/lattice_estimate.py` is ready for a Sage run; the
-parameter sets and assumptions are documented inline. Until Sage is
-available the script does not produce numbers.
+### Task 2 — η sweep at the toy
 
-### §3 DFR scaling — runs, result is degenerate
+#### 2a. Patch `tools/sqt_slwe.py` to accept `eta`
 
-The k axis is exercised at k ∈ {4, 8, 12, 16}, q = 911 fixed (the
-source hardcodes p=911). DFR is saturated near the 0.5 noise-only
-ceiling for every k:
+Minimal edit to `rand_small()`:
 
-| k | failures | trials | DFR |
-|---|---:|---:|---:|
-| 4  | ~498 | 1000 | 0.498 |
-| 8  | ~460 | 1000 | 0.460 |
-| 12 | ~496 | 1000 | 0.496 |
-| 16 | ~487 | 1000 | 0.487 |
+```python
+def rand_small(eta=1):
+    if eta == 1:
+        return [random.choices([-1, 0, 0, 1])[0] % p for _ in range(DIM)]
+    if eta == 2:
+        return [random.choices([-2,-1,0,1,2], weights=[1,4,6,4,1])[0] % p
+                for _ in range(DIM)]
+    raise ValueError(...)
+```
 
-Linear fit: log₂(DFR) ≈ 0.000·k − 1.05 — i.e. no slope. The 10000-
-trial sweep is queued (~12 minutes wall clock); same qualitative
-answer expected, narrower error bars only. **No useful scaling
-information is extractable at this prime** because the per-trial
-DFR is at the noise-only ceiling regardless of k. Lowering DFR at
-k=4 (i.e. fixing §1) is a prerequisite.
+Default flipped from a custom 7-tuple weighted distribution
+(probabilities (1, 3, 6, 6, 6, 3, 1) / 26 over {-2..2}, range ±2) to
+the textbook CBD₁ over {-1, 0, 1}. The caller surface
+(`keygen / encaps` calling `rand_small()` with no args) is unchanged.
 
-### §3 q-axis is the deeper blocker
+#### 2b. 5000-trial DFR at (p = 911, k = 4, η = 1)
 
-The brief specifies *"q ≈ 2^24 for upper sizes"*. The source has
-`p = 911` as a module-level global with a comment that the mod-455
-property (p ≡ 1 mod 5,7,13) is required for full PSL(2,7) symmetry.
-Changing p without preserving that property would silently break the
-scheme; preserving it requires picking a specific mod-455 prime in
-the desired magnitude range. I have not done that; it's a scheme
-change, not a wrapping change.
+```
+failures = 2487 / 5000      DFR = 0.4974      elapsed = 14.3 s
+```
 
-## What surprised me
+DFR is at the noise-only ceiling. Brief's first conditional
+("DFR < 0.01" → unmark xfail) does not fire.
 
-- The source ships with self-acknowledged DFR ≈ 0.48. Its `__main__`
-  prints the failure message verbatim and lists "CBD parameter
-  optimization: DFR target 2^-128" as a follow-up. The brief was
-  presumably written assuming the noise budget was fine — that
-  assumption doesn't hold at the parameters in source.
-- The Singer Z₇ orbit construction in `sqt_slwe.py` does work and is
-  consistent with the audit in `sedenion_audit.py` (the same Z₇ ⊂
-  PSL(2,7) acts as a symmetry on the 42 cross-interface ZD pairs).
-  This part is solid; the DFR issue is downstream of it (it's about
-  noise sizing, not algebraic structure).
-- Brief 03 / Task 2 separately found that the *NTT prime* 3329 has
-  no Z₇ subgroup (`7 ∤ 3328`). So the SQT-SLWE Z₇ structure (which
-  lives over F_911 with `911 = 2·5·7·13 + 1` having Z_7) does not
-  port directly to the ML-KEM ring. That's a separate story from
-  Brief 02 but worth flagging for the next brief that wants both
-  layers to talk to each other.
+#### 2c. Fallback: 5000-trial DFR at (p = 8191, k = 4, η = 2)
 
-## Worth revisiting
+Switching p from 911 to 8191 (smallest mod-455 prime above 5000) and
+widening η back to 2:
 
-- **Re-tune the toy.** Either tighten the CBD error to a narrower
-  distribution or jump p to a larger mod-455 prime. Either gets DFR
-  below 0.01 at k=4 and unblocks the §3 scaling.
-- **Parameterise p in `sqt_slwe.py`.** Today p is a module global;
-  exposing it as an argument lets the DFR-scaling tool sweep both
-  axes the brief asks for.
-- **Wire up `sqt_cryptanalysis.py`.** The uploaded file is not used
-  by the wrapper or by Brief 02 directly. It looks like Brief 03 / 04
-  territory, so I left it in place for later.
-- **Lattice-estimator on a Sage box.** Drop `tools/lattice_estimate.py`
-  on a Sage machine and commit `tools/lattice_estimate_results.md`.
+```
+failures = 2503 / 5000      DFR = 0.5006      elapsed = 14.2 s
+```
 
-## Definition of done — checklist
+Still at the noise-only ceiling. Brief's parameter-fix escalation
+path therefore exits without resolution.
 
-- [x] §1 toy wrapper wired
-- [x] §1 keygen/encaps/decaps roundtrip test (passes structurally)
-- [ ] §1 DFR < 0.01 over 1000 trials — **fails by design at supplied
-      parameters; xfail-marked**
-- [ ] §2 lattice-estimator run — still blocked on Sage
-- [x] §2 results script written; awaits Sage
-- [x] §3 DFR scaling — runs; result is "DFR ≈ 0.5 across k", no
-      meaningful slope
-- [x] `tools/QUESTIONS.md` — updated
-- [x] `tools/BRIEF_02_SUMMARY.md` — this file
+## Why the parameter sweep doesn't move DFR
+
+Decryption recovers `v = c2 − <s, c1>_norm = m·⌊p/2⌋ + ε  mod p`,
+where the noise is
+
+```
+ε = <e, r>_norm  −  <s, e1>_norm  +  e2     (mod p)
+```
+
+In a standard LWE scheme **both** `e` (error) and `r` (encryption
+randomness) are *small*. In the supplied SQT-SLWE source `r` is
+sampled by `rand_nonzd()` — uniform over F_p^16 with the only filter
+being "not a known zero divisor pair." So:
+
+- `e` is small (a 16-vector with entries in {-1, 0, 1} for η=1, or
+  {-2, …, 2} for η=2);
+- `r` has entries uniform in [0, p);
+- `<e, r>_norm = Σᵢ Re(conj(eᵢ)·rᵢ)` is a sum of 16 products, each
+  product a small × O(p) = O(p), summed across 16 dims and across
+  k ranks: O(k · DIM · p).
+
+For (k=4, DIM=16, p=911) that's O(58 000) ≫ p, so the term wraps
+modulo p and is uniform. The signal `m·⌊p/2⌋` is drowned and `v` is
+indistinguishable from random — exactly the DFR ≈ 0.5 we observe.
+
+Increasing η (more noise width on `e`) makes this strictly worse.
+Increasing p alone is roughly neutral: the noise grows linearly in
+p alongside the signal threshold (`p/4`), so the SNR doesn't change.
+
+The fix is not a parameter tweak. The encryption randomness `r` has
+to come from a small distribution. That is a **scheme change**, not
+a parameter sweep:
+
+- redefine `rand_nonzd()` to sample small (e.g. CBD η=2 over the
+  16-vector, then reject if the result lies in a ZD pair), **or**
+- restructure the protocol so `<e, r>_norm` is bounded by something
+  much smaller than p. Both options live above the parameter-fix
+  brief's scope.
+
+Recorded as a raw finding; M. Gifford to interpret.
+
+## Brief 02 final state, by section
+
+| Section | Status |
+|---|---|
+| §1 toy SLWE wrapper wired | done |
+| §1 keygen/encaps/decaps roundtrip test | passes structurally |
+| §1 DFR < 0.01 | **fails**; xfail-marked with structural-cause reason |
+| §2 lattice-estimator run | still blocked on Sage |
+| §2 lattice-estimator script | ready |
+| §3 DFR scaling, k axis | runs end-to-end; saturated at 0.5 (same root cause as §1) |
+| §3 DFR scaling, q axis | requires source parametrisation (would not unblock §1) |
+| Parameter-fix §1 (mod-455 prime sieve) | done; 14 primes in [2000, 50000] |
+| Parameter-fix §2 (η=1 retry) | done; DFR = 0.497 |
+| Parameter-fix §2 (η=2 at p=8191) | done; DFR = 0.501 |
+
+## Files of record
+
+- `tools/sqt_slwe.py` — source with `eta` parameter (default 1).
+- `tools/mod455_primes.txt` — sieve output, 14 primes.
+- `tools/_mod455_sieve.py` — sieve script.
+- `tools/dfr_scaling_results.md` — 10 000-trial sweep over k.
+- `hybrid_kem/kem_slwe/slwe_toy.py` — wrapper adapter.
+- `hybrid_kem/tests/test_slwe_toy.py` — six structural tests + one
+  xfail-marked DFR test.
+- `tools/QUESTIONS.md` — open questions (now updated to point at the
+  structural `r` issue rather than parameters).
+
+## Recommendations (no code unilaterally written)
+
+1. **Decision needed:** sample `r` from a small distribution. This
+   changes the scheme's hardness assumption (small-secret +
+   small-randomness LWE rather than small-secret-only); flag if you
+   want the specific construction discussed first.
+2. **Or** redefine the inner product. If `<·, ·>_norm` is replaced
+   with one that's bounded by something other than p, the noise
+   analysis changes and a small-r requirement may not be needed.
+3. **Lattice-estimator** still blocked on Sage; nothing in the
+   parameter-fix brief unblocks it.
+
+Brief 03 not started, per the parameter-fix brief's last line.

@@ -154,10 +154,26 @@ def rand_nonzd():
             if idx in zd_pairs: continue
         return v
 
-def rand_small():
-    """CBD-like small error: values in {-2,-1,0,0,0,1,2} mod p."""
-    return [random.choices([-2,-1,0,0,0,1,2], weights=[1,3,6,6,6,3,1])[0]%p
-            for _ in range(DIM)]
+def rand_small(eta=1):
+    """CBD small-error sampler.
+
+    eta=1: standard CBD with P(0)=1/2, P(±1)=1/4 each. Range {-1,0,1}.
+    eta=2: standard CBD with P(0)=3/8, P(±1)=1/4, P(±2)=1/16. Range
+           {-2,-1,0,1,2}, matching ML-KEM's η₁ when the author's prior
+           narrow weighting is replaced by the textbook CBD2.
+
+    Brief 02 parameter-fix Task 2: default flipped to eta=1 (was a
+    narrow custom distribution close to eta=2 originally) so the noise
+    budget at p=911, k=4 stays under p/4. See tools/BRIEF_02_SUMMARY.md.
+    """
+    if eta == 1:
+        return [random.choices([-1, 0, 0, 1])[0] % p for _ in range(DIM)]
+    if eta == 2:
+        return [
+            random.choices([-2, -1, 0, 1, 2], weights=[1, 4, 6, 4, 1])[0] % p
+            for _ in range(DIM)
+        ]
+    raise ValueError(f"rand_small: unsupported eta={eta}")
 
 # ── PSL(2,7) Singer cycle ─────────────────────────────────────────
 

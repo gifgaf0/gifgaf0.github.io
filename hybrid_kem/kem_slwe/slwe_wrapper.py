@@ -31,19 +31,28 @@ class SLWEWrapper:
     def __init__(self, mode: str = "stub", params: dict | None = None) -> None:
         if mode not in ("stub", "toy", "full"):
             raise ValueError(f"unknown SLWE mode: {mode}")
-        if mode in ("toy", "full"):
+        if mode == "full":
             raise NotImplementedError(
-                f"SLWE mode {mode!r} pending wrap of sqt_slwe__1_.py"
+                "SLWE mode 'full' pending scaling of sqt_slwe to mod-455 prime ≥ 2^32"
             )
         self.mode = mode
         self.params = params or {}
+        if mode == "toy":
+            # Defer the heavy import (Cayley-Dickson table) to first toy use.
+            from . import slwe_toy as _toy
+            self._toy = _toy
+            self._toy_k = self.params.get("k", _toy.K_TOY)
 
     def keygen(self, drbg: DRBG) -> Tuple[bytes, bytes]:
+        if self.mode == "toy":
+            return self._toy.keygen(drbg, self._toy_k)
         sk = drbg.generate(STUB_SK_LEN)
         pk = hmac.new(sk, STUB_LABEL + b":pk", "sha256").digest()
         return pk, sk
 
     def encaps(self, pk: bytes, drbg: DRBG) -> Tuple[bytes, bytes]:
+        if self.mode == "toy":
+            return self._toy.encaps(pk, drbg, self._toy_k)
         if len(pk) != STUB_PK_LEN:
             raise ValueError("invalid SLWE stub public key length")
         ephem = drbg.generate(STUB_CT_LEN)
@@ -52,6 +61,8 @@ class SLWEWrapper:
         return ct, ss
 
     def decaps(self, sk: bytes, ct: bytes) -> bytes:
+        if self.mode == "toy":
+            return self._toy.decaps(sk, ct, self._toy_k)
         if len(sk) != STUB_SK_LEN or len(ct) != STUB_CT_LEN:
             raise ValueError("invalid SLWE stub key/ct length")
         pk = hmac.new(sk, STUB_LABEL + b":pk", "sha256").digest()

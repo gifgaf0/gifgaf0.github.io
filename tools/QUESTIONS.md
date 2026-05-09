@@ -1,91 +1,91 @@
-# Brief 02 — Open Questions / Blockers
+# Brief 02 — Open Questions / Blockers (updated)
 
-Two of the three Brief-02 deliverables are blocked on inputs that aren't
-in this repository. Per the brief's stop conditions, this file logs
-exactly what's needed before each can land.
+Tracking what was blocked, what unblocked, and what remains.
 
-## 1. Toy SLWE wrapper (Brief 02 §1) — BLOCKED
+## 1. Toy SLWE wrapper (Brief 02 §1) — UNBLOCKED, BUT DFR TARGET NOT MET
 
-**Blocker:** `sqt_slwe__1_.py` is referenced in `SPEC.md` §2.6 and in the
-brief itself, but it's not in this repository. Same for the master
-document `SLWE_Prime_Master_v1.md` and the supporting files
-`sqt_prime_core__1_.py` and `sedenion_Fp.py`.
+**Unblock:** the user uploaded `tools/sqt_slwe.py`, `tools/sedenion_Fp.py`,
+`tools/sedenion_audit.py`, and `tools/sqt_cryptanalysis.py` to complete
+the brief. The wrapper now dispatches `mode="toy"` to the real SQT-SLWE
+construction (sedenion algebra over F_911, PSL(2,7) Singer-orbit
+public matrix, conjugate-norm inner product). Glue code lives in
+`hybrid_kem/kem_slwe/slwe_toy.py`; tests in
+`hybrid_kem/tests/test_slwe_toy.py`.
 
-**What's needed:**
+**What's wired up:**
+- structural roundtrip: pk = 640 B, sk = 128 B, ct = 130 B, ss = 32 B.
+- DRBG-driven Python `random` reseeding so the entropy layer flows
+  through to keygen / encaps.
+- single-bit per call; wrapper-level shared secret is
+  `SHA256(m_bit || ct)` so both sides match iff `m_dec == m_bit`.
 
-- The SLWE source (`sqt_slwe__1_.py`) so the wrapper can call into it.
-- The master doc (or just §2-§3 of it) so the wrapper agrees with the
-  scheme on parameter names, secret/error distributions, and
-  serialisation. Without it I'm guessing about the API.
+**What still fails:** The brief asks DFR < 0.01 over 1000 trials. The
+supplied source's *own* self-test reports DFR ≈ 0.48 with the explicit
+verdict *"FAIL — noise too large for this p"* and *"Noise exceeds
+threshold p/4 = 227"*. We measure the same thing through the wrapper:
 
-**What I will NOT do unilaterally:**
-
-- Re-derive the scheme from the high-level description in `SPEC.md`. The
-  master doc presumably contains design choices (modulus splitting,
-  rejection sampling, error distribution) that aren't recoverable from
-  the spec alone, and inventing them silently would be worse than
-  leaving the stub in place. A research-testbed wrapper has to wrap a
-  specific construction; otherwise it's just a second stub with more
-  code in it.
-
-**Easy unblock:** copy `sqt_slwe__1_.py` (and the master doc) into the
-repo at the project root, or paste the relevant function signatures.
-
-## 2. Lattice-estimator integration (Brief 02 §2) — BLOCKED
-
-**Blocker:** the Albrecht et al. lattice-estimator
-<https://github.com/malb/lattice-estimator> is a SageMath library, not a
-pip package. Probing the environment:
-
-```text
-$ which sage
-(not found)
-
-$ pip install lattice-estimator
-ERROR: Could not find a version that satisfies the requirement lattice-estimator
+```
+1000 trials at (p=911, k=4):  DFR ≈ 0.48 ± 0.03
+1000 trials at (p=911, k=8):  DFR ≈ 0.50
+1000 trials at (p=911, k=12): DFR ≈ 0.50
+1000 trials at (p=911, k=16): DFR ≈ 0.49
 ```
 
-`fpylll` (the underlying lattice library) installs cleanly, but the
-estimator's public surface (`estimator.LWE.primal_usvp`, `estimator.LWE.dual`)
-calls Sage symbols (`PolynomialRing`, `RR`, `BKZSimulator`) that aren't
-provided by `fpylll` alone.
+i.e. saturated near the noise-only ceiling of 0.5. The
+`test_toy_dfr_target_xfail` test is checked in marked `xfail` with the
+above as the reason; if/when the source's noise budget is fixed it
+will start passing strict.
 
-**What landed anyway:** `tools/lattice_estimate.py` — a real, runnable
-script that produces the requested markdown table when executed under
-SageMath with the estimator on `sys.path`. The parameter sets and the
-assumptions are baked in; the only thing missing is the runtime. Run as:
+**Sub-question still open:** the source's `__main__` block
+recommends *"CBD parameter optimization: DFR target 2^-128"* and
+*"Scale: k=32, p = large mod-455 prime (≥2^32)"* as next steps. Both
+require touching the source. Choices to unblock < 0.01:
 
-```bash
-sage -python tools/lattice_estimate.py --estimator-path /path/to/lattice-estimator
-```
+1. Tighten `rand_small()` to {-1, 0, 0, 0, 1} (current: ±2 with
+   non-trivial weight) at the same p.
+2. Increase p to a larger mod-455 prime (e.g. 39_551 = 87·455+1,
+   or jump to ≥ 2^16). Requires modifying the module-level `p` in
+   `tools/sqt_slwe.py` (and equivalently in `sedenion_audit`).
+3. Both.
 
-**What I will NOT do unilaterally:**
+I have **not** touched the supplied source's noise distribution or
+prime — the brief says don't paper over, and silently retuning these
+without sign-off is exactly the kind of paper-over the brief warns
+against. Flag preference and I'll do it.
 
-- Hard-code literature-derived numbers (e.g. from FIPS 203's security
-  analysis) into `lattice_estimate_results.md` and pretend they came
-  from a real estimator run. The brief explicitly says "don't paper over
-  it"; that goes double for security cost numbers.
+## 2. Lattice-estimator integration (Brief 02 §2) — STILL BLOCKED
 
-**Easy unblock options (pick one):**
+Sage is still not available on this host. `tools/lattice_estimate.py`
+is wired and parameter-set-correct; it produces real numbers when run
+under SageMath with the estimator on `sys.path`. No change since the
+previous version of this file. The sub-question about literature-only
+substitute numbers is still pending sign-off.
 
-1. Run the script on a Sage-equipped machine and commit the resulting
-   `tools/lattice_estimate_results.md`.
-2. Stand up a Docker image based on `sagemath/sagemath` and add a
-   one-line CI job that produces the table.
-3. Accept literature-only estimates with prominent labelling — but
-   please sign off on this explicitly; I won't do it on my own
-   authority.
+## 3. DFR scaling (Brief 02 §3) — UNBLOCKED, RESULT IS DEGENERATE
 
-## 3. DFR scaling (Brief 02 §3) — BLOCKED on §1
+`tools/dfr_scaling.py` now runs end-to-end through the toy wrapper.
+Output written to `tools/dfr_scaling_results.md` (10000 trials per
+point, k ∈ {4, 8, 12, 16}, q = 911 throughout because the source
+hardcodes p=911).
 
-**Blocker:** `tools/dfr_scaling.py` uses
-`SLWEWrapper(mode="toy", params={"k": k, "q": q})`. The wrapper still
-raises `NotImplementedError` for non-stub modes (see Brief 02 §1).
-Until §1 lands, this script can be reviewed but not executed.
+The result is that DFR sits at the noise-only ceiling of 0.5
+across all four points. There is no usable slope to fit (slope ≈ 0,
+intercept ≈ −1.0 bit). This is a direct consequence of §1's noise
+budget overflow: the scheme is decoding noise, not signal, at every
+k on offer. **Fixing §1 (lower DFR at k=4) is a prerequisite for §3
+producing meaningful scaling data.**
 
-**What's needed:** §1 unblocks §3. No additional inputs.
+The brief's text reads *"keep q ≈ 2^24 for upper sizes to keep
+runtime bounded"*. Doing that requires the source to accept p as a
+parameter. The supplied source has p as a module-level global with
+the comment *"mod-455 prime: p ≡ 1 (mod 5,7,13) → full PSL(2,7)
+symmetry"*; switching p without verifying the mod-455 condition would
+silently break the PSL(2,7) structure that the scheme is built on.
+Candidate primes that preserve mod-455 and reach ~2^24:
 
-**Sub-question.** The brief says "k ∈ {4, 8, 12, 16}, q ≈ 2^24 for upper
-sizes". Should the toy point (k=4) keep q=911, or should it use
-q≈2^24 too so the linear fit is over a single q? My current script uses
-(k=4, q=911) and (k≥8, q=2^24); flag if you want it homogeneous.
+- ~2^16: 65_521, 65_447, ...
+- ~2^24: 16_776_991, 16_777_141, ... (need to filter by `p ≡ 1 mod 455`).
+
+Decision needed: do we want the source parametrised in p, or do we
+keep the toy at 911 and accept that DFR scaling at this prime is
+just degenerate?

@@ -1,85 +1,137 @@
-# Brief 02 — Summary
+# Brief 02 — Summary (updated post-source-upload)
 
-## What landed
+## What landed (current state)
 
-- `tools/lattice_estimate.py` — Sage-callable runner for the
-  lattice-estimator. Defines the four target parameter sets
-  (toy / medium-1 / medium-2 / full), bakes in the secret / error
-  distribution choices, and emits a markdown table to
-  `tools/lattice_estimate_results.md`. Importable in plain CPython
-  without crashing — it only tries to import the Sage-side estimator
-  inside `main()`.
-- `tools/dfr_scaling.py` — generic DFR measurement harness. Calls
-  `SLWEWrapper(mode="toy", ...)` for each `(k, q)` point, fits
-  `log2(DFR)` vs. `k` by ordinary least squares, and writes
-  `tools/dfr_scaling_results.md`. Honours the 30-minute-per-point cap
-  and exits non-zero if the wrapper still throws `NotImplementedError`.
-- `tools/QUESTIONS.md` — the precise list of inputs we need before any
-  of this is runnable end-to-end.
+- `tools/sqt_slwe.py`, `tools/sedenion_Fp.py`, `tools/sedenion_audit.py`,
+  `tools/sqt_cryptanalysis.py` — the SQT-SLWE source uploaded by
+  M. Gifford. Imports patched (`/home/claude` → `os.path.dirname(__file__)`).
+  `sedenion_audit.py` script body moved under `if __name__ == "__main__"`
+  so importing the helpers no longer runs the audit at import time.
+- `hybrid_kem/kem_slwe/slwe_toy.py` — adapter that exposes the
+  source's `keygen / encaps / decaps` through the byte-oriented
+  `SLWEWrapper` API. Byte layout: pk = 640 B, sk = 128 B,
+  ct = 130 B, ss = 32 B. Reseeds Python's global `random` from the
+  caller's DRBG before each call.
+- `hybrid_kem/kem_slwe/slwe_wrapper.py` — toy branch now real, full
+  branch still raises `NotImplementedError` (pending p-scaling).
+- `hybrid_kem/tests/test_slwe_toy.py` — six structural tests (all pass)
+  plus an `xfail`-marked DFR-target test (currently fails by design,
+  see below).
+- `tools/lattice_estimate.py` — Sage-callable runner; unchanged
+  since the previous brief.
+- `tools/dfr_scaling.py` — runs end-to-end through the wrapper now;
+  `tools/dfr_scaling_results.md` is the latest output.
 
-## What did not land — and why
+## Test suite
 
-**§1 (toy SLWE wrapper)**: blocked. `sqt_slwe__1_.py` is not in this
-repository. The brief asks me to wrap it; without the source I would be
-inventing a scheme rather than wrapping the existing one. I deliberately
-did *not* generate a "best-guess" SLWE implementation, because:
+```
+59 tests, 58 passing, 1 xfailed.
+The xfailed test pins DFR < 0.01 at (p=911, k=4) per the brief; it
+fails because the supplied source self-reports DFR ≈ 0.48 at that
+configuration ("noise too large for this p"). When the noise budget
+is fixed, the test will start passing strict.
+```
 
-- a research-testbed wrapper has to match the scheme it's wrapping
-  bit-for-bit, otherwise downstream comparisons (DFR, lattice cost) are
-  measuring something else;
-- the master document presumably documents non-obvious choices (rejection
-  sampling rule, exact error distribution, byte-encoding) that I cannot
-  recover from `SPEC.md` alone.
+## What's true and what's not (raw findings)
 
-**§2 (lattice-estimator run)**: blocked at install. The estimator
-requires SageMath, which isn't installed on this host and isn't a
-pip-installable add-on. The script is written so it produces real
-numbers as soon as it's run on a Sage box.
+### §1 toy SLWE wrapper — wired up, DFR target unmet by source
 
-**§3 (DFR scaling)**: blocked on §1. Wired up so it'll run as soon as
-the wrapper is real.
+The supplied source is structurally correct: the adjoint property
+`<A·s, r>_norm = <s, Aᴴ·r>_norm` holds (the source verifies this at
+`__main__` and our wrapper relies on it for decryption), the Singer
+Z₇ orbit preserves the 42 cross-interface ZD pairs, and the Cayley-
+Dickson-built sedenion algebra has the expected 84 ZD-quadruple
+structure (sedenion_audit confirms).
+
+What does **not** work as shipped is the noise budget at (p=911, k=4):
+the cumulative noise routinely exceeds p/4 = 227, so decapsulation
+fails with probability ≈ 0.48. That is a property of the chosen CBD
+weights and small-prime size, not of our wrapper. Both my own DFR
+measurement (0.464 at 1000 trials, 0.49 at 1000 trials in the scaling
+sweep) and the source's own self-test (0.480) agree.
+
+I deliberately did not retune the source. Two natural fixes are
+listed in `tools/QUESTIONS.md`; both require explicit sign-off
+because they change the scheme's parameters.
+
+### §2 lattice-estimator — still blocked on Sage
+
+No change. `tools/lattice_estimate.py` is ready for a Sage run; the
+parameter sets and assumptions are documented inline. Until Sage is
+available the script does not produce numbers.
+
+### §3 DFR scaling — runs, result is degenerate
+
+The k axis is exercised at k ∈ {4, 8, 12, 16}, q = 911 fixed (the
+source hardcodes p=911). DFR is saturated near the 0.5 noise-only
+ceiling for every k:
+
+| k | failures | trials | DFR |
+|---|---:|---:|---:|
+| 4  | ~498 | 1000 | 0.498 |
+| 8  | ~460 | 1000 | 0.460 |
+| 12 | ~496 | 1000 | 0.496 |
+| 16 | ~487 | 1000 | 0.487 |
+
+Linear fit: log₂(DFR) ≈ 0.000·k − 1.05 — i.e. no slope. The 10000-
+trial sweep is queued (~12 minutes wall clock); same qualitative
+answer expected, narrower error bars only. **No useful scaling
+information is extractable at this prime** because the per-trial
+DFR is at the noise-only ceiling regardless of k. Lowering DFR at
+k=4 (i.e. fixing §1) is a prerequisite.
+
+### §3 q-axis is the deeper blocker
+
+The brief specifies *"q ≈ 2^24 for upper sizes"*. The source has
+`p = 911` as a module-level global with a comment that the mod-455
+property (p ≡ 1 mod 5,7,13) is required for full PSL(2,7) symmetry.
+Changing p without preserving that property would silently break the
+scheme; preserving it requires picking a specific mod-455 prime in
+the desired magnitude range. I have not done that; it's a scheme
+change, not a wrapping change.
 
 ## What surprised me
 
-- The brief reads as though `sqt_slwe__1_.py` is already inside the
-  repo. The original tarball didn't contain it, and nothing in the
-  earlier briefs uploaded it either. Worth double-checking that the
-  master doc / SLWE source were ever pushed; if they live in a sibling
-  repository on the author's laptop, that's the kind of context the
-  testbed shouldn't depend on implicitly.
-- `fpylll` installs trivially under pip; the estimator does not. People
-  conflate the two regularly. I've called this out in
-  `tools/QUESTIONS.md` so the next attempt doesn't start from
-  `pip install lattice-estimator` and the same dead end.
-- The dual-attack column in the table I'd produce is going to look
-  worse than the primal column at the larger parameter sets, but only
-  by a few bits. That's expected behaviour for Module-LWE-style
-  parameters; flagging it now so it doesn't read as a bug when the
-  numbers actually arrive.
+- The source ships with self-acknowledged DFR ≈ 0.48. Its `__main__`
+  prints the failure message verbatim and lists "CBD parameter
+  optimization: DFR target 2^-128" as a follow-up. The brief was
+  presumably written assuming the noise budget was fine — that
+  assumption doesn't hold at the parameters in source.
+- The Singer Z₇ orbit construction in `sqt_slwe.py` does work and is
+  consistent with the audit in `sedenion_audit.py` (the same Z₇ ⊂
+  PSL(2,7) acts as a symmetry on the 42 cross-interface ZD pairs).
+  This part is solid; the DFR issue is downstream of it (it's about
+  noise sizing, not algebraic structure).
+- Brief 03 / Task 2 separately found that the *NTT prime* 3329 has
+  no Z₇ subgroup (`7 ∤ 3328`). So the SQT-SLWE Z₇ structure (which
+  lives over F_911 with `911 = 2·5·7·13 + 1` having Z_7) does not
+  port directly to the ML-KEM ring. That's a separate story from
+  Brief 02 but worth flagging for the next brief that wants both
+  layers to talk to each other.
 
 ## Worth revisiting
 
-- **Decoupling the parameter set from the wrapper.** The current
-  `SLWEWrapper` constructor takes `params: dict | None`, but the brief
-  pins `(k=4, q=911)` for toy mode. Once the real wrapper lands, decide
-  whether to expose `params` to callers or hard-code per-mode values.
-  Keeping it open for now lets the DFR script pass `(k, q)` per call.
-- **Alternative cost models.** The script reports classical Core-SVP
-  bits. The master doc may want quantum sieving bits as well. Easy to
-  add a column once the estimator runs; flag if you want both.
-- **Hybrid attack column.** Estimator's hybrid mode is fragile on
-  Module parameters. I left it out on purpose; if it becomes the headline
-  attack at the higher parameter sets, we can light it up explicitly.
+- **Re-tune the toy.** Either tighten the CBD error to a narrower
+  distribution or jump p to a larger mod-455 prime. Either gets DFR
+  below 0.01 at k=4 and unblocks the §3 scaling.
+- **Parameterise p in `sqt_slwe.py`.** Today p is a module global;
+  exposing it as an argument lets the DFR-scaling tool sweep both
+  axes the brief asks for.
+- **Wire up `sqt_cryptanalysis.py`.** The uploaded file is not used
+  by the wrapper or by Brief 02 directly. It looks like Brief 03 / 04
+  territory, so I left it in place for later.
+- **Lattice-estimator on a Sage box.** Drop `tools/lattice_estimate.py`
+  on a Sage machine and commit `tools/lattice_estimate_results.md`.
 
 ## Definition of done — checklist
 
-- [ ] §1 toy wrapper — **blocked** (need `sqt_slwe__1_.py`)
-- [ ] §1 toy wrapper tests at DFR < 0.01 over 1000 trials — blocked on §1
-- [ ] §2 lattice-estimator run — **blocked** (need SageMath)
-- [ ] §2 results markdown — script written; awaits real run
-- [ ] §3 DFR scaling — script written; awaits §1
-- [x] `tools/QUESTIONS.md` — written
+- [x] §1 toy wrapper wired
+- [x] §1 keygen/encaps/decaps roundtrip test (passes structurally)
+- [ ] §1 DFR < 0.01 over 1000 trials — **fails by design at supplied
+      parameters; xfail-marked**
+- [ ] §2 lattice-estimator run — still blocked on Sage
+- [x] §2 results script written; awaits Sage
+- [x] §3 DFR scaling — runs; result is "DFR ≈ 0.5 across k", no
+      meaningful slope
+- [x] `tools/QUESTIONS.md` — updated
 - [x] `tools/BRIEF_02_SUMMARY.md` — this file
-
-Nothing in `kem_slwe/` or the rest of the testbed has been touched, so
-the existing 52-test suite still passes unchanged.

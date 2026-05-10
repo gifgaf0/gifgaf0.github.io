@@ -162,12 +162,33 @@ def test_singer_a_column_period_at_k32():
     assert period == 112, period
 
 
-def test_singer_a_fp_rank_at_most_112():
-    """Singer A_F has F_p-rank at most 7·16 = 112 at k=32."""
+def test_singer_pure_a_fp_rank_at_most_112():
+    """Pure (unrandomised) Singer A_F has F_p-rank at most 7·16 = 112 at k=32.
+
+    OP-G vulnerability: the Z_7 Singer cycle, expanded by the 16-dim
+    sedenion algebra, forces column equality at distance 112 in A_F,
+    so column rank ≤ 112. This test PINS the vulnerability so we
+    cannot lose track of it; the production wrapper uses
+    ``singer_a_randomized`` to dodge it (see
+    ``test_singer_a_randomized_fp_rank_full`` below).
+    """
     from tools import gs_profile as _gs
-    Asf, _ = _build_a_matrices(k=32, p=8191)
-    r = _gs._matrix_rank_mod_p(Asf, 8191)
+    from hybrid_kem.kem_slwe.slwe_toy import singer_a_pure
+    A = singer_a_pure(32, 8191, seed=0xb05)
+    A_F = _gs.flatten_sedenion_matrix(A, 8191)
+    r = _gs._matrix_rank_mod_p(A_F, 8191)
     assert r <= 112, r
+
+
+def test_singer_a_randomized_fp_rank_full():
+    """OP-G fix Path A: SingerBase + δ·UniformPerturbation at δ=1 is
+    full F_p-rank at k=32."""
+    from tools import gs_profile as _gs
+    from hybrid_kem.kem_slwe.slwe_toy import singer_a_randomized
+    A = singer_a_randomized(32, 8191, seed=0xb06, delta=1)
+    A_F = _gs.flatten_sedenion_matrix(A, 8191)
+    r = _gs._matrix_rank_mod_p(A_F, 8191)
+    assert r == 512, r
 
 
 def test_random_a_fp_rank_full_at_k32():

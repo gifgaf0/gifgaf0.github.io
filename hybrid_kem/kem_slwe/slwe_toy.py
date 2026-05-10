@@ -209,11 +209,68 @@ def encaps(pk_bytes: bytes, drbg: DRBG, k: int = K_TOY) -> Tuple[bytes, bytes]:
 
 def _keygen_small_sr(k: int) -> dict:
     s = [rand_small_nonzd(_slwe.p, eta=2, dim=_DIM) for _ in range(k)]
-    A = [_slwe.singer_orbit(_slwe.rand_nonzd(), k) for _ in range(k)]
+    A = singer_a_randomized(k, _slwe.p, seed=None, delta=1)
     e = [_slwe.rand_small(eta=2) for _ in range(k)]
     As = _slwe.mat_vec(A, s)
     b = [_slwe.s_add(As[i], e[i]) for i in range(k)]
     return {"sk": s, "A": A, "b": b}
+
+
+# ---------------------------------------------------------------------------
+# Brief 06 (OP-G): Singer-orbit A is rank-deficient at k > 7
+# (column equality at distance 7 in A_sed; period 7·DIM in A_F).
+# Path A fix: SingerBase + δ · UniformPerturbation, sedenion-componentwise.
+# At δ ≥ 1 the perturbation dominates and rank is full with overwhelming
+# probability over the sample, but the PSL(2,7) symmetry in A is gone.
+# ---------------------------------------------------------------------------
+
+
+def singer_a_randomized(k: int, p: int, *, seed: int | None = None,
+                        delta: int = 1) -> list[list[list[int]]]:
+    """SingerBase + δ · UniformPerturbation, k×k of sedenion entries.
+
+    SingerBase[i] = singer_orbit(rand_nonzd(), k) (same as the original
+    construction). UniformPerturbation[i][j] is a uniformly random
+    sedenion in F_p^DIM. Result entry-wise: ``A[i][j] = (singer[i][j]
+    + δ · perturb[i][j]) mod p``.
+
+    At δ ≥ 1 over F_p, the perturbation completely overwrites the Singer
+    structure (F_p has no notion of "small δ"); the resulting matrix is
+    distributionally identical to a uniform random sedenion matrix
+    plus a fixed Singer offset, which is itself uniform random. Brief
+    06 Path A documents this trade-off explicitly.
+    """
+    import random as _r
+    if seed is not None:
+        _r.seed(seed)
+    _slwe.p = p
+    singer_part = [_slwe.singer_orbit(_slwe.rand_nonzd(), k)
+                   for _ in range(k)]
+    A = []
+    for i in range(k):
+        row = []
+        for j in range(k):
+            perturb = [_r.randrange(0, p) for _ in range(_DIM)]
+            entry = [(singer_part[i][j][c] + delta * perturb[c]) % p
+                     for c in range(_DIM)]
+            row.append(entry)
+        A.append(row)
+    return A
+
+
+def singer_a_pure(k: int, p: int, *, seed: int | None = None
+                  ) -> list[list[list[int]]]:
+    """The original (rank-deficient) Singer construction.
+
+    Kept as a callable for the regression test that pins the OP-G
+    vulnerability. Production callers should use
+    :func:`singer_a_randomized` instead.
+    """
+    import random as _r
+    if seed is not None:
+        _r.seed(seed)
+    _slwe.p = p
+    return [_slwe.singer_orbit(_slwe.rand_nonzd(), k) for _ in range(k)]
 
 
 def _encaps_small_r(A, b_vec, k: int):

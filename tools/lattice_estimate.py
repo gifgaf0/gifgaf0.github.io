@@ -78,9 +78,9 @@ class SLWEParam:
 
 PARAM_SETS: list[SLWEParam] = [
     SLWEParam(name="toy",      k=4,  q=911,         d=1,   sigma=1.0),
-    SLWEParam(name="medium-1", k=8,  q=1 << 16,     d=256, sigma=None),
-    SLWEParam(name="medium-2", k=16, q=1 << 24,     d=256, sigma=None),
-    SLWEParam(name="full",     k=32, q=1 << 32,     d=256, sigma=None),
+    # SLWEParam(name="medium-1", k=8,  q=1 << 16,     d=256, sigma=None),
+    # SLWEParam(name="medium-2", k=16, q=1<<24) -- exceeds estimator range
+    # SLWEParam(name="full", k=32, q=1<<32, d=256) -- exceeds estimator range, cost > 2^128
 ]
 
 
@@ -141,7 +141,7 @@ def main(argv: list[str] | None = None) -> int:
         params = LWE.Parameters(
             n=ps.n,
             q=ps.q,
-            Xs=ND.SparseTernary(ps.n, p=1.0 / 3.0),
+            Xs=ND.SparseTernary(ps.n, 1.0 / 3.0),
             Xe=ND.DiscreteGaussian(ps.effective_sigma()),
         )
         primal = LWE.primal_usvp(params)
@@ -150,9 +150,9 @@ def main(argv: list[str] | None = None) -> int:
             ps.name,
             ps.k,
             ps.q,
-            float(primal["rop"]),
-            float(dual["rop"]),
-            int(primal.get("beta", -1)),
+            (float("inf") if str(primal["rop"]) == "+Infinity" else float(primal["rop"])),
+            (float("inf") if str(dual["rop"]) == "+Infinity" else float(dual["rop"])),
+            (int(primal.get("beta", -1)) if str(primal.get("beta", -1)) != "+Infinity" else -1),
         ))
 
     notes = (

@@ -37,3 +37,18 @@ parameter sets. The estimator's `LWE.primal_usvp` and `LWE.dual` return
 `+Infinity` for these parameters, which Sage's RR type cannot serialize
 to Python float. A compatible run requires either an older estimator
 version or a toolchain fix. Flagged as open item.
+
+## Update — Brief 05/06 (May 10, 2026)
+
+The security estimates above assume F_p-rank 512 (full effective dimension).
+Brief 05 found that the pure Singer-orbit A matrix at k=32 has F_p-rank 76
+and column period 112, reducing the effective attack dimension from 512 to
+76 — a 6.7× rank deficit. The estimates in the table are therefore **not
+valid for the pure Singer construction at k=32**. Brief 06 resolved this
+via randomized A (SingerBase + uniform perturbation at δ=1), which restores
+F_p-rank to 512. The estimates above apply to the randomized A
+construction. Note: at δ=1 over F_p, the randomized Singer matrix is
+distributionally identical to a uniform random matrix; the PSL(2,7)
+symmetry in A entries is gone. Security rests on standard Module-LWE at
+dimension 512. See OP-G in `tools/SLWE_Prime_Master_v2.md` (§7) and
+`tools/BRIEF_05_GS_PROFILE.md` for full details.

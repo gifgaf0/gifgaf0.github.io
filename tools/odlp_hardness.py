@@ -99,25 +99,40 @@ def is_prime(n: int) -> bool:
     return True
 
 
-def _pollard_rho(n: int, rng: random.Random) -> int:
+def _pollard_rho(n: int, rng: random.Random,
+                 deadline: float | None = None) -> int | None:
     if n % 2 == 0:
         return 2
     while True:
+        if deadline is not None and time.monotonic() > deadline:
+            return None
         x = rng.randrange(2, n - 1)
         y = x
         c = rng.randrange(1, n - 1)
         d = 1
+        steps = 0
         while d == 1:
             x = (x * x + c) % n
             y = (y * y + c) % n
             y = (y * y + c) % n
             d = math.gcd(abs(x - y), n)
+            steps += 1
+            if deadline is not None and (steps & 0xff) == 0 \
+                    and time.monotonic() > deadline:
+                return None
         if d != n:
             return d
 
 
-def factorise(n: int, *, seed: int = 0xd1f) -> dict[int, int]:
-    """Full integer factorisation. Trial division to 10 000, then Pollard rho."""
+def factorise(n: int, *, seed: int = 0xd1f,
+              deadline: float | None = None) -> dict[int, int]:
+    """Full integer factorisation. Trial division to 10 000, then Pollard rho.
+
+    If ``deadline`` (a ``time.monotonic()`` value) is passed and we don't
+    finish in time, the partial factorisation is returned with a sentinel
+    composite key set to the unfactored remainder. Use
+    ``factorise_completed`` to detect this case.
+    """
     if n <= 1:
         return {}
     rng = random.Random(seed)
@@ -138,13 +153,28 @@ def factorise(n: int, *, seed: int = 0xd1f) -> dict[int, int]:
         m = stack.pop()
         if m == 1:
             continue
+        if deadline is not None and time.monotonic() > deadline:
+            # Bail out, leaving the unfactored remainder under a special key.
+            factors[-1] = m
+            for other in stack:
+                factors[-1] = factors.get(-1, 1) * other
+            break
         if is_prime(m):
             factors[m] = factors.get(m, 0) + 1
             continue
-        f = _pollard_rho(m, rng)
+        f = _pollard_rho(m, rng, deadline=deadline)
+        if f is None:
+            factors[-1] = m
+            for other in stack:
+                factors[-1] = factors.get(-1, 1) * other
+            break
         stack.append(f)
         stack.append(m // f)
     return factors
+
+
+def factorise_completed(facs: dict[int, int]) -> bool:
+    return -1 not in facs
 
 
 def largest_prime_factor(facs: dict[int, int]) -> int:
@@ -358,6 +388,167 @@ def attack_subalg_dlp(p: int, *, max_bsgs_prime: int = 1_000_000,
 # ---------------------------------------------------------------------------
 # Driver
 # ---------------------------------------------------------------------------
+
+
+# ---------------------------------------------------------------------------
+# Attack a degree-16 sub-algebra DLP (Brief 04 extension)
+# ---------------------------------------------------------------------------
+
+
+def _is_lin_indep_set(vectors: list[list[int]], p: int) -> bool:
+    """Check whether the given vectors over F_p are linearly independent."""
+    M = [list(v) for v in vectors]
+    rows = len(M)
+    if not M:
+        return True
+    cols = len(M[0])
+    rank = 0
+    for c in range(cols):
+        if rank >= rows:
+            break
+        piv = None
+        for r in range(rank, rows):
+            if M[r][c] != 0:
+                piv = r
+                break
+        if piv is None:
+            continue
+        M[rank], M[piv] = M[piv], M[rank]
+        inv = pow(M[rank][c], p - 2, p)
+        M[rank] = [(v * inv) % p for v in M[rank]]
+        for r in range(rows):
+            if r != rank and M[r][c] != 0:
+                factor = M[r][c]
+                M[r] = [(M[r][j] - factor * M[rank][j]) % p
+                        for j in range(cols)]
+        rank += 1
+    return rank == rows
+
+
+def find_full_degree_sedenion(p: int, rng: random.Random,
+                              max_attempts: int = 32) -> list[int] | None:
+    """Find a sedenion g whose minimal polynomial has degree DIM = 16.
+
+    Equivalently: {1, g, g^2, ..., g^15} is linearly independent in F_p^16.
+    This guarantees ``F_p[g] ≅ F_{p^16}`` and ord(g) divides p^16 − 1.
+    """
+    for _ in range(max_attempts):
+        g = [rng.randrange(0, p) for _ in range(DIM)]
+        powers = [basis_vec(0)]
+        cur = list(g)
+        for _ in range(DIM - 1):
+            powers.append(list(cur))
+            cur = mul_vec(cur, g, p)
+        powers.append(list(cur))    # this is g^DIM; for the rank check we
+                                    # want the first DIM powers (1..g^{DIM-1}).
+        if _is_lin_indep_set(powers[:DIM], p):
+            return g
+    return None
+
+
+def attack_d16_dlp(p: int, *,
+                   max_seconds: float = 1800.0,
+                   max_bsgs_prime: int = 10**11,
+                   seed: int = 0xb04 ^ 16) -> dict:
+    """Attempt PH against the full d=16 sedenion DLP at the given prime.
+
+    Stages, each with its own slice of the budget:
+
+    1. Pick a random sedenion ``g`` whose minimal polynomial has full
+       degree DIM = 16. ``F_p[g] ≅ F_{p^16}``.
+    2. Factor ``p^16 − 1`` (the order of the unit group) within budget.
+    3. Compute the exact order of ``g``.
+    4. Sample ``n``, compute ``h = g^n``.
+    5. Run Pohlig-Hellman on (g, h) using the factored order, with a
+       global wall-clock check after each prime-power subgroup.
+
+    Returns a dict with stage timings and outcome. Each stage is allowed
+    to bail out cleanly with ``status`` set to a stage-specific token if
+    the deadline is hit.
+    """
+    deadline = time.monotonic() + max_seconds
+    rng = random.Random(seed * p)
+
+    out: dict = {
+        "p": p,
+        "degree": DIM,
+        "max_seconds": max_seconds,
+    }
+
+    # --- Stage 1: find a generator of full degree.
+    t0 = time.monotonic()
+    g = find_full_degree_sedenion(p, rng)
+    out["t_find_g"] = time.monotonic() - t0
+    if g is None:
+        out["status"] = "no_full_degree_sedenion_found"
+        return out
+
+    # --- Stage 2: factor p^16 - 1.
+    t0 = time.monotonic()
+    n_field = pow(p, DIM) - 1
+    facs = factorise(n_field, deadline=deadline)
+    out["t_factor_p16_minus_1"] = time.monotonic() - t0
+    out["p16_minus_1"] = n_field
+    out["p16_minus_1_factorisation"] = dict(facs)
+
+    if not factorise_completed(facs):
+        out["status"] = "factoring_timeout"
+        out["unfactored_remainder"] = facs[-1]
+        return out
+
+    largest = max(facs)
+    out["p16_minus_1_largest_prime_factor"] = largest
+
+    if largest > max_bsgs_prime:
+        out["status"] = "ph_infeasible_largest_prime_too_big"
+        out["bsgs_budget_largest_prime"] = max_bsgs_prime
+        return out
+
+    # --- Stage 3: exact order of g.
+    t0 = time.monotonic()
+    def s_pow(v, n):
+        return sedenion_pow(v, n, p)
+
+    def s_mul(a, b):
+        return mul_vec(a, b, p)
+
+    identity = basis_vec(0)
+    if s_pow(g, n_field) != identity:
+        out["status"] = "g_not_in_unit_group"
+        return out
+    g_order = _exact_order(s_pow, identity, g, n_field, facs)
+    out["t_compute_order"] = time.monotonic() - t0
+    out["g_order"] = g_order
+    g_order_facs = factorise(g_order)
+    out["g_order_factorisation"] = dict(g_order_facs)
+    out["g_order_largest_prime_factor"] = max(g_order_facs)
+
+    # --- Stage 4: sample exponent and compute h.
+    n_secret = rng.randrange(1, g_order)
+    h = s_pow(g, n_secret)
+
+    if time.monotonic() > deadline:
+        out["status"] = "deadline_before_ph"
+        return out
+
+    # --- Stage 5: Pohlig-Hellman. Use only g_order's factor list.
+    t0 = time.monotonic()
+    n_recovered = pohlig_hellman(s_pow, s_mul, identity, g, h, g_order_facs)
+    out["t_ph"] = time.monotonic() - t0
+
+    if n_recovered is None:
+        out["status"] = "ph_returned_none"
+        return out
+
+    success = (s_pow(g, n_recovered) == h)
+    out["status"] = "success" if success else "ph_mismatch"
+    out["secret_n_bits"] = n_secret.bit_length()
+    out["secret_recovered_modulo_g_order"] = (n_recovered == n_secret % g_order)
+    out["wall_clock_seconds_total"] = (
+        out.get("t_find_g", 0) + out.get("t_factor_p16_minus_1", 0)
+        + out.get("t_compute_order", 0) + out.get("t_ph", 0)
+    )
+    return out
 
 
 def smoothness_table(primes: list[int],

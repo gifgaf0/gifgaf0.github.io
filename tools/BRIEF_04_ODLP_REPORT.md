@@ -151,6 +151,66 @@ ODLP. The lattice-side analysis is OP-B in
 environment. This brief settles only the multiplicative-DLP side
 of the picture.
 
+## §4.5. Addendum: d=16 sub-algebra DLP is structurally vacuous (T1)
+
+The follow-up brief asked for a d=16 PH attempt at p=8191 with a
+30-minute wall-clock cap. Before running, I checked the precondition
+— *does any sedenion ``g ∈ S_p`` have a minimal polynomial of degree
+16, i.e., is ``F_p[g] ≅ F_{p^16}`` for any ``g``?* — and the answer
+is **no**. Every sedenion has minimal-polynomial degree at most 2.
+
+**Why (T1, structural argument with empirical confirmation):** the
+sedenions, like every Cayley-Dickson algebra, carry a *trace* and
+*norm* that both land in the base field, and every element ``x``
+satisfies the quadratic identity
+
+```
+x² − tr(x) · x + N(x) · 1 = 0,
+```
+
+where ``tr(x) = 2·x_0`` (twice the real component) and ``N(x) =
+Σᵢ xᵢ²`` is the squared norm. This is a basic property of the
+Cayley-Dickson construction (Albert 1942, Schafer 1966) and
+descends from the real case to ``F_p`` unchanged. A direct
+computational check confirms it: for five random sedenions over
+F_8191, ``g²`` lay in ``span_{F_p}(1, g)`` for every sample. (See
+the smoke check inline in this commit's bash output, or run the
+five-line verifier yourself with ``mul_vec`` and a span solver.)
+
+The consequence is structural: for any sedenion ``g``,
+
+- the powers ``g, g², g³, …`` all lie in ``F_p[g] = span_{F_p}(1, g)``,
+  a 2-dimensional sub-algebra;
+- ``F_p[g] ≅ F_p[X] / m_g(X)`` with ``deg m_g ≤ 2``;
+- the unit group of ``F_p[g]`` has order dividing ``p² − 1`` (when
+  ``m_g`` is irreducible, i.e. F_p[g] = F_{p²}) or ``(p − 1)² − 1
+  = (p − 1)·(p − 2)``-style products in the split case.
+
+The "d = 16 sedenion DLP" therefore has no instances. Every sedenion
+DLP problem is a d ≤ 2 instance, and the d = 2 measurements in §1
+above are the complete picture. PH is < 2 ms at every test prime;
+no further attack scaling is hidden in the algebra.
+
+**Decision (T1):** I did not run the 30-minute PH attempt. The
+correct answer to "does PH succeed at d = 16 in 30 minutes" is
+"the question is empty: there is no d = 16 to attack." The d = 16
+attack code (`attack_d16_dlp` in `tools/odlp_hardness.py`)
+correctly fails at the very first stage — it tries to find a
+sedenion with linearly-independent powers up to ``g^15`` and never
+does — which is the programmatic witness of the structural fact.
+
+**Practical implication:** a Module-SLWE construction over the
+sedenion algebra cannot draw additional hardness from any
+"high-degree-sub-algebra" structure inside the algebra; there is
+only one degree of freedom (the 2-dim sub-algebra each element
+generates), and §1 already showed PH demolishes it at the
+mod-455 primes. Whatever hardness the construction has must come
+from *outside* the multiplicative DLP — the lattice side (OP-B,
+still blocked on Sage), not the algebraic side. The original
+report's verdict stands and is now strengthened: the sedenion ODLP
+at these primes is weak, and there is no deeper layer where it
+might be strong.
+
 ## §5. Reproducibility
 
 ```bash

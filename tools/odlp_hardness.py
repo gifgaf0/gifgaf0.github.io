@@ -551,6 +551,49 @@ def attack_d16_dlp(p: int, *,
     return out
 
 
+# ---------------------------------------------------------------------------
+# Cayley-Dickson norm-form identity verification (Brief 04 closure, T1)
+# ---------------------------------------------------------------------------
+
+
+def verify_norm_form_identity(p: int, n_samples: int = 100,
+                              seed: int = 0xc1d) -> dict:
+    """Verify x² = tr(x)·x − N(x)·1 over ``n_samples`` random sedenions.
+
+    For ``g = (g_0, …, g_15) ∈ S_p``:
+      tr(g)   = 2 · g_0
+      N(g)    = Σᵢ gᵢ²
+      target  = (tr(g) · g) − (N(g) · 1) componentwise mod p
+      computed = g · g (sedenion product)
+
+    Returns the count of samples where ``computed == target`` (i.e.
+    where the identity holds), out of ``n_samples``. By the Cayley-
+    Dickson construction this should always be ``n_samples``.
+    """
+    rng = random.Random(seed * p)
+    pass_count = 0
+    fails: list[dict] = []
+    for s in range(n_samples):
+        g = [rng.randrange(0, p) for _ in range(DIM)]
+        tr_g = (2 * g[0]) % p
+        n_g = sum(c * c for c in g) % p
+        # tr(g) · g − N(g) · 1, componentwise
+        target = [(tr_g * g[i] - (n_g if i == 0 else 0)) % p for i in range(DIM)]
+        computed = mul_vec(g, g, p)
+        if computed == target:
+            pass_count += 1
+        else:
+            fails.append({"sample": s, "g": g, "diff": [
+                (computed[i] - target[i]) % p for i in range(DIM)]})
+    return {
+        "p": p,
+        "n_samples": n_samples,
+        "pass": pass_count,
+        "fail": n_samples - pass_count,
+        "first_failure": fails[0] if fails else None,
+    }
+
+
 def smoothness_table(primes: list[int],
                      degrees: tuple[int, ...] = (1, 2, 4, 8)) -> list[dict]:
     """Largest prime factor of ``p^d - 1`` for each prime / degree.
@@ -584,6 +627,11 @@ def main() -> int:
               f"{r.get('g_order_largest_prime_factor', 0):>10}  "
               f"{r.get('wall_clock_seconds', float('nan')):>12.6f}  "
               f"{r['status']}")
+
+    print("\nNorm-form identity x² = tr(x)·x − N(x)·1 (Cayley-Dickson; T1):\n")
+    nf = verify_norm_form_identity(8191, n_samples=100)
+    print(f"  p={nf['p']}, n={nf['n_samples']}: "
+          f"pass={nf['pass']}, fail={nf['fail']}")
 
     print("\nSmoothness of p^d - 1 (largest prime factor; PH cost ≈ sqrt of this):\n")
     print(f"{'p':>6}  {'p^1-1':>10}  {'p^2-1':>10}  {'p^4-1':>14}  {'p^8-1':>20}")

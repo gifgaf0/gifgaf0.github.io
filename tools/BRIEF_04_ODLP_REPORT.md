@@ -1,7 +1,113 @@
 # Brief 04 — Empirical Sedenion ODLP Hardness Probe
 
 > *T1 = measured fact (script reproducible from `tools/odlp_hardness.py`).
+> T2 = structural argument used to interpret the measurement.
 > No prediction or extrapolation is labelled T1.*
+
+## Correction (closure)
+
+This section supersedes parts of §2 and §4.5, and supersedes the
+"Addendum — d=16 Cyclotomic Analysis" at the foot of the file. It
+records the structural fact that emerged during the d=16 follow-up
+and ties off the ODLP question.
+
+### The norm-form identity (T1 verified)
+
+Every Cayley-Dickson algebra is *quadratic*: each element ``x``
+satisfies the trace-and-norm identity
+
+```
+x²  =  tr(x) · x  −  N(x) · 1,           or equivalently
+x²  −  tr(x) · x  +  N(x) · 1  =  0,
+```
+
+where ``tr(x) = 2 · x₀`` is twice the real component, ``N(x) =
+Σᵢ xᵢ²`` is the squared norm, and both land in the base field
+``F_p``. The identity is a basic consequence of the Cayley-Dickson
+construction (Albert 1942, Schafer 1966, *An Introduction to
+Nonassociative Algebras*) and descends from ``R`` to ``F_p``
+unchanged.
+
+**T1 verified.** ``tools/odlp_hardness.verify_norm_form_identity``
+samples 100 random sedenions over ``F_8191``, computes ``g²`` via
+the sedenion product and ``tr(g) · g − N(g) · 1`` componentwise,
+and compares. **100/100 samples satisfy the identity exactly.**
+Reproducible by ``python3 tools/odlp_hardness.py``.
+
+### Consequence for the sedenion ODLP
+
+The minimal polynomial of any sedenion ``g`` divides
+``X² − tr(g) · X + N(g)``, hence has degree at most 2. The
+sub-algebra ``F_p[g] = span_{F_p}(1, g)`` it generates is
+therefore at most 2-dimensional. The unit group of ``F_p[g]`` is
+either a subgroup of ``F_{p²}^*`` (if ``X² − tr(g) · X + N(g)`` is
+irreducible mod p) or of ``F_p^* × F_p^*`` (if it splits). In
+either case the order divides ``p² − 1``.
+
+**Therefore the sedenion ODLP for any single element reduces
+entirely to a DLP in ``F_{p²}^*``.** It is a 2-dim problem,
+independent of the algebra's nominal 16-dimensionality. (T2.)
+
+### Correction to §2's smoothness table
+
+The cyclotomic factors ``p⁴ − 1``, ``p⁸ − 1``, ``Φ₁₆(p) =
+p⁸ − p⁴ + 1`` are *arithmetically* real numbers and the largest
+prime factors reported in the §2 table are correct as integer
+factorisations. **They are cryptographically irrelevant to the
+sedenion ODLP**, because no sedenion element lives in the
+extension fields ``F_{p⁴}``, ``F_{p⁸}``, or ``F_{p¹⁶}`` — single
+elements are confined to ``F_{p²}``-or-smaller by the norm-form
+identity above.
+
+The earlier reading "PH cost grows with sub-algebra degree" was
+based on the wrong assumption that the algebra's overall
+``F_p``-dimension is reachable by single-element-generated
+sub-algebras. It isn't. (T2.)
+
+### Final ODLP verdict
+
+- **T1 verified.** ``F_p[g]`` is 2-dimensional for every sedenion
+  ``g`` (norm-form identity above).
+- **T1 verified.** Pohlig-Hellman on the resulting ``F_{p²}^*``
+  DLP succeeds in under 2 ms at every test prime
+  ``p ∈ {911, 8191, 11831, 14561, 16381}`` (§1).
+- **T1 verified.** The sedenion ODLP is therefore tractable at
+  every tested mod-455 prime, with the bound being the smoothness
+  of ``p² − 1`` (always small at mod-455 primes by construction).
+
+### Implication for Module-SLWE security (T2)
+
+The sedenion algebra contributes no independent multiplicative
+hardness to the Module-SLWE construction. **Module-SLWE security
+rests entirely on the lattice (Module-LWE) assumption.** The
+non-associative algebra is not load-bearing on the hardness side.
+
+What it *does* provide, structurally, is **diversification
+against ideal-lattice folding attacks**: because the sedenions
+are non-associative, the natural "ideal lattice" structure that
+attackers exploit on commutative rings (e.g. cyclotomic Module-
+LWE) is absent. The lattice arising from a sedenion-coefficient
+LWE instance is not an ideal lattice in the standard sense; this
+is the diversification claim. (T2 structural argument; not
+independently verified in this brief.)
+
+This is a cleaner and more defensible security position than an
+unproven novel hardness assumption. The construction is
+
+> *"as hard as Module-LWE; with non-associative-algebra
+> diversification against folding attacks; no independent
+> multiplicative-DLP claim."*
+
+Anyone reading this report should rely on Module-LWE for the
+hardness floor, not on the sedenion ODLP. The latter is
+demolished at the tested parameters.
+
+---
+
+The remainder of the report (§§1–4, §4.5, §5, the Cyclotomic
+addendum) is preserved for historical record and to show the
+arc of the argument; the conclusions in this Correction
+supersede any earlier framing that conflicts with it.
 
 ## What the sedenion ODLP actually is
 
@@ -223,6 +329,16 @@ this host for the DLP attacks; the smoothness table is the
 dominant cost (factoring `p^8 − 1` for each prime).
 
 ## Addendum — d=16 Cyclotomic Analysis
+
+> **[SUPERSEDED — see Correction at top of file.]** The Φ₁₆(p)
+> factor is real and the 98-bit cofactor is correct as an integer
+> factorisation. It is *not* the order of any group inside which
+> a sedenion ODLP instance lives, because every sedenion's
+> generated sub-algebra is at most 2-dimensional by the
+> Cayley-Dickson norm-form identity. The cyclotomic-cofactor
+> argument therefore does not establish ODLP hardness; the
+> sedenion ODLP reduces to ``F_{p²}^*`` DLP and is broken in
+> < 2 ms by Pohlig-Hellman at every test prime.
 
 Computed Phi_16(8191) = p^8 - p^4 + 1 = 202626110234381170254860810649 61 (approx 2^104 bits).
 

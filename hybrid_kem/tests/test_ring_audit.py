@@ -131,3 +131,49 @@ def test_clifford_obstruction_no_diagonal_cl6():
     assert r["two_random_diagonal_involutions_commute"] is True
     assert r["each_squares_to_identity"] is True
     assert r["obstruction_holds"] is True
+
+
+# ---------------------------------------------------------------------------
+# Brief 05 (OP-F): Singer-orbit A is rank-deficient at k=32
+# ---------------------------------------------------------------------------
+#
+# Three exact-fact assertions extracted from the GS-profile audit
+# (tools/gs_profile.py). The full profile is too slow for CI (~25 s
+# at k=32) but the underlying structural facts that make it slow are
+# fast to verify on their own and worth pinning so they cannot
+# regress silently.
+
+
+def _build_a_matrices(k: int, p: int, seed: int = 0xb05):
+    import random as _r
+    from tools import gs_profile as _gs
+    A_singer = _gs.make_singer_A(k, p, _r.Random(seed))
+    A_random = _gs.make_random_A(k, p, _r.Random(seed + 1))
+    return _gs.flatten_sedenion_matrix(A_singer, p), \
+           _gs.flatten_sedenion_matrix(A_random, p)
+
+
+def test_singer_a_column_period_at_k32():
+    """At k=32, columns of A_F at distance 112 are literal integer copies."""
+    from tools import gs_profile as _gs
+    Asf, _ = _build_a_matrices(k=32, p=8191)
+    period = _gs._column_period(Asf)
+    # 7 (Singer cycle order) × 16 (sedenion dim) = 112.
+    assert period == 112, period
+
+
+def test_singer_a_fp_rank_at_most_112():
+    """Singer A_F has F_p-rank at most 7·16 = 112 at k=32."""
+    from tools import gs_profile as _gs
+    Asf, _ = _build_a_matrices(k=32, p=8191)
+    r = _gs._matrix_rank_mod_p(Asf, 8191)
+    assert r <= 112, r
+
+
+def test_random_a_fp_rank_full_at_k32():
+    """Uniform-random A_F is F_p full rank (= 512) at k=32 with overwhelming
+    probability. Deterministic seed pins the result."""
+    from tools import gs_profile as _gs
+    _, Arf = _build_a_matrices(k=32, p=8191)
+    r = _gs._matrix_rank_mod_p(Arf, 8191)
+    assert r == 512, r

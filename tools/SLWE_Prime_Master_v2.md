@@ -445,10 +445,11 @@ Random non-ZD elements: rank = 16 in 200/200 cases — safe.
 
 | ID | Problem | Blocking | Priority |
 |----|---------|----------|----------|
-| OP §2.24.1 | Full PSL(2,7) (168 elements) acts as ZD graph symmetry | Nothing | Medium |
-| OP §2.24.2 | 42 pairs decompose as 2×21 respecting Fano geometry | Nothing | Low |
+| OP §2.24.1 | Full PSL(2,7) (168 elements) acts as ZD graph symmetry. **Closed (chain probe, commit 4e8a5dc):** all 168 elements of PSL(2,7) verified T1 to preserve all 84 ZD quadruples over F_911 (constructed as GL(3, F_2) on Fano points, extended to {1..7, 9..15} by index shift). Extends the prior Z_7-only confirmation in §1.2. See `tools/chain_zd_probe_report.md`. | Closed | Closed |
+| OP §2.24.2 | 42 pairs decompose as 2×21 respecting Fano geometry. **Closed (answered, not as originally stated; chain probe, commit 4e8a5dc):** the literal "2 × 21" decomposition does **not** emerge. Each chain `A_4_i < S_4_i < PSL(2,7)` (i = 1..7, one per Fano point) gives an A_4 orbit decomposition of size 8 — specifically `6 × 12 + 2 × 6 = 84` at the quadruple level. All 7 chain labellings are pairwise distinct as partitions, so the labelling is *chain-distinguishing*. But the 7 chains are PSL(2,7)-conjugate (point-stabilisers of conjugate Fano points), so the distinguishing-ness is a coordinate phenomenon — observable from the labelled data but equivalent under the same PSL(2,7) action that already acts on the basis. T1 verified; no hardness content emerges. Eddington-Maneuver filter (§0) applied. | Closed | Closed |
 | OP §2.24.3 | 84-pair structure in characteristic 2 | Nothing | Low |
 | OP §2.24.4 | ZD membership polytime via Moreno classification | **Critical for PQC** | High |
+| OP §2.24.5 | Is `Aut(MultTable) = PSL(2,7)` exactly? Sample-bounded T1 from chain probe (commit 4e8a5dc): 5000 random samples from `Aut(K_{7,7}-matching) = S_7 ≀ Z_2` yielded 69 hits inside PSL(2,7) and 0 outside. Consistent with `Aut(MultTable) = PSL(2,7)` but **not a proof**. A definitive answer requires either an exhaustive enumeration of `S_7 ≀ Z_2` elements (5·10⁷ candidates, finite and feasible) or a structural argument tying Aut(MultTable) to PSL(2,7) explicitly. | Nothing | Low (not blocking paper) |
 | OP-Crypto-1 | Full BKZ simulation at N=512 for GSO profile | **Resolved (Brief 05)**: BKZ-style GSO computed at N=512 with fpylll/mpfr-200; pure Singer A_F has F_p-rank 76 and column period 112 (rank deficit detected); fix in OP-G | Closed |
 | OP-Crypto-2 | Formal hardness reduction for Module-SLWE | Requires OP-Crypto-1 | High |
 | OP-Prime | Phase B mod-455 residue distribution test | φ(455)=288 correction done | Medium |
@@ -495,6 +496,7 @@ is the central unanswered question.
 | v1.0 | May 8, 2026 | Initial consolidation from May 8 session |
 | v2.0 | May 10, 2026 | Full update: corrected SQT-SLWE scheme (conjugate-norm inner product), five geometric tests, calibrated BKZ security table, annihilator attack at module scale, GSO profile analysis, invariant sublattice resolution, consolidated open problems |
 | v2.1 (post-v2.0 notes only) | May 10, 2026 | §5.1 Test 1 note added: pure Singer A is rank-deficient at k=32 (F_p-rank 76, column period 112); §4.4 security-table note added: estimates apply only with the Brief 06 randomised A construction; §7 OP-G added; OP-Crypto-1 marked Closed (Brief 05 ran the BKZ-style GSO at N=512 and surfaced the rank deficit). §§1–4 unchanged in body; §5–9 notes added but no existing text removed. Source briefs: `tools/BRIEF_05_GS_PROFILE.md`, `tools/BRIEF_06_OP_G.md`. |
+| v2.2 | May 10, 2026 | Close OP §2.24.1 and §2.24.2 per chain probe (4e8a5dc). Add OP §2.24.5. Append-only. |
 
 ---
 

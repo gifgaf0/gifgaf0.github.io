@@ -12,7 +12,8 @@ Questions:
 """
 
 import sys
-sys.path.insert(0, '/home/claude')
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sedenion_Fp import mul_vec, add_vec, scale_vec, basis_vec, is_zero, DIM
 from itertools import combinations, permutations
 from collections import Counter, defaultdict
@@ -143,34 +144,35 @@ def check_21x4_factorization(quads, pair_count):
 # MAIN
 # ─────────────────────────────────────────────────────────────────
 
-print("=== Deep Structural Audit of Sedenion Zero-Divisors over F_p ===\n")
+if __name__ == "__main__":
+    print("=== Deep Structural Audit of Sedenion Zero-Divisors over F_p ===\n")
 
-# Primary: p=911 (smallest mod-455 prime)
-p = 911
-print(f"Primary field: F_{p}")
-quads_911 = find_canonical_zd_quadruples(p)
-all_pairs, pair_count = analyze_quadruples(quads_911)
-check_21x4_factorization(quads_911, pair_count)
-edges, degree = zero_divisor_graph(quads_911)
+    # Primary: p=911 (smallest mod-455 prime)
+    p = 911
+    print(f"Primary field: F_{p}")
+    quads_911 = find_canonical_zd_quadruples(p)
+    all_pairs, pair_count = analyze_quadruples(quads_911)
+    check_21x4_factorization(quads_911, pair_count)
+    edges, degree = zero_divisor_graph(quads_911)
 
-# Compare across primes: two mod-455, two non-mod-455
-test_primes = [
+    # Compare across primes: two mod-455, two non-mod-455
+    test_primes = [
     911,    # mod-455
     2731,   # mod-455
     907,    # NOT mod-455 (907 mod 455 = 452, prime)
     919,    # NOT mod-455 (919 mod 455 = 9, prime)
-]
-print(f"\nChecking: 907 prime={all(907%i!=0 for i in range(2,30))}, 907 mod 455={907%455}")
-print(f"Checking: 919 prime={all(919%i!=0 for i in range(2,30))}, 919 mod 455={919%455}")
+    ]
+    print(f"\nChecking: 907 prime={all(907%i!=0 for i in range(2,30))}, 907 mod 455={907%455}")
+    print(f"Checking: 919 prime={all(919%i!=0 for i in range(2,30))}, 919 mod 455={919%455}")
 
-results = compare_across_primes(test_primes)
+    results = compare_across_primes(test_primes)
 
-# Check if non-mod-455 primes give the same quadruples
-print("\n=== Quadruple identity across primes ===")
-q911 = results[911]
-for p2 in test_primes[1:]:
-    if p2 in results:
-        same = q911 == results[p2]
-        diff = q911.symmetric_difference(results[p2])
-        print(f"  p={p2}: same quadruples as p=911? {same}  (diff size: {len(diff)})")
+    # Check if non-mod-455 primes give the same quadruples
+    print("\n=== Quadruple identity across primes ===")
+    q911 = results[911]
+    for p2 in test_primes[1:]:
+        if p2 in results:
+            same = q911 == results[p2]
+            diff = q911.symmetric_difference(results[p2])
+            print(f"  p={p2}: same quadruples as p=911? {same}  (diff size: {len(diff)})")
 

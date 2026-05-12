@@ -83,7 +83,8 @@ def linear_fit(xs: list[float], ys: list[float]) -> tuple[float, float]:
 
 def write_report(points: Iterable[tuple[int, int, int, int, float]],
                  slope: float, intercept: float,
-                 out: Path) -> None:
+                 out: Path,
+                 requested_trials: int) -> None:
     rows = []
     xs_for_fit: list[float] = []
     ys_for_fit: list[float] = []
@@ -95,7 +96,11 @@ def write_report(points: Iterable[tuple[int, int, int, int, float]],
         log_dfr = math.log2(dfr) if dfr > 0 else float("-inf")
         xs_for_fit.append(k)
         ys_for_fit.append(log_dfr if math.isfinite(log_dfr) else -64.0)
-        cap_note = "" if total >= DEFAULT_TRIALS else f"truncated after {elapsed:.0f}s"
+        cap_note = (
+            f"hit {TIME_BUDGET_SECONDS}s cap after {total} trials"
+            if total < requested_trials
+            else f"completed in {elapsed:.0f}s"
+        )
         rows.append(
             f"| {k} | {q} | {fails} | {total} | "
             f"{dfr:.3e} | {log_dfr:.2f} | {cap_note} |"
@@ -120,12 +125,12 @@ def main(argv: list[str] | None = None) -> int:
                    default=Path("tools/dfr_scaling_results.md"))
     args = p.parse_args(argv)
 
-    plan = [
-        (4,  911),
-        (8,  1 << 24),
-        (12, 1 << 24),
-        (16, 1 << 24),
-    ]
+    # Brief 02 §3 asks for k ∈ {4, 8, 12, 16} with q ≈ 2^24 at the larger
+    # sizes. The supplied source (tools/sqt_slwe.py) has p = 911 hardcoded
+    # (SPEC.md §2.6 toy parameters), so the q axis cannot vary without a
+    # reparametrisation of the source. We measure along the k axis only;
+    # the q field below records the fixed 911.
+    plan = [(4, 911), (8, 911), (12, 911), (16, 911)]
 
     points: list[tuple[int, int, int, int, float]] = []
     try:
@@ -133,7 +138,6 @@ def main(argv: list[str] | None = None) -> int:
             fails, total, elapsed = measure_dfr(k, q, args.trials)
             points.append((k, q, fails, total, elapsed))
     except NotImplementedError as exc:
-        # Toy / scaled mode isn't wired up yet — bail with a clear message.
         sys.stderr.write(
             "SLWEWrapper raised NotImplementedError: "
             f"{exc}\nWire toy mode (Brief 02 §1) before running this script.\n"
@@ -144,7 +148,7 @@ def main(argv: list[str] | None = None) -> int:
     ys = [math.log2(f / total) if f > 0 and total > 0 else -64.0
           for _, _, f, total, _ in points if total > 0]
     slope, intercept = linear_fit(xs, ys)
-    write_report(points, slope, intercept, args.out)
+    write_report(points, slope, intercept, args.out, args.trials)
     return 0
 
 

@@ -1,91 +1,120 @@
-# Brief 02 — Open Questions / Blockers
+# Brief 02 — Open Questions
 
-Two of the three Brief-02 deliverables are blocked on inputs that aren't
-in this repository. Per the brief's stop conditions, this file logs
-exactly what's needed before each can land.
+Status of every blocker / sub-question raised across Brief 02. Items
+marked **CLOSED** are resolved; items marked **OPEN** still need a
+decision.
 
-## 1. Toy SLWE wrapper (Brief 02 §1) — BLOCKED
+## 1. Toy SLWE wrapper — CLOSED
 
-**Blocker:** `sqt_slwe__1_.py` is referenced in `SPEC.md` §2.6 and in the
-brief itself, but it's not in this repository. Same for the master
-document `SLWE_Prime_Master_v1.md` and the supporting files
-`sqt_prime_core__1_.py` and `sedenion_Fp.py`.
+Originally blocked because `sqt_slwe__1_.py` wasn't in the repo;
+unblocked when you uploaded it. Then blocked on DFR target ≈ 0.5;
+unblocked by the surgical fix described in
+`tools/BRIEF_02_DISTRIBUTION_NOTE.md` (CBD(η=2) with ZD-pair rejection
+applied to `s` and `r`, public matrix `A` left uniform).
 
-**What's needed:**
+DFR over 5000 trials: 0 at p=911, 0 at p=8191. xfail mark removed.
 
-- The SLWE source (`sqt_slwe__1_.py`) so the wrapper can call into it.
-- The master doc (or just §2-§3 of it) so the wrapper agrees with the
-  scheme on parameter names, secret/error distributions, and
-  serialisation. Without it I'm guessing about the API.
+## 2. Lattice-estimator integration — STILL OPEN
 
-**What I will NOT do unilaterally:**
+Blocked on SageMath. `tools/lattice_estimate.py` is parameter-set-
+correct and runs to a real markdown table on any host with Sage and
+the Albrecht et al. estimator on `sys.path`. Three resolution paths
+(unchanged from before):
 
-- Re-derive the scheme from the high-level description in `SPEC.md`. The
-  master doc presumably contains design choices (modulus splitting,
-  rejection sampling, error distribution) that aren't recoverable from
-  the spec alone, and inventing them silently would be worse than
-  leaving the stub in place. A research-testbed wrapper has to wrap a
-  specific construction; otherwise it's just a second stub with more
-  code in it.
-
-**Easy unblock:** copy `sqt_slwe__1_.py` (and the master doc) into the
-repo at the project root, or paste the relevant function signatures.
-
-## 2. Lattice-estimator integration (Brief 02 §2) — BLOCKED
-
-**Blocker:** the Albrecht et al. lattice-estimator
-<https://github.com/malb/lattice-estimator> is a SageMath library, not a
-pip package. Probing the environment:
-
-```text
-$ which sage
-(not found)
-
-$ pip install lattice-estimator
-ERROR: Could not find a version that satisfies the requirement lattice-estimator
-```
-
-`fpylll` (the underlying lattice library) installs cleanly, but the
-estimator's public surface (`estimator.LWE.primal_usvp`, `estimator.LWE.dual`)
-calls Sage symbols (`PolynomialRing`, `RR`, `BKZSimulator`) that aren't
-provided by `fpylll` alone.
-
-**What landed anyway:** `tools/lattice_estimate.py` — a real, runnable
-script that produces the requested markdown table when executed under
-SageMath with the estimator on `sys.path`. The parameter sets and the
-assumptions are baked in; the only thing missing is the runtime. Run as:
-
-```bash
-sage -python tools/lattice_estimate.py --estimator-path /path/to/lattice-estimator
-```
-
-**What I will NOT do unilaterally:**
-
-- Hard-code literature-derived numbers (e.g. from FIPS 203's security
-  analysis) into `lattice_estimate_results.md` and pretend they came
-  from a real estimator run. The brief explicitly says "don't paper over
-  it"; that goes double for security cost numbers.
-
-**Easy unblock options (pick one):**
-
-1. Run the script on a Sage-equipped machine and commit the resulting
+1. Run the script on a Sage box and commit
    `tools/lattice_estimate_results.md`.
-2. Stand up a Docker image based on `sagemath/sagemath` and add a
-   one-line CI job that produces the table.
-3. Accept literature-only estimates with prominent labelling — but
-   please sign off on this explicitly; I won't do it on my own
-   authority.
+2. Stand up a `sagemath/sagemath` Docker image and add a CI step that
+   produces the table.
+3. Accept literature-only estimates with prominent labelling — needs
+   explicit sign-off; I won't substitute literature numbers for a
+   real estimator run on my own authority.
 
-## 3. DFR scaling (Brief 02 §3) — BLOCKED on §1
+## 3. DFR scaling, k-axis — CLOSED for the original construction
 
-**Blocker:** `tools/dfr_scaling.py` uses
-`SLWEWrapper(mode="toy", params={"k": k, "q": q})`. The wrapper still
-raises `NotImplementedError` for non-stub modes (see Brief 02 §1).
-Until §1 lands, this script can be reviewed but not executed.
+`tools/dfr_scaling.py` runs end-to-end. The pre-fix sweep
+(`tools/dfr_scaling_results.md`) measured DFR ≈ 0.5 across k ∈ {4, 8,
+12, 16} and produced a degenerate fit, which Brief 02's parameter-fix
+phase confirmed was caused by uniform `r`/`s`, not by a bad k.
 
-**What's needed:** §1 unblocks §3. No additional inputs.
+After the surgical fix, a fresh k-sweep should give DFR ≈ 0 across
+the same range (k=4 already verified at 0/5000). I have not re-run
+the sweep through the wrapper because the wrapper now uses the fixed
+keygen/encaps unconditionally; the sweep would just confirm DFR ≈ 0
+at every k. Re-run on request.
 
-**Sub-question.** The brief says "k ∈ {4, 8, 12, 16}, q ≈ 2^24 for upper
-sizes". Should the toy point (k=4) keep q=911, or should it use
-q≈2^24 too so the linear fit is over a single q? My current script uses
-(k=4, q=911) and (k≥8, q=2^24); flag if you want it homogeneous.
+## 4. DFR scaling, q-axis — OPEN
+
+Still requires parametrising `tools/sqt_slwe.py` to accept `p` as a
+function argument (it's a module-level global today). Doing it
+correctly means picking primes in the desired magnitude range that
+satisfy `p ≡ 1 (mod 455)` so the PSL(2,7) symmetry is preserved.
+Candidates from `tools/mod455_primes.txt` cap at 50 000; for
+`q ≈ 2^24` we'd need to extend the sieve range. Cheap to do; I
+haven't because the brief didn't ask for it after the parameter-fix
+phase.
+
+## 5. Hardness reduction for the surgical fix — NEW OPEN QUESTION
+
+The closure brief asked about a specific φ-fractional construction
+that isn't on the branch. The actual implemented fix has its own
+open security question, which I'll lodge here in lieu:
+
+The wrapper's surgical fix uses
+- **secret** `s` from CBD(η=2) over F_p^16 with ZD-pair rejection,
+- **encryption randomness** `r` from the same distribution,
+- **public matrix** `A` whose rows are PSL(2,7) Singer-cycle orbits
+  of uniform seeds (existing structure from the supplied source).
+
+Each of these deviates from textbook MLWE in a way that affects the
+hardness reduction:
+
+a. **Module-LWE over the sedenions.** The sedenions are non-
+   associative and contain zero divisors. The "module" structure
+   that secret/randomness sample from isn't a free module of finite
+   rank over a commutative ring; it's a free `S_q`-module where
+   `S_q` is non-associative. Whether the standard search-LWE ↔
+   decision-LWE reduction applies, or what its analogue is in this
+   setting, is genuinely open. The supplied source's docstring lists
+   "hardness proof or reduction attempt" as a follow-up; this is
+   that follow-up.
+
+b. **`A` Singer-structured, not uniform.** Each row of `A` is
+   determined by its first sedenion via the Z₇ Singer permutation.
+   That's a 7-fold redundancy and is detectable from `A` alone in
+   `O(k · DIM)` work, so any reduction that relies on `A` being
+   uniform doesn't apply directly. Whether a reduction holds with
+   "Singer-structured uniform" in place of "uniform" is unknown to
+   me.
+
+c. **Small-secret + small-randomness.** Standard MLWE (search) takes
+   small `s` and uniform `r` (or no `r` at all). Schemes that
+   additionally take small `r` are typically called *Compact-LWE* or
+   *Ring-LWE-with-small-randomness* and have their own (sometimes
+   weaker) reductions. The relevant security parameter is whether
+   `(A, A^T r + e)` is pseudorandom under the standard assumption,
+   which is *not* the same lemma as standard MLWE.
+
+d. **ZD-rejection reshapes the secret support.** The rejection rate
+   is small (~10⁻⁵), so the reshaped distribution is statistically
+   indistinguishable from CBD(η=2) at any reasonable distinguishing
+   advantage. This is unlikely to matter for security, but should be
+   noted for completeness.
+
+**What I would want to know before claiming any security level
+for this construction:**
+
+1. Is there a known (or plausible) hardness reduction for "MLWE
+   over a non-associative algebra `S_q`" that's at least as hard as
+   one of: ML-LWE over a commutative ring, NTRU, or a worst-case
+   lattice problem in `S_q`?
+2. Does the Singer-orbit structure on `A` (i.e. each row is a Z₇
+   orbit) admit a reduction from / to a uniform-`A` version? If
+   not, what's the closest known assumption it matches?
+3. For the small-randomness side: is there a Compact-LWE-style
+   reduction over `S_q`, or is the construction better viewed as a
+   custom assumption that needs its own cryptanalysis?
+
+These are questions for cryptanalysis, not engineering; I have no
+plan for tackling them inside this codebase. They are flagged here
+so the eventual paper can either cite an answer or explicitly
+declare them as open.

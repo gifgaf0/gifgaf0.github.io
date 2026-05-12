@@ -17,7 +17,8 @@ All formulas are standard references:
 """
 
 import sys, random, math
-sys.path.insert(0, '/home/claude')
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sedenion_Fp import mul_vec, basis_vec, DIM
 from sedenion_audit import find_canonical_zd_quadruples
 

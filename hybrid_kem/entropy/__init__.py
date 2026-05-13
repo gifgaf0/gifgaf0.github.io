@@ -29,7 +29,28 @@ from .drbg import (
     RESEED_INTERVAL,
     ReseedRequiredError,
 )
-from .health_tests import HealthTestFailure, HealthTests, apt_cutoff, rct_cutoff
+from .health_tests import (
+    DEFAULT_ALPHA,
+    HealthTestFailure,
+    HealthTestResult,
+    HealthTests,
+    apt,
+    apt_cutoff,
+    rct,
+    rct_cutoff,
+    run_health_tests,
+)
+from .microphone_entropy_source import (
+    AudioBackend,
+    MicrophoneEntropySource,
+    ProcessingDetectedError,
+    ProcessingReport,
+    PyAudioBackend,
+    SilenceProbeResult,
+    SimulatedAudioBackend,
+    SimulatedEstimationError,
+    detect_processing,
+)
 from .qrng_source import QRNGSource
 from .quartz_entropy_source import (
     ADCBackend,

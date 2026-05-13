@@ -196,3 +196,122 @@ class HealthTests:
 
 class HealthTestFailure(Exception):
     """Raised when an entropy consumer detects a sticky-failed health test."""
+
+
+# ---------------------------------------------------------------------------
+# Brief 06 refactor gate: stateless function-style API
+# ---------------------------------------------------------------------------
+#
+# The :class:`HealthTests` class above is the canonical stateful continuous
+# health-test object used by Brief 04's QuartzEntropySource. Brief 06 calls
+# for a stateless ``rct(samples, h_min) / apt(samples, h_min) /
+# run_health_tests(samples, h_min)`` function-style API that's convenient
+# for one-shot batch checks. These wrappers are a thin layer over the
+# existing cutoff calculators — no separate health-test logic, so the
+# extraction the brief asks for is preserved (one source of truth in this
+# file).
+
+
+from dataclasses import dataclass as _dataclass
+
+
+@_dataclass
+class HealthTestResult:
+    rct_passed: bool
+    apt_passed: bool
+    rct_max_run: int
+    apt_max_count: int
+    rct_cutoff: int
+    apt_cutoff: int
+    apt_window: int
+    h_min: float
+    alpha: float
+
+    @property
+    def passed(self) -> bool:
+        return self.rct_passed and self.apt_passed
+
+
+def rct(samples, h_min: float, alpha: float = DEFAULT_ALPHA) -> bool:
+    """SP 800-90B §4.4.1 RCT on a finite sample list.
+
+    Returns ``True`` iff every run of equal samples is shorter than the
+    cutoff ``C = 1 + ceil(-log2(alpha) / h_min)``.
+    """
+    cutoff = rct_cutoff(alpha, max(h_min, 1e-9))
+    count = 0
+    prev = None
+    for s in samples:
+        if s == prev:
+            count += 1
+            if count >= cutoff:
+                return False
+        else:
+            prev = s
+            count = 1
+    return True
+
+
+def apt(samples, h_min: float, *, window: int = 512,
+        alpha: float = DEFAULT_ALPHA) -> bool:
+    """SP 800-90B §4.4.2 APT on a finite sample list with the given window."""
+    cutoff = apt_cutoff(alpha, max(h_min, 1e-9), window)
+    if not samples:
+        return True
+    samples = list(samples)
+    for start in range(0, len(samples), window):
+        block = samples[start:start + window]
+        if not block:
+            break
+        ref = block[0]
+        count = sum(1 for s in block if s == ref)
+        if count >= cutoff:
+            return False
+    return True
+
+
+def run_health_tests(samples, h_min: float, *,
+                     window: int = 512,
+                     alpha: float = DEFAULT_ALPHA) -> HealthTestResult:
+    """Run RCT + APT and return a structured :class:`HealthTestResult`."""
+    samples = list(samples)
+    rct_c = rct_cutoff(alpha, max(h_min, 1e-9))
+    apt_c = apt_cutoff(alpha, max(h_min, 1e-9), window)
+    # Walk the stream once, recording observed maxima alongside pass/fail.
+    rct_max_run = 0
+    count = 0
+    prev = None
+    rct_ok = True
+    for s in samples:
+        if s == prev:
+            count += 1
+        else:
+            prev = s
+            count = 1
+        if count > rct_max_run:
+            rct_max_run = count
+        if count >= rct_c:
+            rct_ok = False
+    apt_max_count = 0
+    apt_ok = True
+    for start in range(0, len(samples), window):
+        block = samples[start:start + window]
+        if not block:
+            break
+        ref = block[0]
+        c = sum(1 for s in block if s == ref)
+        if c > apt_max_count:
+            apt_max_count = c
+        if c >= apt_c:
+            apt_ok = False
+    return HealthTestResult(
+        rct_passed=rct_ok,
+        apt_passed=apt_ok,
+        rct_max_run=rct_max_run,
+        apt_max_count=apt_max_count,
+        rct_cutoff=rct_c,
+        apt_cutoff=apt_c,
+        apt_window=window,
+        h_min=h_min,
+        alpha=alpha,
+    )

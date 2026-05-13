@@ -17,6 +17,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+audio = [
+    "pyaudio>=0.2.13",
+]
 dev = [
     "pytest>=8.0",
     "pytest-cov>=4.0",

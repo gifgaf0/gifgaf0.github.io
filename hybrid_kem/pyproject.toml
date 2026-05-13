@@ -12,6 +12,7 @@ dependencies = [
     "gmpy2>=2.1",
     "requests>=2.31",
     "numpy>=1.24",
+    "scipy>=1.11",
     # liboqs-python and fips203 added once Claude Code reaches KEM brief
 ]
 

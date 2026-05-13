@@ -191,6 +191,63 @@ class SerialADCBackend:
         return self._sr
 
 
+class FingerprintedSimulatedADCBackend(SimulatedADCBackend):
+    """Simulated ADC where each channel carries a deterministic, channel-
+    specific spectral signature on top of Gaussian/uniform background noise.
+
+    Used by the calibration pipeline tests (Brief 05) to verify that the
+    calibrator correctly distinguishes channels as distinct "crystals" in
+    simulation. **Synthetic profiles are NOT physically realistic.**
+    Calibration results from this backend store
+    ``backend_class='FingerprintedSimulatedADCBackend'`` and are refused by
+    :meth:`CrystalCalibrator.update_health_test_params` per the brief.
+
+    The signature is generated as a sum of a few channel-specific tones at
+    deterministic frequencies and amplitudes; each tone contributes a
+    narrow PSD peak that the Welch estimator can resolve. Distinct
+    channels get disjoint frequencies, so their PSD fingerprints separate
+    cleanly under Jensen-Shannon.
+    """
+
+    _N_TONES_PER_CHANNEL = 3
+    _BASE_FREQ_HZ = 500.0
+    _FREQ_SEPARATION_HZ = 700.0
+    _TONE_AMPLITUDE = 0.18
+
+    def __init__(self, n_channels: int, noise_floor: float = 0.05,
+                 sample_rate_hz: int = 44_100, seed: int | None = None):
+        super().__init__(n_channels, noise_floor=noise_floor,
+                         sample_rate_hz=sample_rate_hz, seed=seed,
+                         distribution="gaussian")
+        # Channel-specific frequency offsets, deterministic in channel id.
+        self._tones: dict[int, list[float]] = {}
+        for c in range(n_channels):
+            base = self._BASE_FREQ_HZ + c * (self._N_TONES_PER_CHANNEL
+                                              * self._FREQ_SEPARATION_HZ)
+            self._tones[c] = [base + k * self._FREQ_SEPARATION_HZ
+                              for k in range(self._N_TONES_PER_CHANNEL)]
+        self._t_index = 0
+
+    def read_voltage(self, channel: int) -> float:
+        if channel < 0 or channel >= self._n:
+            raise ValueError(f"channel {channel} out of range")
+        if self._stuck[channel] is not None:
+            self._t_index += 1
+            return self._stuck[channel]
+        base = super().read_voltage(channel)
+        t_s = self._t_index / self._sr
+        tone = 0.0
+        for f in self._tones[channel]:
+            tone += self._TONE_AMPLITUDE * math.sin(2.0 * math.pi * f * t_s)
+        self._t_index += 1
+        v = base + tone / max(1, self._N_TONES_PER_CHANNEL)
+        if v > 1.0:
+            v = 1.0
+        elif v < -1.0:
+            v = -1.0
+        return v
+
+
 # ---------------------------------------------------------------------------
 # Stress schedule
 # ---------------------------------------------------------------------------
@@ -512,6 +569,85 @@ class QuartzEntropySource:
         result = bytes(out[:n_bytes])
         self._total_bytes += len(result)
         return result
+
+    # ------------------------------------------------------------------
+    # Brief 05: tamper-detection hook (calibration round trip)
+    # ------------------------------------------------------------------
+
+    IDENTITY_THRESHOLD = 0.15
+    IDENTITY_AUDIT_LOG = Path(__file__).parent / "quartz_identity_audit.jsonl"
+
+    def verify_crystal_identity(
+        self,
+        calibrator,                       # CrystalCalibrator (avoid circular import)
+        channel: int,
+        crystal_id: str,
+        stress_level: int,
+        n_verification_samples: int = 4096,
+        threshold: float | None = None,
+        audit_log: Path | None = None,
+    ) -> bool:
+        """Sample the channel and compare its PSD against a stored fingerprint.
+
+        Returns ``True`` if the Jensen-Shannon distance between the live
+        PSD and the stored fingerprint is below ``threshold``
+        (default :attr:`IDENTITY_THRESHOLD = 0.15`). Logs the result —
+        pass *or* fail — to an append-only audit JSONL so a tamper
+        attempt leaves a trail.
+
+        The default threshold is the engineering placeholder from
+        Brief 04 §Security Notes; operators should tune from
+        :meth:`CrystalCalibrator.discriminability_report`'s
+        ``recommended_identity_threshold``.
+        """
+        # Apply the stress level on the simulated backend (real hardware
+        # would have an external controller).
+        if isinstance(self._adc, SimulatedADCBackend):
+            self._adc.set_channel_stress(channel, stress_level)
+        samples = [float(self._adc.read_voltage(channel))
+                   for _ in range(n_verification_samples)]
+
+        # Find the stored fingerprint.
+        stored = None
+        for fp in calibrator.all_fingerprints():
+            if fp.crystal_id == crystal_id and fp.stress_level == stress_level:
+                stored = fp
+                break
+        if stored is None:
+            self._log_identity_event(
+                audit_log, crystal_id, stress_level,
+                result=False, reason="no_fingerprint", distance=None,
+            )
+            return False
+
+        from .crystal_calibrator import compute_psd, fingerprint_distance
+        n_fft = getattr(calibrator, "n_fft_bins", 512)
+        psd, _ = compute_psd(samples, self._adc.sample_rate_hz(), n_fft=n_fft)
+        distance = fingerprint_distance(psd, stored.psd_profile)
+        eff_threshold = self.IDENTITY_THRESHOLD if threshold is None else threshold
+        ok = distance < eff_threshold
+        self._log_identity_event(
+            audit_log, crystal_id, stress_level,
+            result=ok, reason=("match" if ok else "mismatch"),
+            distance=distance, threshold=eff_threshold,
+        )
+        return ok
+
+    def _log_identity_event(self, audit_log, crystal_id, stress_level,
+                            *, result, reason, distance=None, threshold=None):
+        path = Path(audit_log) if audit_log is not None else self.IDENTITY_AUDIT_LOG
+        path.parent.mkdir(parents=True, exist_ok=True)
+        record = {
+            "timestamp_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "crystal_id": crystal_id,
+            "stress_level": stress_level,
+            "result": bool(result),
+            "reason": reason,
+            "distance": distance,
+            "threshold": threshold,
+        }
+        with path.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(record) + "\n")
 
     def status(self) -> dict:
         c = self._last_commitment

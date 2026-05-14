@@ -1,0 +1,47 @@
+=== (2,3,7) Triangle Geometry ===
+  alpha (π/2)              = 1.570796326795
+  beta  (π/3)              = 1.047197551197
+  gamma (π/7)              = 0.448798950513
+  angle sum                = 3.066792828504  (< π for hyp)
+  area  (closed-form π/42) = 0.074799825085
+  area  (1 − 1/2 − 1/3 − 1/7) × π = 0.074799825085
+  side opposite π/2 (a)    = 0.620671737556
+  side opposite π/3 (b)    = 0.545274831754
+  side opposite π/7 (c)    = 0.283128153368
+  sinh(R_hyp) = sinh(a)/2  = 0.330648492917
+  R_hyp                    = 0.324902063140
+  |PSL(2,7)|               = 168
+  fundamental domain count = 168
+  total angular content    = 12.566370614359  ≡ 4π
+  R/r = 168/42             = 4.000000000000  (exactly 4)
+
+=== Scale Factor ===
+  n_faces (= 14, first even 7) = 14
+  half Singer period (7/2)     = 3.5
+  L / λ̄_p = 14 × (7/2)         = 49.0  (= 49)
+  λ̄_p (CODATA 2018)           = 0.21030892 fm
+  L  = 49 · λ̄_p               = 10.30513708 fm
+
+=== Void Correction ===
+  φ = (1+√5)/2                 = 1.618033988750
+  cos(18°) via √(2+φ)/2        = 0.951056516295
+  cos(π/10) direct             = 0.951056516295
+  identity verified            = True
+  ζ = 1 − π/√12                = 0.093100317883
+  pentagon void = 1 − cos18°   = 0.048943483705
+  correction ζ·(1−cos18°)      = 0.004556653891
+  factor 1 + correction        = 1.004556653891
+
+=== Proton Radius Prediction ===
+  ρ_structural = R_hyp × 49/4                  = 3.980050
+  ρ_predicted  = ρ_structural × (1 + ζ(1−cos18°)) = 3.998186
+  r_p          = ρ_predicted × λ̄_p             = 0.840854 fm
+  vs muonic H  ρ = 3.998261, r_p = 0.84087 fm (error: 0.0019%)
+  vs α-matched ρ = 3.987182, r_p = 0.83854 fm (error: 0.2760%)
+
+=== Epistemic Summary ===
+  R/r = 4:  T1  (group theory: 168 × π/42 = 4π, ratio 4π/π = 4)
+  R_hyp:    T1  (hyperbolic law of sines / cosines)
+  Scale:    T2  (14 × (7/2); Cayley-Dickson orientation doubling of Z₇)
+  Void:     T2  (identified from principle; H²→ℝ³ derivation open)
+  Formula:  T2  (no free parameters; ~0.002% from muonic H)

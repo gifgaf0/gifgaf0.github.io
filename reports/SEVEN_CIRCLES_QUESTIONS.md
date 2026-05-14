@@ -1,13 +1,16 @@
-# Seven Circles Probe — Blocker
+# Seven Circles Probe — Blocker (v2, with v5 spec-level information)
 
-**Date:** 2026-05-14
+**Date:** 2026-05-14 (v2)
 **Brief:** CLAUDE_CODE_BRIEF_07_SEVEN_CIRCLES.md
-**Status:** Blocked at Step 0. No code written. No 27/40 reproduction attempted.
+**Status:** Still blocked. v5 of `borromean_circumscription_derivation.md`
+            supplies useful spec-level information that was previously
+            only in the missing scratch file, but does not close the
+            implementation gap. No code written. No probe attempted.
 
 ## What the brief requires
 
-Step 0 of Brief 07 names four files that must be read **before any code is
-written**, and explicitly forbids guessing the circle definition:
+Step 0 of Brief 07 names four files that must be read **before any code
+is written**, and explicitly forbids guessing the circle definition:
 
 > ```
 > read scratch_seven_circles_experiment.md
@@ -21,7 +24,7 @@ written**, and explicitly forbids guessing the circle definition:
 
 ## What is in this repository
 
-Searched the full tree of `/home/user/gifgaf0.github.io`:
+Re-searched the full tree of `/home/user/gifgaf0.github.io`:
 
 | Required artefact | Found? |
 |---|:---:|
@@ -32,64 +35,134 @@ Searched the full tree of `/home/user/gifgaf0.github.io`:
 | Any definition of `CURATED_CONSTANTS` | no |
 | Any other "seven circles" / cross-ratio / tube/spine module | no |
 
-Tooling that does exist in `tools/`: `chain_enumerate`, `chain_zd_labelling`,
-`clifford_check`, `dfr_scaling`, `gs_profile`, `lattice_estimate`,
-`discrete_circle_audit.{md,json,_*.py}`. None of these define the
-seven-circles construction, the 40 chord positions, or `CURATED_CONSTANTS`.
-The `_discrete_circle.py` / `discrete_circle_audit.*` files are a separate
-discrete-circle audit and do not match the brief's setup.
+The only candidate in `tools/` is `_discrete_circle.py` /
+`discrete_circle_audit.{md,json}`, which is a separate discrete-circle
+audit and does not match the brief's setup.
 
-## Ambiguities that cannot be resolved without the source
+## What v5 of `borromean_circumscription_derivation.md` adds
 
-1. **What are the 7 natural torus circles?** Brief 07 lists three competing
-   readings (spine + 6 tube cross-sections at Z₇ angles; 7 tube
-   cross-sections; the 7 circles from `seven_circles_tight.py`) and asks
-   the agent to pick the one that matches the scratch file. Without the
-   scratch file or `seven_circles_tight.py`, there is no principled choice.
+§5.2 and §6.4 of the v5 spec supply specification that was previously
+only in the missing scratch file. The following are now known:
 
-2. **What are the 40 chord positions?** Three candidate readings noted in
-   the brief (all C(7,2)=21 pairs × 2 intersections — which is 42, not 40;
-   a specific grid; a filtered subset). 40 ≠ 21·2; some filtering is
-   required and only the scratch file specifies it.
+- **The seven natural torus circles at R=3, r=1, by label:**
+  1. outer equator
+  2. hole equator
+  3. spine
+  4. tube cross-section
+  5. geometric mean
+  6. heptagon inradius
+  7. wing-tip
+- **Chord-position count:** 40 horizontal chord positions.
+- **Match tolerance:** 0.05%.
+- **Library size:** 23 framework constants (the `CURATED_CONSTANTS` table).
+- **Expected primary result:** cos 18° = √(2 + φ)/2 at **14/40** chord
+  positions (35%), joint-highest frequency, ~10× null expectation.
+  (The earlier 27/40 figure was the unaudited v1 scratch result and is
+  **not** the citable count — see paper §X.1 footnote.)
+- **Dominant circle combinations:** (1, 2, 5, 7), (1, 3, 5, 6),
+  (2, 3, 5, 6) — exclusively the hole-boundary geometry
+  (circles 2, 5, 6: hole equator, geometric mean, heptagon inradius).
+  cos 18° concentrates at the void/hole boundary, **not** the tube.
+- **Gate non-identity (verified numerically here, ascending order
+  d, a, c, b):** cross-ratio of the pure radii
+  `{R−r, R, √(R²−r²), (R−r)·cos(π/7)}` evaluates to **1.034239**,
+  not cos 18° = 0.951057. The near-cos18° signal must therefore come
+  from chord-height + 4-point selection geometry within the full
+  sweep — it is **not** a four-radii projective identity. (v5 §6.4
+  explicitly states this and §7 records it as the open gate.)
 
-3. **Which centre defines CR_tube?** Brief 07 points at
-   `cr_from_center(..., tube_centre)` from `three_perspectives.py`, but
-   "tube_centre" depends on which circle is being treated as the tube
-   under reading (1) above.
+## What is still missing
 
-4. **What tolerance counts as a cos18° hit?** The default in the brief
-   is `tol = 5e-4`, but the scratch file may have used a different
-   value (e.g. an exact-match within float epsilon, or a wider window).
-   The 27/40 figure is tolerance-sensitive; guessing changes the count.
+Even with the above, five items remain ambiguous and cannot be
+resolved without the source code or an explicit construction:
 
-5. **Definition of `CURATED_CONSTANTS`.** The framework constant table
-   that determines what counts as a "match" lives in
-   `seven_circles_tight.py`. The brief assumes its keys are known. They
-   are not present in this repo.
+1. **Definition of "wing-tip".** Six of the seven labels parse
+   algebraically without ambiguity (R+r=4, R−r=2, R=3, r=1,
+   √(R²−r²)=√8≈2.828, (R−r)·cos(π/7)≈1.802). "wing-tip" is not a
+   standard term in this context. Candidates include (a) R+r·cos(π/7),
+   (b) R·cos(π/7), (c) (R+r)·cos(π/7), among others. The dominant
+   4-tuple (1, 2, 5, 7) names circle 7 explicitly, so the choice
+   propagates into the headline result.
 
-Any of these choices would silently change the 27/40 count. The brief
-states "the principle (cos18° is the dominant value) matters more than
-the exact 27/40 fraction" but also requires `cos18_hits == 27` in the
-Definition of Done. Both cannot be satisfied without the source.
+2. **The 23 `CURATED_CONSTANTS`.** The framework-constant library that
+   determines what counts as a "match" at 0.05% tolerance lives in
+   `seven_circles_tight.py`. Without the list, "joint-highest frequency"
+   cannot be tested — different libraries give different rankings.
+
+3. **40-chord enumeration rule.** Brief 07 says "40 chord positions"
+   but does not state the rule. Candidates: uniform y grid between
+   y_min and y_max of the union, adaptive spacing per circle,
+   a specific filter that lands at exactly 40, only chords where all
+   seven circles are cut. The exact rule changes which configurations
+   are in scope.
+
+4. **4-from-7 selection rule and side choice.** Cross-ratio is a
+   function of four points. Each chord meets each of the seven circles
+   in at most two points → up to 14 points per chord. The probe must
+   pick four of them. The dominant-tuples list (1, 2, 5, 7),
+   (1, 3, 5, 6), (2, 3, 5, 6) suggests every 4-subset of circles is
+   enumerated; the side choice (left only / right only / a specific
+   pairing) is unstated.
+
+5. **Cross-ratio formula.** Brief 07 mentions `cr_from_center` from
+   `three_perspectives.py`. Angular (from a designated centre),
+   Euclidean (signed projective on the line), or unsigned modulus —
+   each gives a different value for the same four points. The brief
+   names CR_tube and CR_line, implying at least two different
+   formulations relative to two different centres.
+
+Any of these choices silently changes the 14/40 count. The brief
+explicitly forbids guessing the circle definition; the same principle
+applies to the selection and CR-formula choices.
+
+## Editorial guidance for the eventual report (from v5 instructions)
+
+When the source materials arrive and the probe is run, the report
+must follow the editorial discipline applied in `paper/X1_cos18_address.md`:
+
+- Structure: geometric fact → computation → result.
+- Single citation footnote at the first cos 18° appearance.
+- No rung structure, face inheritance, H²→ℝ³ discussion, Clifford
+  tower context, or PSL(2,5)/PSL(2,7) interface.
+- Any unexpected residual flagged at full numerical precision and
+  labelled "residual consistent with deeper geometric structure; see
+  companion framework documentation". No naming of the broader
+  framework.
+- Bilateral symmetry of the 36° → 18°/side fold is stated as
+  geometric fact; its derivation from the substrate action is the
+  open gate and the prior address is Register 2 until that closes.
+- **Target count is 14/40 (tight, 0.05% tolerance).** If the probe
+  returns 14/40, the brief's DoD is met. If it does not, document
+  the discrepancy at full precision per the brief's epistemic
+  discipline section — do not adjust tolerance to force agreement.
 
 ## What this blocker does NOT affect
 
-- Brief 08 (`rho_derivation.py`) is self-contained — all constants and
-  formulas are stated inside the brief — and is being executed
-  independently of this blocker.
-- The void correction `ζ(1−cos18°)` in
-  `borromean_circumscription_derivation.md §5` is identified from the
-  "5 is always a void connection" principle and the numerical match to
-  the muonic-H residual. It does not itself depend on the 27/40 result;
-  the 27/40 result is the *prior geometric address* cited in §X.1 of
-  the paper, not a step in the formula.
+- Brief 08 (`tools/rho_derivation.py`, commit `4d6b612`) is complete
+  and follows the v5 framing: it computes the void correction
+  ζ·(1 − cos 18°), reports the post-correction residual at full
+  precision (−0.0019% in ρ; −0.000076 absolute), and matches the
+  identity cos(π/10) = √(2+φ)/2 to 1e-12. 13/13 tests passing.
+- Paper section §X.1 (`paper/X1_cos18_address.md`) is drafted to the
+  v5 editorial constraints and pointers at the probe report; it does
+  not depend on the probe being unblocked. When the probe lands and
+  the citable count is confirmed, only the footnote pointer needs
+  updating.
 
 ## To unblock
 
 Either upload the four files named in Step 0 of Brief 07, or supply
-the exact construction in-line (the 7 circles' centres & radii, the
-40-position enumeration rule, the `CURATED_CONSTANTS` table, the
-tolerance, and which centre defines CR_tube). With those in hand the
-brief is straight enumeration — a few hours of work — and the
-DoD-required `cos18_hits == 27` becomes a verifiable claim rather than
-a guess.
+the exact construction in-line:
+
+- the wing-tip circle definition (closed-form expression for its
+  radius)
+- the 23-entry `CURATED_CONSTANTS` table
+- the 40-chord enumeration rule (concrete and reproducible)
+- the 4-from-7 selection rule and side choice for points on each
+  chord
+- the cross-ratio formula (including which centre defines `CR_tube`
+  and which defines `CR_line`)
+
+With those, the brief reduces to straight enumeration over a known
+configuration space and the target 14/40 becomes a verifiable claim
+rather than an unconstrained probe.

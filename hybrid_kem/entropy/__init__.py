@@ -40,6 +40,16 @@ from .health_tests import (
     rct_cutoff,
     run_health_tests,
 )
+from .circle_entropy import (
+    DegenerateChordError,
+    ECCENTRICITIES,
+    chord_angle,
+    circle_entropy_seed,
+    h_inf_keplerian,
+    keplerian_penalty,
+    simulate_circle_observation,
+    simulate_seed_bytes,
+)
 from .irrational_conditioner import (
     InsufficientEntropyError,
     IrrationalConditioner,
@@ -96,7 +106,9 @@ __all__ = [
     "DRBG",
     "DRBGStateError",
     "DecoyField",
+    "DegenerateChordError",
     "DiscriminabilityReport",
+    "ECCENTRICITIES",
     "FingerprintedSimulatedADCBackend",
     "HardwareUnavailableError",
     "HealthTestFailure",
@@ -118,11 +130,17 @@ __all__ = [
     "SimulatedCalibrationError",
     "StressSchedule",
     "apt_cutoff",
+    "chord_angle",
+    "circle_entropy_seed",
     "compute_psd",
     "derive_stress_schedule",
     "fingerprint_distance",
+    "h_inf_keplerian",
+    "keplerian_penalty",
     "make_commitment",
     "rct_cutoff",
+    "simulate_circle_observation",
+    "simulate_seed_bytes",
     "verify_commitment",
 ]
 

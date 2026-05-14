@@ -40,6 +40,11 @@ from .health_tests import (
     rct_cutoff,
     run_health_tests,
 )
+from .irrational_conditioner import (
+    InsufficientEntropyError,
+    IrrationalConditioner,
+    OffsetExhaustedError,
+)
 from .microphone_entropy_source import (
     AudioBackend,
     MicrophoneEntropySource,
@@ -98,7 +103,10 @@ __all__ = [
     "HealthTestFailureError",
     "HealthTests",
     "HMAC_SHA256",
+    "InsufficientEntropyError",
     "InsufficientSamplesError",
+    "IrrationalConditioner",
+    "OffsetExhaustedError",
     "QRNGSource",
     "QuartzEntropySource",
     "RESEED_INTERVAL",

@@ -46,7 +46,9 @@ derivation lands, the cos 18° prior address is Register 2.
 
 ¹ Equivalent closed form: cos 18° = √(2 + φ)/2 with φ = (1 + √5)/2;
 verified to 1e-12 in `tools/rho_derivation.py` (commit 4d6b612). For
-the prior-address probe across the seven natural torus circles, see
-the companion Brief 07 report (target: 14/40 chord positions at 0.05%
-tolerance against the curated framework constant library; the loose
-27/40 figure from the v1 scratch probe is not the citable count).
+the prior-address probe across the seven natural torus circles see
+the companion report `reports/seven_circles_report.md`: cos 18°
+appears at **14/40** chord positions at 0.05% tolerance against the
+23-entry framework constant library, joint-highest frequency
+(tied with √5/2; cos π/7 at 13/40), with ~10× null enrichment. The
+v1 scratch figure 27/40 does not reproduce and is superseded.

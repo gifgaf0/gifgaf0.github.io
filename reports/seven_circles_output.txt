@@ -1,0 +1,39 @@
+======================================================================
+SEVEN-CIRCLES PROBE — Brief 07
+======================================================================
+R = 3.0,  r = 1.0
+Chord positions: 40
+Tolerance:       0.0500% relative
+Cross-ratios computed: 11495
+Cross-ratios matched:  123
+
+cos 18° identity √(2+φ)/2 ≡ cos(π/10): True
+  value:    0.951056516295154
+  identity: 0.951056516295154
+
+cos 18° hits: 14/40  (35.00%)
+
+Constants ranked by chord-position hits:
+   14/40  sqrt5/2               1.118034  t parameter                   ██████████████
+   14/40  cos(18deg)            0.951057  cos(18°) = √(2+φ)/2           ██████████████
+   13/40  cos(pi/7)             0.900969  Klein triangle                █████████████
+    6/40  cos(2pi/7)            0.623490  7-fold                        ██████
+    5/40  phi/2                 0.809017  cos(36°)                      █████
+    4/40  arctan(1/sqrt2)       0.615480  Prop P.α                      ████
+    4/40  void                  0.712840  1 - gap                       ████
+    3/40  sin(36deg)            0.587785  sin(36°)                      ███
+    2/40  phi^-1                0.618034  1/φ                           ██
+    2/40  eps_3/eps_2           2.787526  Hales ratio                   ██
+    2/40  pulsation             0.094800  pulsation amplitude           ██
+    2/40  gap                   0.287160  84 - cascade ratio            ██
+    1/40  phi^-2                0.381966  1/φ²                          █
+    1/40  8/21                  0.380952  Cheeger constant              █
+
+======================================================================
+PENTAGON EXCLUSION (three-perspective spine+tube)
+======================================================================
+4-point chord configs: 2060
+CR_line cos18 hits:    3
+CR_tube cos18 hits:    10
+CR_tube / CR_line:     3.33
+Passes 3× threshold:   True

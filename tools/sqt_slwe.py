@@ -59,7 +59,6 @@ from sedenion_Fp import mul_vec, basis_vec, DIM
 from sedenion_audit import find_canonical_zd_quadruples
 
 p   = 911   # mod-455 prime: p ≡ 1 (mod 5,7,13) → full PSL(2,7) symmetry
-random.seed(42)
 
 # ── Sedenion arithmetic ──────────────────────────────────────────
 

@@ -23,7 +23,6 @@ from sedenion_Fp import mul_vec, basis_vec, DIM
 from sedenion_audit import find_canonical_zd_quadruples
 
 p = 911
-random.seed(42)
 
 # ═══════════════════════════════════════════════════════════════
 # PARAMETERS

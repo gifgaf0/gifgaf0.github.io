@@ -79,6 +79,44 @@ def rand_small_nonzd(p: int, eta: int = 2, dim: int = _DIM):
                 continue
         return v
 
+
+def _rand_small_nonzd_drbg(drbg: DRBG, p: int, eta: int = 2, dim: int = _DIM):
+    """DRBG-backed CBD(η) sampler with ZD-pair rejection.
+
+    R2(a) fix (per BRIEF_02_ADDENDUM_SIDE_CHANNEL.md): the encaps
+    randomness ``r`` must come from a cryptographic source, not from
+    Mersenne Twister. This sampler consumes bytes from the caller's
+    DRBG and produces the same CBD(η) distribution as
+    :func:`rand_small_nonzd`, so DFR is unchanged but r_upper is no
+    longer recoverable by MT-state reconstruction.
+
+    CBD(η) is realised as a sum of 2η independent uniform bits:
+    ``sample = (a_1 + ... + a_η) - (b_1 + ... + b_η)``. ZD-pair
+    rejection matches :func:`rand_small_nonzd`.
+    """
+    if eta not in (1, 2):
+        raise ValueError(f"_rand_small_nonzd_drbg: unsupported eta={eta}")
+    zd_pairs = _slwe.zd_pairs
+    bits_per = 2 * eta  # 2 bits/coord for eta=1, 4 bits/coord for eta=2
+
+    def _draw_one(buf: bytes, bit_pos: int) -> int:
+        a = sum((buf[(bit_pos + i) // 8] >> ((bit_pos + i) % 8)) & 1
+                for i in range(eta))
+        b = sum((buf[(bit_pos + i) // 8] >> ((bit_pos + i) % 8)) & 1
+                for i in range(eta, 2 * eta))
+        return a - b
+
+    bytes_per_draw = (bits_per * dim + 7) // 8
+    while True:
+        buf = drbg.generate(bytes_per_draw)
+        v = [_draw_one(buf, i * bits_per) % p for i in range(dim)]
+        nz = [i for i, c in enumerate(v) if c != 0]
+        if not nz:
+            continue
+        if len(nz) == 2 and (nz[0], nz[1]) in zd_pairs:
+            continue
+        return v
+
 # Each sedenion coefficient lies in [0, p) with p = 911 < 2^10. We pack
 # coefficients as little-endian 2-byte words for clarity.
 _COEFF_BYTES = 2
@@ -180,7 +218,7 @@ def keygen(drbg: DRBG, k: int = K_TOY) -> Tuple[bytes, bytes]:
 def encaps(pk_bytes: bytes, drbg: DRBG, k: int = K_TOY) -> Tuple[bytes, bytes]:
     A, b = _deserialize_pk(pk_bytes, k)
     _seed_python_random(drbg)
-    c1, c2, m_bit = _encaps_small_r(A, b, k)
+    c1, c2, m_bit = _encaps_small_r(A, b, k, drbg)
     ct = _serialize_ct(c1, c2, k)
     ss = hashlib.sha256(bytes([m_bit & 1]) + ct).digest()
     return ct, ss
@@ -273,17 +311,27 @@ def singer_a_pure(k: int, p: int, *, seed: int | None = None
     return [_slwe.singer_orbit(_slwe.rand_nonzd(), k) for _ in range(k)]
 
 
-def _encaps_small_r(A, b_vec, k: int):
+def _encaps_small_r(A, b_vec, k: int, drbg: DRBG):
+    # R2(a) fix: r comes from the caller's DRBG (cryptographic).
+    # e1, e2, m_bit remain on the Python random module (MT) — explicitly
+    # carved out of R2(a) scope; their security role is DFR / message
+    # carrier, not r_upper freshness.
     import random as _r
     m_bit = _r.randint(0, 1)
     q2 = _slwe.p // 2
-    r = [rand_small_nonzd(_slwe.p, eta=2, dim=_DIM) for _ in range(k)]
+    r = [_rand_small_nonzd_drbg(drbg, _slwe.p, eta=2, dim=_DIM)
+         for _ in range(k)]
     e1 = [_slwe.rand_small(eta=2) for _ in range(k)]
     e2 = _r.choices([-1, 0, 0, 0, 1], weights=[1, 4, 4, 4, 1])[0] % _slwe.p
     AH = _slwe.conj_transpose(A)
     AHr = _slwe.mat_vec(AH, r)
     c1 = [_slwe.s_add(AHr[i], e1[i]) for i in range(k)]
     c2 = (_slwe.norm_inner_k(b_vec, r) + e2 + m_bit * q2) % _slwe.p
+    # R3 fix: unconditionally blind the Sub-A (lower 8) coords of every
+    # c1[i] before return; same B=1 blinding helper as the reference
+    # source uses, applied outside any branch on the output value.
+    for i in range(k):
+        c1[i] = _slwe._blind_output(c1[i][:8], _slwe.p, B=1) + c1[i][8:]
     return c1, c2, m_bit
 
 

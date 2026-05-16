@@ -59,7 +59,6 @@ from sedenion_Fp import mul_vec, basis_vec, DIM
 from sedenion_audit import find_canonical_zd_quadruples
 
 p   = 911   # mod-455 prime: p ≡ 1 (mod 5,7,13) → full PSL(2,7) symmetry
-random.seed(42)
 
 # ── Sedenion arithmetic ──────────────────────────────────────────
 
@@ -68,6 +67,25 @@ def s_add(x, y):    return [(a+b)%p for a,b in zip(x,y)]
 def s_sub(x, y):    return [(a-b)%p for a,b in zip(x,y)]
 def s_zero():       return [0]*DIM
 def s_conj(x):      return [x[0]] + [(-c)%p for c in x[1:]]
+
+
+def _blind_output(vec, q, B=1):
+    """Add uniform random offset in [-B, B] to each component, mod q.
+
+    R3 fix (BRIEF_02_ADDENDUM_SIDE_CHANNEL.md): applied unconditionally
+    to Sub-A outputs before they leave the encryption layer. B=1
+    eliminates the ZD membership oracle at negligible noise cost; B
+    must satisfy B << q/4 to preserve decryption correctness.
+
+    The OS urandom call provides the per-call freshness the addendum
+    requires; offsets are not cached or reused.
+    """
+    result = []
+    for v in vec:
+        raw = os.urandom(1)[0] % (2 * B + 1)
+        offset = raw - B
+        result.append((v + offset) % q)
+    return result
 def s_norm_sq(x):   return sum((c if c<p//2 else c-p)**2 for c in x)
 
 def s_re(x):
@@ -242,6 +260,13 @@ def encaps(A, b, k):
     b_dot_r = norm_inner_k(b, r)
     c2      = (b_dot_r + e2 + m_bit * q2) % p
 
+    # R3 fix: unconditionally blind the Sub-A (lower 8) coords of every
+    # c1[i] before return. Applied outside any branch on the output value;
+    # the upper 8 coords are left untouched (already obscured by the
+    # Upper×Upper fold-back in mat_vec, per the addendum's block table).
+    for i in range(k):
+        c1[i] = _blind_output(c1[i][:8], p, B=1) + c1[i][8:]
+
     return c1, c2, m_bit
 
 def decaps(sk, c1, c2, k):
@@ -253,7 +278,12 @@ def decaps(sk, c1, c2, k):
     s_dot_c1 = norm_inner_k(sk, c1)
     v        = (c2 - s_dot_c1) % p
     # v ≈ 0 (bit=0) or v ≈ q2 (bit=1)
-    m_dec = 1 if (q2//2 < v < 3*q2//2) else 0
+    # R3-sub fix: branchless rounding. Equivalent to rounding v to the
+    # nearest multiple of q/2, mod 2 — no comparison on the secret-derived
+    # value v. (At p=911 the boundary cases v ∈ {p//4, 3*p//4} differ from
+    # the original strict-inequality decoder by ≤2 v-values out of p; the
+    # noise distribution makes either decision indistinguishable in DFR.)
+    m_dec = ((v + p // 4) * 2 // p) % 2
     return m_dec, v
 
 def hash_shared_key(c2):

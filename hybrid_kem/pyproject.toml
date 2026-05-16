@@ -12,10 +12,23 @@ dependencies = [
     "gmpy2>=2.1",
     "requests>=2.31",
     "numpy>=1.24",
+    "scipy>=1.11",
+    "mpmath>=1.3.0",
     # liboqs-python and fips203 added once Claude Code reaches KEM brief
 ]
 
 [project.optional-dependencies]
+audio = [
+    "pyaudio>=0.2.13",
+]
+radio = [
+    # SoapySDR is typically installed via the system package manager
+    # (apt install soapysdr-module-rtlsdr / brew install soapysdr) rather
+    # than pip. The pip distribution is named "SoapySDR" and may not be
+    # available on all platforms. See entropy/RADIO_NOTES.md for
+    # installation guidance.
+    "SoapySDR>=0.8",
+]
 dev = [
     "pytest>=8.0",
     "pytest-cov>=4.0",

@@ -327,6 +327,11 @@ def _encaps_small_r(A, b_vec, k: int, drbg: DRBG):
     AHr = _slwe.mat_vec(AH, r)
     c1 = [_slwe.s_add(AHr[i], e1[i]) for i in range(k)]
     c2 = (_slwe.norm_inner_k(b_vec, r) + e2 + m_bit * q2) % _slwe.p
+    # R3 fix: unconditionally blind the Sub-A (lower 8) coords of every
+    # c1[i] before return; same B=1 blinding helper as the reference
+    # source uses, applied outside any branch on the output value.
+    for i in range(k):
+        c1[i] = _slwe._blind_output(c1[i][:8], _slwe.p, B=1) + c1[i][8:]
     return c1, c2, m_bit
 
 

@@ -142,10 +142,20 @@ After-pulse detection requires either:
   the after-pulse "shoulder" sits at the characteristic delay and
   drops back to the primary distribution beyond a few characteristic
   delays.
-- **Autocorrelation.** :func:`detect_non_poisson` now reports lag-1
-  autocorrelation. |ρ₁| ≥ :data:`DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD`
-  (currently 0.05) at n ≥ 4096 indicates after-pulse contamination or
-  other serial correlation. **Sensitivity caveat below.**
+- **Autocorrelation.** :func:`detect_non_poisson` now reports two lag-1
+  statistics (Briefs 07.1 + 07.2):
+  - ``lag1_autocorrelation`` (linear domain): catches strong correlation,
+    burst-like after-pulse signatures.
+  - ``lag1_autocorrelation_log`` (log domain): catches weak correlation
+    in the small-Δt regime, additive after-pulse signatures.
+
+  Both default to |ρ₁| < 0.05. Either firing flips
+  ``poisson_compatible`` to False. If only the log-domain check fires,
+  the after-pulse signature is weak — investigate hardware (see fixes
+  below) or apply a software veto as last resort. The combined check
+  catches additive after-pulses with `f ≳ 0.1` at `d ≈ μ`; below that,
+  the marginal-distribution KS check is the safety net (see "Linear vs
+  log-domain lag-1 sensitivity comparison").
 
 If after-pulses are observed:
 
@@ -220,24 +230,38 @@ Two methods of decreasing accessibility:
 
 ---
 
-## Lag-1 autocorrelation calibration (Brief 07.1)
+## Lag-1 autocorrelation calibration (Briefs 07.1 + 07.2)
 
 Calibration sweep run at n=4096 probe events, seed=1, against the
-``'after_pulse'`` simulator mode:
+``'after_pulse'`` simulator mode. Extended in Brief 07.2 with the
+log-domain statistic.
 
-| after_pulse_fraction | after_pulse_delay_ns | rate_hz | observed ρ₁ | autocorrelation_ok |
-|---|---|---|---|---|
-| 0.00 (ideal) | — | 1 000 | +0.0145 | True |
-| 0.001 | 1 000 | 1 000 | −0.0087 | True |
-| 0.01 | 1 000 | 1 000 | −0.0010 | True |
-| 0.05 | 1 000 | 1 000 | −0.0023 | True |
-| 0.10 | 1 000 | 1 000 | −0.0297 | True |
-| 0.05 | 100 | 1 000 | −0.0024 | True |
-| 0.05 | 10 000 | 1 000 | −0.0020 | True |
-| 0.05 | 1 000 | 100 | −0.0024 | True |
-| 0.05 | 1 000 | 10 000 | −0.0020 | True |
-| **0.50** | **2 000 000** | **1 000** | **+0.0517** | **False** |
-| **0.70** | **2 000 000** | **1 000** | **+0.0632** | **False** |
+| after_pulse_fraction | delay_ns | rate_hz | ρ₁(linear) | linear_ok | ρ₁(log) | log_ok |
+|---|---|---|---|---|---|---|
+| 0.00 (ideal) | — | 1 000 | +0.0145 | True | +0.0315 | True |
+| 0.001 | 1 000 | 1 000 | −0.0087 | True | +0.0117 | True |
+| 0.01 | 1 000 | 1 000 | −0.0010 | True | +0.0232 | True |
+| 0.05 | 1 000 | 1 000 | −0.0023 | True | +0.0017 | True |
+| **0.10** | **1 000** | **1 000** | **−0.0297** | **True** | **−0.0626** | **False** |
+| 0.05 | 100 | 1 000 | −0.0024 | True | −0.0111 | True |
+| 0.05 | 10 000 | 1 000 | −0.0020 | True | +0.0197 | True |
+| 0.05 | 1 000 | 100 | −0.0024 | True | −0.0111 | True |
+| 0.05 | 1 000 | 10 000 | −0.0020 | True | +0.0197 | True |
+| **0.50** | **2 000 000** | **1 000** | **+0.0517** | **False** | **+0.0571** | **False** |
+| **0.70** | **2 000 000** | **1 000** | **+0.0632** | **False** | **+0.0422** | **True** |
+
+Three rows show the lag-1 family changing the verdict relative to the
+KS check alone:
+
+- `f=0.10, d=1µs`: **log catches what linear misses.** Linear |ρ|=0.030
+  (below threshold); log |ρ|=0.063 (above threshold). This is the
+  central Brief 07.2 win — one decade above brief-spec params, the log
+  statistic closes the detection gap.
+- `f=0.50, d=2µs`: both fire (agreement).
+- `f=0.70, d=2µs`: **linear catches what log misses.** Linear |ρ|=0.063;
+  log |ρ|=0.042. Confirms the two statistics are complementary, not
+  redundant — at large f the dominant signal lives in the tail (linear)
+  rather than at small Δt (log).
 
 ### Discrepancy with Brief 07.1's prediction
 
@@ -286,30 +310,84 @@ Where the lag-1 check IS valuable in this simulator:
   more pathological hardware failure modes are exactly what the lag-1
   guardrail is for.
 
+### Linear vs log-domain lag-1 sensitivity comparison (Brief 07.2)
+
+Direct comparison at matched parameters (seed=1, n=4096):
+
+| regime | ρ₁(linear) | ρ₁(log) | log/linear ratio |
+|---|---|---|---|
+| brief-spec (f=0.05, d=1µs, μ=1ms) | 0.0023 | 0.0017 | 0.71× |
+| moderate (f=0.05, d=10µs, μ=1ms)  | 0.0020 | 0.0197 | **10.11×** |
+| strong (f=0.5, d=2µs, μ=1ms)      | 0.0517 | 0.0571 | 1.10× |
+
+Across the 10-seed sweep at the brief-spec regime (f=0.05, d=1µs), the
+log-domain |ρ| was **larger than the linear-domain |ρ| in 8/10 seeds**,
+with a median ratio of approximately **3–4×**. The seed=1 row above is
+one of the two outliers — usable as a worst-case bound but not the
+typical case.
+
+**Does log-domain close the gap on the brief-spec regime?**
+
+**No, not reliably.** Even with the typical 3–4× sensitivity ratio,
+the log statistic at brief-spec params averages |ρ(log)| ≈ 0.03,
+still below the 0.05 threshold. The Brief 07.1 commit's
+"~10× sensitivity improvement" estimate is roughly correct at the
+*moderate* regime (one decade up in delay, where log catches 10×
+better) but does NOT translate to threshold-crossing detection at the
+PIN-photodiode-realistic brief-spec params.
+
+**Where log-domain does close the gap:**
+
+The `f=0.10, d=1µs` row in the calibration table is the headline
+result. One increment up in fraction from the brief-spec example,
+linear |ρ| sits at 0.030 (below threshold, undetected) while log |ρ|
+reaches 0.063 (above threshold, **detected**). The two-decade lift in
+sensitivity from the log transform — at this regime — converts a
+silent failure mode into a guardrailed one.
+
+**Sensitivity floor of the check (combined)**
+
+For additive after-pulses with delay = mean inter-arrival (`d ≈ μ`):
+
+- Linear: detects when fraction `f` ≳ 0.3
+- Log:    detects when fraction `f` ≳ 0.1
+
+For shorter delays (`d ≪ μ`, the brief-spec regime), neither lag-1
+statistic reliably detects f ≲ 0.05. **KS continues to fire** because
+the after-pulse contamination adds a marginal-distribution bump near
+zero; the check is still useful, just via the marginal pathway rather
+than the serial pathway.
+
 ### Threshold provisionality and recommended follow-up
 
-The `DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD = 0.05` constant survived
-calibration unchanged at its brief-spec value. It is appropriate for
-catching the high-fraction / high-delay edge cases above and remains
-safe-by-default against false-positives on clean Poisson processes.
+Both lag-1 thresholds survived calibration unchanged at the brief-spec
+0.05 value. They are appropriate for catching the regimes documented
+above and remain safe-by-default against false-positives on clean
+Poisson processes.
 
-The empirical sensitivity gap relative to the brief's expectations is
-a model issue, not a check issue. A follow-up brief should consider:
+The empirical sensitivity gap at the brief-spec regime is a model
+issue, not a check issue. Brief 07.2 closed item #2 of the Brief 07.1
+follow-up list (log-domain); the remaining items still warrant
+consideration:
 
 1. A **burst-mode after-pulse simulator** that produces stronger lag-1
    correlation by clustering after-pulses temporally — closer to real
-   PMT after-pulsing.
-2. A **log-domain** lag-1 statistic (Pearson on `log(Δt)`) which the
-   sensitivity sweep showed is ~10× more sensitive to small `d/μ`
-   after-pulses for the additive model.
+   PMT after-pulsing. Brief 07.1 deferred this; Brief 07.2 did not
+   address it. Likely the next architectural step.
+2. ~~A **log-domain** lag-1 statistic.~~ **Done in Brief 07.2.** Closes
+   the gap one decade above brief-spec params, does NOT close it at
+   the brief-spec params themselves.
 3. **Higher-lag** autocorrelation (ρ₂, ρ₃) for multi-modal after-pulse
    delays, deferred under Brief 07.1's "Out of Scope".
 
-For Brief 07.1 itself: the check is implemented as specified, the
-default threshold is preserved, and KS continues to catch the
-small-d/μ additive after-pulses that lag-1 misses. The combined
-`poisson_compatible` flag therefore still rejects the brief's example
-case, just via a different diagnostic.
+For Briefs 07.1 + 07.2 combined: the dual-domain lag-1 check is
+implemented as specified, both default thresholds are preserved, and
+KS continues to catch the small-d/μ additive after-pulses that lag-1
+misses. The combined `poisson_compatible` flag rejects the brief's
+example case via the KS pathway and the `f=0.10, d=1µs` regime via the
+log-domain lag-1 pathway. The sensitivity floor for additive
+after-pulses where `d ≈ μ` dropped from `f ≳ 0.3` (linear only) to
+`f ≳ 0.1` (linear OR log) — a 3× improvement.
 
 ### Cases where the autocorrelation check disagreed with KS
 

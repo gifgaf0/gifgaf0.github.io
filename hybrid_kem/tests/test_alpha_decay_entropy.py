@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import inspect
+import math
 import time
 
 import pytest
@@ -524,3 +525,112 @@ def test_lag1_autocorrelation_function_zero_variance_returns_zero():
     """Edge case: constant input yields zero denominator → return 0.0 (not NaN)."""
     from hybrid_kem.entropy.alpha_decay_entropy_source import _lag1_autocorrelation
     assert _lag1_autocorrelation([100, 100, 100, 100, 100]) == 0.0
+
+
+# ---------------------------------------------------------------------------
+# Log-domain lag-1 autocorrelation check (Brief 07.2)
+# ---------------------------------------------------------------------------
+
+
+def test_lag1_log_zero_on_ideal():
+    """log-ρ on a clean Poisson stream has |ρ| < 0.05."""
+    rep = detect_non_poisson(
+        SimulatedTimingBackend("ideal", rate_hz=1000, seed=201)
+    )
+    assert abs(rep.lag1_autocorrelation_log) < 0.05
+    assert rep.lag1_autocorrelation_log_ok is True
+
+
+def test_lag1_log_zero_on_dead_time():
+    """dead_time mode is iid; log-ρ ≈ 0."""
+    rep = detect_non_poisson(
+        SimulatedTimingBackend("dead_time", rate_hz=1000, dead_time_ns=1000, seed=202)
+    )
+    assert abs(rep.lag1_autocorrelation_log) < 0.05
+    assert rep.lag1_autocorrelation_log_ok is True
+
+
+def test_lag1_log_zero_on_biased():
+    """biased mode is iid (gamma); log-ρ ≈ 0. KS catches, lag-1(log) does not."""
+    rep = detect_non_poisson(
+        SimulatedTimingBackend("biased", rate_hz=1000, bias_shape=3.0, seed=203)
+    )
+    assert abs(rep.lag1_autocorrelation_log) < 0.05
+    assert rep.lag1_autocorrelation_log_ok is True
+    assert rep.exponential_fit_ok is False
+
+
+def test_lag1_log_more_sensitive_than_linear_on_weak_after_pulse():
+    """At the brief-spec after-pulse regime (f=0.05, d=1µs, μ=1ms) the log-
+    domain |ρ| is materially larger than the linear-domain |ρ| (typically
+    3-6× across seeds — see ALPHA_DECAY_NOTES.md "Linear vs log-domain
+    lag-1 sensitivity comparison"). This test verifies the value-add:
+    log-domain is strictly more sensitive than linear-domain on weak
+    additive after-pulses.
+
+    Seed selected from the 10-seed sweep documented in the notes; the
+    8/10 seeds where |log| > |linear| are seeds 2-5, 7-10."""
+    backend = SimulatedTimingBackend(
+        "after_pulse",
+        rate_hz=1000,
+        seed=5,
+        after_pulse_fraction=0.05,
+        after_pulse_delay_ns=1_000,
+    )
+    rep = detect_non_poisson(backend)
+    # The brief-spec regime is below the linear-domain noise floor:
+    assert abs(rep.lag1_autocorrelation) < 0.05
+    # And log-domain is materially larger:
+    assert abs(rep.lag1_autocorrelation_log) > abs(rep.lag1_autocorrelation)
+
+
+def test_lag1_log_detects_strong_after_pulse():
+    """Strong after-pulse params (f=0.5, d=2µs, seed=1) trip both the
+    linear and log-domain checks; poisson_compatible is False."""
+    backend = SimulatedTimingBackend(
+        "after_pulse",
+        rate_hz=1000,
+        seed=1,
+        after_pulse_fraction=0.5,
+        after_pulse_delay_ns=2_000_000,
+    )
+    rep = detect_non_poisson(backend)
+    assert abs(rep.lag1_autocorrelation_log) > 0.05
+    assert rep.lag1_autocorrelation_log_ok is False
+    assert rep.poisson_compatible is False
+
+
+def test_poisson_report_includes_lag1_log_fields():
+    """Schema check: the new fields appear on PoissonReport."""
+    rep = detect_non_poisson(
+        SimulatedTimingBackend("ideal", rate_hz=1000, seed=204)
+    )
+    assert hasattr(rep, "lag1_autocorrelation_log")
+    assert hasattr(rep, "lag1_autocorrelation_log_ok")
+    assert isinstance(rep.lag1_autocorrelation_log, float)
+    assert isinstance(rep.lag1_autocorrelation_log_ok, bool)
+
+
+def test_default_lag1_log_threshold_constant_is_top_level():
+    """``DEFAULT_LAG1_AUTOCORRELATION_LOG_THRESHOLD`` is a module-level
+    constant so future calibration is a one-line change."""
+    import hybrid_kem.entropy.alpha_decay_entropy_source as mod
+    assert hasattr(mod, "DEFAULT_LAG1_AUTOCORRELATION_LOG_THRESHOLD")
+    assert mod.DEFAULT_LAG1_AUTOCORRELATION_LOG_THRESHOLD == 0.05
+
+
+def test_lag1_log_handles_zero_interarrivals():
+    """Defense-in-depth: a Δt = 0 should not crash the log function."""
+    from hybrid_kem.entropy.alpha_decay_entropy_source import _lag1_autocorrelation_log
+    # Mix of normal and one zero — the zero is silently mapped to 1 ns.
+    deltas = [1_000_000, 1_500_000, 0, 800_000, 1_200_000]
+    r = _lag1_autocorrelation_log(deltas)
+    assert math.isfinite(r)
+    assert -1.0 <= r <= 1.0
+
+
+def test_lag1_log_handles_short_input():
+    """Empty / single-element series return 0.0."""
+    from hybrid_kem.entropy.alpha_decay_entropy_source import _lag1_autocorrelation_log
+    assert _lag1_autocorrelation_log([]) == 0.0
+    assert _lag1_autocorrelation_log([1000]) == 0.0

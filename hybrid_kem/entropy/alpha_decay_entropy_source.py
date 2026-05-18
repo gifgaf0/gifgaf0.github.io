@@ -71,6 +71,22 @@ Security notes (per Brief 07 §"Security Notes"):
    ALPHA_DECAY_NOTES.md "Lag-1 autocorrelation calibration"). Adjustment
    may be warranted after measurement on real detector hardware. Treat
    the default as safe-by-default and review after first hardware run.
+9. **Two-domain lag-1 coverage** (Brief 07.2). The linear and log-domain
+   lag-1 statistics catch different regimes by design. Linear-domain is
+   sensitive to strong correlation (multi-event bursts, periodic
+   threshold drift). Log-domain is sensitive to weak correlation
+   concentrated at small Δt (single-event additive after-pulses, the
+   dominant PIN-photodiode failure mode). Disabling either check weakens
+   the guardrail on a specific failure mode; do not weaken in production
+   without a documented justification.
+10. **Residual gap acknowledgement** (Brief 07.2). Both lag-1 statistics
+    may still miss the very-weak additive after-pulse regime (small f,
+    small d/μ). The Markov H_min estimator inside
+    :meth:`run_h_min_estimation` is the backstop for this regime — it
+    catches lag-1 conditional structure regardless of marginal-statistic
+    shape. The conservative ``h_min_per_sample_bits = 1.0`` default
+    already absorbs typical residual lag-1 leakage; raise this default
+    only after explicit measurement of lag-1 ACF on real hardware.
 
 See ``entropy/ALPHA_DECAY_NOTES.md`` for the detector-characterisation
 analysis, SPEC.md §2.1–§2.3 for the surrounding architecture, and
@@ -144,6 +160,14 @@ _DEAD_TIME_DEFAULT = object()         # sentinel for "use per-mode default"
 # delays (which raises ρ₁ to 0.02–0.10) is caught. Provisional pending
 # calibration on real detector hardware.
 DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD = 0.05
+
+# Log-domain lag-1 autocorrelation threshold (Brief 07.2). Same numerical
+# threshold as the linear-domain check; the noise floor under the null is
+# similar in both domains (Pearson on log-transformed Gumbel-like data
+# has comparable null-distribution variance to Pearson on the original
+# exponential data). Calibration in ALPHA_DECAY_NOTES.md confirms 0.05
+# is appropriate at n=4096.
+DEFAULT_LAG1_AUTOCORRELATION_LOG_THRESHOLD = 0.05
 
 
 class SimulatedTimingBackend:
@@ -403,6 +427,8 @@ class PoissonReport:
     dead_time_ok: bool
     lag1_autocorrelation: float
     lag1_autocorrelation_ok: bool
+    lag1_autocorrelation_log: float
+    lag1_autocorrelation_log_ok: bool
     poisson_compatible: bool
     n_probe_events: int
     notes: str = ""
@@ -411,6 +437,24 @@ class PoissonReport:
 _DETECT_NON_POISSON_KS_ALPHA = 0.01
 _DETECT_NON_POISSON_RATE_CV_THRESHOLD = 0.25
 _DETECT_NON_POISSON_N_SUBWINDOWS = 8
+
+
+def _pearson_lag1(x: list[float]) -> float:
+    """Pearson lag-1 autocorrelation. Returns 0.0 for short or degenerate input."""
+    n = len(x) - 1
+    if n < 2:
+        return 0.0
+    a = x[:-1]
+    b = x[1:]
+    ma = sum(a) / n
+    mb = sum(b) / n
+    num = sum((ai - ma) * (bi - mb) for ai, bi in zip(a, b, strict=True))
+    da2 = sum((ai - ma) ** 2 for ai in a)
+    db2 = sum((bi - mb) ** 2 for bi in b)
+    denom = math.sqrt(da2 * db2)
+    if denom <= 0.0:
+        return 0.0
+    return num / denom
 
 
 def _lag1_autocorrelation(interarrivals: list[int]) -> float:
@@ -429,20 +473,35 @@ def _lag1_autocorrelation(interarrivals: list[int]) -> float:
     detrending — the exponential mean and variance are absorbed into the
     Pearson normalisation.
     """
-    n = len(interarrivals) - 1
-    if n < 2:
+    return _pearson_lag1([float(d) for d in interarrivals])
+
+
+def _lag1_autocorrelation_log(interarrivals: list[int]) -> float:
+    """Lag-1 sample autocorrelation of ``log(Δt)`` (Brief 07.2).
+
+    The log transform compresses the long exponential tail and amplifies
+    small-Δt structure. Sensitivity to weak additive after-pulses —
+    where a short parent-child Δt is followed by a longer child-next-
+    parent Δt — improves over the linear-domain statistic, which is
+    dominated by the tail of the exponential and saturates fast on the
+    small-Δt regime where after-pulses live.
+
+    Returns ρ₁(log) in [-1, +1]. Sign convention matches the linear
+    statistic: positive indicates after-pulse-like structure.
+
+    Edge cases:
+      - A Δt of 0 ns would produce ``log(0) = -inf``. After the dead-
+        time check rejects Δt < dead_time_ns this should not occur. As
+        defense in depth, any Δt ≤ 0 is replaced with 1 ns before
+        taking the log so the function returns a finite value rather
+        than crashing.
+      - Empty or single-element series return 0.0 (cannot form a lag-1
+        pair).
+    """
+    if len(interarrivals) < 2:
         return 0.0
-    x = interarrivals[:-1]
-    y = interarrivals[1:]
-    mx = sum(x) / n
-    my = sum(y) / n
-    num = sum((xi - mx) * (yi - my) for xi, yi in zip(x, y, strict=True))
-    dx2 = sum((xi - mx) ** 2 for xi in x)
-    dy2 = sum((yi - my) ** 2 for yi in y)
-    denom = math.sqrt(dx2 * dy2)
-    if denom <= 0.0:
-        return 0.0
-    return num / denom
+    log_dt = [math.log(d if d > 0 else 1) for d in interarrivals]
+    return _pearson_lag1(log_dt)
 
 
 def detect_non_poisson(
@@ -508,13 +567,24 @@ def detect_non_poisson(
     sub_dt = sum(1 for d in deltas if d < dead_time_ns) if dead_time_ns > 0 else 0
     dead_time_ok = (sub_dt == 0)
 
-    # 4) Lag-1 autocorrelation (Brief 07.1). Catches detector after-pulses,
-    # which the marginal-distribution checks miss by construction.
+    # 4) Lag-1 autocorrelation (linear, Brief 07.1). Catches strong serial
+    # correlation (burst-like after-pulses, periodic threshold drift).
     rho1 = _lag1_autocorrelation(deltas)
     lag1_ok = abs(rho1) < DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD
 
+    # 5) Lag-1 autocorrelation (log domain, Brief 07.2). Closes the
+    # sensitivity gap on weak additive after-pulses concentrated at small
+    # Δt — the realistic PIN-photodiode regime where the linear-domain
+    # statistic is dominated by the exponential tail and saturates.
+    rho1_log = _lag1_autocorrelation_log(deltas)
+    lag1_log_ok = abs(rho1_log) < DEFAULT_LAG1_AUTOCORRELATION_LOG_THRESHOLD
+
     poisson_compatible = bool(
-        rate_stable and exponential_fit_ok and dead_time_ok and lag1_ok
+        rate_stable
+        and exponential_fit_ok
+        and dead_time_ok
+        and lag1_ok
+        and lag1_log_ok
     )
     notes_parts: list[str] = []
     if not rate_stable:
@@ -528,6 +598,11 @@ def detect_non_poisson(
             f"lag1_autocorrelation |ρ₁|={abs(rho1):.4f} >= "
             f"{DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD}"
         )
+    if not lag1_log_ok:
+        notes_parts.append(
+            f"lag1_autocorrelation_log |ρ₁(log)|={abs(rho1_log):.4f} >= "
+            f"{DEFAULT_LAG1_AUTOCORRELATION_LOG_THRESHOLD}"
+        )
 
     return PoissonReport(
         rate_estimate_hz=rate_estimate_hz,
@@ -540,6 +615,8 @@ def detect_non_poisson(
         dead_time_ok=dead_time_ok,
         lag1_autocorrelation=rho1,
         lag1_autocorrelation_ok=lag1_ok,
+        lag1_autocorrelation_log=rho1_log,
+        lag1_autocorrelation_log_ok=lag1_log_ok,
         poisson_compatible=poisson_compatible,
         n_probe_events=n_probe_events,
         notes="; ".join(notes_parts),
@@ -845,6 +922,7 @@ def _unpack_bits(packed: bytes, bits_per_symbol: int, n_symbols: int) -> list[in
 
 
 __all__ = [
+    "DEFAULT_LAG1_AUTOCORRELATION_LOG_THRESHOLD",
     "DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD",
     "AlphaDecayEntropySource",
     "HardwareUnavailableError",

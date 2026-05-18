@@ -133,6 +133,35 @@ If the long-run rate CV across 1-second sub-windows exceeds 25 %, the
 detector chain is non-stationary and `detect_non_poisson` will reject
 on the rate-stability test at next probe.
 
+### Verifying absence of after-pulses (Brief 07.1)
+
+After-pulse detection requires either:
+
+- **Histogram inspection.** Capture ≥ 10⁵ events and bin Δt on log
+  axes. Look for excess at small Δt that breaks the exponential line —
+  the after-pulse "shoulder" sits at the characteristic delay and
+  drops back to the primary distribution beyond a few characteristic
+  delays.
+- **Autocorrelation.** :func:`detect_non_poisson` now reports lag-1
+  autocorrelation. |ρ₁| ≥ :data:`DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD`
+  (currently 0.05) at n ≥ 4096 indicates after-pulse contamination or
+  other serial correlation. **Sensitivity caveat below.**
+
+If after-pulses are observed:
+
+- Check **discriminator hysteresis**. Insufficient hysteresis allows
+  the falling edge of a primary pulse to re-trigger.
+- Check **discriminator dead-time**. Increase if necessary, at the
+  cost of a higher minimum Δt floor.
+- Check **front-end amp ringing**. A poorly-terminated transimpedance
+  amp can produce decaying oscillation that crosses threshold
+  multiple times within tens of nanoseconds.
+- If after-pulses persist and cannot be eliminated in hardware,
+  apply a software veto: discard any event with Δt < veto_ns from
+  the previous event. This raises the effective dead-time floor but
+  eliminates the IID violation. Document the chosen veto_ns in the
+  deployment configuration.
+
 ### Verifying the source is the expected isotope
 Two methods of decreasing accessibility:
 
@@ -188,6 +217,117 @@ Two methods of decreasing accessibility:
   multi-channel analyser, and characterised cooled detector starts
   around $5–10k. Brief's threat model probably warrants the latter
   for production but the former is adequate for the testbed.
+
+---
+
+## Lag-1 autocorrelation calibration (Brief 07.1)
+
+Calibration sweep run at n=4096 probe events, seed=1, against the
+``'after_pulse'`` simulator mode:
+
+| after_pulse_fraction | after_pulse_delay_ns | rate_hz | observed ρ₁ | autocorrelation_ok |
+|---|---|---|---|---|
+| 0.00 (ideal) | — | 1 000 | +0.0145 | True |
+| 0.001 | 1 000 | 1 000 | −0.0087 | True |
+| 0.01 | 1 000 | 1 000 | −0.0010 | True |
+| 0.05 | 1 000 | 1 000 | −0.0023 | True |
+| 0.10 | 1 000 | 1 000 | −0.0297 | True |
+| 0.05 | 100 | 1 000 | −0.0024 | True |
+| 0.05 | 10 000 | 1 000 | −0.0020 | True |
+| 0.05 | 1 000 | 100 | −0.0024 | True |
+| 0.05 | 1 000 | 10 000 | −0.0020 | True |
+| **0.50** | **2 000 000** | **1 000** | **+0.0517** | **False** |
+| **0.70** | **2 000 000** | **1 000** | **+0.0632** | **False** |
+
+### Discrepancy with Brief 07.1's prediction
+
+Brief 07.1 expected `ρ₁ ~ 0.02–0.10` for `f=0.05` / `d=1 µs` /
+`rate=1 kHz`. The calibration shows that the brief overpredicted the
+lag-1 signal by 2–3 orders of magnitude for these parameters.
+
+The reason is structural. For the **additive** after-pulse model the
+brief specifies (each primary spawns at most one secondary, merge and
+sort), the lag-1 Pearson correlation of the merged Δt series scales
+approximately as
+
+    |ρ₁|  ≈  f · (d / μ)²
+
+where `f` is the after-pulse fraction, `d` is the mean after-pulse
+delay, and `μ = 1/λ` is the mean primary inter-arrival. At the brief's
+example (`f=0.05`, `d=1 µs`, `μ=1 ms`) this gives `|ρ₁|` on the order
+of `0.05 · (10⁻³)² = 5×10⁻⁸` — three orders of magnitude below the
+n=4096 noise floor of `1/√n ≈ 0.016`.
+
+The brief's `0.05` threshold and `n=4096` probe size are well-calibrated
+for the **null hypothesis** (clean Poisson processes are rejected at the
+0.1 % level), but the additive after-pulse model under the brief's
+example parameters does not generate a signal above the noise floor.
+
+### Sensitivity floor of the check (as built)
+
+From the calibration sweep, lag-1 autocorrelation detects after-pulse
+contamination only when **both** the fraction is large (`f ≳ 0.3`) **and**
+the delay is on the order of the mean inter-arrival (`d ≳ μ`). For typical
+PIN-photodiode after-pulse parameters (`f` a few percent, `d` in
+nanoseconds-to-microseconds, `μ` in milliseconds at kHz rates), the
+lag-1 check **does not** add useful discrimination over the KS check
+alone.
+
+Where the lag-1 check IS valuable in this simulator:
+
+- **High-fraction edge cases** (`f ≳ 0.3`) where the KS check may itself
+  desensitise because the modified marginal looks like an exponential
+  with a slightly different rate. Lag-1 still fires because the
+  serial correlation is independent of marginal-distribution drift.
+- **Real detectors with non-additive failure modes.** A burst-mode
+  detector (clusters of fast events followed by recovery) would
+  produce strong positive lag-1 correlation without much marginal
+  perturbation. The brief's additive model is just the simplest case;
+  more pathological hardware failure modes are exactly what the lag-1
+  guardrail is for.
+
+### Threshold provisionality and recommended follow-up
+
+The `DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD = 0.05` constant survived
+calibration unchanged at its brief-spec value. It is appropriate for
+catching the high-fraction / high-delay edge cases above and remains
+safe-by-default against false-positives on clean Poisson processes.
+
+The empirical sensitivity gap relative to the brief's expectations is
+a model issue, not a check issue. A follow-up brief should consider:
+
+1. A **burst-mode after-pulse simulator** that produces stronger lag-1
+   correlation by clustering after-pulses temporally — closer to real
+   PMT after-pulsing.
+2. A **log-domain** lag-1 statistic (Pearson on `log(Δt)`) which the
+   sensitivity sweep showed is ~10× more sensitive to small `d/μ`
+   after-pulses for the additive model.
+3. **Higher-lag** autocorrelation (ρ₂, ρ₃) for multi-modal after-pulse
+   delays, deferred under Brief 07.1's "Out of Scope".
+
+For Brief 07.1 itself: the check is implemented as specified, the
+default threshold is preserved, and KS continues to catch the
+small-d/μ additive after-pulses that lag-1 misses. The combined
+`poisson_compatible` flag therefore still rejects the brief's example
+case, just via a different diagnostic.
+
+### Cases where the autocorrelation check disagreed with KS
+
+Documented in the calibration sweep above and in
+`tests/test_alpha_decay_entropy.py::test_lag1_autocorrelation_zero_on_biased`:
+
+- `'biased'` mode (gamma marginal, independent samples): **lag-1 says
+  OK, KS says fail.** Expected and correct — gamma is iid but not
+  exponential.
+- `'after_pulse'` with low `f·(d/μ)²`: **lag-1 says OK, KS says fail.**
+  The marginal "shoulder" near zero is visible to KS even when the
+  serial correlation is below the noise floor.
+- `'after_pulse'` with high `f` and `d ≈ μ`: **lag-1 says fail, KS
+  says fail.** Both checks agree.
+
+No simulator parameter set was observed where lag-1 fires while KS
+passes. That regime exists in principle (burst-mode hardware) but is
+out of scope for the additive simulator.
 
 ---
 

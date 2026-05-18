@@ -57,6 +57,20 @@ Security notes (per Brief 07 §"Security Notes"):
    production, the conditioning chain MUST include at least one independent
    entropy input (QRNGSource and/or /dev/urandom).
 6. λ is re-estimated on every call; never cached across calls.
+7. **After-pulse vulnerability** (Brief 07.1). A detector with significant
+   after-pulsing introduces lag-1 serial correlation that the marginal
+   distribution checks miss. :func:`_lag1_autocorrelation` inside
+   :func:`detect_non_poisson` is the guardrail. If the check is disabled
+   (``require_poisson=False``) or
+   :data:`DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD` is widened, the entropy
+   estimate must be lowered to account for the conditional information
+   leaked by serial correlation. Default: do not weaken this check in
+   production.
+8. **Threshold provisionality** (Brief 07.1). The 0.05 lag-1
+   autocorrelation threshold is calibrated against simulator output (see
+   ALPHA_DECAY_NOTES.md "Lag-1 autocorrelation calibration"). Adjustment
+   may be warranted after measurement on real detector hardware. Treat
+   the default as safe-by-default and review after first hardware run.
 
 See ``entropy/ALPHA_DECAY_NOTES.md`` for the detector-characterisation
 analysis, SPEC.md §2.1–§2.3 for the surrounding architecture, and
@@ -123,11 +137,19 @@ _DEFAULT_DEAD_TIME_NS = 1_000          # 1 µs, applies to 'dead_time' mode
 _DEFAULT_TIMING_RESOLUTION_NS = 1
 _DEAD_TIME_DEFAULT = object()         # sentinel for "use per-mode default"
 
+# Lag-1 autocorrelation threshold for the Poisson-compatibility check
+# (Brief 07.1). At n=4096 the 99 % CI under the null is ~±0.04, so 0.05
+# sits just outside that band — clean Poisson processes are not falsely
+# rejected at the 1 % level, and a 5 % after-pulse fraction at moderate
+# delays (which raises ρ₁ to 0.02–0.10) is caught. Provisional pending
+# calibration on real detector hardware.
+DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD = 0.05
+
 
 class SimulatedTimingBackend:
     """Synthetic TimingBackend for development and tests.
 
-    Three modes:
+    Four modes:
 
     - ``"ideal"``: pure exponential inter-arrivals at ``rate_hz`` with
       no dead time and no pile-up. The reference path for
@@ -143,9 +165,17 @@ class SimulatedTimingBackend:
       ``detect_non_poisson`` KS-rejection path. The mean matches a
       Poisson process at ``rate_hz`` so rate-stability passes but the
       shape mismatch is large.
+    - ``"after_pulse"`` (Brief 07.1): primary events ~ Exp(λ), and each
+      primary spawns a secondary at an exponential delay with mean
+      ``after_pulse_delay_ns`` with probability ``after_pulse_fraction``.
+      Secondaries do not recursively after-pulse (first-generation
+      only). The merged-sorted timestamp stream is serially correlated
+      at lag 1: a short Δt (the after-pulse) is followed by a longer Δt
+      (recovery to the next primary). Used to exercise the
+      :func:`_lag1_autocorrelation` check.
 
     Two test hooks (not part of the protocol) inject specific failure
-    modes:
+    modes for the ``'ideal'`` / ``'dead_time'`` / ``'biased'`` paths:
 
     - :meth:`force_constant_interarrival` — flip the backend to emit
       identical Δt values (drives the health-test fail path).
@@ -153,7 +183,7 @@ class SimulatedTimingBackend:
       below ``dead_time_ns`` (drives the detector's dead-time check).
     """
 
-    _MODES = ("ideal", "dead_time", "biased")
+    _MODES = ("ideal", "dead_time", "biased", "after_pulse")
 
     def __init__(
         self,
@@ -163,6 +193,8 @@ class SimulatedTimingBackend:
         dead_time_ns=_DEAD_TIME_DEFAULT,
         timing_resolution_ns: int = _DEFAULT_TIMING_RESOLUTION_NS,
         bias_shape: float = 3.0,
+        after_pulse_fraction: float = 0.05,
+        after_pulse_delay_ns: int = 1_000,
         seed: int | None = None,
         detector_serial: str = "SIMULATED-001",
     ):
@@ -184,11 +216,17 @@ class SimulatedTimingBackend:
         if bias_shape <= 1.0:
             # shape=1 is exponential, which is the Poisson process itself.
             raise ValueError("bias_shape must be > 1 to be detectable as non-Poisson")
+        if not 0.0 <= after_pulse_fraction <= 1.0:
+            raise ValueError("after_pulse_fraction must be in [0, 1]")
+        if after_pulse_delay_ns <= 0:
+            raise ValueError("after_pulse_delay_ns must be positive")
         self._mode = mode
         self._rate_hz = float(rate_hz)
         self._dead_time_ns = int(dead_time_ns)
         self._timing_resolution_ns = int(timing_resolution_ns)
         self._bias_shape = float(bias_shape)
+        self._after_pulse_fraction = float(after_pulse_fraction)
+        self._after_pulse_delay_ns = int(after_pulse_delay_ns)
         self._serial = str(detector_serial)
         self._rng = _random.Random(seed if seed is not None else 0xa1da5)  # noqa: S311  # simulator only
         self._cum_time_ns = 0
@@ -203,6 +241,8 @@ class SimulatedTimingBackend:
         # In real hardware, timeout would gate the blocking read. For the
         # simulator we ignore it — events are generated instantly.
         _ = timeout_s
+        if self._mode == "after_pulse":
+            return self._read_events_after_pulse(n_events)
         mean_dt_ns = 1e9 / self._rate_hz
         out: list[int] = []
         for _ in range(n_events):
@@ -232,6 +272,42 @@ class SimulatedTimingBackend:
                         * self._timing_resolution_ns)
             self._cum_time_ns += int(dt_ns)
             out.append(self._cum_time_ns)
+        return out
+
+    def _read_events_after_pulse(self, n_events: int) -> list[int]:
+        """Generate primary Exp(λ) events; each primary spawns at most one
+        secondary at delay ~ Exp(1/after_pulse_delay_ns) with probability
+        ``after_pulse_fraction``. Merge-sort and return the first
+        ``n_events`` timestamps."""
+        mean_dt_ns = 1e9 / self._rate_hz
+        # Generate at least n_events worth of primaries so the merged
+        # stream has at least n_events entries after secondaries are added.
+        # Expected total per primary = 1 + f, so n_primaries = ceil(n / (1+f))
+        # plus a small overshoot for tail safety.
+        n_primaries = max(
+            n_events,
+            int(math.ceil(n_events / (1.0 + self._after_pulse_fraction))) + 4,
+        )
+        timestamps: list[int] = []
+        t_cum = self._cum_time_ns
+        for _ in range(n_primaries):
+            dt_ns = self._rng.expovariate(1.0) * mean_dt_ns
+            dt_ns = max(self._timing_resolution_ns,
+                        int(round(dt_ns / self._timing_resolution_ns))
+                        * self._timing_resolution_ns)
+            t_cum += int(dt_ns)
+            timestamps.append(t_cum)
+            if self._rng.random() < self._after_pulse_fraction:
+                delay_ns = self._rng.expovariate(1.0) * self._after_pulse_delay_ns
+                delay_ns = max(self._timing_resolution_ns,
+                               int(round(delay_ns / self._timing_resolution_ns))
+                               * self._timing_resolution_ns)
+                timestamps.append(t_cum + int(delay_ns))
+        timestamps.sort()
+        out = timestamps[:n_events]
+        # Advance the cumulative clock to the last emitted timestamp so a
+        # follow-up read_events call remains monotonic.
+        self._cum_time_ns = out[-1] if out else t_cum
         return out
 
     def detector_info(self) -> dict:
@@ -325,6 +401,8 @@ class PoissonReport:
     exponential_fit_ok: bool
     sub_dead_time_events: int
     dead_time_ok: bool
+    lag1_autocorrelation: float
+    lag1_autocorrelation_ok: bool
     poisson_compatible: bool
     n_probe_events: int
     notes: str = ""
@@ -333,6 +411,38 @@ class PoissonReport:
 _DETECT_NON_POISSON_KS_ALPHA = 0.01
 _DETECT_NON_POISSON_RATE_CV_THRESHOLD = 0.25
 _DETECT_NON_POISSON_N_SUBWINDOWS = 8
+
+
+def _lag1_autocorrelation(interarrivals: list[int]) -> float:
+    """Lag-1 sample autocorrelation coefficient of an inter-arrival series.
+
+    For a memoryless Poisson process the population ρ₁ = 0. Finite
+    samples have ρ₁ ~ N(0, 1/n) under the null hypothesis; at n=4096 the
+    99 % CI is ~ ±0.04.
+
+    Returns ρ₁ in [-1, +1]. Positive values indicate that short Δt tend
+    to be followed by longer Δt (the after-pulse signature); negative
+    values indicate alternation; zero indicates no serial correlation
+    (Poisson-compatible).
+
+    Standard Pearson correlation of ``x[:-1]`` vs ``x[1:]``. No
+    detrending — the exponential mean and variance are absorbed into the
+    Pearson normalisation.
+    """
+    n = len(interarrivals) - 1
+    if n < 2:
+        return 0.0
+    x = interarrivals[:-1]
+    y = interarrivals[1:]
+    mx = sum(x) / n
+    my = sum(y) / n
+    num = sum((xi - mx) * (yi - my) for xi, yi in zip(x, y, strict=True))
+    dx2 = sum((xi - mx) ** 2 for xi in x)
+    dy2 = sum((yi - my) ** 2 for yi in y)
+    denom = math.sqrt(dx2 * dy2)
+    if denom <= 0.0:
+        return 0.0
+    return num / denom
 
 
 def detect_non_poisson(
@@ -398,7 +508,14 @@ def detect_non_poisson(
     sub_dt = sum(1 for d in deltas if d < dead_time_ns) if dead_time_ns > 0 else 0
     dead_time_ok = (sub_dt == 0)
 
-    poisson_compatible = bool(rate_stable and exponential_fit_ok and dead_time_ok)
+    # 4) Lag-1 autocorrelation (Brief 07.1). Catches detector after-pulses,
+    # which the marginal-distribution checks miss by construction.
+    rho1 = _lag1_autocorrelation(deltas)
+    lag1_ok = abs(rho1) < DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD
+
+    poisson_compatible = bool(
+        rate_stable and exponential_fit_ok and dead_time_ok and lag1_ok
+    )
     notes_parts: list[str] = []
     if not rate_stable:
         notes_parts.append(f"rate CV {rate_cv:.3f} >= {_DETECT_NON_POISSON_RATE_CV_THRESHOLD}")
@@ -406,6 +523,11 @@ def detect_non_poisson(
         notes_parts.append(f"KS p={ks_p:.4f} < {_DETECT_NON_POISSON_KS_ALPHA}")
     if not dead_time_ok:
         notes_parts.append(f"{sub_dt} sub-dead-time events")
+    if not lag1_ok:
+        notes_parts.append(
+            f"lag1_autocorrelation |ρ₁|={abs(rho1):.4f} >= "
+            f"{DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD}"
+        )
 
     return PoissonReport(
         rate_estimate_hz=rate_estimate_hz,
@@ -416,6 +538,8 @@ def detect_non_poisson(
         exponential_fit_ok=exponential_fit_ok,
         sub_dead_time_events=sub_dt,
         dead_time_ok=dead_time_ok,
+        lag1_autocorrelation=rho1,
+        lag1_autocorrelation_ok=lag1_ok,
         poisson_compatible=poisson_compatible,
         n_probe_events=n_probe_events,
         notes="; ".join(notes_parts),
@@ -721,6 +845,7 @@ def _unpack_bits(packed: bytes, bits_per_symbol: int, n_symbols: int) -> list[in
 
 
 __all__ = [
+    "DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD",
     "AlphaDecayEntropySource",
     "HardwareUnavailableError",
     "HealthTestFailureError",

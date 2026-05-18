@@ -361,3 +361,166 @@ def test_wrong_channel_mixing_is_architectural_defect_doc():
     bad_mix = seed + perso
     assert bad_mix[:32] != bad_mix[32:]
     assert len(bad_mix) == 64
+
+
+# ---------------------------------------------------------------------------
+# Lag-1 autocorrelation check (Brief 07.1)
+# ---------------------------------------------------------------------------
+#
+# Empirical finding (documented in ALPHA_DECAY_NOTES.md "Lag-1 autocorrelation
+# calibration"): with the additive after-pulse simulator the brief specifies,
+# the lag-1 Pearson |ρ| scales as approximately f · (d/μ)² for after-pulse
+# fraction f and delay d small relative to mean Δt μ. At the brief's example
+# of f=0.05 / d=1µs / μ=1ms, the predicted ρ is ~10⁻⁵ — below the n=4096
+# noise floor of ~0.016. The check therefore does NOT reliably detect the
+# brief's example after-pulse configuration; instead it detects after-pulses
+# where d is comparable to μ AND f is substantial.
+#
+# Tests below use f=0.5 / d=2µs (≈ 2·μ) where ρ reliably exceeds 0.05 to
+# verify the check works. The brief's small-signal parameter set is covered
+# by ``test_low_signal_after_pulse_not_detected_by_lag1_alone`` which
+# documents the sensitivity floor honestly.
+
+
+def test_lag1_autocorrelation_zero_on_ideal():
+    """Pure Poisson process has ρ₁ ≈ 0; |ρ| < 0.05 at n=4096."""
+    rep = detect_non_poisson(
+        SimulatedTimingBackend("ideal", rate_hz=1000, seed=101)
+    )
+    assert abs(rep.lag1_autocorrelation) < 0.05
+    assert rep.lag1_autocorrelation_ok is True
+
+
+def test_lag1_autocorrelation_zero_on_dead_time():
+    """dead_time mode shifts the marginal but does not introduce serial
+    correlation; |ρ| < 0.05."""
+    rep = detect_non_poisson(
+        SimulatedTimingBackend("dead_time", rate_hz=1000, dead_time_ns=1000, seed=102)
+    )
+    assert abs(rep.lag1_autocorrelation) < 0.05
+    assert rep.lag1_autocorrelation_ok is True
+
+
+def test_lag1_autocorrelation_zero_on_biased():
+    """Gamma-distributed Δt are still independent, so ρ₁ ≈ 0 even though the
+    marginal fails KS. Confirms the lag-1 check is orthogonal to the KS
+    check — gamma is rejected by KS but not by autocorrelation."""
+    rep = detect_non_poisson(
+        SimulatedTimingBackend("biased", rate_hz=1000, bias_shape=3.0, seed=103)
+    )
+    assert abs(rep.lag1_autocorrelation) < 0.05
+    assert rep.lag1_autocorrelation_ok is True
+    # Orthogonality: KS rejects, autocorrelation does not.
+    assert rep.exponential_fit_ok is False
+
+
+def test_lag1_autocorrelation_positive_on_after_pulse():
+    """Strong-after-pulse parameter set (f=0.5, d=2·μ) reliably produces
+    ρ > 0.05 at n=4096. See module-level note above re. brief-spec defaults."""
+    backend = SimulatedTimingBackend(
+        "after_pulse",
+        rate_hz=1000,
+        seed=1,
+        after_pulse_fraction=0.5,
+        after_pulse_delay_ns=2_000_000,
+    )
+    rep = detect_non_poisson(backend)
+    assert rep.lag1_autocorrelation > 0.05
+
+
+def test_after_pulse_detected_on_after_pulse_backend():
+    """Strong-after-pulse backend trips both lag1 and KS, so poisson=False."""
+    backend = SimulatedTimingBackend(
+        "after_pulse",
+        rate_hz=1000,
+        seed=1,
+        after_pulse_fraction=0.5,
+        after_pulse_delay_ns=2_000_000,
+    )
+    rep = detect_non_poisson(backend)
+    assert rep.lag1_autocorrelation_ok is False
+    assert rep.poisson_compatible is False
+
+
+def test_init_raises_on_after_pulse_with_require_poisson():
+    """Strong-after-pulse + require_poisson=True raises NonPoissonError; the
+    error message includes 'lag1' so the operator can diagnose."""
+    backend = SimulatedTimingBackend(
+        "after_pulse",
+        rate_hz=1000,
+        seed=1,
+        after_pulse_fraction=0.5,
+        after_pulse_delay_ns=2_000_000,
+    )
+    with pytest.raises(NonPoissonError) as ei:
+        AlphaDecayEntropySource(backend)
+    assert ei.value.report.lag1_autocorrelation_ok is False
+    assert "lag1" in str(ei.value).lower()
+
+
+def test_low_after_pulse_fraction_not_falsely_rejected():
+    """At f=0.001 (0.1 %), ρ is below the n=4096 noise floor — the check
+    must not reject."""
+    backend = SimulatedTimingBackend(
+        "after_pulse",
+        rate_hz=1000,
+        seed=104,
+        after_pulse_fraction=0.001,
+        after_pulse_delay_ns=1_000,
+    )
+    rep = detect_non_poisson(backend)
+    assert abs(rep.lag1_autocorrelation) < 0.05
+    assert rep.lag1_autocorrelation_ok is True
+
+
+def test_low_signal_after_pulse_not_detected_by_lag1_alone():
+    """Honest documentation: brief-spec defaults (f=0.05, d=1µs) produce a
+    lag-1 signal far below the n=4096 noise floor. The check does NOT
+    detect this case via lag-1 — but KS catches it via the bump at small
+    Δt. This is the model-mismatch result; see ALPHA_DECAY_NOTES.md."""
+    backend = SimulatedTimingBackend(
+        "after_pulse",
+        rate_hz=1000,
+        seed=42,
+        after_pulse_fraction=0.05,
+        after_pulse_delay_ns=1_000,
+    )
+    rep = detect_non_poisson(backend)
+    # Lag-1 alone misses (as predicted by the f·(d/μ)² scaling):
+    assert rep.lag1_autocorrelation_ok is True
+    # But KS catches the marginal-distribution bump:
+    assert rep.exponential_fit_ok is False
+    assert rep.poisson_compatible is False
+
+
+def test_poisson_report_includes_lag1_fields():
+    """Schema check: the new fields appear on PoissonReport."""
+    rep = detect_non_poisson(
+        SimulatedTimingBackend("ideal", rate_hz=1000, seed=105)
+    )
+    assert hasattr(rep, "lag1_autocorrelation")
+    assert hasattr(rep, "lag1_autocorrelation_ok")
+    assert isinstance(rep.lag1_autocorrelation, float)
+    assert isinstance(rep.lag1_autocorrelation_ok, bool)
+
+
+def test_default_lag1_threshold_constant_is_top_level():
+    """``DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD`` is a module-level constant,
+    so future calibration adjustment is a one-line change."""
+    import hybrid_kem.entropy.alpha_decay_entropy_source as mod
+    assert hasattr(mod, "DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD")
+    assert mod.DEFAULT_LAG1_AUTOCORRELATION_THRESHOLD == 0.05
+
+
+def test_lag1_autocorrelation_function_handles_short_input():
+    """Edge case: < 3 samples returns 0.0 (cannot compute Pearson)."""
+    from hybrid_kem.entropy.alpha_decay_entropy_source import _lag1_autocorrelation
+    assert _lag1_autocorrelation([]) == 0.0
+    assert _lag1_autocorrelation([1]) == 0.0
+    assert _lag1_autocorrelation([1, 2]) == 0.0
+
+
+def test_lag1_autocorrelation_function_zero_variance_returns_zero():
+    """Edge case: constant input yields zero denominator → return 0.0 (not NaN)."""
+    from hybrid_kem.entropy.alpha_decay_entropy_source import _lag1_autocorrelation
+    assert _lag1_autocorrelation([100, 100, 100, 100, 100]) == 0.0

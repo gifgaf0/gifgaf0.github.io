@@ -77,7 +77,7 @@
       { id:"c",  label:"Charm",    sym:"c",   type:"quark",  gen:2, knot:"5₁ (torus)",         A:5,   Zf:1/48,      L:23.60,  obs:1270,     src:"C", note:"Zf=1/48 bilateral octahedral inversion" },
       { id:"tau",label:"Tau",      sym:"τ⁻",  type:"lepton", gen:3, knot:"(3,1)-cable 3₁",     A:3,   Zf:ZF_LEP,    L:3*L_q,  obs:1776.86,  src:"C", note:"Gen III lepton: triple cable of trefoil" },
       { id:"b",  label:"Bottom",   sym:"b",   type:"quark",  gen:3, knot:"8₁",                 A:119, Zf:0.75,      L:37.31,  obs:4180,     src:"C", note:"Zf=3/4 C₃/C₄ phase lock" },
-      { id:"t",  label:"Top",      sym:"t",   type:"quark",  gen:3, knot:"8₁⁹",                A:119, Zf:1/(8*phi4),L:37.31,  obs:172690,   src:"C", note:"Zf=1/(8φ⁴) brings prediction within 1% of PDG. Earlier versions used Zf=1/144 (factor ~2.6 miss); structural choice between octahedral 1/144 and golden 1/(8φ⁴) is an open question." },
+      { id:"t",  label:"Top",      sym:"t",   type:"quark",  gen:3, knot:"8₁⁹",                A:119, Zf:1/144,     L:37.31,  obs:172690,   src:"F", note:"STRUCTURAL ANOMALY (§4.10). Zf=1/144 (=12², octahedral integer family) at L=37.31 fm gives ~449.6 GeV — an overshoot factor of 2.60, sitting next to φ²=2.618. That proximity is logged as a Register 3 (proximity) conjecture, NOT a derivation. Reframed in §4.10 as the torus hole/anchor paying a load tax distinct from the crossing tax. Open problem — not a small-percent miss." },
       { id:"p",  label:"Proton",   sym:"p",   type:"baryon", gen:null, knot:"Borromean rings", A:A_B, Zf:ZF_B,      L:L_B,    obs:938.272,  src:"G", note:"A=20 from Alexander poly; Zf=6=|F₇*| (Register 2 Complete)" },
     ];
 
@@ -88,7 +88,7 @@
       s: [91, 99],
       c: [1240, 1300],
       b: [4150, 4210],
-      t: [171000, 174300],
+      t: [171000, 174300], // structural anomaly: prediction (~449.6 GeV) falls far outside
       e: [0.510999, 0.511001],
       mu: [105.6583, 105.6584],
       tau: [1776.8, 1776.9],
@@ -169,13 +169,19 @@
       const pred = massFn(p.A, p.Zf, p.L);
       const err  = pct(pred, p.obs);
       const isSelected = selected === p.id;
+      const isTop = p.id === "t";
       const band = inBand(p.id, pred);
 
-      const errCell = <span style={{ color:errColor(err), fontWeight:600 }}>{fmtPct(err)}</span>;
+      // Top quark: structural anomaly (§4.10) — show overshoot factor, not a misleading %.
+      const errCell = isTop
+        ? <span style={{ color:C.red, fontWeight:700 }}>×{(pred/p.obs).toFixed(2)}</span>
+        : <span style={{ color:errColor(err), fontWeight:600 }}>{fmtPct(err)}</span>;
 
-      const statusBadge = band === true
-        ? <Badge label="IN PDG BAND" col={C.grn} />
-        : <Badge label={srcLabel(p.src)} col={srcColor(p.src)} />;
+      const statusBadge = isTop
+        ? <Badge label="STRUCTURAL ANOMALY" col={C.red} />
+        : band === true
+          ? <Badge label="IN PDG BAND" col={C.grn} />
+          : <Badge label={srcLabel(p.src)} col={srcColor(p.src)} />;
 
       return <>
         <tr onClick={() => onSelect(isSelected ? null : p.id)}
@@ -196,7 +202,7 @@
           <td colSpan={7} style={{ padding:"12px 16px 16px" }}>
             <div style={{ display:"flex", gap:24, flexWrap:"wrap", marginBottom:8 }}>
               <Stat l="A (winding)"     v={p.A} />
-              <Stat l="Zf (topology)"   v={p.Zf < 1 ? `1/${(1/p.Zf).toFixed(2)}` : String(p.Zf)} />
+              <Stat l="Zf (topology)"   v={p.Zf < 1 ? `1/${Number.isInteger(1/p.Zf) ? (1/p.Zf) : (1/p.Zf).toFixed(2)}` : String(p.Zf)} />
               <Stat l="L (ropelength)"  v={`${p.L.toFixed?.(3) ?? p.L} fm`} />
               <Stat l="Predicted"       v={fmtMeV(pred)} />
               <Stat l="r_eff(L)"        v={rEff(p.L).toFixed(4)} color={C.txt2} />
@@ -224,10 +230,10 @@
         const predRatio = massFn(pa.A,pa.Zf,pa.L) / massFn(pb.A,pb.Zf,pb.L);
         const obsRatio  = pa.obs / pb.obs;
         const ratioErr = (predRatio - obsRatio) / obsRatio * 100;
-        return { a:pa.sym, b:pb.sym, predRatio, obsRatio, err:ratioErr };
+        return { a:pa.sym, b:pb.sym, predRatio, obsRatio, err:ratioErr, hasTop: a==="t"||b==="t" };
       });
-      const passing = ratioRows.filter(r => Math.abs(r.err) < 8).length;
-      const total = ratioRows.length;
+      const passing = ratioRows.filter(r => !r.hasTop && Math.abs(r.err) < 8).length;
+      const total = ratioRows.filter(r => !r.hasTop).length;
 
       return (
         <div>
@@ -241,7 +247,8 @@
                 color: filter===f ? C.cya : C.gry,
               }}>{f}</button>)}
             <div style={{ marginLeft:"auto", display:"flex", gap:8, alignItems:"center" }}>
-              <Badge label={`${passing}/${total} RATIOS WITHIN 8%`} col={C.grn} />
+              <Badge label={`${passing}/${total} TOP-FREE RATIOS WITHIN 8%`} col={C.grn} />
+              <Badge label="TOP = §4.10 ANOMALY" col={C.red} />
             </div>
           </div>
 
@@ -261,7 +268,7 @@
             </table>
           </div>
           <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, marginTop:8, lineHeight:1.6 }}>
-            Click any row to expand. Δ is percent error vs PDG (Up quark prediction sits inside the PDG MS-bar band 1.90–2.65 MeV; flagged IN PDG BAND). Top quark uses Zf=1/(8φ⁴) which lands within 1% of PDG; the alternative octahedral Zf=1/144 used in older calculator versions gives a factor-2.6 miss — the structural choice is an open question, see expanded row.
+            Click any row to expand. Δ is percent error vs PDG (Up quark prediction sits inside the PDG MS-bar band 1.90–2.65 MeV; flagged IN PDG BAND). Top quark is shown as a multiplicative factor (×2.60), not a percentage: Zf=1/144 at L=37.31 fm overshoots PDG by a factor next to φ²=2.618 — an open structural anomaly reframed in §4.10 (torus hole/anchor load tax), not a small-percent miss.
           </div>
 
           <div style={{ marginTop:18 }}>
@@ -277,10 +284,10 @@
                 <tbody>
                   {ratioRows.map((r,i) => (
                     <tr key={i} style={{ borderBottom:`1px solid ${C.brd}` }}>
-                      <td style={{ padding:"6px 10px", color:C.txt }}>{r.a} / {r.b}</td>
+                      <td style={{ padding:"6px 10px", color: r.hasTop ? C.red : C.txt }}>{r.a} / {r.b}</td>
                       <td style={{ padding:"6px 10px", textAlign:"right", color:C.txt2 }}>{r.predRatio.toFixed(3)}</td>
                       <td style={{ padding:"6px 10px", textAlign:"right", color:C.txt2 }}>{r.obsRatio.toFixed(3)}</td>
-                      <td style={{ padding:"6px 10px", textAlign:"right", color:errColor(r.err) }}>
+                      <td style={{ padding:"6px 10px", textAlign:"right", color: r.hasTop ? C.red : errColor(r.err) }}>
                         {fmtPct(r.err)}
                       </td>
                     </tr>
@@ -368,18 +375,23 @@
     function ConstantsTab() {
       return (
         <div>
-          <Section title="DERIVED CONSTANTS — ZERO FREE PARAMETERS" accent={C.cya}>
+          <Section title="DERIVED CONSTANTS — ONE CALIBRATION (m₀*)" accent={C.cya}>
             <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(220px, 1fr))", gap:"14px 24px" }}>
               <Stat l="φ (golden ratio)"  v={phi.toFixed(8)}    s="(1+√5)/2 — axiom" />
               <Stat l="φ²"                v={phi2.toFixed(8)}   s="exchange dominance scale" />
               <Stat l="2π"                v={TWO_PI.toFixed(8)} s="base ropelength of unknot" />
               <Stat l="Φ (throat angle)"  v={PHI.toFixed(8)}    s="2π + K/(8π²)" />
-              <Stat l="m₀ (base mass)"    v={`${m0.toFixed(6)} MeV`} s="0.511 / exp(2π/Φ)" />
+              <Stat l="m₀ (base mass)*"   v={`${m0.toFixed(6)} MeV`} s="*CALIBRATED to electron: 0.511/exp(2π/Φ)" color={C.amb} />
               <Stat l="κ (bulk modulus)"  v={kappa.toFixed(8)}  s="φ⁻⁴" />
               <Stat l="ξ_vac"             v={`${XI_VAC.toFixed(4)} fm`} s="100φ" />
               <Stat l="Zf_lep"            v={ZF_LEP.toFixed(8)} s="1/(2π) — gen II/III leptons" />
               <Stat l="L_q (quark base)"  v={`${L_q.toFixed(4)} fm`} s="Φ·φ²" />
               <Stat l="L_B (Borromean)"   v={`${L_B.toFixed(4)} fm`} s="solved for m_p=938.272 MeV" />
+            </div>
+            <div style={{ fontFamily:C.mono, fontSize:10, color:C.amb, marginTop:14, lineHeight:1.6 }}>
+              * m₀ is the single calibration in the framework: fixed by setting the electron prediction
+              to 0.511 MeV, not derived from first principles. All other constants flow from φ and π.
+              The overall mass scale is therefore anchored to one measured input.
             </div>
           </Section>
 
@@ -533,13 +545,13 @@
                   <text x={16} y={26} fill={C.grn} fontSize="10" fontFamily={C.mono}>predicted (Δ &lt; 2%)</text>
                   <circle cx={6} cy={38} r="4" fill={C.amb} />
                   <text x={16} y={42} fill={C.amb} fontSize="10" fontFamily={C.mono}>predicted (Δ &lt; 8%)</text>
-                  <circle cx={6} cy={54} r="4" fill={C.org} />
-                  <text x={16} y={58} fill={C.org} fontSize="10" fontFamily={C.mono}>predicted (Δ &lt; 20%)</text>
+                  <circle cx={6} cy={54} r="4" fill={C.red} />
+                  <text x={16} y={58} fill={C.red} fontSize="10" fontFamily={C.mono}>§4.10 anomaly (top, ×2.60)</text>
                 </g>
               </svg>
             </div>
             <div style={{ fontFamily:C.mono, fontSize:9, color:C.gry, marginTop:8, lineHeight:1.6 }}>
-              Each bar = log-displacement between SQT prediction (colored dot) and PDG observation (grey dot). Bar color encodes |Δ| using the same thresholds as the audit table.
+              Each bar = log-displacement between SQT prediction (colored dot) and PDG observation (grey dot). Bar color encodes |Δ| using the same thresholds as the audit table. The top quark bar is the visible outlier (~factor 2.60 overshoot, §4.10).
             </div>
           </Section>
         </div>
@@ -665,13 +677,15 @@
               <h1 style={{ fontSize:26, fontWeight:700, margin:0 }}>Geometric Mass Calculator</h1>
               <p style={{ color:C.txt2, fontSize:13, marginTop:8, lineHeight:1.55, maxWidth:620 }}>
                 Particle masses from knot topology, division-algebra structure, and Fano-plane combinatorics.
-                All constants flow from φ and π — no mass targets consulted in parameter construction.
+                Constants flow from φ and π; the overall scale m₀ is the single calibration, anchored to the
+                electron. See the Constants tab for the m₀ caveat.
               </p>
               <div style={{ display:"flex", gap:8, marginTop:12, flexWrap:"wrap" }}>
                 <Badge label="DERIVED" col={C.grn} />
                 <Badge label="CONJECTURE" col={C.cya} />
                 <Badge label="REG 2 COMPLETE" col={C.cya} />
                 <Badge label="OPEN PROBLEM" col={C.org} />
+                <Badge label="STRUCTURAL ANOMALY" col={C.red} />
               </div>
             </div>
 
@@ -693,6 +707,7 @@
               fontFamily:C.mono, fontSize:9, color:C.gry, lineHeight:1.8 }}>
               SQT Framework · M. Gifford · 2026 · Calculator v3 incorporates §2.26 (Φ structure),
               §2.15-PS (Conjecture 1 R2 complete), §2.17-R2 (Lemma θ — π/8 stability, π/4 sign flip).
+              Top quark held open as a §4.10 structural anomaly (×2.60 ≈ φ²). m₀ calibrated to the electron.
             </div>
           </div>
         </div>

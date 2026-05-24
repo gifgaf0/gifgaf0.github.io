@@ -77,7 +77,7 @@
       { id:"c",  label:"Charm",    sym:"c",   type:"quark",  gen:2, knot:"5₁ (torus)",         A:5,   Zf:1/48,      L:23.60,  obs:1270,     src:"C", note:"Zf=1/48 bilateral octahedral inversion" },
       { id:"tau",label:"Tau",      sym:"τ⁻",  type:"lepton", gen:3, knot:"(3,1)-cable 3₁",     A:3,   Zf:ZF_LEP,    L:3*L_q,  obs:1776.86,  src:"C", note:"Gen III lepton: triple cable of trefoil" },
       { id:"b",  label:"Bottom",   sym:"b",   type:"quark",  gen:3, knot:"8₁",                 A:119, Zf:0.75,      L:37.31,  obs:4180,     src:"C", note:"Zf=3/4 C₃/C₄ phase lock" },
-      { id:"t",  label:"Top",      sym:"t",   type:"quark",  gen:3, knot:"8₁⁹",                A:119, Zf:1/144,     L:37.31,  obs:172690,   src:"F", note:"STRUCTURAL ANOMALY (§4.10). Zf=1/144 (=12², octahedral integer family) at L=37.31 fm gives ~449.6 GeV — an overshoot factor of 2.60, sitting next to φ²=2.618 (logged as conjecture, not derivation). Reframed in §4.10 as the torus hole/anchor paying a load tax distinct from the crossing tax. Open problem — not a small-percent miss." },
+      { id:"t",  label:"Top",      sym:"t",   type:"quark",  gen:3, knot:"8₁⁹",                A:119, Zf:1/144,     L:37.31,  obs:172690,   src:"F", note:"STRUCTURAL ANOMALY (§4.10). Zf=1/144 (=12², octahedral integer family) at L=37.31 fm gives ~449.6 GeV — an overshoot factor of 2.60, sitting next to φ²=2.618. That proximity is logged as a Register 3 (proximity) conjecture, NOT a derivation. Reframed in §4.10 as the torus hole/anchor paying a load tax distinct from the crossing tax. Open problem — not a small-percent miss." },
       { id:"p",  label:"Proton",   sym:"p",   type:"baryon", gen:null, knot:"Borromean rings", A:A_B, Zf:ZF_B,      L:L_B,    obs:938.272,  src:"G", note:"A=20 from Alexander poly; Zf=6=|F₇*| (Register 2 Complete)" },
     ];
 
@@ -202,7 +202,7 @@
           <td colSpan={7} style={{ padding:"12px 16px 16px" }}>
             <div style={{ display:"flex", gap:24, flexWrap:"wrap", marginBottom:8 }}>
               <Stat l="A (winding)"     v={p.A} />
-              <Stat l="Zf (topology)"   v={p.Zf < 1 ? `1/${(1/p.Zf).toFixed(2)}` : String(p.Zf)} />
+              <Stat l="Zf (topology)"   v={p.Zf < 1 ? `1/${Number.isInteger(1/p.Zf) ? (1/p.Zf) : (1/p.Zf).toFixed(2)}` : String(p.Zf)} />
               <Stat l="L (ropelength)"  v={`${p.L.toFixed?.(3) ?? p.L} fm`} />
               <Stat l="Predicted"       v={fmtMeV(pred)} />
               <Stat l="r_eff(L)"        v={rEff(p.L).toFixed(4)} color={C.txt2} />

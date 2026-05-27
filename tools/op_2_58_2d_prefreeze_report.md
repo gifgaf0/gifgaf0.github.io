@@ -353,4 +353,38 @@ freeze. The spec-parameter gate remains enforced and tested (new
 
 ---
 
+## 9. Brief-10.5 closure (L2 — §2.58.B construction implemented)
+
+The Brief-10 primary run halted because the §2.58.B construction was not present
+as executable code (L2 finding, §2.69.2). Brief 10.5 implements it:
+`tools/op_2_58_2d_construction.py` (`gen_zd_noise_sample`, `gen_public_matrix`,
+`gen_spec_instance`), built from canonical §2.58.B prose on top of the existing
+sedenion / kernel-involution / lattice modules (all consumed unchanged). See
+`op_2_58_2d_L2_construction_note.md`.
+
+**Implemented:** §2.58.B KeyGen steps 1–5 at toy scale, spec-gate enforced. 12
+toy tests pass (secret non-ZD, z ∈ 84-ZD set, ℓ/pair label consistency, kernel
+containment L_z·e=0, α range/distribution, 4D kernel basis, b round-trip, spec
+gate, matrix-structure halt).
+
+**Halted (surfaced for session resolution):**
+- **§2.3 public-matrix structure.** Only `"uniform"` is implemented; the
+  PSL(2,7)-equivariant and Singer-cycle readings raise `NotImplementedError`
+  (runtime message cites §2.3 and §2.69.2). The choice materially changes the
+  attack surface and is a session-level structural decision; (b)/(c) need a
+  follow-on Brief 10.6.
+
+**§2.4 σ finding:** the cross-check (σ ∈ {1,2,4}) gives **95.857% pair-recovery
+at every σ, spread 0.000%** — σ is non-load-bearing at toy scale (the projection
+ratio is scale-invariant). Cross-check **PASS** (within ±3% of the Brief-08
+96.2% baseline; the small gap is the canonical-allowed all-zero-α coordinate).
+
+**Path to Brief 10 re-attempt:** the construction now exists and is toy-verified.
+The primary run remains blocked on (1) committing the frozen Rev 5
+pre-registration with a signed §6 (orchestrator freeze check), and (2) resolving
+the §2.3 matrix-structure gap (+ Brief 10.6 if (b)/(c)). Lattice basis (b)
+remains a stub. Full suite: 322 passing (OP-2.58.2d suite: 53 tests).
+
+---
+
 *End of OP-2.58.2d pre-freeze infrastructure correctness report.*

@@ -267,4 +267,51 @@ are correctly deferred to the item-4 smoke test.
 
 ---
 
+## 6. Brief-08 pre-freeze item closure (L1, F1, D1)
+
+The three remaining Rev 3 pre-freeze items are now resolved. Each is a discrete
+signed pre-freeze edit (Brief 08, §5 sequencing L1 → F1 → D1); the result files
+carry the patch strings.
+
+### L1 — §2.66.2 pair-vs-line attribution → UNATTRIBUTABLE (unlocatable)
+See `op_2_58_2d_L1_attribution_note.md`. The §2.66.2 source, the SQT master
+ledger (`SQT_Master_Ledger_v4_0_CANONICAL.md`), and the Phase-B audit log
+(`phase_b_audit_log.md`) are **all absent from the repo and its full git
+history** — none has ever existed on any branch. The 65.4%/93.0% numbers
+survive only as uncaptioned reference data in §2 of this report. No evidence-
+based §3.3 attribution is possible; the attribution-dependent sentence is
+instead replaced by the F1 (b/c) framing.
+
+**Retraction-grade flag (Brief 08 §7):** the total absence of the §2.66.2
+attribution weakens the SQT thread's reliance on §2.66.2 as a load-bearing
+reference below what the Rev 3 pre-registration assumes. There is no ledger
+file in this repo to record this into; it is surfaced here for freeze
+consideration.
+
+### F1 — signed-lift discrimination → (b/c) closure selected
+See `op_2_58_2d_F1_result.md`. 4-number matrix (q=911, N=500, seed 20260527):
+pair 96.2% (lift on) / 41.8% (lift off); line 88.0% (lift on) / 89.6% (lift
+off). The with-lift figures reproduce the §2 baseline exactly. Neither metric
+approaches §2.66.2's 65.4% under disabled lift, so possibility (a) (signed-lift
+= the §2.66.2 bug) is **ruled out**; this converges with L1's unattributable
+resolution on the **(b/c)** §3.3 closure paragraph. Disable-path instrumentation
+confirmed (910 → +910, not −1). No SNR consequence (outcome is (b/c), not (a)).
+
+### D1 — §3.6(b) F_L union dimension → rank 14 at both q
+See `op_2_58_2d_D1_result.md`. Exact F_q-rank of the 16×56 stacked kernel basis
+is **14** at q = 911 and **14** at q = 4,294,977,961 (ranks agree). Each K_{a,b}
+is 4D and each F_L is 8D at both primes (sanity confirmed). Rank 14 is in the
+expected 9–15 band given F4 (partial F_L overlap; not the 8 or 16 edge cases).
+
+### Freeze readiness
+
+OP-2.58.2d pre-registration Rev 3 is now ready for §3.3.1 second-stage cutoff
+repin (pending item-4 smoke test) and §6 freeze. No remaining pre-freeze
+placeholders or deferred sub-tasks. The §2.66.2 retraction-grade weakness (L1)
+should be visible to the freeze signer but does not itself block the freeze:
+the F1 (b/c) closure was chosen precisely so that the §3.3 commitment no longer
+depends on the unverifiable §2.66.2 identity.
+
+---
+
 *End of OP-2.58.2d pre-freeze infrastructure correctness report.*

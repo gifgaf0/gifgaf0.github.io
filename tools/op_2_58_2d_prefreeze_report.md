@@ -314,4 +314,43 @@ depends on the unverifiable §2.66.2 identity.
 
 ---
 
+## 7. Brief-09 closure (Q2 cutoff repin, Q3 SNR)
+
+The final pre-freeze dependency — the §3.3.1 short-vector cutoff repin — is
+resolved by the toy-scale BKZ smoke test (`op_2_58_2d_bkz_smoke.py`,
+`op_2_58_2d_bkz_smoke_results.md`). One conditional item (Item 5 / Q3) fired.
+
+### Q2 — §3.3.1 cutoff → RATIFY factor-of-2.0 (outcome a)
+See `op_2_58_2d_Q2_cutoff_repin.md`. At β=30 (where fplll BKZ solves the toy
+uSVP on all three seeds, min norm 4.1–4.6), pair-recovery is **100%**, flat
+across every swept cutoff N ∈ {1.0…10.0}, with pooled σ = 7.75 vs the 1/21
+baseline and zero variance across seeds. At β=20 BKZ does not reduce the lattice
+(stuck at q-vectors, norm 911) and there is no signal at any N. No discontinuity
+at either β → the §3.4(c) instability outcome is **ruled out** (the §5 goal).
+The cutoff is non-binding at toy scale (single trapdoor vector, ≫10× separated
+from the bulk), so 2.0 is ratified as safe but fine N-discrimination is deferred
+to the secondary-run gate (consistent with the Brief-07 Q2 prediction). The
+§3.3.1 patch is a value-unchanged addendum. Item 2 lattice→classifier sanity
+passed (planted e → true pair, ratio 1.0).
+
+### Q3 — §3.1 SNR target → downgrade to reference-only (Item 5 fired)
+See `op_2_58_2d_Q3_snr_check.md`. The toy-scale SNR proxy ‖e‖/‖A·s‖ ≈ 0.0053
+(three seeds) is ~2× the §3.1 target of 0.0025 and outside ±10%. Combined with
+the L1/§2.69.1 finding that the §2.66.2 SNR figure's definition is
+unattributable (amplitude-vs-power offset would explain the factor of 2) and the
+toy-vs-spec regime mismatch, the recommendation is to **downgrade the §3.1
+"SNR ≈ 0.0025 within 10%" from a validation gate to a reference value**, pending
+a written spec-scale re-derivation with an explicit definition.
+
+### Freeze readiness
+The §3.3.1 cutoff repin (Q2) and the §3.1 SNR disposition (Q3) are the last
+pre-freeze items. With the Q2 addendum and the Q3 SNR downgrade applied to the
+pre-registration (by the session, append-only), OP-2.58.2d has no remaining
+provisional values or open pre-freeze dependencies and is ready for the §6
+freeze. The spec-parameter gate remains enforced and tested (new
+`test_op_2_58_2d_bkz_smoke.py` adds two gate assertions); the full suite is
+303 tests passing.
+
+---
+
 *End of OP-2.58.2d pre-freeze infrastructure correctness report.*

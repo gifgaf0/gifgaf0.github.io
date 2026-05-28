@@ -494,4 +494,128 @@ Suite: 325 passing post-Brief-10.6; ruff clean on touched files.
 
 ---
 
+## §11. Brief 10.7 closure (σ noise-model reconciliation, §2.69.3)
+
+Brief 10.6 Item 2 pinned σ=2 via the η=2 boundary derivation because
+§2.66.1 was reported as "not citable, branch-absent." Session review found
+§2.66.1 IS in canonical V4.9 (line 2162) — branch-absent but fully
+recoverable. The third branch-absence finding in the OP-2.58.2d arc (filed
+as §2.69.3 in canonical V4.12) and the mildest of the three (§2.69.1:
+§2.66.2 scripts source-absent; §2.69.2: §2.58.B construction source-absent;
+§2.69.3: §2.66.1 branch-sync gap, recoverable).
+
+### §11.1 §2.66.1 recovery (Item 1)
+
+`tools/op_2_58_2d_dfr_reference.md` recovers the load-bearing facts of
+§2.66.1 to the branch: Var(N)=(η/2)·(h_s+h_r+1), η=2 by ML-KEM convention
+(not DFR optimisation), DFR slack to η=512 (no DFR-constrained σ-band),
+and the load-bearing scope distinction — §2.66.1 analyses **unconfined**
+CBD(η); §2.58.B deploys **confined** kernel-restricted noise. §2.66.1 is
+the cross-check anchor, not the calibration target.
+
+### §11.2 The noise-model reconciliation (Item 2)
+
+`tools/op_2_58_2d_sigma_calibration.py` (branch-adapted, N=50,000, p=911;
+kernel structure is q-independent per A1/D1):
+
+| metric | confined σ=2 | CBD(η=2) | role |
+|---|---|---|---|
+| per-coordinate variance | 1.332 | 1.000 | easy scalar — necessary, not sufficient |
+| per-block Euclidean norm | 4.514 ± 0.965 | 3.953 ± 0.614 | **BDD-radius metric the attack sees** |
+| occupied dimensions | 5.33 ± 1.89 | 10.0 ± 1.93 | **fingerprint: distinct distributions** |
+
+**Mean-norm ratio 1.142** — confined σ=2 is 1.14× larger than CBD(η=2),
+the conservative direction (larger noise → harder attack → conservative
+null). **Occupancy means non-overlapping** (5.33 vs 10.0) — the confined
+sampler is genuinely a different distribution, not a CBD reparameterisation;
+this is the load-bearing fingerprint preventing the cross-check from being
+misread as a calibration.
+
+`test_op_2_58_2d_sigma_calibration.py` locks both claims (norm ratio in
+the 1.05–1.25 band; occupancy means non-overlapping) plus the 1/√k
+aggregate-averaging assumption.
+
+### §11.3 Dissolution of the σ-band concern
+
+The Brief 10.6 worry — "σ=2 might be the weak-null corner of a DFR-
+constrained band" — is **dissolved** by §2.66.1: there is no
+DFR-constrained band. η=2 is fixed by ML-KEM convention; DFR slack is many
+orders of magnitude in either direction (log₂ DFR ≈ −10¹⁴ at η=512). σ=2
+is fully determined by the §2.58.B sampler definition realising the η=2
+convention — it is not a sweep target, not a band corner, not a
+calibration. The sub-case 2 derivation (σ ≤ η = 2) agreed on the value
+but missed the framing; §2.69.3 supplies the correct anchor.
+
+### §11.4 Two-level conservatism statement
+
+Per-block:
+- Mean norm ratio 1.14 (confined > CBD in mean).
+- P(confined per-block norm > CBD per-block norm) = 0.71 — the distributions
+  overlap; the conservative direction is a 71% statement at the
+  per-block level. Range of per-block ratios: [0, 3.27] (lower tail driven
+  by the ~1.2% all-zero-α blocks and single-active-α blocks).
+
+Aggregate (k=32 — the operative BDD radius):
+- Per-block draws are independent by construction (per §2.58.B KeyGen each
+  z_i and its α are drawn independently; the shared public matrix A enters
+  the signal A·s, not the noise offset e).
+- 1/√k averaging collapses the per-block spread; aggregate ratio converges
+  to 1.14.
+- Verified empirically by `aggregate_independence()`: aggregate norm mean
+  26.11 matches the √(32·E‖e‖²) = 26.12 independent-draw prediction to
+  0.05%; per-block→aggregate CV ratio is 6.78 ≈ √32; P(confined aggregate
+  < CBD aggregate) = 0.001 (vs 0.29 per-block).
+- **The attack sees the aggregate, not per-block.** A pair-recovery null
+  at σ=2 is conservative at the aggregate BDD radius.
+
+### §11.5 Methodological note (carried to closure & any synthesis)
+
+The σ pin went **variance-match → norm-check → sampler-definition with
+cross-check → cross-check defended across draws**, and σ=2 survived all
+four while each metric reframed the prior justification. The convenient
+metric (per-coordinate variance, scalar, attack doesn't see) was never
+allowed to stand as the justification once the load-bearing metric
+(aggregate BDD norm with its spread) was an hour of compute away. When a
+reviewer asks "why that noise level, and does it match what the
+construction deploys?", the answer is measured at every level —
+per-coordinate, per-block, aggregate, across-draws — not assumed.
+
+The Brief 10.6 sigma_resolution.md remains on-branch as the contemporaneous
+record of the sub-case 2 derivation; it is **not retracted**. It pins the
+same value (σ=2). §11 here updates the JUSTIFICATION (norm cross-check,
+not η-boundary alone) and the FRAMING (cross-check, not calibration). Both
+documents are valid; this one is the operative anchor.
+
+### §11.6 Code touch (Item 3)
+
+- `op_2_58_2d_construction.gen_spec_instance` docstring reframed: σ=2 is
+  the confined-sampler value cross-checked against CBD(η=2) by aggregate
+  BDD norm. Cites §2.69.3 + `op_2_58_2d_sigma_calibration.py` +
+  `op_2_58_2d_dfr_reference.md`.
+- `op_2_58_2d_primary_run._run_one` σ default comment reframed (BDD-norm
+  cross-check, not per-coord variance).
+- `op_2_58_2d_primary_run.main` Audit Entry 002 now prints the σ pin with
+  the norm ratio (1.14), occupancy (5.33 vs 10.0), and aggregate
+  inversion probability (≈0.001) alongside the prereg SHA-256.
+
+### §11.7 Out-of-session prerequisite (the only remaining work)
+
+After Brief 10.7: every pre-schedule parameter is pinned with an on-branch
+derivation. Construction (Brief 10.5), trapdoor geometry (§2.58.B.1),
+pipeline (Brief 10 proof-of-life), basis (a)/(b) ratified (Brief 10.6
+Item 1), σ=2 pinned with norm/occupancy reconciliation (Brief 10.7), full
+binding text + SHA-256 + σ pin in Audit Entry 002 (Brief 10.6 Item 3 +
+Brief 10.7 Item 3), §2.66.1 recovered to branch (Brief 10.7 Item 1).
+
+The only remaining step toward an OP-2.58.2d result is the 30-day
+wall-clock compute of the 42-run schedule (pre-reg §4.2), out-of-session
+by necessity. Per the §2.1 §2.58.B.1 forward-pointer, a pair-recovery null
+at σ=2 safely upper-bounds kernel-level leakage at the operational noise
+level (conservative in the aggregate BDD radius via §2.69.3 / §11.4).
+
+Suite: 327 passing post-Brief-10.7 (325 prior + 2 reconciliation tests);
+ruff clean on touched files.
+
+---
+
 *End of OP-2.58.2d pre-freeze infrastructure correctness report.*

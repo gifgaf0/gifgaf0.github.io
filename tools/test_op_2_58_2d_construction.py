@@ -16,7 +16,7 @@ from tools.op_2_58_2d_construction import (
     gen_spec_instance,
     gen_zd_noise_sample,
 )
-from tools.op_2252_v2_kernel_involution import enumerate_two_term_ZDs
+from tools.op_2252_v2_kernel_involution import enumerate_two_term_ZDs, lmm, rref_kernel
 from tools.op_2_58_2d_D1_fano_union_dimension import rank_modp
 from tools.sedenion_Fp import DIM, add_vec, basis_vec, mul_vec
 
@@ -141,3 +141,62 @@ def test_matrix_structure_halts(structure):
     msg = str(excinfo.value)
     assert "§2.3" in msg
     assert "§2.69.2" in msg
+
+
+# ---------------------------------------------------------------------------
+# §2.3-bis (revised) — trapdoor cardinality (line / pair / kernel)
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.parametrize("reading", ["fano_line_7", "kernel_42"])
+def test_trapdoor_cardinality_halts(reading):
+    """OP-2.58.B.card / §2.58.B.1: non-pair cardinalities must halt with a
+    runtime message citing OP-2.58.B.card and §2.58.B.1."""
+    rng = np.random.default_rng(12)
+    with pytest.raises(NotImplementedError) as excinfo:
+        gen_zd_noise_sample(TOY_P, k=7, sigma=1, rng=rng,
+                            trapdoor_cardinality=reading)
+    msg = str(excinfo.value)
+    assert "OP-2.58.B.card" in msg, msg
+    assert "§2.58.B.1" in msg, msg
+
+
+def _rref_kernel_key(z_vec, p):
+    """RREF fingerprint of ker(L_z) as a hashable tuple — unique per subspace."""
+    K = rref_kernel(lmm(z_vec, p), p)
+    A = [list(v) for v in K]
+    nr, nc = len(A), len(A[0]) if A else 0
+    r = 0
+    for c in range(nc):
+        if r >= nr:
+            break
+        piv = next((i for i in range(r, nr) if A[i][c] % p != 0), None)
+        if piv is None:
+            continue
+        A[r], A[piv] = A[piv], A[r]
+        inv = pow(A[r][c], -1, p)
+        A[r] = [(x * inv) % p for x in A[r]]
+        for i in range(nr):
+            if i != r and A[i][c] % p != 0:
+                f = A[i][c]
+                A[i] = [(A[i][j] - f * A[r][j]) % p for j in range(nc)]
+        r += 1
+    return tuple(tuple(row) for row in A[:r])
+
+
+def test_42_kernel_partition():
+    """§2.58.B.1 (A1 finding): the 84 two-term ZDs partition into exactly 42
+    distinct ker(L_z), 2 per unordered pair, at toy scale. Locks the finding
+    so a future refactor of the kernel machinery cannot silently regress it."""
+    zds = enumerate_two_term_ZDs(TOY_P)
+    assert len(zds) == 84, f"expected 84 ZDs, got {len(zds)}"
+    kernels: dict[tuple, list[tuple[int, int]]] = {}
+    pairs: set[frozenset[int]] = set()
+    for zd in zds:
+        key = _rref_kernel_key(zd["vec"], TOY_P)
+        kernels.setdefault(key, []).append(tuple(zd["interior_pair"]))
+        pairs.add(frozenset(zd["interior_pair"]))
+    assert len(kernels) == 42, f"expected 42 distinct kernels, got {len(kernels)}"
+    assert all(len(v) == 2 for v in kernels.values()), \
+        f"expected 2 ZDs per kernel, got {sorted({len(v) for v in kernels.values()})}"
+    assert len(pairs) == 21, f"expected 21 unordered pairs, got {len(pairs)}"

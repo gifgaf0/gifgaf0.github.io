@@ -58,12 +58,55 @@ def _fano_line_of_pair(a: int, b: int, p: int) -> frozenset[int]:
     return frozenset({a, b, nz[0]})
 
 
-def gen_zd_noise_sample(p: int, k: int, sigma: int, rng: np.random.Generator) -> dict:
+def gen_zd_noise_sample(
+    p: int,
+    k: int,
+    sigma: int,
+    rng: np.random.Generator,
+    *,
+    trapdoor_cardinality: Literal["fano_line_7", "pair_21", "kernel_42"] = "pair_21",
+) -> dict:
     """Generate a §2.58.B (s, z, e) ZD-noise sample with trapdoor recorded.
 
     Steps 1, 2, 4 of §2.58.B KeyGen. See module docstring for the trapdoor
     sampling convention. Returns s/z/ell/pair/e plus alphas/kernels record-keeping.
+
+    `trapdoor_cardinality` pins which trapdoor object is RECORDED as the label,
+    per OP-2.58.B.card and §2.58.B.1 (the A1 42-kernel finding). The three
+    geometrically distinct objects:
+
+      - "fano_line_7":  the Fano line ell(z_i) in {1..7}   (cardinality 7)
+      - "pair_21":      the unordered interior pair {a,b}   (cardinality 21)
+      - "kernel_42":    the noise subspace ker(L_z)         (cardinality 42)
+
+    The 84 two-term ZDs partition into 42 distinct ker(L_z), with 2 ZDs per
+    kernel exchanged by the CD doubling involution e_i<->e_{i+8} (verified at
+    p=911 and p=spec). 84 is therefore a 2-to-1 redundant labeling of 42, not a
+    fourth object. Only "pair_21" is implemented; it is the §3.3 Convention-C
+    target and recovers the pair label, a LOWER BOUND on kernel recovery (kernel
+    => pair, not conversely). "kernel_42" needs a 42-class chirality-resolving
+    classifier; "fano_line_7" needs the §2.66.2 line classifier (demoted to
+    reference data by Convention C). Which object is the operative trapdoor is
+    the open structural problem OP-2.58.B.card.
+
+    The pair_21 default samples uniformly over the 21 canonical Convention-C
+    cross-edge pairs (a<b, z=e_a+e_{b+8}); each such z is one of two ZDs sharing
+    its kernel, so the sampler picks one specific kernel per pair (a
+    chirality-discarding projection onto 21 of the 42 kernels).
     """
+    if trapdoor_cardinality != "pair_21":
+        raise NotImplementedError(
+            f"OP-2.58.B.card: trapdoor_cardinality={trapdoor_cardinality!r} is "
+            "not implemented. Per §2.58.B.1, the noise subspace ker(L_z) is one "
+            "of 42 distinct kernels (2 per unordered pair, exchanged by the CD "
+            "doubling involution e_i<->e_{i+8}). 'pair_21' (the §3.3 "
+            "Convention-C target) is implemented and recovers the pair label, a "
+            "LOWER BOUND on kernel recovery. 'kernel_42' needs a 42-class "
+            "chirality-resolving classifier; 'fano_line_7' needs the §2.66.2 "
+            "line classifier. Which object is the operative trapdoor is the "
+            "open structural problem OP-2.58.B.card. See §2.58.B.1 in the "
+            "canonical ledger."
+        )
     zd_set = _zd_vec_set(p)
     pairs = list(combinations(range(1, 8), 2))
 
@@ -142,15 +185,20 @@ def gen_spec_instance(
     rng: np.random.Generator,
     matrix_structure: Literal["uniform", "psl27_equivariant", "singer_cycle"] = "uniform",
     allow_spec_params: bool = False,
+    *,
+    trapdoor_cardinality: Literal["fano_line_7", "pair_21", "kernel_42"] = "pair_21",
 ) -> dict:
     """Generate a complete §2.58.B (A, s, z, ell, pair, e, b) instance.
 
     Composes gen_public_matrix + gen_zd_noise_sample, then b = A·s + e over 𝕊_p.
     Enforces the shared spec-parameter gate (SpecParamsRefused on spec scale).
+    `trapdoor_cardinality` is propagated to gen_zd_noise_sample (see its
+    docstring for OP-2.58.B.card / §2.58.B.1 framing).
     """
     _check_not_spec(p, k, allow_spec_params)
     A = gen_public_matrix(p, k, rng, matrix_structure)
-    sample = gen_zd_noise_sample(p, k, sigma, rng)
+    sample = gen_zd_noise_sample(p, k, sigma, rng,
+                                 trapdoor_cardinality=trapdoor_cardinality)
     s, e = sample["s"], sample["e"]
     b: list[list[int]] = []
     for i in range(k):

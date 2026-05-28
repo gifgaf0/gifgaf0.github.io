@@ -16,7 +16,7 @@ prose (V4.9 §2.58.B). Public API:
 
 | Function | §2.58.B step | Notes |
 |---|---|---|
-| `gen_zd_noise_sample(p, k, sigma, rng)` | steps 1, 2, 4 | secret, ZD trapdoor + ℓ/pair labels, kernel-basis noise |
+| `gen_zd_noise_sample(p, k, sigma, rng, *, trapdoor_cardinality="pair_21")` | steps 1, 2, 4 | secret, ZD trapdoor + ℓ/pair labels, kernel-basis noise; §2.3-bis kwarg per A1 (§2.58.B.1) |
 | `gen_public_matrix(p, k, rng, structure)` | step 3 | `"uniform"` only; non-uniform readings halt (see §2 below) |
 | `gen_spec_instance(..., allow_spec_params=False)` | composes + step 5 | computes b = A·s + e; spec-gate enforced |
 
@@ -50,6 +50,44 @@ progressively more work that may surface further §2.58.B ambiguities. Per Brief
 changes the attack surface the §2.66.2 attacks probe); if the session pins (b)
 or (c), a follow-on **Brief 10.6** implements it. Surfaced for session
 resolution.
+
+**§2.3 / §2.3-bis are independent and both resolved at the implementation-default
+level** (uniform-A; pair_21 trapdoor cardinality), with the structural questions
+filed as **OP-2.58.2.M** (matrix structure, deferred) and **OP-2.58.B.card**
+(trapdoor cardinality, open).
+
+## 2.3-bis. Trapdoor cardinality — corrected by §2.58.B.1
+
+The §2.58.B prose "z_i ← ZD uniformly" was initially read as a 21/42/84
+ambiguity (pairs / signed-pairs / full-ZD-set). The **A1 computation
+(§2.58.B.1)** corrected this: the 84 two-term ZDs partition into **42 distinct
+noise subspaces** (2 per unordered pair, exchanged by the CD doubling involution
+e_i ↔ e_{i+8}); empirically verified at p = 911 (the verification is locked in
+`test_42_kernel_partition`) and field-independent at q = 4,294,977,961 per A1.
+The three *geometrically meaningful* trapdoor objects are:
+
+| Reading | Object | Cardinality | Status |
+|---|---|---|---|
+| `fano_line_7` | Fano line ℓ(z_i) | 7 | halts (needs §2.66.2 line classifier) |
+| `pair_21` | unordered pair {a,b} | 21 | **implemented** (the §3.3 Convention-C target) |
+| `kernel_42` | noise subspace ker(L_z) | 42 | halts (needs 42-class chirality classifier) |
+
+84 is a 2-to-1 redundant labelling of the 42 kernels, not a fourth object. The
+construction's `trapdoor_cardinality` parameter (default `"pair_21"`) controls
+only which object is recorded/scored; the noise geometry is identical regardless.
+`kernel_42` and `fano_line_7` raise `NotImplementedError` whose runtime message
+cites `OP-2.58.B.card` and `§2.58.B.1`.
+
+**Pair-recovery is a lower bound on kernel-recovery** (kernel ⇒ pair, not
+conversely), so the Convention-C classifier's results upper-bound kernel leakage
+safely: a pair-recovery null implies kernel-recovery null. Which object is the
+*operative* trapdoor is the open structural problem **OP-2.58.B.card**.
+
+Implementation note: the `pair_21` default samples uniformly over the 21
+canonical Convention-C cross-edge reps (a<b, z=e_a+e_{b+8}). Each such ZD is one
+of two sharing its kernel, so this samples 21 specific kernels (one chirality
+per pair) out of 42 — a chirality-discarding projection. Brief-10.5 behavior is
+preserved exactly.
 
 ## 3. §2.4 σ-stability finding
 
@@ -88,11 +126,13 @@ to §2.58.B as an executable artifact cites §2.69.2; the §2.66.2 baseline numb
 ## 6. Test count delta
 
 Brief 10.5 adds `tools/test_op_2_58_2d_construction.py`: 10 named tests, with the
-matrix-structure test parametrized over the two halted structures → **12
-collected**. Suite progression: post-Brief-09 303 → post-Brief-10 310 (+7
-orchestrator) → post-Brief-10.5 **322 passing** (+12). The OP-2.58.2d-specific
-suite is now 53 tests (14 lattice + 9 classifier + 11 smoke + 7 orchestrator +
-12 construction).
+matrix-structure test parametrized over the two halted structures → 12
+collected. The revised §2.3-bis patch (this version) adds the trapdoor-cardinality
+halt test (parametrized × 2) and the A1 42-kernel partition lock → +3, so the
+construction file collects **15** tests. Suite progression: post-Brief-09 303 →
+post-Brief-10 310 (+7) → post-Brief-10.5 322 (+12) → post §2.3-bis revised
+**325 passing** (+3). The OP-2.58.2d-specific suite is 56 tests (14 + 9 + 11 +
+7 + 15).
 
 ## 7. Honest framing note (Brief 10.5 §3.4 point 7)
 

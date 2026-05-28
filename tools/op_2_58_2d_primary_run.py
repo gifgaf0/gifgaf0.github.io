@@ -178,22 +178,30 @@ def _run_one(job: dict, freeze: dict, *, proof_of_life: bool = False) -> dict:
     # with the toy noise width η=2) as the proof-of-life default. Brief 10.6 to
     # ratify the operational σ.
     sigma = job.get("sigma", 2)
+    # k defaults to SPEC_K=32 (brief §3.1) but the proof-of-life entry may pass
+    # a smaller k to keep the Python-side unrolling tractable; the spec-Q gate
+    # is still bypassed via allow_spec_params.
+    k_run = job.get("k", SPEC_K)
+    print(f"  [_run_one] inst gen (k={k_run}, q=SPEC, σ={sigma})…", flush=True)
     inst = gen_spec_instance(
-        SPEC_Q, k=SPEC_K, sigma=sigma, rng=rng, allow_spec_params=True
+        SPEC_Q, k=k_run, sigma=sigma, rng=rng, allow_spec_params=True
     )
+    print(f"  [_run_one] inst done in {time.time()-t0:.2f}s; unrolling to scalar LWE (n_eff={k_run*16})…", flush=True)
     lwe = build_scalar_lwe(inst["A"], inst["s"], inst["e"], SPEC_Q)
     t_inst = time.time() - t0
+    print(f"  [_run_one] scalar LWE done in {t_inst:.2f}s total", flush=True)
 
     if job["basis"] == "a-primal":
         B = build_primal_lattice(lwe["A_scalar"], lwe["b_scalar"], SPEC_Q)
     elif job["basis"] == "b-fano-projected":
         B = build_fano_projected_lattice(
             lwe["A_scalar"], lwe["b_scalar"], SPEC_Q,
-            k=SPEC_K, allow_spec_params=True,
+            k=k_run, allow_spec_params=True,
         )
     else:
         raise ValueError(f"unknown basis {job['basis']!r}")
     t_basis = time.time() - t0 - t_inst
+    print(f"  [_run_one] lattice basis {len(B)}x{len(B[0])} in {t_basis:.2f}s", flush=True)
 
     # LLL + BKZ.
     from fpylll import BKZ, LLL, IntegerMatrix
@@ -201,12 +209,14 @@ def _run_one(job: dict, freeze: dict, *, proof_of_life: bool = False) -> dict:
     A_mat = IntegerMatrix.from_matrix([[int(x) for x in row] for row in B])
     LLL.reduction(A_mat)
     t_lll = time.time() - t0 - t_inst - t_basis
+    print(f"  [_run_one] LLL done in {t_lll:.2f}s; starting BKZ β={job['beta']}…", flush=True)
     par = BKZ.Param(
         block_size=job["beta"], max_loops=job.get("max_loops", 4),
         flags=BKZ.AUTO_ABORT | BKZ.MAX_LOOPS,
     )
     BKZ.reduction(A_mat, par, float_type="ld")
     t_bkz = time.time() - t0 - t_inst - t_basis - t_lll
+    print(f"  [_run_one] BKZ done in {t_bkz:.2f}s", flush=True)
     n_rows = A_mat.nrows
     n_cols = A_mat.ncols
     reduced = [[A_mat[i, j] for j in range(n_cols)] for i in range(n_rows)]
@@ -285,8 +295,12 @@ def main() -> int:
     # the Brief-10 schedule result — a pipeline proof-of-life only. Closure must
     # cite this label explicitly per Brief 10 §3.4.
     if os.environ.get("OP_2_58_2D_PROOF_OF_LIFE") == "1":
+        # k=4 sub-spec by default; the full k=SPEC_K=32 build_scalar_lwe is
+        # O(n³)≈134M Python ops at n=512 and exceeds the proof-of-life budget.
+        # k=4 still exercises the spec-Q gate-bypass and produces a real σ.
+        proof_k = int(os.environ.get("OP_2_58_2D_PROOF_K", "4"))
         proof_job = {"beta": 20, "sample": 20260601, "basis": "a-primal",
-                     "max_loops": 3, "sigma": 2}
+                     "max_loops": 3, "sigma": 2, "k": proof_k}
         print("\n[PROOF-OF-LIFE] dispatching one spec-parameter run:")
         print(f"  job: {proof_job}  (NOT the Brief-10 42-run schedule result)")
         res = _run_one(proof_job, freeze, proof_of_life=True)

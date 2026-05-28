@@ -192,9 +192,11 @@ def _run_one(job: dict, freeze: dict, *, proof_of_life: bool = False) -> dict:
 
     t0 = time.time()
     rng = np.random.default_rng(job["sample"])
-    # σ is unspecified at toy/spec scale per Brief 10.5 §2.4; use σ=2 (consistent
-    # with the toy noise width η=2) as the proof-of-life default. Brief 10.6 to
-    # ratify the operational σ.
+    # Operational σ per Brief 10.7 / §2.69.3: σ=2 is the §2.58.B confined-
+    # sampler value realising the frozen pre-reg §3.1 η=2 ML-KEM convention.
+    # Cross-checked against §2.66.1 CBD(η=2) by aggregate BDD norm (1.14×
+    # conservative over k=32); distinct distributions per occupancy (5.3 vs
+    # 10.0). NOT a calibration to CBD; see op_2_58_2d_sigma_calibration.py.
     sigma = job.get("sigma", 2)
     # k defaults to SPEC_K=32 (brief §3.1) but the proof-of-life entry may pass
     # a smaller k to keep the Python-side unrolling tractable; the spec-Q gate
@@ -297,9 +299,17 @@ def main() -> int:
         print(f"  prereg_path: {freeze['prereg_path']}")
         print(f"  freeze_date: {freeze['freeze_date']}")
         print(f"  freeze_signature: {freeze['freeze_signature']}")
-        # Brief 10.6 Item 3 §4.2: Audit Entry 002 records the binding-text hash.
+        # Brief 10.6 Item 3 §4.2 + Brief 10.7 Item 3 §3.3: Audit Entry 002
+        # records the binding-text hash AND the σ pin with its norm/occupancy
+        # justification (§2.69.3 reconciliation, NOT per-coordinate variance).
         print("\n[Audit Entry 002 — prereg sha256]")
         print(f"  {freeze['prereg_sha256']}  {freeze['prereg_path']}")
+        print("[Audit Entry 002 — σ pin + reconciliation (§2.69.3 / Brief 10.7)]")
+        print("  σ = 2  (§2.58.B confined-sampler value, realising frozen §3.1 η=2)")
+        print("  vs §2.66.1 CBD(η=2) cross-check:")
+        print("    per-block BDD norm:  confined 4.51 vs CBD 3.95  (ratio 1.14, conservative)")
+        print("    occupancy:           confined 5.33 ± 1.89  vs CBD 10.0 ± 1.93  (DISTINCT)")
+        print("    aggregate (k=32):    conservative robustly (1/√k averaging; P(invert)≈0.001)")
     if not freeze["ok"]:
         print("\nHALT (brief §2.1): pre-registration is not frozen/verifiable. "
               "No spec-parameter code path will execute. Exiting non-zero.")

@@ -194,6 +194,16 @@ def gen_spec_instance(
     Enforces the shared spec-parameter gate (SpecParamsRefused on spec scale).
     `trapdoor_cardinality` is propagated to gen_zd_noise_sample (see its
     docstring for OP-2.58.B.card / §2.58.B.1 framing).
+
+    Operational σ (per §2.69.3 / Brief 10.7): σ=2 is the §2.58.B
+    confined-sampler value, cross-checked against §2.66.1 CBD(η=2) by
+    aggregate BDD norm — confined σ=2 per-block norm 4.51 vs CBD 3.95 (mean
+    ratio 1.14, conservative); distinct distributions per the occupancy
+    fingerprint (5.33 ± 1.89 occupied dims vs CBD's 10.0 ± 1.93). σ=2
+    realises the frozen pre-reg §3.1 η=2 ML-KEM convention as the confined
+    sampler value, NOT a calibration to CBD; see
+    `tools/op_2_58_2d_sigma_calibration.py` for the reconciliation and
+    `tools/op_2_58_2d_dfr_reference.md` for the §2.66.1 anchor.
     """
     _check_not_spec(p, k, allow_spec_params)
     A = gen_public_matrix(p, k, rng, matrix_structure)

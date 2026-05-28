@@ -163,7 +163,10 @@ def mul_vec(x, y, p):
             if y[j] == 0:
                 continue
             for (k, s) in mul_basis(i, j):
-                result[k] = (result[k] + x[i] * y[j] * s) % p
+                # int() casts: defensive against int64 overflow at spec-scale q
+                # (q≈2^32 ⇒ x[i]*y[j] up to 2^64, beyond int64). No-op at toy
+                # scale (values already Python ints).
+                result[k] = (result[k] + int(x[i]) * int(y[j]) * s) % p
     return result
 
 def is_zero(v, p):

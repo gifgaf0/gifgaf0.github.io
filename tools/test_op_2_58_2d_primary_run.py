@@ -34,10 +34,13 @@ def test_freeze_verification_passes_with_stub():
     assert "AUTHORIZED_RUN_V4.11_MAY_27_2026" in (fz["freeze_signature"] or "")
 
 
-def test_main_halts_on_construction():
-    """Freeze passes; main() halts at the construction check on basis (b)
-    Fano-projected lattice unimplemented (exit code 2)."""
-    assert main() == 2
+def test_main_completes_without_dispatch():
+    """Freeze passes; basis (b) is implemented; construction module is
+    available. Without OP_2_58_2D_PROOF_OF_LIFE, main() reaches end-of-flow
+    (queues the 42-run schedule, dispatches nothing) and returns 0."""
+    import os
+    os.environ.pop("OP_2_58_2D_PROOF_OF_LIFE", None)
+    assert main() == 0
 
 
 def test_job_matrix_is_42_runs():
@@ -45,20 +48,24 @@ def test_job_matrix_is_42_runs():
     assert len(jobs) == len(BETAS) * len(SAMPLES) * len(BASES) == 42
 
 
-def test_construction_preconditions_unmet():
+def test_construction_preconditions_met():
+    """Post-Brief-10.5 + basis-(b) candidate implementation: construction
+    module is importable and basis (b) probes successfully."""
     con = check_construction_available()
-    assert con["basis_b_ready"] is False
-    assert any("§2.58.B" in b for b in con["blockers"])
+    assert con["basis_b_ready"] is True, con
+    assert con["construction_ready"] is True, con
+    assert con["blockers"] == []
 
 
 def test_run_one_refuses_without_verified_freeze():
-    with pytest.raises(RuntimeError):
+    with pytest.raises(RuntimeError, match="freeze not verified"):
         _run_one({"beta": 20, "sample": SAMPLES[0], "basis": BASES[0]},
                  freeze={"ok": False})
 
 
-def test_run_one_refuses_even_if_freeze_ok_when_disarmed():
-    # Freeze ok but PRODUCTION_RUN is False → still refuses (the AND guard).
-    with pytest.raises(RuntimeError):
+def test_run_one_refuses_when_neither_gate_armed():
+    """Freeze ok but PRODUCTION_RUN=False and proof_of_life not requested:
+    still refuses (the §4.1 audit anchor)."""
+    with pytest.raises(RuntimeError, match="PRODUCTION_RUN"):
         _run_one({"beta": 20, "sample": SAMPLES[0], "basis": BASES[0]},
                  freeze={"ok": True})

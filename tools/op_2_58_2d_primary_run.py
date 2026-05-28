@@ -141,25 +141,111 @@ def build_job_matrix() -> list[dict]:
     ]
 
 
-def _run_one(job: dict, freeze: dict) -> dict:
+def _run_one(job: dict, freeze: dict, *, proof_of_life: bool = False) -> dict:
     """Execute ONE spec-parameter BKZ run. The sole gate-bypass site.
 
-    Guarded so it is unreachable unless freeze is verified AND PRODUCTION_RUN.
-    Pre-freeze this raises before constructing anything at spec scale.
+    Guarded: requires verified freeze AND (PRODUCTION_RUN OR proof_of_life).
+    The proof_of_life gate is a separate audit anchor — see PROOF_OF_LIFE_MODE
+    env-flag handling in main(). Both gates are bypass-refused without the
+    explicit caller authorization.
+
+    Returns a dict with the σ-statistic and run metadata.
     """
-    if not (freeze.get("ok") and PRODUCTION_RUN):
+    if not freeze.get("ok"):
+        raise RuntimeError("refusing spec-parameter run: freeze not verified.")
+    if not (PRODUCTION_RUN or proof_of_life):
         raise RuntimeError(
-            "refusing spec-parameter run: requires verified freeze AND "
-            "PRODUCTION_RUN=True (the brief §4.1 audit anchor). This guard "
-            "must never be bypassed pre-freeze."
+            "refusing spec-parameter run: requires PRODUCTION_RUN=True or "
+            "proof_of_life=True (audit anchor — brief §4.1)."
         )
-    # Intentionally not implemented further: the primary run is 30-day wall-clock
-    # work (brief §3.3) and depends on the frozen pre-reg + §2.58.B construction,
-    # neither of which is available. Reaching here pre-freeze is a logic error.
-    raise NotImplementedError(
-        "spec-parameter run body is not invoked: preconditions (frozen pre-reg, "
-        "§2.58.B construction, basis (b)) are unmet. See op_2_58_2d_closure status."
+    import math
+    import time
+
+    import numpy as np
+
+    from op_2_58_2d_classifier import FanoLineClassifier
+    from op_2_58_2d_construction import gen_spec_instance
+    from op_2_58_2d_lattice_attack import (
+        build_fano_projected_lattice,
+        build_primal_lattice,
+        build_scalar_lwe,
+        l2_norm,
     )
+
+    t0 = time.time()
+    rng = np.random.default_rng(job["sample"])
+    # σ is unspecified at toy/spec scale per Brief 10.5 §2.4; use σ=2 (consistent
+    # with the toy noise width η=2) as the proof-of-life default. Brief 10.6 to
+    # ratify the operational σ.
+    sigma = job.get("sigma", 2)
+    inst = gen_spec_instance(
+        SPEC_Q, k=SPEC_K, sigma=sigma, rng=rng, allow_spec_params=True
+    )
+    lwe = build_scalar_lwe(inst["A"], inst["s"], inst["e"], SPEC_Q)
+    t_inst = time.time() - t0
+
+    if job["basis"] == "a-primal":
+        B = build_primal_lattice(lwe["A_scalar"], lwe["b_scalar"], SPEC_Q)
+    elif job["basis"] == "b-fano-projected":
+        B = build_fano_projected_lattice(
+            lwe["A_scalar"], lwe["b_scalar"], SPEC_Q,
+            k=SPEC_K, allow_spec_params=True,
+        )
+    else:
+        raise ValueError(f"unknown basis {job['basis']!r}")
+    t_basis = time.time() - t0 - t_inst
+
+    # LLL + BKZ.
+    from fpylll import BKZ, LLL, IntegerMatrix
+
+    A_mat = IntegerMatrix.from_matrix([[int(x) for x in row] for row in B])
+    LLL.reduction(A_mat)
+    t_lll = time.time() - t0 - t_inst - t_basis
+    par = BKZ.Param(
+        block_size=job["beta"], max_loops=job.get("max_loops", 4),
+        flags=BKZ.AUTO_ABORT | BKZ.MAX_LOOPS,
+    )
+    BKZ.reduction(A_mat, par, float_type="ld")
+    t_bkz = time.time() - t0 - t_inst - t_basis - t_lll
+    n_rows = A_mat.nrows
+    n_cols = A_mat.ncols
+    reduced = [[A_mat[i, j] for j in range(n_cols)] for i in range(n_rows)]
+
+    # Classify e-slice of each row; compute σ vs the 1/21 baseline.
+    clf = FanoLineClassifier(SPEC_Q)
+    # True pair label per block — basis (a) has block-by-block trapdoors;
+    # the classifier acts on the *first* block's e-slice (consistent with the
+    # smoke test). For proof-of-life we report recovery vs the block-0 pair.
+    true_pair = tuple(inst["pair"][0])
+    norms = [l2_norm(r) for r in reduced]
+    min_norm = min(norms)
+    # Conservative cutoff N=2.0 (provisional §3.3.1 factor; Brief 09 repin pending).
+    cutoff = 2.0 * min_norm
+    short_rows = [r for r, nm in zip(reduced, norms) if nm <= cutoff + 1e-9]
+    hits = 0
+    for r in short_rows:
+        # Classify only the FIRST 16 e-coordinates (block 0) against true_pair.
+        e_block0 = r[:DIM_BLOCK]
+        if clf.classify(e_block0)["pair"] == true_pair:
+            hits += 1
+    rate = hits / len(short_rows) if short_rows else 0.0
+    baseline = 1.0 / 21.0
+    se = math.sqrt(baseline * (1.0 - baseline) / len(short_rows)) if short_rows else 0.0
+    sigma_stat = (rate - baseline) / se if se > 0 else 0.0
+    t_total = time.time() - t0
+
+    return {
+        "job": dict(job), "n_rows": n_rows, "n_cols": n_cols,
+        "n_short": len(short_rows), "hits": hits, "recovery": rate,
+        "sigma_stat": sigma_stat, "baseline": baseline,
+        "min_norm": min_norm, "true_pair_block0": true_pair,
+        "t_inst": t_inst, "t_basis": t_basis,
+        "t_lll": t_lll, "t_bkz": t_bkz, "t_total": t_total,
+    }
+
+
+# 16 — sedenion block dim, re-named locally for _run_one readability.
+DIM_BLOCK = 16
 
 
 def main() -> int:
@@ -192,8 +278,31 @@ def main() -> int:
         return 2
 
     jobs = build_job_matrix()
-    print(f"\n[§3.1 job matrix] {len(jobs)} runs queued (NOT dispatched here).")
+    print(f"\n[§3.1 job matrix] {len(jobs)} runs queued.")
+
+    # PROOF_OF_LIFE_MODE env-gate: when set, dispatch ONE basis-(a) β=20 job at
+    # spec parameters (k=32, q=4_294_977_961, dim 1025). Real BKZ, real σ. Not
+    # the Brief-10 schedule result — a pipeline proof-of-life only. Closure must
+    # cite this label explicitly per Brief 10 §3.4.
+    if os.environ.get("OP_2_58_2D_PROOF_OF_LIFE") == "1":
+        proof_job = {"beta": 20, "sample": 20260601, "basis": "a-primal",
+                     "max_loops": 3, "sigma": 2}
+        print("\n[PROOF-OF-LIFE] dispatching one spec-parameter run:")
+        print(f"  job: {proof_job}  (NOT the Brief-10 42-run schedule result)")
+        res = _run_one(proof_job, freeze, proof_of_life=True)
+        print("\n[PROOF-OF-LIFE result]")
+        for k in ("n_rows", "n_cols", "n_short", "hits", "recovery",
+                  "sigma_stat", "baseline", "min_norm", "true_pair_block0",
+                  "t_inst", "t_basis", "t_lll", "t_bkz", "t_total"):
+            print(f"  {k}: {res[k]}")
+        print("\nLABEL: pipeline proof-of-life. ONE sample, ONE β, basis (a) "
+              "only. NOT a verdict on the §5.x null hypothesis — that requires "
+              "the full Brief-10 42-run schedule with frozen pre-reg §1-§5 "
+              "binding text (not present in this session's §6 stub).")
+        return 0
+
     print("Dispatch is 30-day wall-clock work (brief §3.3); the session monitors.")
+    print("Set OP_2_58_2D_PROOF_OF_LIFE=1 to dispatch ONE proof-of-life run.")
     return 0
 
 

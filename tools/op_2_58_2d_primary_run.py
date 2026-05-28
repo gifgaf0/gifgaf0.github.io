@@ -99,11 +99,19 @@ def verify_freeze() -> dict:
 
 def check_construction_available() -> dict:
     """Secondary precondition (brief §3.3 halt conditions): is there an actual
-    §2.58.B spec instance to attack, and is basis (b) implemented?"""
+    §2.58.B spec instance to attack, and is basis (b) implemented?
+
+    Updated post-Brief-10.5: the §2.58.B construction artifact now exists
+    (`op_2_58_2d_construction.gen_spec_instance`), so the previously
+    unconditional "no construction artifact" blocker is no longer raised. The
+    matrix-A reading is settled per §2.3 audit as 'uniform' (reading (a)).
+    """
     from op_2_58_2d_lattice_attack import build_fano_projected_lattice
 
     blockers = []
-    # Basis (b): Fano-projected lattice.
+    # Basis (b) lattice: Fano-projected lattice basis (DISTINCT from §2.3
+    # matrix-A reading (b)). Still a stub; substantive new work to wire D1's
+    # 14-dim F_L union into the primal-basis projection.
     try:
         build_fano_projected_lattice()
         basis_b_ready = True
@@ -113,14 +121,16 @@ def check_construction_available() -> dict:
     except Exception as exc:  # noqa: BLE001
         basis_b_ready = False
         blockers.append(f"basis (b) raised unexpectedly: {exc!r}")
-    # §2.58.B construction: there is no spec-parameter §2.58.B instance generator
-    # in the repo; gen_toy_instance produces generic synthetic LWE, not §2.58.B.
-    blockers.append(
-        "no §2.58.B spec-parameter construction artifact in repo: "
-        "gen_toy_instance produces generic synthetic LWE, not the §2.58.B "
-        "Fano-line-structured instance the primary run must attack."
-    )
-    return {"basis_b_ready": basis_b_ready, "blockers": blockers}
+    # §2.58.B construction availability (Brief 10.5 delivered it).
+    try:
+        from op_2_58_2d_construction import gen_spec_instance  # noqa: F401
+        construction_ready = True
+    except ImportError as exc:
+        construction_ready = False
+        blockers.append(f"§2.58.B construction module unavailable: {exc!r}")
+    return {"basis_b_ready": basis_b_ready,
+            "construction_ready": construction_ready,
+            "blockers": blockers}
 
 
 def build_job_matrix() -> list[dict]:

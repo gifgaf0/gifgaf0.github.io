@@ -25,14 +25,19 @@ def test_production_run_flag_is_disarmed():
     assert PRODUCTION_RUN is False
 
 
-def test_freeze_verification_fails_no_prereg():
+def test_freeze_verification_passes_with_stub():
+    """Post-Brief-10 §6 signature stub: verify_freeze() recognises the
+    committed signature and freeze date in OP_2_58_2d_staging_PREREGISTRATION.md."""
     fz = verify_freeze()
-    assert fz["ok"] is False
-    assert "not found" in fz["reason"] or "[pending" in fz["reason"]
+    assert fz["ok"] is True, fz
+    assert fz["freeze_date"] == "2026-05-27"
+    assert "AUTHORIZED_RUN_V4.11_MAY_27_2026" in (fz["freeze_signature"] or "")
 
 
-def test_main_halts_nonzero():
-    assert main() == 1
+def test_main_halts_on_construction():
+    """Freeze passes; main() halts at the construction check on basis (b)
+    Fano-projected lattice unimplemented (exit code 2)."""
+    assert main() == 2
 
 
 def test_job_matrix_is_42_runs():

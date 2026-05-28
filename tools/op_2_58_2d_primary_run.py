@@ -59,8 +59,14 @@ def verify_freeze() -> dict:
     """Brief §2.1 freeze verification. Locate the pre-reg and confirm §6 holds a
     real freeze date (YYYY-MM-DD) and signature (not [pending]).
 
-    Returns {ok, reason, prereg_path, freeze_date, freeze_signature}.
+    Brief 10.6 Item 3 addition: compute the file's SHA-256 hash and return it
+    as `prereg_sha256` for Audit Entry 002. The hash anchors the binding
+    result to the exact frozen text in the repo at run time.
+
+    Returns {ok, reason, prereg_path, freeze_date, freeze_signature, prereg_sha256}.
     """
+    import hashlib
+
     path = _find_prereg()
     if path is None:
         return {
@@ -72,13 +78,23 @@ def verify_freeze() -> dict:
                 "frozen §6 to verify."
             ),
             "prereg_path": None, "freeze_date": None, "freeze_signature": None,
+            "prereg_sha256": None,
         }
-    with open(path, encoding="utf-8") as f:
-        text = f.read()
-    # Extract §6 freeze date and signature; reject [pending].
-    date_m = re.search(r"freeze\s*date[:\s]*([0-9]{4}-[0-9]{2}-[0-9]{2}|\[pending[^\]]*\])",
-                       text, re.IGNORECASE)
-    sig_m = re.search(r"freeze\s*signature[:\s]*(\[pending[^\]]*\]|\S.*)", text, re.IGNORECASE)
+    with open(path, "rb") as fb:
+        prereg_bytes = fb.read()
+    sha256 = hashlib.sha256(prereg_bytes).hexdigest()
+    text = prereg_bytes.decode("utf-8")
+    # Extract §6 freeze date and signature; reject [pending]. The regex
+    # requires a literal colon (so §6's prose mention of "the freeze date and
+    # signature are added..." doesn't false-match) and tolerates optional
+    # `**` markdown bold around the field label and value.
+    date_m = re.search(
+        r"freeze\s*date\s*:\**\s*\**\s*([0-9]{4}-[0-9]{2}-[0-9]{2}|\[pending[^\]]*\])",
+        text, re.IGNORECASE)
+    sig_m = re.search(
+        r"freeze\s*signature\s*:\**\s*\**\s*"
+        r"(\[pending[^\]]*\]|[^\s*][^\n]*?)(?:\s*\*\*)?\s*$",
+        text, re.IGNORECASE | re.MULTILINE)
     date = date_m.group(1) if date_m else None
     sig = sig_m.group(1).strip() if sig_m else None
     pending = (date is None or sig is None
@@ -90,10 +106,12 @@ def verify_freeze() -> dict:
             "reason": f"§6 freeze is incomplete (date={date!r}, signature={sig!r}); "
                       "still [pending] or unparseable. HALT per brief §2.1.",
             "prereg_path": path, "freeze_date": date, "freeze_signature": sig,
+            "prereg_sha256": sha256,
         }
     return {
         "ok": True, "reason": "freeze verified",
         "prereg_path": path, "freeze_date": date, "freeze_signature": sig,
+        "prereg_sha256": sha256,
     }
 
 
@@ -275,6 +293,13 @@ def main() -> int:
     print("\n[§2.1 freeze verification]")
     print(f"  ok: {freeze['ok']}")
     print(f"  reason: {freeze['reason']}")
+    if freeze.get("prereg_path"):
+        print(f"  prereg_path: {freeze['prereg_path']}")
+        print(f"  freeze_date: {freeze['freeze_date']}")
+        print(f"  freeze_signature: {freeze['freeze_signature']}")
+        # Brief 10.6 Item 3 §4.2: Audit Entry 002 records the binding-text hash.
+        print("\n[Audit Entry 002 — prereg sha256]")
+        print(f"  {freeze['prereg_sha256']}  {freeze['prereg_path']}")
     if not freeze["ok"]:
         print("\nHALT (brief §2.1): pre-registration is not frozen/verifiable. "
               "No spec-parameter code path will execute. Exiting non-zero.")

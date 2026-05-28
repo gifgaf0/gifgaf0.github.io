@@ -387,4 +387,111 @@ remains a stub. Full suite: 322 passing (OP-2.58.2d suite: 53 tests).
 
 ---
 
+## §10. Brief 10.6 closure (pre-schedule)
+
+Brief 10.6 closed the three pre-schedule questions left open by Brief 10's
+proof-of-life run.
+
+### §10.1 Item 1 — basis-(b) design ratification
+
+**Ratified reading: (I) F_L-restriction.** Three candidate readings of §3.6(b)
+("lattice basis pre-projected onto the union of the seven 8D F_L subspaces")
+were considered: (I) restriction — replace e-side q·I_n rows with q·F_L per
+block; (II) augmentation — enrich basis (a) with 14·k unscaled F_L basis
+vectors as auxiliary short rows; (III) quotient — project to F_L⊥ (rejected
+on prose grounds, "onto" not "out of").
+
+Toy comparison at k=7 q=911 β=30 across seeds 20260601/02/03 under the §3.3.1
+N=2.0×min_norm cutoff and 1/21≈0.0476 baseline:
+
+| basis              | tot_short | tot_hits | pooled rate |
+|--------------------|-----------|----------|-------------|
+| (a) primal         | 675       | 24       | 0.0356 (below baseline) |
+| (b)-I restriction  | 633       | 34       | **0.0537 (RATIFIED)**   |
+| (b)-II augmentation| 294       | 0        | 0.0000 (degenerate)     |
+
+Reading (II) is INVERSE to Brief 10.6's predicted outcome — under the frozen
+§3.3.1 cutoff, the unscaled F_L hint vectors (norm ≈ 1.0 after LLL) hijack
+the short-set selection and the trapdoor signal is not captured. Reading (I)
+is the worst-case-for-defender and is the ratified basis (b).
+
+Code: `tools/op_2_58_2d_lattice_attack.build_fano_projected_lattice`. Rejected
+(II) retained as `_build_fano_augmentation_lattice` for the audit record.
+Full ratification record: `tools/op_2_58_2d_basis_b_ratification.md`.
+Reproducer: `tools/op_2_58_2d_basis_b_compare.py`.
+
+### §10.2 Item 2 — σ resolution
+
+**Pinned: σ = 2.** Sub-case 1 (cite §2.66.1 / DFR analysis) did not close —
+§2.66.1 is not present on-branch (only §2.66.2 line classifier is referenced;
+the L1 attribution gap of §3.3 applies). Sub-case 2 (derive from η=2 and
+kernel-vector structure) closed cleanly.
+
+Empirical finding at q=911 over 50 seeds × k=7 × DIM=16 = 5600 coords/σ:
+every nonzero `e_d` is **exactly ±σ** — the rref_kernel basis vectors have
+disjoint support per coordinate, so no superposition occurs and the η bound
+on `|e_d|` translates directly to a bound on σ. With η=2: σ ≤ 2; σ ∈ {1, 2}
+feasible, σ = 4 violates η.
+
+Pin σ = 2 (worst-case-for-defender within η: the largest noise the
+construction permits, max BDD radius for the attacker). Matches the
+proof-of-life setting. The σ ∈ {1, 2, 4} cross-check (Brief 10.5 §2.4)
+spanned the η bound to characterise classifier σ-invariance; the schedule
+stays within η.
+
+**Classifier-vs-lattice-attack sensitivity (Brief 10.6 §3.4)**: σ is
+non-load-bearing for the §3.3 classifier (exact direction-only invariance,
+95.857% pair-recovery across σ ∈ {1,2,4} with 0.000% spread — Brief 10.5
+finding); σ IS load-bearing for the lattice attack (scales ‖e‖, hence
+‖v_target‖, hence BDD radius). At spec k=32 σ=2, ‖v_target‖ ≈ 27 ≪ gh ≈ 5×10⁵
+→ uSVP regime → BKZ-recoverable in principle at sufficient β.
+
+Sub-case 3 (sweep over σ) ruled out; schedule remains 42 runs, not 126.
+No production-code change required — `_run_one`'s `job.get("sigma", 2)`
+default already conforms. Full record: `tools/op_2_58_2d_sigma_resolution.md`.
+
+### §10.3 Item 3 — Full pre-reg text committed
+
+`OP_2_58_2d_staging_PREREGISTRATION.md` now contains the full Rev 5 binding
+text (§§1–6) supplied by the session principal, replacing the §6-only stub.
+The §2.1 forward-pointer to §2.58.B.1 is included (the clarifying
+V4.11-consistent addition: pair-recovery is a lower bound on kernel-recovery;
+pair-null safely upper-bounds kernel leakage). Per Brief 10.6 §4.4: **this is
+not a Rev 6** — committing the full text completes the on-branch realization
+of the already-frozen Rev 5; the §6 freeze signature
+`AUTHORIZED_RUN_V4.11_MAY_27_2026` covers it.
+
+Audit Entry 002 (the orchestrator's freeze-verification entry) records the
+SHA-256 of the committed text:
+`ecbb7dfc19d3491d37d6a6b961387b0e3e70637c0dd47a958d19d4fa5ffdd12e`. The
+orchestrator's `verify_freeze()` recomputes the hash at run time so the
+binding result is provably tied to the exact frozen text in the repo at that
+run.
+
+Regex update: the freeze-verification regex was tightened to require a
+literal colon between "Freeze date/signature" and its value, so §6's intro
+paragraph mention ("the freeze date and the freeze signature are added in the
+same act…") doesn't false-match. The regex also tolerates the markdown `**`
+bolding around the field label.
+
+### §10.4 Out-of-session prerequisite (the only remaining work)
+
+After Brief 10.6: OP-2.58.2d is fully prepared. The construction (Brief 10.5),
+the trapdoor geometry (§2.58.B.1), the proof-of-life pipeline (Brief 10),
+basis (a) and basis (b) (both ratified, Brief 10.6 Item 1), σ pinning
+(Brief 10.6 Item 2), and the full binding pre-reg text on branch (Brief 10.6
+Item 3) are all in place. The orchestrator's construction-availability check
+now returns `basis_b_ready=True`, `construction_ready=True`, no blockers.
+
+The only remaining prerequisite for an OP-2.58.2d result is the 30-day
+wall-clock compute of the 42-run schedule (§4.2), which the proof-of-life
+confirmed is realistic but out-of-session. When that compute completes,
+closure follows the Brief-10 §3.4 / pre-reg §5 structure: the verbatim
+§5.1/§5.2/§5.3/§5.5 outcome declaration, the per-(β, sample, basis) table,
+the §4.3 decision-tree resolution, and the ledger entry.
+
+Suite: 325 passing post-Brief-10.6; ruff clean on touched files.
+
+---
+
 *End of OP-2.58.2d pre-freeze infrastructure correctness report.*

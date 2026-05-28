@@ -207,7 +207,12 @@ def _run_one(job: dict, freeze: dict, *, proof_of_life: bool = False) -> dict:
     from fpylll import BKZ, LLL, IntegerMatrix
 
     A_mat = IntegerMatrix.from_matrix([[int(x) for x in row] for row in B])
-    LLL.reduction(A_mat)
+    # LLL precision: at k=4 dim 129 the default wrapper works; at k=8 dim 257
+    # both wrapper (default "double", 53-bit) and method="proved"+"ld" hit
+    # "infinite loop in babai" — GSO ratios exceed available precision for
+    # q-ary lattices at q≈2³². Use mpfr (arbitrary precision) at 128 bits.
+    # Slower but correct.
+    LLL.reduction(A_mat, method="proved", float_type="mpfr", precision=128)
     t_lll = time.time() - t0 - t_inst - t_basis
     print(f"  [_run_one] LLL done in {t_lll:.2f}s; starting BKZ β={job['beta']}…", flush=True)
     par = BKZ.Param(

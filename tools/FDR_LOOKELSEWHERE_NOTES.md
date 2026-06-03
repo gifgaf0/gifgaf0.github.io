@@ -24,7 +24,11 @@ with per-target probability p_c under one of three nulls:
 |---|---|---|
 | `log` (default) | ln((1+τ)/(1−τ)) / ln(b/a) | values span scales; scale-agnostic |
 | `uniform` | 2τc / (b−a) | values roughly linear on [a,b] |
-| `empirical` | (Monte Carlo from your actual values) | **most defensible** — folds in real pipeline geometry |
+| `empirical` (`--values`) | (Monte Carlo from your actual values) | total-count question; folds in real pipeline geometry |
+| `placebo` (`--placebo`) | (random fake constants from `--values` support) | **single-constant question** — is *this* constant special vs random constants in the same distribution? |
+
+The library is the full production 23-entry `CURATED_CONSTANTS` from
+`seven_circles_tight.py` (supplied 2026-06-03).
 
 ## Usage
 
@@ -40,9 +44,14 @@ python3 tools/fdr_lookelsewhere.py --n 11495 --tol 5e-4 --range 0.05 25 \
 python3 tools/fdr_lookelsewhere.py --n 40 --tol 5e-4 --range 0.05 25 \
     --null log --reciprocal --only "cos(18deg)" --observed 14
 
-# EMPIRICAL null from the actual computed values (one float per line):
+# EMPIRICAL null (total-count question) from the actual values, one float/line:
 python3 tools/fdr_lookelsewhere.py --values cross_ratios.txt --tol 5e-4 \
     --reciprocal --observed 123
+
+# PLACEBO test (single-constant question): is cos(18deg) special vs random
+# constants drawn from the SAME value distribution?
+python3 tools/fdr_lookelsewhere.py --values cross_ratios.txt --tol 5e-4 \
+    --reciprocal --only "cos(18deg)" --observed 14 --placebo 20000
 ```
 
 Analytic and Monte Carlo agree to within sampling error (validated in `--demo`:
@@ -51,26 +60,48 @@ E=51.8 vs MC mean=51.7). MC auto-caps trials by a compute budget
 
 ## Two findings that already matter
 
-1. **The "~10× enrichment" headline is null-dependent.** Under a log-uniform
-   null on [0.05, 25] with the partial 14-entry library, the seven-circles
-   total (123 matches over 11,495 cross-ratios) is **~2.4×**, not ~10×. The
-   enrichment number is a function of the assumed range, the library size, and
-   the null — none of which the original report pins down. Report the null
-   explicitly next to any enrichment claim.
+1. **The "~10× enrichment" headline is null-dependent — and ~1.7× under the
+   full library.** Under a log-uniform null on [0.05, 25] with the production
+   23-entry library, the seven-circles total (123 matches over 11,495
+   cross-ratios) is **~1.71×** (E[total] ≈ 72; Poisson p ≈ 3.3e-8 — still
+   formally above chance, but not ~10×). With the partial 14-entry library it
+   was 2.4×; adding the real library entries *lowered* the enrichment, as a
+   look-elsewhere correction must. Always report the null and the library size
+   next to an enrichment claim.
 
-2. **The empirical null is the one that decides it.** When the actual probe
-   distribution already clusters near a target (because the pipeline *produces*
-   those values), the empirical null absorbs the apparent signal: in a
-   stress test where 200 of 4,200 values were seeded near cos 18°, the
-   empirical-null enrichment was **0.95× (p ≈ 0.78)** — consistent with chance.
-   This is exactly the pipeline-geometry-vs-special-constant distinction
-   Perspective 5's placebo test targets. **Feed `--values` the real
-   cross-ratios before citing significance.**
+   **Provenance caveat (open).** The 11,495 denominator is not reproducible
+   from the canonical sweep (40 chords × C(12,4) = 19,800; the report's 11,495
+   is a different/filtered config). This is the same class of issue as the
+   §2.66.2 attribution gap. Lock a stated sweep and regenerate, rather than
+   reverse-engineer 11,495 (see "what to hand the generator", below).
+
+2. **The placebo test is what decides single-constant specialness.** The
+   total-count empirical null answers "are 123 matches more than chance?"; the
+   *placebo* null answers "is cos 18° special *vs other constants in the same
+   distribution*?" — the one that controls for pipeline geometry. Validation:
+   on synthetic values with a deliberately-seeded cos 18° cluster, the placebo
+   test correctly returns SIGNAL (p ≈ 2.5e-4); on a broad distribution with no
+   seeded cluster it returns ~chance. **Feed `--values` the real cross-ratios
+   and run `--placebo` before citing that cos 18° is special.**
+
+## What to hand the seven-circles generator
+
+To make both findings airtight, regenerate the cross-ratio dump from a **locked,
+stated** sweep (there is no saved file; CRs are computed on the fly in
+`seven_circles_tight.py`):
+
+- **Config to lock** (the canonical one in `seven_circles_report.md`): R=3, r=1,
+  7 natural circles, 40 chord positions d ∈ linspace(0.1, 3.8, 40), θ=0, all
+  4-subsets of intersection points with exactly 4 valid intersections.
+- **Emit:** (a) `cross_ratios.txt` — one CR value per line (for `--values`), and
+  (b) a one-line manifest: the exact intersection/4-subset rule, the total count
+  (this *replaces* the unreproducible 11,495), and per-constant chord-position
+  hit counts (for the 14/40-style placebo at chord granularity).
+- Then: `--values cross_ratios.txt --observed <total>` for finding #1, and
+  `--placebo 20000 --only "cos(18deg)" --observed <hits>` for finding #2.
 
 ## Caveats / honest limits
 
-- The default library is **partial (14 of the production 23)**; a smaller M
-  *understates* the look-elsewhere effect. Paste the real `CURATED_CONSTANTS`.
 - Analytic nulls assume disjoint match intervals (true at τ = 5e-4 here) and
   that target intervals lie inside the support (unreachable targets are
   reported and contribute 0).

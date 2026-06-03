@@ -73,29 +73,43 @@ import math
 import random
 import sys
 
-# ── Default (PARTIAL) framework constant library ─────────────────────────────
-# Reconstructed from reports/seven_circles_report.md §2 (the 14 constants that
-# actually appeared). The production CURATED_CONSTANTS has 23 entries; PASTE
-# YOUR REAL LIBRARY HERE before citing a result — a smaller M understates the
-# look-elsewhere effect. Marked partial deliberately.
+# ── Framework constant library (full 23-entry CURATED_CONSTANTS) ─────────────
+# Canonical version from seven_circles_tight.py (supplied by the seven-circles
+# generator, 2026-06-03). This is the production library; M = 23.
 PHI = (1 + math.sqrt(5)) / 2
 DEFAULT_LIBRARY = {
-    "sqrt5/2":          math.sqrt(5) / 2,        # 1.118034
-    "cos(18deg)":       math.cos(math.radians(18)),  # 0.951057
-    "cos(pi/7)":        math.cos(math.pi / 7),   # 0.900969
-    "cos(2pi/7)":       math.cos(2 * math.pi / 7),   # 0.623490
-    "phi/2":            PHI / 2,                  # 0.809017
-    "arctan(1/sqrt2)":  math.atan(1 / math.sqrt(2)),  # 0.615480
-    "void":             0.712840,                # 1 - gap
-    "sin(36deg)":       math.sin(math.radians(36)),   # 0.587785
-    "phi^-1":           1 / PHI,                  # 0.618034
-    "eps_3/eps_2":      2.787526,                # Hales ratio
-    "pulsation":        0.094800,
-    "gap":              0.287160,
-    "phi^-2":           1 / PHI**2,              # 0.381966
-    "8/21":             8 / 21,                  # 0.380952
+    # φ-tower (framework-specific)
+    "phi":              PHI,
+    "phi^-1":           1 / PHI,
+    "phi^-2":           1 / PHI**2,
+    "phi^-3":           1 / PHI**3,
+    "phi^-5":           1 / PHI**5,
+    "phi^5":            PHI**5,
+    # 5-fold trig
+    "phi/2":            PHI / 2,                 # cos(36°)
+    "1/(2*phi)":        1 / (2 * PHI),           # cos(72°)
+    "sqrt5/2":          math.sqrt(5) / 2,        # t parameter
+    "cos(18deg)":       math.sqrt(2 + PHI) / 2,  # cos(18°)
+    "sin(36deg)":       math.sqrt(3 - PHI) / 2,  # sin(36°)
+    # 7-fold trig (PSL(2,7) / Klein quartic)
+    "cos(pi/7)":        math.cos(math.pi / 7),
+    "cos(2pi/7)":       math.cos(2 * math.pi / 7),
+    "cos(3pi/7)":       math.cos(3 * math.pi / 7),
+    # Framework packing constants
+    "epsilon_2":        1 - math.pi / (2 * math.sqrt(3)),   # ζ lattice tax
+    "eps_3/eps_2":      (1 - math.pi / (3 * math.sqrt(2)))
+                        / (1 - math.pi / (2 * math.sqrt(3))),  # Hales ratio
+    "arctan(1/sqrt2)":  math.atan(1 / math.sqrt(2)),        # Prop P.α
+    # 84-decomposition values
+    "pulsation":        0.09480,
+    "void":             0.71284,
+    "gap":              0.28716,
+    # Lattice + PSL(2,7) coset
+    "8/21":             8 / 21,                  # Cheeger constant
+    "84":               84.0,                    # Cl(2)+Cl(4)+Cl(6)
+    "21":               21.0,                    # K₇ / Császár edges
 }
-DEFAULT_LIBRARY_IS_PARTIAL = True  # 14 of the production 23 entries
+DEFAULT_LIBRARY_IS_PARTIAL = False  # full production 23-entry library
 
 
 # ── Targets (optionally include reciprocals) ─────────────────────────────────
@@ -224,6 +238,53 @@ def monte_carlo(library, tol, n_probes, sampler, trials=10000,
     return out
 
 
+# ── Placebo-library test (single-constant significance, empirical) ───────────
+def placebo_test(values, tol, observed, n_draws=20000, include_reciprocal=True,
+                 seed=12345):
+    """The Perspective-5 control. Draw `n_draws` random FAKE constants
+    log-uniformly from the support of the actual probe `values`, and for each
+    count how many of `values` land within relative tol of it (matching the
+    reciprocal too, when requested, exactly as a real constant would be matched).
+
+    This builds the null distribution of per-constant hit counts *induced by the
+    real value distribution* — so a high score for a real constant only counts
+    as signal if random constants in the same distribution rarely score as high.
+    Returns mean, percentiles, and p-value = fraction of fake constants with
+    hits >= observed. Requires the actual values (pipeline geometry is the
+    whole point); an analytic null would make every fake constant identical."""
+    import bisect
+    random.seed(seed)
+    vals = sorted(values)
+    n = len(vals)
+    v_lo, v_hi = vals[0], vals[-1]
+    la, lb = math.log(v_lo), math.log(v_hi)
+
+    def hits_for(c):
+        total = 0
+        for center in ((c, 1.0 / c) if include_reciprocal and c > 0 else (c,)):
+            lo, hi = center * (1 - tol), center * (1 + tol)
+            total += bisect.bisect_right(vals, hi) - bisect.bisect_left(vals, lo)
+        return total
+
+    counts = [hits_for(math.exp(random.uniform(la, lb))) for _ in range(n_draws)]
+    counts.sort()
+    mean = sum(counts) / n_draws
+    ge = sum(1 for c in counts if c >= observed)
+    return {
+        "n_values": n,
+        "support": (v_lo, v_hi),
+        "draws": n_draws,
+        "mean": mean,
+        "p50": counts[n_draws // 2],
+        "p95": counts[min(int(0.95 * n_draws), n_draws - 1)],
+        "p99": counts[min(int(0.99 * n_draws), n_draws - 1)],
+        "max": counts[-1],
+        "observed": observed,
+        "p_value": ge / n_draws,
+        "enrichment": observed / mean if mean > 0 else float("inf"),
+    }
+
+
 # ── Poisson survival for analytic p-value ────────────────────────────────────
 def poisson_sf(k, lam):
     """P(X >= k) for X ~ Poisson(lam). Stable for the small lam, modest k here."""
@@ -239,6 +300,49 @@ def poisson_sf(k, lam):
 
 
 # ── Reporting ────────────────────────────────────────────────────────────────
+def print_placebo_report(values, tol, observed, n_draws, include_reciprocal,
+                         only, library):
+    print("=" * 74)
+    print("PLACEBO-LIBRARY TEST (single-constant significance vs the same "
+          "distribution)")
+    print("=" * 74)
+    res = placebo_test(values, tol, observed, n_draws, include_reciprocal)
+    print(f"  Actual values        : {res['n_values']}  "
+          f"support [{res['support'][0]:.4g}, {res['support'][1]:.4g}]")
+    print(f"  Fake constants drawn : {res['draws']} (log-uniform on support)")
+    print(f"  Tolerance tau        : {tol:g}   reciprocal: "
+          f"{'on' if include_reciprocal else 'off'}")
+    if only and only in library:
+        import bisect
+        vals = sorted(values)
+        c = library[only]
+        rh = 0
+        for center in ((c, 1.0 / c) if include_reciprocal and c > 0 else (c,)):
+            lo, hi = center * (1 - tol), center * (1 + tol)
+            rh += bisect.bisect_right(vals, hi) - bisect.bisect_left(vals, lo)
+        print(f"  Real constant '{only}' = {c:.6f}: {rh} hits in the actual "
+              f"values")
+    print()
+    print(f"  Fake-constant hit distribution: mean={res['mean']:.3f}  "
+          f"[p50={res['p50']}, p95={res['p95']}, p99={res['p99']}, "
+          f"max={res['max']}]")
+    print(f"  OBSERVED                    : {res['observed']}")
+    print(f"  Enrichment (obs / mean)     : {res['enrichment']:.2f}x")
+    print(f"  Placebo p-value P(fake>=obs): {res['p_value']:.3e}")
+    verdict = ("SIGNAL — rare among random constants" if res['p_value'] < 1e-3
+               else "marginal" if res['p_value'] < 0.05
+               else "CONSISTENT WITH PIPELINE GEOMETRY (not special)")
+    print(f"  Verdict                     : {verdict}")
+    print()
+    print("  Reading: this asks whether the constant scores higher than RANDOM")
+    print("  constants drawn from the same value distribution. A high analytic")
+    print("  enrichment with a non-significant placebo p-value means the hits")
+    print("  come from where the pipeline piles up values, not from the")
+    print("  constant being special. Match the granularity of --observed to the")
+    print("  granularity of the supplied values (flat CR list -> value-level).")
+    return 0
+
+
 def print_report(library, tol, n_probes, v_lo, v_hi, null, include_reciprocal,
                  observed, only, mc_trials, empirical_values):
     print("=" * 74)
@@ -380,6 +484,11 @@ def main(argv=None):
                          "empirical null (Monte Carlo)")
     ap.add_argument("--mc", type=int, default=0,
                     help="Monte Carlo trials (0 = analytic only; demo uses 20000)")
+    ap.add_argument("--placebo", type=int, default=0, metavar="DRAWS",
+                    help="placebo-library test: draw DRAWS random fake "
+                         "constants from the --values support and rank the "
+                         "observed count against them (requires --values, "
+                         "--observed)")
     ap.add_argument("--demo", action="store_true",
                     help="run the worked seven-circles example and exit")
     args = ap.parse_args(argv)
@@ -389,6 +498,14 @@ def main(argv=None):
         return 0
 
     empirical_values = load_values(args.values) if args.values else None
+
+    if args.placebo:
+        if empirical_values is None or args.observed is None:
+            ap.error("--placebo requires --values and --observed")
+        return print_placebo_report(empirical_values, args.tol, args.observed,
+                                    args.placebo, args.reciprocal, args.only,
+                                    DEFAULT_LIBRARY)
+
     if empirical_values is not None:
         v_lo, v_hi = min(empirical_values), max(empirical_values)
         n_probes = args.n if args.n is not None else len(empirical_values)

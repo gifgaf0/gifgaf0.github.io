@@ -59,6 +59,10 @@ only in the missing scratch file. The following are now known:
   positions (35%), joint-highest frequency, ~10× null expectation.
   (The earlier 27/40 figure was the unaudited v1 scratch result and is
   **not** the citable count — see paper §X.1 footnote.)
+  > **[SUPERSEDED 2026-06-03:** the "~10× null expectation" does not survive a
+  > look-elsewhere control (consistent with pipeline geometry, p ≈ 0.35
+  > empirical-density); see `SEVEN_CIRCLES_FDR_RESULT.md` / ledger §3.07. The
+  > 14/40 count itself stands.**]**
 - **Dominant circle combinations:** (1, 2, 5, 7), (1, 3, 5, 6),
   (2, 3, 5, 6) — exclusively the hole-boundary geometry
   (circles 2, 5, 6: hole equator, geometric mean, heptagon inradius).

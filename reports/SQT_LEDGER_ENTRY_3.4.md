@@ -41,12 +41,26 @@ By **M.CW**, the substrate action cannot be *derived* from the
 K₇/Fano/sedenion combinatorics — it carries a metric, a scale, and a sign, the
 three quantities the Category Wall forbids combinatorics from producing. "Proof"
 therefore means the standard physics statement: the action is the **minimal
-local functional invariant under the framework's established symmetry**
-(G₂ = Aut(𝕆); the Fano subgroup PSL(2,7) of §1.1) **whose ground state,
-solitons, and excitations reproduce the existing T1/T2 structure**, importing
-only:
+local functional invariant under the framework's established symmetry** **whose
+ground state, solitons, and excitations reproduce the existing T1/T2 structure**,
+importing only:
 
 - **I1** field target (ψ ∈ ℂ⊗𝕆), **I2** GP kinetic form, **I3** one scale (m₀).
+
+**Three groups — keep them separate (§2.23 register split; corrected per §2.79).**
+The action is built on the octonion product, so any *finite* symmetry of the
+**action** must lift to an octonion automorphism:
+
+- **G₂ = Aut(𝕆)** — the continuous symmetry of the action. It acts on the 7
+  imaginary directions as its **irreducible 7**; this is what does the
+  GP-forcing (Schur ⇒ unique invariant metric).
+- **F₂₁** — the **realized finite Fano symmetry** on the algebra. By **§2.79**
+  (R1, over 𝔽₉₁₁ and ℚ) only F₂₁ ⊂ PSL(2,7) lifts into G₂; the other 147/168
+  collineations break the octonion sign rules and are **not** action symmetries.
+- **PSL(2,7)** — automorphism group of the **bare Fano incidence only**, *not* a
+  symmetry of the dynamical action. It is used solely for the **7 + 28**
+  classification of 3-subsets into lines / non-lines (a genuine PSL(2,7)-orbit
+  fact F₂₁ cannot supply, since 28 > 21) that G1′ / G1″ probe.
 
 This is the M.BRIDGE "ticket": three imports, declared up front. The candidate
 is the Gross–Pitaevskii / Bjerknes superfluid functional with a roton kernel;
@@ -72,9 +86,16 @@ environment), each ruling out a sector:
 | Gate | Sector | Finding | Register | Tool |
 |---|---|---|---|---|
 | **MV-G1** | vacuum density | roton-GP action crystallises to **p6m** (local ψ₆≈0.83); g=0 control stays uniform. Mechanism **viable**; the roton profile is **imported**. | R1 | `tools/mv_g1_minimiser.py` |
-| **G0** | symmetry-allowed terms | GL(3,2)=PSL(2,7) is **2-transitive** (invariant 2-tensors = {I, J}); triples split **7+28**. ⇒ contact potential forced to **standard GP**; 2-body kernel **scalar-per-channel**; Fano structure first possible at **3-body**. | R1+R2 | `tools/g0_invariants.py` |
+| **G0** | symmetry-allowed terms | **G₂ acts on the 7 as its irreducible 7 ⇒ (Schur) a unique invariant symmetric 2-tensor = the metric ⇒ 2-body contact kernel is a SINGLE scalar** (stricter than the {I, J} the *permutation* rep would give — that is the wrong module). Contact potential forced to **standard GP**. PSL(2,7)-incidence gives the **7 + 28** line/non-line split ⇒ Fano structure first possible at **3-body**. | R1\*+R2 | `tools/g0_invariants.py`† |
 | **G1′** | symmetric 3-body | the Fano density-product term is **inert** (line-lock Q=0.431=uniform baseline, 4 seeds), while a non-line control **orders** components (Q≈0.73). p6m survives both. Cause: the lines are a balanced **2-(7,3,1) design**. | R1+R2 | `tools/g1prime_fano3body.py` |
-| **G1″** | oriented 3-body | φ(ψ,ψ,ψ)≡0 (antisymmetry); the orientation density O=∫φ ψ∂ₓψ∂_yψ is a **total derivative** (0 on all smooth fields); on a skyrmion it is nonzero & orientation-odd **iff** the winding components form a **Fano line** (line: O=−12.47; non-line: O=0). | R1+R2 | `tools/g1pp_orientation.py` |
+| **G1″** | oriented 3-body | φ(ψ,ψ,ψ)≡0 (antisymmetry); the orientation density O=∫φ ψ∂ₓψ∂_yψ is a **total derivative ⇒ 0 on topologically TRIVIAL configurations** (vacuum, 1-D, trivial smooth 2-D), but **integrates to the topological charge on a (smooth) skyrmion** — nonzero & orientation-odd **iff** the winding components form a **Fano line** (line: O=−12.47; non-line: O=0). | R1\*+R2 | `tools/g1pp_orientation.py` |
+
+\* All four computations are **R1-pending-independent-reproduction**: reproducible
+from the committed tools but not yet re-run in the canonical sandbox (house norm:
+R1 closures are re-run at fold).  † `g0_invariants.py` correctly computes the
+PSL(2,7)-on-incidence orbit structure (the valid 7 + 28 split); the *action*
+2-body kernel is fixed instead by G₂-irreducibility (single scalar) — the tool's
+{I, J} output is the permutation-rep invariant, not the action kernel.
 
 The vacuum is **generic by necessity**: G0 forces GP, G1′ is symmetry-inert, G1″
 is topologically trivial in the bulk. This is M.CW expressing itself sector by
@@ -125,10 +146,10 @@ sector — the orientation (an import) can attach only to topology.
 
 | Task | Status |
 |---|---|
-| **§3.4-G0** (symmetry-allowed term list) | **First pass CLOSED (R1+R2); term list pre-registered.** Residual: full G₂ higher-quartic tensor tidy-up. |
-| **§3.4-MV-G1** (roton → p6m vacuum) | **PASS as "mechanism viable" (R1).** Roton profile imported (not symmetry-forced). |
-| **§3.4-G1′** (symmetric Fano 3-body) | **CLOSED — informative null (R1+R2):** inert by 2-design symmetry. |
-| **§3.4-G1″** (oriented Fano 3-body) | **CLOSED (R1+R2):** orientation is topological, Fano-line-selective, defect-only. |
+| **§3.4-G0** (symmetry-allowed term list) | **First pass CLOSED pending in-environment reproduction (R1\*+R2); term list pre-registered.** Kernel fixed by G₂-irreducibility (single scalar). Residual: F₂₁-invariant (not PSL-permutation) higher-order tidy-up. |
+| **§3.4-MV-G1** (roton → p6m vacuum) | **PASS as "mechanism viable" (R1\*), conditional on the imported roton profile.** Not symmetry-forced. |
+| **§3.4-G1′** (symmetric Fano 3-body) | **CLOSED pending in-environment reproduction — informative null (R1\*+R2):** inert by 2-design symmetry. |
+| **§3.4-G1″** (oriented Fano 3-body) | **CLOSED pending in-environment reproduction (R1\*+R2):** orientation is topological, Fano-line-selective, defect-only. |
 | **§3.4-G2-orient** (Fano-line linking charge on the soliton core) | **Open — the located fingerprint; the concrete G2 prediction.** |
 | **§3.4-G1‴ / G4** (collective tiling; Bjerknes pulsation = ζ) | **Open — downstream of a soliton that locks a core.** |
 
@@ -144,11 +165,15 @@ Companion reports: `reports/SQT_3.4_PROOF_PROGRAM.md` (the full gate spec),
 
 ## §3.4.I — Fold-in notes
 
-- Replace the Part VI "§3.4 Bjerknes-action audit (Paper II scope) — Open" line
-  with the §3.4.G task block; this entry is its expansion.
+- **KEEP** the standalone Part VI "§3.4 Bjerknes-action audit (Paper II scope) —
+  Open" row (it is the load-bearing open gate) and **ADD the §3.4.G block beneath
+  it** — do **not** replace it, or the open gate disappears into a list of
+  mostly-"CLOSED" sub-tasks.
+- **Version: this is v4.26**, not v4.25 (v4.25 is the §3.07 seven-circles fold-in).
 - Register honesty: **nothing is an observable bridge.** The promoted content is
-  the §3.4.B structural theorem (R2) resting on four R1 computations. Gate
-  *targets* carry their own labels; only G2-orient is the live physical gate.
+  the §3.4.B **locality observation** (R2) resting on four
+  R1-pending-reproduction computations. Gate *targets* carry their own labels;
+  only G2-orient is the live physical gate.
 - The Eddington watch and the §3.4.A import ticket travel with every sub-gate
   until G2 is attempted.
 
@@ -162,15 +187,17 @@ additive updates proposed (Part VI §3.4 line → task block; cross-refs to §1.
 
 **Version-tag style (v4.x):**
 
-> **v4.25** — June 3, 2026 — **§3.4-SYM: symmetry/locality structure of the
+> **v4.26** — June 3, 2026 — **§3.4-SYM: symmetry/locality structure of the
 > Bjerknes vacuum action (a §3.4 sub-result; the load-bearing §3.4 gates §2.52
 > Open 3 and §2.45-NGA/§2.53 remain OPEN and untouched; the Part VI "§3.4 audit
 > — Open" row stands).** Add the symmetry sub-program (gates G0–G5 + MV-G1) and
 > its first results. Promote one **locality observation (R2; supporting
-> computations R1-pending-independent-reproduction):** the Fano/PSL(2,7)
-> content is invisible to the substrate vacuum at every local order — G0 forces
-> the contact potential to standard GP (G₂ irreducible on ℝ⁷; PSL(2,7)
-> 2-transitive ⇒ 2-body kernel scalar-per-channel); G1′ shows the symmetric
+> computations R1-pending-independent-reproduction):** the Fano content is
+> invisible to the substrate vacuum at every local order — G0 forces the
+> contact potential to standard GP (**G₂-irreducibility on the 7 ⇒ a
+> single-scalar 2-body kernel**; the realized finite algebra symmetry is **F₂₁**,
+> not PSL(2,7), per **§2.79**; PSL(2,7) supplies only the **7+28** line/non-line
+> incidence split); G1′ shows the symmetric
 > Fano 3-body term is dynamically inert (balanced 2-(7,3,1) design; line-lock
 > Q=0.43=baseline vs control 0.73); G1″ shows the orientation term is a
 > topological total derivative — and the content lives ONLY on topological
@@ -187,4 +214,4 @@ additive updates proposed (Part VI §3.4 line → task block; cross-refs to §1.
 
 | Version | Date | Changes |
 |---|---|---|
-| v4.25 | Jun 3, 2026 | §3.4-SYM (sub-result; §3.4 load-bearing gates §2.52 Open 3, §2.45-NGA remain open). Locality observation (R2; computations R1-pending-reproduction): Fano content invisible to the vacuum (G0→GP; G1′ 2-design-inert; G1″ orientation = topological total derivative), lives only on Fano-line soliton-core defects. MV-G1 vacuum = p6m **given an imported roton**. Import ticket I1–I3. Open §3.4-G2-orient. Append-only. |
+| v4.26 | Jun 3, 2026 | §3.4-SYM (sub-result; §3.4 load-bearing gates §2.52 Open 3, §2.45-NGA remain open; audit row stands). Locality observation (R2; computations R1-pending-reproduction): Fano content invisible to the vacuum (G0→GP via G₂-irreducible single-scalar kernel; realized finite symmetry is F₂₁ not PSL(2,7), §2.79; PSL(2,7) only for the 7+28 split; G1′ 2-design-inert; G1″ orientation = topological, 0 on trivial configs, = charge on a Fano-line skyrmion), lives only on Fano-line soliton-core defects. MV-G1 vacuum = p6m **given an imported roton**. Import ticket I1–I3. Open §3.4-G2-orient. Append-only. |

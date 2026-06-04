@@ -6,6 +6,14 @@
 **Program:** §3.4-G1″ (raised in `reports/SQT_3.4_G1prime_FIRST_PASS.md` §G1′.5).
 **Eddington watch:** ACTIVE — every claim is a vanishing/non-vanishing test with
 an explicit control (non-line triple; orientation reversal).
+**Register caveat:** R1 = **pending independent reproduction** (reproducible from
+the committed tool, not yet re-run in the canonical sandbox).
+
+> **⚠ WORDING CORRECTION (2026-06-03).** Where this document says O is "zero on
+> all smooth fields," read **"zero on topologically TRIVIAL configurations."** A
+> skyrmion is a *smooth* field; O is a total derivative that integrates to the
+> **topological charge** on it (Fano-line skyrmion O=−12.47, non-line O=0). The
+> load-bearing claim is the topological selection, not smoothness.
 
 > **Question.** G1′ showed the *symmetric* Fano 3-body term is dynamically inert
 > (balanced 2-design). G1″ tests the term carrying the Fano **orientation** — the

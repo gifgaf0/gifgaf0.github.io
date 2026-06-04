@@ -12,6 +12,19 @@ to GP; 2-body kernel form) + **R3** for the forward program (the 3-body Fano gat
 > enumerated and recorded **before** computing the ground state, so the MV-G1
 > kernel is audited rather than assumed. This is that record.
 
+> **⚠ CORRECTION (per §2.79 audit, 2026-06-03) — read before using the kernel
+> claim below.** This document derives the 2-body kernel from the **permutation
+> rep** of PSL(2,7) (2-transitive ⇒ {I, J}). That is the wrong module for the
+> *action*: G₂ does not act on the 7 imaginaries by permutations but as its
+> **irreducible 7**, so by Schur the invariant symmetric 2-tensor is **unique
+> (the metric) and the 2-body contact kernel is a SINGLE scalar** — stricter than
+> {I, J}. Also, by **§2.79** only **F₂₁ ⊂ PSL(2,7)** lifts to octonion
+> automorphisms, so the realized finite *action* symmetry is **F₂₁, not
+> PSL(2,7)**. What the orbit computation here *correctly* supplies is the
+> bare-incidence **7 + 28** line/non-line split (a genuine PSL(2,7)-orbit fact),
+> which is all G1′/G1″ use. The "Fano first at 3-body" conclusion stands, derived
+> from G₂-irreducibility. See `reports/SQT_LEDGER_ENTRY_3.4.md` §3.4.A/§3.4.B.
+
 ---
 
 ## §G0.1 — Import declaration (I1, restated)

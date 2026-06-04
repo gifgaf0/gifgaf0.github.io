@@ -1,18 +1,37 @@
-# Ledger Entry — §3.4 — The Bjerknes Substrate Program: First Computational Arc
+# Ledger Entry — §3.4-SYM — Symmetry & Locality Structure of the Bjerknes Vacuum Action
 
 **Date:** June 3, 2026
-**Register:** **R2** (the proof methodology + the structural theorem) · **R1**
-(the four computations: orbit structure, GP ground state, multi-component
-ordering, octonion 3-form topology — all exact or reproducible) · **R3** (the
-candidate action and the forward soliton gate).
+**Register:** **R2** (the methodology + the locality/no-go observation) · **R1
+— pending independent reproduction** (the four computations are reproducible
+from committed code but have NOT yet been re-run in the canonical ledger
+environment; do not promote on this self-report) · **R3** (the candidate action
+and the forward soliton gate).
 **Cluster:** Continuum-limit / substrate dynamics (Paper II scope).
-**Status:** **Supersedes the bare "§3.4 Bjerknes-action audit — Open" placeholder**
-in Part VI with a structured program AND its first results. Program of record;
-the only physical *claim* promoted is a structural theorem about where the
-framework's content can and cannot appear. No observable bridge is asserted.
+
+> **SCOPE — READ FIRST.** This is **§3.4-SYM**, a *sub-result* about the symmetry
+> and term structure of the Bjerknes vacuum action. **It does NOT advance the
+> load-bearing §3.4 gates** — **§2.52 Open 3** (pulsation ratio = ζ without
+> external fit, flagged as *the* most structurally important remaining gate) and
+> **§2.45-NGA / §2.53** (the bilateral-fold derivation that prior-addresses
+> cos(π/10)) — which remain **OPEN and untouched**, as does the Part VI
+> "§3.4 Bjerknes-action audit — Open" row. File §3.4-SYM *beside* those gates,
+> not as progress on them. **Constructive link:** §3.4-SYM *constrains* those
+> gates — by the result below, if the pulsation-ζ and bilateral-fold closures
+> are framework-specific they must live in the **soliton/defect sector**, not
+> the vacuum.
+>
+> **The one conditional in the headline:** MV-G1's p6m selection is conditional
+> on an **imported roton profile** (I1–I3 below). Its scope is "given the roton
+> dispersion," **not** "from Császár/substrate axioms."
+
+**Status:** Sub-result of record. The only promoted content is the §3.4.B
+locality observation (R2). **No observable bridge is asserted; the §3.4 gates
+are not closed or advanced.**
 **Eddington watch:** ACTIVE (high) — the G0 term list was pre-registered before
-the ground state was computed (§3.4.3 discipline); every dynamical test carries
-an explicit control.
+the ground state was computed; every dynamical test carries an explicit control.
+**Scaffolding-ratio caveat:** four tools / six reports / one figure / seven
+commits underlie a single modest R2 claim; under the program's own
+"acceleration is a warning sign" rule, weight the claim, not the volume.
 
 ---
 
@@ -34,14 +53,21 @@ is the Gross–Pitaevskii / Bjerknes superfluid functional with a roton kernel;
 particles are knotted vortex solitons; the secondary Bjerknes force is the
 inter-soliton interaction.
 
-## §3.4.B — The structural theorem (R2, the principal result of this arc)
+## §3.4.B — The locality / no-go observation (R2, the one promoted claim)
+
+*(Stated modestly: this is a locality statement about the vacuum action, not a
+grand "theorem." It reduces to: the bulk vacuum action carries no Fano-sensitive
+term at any local order, so the Fano content can only appear as an orientation
+charge on defect cores.)*
 
 > **The framework-specific Fano/PSL(2,7) content is invisible to the substrate
 > VACUUM at every local order. It can appear only on TOPOLOGICAL DEFECTS —
 > soliton / vortex cores — where it is a topological orientation charge that
 > selects Fano-LINE windings.**
 
-Established by four computations, each ruling out a sector:
+Supported by four computations (each **R1-pending-independent-reproduction** —
+reproducible from the committed tools, not yet re-run in the canonical
+environment), each ruling out a sector:
 
 | Gate | Sector | Finding | Register | Tool |
 |---|---|---|---|---|
@@ -136,10 +162,12 @@ additive updates proposed (Part VI §3.4 line → task block; cross-refs to §1.
 
 **Version-tag style (v4.x):**
 
-> **v4.25** — June 3, 2026 — **§3.4 Bjerknes substrate program, first
-> computational arc.** Supersede the bare "§3.4 audit — Open" placeholder with a
-> structured proof program (gates G0–G5 + MV-G1) and its first results. Promote
-> one **structural theorem (R2 on four R1 computations):** the Fano/PSL(2,7)
+> **v4.25** — June 3, 2026 — **§3.4-SYM: symmetry/locality structure of the
+> Bjerknes vacuum action (a §3.4 sub-result; the load-bearing §3.4 gates §2.52
+> Open 3 and §2.45-NGA/§2.53 remain OPEN and untouched; the Part VI "§3.4 audit
+> — Open" row stands).** Add the symmetry sub-program (gates G0–G5 + MV-G1) and
+> its first results. Promote one **locality observation (R2; supporting
+> computations R1-pending-independent-reproduction):** the Fano/PSL(2,7)
 > content is invisible to the substrate vacuum at every local order — G0 forces
 > the contact potential to standard GP (G₂ irreducible on ℝ⁷; PSL(2,7)
 > 2-transitive ⇒ 2-body kernel scalar-per-channel); G1′ shows the symmetric
@@ -150,12 +178,13 @@ additive updates proposed (Part VI §3.4 line → task block; cross-refs to §1.
 > non-line O=0). MV-G1: roton-GP vacuum crystallises to p6m (mechanism viable;
 > roton profile imported, not symmetry-forced). Declare the I1–I3 import ticket.
 > Open **§3.4-G2-orient** (Fano-line linking charge on the knotted-vortex /
-> Császár-torus soliton core) as the single concrete forward prediction. Tools:
-> `mv_g1_minimiser.py`, `g0_invariants.py`, `g1prime_fano3body.py`,
-> `g1pp_orientation.py`. **No observable bridge asserted.** Append-only.
+> Császár-torus soliton core) as the single concrete forward prediction. Tools
+> (crypto branch, re-verify before promotion): `mv_g1_minimiser.py`,
+> `g0_invariants.py`, `g1prime_fano3body.py`, `g1pp_orientation.py`. **No
+> observable bridge asserted; §3.4 load-bearing gates not advanced.** Append-only.
 
 **Table-row style (v2 §9 format):**
 
 | Version | Date | Changes |
 |---|---|---|
-| v4.25 | Jun 3, 2026 | §3.4 Bjerknes program first arc. Structural theorem (R2/4×R1): Fano content invisible to the vacuum (G0→GP; G1′ 2-design-inert; G1″ orientation = topological total derivative), lives only on Fano-line soliton-core defects. MV-G1 vacuum = p6m (roton imported). Import ticket I1–I3 declared. Open §3.4-G2-orient. Append-only. |
+| v4.25 | Jun 3, 2026 | §3.4-SYM (sub-result; §3.4 load-bearing gates §2.52 Open 3, §2.45-NGA remain open). Locality observation (R2; computations R1-pending-reproduction): Fano content invisible to the vacuum (G0→GP; G1′ 2-design-inert; G1″ orientation = topological total derivative), lives only on Fano-line soliton-core defects. MV-G1 vacuum = p6m **given an imported roton**. Import ticket I1–I3. Open §3.4-G2-orient. Append-only. |

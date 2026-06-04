@@ -174,6 +174,11 @@ def main():
           f"{orbitals}")
     print(f"  ⇒ 2-transitive: {'YES ✓' if len(o2o) == 1 else 'no'}  "
           f"⇒ invariant symmetric 2-tensors: dim {orbitals} = span{{I, J}}")
+    print("    ⚠ CORRECTION (per §2.79): {I,J} is the PERMUTATION-rep invariant —")
+    print("      the WRONG module for the action. G₂ acts on the 7 as its irreducible")
+    print("      7, so by Schur the action's invariant symmetric 2-tensor is UNIQUE")
+    print("      (the metric) ⇒ 2-body kernel is a SINGLE scalar. The valid output")
+    print("      of THIS tool is the 7+28 incidence split below, not the kernel.")
     print()
 
     # unordered k-subsets
@@ -210,9 +215,13 @@ def main():
     the coassociative 4-form is antisymmetric ⇒ no bosonic quartic beyond
     (|ψ|²)². The octonion structure adds NOTHING to the contact potential.
 
-  2-BODY NON-LOCAL KERNEL:
-    2-transitivity ⇒ only invariant 2-tensors are I and J ⇒
-        K_ij(r) = a(r)·δ_ij + b(r)·J_ij   (scalar-per-channel).
+  2-BODY NON-LOCAL KERNEL  [CORRECTED per §2.79 — see warning above]:
+    The action symmetry on the algebra is G₂ = Aut(𝕆) (only F₂₁⊂PSL(2,7) lifts
+    as an unsigned basis permutation; all 168 lift with signs → G_sp order 1344).
+    G₂ acts irreducibly on the 7 ⇒ (Schur) a UNIQUE invariant symmetric 2-tensor
+    (the metric) ⇒ the 2-body kernel is a SINGLE scalar K_ij(r)=a(r)·δ_ij — even
+    stricter than the {I,J}/scalar-per-channel the permutation rep suggests.
+    (Verified in-env: dim 1 under G₂/G_sp, dim 2 under F₂₁ alone.)
     NO finer Fano structure at 2-body. A roton (negative Ũ-lobe at finite k)
     is PERMITTED via the radial profile a(r)/b(r) but is NOT FORCED by the
     symmetry — the profile is an M.CW import (I2/I3). The MV-G1 soft-core

@@ -163,6 +163,11 @@ def analyse(rho, dx, L, triples):
     drho = rho_tot - rho_tot.mean()
     contrast = float(drho.std() / rho_tot.mean())
     peaks = _local_max(rho_tot, rho_tot.mean() + 0.5 * rho_tot.std())
+    if len(peaks) < 7:
+        # collapsed/uniform (e.g. a control that over-concentrates to one peak):
+        # ψ6 is undefined with <7 neighbours — guard as bond_orientational() does.
+        return {"contrast": contrast, "psi6": 0.0, "n_peaks": int(len(peaks)),
+                "Q": 0.0}
     # psi6 of the total-density lattice (local bond order)
     P = peaks.astype(float) * dx
     psi6 = []

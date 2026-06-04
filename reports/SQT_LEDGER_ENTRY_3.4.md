@@ -129,3 +129,33 @@ Companion reports: `reports/SQT_3.4_PROOF_PROGRAM.md` (the full gate spec),
 *Append-only discipline preserved. No prior ledger content modified. Two surgical
 additive updates proposed (Part VI §3.4 line → task block; cross-refs to §1.1,
 §2.15, §2.74). June 3, 2026.*
+
+---
+
+## §3.4.J — Changelog line (drop into the ledger §9 / version history)
+
+**Version-tag style (v4.x):**
+
+> **v4.25** — June 3, 2026 — **§3.4 Bjerknes substrate program, first
+> computational arc.** Supersede the bare "§3.4 audit — Open" placeholder with a
+> structured proof program (gates G0–G5 + MV-G1) and its first results. Promote
+> one **structural theorem (R2 on four R1 computations):** the Fano/PSL(2,7)
+> content is invisible to the substrate vacuum at every local order — G0 forces
+> the contact potential to standard GP (G₂ irreducible on ℝ⁷; PSL(2,7)
+> 2-transitive ⇒ 2-body kernel scalar-per-channel); G1′ shows the symmetric
+> Fano 3-body term is dynamically inert (balanced 2-(7,3,1) design; line-lock
+> Q=0.43=baseline vs control 0.73); G1″ shows the orientation term is a
+> topological total derivative — and the content lives ONLY on topological
+> defects (soliton cores), selecting Fano-line windings (skyrmion: line O=−12.47,
+> non-line O=0). MV-G1: roton-GP vacuum crystallises to p6m (mechanism viable;
+> roton profile imported, not symmetry-forced). Declare the I1–I3 import ticket.
+> Open **§3.4-G2-orient** (Fano-line linking charge on the knotted-vortex /
+> Császár-torus soliton core) as the single concrete forward prediction. Tools:
+> `mv_g1_minimiser.py`, `g0_invariants.py`, `g1prime_fano3body.py`,
+> `g1pp_orientation.py`. **No observable bridge asserted.** Append-only.
+
+**Table-row style (v2 §9 format):**
+
+| Version | Date | Changes |
+|---|---|---|
+| v4.25 | Jun 3, 2026 | §3.4 Bjerknes program first arc. Structural theorem (R2/4×R1): Fano content invisible to the vacuum (G0→GP; G1′ 2-design-inert; G1″ orientation = topological total derivative), lives only on Fano-line soliton-core defects. MV-G1 vacuum = p6m (roton imported). Import ticket I1–I3 declared. Open §3.4-G2-orient. Append-only. |

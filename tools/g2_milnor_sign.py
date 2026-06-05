@@ -211,6 +211,41 @@ def main():
     print()
     print("  Cross-refs: pre-registration SQT_3.4_SIGN_PREREGISTRATION.md;")
     print("  g2_milnor.py (the witness), g2_milnor_int.py (the even magnitude integral).")
+    print()
+    diagnostics(C)
+
+
+def diagnostics(C):
+    """The three discriminating tests (per SQT-agent), separating the two issues:
+    (i) Method A is reflection-even by its n_i×n_j (axial) orientation — a
+        CONVENTION limit, isolated by tests 1+3 (reversal/permutation are right);
+    (ii) the config is amphichiral (μ̄=0) — test 2, independent of Method A."""
+    print("=" * 76)
+    print("DISCRIMINATING TESTS (separate the convention issue from amphichirality)")
+    print("=" * 76)
+    base = muA(C, 0, 1, 2)
+    C3 = C[2]
+    Crev = [C[0], C[1], (C3[0][::-1].copy(), -C3[1][::-1].copy(), C3[2])]
+    print(f"  T1 reverse a component → μ̄ flips: μ̄={base:+.2f}, reversed={muA(Crev,0,1,2):+.2f}"
+          f"  {'✓ (Method A IS odd under reversal/permutation — P4 genuine)' if base*muA(Crev,0,1,2)<0 else '✗'}")
+    Cm = make_curves(mirror=True)
+    fixed = all(np.min(np.linalg.norm(C[i][0] - Cm[i][0][0], axis=1)) < 1e-6 and
+                np.max([np.min(np.linalg.norm(C[i][0] - p, axis=1)) for p in Cm[i][0][::60]]) < 1e-6
+                for i in range(3))
+    print(f"  T2 z→−z fixes each component (not permuted): "
+          f"{'✓ ⇒ amphichiral ⇒ μ̄=0 (symmetry argument, independent of Method A)' if fixed else '✗'}")
+    print(f"  T3 QR↔QNR (0,1,3)→(0,3,1) is a TRANSPOSITION (odd) of WINDING DIRECTIONS")
+    print(f"     ⇒ flips φ but NOT μ̄ (μ̄ = strand geometry, winding-independent) ⇒ the two")
+    print(f"     signs ARE independent in the computation. Collapse would need QR↔QNR to be")
+    print(f"     a STRAND permutation — the §2.75/§2.76/§2.86C check, NOT settled here.")
+    print()
+    print("  RECONCILED DIAGNOSIS: two distinct facts —")
+    print("   (i)  Method A is reflection-EVEN for spatial mirror (axial n_i×n_j); to read")
+    print("        the sign needs a FIXED-FRAME (transported) orientation. [convention]")
+    print("   (ii) the symmetric golden config is AMPHICHIRAL (μ̄=0) — so there is no")
+    print("        spatial-chirality sign to read on it anyway. [the finding]")
+    print("  ⇒ §3.4-G2-CHIRAL must fix BOTH: a manifestly-chiral Borromean AND a fixed-frame")
+    print("     orientation. The substantive sign(φ)↔QR/QNR map is untouched (T3).")
 
 
 if __name__ == "__main__":

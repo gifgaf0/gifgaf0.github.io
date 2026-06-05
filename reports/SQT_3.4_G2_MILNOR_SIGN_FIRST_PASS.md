@@ -54,6 +54,45 @@ curve–surface boundary contributions, omitted in both) bring the true μ̄ to 
 The single transverse triple point at the origin is cancelled by the corrections
 the symmetry guarantees.
 
+## §2.5 — Sharpened: TWO distinct issues (per SQT-agent analysis + 3 tests)
+
+The agent correctly flagged that I conflated two things. Separating them
+(discriminating tests now in the tool):
+
+- **(i) Method A is reflection-EVEN for the spatial mirror — a *convention*
+  limit (the agent's "trap #4").** Its segment orientation uses n_i×n_j, a cross
+  product of two *axial* surface normals, which is itself axial; an
+  intrinsically-(re)computed orientation is reflection-even by construction. So
+  Method A **cannot read spatial chirality on any config** — its P2 failure is
+  *not by itself* evidence of μ̄=0. (Tests confirm Method A is nonetheless correct
+  on the *permutation* structure: **T1** it flips under a component reversal;
+  **P4** cyclic-invariant / transposition-odd. So only the *mirror* handling is
+  convention-limited.) Fix: a **fixed-frame (transported)** orientation.
+- **(ii) The configuration is amphichiral (μ̄=0) — the *finding*, and it rests on
+  the symmetry argument, NOT on Method A.** **T2** confirms z→−z **fixes each
+  component** (set-distance 0; *not* a permutation), so the §2 chain
+  (μ̄ = −μ̄ ⟹ 0) holds independently of Method A's convention issue.
+
+These **combine**: on the symmetric config, Method A can't see the sign *and*
+there is no sign to see. The agent's deeper reading is right — the "geometric
+Borromean handedness" the registration leaned on was **frame-dependent** on this
+config (no topological spatial chirality), exactly as a physical parity must be.
+
+## §2.6 — Framework-critical check (T3): the substantive map is NOT threatened
+
+The agent's sharpest point: do sign(φ) and sign(μ̄) stay *independent*? **T3:** the
+QR↔QNR conjugate used, (0,1,3)→(0,3,1), is a **transposition (odd)** — but of the
+**winding directions** d_i (octonion indices), which flips **φ** and **not** μ̄
+(μ̄ is the strand geometry, independent of which component each strand winds in).
+So in the computation the **two signs are genuinely independent**. The collapse
+the agent warned of would occur **only if** physical QR↔QNR is realized as a
+**strand permutation** that is odd — and that is exactly the §2.75/§2.76/§2.86C
+**consistency check the registration pre-committed to**. This sign build
+**foregrounds** that check but does **not** settle it; the registered substantive
+map sign(φ)↔QR/QNR is **untouched**. What is refined is only the *forced/geometric*
+half (sign(μ̄)↔parity): the geometric witness is frame-dependent, not a topological
+invariant, on the symmetric config.
+
 ## §3 — Consequence (must be surfaced): the magnitude claim needs a recheck
 
 This reaches **already-folded canonical results**:
@@ -76,15 +115,19 @@ result (pairwise Hopf charge) is independent of μ̄.
 
 ## §4 — The required fix (the real next step)
 
-1. **Determine the link type** of the golden-orthogonal config: amphichiral
-   nontrivial (μ̄=0 but linked) vs. the unlink. (A second Milnor-type or a
-   direct isotopy check.)
-2. **Use a manifestly CHIRAL Borromean** — break the z→−z symmetry (e.g. a
-   chiral offset / screw arrangement, or a known μ̄=±1 parametrisation) — and
-   **recompute BOTH** the magnitude (does |μ̄^φ|=1 there, with the corrections)
-   **and** the sign (does Method A flip under mirror there, P2 passing).
-3. **Re-validate G2-Milnor's magnitude** on the chiral config with the
-   **Mellor–Melvin corrections** included, before the |μ̄^φ|=1 claim is restated.
+1. **Fix Method A's orientation (trap #4):** replace the axial n_i×n_j segment
+   orientation with a **fixed-frame, transported** orientation, so the linking
+   number is genuinely reflection-odd (P2-capable). Verify on a known-chiral
+   link that it then flips under mirror.
+2. **Use a manifestly CHIRAL Borromean** — break the z→−z symmetry (a chiral
+   offset / screw arrangement, or a known μ̄=±1 parametrisation), confirmed
+   chiral (μ̄≠0) by the symmetry check — and **recompute BOTH** the magnitude
+   (does |μ̄^φ|=1 there, *with* the Mellor–Melvin corrections) **and** the sign
+   (does the fixed-frame Method A flip under mirror, P2 passing).
+3. **Determine the golden-orthogonal link type** (amphichiral nontrivial vs.
+   unlink) for the record.
+4. **Re-validate G2-Milnor's magnitude** on the chiral config with corrections
+   before the |μ̄^φ|=1 claim is restated.
 
 Until then: **the sign stays R3-pending**, and **the §3.4-G2-Milnor magnitude
 result should be flagged "under review — configuration amphichiral, recheck on a

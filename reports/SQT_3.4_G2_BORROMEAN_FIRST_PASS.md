@@ -27,12 +27,16 @@ result; a wrong handedness scalar (reflection-even) was caught and replaced.
 | **(C)** φ-weight, **Fano line** (0,1,3) | φ_abc = **+1** | triple invariant can be nonzero ✓ |
 | (C) φ-weight, **non-line** (0,1,2) | φ_abc = **0** | μ̄^φ ≡ 0 off the lines ✓ |
 
-**(A) The meson-sector observable is identically blind to the baryon.** On a
-genuine Borromean configuration (three mutually-perpendicular golden ellipses)
-all three pairwise Gauss linking integrals vanish, while a Hopf link gives
-\|lk\|=1. So the pairwise Hopf/helicity charge of G2-orient cannot see the
-Borromean's defining inter-strand binding. The reframe is confirmed: the baryon
-requires a higher-arity invariant.
+**(A) The meson-sector observable is identically blind to the baryon.** All
+three pairwise Gauss linking integrals vanish, while a Hopf link gives |lk|=1.
+So the pairwise Hopf/helicity charge of G2-orient cannot see the Borromean's
+defining inter-strand binding. **Precision (necessary ≠ sufficient):** pairwise
+lk = 0 is *necessary* for Borromean but does **not** by itself prove the link is
+genuinely Borromean — three *separated* loops are also pairwise-unlinked and have
+μ̄ = 0. The genuine Borromean-ness here is supplied by the **construction** (the
+standard three-orthogonal-golden-ellipse realization, μ̄ = ±1); G2-Milnor must
+confirm μ̄ = ±1 on the *unweighted* link before applying φ. The reframe stands:
+the baryon requires a higher-arity invariant.
 
 **(B) The chirality the Hopf charge lacked is present in the link topology.** A
 configuration handedness pseudoscalar (det of one sample point per loop — a
@@ -49,19 +53,33 @@ otherwise — the same arity ladder as G0 (2-body blind; Fano structure first at
 
 ## §GB.2 — The pre-registered gate (R3 → R1 target)
 
-> **G2-Borromean (proper).** Compute the **φ-weighted Milnor triple-linking
-> μ̄₁₂₃^φ** on the Borromean strands (third-order helicity / Massey product;
-> tractable precisely because all pairwise linkings vanish). **Predictions,
-> recorded now:**
-> 1. **μ̄₁₂₃^φ ≠ 0 iff** the three winding directions form a **Fano line**
->    (arity match: triple invariant ↔ 3-point line ↔ associative 3-form φ).
-> 2. **sign(μ̄₁₂₃^φ) = the Borromean chirality** (left/right ⇒ ±1) — supplying the
->    handedness the orientation-even Q_φ could not carry, and tying it to QR/QNR
->    (§2.75/§2.76) and matter/antimatter.
+> **G2-Milnor (proper).** Compute the **φ-weighted Milnor triple-linking
+> μ̄₁₂₃^φ = φ_{a₁a₂a₃}·μ̄₁₂₃** on the Borromean strands. Discipline (per audit):
 >
-> Milnor invariants are subtle to evaluate; the numeric is **not faked** in this
-> first pass. **Hold** any brute-force knotted-soliton energy relaxation until
-> this gate reports.
+> - **Compute μ̄ two independent ways** — the third-order-helicity / Massey-product
+>   integral (needs the pairwise potential 1-forms, which exist *because* lk = 0)
+>   **and** the combinatorial Seifert-surface triple-point count (robust sign).
+>   The two-method cross-check is the discipline that has caught every error in
+>   this thread; a naive triple integral does **not** give the integer.
+> - **Pre-registered magnitude (the falsifiable core, committed now):**
+>   |μ̄^φ| = 1 on a Fano-line **genuine** Borromean; **0 off-line**; **0 on a
+>   non-Borromean (separated/pairwise-only) link**. Confirm μ̄ = ±1 on the
+>   unweighted link first.
+> - **The sign is the Eddington-exposed claim — disentangle it.** μ̄^φ carries
+>   **two independent signs**: (i) the geometric Borromean handedness sign(μ̄),
+>   which flips under a **spatial mirror**; (ii) the φ-orientation sign(φ), which
+>   flips under **cyclic reassignment of which strand winds in which line-point**
+>   (the QNR-conjugate line, §2.75/§2.76). "sign = chirality" can be matched
+>   post-hoc to *either* — so **vary the two independently** (mirror the config vs.
+>   reassign/QNR-conjugate the windings) and **pre-commit, before computing,
+>   which physical chirality maps to which sign.** The genuinely interesting,
+>   registrable prediction: whether QR/QNR algebraic orientation lives in
+>   sign(φ) while matter/antimatter lives in sign(μ̄), or whether they coincide.
+>   This mapping is a **framework (§2.75/§2.76) pre-commitment**, not something to
+>   read off the computation.
+>
+> Milnor invariants are subtle; the numeric is **not faked** here. **Hold** any
+> brute-force knotted-soliton energy relaxation until this gate reports.
 
 ## §GB.3 — Scope / what this does and does not establish
 
@@ -72,6 +90,13 @@ otherwise — the same arity ladder as G0 (2-body blind; Fano structure first at
   physical baryon soliton; assert any observable bridge; close §2.15. The
   handedness scalar in (B) is a sample-dependent chirality check, not the
   topological invariant.
+- **Boundary to keep explicit (so §2.15 is not over-read):** G2-Milnor on
+  *idealized curves* tests only the **topological selection rule and chirality
+  structure**. It does **not** show that a stable **field** (Faddeev–Hopf)
+  soliton *realizes* a Borromean three-strand — Hopf solitons are π₃(S²) objects
+  and Borromean field configurations are exotic, so "does a stable Borromean
+  Faddeev–Hopf soliton exist" is the genuinely hard deferred step (the real
+  **G2-knot**). Brute-force soliton relaxation stays held until μ̄ reports.
 
 ## §GB.4 — Proposed Part VI open-task update
 

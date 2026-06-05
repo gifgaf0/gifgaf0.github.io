@@ -196,17 +196,25 @@ def main():
   Fano line AND the strands are genuinely Borromean — the pre-registered
   prediction holds.
 
-  SIGN STRUCTURE (R1 for independence; chiral sign = polar handedness, mirror-
-  validated): μ̄^φ = sign(φ)·|μ̄|·sign(μ̄) carries TWO independent ±1 signs that
-  flip under TWO independent operations — sign(μ̄) under a spatial mirror,
-  sign(φ) under QR↔QNR winding reassignment (all four combinations realized).
+  SIGN STRUCTURE — what is R1 is the FACTORIZATION: μ̄^φ = sign(φ)·|μ̄|·sign(μ̄)
+  carries TWO independent ±1 degrees of freedom flipping under TWO independent
+  operations — a rigorous algebraic φ-orientation (QR↔QNR reassignment) and a
+  reflection-odd geometric handedness WITNESS (spatial mirror). The witness's
+  identification with the rigorous topological sign(μ̄) is R3-pending the Massey
+  integral; and the triple-point MAGNITUDE method is config-specialized (exact
+  for these orthogonal flat disks), validated on controls, with the integral as
+  the general authority.
 
-  PHYSICAL SIGN-MAP — *framework pre-commit required; NOT asserted here.*
-     ┌─ sign(μ̄)  [flips under spatial mirror]        ↔  ???
-     └─ sign(φ)   [flips under QR↔QNR reassignment]    ↔  ???
-  Whether spatial parity and the QR/QNR algebraic chirality (§2.75/§2.76) are
-  DISTINCT (one in each sign) or COINCIDE is the registrable prediction; this
-  computation supplies the two independent signs but does NOT decide the map.
+  PHYSICAL SIGN-MAP — REGISTERED V4.29 (framework pre-commit; see
+  reports/SQT_3.4_SIGNMAP_REGISTRATION.md). NOT confirmed by the mirror flip:
+     ┌─ sign(μ̄)  [flips under spatial mirror]       ↔  spatial PARITY (forced —
+     │                                                  not a discovery)
+     └─ sign(φ)   [flips under QR↔QNR reassignment]   ↔  QR/QNR algebraic chirality
+                                                         (§2.75/§2.76) = the baryon's
+                                                         matter/antimatter chirality
+                                                         (the SUBSTANTIVE claim)
+  Registered DISTINCT (two Z₂'s). TEST = consistency of the sign(φ)↔QR/QNR half
+  with §2.75/§2.76 + §2.86C + the matter/antimatter assignment — NOT the mirror.
 
   OPEN (honest): (1) the independent 3rd-order-helicity INTEGRAL cross-check —
   the rigorous chiral sign(μ̄) and a second magnitude method (not faked);

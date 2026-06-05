@@ -43,10 +43,16 @@ This is the baryon-sector realization of the arity ladder: a cubic (triple)
 invariant, matching the 3-point Fano lines and the associative 3-form φ, nonzero
 exactly where G0 said Fano structure first becomes possible.
 
-## §GM.2 — The two independent signs (R1 for the structure)
+## §GM.2 — The two independent signs (R1 = the factorization)
 
-μ̄^φ = sign(φ)·|μ̄|·sign(μ̄) couples **two independent ±1 signs**, which flip under
-**two independent operations** (all four combinations realized):
+**What is R1 is the *factorization*:** μ̄^φ couples **two independent ±1 degrees
+of freedom** flipping under **two independent operations** (all four combinations
+realized). One is the rigorous algebraic φ-orientation; the other is a
+**reflection-odd geometric handedness *witness***. *Precision (per audit):* the
+witness's identification with the rigorous **topological** sign(μ̄) is
+**R3-pending the Massey integral** — the R1 claim is "two independent sign DOF,"
+not "sign(μ̄) = this witness." (The magnitude method is also config-specialized;
+see §GM.5.)
 
 | windings | space | μ̄^φ |
 |---|---|---:|
@@ -62,20 +68,24 @@ exactly where G0 said Fano structure first becomes possible.
 
 They are independent because the two operations are independent.
 
-## §GM.3 — The physical sign-map: a framework pre-commit, NOT asserted
+## §GM.3 — The physical sign-map: REGISTERED (V4.29 pre-commit)
+
+The map is now **registered** (framework author, 2026-06-04 — full record in
+`reports/SQT_3.4_SIGNMAP_REGISTRATION.md`):
 
 ```
-   sign(μ̄)  [flips under spatial mirror]       ↔  ???
-   sign(φ)   [flips under QR↔QNR reassignment]   ↔  ???
+   sign(μ̄)  [flips under spatial mirror]       ↔  spatial PARITY   (forced; not a discovery)
+   sign(φ)   [flips under QR↔QNR reassignment]   ↔  QR/QNR algebraic chirality (§2.75/§2.76)
+                                                    = the baryon's matter/antimatter chirality
+                                                      (the SUBSTANTIVE registered claim)
 ```
 
-Which **physical** chirality maps to which **computed** sign is a §2.75/§2.76
-call that must be **registered before** it is read as a result — "sign =
-chirality" is matchable to either, so reading it off post-hoc would be an
-Eddington maneuver. The genuinely registrable prediction is whether **spatial
-parity** and the **QR/QNR algebraic chirality** are *distinct* (one encoded in
-each sign) or *coincide*. This computation supplies the two independent signs;
-it does **not** decide the map.
+Parity and QR/QNR are registered as **distinct Z₂'s** (one in each sign). The
+**test is consistency** of the sign(φ)↔QR/QNR half with §2.75/§2.76, §2.86C, and
+the matter/antimatter assignment — **not** the mirror flip (sign(μ̄)↔parity is
+forced by topology and must not be cited as confirmation; that would be the
+Eddington maneuver). The substantive half is **R3 pending that consistency
+check**; it is registered, not confirmed.
 
 ## §GM.4 — Caught, not hidden (the control working)
 

@@ -11,7 +11,9 @@ caught the issue, and it turned out to be deeper than an orientation bug.
 > the pre-committed criteria, has surfaced that the configuration used throughout
 > §3.4-G2-Borromean (V4.27) and §3.4-G2-Milnor (V4.29) is **amphichiral with true
 > μ̄(123) = 0** — *not* a chiral Borromean (μ̄=±1). The prior |μ̄|=1 results are
-> the **uncorrected** Seifert count. **The magnitude claim needs a recheck.**
+> the **uncorrected** Seifert count, and the validation was **circular** (the
+> control was that same count). **The filed V4.29 magnitude is RETRACTED as
+> filed**, independently of any recheck (μ̄=0 is proven now).
 
 ## §1 — What the sign build computed
 
@@ -93,27 +95,41 @@ map sign(φ)↔QR/QNR is **untouched**. What is refined is only the *forced/geom
 half (sign(μ̄)↔parity): the geometric witness is frame-dependent, not a topological
 invariant, on the symmetric config.
 
-## §3 — Consequence (must be surfaced): the magnitude claim needs a recheck
+## §3 — Consequence: RETRACTION-grade, not just a flag (per SQT-agent; concurred)
 
-This reaches **already-folded canonical results**:
+This reaches **already-folded canonical R1 results**, and the honest scope is a
+**retraction**, not a provisional flag — μ̄=0 is **proven now**; the recheck
+answers a *different* question. (My earlier "flag pending recheck" under-stated
+it; corrected here.)
 
-- **§3.4-G2-Milnor (V4.29):** the magnitude selection rule "|μ̄^φ| = 1 iff
-  Fano-line genuine Borromean" was validated using the **Seifert triple-point
-  count on this configuration** — which is the uncorrected count of an
-  **amphichiral (μ̄=0)** link. The "1" is the uncorrected value; the corrected
-  μ̄ is 0. **The magnitude claim does not stand on this configuration.**
-- **§3.4-G2-Borromean (V4.27):** the "genuine Borromean (μ̄=±1)" framing is
-  incorrect for the golden-orthogonal config; pairwise-unlinkedness was verified,
-  but the triple-linking is **0**, so the config is amphichiral (possibly even
-  unlinked — to be determined), not the chiral baryon.
+**The decisive point — the validation was circular.** The §3.4-G2-Milnor
+magnitude was "validated" against the **textbook |μ̄|=1** — but that control was
+*itself* the uncorrected Seifert triple-point count, the very quantity under test.
+There was **never an independent check** that the configuration was genuinely
+Borromean; now there is a proof (μ̄=0) that it was not.
 
-**What is NOT affected:** the φ-weighted *selection* structure (φ_abc nonzero iff
-Fano line) and the two-sign *factorization* are algebraic facts independent of
-the link's chirality. The **registered sign(φ)↔QR/QNR map is untouched** (it was
-never going to be confirmed by this computation). And the meson-sector G2-orient
-result (pairwise Hopf charge) is independent of μ̄.
+- **§3.4-G2-Milnor (V4.29) magnitude:** "|μ̄^φ|=1 iff genuine Borromean", filed
+  canonical R1 (and in Paper II §3.4.6), used a configuration that is **not** a
+  genuine Borromean (μ̄=0). The **filed value is wrong as filed** ⇒ **retract**.
+- **§3.4-G2-Borromean (V4.27, B):** the "chiral, a sign is available" framing —
+  the config is amphichiral; the witness tracks **no** nonzero invariant on it.
+- **§3.4-G2-Milnor-INT (V4.30):** the integral as a "second magnitude method for
+  |μ̄|" — it detected nonzero *geometry* but μ̄=0, so it was **not measuring μ̄**.
 
-## §4 — The required fix (the real next step)
+The recheck (§3.4-G2-CHIRAL) is a **separate, NEW** question — does a *manifestly
+chiral* Borromean give |μ̄^φ|=1 with corrections? — **not** a pending validation
+of the filed claim (already wrong).
+
+**Survives intact (config-independent / different object):** V4.26 §3.4-SYM /
+G0 / G1′ / G1″ (vacuum, no Borromean); **V4.27 §3.4-G2-orient** (Q_φ on a charge-1
+*hopfion*, not the ellipses — meson sector stands); V4.27(A) pairwise-unlinked
+(lk=0) and V4.27(C)/V4.29 **φ-orientation** (algebraic); the **registered
+sign(φ)↔QR/QNR map** (untouched, T3, still R3-pending its consistency check).
+The selection-rule **structure** (φ picks Fano lines; μ̄ supplies the magnitude)
+is **not refuted — just never instantiated** (μ̄=0 on the degenerate config); the
+recheck decides whether it holds on a real chiral Borromean.
+
+## §4 — The required fix (§3.4-G2-CHIRAL, the real next step)
 
 1. **Fix Method A's orientation (trap #4):** replace the axial n_i×n_j segment
    orientation with a **fixed-frame, transported** orientation, so the linking
@@ -129,18 +145,25 @@ result (pairwise Hopf charge) is independent of μ̄.
 4. **Re-validate G2-Milnor's magnitude** on the chiral config with corrections
    before the |μ̄^φ|=1 claim is restated.
 
-Until then: **the sign stays R3-pending**, and **the §3.4-G2-Milnor magnitude
-result should be flagged "under review — configuration amphichiral, recheck on a
-chiral Borromean required."** No result is faked; the honest reading is that
-there is no nonzero sign on this configuration to find, *because the
-configuration is amphichiral.*
+Until then: **the sign stays R3-pending**, and **the §3.4-G2-Milnor magnitude is
+RETRACTED as filed** (μ̄=0 on the tested config, proven now) — not merely flagged
+pending the recheck. No result is faked; the honest reading is that there is no
+nonzero sign on this configuration to find, *because it is amphichiral.*
 
-## §5 — Proposed Part VI / canonical update
+## §5 — Proposed canonical update (a V4.31 walk-back; framework author's call)
+
+A genuine **§3.x retraction-log entry** (the thread's first — the magnitude was
+filed canonical R1, now proven wrong on the tested config; unlike the
+V4.2/V4.11/§2.78 unfiled-draft precedents), plus additive annotations on the
+V4.27/V4.29/V4.30 rows, a finding section (amphichirality R1 + the Method-A
+convention issue + T3), the new **§3.4-G2-CHIRAL** open task, and a one-line
+Paper II §3.4.6 retraction note. **Full retraction recommended** (concurring with
+the SQT-agent): μ̄=0 is proven independently of the recheck.
 
 | Task | Status |
 |---|---|
 | §3.4-G2-Milnor-SIGN | **First pass — R1 finding (amphichirality):** Method A is reflection-odd, cyclic-consistent, but P2 fails because **z→−z is a symmetry of the golden-orthogonal config ⇒ μ̄(123)=0** (verified). The sign is not established (there is none here). |
-| §3.4-G2-Milnor (V4.29 magnitude) | **FLAG: under review.** The |μ̄^φ|=1 selection rule used the uncorrected Seifert count on an **amphichiral** configuration; recheck required on a manifestly-chiral Borromean with Mellor–Melvin corrections. |
+| §3.4-G2-Milnor (V4.29 magnitude) | **RETRACT as filed.** |μ̄^φ|=1 used the uncorrected Seifert count on an **amphichiral (μ̄=0)** config; the validation was circular (the "textbook |μ̄|=1" control *was* that same count). Filed value wrong as filed; selection rule re-opened, restoration is the §3.4-G2-CHIRAL question. |
 | §3.4-G2-CHIRAL (new) | **Open — prerequisite:** build a manifestly-chiral Borromean (symmetry broken) and recompute magnitude + sign with corrections. |
 
 *Reproduce: `python3 tools/g2_milnor_sign.py`. Pre-registration:

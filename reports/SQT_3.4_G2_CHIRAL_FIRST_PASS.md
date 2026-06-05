@@ -1,5 +1,15 @@
 # §3.4-G2-CHIRAL First Pass — Magnitude Restored on a Genuine Borromean; sign(μ̄) Is Reflection-EVEN (Closed Negative)
 
+> **⚠ PREMISE CORRECTED (2026-06-05) — see `SQT_3.4_GOLDEN_LINK_TYPE_CORRECTION.md`.**
+> This report's **two results are correct** (the magnitude rule holds on a genuine
+> Borromean; sign(μ̄) is reflection-EVEN). Its **premise is wrong**: it treats the
+> golden ellipses as amphichiral (μ̄=0) and so frames the magnitude as "restored on
+> a *different* object." SnapPy shows the golden ellipses ARE the Borromean rings
+> (μ̄=±1), so the magnitude is confirmed on the **same, filed** object — V4.29 was
+> correct, not retracted. (This report's own reflection-even result is exactly what
+> invalidates the amphichirality premise it inherited; that contradiction was
+> missed here and caught by the SQT-agent audit.) Read with the correction note.
+
 **Date:** 2026-06-05
 **Register:** **R1** — two exact group-theoretic results (a restored magnitude
 on the right object; a reflection-EVEN finding for the triple-linking sign).

@@ -1,5 +1,15 @@
 # §3.4-G2-Milnor-SIGN First Pass — The Configuration Is Amphichiral (μ̄ = 0): a Finding That Reaches the Magnitude
 
+> **⚠ WITHDRAWN (2026-06-05) — see `SQT_3.4_GOLDEN_LINK_TYPE_CORRECTION.md`.**
+> The amphichirality inference below (μ̄=0, "not a Borromean") is **WRONG**. It
+> assumed μ̄ is reflection-**odd**; μ̄(123) is reflection-**EVEN**, so the verified
+> z→−z symmetry imposes **no constraint** on μ̄. SnapPy identifies the golden
+> ellipses as the genuine **Borromean rings** (vol 7.327725 / t12067, 6 seeds,
+> controls passing — `tools/golden_link_id.py`). So **μ̄=±1**, the V4.29 magnitude
+> was **correct**, and this report's retraction recommendation is **reversed**.
+> The only part that stands: the z→−z set-symmetry fact itself (the inference from
+> it does not). Body kept below for provenance.
+
 **Date:** 2026-06-05
 **Register:** **R1** — a rigorous structural finding (a verified symmetry forces
 μ̄=0). **Pre-registration:** `reports/SQT_3.4_SIGN_PREREGISTRATION.md` (committed

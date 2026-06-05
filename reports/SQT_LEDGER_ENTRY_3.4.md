@@ -142,6 +142,18 @@ sector — the orientation (an import) can attach only to topology.
 > framework-specific, falsifiable prediction in the soliton sector and the
 > bridge to §2.15 (Borromean) and §2.74.
 
+> **Update (G2-orient first pass, `reports/SQT_3.4_G2_ORIENT_FIRST_PASS.md`):**
+> the **selection rule is CONFIRMED** on a charge-1 Faddeev–Hopf hopfion — the
+> φ-weighted Hopf linking charge Q_φ ≈ +0.99 on every Fano line, **identically 0**
+> off the lines (φ|_abc≡0), supported on the **coordinate associative 3-planes**
+> of 𝕆. **Parity correction:** Q_φ ~ φ² is **orientation-EVEN** (not odd) ⇒
+> **chirality-blind**. **Sector correction (per audit):** the Hopf charge is a
+> *pairwise/helicity* (meson-sector, §2.7) invariant and is **blind to the
+> Borromean baryon** (pairwise unlinked by definition). The §2.15 bridge needs
+> the **cubic Milnor triple-linking μ̄(123)** — see the reframed gate G2-Borromean
+> in §3.4.G. So G2-orient banks as the meson/pairwise confirmation; it does **not**
+> reach §2.15.
+
 ## §3.4.G — Proposed Part VI open-task entries
 
 | Task | Status |

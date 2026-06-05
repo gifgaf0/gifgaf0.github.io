@@ -33,8 +33,12 @@ S² area form's Levi-Civita ε with the octonion 3-form φ restricted to {a,b,c}
 | ordinary Q_H (Levi-Civita) | **+0.987** | genuine charge-1 hopfion (≈ integer) ✓ |
 | Q_φ, **Fano line** (0,1,3) | **+0.987** | nonzero quantized linking ✓ |
 | Q_φ, **Fano line** (1,2,4) | **+0.987** | every line carries it ✓ |
-| Q_φ, **non-line** (0,1,2) | **0.0** (\|B\|max = 0) | exactly zero ✓ |
+| Q_φ, **non-line** (0,1,2) | **0.0** (\|B\|max = 0) | **identically/machine zero** — B_φ≡0 ✓ |
 | Q_φ under φ→−φ | **+0.987** (unchanged) | orientation-EVEN (see §G2.3) |
+
+**The non-line zero is identical, not grid-limited.** Every ordering of a
+non-line triple has φ_abc = 0, so the pulled-back area form B_φ ≡ 0 pointwise
+(\|B\|max = 0 to machine precision) — the charge is exactly zero, not "small."
 
 **Selection rule CONFIRMED at the Q_H = 1 level:** the framework-observable Hopf
 linking charge is a nonzero, near-integer quantized linking number on **every**
@@ -54,15 +58,30 @@ the intrinsic **linking number**, not a φ-sign. What carries over from 2-D is t
 §3.4.F wording "Faddeev–Hopf linking charge … orientation-odd" should be
 corrected to "…orientation-even (quadratic); the selection rule is the content."
 
+**Consequence — Q_φ is chirality-blind.** Orientation-even means Q_φ cannot
+distinguish a configuration from its mirror image. So the framework's *required*
+chirality (QR/QNR §2.75/§2.76, the §2.86C principal anti-automorphism,
+matter/antimatter) is **not** carried by this observable. That is a signpost,
+not a defect: chirality must live in the link **topology** (the *sign* of a
+triple-linking invariant), which is exactly where the baryon reframe (§G2.6)
+sends it.
+
 ## §G2.4 — Geometric reading (R2)
 
 φ|_{abc} ≠ 0 **exactly on the 7 Fano lines = the coordinate associative 3-planes
-of 𝕆** (the φ-calibrated planes of G₂ geometry). So the framework-observable
-soliton linking charge is supported **precisely on the associative 3-planes** —
-only there does the octonion product supply the oriented area element a Hopf
-charge requires. This is the clean structural statement behind the selection
-rule, and it ties G2-orient to standard G₂ calibrated geometry rather than to a
-bespoke construction.
+of 𝕆** (the φ-calibrated planes of G₂ geometry; on such a plane the octonion
+product restricts to the quaternionic cross product, which is precisely why
+Q_φ = Q_H there and 0 off it). So the framework-observable soliton linking charge
+is supported **precisely on the associative 3-planes** — only there does the
+octonion product supply the oriented area element a Hopf charge requires. This
+ties G2-orient to standard G₂ calibrated geometry rather than to a bespoke
+construction.
+
+**Scope of the test (precision).** Only the **7 coordinate** associative planes
+(basis-triple windings) were probed. The full associative-plane claim is the
+correct *interpretation* (G₂ calibration), but the non-coordinate associative
+planes of the G₂/SO(4) Grassmannian family were **not separately tested** — a
+clean tidy-up item, not a gap in the selection-rule result.
 
 ## §G2.5 — Scope / what this does and does not establish
 
@@ -75,21 +94,35 @@ bespoke construction.
   assert any observable bridge (mass/scale). The discrete Q_φ is near-integer
   (~1–2% grid error), not exactly 1.
 
-## §G2.6 — Forward pointer (G2-knot)
+## §G2.6 — Forward pointer (REFRAMED: G2-Borromean, not a knotted soliton)
 
-> **G2-knot.** Replace the Q_H=1 hopfion with a **knotted** Faddeev–Hopf soliton
-> (the framework's actual particle — Császár-torus topology / a specific knot at
-> higher Q_H) and recompute the φ-weighted linking charge, then map it to the
-> §2.15 Borromean three-strand structure. The selection rule (associative-plane
-> support) should persist; the question is which knot/linking the physical
-> minimiser selects and whether it matches the framework's particle assignment.
+**The Hopf charge is the wrong invariant for the baryon — so the next gate is
+not a knotted soliton.** Q_φ = ∫A·B is a **pairwise / helicity** invariant: the
+**meson sector** (§2.7, two-component Hopf link). The §2.15 baryon is the
+three-strand **Borromean** configuration, which is **pairwise unlinked by
+definition** — so its helicity cross-terms vanish and the Hopf charge is **blind**
+to the Borromean's defining inter-strand binding. The baryon's topological
+content is the **cubic Milnor triple-linking invariant μ̄(123)**, not the
+quadratic Hopf charge.
+
+> **G2-Borromean (pre-registered).** On a three-strand Borromean vortex
+> configuration, compute the **φ-weighted Milnor triple-linking μ̄₁₂₃^φ**.
+> Predictions: (i) **nonzero iff** the three winding directions form a **Fano
+> line** (arity match: a triple invariant ↔ the 3-point Fano lines ↔ the
+> associative 3-**form** φ — the same ladder as G0, where 2-body was blind and
+> Fano structure first appears at 3-body); (ii) its **sign = chirality** (left/
+> right Borromean are mirror images with μ̄ = ±1), supplying the handedness the
+> orientation-even Q_φ cannot carry and tying it back to QR/QNR (§2.75/§2.76).
+> This is lighter than a knotted Faddeev–Hopf energy relaxation and tests the
+> actual baryon claim. **Hold the brute-force knotted-soliton build** until
+> G2-Borromean says whether the structure survives to the baryon.
 
 ## §G2.7 — Proposed Part VI open-task update
 
 | Task | Status |
 |---|---|
-| §3.4-G2-orient (Fano-line linking charge on the 3-D soliton) | **First pass CLOSED (R1+R2):** selection rule confirmed (Q_φ ≈ 1 on every Fano line, 0 off-line) on the Q_H=1 hopfion; supported on the associative 3-planes. Parity corrected: orientation-**even**, not odd. |
-| §3.4-G2-knot (knotted soliton; Császár / §2.15 Borromean mapping) | **Open — the next physical gate.** |
+| §3.4-G2-orient (Fano-line linking charge on the 3-D soliton) | **First pass CLOSED (R1+R2):** selection rule confirmed (Q_φ ≈ 1 on every Fano line, **identically 0** off-line) on the Q_H=1 hopfion; supported on the coordinate associative 3-planes. Parity = orientation-**even** ⇒ **chirality-blind**. **Meson/pairwise sector only — does NOT reach §2.15.** |
+| **§3.4-G2-Borromean** (φ-weighted Milnor triple-linking μ̄₁₂₃ on the Borromean baryon; Fano-selective, sign = chirality) | **Open — the reframed next gate (replaces the generic "G2-knot").** The pairwise Hopf charge is blind to the Borromean; the baryon needs the cubic triple invariant. |
 
 *Reproduce: `python3 tools/g2_orient.py`. Append-only; no prior ledger content
 modified. Cross-refs: §3.4-G1″ (2-D origin + the corrected parity), §3.4.F (gate

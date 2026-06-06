@@ -64,6 +64,22 @@ def convexity_lemma(f, delta):
     return curv, midpoint_lower
 
 
+def localization_scan(f, delta, Ns=(1, 2, 3, 5, 10, 50, 1000)):
+    """Distribute the deficit over N equal sub-folds: E_N = N·f(Δ/N). Does the
+    energy PREFER localization (small N) or smearing (large N)? This tests the
+    single-seam ANSATZ — the load-bearing assumption behind the gate (SQT-agent
+    audit): a convex energy SMEARS (E_N→0 as N→∞), so the single localized fold is
+    its WORST case — the localization is imposed AGAINST the metric, not by it."""
+    Es = [(N, N * f(delta / N)) for N in Ns]
+    if Es[-1][1] < Es[0][1] - 1e-9:
+        trend = "decreasing → SMEARS (opposes localization)"
+    elif abs(Es[-1][1] - Es[0][1]) < 1e-9:
+        trend = "flat → INDIFFERENT to localization"
+    else:
+        trend = "increasing → localizes (prefers single fold)"
+    return Es, trend
+
+
 def main():
     print("=" * 78)
     print("§3.4 bilateral-fold gate — does the substrate action force 36° → 18°+18°?")
@@ -120,6 +136,20 @@ def main():
     print(f"     ⇒ B3 {'PASS' if b3 else 'FAIL'} ; B4 {'PASS' if b4 else 'FAIL'}")
     print()
 
+    # ── B6 (audit add-on) — is the single-seam localization preferred? ───────
+    print("  B6 — the single-seam ANSATZ, tested (SQT-agent audit): distribute Δ")
+    print("       over N equal sub-folds, E_N = N·f(Δ/N) — which N does each prefer?")
+    for label, f in forms:
+        Es, trend = localization_scan(f, delta)
+        tag = label.split("[")[0].strip()
+        print(f"     {tag:34} {trend}")
+    print("     ⇒ the convex (GP) energy SMEARS — the single localized fold is its")
+    print("       WORST case; localization is imposed AGAINST the metric (anti-GP),")
+    print("       and the linear (Regge) term is indifferent to it too. So NEITHER")
+    print("       term wants a single localized symmetric fold — localization is a")
+    print("       separate (topological/ansatz) input, NOT supplied by the action.")
+    print()
+
     # ── B5 — the value ───────────────────────────────────────────────────────
     half = delta / 2                      # 18°
     c = math.cos(half * DEG)
@@ -141,23 +171,31 @@ def main():
     print("=" * 78)
     if b1 and b3 and b4 and b5:
         print(f"""\
-  GATE ADVANCED (not unconditionally closed). With the split left free, the
-  substrate action selects the BILATERAL fold IFF its fold-energy is strictly
-  convex:
-    • the bare deficit-angle (Regge) term is LINEAR ⇒ split-indifferent: it
-      CANNOT force the 18°+18° fold (a clean negative that sharpens the gate);
-    • the GP / Bjerknes kinetic term (§3.4.4 gradient energy, ∝∫|∇ψ|²) is
-      strictly CONVEX ⇒ it forces the symmetric split θ = Δ/2 = 18° uniquely
-      (reflection symmetry makes Δ/2 a critical point; convexity makes it the min).
-  Step (3) therefore closes MODULO the substrate having a convex kinetic energy —
-  exactly the GP functional §3.4.4 already imports. With (3) in hand, step (4)
-  gives cos 18° = cos(π/10) = √(2+φ)/2 (B5).
+  GATE ADVANCED, NOT CLOSED — and the head-on attack lands as a clean instance of
+  M.CW (combinatorics cannot fix the metric/sign). With the split left free:
+    • the bare deficit-angle (Regge / topological) term is LINEAR ⇒ split-
+      indifferent AND localization-indifferent: it CANNOT force the fold (the
+      genuinely informative R1 negative — the "topological action forces it"
+      reading is false);
+    • forcing the symmetric split requires a fold-energy that is strictly CONVEX
+      in the split angle θ — a SIGN (f″>0). This is Jensen-standard once convexity
+      is granted (any convex f gives Δ/2: θ², θ⁴, cosh… all land on 18°), so the
+      load-bearing import is convexity-in-θ, NOT "the GP functional" specifically.
+    • and that convex energy SMEARS (B6): unconstrained it prefers N→∞ sub-folds
+      (E_N→0), so the single-seam localization is its WORST case — imposed AGAINST
+      the metric. Localization is a separate (topological/ansatz) input.
+  So step (3) reduces to TWO named metric-class imports: (i) convexity-in-θ (a
+  sign) and (ii) single-seam localization (anti-GP). By M.CW a sign is exactly
+  what combinatorics can never supply — so "derive convexity from the lattice
+  axioms" is NOT an achievable combinatorial task; the gate bottoms out at the
+  standing substrate metric/dynamics import (the same one blocking §2.52
+  pulsation=ζ). With (3) granted, step (4) gives cos18° = cos(π/10) = √(2+φ)/2.
 
-  HONEST SCOPE (M.CW / M.BRIDGE): the convex kinetic energy and the single-seam
-  bilateral-fold ansatz are IMPORTS (metric-class), not combinatorial outputs;
-  this is R2 (conditional on the import), NOT R1 unconditional closure. No
-  observable is asserted — the (1−cos 18°) void correction is downstream. No value
-  was reverse-engineered: θ was free and the convex action chose Δ/2.""")
+  HONEST SCOPE (M.CW / M.BRIDGE): R1 for the geometry, the value identity, and the
+  Regge split/localization-indifference negative; R2 (conditional on the two
+  imports) for the forced bilateral fold. NOT R1 closure, and NOT a breach of the
+  wall — it is the wall, precisely located. No observable asserted ((1−cos18°)
+  void is downstream). No value reverse-engineered: θ and N were free.""")
         rc = 0
     else:
         print("  Gate did NOT advance as registered — reported honestly; "

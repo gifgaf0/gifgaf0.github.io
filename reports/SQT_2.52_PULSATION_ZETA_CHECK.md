@@ -1,11 +1,52 @@
-# §2.52 Open 3 (Pulsation = ζ) — HELD: the Value-Check Was CIRCULAR; the One Clean Keeper Is M.CW Status; the Decisive Test (ε₂) Is Not Yet Run
+# §2.52 Open 3 (Pulsation = ζ) — HELD; CORRECTED TWICE: the Value-Check Was Circular, AND the "M.CW-Legal" Keeper Was Also Wrong (ζ Is a Metric Ratio — Both Gates Are Walled)
 
-**Date:** 2026-06-06 (corrected same day after SQT-agent audit — see §0)
-**Register:** **R1** for one narrow structural point (the pulsation target is a
-dimensionless ratio ⇒ **not M.CW-walled**); **everything else HELD** — the
-"value = output" reading was **circular** and is withdrawn. **Pre-registration:**
-`reports/SQT_2.52_PULSATION_ZETA_PREREGISTRATION.md`. **Tool:**
-`tools/pulsation_zeta_check.py` (Z1/Z3 now annotated circular).
+**Date:** 2026-06-06 (corrected twice same day after SQT-agent audits — see §0′, §0)
+**Register:** **the only solid positive content is the verified `pulsation ≠ ζ`
+finding** (§0). The "value = output" reading was **circular** (withdrawn); the
+"M.CW-legal because dimensionless" keeper was **also wrong** (withdrawn — see §0′).
+**Pre-registration:** `reports/SQT_2.52_PULSATION_ZETA_PREREGISTRATION.md`.
+**Tool:** `tools/pulsation_zeta_check.py` (Z1/Z3 annotated circular; Z2's
+"M.CW-legal" reading superseded by §0′).
+
+## §0′ — SECOND correction: the "M.CW-legal" keeper is withdrawn (dimensionless ≠ combinatorial)
+
+My one surviving "clean keeper" — *"a pulsation ratio is dimensionless ⇒ M.CW
+permits it ⇒ legal, unlike the walled cos π/10"* — is **wrong**, and I withdraw it.
+The error (caught via a user question, sharpened by the SQT-agent; verified here):
+
+- **Dimensionless ≠ combinatorial.** ζ = 1 − π/√12 is a packing **density** — an
+  *area ratio*. Defining it needs round circles, Euclidean areas, and π:
+  π/√12 = πr²/(2√3 r²). The abstract triangular lattice *as an incidence structure*
+  has **no** packing density; the number exists only once embedded in the **metric**
+  plane. So ζ is a dimensionless **metric** ratio, **not** a combinatorial count —
+  and **M.CW walls metrics.** "Dimensionless ⇒ legal" conflated dimensionless-ness
+  with combinatorial origin.
+- **cos π/10 was never "a sign" either.** As a *value* it is a cosine of an angle —
+  dimensionless and metric, exactly like ζ. The sign that walls the bilateral-fold
+  gate sat **upstream**, on the **convexity** (f″>0) needed to force the symmetric
+  split — *not* on cos π/10. (Canonical V4.34 states this correctly — sign on the
+  convexity; only this provenance had the collapsed "cos π/10 is a sign" phrasing.)
+- **So the picture is SYMMETRIC, and the "legal vs walled" contrast is illusory.**
+  Both targets (cos π/10, ζ) are **dimensionless metric** quantities; **neither is
+  combinatorial**; **both bottom at the same wall** — instantiating the substrate
+  metric/dynamics (the I1–I3 import). If anything pulsation is the **harder** of the
+  two: a generic kinetic energy is convex anyway (the fold's "sign" is nearly free),
+  whereas pulsation needs an actual metric **value** (0.0948 = void fraction +
+  anharmonic) to come out right.
+- **Why this matters structurally (the real distinction):** the parts of §3.4 that
+  **closed** — the Hopf charge and the Borromean triple-linking — are **topological
+  integer invariants** (they don't see lengths/angles), which is *why* combinatorics
+  + topology could deliver them. The two **open** gates are open precisely because
+  their targets are **metric** (an angle's cosine; an area fraction), which
+  combinatorics + topology alone cannot produce. Topological closed; metric open.
+
+**Net after both corrections:** the only solid positive result in this report is the
+verified **pulsation (0.0948) ≠ ζ (0.0931)** finding (§0). My "value = output" and
+"M.CW-legal keeper" are **both withdrawn**. Holding §2.52 untouched was the right
+call — the one thing we'd flagged as a keeper was itself the shaky part. **Anyone
+reaching for a "legal vs walled" contrast later should drop it** in favour of the
+symmetric statement: both §3.4 dynamical gates reduce to the same
+metric-instantiation problem, full stop.
 
 ## §0 — Audit response (SQT-agent; concurred, miss owned)
 
@@ -24,12 +65,11 @@ value-output check is circular.** I verified it independently and **concur fully
   ledger itself flags (the §3.03/§3.04 "Error 3" precedent). I brushed against it.
   **The "value = output" and "data selects the linear coupling" claims are
   withdrawn.**
-- **The one clean keeper, stated more sharply than I had it:** a **pulsation
-  amplitude *ratio* is dimensionless by its nature** (amplitude/amplitude), so
-  M.CW permits it **regardless of its value** — no void-fraction identification
-  needed. *That* is the real, conjecture-independent contrast with cos π/10 (whose
-  target was a **sign**, walled forever). "Legal but imported" ≠ "walled": a legal
-  target can be closed by instantiation; a walled one never can.
+- **[⚠ SUPERSEDED by §0′ — this "keeper" is WITHDRAWN.]** ~~The one clean keeper:
+  a pulsation amplitude *ratio* is dimensionless ⇒ M.CW permits it regardless of
+  value ⇒ "legal," unlike the walled cos π/10.~~ Wrong: dimensionless ≠
+  combinatorial. ζ is a *metric* packing ratio, M.CW walls it, and cos π/10 is the
+  same kind of object — both metric, both walled. See §0′.
 - **Worse than my Z5:** the banked conjecture doesn't merely say "don't promote" —
   it **conflicts with C.COSM.2 Position A** (promoting ζ=1−π/√12 effectively
   promotes Position B in an open cosmological dispute; ζ-tax gate 4). So
@@ -89,7 +129,7 @@ verbatim for the audit trail. What is foldable now is **only** the M.CW status l
 > this one's target is **legal**, not walled — making it the genuinely promising
 > one to instantiate.
 
-## §1 — The value (Z1, Z2): ζ is the p6m packing void fraction, and it is M.CW-legal
+## §1 — The value (Z1, Z2): ζ is the p6m packing void fraction  [⚠ the "M.CW-legal" claim in this section is WITHDRAWN — see §0′; ζ is metric, hence walled]
 
 - π/√12 = π/(2√3) = **0.906900** is the **densest 2D circle-packing density**
   (Thue), realised by the hexagonal **p6m** lattice — which **is** the framework's
@@ -154,23 +194,25 @@ lost in the void). **What is not gained:** no derivation of the coupling, no
 closure, and the value-as-output rests on a banked definition. No observable
 (M.BRIDGE).
 
-**Contrast table (the two §3.4 dynamical gates):**
+**Contrast table — ⚠ WITHDRAWN by §0′ (the "M.CW status: walled vs legal" row and
+the "prospect" row are wrong; both targets are dimensionless *metric* quantities,
+both walled, both bottoming at metric instantiation). Kept struck-through for the
+audit trail; the corrected symmetric statement is in §0′:**
 
 | | bilateral fold → cos π/10 | pulsation = ζ |
 |---|---|---|
-| target | cos π/10 (a **sign** via convexity) | ζ = void fraction (a **dimensionless ratio**) |
-| M.CW status | **walled** (combinatorics can't fix a sign) | **legal** (a packing ratio) |
-| value-half | conditional on two metric imports | **genuine geometric output** (Thue + p6m) |
-| dynamical-half | convexity + single-seam (imports) | linear amplitude-area coupling (import) |
-| bottom | substrate instantiation | substrate instantiation |
-| prospect | conditional R2, permanently | **closable in principle** (legal target) |
+| target | cos π/10 (dimensionless **metric** — a cosine) | ζ = void fraction (dimensionless **metric** — an area ratio) |
+| ~~M.CW status~~ | ~~walled~~ → **both metric ⇒ both walled** | ~~legal~~ → **both metric ⇒ both walled** |
+| dynamical-half | convexity + single-seam (metric imports) | the metric *value* 0.0948 (void + anharmonic) |
+| bottom | substrate (metric) instantiation | substrate (metric) instantiation |
+| ~~prospect~~ | — | ~~closable in principle~~ → if anything the **harder** (needs a value, not just a sign) |
 
 ## §4 — Proposed canonical update (additive)
 
 | Task | Status |
 |---|---|
-| §2.52 Open 3 (pulsation = ζ) | **HELD — gate open; "pulsation = ζ" is a leading-order approximation, NOT an identity.** **Foldable now (R1):** the pulsation target is a **dimensionless amplitude ratio ⇒ not M.CW-walled** (the real contrast with cos π/10's walled *sign*); bottoms at substrate instantiation. **Withdrawn as circular:** "value = output" (Z1/Z3 checked the banked conjecture ζ=1−π/√12 against itself). **New, verified (SQT-agent dig):** the independently-needed **pulsation = void − φ⁻¹ = 0.0948** (Regge cascade, no ζ conjecture; project files, R4 = underived) **≠ ζ = 0.0931** — they differ by 0.00167 (~1.8%); "φ⁻¹+ζ" undershoots the void by exactly that. So the §3.4 target is the **full 0.0948 (void fraction + a next-order anharmonic)**, a higher bar. **Caveats:** (i) the residual 0.00167 is **not** cleanly §2.52 Open 2's δ=0.01829 (needs δ's precise definition); (ii) ζ=1−π/√12 is in a conflict-flagged banked conjecture (C.COSM.2 Position A); (iii) 0.0948 rests on the cascade 83.7128 (E_torus + K₇ factor), trusted not re-derived. |
-| both §3.4 dynamical gates | bottom at **substrate instantiation**; differ in M.CW status (cos π/10 walled *sign*; pulsation ratio legal *ratio*). |
+| §2.52 Open 3 (pulsation = ζ) | **HELD — gate open; "pulsation = ζ" is a leading-order approximation, NOT an identity.** **Withdrawn:** "value = output" (circular — Z1/Z3 checked the banked conjecture ζ=1−π/√12 against itself) **and** the "M.CW-legal because dimensionless" keeper (§0′ — ζ is a *metric* packing ratio, not combinatorial; M.CW walls it, same as cos π/10). **The one solid positive (verified, SQT-agent dig):** the independently-needed **pulsation = void − φ⁻¹ = 0.0948** (Regge cascade, no ζ conjecture; project files, R4 = underived) **≠ ζ = 0.0931** — differ by 0.00167; "φ⁻¹+ζ" undershoots the void by exactly that. So "pulsation=ζ" is the leading term, and the §3.4 target is the **full 0.0948 (void fraction + anharmonic)**. **Caveats:** (i) the residual is **not** cleanly §2.52 Open 2's δ (below the precision floor of the truncated cascade — §0); (ii) ζ=1−π/√12 is in a conflict-flagged banked conjecture (C.COSM.2 Position A); (iii) 0.0948 rests on the cascade 83.7128 (E_torus + K₇ factor), not re-derived. |
+| both §3.4 dynamical gates | **SYMMETRIC (corrected, §0′):** both targets are dimensionless **metric** quantities (a cosine; an area ratio) — **neither combinatorial, both walled**, both bottoming at the same **metric-instantiation** import (I1–I3). The §3.4 parts that *closed* (Hopf charge, Borromean triple-linking) are **topological integer invariants**; the open gates are open *because* they are metric. No "legal vs walled" asymmetry. |
 
 *Reproduce: `python3 tools/pulsation_zeta_check.py`. Pre-registration:
 `SQT_2.52_PULSATION_ZETA_PREREGISTRATION.md`. Append-only; no observable asserted

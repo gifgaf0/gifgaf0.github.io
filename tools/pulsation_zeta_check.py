@@ -12,6 +12,17 @@ framework's p6m substrate. So ζ is the substrate's VOID (vacant-area) fraction.
 
 Discipline: the coupling power p in Φ_out = Φ_in·η^p is left FREE; the data must
 select it. No scale is fitted. Pure stdlib. Author: §2.52 gate, 2026-06-06.
+
+⚠ CIRCULARITY NOTICE (added after SQT-agent audit, 2026-06-06): Z1 and Z3 below
+are CIRCULAR as run, and their "value = output / data selects the linear coupling"
+reading is WITHDRAWN. The target 0.0931 has NO canonical source outside the banked
+conjecture ζ = 1 − π/√12, so Z1 checks that number against its own rounding, and
+Z3's "free power" only ever meets ζ := 1 − η¹ — forcing p=1 by definition, not
+selecting it from data. The only conjecture-INDEPENDENT keeper is the M.CW status
+(Z2): a pulsation amplitude *ratio* is dimensionless by nature ⇒ not walled. The
+decisive non-circular test — whether the §2.16 Regge-packing constant ε₂ equals
+1 − π/√12 independently — is NOT run here (ε₂'s value is not in the canonical text).
+See reports/SQT_2.52_PULSATION_ZETA_CHECK.md §0.
 """
 
 import math
@@ -24,6 +35,11 @@ def main():
     print("=" * 78)
     print("§2.52 Open 3 — pulsation = ζ : output or import?  [pre-registered Z1–Z5]")
     print("=" * 78)
+    print("  ⚠ CIRCULARITY NOTICE (SQT-agent audit): Z1/Z3 are CIRCULAR as run —")
+    print("    0.0931 has no canonical source outside the conjecture ζ=1−π/√12, so")
+    print("    they check the conjecture against itself. 'value=output' WITHDRAWN.")
+    print("    Clean keeper = Z2 (dimensionless ratio ⇒ not walled). Decisive test")
+    print("    (ε₂ =? 1−π/√12 from §2.16) NOT run — ε₂ value not in canonical text.")
     print()
 
     eta = math.pi / math.sqrt(12)       # p6m packing density (occupied fraction)

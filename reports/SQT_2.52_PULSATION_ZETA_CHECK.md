@@ -1,14 +1,51 @@
-# §2.52 Open 3 (Pulsation = ζ) — Status Clarified: ζ Is the p6m Packing Void Fraction (M.CW-LEGAL, unlike cos π/10); Value = Output, Dynamical Identification = Import
+# §2.52 Open 3 (Pulsation = ζ) — HELD: the Value-Check Was CIRCULAR; the One Clean Keeper Is M.CW Status; the Decisive Test (ε₂) Is Not Yet Run
 
-**Date:** 2026-06-06
-**Register:** **R1** for the geometry/classification (ζ = 1−π/√12 = p6m packing
-void fraction; M.CW-legal); **open** for the dynamical identification (pulsation
-amplitude ratio = ζ), which is currently an import; **conditional on a banked-
-definition promotion** (Z5). **Pre-registration:**
+**Date:** 2026-06-06 (corrected same day after SQT-agent audit — see §0)
+**Register:** **R1** for one narrow structural point (the pulsation target is a
+dimensionless ratio ⇒ **not M.CW-walled**); **everything else HELD** — the
+"value = output" reading was **circular** and is withdrawn. **Pre-registration:**
 `reports/SQT_2.52_PULSATION_ZETA_PREREGISTRATION.md`. **Tool:**
-`tools/pulsation_zeta_check.py`.
-**Eddington / M.BRIDGE:** ACTIVE — no scale fitted, coupling power selected by the
-data; no observable asserted.
+`tools/pulsation_zeta_check.py` (Z1/Z3 now annotated circular).
+
+## §0 — Audit response (SQT-agent; concurred, miss owned)
+
+The agent searched the canonical body and found the decisive flaw I missed: **the
+value-output check is circular.** I verified it independently and **concur fully**:
+
+- **0.0931 appears *nowhere* in the canonical ledger** except as the banked
+  conjecture's ζ = 1 − π/√12. So the tool checked the conjecture's number against
+  **itself**:
+  - **Z1** tested `|(1−π/√12) − 0.0931| < 5e-4` — a number vs. its own 4-figure
+    rounding. Tautological; verifies nothing.
+  - **Z3** ("free power p selects the linear coupling") solved `1 − η^p = ζ` with
+    `ζ := 1 − η¹` *by definition* — so **p=1 is forced by the definition, not
+    selected by data.** The "free power" never met an independent number.
+  This is exactly the **vocabulary-substitution / Eddington failure mode** the
+  ledger itself flags (the §3.03/§3.04 "Error 3" precedent). I brushed against it.
+  **The "value = output" and "data selects the linear coupling" claims are
+  withdrawn.**
+- **The one clean keeper, stated more sharply than I had it:** a **pulsation
+  amplitude *ratio* is dimensionless by its nature** (amplitude/amplitude), so
+  M.CW permits it **regardless of its value** — no void-fraction identification
+  needed. *That* is the real, conjecture-independent contrast with cos π/10 (whose
+  target was a **sign**, walled forever). "Legal but imported" ≠ "walled": a legal
+  target can be closed by instantiation; a walled one never can.
+- **Worse than my Z5:** the banked conjecture doesn't merely say "don't promote" —
+  it **conflicts with C.COSM.2 Position A** (promoting ζ=1−π/√12 effectively
+  promotes Position B in an open cosmological dispute; ζ-tax gate 4). So
+  "prerequisite: promote the definition" is **not** a formality.
+- **The decisive non-circular test I did NOT run:** the §2.52 84-gap is built from
+  the **Regge-packing constant ε₂** (R(2→3)=6ε₂, "exact analytic quantities from
+  packing theorems"). If **ε₂ independently = 1 − π/√12**, derived from §2.16's
+  packing theorems (**not** taken from the conjecture), *then* there is a genuine,
+  non-circular target and "ε₂ = the hexagonal void fraction" is a real identity
+  worth promoting. **I could not run this:** §2.16 (canonical) does **not** state
+  ε₂'s value, and deriving it from memory is the load-bearing-from-memory trap.
+  **This is the open decisive step.**
+
+**Verdict: HOLD.** Do not fold "value = output" (circular, and entangled with
+C.COSM.2). The body below is superseded by this §0 where they conflict; it is kept
+verbatim for the audit trail. What is foldable now is **only** the M.CW status line.
 
 > **What this is, plainly.** This is a **status clarification, not a closure** —
 > and more modest than the bilateral-fold advance (there was a genuine negative
@@ -106,9 +143,9 @@ closure, and the value-as-output rests on a banked definition. No observable
 
 | Task | Status |
 |---|---|
-| §2.52 Open 3 (pulsation = ζ) | **STATUS CLARIFIED (R1 classification; gate still open).** ζ = 1−π/√12 = p6m packing **void fraction** (Thue + §2.1/§2.24) — parameter-free, **dimensionless ⇒ M.CW-LEGAL** (unlike the walled cos π/10). **Value-half = genuine output** (conditional on promoting the banked ζ=1−π/√12 definition). **Dynamical-half open:** "pulsation amplitude ratio = ζ" needs the **linear amplitude-∝-occupied-area coupling** (uniquely reproduces ζ; p=½→0.0477), which the Fano-blind §3.4 vacuum action does **not** supply (import; I1–I3 roton floor). The gate is the **promising** dynamical one — legal target, closable in principle on substrate instantiation. |
-| prerequisite | **Promote ζ = 1−π/√12** from its banked R3 status (`zeta_tax_unified_picture`, 4 gates) before the value-output is canonical. |
-| both §3.4 dynamical gates | bottom at **substrate instantiation**; they differ in M.CW status (cos π/10 walled; ζ legal). |
+| §2.52 Open 3 (pulsation = ζ) | **HELD — gate stays open; one clean structural keeper.** Foldable now (R1): the pulsation target is a **dimensionless amplitude ratio ⇒ not M.CW-walled** (the real contrast with cos π/10's walled *sign*) — no conjecture needed; the gate bottoms at substrate instantiation. **NOT foldable (withdrawn as circular):** "value = output" — 0.0931 has no canonical source outside the banked conjecture ζ=1−π/√12, so Z1/Z3 checked the conjecture against itself. **Decisive open test:** does the §2.16 Regge-packing constant **ε₂ independently equal 1−π/√12** (derived from packing theorems, not the conjecture)? Only then is "ζ = the hexagonal void fraction" a non-circular identity. **Caveat:** ζ=1−π/√12 is in a conflict-flagged banked conjecture (C.COSM.2 Position A). |
+| decisive next step (ε₂) | **Open — not yet run:** §2.16 (canonical) does not state ε₂'s value; needs the ε₂ definition / packing-theorem derivation to test ε₂ =? 1−π/√12 without circularity. |
+| both §3.4 dynamical gates | bottom at **substrate instantiation**; differ in M.CW status (cos π/10 walled *sign*; pulsation ratio legal *ratio*). |
 
 *Reproduce: `python3 tools/pulsation_zeta_check.py`. Pre-registration:
 `SQT_2.52_PULSATION_ZETA_PREREGISTRATION.md`. Append-only; no observable asserted

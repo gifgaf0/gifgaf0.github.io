@@ -33,7 +33,6 @@ import argparse
 import difflib
 import json
 import re
-import statistics
 import sys
 import time
 from dataclasses import dataclass, field
@@ -41,13 +40,20 @@ from typing import Any, Iterable
 
 import requests
 
+from capillary_robust import (
+    RECOMMENDED_SAMPLES,
+    RobustBaselineStats,
+    all_pairs_min_similarity,
+    decide_anomalous,
+    score_length,
+    score_timing,
+)
+
 
 # Body is normalised and capped before comparison so difflib stays cheap
 # on large pages (its ratio is roughly O(n*m)).
 _BODY_COMPARE_CAP = 100_000
 _WHITESPACE = re.compile(r"\s+")
-# Floor for stddev so a perfectly stable metric does not divide by zero.
-_STDDEV_FLOOR = 1e-6
 # Where a variant's parameters are injected into the request.
 _INJECT_POINTS = {"query", "body", "json", "header", "path"}
 
@@ -84,24 +90,22 @@ class Baseline:
     """Statistically-described baseline learned from repeated sampling."""
 
     status_codes: set[int]
-    length_mean: float
-    length_stddev: float
-    time_mean: float
-    time_stddev: float
+    # Robust centre/scale for length and timing (median + scaled MAD with
+    # metric-appropriate floors); replaces the old mean/stddev z-scoring.
+    stats: RobustBaselineStats
     # Header keys seen in *every* baseline sample (the stable set).
     stable_headers: frozenset[str]
     reference_body: str
-    # Lowest self-similarity between two identical baseline responses:
-    # the body's natural variance floor. A variant must drop below this
-    # (scaled by the threshold) to count as anomalous.
+    # Lowest self-similarity across *all* pairs of identical baseline
+    # responses: the body's natural variance floor. A variant must drop
+    # below this (scaled by the threshold) to count as anomalous.
     content_floor: float
     samples: list[Sample] = field(default_factory=list)
 
     def describe(self) -> str:
         return (
             f"status={sorted(self.status_codes)} "
-            f"length={self.length_mean:.0f}+/-{self.length_stddev:.1f}B "
-            f"time={self.time_mean:.4f}+/-{self.time_stddev:.4f}s "
+            f"{self.stats.describe()} "
             f"content_floor={self.content_floor:.4f} "
             f"stable_headers={len(self.stable_headers)}"
         )
@@ -116,9 +120,14 @@ class VarianceReport:
     status_changed: bool
     similarity: float
     similarity_threshold: float
+    # length_z is 0.0 in the deterministic-length any-change branch; read
+    # length_delta / length_reason there instead.
     length_z: float
+    length_delta: float
+    length_reason: str
     time_z: float
     time_delta: float
+    time_reason: str
     header_diff: set[str]
     reflected: bool
     signals: list[str]
@@ -139,7 +148,7 @@ class CapillaryVarianceScanner:
         *,
         variance_threshold: float = 0.85,
         z_threshold: float = 3.0,
-        samples: int = 5,
+        samples: int = RECOMMENDED_SAMPLES,
         timeout: float = 10.0,
         delay: float = 0.0,
         method: str | None = None,
@@ -277,20 +286,17 @@ class CapillaryVarianceScanner:
         times = [s.response_time for s in samples]
         header_sets = [s.header_keys for s in samples]
 
-        # The body's natural variance floor: the worst self-similarity
-        # between any two identical baseline responses.
-        ref = samples[-1].body
-        floors = [_similarity(ref, s.body) for s in samples[:-1]] or [1.0]
-        content_floor = min(floors)
+        # The body's natural variance floor: the worst self-similarity across
+        # *all* pairs of identical baseline responses (a single-reference
+        # floor can be skewed by one unlucky sample).
+        bodies = [s.body for s in samples]
+        content_floor = all_pairs_min_similarity(bodies, _similarity)
 
         self.baseline = Baseline(
             status_codes={s.status_code for s in samples},
-            length_mean=statistics.fmean(lengths),
-            length_stddev=statistics.pstdev(lengths),
-            time_mean=statistics.fmean(times),
-            time_stddev=statistics.pstdev(times),
+            stats=RobustBaselineStats.from_samples(lengths, times),
             stable_headers=frozenset.intersection(*header_sets),
-            reference_body=ref,
+            reference_body=samples[-1].body,
             content_floor=content_floor,
             samples=samples,
         )
@@ -308,11 +314,11 @@ class CapillaryVarianceScanner:
 
         status_changed = sample.status_code not in b.status_codes
 
-        length_z = abs(sample.content_length - b.length_mean) / max(
-            b.length_stddev, _STDDEV_FLOOR
-        )
-        time_delta = sample.response_time - b.time_mean
-        time_z = time_delta / max(b.time_stddev, _STDDEV_FLOOR)
+        # Robust scoring: median + scaled MAD with metric-appropriate floors.
+        # Length self-selects an any-change rule when the baseline is
+        # deterministic; timing always uses the floored robust z.
+        time_v = score_timing(sample.response_time, b.stats, self.z_threshold)
+        length_v = score_length(sample.content_length, b.stats, self.z_threshold)
 
         similarity = _similarity(b.reference_body, sample.body)
         # Adaptive threshold: a page that naturally jitters (low floor)
@@ -328,19 +334,18 @@ class CapillaryVarianceScanner:
             signals.append("status")
         if similarity < sim_threshold:
             signals.append("body")
-        if length_z >= self.z_threshold:
+        if length_v.fired:
             signals.append("length")
-        if abs(time_z) >= self.z_threshold:
+        if time_v.fired:
             signals.append("timing")
         if reflected:
             signals.append("reflection")
         if header_diff:
             signals.append("headers")
 
-        # Reflection and header drift alone are weak signals (a reflected
-        # parameter is common and benign); they annotate but do not flag.
-        strong = {"status", "body", "length", "timing"}
-        anomalous = bool(strong.intersection(signals))
+        # Strong signals (status/body/length/timing) flag on their own;
+        # reflection elevates only in combination with another signal.
+        anomalous = decide_anomalous(signals)
 
         return VarianceReport(
             name=name,
@@ -348,9 +353,12 @@ class CapillaryVarianceScanner:
             status_changed=status_changed,
             similarity=similarity,
             similarity_threshold=sim_threshold,
-            length_z=length_z,
-            time_z=time_z,
-            time_delta=time_delta,
+            length_z=length_v.z,
+            length_delta=length_v.delta,
+            length_reason=length_v.reason,
+            time_z=time_v.z,
+            time_delta=time_v.delta,
+            time_reason=time_v.reason,
             header_diff=header_diff,
             reflected=reflected,
             signals=signals,
@@ -400,8 +408,8 @@ class CapillaryVarianceScanner:
                 f"    - similarity  : {r.similarity:.4f} "
                 f"(threshold {r.similarity_threshold:.4f})"
             )
-            print(f"    - length z    : {r.length_z:.2f}")
-            print(f"    - time z      : {r.time_z:+.2f} ({r.time_delta:+.4f}s)")
+            print(f"    - length      : {r.length_reason}")
+            print(f"    - timing      : {r.time_reason}")
             if r.reflected:
                 print("    - reflection  : payload echoed in body")
             if r.header_diff:
@@ -463,8 +471,10 @@ def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
         "-n",
         "--samples",
         type=int,
-        default=5,
-        help="Number of baseline samples to learn the noise floor (default: 5).",
+        default=RECOMMENDED_SAMPLES,
+        help="Number of baseline samples to learn the noise floor "
+        f"(default: {RECOMMENDED_SAMPLES}; robust scale estimation needs "
+        "~15-20, fewer widens the envelope).",
     )
     p.add_argument("--timeout", type=float, default=10.0, help="Per-request timeout (s).")
     p.add_argument(

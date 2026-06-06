@@ -48,6 +48,8 @@ _BODY_COMPARE_CAP = 100_000
 _WHITESPACE = re.compile(r"\s+")
 # Floor for stddev so a perfectly stable metric does not divide by zero.
 _STDDEV_FLOOR = 1e-6
+# Where a variant's parameters are injected into the request.
+_INJECT_POINTS = {"query", "body", "json", "header"}
 
 
 def _normalise_body(text: str) -> str:
@@ -140,7 +142,8 @@ class CapillaryVarianceScanner:
         samples: int = 5,
         timeout: float = 10.0,
         delay: float = 0.0,
-        method: str = "GET",
+        method: str | None = None,
+        inject: str = "query",
         verify_tls: bool = True,
     ) -> None:
         self.target_url = target_url
@@ -151,7 +154,15 @@ class CapillaryVarianceScanner:
         self.samples = max(2, samples)
         self.timeout = timeout
         self.delay = delay
-        self.method = method.upper()
+        if inject not in _INJECT_POINTS:
+            raise ValueError(
+                f"inject must be one of {sorted(_INJECT_POINTS)}, got {inject!r}"
+            )
+        self.inject = inject
+        # Body/json variants ride in a request body, so default to POST
+        # unless the caller pinned a method explicitly.
+        default_method = "POST" if inject in ("body", "json") else "GET"
+        self.method = (method or default_method).upper()
         self.baseline: Baseline | None = None
 
         # A single session reuses the TCP/TLS connection so per-request
@@ -170,13 +181,27 @@ class CapillaryVarianceScanner:
 
     # -- request plumbing ---------------------------------------------------
 
-    def _request(self, params: dict | None = None) -> Sample:
+    def _request(self, payload: dict | None = None) -> Sample:
+        # Route the variant to the configured injection point. With no
+        # payload (baseline sampling) the request rides the same method and
+        # transport but carries no mutation.
+        kwargs: dict[str, Any] = {"timeout": self.timeout}
+        if payload:
+            if self.inject == "query":
+                kwargs["params"] = payload
+            elif self.inject == "body":
+                kwargs["data"] = payload
+            elif self.inject == "json":
+                kwargs["json"] = payload
+            elif self.inject == "header":
+                # Header values must be strings; coerce lists/ints.
+                kwargs["headers"] = {k: str(v) for k, v in payload.items()}
+
         start = time.perf_counter()
         response = self.session.request(
             self.method,
             self.target_url,
-            params=params,
-            timeout=self.timeout,
+            **kwargs,
         )
         elapsed = time.perf_counter() - start
         return Sample(
@@ -192,7 +217,10 @@ class CapillaryVarianceScanner:
     def establish_baseline(self) -> bool:
         """Sample the unmutated endpoint repeatedly to learn its noise."""
         print(f"[*] Establishing baseline for: {self.target_url}")
-        print(f"    method={self.method} samples={self.samples}")
+        print(
+            f"    method={self.method} inject={self.inject} "
+            f"samples={self.samples}"
+        )
         try:
             # Warm-up request primes the connection; discarded so the TLS
             # handshake does not inflate the timing baseline.
@@ -322,7 +350,7 @@ class CapillaryVarianceScanner:
             if self.delay:
                 time.sleep(self.delay)
             try:
-                sample = self._request(params=payload)
+                sample = self._request(payload)
             except requests.exceptions.RequestException as e:
                 print(f"[-] Branch failure on {name}: {e}")
                 continue
@@ -414,7 +442,18 @@ def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
         default=0.0,
         help="Delay between requests (s) to respect target load.",
     )
-    p.add_argument("--method", default="GET", help="HTTP method (default: GET).")
+    p.add_argument(
+        "--method",
+        default=None,
+        help="HTTP method (default: GET, or POST when --inject is body/json).",
+    )
+    p.add_argument(
+        "--inject",
+        choices=sorted(_INJECT_POINTS),
+        default="query",
+        help="Where to inject each variant: query string, form body, JSON "
+        "body, or request headers (default: query).",
+    )
     p.add_argument(
         "--insecure",
         action="store_true",
@@ -445,6 +484,7 @@ def main(argv: Iterable[str] | None = None) -> int:
         timeout=args.timeout,
         delay=args.delay,
         method=args.method,
+        inject=args.inject,
         verify_tls=not args.insecure,
     )
 

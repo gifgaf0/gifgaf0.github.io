@@ -49,7 +49,7 @@ _WHITESPACE = re.compile(r"\s+")
 # Floor for stddev so a perfectly stable metric does not divide by zero.
 _STDDEV_FLOOR = 1e-6
 # Where a variant's parameters are injected into the request.
-_INJECT_POINTS = {"query", "body", "json", "header"}
+_INJECT_POINTS = {"query", "body", "json", "header", "path"}
 
 
 def _normalise_body(text: str) -> str:
@@ -144,6 +144,8 @@ class CapillaryVarianceScanner:
         delay: float = 0.0,
         method: str | None = None,
         inject: str = "query",
+        path_marker: str = "FUZZ",
+        path_baseline: str = "",
         verify_tls: bool = True,
     ) -> None:
         self.target_url = target_url
@@ -159,6 +161,15 @@ class CapillaryVarianceScanner:
                 f"inject must be one of {sorted(_INJECT_POINTS)}, got {inject!r}"
             )
         self.inject = inject
+        # Path injection is positional: the variant value replaces a marker
+        # in the URL itself, so the URL must contain that marker.
+        self.path_marker = path_marker
+        self.path_baseline = path_baseline
+        if inject == "path" and path_marker not in target_url:
+            raise ValueError(
+                f"path injection requires the marker {path_marker!r} in the URL, "
+                f"e.g. https://host/api/users/{path_marker}"
+            )
         # Body/json variants ride in a request body, so default to POST
         # unless the caller pinned a method explicitly.
         default_method = "POST" if inject in ("body", "json") else "GET"
@@ -185,8 +196,13 @@ class CapillaryVarianceScanner:
         # Route the variant to the configured injection point. With no
         # payload (baseline sampling) the request rides the same method and
         # transport but carries no mutation.
+        url = self.target_url
         kwargs: dict[str, Any] = {"timeout": self.timeout}
-        if payload:
+        if self.inject == "path":
+            # Positional: substitute the marker with the variant value (or
+            # the known-good baseline value when sampling the baseline).
+            url = self._build_path_url(payload)
+        elif payload:
             if self.inject == "query":
                 kwargs["params"] = payload
             elif self.inject == "body":
@@ -200,7 +216,7 @@ class CapillaryVarianceScanner:
         start = time.perf_counter()
         response = self.session.request(
             self.method,
-            self.target_url,
+            url,
             **kwargs,
         )
         elapsed = time.perf_counter() - start
@@ -211,6 +227,21 @@ class CapillaryVarianceScanner:
             header_keys=frozenset(response.headers.keys()),
             body=_normalise_body(response.text),
         )
+
+    def _build_path_url(self, payload: dict | None) -> str:
+        """Substitute the path marker with the variant (or baseline) value.
+
+        The substring is inserted verbatim -- no URL-encoding -- so
+        traversal sequences like ``../`` or pre-encoded ``..%2f`` reach the
+        server intact, which is the whole point of path probing.
+        """
+        if not payload:
+            value = self.path_baseline
+        else:
+            # Multiple values join into nested segments; the common case is
+            # a single value, e.g. {"seg": "../../etc/passwd"}.
+            value = "/".join(str(v) for v in payload.values())
+        return self.target_url.replace(self.path_marker, value)
 
     # -- baseline -----------------------------------------------------------
 
@@ -452,7 +483,19 @@ def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
         choices=sorted(_INJECT_POINTS),
         default="query",
         help="Where to inject each variant: query string, form body, JSON "
-        "body, or request headers (default: query).",
+        "body, request headers, or URL path (default: query).",
+    )
+    p.add_argument(
+        "--path-marker",
+        default="FUZZ",
+        help="Placeholder in the URL replaced by the variant value when "
+        "--inject path is used (default: FUZZ).",
+    )
+    p.add_argument(
+        "--path-baseline",
+        default="",
+        help="Known-good value substituted for the marker while learning the "
+        "baseline under --inject path (e.g. a real resource id).",
     )
     p.add_argument(
         "--insecure",
@@ -476,17 +519,23 @@ def main(argv: Iterable[str] | None = None) -> int:
         print(f"[-] Could not load variants: {e}", file=sys.stderr)
         return 2
 
-    scanner = CapillaryVarianceScanner(
-        args.url,
-        variance_threshold=args.threshold,
-        z_threshold=args.z_threshold,
-        samples=args.samples,
-        timeout=args.timeout,
-        delay=args.delay,
-        method=args.method,
-        inject=args.inject,
-        verify_tls=not args.insecure,
-    )
+    try:
+        scanner = CapillaryVarianceScanner(
+            args.url,
+            variance_threshold=args.threshold,
+            z_threshold=args.z_threshold,
+            samples=args.samples,
+            timeout=args.timeout,
+            delay=args.delay,
+            method=args.method,
+            inject=args.inject,
+            path_marker=args.path_marker,
+            path_baseline=args.path_baseline,
+            verify_tls=not args.insecure,
+        )
+    except ValueError as e:
+        print(f"[-] {e}", file=sys.stderr)
+        return 2
 
     if not scanner.establish_baseline():
         return 1

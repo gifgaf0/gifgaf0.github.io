@@ -34,14 +34,30 @@ value-output check is circular.** I verified it independently and **concur fully
   it **conflicts with C.COSM.2 Position A** (promoting ζ=1−π/√12 effectively
   promotes Position B in an open cosmological dispute; ζ-tax gate 4). So
   "prerequisite: promote the definition" is **not** a formality.
-- **The decisive non-circular test I did NOT run:** the §2.52 84-gap is built from
-  the **Regge-packing constant ε₂** (R(2→3)=6ε₂, "exact analytic quantities from
-  packing theorems"). If **ε₂ independently = 1 − π/√12**, derived from §2.16's
-  packing theorems (**not** taken from the conjecture), *then* there is a genuine,
-  non-circular target and "ε₂ = the hexagonal void fraction" is a real identity
-  worth promoting. **I could not run this:** §2.16 (canonical) does **not** state
-  ε₂'s value, and deriving it from memory is the load-bearing-from-memory trap.
-  **This is the open decisive step.**
+- **The decisive non-circular test — now effectively run (SQT-agent dig, verified
+  here):** the independently-needed number is **not** ζ. The §2.52 Regge cascade
+  gives, with **no** ζ conjecture in the loop:
+  cascade 83.7128 → gap 0.2872 → void 0.7128 → **pulsation = void − φ⁻¹ = 0.09477**.
+  I reconstructed this from the canonical cascade and confirmed it against the
+  project files (`tools/_seven_circles_source/`: pulsation = 0.0948, "determined by
+  subtraction," and R4 — *no clean cross-ratio address; canonically underived*).
+  Meanwhile ζ = 1 − π/√12 = **0.09310**. So **pulsation ≠ ζ**: they differ by
+  **0.00167**, and the canonical bridge "φ⁻¹ + ζ" (0.71113) **undershoots** the
+  void (0.7128) by exactly that. ⇒ "pulsation = ζ" is a **leading-order
+  approximation (~1.8%), not an identity** — and the §3.4 derivation target is the
+  **full 0.0948** (void fraction *plus* a next-order anharmonic), a higher bar than
+  the "ζ = void fraction" story suggested. **Verified — core finding solid**
+  (modulo the upstream cascade 83.7128 ← E_torus + K₇ "factor", trusted from the
+  project files, not re-derived).
+- **One caveat I do NOT concede (verify the identification, don't assert it):** the
+  residual **0.00167 is not** §2.52 Open 2's δ = **0.01829** — they are not equal,
+  and the *relative* residual (0.0179) only *approximately* matches 0.01829 (off by
+  ~2% of itself), with 0.01829 appearing **nowhere** in these project files. So
+  "the residual *is* Open 2" is **not** arithmetically clean; whether the
+  pulsation−ζ gap equals Open 2's δ (vs. being a distinct quantity, or a
+  normalization/rounding difference) needs δ's precise canonical definition before
+  it is folded. Flagged for the same reason the circularity was: a load-bearing
+  identification must be checked, not assumed.
 
 **Verdict: HOLD.** Do not fold "value = output" (circular, and entangled with
 C.COSM.2). The body below is superseded by this §0 where they conflict; it is kept
@@ -143,8 +159,7 @@ closure, and the value-as-output rests on a banked definition. No observable
 
 | Task | Status |
 |---|---|
-| §2.52 Open 3 (pulsation = ζ) | **HELD — gate stays open; one clean structural keeper.** Foldable now (R1): the pulsation target is a **dimensionless amplitude ratio ⇒ not M.CW-walled** (the real contrast with cos π/10's walled *sign*) — no conjecture needed; the gate bottoms at substrate instantiation. **NOT foldable (withdrawn as circular):** "value = output" — 0.0931 has no canonical source outside the banked conjecture ζ=1−π/√12, so Z1/Z3 checked the conjecture against itself. **Decisive open test:** does the §2.16 Regge-packing constant **ε₂ independently equal 1−π/√12** (derived from packing theorems, not the conjecture)? Only then is "ζ = the hexagonal void fraction" a non-circular identity. **Caveat:** ζ=1−π/√12 is in a conflict-flagged banked conjecture (C.COSM.2 Position A). |
-| decisive next step (ε₂) | **Open — not yet run:** §2.16 (canonical) does not state ε₂'s value; needs the ε₂ definition / packing-theorem derivation to test ε₂ =? 1−π/√12 without circularity. |
+| §2.52 Open 3 (pulsation = ζ) | **HELD — gate open; "pulsation = ζ" is a leading-order approximation, NOT an identity.** **Foldable now (R1):** the pulsation target is a **dimensionless amplitude ratio ⇒ not M.CW-walled** (the real contrast with cos π/10's walled *sign*); bottoms at substrate instantiation. **Withdrawn as circular:** "value = output" (Z1/Z3 checked the banked conjecture ζ=1−π/√12 against itself). **New, verified (SQT-agent dig):** the independently-needed **pulsation = void − φ⁻¹ = 0.0948** (Regge cascade, no ζ conjecture; project files, R4 = underived) **≠ ζ = 0.0931** — they differ by 0.00167 (~1.8%); "φ⁻¹+ζ" undershoots the void by exactly that. So the §3.4 target is the **full 0.0948 (void fraction + a next-order anharmonic)**, a higher bar. **Caveats:** (i) the residual 0.00167 is **not** cleanly §2.52 Open 2's δ=0.01829 (needs δ's precise definition); (ii) ζ=1−π/√12 is in a conflict-flagged banked conjecture (C.COSM.2 Position A); (iii) 0.0948 rests on the cascade 83.7128 (E_torus + K₇ factor), trusted not re-derived. |
 | both §3.4 dynamical gates | bottom at **substrate instantiation**; differ in M.CW status (cos π/10 walled *sign*; pulsation ratio legal *ratio*). |
 
 *Reproduce: `python3 tools/pulsation_zeta_check.py`. Pre-registration:

@@ -49,15 +49,25 @@ value-output check is circular.** I verified it independently and **concur fully
   the "ζ = void fraction" story suggested. **Verified — core finding solid**
   (modulo the upstream cascade 83.7128 ← E_torus + K₇ "factor", trusted from the
   project files, not re-derived).
-- **One caveat I do NOT concede (verify the identification, don't assert it):** the
-  residual **0.00167 is not** §2.52 Open 2's δ = **0.01829** — they are not equal,
-  and the *relative* residual (0.0179) only *approximately* matches 0.01829 (off by
-  ~2% of itself), with 0.01829 appearing **nowhere** in these project files. So
-  "the residual *is* Open 2" is **not** arithmetically clean; whether the
-  pulsation−ζ gap equals Open 2's δ (vs. being a distinct quantity, or a
-  normalization/rounding difference) needs δ's precise canonical definition before
-  it is folded. Flagged for the same reason the circularity was: a load-bearing
-  identification must be checked, not assumed.
+- **One caveat I do NOT concede (verify the identification, don't assert it) —
+  now reconciled.** My first flag stands but resolves cleanly: the absolute
+  anharmonic (pulsation − ζ) = **0.00167** *does* match canonical §2.52 Open 2's
+  anharmonic ≈ 0.00170 (within cascade rounding); the confusion was that **δ is the
+  ζ-normalized *ratio*** anharmonic/ζ = **0.01789**, not the absolute term, and the
+  computed 0.01789 does **not** equal the stated canonical δ = 0.01829. **But that
+  gap is below the precision floor:** the anharmonic is a small difference of larger
+  numbers (void 0.713 − φ⁻¹ 0.618 − ζ 0.093), so δ is hypersensitive to cascade
+  truncation — a **0.000044% change** in the cascade (83.712800 → 83.712837) swings
+  δ by **~2.2%**, more than the 0.01789↔0.01829 gap. So the residual's identity
+  **cannot be resolved** at the available precision — *exactly why* the May-13 file
+  finds δ unidentifiable (π/172 "a coincidence, not an identification"). **This is a
+  clarification consistent with canonical §2.52, not a reversal:** §2.52 already
+  splits this as Open 3 (pulsation = ζ, the *leading* term) + Open 2 (the
+  anharmonic); what was loose — in my tool, the running memory, and the agent's
+  first pass — was treating ζ *alone* as the full pulsation. The corrected statement
+  (pulsation 0.0948 = void fraction 0.0931 + anharmonic 0.0017) *is* the canonical
+  split, made explicit. Both directions of the cross-audit verified against the
+  project text.
 
 **Verdict: HOLD.** Do not fold "value = output" (circular, and entangled with
 C.COSM.2). The body below is superseded by this §0 where they conflict; it is kept

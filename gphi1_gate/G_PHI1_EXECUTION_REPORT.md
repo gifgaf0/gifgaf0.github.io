@@ -22,7 +22,7 @@ auditor decision of 2026-06-16.
 
 | step | quantity | result | note |
 |---|---|---|---|
-| 1 | μ (rectangular 2×2 supercell, 224×388, dx=0.013, PBC) | 55.946 | matches R1/G-ζ1 exactly |
+| 1 | μ (rectangular 2×2 supercell, 224×388, dx=0.013, PBC) | 55.946 | matches the G-ζ1 **rebuild** value to 0.02%; deviates from the original Phase-2 R1 (55.857) by 0.16%, within the rebuild's documented <1% tolerance [†] |
 | 1 | GP residual | 2.3e-3 | a* locked at 1.4576 by commensurate box |
 | 2 | void centre | (0.000, 0.842) | triangle-centre min-density point |
 | 2 | ρ_void | 0.0081 | ≈ 0 ✓ (good vortex core) |
@@ -30,6 +30,12 @@ auditor decision of 2026-06-16.
 | 3 | radial profile | recorded 0→3ξ step ξ/20, 24 angular bins | extended to 5.5ξ for the premise check |
 | 4 | max\|dρ/dr\| in registered [0,3ξ] | r = 3.000ξ (**window boundary**) | profile convex throughout — no interior inflection |
 | 5 | rate_actual = −ln(ρ(3ξ)/ρ₀)·(2ξ/a*) | 0.2013 | = density at the 3ξ cutoff, **not** an inflection |
+
+**[†] μ provenance (audit correction 2026-06-16):** the instrument reproduces the
+**G-ζ1 rebuild**, not the original Phase-2 R1. μ_actual = 55.946 vs rebuild 55.95
+(0.02%) vs original R1 55.857 (0.16%). The 0.16% offset is within the rebuild's
+documented <1% tolerance and does not affect the gate; earlier "matches R1 exactly"
+language was too strong and is retracted.
 
 **Convention (logged, HARD-RULE choice):** ξ = 1/√(2g) = 0.150756, the GP healing
 length that makes the pre-registered tanh result exact (rate_tanh = ln3·(2ξ/a*) =
@@ -80,6 +86,16 @@ Define a compounding-rate probe that is well-posed for a droplet crystal — e.g
 density at a *fixed geometric fraction* of the void-to-peak separation, or a
 log-slope integrated across one tube-diameter, rather than the tanh inflection
 point. Re-register before recomputing. M.BRIDGE remains the open structural channel.
+
+**Auditor motivation for the next gate (not a pre-registered result, 2026-06-16):**
+the right characterisation of perturbation propagation through the *actual* crystal
+is the existing G-ζ1 Phase-4 per-layer decay constants — t_A = 0.36, t_B = 0.76,
+d_row = 1.2623 — not a fresh tanh-profile computation. Reading these as
+per-tube-diameter compounding rates (2ξ/d_row = 0.239) gives rate_A =
+−ln(0.36)·0.239 = 0.244 and rate_B = −ln(0.76)·0.239 = 0.065; geometric mean
+√(0.244·0.065) = 0.126 is the right order of magnitude vs 1/Φ = 0.160, and a proton
+tube samples both channels by lattice orientation. This is the starting data for the
+re-registered gate, not evidence — it must be pre-registered before it counts.
 
 ## Proposed Master Ledger Part V row (for auditor fold-in; **ledger not edited here**
 — canonical V4.39 is not in this repo)

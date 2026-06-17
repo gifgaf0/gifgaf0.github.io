@@ -99,11 +99,40 @@ this third level is field-class-independent by construction.
 | **64→128** | **64D→128D** | **PG(5,2)** | **63** | **651** | **GL(6,2)** |
 
 The projective dimension advances by exactly one per algebra-doubling, confirmed
-at three consecutive levels. Each doubling embeds two intact copies of the level
-below (84→84+84; 1260→1260+1260; 13020→13020+13020) and the bridge realizes the
-next PG(n,2). Bridge growth: 1092 (32D) → 10500 (64D) → 91140 (128D). The 256→PG(6,2)
-continuation is the next R2.
+at three consecutive levels.
+
+## 7. NEW RESULT — fourth consecutive doubling: 256D realizes PG(6,2) (R1)
+`pathion256_pg62.py`, pruned method (prime-free), 256D table:
+
+| quantity | computed |
+|---|---|
+| 256D total two-term canonical ZD pairs | **992124** |
+| decomposition (two 128D copies + bridge) | **117180 + 117180 + 757764** |
+| every quadruple index-XOR=0 | **True** |
+| PG(6,2) ground truth | **127 pts, 2667 lines, each pt on 63** ✓ |
+| bridge line witnessing | **2667/2667, none spurious, missing=0** |
+| generator e₁₂₈ | **excluded; 127 reductions used** |
+
+Trust basis: the dimension-general completeness lemma + implementation validated
+pruned==brute at 32D (in-script) and 64D (full brute, §6). A 128D/256D brute force
+is *not* run (256D brute ≈ hundreds of hours); this is the recorded tradeoff — the
+proven lemma plus two-level validation, not a third brute leg. Prime-free pruned
+search ⇒ field-class-independent by construction.
+
+### Updated recursion (now R1 at FOUR consecutive doublings)
+| level | doubling | geometry | points | lines | Aut = GL(n,2) | total ZD pairs | bridge |
+|---|---|---|---|---|---|---|---|
+| octonion | — | PG(2,2) Fano | 7 | 7 | GL(3,2)≅PSL(2,7) | — | — |
+| 16→32 | sedenion→pathion | PG(3,2) | 15 | 35 | GL(4,2)≅A₈ | 1260 | 1092 |
+| 32→64 | pathion→64D | PG(4,2) | 31 | 155 | GL(5,2) | 13020 | 10500 |
+| 64→128 | 64D→128D | PG(5,2) | 63 | 651 | GL(6,2) | 117180 | 91140 |
+| **128→256** | **128D→256D** | **PG(6,2)** | **127** | **2667** | **GL(7,2)** | **992124** | **757764** |
+
+Projective dimension +1 per algebra-doubling, four consecutive levels. Each doubling
+embeds two intact copies of the level below (totals: 84→1260→13020→117180→992124,
+each = 2×prev + bridge) and the bridge realizes the next PG(n,2). The 512→PG(7,2)
+continuation (255 points, 10795 lines) is the next R2.
 
 *Files added by this verification: `field_class_check.py` (independent driver),
 `pathion128_pg52.py` (128D→PG(5,2)), `pathion64_brute_check.py` (64D brute leg),
-this report. Author scripts unmodified.*
+`pathion256_pg62.py` (256D→PG(6,2)), this report. Author scripts unmodified.*

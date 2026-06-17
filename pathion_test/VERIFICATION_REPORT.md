@@ -70,5 +70,40 @@ realizes PG(n,2) exactly at two consecutive doublings (16→32 PG(3,2), 32→64 
 with the GL(n,2) automorphism ladder advancing in lockstep — and that this is
 prime-class-independent.
 
+## 6. NEW RESULT — third consecutive doubling: 128D realizes PG(5,2) (R1)
+The ledger left 128D→PG(5,2) as R2 (not computed). It is now computed and
+**closes positive**. `pathion128_pg52.py`, pruned method (prime-free), 128D table:
+
+| quantity | predicted by the pattern | computed |
+|---|---|---|
+| 128D total two-term canonical ZD pairs | — | **117180** |
+| decomposition | two 64D copies + bridge | **13020 + 13020 + 91140** |
+| every quadruple index-XOR=0 | yes | **True** |
+| PG(5,2) ground truth | 63 pts, 651 lines, each pt on 31 | **63, 651, {31}** ✓ |
+| bridge line witnessing | all 651, none spurious | **651/651, subset, missing=0** |
+| generator e₆₄ | excluded | **excluded; 63 reductions used** |
+
+**Implementation validated at two levels, not one.** `pathion64_brute_check.py`
+ran the full 64D brute force (14 min) against the pruned method: **both 13020,
+identical sets**. Combined with the in-script 32D equivalence (1260==1260) and the
+dimension-general completeness lemma, the 128D pruned count rests on implementation
+checks at 32D *and* 64D. The pruned search uses only σ(i,j)∈{±1} — no prime — so
+this third level is field-class-independent by construction.
+
+### Updated recursion (now R1 at THREE consecutive doublings)
+| level | doubling | geometry | points | lines | Aut = GL(n,2) |
+|---|---|---|---|---|---|
+| octonion | — | PG(2,2) Fano | 7 | 7 | GL(3,2) ≅ PSL(2,7) |
+| 16→32 | sedenion→pathion | PG(3,2) | 15 | 35 | GL(4,2) ≅ A₈ |
+| 32→64 | pathion→64D | PG(4,2) | 31 | 155 | GL(5,2) |
+| **64→128** | **64D→128D** | **PG(5,2)** | **63** | **651** | **GL(6,2)** |
+
+The projective dimension advances by exactly one per algebra-doubling, confirmed
+at three consecutive levels. Each doubling embeds two intact copies of the level
+below (84→84+84; 1260→1260+1260; 13020→13020+13020) and the bridge realizes the
+next PG(n,2). Bridge growth: 1092 (32D) → 10500 (64D) → 91140 (128D). The 256→PG(6,2)
+continuation is the next R2.
+
 *Files added by this verification: `field_class_check.py` (independent driver),
+`pathion128_pg52.py` (128D→PG(5,2)), `pathion64_brute_check.py` (64D brute leg),
 this report. Author scripts unmodified.*

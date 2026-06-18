@@ -1,16 +1,16 @@
 # Proof sketch — the Cayley-Dickson ZD bridge realizes PG(n−1,2) at every doubling
 
-**Status: PROVED unconditionally for n = 4…8** (the five computed doublings — every link
-proved or exhaustively finitely verified), and **proved for all n ≥ 4 modulo one
-classical input** (the nucleus of A_n is the base field, used only for "top-bit"
-reduction pairs in the existence half). The former identity gap — G = associator
-(Lemma 3) — is now closed symbolically: it reduces to *basis left-alternativity*
-[eₓ,eₓ,e_w]=0, proved for all n by induction on the doubling with an elementary base
-(n=1, ℂ), citing nothing external. The completeness property turned out to *be the
-algebra's associator*: the bridge realizes PG(n−1,2) precisely because every
-Cayley–Dickson algebra past the quaternions is non-associative. Machine certificates:
-`verify_reduction.py`, `verify_associator.py`, `verify_alternative.py`,
-`verify_induction.py`, `verify_existence.py`.
+**Status: PROVED unconditionally for all n ≥ 4**, self-contained — no external citations.
+Both former dependencies are eliminated: (1) the identity G = associator (Lemma 3)
+reduces to *basis left-alternativity* [eₓ,eₓ,e_w]=0, proved for all n by induction on the
+doubling with an elementary base (n=1, ℂ); (2) the existence half (every line has a
+non-associating witness) is proved by an **explicit per-line witness** (three cases,
+each a τ-product or an anticommutator equal to −1), replacing the nucleus theorem. The
+completeness property turned out to *be the algebra's associator*: the bridge realizes
+PG(n−1,2) precisely because every Cayley–Dickson algebra past the quaternions is
+non-associative. Machine certificates: `verify_reduction.py`, `verify_associator.py`,
+`verify_alternative.py`, `verify_induction.py`, `verify_existence.py`,
+`verify_witness_complete.py`.
 
 Throughout: field of characteristic ≠ 2; `^` is bitwise XOR; results reported as
 found (no target consulted).
@@ -187,25 +187,29 @@ With Lemma 3, **(P_n) becomes a pure non-associativity statement:**
 > **(P_n′).** For every two distinct nonzero imaginary units e_{q₁}, e_{q₂} there is a
 > unit e_p with which they **fail to associate** (A(q₁,q₂,p) = −1).
 
-**Free-bit witness lemma (elementary, no nucleus theorem cited).** If a,b are distinct
-nonzero with a,b < 2ᵏ (k ≤ n−1), then A(a,b,2ᵏ) = −1. *Proof:* all four index-pairs
-in A(a,b,2ᵏ) lie in the subalgebra A_{k+1}, so we may use the cocycle recursion at the
-doubling A_k → A_{k+1} (D=2ᵏ, generator e_D): σ(a⊕b,D)=σ_<(0,a⊕b)=1, σ(b,D)=1,
-σ(a,b⊕D)=σ_<(b,a), σ(a,b)=σ_<(a,b); hence
-A(a,b,2ᵏ) = σ_<(a,b)·1·1·σ_<(b,a) = σ_<(a,b)σ_<(b,a) = −1 by anticommutativity. ∎
-(Verified, as predicate (W), in `verify_existence.py`.) Taking k=n−1, this **proves
-(P_n′) outright for every pair whose two reductions are < 2ⁿ⁻¹** — the explicit
-witness is the top generator e_{2ⁿ⁻¹}.
+**(P_n′) is proved elementarily for all n** — by an explicit witness per line, with no
+nucleus theorem and no residual. Completeness needs only that each *line* be witnessed
+(a bridge ZD on any pair of its points realizes the whole triple), so for each line we
+pick the most convenient pair. Set t := 2ⁿ⁻¹. Each line has 0 or 2 "upper" points
+(reductions ≥ t), since the top bit of δ=q₁⊕q₂ is the XOR of the top bits of q₁,q₂.
 
-**Remaining pairs (a reduction uses the top bit).** Here no generator sits above both
-units and there is no single closed-form witness (the associator has two regimes;
-checked). (P_n′) still holds — it is exactly the standard fact that the nucleus of A_n
-is the base field for n ≥ 3 (Schafer, *Intro. to Nonassociative Algebras*), so no
-imaginary unit lies in a common associative subalgebra with everything. We have not
-reduced this residual to a one-line elementary argument; it is **verified exhaustively
-for n = 4…8**, where the witness count is exactly 2ⁿ⁻¹ > 0 for every pair (values
-{2ⁿ⁻¹, 2ⁿ−4}, `verify_associator.py`). This is the single non-elementary input for
-general n; everything else is proved for all n from scratch.
+- **0 upper points** (all three < t): take a lower pair (x,y), witness **p = t**. All
+  four index-pairs of A(x,y,t) lie in A_n's subalgebra A_{(log t)+1}, where the cocycle
+  recursion gives σ(x⊕y,t)=σ(t,y)=1 and σ(x,y⊕t)=σ(y,x); so
+  **A(x,y,t) = σ(x,y)σ(y,x) = −1** (anticommutativity).
+- **2 upper points** u₁=t+r₁, u₂=t+r₂ (r₁≠r₂): take the pair (u₁,u₂).
+   - *both r₁,r₂ ≠ 0* — witness **p = r₁** (lower). The recursion collapses the σ-factors
+     to 1 and leaves **A(u₁,u₂,r₁) = τ(r₁)τ(r₂)τ(r₁⊕r₂) = (−1)³ = −1** (all three
+     nonzero), where τ(x)=−1 for x≠0.
+   - *one reduction is 0* (the line passes through t; say u₂=t, r₁≠0) — witness **p =**
+     any lower index in {1,…,t−1}\{r₁} (nonempty for t ≥ 3, i.e. n ≥ 3). The recursion
+     gives **A(t+r₁, t, p) = σ(r₁,p)σ(p,r₁) = −1**.
+
+These cases are exhaustive, so **every PG(n−1,2) line is witnessed, for all n ≥ 3.** The
+three closed-form associator values are derived from the cocycle recursion and certified
+against the multiplication table for n=3…8; the witness rule is certified to produce
+A=−1 on all 7…43 435 lines for n=3…9 (`verify_witness_complete.py`). The earlier
+free-bit lemma is the 0-upper case; the nucleus theorem is no longer needed.
 
 **Reading.** *The projective geometry of the bridge is the associator structure of
 the algebra.* A PG(n−1,2) line {q₁,q₂,δ} is realized by the 64→128-style bridge **iff**
@@ -227,32 +231,29 @@ non-associativity of every CD algebra past the quaternions, always holds. PG(2,2
 | completeness ⇔ (P_n) | **proved** (reduction, all n) |
 | Lemma 3: G(p) = associator A(q₁,q₂,p) | **proved** (all n, via Lemma 3a) + verified n=4…8 |
 | Lemma 3a: basis left-alternativity | **proved all n** (induction, base n=1) + verified n=1…9 |
-| (P_n′): ∃ non-associating p — pairs with both reductions < 2ⁿ⁻¹ | **proved all n** (free-bit lemma, elementary) |
-| (P_n′): ∃ non-associating p — top-bit pairs | **proved n≤8** (exhaustive); general n = nucleus thm (Schafer), not re-derived |
+| (P_n′)/completeness: every line witnessed | **proved all n** (explicit per-line witness, 3 cases) + verified n=3…9 |
 
-**Bottom line.** Two scopes:
+**Bottom line — unconditional theorem, all n, self-contained.** Every row is proved from
+scratch for all n, citing nothing external (the former two dependencies — octonion
+alternativity and the nucleus theorem — are both eliminated):
 
-> **Theorem (unconditional, n = 4…8).** For each of the five computed doublings, the
-> two-term canonical zero divisors split as two intact copies of A_n plus a bridge that
-> realizes **exactly** PG(n−1,2) on the 2ⁿ−1 nonzero upper reductions — every line
-> witnessed, none spurious, generator excluded — field-independently. Every link is
-> proved or exhaustively finitely verified.
+> **Theorem.** For every Cayley–Dickson doubling A_n → A_{n+1} (n ≥ 4) over a field of
+> characteristic ≠ 2, the two-term canonical zero divisors split as two intact copies of
+> A_n plus a bridge, and the bridge realizes **exactly** PG(n−1,2) on the 2ⁿ−1 nonzero
+> upper reductions: every projective line is witnessed, no non-line is, and the doubling
+> generator is excluded. The criterion is a sign condition, so the result is independent
+> of the field (any characteristic ≠ 2).
 
-> **Theorem (general n ≥ 4, modulo one classical input).** The same holds at *every*
-> Cayley–Dickson doubling, with a single non-elementary dependency: that for top-bit
-> reduction pairs a non-associating unit exists — i.e. the nucleus of A_n is the base
-> field (Schafer). All other ingredients — Lemma 1, Prop 2, soundness, point set,
-> decomposition, Lemma 3 (G = associator) via basis left-alternativity, and the
-> free-bit half of (P_n′) — are proved from scratch for all n.
-
-The five computed levels PG(3,2)…PG(7,2) are unconditional instances. **Conceptual
-content:** the bridge realizes PG(n−1,2) because, and exactly to the extent that, the
-Cayley–Dickson algebra is non-associative — and the realization is *driven* by basis
-left-alternativity, the last vestige of alternativity that survives past the octonions.
-PG(2,2) (Fano, octonions) is the n=3 instance of the same statement.
+The five computed levels PG(3,2)…PG(7,2) are instances; the proof covers them and every
+higher doubling at once. **Conceptual content:** the bridge realizes PG(n−1,2) because,
+and exactly to the extent that, the Cayley–Dickson algebra is non-associative — the
+soundness side is forced by basis left-alternativity (the last vestige of alternativity
+past the octonions), and the completeness side by an explicit non-associating witness on
+every line. PG(2,2) (Fano, octonions) is the n=3 instance of the same statement.
 
 *Companions: `verify_reduction.py` (Prop 2 vs brute; (P_n) on σ_n), `verify_associator.py`
 (Lemma 3 + witness counts), `verify_alternative.py` (G=A ⇔ basis left-alt, n=4…8),
 `verify_induction.py` (induction ingredients + L(n), n=1…9), `verify_existence.py`
-(free-bit witness lemma (W)), `explore_Pn.py` (discovery). Other scripts per
+(free-bit witness lemma), `verify_witness_complete.py` (complete per-line witness rule
++ closed-form associator values, n=3…9), `explore_Pn.py` (discovery). Other scripts per
 VERIFICATION_REPORT.md.*

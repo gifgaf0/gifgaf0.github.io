@@ -133,6 +133,36 @@ embeds two intact copies of the level below (totals: 84→1260→13020→117180�
 each = 2×prev + bridge) and the bridge realizes the next PG(n,2). The 512→PG(7,2)
 continuation (255 points, 10795 lines) is the next R2.
 
+## 8. NEW RESULT — fifth consecutive doubling: 512D realizes PG(7,2) (R1)
+`pathion512_pg72.py`, pruned method (prime-free), 512D table (~2.5 min):
+
+| quantity | computed |
+|---|---|
+| 512D total two-term canonical ZD pairs | **8161020** |
+| decomposition (two 256D copies + bridge) | **992124 + 992124 + 6176772** |
+| every quadruple index-XOR=0 | **True** |
+| PG(7,2) ground truth | **255 pts, 10795 lines, each pt on 127** ✓ |
+| bridge line witnessing | **10795/10795, none spurious, missing=0** |
+| generator e₂₅₆ | **excluded; 255 reductions used** |
+
+Trust basis unchanged (lemma + 32D/64D pruned==brute; no higher brute; prime-free
+⇒ field-class-independent).
+
+### Full recursion — R1 at FIVE consecutive doublings
+| level | doubling | geometry | points | lines | Aut = GL(n,2) | total ZD pairs | bridge |
+|---|---|---|---|---|---|---|---|
+| octonion | — | PG(2,2) Fano | 7 | 7 | GL(3,2)≅PSL(2,7) | — | — |
+| 16→32 | sedenion→pathion | PG(3,2) | 15 | 35 | GL(4,2)≅A₈ | 1260 | 1092 |
+| 32→64 | pathion→64D | PG(4,2) | 31 | 155 | GL(5,2) | 13020 | 10500 |
+| 64→128 | 64D→128D | PG(5,2) | 63 | 651 | GL(6,2) | 117180 | 91140 |
+| 128→256 | 128D→256D | PG(6,2) | 127 | 2667 | GL(7,2) | 992124 | 757764 |
+| **256→512** | **256D→512D** | **PG(7,2)** | **255** | **10795** | **GL(8,2)** | **8161020** | **6176772** |
+
+Projective dimension +1 per algebra-doubling, five consecutive levels. Each total =
+2×(previous) + bridge; bridge growth 1092 → 10500 → 91140 → 757764 → 6176772.
+Points/lines match PG(n,2) at every level (points = 2ⁿ⁺¹−1, lines = the XOR-zero
+triples). The 1024→PG(8,2) continuation (511 points, 43435 lines) is the next R2.
+
 *Files added by this verification: `field_class_check.py` (independent driver),
-`pathion128_pg52.py` (128D→PG(5,2)), `pathion64_brute_check.py` (64D brute leg),
-`pathion256_pg62.py` (256D→PG(6,2)), this report. Author scripts unmodified.*
+`pathion128_pg52.py`, `pathion64_brute_check.py`, `pathion256_pg62.py`,
+`pathion512_pg72.py`, this report. Author scripts unmodified.*

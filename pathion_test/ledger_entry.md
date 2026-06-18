@@ -1,7 +1,7 @@
 # Exploration-Mode Ledger Entry: Recursive Projective Geometry in the Cayley-Dickson Zero-Divisor Tower (16D → 32D)
 
 **Date:** June 16, 2026
-**Mode:** EXPLORATION (declared). Not folded; not promoted. Awaiting author authorization and the two standard checks (two-leg / field-class-independence) before any register promotion.
+**Mode:** ~~EXPLORATION (declared). Not folded; not promoted.~~ **FOLDED 2026-06-18** (author-authorized; two standard checks passed; upgraded to R1-deductive theorem, all n ≥ 3). Retained for provenance; **superseded by `FOLD_LEDGER_2026-06-18.md`** (repo root).
 **Cluster (proposed, on fold):** Cluster L (sedenion / Cayley-Dickson zero-divisor structure), downstream of §2.78/§2.79 (box-kites, F₂₁) and §2.81 (n-term ZD parity / odd-power rung selection).
 **Provenance (deposited `/mnt/user-data/outputs/pathion_zd/`):**
 - `pathion_zd_structure.py` (md5 f8a7112327c5fef94c0fc1cfd4d60a02) — 32D ZD enumeration + lower/upper/crossing decomposition + XOR probe

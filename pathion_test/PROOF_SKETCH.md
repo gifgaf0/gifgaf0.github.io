@@ -1,7 +1,10 @@
 # Proof sketch — the Cayley-Dickson ZD bridge realizes PG(n−1,2) at every doubling
 
-**Status: PROVED unconditionally for all n ≥ 4**, self-contained — no external citations.
-Both former dependencies are eliminated: (1) the identity G = associator (Lemma 3)
+**Status: PROVED unconditionally for all n ≥ 3** (the doubling target being the
+sedenions or higher — the first algebras with two-term ZDs; see threshold below), modulo
+only standard, citable Cayley–Dickson structural facts (S0)–(S2). The novel content is
+deductive and the six machine certificates (n=3…9) are **confirmatory, not load-bearing**
+(D2 = case i). (1) the identity G = associator (Lemma 3)
 reduces to *basis left-alternativity* [eₓ,eₓ,e_w]=0, proved for all n by induction on the
 doubling with an elementary base (n=1, ℂ); (2) the existence half (every line has a
 non-associating witness) is proved by an **explicit per-line witness** (three cases,
@@ -17,23 +20,58 @@ found (no target consulted).
 
 ---
 
+## Theorem (precise statement)
+
+Let the field have characteristic ≠ 2. Consider the Cayley–Dickson doubling
+A_n → A_{n+1} = A_n ⊕ A_n ℓ (dim A_{n+1} = 2ⁿ⁺¹), with D = 2ⁿ, and index every basis
+unit of A_{n+1} by F₂ⁿ⁺¹; "upper" units are e_{D+k}=e_k ℓ with **reduction** k ∈ F₂ⁿ.
+
+**Scope (in the statement, not a footnote).** "ZD" means a **two-term, ±1-coefficient,
+canonical** zero divisor x·y=0 with x=s_a e_a+s_b e_b, y=s_c e_c+s_d e_d (a,b,c,d≥1).
+Higher-term ZDs (n-term kernels) and non-±1 / non-canonical ZDs are **outside scope**:
+the theorem is silent on them. **Threshold:** such ZDs exist iff dim A_{n+1} ≥ 16, i.e.
+**n ≥ 3** (Hurwitz: ℝ,ℂ,ℍ,𝕆 are the only composition algebras, so the first algebra
+with zero divisors is the sedenions A_4 = 16D — see B2). At n=3 the bridge is the entire
+sedenion ZD set; n=3 ↦ PG(2,2) is therefore a genuine ZD instance, not a Fano analogy.
+
+**Statement (set equality, A2).** For n ≥ 3:
+1. the canonical two-term ZD pairs of A_{n+1} partition as (lower copy of A_n's ZDs) ⊔
+   (upper copy) ⊔ (bridge = pairs whose two assessors each cross lower/upper);
+2. define, for a bridge ZD {(p₁,D+q₁),(p₂,D+q₂)}, its **witnessed triple**
+   {q₁,q₂,q₁⊕q₂} ⊂ F₂ⁿ. Then
+   **{ witnessed triples } = { lines of PG(n−1,2) }**
+   under the identification (nonzero reduction k) ↔ (point k of F₂ⁿ∖{0}); i.e. every
+   projective line is witnessed (completeness), and every witnessed triple is a line
+   (soundness, "nothing spurious"); and the doubling generator ℓ (reduction 0) appears
+   in no bridge ZD (so the point set is exactly the 2ⁿ−1 points of PG(n−1,2)).
+
+**Field scope (A4).** The criterion for a canonical pair to be a ZD is a finite set of
+sign equations in σ ∈ {±1} (Prop 2); no prime or characteristic enters beyond char≠2.
+Hence the F_911 / field-class checks were only ever **evidence for the empirical claim**
+and are irrelevant to this theorem — it holds over every field of char ≠ 2.
+
+---
+
 ## 0. Setup and notation
 
-The Cayley-Dickson algebra A_n (dim 2ⁿ) is the twisted group algebra of (ℤ/2)ⁿ:
-for basis units i, j ≥ 0,
-  e_i · e_j = σ_n(i,j) · e_{i^j},  σ_n(i,j) ∈ {+1,−1},
-with σ_n(i,i) = −1 for i ≥ 1 (units square to −1) and σ_n(0,·)=σ_n(·,0)=1. The
-"XOR property" e_i e_j = ±e_{i^j} is verified to hold in the project's build_cd_table
-at every dimension used.
+**Standard Cayley–Dickson facts** (Schafer, *An Introduction to Nonassociative
+Algebras* 1966; Baez, *The Octonions* 2002), used as cited foundations, each provable
+by induction on the doubling from the recurrence (a+bℓ)(c+dℓ) = (ac − d̄b, da + bc̄),
+ē=conjugate:
 
-A **canonical two-term element** is x = s_a e_a + s_b e_b, a≠b, both ≥1, signs ±1.
-A pair (x,y) is a **two-term canonical zero divisor (ZD)** if xy = 0.
+- **(S0) Twisted-group structure / XOR property.** A_n (dim 2ⁿ over a field, char ≠ 2)
+  has a basis {e_i}_{i∈F₂ⁿ} with e_i·e_j = σ_n(i,j)·e_{i⊕j}, σ_n(i,j) ∈ {+1,−1}; and
+  σ_n(i,i)=−1 (i≠0), σ_n(0,·)=σ_n(·,0)=1. *Proof for all n:* induction — each of the
+  four product cases below yields exactly one basis vector whose index is the XOR. ∎
+- **(S1) Anticommutativity.** σ_n(i,j) = −σ_n(j,i) for distinct nonzero i,j (distinct
+  imaginary units anticommute; ē_i=−e_i and conjugation is an antiautomorphism).
+- **(S2) Flexibility.** (xy)x = x(yx); on basis units σ(i,j)σ(i⊕j,i)=σ(j,i)σ(i,i⊕j).
+  *(Derivable from (S1): see verify_induction.py.)*
 
-**Doubling.** A_{n+1} = A_n ⊕ A_n ℓ, ℓ = e_D, D = 2ⁿ. Lower indices 0..D−1 are the
-A_n subalgebra; upper indices are e_{D+k} = e_k ℓ (k = 0..D−1); call k the
-**reduction** of D+k. From the CD product (a+bℓ)(c+dℓ) = (ac − d̄b) + (da + bc̄)ℓ and
-τ(k) := (+1 if k=0 else −1), one gets the **cocycle recursion** (each line verified
-against the table):
+**Cocycle recursion (derived, not assumed).** For A_{n+1} = A_n ⊕ A_n ℓ, ℓ = e_D,
+D = 2ⁿ, with e_{D+k}=e_k ℓ (call k the **reduction**) and τ(k):=(+1 if k=0 else −1),
+the doubling formula gives, **for all n** (each line is the basis-level evaluation of
+(a+bℓ)(c+dℓ), not a table lookup):
 
 | product | σ_{n+1} | result index |
 |---|---|---|
@@ -41,6 +79,15 @@ against the table):
 | lower·upper | σ_{n+1}(a, D+d) = σ_n(d,a) | D+(a^d) |
 | upper·lower | σ_{n+1}(D+b, c) = τ(c) σ_n(b,c) | D+(b^c) |
 | upper·upper | σ_{n+1}(D+b, D+d) = −τ(d) σ_n(d,b) | b^d  (lower) |
+
+The build_cd_table verification (`verify_induction.py`, n=1…9) **confirms** (S0)–(S2)
+and the recursion; it is not relied upon by the deductive chain.
+
+A **canonical two-term element** is x = s_a e_a + s_b e_b, a≠b, both ≥1, signs ±1.
+A pair (x,y) is a **two-term canonical zero divisor (ZD)** if xy = 0.
+
+**Doubling decomposition.** Lower indices 0..D−1 are the A_n subalgebra; upper indices
+are the e_k ℓ.
 
 ---
 
@@ -215,7 +262,8 @@ free-bit lemma is the 0-upper case; the nucleus theorem is no longer needed.
 the algebra.* A PG(n−1,2) line {q₁,q₂,δ} is realized by the 64→128-style bridge **iff**
 the corresponding imaginary units fail to associate with some third unit — which, by
 non-associativity of every CD algebra past the quaternions, always holds. PG(2,2)
-(Fano) for the octonions is the n=3 instance of the very same statement.
+(Fano) is the n=3 instance — realized by the 84 sedenion zero divisors (all of which
+are bridge, since octonions have none), witnessing all 7 Fano lines (verified).
 
 ---
 
@@ -237,19 +285,31 @@ non-associativity of every CD algebra past the quaternions, always holds. PG(2,2
 scratch for all n, citing nothing external (the former two dependencies — octonion
 alternativity and the nucleus theorem — are both eliminated):
 
-> **Theorem.** For every Cayley–Dickson doubling A_n → A_{n+1} (n ≥ 4) over a field of
-> characteristic ≠ 2, the two-term canonical zero divisors split as two intact copies of
-> A_n plus a bridge, and the bridge realizes **exactly** PG(n−1,2) on the 2ⁿ−1 nonzero
-> upper reductions: every projective line is witnessed, no non-line is, and the doubling
-> generator is excluded. The criterion is a sign condition, so the result is independent
-> of the field (any characteristic ≠ 2).
+> **Theorem.** For every Cayley–Dickson doubling A_n → A_{n+1} (n ≥ 3) over a field of
+> characteristic ≠ 2, the two-term ±1-canonical zero divisors split as two intact copies
+> of A_n's ZDs plus a bridge, and the bridge realizes **exactly** PG(n−1,2) on the 2ⁿ−1
+> nonzero upper reductions: every projective line is witnessed, no non-line is, and the
+> doubling generator is excluded. The criterion is a sign condition, so the result is
+> independent of the field (any characteristic ≠ 2).
 
-The five computed levels PG(3,2)…PG(7,2) are instances; the proof covers them and every
-higher doubling at once. **Conceptual content:** the bridge realizes PG(n−1,2) because,
-and exactly to the extent that, the Cayley–Dickson algebra is non-associative — the
-soundness side is forced by basis left-alternativity (the last vestige of alternativity
-past the octonions), and the completeness side by an explicit non-associating witness on
-every line. PG(2,2) (Fano, octonions) is the n=3 instance of the same statement.
+The computed levels PG(2,2)…PG(7,2) (sedenions through 512D) are instances; the proof
+covers them and every higher doubling at once.
+
+**Conceptual content — two distinct facts at two distinct thresholds (B2).**
+*(i) Why the object exists at all:* two-term ZDs require the loss of the composition
+(normed-division) property, which by Hurwitz happens first at the **sedenions** (A_4,
+the n=3 doubling). This is the **Hurwitz threshold**, and it — not non-associativity —
+is why n=3 is the first level; for n<3 (the doubling target being ℍ, ℂ, ℝ) there are no
+ZDs and the theorem is vacuously silent (A3).
+*(ii) Why the ZDs are organized as PG(n−1,2):* the **associator**. Non-associativity
+appears earlier, at the octonions (A_3), and is the *structuring* mechanism: soundness
+is forced by basis left-alternativity (Lemma 3a — the vestige of alternativity that
+*survives* past the octonions, making G=A; B1), and completeness by an explicit
+non-associating witness on every line (§"existence"). These are independent of (i):
+non-associativity organizes ZDs once they exist, but does not create them (octonions are
+non-associative yet division). Both facts are load-bearing, neither is decoration.
+PG(2,2) (Fano) at n=3 is a genuine ZD instance (the 84 sedenion ZDs, all bridge, witness
+all 7 Fano lines — verified), not a Fano analogy.
 
 *Companions: `verify_reduction.py` (Prop 2 vs brute; (P_n) on σ_n), `verify_associator.py`
 (Lemma 3 + witness counts), `verify_alternative.py` (G=A ⇔ basis left-alt, n=4…8),

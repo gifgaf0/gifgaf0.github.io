@@ -1,9 +1,17 @@
 # FOLD — Master Ledger incorporation (author-authorized 2026-06-18)
 
+> **⚠ CORRECTION (2026-06-18, post-SQT-review): ENTRY 1's NOVELTY CLAIM IS RETRACTED.**
+> SQT's literature review established that the PG(n−1,2) zero-divisor result is **correct
+> mathematics but established prior art** (Moreno 1998/2005, de Marrais 2000–2006, Cawagas
+> 2004, Saniga–Holweck 2014/2015, Flaut–Wilmot 2026). It is **NOT a new theorem**, register
+> **R0 (no new content)**, retained only as a verified, citable foundation. The fold of
+> Entry 1 *as a novel theorem* is **withdrawn**; see `pathion_test/PRIOR_ART_CORRECTION.md`
+> (authoritative) and the corrected Entry-1 status below. Entry 2 (G-Φ1 gate) is unaffected.
+
 **Authorization:** author (mg1388484), explicit, 2026-06-18 — "please fold all the
-findings." Promotion criteria met where claimed (see each entry). **Canonical V4.39 is
-not in this repository**; this file is the authoritative folded record for incorporation
-into canon, and **supersedes the exploration-mode status** of the entries below.
+findings." **Canonical V4.39 is not in this repository**; this file is the in-repo record.
+Per the correction above, Entry 1 incorporates into canon **only as prior-art foundation
+with literature attached**, never as a discovery.
 
 **Invariant across all entries:** pure finite algebra and one gate result. **M.BRIDGE
 intact** — no observable bridge, no physics, no §3.x, no mass/gravity claim, §2.52 Open 3
@@ -11,16 +19,37 @@ untouched. Nothing here asserts a physical consequence.
 
 ---
 
-## ENTRY 1 (Cluster L) — Cayley–Dickson zero-divisor bridge realizes PG(n−1,2): THEOREM
+## ENTRY 1 (Cluster L) — CD zero-divisor bridge realizes PG(n−1,2): PRIOR ART (R0)
 
-**Status on fold: R1-DEDUCTIVE (theorem, all n ≥ 3)** — upgraded from the R1-empirical
-(six levels) exploration entry. The empirical results are independently R1 (below); the
-all-n theorem is proved.
+**Status on fold: R0 — no new content. Correct mathematics, established prior art; the
+"R1-deductive theorem (all n≥3)" *novelty* framing is RETRACTED.** Retained as a verified,
+citable foundation connecting §2.41.B (PSL(2,7) ladder) and §2.81 (n-term ZD parity), with
+the literature now attached so it is not re-derived again. The computations and the
+longhand proof are *sound*; what is withdrawn is the claim that any of it is *new*. The
+specific results and their published sources:
 
-### 1a. Empirical core (R1; field-class-independent; CC-reproduced)
+- PG(N−1,2) encoding of 2ᴺ-ion unit multiplication → **Saniga–Holweck et al. 2014/2015**
+  (they also did the Veldkamp two-line-type refinement — more than this work).
+- all-n / "extend indefinitely" → **de Marrais 2002**; **Moreno 2005** (Stiefel-manifold
+  construction, more general).
+- the Hurwitz-threshold cause (the "B2 correction" recorded earlier as a win) → **Moreno
+  1998**. Generator exclusion ("XOR-with-8 excluded") → **de Marrais 2002**.
+- 42 assessors / 7 box-kites / PSL(2,7)·168 → **de Marrais 2000**, **Cawagas 2004**.
+- 32D "Pléiades" = our seven size-12 + fifteen size-14 components → **de Marrais
+  2004/2006**; 64/128/256-D = chingon/routon/voudon (established names).
+- subloop PG(k,𝔽₂) geometry / 84-multiples → **Flaut–Wilmot 2026**.
+- "box-kite", "assessor", "pathion/chingon/routon/voudon" are **established vocabulary**
+  (de Marrais; Maple–Carter 2011), not coinages of this work.
+
+**Field-extension note:** the 𝔽₂ is the CD construction (binary doubling, 𝔽₂ᴺ grading, XOR
+multiply, ℤ/2 twist), not a tunable parameter — the tower only ever yields PG(N−1,**2**);
+PG(n,3)/PG(n,4) are not CD-reachable. (Not pursued.)
+
+### 1a-orig. The (correct, prior-art) empirical core — retained as verified foundation
 For the Cayley–Dickson doubling A_n → A_{n+1}, the two-term ±1-canonical zero divisors
 split as two intact copies of A_n's ZDs plus a **bridge**, and the bridge realizes
-exactly **PG(n−1,2)** on the 2ⁿ−1 nonzero upper reductions. Computed, all checks passed:
+exactly **PG(n−1,2)** on the 2ⁿ−1 nonzero upper reductions. Computed/verified here
+(reproducing the literature):
 
 | doubling | geometry | points | lines | total ZD pairs = 2·prev + bridge |
 |---|---|---|---|---|
@@ -62,33 +91,47 @@ result (extended the base to n=3 / Fano). Computational-dependency flag (D3) res
 the cocycle recursion and structural facts (S0)–(S2) are derived/standard, not
 "verified"; the certificates are confirmatory (D2 = case i), not load-bearing.
 
-### 1d. Caveats on fold
-1. **Scope (carried):** two-term, ±1-coefficient, *canonical* ZDs only. Higher-term
-   (n-term kernel) and non-canonical/non-±1 ZDs are **out of scope** — the theorem is
-   silent on them, claims nothing.
-2. **One-prime caveat:** RESOLVED — field-class-independent (the criterion is a sign
-   identity in {±1}; verified at primes in both mod-455 classes; irrelevant to the
-   theorem, which is over any field char ≠ 2). OP-PATH.1 **closed**.
-3. **Single-environment caveat:** RESOLVED — CC-reproduced in a second environment.
-4. **Proof-review status (honest flag):** the longhand sign-derivations
-   (LONGHAND_SIGN_DERIVATIONS.md §§0–5) are produced and self-cross-checked against the
-   table at the per-factor level; an independent **SQT-agent line-by-line was requested
-   and is not yet returned**. Folded as theorem at this status; the line-by-line, when
-   returned, retires the last expository caveat (it does not gate the logical chain).
+### 1c-bis. The decisive caveat — NOVELTY (supersedes the soundness caveats below)
+**The result is prior art (R0).** SQT's literature review (the check that should have run
+at the conjecture stage, before any audit/compute) found the entire result published. The
+"audit win" recorded in 1c — the Hurwitz-threshold correction — is itself **Moreno 1998**.
+The deep soundness work below (longhand, certificates) verified a *true* statement; it does
+not make it *new*. Soundness diligence stood in for novelty diligence; corrected now.
+
+### 1d. Caveats on fold (soundness-axis; all moot for promotion given R0)
+1. **Scope (carried):** two-term, ±1-coefficient, *canonical* ZDs only — and the published
+   work (Moreno 2005; Biss–Christensen–Dugger–Isaksen) covers more (annihilator theory,
+   higher-term), so even the scope boundary is not a frontier.
+2. **One-prime caveat:** RESOLVED (field-class-independent). 3. **Single-environment:**
+   RESOLVED (CC-reproduced). 4. **Proof line-by-line:** the SQT review returned not a
+   sign-check but the prior-art finding above, which moots the novelty question the
+   line-by-line was serving; the longhand remains sound craft, retained as such.
 
 ### 1e. Open follow-ups
-- OP-PATH.1 (field-class) — **CLOSED**.
-- OP-PATH.3 (PG(4,2) at 64D) — **CLOSED**; superseded by the all-n theorem.
-- OP-PATH.2 (GL(n,2) acts as the automorphism group on bridge components) — open, R2.
-- OP-PATH.4 (relation of size-12/size-14 split to §2.81 n-term parity) — open.
-- R2 "continuation beyond 512D" — now a **corollary** of the theorem, not a conjecture.
+- OP-PATH.1 (field-class), OP-PATH.3 (PG(4,2)) — closed, but as *reproductions* of prior
+  art, not closures of open problems.
+- OP-PATH.2 (GL(n,2) bridge automorphism action) / OP-PATH.4 (size-12/14 vs §2.81 parity)
+  — **check the literature first** (de Marrais / Saniga–Holweck likely cover these) before
+  any further compute, per the standing rule below.
+- "continuation beyond 512D" — prior art (de Marrais 2002 "extend indefinitely").
+
+### 1e-bis. STANDING WORKFLOW RULE (added this session, after the third such collision)
+**Run a literature search at the CONJECTURE stage — before any audit or compute** —
+triggered by: (a) any *named* structure appearing (esp. one already in project files:
+"box-kite", "assessor", "pathion" are all literature terms that were in front of me all
+session); (b) any result that "connects" two established objects; (c) anything clean/general
+enough to feel publishable. Deep-audit effort is reserved for questions a lit-check has
+shown to be open. Prior collisions: §2.78 was already annotated as a "V4.14-pattern"
+instance (over-reach collapses, pure-math holds) — the warning was in the record. The web
+tool was available the entire session and went unused until "publish" was raised.
 
 ### 1f. Provenance (`pathion_test/`, p=911 for empirical legs; md5s in MANIFEST.md5)
 Empirical: pathion_zd_structure / boxkite_structure / boxkite_pairing / pg32_incidence
 (orig.), pathion64_pg42, pathion256_pg62, pathion512_pg72, pathion64_brute_check,
 field_class_check, verify_n3_fano. Proof: PROOF_SKETCH.md, LONGHAND_SIGN_DERIVATIONS.md,
 verify_reduction / associator / alternative / induction / existence / witness_complete.
-Audit: AUDIT_RESPONSE.md. Original exploration entry: ledger_entry.md (superseded).
+Audit: AUDIT_RESPONSE.md. **Prior-art correction (authoritative): PRIOR_ART_CORRECTION.md.**
+Original exploration entry: ledger_entry.md (superseded).
 
 ### 1g. Relation to canon
 Realizes the §2.41.B GL(3,2)≅PSL(2,7) → GL(4,2)≅A₈ → … ladder concretely in the
@@ -117,10 +160,13 @@ Does NOT touch M.BRIDGE; not promoted to body.
 
 ---
 
-## Summary of fold actions
-- **Entry 1** → fold to **Cluster L as R1-deductive theorem** (all n ≥ 3), caveat 1d.4
-  (line-by-line pending) carried; OP-PATH.1/.3 closed; R2-continuation downgraded to
-  corollary.
-- **Entry 2** → record in **Part V** as INCONCLUSIVE/premise-falsified; no arm.
-- Canonical V4.39 not in-repo: incorporate the above rows there; this file is the
-  source of record until then.
+## Summary of fold actions (CORRECTED post-SQT-review)
+- **Entry 1** → **NOT folded as a theorem/discovery (novelty retracted).** Record in
+  **Cluster L as R0 prior-art foundation**, literature attached (Moreno, de Marrais,
+  Cawagas, Saniga–Holweck, Flaut–Wilmot), so it is never re-derived again. The math is
+  verified; the contribution is nil. Path to publication closed.
+- **Entry 2** → record in **Part V** as INCONCLUSIVE/premise-falsified; no arm. (Unaffected
+  by the prior-art correction — it is a gate result, not a novelty claim.)
+- **Standing rule (1e-bis)** → adopt: literature search at conjecture stage.
+- Canonical V4.39 not in-repo: incorporate the above there; `PRIOR_ART_CORRECTION.md` is
+  the authoritative correction; this file is the source of record until then.

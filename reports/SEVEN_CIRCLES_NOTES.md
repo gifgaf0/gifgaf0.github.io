@@ -62,6 +62,12 @@ The brief's principle is intact: cos 18° is the dominant 5-fold value
 in the cross-ratio distribution, ~10× the null enrichment under
 random log-uniform sampling against the same library.
 
+> **[SUPERSEDED — 2026-06-03.]** The "~10× enrichment under random log-uniform
+> sampling" does not survive a look-elsewhere control: under the
+> empirical-density null cos 18° at 14/40 is 1.46×, p ≈ 0.35 (consistent with
+> pipeline geometry). See `reports/SEVEN_CIRCLES_FDR_RESULT.md` and ledger
+> §3.07. The cos 18° prior address (§2.45-NGA) is unaffected.
+
 ## Ambiguities the brief flagged, and how they were resolved
 
 The brief's prior blocker (`reports/SEVEN_CIRCLES_QUESTIONS.md` v2)
@@ -110,6 +116,13 @@ is replaced with the verified 14/40 (joint-highest frequency, tied
 with √5/2, with cos π/7 at 13/40, ~10× null enrichment). The §X.1
 body — which states cos 18° as a geometric fact with one footnote
 citing the companion report — needs no other change.
+
+> **[SUPERSEDED 2026-06-03 — paper edit still pending.]** The
+> "~10× null enrichment" phrase in the `paper/X1_cos18_address.md` footnote
+> is refuted by the look-elsewhere control (`SEVEN_CIRCLES_FDR_RESULT.md`,
+> ledger §3.07). The paper footnote was **not** auto-edited (left for manual
+> wording); it should drop the enrichment phrase and keep only the verified
+> 14/40 frequency. The 14/40 count and the cos 18° prior address stand.
 
 `reports/SEVEN_CIRCLES_QUESTIONS.md` is now superseded by this
 closure note; the file is left in place to preserve the resolution

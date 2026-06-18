@@ -9,6 +9,16 @@
 **Cited from:** `borromean_circumscription_derivation.md §5.2`,
        `paper/X1_cos18_address.md`
 
+> **[ENRICHMENT CLAIM SUPERSEDED — 2026-06-03.]** The "~10× null enrichment"
+> figure below was computed against a **random log-uniform null**. A
+> look-elsewhere control on the locked 11,495-CR dump (placebo-library +
+> empirical-density nulls; two independent implementations) finds the
+> enrichment **consistent with pipeline geometry** (cos 18° at 14/40 → 1.46×,
+> p ≈ 0.35 under the empirical-density null; marginal at p ≈ 0.01–0.015 under
+> log-uniform). See `reports/SEVEN_CIRCLES_FDR_RESULT.md` and ledger §3.07.
+> **Scope: this supersedes the *enrichment statistic only*; the cos 18° prior
+> address (§2.45-NGA) and the µH residual are unaffected.**
+
 ---
 
 ## §1 — Construction
@@ -98,6 +108,11 @@ appearance is not a single chord-position artefact — it occurs at
 35% of the swept positions, ~10× the null expectation under random
 log-uniform sampling against the same library.
 
+> **[SUPERSEDED — see top banner / `SEVEN_CIRCLES_FDR_RESULT.md`.]** The
+> "random log-uniform sampling" null named here is the source of the error:
+> under the pipeline's own value distribution a random CR value already hits
+> ~9.6/40 chords, so 14/40 is not distinguished (p ≈ 0.35).
+
 ---
 
 ## §3 — Crystallographic Exclusion Check
@@ -181,6 +196,12 @@ The principle holds: cos 18° is the joint-highest-frequency framework
 constant in the seven-circles cross-ratio distribution at the
 canonical parameters, with ~10× null enrichment.
 
+> **[SUPERSEDED 2026-06-03 — the enrichment half of this sentence.]** The
+> "joint-highest-frequency" observation holds; the "~10× null enrichment"
+> does **not** survive a look-elsewhere control (consistent with pipeline
+> geometry, p ≈ 0.35 empirical-density). See top banner /
+> `SEVEN_CIRCLES_FDR_RESULT.md` / ledger §3.07.
+
 ---
 
 ## §6 — Epistemic Status
@@ -191,6 +212,10 @@ canonical parameters, with ~10× null enrichment.
   construction on the torus: it is the joint-highest-frequency
   framework constant across a wide chord sweep at canonical
   parameters, with ~10× null enrichment.
+  *[SUPERSEDED 2026-06-03: the ~10× enrichment does not survive a
+  look-elsewhere control — consistent with pipeline geometry; see top
+  banner and `SEVEN_CIRCLES_FDR_RESULT.md`. The "joint-highest-frequency"
+  observation and the cos 18° prior address (§2.45-NGA) are unaffected.]*
 - The pentagon content (cos 18°) concentrates in the local-curvature
   (tube) frame and is suppressed in the external projective frame —
   consistent with crystallographic exclusion of 5-fold symmetry from

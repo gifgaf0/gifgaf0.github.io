@@ -1,0 +1,29 @@
+{
+ "params": {
+  "N": 160,
+  "L": 20.0,
+  "seed": 7,
+  "dtau": 0.002,
+  "steps": 4000,
+  "g": 22.0,
+  "R": 1.0,
+  "rho0": 1.0
+ },
+ "disk_fft_kernel": {
+  "psi6": 0.834,
+  "psi4": 0.1109,
+  "n_peaks": 234,
+  "contrast": 1.6275,
+  "kc": 5.0364,
+  "a_from_kc": 1.4406
+ },
+ "bessel_kernel": {
+  "psi6": 0.8207,
+  "psi4": 0.0889,
+  "n_peaks": 211,
+  "contrast": 1.6974,
+  "kc": 5.1526,
+  "a_from_kc": 1.4081
+ },
+ "p6m_confirmed": true
+}

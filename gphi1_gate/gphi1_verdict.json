@@ -1,0 +1,13 @@
+{
+ "Phi": 6.250027519360085,
+ "rate_target": 0.15999929550748376,
+ "rate_tanh": 0.227,
+ "rate_actual": 0.2013037827551723,
+ "gap_to_tanh": 0.11319919491113527,
+ "gap_to_target": 0.25815418197111106,
+ "fraction_closed": 0.38352159786167456,
+ "mechanical_arm": "C",
+ "recorded_verdict": "INCONCLUSIVE (premise falsified)",
+ "rate_is_window_boundary_artifact": true,
+ "premise_falsified": true
+}

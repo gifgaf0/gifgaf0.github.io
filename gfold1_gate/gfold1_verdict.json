@@ -1,0 +1,22 @@
+{
+  "gate": "G-FOLD1",
+  "decision_scalar": "S = <e_0, Lambda e_0>_eta = -Lambda_00 = -cosh(phi)  (depends only on boost rapidity; rotation drops out)",
+  "lemma_welding": "(1+z) = dtau_r/dtau_e  -- verified symbolically (R1)",
+  "H_rot": {
+    "S": -1,
+    "z": 0,
+    "verdict": "INFORMATIVE-FAIL: no redshift channel"
+  },
+  "H_boost": {
+    "S": "-cosh(phi)",
+    "z": "exp(phi)-1",
+    "dilation": "exp(phi)=1+z",
+    "verdict": "R2 import-contingent; degenerate with expansion on dilation axis"
+  },
+  "import_I1": "plane-type of the fold 2-plane (spacelike->rotation->z=0 ; time-containing->boost->z!=0). NOT declared numerically; not derivable from combinatorics (M.CW). Gate reports S(I1), refuses to pick.",
+  "falsifiers": {
+    "lemma_symbolic": true,
+    "z_independent_of_rotation": true
+  },
+  "verdict": "LEMMA -> R1 (tired-light branch unreachable; any fold redshift carries (1+z), passes SNe Ia by construction). PHYSICAL BRANCH -> UNDETERMINED at gate (contingent on I1, an undeclared physical postulate); not promoted past R2. Eddington flag (lensing=deflection=>rotation=>z=0) held open."
+}

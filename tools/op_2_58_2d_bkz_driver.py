@@ -38,36 +38,58 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 SPEC_Q = 4_294_977_961
 SPEC_K = 32
 
-ALLOWED_FLOAT_TYPES = ("ld",)  # long-double GSO ONLY for q-ary spec lattices.
+# Per pre-reg §3.3.1: "fpylll `float_type='ld'` required ... or a
+# verified-equivalent precision setting." Empirical evidence (the
+# proof-of-life) found that at q=SPEC_Q k≥8, LLL with 'ld' also hits the
+# babai loop and the strictly-higher-precision 'mpfr' is required for the
+# LLL preprocessing. BKZ-proper retains the strict 'ld' pin (the smoke-test
+# convention that's been validated at the spec-q proof-of-life).
+ALLOWED_BKZ_FLOAT_TYPES = ("ld",)
+ALLOWED_LLL_FLOAT_TYPES = ("ld", "mpfr")  # mpfr is the §3.3.1 escape clause.
 
 
 # ---------------------------------------------------------------------------
-# Pre-flight 1: float_type="ld" hard guard
+# Pre-flight 1: float_type guards (BKZ strict 'ld'; LLL 'ld' or 'mpfr')
 # ---------------------------------------------------------------------------
 
 
 class FloatTypeRefused(RuntimeError):
-    """Raised when a reduction is requested without the pre-reg-pinned
-    `float_type="ld"`. The default-precision path hits an infinite-loop
-    babai condition on q-ary lattices; pre-reg §3.3.1 hard-pins `ld`."""
+    """Raised when a reduction is requested without a pre-reg-pinned float_type.
+    Pre-reg §3.3.1 hard-pins 'ld' for BKZ (the smoke-test convention); 'mpfr'
+    is the verified-equivalent escape clause for LLL preprocessing at
+    spec-Q k≥8 where 'ld' also hits the babai infinite loop."""
 
 
 def _assert_ld(float_type: str | None) -> None:
-    if float_type not in ALLOWED_FLOAT_TYPES:
+    """Strict 'ld' guard — used for BKZ-proper."""
+    if float_type not in ALLOWED_BKZ_FLOAT_TYPES:
         raise FloatTypeRefused(
-            f"refusing reduction with float_type={float_type!r}: pre-reg §3.3.1 "
-            f"hard-pins float_type='ld'. Default precision hits the babai "
-            f"infinite loop on q-ary lattices; allowed values: {ALLOWED_FLOAT_TYPES!r}."
+            f"refusing BKZ reduction with float_type={float_type!r}: pre-reg "
+            f"§3.3.1 hard-pins float_type='ld' for BKZ. Default precision "
+            f"hits the babai infinite loop on q-ary lattices; allowed: "
+            f"{ALLOWED_BKZ_FLOAT_TYPES!r}."
         )
 
 
-def reduce_lll(A_mat, *, method: str = "proved", float_type: str = "ld",
+def _assert_lll_precision(float_type: str | None) -> None:
+    """LLL precision guard — 'ld' or strictly-higher 'mpfr' (§3.3.1 escape)."""
+    if float_type not in ALLOWED_LLL_FLOAT_TYPES:
+        raise FloatTypeRefused(
+            f"refusing LLL reduction with float_type={float_type!r}: pre-reg "
+            f"§3.3.1 allows 'ld' or the verified-equivalent (higher) precision "
+            f"'mpfr'. Empirically at q=SPEC_Q k≥8 the 'ld' LLL hits the babai "
+            f"loop and 'mpfr' precision=128 is the proven escape. Allowed: "
+            f"{ALLOWED_LLL_FLOAT_TYPES!r}."
+        )
+
+
+def reduce_lll(A_mat, *, method: str = "proved", float_type: str = "mpfr",
                precision: int = 128) -> Any:
-    """LLL with the pinned precision. Raises FloatTypeRefused on any other
-    float_type. `method="proved"` + `float_type="ld"` + `precision=128`
-    matches the proof-of-life run that completed LLL at k=4 spec-Q without
-    babai-loop or precision overflow."""
-    _assert_ld(float_type)
+    """LLL with the pinned precision class. Default mpfr-128 matches the
+    proof-of-life run that completed LLL at k=4 spec-Q without babai-loop or
+    precision overflow. Raises FloatTypeRefused on any value outside
+    {"ld", "mpfr"} (§3.3.1's allowed precision class)."""
+    _assert_lll_precision(float_type)
     from fpylll import LLL
     LLL.reduction(A_mat, method=method, float_type=float_type, precision=precision)
     return A_mat
@@ -75,8 +97,8 @@ def reduce_lll(A_mat, *, method: str = "proved", float_type: str = "ld",
 
 def reduce_bkz(A_mat, beta: int, *, max_loops: int = 4,
                float_type: str = "ld", flags: int | None = None) -> Any:
-    """BKZ-β with the pinned precision. Raises FloatTypeRefused on any
-    other float_type."""
+    """BKZ-β with the pinned `float_type="ld"` (strict; the smoke-test
+    convention). Raises FloatTypeRefused on any other float_type."""
     _assert_ld(float_type)
     from fpylll import BKZ
     if flags is None:
@@ -218,21 +240,32 @@ def run_preflight(q: int = SPEC_Q, verbose: bool = True) -> dict:
     them as an audit-trail block before any spec dispatch.
     """
     results: dict[str, Any] = {}
-    # 2a: float_type="ld" guard (constructive: try both correct and wrong).
+    # 2a: BKZ 'ld' strict guard + LLL {'ld','mpfr'} precision-class guard.
     try:
         _assert_ld("ld")
+        _assert_lll_precision("ld")
+        _assert_lll_precision("mpfr")
     except FloatTypeRefused as exc:
-        raise RuntimeError("ld guard rejected the pinned value") from exc
-    refused = False
-    try:
-        _assert_ld("double")
-    except FloatTypeRefused:
-        refused = True
-    if not refused:
-        raise RuntimeError("ld guard FAILED to refuse float_type='double'")
+        raise RuntimeError("ld/mpfr guard rejected a pinned value") from exc
+    for bad in ("double", "d", "dpe", None):
+        refused_bkz = False
+        try:
+            _assert_ld(bad)
+        except FloatTypeRefused:
+            refused_bkz = True
+        if not refused_bkz:
+            raise RuntimeError(f"BKZ 'ld' guard FAILED to refuse {bad!r}")
+    for bad_lll in ("double", "d", "dpe", None):
+        refused_lll = False
+        try:
+            _assert_lll_precision(bad_lll)
+        except FloatTypeRefused:
+            refused_lll = True
+        if not refused_lll:
+            raise RuntimeError(f"LLL precision-class guard FAILED to refuse {bad_lll!r}")
     results["float_type_ld_guard"] = "PASS"
     if verbose:
-        print("  [preflight 2a] float_type='ld' guard: PASS")
+        print("  [preflight 2a] BKZ='ld' strict / LLL ∈ {ld,mpfr} precision-class: PASS")
     # 2b: round-trip at toy q
     rt_toy = round_trip_check(q=911, k=7)
     if not rt_toy["pass"]:

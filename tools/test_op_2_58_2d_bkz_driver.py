@@ -17,6 +17,7 @@ from tools.op_2_58_2d_bkz_driver import (
     FloatTypeRefused,
     ModulusRefused,
     _assert_ld,
+    _assert_lll_precision,
     assert_spec_gate_enforced,
     assert_spec_q,
     round_trip_check,
@@ -24,17 +25,35 @@ from tools.op_2_58_2d_bkz_driver import (
 )
 
 
-# -- 2a: float_type="ld" guard --------------------------------------------
+# -- 2a: BKZ float_type='ld' strict guard ---------------------------------
 
 
-def test_float_type_ld_accepted():
-    _assert_ld("ld")  # should not raise
+def test_bkz_float_type_ld_accepted():
+    _assert_ld("ld")  # strict 'ld' only
 
 
 @pytest.mark.parametrize("ft", ["d", "double", "dpe", "mpfr", None, "long_double"])
-def test_float_type_other_rejected(ft):
-    with pytest.raises(FloatTypeRefused, match="float_type='ld'"):
+def test_bkz_float_type_other_rejected(ft):
+    """BKZ-proper is strict 'ld' — mpfr is also rejected for BKZ
+    (only allowed for LLL preprocessing per §3.3.1 escape clause)."""
+    with pytest.raises(FloatTypeRefused, match="BKZ"):
         _assert_ld(ft)
+
+
+# -- 2a: LLL precision-class guard ({ld, mpfr}) ---------------------------
+
+
+@pytest.mark.parametrize("ft", ["ld", "mpfr"])
+def test_lll_precision_class_accepts(ft):
+    """LLL allows 'ld' OR strictly-higher 'mpfr' per §3.3.1 escape clause
+    (empirically required at spec-Q k≥8 where ld also hits babai loop)."""
+    _assert_lll_precision(ft)
+
+
+@pytest.mark.parametrize("ft", ["d", "double", "dpe", None, "long_double"])
+def test_lll_precision_class_rejects(ft):
+    with pytest.raises(FloatTypeRefused, match="LLL"):
+        _assert_lll_precision(ft)
 
 
 # -- 2c: exact-q assertion ------------------------------------------------

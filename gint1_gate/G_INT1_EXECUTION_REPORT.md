@@ -14,13 +14,18 @@ breach arm (GAPPED-SCALE-FREE) does **not** fire.
 
 **λ is the located import for the INTERNAL channel** (the oriented-term coupling). It is
 **not** §2.53/§2.64's import — those are *density-sector* quantities (§2.53 fold-convexity
-sign; §2.64 C = ξ_vac/a healing length) whose import is the **density-sector roton
-profile** (the angle-3 target, examined by G-ζ1). G-INT1's contribution to the chokepoint
-cluster is therefore narrower and real: it **eliminates the internal channel as a breach
-route** and strengthens M.BRIDGE — two channels examined (density via G-ζ1, internal via
-G-INT1), **two distinct imports** (roton profile; λ). This entry must not launder "serves
-§2.53/§2.64" into "resolves their import." *(Scope correction adopted from the SQT
-second-leg audit, 2026-06-23.)*
+sign; §2.64 C = ξ_vac/a healing length) whose import is the **density-sector roton /
+healing-length profile**. **That density import is still OPEN, not examined:** G-ζ1
+*used* the roton profile (took it as the I1–I3 ticket and computed the density spectrum) —
+it did **not** derive it; and **angle-3** (the ξ_vac/a-forcing test — whether p6m
+crystallization pins C to a pure number) **is UNEXECUTED**. So the density-sector import
+remains the **live frontier**. G-INT1's contribution to the chokepoint cluster is
+therefore narrow and real: it **eliminates the internal channel as a breach route** and
+strengthens M.BRIDGE — two channels examined (density spectrum via G-ζ1, internal via
+G-INT1), **two distinct imports** (the density roton/healing-length profile, still open;
+λ, located here). This entry must not launder "serves §2.53/§2.64" into "resolves their
+import," nor "G-ζ1 used the profile" into "the density import is examined." *(Scope
+corrections adopted from the SQT second-leg audit + clearance, 2026-06-23.)*
 
 ## Independent second-leg verification (incorporated)
 The three R1 structural pillars are confirmed by a from-scratch independent build
@@ -123,8 +128,10 @@ G-ζ1 density channel, carries no import-free dynamical number.
   concretely named — and the internal channel is **eliminated as a breach route**.
 - **Does not settle:** any import-free dynamical number — none exists in this channel
   (breach arm negative); the internal gap is real but its scale is λ-set. **Nor does it
-  resolve §2.53/§2.64's import** — those are density-sector (their import is the roton
-  profile / angle-3, examined by G-ζ1), a *distinct* second import from λ.
+  resolve §2.53/§2.64's import** — those are density-sector; their import (the roton /
+  healing-length profile) is **still open**, with **angle-3 unexecuted** and G-ζ1 having
+  only *used* (not derived) the profile. That density import is the **live frontier**; λ
+  is a *distinct* second import, not it.
 - **Freeze:** §2.52 Open 3 untouched and frozen throughout; no numeric target loaded.
   M.CW/M.REL/M.2π respected (λ never tuned; magnitudes per-axis-classed; no 2π conflation).
 

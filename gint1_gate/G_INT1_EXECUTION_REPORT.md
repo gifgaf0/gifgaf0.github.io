@@ -10,8 +10,25 @@ Eddington-guarded: no ledger value loaded; λ symbolic; full spectrum reported.
 The registered, a-priori-expected arm. The internal octonion sector carries a
 **gapped, Fano-selective fluctuation channel**, but **every dynamical magnitude is
 class-(b)** (λ-dependent, μ-drifting) — **no geometry-protected pure number**. The
-breach arm (GAPPED-SCALE-FREE) does **not** fire. **λ is named as the located second
-import** for the §2.53/§2.64 dynamical bridge.
+breach arm (GAPPED-SCALE-FREE) does **not** fire.
+
+**λ is the located import for the INTERNAL channel** (the oriented-term coupling). It is
+**not** §2.53/§2.64's import — those are *density-sector* quantities (§2.53 fold-convexity
+sign; §2.64 C = ξ_vac/a healing length) whose import is the **density-sector roton
+profile** (the angle-3 target, examined by G-ζ1). G-INT1's contribution to the chokepoint
+cluster is therefore narrower and real: it **eliminates the internal channel as a breach
+route** and strengthens M.BRIDGE — two channels examined (density via G-ζ1, internal via
+G-INT1), **two distinct imports** (roton profile; λ). This entry must not launder "serves
+§2.53/§2.64" into "resolves their import." *(Scope correction adopted from the SQT
+second-leg audit, 2026-06-23.)*
+
+## Independent second-leg verification (incorporated)
+The three R1 structural pillars are confirmed by a from-scratch independent build
+(`verify_gint1_secondleg.py`, SQT, not using `gz1_core.py`): φ on exactly 7 of 35 triples;
+F₂₁ order 21, orders {1:1,3:14,7:6}, character ⟨χ,triv⟩=1, ⟨χ,χ⟩=3, remainder-norm²=2 ⇒
+**1⊕3⊕3̄** (two distinct mult-1 irreps, dims 3+3 from 7−1); line {1,2,4} eigenstructure
+**{0, ±i√3}**, non-line {1,2,3} the zero matrix. Two-method confirmation for the fold
+record (this report's `gint1_execute.py` is the first leg).
 
 ## Results vs the pre-registered plan
 
@@ -20,9 +37,9 @@ import** for the §2.53/§2.64 dynamical bridge.
 | 1. GP crystal (big box, seed 7) | μ=55.21, k_c=5.04, **ψ₆=0.759 ≫ ψ₄=0.117** (p6m hexagonal) ✓ |
 | 1b. primitive cell, a* by energy-min | a*=1.45, μ_cell=55.87 (consistent with the canonical MV-G1 row) |
 | 2. two-body internal control | **GAPLESS at Γ** — ψ₀ is the *exact* internal zero mode (theorem below); lowest L_⊥ eig ≈ −7×10⁻⁴ ✓ (registered prediction; a gap here would have been a bug) |
-| 3. Fano-line core {e₁,e₂,e₄} | oriented term **lifts** internal modes: 2 chiral splits, magnitude √3·λκ |
+| 3. Fano-line core {e₁,e₂,e₄} | oriented term **lifts** internal modes: eigenstructure {0, ±iσ} → **exactly 2 chiral modes + 1 unaffected** (count & ± chirality R1, see below), magnitude σ = ‖φ\|_line‖·λκ |
 | 4. non-line core {e₁,e₂,e₃} | oriented coupling **‖M‖ = 0**, no mode lifted → **S_Fano = SELECTIVE** ✓ |
-| 5. scale test | gap ∝ λ (→0 at λ=0) and drifts with μ-scale → **class-(b)**; only λ/μ-independent quantity is the structural split factor √3 (a representation number) |
+| 5. scale test | gap σ ∝ λ (→0 at λ=0) and drifts with μ-scale → **class-(b)**; the only λ/μ-independent quantity is the prefactor **‖φ\|_line‖ = √3** (the norm of φ on a Fano line — *not* a representation number, *not* the p6m lattice √3) |
 | limit checks | (a) λ→0 recovers the gapless control ✓; (b) non-line core inert ✓ |
 
 ## The two-body gapless control is a theorem, not just a measurement
@@ -47,19 +64,32 @@ in the internal sector (consistent with §3.4.4).
   action ⇒ one trivial + two conjugate 3-dim irreps). *This is standard G₂/F₂₁
   representation theory — used to classify the channel, not claimed as new.*
 
+- **2-chiral count + ± chirality (R1, profile-independent).** On a Fano line φ is
+  *totally antisymmetric* over the 3 indices, so the induced internal coupling is a 3×3
+  antisymmetric matrix; *every* such matrix has eigenstructure {0, ±iσ}. Hence a line core
+  lifts **exactly two** internal modes in a **chiral ± pair** with one unaffected — a count
+  and a chirality that are forced by antisymmetry, **independent of λ and of the core
+  profile**. Only the magnitude σ depends on profile/λ. (Upgraded to R1 per the SQT audit;
+  earlier draft hedged the count as "representative" — that was too conservative.)
+
 These extend the §3.4.4/§3.4.5 selection-rule ladder **from the static linking charge
 Q_φ to the dynamical fluctuation spectrum** — the gate's R1 structural contribution.
 
+**See-also (cross-ref, not a new claim):** the 3/3̄ split *is* the QR/QNR split — the
+i√7 appearing in the F₂₁ character is the Gauss-sum of 7th roots over the
+quadratic-residue vs non-residue cosets — threading to §2.75/§2.76 and the §3.4.6
+sign(φ) ↔ QR/QNR map. Worth a canonical cross-reference; not asserted as new here.
+
 ## Why the breach fails (class-(b), per M.REL axes)
 
-The internal gap magnitude is λ·κ·(structural factor), κ = core overlap. *Scale:* κ
-drifts under μ-rescaling (core size is metric-set) → not scale-invariant. *Coupling:* ∝λ,
-vanishes at λ=0. The only λ/μ-independent quantity is the **structural split factor √3**,
-which is a representation number (the ‖imag-eigenvalue‖ of the 3×3 antisymmetric φ-block
-on a line), **not a dynamical magnitude** — it is the same kind of object as the
-multiplet content, already banked as R1 structural. There is no λ-canceling dimensionless
-*dynamical* quantity. So the internal channel, like the G-ζ1 density channel, carries no
-import-free dynamical number.
+The internal gap magnitude is σ = λ·κ·‖φ|_line‖, κ = core overlap. *Scale:* κ drifts
+under μ-rescaling (core size is metric-set) → not scale-invariant. *Coupling:* ∝λ,
+vanishes at λ=0. The only λ/μ-independent quantity is **‖φ|_line‖ = √3** — the norm of
+the octonion structure constants on a Fano line (√(1²+1²+1²)). This is a *structural
+prefactor on a class-(b) magnitude*, **not** a derived dynamical number (and **not** a
+representation dimension — those are the integers 1,3,3 — nor the p6m lattice √3). There
+is no λ-canceling dimensionless *dynamical* quantity. So the internal channel, like the
+G-ζ1 density channel, carries no import-free dynamical number.
 
 ## Honest scope (what was and was not computed)
 
@@ -75,24 +105,41 @@ import-free dynamical number.
   class-(b) regardless. The per-core spectrum shows a line-triplet lifted (1 inert + 2
   chiral); the global 1⊕3⊕3̄ assignment is the F₂₁ group-theory result, not read off a
   single-core spectrum.
+- **The full relaxed-core 7-component BdG is declined as a prerequisite** (SQT audit):
+  it would only pin σ = ‖φ|_line‖·λ·(profile integral) — a **class-(b), import-classified
+  magnitude**, not a derivation. Spending the heavy N=160 solve to fix an
+  import-classified number is the M.CW "not worth pursuing" pattern (the §2.64 "100"
+  again). Filed as **optional, low-priority R2-firming**, *not* load-bearing. The
+  error-prone oriented-second-variation only touches σ; the 2-chiral count is fixed by
+  φ's antisymmetry, which is rock-solid. **Future trigger:** if Gate-2a (spin–isospin
+  locking) needs the explicit chiral-mode structure on the core, σ feeds in there — flag
+  it for that, not now.
 
 ## What this settles / does not settle
 
 - **Settles (R1 structural):** the §3.4.4 Fano selection rule extends to the dynamical
-  internal spectrum (S_Fano selective; 1⊕3⊕3̄). M.BRIDGE strengthened: the dynamical
-  internal bridge **requires** the λ import, now concretely named for §2.53/§2.64.
+  internal spectrum (S_Fano selective; 1⊕3⊕3̄ classification; 2-chiral count + chirality).
+  M.BRIDGE strengthened: the dynamical **internal** bridge requires the λ import, now
+  concretely named — and the internal channel is **eliminated as a breach route**.
 - **Does not settle:** any import-free dynamical number — none exists in this channel
-  (breach arm negative). The internal gap is a real channel but its scale is λ-set.
+  (breach arm negative); the internal gap is real but its scale is λ-set. **Nor does it
+  resolve §2.53/§2.64's import** — those are density-sector (their import is the roton
+  profile / angle-3, examined by G-ζ1), a *distinct* second import from λ.
 - **Freeze:** §2.52 Open 3 untouched and frozen throughout; no numeric target loaded.
   M.CW/M.REL/M.2π respected (λ never tuned; magnitudes per-axis-classed; no 2π conflation).
 
 ## Proposed ledger rows (auditor fold-in; canonical V4.46 not in this repo)
 > **G-INT1 / structural** | 2026-06-23 | **R1** | internal octonion sector: S_Fano
-> selective in the *dynamical* spectrum; multiplet 1⊕3⊕3̄ under F₂₁; two-body gapless
-> (ψ₀ = exact zero mode). Extends §3.4.4/§3.4.5 ladder to fluctuations. | not body.
+> selective in the *dynamical* spectrum; multiplet 1⊕3⊕3̄ under F₂₁; **2-chiral count +
+> ± chirality** (forced by φ antisymmetry, profile-independent); two-body gapless (ψ₀ =
+> exact zero mode). Extends §3.4.4/§3.4.5 ladder to fluctuations. Two-leg verified
+> (gint1_execute + independent verify_gint1_secondleg). See-also: 3/3̄ = QR/QNR
+> (§2.75/§2.76, §3.4.6). | not body.
 > **G-INT1 / dynamical** | 2026-06-23 | **STRUCTURAL-ONLY (no R2 breach)** | every
-> internal magnitude class-(b) (∝λ, μ-drifting); no geometry-protected pure number;
-> **λ named as the second import** for §2.53/§2.64. | not body.
+> internal magnitude class-(b) (σ = ‖φ|_line‖·λ·profile, ∝λ, μ-drifting); no
+> geometry-protected pure number; **λ = the INTERNAL-channel import** (NOT §2.53/§2.64's,
+> which is the density roton profile). Internal channel eliminated as a breach route.
+> Full relaxed-core BdG = optional low-priority R2-firming (trigger: Gate-2a). | not body.
 
 *Files: `octonion_fano.py`, `gint1_execute.py`, `gint1_verdict.json`, this report,
 `G_INT1_EXECUTION_PREREGISTRATION.md`; MANIFEST.md5 alongside.*

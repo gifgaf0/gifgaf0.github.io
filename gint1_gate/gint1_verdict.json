@@ -1,24 +1,18 @@
 {
   "gate": "G-INT1",
-  "verdict": "STRUCTURAL-ONLY (R1 structural + M.BRIDGE strengthened) -- the registered a-priori-expected arm",
-  "S_Fano": "SELECTIVE: oriented term lifts internal modes iff winding triple is a Fano line (line {e1,e2,e4}: 2 chiral splits; non-line {e1,e2,e3}: ||M||=0, inert). Symmetry-determined by octonion phi (supported exactly on lines).",
-  "multiplet": "7 = 1 (+) 3 (+) 3bar under F_21 (order-21 octonion automorphism subgroup of G_2); rigorous character result (rank-3 transitive action; elt orders {1:1,3:14,7:6}).",
-  "two_body_control": "GAPLESS at Gamma -- psi0 is the EXACT internal zero mode (L_perp psi0 = GP equation = 0); numeric lowest eig ~ -7e-4.",
-  "breach_GAPPED_SCALE_FREE": "does NOT fire -- every dynamical magnitude is class-(b): internal gap ~ lambda*kappa, vanishes at lambda=0, drifts with mu-scale; only lambda/mu-independent quantity is the structural split factor sqrt(3) (a representation number, not a dynamical magnitude).",
-  "lambda": "named as the located SECOND IMPORT for the section-2.53/2.64 dynamical bridge (the concrete object M.BRIDGE predicts must exist).",
-  "GP_baseline": {
-    "mu_box": 55.21,
-    "k_c": 5.04,
-    "psi6": 0.759,
-    "psi4": 0.117,
-    "a_star": 1.45,
-    "mu_cell": 55.87
+  "verdict": "STRUCTURAL-ONLY (R1 structural + M.BRIDGE strengthened) -- registered a-priori-expected arm. Two-leg verified.",
+  "R1_structural": {
+    "S_Fano": "SELECTIVE (binary): oriented term lifts internal modes iff winding triple is a Fano line. Symmetry-determined by octonion phi (supported exactly on the 7 lines).",
+    "multiplet": "7 = 1 + 3 + 3bar under F_21 (order-21 octonion automorphisms in G_2); character rank-3, orders {1:1,3:14,7:6}.",
+    "chiral_count": "EXACTLY 2 chiral (+-) modes + 1 unaffected on a line core -- count & chirality forced by total antisymmetry of phi on a 3-element line ({0,+-i sigma}); PROFILE- and lambda-INDEPENDENT (upgraded to R1 per SQT audit).",
+    "two_body_control": "GAPLESS at Gamma; psi0 is the EXACT internal zero mode (L_perp psi0 = GP equation = 0)."
   },
-  "scope_flags": "Steps 1-2 executed in full. Steps 3-5 structural results are symmetry-determined and demonstrated on the oriented-term-induced internal coupling with a representative core overlap; the full spatially-resolved relaxed-N=160 7-component defect-core BdG eigenproblem is NOT performed. Structural verdicts (S_Fano, 1+3+3bar) are profile-independent; magnitudes class-(b). 1+3+3bar is standard G_2/F_21 rep theory (not claimed novel).",
-  "limit_checks": {
-    "lambda->0 gapless": true,
-    "non-line inert": true
-  },
-  "eddington": "no ledger value loaded; lambda symbolic/scanned, never tuned post-spectrum; full internal spectrum reported.",
-  "freeze": "section-2.52 Open 3 untouched and frozen; serves section-2.53/2.64."
+  "class_b_magnitude": "sigma = ||phi|_line|| * lambda * (core overlap kappa). ||phi|_line|| = sqrt(3) is the norm of phi on a Fano line -- a structural PREFACTOR, NOT a representation number (dims are 1,3,3) and NOT the p6m lattice sqrt3. sigma is class-(b): ~lambda, mu-drifting.",
+  "breach_GAPPED_SCALE_FREE": "does NOT fire -- no lambda-canceling dimensionless dynamical quantity; internal channel eliminated as a breach route.",
+  "lambda_scope": "lambda is the located import for the INTERNAL channel only. It is NOT section-2.53/2.64 import -- those are density-sector (import = density roton profile / angle-3, examined by G-zeta1), a DISTINCT second import. Gate contribution to the cluster: two channels examined (density, internal), two distinct imports; do not launder serves->resolves.",
+  "second_leg": "verify_gint1_secondleg.py (SQT, independent from-scratch build) reproduces phi-on-7-lines, F_21 order 21, 1+3+3bar character, line eigs {0,+-i sqrt3}, non-line zero. Two-method confirmation.",
+  "see_also": "3/3bar split = QR/QNR split (i sqrt7 Gauss sum over residue cosets) -> section-2.75/2.76, section-3.4.6 sign(phi)<->QR/QNR. Cross-ref only, not a new claim.",
+  "full_BdG": "relaxed-core 7-component N=160 BdG DECLINED as prerequisite -- would only pin sigma (import-classified, class-b); M.CW not-worth-pursuing. Filed optional low-priority R2-firming; trigger = Gate-2a (spin-isospin locking).",
+  "freeze": "section-2.52 Open 3 untouched and frozen; M.CW/M.REL/M.2pi respected; no physical bridge promoted to R1.",
+  "provenance": "first leg gint1_execute.py (commit 41c6bb9) + second leg verify_gint1_secondleg.py"
 }

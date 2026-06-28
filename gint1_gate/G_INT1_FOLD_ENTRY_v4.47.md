@@ -1,10 +1,23 @@
-# G-INT1 — Fold-ready entry (PREPARED; PENDING author authorization)
+# G-INT1 — Fold entry (FOLDED into canonical V4.47, 2026-06-28)
 
-**Status:** SQT-cleared (two-leg agree; three corrections + one precision flag all
-incorporated). **Not yet folded.** Per SQT: "authorize when you want it folded."
-**Constraint:** canonical V4.46/V4.47 is **not in this repository** — the byte-md5 splice
-below is specified as an *instruction set* for whoever holds the canonical copy; this file
-is the source of record until incorporated.
+**Status: FOLDED.** Author-authorized and executed against the canonical Master Ledger
+(framework project, `/mnt/project/` — separate from this code/crypto repo). The byte-splice
+was run by the author: **V4.46 → V4.47** (ledger, as §2.88.D.2 + one Part VI row) and
+**Paper II §3.4 → §3.4.7** (the ladder extension). This staging entry was the source
+content; it is retained here as the gate's record. The byte-verified splice recipes are
+archived alongside (`foldin_v4_47_gint1.py`, `foldin_paper_ii_3_4_7.py`).
+
+**Code-repo audit of the executed fold (CC, 2026-06-28).** Faithfulness **confirmed**
+against the provided V4.47 canonical: §2.52 Open 3 frozen row present **exactly once**
+(byte-guard intact); §2.88.D.2 + Part VI row present; **all** SQT corrections in the text
+(scope de-laundered; density import "not located, not examined / G-ζ1 *used* the profile";
+√3 "NOT a representation number / NOT the p6m √3"; prior-art flagged; two-leg; Gate-2a
+trigger; M.CW "not worth pursuing"). Both splice scripts are disciplined (anchor-uniqueness
+asserted, full byte-reconstruction to source, explicit §2.52 frozen-row guard, intra-line
+title/As-of bumps enumerated with the V4.40 precedent). **Caveat (honest):** the byte-level
+additivity (recon == V4.46) is the **author's** verification — canonical V4.46 is not
+reachable from this code repo (`/mnt/project` unmounted here), so I confirmed faithfulness
+of the *output* and the *logic* of the recipe, not an independent byte-reconstruction.
 
 ---
 
@@ -61,4 +74,4 @@ over residue vs non-residue cosets) → **§2.75/§2.76**, **§3.4.6** sign(φ)�
   non-line zero.
 - Report: `G_INT1_EXECUTION_REPORT.md`; verdict: `gint1_verdict.json`; this entry.
 
-**Authorize to incorporate into canonical V4.47.**
+**FOLDED into canonical V4.47 (ledger §2.88.D.2 + Part VI) and Paper II §3.4.7, 2026-06-28. Canonical lives in the framework project; this code repo holds the gate execution + the byte-verified splice recipe.**

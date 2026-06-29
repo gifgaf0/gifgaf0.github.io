@@ -98,3 +98,14 @@ print(f"    xi_vac=100phi would be {100*PHI/a_const:.0f}x the lattice spacing; G
 print(f"\nSECOND-LEG VERDICT: a/R geometry-pinned (~1.41, EXACTLY U,rho-independent), xi/a a")
 print(f"free knob ~1/sqrt(rho U) -> IMPORTED / class-(b); no crystal ratio = 100phi (category")
 print(f"mismatch). CONFIRMS the SQT first leg.")
+
+# --- (E) distinct-constants note (SQT audit): framework value vs soft-disk instance ---
+a_star = 1.4576                      # MV-G1 R1 relaxed lattice constant (R=1)
+kminR_framework = 4*np.pi/(np.sqrt(3)*a_star)
+print("\n[E] distinct-constants (do NOT fold j_(2,1) as the framework number):")
+print(f"    soft-disk instance : k_min*R = j_(2,1) = {j2_1:.4f}  -> a/R = {a_over_R(j2_1):.4f}")
+print(f"    gamma=6 bracket     : k_min*R = {kmin_s6:.4f}  -> a/R = {a_over_R(kmin_s6):.4f}")
+print(f"    framework MV-G1     : a* = {a_star} (relaxed) <=> k_min*R = 4pi/(sqrt3 a*) = {kminR_framework:.4f}")
+print(f"    -> framework k_min*R ~ 4.98 sits BETWEEN soft-disk (5.136) and gamma=6 (4.82);")
+print(f"       R1 claim = the STRUCTURAL form a/R=(4pi/sqrt3)/(k_min*R), k_min*R shape-fixed,")
+print(f"       U,rho-independent; j_(2,1) is the soft-disk's exact instance only.")

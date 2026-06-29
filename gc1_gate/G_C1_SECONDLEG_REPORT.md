@@ -18,19 +18,34 @@ import is located as the roton kernel (the free ξ/a knob). Two legs agree to th
 | roton k_min·R (soft-disk) | 5.13 | **5.13562 = j₂,₁ exactly** (first zero of J₂) | ✓ + analytic |
 | a/R (soft-disk) | 1.41 | **1.41272** = 4π/(√3·j₂,₁) | ✓ |
 | a/R (γ=6 bracket) | 1.51 | 1.5052 | ✓ |
-| vs MV-G1 a*=1.4576 | ~3% | soft-disk 3.1%, γ=6 3.3% | ✓ |
+| **framework MV-G1 a*=1.4576 ⇔ k_min·R** | — | **≈4.98**, between soft-disk 5.136 & γ=6 4.82 | ✓ (relaxed crystal) |
+| soft-disk linear a/R vs relaxed a* | ~3% | 3.1% (linear-roton vs relaxed) | ✓ |
 | a/R under U,ρ sweep | 0.00% spread | **0.000% — and EXACTLY so, analytically** | ✓ strengthened |
 | ξ/a under sweep | 4.0× drift, ∝1/√(Uρ) | **4.0× (0.0213–0.0851), 1/√2 law exact (0.7071)** | ✓ exact match |
 | any ratio = 100φ? | no (off 114×) | **no** (a/R off 115×; ξ/a sub-cell) | ✓ |
 
-**The strengthening (why a/R is *forced*, not just flat).** For the soft-disk
-V(r)=U·θ(R−r), Ṽ(q) = 2πUR·J₁(qR)/q, and d/dx[J₁(x)/x] = −J₂(x)/x, so the roton minimum
-sits **exactly at the first positive zero of J₂**: k_min·R = j₂,₁ = 5.13562…, giving the
-closed form **a/R = 4π/(√3·j₂,₁) = 1.41272** — a pure number set by the kernel *shape*. It
-is **rigorously** U- and ρ-independent: U is an overall prefactor of Ṽ(q) (cannot move the
-argmin) and ρ never enters Ṽ(q) at all. So the sweep's 0.000% spread is not numerical
-luck — the spacing-to-range ratio is analytically forced. The geometry *does* force a pure
-number; it is just **a/R ≈ 1.41, not ξ_vac/a, and 115× away from 100φ**.
+**The strengthening (why a/R is *forced*, not just flat) — the R1 claim is STRUCTURAL.**
+The bankable R1 statement is the *form*:
+> **a/R = (4π/√3)/(k_min·R), with k_min·R a closed-form pure number fixed by the kernel
+> shape, rigorously U- and ρ-independent** — because U is an overall prefactor of Ṽ(q)
+> (cannot move the argmin) and ρ never enters Ṽ(q) at all. So the sweep's 0.000% spread is
+> analytic, not numerical luck.
+
+**Distinct-constants discipline (SQT audit refinement):** j₂,₁ is the **soft-disk's
+specific instance**, not the framework's value.
+- *Soft-disk* V(r)=U·θ(R−r): Ṽ(q)=2πUR·J₁(qR)/q, and d/dx[J₁/x]=−J₂/x ⇒ the roton minimum
+  is **exactly** the first zero of J₂, k_min·R = j₂,₁ = 5.13562, a/R = 4π/(√3·j₂,₁) = 1.41272.
+- *γ=6 bracket:* k_min·R = 4.82, a/R = 1.5052.
+- *Framework (MV-G1) actual:* the relaxed crystal a* = 1.4576 ⇔ **k_min·R ≈ 4π/(√3·a*) =
+  4.978**, which sits **between** the soft-disk (5.136) and γ=6 (4.82) brackets. The ~3%
+  gap between the soft-disk's linear a/R = 1.4127 and the framework's relaxed a* = 1.4576 is
+  the linear-roton-onset vs relaxed-crystal difference, not a discrepancy.
+
+So **do not fold "k_min·R = j₂,₁" as the framework's number** — fold the structural form
+(a/R = (4π/√3)/(k_min·R), k_min·R shape-fixed and U,ρ-independent), with j₂,₁ ↔ 1.41272 the
+soft-disk instance and a* = 1.4576 ↔ k_min·R ≈ 4.98 the framework's value between the
+brackets. Either way the geometry *does* force a pure number — but it is **a/R ≈ 1.4…1.5,
+not ξ_vac/a, and ~115× away from 100φ**.
 
 **Why ξ/a is the free knob (class-b).** ξ = 1/√(2ρṼ(0)) = 1/√(2πρUR²) ∝ (ρU)^(−1/2),
 while a is pinned to R. So ξ/a ∝ (ρU)^(−1/2) drifts: over U∈[11,88]×ρ∈[1,2] it spans

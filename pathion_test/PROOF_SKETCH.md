@@ -1,5 +1,10 @@
 # Proof sketch — the Cayley-Dickson ZD bridge realizes PG(n−1,2) at every doubling
 
+> **⚠ PRIOR ART (novelty retracted 2026-06-18).** This proof is *correct* but the result
+> is **established prior art** (Moreno 1998/2005; de Marrais 2000–2006; Cawagas 2004;
+> Saniga–Holweck 2014/2015; Flaut–Wilmot 2026). It is not a new theorem. Retained as
+> verified, citable mathematics only. See `PRIOR_ART_CORRECTION.md`.
+
 **Status: PROVED unconditionally for all n ≥ 3** (the doubling target being the
 sedenions or higher — the first algebras with two-term ZDs; see threshold below), modulo
 only standard, citable Cayley–Dickson structural facts (S0)–(S2). The novel content is

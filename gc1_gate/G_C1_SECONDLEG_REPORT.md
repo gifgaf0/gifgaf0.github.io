@@ -1,5 +1,15 @@
 # G-C1 (angle-3) — Independent Second-Leg Verification
 
+> **✓ INCORPORATED INTO CANON (V4.48, 2026-06-29).** The SQT folded G-C1 as **§2.64.B +
+> one Part VI G-C1 row**, V4.47 → V4.48, with the three-instances structural-form wording
+> (soft-disk j₂,₁→1.41272 / γ=6→1.5052 / framework a*=1.4576⇔k_min·R≈4.978) and an additive
+> forward-pointer on §2.88.D.2 (the density import it logged "open: not located" now reads
+> forward to §2.64.B as located). Discipline confirmed by the SQT: byte-reconstruction back
+> to V4.47 exact, §2.52 Open 3 row byte-identical (count==1), +19,011 chars / +28 lines.
+> Canonical V4.48 md5 `790c93276b8809ade45e291dd49d606b` (canonical lives in the framework
+> project; this code repo holds the second-leg verification of record). Nothing further on
+> the code-repo side.
+
 **Date:** 2026-06-29 · **Pre-registration:** `G_C1_ANGLE3_EXECUTION_PREREGISTRATION.md`
 (SQT, target-quarantined) · **First leg:** `angle3_xivac_forcing_firstleg.py` (SQT) ·
 **Second leg:** `gc1_secondleg.py` (this, independent — own 2D FT, own k_min, own sweep;

@@ -39,41 +39,63 @@ import (M.BRIDGE). Pre-locked thresholds (route (b), core-dominance) from the al
 Q2 stats (std(ln R_cut)=0.192, cross-class ΔT≈1.0): internal dispersion <3% needs **C≳5.3**;
 cross-class shift <3% needs **C≳32**; calibration **C_GP=0.38**.
 
-## 3. Route-(b) anchor (CC, independent, definition-robust) — `gk1_gp_vortex_anchor.py`
-I solved the GP straight-vortex profile from scratch (BVP) and split its energy:
-- **E(R)/π = 1.0004·ln R + 0.879** — slope **1.000**: the flow (azimuthal 1/r²) energy is a
-  **universal log**, and the core is a **convergent O(1)** additive constant.
-- **core/flow ratio at R=40 = 0.389** — independently **reproduces the memo's C_GP = 0.38**
-  (the ratio is mildly log-running via the system size; the match at the relevant scale is
-  a clean calibration check).
+## 3. Route-(b) anchor + Q1b second leg (CC, independent)
 
-**Verdict (definition-robust):** the flow log is *universal* — set by the circulation Γ and
-ρ_∞, **identical for any single-charge superfluid vortex, GP or roton/soft-core**. Only the
-O(1) core constant is kernel-dependent. For route (b), C would have to jump **×14–84**
-(0.38→5.3/32), i.e. the core energy swamping the universal flow by *tens*. A soft-core
-(roton) kernel widens the core but shifts the O(1) core constant by O(1), **not by tens**.
-So **route (b) fails robustly ⇒ the E_hydro↔mass coupling is a genuine located import (route
-c)** — the hybrid fold the re-scoping proposes. (The order-of-magnitude verdict is
-definition-independent; the *exact* C[K_roton] vs 5.3/32 still wants the Berloff–Roberts
-leg — see §4.)
+**3a. GP vortex energy split (`gk1_gp_vortex_anchor.py`).** Flow (azimuthal 1/r²) energy is a
+**universal log** (E(R)/π = 1.000·ln R + O(1), slope exactly 1); the core is a convergent
+O(1). The flow log is set by Γ and ρ_∞ — *identical for any single-charge superfluid vortex,
+GP or roton*. Only the O(1) core constant is kernel-dependent. **[Correction:** an earlier
+note here mislabeled the core/flow *ratio* (0.389) as "reproducing C_GP=0.38." That was a
+coincidence — the memo's C_GP=0.38 is the **additive core constant** ln(1.464), reproduced
+properly in 3b below, not the core/flow ratio. The route-(b) physics is unaffected.]
 
-## 4. Handoff targets — honest scope (what a valid second leg needs)
-The two CC-handoff computes are heavier and, to be **comparable to the pre-locked
-thresholds**, need the chat-side definitions, not a fresh redefinition:
-- **CKS-exact Q2** (tight-Borromean piecewise geometry → tension pipeline → dispersion +
-  screening): I can encode a tight-Borromean numerical geometry, but to produce a δ / a
-  std(ln R_cut) **comparable to the 0.192 stand-in** I need the chat-side Q2 tension pipeline
-  (how T(s) is built from κ(s) and the cutoff). Requesting that pipeline for a valid second
-  leg; a from-scratch redefinition would not be threshold-comparable.
-- **C[K_roton] via Berloff–Roberts** (nonlocal soft-core GP vortex): a real integro-
-  differential vortex solve. To compare against 5.3/32 it must use the **same C-definition**
-  that gives C_GP=0.38 (which my GP anchor reproduces as core/flow). With that definition
-  handed over, this is a bounded second leg; without it, my number risks being incomparable.
+**3b. Q1b two-leg (`gk1_q1b_secondleg.py`) — the decidable, bankable piece.** I recomputed the
+core parameter C[kernel] (= additive core constant, C = lim[e(R)−ln R]) by an **independent
+method** (scipy solve_bvp; the first leg used Newton/Thomas relaxation), across the local
+kernel family U′(n)=n^γ:
 
-**Recommendation:** the fold can already state the **hybrid verdict** — D1=(a) (no new
-dimensionless import, Q1 prior-art-backed), exponent **sealed** (ARM-R for the container),
-δ material but in the **E_hydro ledger not the exponent** (ARM-N magnitude lands there), and
-**one located import** (E_hydro↔mass coupling) — because route (b) is robustly closed by the
-universality argument above. The exact C[K_roton] and CKS-exact δ refine the *magnitude* of
-the located import, not the verdict. §2.52 untouched; no observable target entered the
-construction (0.03 is a comparison bound only); Eddington guard held.
+| kernel | C (second leg) | first leg |
+|---|---|---|
+| γ=1 (GP) | **+0.3809** (= ln 1.464) | +0.3810 |
+| γ=2 | +0.6156 | +0.6156 |
+| γ=3 | +0.7272 | +0.7273 |
+
+Match to **3–4 digits, zero shared machinery** — Q1b is **two-leg verified**. C is a bounded
+O(1) kernel functional with no residual freedom ⇒ **no new dimensionless import** (D1=(a)).
+
+**Route-(b) verdict — now directly supported (not just by the universality argument).** Route
+(b) needs C ≳ 5.3 (dispersion) / 32 (cross-class) vs the O(1) family C ∈ [0.38, 0.73]. That is
+**14×–84× outside** the entire local kernel family — the core would have to swamp the universal
+flow by tens. **Route (b) fails robustly ⇒ the E_hydro↔mass coupling is a genuine located
+import (route c)** — the hybrid fold the re-scoping proposes. The one remaining numeric — the
+*nonlocal roton* C[K_roton] via Berloff–Roberts — is an **evaluation of this existing (class-b)
+import**, expected O(1) (both the family and the universality argument point there), and is
+*not* fold-deciding.
+
+## 4. Status after the first-leg scripts arrived
+The chat-side first-leg scripts (`gk1_q1b_core_parameter.py`, `gk1_q2_borromean_bound.py`,
+`G_K1_FIRST_LEG_RESULTS.md`) are now in hand and archived here. Updated status:
+- **Q1b — two-leg DONE** (§3b): C[kernel] reproduced independently to 3–4 digits; no new
+  import; route (b) directly closed.
+- **Q2 (golden-ellipse stand-in) — first-leg pipeline in hand.** It gives large tension
+  structure: internal dispersion ~8–13%, cross-class shift vs the tight unknot ≈ **−41%**
+  (screening: a compact tangle's flow is cut off at 2.4–4.2ξ by neighbor strands, an isolated
+  ring's is not). C enters T *additively*, so these **shape** results are kernel-robust (C
+  cancels). Two refinements remain, neither fold-deciding after the §2.14 seal: **(i)** an
+  independent Q2 second leg / **CKS-exact** tight-Borromean geometry (expected to *shrink* the
+  internal dispersion — tightness equalizes constraints — while the screening shift persists);
+  **(ii)** the **nonlocal roton C[K_roton]** (Berloff–Roberts) — an evaluation of the existing
+  class-(b) import, expected O(1).
+- **The decisive move was interpretive, not numeric:** the §2.14-consumption reading. The
+  first leg itself flagged the exponential-amplification hazard (a tension shift in
+  exp(L/Φr_eff) would be amplified by ~L/Φξ e-folds); the re-scoping audit resolved it by
+  showing **L is geometric ropelength** and the exponent is sealed, so the −41% lands in the
+  E_hydro ledger, not the exponent.
+
+**The fold can state the hybrid verdict now:** D1=(a) (no new dimensionless import — Q1
+prior-art + Q1b two-leg), exponent **sealed** (ARM-R for the container), δ material but in the
+**E_hydro ledger not the exponent** (ARM-N magnitude lands there), and **one located import**
+(E_hydro↔mass coupling). CKS-exact δ and roton C[K_roton] refine the *magnitude* of that
+import, not the verdict. §2.52 untouched; no observable target entered the construction (0.03
+is a comparison bound only); Eddington guard held; the first leg's one bug (vertex-flank
+self-contact) was caught and corrected in-file before interpretation.

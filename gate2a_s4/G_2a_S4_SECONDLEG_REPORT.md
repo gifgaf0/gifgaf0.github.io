@@ -2,7 +2,8 @@
 
 **Date:** 2026-07-08 · **Pre-registration:** `G_2a_S4_EXECUTION_PREREGISTRATION.md` (archived here) ·
 **First leg:** `g_2a_s4_firstleg.py` + `G_2a_S4_FIRSTLEG_REPORT.md` (archived here) ·
-**Second-leg script:** `gate2a_s4_secondleg.py` · **Base:** V4.52 CANONICAL.
+**Second-leg scripts:** `gate2a_s4_secondleg.py` (P1 characters + P2 branch a/b),
+`gate2a_s4_secondleg_branchC.py` (P2 branch c, SnapPy) · **Base:** V4.52 CANONICAL.
 
 ## Zero-shared-machinery contract (honored)
 The first leg computed P1 by building the 8-dim operators of `(ℂ²)^⊗3` in numpy and taking
@@ -42,21 +43,32 @@ entirely different route (highest-weight multiplicity = 1, not a commutant SVD).
   (the order-4 element rules out A₄) → **motion group = octahedral rotation group O ≅ S₄** in its
   standard signed-permutation representation. Reproduces the first leg's principal yield.
 
-## SnapPy-unavailability disclosure (honest scope)
-`snappy` is **not installed** in this environment (`ModuleNotFoundError`). The second-leg spec
-offered three P2 branches; branch (c) (independent SnapPy triangulation + `symmetry_group()`) is
-therefore **not runnable here**. Branches (a)/(b) — the independent combinatorial/group construction
-of the order-24 peripheral-action group and the parity law — are what this leg executes, and they
-reproduce the order, the S₃ image, the parity law, and the O ≅ S₄ identification with **zero**
-dependence on the first leg's machinery.
+## P2 branch (c) — independent SnapPy recompute (RUN; MATCHES)
+`snappy` was **not** in the base image but **pip-installs cleanly** here (SnapPy 3.3.2), so branch
+(c) of the second-leg spec — "independent SnapPy install with `M.symmetry_group()` on an
+independently built triangulation" — is now executed (`gate2a_s4_secondleg_branchC.py`).
 
-**What this does and does not second-leg:** it independently re-derives the *group-theoretic*
-content (the exchange-statistics S₃, the det=+1 parity law, the motion group O ≅ S₄). It does **not**
-independently recompute the *hyperbolic manifold* (volume 7.328, two ideal regular octahedra,
-|Isom| = 48 flag-transitive) — that half rests on the first leg's SnapPy call plus the cited
-**Thurston** prior art (Borromean complement = two ideal octahedra). So the topological-realizability
-claim is **two-leg confirmed at the group/motion level, single-leg + literature-anchored at the
-manifold level.** Flagged, not laundered.
+Independence from the first leg is at the **construction path**: the first leg called
+`snappy.Manifold("6^3_2")` (census lookup by name); this leg builds the manifold from a link
+**diagram**, `Link('L6a4').exterior()`, and confirms it is the same manifold via
+`is_isometric_to(6^3_2) = True` (identity established, not assumed). Recomputed results:
+- Symmetry group `Z/2 × octahedral`, **order 48**; **24** orientation-preserving; all 24 have clean
+  ±Id peripheral maps (no shear/mixing).
+- **Image of Isom⁺ in S₃ = ALL of S₃**; the three transpositions realized orientation-preservingly.
+- **Parity law sgn(σ)=ε₁ε₂ε₃** holds over all 24; each cusp permutation carries exactly 4 sign
+  patterns (6×4=24).
+- **Cross-check:** the recomputed set of (σ, ε) pairs is **byte-identical** to the machinery-free
+  signed-permutation det=+1 group of branch (a)/(b) — `SETS IDENTICAL: True`.
+
+**Honest independence caveat:** `symmetry_group()` itself is the *same SnapPy algorithm* the first
+leg used — branch (c) is independent at the **triangulation-construction** level (diagram vs census
+name), not at the symmetry-solver level. The solver-independent confirmation is supplied separately
+by branch (a)/(b) (pure signed-permutation group theory, no SnapPy), whose (σ,ε) set matches exactly.
+Together: the manifold identity and symmetry order are re-derived from an independent construction
+path, and the group/parity content is re-derived with zero SnapPy dependence. So the
+topological-realizability claim is now **two-leg confirmed at both the manifold level (independent
+construction path, isometry-verified) and the group/motion level (SnapPy-free)** — an upgrade from
+the group-only confirmation, with the shared-solver caveat stated plainly.
 
 ## Discipline flags carried
 - **Distinct-48 (Eddington):** |Isom(BRC)| = 48 = |2O| — same integer, distinct provenance
@@ -79,8 +91,12 @@ manifold level.** Flagged, not laundered.
 - **Parity law + motion group O ≅ S₄: PASS (R1)** — reproduced independently over all 48 elements.
 - **H-P3 chain:** the single shared bottleneck import (§2.50 per-strand spinor phase) feeding both
   the Sym³ route and the motion-group→2O route is confirmed as the *only* open link; not resolved here.
-- **Two-leg agreement:** achieved for all group/rep-theoretic content. Manifold-level realizability
-  is literature-anchored (Thurston) + first-leg SnapPy, not independently recomputed (snappy absent).
+- **Two-leg agreement:** achieved for all group/rep-theoretic content AND, via branch (c), at the
+  manifold level — an independently-constructed (diagram-built, isometry-verified) triangulation
+  reproduces the order-48 symmetry group, the full-S₃ image, and the parity law, with the recomputed
+  (σ,ε) set identical to the SnapPy-free branch (a)/(b) group. Shared-solver caveat noted: branch (c)
+  is construction-path-independent, not symmetry-solver-independent; the solver-independent check is
+  branch (a)/(b).
 
 *Second-leg deliverable. Scripts + report committed; first-leg files, first-leg report, and the
 pre-registration archived in this directory.*

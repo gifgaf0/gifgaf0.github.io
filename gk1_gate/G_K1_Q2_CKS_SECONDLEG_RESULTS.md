@@ -1,5 +1,19 @@
 # G-κ1 — Q2 second leg (tight Borromean) + Task-2 status. CC deliverable.
 
+> **✓ FOLDED into canonical V4.52 (2026-07-05).** The SQT executed the single V4.51→V4.52
+> fold carrying the full hybrid verdict. **Code-repo audit of the output: faithful.** Every
+> honest-scope item survived into canon — the elliptical representative (pipeline verified
+> vs first leg first), the **dispersion-6% as an upper bound** on the CKS-exact value (R2, by
+> tightness-equalization monotonicity), the **arXiv-403 fetch block honestly flagged**
+> (retrievable chat-side), route (b) **closed (local, R1) / strongly disfavored (nonlocal,
+> R2)**, and the **§2.52 Open 3 frozen row byte-identical (count==1)**. My commit hashes
+> (5ac488f, db5555d, dafb561) are cited; the V4.52 changelog + open items ("CKS-exact §10
+> data; exact C[K_roton] once a kernel form is pinned") are present. Q1a is attributed to
+> Amit–Gross 1966 / Roberts–Grant 1971 — the source of the pipeline's c₁=8 (ln(8/ξκ_c)).
+> **Boundary (honest):** the byte-splice/reconstruction to V4.51 is the SQT's verification —
+> V4.51 canonical is not in this code repo, so I confirmed output faithfulness, not the
+> byte-additivity. Canonical lives in the framework project; not duplicated here.
+
 **Date:** 2026-07-05 · **Handoff:** `G_K1_CC_HANDOFF_CKS.md` (GO for CKS-exact Q2 + conditional
 C[K_roton]) · **Commit:** see below. Pipeline unchanged from the first leg, C=0.3810 fixed.
 

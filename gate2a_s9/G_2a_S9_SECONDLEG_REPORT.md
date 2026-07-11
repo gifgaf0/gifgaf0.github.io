@@ -4,10 +4,37 @@
 author-lock pending) · **Script:** `gate2a_s9_secondleg.py` (exact Cℓ(3)± over ℚ(√2)) ·
 **Base:** V4.59.
 
-> **STATUS.** CC leg run against the **DRAFT** pre-reg, **ahead of author-lock and the chat leg**
-> (S8 precedent: that draft was byte-identical to its lock and running ahead converged). Nothing
-> folded. If the locked pre-reg changes the hypotheses, I re-run. The run doubled as a design check
-> — see the self-caught bug (under-generated N) below.
+> **STATUS.** CC leg run against the **DRAFT** pre-reg, ahead of the chat leg (S8 precedent). The
+> chat leg (`cb4b65ec`) then audited this leg and **caught two real errors**, which I have
+> **independently confirmed, own, and correct below** (`gate2a_s9_correction.py`). The verdict
+> (OPEN-FORK) is unchanged; my B1 *headline* survives in refined (comparative) form; my B1 *absolute
+> assignment* and my *element dictionary* do not. B2 and H-A stand.
+
+## ⚠ CORRECTIONS (chat audit `cb4b65ec`, independently confirmed — `gate2a_s9_correction.py`)
+**ERROR 1 — my element dictionary is FALSE.** I claimed g_A = the glide, "g_A ≠ −I." Wrong: **glide ∘
+(−I) = r₁ ∈ Γ** (pure affine, verified), so the glide and −I are the **same N/Γ class** — my
+"contrast" compared two representatives of one class. **−I itself is the central amphichiral class
+g_A** (it is the unique central ℤ/2 of N/Γ ≅ ℤ/2×S₄: central in O(3), σ=id, det −1). My Φ(−I)=(id;
++,−,−;−1) was a **γ-correction double-count** bug — the same bug class the chat independently hit and
+caught via the coset-invariance falsifier (S7's translation-only regression, where the spurious sign
+is always +1, could not expose it). *(Honest scope: I proved the class identity affinely, which is
+the substance; I did **not** reproduce the chat's exact γ-corrected ε-labels — my own phi's
+convention I did not fully reverse-engineer, and nothing substantive depends on it.)*
+
+**ERROR 2 — my absolute B1 assignment is deck-representative GAUGE.** "g_A² = +1 in Pin⁺" is **not a
+class invariant**: the glide-rep lifts to e₁ (square q → +1 in Pin⁺), the −I-rep lifts to ω (square
+−q → −1 in Pin⁺) — **same class, opposite absolute value** (verified in Clifford). The pre-reg's
+"pinned representative" framing presupposed an invariant that does not exist (a shared pre-reg flaw,
+recorded per the S7 Πε precedent).
+
+**What SURVIVES (independently re-verified):** the **comparative** invariant — for *every* fixed
+representative, Pin⁺ and Pin⁻ evaluate **oppositely** (glide +1/−1; −I −1/+1; h +1/−1), and it is
+**structure-independent** (surviving characters are trivial on Γ and turn-overs). **So B1's direction
+— Pin-DISTINGUISHING, the fork real and binary — survives in this refined comparative form.** My
+absolute value and my dictionary justification do not.
+
+> **Original CC status note (retained for the record; a design check that also had a self-caught
+> bug — under-generated N, below).**
 
 ## Method (independent)
 Explicit Clifford algebra Cℓ(3)^q over ℚ(√2), q = e_i² = **+1 (Pin⁺)** / **−1 (Pin⁻)**; Pin±(3)
@@ -22,12 +49,15 @@ amphichiral class isolated. **None found** — the pieces (I2₁2₁2₁ crystal
 Kirby–Taylor/Blau–Dabrowski Pin theory) exist separately; no source assembles this. Novelty class:
 **novel-in-assembly**, as registered. *(Sources at end.)*
 
-## Element dictionary (pinned BEFORE any square — Eddington trap 3)
-Reusing the S7 Φ_flat over the full N: the amphichiral class **g_A = (id; +,+,+; −1)** is realized by
-the **glide reflection** (B = diag(−1,1,1) | (0,0,1)) — reflection in the x-mirror plus a z-glide;
-its point part is an **order-2 reflection** (det −1). **g_A² = (I | (0,0,2)) = 2e₃ ∈ Γ.** And
-**g_A ≠ −I**: Φ_flat(−I) is the *different* class (id; +,−,−; −1). So g_A is a genuine reflection-type
-element, not point-inversion — the confusion the pre-reg quarantines is avoided.
+## Element dictionary ~~(pinned BEFORE any square)~~ — **SUPERSEDED, see CORRECTIONS**
+> **This section is WRONG (ERROR 1 above).** The glide and −I are the **same** N/Γ class; **−I is
+> g_A**. Struck through and retained for the record only.
+
+~~Reusing the S7 Φ_flat over the full N: the amphichiral class g_A = (id; +,+,+; −1) is realized by
+the glide reflection (B = diag(−1,1,1) | (0,0,1))… g_A ≠ −I: Φ_flat(−I) is the different class
+(id; +,−,−; −1).~~ — **False**: my Φ(−I) was a γ-correction double-count; glide ∘ (−I) = r₁ ∈ Γ, so
+−I *is* the amphichiral class. The one robust fact from here that survives: **g_A² (any representative)
+∈ Γ** (glide-rep: 2e₃; −I-rep: I), so g_A is order 2 in N/Γ.
 
 ## Calibration + regression (machinery controls)
 - **Calibration:** ω = e₁e₂e₃ covers −I with **ω² = −q** (ω²=−1 in Pin⁺, +1 in Pin⁻). Verified.
@@ -35,15 +65,16 @@ element, not point-inversion — the confusion the pre-reg quarantines is avoide
   *both* Pin types** (Pin-blind — the proper sector is the common Spin(3)). This reproduces the S8
   ambient-2π meridian −1: **the fork lives only in the improper (reflection) sector.**
 
-## H-B / decisive bit B1 — the amphichiral square (PASS, R1)
-g_A's point part lifts to the unit vector **e₁** (ρ(e₁)=diag(−1,1,1)); the glide translation 2e₃ is
-spin-trivial (+1). So **(lift g_A)² = e₁² = q**:
-- **Pin⁺: g_A² = +1** (g_A lifts to an involution).
-- **Pin⁻: g_A² = −1** (g_A lifts to an order-4 element; its square is the central −1).
+## H-B / decisive bit B1 — the amphichiral square (PASS, R1 — **REFINED per CORRECTIONS**)
+**B1 = Pin-DISTINGUISHING — the fork is real and binary — but as a COMPARATIVE, not absolute,
+statement** (ERROR 2 above). The absolute square is **deck-representative gauge**: the glide-rep
+lifts to e₁ (e₁²=q → +1 in Pin⁺, −1 in Pin⁻); the −I-rep lifts to ω (ω²=−q → −1 in Pin⁺, +1 in
+Pin⁻) — **same class, opposite absolute values**. My earlier "g_A²=+1 in Pin⁺" is **not** invariant.
 
-**B1 = Pin-DISTINGUISHING (branch a): the fork is real and binary — the flat home's amphichiral
-symmetry sees the Pin type.** (For the record, −I=ρ(ω) gives ω²=−q, the *opposite* assignment — a
-distinct element, confirming g_A≠−I matters.)
+**The invariant (independently re-verified):** for *every* fixed representative, **Pin⁺ and Pin⁻
+evaluate oppositely**, and this is **structure-independent** (surviving characters are trivial on Γ
+and the turn-overs). So choosing the Pin type is a real, binary distinction — the amphichiral square
+sees it, comparatively. My B1 *headline direction* stands; my *absolute value* is corrected away.
 
 ## H-A — the Pin structure set (both types populated)
 The proper sector (d=+1) is the **same Spin(3)** in both algebras (products of two vectors cancel
@@ -93,13 +124,21 @@ second-way character cross-check before trusting it.
   structure count with the complete relation audit the chat leg is spec'd to do — that finer count is
   where a chat-leg cross-check would add most.
 
-## Verdict (second leg)
-- **Element dictionary (R1):** g_A = glide reflection, g_A²=2e₃, g_A≠−I.
-- **B1 (R1): Pin-DISTINGUISHING** — g_A²=+1 (Pin⁺), −1 (Pin⁻). The fork is real and binary.
-- **H-A (R1):** both Pin types populated; not a forced selection.
-- **B2 (R1): FORCED** — the improper sector consumes the S8 boundary bit (χ(t₁₁₁)→+1).
-- **H-D: OPEN-FORK** — the located ℤ/2 moves up from the boundary bit to the Pin type. No §2.50
-  closure; ontology imports untouched; no μ_n; no time-reversal; §2.52 Open 3 untouched.
+## Verdict (second leg — post-audit, corrected)
+- **Element dictionary (R1, CORRECTED):** −I **is** g_A (glide ∘ (−I) = r₁ ∈ Γ; same class). My
+  "g_A ≠ −I" was false (γ-correction bug). g_A is order 2 in N/Γ.
+- **B1 (R1, REFINED): Pin-DISTINGUISHING as a COMPARATIVE statement** — every representative squares
+  oppositely in Pin⁺ vs Pin⁻, structure-independently; the absolute value is deck gauge. Headline
+  survives; absolute assignment corrected away.
+- **H-A (R1):** both Pin types populated (chat closed the depth gap: |Hom|=4 each at the 768-model);
+  not a forced selection.
+- **B2 (R1): FORCED** — the improper sector consumes the S8 boundary bit (χ(t₁₁₁)→+1); chat isolated
+  the mechanism (h with h²=t₁₁₁). Confirms my CC result.
+- **H-D: OPEN-FORK** (unchanged) — the located ℤ/2 moves up from the boundary bit to the Pin type. No
+  §2.50 closure; ontology imports untouched; no μ_n; no time-reversal; §2.52 Open 3 untouched.
+- **Two-leg status:** verdict agreed; two substantive CC corrections (dictionary; B1 absolute framing)
+  owned and independently re-verified; each leg independently hit the γ-correction bug class once
+  (CC here on Φ(−I); chat on its ε-formula), both caught by coset-invariance.
 
 **Sources (collision check):** en.wikipedia.org/wiki/Space_group ; Kirby–Taylor 1990 (Pin structures,
 LMS 151); Blau–Dabrowski 1989 (Pin structures on quotients); math.osu.edu lectures on orbifolds &

@@ -3,14 +3,17 @@
 **Date:** 2026-07-11 · **Pre-registration:** `G_2a_S10_EXECUTION_PREREGISTRATION.md` (**DRAFT**) ·
 **Script:** `gate2a_s10_secondleg.py` (exact Cℓ(3)± over ℚ(√2)) · **Base:** V4.61.
 
-> **⚠ PROCESS DEVIATION — logged honestly.** This registration explicitly asked to *retire* the
-> S8/S9 lock-by-forwarding: "the declared clean order is register → lock → legs." I attempted to
-> obtain an explicit lock **twice** (a question tool); both failed on a technical error and you said
-> "continue." Per the pre-reg's **own provision** — "If forwarding precedes an explicit lock, the
-> deviation is logged per the S8/S9 precedent and the locked text must be byte-identical to the
-> forwarded draft" — I executed the CC leg against the forwarded draft (byte-identical by
-> construction) and **log the lock-by-forwarding deviation here.** This is the CC leg, **ahead of the
-> chat leg** (no two-leg agreement yet); nothing folds without authorization.
+> **⚠ PROCESS DEVIATION — logged, then RESOLVED at lock.** This registration explicitly asked to
+> *retire* the S8/S9 lock-by-forwarding: "the declared clean order is register → lock → legs." I
+> attempted to obtain an explicit lock **twice** (a question tool); both failed on a technical error
+> and you said "continue." Per the pre-reg's **own provision** ("If forwarding precedes an explicit
+> lock, the deviation is logged per the S8/S9 precedent and the locked text must be byte-identical to
+> the forwarded draft"), I executed the CC leg against the forwarded draft and logged the deviation.
+> **RESOLUTION (2026-07-11):** the pre-reg was subsequently re-forwarded as the lock and is
+> **byte-identical** — locked md5 **`187d0071b7b7b43112030dc5bc11f2a3`**, matching the draft I
+> executed against exactly. So this CC leg is valid against the locked text; **no re-run needed.**
+> The deviation is closed per the pre-reg's provision. This is the CC leg, **ahead of the chat leg**
+> (no two-leg agreement yet); nothing folds without authorization.
 
 ## Method (independent) + the S9 lesson applied up front
 Exact Cℓ(3)^q over ℚ(√2), q = e_i² = +1 (Pin⁺)/−1 (Pin⁻); cone-loop lifts = bivectors (order-4

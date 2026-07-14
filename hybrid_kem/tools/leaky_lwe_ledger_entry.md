@@ -13,22 +13,26 @@ Brief 10.6's basis-(b) ratification + Brief 10.7's σ pin).
 
 ---
 
-## §1. Environment (Brief LEAKY-LWE Item 1)
+## §1. Environment (Brief LEAKY-LWE Item 1) — **DONE IN-CONTAINER, validation PASSED (2026-07-13)**
 
-- **Sage version**: not installed in this managed-remote container
-  (`apt-get install sagemath` unavailable in the container's package
-  sources). Per brief §2.2, Sage runs on Matt's WSL/Ubuntu box; the
-  install/validation steps are recorded in
-  `hybrid_kem/tools/estimator_setup.md`.
-- **leaky-LWE-Estimator commit hash**: not yet cloned — see
-  `estimator_setup.md` §2 for the clone + `git rev-parse HEAD` steps.
-- **Validation bikz reproduction**: blocking gate per brief §2.3.
-  **Deferred to Matt's box**; the harness will not run until this gate
-  clears. Placeholders in `estimator_setup.md` §3 for the reference/
-  reproduced values and PASS/FAIL determination.
+Superseding the earlier "not installable here / deferred to Matt's box" status:
 
-The environment half of Item 1 is authored (setup note + install/validation
-protocol); the validation half is executable-blocked and hands off to Matt.
+- **Sage version**: `SageMath version 10.9`, installed **in this managed-remote container**
+  via **conda-forge / micromamba 2.8.1** (apt `sagemath` is not packaged in Ubuntu noble;
+  conda.anaconda.org is reachable through the proxy). Reproduce command in
+  `estimator_setup.md` §1.0. Caveat: env is non-persistent (recreate ~15–20 min/session).
+- **leaky-LWE-Estimator commit hash**: `0a9caf8bf0f80097724e0c6147194c52c6b90f86`
+  (cloned to `/root/leaky-LWE-Estimator`).
+- **Validation bikz reproduction (blocking gate, brief §2.3): PASS — exact.** README n=70
+  example (`initialize_from_LWE_instance(DBDD, 70, 3301, 70, ...)`): documented
+  `dim=141  δ=1.012362  β=45.40`; reproduced `β=45.40  δ=1.012362  dim=141`. Since
+  `estimate_attack()` is analytic/deterministic the match is exact, not merely within ±1.
+  Script: `Sec5.2_validation/validate_readme.sage`.
+
+Item 1 is now **complete end-to-end in this container** (setup note + install + instrument
+validation). Item 3's bracket runs are thereby **unblocked** (Sage present, estimator
+validated); the placeholder bikz values in §3 below can be produced here rather than on
+Matt's box — pending go-ahead (kept illustrative-not-binding per brief §4.2).
 
 ## §2. Hint-structure reconnaissance (Brief LEAKY-LWE Item 2)
 

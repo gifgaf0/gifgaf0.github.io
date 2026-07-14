@@ -252,7 +252,16 @@ def predict_bikz(params, bracket, verbose=True):
                 if val > q // 2:
                     val -= q
                 full[i * DIM + d] = val                   # error block i, coord d
-            dbdd.integrate_perfect_hint(vector(ZZ, full), 0)   # noqa: F821
+            vv = vector(ZZ, full)                          # noqa: F821
+            # Use the planted inner product l = <(e,s), v> (README idiom) so the
+            # hint is always consistent with the drawn instance. A perfect hint
+            # reduces the DBDD dimension by 1 regardless of l, so the bikz is the
+            # same as the confinement (l=0) model would give on a confined instance
+            # -- what changes is only whether the drawn instance happens to satisfy
+            # l=0 (non-deterministic 'absurd hint' otherwise). Illustrative bikz is
+            # value-independent (brief 4.2).
+            l = dbdd.leak(vv)
+            dbdd.integrate_perfect_hint(vv, l)             # noqa: F821
             n_hints += 1
             if verbose and n_hints % 50 == 0:
                 print(f"  integrated {n_hints} hints...")

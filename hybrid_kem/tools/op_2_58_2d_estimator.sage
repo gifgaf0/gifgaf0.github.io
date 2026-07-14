@@ -242,8 +242,17 @@ def predict_bikz(params, bracket, verbose=True):
         raise ValueError(bracket)
 
     # Embed into the full [e; s] space (error first) and integrate as perfect
-    # hints <e, v> = 0 (l=0), one per block per basis vector.
-    n_hints = 0
+    # hints one per block per basis vector, using l = <(e,s),v> (README idiom;
+    # always consistent with the drawn instance; the bikz is value-independent).
+    #
+    # `integrate_perfect_hint` is decorated assert_worthy=True: a hint that does
+    # NOT lower beta raises InvalidHint("Unworthy hint, absurd!"). That is a real
+    # signal (the security estimate has bottomed / that hint adds no reduction),
+    # not an error -- so we catch it, pop() to restore the pre-hint state, and
+    # SKIP that hint, reporting how many hints were worthy.
+    n_total = bracket_hint_count(bracket, k)
+    n_worthy = 0
+    n_skipped = 0
     for i in range(k):
         for w in per_block:
             full = [0] * (m + n)
@@ -253,23 +262,32 @@ def predict_bikz(params, bracket, verbose=True):
                     val -= q
                 full[i * DIM + d] = val                   # error block i, coord d
             vv = vector(ZZ, full)                          # noqa: F821
-            # Use the planted inner product l = <(e,s), v> (README idiom) so the
-            # hint is always consistent with the drawn instance. A perfect hint
-            # reduces the DBDD dimension by 1 regardless of l, so the bikz is the
-            # same as the confinement (l=0) model would give on a confined instance
-            # -- what changes is only whether the drawn instance happens to satisfy
-            # l=0 (non-deterministic 'absurd hint' otherwise). Illustrative bikz is
-            # value-independent (brief 4.2).
-            l = dbdd.leak(vv)
-            dbdd.integrate_perfect_hint(vv, l)             # noqa: F821
-            n_hints += 1
-            if verbose and n_hints % 50 == 0:
-                print(f"  integrated {n_hints} hints...")
+            try:
+                l = dbdd.leak(vv)
+                dbdd.integrate_perfect_hint(vv, l)         # noqa: F821
+                n_worthy += 1
+            except Exception as ex:                        # InvalidHint (sage global)
+                if "nworthy" in str(ex) or "absurd" in str(ex) or "Projects to 0" in str(ex):
+                    try:
+                        dbdd.pop()                          # restore pre-hint state
+                    except Exception:
+                        pass
+                    n_skipped += 1
+                else:
+                    raise
+            if verbose and (n_worthy + n_skipped) % 50 == 0:
+                print(f"  processed {n_worthy + n_skipped}/{n_total} "
+                      f"({n_worthy} worthy, {n_skipped} skipped)...")
 
     beta, delta = dbdd.estimate_attack(silent=True)
+    if verbose:
+        print(f"[hints] {n_worthy}/{n_total} worthy (beta-reducing); "
+              f"{n_skipped} skipped (no further reduction)")
     return {
         "bracket": bracket, "params": params,
-        "n_hints_integrated": n_hints,
+        "n_hints_total": n_total,
+        "n_hints_worthy": n_worthy,
+        "n_hints_skipped": n_skipped,
         "baseline_bikz": float(beta0),
         "predicted_bikz": float(beta),
         "predicted_delta": float(delta),
@@ -341,7 +359,9 @@ def main():
 
     print()
     print(f"[R3 illustrative — NOT the binding OP-2.58.2d closure]")
-    print(f"  predicted bikz: {result['predicted_bikz']:.2f}")
+    print(f"  hints: {result['n_hints_worthy']}/{result['n_hints_total']} worthy "
+          f"(beta-reducing), {result['n_hints_skipped']} skipped")
+    print(f"  baseline bikz: {result['baseline_bikz']:.2f}  ->  predicted bikz: {result['predicted_bikz']:.2f}")
     print(f"  {schedule_context(result['predicted_bikz'])}")
     if args.bracket == "strong":
         guess = NUM_PAIRS ** params["k"]

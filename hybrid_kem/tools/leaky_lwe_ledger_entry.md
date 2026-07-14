@@ -70,26 +70,33 @@ provenance to file/function/line). Executive summary:
 | Weak (F_L union complement) | 2 | 64 | 14 | 28 | YES |
 | Strong (per-pair K_{a,b} complement) | 12 | 384 | 84 | 168 | requires 21^k pair guess |
 
-## §3. Bracket bikz values (Brief LEAKY-LWE Item 3) — DEFERRED
+## §3. Bracket bikz values (Brief LEAKY-LWE Item 3) — **RAN IN-CONTAINER (toy k=7); k=14/spec deferred**
 
-The parameterised harness (`hybrid_kem/tools/op_2_58_2d_estimator.sage`)
-is authored and syntax-checked as valid Python; delegation to the on-branch
-kernel-basis machinery (`_fano_union_basis`,
-`op_2252_v2_kernel_involution.rref_kernel`) is verified from this
-container. The bracket bikz values themselves — the numbers this ledger
-row should carry — are Matt's box's output, since Sage is not installable
-here. Placeholders:
+The harness was authored by a prior session **without a working Sage** and had
+several estimator-API mismatches (it could not have run). Those are now fixed and
+the harness runs end-to-end under the in-container Sage (§1). Values below are
+**ILLUSTRATIVE, NOT the OP-2.58.2d prediction** (brief §4.2): they show the harness
+integrates the bracket hints and returns a bikz; the binding number is Phase-2 (needs
+the 21^k guess-cost fold — §5).
 
-- Weak bracket (2·k hints):
-  - toy k=7 (14 hints): bikz = **_______** (illustrative not binding)
-  - toy k=14 (28 hints): bikz = **_______** (illustrative not binding)
-  - spec k=32 (64 hints): bikz = **_______** (illustrative not binding)
-- Strong bracket (12·k hints):
-  - toy k=7 (84 hints): bikz = **_______** (illustrative not binding)
-  - toy k=14 (168 hints): bikz = **_______** (illustrative not binding)
-  - spec k=32 (384 hints): bikz = **_______** (illustrative not binding; may be
-    slow with DDGR successive integration → fallback to eprint 2023/777
-    single-stroke integrator per brief §4.3)
+**Toy k=7 (q=911), computed in-container:**
+- **Weak bracket** (F_L⊥ complement, 2/block; 14 hints): baseline bikz 32.00 → **13.44**.
+- **Strong bracket** (per-pair K_{a,b}⊥, 12/block; 84 hints): baseline 32.00 → **2.00**.
+  Strong-bracket guess cost carried separately: **21⁷ ≈ 1.80×10⁹** per-block pair-tuples.
+- Both toy-k=7 predictions sit ≤ the schedule's low β (20) — an R3 upper bound on the
+  pair-classifier β (brief §1); illustrative only, toy q, not spec.
+
+**k=14 and spec k=32 — DEFERRED (harness-ready, run cost prohibitive in-container).**
+`integrate_perfect_hint` is decorated `assert_worthy=True`, forcing a full
+`estimate_attack` after **every** hint. At k=14 the lattice dim is ~449 (n=m=224) and
+each estimate is slow, so DDGR successive integration is impractical here: **k=14 weak
+(28 hints) burned >50 min CPU without finishing**; k=14 strong (168 hints) and spec
+(k=32; 64/384 hints) scale ~6×/large worse. This is exactly the strong-bracket slowness
+the brief anticipates (§4.3): run these on Matt's box, or swap the **May–Nowakowski
+single-stroke integrator** (eprint 2023/777) for the larger hint counts — which the
+brief says **not** to implement pre-emptively. Values:
+  - toy k=14 (weak 28 / strong 168 hints): **DEFERRED** (per-hint re-estimation too slow in-container).
+  - spec k=32 (weak 64 / strong 384 hints): **DEFERRED** (same; strong-spec also needs the §4.3 fallback).
 
 Matt's Item-3 run will fill these values. Each is labelled **illustrative,
 not the OP-2.58.2d prediction** per brief §4.2. The binding single-number

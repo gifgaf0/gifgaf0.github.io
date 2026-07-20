@@ -1,0 +1,17 @@
+2bf1f44937628fe657d5ee70d2433568  arm_mapper.py
+04c2b32ff47fa2f9db7f07b20ad9c43e  g_tsh2_chatleg.py
+e725f083bf2bcd20958ba2401ab15bc3  tsh2_cc_armmap.py
+aa6ce3a11c65bbbe540c633a95c6f3d5  tsh2_cc_reduce.py
+b48fa08f1c467ea8762408dde9d158f5  tsh2_cc_solver.py
+131825d1eb2fa522f3324b32a8fc90c4  CC_HANDOFF_G_TSH2.md
+be42d3e51454b385988df53c57504e45  G_TSH2_CCLEG_REPORT.md
+712112c474fea646e88ac232c9722a11  G_TSH2_CHATLEG_REPORT.md
+99eb26a5d8ff1e32c54d5cff40386098  G_TSH2_PREREGISTRATION_LOCKED.md
+5fd459845296f0723aee71f1c5713c90  arm_verdict.json
+5b97377984e947dd3fa9213ff4868ee3  cc_K3.json
+2320711cfd1a9a99ad3a0ff138e7c7c5  cc_K4.json
+efb77ec056ef904adc4fd6580d35508f  cc_K5.json
+b90721c9276eb96e8041337b0e8b6e70  cc_K6.json
+c0dbe91060f230d282fcd57ac17f975d  cc_arm_verdict.json
+1682e6a3a532756d86486ec6fecc01c4  cc_p0.json
+9d73e1aea61b2db9b6205e29a5b1ff74  gtsh2_results.json

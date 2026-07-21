@@ -1,0 +1,51 @@
+{
+ "P_ext": {
+  "step_g22": 0.5228,
+  "step_g30": 0.5286,
+  "step_g37": 0.5348,
+  "step_g44": 0.5436,
+  "gamma6": 0.4988,
+  "gamma8": 0.47791,
+  "gamma12": 0.48861,
+  "cap_p1": 0.51622,
+  "gem8": 0.5176702082899728,
+  "gem4": 0.47400966799034566,
+  "gem3": 0.4077985188877436
+ },
+ "families": {
+  "step_g22": "SS",
+  "step_g30": "SS",
+  "step_g37": "SS",
+  "step_g44": "SS",
+  "gamma6": "SS",
+  "gamma8": "SS",
+  "gamma12": "SS",
+  "cap_p1": "CAP",
+  "gem8": "GEM",
+  "gem4": "GEM",
+  "gem3": "GEM"
+ },
+ "D_ext": 18.600407669061322,
+ "mean_ext": 0.5009834904698238,
+ "ncert_new": 3,
+ "exclusions": [
+  [
+   "cap_p2",
+   [
+    "F-LIN L1 [0.986 0.946 0.987 0.952]"
+   ]
+  ]
+ ],
+ "farthest": "gem3",
+ "departing_family": "GEM",
+ "D_F": 12.582033357055552,
+ "theta1": 3.0,
+ "theta2": 10.0,
+ "boundary_flag": false,
+ "arm": "KNOB",
+ "witness_points": {
+  "step": 0.52284
+ },
+ "D_C": null,
+ "witness_note": "witness sample collapsed to the step reuse point; D_C degenerate; section-8 guide uninformative; section-7 arm stands unqualified"
+}

@@ -1,0 +1,8 @@
+e7036f1f68ec368840317e87da513601  G_TSH3_CHATLEG_REPORT.md
+d8dac07c70b20f2adff55d4c9715cd0b  CC_HANDOFF_G_TSH3.md
+438f0bfd1fe43ca5671adbd868b70f6d  gtsh3_deviation_log.md
+f23aaca367b308dc50dd998b0eff798c  g_tsh3_chatleg.py
+91b671203c3ad4a70bc08833170095e0  gtsh3_results.json
+6485f8391ddc565d9fcfdce24fc53d5c  gtsh3_arm_mapper.py
+cd15b0ee0fb0f5358129446be3b29e7d  gtsh3_arm_verdict.json
+dab46b332b83997d34f9e4ca64c07a4d  G_TSH3_STAGING_MEMO.md

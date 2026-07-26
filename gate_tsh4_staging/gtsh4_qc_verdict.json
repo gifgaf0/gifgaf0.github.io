@@ -1,0 +1,94 @@
+{
+ "thresholds": {
+  "theta1_pct": 3.0,
+  "theta2_pct": 10.0,
+  "fiso_pct": 2.0
+ },
+ "classes": {
+  "hex:step": {
+   "basis": "polished, frozen Phase-0 geometry, fixed-Lambda shears",
+   "C44_over_rho": 56.34965718986833,
+   "C66_over_rho": 60.79276781083682,
+   "C11mC12_over_rho": 117.6318620522281,
+   "F_ISO_identity_residual_pct": 3.251763089441674,
+   "F_ISO": "FIRED",
+   "A3D_clean_shear_pct": 2.6725809347203575,
+   "v_mean": 7.594015497348577,
+   "verdict": "NOT VERDICT-ELIGIBLE this leg \u2014 F-ISO fired on the static basis (dev-channel outlier vs triple-sourced C66); indicative-only A_3D = 2.67% -> would map to 'ISO-3D'"
+  },
+  "hex:gem8": {
+   "basis": "polished, frozen Phase-0 geometry, fixed-Lambda shears",
+   "C44_over_rho": 80.53709549580458,
+   "C66_over_rho": 84.79299858096128,
+   "C11mC12_over_rho": 163.13570582404458,
+   "F_ISO_identity_residual_pct": 3.803551853234189,
+   "F_ISO": "FIRED",
+   "A3D_clean_shear_pct": 1.8098606620380622,
+   "v_mean": 9.044616431149127,
+   "verdict": "NOT VERDICT-ELIGIBLE this leg \u2014 F-ISO fired on the static basis (dev-channel outlier vs triple-sourced C66); indicative-only A_3D = 1.81% -> would map to 'ISO-3D'"
+  },
+  "cubic:step": {
+   "basis": "polished, frozen Phase-0 geometry, fixed-Lambda shears",
+   "C44_over_rho": 85.2933746464315,
+   "Cprime_over_rho": 36.725236539205476,
+   "Zener_A": 2.3224731188695773,
+   "transverse_multiset": [
+    9.23544122640773,
+    9.23544122640773,
+    9.23544122640773,
+    6.060135026482947,
+    7.274243322042563,
+    7.274243322042563
+   ],
+   "A3D_pct": 24.74210641106568,
+   "v_mean": 8.052490891631878,
+   "A3D_devchannel_sensitivity_pct": [
+    22.70021319289316,
+    26.91484826333576
+   ],
+   "verdict_raw": "ANISO-3D",
+   "verdict": "ANISO-3D \u2014 SINGLE-LEG PROVISIONAL; robust to the dev-channel systematic (sensitivity band [22.7%, 26.9%] stays above theta2)"
+  },
+  "cubic:gem8": {
+   "basis": "polished, frozen Phase-0 geometry, fixed-Lambda shears",
+   "C44_over_rho": 131.5436347986907,
+   "Cprime_over_rho": 46.34987766209296,
+   "Zener_A": 2.838057864093848,
+   "transverse_multiset": [
+    11.469247351011779,
+    11.469247351011779,
+    11.469247351011779,
+    6.808074445986395,
+    8.645680812268374,
+    8.645680812268374
+   ],
+   "A3D_pct": 30.182162281604974,
+   "v_mean": 9.751196353926412,
+   "A3D_devchannel_sensitivity_pct": [
+    28.21813712910225,
+    32.26726585561574
+   ],
+   "verdict_raw": "ANISO-3D",
+   "verdict": "ANISO-3D \u2014 SINGLE-LEG PROVISIONAL; robust to the dev-channel systematic (sensitivity band [28.2%, 32.3%] stays above theta2)"
+  }
+ },
+ "route_D_crosscheck": {
+  "z_modes56_slopes": [
+   7.486838925018468,
+   7.5200869314666186
+  ],
+  "x_modes56_slopes": [
+   7.649416856214727,
+   7.875164155894372
+  ],
+  "static_sqrtC44": 7.506640872578648,
+  "static_sqrtC66": 7.796971707710425,
+  "z_vs_sqrtC44_pct": [
+   -0.263792392580231,
+   0.17912218149516157
+  ],
+  "x_SV_vs_sqrtC44_pct": 1.9019956603709698,
+  "x_SH_vs_sqrtC66_pct": 1.0028566360786417,
+  "caveat": "single |q|=0.3, curvature unmeasured; acoustic pair identified as modes 5-6 above the flat Josephson/phase complex"
+ }
+}

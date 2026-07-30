@@ -20,7 +20,7 @@ practice reported below (residuals driven to 1e-9…1e-13; F-CONV pin honoured).
 |---|---|
 | **Q-A (Phase 0)** | **STACK-SELECTED**, argmin **AB (hcp)** — kernel-independent (step and gem8) |
 | **Q-C (Route S)** | **A_3D THREE-D-DISTINCT** (axial-vs-basal compression > θ₂), robust across both kernels and both symmetry classes; F-ISO tensor identity holds to ~1e-6 |
-| **Q-D (Route D)** | **NON-CERTIFIED** in the CC leg — BdG solver validated on the analytic uniform control (~2e-13) but the crystal transverse spectrum was not certified; deferred per A-1.6 |
+| **Q-D (Route D)** | **CERTIFIED** (author election P-2a) — BdG dynamically STABLE (validity gate passes); transverse sector **ANISO-3D** on AB and FCC, concordant with Route-S to ~0.2–0.4 % and with the chat leg |
 | **E5 halt** | not triggered (no DEGENERATE-STRUCTURE) |
 
 ---
@@ -108,23 +108,47 @@ structure-robustness. Route-S caveat (A-1.6) carried: these are lattice-elastic
 speeds; the superfluid-participation renormalization is the known systematic and
 Route-D would be authoritative where the routes disagree.
 
-## §4 Route D — dynamical BdG (NON-CERTIFIED in the CC leg)
-A plane-wave Bogoliubov–de Gennes solver was built,
-ω² = eig[L0(q)^{1/2}(L0(q)+2X(q))L0(q)^{1/2}], and **validated against the
-analytic uniform Bogoliubov spectrum** ω²=(k²/2)(k²/2+2ΛÛ̃(k)) — the C-NEG
-dynamical control — to **~2e-13** for both kernels (this exercises the
-Hartree+exchange assembly). For the *crystal*, however, a sign-definite (PSD)
-fluctuation operator was not achieved at accessible compute: the full-grid ground
-state truncated to |G|≤g_cut produces a ground-state/BdG basis inconsistency
-(spurious negative ω² growing with g_cut), and the theoretically clean fix
-(relaxing ψ₀ self-consistently inside the cutoff) did not converge to a low enough
-in-subspace residual to certify PSD-ness within the available budget. Reporting
-negative/near-zero ω² as transverse speeds would be false; per **A-1.6** the
-Route-S static-elastic result stands as the elastic measurement and the CC-leg
-**Route-D dynamical slopes are DEFERRED**. **Q-B statement:** not issued by the CC
-leg. This is surfaced for the comparison stage as **gate-fragility (S9-lite
-eligible)**; the chat-leg Route-D (full E4 set on AB+FCC@step, A-1.3) is the
-authoritative dynamical leg.
+## §4 Route D — dynamical BdG (CERTIFIED, author election P-2a)
+A plane-wave Bogoliubov–de Gennes solver, ω² = eig[L0(q)^{1/2}(L0(q)+2X(q))L0(q)^{1/2}],
+validated against the analytic uniform Bogoliubov spectrum ω²=(k²/2)(k²/2+2ΛÛ̃(k))
+— the C-NEG dynamical control — to **~2e-13** both kernels. An initial attempt was
+deferred because a *fine-grid ground state truncated to a small |G|≤g_cut* is not
+stationary in the truncated BdG space (spurious negative ω²). **Resolution (P-2a):**
+relax ψ₀ fully on a fine grid (res ~1e-10) and build the BdG at **large g_cut = 22**
+(NG ≈ 1355) so the truncation tail (ψ₀ weight beyond |G|=18 ≈ 2e-5) is negligible and
+ψ₀ is effectively stationary in the BdG space. The spurious negatives scaled exactly
+with the tail (g_cut=14 tail ~2e-3 → −0.7; g_cut≥18 → none).
+
+**Validity gate (before any speed is trusted) — PASS both structures.** q=0 spectra
+have no negative ω² and exactly **four near-zero modes** — the 3 rigid crystal
+translations + 1 U(1) phase Goldstone of a 3-D crystal superfluid (AB min ω² =
+0.053; FCC 0.086; both →0 as g_cut grows). The crystals are **dynamically stable**.
+
+**Transverse acoustic speeds** (v = slope of the gapless branches; longitudinal
+identified as the fastest, ρ=1):
+
+| structure | direction | transverse speeds | (longitudinal) |
+|---|---|---|---|
+| AB | basal Γ→M | 7.768, 8.146 | 16.03 |
+| AB | basal Γ→K | 7.768, 8.021 | 16.12 |
+| AB | axial Γ→A | 7.744, 7.744 | 16.95 |
+| AB | oblique 45° | 7.948, 9.154 | 15.79 |
+| FCC | [100] | 9.632, 9.632 | 14.91 |
+| FCC | [110] | **6.446**, 9.637 | 16.52 |
+| FCC | [111] | 7.630, 7.630 | 17.05 |
+| FCC | oblique (110-plane) | 7.309, 8.168 | 16.94 |
+
+**A_3D (dynamical, max-from-mean of transverse speeds):** AB **13.9 % → ANISO-3D**;
+FCC **22.0 % → ANISO-3D**. **F-ISO dynamical (A-1.5):** Γ→K vs Γ→M = 7.894 vs 7.957,
+**0.79 % ≤ 2 % PASS** (concordant with the chat leg's 0.65 %).
+
+**Route agreement (S vs D).** The dynamical transverse A_3D matches the static
+Christoffel A_3D (§3-derived, R-2) to **~0.2 %** (AB: 13.9 vs 14.1) / **~0.4 %**
+(FCC: 22.0 vs 22.3); per-direction transverse speeds agree to ~1 % (axial to 0.1 %;
+the FCC [110] soft transverse 6.446 vs Christoffel √((C11−C12)/2)=6.389). ⇒ the
+superfluid-participation renormalization (A-1.6) is **small for the transverse
+sector** here; Routes S and D concur. **Q-B:** AB and FCC are dynamically stable;
+transverse sector ANISO-3D on both, two-route and (with the chat leg) two-leg.
 
 ## §5 Falsifiers and controls ledger
 | control | result |
@@ -147,8 +171,9 @@ tabulated in §3.
 - **C1 energies:** §2 tables (both kernels).
 - **C2 Q-A arms:** STACK-SELECTED, argmin AB, both kernels; class margins 1.24 %/0.92 %.
 - **C3 curvatures/constants:** §3 elastic tables; F-ISO 1.3e-6.
-- **C4 Route-D slopes + mode ID:** CC leg **not adjudicated** (Route-D non-certified);
-  defer to chat-leg Route-D.
+- **C4 Route-D slopes + mode ID:** CC leg **CERTIFIED** (P-2a) — transverse speeds
+  per §4; ANISO-3D both structures; two-route agreement with Route-S ~0.2–0.4 %.
+  Now two-leg with the chat Route-D.
 - **C5 falsifier/control ledger:** §5 (every fire surfaced).
 - **C6 mapper outputs:** §6 / `tsh4_mapper_output.json`.
 

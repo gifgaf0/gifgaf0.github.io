@@ -45,9 +45,23 @@
   }
  },
  "QD_routeD": {
-  "status": "NON-CERTIFIED (crystal transverse speeds deferred)",
+  "status": "CERTIFIED (P-2a, author-elected)",
+  "kernel": "step (A-1.3)",
+  "method": "fine-grid ground state (res ~1e-10) + plane-wave BdG at large gcut=22 (NG~1355) so the truncation tail is negligible and psi0 is effectively stationary in the BdG space; omega^2 = eig[L0^{1/2}(L0+2X)L0^{1/2}].",
   "solver_control": "C-NEG uniform Bogoliubov reproduced to ~2e-13 both kernels",
-  "reason": "self-consistent truncated-basis crystal BdG did not reach a sign-definite (PSD) fluctuation operator at accessible compute; reporting Route-S elastic result per A-1.6, Route-D dynamical slopes deferred to comparison (C4/C5, S9-lite eligible)."
+  "validity_gate": {"AB": {"q0_min_omega2": 0.0526, "nearzero_count": 4, "pass": true},
+                    "FCC": {"q0_min_omega2": 0.0863, "nearzero_count": 4, "pass": true},
+                    "note": "no negative omega^2; exactly 4 near-zero q=0 modes (3 rigid translations + 1 U(1) phase) for a 3D crystal superfluid"},
+  "transverse_speeds": {
+   "AB": {"GammaM": [7.768, 8.146], "GammaK": [7.768, 8.021], "GammaA_axial": [7.744, 7.744], "oblique45": [7.948, 9.154], "longitudinal": "~16.0-17.0"},
+   "FCC": {"100": [9.632, 9.632], "110": [6.446, 9.637], "111": [7.630, 7.630], "oblique": [7.309, 8.168], "longitudinal": "~14.9-17.1"}
+  },
+  "A_3D_dynamical": {"AB": [0.1390, "ANISO-3D"], "FCC": [0.2197, "ANISO-3D"]},
+  "route_agreement_S_vs_D": {"AB": "dyn 13.9% vs static-Christoffel 14.1% (~0.2%)",
+                             "FCC": "dyn 22.0% vs static-Christoffel 22.3% (~0.4%)",
+                             "note": "transverse speeds agree to ~1% (axial to 0.1%; FCC [110] soft branch 6.446 vs Christoffel 6.389); superfluid-participation renormalization small for transverse modes (A-1.6)"},
+  "F_ISO_dynamical": {"GammaK": 7.894, "GammaM": 7.957, "rel_diff": 0.0079, "gate": 0.02, "passed": true},
+  "Q_B_statement": "AB and FCC crystals are dynamically STABLE (no imaginary Bogoliubov frequencies); transverse acoustic sector is ANISO-3D on both, concordant with Route-S and with the chat leg."
  },
  "controls_falsifiers": {
   "C_NEG_phase0": {"step_abs_err": 0.0, "gem8_abs_err": 0.0, "note": "uniform e=(Lam/2)Uhat(0) exact"},
@@ -57,5 +71,5 @@
   "T1_self_grep": "PASS on all computation files",
   "symmetry_verification": "PASS all structures (relaxed Bragg content matches seed)"
  },
- "provenance": "tsh4_core.py + tsh4_phase0.py/run_phase0.py + tsh4_routeS.py/run_routeS.py + tsh4_routeD.py/finalize_routeD.py + tsh4_mapper.py; measurements in tsh4_phase0_measurements.json, tsh4_routeS_measurements.json, tsh4_routeD_measurements.json, tsh4_mapper_output.json"
+ "provenance": "tsh4_core.py + tsh4_phase0.py/run_phase0.py + tsh4_routeS.py/run_routeS.py + tsh4_routeD.py/run_routeD.py + tsh4_R2_christoffel.py + tsh4_mapper.py; measurements in tsh4_phase0_measurements.json, tsh4_routeS_measurements.json, tsh4_routeD_measurements.json, tsh4_R2_christoffel_output.json, tsh4_mapper_output.json"
 }

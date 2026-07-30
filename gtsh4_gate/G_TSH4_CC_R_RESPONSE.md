@@ -79,23 +79,30 @@ All ≤ 1e-6 by 3–5 orders of magnitude ⇒ **A-2 compliance certified retroac
 Full per-state numbers in `tsh4_phase0_measurements.json` (`fconv.res_fine`) and
 `tsh4_routeS_measurements.json` (`*.res_max`).
 
-## Author elections (not the blind leg's to make — surfaced for the author)
-- **P-2 (Route-D path).** CC can attempt certification (option a) by moving the BdG
-  off the truncated plane-wave basis onto a matrix-free full-grid operator seeded by
-  the already-converged ground state (res ~3e-10) with a validity gate before trusting
-  eigenvalues — the analogue of the chat mechanism. This is real additional compute,
-  not pure post-processing; awaiting the author's election among (a) certify / (b)
-  accept chat single-leg + logged deferral / (c) exclude Route-D from the fold candidate.
+## Author elections
+- **P-2 (Route-D path) — author elected (a); CC has now CERTIFIED Route-D.** Root
+  cause of the earlier deferral: a *fine-grid* ψ₀ truncated to a *small* |G|≤g_cut is
+  not stationary in the truncated BdG space (spurious negative ω² scaling with the
+  truncation tail). Fix: keep the fine, well-resolved ψ₀ and push **g_cut=22** so the
+  tail (~2e-5 beyond |G|=18) is negligible. **Validity gate PASSES** (no negative ω²;
+  exactly 4 near-zero q=0 modes = 3 translations + phase) on AB and FCC → crystals
+  dynamically stable. Transverse A_3D: **AB 13.9 %, FCC 22.0 % → ANISO-3D**, matching
+  the static Christoffel (R-2) to ~0.2–0.4 % and the chat leg. F-ISO_dyn 0.79 % PASS.
+  **C4 is now two-leg** (CC + chat), and Routes S and D concur (small superfluid
+  renormalization on the transverse sector). Details in `tsh4_routeD_measurements.json`
+  and report §4.
 - **P-3 / P-4.** Chat-side action / process rule; CC concurs with both recommendations
-  (P-3 yes: R-3 shows the true-optimum re-measurement is the decisive S9-F-ISO test;
-  P-4 yes: every dispatch should embed its own activation flags — the A-2 gap here is
-  the second transmission-layer defect).
+  (P-3 yes: R-3 shows the true-optimum re-measurement is the decisive S9-F-ISO test —
+  and CC's certified *dynamical* F-ISO 0.79 % independently sides with basal isotropy,
+  as does the chat dynamical 0.65 %; P-4 yes: every dispatch should embed its own
+  activation flags — the A-2 gap here is the second transmission-layer defect).
 
 ## Net effect on C1–C6
 - **C1:** R-1 table supplied → close pending the chat-side geometry diff.
 - **C2:** unchanged — CLOSED, two-leg.
 - **C3:** R-2 makes the CC Q-C statistic conforming → **ANISO-3D, two-leg concordant**;
   R-3 falsifies the F-ISO circularity hypothesis, leaving the testable (b).
-- **C4:** unchanged — Route-D one-legged pending P-2.
+- **C4:** Route-D now **CERTIFIED two-leg** (P-2a); transverse ANISO-3D both structures,
+  concordant with Route-S (~0.2–0.4 %) and the chat leg.
 - **C5:** R-4 certifies A-2 retroactively; F-ISO conflict now has one surviving hypothesis.
 - **C6:** the R-2 conformance blocker is cleared; assembly still gated on S9-F-ISO (P-3).

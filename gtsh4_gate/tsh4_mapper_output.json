@@ -1,0 +1,134 @@
+{
+ "gate": "G-TSH4",
+ "mapper": "quarantined, run last",
+ "thresholds": {
+  "theta1": 0.03,
+  "theta2": 0.1,
+  "delta_E": 0.0001
+ },
+ "QA": {
+  "step": {
+   "order": [
+    [
+     "AB",
+     68.342749
+    ],
+    [
+     "FCC",
+     68.350821
+    ],
+    [
+     "ABC",
+     68.351241
+    ],
+    [
+     "BCC",
+     69.191423
+    ],
+    [
+     "AA",
+     69.685277
+    ]
+   ],
+   "argmin": "AB",
+   "cp_min": 68.34274931108449,
+   "ncp_min": 69.19142265619536,
+   "class_margin": 0.012417898806614466,
+   "delta_E": 0.0001,
+   "verdict": "STACK-SELECTED",
+   "stacking_subgap": 0.00011810764620764791,
+   "stacking_pref": "hcp(AB)"
+  },
+  "gem8": {
+   "order": [
+    [
+     "AB",
+     98.942926
+    ],
+    [
+     "FCC",
+     98.953858
+    ],
+    [
+     "ABC",
+     98.954277
+    ],
+    [
+     "BCC",
+     99.857361
+    ],
+    [
+     "AA",
+     100.700628
+    ]
+   ],
+   "argmin": "AB",
+   "cp_min": 98.94292596750876,
+   "ncp_min": 99.85736111595455,
+   "class_margin": 0.00924204676083741,
+   "delta_E": 0.0001,
+   "verdict": "STACK-SELECTED",
+   "stacking_subgap": 0.00011049125626358744,
+   "stacking_pref": "hcp(AB)"
+  }
+ },
+ "QC": {
+  "step": {
+   "AB": {
+    "C": {
+     "C11": 211.87258039559399,
+     "C12": 83.80284489938052,
+     "C33": 238.56593680095,
+     "C44": 59.856753036484264,
+     "C66": 64.03478174222653,
+     "C11_minus_C12": 128.06973549621347
+    },
+    "shear_aniso": 0.06524623949779378,
+    "shear_class": "MILD",
+    "compr_aniso": 0.12598778169178854,
+    "compr_class": "THREE-D-DISTINCT",
+    "F_ISO_residual": 1.3431119442609946e-06,
+    "F_ISO_pass": true
+   },
+   "FCC": {
+    "C": {
+     "C44": 92.08079128668007,
+     "C11_minus_C12": 81.6472260102815
+    },
+    "zener": 2.2555767240661604,
+    "zener_aniso": 1.2555767240661604,
+    "zener_class": "THREE-D-DISTINCT"
+   }
+  },
+  "gem8": {
+   "AB": {
+    "C": {
+     "C11": 313.4526338669609,
+     "C12": 137.45630591197462,
+     "C33": 365.51304742044897,
+     "C44": 84.50912961579014,
+     "C66": 87.99805215281091,
+     "C11_minus_C12": 175.99632795498627
+    },
+    "shear_aniso": 0.039647724599200955,
+    "shear_class": "MILD",
+    "compr_aniso": 0.16608701898987427,
+    "compr_class": "THREE-D-DISTINCT",
+    "F_ISO_residual": 1.2707631531139878e-06,
+    "F_ISO_pass": true
+   },
+   "FCC": {
+    "C": {
+     "C44": 140.42566969980462,
+     "C11_minus_C12": 101.63109086077156
+    },
+    "zener": 2.763439189926226,
+    "zener_aniso": 1.7634391899262258,
+    "zener_class": "THREE-D-DISTINCT"
+   }
+  }
+ },
+ "QD": {
+  "status": "NON-CERTIFIED (crystal transverse speeds deferred)"
+ }
+}

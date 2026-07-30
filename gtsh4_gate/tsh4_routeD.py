@@ -140,6 +140,9 @@ def acoustic_branches(basis, khat, Lam, mu, direction, qmags, nlow=5):
     return dict(direction=[float(x) for x in d], qmags=list(qs),
                 omegas=[[float(x) for x in row] for row in W],
                 slopes=[float(s) for s in slopes])
+
+
+def uniform_bdg_check(khat, Lam):
     """C-NEG: single-plane-wave basis reproduces analytic uniform Bogoliubov."""
     # psi0 = 1 on a trivial cell
     H = np.eye(3)*3.0

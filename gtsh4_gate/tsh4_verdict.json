@@ -1,0 +1,61 @@
+{
+ "gate": "G-TSH4",
+ "leg": "CC full-from-scratch (E6)",
+ "base_canonical": "V4.71 md5 9517f4fb7aa2de65b0b4a69985962d8f",
+ "artifacts_verified_byte_exact": {
+  "locked_prereg_md5": "e66b964d4467fcb9a5f328ef0db80a35",
+  "amendment_1_partA_md5": "2c67670112844e9df9cf9909a06ac27a"
+ },
+ "coupling": {
+  "convention": "Lambda = 2.0 * Lambda_c (roton threshold), fixed before any structure energy",
+  "step": {"Lambda_c": 21.713735, "kstar": 5.4486, "Lambda": 43.427469},
+  "gem8": {"Lambda_c": 33.783379, "kstar": 5.5655, "Lambda": 67.566757}
+ },
+ "QA": {
+  "rule": "A-1.1 class re-carve; margin between class minima vs delta_E=1e-4",
+  "step": {
+   "energies": {"AB": 68.34275, "FCC": 68.35082, "ABC": 68.35124, "BCC": 69.19142, "AA": 69.68528},
+   "argmin": "AB", "class_margin": 0.01241, "verdict": "STACK-SELECTED",
+   "stacking_subquestion": {"pref": "hcp(AB)", "gap": 1.18e-4, "note": "demoted per A-1.1, not verdict-bearing"}
+  },
+  "gem8": {
+   "energies": {"AB": 98.94293, "FCC": 98.95386, "ABC": 98.95428, "BCC": 99.85736, "AA": 100.70063},
+   "argmin": "AB", "class_margin": 0.00924, "verdict": "STACK-SELECTED",
+   "stacking_subquestion": {"pref": "hcp(AB)", "gap": 1.10e-4, "note": "demoted per A-1.1, not verdict-bearing"}
+  },
+  "kernel_independent": true,
+  "containment_bugcatch": "ABC relaxed to c/a=2.448~=sqrt6; e(ABC)~=e(FCC) to ~1e-5 both kernels -> PASS",
+  "degenerate_halt_E5b": false
+ },
+ "QC_routeS": {
+  "F_ISO_residual": {"step": 1.34e-6, "gem8": 1.27e-6, "gate": 0.02, "passed": true},
+  "elastic_constants": {
+   "step": {"AB": {"C11": 211.9, "C12": 83.8, "C33": 238.6, "C44": 59.9, "C66": 64.0},
+            "FCC": {"C44": 92.1, "C11_minus_C12": 81.6, "Zener": 2.256}},
+   "gem8": {"AB": {"C11": 313.5, "C12": 137.5, "C33": 365.5, "C44": 84.5, "C66": 88.0},
+            "FCC": {"C44": 140.4, "C11_minus_C12": 101.6, "Zener": 2.763}}
+  },
+  "A_3D_anisotropy_verdict": {
+   "thresholds": {"theta1": 0.03, "theta2": 0.10},
+   "step": {"AB_shear": [0.065, "MILD"], "AB_compression": [0.126, "THREE-D-DISTINCT"],
+            "FCC_zener": [1.256, "THREE-D-DISTINCT"]},
+   "gem8": {"AB_shear": [0.040, "MILD"], "AB_compression": [0.166, "THREE-D-DISTINCT"],
+            "FCC_zener": [1.763, "THREE-D-DISTINCT"]},
+   "summary": "3D stack is elastically THREE-D-DISTINCT (axial-vs-basal compression > theta2), robust across both kernels and both symmetry classes (AB hex, FCC cubic); basal shear only MILD."
+  }
+ },
+ "QD_routeD": {
+  "status": "NON-CERTIFIED (crystal transverse speeds deferred)",
+  "solver_control": "C-NEG uniform Bogoliubov reproduced to ~2e-13 both kernels",
+  "reason": "self-consistent truncated-basis crystal BdG did not reach a sign-definite (PSD) fluctuation operator at accessible compute; reporting Route-S elastic result per A-1.6, Route-D dynamical slopes deferred to comparison (C4/C5, S9-lite eligible)."
+ },
+ "controls_falsifiers": {
+  "C_NEG_phase0": {"step_abs_err": 0.0, "gem8_abs_err": 0.0, "note": "uniform e=(Lam/2)Uhat(0) exact"},
+  "C_NEG_bdg_uniform": {"max_abs_err": 2.27e-13},
+  "F_CONV": "spectral: |de|/e under x1.5 resolution ~1e-16 all structures both kernels (gate 5e-6) PASS",
+  "F_ISO_routeS": "PASS (see QC)",
+  "T1_self_grep": "PASS on all computation files",
+  "symmetry_verification": "PASS all structures (relaxed Bragg content matches seed)"
+ },
+ "provenance": "tsh4_core.py + tsh4_phase0.py/run_phase0.py + tsh4_routeS.py/run_routeS.py + tsh4_routeD.py/finalize_routeD.py + tsh4_mapper.py; measurements in tsh4_phase0_measurements.json, tsh4_routeS_measurements.json, tsh4_routeD_measurements.json, tsh4_mapper_output.json"
+}

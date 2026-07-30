@@ -1,0 +1,90 @@
+{
+ "gate": "G-TSH4",
+ "route": "D (dynamical BdG transverse branches)",
+ "kernel_declared": "step (A-1.3)",
+ "status": "NON-CERTIFIED (crystal transverse speeds deferred)",
+ "solver_control_C_NEG_uniform_Bogoliubov": {
+  "formula": "omega^2(k) = (k^2/2)(k^2/2 + 2 Lambda Uhat(k))",
+  "agreement": "machine precision",
+  "detail": {
+   "step": {
+    "max_abs_err": 2.2737367544323206e-13,
+    "rows": [
+     {
+      "q": 0.5,
+      "omega2_num": 44.36594028948286,
+      "omega2_analytic": 44.36594028948285,
+      "abs_err": 7.105427357601002e-15
+     },
+     {
+      "q": 1.0,
+      "omega2_num": 164.60548027455332,
+      "omega2_analytic": 164.6054802745533,
+      "abs_err": 2.842170943040401e-14
+     },
+     {
+      "q": 2.0,
+      "omega2_num": 479.215488338498,
+      "omega2_analytic": 479.21548833849795,
+      "abs_err": 5.684341886080802e-14
+     },
+     {
+      "q": 5.4486,
+      "omega2_num": -220.3330841477216,
+      "omega2_analytic": -220.33308414772162,
+      "abs_err": 2.842170943040401e-14
+     },
+     {
+      "q": 8.0,
+      "omega2_num": 1170.8928784883694,
+      "omega2_analytic": 1170.8928784883692,
+      "abs_err": 2.2737367544323206e-13
+     }
+    ]
+   },
+   "gem8": {
+    "max_abs_err": 2.2737367544323206e-13,
+    "rows": [
+     {
+      "q": 0.5,
+      "omega2_num": 61.34040145847785,
+      "omega2_analytic": 61.34040145847784,
+      "abs_err": 7.105427357601002e-15
+     },
+     {
+      "q": 1.0,
+      "omega2_num": 227.40201294573967,
+      "omega2_analytic": 227.40201294573964,
+      "abs_err": 2.842170943040401e-14
+     },
+     {
+      "q": 2.0,
+      "omega2_num": 661.1892473017233,
+      "omega2_analytic": 661.1892473017232,
+      "abs_err": 1.1368683772161603e-13
+     },
+     {
+      "q": 5.4486,
+      "omega2_num": -215.70418041352323,
+      "omega2_analytic": -215.70418041352323,
+      "abs_err": 0.0
+     },
+     {
+      "q": 8.0,
+      "omega2_num": 1057.0546202123269,
+      "omega2_analytic": 1057.0546202123267,
+      "abs_err": 2.2737367544323206e-13
+     }
+    ]
+   }
+  }
+ },
+ "why_not_certified": [
+  "The plane-wave BdG operator omega^2 = L0^{1/2}(L0+2X)L0^{1/2} is exact in the uniform limit (agreement ~1e-14, both kernels), validating the Hartree+exchange assembly on the diagonal channel.",
+  "For the crystal, using the full-grid ground state truncated to |G|<=gcut the amplitude Hessian (L0+2X) acquires spurious negative eigenvalues as gcut grows -- a ground-state/BdG basis inconsistency, not physics.",
+  "Relaxing psi0 self-consistently INSIDE the cutoff removes the inconsistency in principle, but at the resolution needed to resolve psi0 (spectral weight beyond |G|=14 ~2e-3) the truncated imaginary-time relaxation did not reach a low enough in-subspace residual for a sign-definite (PSD) fluctuation operator at the compute available in this execution.",
+  "Reporting negative/near-zero omega^2 as transverse speeds would be false; per A-1.6 the Route-S static-elastic speeds are reported as the elastic result and Route-D dynamical slopes are DEFERRED."
+ ],
+ "comparison_note": "Surface at C4/C5 as gate-fragility (S9-lite eligible). The chat-leg Route-D (full E4 set on AB+FCC@step) is the authoritative dynamical leg per A-1.3; CC-leg Route-D is not adjudicated here.",
+ "Q_B_statement": "Not issued by the CC leg (Route-D non-certified)."
+}

@@ -1,0 +1,14 @@
+G-POLY1 CC leg T1 quarantine log -- external grep -i -F against the section-7 checker list
+(list itself quarantined in the dispatch; not reproduced here)
+date: 2026-08-05
+poly1_phase0a_ccleg.py: 0 hits
+poly1_fullprec_ccleg.py: 0 hits
+compare_cc_vs_chat.py: 0 hits
+poly1_phase0a_cc.json: 0 hits
+poly1_phase0full_cc.json: 0 hits
+poly1_phase0bfull_cc.json: 0 hits
+poly1_phase1full_cc.json: 0 hits
+poly1_phase1quoted_cc.json: 0 hits
+gpoly1_cc_verdict.json: 0 hits
+G_POLY1_CC_EXECUTION_REPORT.md: 0 hits
+adjudications: none required (zero hits everywhere; instruments checked before every invocation)

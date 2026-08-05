@@ -1,0 +1,75 @@
+{
+ "phase0b": {
+  "step_cubic": {
+   "K": 123.83246666666666,
+   "mu_HS": [
+    60.196098807662864,
+    61.90468450314806
+   ],
+   "vT_HS": [
+    7.758614490207827,
+    7.867953005906178
+   ],
+   "vT_VR": [
+    7.468877341686608,
+    8.11579447743719
+   ],
+   "HS_halfwidth_pct": 0.7009736218327429,
+   "VR_halfwidth_pct": 4.147411776869302,
+   "status": "FULL"
+  },
+  "gem8_cubic": {
+   "K": 210.2755,
+   "mu_HS": [
+    84.85580496763791,
+    89.43210619958737
+   ],
+   "vT_HS": [
+    9.211721064363484,
+    9.456854984591196
+   ],
+   "vT_VR": [
+    8.706771527831359,
+    9.872492086601033
+   ],
+   "HS_halfwidth_pct": 1.31680585603757,
+   "VR_halfwidth_pct": 6.261996123854931,
+   "status": "FULL"
+  },
+  "step_hex": {
+   "K_V": 134.6092888888889,
+   "K_R_berryman": 134.61592608974317,
+   "K_R_1606": 134.60823359539015,
+   "K_HS": [
+    134.61592608974317,
+    134.60933811973788
+   ],
+   "K_band_note": "degenerate at input-identity-residual floor",
+   "G_HS": "PENDING-verbatim (pin S2 elided term); VR shear bracket [68.6936, 73.0622]",
+   "status": "K FULL; G PENDING"
+  },
+  "gem8_hex": {
+   "K_V": 229.69615555555558,
+   "K_R_berryman": 229.689087784171,
+   "K_R_1606": 229.69594530872428,
+   "K_HS": [
+    229.69158236465034,
+    229.69261752706808
+   ],
+   "K_band_note": "degenerate at input-identity-residual floor",
+   "G_HS": "PENDING-verbatim (pin S2 elided term); VR shear bracket [96.6334, 105.0440]",
+   "status": "K FULL; G PENDING"
+  },
+  "note_hex_G": "hex shear HS blocked on pin S2 completion (obligation before Phase 3)"
+ },
+ "_meta": {
+  "instrument": "poly1_fullprec_chatleg.py",
+  "leg": "chat",
+  "input_file": "/mnt/user-data/uploads/poly_vrh_results.json",
+  "input_md5": "200e7a8b775577564369c6924d38a84c",
+  "pin_record_md5": "621120e50d395beea2e914d54c929600",
+  "prereg_md5": "dab462d2e133d0962c512a34bb7bc635",
+  "time": "2026-08-05 01:26:48.583364+00:00",
+  "phase": "0b-full"
+ }
+}

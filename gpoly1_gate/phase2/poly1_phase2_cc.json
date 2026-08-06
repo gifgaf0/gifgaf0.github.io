@@ -1,0 +1,100 @@
+{
+ "gate": "G-POLY1",
+ "phase": "2",
+ "leg": "cc",
+ "lock": {
+  "memo_md5": "35a6225c38b66d2ac497d9e9af447e71",
+  "lock_record_md5": "f1c1342c843e34ec40ae1eaab201b947",
+  "base": "V4.74 13d5eda14c69d3f68468a6ccdb8c3257",
+  "elections": [
+   "E2-1(a) variance addition delta_RMS(L)=s1*sqrt(d/L)",
+   "E2-2 monodisperse d",
+   "E2-3 four configs pure phases"
+  ]
+ },
+ "input_md5": "200e7a8b775577564369c6924d38a84c",
+ "law": "delta_RMS(L) = s1 * sqrt(d/L)  [E2-1(a); F-N1 endpoint delta_RMS(d)=s1 exact]",
+ "quadrature": {
+  "base": [
+   144,
+   144
+  ],
+  "doubling": [
+   288,
+   288
+  ],
+  "gate": "<=1e-9 on s1",
+  "construction": "GL(cos theta) x GL(phi) product (CC leg; distinct from chat GL x uniform)",
+  "eigen": "closed-form trigonometric symmetric-3x3 (no library eigensolver)",
+  "note": "psi-average exact: Christoffel eigenvalues are polarization-frame independent"
+ },
+ "controls": {
+  "F_ISO_NULL": "PASS max B 3.416e-16",
+  "qL_separation": "PASS all configs",
+  "F_N1": "PASS exact (identity at L=d)"
+ },
+ "results": {
+  "hex:step": {
+   "s1": 0.15150802249390605,
+   "mean_B": 0.12615803438630624,
+   "max_B_grid": 0.2418929910153492,
+   "inv_qT_lamsum": 144.63481547995423,
+   "inv_qL_lam": 233.522917853379,
+   "inv_qT_vprod": 71.42475390318586,
+   "min_vqL": 14.722020793499155,
+   "max_vqT": 10.09138502472907,
+   "s1_doubling_reldelta": 1.2823679308283301e-14,
+   "mean_B_doubling_delta": 6.065997800383341e-05
+  },
+  "hex:gem8": {
+   "s1": 0.18156944659334423,
+   "mean_B": 0.15167341871333206,
+   "max_B_grid": 0.28395785911586335,
+   "inv_qT_lamsum": 207.5155557904022,
+   "inv_qL_lam": 372.3204442095976,
+   "inv_qT_vprod": 101.90389694937927,
+   "min_vqL": 18.56049865682428,
+   "max_vqT": 12.405807808128598,
+   "s1_doubling_reldelta": 1.2840642494959794e-14,
+   "mean_B_doubling_delta": 1.125501714376005e-05
+  },
+  "cubic:step": {
+   "s1": 0.23334890363910085,
+   "mean_B": 0.20882336967894977,
+   "max_B_grid": 0.4150694473337891,
+   "inv_qT_lamsum": 129.27740364392542,
+   "inv_qL_lam": 214.10879635607458,
+   "inv_qT_vprod": 62.99070077676408,
+   "min_vqL": 13.146677731077899,
+   "max_vqT": 9.235442598568518,
+   "s1_doubling_reldelta": 4.163058541939654e-15,
+   "mean_B_doubling_delta": 6.271357026694437e-06
+  },
+  "cubic:gem8": {
+   "s1": 0.2842315076611469,
+   "mean_B": 0.25381664836914075,
+   "max_B_grid": 0.5098842778594318,
+   "inv_qT_lamsum": 190.396984312369,
+   "inv_qL_lam": 344.7655156876311,
+   "inv_qT_vprod": 91.67139099115076,
+   "min_vqL": 16.49666766344451,
+   "max_vqT": 11.469245833310834,
+   "s1_doubling_reldelta": 4.491959701529798e-15,
+   "mean_B_doubling_delta": 6.332581697915771e-06
+  }
+ },
+ "witness_W_ANISO": {
+  "hex:step": {
+   "max_B_pct": 24.18929910153492
+  },
+  "hex:gem8": {
+   "max_B_pct": 28.395785911586337
+  },
+  "cubic:step": {
+   "max_B_pct": 41.50694473337891
+  },
+  "cubic:gem8": {
+   "max_B_pct": 50.98842778594318
+  }
+ }
+}

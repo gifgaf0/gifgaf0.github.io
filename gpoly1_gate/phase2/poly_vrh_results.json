@@ -1,0 +1,132 @@
+{
+ "gem8_fcc_iso": {
+  "A": 946.2397864450644,
+  "lin": -214.4531034305213,
+  "base_res": 4.7100744185220225e-09,
+  "seconds": 38.00324010848999
+ },
+ "vrh": {
+  "controls": {
+   "cubic_closed_form_maxerr": 4.440892098500626e-16,
+   "iso_null": "PASS"
+  },
+  "hex:step": {
+   "label": "TRUE-OPTIMUM (V4.72 R1 two-leg)",
+   "C_over_rho": {
+    "C11": 238.4183,
+    "C12": 108.5389,
+    "C13": 57.4751,
+    "C33": 287.6688,
+    "C44": 60.0308,
+    "C66": 64.9223
+   },
+   "K_VRH": 134.609,
+   "G_V": 73.065,
+   "G_R": 68.697,
+   "G_VRH": 70.881,
+   "VR_spread_pct": 6.16,
+   "AU": 0.3179,
+   "vT_V": 8.5478,
+   "vT_R": 8.2883,
+   "vT_VRH": 8.4191,
+   "vT_halfwidth_pct": 1.54,
+   "single_crystal_input": {
+    "mean": 8.472742664753259,
+    "std_pct": 9.164259025458835,
+    "maxdev_pct": 19.105382411223452
+   }
+  },
+  "hex:gem8": {
+   "label": "TRUE-OPTIMUM (V4.72 R1 two-leg)",
+   "C_over_rho": {
+    "C11": 377.5438,
+    "C12": 200.2076,
+    "C13": 111.0018,
+    "C33": 467.7554,
+    "C44": 84.8245,
+    "C66": 88.6835
+   },
+   "K_VRH": 229.696,
+   "G_V": 105.042,
+   "G_R": 96.63,
+   "G_VRH": 100.836,
+   "VR_spread_pct": 8.34,
+   "AU": 0.4352,
+   "vT_V": 10.249,
+   "vT_R": 9.8301,
+   "vT_VRH": 10.0417,
+   "vT_halfwidth_pct": 2.09,
+   "single_crystal_input": {
+    "mean": 10.120315551687215,
+    "std_pct": 10.906419350629072,
+    "maxdev_pct": 22.59028052217178
+   }
+  },
+  "cubic:step": {
+   "label": "polished-at-FROZEN geometry (labelled)",
+   "C_over_rho": {
+    "C44": 85.2934,
+    "C12": 99.349,
+    "C11": 172.7994
+   },
+   "K_VRH": 123.832,
+   "G_V": 65.866,
+   "G_R": 55.784,
+   "G_VRH": 60.825,
+   "VR_spread_pct": 16.58,
+   "AU": 0.9037,
+   "vT_V": 8.1158,
+   "vT_R": 7.4689,
+   "vT_VRH": 7.799,
+   "vT_halfwidth_pct": 4.15,
+   "single_crystal_input": {
+    "mean": 7.97359836526451,
+    "std_pct": 13.113372264449117,
+    "maxdev_pct": 23.995868277249034
+   }
+  },
+  "cubic:gem8": {
+   "label": "polished-at-FROZEN geometry (labelled; iso measured this session)",
+   "C_over_rho": {
+    "C44": 131.5436,
+    "C12": 179.3756,
+    "C11": 272.0753
+   },
+   "K_VRH": 210.276,
+   "G_V": 97.466,
+   "G_R": 75.808,
+   "G_VRH": 86.637,
+   "VR_spread_pct": 25.0,
+   "AU": 1.4285,
+   "vT_V": 9.8725,
+   "vT_R": 8.7068,
+   "vT_VRH": 9.3079,
+   "vT_halfwidth_pct": 6.26,
+   "single_crystal_input": {
+    "mean": 9.63705464398007,
+    "std_pct": 15.808320696928124,
+    "maxdev_pct": 29.351684168073366
+   }
+  },
+  "mixture:step": {
+   "f_hcp -> vT": {
+    "0.0": 7.799,
+    "0.25": 7.9499,
+    "0.5": 8.1032,
+    "0.75": 8.2594,
+    "1.0": 8.4191
+   },
+   "phase_span_pct": 7.65
+  },
+  "mixture:gem8": {
+   "f_hcp -> vT": {
+    "0.0": 9.3079,
+    "0.25": 9.4864,
+    "0.5": 9.6679,
+    "0.75": 9.8527,
+    "1.0": 10.0417
+   },
+   "phase_span_pct": 7.59
+  }
+ }
+}

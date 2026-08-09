@@ -1,0 +1,152 @@
+{
+ "gate": "G-POLY1",
+ "item": "hex G_HS completion \u2014 CC-leg independent confirmation (rides the Phase 3 dispatch, S2(g))",
+ "addenda": {
+  "A1": "57dfd40e5f0dbb311a64b30a67a47df6",
+  "A2": "3d419b8f7196efd895fc5079df8760b4"
+ },
+ "source": "UCRL-JRNL-206669 (JMPS 53, 2141 (2005)) as transcribed verbatim in the two PIN addenda (CC leg computes from the pins, not from a re-retrieval)",
+ "input_md5": "200e7a8b775577564369c6924d38a84c",
+ "convention": "TETRAGONAL branch primary (identity-exact, c66 free); hex branch = exact-hex projection + guarded continuity check; singular uppers minimized over the ADMISSIBLE delta family (K+>0), grid + golden-section refinement (CC method note: refined, not grid-quantized); lowers delta-free",
+ "method_note": "pure-python instrument; 601-point log grid on delta in [max(1.5*sliver,1e-9), 10] + golden-section refinement; cross-route asserts (2),(36)/(6),(37)+(39)/(43) vs (11)/(13) at <=1e-9",
+ "honesty": "H-10 and H-11 stand as banked (chat-leg events, acknowledged); CC leg adds none",
+ "controls": {
+  "Co (hex)": {
+   "mu": [
+    76.56986045778392,
+    76.88214720266602
+   ],
+   "table": [
+    76.6,
+    77.0
+   ],
+   "singular": true,
+   "containment": 0.0010530891652535956,
+   "dstar": 0.005195547256974134
+  },
+  "Mg (hex)": {
+   "mu": [
+    17.297184275983586,
+    17.30284485511332
+   ],
+   "table": [
+    17.3,
+    17.3
+   ],
+   "singular": true,
+   "containment": 0.0028448569351802178,
+   "dstar": 0.0073325217885899
+  },
+  "GraphB (hex)": {
+   "mu": [
+    14.84694736902162,
+    148.91625104632982
+   ],
+   "table": [
+    14.8,
+    148.9
+   ],
+   "singular": false,
+   "containment": 0.016251046329813335,
+   "dstar": null
+  },
+  "TiO2 (tet)": {
+   "mu": [
+    110.02673715093073,
+    116.97354735335861
+   ],
+   "table": [
+    110.0,
+    117.0
+   ],
+   "singular": false,
+   "containment": 0.026452646641388355,
+   "dstar": null
+  },
+  "Sn (tet)": {
+   "mu": [
+    17.701998655565628,
+    18.934794171515023
+   ],
+   "table": [
+    17.7,
+    19.0
+   ],
+   "singular": true,
+   "containment": 0.0003776956314354152,
+   "dstar": 0.0077862470917678984
+  }
+ },
+ "results": {
+  "hex:step": {
+   "tet_primary": {
+    "mu_lo": 70.40652703751678,
+    "mu_hi": 70.97358894133485,
+    "vT_lo": 8.390859731726945,
+    "vT_hi": 8.424582419404231,
+    "halfwidth_pct": 0.200545946839811,
+    "VR": [
+     68.69659702931511,
+     73.06453333333333
+    ],
+    "VR_halfwidth_pct": 1.540963128870885,
+    "K_PM": [
+     134.60861925740434,
+     134.60875478679517
+    ],
+    "singular": true,
+    "dstar": 0.0013934907394749236,
+    "excluded_sliver": null,
+    "dsens_mu_x3": [
+     0.0016038843590848728,
+     0.001612175926837267
+    ],
+    "product_resid": 0.0
+   },
+   "hex_measured_guarded": {
+    "mu_lo": 70.40389969167168,
+    "mu_hi": 70.75780505523672,
+    "excluded_sliver": 4.930715338487499e-05
+   },
+   "hex_exact_projection": {
+    "mu_lo": 70.41030322859513,
+    "mu_hi": 70.97730993136584
+   }
+  },
+  "hex:gem8": {
+   "tet_primary": {
+    "mu_lo": 99.81834260491628,
+    "mu_hi": 101.05874270193425,
+    "vT_lo": 9.99091300156879,
+    "vT_hi": 10.052797754950323,
+    "halfwidth_pct": 0.3087489843236968,
+    "VR": [
+     96.63040078152181,
+     105.04195333333332
+    ],
+    "VR_halfwidth_pct": 2.0863578561104528,
+    "K_PM": [
+     229.69601951476088,
+     229.6960501161893
+    ],
+    "singular": true,
+    "dstar": 0.0004779411549812319,
+    "excluded_sliver": null,
+    "dsens_mu_x3": [
+     0.0010649587122486537,
+     0.0010669314644928818
+    ],
+    "product_resid": 0.0
+   },
+   "hex_measured_guarded": {
+    "mu_lo": 99.82089262136299,
+    "mu_hi": 101.0687812550612,
+    "excluded_sliver": null
+   },
+   "hex_exact_projection": {
+    "mu_lo": 99.81488234510398,
+    "mu_hi": 101.05536909854021
+   }
+  }
+ }
+}

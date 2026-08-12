@@ -1,0 +1,154 @@
+{
+ "gate": "G-POLY1",
+ "item": "hex G_HS completion (chat leg; CC confirmation rides Phase 3 dispatch)",
+ "addenda": {
+  "A1": "57dfd40e5f0dbb311a64b30a67a47df6",
+  "A2": "3d419b8f7196efd895fc5079df8760b4"
+ },
+ "source": "UCRL-JRNL-206669 (JMPS 53, 2141 (2005)) via OSTI servlets/purl/875664",
+ "input_md5": "200e7a8b775577564369c6924d38a84c",
+ "convention": "TETRAGONAL branch primary (identity-exact for the measured tensors, c66 free); hex branch = exact-hex projection + guarded continuity check; singular-case uppers minimized over the ADMISSIBLE delta family (K+>0); lowers delta-free",
+ "honesty": {
+  "H10": "first Co control spec (fixed small delta, +/-0.1 both bounds) mis-specified against the delta-dependent published upper; family scan showed a non-monotone family with an interior minimum below the table point; control respecified to validity-direction + containment; no outputs consumed",
+  "H11": "v2 hex-branch minimized family produced an INVERTED band on hex:step: the C66-identity residual direction there gives KR(23)>KV, hence GReff>GVeff, opening a K+<0 inadmissible sliver that the unguarded minimizer entered; fixed by (a) admissibility guard K+>0 and (b) adopting the tetragonal branch (same source, Addendum 2) as the identity-exact primary, under which KR(33)<KV and the product identity is exact; no outputs consumed"
+ },
+ "controls": {
+  "Co (hex)": {
+   "mu": [
+    76.56986045778392,
+    76.88214805540862
+   ],
+   "table": [
+    76.6,
+    77.0
+   ],
+   "singular": true,
+   "containment": 0.001093217620308451,
+   "dstar": 0.005108969774506924
+  },
+  "Mg (hex)": {
+   "mu": [
+    17.297184275983586,
+    17.302844941762302
+   ],
+   "table": [
+    17.3,
+    17.3
+   ],
+   "singular": true,
+   "containment": 0.0028453649562187877,
+   "dstar": 0.007498942093324558
+  },
+  "GraphB (hex)": {
+   "mu": [
+    14.84694736902162,
+    148.91625104632982
+   ],
+   "table": [
+    14.8,
+    148.9
+   ],
+   "singular": false,
+   "containment": 0.016251046329813335,
+   "dstar": null
+  },
+  "TiO2 (tet)": {
+   "mu": [
+    110.02673715093076,
+    116.97354735335861
+   ],
+   "table": [
+    110.0,
+    117.0
+   ],
+   "singular": false,
+   "containment": 0.026452646641388355,
+   "dstar": null
+  },
+  "Sn (tet)": {
+   "mu": [
+    17.701998655565628,
+    18.934801663580018
+   ],
+   "table": [
+    17.7,
+    19.0
+   ],
+   "singular": true,
+   "containment": 0.00012530891407180889,
+   "dstar": 0.007498942093324558
+  }
+ },
+ "results": {
+  "hex:step": {
+   "tet_primary": {
+    "mu_lo": 70.40652703751678,
+    "mu_hi": 70.97359128059766,
+    "vT_lo": 8.390859731726945,
+    "vT_hi": 8.424582558239765,
+    "halfwidth_pct": 0.20054677082708333,
+    "VR": [
+     68.69659702931511,
+     73.06453333333333
+    ],
+    "VR_halfwidth_pct": 1.540963128870885,
+    "K_PM": [
+     134.60861925740434,
+     134.60875478736267
+    ],
+    "singular": true,
+    "dstar": 0.001333521432163324,
+    "excluded_sliver": null,
+    "dsens_mu_x3": [
+     0.0017459726140458542,
+     0.0014719312767113024
+    ],
+    "product_resid": 0.0
+   },
+   "hex_measured_guarded": {
+    "mu_lo": 70.40389969167171,
+    "mu_hi": 70.75780505523669,
+    "excluded_sliver": 4.930715338487499e-05
+   },
+   "hex_exact_projection": {
+    "mu_lo": 70.4103032285951,
+    "mu_hi": 70.97731227038908
+   }
+  },
+  "hex:gem8": {
+   "tet_primary": {
+    "mu_lo": 99.81834260491625,
+    "mu_hi": 101.05874338727293,
+    "vT_lo": 9.990913001568789,
+    "vT_hi": 10.052797789037285,
+    "halfwidth_pct": 0.3087491538617707,
+    "VR": [
+     96.63040078152181,
+     105.04195333333332
+    ],
+    "VR_halfwidth_pct": 2.0863578561104528,
+    "K_PM": [
+     229.69601951476088,
+     229.6960501162065
+    ],
+    "singular": true,
+    "dstar": 0.00046415888336127724,
+    "excluded_sliver": null,
+    "dsens_mu_x3": [
+     0.0011276519840066612,
+     0.0010049526519253504
+    ],
+    "product_resid": 0.0
+   },
+   "hex_measured_guarded": {
+    "mu_lo": 99.82089262136301,
+    "mu_hi": 101.06878842423973,
+    "excluded_sliver": null
+   },
+   "hex_exact_projection": {
+    "mu_lo": 99.81488234510398,
+    "mu_hi": 101.05536978392769
+   }
+  }
+ }
+}

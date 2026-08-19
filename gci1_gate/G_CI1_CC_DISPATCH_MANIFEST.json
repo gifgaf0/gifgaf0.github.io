@@ -1,0 +1,95 @@
+{
+ "embeds": [
+  {
+   "file": "G_CI1_EXECUTION_PREREGISTRATION.md",
+   "md5": "6c480340658a54e9da5d3553a8890c46",
+   "bytes": 36793,
+   "t1_exempt": false
+  },
+  {
+   "file": "t1_forbidden_G_CI1.txt",
+   "md5": "653a0b7447e68aa8a094e62337a24da3",
+   "bytes": 1127,
+   "t1_exempt": true
+  },
+  {
+   "file": "G_CI1_LOCK_RECORD.md",
+   "md5": "a6adbb6ab69bcc6184b8fc2f6bcb9f5b",
+   "bytes": 9851,
+   "t1_exempt": true
+  },
+  {
+   "file": "G_CI1_LOCK_RECORD_ADDENDUM_1.md",
+   "md5": "e5029ae86cd43dcb343ebb4e872f856b",
+   "bytes": 5203,
+   "t1_exempt": true
+  },
+  {
+   "file": "G_CI1_LOCK_RECORD_ADDENDUM_2.md",
+   "md5": "92672d5a72cf2efce8865d2a4ca3fb6c",
+   "bytes": 8443,
+   "t1_exempt": true
+  },
+  {
+   "file": "G_CI1_LOCK_RECORD_ADDENDUM_3.md",
+   "md5": "4c0b52c6ab10b5f075ad49abad137020",
+   "bytes": 4286,
+   "t1_exempt": true
+  },
+  {
+   "file": "poly_vrh_results.json",
+   "md5": "200e7a8b775577564369c6924d38a84c",
+   "bytes": 2767,
+   "t1_exempt": false
+  },
+  {
+   "file": "G_POLY1_PIN_RECORD.md",
+   "md5": "621120e50d395beea2e914d54c929600",
+   "bytes": 10759,
+   "t1_exempt": true
+  },
+  {
+   "file": "anchors_G_CI1_SEALED.md",
+   "md5": "dd8fe2d364624750201ad9c9ffef575c",
+   "bytes": 17652,
+   "t1_exempt": true
+  }
+ ],
+ "commitments": {
+  "ci1_phase0.json": [
+   "b049856819f5e133e888771cf4ab69ec",
+   3257
+  ],
+  "ci1_resupply_verify.json": [
+   "d99d21b2bc15d9f0075ee9d00e6c69d8",
+   1835
+  ],
+  "ci1_phase1.json": [
+   "9d8e40b827f68d354335c2a147420636",
+   218006
+  ],
+  "ci1_phase2.json": [
+   "ee61b4b1cabda12ee77b27c05f425bc8",
+   57470
+  ],
+  "g_ci1_phase0_chatleg.py": [
+   "b8e6abcc45569daa43757a90e415b7ae",
+   5875
+  ],
+  "g_ci1_phase1_irrep_chatleg.py": [
+   "b5715bf62189c9f2105e451e396c21ce",
+   23236
+  ],
+  "g_ci1_phase2_regime_chatleg.py": [
+   "6db6e872edefe318e92c5e9448ef02ee",
+   26815
+  ]
+ },
+ "canonical": [
+  "f539d10cb4f73c81e7d9fdbe7fa63714",
+  1432221
+ ],
+ "t1_hits_non_exempt_portion": 0,
+ "dispatch_md5": "420082d54f11817c9d64a8198f1042ae",
+ "dispatch_bytes": 109192
+}

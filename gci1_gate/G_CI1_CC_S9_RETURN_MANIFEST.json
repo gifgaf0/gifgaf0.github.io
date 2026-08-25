@@ -1,0 +1,37 @@
+{
+ "gate": "G-CI1",
+ "leg": "CC",
+ "return": "S9 re-derivation (r2)",
+ "artifacts": {
+  "ci1_phase3_cc_r2.json": {
+   "md5": "845ae6beb1b90fe34c540f843ffdb9f5",
+   "bytes": 45760,
+   "t1_hits": 0
+  },
+  "g_ci1_phase3_mapper_ccleg_r2.py": {
+   "md5": "eab5d849963615f64ba6b5eaef56d8f0",
+   "bytes": 51231,
+   "t1_hits": 0
+  },
+  "G_CI1_CC_S9_REPORT.md": {
+   "md5": "d976a3c5a36d8b2e4841b5542e791624",
+   "bytes": 11772,
+   "t1_hits": 0
+  },
+  "G_CI1_CC_S9_MINIDISPATCH.md": {
+   "md5": "4c21c43d7a2b36aa54985b2d7043b1d3",
+   "bytes": 63187,
+   "t1_hits": "EXEMPT(dispatch embeds its own frozen list + exempt classes)"
+  },
+  "G_CI1_CC_S9_MANIFEST.json": {
+   "md5": "4a08dd1196ed0eb5ccd6fb677b3c2226",
+   "bytes": 1232,
+   "t1_hits": 0
+  }
+ },
+ "r1_intact_assert": {
+  "ci1_phase3_cc.json": "e97d9a1cbf94e5e8cd390b99dab87cf0",
+  "g_ci1_phase3_mapper_ccleg.py": "e7c02db36d3bf5942c0844bec9859b55",
+  "ci1_phase2_cc.json": "f79113b7664addc9b1d96893aa883cbf"
+ }
+}

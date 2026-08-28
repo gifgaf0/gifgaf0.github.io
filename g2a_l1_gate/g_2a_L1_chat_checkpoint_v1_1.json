@@ -1,0 +1,141 @@
+{
+ "C1_F1": {
+  "bivector_squares_minus_one_both_algebras": true,
+  "characters_trivial_on_Gamma": true,
+  "closures_768_384_16_8": true,
+  "glide_eq_r1_circ_minusI": true,
+  "h_squared_eq_t111": true,
+  "meridian_minus_one": true,
+  "omega_squared_eq_minus_q": true
+ },
+ "C2_M": {
+  "M_direct_Z2_x_Mplus": true,
+  "Mplus_class_sizes": [
+   1,
+   3,
+   6,
+   6,
+   8
+  ],
+  "Mplus_element_orders": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "Mplus_order": 24,
+  "center_is_minusI_class": true,
+  "center_order": 2,
+  "order_M": 48
+ },
+ "C3_B1": {
+  "D2_collapse_quotient_order": 48,
+  "all_characters_kill_z": true,
+  "arm": "SPLIT",
+  "arm_sharpened": "NOT-INDUCED-BY-OBSTRUCTION",
+  "num_characters_Gamma2_to_Z2": 8,
+  "pin_dependence": "none",
+  "z_is_commutator_q1_q2": true
+ },
+ "C4_F2": {
+  "2O_all_order2_classes_of_O_lift_at_order_4": true,
+  "2O_order": 48,
+  "2O_unique_involution_is_minus_one": true,
+  "GL23_order": 48,
+  "GL23_transposition_class_has_involution_preimage": true,
+  "GL23_transposition_class_size_GL": 12,
+  "GL23_transposition_class_size_PGL": 6,
+  "O_class_data": [
+   [
+    1,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    6,
+    2
+   ],
+   [
+    6,
+    4
+   ],
+   [
+    8,
+    3
+   ]
+  ],
+  "discriminator_separates": true
+ },
+ "C5_B2": {
+  "arm": "ASSEMBLED-RELOCATED",
+  "both_lifts_fix_z": true,
+  "chi_3half_at_z": -4,
+  "chi_3half_norm": 1,
+  "chi_3half_vanishes_on_all_odd_classes": true,
+  "module_transport_unique": true,
+  "num_lifts_over_id_S4": 2,
+  "pin_independent": true
+ },
+ "C6_B3": {
+  "assignment_disposition": "NEUTRAL",
+  "lattice_2O_sgn": {
+   "1,5": 1,
+   "3,3": 1,
+   "3,5": 1,
+   "5,1": 1,
+   "5,3": 1,
+   "5,5": 1,
+   "7,1": 1,
+   "7,3": 1,
+   "7,5": 2
+  },
+  "lattice_2O_triv": {
+   "1,1": 1,
+   "3,3": 1,
+   "3,5": 1,
+   "5,3": 1,
+   "5,5": 2,
+   "7,1": 1,
+   "7,3": 1,
+   "7,5": 2
+  },
+  "lattice_2T": {
+   "1,1": 1,
+   "1,5": 1,
+   "3,3": 2,
+   "3,5": 2,
+   "5,1": 1,
+   "5,3": 2,
+   "5,5": 3,
+   "7,1": 2,
+   "7,3": 2,
+   "7,5": 4
+  },
+  "parity_law_all_tables": true
+ },
+ "all_checks_pass": true,
+ "assertions": 8484,
+ "gate": "G-2a-L1",
+ "instrument_md5": "2f0fa8f4abb85291250cb49a1bf756f2",
+ "leg": "chat",
+ "pin_types_run": [
+  "Pin+",
+  "Pin-"
+ ],
+ "prereg_md5": "da9c25d19ff91f2c0809ac0027a7bebb",
+ "reemission": {
+  "changes": [
+   "schema string",
+   "Mplus_element_orders declared as SET (value unchanged)",
+   "GL23_transposition_class_size (PGL-level 6) split into _PGL=6 (instrument line 449) and _GL=12 (gl23_class_level_addon.py, independent F_3 enumeration)"
+  ],
+  "from_v1_checkpoint_md5": "476052b1e075db43a6e8b7a2bb5b0be3",
+  "instrument_unchanged": true,
+  "note": "C5_B2.arm keeps the -RELOCATED suffix; v1.1 compares the base arm and reports the suffix"
+ },
+ "run_log_md5": "30951582d29372ff68595c1876581a1f",
+ "schema": "g2a_l1_checkpoint_v1_1"
+}

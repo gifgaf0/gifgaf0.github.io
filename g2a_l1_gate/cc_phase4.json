@@ -1,0 +1,13 @@
+{
+ "C5_B2": {
+  "arm": "ASSEMBLED",
+  "both_lifts_fix_z": true,
+  "chi_3half_at_z": -4,
+  "chi_3half_norm": 1,
+  "chi_3half_vanishes_on_all_odd_classes": true,
+  "module_transport_unique": true,
+  "num_lifts_over_id_S4": 2,
+  "pin_independent": true
+ },
+ "phase": 4
+}

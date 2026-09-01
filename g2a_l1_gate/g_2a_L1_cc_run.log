@@ -1,0 +1,53 @@
+g_2a_L1_ccleg.py — Gate G-2a-L1 CC leg (independent instrument)
+prereg md5 da9c25d19ff91f2c0809ac0027a7bebb (locked 2026-07-11)
+
+=== F2: abstract discriminator — 2O (SU(2)/Q(zeta_8)) vs GL(2,3) ===
+  O class data [size, order]: [[1, 1], [3, 2], [6, 2], [6, 4], [8, 3]]
+  2O: both order-2 classes of O (sizes 3 and 6) lift at order 4; no non-central involutions
+  GL(2,3): transpositions lift to involutions (one class, size 12)
+  DISCRIMINATOR SEPARATES: transposition-lift order 4 (2O) vs 2 (GL(2,3))
+wrote cc_phase2.json (md5 3348d35e1ab7a483b4eac07ac1384f80)
+
+=== flat home rebuild: Cl(3)^+ / Pin+ (e_i^2 = +1) ===
+  closures: 768 / 384 / 16 / 8  (F1 anchors all pass)
+  S10 axial-law spot checks pass (n_c3, h, n_inv, te1)
+  M = N/Gamma: Z/2 x S4; center = the -I class; M+ classes [1,3,6,6,8], orders [1,2,2,3,4]
+  --- B1 (direct route): Hom(Gamma~_2, Z/2) and the obstruction ---
+  Hom(Gamma~_2, Z/2): 8 characters by all three routes; ALL kill z
+  => no equivariant pushforward of 1 -> Gamma~ -> N~ -> M -> 1 to a
+     Z/2-extension of M carries the spin sign: the pushforward is
+     OBSTRUCTED (z central AND a commutator).
+  D2 collapse verified: N~_fin/Gamma~_fin has order 48 = |M| (the Z/2 is absorbed; z in Gamma~)
+
+=== flat home rebuild: Cl(3)^- / Pin- (e_i^2 = -1) ===
+  closures: 768 / 384 / 16 / 8  (F1 anchors all pass)
+  S10 axial-law spot checks pass (n_c3, h, n_inv, te1)
+  M = N/Gamma: Z/2 x S4; center = the -I class; M+ classes [1,3,6,6,8], orders [1,2,2,3,4]
+  --- B1 (direct route): Hom(Gamma~_2, Z/2) and the obstruction ---
+  Hom(Gamma~_2, Z/2): 8 characters by all three routes; ALL kill z
+  => no equivariant pushforward of 1 -> Gamma~ -> N~ -> M -> 1 to a
+     Z/2-extension of M carries the spin sign: the pushforward is
+     OBSTRUCTED (z central AND a commutator).
+  D2 collapse verified: N~_fin/Gamma~_fin has order 48 = |M| (the Z/2 is absorbed; z in Gamma~)
+
+Pin+ and Pin- runs agree on C1/C2/C3 and on the spatial 2O set
+wrote cc_phase1.json (md5 874a9f463606b6432d66f86322afe78f)
+wrote cc_phase3.json (md5 273da4ff9fceaa2ffd7ebbb43a69d144)
+
+=== B2: assembly — lifts over id_S4, chi_{3/2} on the SU(2) model ===
+  Pin+: 2 lifts over id_S4, both fix z; chi_{3/2}: 0 on odd classes, -4 at z, norm 1; transport unique
+  Pin-: 2 lifts over id_S4, both fix z; chi_{3/2}: 0 on odd classes, -4 at z, norm 1; transport unique
+wrote cc_phase4.json (md5 313837517b808406ce13ca4ace9bc224)
+
+=== B3: admissibility lattices over the diagonal lock ===
+  table cells m(2J,2I) [triv | sgn | 2T]:
+    (1,1): 1|0|1  (1,3): 0|0|0  (1,5): 0|1|1
+    (3,1): 0|0|0  (3,3): 1|1|2  (3,5): 1|1|2
+    (5,1): 0|1|1  (5,3): 1|1|2  (5,5): 2|1|3
+    (7,1): 1|1|2  (7,3): 1|1|2  (7,5): 2|2|4
+  parity law verified; mixed-parity control cells vanish
+wrote cc_phase5.json (md5 69c44e158014fd36edcb5eee554ac3e4)
+
+ALL CHECKS PASS — assertions: 6447
+assertions total: 6447
+instrument md5: c3bea9ee71765b196263ff2e5203708a

@@ -1,0 +1,62 @@
+{
+ "dispatch_md5": "0c5588ee19c2acd5cedb13e9b7472870",
+ "embeds": [
+  {
+   "bytes": 1783,
+   "md5": "80bcd166bdfee8a275d97d30a4e64ec7",
+   "name": "activation_G_2a_L1.json"
+  },
+  {
+   "bytes": 18381,
+   "md5": "da9c25d19ff91f2c0809ac0027a7bebb",
+   "name": "G_2a_L1_EXECUTION_PREREGISTRATION.md"
+  },
+  {
+   "bytes": 117,
+   "md5": "04438b74e0ade26cc3f4415bb20e7b6d",
+   "name": "t1_forbidden_G_2a_L1.txt"
+  },
+  {
+   "bytes": 3267,
+   "md5": "67ee429aa8789188bbd4aee11951b15a",
+   "name": "g_2a_L1_compare.py"
+  },
+  {
+   "bytes": 1464,
+   "md5": "63942160beed37c28aed4234c185c4a0",
+   "name": "extract_embeds_G_2a_L1.py"
+  },
+  {
+   "bytes": 23048,
+   "md5": "2f0fa8f4abb85291250cb49a1bf756f2",
+   "name": "g_2a_L1_chatleg.py"
+  },
+  {
+   "bytes": 1807,
+   "md5": "30951582d29372ff68595c1876581a1f",
+   "name": "g_2a_L1_run.log"
+  },
+  {
+   "bytes": 2296,
+   "md5": "476052b1e075db43a6e8b7a2bb5b0be3",
+   "name": "g_2a_L1_chat_checkpoint.json"
+  },
+  {
+   "bytes": 11868,
+   "md5": "753a34ec8347254801e9517ecb4d23a6",
+   "name": "G_2a_L1_CHATLEG_REPORT.md"
+  }
+ ],
+ "gate": "G-2a-L1",
+ "leg": "cc",
+ "note": "all nine embeds re-extracted and md5/byte-verified; prereg read in full from the verified embed; chat artifacts moved to quarantine/ unread (see D-CC-1 in the report for a partial pre-Phase-0 exposure)",
+ "phase": 0,
+ "prereg_md5": "da9c25d19ff91f2c0809ac0027a7bebb",
+ "quarantined_unread": [
+  "g_2a_L1_chatleg.py",
+  "g_2a_L1_run.log",
+  "g_2a_L1_chat_checkpoint.json",
+  "G_2a_L1_CHATLEG_REPORT.md"
+ ],
+ "verified": true
+}

@@ -8,7 +8,7 @@ import json, hashlib, subprocess, sys
 INSTRUMENTS = [
     "s2c1_cc_core.py", "run_cc_validation.py", "run_cc_phase1.py", "run_cc_phase2.py",
     "run_cc_phase3.py", "run_cc_phase4.py", "run_cc_phase5_checkpoint.py",
-    "write_cc_phase0.py",
+    "write_cc_phase0.py", "sanitize_t1_floats.py",
 ]
 OUTPUTS = [
     "cc_phase0.json", "cc_instrument_validation.json", "cc_phase1.json", "cc_phase2.json",

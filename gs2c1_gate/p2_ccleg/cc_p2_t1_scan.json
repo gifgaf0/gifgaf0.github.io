@@ -28,7 +28,9 @@
   "cc_p2_phase4.json",
   "cc_p2_pv_xcheck.json",
   "s2c1_p2_cc_cmp_checkpoint.json",
-  "CC_D2_DERIVATION.md"
+  "CC_D2_DERIVATION.md",
+  "G_S2C1_P2_CCLEG_REPORT.md",
+  "comparator_output.txt"
  ],
  "hits": [
   {
@@ -48,7 +50,13 @@
    "pattern": "5e-16",
    "line": 35,
    "context": "\"CI_quadrature\": 2.2551405187698315e-16,"
+  },
+  {
+   "file": "G_S2C1_P2_CCLEG_REPORT.md",
+   "pattern": "5e-16",
+   "line": 47,
+   "context": "- **H-CC-P2-2 (T1 numeric collisions):** the T1 scan over all CC instruments and outputs returns 3 h"
   }
  ],
- "result": "HITS LOGGED AS H-ITEM (numeric collision class)"
+ "result": "all hits are the numeric pattern 5e-16 inside scientific-notation floats \u2014 H-CC-P2-2 collision class; no non-numeric hits"
 }

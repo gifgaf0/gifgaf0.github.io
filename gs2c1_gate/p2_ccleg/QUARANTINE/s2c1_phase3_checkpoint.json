@@ -1,0 +1,175 @@
+{
+ "controls": {
+  "F_AGG_KK_max_rel": 6.661338147750939e-16,
+  "F_AGG_KK_pass": true,
+  "F_AGG_L_pass": false,
+  "F_AGG_PIN_pass": true,
+  "F_CONV_pass": true,
+  "F_CONV_worst": {
+   "D03_Qmax100_rel": 2.220446049250313e-16,
+   "D03_mu128_rel": 1.9984014443252818e-15,
+   "D03_xi_doubling_rel": 1.894040480010517e-13,
+   "D2_mu128_rel": 1.0658141036401503e-14,
+   "D2_xi_doubling_rel": 2.0272672429655358e-13
+  }
+ },
+ "election_E_P2_1": "(a) polarization-averaged transverse shear cone (author-confirmed)",
+ "gate": "G-S2C1",
+ "leg": "chat",
+ "per_substrate": {
+  "gem8_cubic": {
+   "D0_static_shift": -0.043677143926979745,
+   "F_AGG_DISP": {
+    "locked_rule": {
+     "F_AGG_ANALYTIC_pass": false,
+     "a2_of_record": -0.04029030373498979,
+     "arm": "A5-agg INSTRUMENT-LIMITED"
+    },
+    "proposed_P2A": {
+     "CI": 8.051084423687197e-15,
+     "a2_of_record": -0.03971397679128813,
+     "arm": "A3-agg DISPERSIVE (grain-scale k^2)",
+     "exceeds_tau_agg": true
+    }
+   },
+   "a2_L_over_a2_T": 1.318503658419682,
+   "a2_agg_analytic_D2": -0.03971397679128813,
+   "a2_agg_locked_rule_basis3_fit": -0.04029030373498979,
+   "a2_over_Q_T": -0.5260526384339456,
+   "a3_agg": 0.0,
+   "a3_note": "pre-registered k^3 term REFUTED by the machine (R/k^4 flat over four decades; even basis rms 1.8e-08)",
+   "a4_agg_even_basis": 0.14925425810681414,
+   "a6_agg_even_basis": -0.5464825275583549,
+   "fit_vs_analytic_rel": 0.014511942400794453
+  },
+  "gem8_hex": {
+   "D0_static_shift": -0.028917807603071735,
+   "F_AGG_DISP": {
+    "locked_rule": {
+     "F_AGG_ANALYTIC_pass": false,
+     "a2_of_record": -0.026315561329526428,
+     "arm": "A5-agg INSTRUMENT-LIMITED"
+    },
+    "proposed_P2A": {
+     "CI": 5.257452749254513e-15,
+     "a2_of_record": -0.02593369358429421,
+     "arm": "A3-agg DISPERSIVE (grain-scale k^2)",
+     "exceeds_tau_agg": true
+    }
+   },
+   "a2_L_over_a2_T": 1.3267229845240625,
+   "a2_agg_analytic_D2": -0.02593369358429421,
+   "a2_agg_locked_rule_basis3_fit": -0.026315561329526428,
+   "a2_over_Q_T": -0.5184608000734835,
+   "a3_agg": 0.0,
+   "a3_note": "pre-registered k^3 term REFUTED by the machine (R/k^4 flat over four decades; even basis rms 1.2e-08)",
+   "a4_agg_even_basis": 0.09896419512444805,
+   "a6_agg_even_basis": -0.36153040790504276,
+   "fit_vs_analytic_rel": 0.014724772774499018
+  },
+  "step_cubic": {
+   "D0_static_shift": -0.03151342243433623,
+   "F_AGG_DISP": {
+    "locked_rule": {
+     "F_AGG_ANALYTIC_pass": false,
+     "a2_of_record": -0.02894942905557272,
+     "arm": "A5-agg INSTRUMENT-LIMITED"
+    },
+    "proposed_P2A": {
+     "CI": 5.7853080374211124e-15,
+     "a2_of_record": -0.028537471107944423,
+     "arm": "A3-agg DISPERSIVE (grain-scale k^2)",
+     "exceeds_tau_agg": true
+    }
+   },
+   "a2_L_over_a2_T": 1.3200373176262166,
+   "a2_agg_analytic_D2": -0.028537471107944423,
+   "a2_agg_locked_rule_basis3_fit": -0.02894942905557272,
+   "a2_over_Q_T": -0.52771306792253,
+   "a3_agg": 0.0,
+   "a3_note": "pre-registered k^3 term REFUTED by the machine (R/k^4 flat over four decades; even basis rms 1.3e-08)",
+   "a4_agg_even_basis": 0.10681725928270075,
+   "a6_agg_even_basis": -0.3904839352751149,
+   "fit_vs_analytic_rel": 0.014435685140776755
+  },
+  "step_hex": {
+   "D0_static_shift": -0.02052824459532835,
+   "F_AGG_DISP": {
+    "locked_rule": {
+     "F_AGG_ANALYTIC_pass": false,
+     "a2_of_record": -0.018615614040902683,
+     "arm": "A5-agg INSTRUMENT-LIMITED"
+    },
+    "proposed_P2A": {
+     "CI": 3.719561651723525e-15,
+     "a2_of_record": -0.018347663163947047,
+     "arm": "A3-agg DISPERSIVE (grain-scale k^2)",
+     "exceeds_tau_agg": true
+    }
+   },
+   "a2_L_over_a2_T": 1.325651909559672,
+   "a2_agg_analytic_D2": -0.018347663163947047,
+   "a2_agg_locked_rule_basis3_fit": -0.018615614040902683,
+   "a2_over_Q_T": -0.5213776054482726,
+   "a3_agg": 0.0,
+   "a3_note": "pre-registered k^3 term REFUTED by the machine (R/k^4 flat over four decades; even basis rms 8.5e-09)",
+   "a4_agg_even_basis": 0.0695407376703341,
+   "a6_agg_even_basis": -0.253629787389283,
+   "fit_vs_analytic_rel": 0.01460408742853736
+  }
+ },
+ "phase": "3 / Probe P2 (aggregate inheritance)",
+ "provenance": {
+  "addendum_P2_md5": "2feff442dfd08a379443d893b8c7761b",
+  "checkpoints": {
+   "phase0_pin": "0328b570af46a878970653ad8775f6d9",
+   "phase1_ladders": "6da62fca644d5ea6b1d7abe7329b5e2c",
+   "phase2_fits": "0e8cc05e4868b8db086564e297cab6d5",
+   "structure_diag": "60add009c282b9d603021ba0adbfa1e2"
+  },
+  "instrument_md5": "05a323cf73851a56f54539f37c00cb1f",
+  "recovered_machinery": "poly1_fullprec_ccleg.py a58482ef (branch gvbkof @ 231b555a, 20/20 manifest OK); input poly_vrh_results.json 200e7a8b",
+  "reproduction": "re-executed Sept 3 (p2_repro/): all three checkpoints byte-identical"
+ },
+ "summary": {
+  "F_AGG_UNI": {
+   "a2L_over_a2T": {
+    "gem8_cubic": 1.318503658419682,
+    "gem8_hex": 1.3267229845240625,
+    "step_cubic": 1.3200373176262166,
+    "step_hex": 1.325651909559672
+   },
+   "a2_over_QT_spread_rel": 0.017677206108935393
+  },
+  "a2_agg_analytic_by_substrate": {
+   "gem8_cubic": -0.03971397679128813,
+   "gem8_hex": -0.02593369358429421,
+   "step_cubic": -0.028537471107944423,
+   "step_hex": -0.018347663163947047
+  },
+  "a4_agg_by_substrate": {
+   "gem8_cubic": 0.14925425810681414,
+   "gem8_hex": 0.09896419512444805,
+   "step_cubic": 0.10681725928270075,
+   "step_hex": 0.0695407376703341
+  },
+  "arm_under_proposed_P2A": {
+   "gem8_cubic": "A3-agg",
+   "gem8_hex": "A3-agg",
+   "step_cubic": "A3-agg",
+   "step_hex": "A3-agg"
+  },
+  "honesty": {
+   "H-S2C-10": "pre-registered non-analytic k^3 term refuted (derivation error, corrected: analytic in k_M^2 for even F0)",
+   "H-S2C-11": "window-stability CI under-estimated fit-basis bias",
+   "H-S2C-12": "T1 numeric-pattern collision: one bare numeric pattern of the frozen list matched inside a machine-epsilon F-CONV float in the phase-2 checkpoint; classified as formatting collision, logged, not reformatted; contextual-pattern amendment proposed for the next lock cycle"
+  },
+  "mechanical_arm_locked_rule": {
+   "gem8_cubic": "A5-agg INSTRUMENT-LIMITED",
+   "gem8_hex": "A5-agg INSTRUMENT-LIMITED",
+   "step_cubic": "A5-agg INSTRUMENT-LIMITED",
+   "step_hex": "A5-agg INSTRUMENT-LIMITED"
+  },
+  "status": "P2 chat leg COMPLETE and reproduced; F-AGG-DISP evaluated under both the locked rule (A5-agg) and the proposed P2-A (A3-agg); P2-A awaits author decision; P2 CC leg (two-leg) not yet dispatched; no window action"
+ }
+}

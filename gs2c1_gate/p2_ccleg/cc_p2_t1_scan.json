@@ -1,0 +1,54 @@
+{
+ "patterns": [
+  "graviton",
+  "gravitational wave",
+  "GW170817",
+  "GW150914",
+  "GRB 170817",
+  "LIGO",
+  "Virgo",
+  "speed of gravity",
+  "c_g",
+  "4.7e-23",
+  "1.27e-22",
+  "5e-16",
+  "Weinberg",
+  "Witten",
+  "Hulse",
+  "PSR B1913"
+ ],
+ "files_scanned": [
+  "g_s2c1_p2_cc_instrument.py",
+  "g_s2c1_p2_cc_stage3.py",
+  "cc_p2_pv_xcheck.py",
+  "cc_p2_phase0.json",
+  "cc_p2_phase1.json",
+  "cc_p2_phase2.json",
+  "cc_p2_phase3.json",
+  "cc_p2_phase4.json",
+  "cc_p2_pv_xcheck.json",
+  "s2c1_p2_cc_cmp_checkpoint.json",
+  "CC_D2_DERIVATION.md"
+ ],
+ "hits": [
+  {
+   "file": "cc_p2_phase1.json",
+   "pattern": "5e-16",
+   "line": 211,
+   "context": "\"V_L_rel\": 7.390347823399325e-16,"
+  },
+  {
+   "file": "cc_p2_phase1.json",
+   "pattern": "5e-16",
+   "line": 292,
+   "context": "\"max_odd_over_even\": 3.984522480373865e-16"
+  },
+  {
+   "file": "cc_p2_phase4.json",
+   "pattern": "5e-16",
+   "line": 35,
+   "context": "\"CI_quadrature\": 2.2551405187698315e-16,"
+  }
+ ],
+ "result": "HITS LOGGED AS H-ITEM (numeric collision class)"
+}

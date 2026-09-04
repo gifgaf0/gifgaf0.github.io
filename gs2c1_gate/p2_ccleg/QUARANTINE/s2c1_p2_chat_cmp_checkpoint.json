@@ -1,0 +1,169 @@
+{
+ "F_AGG_UNI": {
+  "a2_over_QT_spread_rel": 0.017677206108935393
+ },
+ "addenda_md5": {
+  "P2": "2feff442dfd08a379443d893b8c7761b",
+  "P2A": "71b4c7010e48601e07f6458c711dfb4a"
+ },
+ "election_E_P2_1": "(a)",
+ "gate": "G-S2C1",
+ "leg": "chat",
+ "per_substrate": {
+  "gem8_cubic": {
+   "C1_pin": {
+    "Q_T_a": 0.07549430207120778,
+    "V_L": 18.44533274300033,
+    "V_T": 9.872492086601033,
+    "pin_pass": true
+   },
+   "C2_KK": {
+    "alpha_tie_max_rel": 2.220446049250313e-16,
+    "pass": true
+   },
+   "C3_D0": {
+    "L": -0.016682977687758747,
+    "T": -0.043677143926979745
+   },
+   "C4_a2_agg": {
+    "CI_quadrature_rel": 1.0369483049998962e-13,
+    "L_analytic": -0.05236302368970775,
+    "T_analytic": -0.03971397679128813
+   },
+   "C5_a4_agg": {
+    "T_a6": -0.5464825275583549,
+    "T_even_basis": 0.14925425810681414,
+    "even_basis_rms": 1.8465282614685326e-08,
+    "smallk_confirmation_rel": 0.0001161316698365944
+   },
+   "C6_controls": {
+    "F_AGG_DISP_pass": true,
+    "F_AGG_L_pass": true,
+    "F_CONV_pass": true,
+    "structure_no_odd_or_log_term": true
+   },
+   "C7_arm": "A3-agg DISPERSIVE (grain-scale k^2)",
+   "a2L_over_a2T": 1.318503658419682,
+   "a2_over_QT": -0.5260526384339456
+  },
+  "gem8_hex": {
+   "C1_pin": {
+    "Q_T_a": 0.05002054847853209,
+    "V_L": 19.22893895495363,
+    "V_T": 10.248997674569612,
+    "pin_pass": true
+   },
+   "C2_KK": {
+    "alpha_tie_max_rel": 6.661338147750939e-16,
+    "pass": true
+   },
+   "C3_D0": {
+    "L": -0.010953813609986885,
+    "T": -0.028917807603071735
+   },
+   "C4_a2_agg": {
+    "CI_quadrature_rel": 5.96189764223709e-14,
+    "L_analytic": -0.03440682735188735,
+    "T_analytic": -0.02593369358429421
+   },
+   "C5_a4_agg": {
+    "T_a6": -0.36153040790504276,
+    "T_even_basis": 0.09896419512444805,
+    "even_basis_rms": 1.2108021478497649e-08,
+    "smallk_confirmation_rel": 0.0001178733317235281
+   },
+   "C6_controls": {
+    "F_AGG_DISP_pass": true,
+    "F_AGG_L_pass": true,
+    "F_CONV_pass": true,
+    "structure_no_odd_or_log_term": true
+   },
+   "C7_arm": "A3-agg DISPERSIVE (grain-scale k^2)",
+   "a2L_over_a2T": 1.3267229845240625,
+   "a2_over_QT": -0.5184608000734835
+  },
+  "step_cubic": {
+   "C1_pin": {
+    "Q_T_a": 0.05407762824651864,
+    "V_L": 14.548331863138124,
+    "V_T": 8.11579447743719,
+    "pin_pass": true
+   },
+   "C2_KK": {
+    "alpha_tie_max_rel": 3.3306690738754696e-16,
+    "pass": true
+   },
+   "C3_D0": {
+    "L": -0.01307585182071167,
+    "T": -0.03151342243433623
+   },
+   "C4_a2_agg": {
+    "CI_quadrature_rel": 2.0272672429655358e-13,
+    "L_analytic": -0.03767052681316661,
+    "T_analytic": -0.028537471107944423
+   },
+   "C5_a4_agg": {
+    "T_a6": -0.3904839352751149,
+    "T_even_basis": 0.10681725928270075,
+    "even_basis_rms": 1.317026496328201e-08,
+    "smallk_confirmation_rel": 0.00011531424349453534
+   },
+   "C6_controls": {
+    "F_AGG_DISP_pass": true,
+    "F_AGG_L_pass": true,
+    "F_CONV_pass": true,
+    "structure_no_odd_or_log_term": true
+   },
+   "C7_arm": "A3-agg DISPERSIVE (grain-scale k^2)",
+   "a2L_over_a2T": 1.3200373176262166,
+   "a2_over_QT": -0.52771306792253
+  },
+  "step_hex": {
+   "C1_pin": {
+    "Q_T_a": 0.03519073886607003,
+    "V_L": 15.23248721209595,
+    "V_T": 8.54777943873924,
+    "pin_pass": true
+   },
+   "C2_KK": {
+    "alpha_tie_max_rel": 5.551115123125783e-16,
+    "pass": true
+   },
+   "C3_D0": {
+    "L": -0.008620711279809864,
+    "T": -0.02052824459532835
+   },
+   "C4_a2_agg": {
+    "CI_quadrature_rel": 5.88418203051333e-15,
+    "L_analytic": -0.024322614709244055,
+    "T_analytic": -0.018347663163947047
+   },
+   "C5_a4_agg": {
+    "T_a6": -0.253629787389283,
+    "T_even_basis": 0.0695407376703341,
+    "even_basis_rms": 8.48733544311705e-09,
+    "smallk_confirmation_rel": 0.00011663917851345573
+   },
+   "C6_controls": {
+    "F_AGG_DISP_pass": true,
+    "F_AGG_L_pass": true,
+    "F_CONV_pass": true,
+    "structure_no_odd_or_log_term": true
+   },
+   "C7_arm": "A3-agg DISPERSIVE (grain-scale k^2)",
+   "a2L_over_a2T": 1.325651909559672,
+   "a2_over_QT": -0.5213776054482726
+  }
+ },
+ "phase": "3 / P2 aggregate",
+ "prereg_md5": "2ea8ec13ffa3c32898cc24a3be605c64",
+ "schema": "p2_cmp_v1",
+ "shared_layer_flagged": "Xi/Phi_TM kernels and the pinned tensors are the banked G-POLY1 layer (chat leg used the recovered CC-authored G-POLY1 instrument for them); the independent content of this gate is the real-part (PV) computation, the analytic D2, and the fits",
+ "source_md5": {
+  "P2A_evaluation": "56b17d9356a60c4fb2c7d69ad19a6198",
+  "phase0_pin": "0328b570af46a878970653ad8775f6d9",
+  "phase1_ladders": "6da62fca644d5ea6b1d7abe7329b5e2c",
+  "phase2_fits": "0e8cc05e4868b8db086564e297cab6d5",
+  "structure_diag": "60add009c282b9d603021ba0adbfa1e2"
+ }
+}

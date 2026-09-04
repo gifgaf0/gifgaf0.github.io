@@ -1,0 +1,59 @@
+{
+ "F_S9_1_kernel_U0": {
+  "chat_kernel_U0": 56.95094726226156,
+  "cc_kernel_U0_reported": 20.0,
+  "cc_Uhat_at_q0": 56.95094726224363,
+  "rel_diff_Uhat0": 3.14779544239684e-13,
+  "mechanism": "schema key semantics: chat reported the q=0 kernel transform Uhat(0) under kernel_U0; CC reported the real-space amplitude U0=20 (g_star agrees identically at 20.0). The independent CC Hankel quadrature reproduces the chat Uhat(0) to 3.1e-13 relative: substrates identical."
+ },
+ "F_S9_2_3_a4": {
+  "per_direction": {
+   "GK": {
+    "chat_a2_a4_refit_by_cc_fitter": [
+     -0.012794161530785378,
+     -0.0029984197756170888
+    ],
+    "chat_a2_a4_in_checkpoint": [
+     -0.01279416153079276,
+     -0.0029984197755478044
+    ],
+    "fitter_equivalent": true,
+    "cc_a2_a4": [
+     -0.0132447218611613,
+     0.001099483432346548
+    ],
+    "rung_shape_rel_diff_vs_ka": {
+     "0.3": -8.680957230611241e-06,
+     "0.15": -8.723321668346884e-06,
+     "0.075": -6.197586959411083e-06,
+     "0.0375": 0.0
+    },
+    "chat_internal_a4_drift_32v40": 0.00862897359513771
+   },
+   "GM": {
+    "chat_a2_a4_refit_by_cc_fitter": [
+     -0.01993261914212204,
+     -0.00827094156215236
+    ],
+    "chat_a2_a4_in_checkpoint": [
+     -0.01993261914213197,
+     -0.008270941562040834
+    ],
+    "fitter_equivalent": true,
+    "cc_a2_a4": [
+     -0.020633674570357804,
+     -0.001941590035886091
+    ],
+    "rung_shape_rel_diff_vs_ka": {
+     "0.3": -1.307220237978246e-05,
+     "0.15": -1.3054422430380797e-05,
+     "0.075": -7.771085135499511e-06,
+     "0.0375": 0.0
+    },
+    "chat_internal_a4_drift_32v40": 0.006173285337809303
+   }
+  },
+  "mechanism": "the CC fitter applied to the chat leg's own r(k) reproduces the chat (a2, a4) exactly, so the a4 misses live entirely in the omega_T(k) inputs. The legs' dimensionless ladder shapes differ by ~9e-6 (GK) / 1.3e-5 (GM) at the outer rungs; through the 4-rung quadratic fit this maps to delta-a2 ~ 4.5e-4 / 7.0e-4 (the observed, PASSING a2 gaps) and delta-a4 ~ 4e-3 / 6e-3 (the observed a4 gaps). The chat leg's own internal a4 resolution drift (8.6e-3 / 6.2e-3, 32v40) exceeds its |a4|; the CC drift is 1.6e-4 / 3.2e-4. a4 at the 1e-3 scale is below the two-leg systematic floor; the frozen a4 criterion (same sign, <=5e-1 rel) implicitly assumed |a4| above that floor. Verdict-irrelevant: both arms are A3 from a2, and a2 agrees within its 5e-2 tolerance."
+ },
+ "disposition": "S9 recorded; no re-tuning; arms untouched (A3/A3 both legs, both directions); chat side re-runs the frozen comparator on return."
+}

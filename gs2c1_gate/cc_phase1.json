@@ -1,0 +1,87 @@
+{
+ "gate": "G-S2C1",
+ "leg": "cc",
+ "phase": 1,
+ "mu_fixed": 53.225,
+ "kernel": "U(r) = 20*exp(-r^8)",
+ "a_star": 1.46059,
+ "solver": "L-BFGS-B direct minimization + dense-Newton polish + exact p6m symmetrization",
+ "resolutions": {
+  "24": {
+   "n": 24,
+   "dim_band": 529,
+   "residual_rel": 3.954874300511219e-12,
+   "residual_le_1e-10": true,
+   "mean_rho": 0.9999881332389144,
+   "rho_max": 5.251874188206193,
+   "rho_min": 0.1139016721042946,
+   "grand_energy_per_cell": -46.1074185540945,
+   "spectral_tail": 1.8271363134723214e-16,
+   "lambda_min_L_Gamma": 3.283110225864603e-12,
+   "lambda_min_L_Gamma_ge_minus1e-12": true,
+   "solver_history": [
+    [
+     "lbfgs",
+     131,
+     0.5640560520136112
+    ],
+    [
+     "newton",
+     1,
+     8.807433422869844e-06
+    ],
+    [
+     "newton",
+     2,
+     3.954874300511219e-12
+    ]
+   ]
+  },
+  "32": {
+   "n": 32,
+   "dim_band": 961,
+   "residual_rel": 4.000718298190651e-12,
+   "residual_le_1e-10": true,
+   "mean_rho": 0.9999881332389144,
+   "rho_max": 5.251874188206188,
+   "rho_min": 0.11416350550168994,
+   "grand_energy_per_cell": -46.10741855409453,
+   "spectral_tail": 3.328565212636028e-17,
+   "lambda_min_L_Gamma": 3.2795549101005907e-12,
+   "lambda_min_L_Gamma_ge_minus1e-12": true,
+   "solver_history": [
+    [
+     "lbfgs",
+     0,
+     4.000718298190651e-12
+    ]
+   ]
+  },
+  "40": {
+   "n": 40,
+   "dim_band": 1521,
+   "residual_rel": 4.1681724735375635e-12,
+   "residual_le_1e-10": true,
+   "mean_rho": 0.9999881332389154,
+   "rho_max": 5.251874188206188,
+   "rho_min": 0.11406278696530227,
+   "grand_energy_per_cell": -46.10741855409449,
+   "spectral_tail": 2.730388417107707e-17,
+   "lambda_min_L_Gamma": 3.330589607402088e-12,
+   "lambda_min_L_Gamma_ge_minus1e-12": true,
+   "solver_history": [
+    [
+     "lbfgs",
+     0,
+     4.1681724735375635e-12
+    ]
+   ]
+  }
+ },
+ "record": {
+  "resolution_of_record": 40,
+  "mean_rho": 0.9999881332389154,
+  "residual_rel": 4.1681724735375635e-12,
+  "lambda_min_L_Gamma": 3.330589607402088e-12
+ }
+}

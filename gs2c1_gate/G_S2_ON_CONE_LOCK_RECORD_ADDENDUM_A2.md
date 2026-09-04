@@ -1,0 +1,9 @@
+# G-S2C1 — LOCK RECORD ADDENDUM A-2 (September 3, 2026)
+
+**Authorization (verbatim, author):** "I explicitly AUTHORIZE Amendment A-2. F-CONV is now defined as: absolute 10⁻⁷ when |a₂| ≤ 10τ; relative 10⁻² when |a₂| > 10τ. The speed reference is taken from the c-free joint estimator over floor-clean rungs."
+
+**Operational form (both legs):**
+- Speed reference c_T and the fit coefficients come from the joint least squares ω_T/k = c(1 + a₂(ka)² + a₄(ka)⁴) over a COMMON floor-clean rung set used for every n_b, selected at the largest n_b of record (40): rungs with σ_r = floor_ω²(40)/(2ω_T²) < 3×10⁻⁷ (floor_ω² = the A-1 Hermitian Goldstone |ω²|) — on the E-4 ladder this is ka ∈ {0.3, 0.15, 0.075, 0.0375} (4 rungs). The excluded rungs are listed, never silently dropped. The window systematic on a₂ is the difference to the next-larger common set (σ_r < 10⁻⁶, 5 rungs) and is carried as the a₂ CI's window term.
+- F-CONV on a₂ across successive n_b (24→32, 32→40): |Δa₂| ≤ 10⁻⁷ when |a₂| ≤ 10τ = 10⁻⁵; |Δa₂|/|a₂| ≤ 10⁻² when |a₂| > 10⁻⁵. F-CONV on c_T: |Δc_T|/c_T ≤ 10⁻⁵.
+- Sensitivity disclosed (H-S2C-9): a per-n_b-varying rung set (σ_r(n_b) < 10⁻⁶ evaluated at each n_b separately) mixes rung sets across the F-CONV pair and fails Γ–K's 24→32 at 1.2×10⁻²; the common-set rule is adopted as the principled form, and it passes at both floor thresholds (3×10⁻⁷: drifts ≤ 3.0×10⁻³; 10⁻⁶: ≤ 1.6×10⁻³). Also corrected: the Phase-1 ladder report's "6 rungs" label for the ka ≥ 0.0375 set is 4 rungs (the numbers were computed on 4).
+- Amends the F-CONV clause and the speed-reference estimator only; E-0..E-8, τ, θ_iso, θ_id, arms, prereg 2ea8ec13, T1 8cd89b9a, A-1 8bf51bd0 unchanged. Applied to the Phase-1 ladder data (checkpoint 5ee152fc) without recomputation; the CC leg runs the same clause at dispatch.

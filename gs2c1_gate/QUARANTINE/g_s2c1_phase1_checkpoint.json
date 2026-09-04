@@ -1,0 +1,82 @@
+{
+ "PHASE1_AUTHORIZED": true,
+ "halt": "WARD-GAMMA FAILED as literally specified (product-form eig, n_b=32: 3.48e-8 > 1e-8); see step2_ward.diagnosis",
+ "leg": "chat",
+ "lock_record_md5": "f2f4d50029fb5be3122a885c48a7e04f",
+ "phase": 1,
+ "prereg_md5": "2ea8ec13ffa3c32898cc24a3be605c64",
+ "step1": {
+  "bragg_peak_ratio_rho": 0.46500516152224447,
+  "energy_per_area_int": 24.95649148170111,
+  "energy_per_area_kin": 3.3113852157931696,
+  "grid_n": 64,
+  "mean_rho": 0.9999881292474472,
+  "pass": true,
+  "psi0_md5": "b27fa00495ef686b0184ea29c455b4db",
+  "psi0_spectral_weight_beyond_m24": 2.1242939904078617e-32,
+  "residual_after_NK": 1.9550255784262934e-12,
+  "residual_imaginary_time": 1.9550255784262934e-12,
+  "threshold": 1e-10
+ },
+ "step2_ward": {
+  "diagnosis": {
+   "hermitian_form_eigh_goldstone_abs_w2_max_by_nb": {
+    "24": 6.54e-10,
+    "32": 3.11e-09,
+    "40": 1.81e-08
+   },
+   "kinetic_cutoff_max_by_nb": {
+    "24": 4955,
+    "32": 8952,
+    "40": 14134
+   },
+   "lambda_min_L_Gamma": 1.62e-14,
+   "product_form_eig_goldstone_abs_w2_max_by_nb": {
+    "24": 2.12e-09,
+    "32": 3.48e-08,
+    "40": 3.62e-08
+   },
+   "reading": "dense-eigensolver Goldstone values scale with (kinetic cutoff)^2 x machine epsilon \u2014 a double-precision floor, not a Ward violation; the Ward identity holds at the stationarity-residual level (~1e-11); the literal |w2|<=1e-8 criterion is met by the product form at n_b=24 and by the Hermitian form at n_b<=32, and is not achievable by any dense double-precision solve at n_b>=32 (product) / 40 (Hermitian) irrespective of the state",
+   "status": "HALTED per directive item 2 \u2014 ladder NOT run; amendment A-1 proposed for author authorization",
+   "ward_residual_analytic_translation_modes_nb24": {
+    "dx": 2.28e-12,
+    "dy": 3.1e-12
+   },
+   "ward_residual_analytic_translation_modes_nb32": {
+    "dx": 6.58e-12,
+    "dy": 1.13e-11
+   }
+  },
+  "lambda_min_L_Gamma": 1.6194019682109478e-14,
+  "pass": false,
+  "product_form_w2_Gamma_3lowest": [
+   [
+    -8.745824396087874e-09,
+    -1.395019996487739e-09
+   ],
+   [
+    -3.895065024667919e-09,
+    -2.1109105090449543e-09
+   ],
+   [
+    3.475643503956464e-08,
+    5.778631893864184e-10
+   ]
+  ],
+  "product_form_w2_ka0.005_3lowest": [
+   [
+    0.00016433763074113965,
+    -1.838118202465561e-08
+   ],
+   [
+    0.0002986362194320979,
+    -1.1216673626115911e-09
+   ],
+   [
+    0.0010978982260118535,
+    1.7630637089804532e-08
+   ]
+  ],
+  "threshold_abs_w2": 1e-08
+ }
+}

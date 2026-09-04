@@ -1,0 +1,68 @@
+{
+ "gate": "G-S2C1",
+ "leg": "cc",
+ "phase": 2,
+ "resolutions": {
+  "24": {
+   "n": 24,
+   "ward_residual_dx": 8.022432675986799e-12,
+   "ward_residual_dy": 9.306180603779477e-12,
+   "pass_a_analytic": true,
+   "hermitian_goldstone_abs_w2": 1.588648788627416e-09,
+   "w2_low6_abs_sorted": [
+    2.4949491800205884e-10,
+    1.0389224656409623e-09,
+    1.588648788627416e-09,
+    71.28295756667195,
+    236.45021256972663,
+    236.45021256988855
+   ],
+   "lambda_min_L_Gamma": 3.281597216525313e-12,
+   "pass_b_hermitian": true
+  },
+  "32": {
+   "n": 32,
+   "ward_residual_dx": 1.6924071274719838e-11,
+   "ward_residual_dy": 2.4725171267379828e-11,
+   "pass_a_analytic": true,
+   "hermitian_goldstone_abs_w2": 9.166337557012824e-09,
+   "w2_low6_abs_sorted": [
+    1.2664364950544397e-09,
+    3.1151945152803404e-09,
+    9.166337557012824e-09,
+    71.28295756991163,
+    236.4502125626502,
+    236.45021257086424
+   ],
+   "lambda_min_L_Gamma": 3.28056086186789e-12,
+   "pass_b_hermitian": true
+  },
+  "40": {
+   "n": 40,
+   "ward_residual_dx": 4.094669840751817e-11,
+   "ward_residual_dy": 5.961899774410522e-11,
+   "pass_a_analytic": true,
+   "hermitian_goldstone_abs_w2": 8.647858854906476e-09,
+   "w2_low6_abs_sorted": [
+    2.9183898424300254e-09,
+    8.031850145395479e-09,
+    8.647858854906476e-09,
+    71.28295755656552,
+    236.4502125662535,
+    236.45021258429935
+   ],
+   "lambda_min_L_Gamma": 3.3312736240066965e-12,
+   "pass_b_hermitian": true
+  }
+ },
+ "record": {
+  "resolution_of_record": 40,
+  "pass_a_analytic": true,
+  "pass_b_hermitian": true,
+  "analytic_ward_residual_max": 5.961899774410522e-11,
+  "hermitian_goldstone_abs_w2_max": 8.647858854906476e-09,
+  "lambda_min_L_Gamma": 3.3312736240066965e-12,
+  "floor_w2_for_A2": 8.647858854906476e-09
+ },
+ "WARD_GAMMA_pass": true
+}

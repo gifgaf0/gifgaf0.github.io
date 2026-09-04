@@ -1,0 +1,32 @@
+{
+ "V1_gradient_fd": {
+  "rel_err": [
+   3.844570830982691e-09,
+   1.161800576172378e-07
+  ],
+  "pass": true
+ },
+ "V4_fitter_synthetic": {
+  "rel_err": [
+   6.269494727295002e-16,
+   4.485153057777388e-12,
+   7.773543713491498e-12
+  ],
+  "pass": true
+ },
+ "V2_hermiticity": {
+  "asym_X_presym": 2.055487859394714e-17,
+  "asym_L": 0.0,
+  "crys_res": 3.954874300511219e-12,
+  "pass": true
+ },
+ "V3_uniform_bogoliubov": {
+  "uniform_residual": 2.51214793389404e-14,
+  "max_rel_err_w2": [
+   1.549640275344333e-12,
+   5.2051191314265444e-11
+  ],
+  "pass": true
+ },
+ "all_pass": true
+}

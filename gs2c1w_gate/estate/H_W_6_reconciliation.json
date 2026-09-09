@@ -1,0 +1,46 @@
+{
+ "record": "H-W-6 reconciliation \u2014 per-arm oom_robust recomputed under the memo \u00a73.5 LETTER from the chat checkpoint of record (af7516c5); no sealed access; no re-read",
+ "per_arm": {
+  "hex:step": {
+   "base_class": "P-2'",
+   "class_x10": "VOID-DISP",
+   "class_x0.1": "P-2'",
+   "oom_robust_memo_letter": false,
+   "oom_robust_as_serialized_by_chat_v6_1 (governing-edge criterion)": true,
+   "cc_return_oom_robust": false,
+   "window_invariant_under_both": true
+  },
+  "hex:gem8": {
+   "base_class": "P-2'",
+   "class_x10": "VOID-DISP",
+   "class_x0.1": "P-2'",
+   "oom_robust_memo_letter": false,
+   "oom_robust_as_serialized_by_chat_v6_1 (governing-edge criterion)": true,
+   "cc_return_oom_robust": false,
+   "window_invariant_under_both": true
+  },
+  "cubic:step": {
+   "base_class": "P-2'",
+   "class_x10": "VOID-DISP",
+   "class_x0.1": "P-2'",
+   "oom_robust_memo_letter": false,
+   "oom_robust_as_serialized_by_chat_v6_1 (governing-edge criterion)": true,
+   "cc_return_oom_robust": false,
+   "window_invariant_under_both": true
+  },
+  "cubic:gem8": {
+   "base_class": "P-2'",
+   "class_x10": "VOID-DISP",
+   "class_x0.1": "P-2'",
+   "oom_robust_memo_letter": false,
+   "oom_robust_as_serialized_by_chat_v6_1 (governing-edge criterion)": true,
+   "cc_return_oom_robust": false,
+   "window_invariant_under_both": true
+  }
+ },
+ "gate_level": {
+  "chat_comparison_oom_robust": true,
+  "cc_comparison_oom_robust": true,
+  "class_under_all_scalings": "INERT (pinned edge governs on every arm under base, x10, x0.1 on both legs)"
+ }
+}

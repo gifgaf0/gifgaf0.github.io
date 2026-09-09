@@ -1,6 +1,7 @@
-648a963ae5388e8c9504591d170e2959  ESTATE_NOTE.md
+e966da7cf91d543b41495b6cd694929a  ESTATE_NOTE.md
 03fcd0d2ac55c2e12d9d52ef3fc18d6d  FOLD_AUTHORIZATION_V4_81.md
 7ca7e9e9937d2f3c12f0521bce859e37  G_S2C1_W_CC_DISPATCH_INBAND.md
+376bfad8fef81932cf75f11a8dc3efd9  G_S2C1_W_CLOSURE_LOG.md
 5f963ed8d7eff9f803da5c1eea2f841a  G_S2C1_W_LOCK_RECORD.md
 125809174278cc7738692fd783d4ecd7  G_S2C1_W_LOCK_RECORD_ADDENDUM_1.md
 7cdcf7e6a170dde885a0a0ce8ac3a8ad  G_S2C1_W_LOCK_RECORD_ADDENDUM_2.md
@@ -12,6 +13,7 @@ a5a006c69f720bac8ca2e461c623c4f2  extract_embeds_G_S2C1_W.py
 8de856d7591e42d9977e53e1f84699c1  foldin_v4_81_gs2c1w.py
 007688e5d8ea45d6848fd8e99c57a7d8  g_s2c1w_compare_v1_0.py
 55e6977e801e73df2b3d0b15fe17d7bf  g_s2c1w_compare_v1_1p.py
+af7516c519048ad631f1a867f5f0822d  g_s2c1w_phase3_chat.json
 dd014b8cc4c48e5dbf356e96baded753  g_s2c1w_schema_v1_0.json
 d1edc69b16dfd0b728a48cd8389b322b  pinned_inputs_G_S2C1_W.json
 1ebb6a82fcb24e207b164a654eb94dd1  staging_memo_G_S2C1_W.md

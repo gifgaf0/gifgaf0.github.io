@@ -42,18 +42,39 @@ same `0b39d057…`: an independent confirmation of Addendum 3 §1's
 re-verified Addendum 2 §1's declaration of its own return manifest
 (`c827f1d6…`, 327 B) against the committed `../RETURN_MANIFEST.md5`: exact.
 
+## Third delivery (September 9, 2026): chat checkpoint + closure log; CC BACKSTOP RUN
+
+Added, hash-verified against their declarations: **`g_s2c1w_phase3_chat.json`**
+(`af7516c519048ad631f1a867f5f0822d`, 18,857 B — the chat read #2 of record) and
+**`G_S2C1_W_CLOSURE_LOG.md`** (`376bfad8fef81932cf75f11a8dc3efd9`, 11,254 B).
+The same delivery re-supplied the lock record, Addendum 1, pinned inputs, and the
+T1 base list — all byte-identical to the files already here.
+
+**Independent CC-side backstop of comparator run 3 (this session, September 9):**
+with the chat checkpoint in hand, the CC leg re-executed `g_s2c1w_compare_v1_1p.py`
+(the committed `55e6977e…` copy) on chat `af7516c5…` vs CC `6dde4ae6…` (the
+committed checkpoint, pin-checked by the comparator itself). Output:
+**byte-identical to `comparator_run3_v1_1p_OF_RECORD.json` (`0b39d057…`)**, exit 1
+with the 19 disposed misses — the run-3 record is independently reproduced.
+Caveat (disclosed): `g_s2c1w_schema_v1_1.json` (`6c020e94…`) is not yet in the
+estate; the backstop ran with the frozen v1.0 schema (`dd014b8c…`, in this
+directory) standing in, since the comparator consumes only fields both schemas
+carry (tolerances, lock_keys, arms, disp_keys, F_L_dependent_fields) — the
+byte-identical output certifies those consumed fields are effectively identical.
+A second cross-check: the CC scanner's T1 scan of the chat checkpoint reports
+0 hits / 17 logged, matching the checkpoint's own `t1_checkpoint_scan` exactly.
+
 ## Estate items NOT in this commit (not present in the CC session; author to supply)
 
 | artifact | declared md5 | bytes |
 |---|---|---|
 | `SQT_Master_Ledger_v4_81_CANONICAL.md` | `b4e55aaea76a2152f7b1873309aec077` | 1,529,485 |
-| chat instrument v6 (pre-X-1) | `044fc22e…` (prefix as cited in the fold record) | — |
+| chat instrument v6 (read #1, X-1) | `044fc22e31ca900ee0ad89a3db119cc8` | 25,819 |
 | comparator v1.1 | `f27a008f…` | — |
-| `g_s2c1w_schema_v1_1.json` | `6c020e94…` (v1.1p in this directory needs it to run) | — |
-| chat checkpoint read #1 (X-1, retained in lineage) | `3064fad78c492ee57689ba8232dc88c6` | — |
-| chat checkpoint read #2 of record | `af7516c519048ad631f1a867f5f0822d` | 18,857 |
+| `g_s2c1w_schema_v1_1.json` | `6c020e94…` (see backstop caveat above) | — |
+| chat checkpoint read #1 (X-1, retained in lineage) | `3064fad78c492ee57689ba8232dc88c6` | 1,603 |
 | comparator run records 1–2 (incl. the superseded text `722f0f1d…`) | — | — |
-| closure log + closure-log Addendum 1 | `376bfad8…` / `510b9fe7…` | — |
+| closure-log Addendum 1 | `510b9fe7…` | — |
 
 The CC return of record (instrument, scanner, checkpoint `6dde4ae6…`, pre-read
 suite results, CC report, return manifest) lives one directory up in

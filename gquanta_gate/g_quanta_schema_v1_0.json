@@ -1,0 +1,33 @@
+{
+  "gate": "G-QUANTA",
+  "schema_version": "1.0",
+  "frozen": "2026-09-10",
+  "required_keys": [
+    "gate", "leg", "instrument", "instrument_md5", "memo", "memo_md5", "memo_bytes",
+    "ledger_base_md5", "elections.E-Q-1", "elections.E-Q-2", "utc", "inventory_rows", "results",
+    "falsifiers.F-QUANTA-1.state", "falsifiers.F-QUANTA-2.state", "falsifiers.F-QUANTA-3.state",
+    "promotion_conditions.PC-1_nontrivial_partition.met",
+    "promotion_conditions.PC-1_nontrivial_partition.n_pass",
+    "promotion_conditions.PC-1_nontrivial_partition.n_fail",
+    "promotion_conditions.PC-2_independence_witness.met",
+    "promotion_conditions.PC-2_independence_witness.witnesses"
+  ],
+  "result_keys": [
+    "object", "ledger_ref", "perspective", "config_space", "invariant", "functional_class",
+    "C1", "C2", "verdict"
+  ],
+  "compare_file_keys": ["rows", "PC-3_met"],
+  "compare_row_keys": ["object", "predicted", "machine", "concordant"],
+  "value_domains": {
+    "perspective": ["L-Perspective", "E-Perspective"],
+    "config_space": ["Continuous", "Discrete"],
+    "functional_class": ["Rigid Constraint", "Competing Exponents", "Single Exponent", "None"],
+    "verdict": ["PASS", "FAIL"],
+    "falsifier_state": ["FIRES", "SILENT", "REGISTERED_NOT_EXECUTED"]
+  },
+  "notes": [
+    "invariant is null for a trivial/absent invariant (the memo's 'None (Trivial Knot)').",
+    "Free text (reasons, notes, election wording) is never compared; elections compare by choice letter only.",
+    "Optional keys (T1_pre_evaluation, T1_post_write, C1_reason, C2_reason, design register) are reported, not compared."
+  ]
+}

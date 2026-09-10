@@ -1,0 +1,54 @@
+{
+  "gate": "G-QUANTA",
+  "step": "compare (PC-3, comparison last)",
+  "checkpoint": "g_quanta_chatleg_checkpoint.json",
+  "checkpoint_md5": "55861161748fca634534790f366380fd",
+  "memo_md5": "0039d001769569297c2aa8ccbded5a3b",
+  "rows": [
+    {
+      "label": "L_B Borromean Baryon",
+      "object": "L_B Borromean Baryon",
+      "predicted": "PASS",
+      "machine": "PASS",
+      "concordant": true
+    },
+    {
+      "label": "K₇ Vortex",
+      "object": "K₇ Vortex",
+      "predicted": "PASS",
+      "machine": "PASS",
+      "concordant": true
+    },
+    {
+      "label": "Electron 2π Closure",
+      "object": "Electron 2π Closure",
+      "predicted": "PASS",
+      "machine": "PASS",
+      "concordant": true
+    },
+    {
+      "label": "Clifford Unknot",
+      "object": "Clifford Unknot / Rule 17",
+      "predicted": "FAIL",
+      "machine": "FAIL",
+      "concordant": true
+    },
+    {
+      "label": "CD Tower Rungs",
+      "object": "CD Tower Rungs (e.g., 42/84)",
+      "predicted": "FAIL",
+      "machine": "FAIL",
+      "concordant": true
+    },
+    {
+      "label": "SLWE Matrices",
+      "object": "Cluster M SLWE Matrices",
+      "predicted": "FAIL",
+      "machine": "FAIL",
+      "concordant": true
+    }
+  ],
+  "objects_without_hypothesis": [],
+  "PC-3_met": true,
+  "utc": "2026-09-10T20:02:18.082025Z"
+}

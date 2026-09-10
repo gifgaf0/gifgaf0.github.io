@@ -1,0 +1,16 @@
+{
+ "schema": "G-S2C1-W checkpoint schema v1.0 (frozen pre-chat-emission; memo §8.4)",
+ "required_top": ["gate", "leg", "read", "instrument_md5", "lock", "t1_patterns", "pinned_gate", "sealed", "anchors",
+                  "per_arm", "union", "pre_comparison_md5", "comparison", "t1_checkpoint_scan"],
+ "lock_keys": ["memo", "lock_record", "t1_base", "t1_a1", "pinned_inputs", "sealed_declared"],
+ "sealed_keys": ["md5", "bytes", "census"],
+ "anchor_keys": ["idx", "cls", "q", "B", "k", "row_md5"],
+ "arms": ["hex:step", "hex:gem8", "cubic:step", "cubic:gem8"],
+ "per_arm_keys": ["pinned_gpoly1_edge_m", "disp", "W_upper_m", "governing", "arm_class", "oom_robust", "oom_relaxed_upper", "oom_tightened_upper"],
+ "disp_keys": ["anchor", "q", "c_q", "F_L", "B_prime", "fail_L", "edge_born_m", "kd", "voided", "delta4", "dressing_sensitive", "edge_dressed_m", "dressed_status"],
+ "union_keys": ["W_union_prime", "union_governing_arm", "W_intersection"],
+ "comparison_keys": ["class", "oom_robust", "W_union_prime_upper_m", "W_union_pinned_upper_m", "per_arm_classes", "per_arm_governing", "reinstatement"],
+ "tolerances": {"rel_exact": 1e-6, "rel_F_L_dependent": 0.035001, "abs_floor": 1e-300},
+ "F_L_dependent_fields": ["F_L", "B_prime", "edge_born_m", "kd", "delta4", "edge_dressed_m"],
+ "classes": {"arm": ["P-2'", "FAIL-L", "VOID-DISP"], "gate": ["TIGHTENED", "INERT", "FAIL-L"]}
+}

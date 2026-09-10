@@ -1,0 +1,209 @@
+{
+ "gate": "G-S2C1-W",
+ "artifact": "pinned_inputs_G_S2C1_W.json",
+ "date": "2026-09-08",
+ "status": "PINNED for author verification (pre-Phase-0 gate); any correction -> v2 + lock-record addendum; memo untouched",
+ "provenance": {
+  "ledger_base": {
+   "file": "SQT_Master_Ledger_v4_80_CANONICAL.md",
+   "md5": "a28e9b40616ee9b5798e9a5be027c1d9",
+   "bytes": 1514144
+  },
+  "staging_memo": {
+   "file": "staging_memo_G_S2C1_W.md",
+   "md5": "1ebb6a82fcb24e207b164a654eb94dd1",
+   "bytes": 32219,
+   "status": "LOCKED"
+  },
+  "t1_list": {
+   "file": "t1_forbidden_G_S2C1_W.txt",
+   "md5": "20ba1e7eab5a3bbffe510b4840edbc57",
+   "bytes": 1560,
+   "pattern_lines": 34,
+   "status": "FROZEN (without D-W-2 merge)"
+  },
+  "phase3_machinery": {
+   "repo": "github.com/gifgaf0/gifgaf0.github.io",
+   "branch": "claude/new-session-e1u91p",
+   "commit": "dd813646ed112f630816ee260ae0bdd096e2b417",
+   "dir": "gpoly1_gate/phase3/",
+   "manifest_check": "13/13 OK"
+  },
+  "gpoly1_blind_leg_checkpoint": {
+   "file": "poly1_phase3_cc.json",
+   "md5": "2064bd7b4ed4f7b2b4e09bafdc0cf85a",
+   "bytes": 11808,
+   "mapper_source_md5": "f1cd9de544b1378da2cfea211db6eb52",
+   "gate_class": "P-2"
+  },
+  "gs2c1_sources": {
+   "section": "§2.91.O (V4.80)",
+   "chat_P1_ladder": "5ee152fc",
+   "chat_A2_eval": "77fea65f",
+   "chat_P2_phase3": "48927b9a",
+   "chat_P2A_eval": "56b17d93",
+   "cc_single_crystal": "gsmiya@cd51a00",
+   "cc_aggregate": "3xgb2b@debce15",
+   "comparator_P2": "aa887e6c (69/69 both sides)",
+   "note": "chat P2 checkpoint bytes not in project knowledge (D-W-1); values pinned from the V4.80 canonical text"
+  }
+ },
+ "arm_map": [
+  {
+   "mapper_label": "hex:step",
+   "gs2c1_label": "step_hex"
+  },
+  {
+   "mapper_label": "hex:gem8",
+   "gs2c1_label": "gem8_hex"
+  },
+  {
+   "mapper_label": "cubic:step",
+   "gs2c1_label": "step_cubic"
+  },
+  {
+   "mapper_label": "cubic:gem8",
+   "gs2c1_label": "gem8_cubic"
+  }
+ ],
+ "arm_map_rule": "instrument asserts pairing BY NAME, never by index (H-S2C-7 swap class)",
+ "a2_L_lattice": {
+  "state": {
+   "kernel": "gem8 U=20*exp(-r^8)",
+   "a_star_substrate": 1.46059,
+   "mu": 53.225,
+   "rho_mean": 0.999988
+  },
+  "c_T_substrate": {
+   "chat": 5.0482,
+   "cc": 5.04824
+  },
+  "chat": {
+   "GK": -0.012794,
+   "GM": -0.019933
+  },
+  "cc": {
+   "GK": -0.01324,
+   "GM": -0.02063
+  },
+  "ci_rel": 0.035,
+  "a4_L": "UNRESOLVED — EXCLUDED (D-W-3)",
+  "election_E_W_2": "GK for the window edge; GM for the FAIL-L robustness arm",
+  "election_E_W_3": "each leg uses its own column; comparator carries ci_rel on every F_L-dependent quantity"
+ },
+ "a2_agg_grain": {
+  "hex:step": -0.01834766,
+  "hex:gem8": -0.02593369,
+  "cubic:step": -0.02853747,
+  "cubic:gem8": -0.03971398,
+  "two_leg_agreement": 3.4e-13,
+  "definition": "P2-A analytic second-order Born real part D2 (§2.91.O)"
+ },
+ "a4_agg_grain_diagnostic": {
+  "hex:step": 0.0695,
+  "hex:gem8": 0.099,
+  "cubic:step": 0.1068,
+  "cubic:gem8": 0.1493,
+  "two_leg_agreement_rel": 0.005,
+  "role": "dressing diagnostic only (E-W-6(a))"
+ },
+ "D0_static_born_shift": {
+  "hex:step": -0.0205,
+  "hex:gem8": -0.0289,
+  "cubic:step": -0.0315,
+  "cubic:gem8": -0.0437,
+  "role": "report-only"
+ },
+ "Q_T_a": {
+  "hex:step": 0.03519074,
+  "hex:gem8": 0.05002055,
+  "cubic:step": 0.05407763,
+  "cubic:gem8": 0.0754943
+ },
+ "Q_T_d_rule": "Q_T_a / 8 (mapper v5 constant)",
+ "s1": {
+  "hex:step": 0.151508022,
+  "hex:gem8": 0.181569447,
+  "cubic:step": 0.233348904,
+  "cubic:gem8": 0.284231508
+ },
+ "tie_in_report_only": {
+  "a2_agg_over_Q_T_a": -0.52,
+  "spread_rel": 0.009,
+  "role": "F-W-PIN consistency, non-verdict"
+ },
+ "gpoly1_pinned_edges_m": {
+  "hex:step": 2.1213132100130068,
+  "hex:gem8": 1.8866794048346085,
+  "cubic:step": 1.838266105289967,
+  "cubic:gem8": 1.6447865351995365
+ },
+ "gpoly1_pinned_class": {
+  "hex:step": "P-2",
+  "hex:gem8": "P-2",
+  "cubic:step": "P-2",
+  "cubic:gem8": "P-2"
+ },
+ "gpoly1_W_union_upper_m": 2.1213132100130068,
+ "gpoly1_rule": "edges enter as PINNED NUMBERS; the G-POLY1 sealed file is NOT re-opened (EG-3, D-W-0)",
+ "a_phys_chain_E_W_1a": {
+  "xi_declared": "l_P (G-SCALE1 reading (a))",
+  "l_P_m": 1.616255e-35,
+  "l_P_source": "CODATA 2018",
+  "C_ratio_xi_over_a": {
+   "lo": 0.0213,
+   "hi": 0.0851,
+   "source": "G-C1 class-(b) sweep range (a kernel-class knob, caveat inherited)"
+  },
+  "a_phys_m": {
+   "lo": 1.8992420681551118e-34,
+   "hi": 7.588051643192489e-34,
+   "formula": "a_phys = l_P / C"
+  },
+  "rule": "window edge uses a_phys.lo (conservative); FAIL-L declared only if it fires at a_phys.lo AND under x10 budget relaxation (EG-9); a_phys.hi serialized as robustness arm"
+ },
+ "constants": {
+  "KD_CLIP": 0.3,
+  "N_MIN": 10.0,
+  "DELTA4_THRESHOLD": 0.1,
+  "FP_TOL_REL": 1e-15,
+  "FP_MAX_ITER": 200,
+  "c_q": {
+   "phase": 1,
+   "group": 3
+  },
+  "band_rule": "evaluate at upper band edge k2; full sweep serialized (D-W-6)",
+  "silent_text_q_default": {
+   "arrival_time_class": "group",
+   "coherence_class": "phase"
+  },
+  "oom_factors": [
+   10.0,
+   0.1
+  ],
+  "comparator_rel_tol": 1e-06,
+  "pin_rel_tol": 1e-12
+ },
+ "elections_T3": {
+  "E-W-1": "(a)",
+  "E-W-2": "(a)",
+  "E-W-3": "(a)",
+  "E-W-4": "(i) author-supplied sealed file; T1 frozen without D-W-2 merge",
+  "E-W-5": "(a) CC-BLIND-FIRST",
+  "E-W-6": "(a) Born a2-only of record; dressed reported",
+  "E-W-7": "(a) banked alongside suspended W_union; no reinstatement"
+ },
+ "defaults_ratified": [
+  "D-W-1",
+  "D-W-4",
+  "D-W-5",
+  "D-W-6",
+  "D-W-7"
+ ],
+ "excluded": [
+  "a4_L (unresolved)",
+  "a2_L longitudinal quartet (not the S2 channel)",
+  "gem4/gem3 kernel sub-annotations (not run at G-S2C1)"
+ ],
+ "not_in_this_file": "no anchor, no budget, no wavenumber, no comparison — the sealed file is author-supplied and opened only by the mapper phase"
+}

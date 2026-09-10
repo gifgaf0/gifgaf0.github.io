@@ -1,0 +1,85 @@
+{
+ "comparator": "g_s2c1w_compare_v1_1p.py",
+ "cc_declared_md5": "6dde4ae6ffb944d94b138985cd7cf6cd",
+ "cc_file_md5": "6dde4ae6ffb944d94b138985cd7cf6cd",
+ "items": 105,
+ "miss": [
+  [
+   "sealed/census",
+   "{'disp': 1} != {'fields_per_row': 8, 'per_class': {'disp': 1}, 'rows': 1}"
+  ],
+  [
+   "anchors/0/idx",
+   "1 != 0"
+  ],
+  [
+   "per_arm/hex:step/governing",
+   "'GPOLY1-pinned' != 'pinned_gpoly1'"
+  ],
+  [
+   "per_arm/hex:step/oom_robust",
+   "True != False"
+  ],
+  [
+   "per_arm/hex:step/disp/0/anchor",
+   "1 != 0"
+  ],
+  [
+   "per_arm/hex:gem8/governing",
+   "'GPOLY1-pinned' != 'pinned_gpoly1'"
+  ],
+  [
+   "per_arm/hex:gem8/oom_robust",
+   "True != False"
+  ],
+  [
+   "per_arm/hex:gem8/disp/0/anchor",
+   "1 != 0"
+  ],
+  [
+   "per_arm/cubic:step/governing",
+   "'GPOLY1-pinned' != 'pinned_gpoly1'"
+  ],
+  [
+   "per_arm/cubic:step/oom_robust",
+   "True != False"
+  ],
+  [
+   "per_arm/cubic:step/disp/0/anchor",
+   "1 != 0"
+  ],
+  [
+   "per_arm/cubic:gem8/governing",
+   "'GPOLY1-pinned' != 'pinned_gpoly1'"
+  ],
+  [
+   "per_arm/cubic:gem8/oom_robust",
+   "True != False"
+  ],
+  [
+   "per_arm/cubic:gem8/disp/0/anchor",
+   "1 != 0"
+  ],
+  [
+   "comparison/reinstatement",
+   "'NONE (E-W-7(a): banked alongside the suspended W_union)' != 'NONE'"
+  ],
+  [
+   "comparison/per_arm_governing",
+   "{'hex:step': 'GPOLY1-pinned', 'hex:gem8': 'GPOLY1-pinned', 'cubic:step': 'GPOLY1-pinned', 'cubic:gem8': 'GPOLY1-pinned'} != {'cubic:gem8': 'pinned_gpoly1', 'cubic:step': 'pinned_gpoly1', 'hex:gem8': 'pinned_gpoly1', 'hex:step': 'pinned_gpoly1'}"
+  ],
+  [
+   "cc/pre_comparison_md5",
+   "COMPARISON-LAST EVIDENCE: recomputed e6b510c46718d5fa87433878d55039ca != stored '279bb25f738921eb3d9f21600a212f45'"
+  ],
+  [
+   "cc/self_tests",
+   "REPRESENTATIONAL: key absent"
+  ],
+  [
+   "cc/instrument",
+   "REPRESENTATIONAL: key absent"
+  ]
+ ],
+ "status": "MISS x19 (S9)"
+}

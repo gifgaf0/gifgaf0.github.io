@@ -1,0 +1,47 @@
+# t1_forbidden_G_S2C1_W.txt — T1 forbidden-string list, Gate G-S2C1-W
+# FROZEN September 8, 2026 under election E-W-4 (freeze WITHOUT the D-W-2 merge; 8cd89b9a / 653a0b74 unrecovered).
+# Convention (G-BKZ32 H-2): lines beginning with '#' are documentation, NOT patterns. Every other non-empty line is
+# one literal, case-sensitive substring pattern. Scanner: pattern-lines only; instruments carry patterns split-string.
+# Numeric rule D-W-7 (contextual): a bare-numeric pattern counts as a hit only when glued to a unit/identifier token;
+# machine-epsilon / exponent-formatting collisions are logged, not fatal. Non-numeric patterns are unconditional.
+# Exemptions (justified, as at G-POLY1): the sealed anchor file itself; this list file; T1 Addendum 1.
+# T1 ADDENDUM 1 (T1-A1): the author appends the anchor-specific identifiers and bound digit strings of the sealed
+# file at sealed delivery (E-W-4(i)); frozen with its own md5; the instrument scans base ∪ T1-A1.
+#
+# --- base set (recovered byte-exact from g_poly1_phase3_mapper_v5.py 2c5ca7a4, lines 10-11 + rb_mask T1SUB) ---
+Mpc
+Gpc
+LIGO
+170817
+299792458
+SME
+GW1
+3.19
+0.019
+Hz
+GW
+# --- identifier-class additions (S2-side dispersion / speed-offset anchor literature; no numeric bounds) ---
+GWTC
+Virgo
+KAGRA
+LVK
+LVC
+graviton
+Graviton
+lambda_g
+λ_g
+A_alpha
+A_α
+Mirshekari
+Yunes
+Kostelecky
+Kostelecký
+Mewes
+GRB
+gamma-ray
+eV/c
+Abbott
+Tests of GR
+# --- G-POLY1 sealed reference strings (ledger-disclosed at V4.76; the G-POLY1 sealed file is NOT re-opened) ---
+1.234271032596547e24
+2.095845021951682e-6

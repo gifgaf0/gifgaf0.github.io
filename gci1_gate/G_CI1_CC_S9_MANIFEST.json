@@ -1,0 +1,59 @@
+{
+ "embeds": [
+  {
+   "file": "G_CI1_LOCK_RECORD_ADDENDUM_4.md",
+   "md5": "b3f8cbd58cd2202f971abc823eef76ac",
+   "bytes": 4412,
+   "t1_exempt": true
+  },
+  {
+   "file": "t1_forbidden_G_CI1.txt",
+   "md5": "653a0b7447e68aa8a094e62337a24da3",
+   "bytes": 1127,
+   "t1_exempt": true
+  },
+  {
+   "file": "anchors_G_CI1_SEALED.md",
+   "md5": "dd8fe2d364624750201ad9c9ffef575c",
+   "bytes": 17652,
+   "t1_exempt": true
+  },
+  {
+   "file": "ci1_ci4_compare.json",
+   "md5": "756973eeed879738cfa6a6f3586f554a",
+   "bytes": 23880,
+   "t1_exempt": false
+  },
+  {
+   "file": "G_CI1_PHASE3_CLOSURE_MEMO.md",
+   "md5": "dd1a02eca875211755b0cf5915ac769c",
+   "bytes": 8062,
+   "t1_exempt": false
+  }
+ ],
+ "commitments": {
+  "ci1_phase3_chat.json": [
+   "276586f94c8d426c38ff12228c91289d",
+   23097
+  ],
+  "g_ci1_phase3_mapper_chatleg.py": [
+   "49d153e4aa52305407e7887f8e0f6666",
+   17242
+  ],
+  "g_ci1_ci4_compare_r3.py": [
+   "956036f05e90c9ecfc32883dcbf2b910",
+   8086
+  ],
+  "ci1_twoleg_compare.json": [
+   "82d04fa6a74a0135b8805189d4305a9e",
+   14721
+  ]
+ },
+ "canonical": [
+  "f539d10cb4f73c81e7d9fdbe7fa63714",
+  1432221
+ ],
+ "t1_hits_non_exempt_portion": 0,
+ "dispatch_md5": "4c21c43d7a2b36aa54985b2d7043b1d3",
+ "dispatch_bytes": 63187
+}

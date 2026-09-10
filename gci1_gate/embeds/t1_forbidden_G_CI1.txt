@@ -1,0 +1,84 @@
+# G-CI1 T1 forbidden-string list — DRAFT (frozen at lock; md5 recorded in the lock record)
+# One Python regex per line; lines beginning with '#' are comments. Case-sensitive.
+# Applied by self-grep to every instrument file and checkpoint of every phase, both legs.
+# Exempt embeds: anchors_G_CI1_SEALED.md and G_CI1_LOCK_RECORD.md only.
+# --- inherited class (G-POLY1 lineage) ---
+\bMpc\b
+\bGpc\b
+\bkpc\b
+\bpc\b
+\bHz\b
+\b[kMGT]Hz\b
+GW1
+170817
+170814
+GWTC
+LIGO
+Virgo
+KAGRA
+\bLVK\b
+\bSME\b
+299792458
+2\.99792458
+2\.998e8
+\b3e8\b
+\bm/s\b
+\bkm/s\b
+\bmeters?\b
+\bmetres?\b
+# --- EM extension (band / source-class / instrument / unit / constant tokens) ---
+\bradio\b
+X-ray
+x-ray
+gamma-ray
+γ-ray
+\bVHE\b
+\b[kMGT]eV\b
+\beV\b
+H\.E\.S\.S
+\bHESS\b
+\bMAGIC\b
+VERITAS
+\bFermi\b
+\bLAT\b
+\bCTA\b
+LHAASO
+\bHAWC\b
+\bEBL\b
+blazar
+quasar
+\bQSO\b
+\bAGN\b
+\bGRB\b
+\bFRB\b
+pulsar
+magnetar
+supernova
+\bSNe?\b
+\bIa\b
+Kostel
+Mewes
+Aharonian
+\b1ES\b
+\bMk[nr]\b
+\bPKS\b
+Chandra
+\bXMM\b
+NuSTAR
+\bSwift\b
+INTEGRAL
+\bnm\b
+\bÅ\b
+Angstrom
+micron
+\bμm\b
+redshift
+\bz\s*=\s*\d
+6\.626
+6\.62607
+4\.1357
+1\.054571
+1\.602176
+1\.616255
+1\.616e-35
+Planck length

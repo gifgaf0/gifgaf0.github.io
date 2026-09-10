@@ -1,0 +1,12 @@
+[0s] iso null 1.860e-14
+[4s] hex:step containment: s1 dev 3.26e-09 (rms_of_local_ratio) | Q_T^a dev 3.22e-08 | PASS
+[112s] hex:step: D2 -4.5869158e-03 | plateau -8.81692e-03 | c_cone/V_T0 0.979885 | x_S 10.000 | I3 gate worst 3.73e-08
+[115s] hex:gem8 containment: s1 dev 2.24e-09 (rms_of_local_ratio) | Q_T^a dev 3.04e-08 | PASS
+[225s] hex:gem8: D2 -6.4834233e-03 | plateau -1.21709e-02 | c_cone/V_T0 0.971895 | x_S 3.162 | I3 gate worst 3.73e-08
+[228s] cubic:step containment: s1 dev 1.55e-09 (rms_of_local_ratio) | Q_T^a dev 3.24e-08 | PASS
+[336s] cubic:step: D2 -7.1343677e-03 | plateau -1.40931e-02 | c_cone/V_T0 0.969449 | x_S 3.162 | I3 gate worst 3.68e-08
+[339s] cubic:gem8 containment: s1 dev 1.19e-09 (rms_of_local_ratio) | Q_T^a dev 2.74e-08 | PASS
+[447s] cubic:gem8: D2 -9.9284953e-03 | plateau -1.89435e-02 | c_cone/V_T0 0.958151 | x_S 3.162 | I3 gate worst 3.68e-08
+PHASE2 CC OK
+checkpoint: {'md5': '75598d8e82ce1fce22e9f4cf6c72f312', 'bytes': 53194, 'float_sig_digits': 11, 't1_reserialize_retries': 0}
+T1 hits: 0

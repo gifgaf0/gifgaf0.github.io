@@ -1,0 +1,228 @@
+{
+ "gate": "G-S2C1",
+ "leg": "cc",
+ "phase": 0,
+ "date": "2026-09-03",
+ "dispatch_file": "G_S2C1_CC_DISPATCH_INBAND.md",
+ "dispatch_md5": "2847e41c9e97388d08cd5b4c536c2f4e",
+ "extractor": "extract_embeds_v2.py (embedded raw, md5 d4ac62219a95bea1e29d226e371ee39a)",
+ "embeds_total": 23,
+ "embeds_verified": 23,
+ "quarantined_unread": true,
+ "prereg_md5": "2ea8ec13ffa3c32898cc24a3be605c64",
+ "lock_record_md5": "f2f4d50029fb5be3122a885c48a7e04f",
+ "addendum_A1_md5": "8bf51bd05c691f3f03d796b231cdd262",
+ "addendum_A2_md5": "a9bda086213ee0afe1e2ba01055659cd",
+ "t1_md5": "8cd89b9a82704accd89f7ff6f5e220b4",
+ "comparator_md5": "e730844e9cf9e722e0e7789f90f34489",
+ "all_verified": true,
+ "embed_table": [
+  {
+   "name": "activation_G_S2C1.json",
+   "md5_manifest": "7a37816df1bd076636d5c78ab7d04b1e",
+   "md5_on_disk": "7a37816df1bd076636d5c78ab7d04b1e",
+   "bytes": 3536,
+   "enc": "raw",
+   "quarantined": false,
+   "verified": true
+  },
+  {
+   "name": "G_S2_ON_CONE_EXECUTION_PREREGISTRATION.md",
+   "md5_manifest": "2ea8ec13ffa3c32898cc24a3be605c64",
+   "md5_on_disk": "2ea8ec13ffa3c32898cc24a3be605c64",
+   "bytes": 12984,
+   "enc": "raw",
+   "quarantined": false,
+   "verified": true
+  },
+  {
+   "name": "G_S2_ON_CONE_LOCK_RECORD.md",
+   "md5_manifest": "f2f4d50029fb5be3122a885c48a7e04f",
+   "md5_on_disk": "f2f4d50029fb5be3122a885c48a7e04f",
+   "bytes": 3009,
+   "enc": "raw",
+   "quarantined": false,
+   "verified": true
+  },
+  {
+   "name": "G_S2_ON_CONE_LOCK_RECORD_ADDENDUM_A1.md",
+   "md5_manifest": "8bf51bd05c691f3f03d796b231cdd262",
+   "md5_on_disk": "8bf51bd05c691f3f03d796b231cdd262",
+   "bytes": 1019,
+   "enc": "raw",
+   "quarantined": false,
+   "verified": true
+  },
+  {
+   "name": "G_S2_ON_CONE_LOCK_RECORD_ADDENDUM_A2.md",
+   "md5_manifest": "a9bda086213ee0afe1e2ba01055659cd",
+   "md5_on_disk": "a9bda086213ee0afe1e2ba01055659cd",
+   "bytes": 1950,
+   "enc": "raw",
+   "quarantined": false,
+   "verified": true
+  },
+  {
+   "name": "t1_forbidden_G_S2_ON_CONE.txt",
+   "md5_manifest": "8cd89b9a82704accd89f7ff6f5e220b4",
+   "md5_on_disk": "8cd89b9a82704accd89f7ff6f5e220b4",
+   "bytes": 144,
+   "enc": "raw",
+   "quarantined": false,
+   "verified": true
+  },
+  {
+   "name": "g_s2c1_compare.py",
+   "md5_manifest": "e730844e9cf9e722e0e7789f90f34489",
+   "md5_on_disk": "e730844e9cf9e722e0e7789f90f34489",
+   "bytes": 4643,
+   "enc": "raw",
+   "quarantined": false,
+   "verified": true
+  },
+  {
+   "name": "extract_embeds_v2.py",
+   "md5_manifest": "d4ac62219a95bea1e29d226e371ee39a",
+   "md5_on_disk": "d4ac62219a95bea1e29d226e371ee39a",
+   "bytes": 2102,
+   "enc": "raw",
+   "quarantined": false,
+   "verified": true
+  },
+  {
+   "name": "s2c1_chat_cmp_checkpoint.json",
+   "md5_manifest": "2aa66ea21dd5cda16535d409654fe4dd",
+   "md5_on_disk": "2aa66ea21dd5cda16535d409654fe4dd",
+   "bytes": 2164,
+   "enc": "b64",
+   "quarantined": true,
+   "verified": true
+  },
+  {
+   "name": "g_s2c1_phase0_close.py",
+   "md5_manifest": "1882c941fc4288b031131fb8aacccf83",
+   "md5_on_disk": "1882c941fc4288b031131fb8aacccf83",
+   "bytes": 11719,
+   "enc": "b64",
+   "quarantined": true,
+   "verified": true
+  },
+  {
+   "name": "g_s2c1_phase1.py",
+   "md5_manifest": "c987a1a6f3ec8c3308dfb3bb1279bb09",
+   "md5_on_disk": "c987a1a6f3ec8c3308dfb3bb1279bb09",
+   "bytes": 17227,
+   "enc": "b64",
+   "quarantined": true,
+   "verified": true
+  },
+  {
+   "name": "g_s2c1_phase1_ladder.py",
+   "md5_manifest": "a9949649af4a2e99e3ae69186a066c23",
+   "md5_on_disk": "a9949649af4a2e99e3ae69186a066c23",
+   "bytes": 21163,
+   "enc": "b64",
+   "quarantined": true,
+   "verified": true
+  },
+  {
+   "name": "s2c1_phase1_ladder_analysis.py",
+   "md5_manifest": "a55b0544d3c5ce7ab050a4af01492b4e",
+   "md5_on_disk": "a55b0544d3c5ce7ab050a4af01492b4e",
+   "bytes": 3134,
+   "enc": "b64",
+   "quarantined": true,
+   "verified": true
+  },
+  {
+   "name": "gz1_core.py",
+   "md5_manifest": "361b1743a9164d1f7ff2380f6b74840d",
+   "md5_on_disk": "361b1743a9164d1f7ff2380f6b74840d",
+   "bytes": 18205,
+   "enc": "b64",
+   "quarantined": true,
+   "verified": true
+  },
+  {
+   "name": "g_s2c1_phase0_checkpoint.json",
+   "md5_manifest": "eae2bbd734f5129dd1e51efcbb55dd3d",
+   "md5_on_disk": "eae2bbd734f5129dd1e51efcbb55dd3d",
+   "bytes": 4555,
+   "enc": "b64",
+   "quarantined": true,
+   "verified": true
+  },
+  {
+   "name": "g_s2c1_phase1_checkpoint.json",
+   "md5_manifest": "eeedcfa594a24915fa9c10c6abbd0a4e",
+   "md5_on_disk": "eeedcfa594a24915fa9c10c6abbd0a4e",
+   "bytes": 2477,
+   "enc": "b64",
+   "quarantined": true,
+   "verified": true
+  },
+  {
+   "name": "g_s2c1_phase1_ladder_checkpoint.json",
+   "md5_manifest": "5ee152fc14ac55e72094fc660aff7a4a",
+   "md5_on_disk": "5ee152fc14ac55e72094fc660aff7a4a",
+   "bytes": 43647,
+   "enc": "b64",
+   "quarantined": true,
+   "verified": true
+  },
+  {
+   "name": "s2c1_phase1_ladder_analysis.json",
+   "md5_manifest": "bdfd3d01bc3f4cef0e22232bb7ff7eb5",
+   "md5_on_disk": "bdfd3d01bc3f4cef0e22232bb7ff7eb5",
+   "bytes": 6507,
+   "enc": "b64",
+   "quarantined": true,
+   "verified": true
+  },
+  {
+   "name": "s2c1_phase1_A2_evaluation.json",
+   "md5_manifest": "77fea65fde95efd33d8990956c7c07ff",
+   "md5_on_disk": "77fea65fde95efd33d8990956c7c07ff",
+   "bytes": 2934,
+   "enc": "b64",
+   "quarantined": true,
+   "verified": true
+  },
+  {
+   "name": "G_S2C1_PHASE0_REPORT.md",
+   "md5_manifest": "5f678490ed33040705c372065cfd1124",
+   "md5_on_disk": "5f678490ed33040705c372065cfd1124",
+   "bytes": 6556,
+   "enc": "b64",
+   "quarantined": true,
+   "verified": true
+  },
+  {
+   "name": "G_S2C1_PHASE1_HALT_REPORT.md",
+   "md5_manifest": "b0e6790c323764d7e93350d2b5ef09a8",
+   "md5_on_disk": "b0e6790c323764d7e93350d2b5ef09a8",
+   "bytes": 4107,
+   "enc": "b64",
+   "quarantined": true,
+   "verified": true
+  },
+  {
+   "name": "G_S2C1_PHASE1_LADDER_REPORT.md",
+   "md5_manifest": "6995cee96c9e696241b038a709dabcaf",
+   "md5_on_disk": "6995cee96c9e696241b038a709dabcaf",
+   "bytes": 5341,
+   "enc": "b64",
+   "quarantined": true,
+   "verified": true
+  },
+  {
+   "name": "psi0_gem8_n64.npy",
+   "md5_manifest": "a56796186e5eaf78c2e513fc710cb143",
+   "md5_on_disk": "a56796186e5eaf78c2e513fc710cb143",
+   "bytes": 32896,
+   "enc": "b64",
+   "quarantined": true,
+   "verified": true
+  }
+ ]
+}

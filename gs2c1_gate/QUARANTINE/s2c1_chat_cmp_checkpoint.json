@@ -1,0 +1,91 @@
+{
+ "C1_substrate": {
+  "a_star": 1.46059,
+  "g_star": 20.0,
+  "kernel_U0": 56.95094726226156,
+  "lambda_min_L_Gamma_ge_minus1e-12": true,
+  "mean_rho": 0.9999881292474472,
+  "mu_fixed": 53.225,
+  "residual_le_1e-10": true,
+  "residual_rel": 1.9550255784262934e-12,
+  "resolution_of_record": "n_b=40 plane waves (chat); CC reports its own"
+ },
+ "C2_ward_A1": {
+  "analytic_ward_residual_max": 2.304613322563949e-11,
+  "hermitian_goldstone_abs_w2_max": 8.10886315689521e-09,
+  "lambda_min_L_Gamma": 1.6914472705329813e-14,
+  "pass_a_analytic": true,
+  "pass_b_hermitian": true
+ },
+ "C3_F_ISO": {
+  "cT_split": 1.3338947954633085e-05,
+  "pass": true
+ },
+ "C3_speeds": {
+  "GK": {
+   "R_T_framework": 0.5214788406301364,
+   "c_L1_framework": 9.680546881457015,
+   "c_T": 5.048199682765422,
+   "c_other_compressional": 3.7413502933604414
+  },
+  "GM": {
+   "R_T_framework": 0.5214692995963482,
+   "c_L1_framework": 9.680594872088832,
+   "c_T": 5.048171222301642,
+   "c_other_compressional": 3.7413533299128687
+  }
+ },
+ "C4_F_MIX": {
+  "min_o2_T": {
+   "GK": 0.9999999936988696,
+   "GM": 0.9999999775809556
+  },
+  "pass": true
+ },
+ "C5_F_DISP": {
+  "GK": {
+   "CI_a2_total": 0.0003183480052802584,
+   "F_CONV_pass_A2": true,
+   "a2": -0.01279416153079276,
+   "a4": -0.0029984197755478044,
+   "regime": "relative",
+   "rungs_used_ka": [
+    0.3,
+    0.15,
+    0.075,
+    0.0375
+   ]
+  },
+  "GM": {
+   "CI_a2_total": 0.00012367688421115533,
+   "F_CONV_pass_A2": true,
+   "a2": -0.01993261914213197,
+   "a4": -0.008270941562040834,
+   "regime": "relative",
+   "rungs_used_ka": [
+    0.3,
+    0.15,
+    0.075,
+    0.0375
+   ]
+  }
+ },
+ "C6_arm": {
+  "GK": "A3 DISPERSIVE-O(k^2)",
+  "GM": "A3 DISPERSIVE-O(k^2)"
+ },
+ "addenda_md5": {
+  "A1": "8bf51bd05c691f3f03d796b231cdd262",
+  "A2": "a9bda086213ee0afe1e2ba01055659cd"
+ },
+ "gate": "G-S2C1",
+ "leg": "chat",
+ "prereg_md5": "2ea8ec13ffa3c32898cc24a3be605c64",
+ "registered_expectation": "DISPERSIVE",
+ "schema": "s2c1_cmp_v1",
+ "source_md5": {
+  "A2_evaluation": "77fea65fde95efd33d8990956c7c07ff",
+  "ladder_checkpoint": "5ee152fc14ac55e72094fc660aff7a4a",
+  "phase1_halt_checkpoint": "eeedcfa594a24915fa9c10c6abbd0a4e"
+ }
+}

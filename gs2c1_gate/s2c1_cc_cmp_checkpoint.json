@@ -1,0 +1,87 @@
+{
+ "schema": "s2c1_cmp_v1",
+ "gate": "G-S2C1",
+ "leg": "cc",
+ "prereg_md5": "2ea8ec13ffa3c32898cc24a3be605c64",
+ "addenda_md5": {
+  "A1": "8bf51bd05c691f3f03d796b231cdd262",
+  "A2": "a9bda086213ee0afe1e2ba01055659cd"
+ },
+ "source_md5": "2847e41c9e97388d08cd5b4c536c2f4e",
+ "C1_substrate": {
+  "kernel_U0": 20.0,
+  "g_star": 20.0,
+  "a_star": 1.46059,
+  "mu_fixed": 53.225,
+  "mean_rho": 0.9999881332389154,
+  "residual_rel": 4.1681724735375635e-12,
+  "residual_le_1e-10": true,
+  "lambda_min_L_Gamma_ge_minus1e-12": true,
+  "resolution_of_record": "n=40 Fourier-collocation band basis (dim 1521), dealiased"
+ },
+ "C2_ward_A1": {
+  "pass_a_analytic": true,
+  "pass_b_hermitian": true,
+  "analytic_ward_residual_max": 5.961899774410522e-11,
+  "hermitian_goldstone_abs_w2_max": 8.647858854906476e-09,
+  "lambda_min_L_Gamma": 3.3312736240066965e-12
+ },
+ "C3_speeds": {
+  "GK": {
+   "c_T": 5.048237184432884,
+   "c_L1_framework": 9.680731175517149,
+   "c_other_compressional": 3.74137175082421,
+   "R_T_framework": 0.5214727165650487
+  },
+  "GM": {
+   "c_T": 5.048231141601394,
+   "c_L1_framework": 9.680733197078808,
+   "c_other_compressional": 3.741372807647238,
+   "R_T_framework": 0.5214719834572772
+  }
+ },
+ "C3_F_ISO": {
+  "cT_split": 1.1970195739063882e-06,
+  "pass": true
+ },
+ "C4_F_MIX": {
+  "min_o2_T": {
+   "GK": 0.9999999949553976,
+   "GM": 0.9999999996815179
+  },
+  "pass": true
+ },
+ "C5_F_DISP": {
+  "GK": {
+   "a2": -0.0132447218611613,
+   "a4": 0.001099483432346548,
+   "CI_a2_total": 3.214442716115845e-05,
+   "regime": "relative",
+   "F_CONV_pass_A2": true,
+   "rungs_used_ka": [
+    0.3,
+    0.15,
+    0.075,
+    0.0375
+   ]
+  },
+  "GM": {
+   "a2": -0.020633674570357804,
+   "a4": -0.001941590035886091,
+   "CI_a2_total": 3.546387520417596e-05,
+   "regime": "relative",
+   "F_CONV_pass_A2": true,
+   "rungs_used_ka": [
+    0.3,
+    0.15,
+    0.075,
+    0.0375
+   ]
+  }
+ },
+ "C6_arm": {
+  "GK": "A3 DISPERSIVE-O(k^2)",
+  "GM": "A3 DISPERSIVE-O(k^2)"
+ },
+ "registered_expectation": "DISPERSIVE"
+}

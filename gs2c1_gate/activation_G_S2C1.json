@@ -1,0 +1,33 @@
+{
+ "BDG_FORM_OF_RECORD": "Hermitian: omega^2 h = L^{1/2}(L+2X)L^{1/2} h, admissible only with lambda_min(L) >= -1e-12 verified at EVERY k; product-form omega^2 f = L(L+2X) f cross-checks at two rungs (ka=0.3 and 0.01875)",
+ "BLIND_UNTIL_CC_CHECKPOINT_HASHED": true,
+ "BRANCH_NAMING": "claude/<descriptor>",
+ "CHANNEL_E2": "S2 channel = the lattice-phonon mode of maximal traceless-strain (E2) fraction o2; lattice-phonon = density-fluctuation amplitude dominated by grad rho0 (R2 >= 0.90, grad share >= 0.5); theta_id = 0.90",
+ "COMPARATOR_FROZEN": "g_s2c1_compare.py md5 e730844e9cf9e722e0e7789f90f34489 ; schema s2c1_cmp_v1 ; run after hashing your checkpoint; the chat side re-runs it on return",
+ "DISCLOSURE": "Addendum A-2's text necessarily reveals that the chat leg's a2 lies in the |a2| > 1e-5 regime; blindness under P-4 is procedural (G-POLY1 H-8); your independence rests on your own stack, not on ignorance of that fact",
+ "ELECTIONS": "E-0..E-8 at the lock record defaults (T3); A-1 and A-2 operational forms as written in the addenda",
+ "ESTIMATOR_A2": "joint LSQ omega_T/k = c(1 + a2 (ka)^2 + a4 (ka)^4) over a COMMON floor-clean rung set chosen at your largest resolution: sigma_r = floor_w2/(2 omega_T^2) < 3e-7 (floor_w2 = your A-1 Hermitian Goldstone |omega^2| at that resolution); list excluded rungs; window term from the sigma_r < 1e-6 set",
+ "EXECUTE_CC_LEG": true,
+ "FALSIFIERS": "F-MIX min o2(T) >= 0.90; F-ISO |c_T(GK)/c_T(GM) - 1| <= 0.01; F-DISP at tau = 1e-6 with CI = max(resolution deltas, window term); arms A1..A5 per prereg \u00a75",
+ "F_CONV_A2": "a2 across successive resolutions: |da2| <= 1e-7 if |a2| <= 1e-5 else |da2|/|a2| <= 1e-2 ; c_T: |dc_T|/c_T <= 1e-5",
+ "LADDER_E4": "dyadic ka in [1e-3, 0.3]: ka = 0.3/2^j, j=0..8, plus speed-set {0.005,0.01,0.015,0.02,0.03}; directions Gamma-K (along a bond) and Gamma-M (30 deg); three resolutions of your discretization (the analogue of n_b 24/32/40), per-phase JSON checkpoints",
+ "LOCK": {
+  "A1": "8bf51bd05c691f3f03d796b231cdd262",
+  "A2": "a9bda086213ee0afe1e2ba01055659cd",
+  "T1": "8cd89b9a82704accd89f7ff6f5e220b4",
+  "lock_record": "f2f4d50029fb5be3122a885c48a7e04f",
+  "prereg": "2ea8ec13ffa3c32898cc24a3be605c64"
+ },
+ "NO_FOLD_NO_WINDOW_ACTION": true,
+ "P4b_BASE64_ARMOR_QUARANTINE": true,
+ "REQUESTED_VARIATION": "your OWN crystallization (different solver/seed than semi-implicit imaginary time + Newton-Krylov), your OWN BdG discretization (e.g. real-space finite-difference Bloch-BdG, or a Fourier-grid BdG built from a different kernel-table method), your OWN E2/quadrupole projector implementation and fitter; ZERO code reuse from the quarantined chat instruments",
+ "S9_ON_ANY_MISS": true,
+ "SUBSTRATE_TO_BUILD": "2-D GP, hbar=m=1, gem8 kernel U(r)=20*exp(-r^8) (R=1), hexagonal p6m primitive cell a*=1.46059, one density peak per cell, FIXED mu=53.225 (report mean density; ~1 expected), stationarity ||L psi0||/||psi0|| <= 1e-10 (L = -1/2 lap - mu + U*rho0)",
+ "T1_SCAN": "grep -n -i -F -f t1_forbidden_G_S2_ON_CONE.txt <every CC instrument and checkpoint> -> zero hits; exemptions: the locked prereg/addenda/reports and the quarantined chat artifacts",
+ "VERIFY_THEN_BUILD": true,
+ "WARD_GAMMA_A1": "(a) ||(L+2X) d_x psi0||/||d_x psi0|| and d_y both <= 1e-9 in your basis; (b) Hermitian-form Goldstone |omega^2| <= 1e-8 at Gamma with lambda_min(L) >= -1e-12; halt if either fails",
+ "dispatch": "CC LEG \u2014 single-crystal S2-on-cone ladder",
+ "dispatch_date": "2026-09-03",
+ "display": "Gate G-S2-ON-CONE",
+ "gate": "G-S2C1"
+}

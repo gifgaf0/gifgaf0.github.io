@@ -1,0 +1,25 @@
+checkpoint QUARANTINE/s2c1_chat_cmp_checkpoint.json md5 2aa66ea21dd5cda16535d409654fe4dd
+checkpoint s2c1_cc_cmp_checkpoint.json md5 84699fdf4c39252c96deab30d47279fc
+  C1 MISS  kernel U0 56.95094726226156 vs 20.0
+  C1 PASS  mean_rho 0.9999881292474472 vs 0.9999881332389154
+  C1 PASS  residual<=1e-10 True vs True
+  C1 PASS  lambda_min(L) floor
+  C2 PASS  A-1 (a)/(b) chat True/True cc True/True
+  C3 PASS  GK c_T 5.048200 vs 5.048237 (rel 7.4e-06)
+  C3 PASS  GK c_L1 9.68055 vs 9.68073
+  C3 PASS  GK R_T 0.52148 vs 0.52147
+  C3 PASS  GM c_T 5.048171 vs 5.048231 (rel 1.2e-05)
+  C3 PASS  GM c_L1 9.68059 vs 9.68073
+  C3 PASS  GM R_T 0.52147 vs 0.52147
+  C3 PASS  F-ISO pass True vs True (splits 1.3e-05 / 1.2e-06)
+  C4 PASS  F-MIX pass True vs True (min o2 {'GK': 0.9999999936988696, 'GM': 0.9999999775809556} / {'GK': 0.9999999949553976, 'GM': 0.9999999996815179})
+  C5 PASS  GK a2 -1.2794e-02 vs -1.3245e-02 (rel 3.4e-02)
+  C5 MISS  GK a4 -2.998e-03 vs +1.099e-03 (rel 1.4e+00)
+  C5 PASS  GK F-CONV(A-2) True vs True
+  C6 PASS  GK arm A3 DISPERSIVE-O(k^2) vs A3 DISPERSIVE-O(k^2)
+  C5 PASS  GM a2 -1.9933e-02 vs -2.0634e-02 (rel 3.4e-02)
+  C5 MISS  GM a4 -8.271e-03 vs -1.942e-03 (rel 7.7e-01)
+  C5 PASS  GM F-CONV(A-2) True vs True
+  C6 PASS  GM arm A3 DISPERSIVE-O(k^2) vs A3 DISPERSIVE-O(k^2)
+VERDICT chat={'GK': 'A3', 'GM': 'A3'} cc={'GK': 'A3', 'GM': 'A3'}
+RESULT: S9 TRIGGERED — 3 miss(es); counter-cross-check before any verdict.

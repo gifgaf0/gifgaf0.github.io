@@ -1,0 +1,459 @@
+{
+ "gate": "G-POLY1",
+ "phase": "3",
+ "leg": "cc",
+ "read": "cc-1 (authorized: re-lock 3 6a7069b0; election E3-5(a) CC-blind-first)",
+ "lock": {
+  "memo": "e16a78906560d2bb076d0699966981ac",
+  "addendum1": "ba75b113e8ad094cd752026df4e73977",
+  "relock1": "7f4b53ad43af3aff55938726d8f26738",
+  "addendum2": "ac87bc92890c7bf6a08b3d67d493ec9c",
+  "relock2": "b1150c946f6986a9bc19ae2b073db83e",
+  "addendum3": "257b81bf3924cb92ca9d1232fb94325c",
+  "relock3": "6a7069b07c2184eea41dfc38b4446c9d",
+  "base": "V4.75 0e923ab786c1e1a96eb0a3bcad3e616f",
+  "elections": [
+   "E3-1(a)",
+   "E3-2(a)",
+   "E3-3(a)",
+   "E3-4(a)",
+   "E3-5(a)"
+  ]
+ },
+ "sealed": {
+  "md5": "a1d19dd98151cd7299af41fb14584c6f",
+  "bytes": 2470,
+  "row_count": 4,
+  "class_census": {
+   "ATT-REF": 1,
+   "CEIL": 1,
+   "DLM": 1,
+   "VLD": 1
+  }
+ },
+ "refs": {
+  "D_ref_m": 1.234271032596547e+24,
+  "k_ref_per_m": 2.095845021951682e-06
+ },
+ "unit_map": "sealed Unit map carries no explicit unit definitions; runtime table governs (P3-A1 S2(e))",
+ "design_register": {
+  "CC-DD-1": "sign-guarded numeric lexer: a digit run preceded by [0-9A-Za-z_.-] is part of an identifier (e.g. NAME-3, V4.75), not a quantity",
+  "CC-DD-2": "unit tokens start with a letter or percent; a captured unit whose base is a known length/frequency unit carrying an inverse marker (slash, caret-minus, superscript-minus) is DIMENSIONED (inverse dimension); unknown unit tokens cannot certify a dimension and pass the dimensionless validator; bare percent is dimensionless",
+  "CC-DD-3": "comparison-operator variants (incl. or-similar forms and the unicode minus) normalized row-wide; multiplication-dot variants normalized only inside criterion matching (P3-A2 S2 scope)",
+  "CC-DD-4": "CEIL primary window = 80 chars after the adjacency token; CEIL-FB clause = leading class keyword to next clause delimiter (semicolon or non-decimal period)",
+  "CC-DD-5": "DLM primary adjacency tokens = the frozen P3-A1 S2(b) list {ceiling, bound, margin, criterion} (first present token with an adjacent quantity, 80-char window, single-shot dimensionless validation); no class-specific token list was invented",
+  "CC-DD-6": "VLD f_max+margin route read literally as d <= margin x lambda_min (lambda_min = c/f_max), intersected with the E3-3(a) envelope d <= 0.3/k(f_max); the tighter governs and is reported",
+  "CC-DD-7": "superscript exponents are NOT folded into numeric values (the frozen text normalizes operator variants only); a superscript-tailed exponent leaves the leading mantissa as the read value \u2014 flagged for author adjudication",
+  "CC-DD-8": "P1-P6 engaged first-match-in-order (dispatch S2(a)); every additionally matching pattern is recorded in the checkpoint"
+ },
+ "curves": {
+  "QTa": {
+   "hex:step": 0.03519074,
+   "hex:gem8": 0.05002055,
+   "cubic:step": 0.05407763,
+   "cubic:gem8": 0.0754943
+  },
+  "s1": {
+   "hex:step": 0.151508022,
+   "hex:gem8": 0.181569447,
+   "cubic:step": 0.233348904,
+   "cubic:gem8": 0.284231508
+  }
+ },
+ "self_tests": "memo S7 + C-SYN-X (four-class, symbolic, fallback, adversarial shared + CC additions, forced-failure masking) ALL PASS pre-read",
+ "anchors": [
+  {
+   "idx": 1,
+   "cls": "ATT-REF",
+   "oom": false,
+   "inherit": [],
+   "fallback": null,
+   "kind": "att",
+   "B": 1.0,
+   "k": 2.095845021951682e-06,
+   "L": 1.234271032596547e+24,
+   "pattern": "P5",
+   "matched_span": "\u2113_att(f_ref) >= D_ref",
+   "reading": "symbolic expr >= D_ref / n => B = n (n absent => 1)",
+   "also_matched": []
+  },
+  {
+   "idx": 2,
+   "cls": "CEIL",
+   "oom": true,
+   "inherit": [
+    "D_ref"
+   ],
+   "fallback": null,
+   "kind": "ceil",
+   "B": 90.0,
+   "matched_span": "90%",
+   "k": 2.095845021951682e-06,
+   "L": 1.234271032596547e+24,
+   "own_freq_span": "100 Hz",
+   "own_len_span": null,
+   "caveat": "Caveat carried: that measurement is polarization-differential; its use as a common-mode order-of-magnitude ceiling is election E6's annotation, reported, non-verdict-bearing."
+  },
+  {
+   "idx": 3,
+   "cls": "DLM",
+   "oom": true,
+   "inherit": [
+    "D_ref"
+   ],
+   "fallback": null,
+   "kind": "dlm",
+   "B": 3.19,
+   "matched_span": "3.19",
+   "L": 1.234271032596547e+24,
+   "own_len_span": null,
+   "primary_reject": null,
+   "binding": "Binding caveat: SME coefficients are static background fields; the G-POLY1 residual is stochastic/path-random \u2014 comparison is order-of-magnitude dialect-matching ONLY, R2-estimate."
+  },
+  {
+   "idx": 4,
+   "cls": "VLD",
+   "oom": false,
+   "inherit": [],
+   "fallback": null,
+   "kind": "vld",
+   "d_cap": 14314.035477710826,
+   "k_max": 2.0958450219516817e-05,
+   "margin": 10.0,
+   "margin_span": "10",
+   "cap_margin_route": 2997924.58,
+   "cap_envelope": 14314.035477710826,
+   "governing_clip": "kd-envelope",
+   "reading": "f_max+margin route (CC-DD-6): min(margin * lambda_min, 0.3/k_max)"
+  }
+ ],
+ "anchor_texts": {
+  "1": "**A-1 (verdict-bearing transparency):** GW170817-class anchor \u2014 D_ref = 40 Mpc (EM-counterpart distance); f_ref = 100 Hz; criterion \u2113_att(f_ref) >= D_ref (one e-fold, conservative).",
+  "2": "**A-2 (reported secondary):** GWTC-3 Gpc-scale ceiling \u2014 |\u03b1_T(100 Hz)| <= 0.05 Gpc\u207b\u00b9, elected as the 90%-band edge of the measured birefringent-attenuation constraint \u03ba = -0.019 (+0.038/-0.029) Gpc\u207b\u00b9 at 100 Hz (arXiv:2305.05844). Caveat carried: that measurement is polarization-differential; its use as a common-mode order-of-magnitude ceiling is election E6's annotation, reported, non-verdict-bearing.",
+  "3": "**A-3 (Phase-2 dialect band):** SME linearized-gravity bounds \u2014 isotropic k\u207d\u2075\u207e\u208dV\u208e\u2080\u2080 <= 3.19\u00d710\u207b\u00b9\u2075 m; 16 anisotropic k\u207d\u2075\u207e coefficients ~10\u207b\u00b9\u00b3 m (Haegel et al., arXiv:2210.04481 / PRD 107, 064031 (2023)); d=6 non-birefringent anisotropic set (25 coefficients) per PRD 107, 124015 (2023) (arXiv:2302.05077). Binding caveat: SME coefficients are static background fields; the G-POLY1 residual is stochastic/path-random \u2014 comparison is order-of-magnitude dialect-matching ONLY, R2-estimate.",
+  "4": "**A-4 (validity ceiling):** f_max = 1 kHz; \u03bb\u226bd margin \u03b5 = 10\u207b\u00b2; admissibility requires d <= \u03b5\u00b7\u03bb_min in any reported window W."
+ },
+ "per_arm": {
+  "hex:step": {
+   "cls": "P-2",
+   "W": [
+    0.0,
+    2.1213132100130068
+   ],
+   "governing": "A1",
+   "edges": [
+    [
+     2.1213132100130068,
+     "A1"
+    ],
+    [
+     9.506463088884349,
+     "A2-att"
+    ],
+    [
+     14314.035477710826,
+     "A4-cap"
+    ]
+   ],
+   "voided": [
+    [
+     "A2-bir",
+     4.355362412343389e+29,
+     "BIR regime invalid: N_edge=2.834e-06 < 10"
+    ],
+    [
+     "A3",
+     5.471679437561428e+26,
+     "BIR regime invalid: N_edge=2.256e-03 < 10"
+    ]
+   ],
+   "note": "no lower-edge rows present: UNBOUNDED-BELOW"
+  },
+  "hex:gem8": {
+   "cls": "P-2",
+   "W": [
+    0.0,
+    1.8866794048346085
+   ],
+   "governing": "A1",
+   "edges": [
+    [
+     1.8866794048346085,
+     "A1"
+    ],
+    [
+     8.454974040477918,
+     "A2-att"
+    ],
+    [
+     14314.035477710826,
+     "A4-cap"
+    ]
+   ],
+   "voided": [
+    [
+     "A2-bir",
+     3.0325642696062758e+29,
+     "BIR regime invalid: N_edge=4.070e-06 < 10"
+    ],
+    [
+     "A3",
+     3.809836699251904e+26,
+     "BIR regime invalid: N_edge=3.240e-03 < 10"
+    ]
+   ],
+   "note": "no lower-edge rows present: UNBOUNDED-BELOW"
+  },
+  "cubic:step": {
+   "cls": "P-2",
+   "W": [
+    0.0,
+    1.838266105289967
+   ],
+   "governing": "A1",
+   "edges": [
+    [
+     1.838266105289967,
+     "A1"
+    ],
+    [
+     8.238014450070523,
+     "A2-att"
+    ],
+    [
+     14314.035477710826,
+     "A4-cap"
+    ]
+   ],
+   "voided": [
+    [
+     "A2-bir",
+     1.836047973662208e+29,
+     "BIR regime invalid: N_edge=6.722e-06 < 10"
+    ],
+    [
+     "A3",
+     2.3066429363930853e+26,
+     "BIR regime invalid: N_edge=5.351e-03 < 10"
+    ]
+   ],
+   "note": "no lower-edge rows present: UNBOUNDED-BELOW"
+  },
+  "cubic:gem8": {
+   "cls": "P-2",
+   "W": [
+    0.0,
+    1.6447865351995365
+   ],
+   "governing": "A1",
+   "edges": [
+    [
+     1.6447865351995365,
+     "A1"
+    ],
+    [
+     7.370954186195101,
+     "A2-att"
+    ],
+    [
+     14314.035477710826,
+     "A4-cap"
+    ]
+   ],
+   "voided": [
+    [
+     "A2-bir",
+     1.2375168385119339e+29,
+     "BIR regime invalid: N_edge=9.974e-06 < 10"
+    ],
+    [
+     "A3",
+     1.554703098812505e+26,
+     "BIR regime invalid: N_edge=7.939e-03 < 10"
+    ]
+   ],
+   "note": "no lower-edge rows present: UNBOUNDED-BELOW"
+  }
+ },
+ "per_arm_oom_relaxed": {
+  "hex:step": {
+   "cls": "P-2",
+   "W": [
+    0.0,
+    2.1213132100130068
+   ],
+   "governing": "A1",
+   "edges": [
+    [
+     2.1213132100130068,
+     "A1"
+    ],
+    [
+     20.481053863134655,
+     "A2-att"
+    ],
+    [
+     14314.035477710826,
+     "A4-cap"
+    ]
+   ],
+   "voided": [
+    [
+     "A2-bir",
+     4.355362412343389e+31,
+     "BIR regime invalid: N_edge=2.834e-08 < 10"
+    ],
+    [
+     "A3",
+     5.471679437561428e+28,
+     "BIR regime invalid: N_edge=2.256e-05 < 10"
+    ]
+   ],
+   "note": "no lower-edge rows present: UNBOUNDED-BELOW"
+  },
+  "hex:gem8": {
+   "cls": "P-2",
+   "W": [
+    0.0,
+    1.8866794048346085
+   ],
+   "governing": "A1",
+   "edges": [
+    [
+     1.8866794048346085,
+     "A1"
+    ],
+    [
+     18.215689379596256,
+     "A2-att"
+    ],
+    [
+     14314.035477710826,
+     "A4-cap"
+    ]
+   ],
+   "voided": [
+    [
+     "A2-bir",
+     3.0325642696062756e+31,
+     "BIR regime invalid: N_edge=4.070e-08 < 10"
+    ],
+    [
+     "A3",
+     3.809836699251904e+28,
+     "BIR regime invalid: N_edge=3.240e-05 < 10"
+    ]
+   ],
+   "note": "no lower-edge rows present: UNBOUNDED-BELOW"
+  },
+  "cubic:step": {
+   "cls": "P-2",
+   "W": [
+    0.0,
+    1.838266105289967
+   ],
+   "governing": "A1",
+   "edges": [
+    [
+     1.838266105289967,
+     "A1"
+    ],
+    [
+     17.748264111427005,
+     "A2-att"
+    ],
+    [
+     14314.035477710826,
+     "A4-cap"
+    ]
+   ],
+   "voided": [
+    [
+     "A2-bir",
+     1.8360479736622082e+31,
+     "BIR regime invalid: N_edge=6.722e-08 < 10"
+    ],
+    [
+     "A3",
+     2.306642936393085e+28,
+     "BIR regime invalid: N_edge=5.351e-05 < 10"
+    ]
+   ],
+   "note": "no lower-edge rows present: UNBOUNDED-BELOW"
+  },
+  "cubic:gem8": {
+   "cls": "P-2",
+   "W": [
+    0.0,
+    1.6447865351995365
+   ],
+   "governing": "A1",
+   "edges": [
+    [
+     1.6447865351995365,
+     "A1"
+    ],
+    [
+     15.88023939967464,
+     "A2-att"
+    ],
+    [
+     14314.035477710826,
+     "A4-cap"
+    ]
+   ],
+   "voided": [
+    [
+     "A2-bir",
+     1.2375168385119335e+31,
+     "BIR regime invalid: N_edge=9.974e-08 < 10"
+    ],
+    [
+     "A3",
+     1.5547030988125045e+28,
+     "BIR regime invalid: N_edge=7.939e-05 < 10"
+    ]
+   ],
+   "note": "no lower-edge rows present: UNBOUNDED-BELOW"
+  }
+ },
+ "oom_robustness": {
+  "hex:step": {
+   "point_class": "P-2",
+   "relaxed_class": "P-2",
+   "point_up": 2.1213132100130068,
+   "relaxed_up": 2.1213132100130068,
+   "survives": "YES"
+  },
+  "hex:gem8": {
+   "point_class": "P-2",
+   "relaxed_class": "P-2",
+   "point_up": 1.8866794048346085,
+   "relaxed_up": 1.8866794048346085,
+   "survives": "YES"
+  },
+  "cubic:step": {
+   "point_class": "P-2",
+   "relaxed_class": "P-2",
+   "point_up": 1.838266105289967,
+   "relaxed_up": 1.838266105289967,
+   "survives": "YES"
+  },
+  "cubic:gem8": {
+   "point_class": "P-2",
+   "relaxed_class": "P-2",
+   "point_up": 1.6447865351995365,
+   "relaxed_up": 1.6447865351995365,
+   "survives": "YES"
+  }
+ },
+ "gate_class": "P-2",
+ "W_union": [
+  [
+   0.0,
+   2.1213132100130068
+  ]
+ ],
+ "mapper_source_md5": "f1cd9de544b1378da2cfea211db6eb52",
+ "h_ledger": "H-12..H-17 stand (chain records); CC leg: no sealed-contact H-items; pre-read gate iterations logged in the CC run report"
+}

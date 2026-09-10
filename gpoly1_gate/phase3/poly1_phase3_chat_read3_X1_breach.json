@@ -1,0 +1,15 @@
+{
+ "gate": "G-POLY1",
+ "phase": "3",
+ "leg": "chat",
+ "read": "3 (authorized re-lock 2 b1150c94)",
+ "verdict": "X-1 SCHEMA-DEFECT",
+ "breach": "H-16 QUARANTINE BREACH: the read-#3 X-1 diagnostic printed the raw failing clause (anchor A-2) unmasked into the chat transcript and into the original checkpoint; root cause: pipe field-separator collision with absolute-value bars defeated the len==3 masking branch; the ratified P3-A2 \u00a74 masking rule was violated by this leg.",
+ "contaminated_checkpoint_md5": "d6e734516adf43ddff01411f977ba73b",
+ "row": "row 2",
+ "defect": "CEIL value unreadable (primary and fallback both failed)",
+ "underlying_defect": "H-17: CEIL-FB tested only the FIRST quantity in the clause; the frozen P3-A2 \u00a73 text specifies the first DIMENSIONLESS quantity; a dimensioned decoy quantity earlier in the clause defeated it",
+ "masked_clause": "# # # <U> <U> ceiling # # <U> # # <U> elected as the # edge of the measured birefringent-attenuation constraint # # # # <U> at # <U> # Caveat # that measurement is # its use as a common-mode order-of-magnitude ceiling is election # # # #",
+ "sealed_md5": "a1d19dd98151cd7299af41fb14584c6f",
+ "exposure": "A-2 clause verbatim in transcript (irreversible, recorded); row 1 parsed in-process only, never printed; rows 3-4 never reached"
+}

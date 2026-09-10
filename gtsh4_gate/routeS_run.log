@@ -1,0 +1,21 @@
+[step] AB  xz   A=239.4270 A_odd=4.15e-13 c4=-1.789e+03 res=9.5e-10 56s
+[step] AB  xy   A=256.1391 A_odd=-2.05e-12 c4=5.655e+01 res=8.7e-10 58s
+[step] AB  dev  A=256.1395 A_odd=2.63e-04 c4=5.525e+01 res=9.7e-10 48s
+[step] AB  bi   A=591.3509 A_odd=7.42e-01 c4=1.835e+03 res=8.9e-10 25s
+[step] AB  zz   A=238.5659 A_odd=2.55e-01 c4=4.217e+02 res=9.2e-10 29s
+[step] AB  iso  A=1062.0533 A_odd=9.97e-01 c4=2.837e+03 res=3.8e-10 27s
+[step] FCC xz   A=368.3232 A_odd=-4.99e-13 c4=1.711e+03 res=5.0e-11 23s
+[step] FCC dev  A=163.2945 A_odd=3.35e-13 c4=-4.375e+02 res=1.2e-10 23s
+[step] FCC iso  A=1067.6584 A_odd=-2.28e-01 c4=2.846e+03 res=9.3e-11 23s
+[step] F-ISO |C66-(C11-C12)/2|/C66 = 1.343e-06  passed=True
+[gem8] AB  xz   A=338.0365 A_odd=-1.69e-12 c4=-3.021e+03 res=6.3e-10 57s
+[gem8] AB  xy   A=351.9922 A_odd=-2.83e-12 c4=-3.081e+02 res=6.7e-10 65s
+[gem8] AB  dev  A=351.9927 A_odd=2.75e-04 c4=-3.097e+02 res=9.3e-10 53s
+[gem8] AB  bi   A=901.8179 A_odd=1.02e+00 c4=1.379e+03 res=9.7e-10 25s
+[gem8] AB  zz   A=365.5130 A_odd=3.78e-01 c4=1.549e+02 res=8.6e-10 25s
+[gem8] AB  iso  A=1616.3020 A_odd=1.39e+00 c4=9.674e+02 res=6.8e-10 24s
+[gem8] FCC xz   A=561.7027 A_odd=-2.46e-12 c4=2.054e+03 res=2.3e-11 21s
+[gem8] FCC dev  A=203.2622 A_odd=6.89e-13 c4=-4.893e+02 res=2.2e-11 19s
+[gem8] FCC iso  A=1618.3493 A_odd=7.01e-01 c4=9.339e+02 res=4.5e-11 20s
+[gem8] F-ISO |C66-(C11-C12)/2|/C66 = 1.271e-06  passed=True
+WROTE tsh4_routeS_measurements.json

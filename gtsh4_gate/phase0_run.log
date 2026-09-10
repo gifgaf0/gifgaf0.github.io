@@ -1,0 +1,25 @@
+/home/user/gifgaf0.github.io/gtsh4_gate/tsh4_phase0.py:50: RankWarning: Polyfit may be poorly conditioned
+  p = np.polyfit(xs, ys, 2)
+[step] AA   params=[1.2647 1.3401] e=69.685277 (fine=69.685277) fconv=0.0e+00/True sym=True 115s
+[step] AB   params=[1.386  2.2596] e=68.342749 (fine=68.342749) fconv=2.1e-16/True sym=True 49s
+[step] ABC  params=[1.3855 3.3919] e=68.351241 (fine=68.351241) fconv=6.2e-16/True sym=True 59s
+/home/user/gifgaf0.github.io/gtsh4_gate/tsh4_phase0.py:50: RankWarning: Polyfit may be poorly conditioned
+  p = np.polyfit(xs, ys, 2)
+[step] FCC  params=[1.9569] e=68.340703 (fine=68.350821) fconv=6.2e-16/True sym=True 22s
+/home/user/gifgaf0.github.io/gtsh4_gate/tsh4_phase0.py:50: RankWarning: Polyfit may be poorly conditioned
+  p = np.polyfit(xs, ys, 2)
+[step] BCC  params=[1.5581] e=69.196247 (fine=69.191423) fconv=2.1e-16/True sym=True 8s
+== kernel step done in 253s ==
+/home/user/gifgaf0.github.io/gtsh4_gate/tsh4_phase0.py:50: RankWarning: Polyfit may be poorly conditioned
+  p = np.polyfit(xs, ys, 2)
+[gem8] AA   params=[1.2696 1.326 ] e=100.700628 (fine=100.700628) fconv=2.8e-16/True sym=True 115s
+[gem8] AB   params=[1.3744 2.2417] e=98.942926 (fine=98.942926) fconv=7.2e-16/True sym=True 46s
+[gem8] ABC  params=[1.374  3.3643] e=98.954277 (fine=98.954277) fconv=4.3e-16/True sym=True 75s
+/home/user/gifgaf0.github.io/gtsh4_gate/tsh4_phase0.py:50: RankWarning: Polyfit may be poorly conditioned
+  p = np.polyfit(xs, ys, 2)
+[gem8] FCC  params=[1.9421] e=98.944340 (fine=98.953858) fconv=7.2e-16/True sym=True 25s
+/home/user/gifgaf0.github.io/gtsh4_gate/tsh4_phase0.py:50: RankWarning: Polyfit may be poorly conditioned
+  p = np.polyfit(xs, ys, 2)
+[gem8] BCC  params=[1.5394] e=99.866676 (fine=99.857361) fconv=2.8e-16/True sym=True 8s
+== kernel gem8 done in 270s ==
+WROTE tsh4_phase0_measurements.json

@@ -1,0 +1,1803 @@
+{
+  "checks": [
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key gate",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key leg",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key instrument",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key instrument_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key memo",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key memo_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key memo_bytes",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key ledger_base_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key elections.E-Q-1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key elections.E-Q-2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key utc",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key inventory_rows",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key results",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key falsifiers.F-QUANTA-1.state",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key falsifiers.F-QUANTA-2.state",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key falsifiers.F-QUANTA-3.state",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key promotion_conditions.PC-1_nontrivial_partition.met",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key promotion_conditions.PC-1_nontrivial_partition.n_pass",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key promotion_conditions.PC-1_nontrivial_partition.n_fail",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key promotion_conditions.PC-2_independence_witness.met",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: required key promotion_conditions.PC-2_independence_witness.witnesses",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[0].object",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[0].ledger_ref",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[0].perspective",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[0].config_space",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[0].invariant",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[0].functional_class",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[0].C1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[0].C2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[0].verdict",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[1].object",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[1].ledger_ref",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[1].perspective",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[1].config_space",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[1].invariant",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[1].functional_class",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[1].C1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[1].C2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[1].verdict",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[2].object",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[2].ledger_ref",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[2].perspective",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[2].config_space",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[2].invariant",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[2].functional_class",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[2].C1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[2].C2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[2].verdict",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[3].object",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[3].ledger_ref",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[3].perspective",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[3].config_space",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[3].invariant",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[3].functional_class",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[3].C1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[3].C2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[3].verdict",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[4].object",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[4].ledger_ref",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[4].perspective",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[4].config_space",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[4].invariant",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[4].functional_class",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[4].C1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[4].C2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[4].verdict",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[5].object",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[5].ledger_ref",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[5].perspective",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[5].config_space",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[5].invariant",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[5].functional_class",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[5].C1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[5].C2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: results[5].verdict",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: memo_md5 == lock",
+      "result": "PASS",
+      "chat": "0039d001769569297c2aa8ccbded5a3b",
+      "cc": "0039d001769569297c2aa8ccbded5a3b"
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: memo_bytes == lock",
+      "result": "PASS",
+      "chat": 4863,
+      "cc": 4863
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: instrument_md5 real 32-hex",
+      "result": "PASS",
+      "chat": "79072196cdfc480f4073195d96100d2e",
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "chat: no placeholder tokens",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key gate",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key leg",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key instrument",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key instrument_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key memo",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key memo_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key memo_bytes",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key ledger_base_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key elections.E-Q-1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key elections.E-Q-2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key utc",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key inventory_rows",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key results",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key falsifiers.F-QUANTA-1.state",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key falsifiers.F-QUANTA-2.state",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key falsifiers.F-QUANTA-3.state",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key promotion_conditions.PC-1_nontrivial_partition.met",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key promotion_conditions.PC-1_nontrivial_partition.n_pass",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key promotion_conditions.PC-1_nontrivial_partition.n_fail",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key promotion_conditions.PC-2_independence_witness.met",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: required key promotion_conditions.PC-2_independence_witness.witnesses",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[0].object",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[0].ledger_ref",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[0].perspective",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[0].config_space",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[0].invariant",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[0].functional_class",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[0].C1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[0].C2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[0].verdict",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[1].object",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[1].ledger_ref",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[1].perspective",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[1].config_space",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[1].invariant",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[1].functional_class",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[1].C1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[1].C2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[1].verdict",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[2].object",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[2].ledger_ref",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[2].perspective",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[2].config_space",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[2].invariant",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[2].functional_class",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[2].C1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[2].C2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[2].verdict",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[3].object",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[3].ledger_ref",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[3].perspective",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[3].config_space",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[3].invariant",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[3].functional_class",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[3].C1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[3].C2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[3].verdict",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[4].object",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[4].ledger_ref",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[4].perspective",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[4].config_space",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[4].invariant",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[4].functional_class",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[4].C1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[4].C2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[4].verdict",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[5].object",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[5].ledger_ref",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[5].perspective",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[5].config_space",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[5].invariant",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[5].functional_class",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[5].C1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[5].C2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: results[5].verdict",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: memo_md5 == lock",
+      "result": "PASS",
+      "chat": "0039d001769569297c2aa8ccbded5a3b",
+      "cc": "0039d001769569297c2aa8ccbded5a3b"
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: memo_bytes == lock",
+      "result": "PASS",
+      "chat": 4863,
+      "cc": 4863
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: instrument_md5 real 32-hex",
+      "result": "PASS",
+      "chat": "4b1e700e3df9c1b5f51904fbf70ec219",
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "cc: no placeholder tokens",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-Q-0",
+      "item": "INDEPENDENCE: instrument_md5 differ",
+      "result": "PASS",
+      "chat": "79072196cdfc480f4073195d96100d2e",
+      "cc": "4b1e700e3df9c1b5f51904fbf70ec219"
+    },
+    {
+      "check": "C-Q-0",
+      "item": "INDEPENDENCE: checkpoints not byte-identical",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C1",
+      "item": "memo_md5",
+      "result": "PASS",
+      "chat": "0039d001769569297c2aa8ccbded5a3b",
+      "cc": "0039d001769569297c2aa8ccbded5a3b"
+    },
+    {
+      "check": "C1",
+      "item": "memo_bytes",
+      "result": "PASS",
+      "chat": 4863,
+      "cc": 4863
+    },
+    {
+      "check": "C1",
+      "item": "ledger_base_md5",
+      "result": "PASS",
+      "chat": "b4e55aaea76a2152f7b1873309aec077",
+      "cc": "b4e55aaea76a2152f7b1873309aec077"
+    },
+    {
+      "check": "C1",
+      "item": "ledger_base_md5 == V4.81",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C2",
+      "item": "row count",
+      "result": "PASS",
+      "chat": 6,
+      "cc": 6
+    },
+    {
+      "check": "C2",
+      "item": "[0].object",
+      "result": "PASS",
+      "chat": "L_B Borromean Baryon",
+      "cc": "L_B Borromean Baryon"
+    },
+    {
+      "check": "C2",
+      "item": "[0].ledger_ref",
+      "result": "PASS",
+      "chat": "§2.15/§2.51",
+      "cc": "§2.15/§2.51"
+    },
+    {
+      "check": "C2",
+      "item": "[0].perspective",
+      "result": "PASS",
+      "chat": "L-Perspective",
+      "cc": "L-Perspective"
+    },
+    {
+      "check": "C2",
+      "item": "[0].config_space",
+      "result": "PASS",
+      "chat": "Continuous",
+      "cc": "Continuous"
+    },
+    {
+      "check": "C2",
+      "item": "[0].invariant",
+      "result": "PASS",
+      "chat": "Linking Number",
+      "cc": "Linking Number"
+    },
+    {
+      "check": "C2",
+      "item": "[0].functional_class",
+      "result": "PASS",
+      "chat": "Rigid Constraint",
+      "cc": "Rigid Constraint"
+    },
+    {
+      "check": "C3",
+      "item": "[0].C1 (L_B Borromean Baryon)",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C3",
+      "item": "[0].C2 (L_B Borromean Baryon)",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C4",
+      "item": "[0].verdict (L_B Borromean Baryon)",
+      "result": "PASS",
+      "chat": "PASS",
+      "cc": "PASS"
+    },
+    {
+      "check": "C2",
+      "item": "[1].object",
+      "result": "PASS",
+      "chat": "K₇ Vortex",
+      "cc": "K₇ Vortex"
+    },
+    {
+      "check": "C2",
+      "item": "[1].ledger_ref",
+      "result": "PASS",
+      "chat": "§3.4",
+      "cc": "§3.4"
+    },
+    {
+      "check": "C2",
+      "item": "[1].perspective",
+      "result": "PASS",
+      "chat": "L-Perspective",
+      "cc": "L-Perspective"
+    },
+    {
+      "check": "C2",
+      "item": "[1].config_space",
+      "result": "PASS",
+      "chat": "Continuous",
+      "cc": "Continuous"
+    },
+    {
+      "check": "C2",
+      "item": "[1].invariant",
+      "result": "PASS",
+      "chat": "Fano Winding",
+      "cc": "Fano Winding"
+    },
+    {
+      "check": "C2",
+      "item": "[1].functional_class",
+      "result": "PASS",
+      "chat": "Competing Exponents",
+      "cc": "Competing Exponents"
+    },
+    {
+      "check": "C3",
+      "item": "[1].C1 (K₇ Vortex)",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C3",
+      "item": "[1].C2 (K₇ Vortex)",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C4",
+      "item": "[1].verdict (K₇ Vortex)",
+      "result": "PASS",
+      "chat": "PASS",
+      "cc": "PASS"
+    },
+    {
+      "check": "C2",
+      "item": "[2].object",
+      "result": "PASS",
+      "chat": "Electron 2π Closure",
+      "cc": "Electron 2π Closure"
+    },
+    {
+      "check": "C2",
+      "item": "[2].ledger_ref",
+      "result": "PASS",
+      "chat": "§2.50.A",
+      "cc": "§2.50.A"
+    },
+    {
+      "check": "C2",
+      "item": "[2].perspective",
+      "result": "PASS",
+      "chat": "L-Perspective",
+      "cc": "L-Perspective"
+    },
+    {
+      "check": "C2",
+      "item": "[2].config_space",
+      "result": "PASS",
+      "chat": "Continuous",
+      "cc": "Continuous"
+    },
+    {
+      "check": "C2",
+      "item": "[2].invariant",
+      "result": "PASS",
+      "chat": "Winding Number",
+      "cc": "Winding Number"
+    },
+    {
+      "check": "C2",
+      "item": "[2].functional_class",
+      "result": "PASS",
+      "chat": "Rigid Constraint",
+      "cc": "Rigid Constraint"
+    },
+    {
+      "check": "C3",
+      "item": "[2].C1 (Electron 2π Closure)",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C3",
+      "item": "[2].C2 (Electron 2π Closure)",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C4",
+      "item": "[2].verdict (Electron 2π Closure)",
+      "result": "PASS",
+      "chat": "PASS",
+      "cc": "PASS"
+    },
+    {
+      "check": "C2",
+      "item": "[3].object",
+      "result": "PASS",
+      "chat": "Clifford Unknot / Rule 17",
+      "cc": "Clifford Unknot / Rule 17"
+    },
+    {
+      "check": "C2",
+      "item": "[3].ledger_ref",
+      "result": "PASS",
+      "chat": "§2.41",
+      "cc": "§2.41"
+    },
+    {
+      "check": "C2",
+      "item": "[3].perspective",
+      "result": "PASS",
+      "chat": "L-Perspective",
+      "cc": "L-Perspective"
+    },
+    {
+      "check": "C2",
+      "item": "[3].config_space",
+      "result": "PASS",
+      "chat": "Continuous",
+      "cc": "Continuous"
+    },
+    {
+      "check": "C2",
+      "item": "[3].invariant",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C2",
+      "item": "[3].functional_class",
+      "result": "PASS",
+      "chat": "Rigid Constraint",
+      "cc": "Rigid Constraint"
+    },
+    {
+      "check": "C3",
+      "item": "[3].C1 (Clifford Unknot / Rule 17)",
+      "result": "PASS",
+      "chat": false,
+      "cc": false
+    },
+    {
+      "check": "C3",
+      "item": "[3].C2 (Clifford Unknot / Rule 17)",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C4",
+      "item": "[3].verdict (Clifford Unknot / Rule 17)",
+      "result": "PASS",
+      "chat": "FAIL",
+      "cc": "FAIL"
+    },
+    {
+      "check": "C2",
+      "item": "[4].object",
+      "result": "PASS",
+      "chat": "CD Tower Rungs (e.g., 42/84)",
+      "cc": "CD Tower Rungs (e.g., 42/84)"
+    },
+    {
+      "check": "C2",
+      "item": "[4].ledger_ref",
+      "result": "PASS",
+      "chat": "§2.31/§2.75",
+      "cc": "§2.31/§2.75"
+    },
+    {
+      "check": "C2",
+      "item": "[4].perspective",
+      "result": "PASS",
+      "chat": "E-Perspective",
+      "cc": "E-Perspective"
+    },
+    {
+      "check": "C2",
+      "item": "[4].config_space",
+      "result": "PASS",
+      "chat": "Discrete",
+      "cc": "Discrete"
+    },
+    {
+      "check": "C2",
+      "item": "[4].invariant",
+      "result": "PASS",
+      "chat": "Chirality/Algebraic",
+      "cc": "Chirality/Algebraic"
+    },
+    {
+      "check": "C2",
+      "item": "[4].functional_class",
+      "result": "PASS",
+      "chat": "None",
+      "cc": "None"
+    },
+    {
+      "check": "C3",
+      "item": "[4].C1 (CD Tower Rungs (e.g., 42/84))",
+      "result": "PASS",
+      "chat": false,
+      "cc": false
+    },
+    {
+      "check": "C3",
+      "item": "[4].C2 (CD Tower Rungs (e.g., 42/84))",
+      "result": "PASS",
+      "chat": false,
+      "cc": false
+    },
+    {
+      "check": "C4",
+      "item": "[4].verdict (CD Tower Rungs (e.g., 42/84))",
+      "result": "PASS",
+      "chat": "FAIL",
+      "cc": "FAIL"
+    },
+    {
+      "check": "C2",
+      "item": "[5].object",
+      "result": "PASS",
+      "chat": "Cluster M SLWE Matrices",
+      "cc": "Cluster M SLWE Matrices"
+    },
+    {
+      "check": "C2",
+      "item": "[5].ledger_ref",
+      "result": "PASS",
+      "chat": "§2.58",
+      "cc": "§2.58"
+    },
+    {
+      "check": "C2",
+      "item": "[5].perspective",
+      "result": "PASS",
+      "chat": "E-Perspective",
+      "cc": "E-Perspective"
+    },
+    {
+      "check": "C2",
+      "item": "[5].config_space",
+      "result": "PASS",
+      "chat": "Discrete",
+      "cc": "Discrete"
+    },
+    {
+      "check": "C2",
+      "item": "[5].invariant",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C2",
+      "item": "[5].functional_class",
+      "result": "PASS",
+      "chat": "None",
+      "cc": "None"
+    },
+    {
+      "check": "C3",
+      "item": "[5].C1 (Cluster M SLWE Matrices)",
+      "result": "PASS",
+      "chat": false,
+      "cc": false
+    },
+    {
+      "check": "C3",
+      "item": "[5].C2 (Cluster M SLWE Matrices)",
+      "result": "PASS",
+      "chat": false,
+      "cc": false
+    },
+    {
+      "check": "C4",
+      "item": "[5].verdict (Cluster M SLWE Matrices)",
+      "result": "PASS",
+      "chat": "FAIL",
+      "cc": "FAIL"
+    },
+    {
+      "check": "C5",
+      "item": "F-QUANTA-1.state",
+      "result": "PASS",
+      "chat": "SILENT",
+      "cc": "SILENT"
+    },
+    {
+      "check": "C5",
+      "item": "F-QUANTA-2.state",
+      "result": "PASS",
+      "chat": "SILENT",
+      "cc": "SILENT"
+    },
+    {
+      "check": "C5",
+      "item": "F-QUANTA-3.state",
+      "result": "PASS",
+      "chat": "REGISTERED_NOT_EXECUTED",
+      "cc": "REGISTERED_NOT_EXECUTED"
+    },
+    {
+      "check": "C5",
+      "item": "PC-1_nontrivial_partition.met",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C5",
+      "item": "PC-1_nontrivial_partition.n_pass",
+      "result": "PASS",
+      "chat": 3,
+      "cc": 3
+    },
+    {
+      "check": "C5",
+      "item": "PC-1_nontrivial_partition.n_fail",
+      "result": "PASS",
+      "chat": 3,
+      "cc": 3
+    },
+    {
+      "check": "C5",
+      "item": "PC-2_independence_witness.met",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C5",
+      "item": "PC-2 witness set",
+      "result": "PASS",
+      "chat": [
+        "K₇ Vortex"
+      ],
+      "cc": [
+        "K₇ Vortex"
+      ]
+    },
+    {
+      "check": "C5",
+      "item": "election E-Q-1 choice letter",
+      "result": "PASS",
+      "chat": "b",
+      "cc": "b"
+    },
+    {
+      "check": "C5",
+      "item": "election E-Q-2 choice letter",
+      "result": "PASS",
+      "chat": "a",
+      "cc": "a"
+    },
+    {
+      "check": "C6",
+      "item": "row count",
+      "result": "PASS",
+      "chat": 6,
+      "cc": 6
+    },
+    {
+      "check": "C6",
+      "item": "[0].object",
+      "result": "PASS",
+      "chat": "L_B Borromean Baryon",
+      "cc": "L_B Borromean Baryon"
+    },
+    {
+      "check": "C6",
+      "item": "[0].predicted",
+      "result": "PASS",
+      "chat": "PASS",
+      "cc": "PASS"
+    },
+    {
+      "check": "C6",
+      "item": "[0].machine",
+      "result": "PASS",
+      "chat": "PASS",
+      "cc": "PASS"
+    },
+    {
+      "check": "C6",
+      "item": "[0].concordant",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C6",
+      "item": "[1].object",
+      "result": "PASS",
+      "chat": "K₇ Vortex",
+      "cc": "K₇ Vortex"
+    },
+    {
+      "check": "C6",
+      "item": "[1].predicted",
+      "result": "PASS",
+      "chat": "PASS",
+      "cc": "PASS"
+    },
+    {
+      "check": "C6",
+      "item": "[1].machine",
+      "result": "PASS",
+      "chat": "PASS",
+      "cc": "PASS"
+    },
+    {
+      "check": "C6",
+      "item": "[1].concordant",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C6",
+      "item": "[2].object",
+      "result": "PASS",
+      "chat": "Electron 2π Closure",
+      "cc": "Electron 2π Closure"
+    },
+    {
+      "check": "C6",
+      "item": "[2].predicted",
+      "result": "PASS",
+      "chat": "PASS",
+      "cc": "PASS"
+    },
+    {
+      "check": "C6",
+      "item": "[2].machine",
+      "result": "PASS",
+      "chat": "PASS",
+      "cc": "PASS"
+    },
+    {
+      "check": "C6",
+      "item": "[2].concordant",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C6",
+      "item": "[3].object",
+      "result": "PASS",
+      "chat": "Clifford Unknot / Rule 17",
+      "cc": "Clifford Unknot / Rule 17"
+    },
+    {
+      "check": "C6",
+      "item": "[3].predicted",
+      "result": "PASS",
+      "chat": "FAIL",
+      "cc": "FAIL"
+    },
+    {
+      "check": "C6",
+      "item": "[3].machine",
+      "result": "PASS",
+      "chat": "FAIL",
+      "cc": "FAIL"
+    },
+    {
+      "check": "C6",
+      "item": "[3].concordant",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C6",
+      "item": "[4].object",
+      "result": "PASS",
+      "chat": "CD Tower Rungs (e.g., 42/84)",
+      "cc": "CD Tower Rungs (e.g., 42/84)"
+    },
+    {
+      "check": "C6",
+      "item": "[4].predicted",
+      "result": "PASS",
+      "chat": "FAIL",
+      "cc": "FAIL"
+    },
+    {
+      "check": "C6",
+      "item": "[4].machine",
+      "result": "PASS",
+      "chat": "FAIL",
+      "cc": "FAIL"
+    },
+    {
+      "check": "C6",
+      "item": "[4].concordant",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C6",
+      "item": "[5].object",
+      "result": "PASS",
+      "chat": "Cluster M SLWE Matrices",
+      "cc": "Cluster M SLWE Matrices"
+    },
+    {
+      "check": "C6",
+      "item": "[5].predicted",
+      "result": "PASS",
+      "chat": "FAIL",
+      "cc": "FAIL"
+    },
+    {
+      "check": "C6",
+      "item": "[5].machine",
+      "result": "PASS",
+      "chat": "FAIL",
+      "cc": "FAIL"
+    },
+    {
+      "check": "C6",
+      "item": "[5].concordant",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C6",
+      "item": "PC-3_met",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    }
+  ],
+  "n_checks": 255,
+  "n_miss": 0,
+  "misses": [],
+  "S9_triggered": false,
+  "overall": "C1-C6 ALL PASS",
+  "comparator": "g_quanta_compare_v1_0.py",
+  "comparator_md5": "2be701be868259465525e29c79a4c621",
+  "schema_md5": "05e53dbb8e8e1f7669fa12b6fc55c260",
+  "chat_checkpoint_md5": "55861161748fca634534790f366380fd",
+  "cc_checkpoint_md5": "ca0e69a75a521f3869726693b23e3dce"
+}

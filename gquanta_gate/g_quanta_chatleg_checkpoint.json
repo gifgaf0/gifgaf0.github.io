@@ -1,0 +1,139 @@
+{
+  "gate": "G-QUANTA",
+  "leg": "chat",
+  "instrument": "g_quanta_chatleg.py",
+  "instrument_md5": "79072196cdfc480f4073195d96100d2e",
+  "memo": "staging_memo_G_QUANTA_v2.md",
+  "memo_md5": "0039d001769569297c2aa8ccbded5a3b",
+  "memo_bytes": 4863,
+  "ledger_base": "SQT_Master_Ledger_v4_81_CANONICAL.md",
+  "ledger_base_md5": "b4e55aaea76a2152f7b1873309aec077",
+  "elections": {
+    "E-Q-1": "(b) Promote standalone.",
+    "E-Q-2": "(a) E-perspective (3D) for envelopes, L-perspective (2D/3D) for defects; extended (infinite-energy) defects explicitly in scope."
+  },
+  "utc": "2026-09-10T20:02:18.037336Z",
+  "T1_pre_evaluation": {
+    "state": "LIST_ABSENT",
+    "deviation": "D-T1: self-grep skipped, list not supplied"
+  },
+  "inventory_rows": 6,
+  "results": [
+    {
+      "object": "L_B Borromean Baryon",
+      "ledger_ref": "§2.15/§2.51",
+      "perspective": "L-Perspective",
+      "config_space": "Continuous",
+      "invariant": "Linking Number",
+      "functional_class": "Rigid Constraint",
+      "C1": true,
+      "C1_reason": "continuous configuration space with invariant Linking Number",
+      "C2": true,
+      "C2_reason": "functional class Rigid Constraint is Derrick-evading",
+      "verdict": "PASS"
+    },
+    {
+      "object": "K₇ Vortex",
+      "ledger_ref": "§3.4",
+      "perspective": "L-Perspective",
+      "config_space": "Continuous",
+      "invariant": "Fano Winding",
+      "functional_class": "Competing Exponents",
+      "C1": true,
+      "C1_reason": "continuous configuration space with invariant Fano Winding",
+      "C2": true,
+      "C2_reason": "functional class Competing Exponents is Derrick-evading",
+      "verdict": "PASS"
+    },
+    {
+      "object": "Electron 2π Closure",
+      "ledger_ref": "§2.50.A",
+      "perspective": "L-Perspective",
+      "config_space": "Continuous",
+      "invariant": "Winding Number",
+      "functional_class": "Rigid Constraint",
+      "C1": true,
+      "C1_reason": "continuous configuration space with invariant Winding Number",
+      "C2": true,
+      "C2_reason": "functional class Rigid Constraint is Derrick-evading",
+      "verdict": "PASS"
+    },
+    {
+      "object": "Clifford Unknot / Rule 17",
+      "ledger_ref": "§2.41",
+      "perspective": "L-Perspective",
+      "config_space": "Continuous",
+      "invariant": null,
+      "functional_class": "Rigid Constraint",
+      "C1": false,
+      "C1_reason": "no conserved invariant declared (trivial)",
+      "C2": true,
+      "C2_reason": "functional class Rigid Constraint is Derrick-evading",
+      "verdict": "FAIL"
+    },
+    {
+      "object": "CD Tower Rungs (e.g., 42/84)",
+      "ledger_ref": "§2.31/§2.75",
+      "perspective": "E-Perspective",
+      "config_space": "Discrete",
+      "invariant": "Chirality/Algebraic",
+      "functional_class": "None",
+      "C1": false,
+      "C1_reason": "configuration space is Discrete (section 2: discrete labels evaluate to NO)",
+      "C2": false,
+      "C2_reason": "functional class None is not Derrick-evading",
+      "verdict": "FAIL"
+    },
+    {
+      "object": "Cluster M SLWE Matrices",
+      "ledger_ref": "§2.58",
+      "perspective": "E-Perspective",
+      "config_space": "Discrete",
+      "invariant": null,
+      "functional_class": "None",
+      "C1": false,
+      "C1_reason": "configuration space is Discrete (section 2: discrete labels evaluate to NO)",
+      "C2": false,
+      "C2_reason": "functional class None is not Derrick-evading",
+      "verdict": "FAIL"
+    }
+  ],
+  "falsifiers": {
+    "F-QUANTA-1": {
+      "state": "SILENT",
+      "hits": [],
+      "inert_by_inventory": true,
+      "note": "fires only on a Single Exponent functional class; the locked inventory declares none, so silence here is inert-by-inventory, not a test passed"
+    },
+    "F-QUANTA-2": {
+      "state": "SILENT",
+      "hits": [],
+      "tower_rows_examined": [
+        "CD Tower Rungs (e.g., 42/84)"
+      ]
+    },
+    "F-QUANTA-3": {
+      "state": "REGISTERED_NOT_EXECUTED",
+      "note": "no derived E_binding exists in the framework; tests scale separation, not the stability discriminator"
+    }
+  },
+  "promotion_conditions": {
+    "PC-1_nontrivial_partition": {
+      "met": true,
+      "n_pass": 3,
+      "n_fail": 3
+    },
+    "PC-2_independence_witness": {
+      "met": true,
+      "witnesses": [
+        "K₇ Vortex"
+      ],
+      "excluded_class": "Rigid Constraint"
+    },
+    "PC-3_concordance_with_section_5": "DEFERRED to `compare` (comparison step last)"
+  },
+  "T1_post_write": {
+    "state": "LIST_ABSENT",
+    "deviation": "D-T1: self-grep skipped, list not supplied"
+  }
+}

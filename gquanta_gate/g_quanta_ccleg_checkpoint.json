@@ -1,0 +1,118 @@
+{
+  "gate": "G-QUANTA",
+  "leg": "cc",
+  "instrument": "g_quanta_ccleg.py",
+  "instrument_md5": "4b1e700e3df9c1b5f51904fbf70ec219",
+  "memo": "staging_memo_G_QUANTA_v2.md",
+  "memo_md5": "0039d001769569297c2aa8ccbded5a3b",
+  "memo_bytes": 4863,
+  "ledger_base_md5": "b4e55aaea76a2152f7b1873309aec077",
+  "elections": {
+    "E-Q-1": "(b) promote standalone -- CC-leg wording",
+    "E-Q-2": "(a) E-perspective for envelopes, L-perspective for defects; extended defects in scope -- CC-leg wording"
+  },
+  "utc": "2026-09-10T20:19:28+00:00",
+  "inventory_rows": 6,
+  "results": [
+    {
+      "object": "L_B Borromean Baryon",
+      "ledger_ref": "§2.15/§2.51",
+      "perspective": "L-Perspective",
+      "config_space": "Continuous",
+      "invariant": "Linking Number",
+      "functional_class": "Rigid Constraint",
+      "C1": true,
+      "C2": true,
+      "verdict": "PASS"
+    },
+    {
+      "object": "K₇ Vortex",
+      "ledger_ref": "§3.4",
+      "perspective": "L-Perspective",
+      "config_space": "Continuous",
+      "invariant": "Fano Winding",
+      "functional_class": "Competing Exponents",
+      "C1": true,
+      "C2": true,
+      "verdict": "PASS"
+    },
+    {
+      "object": "Electron 2π Closure",
+      "ledger_ref": "§2.50.A",
+      "perspective": "L-Perspective",
+      "config_space": "Continuous",
+      "invariant": "Winding Number",
+      "functional_class": "Rigid Constraint",
+      "C1": true,
+      "C2": true,
+      "verdict": "PASS"
+    },
+    {
+      "object": "Clifford Unknot / Rule 17",
+      "ledger_ref": "§2.41",
+      "perspective": "L-Perspective",
+      "config_space": "Continuous",
+      "invariant": null,
+      "functional_class": "Rigid Constraint",
+      "C1": false,
+      "C2": true,
+      "verdict": "FAIL"
+    },
+    {
+      "object": "CD Tower Rungs (e.g., 42/84)",
+      "ledger_ref": "§2.31/§2.75",
+      "perspective": "E-Perspective",
+      "config_space": "Discrete",
+      "invariant": "Chirality/Algebraic",
+      "functional_class": "None",
+      "C1": false,
+      "C2": false,
+      "verdict": "FAIL"
+    },
+    {
+      "object": "Cluster M SLWE Matrices",
+      "ledger_ref": "§2.58",
+      "perspective": "E-Perspective",
+      "config_space": "Discrete",
+      "invariant": null,
+      "functional_class": "None",
+      "C1": false,
+      "C2": false,
+      "verdict": "FAIL"
+    }
+  ],
+  "falsifiers": {
+    "F-QUANTA-1": {
+      "state": "SILENT",
+      "note": "inert-by-inventory: the locked table declares no Single Exponent row, so silence is not a test passed"
+    },
+    "F-QUANTA-2": {
+      "state": "SILENT"
+    },
+    "F-QUANTA-3": {
+      "state": "REGISTERED_NOT_EXECUTED"
+    }
+  },
+  "promotion_conditions": {
+    "PC-1_nontrivial_partition": {
+      "met": true,
+      "n_pass": 3,
+      "n_fail": 3
+    },
+    "PC-2_independence_witness": {
+      "met": true,
+      "witnesses": [
+        "K₇ Vortex"
+      ]
+    }
+  },
+  "T1": {
+    "state": "LIST_ABSENT",
+    "deviation": "D-T1 (CC)",
+    "note": "T1 forbidden-string list (13 lines, md5 prefix 04438b74) not supplied to the CC leg; self-grep not performed"
+  },
+  "deviations": [
+    "D-T1 (CC): T1 list absent, self-grep skipped, state LIST_ABSENT"
+  ],
+  "route_agreement": "route A (predicate) and route B (literal lookup) agreed on every row (asserted per row at evaluation time)"
+}

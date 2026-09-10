@@ -1,0 +1,919 @@
+#!/usr/bin/env python3
+# =============================================================================
+# g_2a_L1_ccleg.py — Gate G-2a-L1, CC leg (independent instrument).
+# Locked pre-registration: G_2a_L1_EXECUTION_PREREGISTRATION.md
+#   md5 da9c25d19ff91f2c0809ac0027a7bebb (verified in Phase 0 before this ran).
+# Requested variation implemented (dispatch section 2 / prereg section 8):
+#   * B1 by the direct cohomological route: Hom(Gamma~_2, Z/2) computed by
+#     THREE independent methods (derived-subgroup/abelianization quotient;
+#     brute-force character enumeration; F_2 relation-matrix rank), plus the
+#     D2 collapse by own coset enumeration.
+#   * The internal 2O built abstractly in SU(2) over Q(zeta_8) = Q(i, sqrt2)
+#     as exact 2x2 cyclotomic matrices — zero reuse of the flat-home Clifford
+#     model on the internal side.
+#   * All characters by explicit Sym^n(C^2) matrix traces (no closed form).
+#   * GL(2,3) built over F_3 from scratch for the F2 discriminator.
+# Exact arithmetic throughout: Fractions; Q(sqrt2) pairs for Cl(3)^q;
+# Q(zeta_8) 4-tuples for SU(2); integer matrices; F_3 matrices.
+# Shared layer (flagged in the prereg): the S7 Gamma/N presentation only.
+# Execution order note: F2 (the abstract discriminator control) runs FIRST,
+# before any flat-home framework data is built, per the prereg's F2 clause;
+# phase files keep the dispatch's numbering (cc_phase2.json is thus written
+# before cc_phase1.json — logged, not silent).
+# =============================================================================
+import json, hashlib, os, sys
+from fractions import Fraction as Fr
+from math import comb
+
+LOG = []
+ASSERTS = 0
+
+def log(s):
+    print(s)
+    LOG.append(s)
+
+def chk(cond, label):
+    global ASSERTS
+    if not cond:
+        raise AssertionError("CHECK FIRED: " + label)
+    ASSERTS += 1
+
+def write_json(path, obj):
+    with open(path, "w") as f:
+        json.dump(obj, f, indent=1, sort_keys=True)
+        f.write("\n")
+    log("wrote %s (md5 %s)" % (path, hashlib.md5(open(path, "rb").read()).hexdigest()))
+
+# ============================================================ Q(zeta_8) layer
+# z8^4 = -1; elements are 4-tuples of Fractions (c0 + c1 z + c2 z^2 + c3 z^3).
+# i = z^2, sqrt2 = z - z^3, (1+i)/sqrt2 = z.
+Z0 = (Fr(0), Fr(0), Fr(0), Fr(0))
+Z1 = (Fr(1), Fr(0), Fr(0), Fr(0))
+
+def zn(*c):
+    c = tuple(Fr(x) for x in c)
+    return c + (Fr(0),) * (4 - len(c))
+
+def zadd(a, b): return tuple(x + y for x, y in zip(a, b))
+def zneg(a):    return tuple(-x for x in a)
+def zsub(a, b): return tuple(x - y for x, y in zip(a, b))
+
+def zmul(a, b):
+    c = [Fr(0)] * 4
+    for i in range(4):
+        if a[i] == 0: continue
+        for j in range(4):
+            if b[j] == 0: continue
+            k = i + j
+            if k < 4:
+                c[k] += a[i] * b[j]
+            else:
+                c[k - 4] -= a[i] * b[j]
+    return tuple(c)
+
+def zis_rat(a):  return a[1] == 0 and a[2] == 0 and a[3] == 0
+def zis_real(a): return a[2] == 0 and a[1] == -a[3]   # real subfield Q(sqrt2)
+
+ZI  = zn(0, 0, 1, 0)          # i
+ZS2 = zn(0, 1, 0, -1)         # sqrt2
+ZH  = zn(Fr(1, 2))            # 1/2
+
+# 2x2 matrices over Q(zeta_8)
+def m2(a, b, c, d): return ((a, b), (c, d))
+M2_ID = m2(Z1, Z0, Z0, Z1)
+
+def m2mul(A, B):
+    return ((zadd(zmul(A[0][0], B[0][0]), zmul(A[0][1], B[1][0])),
+             zadd(zmul(A[0][0], B[0][1]), zmul(A[0][1], B[1][1]))),
+            (zadd(zmul(A[1][0], B[0][0]), zmul(A[1][1], B[1][0])),
+             zadd(zmul(A[1][0], B[0][1]), zmul(A[1][1], B[1][1]))))
+
+def m2det(A):
+    return zsub(zmul(A[0][0], A[1][1]), zmul(A[0][1], A[1][0]))
+
+def m2inv_det1(A):  # inverse for det = 1
+    return ((A[1][1], zneg(A[0][1])), (zneg(A[1][0]), A[0][0]))
+
+def m2neg(A):
+    return tuple(tuple(zneg(x) for x in row) for row in A)
+
+def m2tr(A):
+    return zadd(A[0][0], A[1][1])
+
+def group_closure(gens, mul, ident):
+    seen = {ident}
+    frontier = [ident]
+    while frontier:
+        nxt = []
+        for e in frontier:
+            for g in gens:
+                p = mul(e, g)
+                if p not in seen:
+                    seen.add(p)
+                    nxt.append(p)
+        frontier = nxt
+    return seen
+
+def conj_classes_table(elems, mul, inv):
+    rem = set(elems)
+    out = []
+    while rem:
+        x = sorted(rem)[0]
+        orb = set(mul(mul(g, x), inv(g)) for g in elems)
+        out.append(sorted(orb))
+        rem -= orb
+    return out
+
+def elt_order(x, mul, ident):
+    k, y = 1, x
+    while y != ident:
+        y = mul(y, x)
+        k += 1
+    return k
+
+# =============================================================================
+# PHASE F2 — the discriminator control (abstract; BEFORE any framework data)
+# =============================================================================
+def run_F2():
+    log("")
+    log("=== F2: abstract discriminator — 2O (SU(2)/Q(zeta_8)) vs GL(2,3) ===")
+    # --- 2O: generated by the two quarter-turn lifts (1+i)/sqrt2, (1+j)/sqrt2
+    s = zmul(ZH, ZS2)                              # 1/sqrt2
+    U = m2(zn(0, 1, 0, 0), Z0, Z0, zn(0, 0, 0, -1))   # diag(z8, z8^-1) = (1+i)/sqrt2
+    V = m2(s, s, zneg(s), s)                          # (1+j)/sqrt2
+    chk(m2det(U) == Z1 and m2det(V) == Z1, "F2: generators in SU(2)")
+    TwoO = group_closure([U, V], m2mul, M2_ID)
+    chk(len(TwoO) == 48, "F2: |2O| = 48")
+    minus1 = m2neg(M2_ID)
+    invols = [g for g in TwoO if g != M2_ID and m2mul(g, g) == M2_ID]
+    chk(invols == [minus1], "F2: unique involution of 2O is -1")
+    # quotient O = 2O / {+-1}
+    def okey(g):
+        return min(g, m2neg(g))
+    Oreps = {}
+    for g in TwoO:
+        Oreps.setdefault(okey(g), okey(g))
+    O = sorted(Oreps)
+    chk(len(O) == 24, "F2: |O| = 24")
+    def omul(a, b): return okey(m2mul(a, b))
+    def oinv(a):    return okey(m2inv_det1(a))
+    ccO = conj_classes_table(O, omul, oinv)
+    o_ident = okey(M2_ID)
+    o_class_data = sorted([len(c), elt_order(c[0], omul, o_ident)] for c in ccO)
+    log("  O class data [size, order]: %s" % o_class_data)
+    chk(o_class_data == [[1, 1], [3, 2], [6, 2], [6, 4], [8, 3]],
+        "F2: O has the S4 class pattern [1,3,6,6,8] with orders [1,2,2,3,4]")
+    # every order-2 class of O lifts at order 4 in 2O
+    lift4 = True
+    for c in ccO:
+        if elt_order(c[0], omul, o_ident) == 2:
+            for rep in c:
+                for pre in (rep, m2neg(rep)):
+                    chk(elt_order(pre, m2mul, M2_ID) == 4,
+                        "F2: order-2 class of O lifts at order 4 in 2O")
+    log("  2O: both order-2 classes of O (sizes 3 and 6) lift at order 4; "
+        "no non-central involutions")
+    # --- GL(2,3) over F_3, from scratch
+    def f3mul(A, B):
+        return tuple(tuple(sum(A[i][k] * B[k][j] for k in range(2)) % 3
+                           for j in range(2)) for i in range(2))
+    def f3det(A): return (A[0][0] * A[1][1] - A[0][1] * A[1][0]) % 3
+    GL = [((a, b), (c, d)) for a in range(3) for b in range(3)
+          for c in range(3) for d in range(3)
+          if f3det(((a, b), (c, d))) != 0]
+    chk(len(GL) == 48, "F2: |GL(2,3)| = 48")
+    F3_ID = ((1, 0), (0, 1))
+    F3_MID = ((2, 0), (0, 2))
+    def f3inv(A):
+        for B in GL:
+            if f3mul(A, B) == F3_ID:
+                return B
+        raise AssertionError("no inverse")
+    center = [g for g in GL if all(f3mul(g, h) == f3mul(h, g) for h in GL)]
+    chk(sorted(center) == sorted([F3_ID, F3_MID]), "F2: Z(GL(2,3)) = {+-I}")
+    def pkey(g): return min(g, f3mul(F3_MID, g))
+    PGL = sorted(set(pkey(g) for g in GL))
+    chk(len(PGL) == 24, "F2: |PGL(2,3)| = 24")
+    def pmul(a, b): return pkey(f3mul(a, b))
+    def pinv(a):    return pkey(f3inv(a))
+    ccP = conj_classes_table(PGL, pmul, pinv)
+    p_ident = pkey(F3_ID)
+    p_class_data = sorted([len(c), elt_order(c[0], pmul, p_ident)] for c in ccP)
+    chk(p_class_data == [[1, 1], [3, 2], [6, 2], [6, 4], [8, 3]],
+        "F2: PGL(2,3) has the S4 class pattern (so both quotients are S4)")
+    # the transposition class of S4 = the size-6, order-2 class
+    transp_P = [c for c in ccP if len(c) == 6 and elt_order(c[0], pmul, p_ident) == 2]
+    chk(len(transp_P) == 1, "F2: unique size-6 order-2 class (transpositions)")
+    pre = []
+    for rep in transp_P[0]:
+        pre += [rep, f3mul(F3_MID, rep)]
+    chk(len(set(pre)) == 12, "F2: 12 preimages of the 6 transpositions")
+    pre_orders = sorted(set(elt_order(g, f3mul, F3_ID) for g in pre))
+    chk(pre_orders == [2], "F2: ALL transposition preimages in GL(2,3) are involutions")
+    # class size of those involutions inside GL(2,3)
+    ccGL = conj_classes_table(GL, f3mul, f3inv)
+    tr_classes = sorted(set(len(c) for c in ccGL if c[0] in set(pre)))
+    chk(tr_classes == [12], "F2: the involution preimages form one GL(2,3) class of size 12")
+    log("  GL(2,3): transpositions lift to involutions (one class, size 12)")
+    separates = True  # 2O lifts transpositions at order 4; GL(2,3) at order 2
+    chk(separates, "F2: discriminator separates 2O from GL(2,3)")
+    log("  DISCRIMINATOR SEPARATES: transposition-lift order 4 (2O) vs 2 (GL(2,3))")
+    C4 = {
+        "2O_order": 48,
+        "2O_unique_involution_is_minus_one": True,
+        "2O_all_order2_classes_of_O_lift_at_order_4": True,
+        "O_class_data": o_class_data,
+        "GL23_order": 48,
+        "GL23_transposition_class_size": 12,
+        "GL23_transposition_class_has_involution_preimage": True,
+        "discriminator_separates": True,
+    }
+    models = {"TwoO": TwoO, "minus1": minus1, "okey": okey, "omul": omul,
+              "oinv": oinv, "O": O, "o_ident": o_ident, "ccO": ccO}
+    return C4, models
+
+# ============================================================ Q(sqrt2) layer
+Q0 = (Fr(0), Fr(0))
+Q1 = (Fr(1), Fr(0))
+QM1 = (Fr(-1), Fr(0))
+QHS = (Fr(0), Fr(1, 2))    # 1/sqrt2
+
+def qadd(a, b): return (a[0] + b[0], a[1] + b[1])
+def qmulq(a, b): return (a[0] * b[0] + 2 * a[1] * b[1], a[0] * b[1] + a[1] * b[0])
+def qnegq(a):   return (-a[0], -a[1])
+
+# ============================================================ Cl(3)^q layer
+# blades indexed by bitmask (bit i = e_{i+1}); precomputed structure table
+GRADE = [bin(m).count("1") for m in range(8)]
+_TAB = {}
+def blade_tab(A, B):
+    key = (A, B)
+    if key not in _TAB:
+        swaps = 0
+        for b in range(3):
+            if (B >> b) & 1:
+                swaps += bin(A >> (b + 1)).count("1")
+        _TAB[key] = (A ^ B, swaps & 1, bin(A & B).count("1"))
+    return _TAB[key]
+
+def cl_scal(v):
+    c = [Q0] * 8
+    c[0] = (Fr(v), Fr(0))
+    return tuple(c)
+
+def cl_e(i):
+    c = [Q0] * 8
+    c[1 << i] = Q1
+    return tuple(c)
+
+def cl_mul(x, y, q):
+    out = [Q0] * 8
+    for A in range(8):
+        if x[A] == Q0: continue
+        for B in range(8):
+            if y[B] == Q0: continue
+            C, par, com = blade_tab(A, B)
+            v = qmulq(x[A], y[B])
+            if par:
+                v = qnegq(v)
+            if q == -1 and (com & 1):
+                v = qnegq(v)
+            out[C] = qadd(out[C], v)
+    return tuple(out)
+
+def cl_add(x, y): return tuple(qadd(a, b) for a, b in zip(x, y))
+def cl_neg(x):    return tuple(qnegq(a) for a in x)
+def cl_scale(x, s): return tuple(qmulq(a, s) for a in x)
+def cl_alpha(x):  return tuple(qnegq(a) if GRADE[m] & 1 else a for m, a in enumerate(x))
+def cl_rev(x):    return tuple(qnegq(a) if GRADE[m] in (2, 3) else a for m, a in enumerate(x))
+
+CL_ONE = cl_scal(1)
+CL_MONE = cl_scal(-1)
+
+def cl_inv(u, q):
+    r = cl_rev(u)
+    s = cl_mul(u, r, q)
+    chk(all(s[m] == Q0 for m in range(1, 8)), "cl_inv: u*rev(u) scalar")
+    chk(s[0] in (Q1, QM1), "cl_inv: u*rev(u) = +-1")
+    return r if s[0] == Q1 else cl_neg(r)
+
+def cl_rho(u, q):
+    # twisted adjoint: v -> alpha(u) v u^{-1}; asserted to be an integer O(3) matrix
+    ui = cl_inv(u, q)
+    au = cl_alpha(u)
+    M = [[0] * 3 for _ in range(3)]
+    for i in range(3):
+        y = cl_mul(cl_mul(au, cl_e(i), q), ui, q)
+        for m in range(8):
+            if y[m] != Q0:
+                chk(GRADE[m] == 1, "rho: image is a vector")
+                chk(y[m][1] == 0 and y[m][0].denominator == 1, "rho: integer entries")
+        for j in range(3):
+            M[j][i] = int(y[1 << j][0])
+    return tuple(tuple(r) for r in M)
+
+def imat_mul(A, B):
+    return tuple(tuple(sum(A[i][k] * B[k][j] for k in range(3)) for j in range(3))
+                 for i in range(3))
+
+def imat_vec(A, v):
+    return tuple(sum(Fr(A[i][j]) * v[j] for j in range(3)) for i in range(3))
+
+def idet3(M):
+    return (M[0][0] * (M[1][1] * M[2][2] - M[1][2] * M[2][1])
+          - M[0][1] * (M[1][0] * M[2][2] - M[1][2] * M[2][0])
+          + M[0][2] * (M[1][0] * M[2][1] - M[1][1] * M[2][0]))
+
+I3 = ((1, 0, 0), (0, 1, 0), (0, 0, 1))
+MI3 = ((-1, 0, 0), (0, -1, 0), (0, 0, -1))
+
+def perm_sign_of(P):
+    # P is a signed permutation matrix; sign of the underlying permutation
+    sig = tuple(next(j for j in range(3) if P[j][i] != 0) for i in range(3))
+    inv = sum(1 for a in range(3) for b in range(a + 1, 3) if sig[a] > sig[b])
+    return -1 if inv & 1 else 1
+
+# =============================================================================
+# PHASES F1 + M + B1 — the flat-home rebuild, per Pin type
+# =============================================================================
+def run_flat_home(q, name):
+    log("")
+    log("=== flat home rebuild: %s (e_i^2 = %+d) ===" % (name, q))
+    rho_cache = {}
+    def R(u):
+        if u not in rho_cache:
+            rho_cache[u] = cl_rho(u, q)
+        return rho_cache[u]
+    def amul(g, h):
+        return (cl_mul(g[0], h[0], q),
+                tuple((a + b) % 2 for a, b in zip(g[1], imat_vec(R(g[0]), h[1]))))
+    def ainv(g):
+        ui = cl_inv(g[0], q)
+        return (ui, tuple((-x) % 2 for x in imat_vec(R(ui), g[1])))
+    E1, E2, E3 = cl_e(0), cl_e(1), cl_e(2)
+    q1 = cl_mul(E2, E3, q)
+    q2 = cl_mul(E3, E1, q)
+    q3 = cl_mul(E1, E2, q)
+    # F1: bivector squares (Pin-blind Spin sector)
+    for b in (q1, q2, q3):
+        chk(cl_mul(b, b, q) == CL_MONE, "F1: bivector^2 = -1")
+    omega = cl_mul(q3, E3, q)   # = e1 e2 e3
+    chk(cl_mul(omega, omega, q) == cl_scal(-q), "F1: omega^2 = -q")
+    W12 = cl_scale(cl_add(E1, cl_neg(E2)), QHS)
+    W23 = cl_scale(cl_add(E2, cl_neg(E3)), QHS)
+    u_c3 = cl_mul(W23, W12, q)
+    # the S7 Gamma/N presentation (the flagged shared layer)
+    ZV = (Fr(0), Fr(0), Fr(0))
+    r1 = (q1, (Fr(0), Fr(0), Fr(1)))
+    r2 = (q2, (Fr(1), Fr(0), Fr(0)))
+    r3 = (q3, (Fr(0), Fr(1), Fr(0)))
+    te1 = (CL_ONE, (Fr(1), Fr(0), Fr(0)))
+    n_c3 = (u_c3, ZV)
+    h = (W23, (Fr(1, 2), Fr(1, 2), Fr(1, 2)))
+    n_inv = (omega, ZV)
+    zt = (CL_MONE, ZV)
+    # F1 anchors
+    hh = amul(h, h)
+    chk(hh[0] in (CL_ONE, CL_MONE) and hh[1] == (Fr(1), Fr(1), Fr(1)),
+        "F1: h^2 covers t111")
+    glide = amul(r1, n_inv)
+    chk(R(glide[0]) == ((-1, 0, 0), (0, 1, 0), (0, 0, 1))
+        and glide[1] == (Fr(0), Fr(0), Fr(1)), "F1: glide = r1 o (-I)")
+    for rf in (r1, r2, r3):
+        chk(amul(rf, rf) == zt, "F1: meridian squares to -1 (translation cancels)")
+    chk(R(omega) == MI3, "F1: rho(omega) = -I")
+    # closures
+    gens = [r1, r2, r3, te1, n_c3, h, n_inv]
+    gens_pm = gens + [ainv(g) for g in gens]
+    ident = (CL_ONE, ZV)
+    Nt = group_closure(gens_pm, amul, ident)
+    chk(len(Nt) == 768, "F1: |N~_fin| = 768")
+    Gam_t = group_closure([r1, r2, r3, ainv(r1), ainv(r2), ainv(r3)], amul, ident)
+    chk(len(Gam_t) == 16, "F1: |Gamma~_2| = 16")
+    proj = {}
+    for e in Nt:
+        proj.setdefault((R(e[0]), e[1]), e)
+    Gfin = sorted(proj)
+    chk(len(Gfin) == 384, "F1: |G_fin| = 384")
+    Gam_fin = sorted(set((R(e[0]), e[1]) for e in Gam_t))
+    chk(len(Gam_fin) == 8, "F1: |Gamma_fin| = 8")
+    log("  closures: 768 / 384 / 16 / 8  (F1 anchors all pass)")
+    # S10 axial-law spot checks (bivectors transform as axial vectors:
+    # Ad(n) on the q_f = det(rho(n)) * rho(n) as a signed permutation)
+    qs = (q1, q2, q3)
+    for n in (n_c3, h, n_inv, te1):
+        P = R(n[0]); d = idet3(P)
+        for f in range(3):
+            c = amul(amul(n, (qs[f], ZV)), ainv(n))
+            hit = None
+            for fp in range(3):
+                if c[0] == qs[fp]: hit = (fp, 1)
+                elif c[0] == cl_neg(qs[fp]): hit = (fp, -1)
+            chk(hit is not None, "axial: conjugate of q_f is +-q_f'")
+            fp, sgn = hit
+            col = [P[j][f] for j in range(3)]
+            chk(sum(1 for v in col if v != 0) == 1 and col[fp] != 0,
+                "axial: rho(n) signed-permutation column")
+            chk(sgn == d * P[fp][f], "axial law: sign = det(rho) * rho entry")
+    log("  S10 axial-law spot checks pass (n_c3, h, n_inv, te1)")
+    # characters trivial on Gamma
+    for (P, tau) in Gam_fin:
+        chk(idet3(P) == 1 and perm_sign_of(P) == 1,
+            "characters trivial on Gamma (det and perm-sign)")
+    # ---------------- M = G_fin / Gamma_fin (own coset enumeration) ---------
+    def pm_mul(a, b):
+        return (imat_mul(a[0], b[0]),
+                tuple((x + y) % 2 for x, y in zip(a[1], imat_vec(a[0], b[1]))))
+    def pm_inv(a):
+        Pt = tuple(tuple(a[0][j][i] for j in range(3)) for i in range(3))
+        chk(imat_mul(Pt, a[0]) == I3, "pm_inv: transpose is inverse")
+        return (Pt, tuple((-x) % 2 for x in imat_vec(Pt, a[1])))
+    GamS = list(Gam_fin)
+    def ckey(g):
+        return min(pm_mul(g, gp) for gp in GamS)
+    cosets = sorted(set(ckey(g) for g in Gfin))
+    chk(len(cosets) == 48, "M: |M| = 48")
+    cid = {c: i for i, c in enumerate(cosets)}
+    MT = [[cid[ckey(pm_mul(a, b))] for b in cosets] for a in cosets]
+    def m_inv(i): return cid[ckey(pm_inv(cosets[i]))]
+    m_id = cid[ckey((I3, ZV))]
+    for i in range(48):
+        chk(MT[m_id][i] == i and MT[i][m_id] == i, "M: identity law")
+        chk(MT[i][m_inv(i)] == m_id, "M: inverse law")
+    center = [i for i in range(48) if all(MT[i][j] == MT[j][i] for j in range(48))]
+    chk(len(center) == 2, "M: |Z(M)| = 2")
+    mI_cos = cid[ckey((MI3, ZV))]
+    chk(set(center) == {m_id, mI_cos}, "M: center = the -I class")
+    for c in cosets:
+        chk(all(idet3(pm_mul(c, gp)[0]) == idet3(c[0]) for gp in GamS),
+            "M: det constant on cosets")
+    Mplus = [i for i in range(48) if idet3(cosets[i][0]) == 1]
+    chk(len(Mplus) == 24, "M: |M+| = 24")
+    chk(mI_cos not in Mplus, "M: -I class is improper")
+    chk(all(MT[mI_cos][m] == MT[m][mI_cos] for m in range(48)), "M: -I central")
+    chk(len(set(MT[zc][m] for zc in center for m in Mplus)) == 48,
+        "M: M = Z/2 x M+ (direct)")
+    def m_order(i): return elt_order(i, lambda a, b: MT[a][b], m_id)
+    Mset = set(Mplus)
+    chk(all(MT[i][j] in Mset for i in Mplus for j in Mplus), "M: M+ closed")
+    def m_conj_classes(elems):
+        rem = set(elems); out = []
+        while rem:
+            x = min(rem)
+            orb = set(MT[MT[g][x]][m_inv(g)] for g in elems)
+            out.append(sorted(orb)); rem -= orb
+        return out
+    ccMp = m_conj_classes(Mplus)
+    cls_sizes = sorted(len(c) for c in ccMp)
+    cls_orders = sorted(m_order(c[0]) for c in ccMp)
+    chk(cls_sizes == [1, 3, 6, 6, 8], "M: M+ class sizes [1,3,6,6,8]")
+    chk(cls_orders == [1, 2, 2, 3, 4], "M: M+ class-representative orders [1,2,2,3,4]")
+    log("  M = N/Gamma: Z/2 x S4; center = the -I class; M+ classes "
+        "[1,3,6,6,8], orders [1,2,2,3,4]")
+    C1 = {
+        "closures_768_384_16_8": True,
+        "h_squared_eq_t111": True,
+        "glide_eq_r1_circ_minusI": True,
+        "meridian_minus_one": True,
+        "omega_squared_eq_minus_q": True,
+        "bivector_squares_minus_one_both_algebras": True,
+        "characters_trivial_on_Gamma": True,
+    }
+    C2 = {
+        "order_M": 48,
+        "center_order": 2,
+        "center_is_minusI_class": True,
+        "M_direct_Z2_x_Mplus": True,
+        "Mplus_order": 24,
+        "Mplus_class_sizes": cls_sizes,
+        "Mplus_element_orders": cls_orders,
+    }
+    # ---------------- B1: the direct cohomological/abelianization route -----
+    log("  --- B1 (direct route): Hom(Gamma~_2, Z/2) and the obstruction ---")
+    r1m, r2m, r3m = r1, r2, r3
+    comm = amul(amul(r1m, r2m), amul(ainv(r1m), ainv(r2m)))
+    chk(comm == zt, "B1: z = [q~1, q~2] exactly (z is a commutator)")
+    GamL = sorted(Gam_t)
+    # route (i): derived subgroup and the abelianization quotient
+    D = set()
+    for a in GamL:
+        for b in GamL:
+            D.add(amul(amul(a, b), amul(ainv(a), ainv(b))))
+    Dcl = group_closure(list(D), amul, ident)
+    chk(sorted(Dcl) == sorted([ident, zt]), "B1(i): [Gamma~_2, Gamma~_2] = {1, z}")
+    def dkey(g):
+        return min(amul(g, d) for d in Dcl)
+    ab = sorted(set(dkey(g) for g in GamL))
+    chk(len(ab) == 8, "B1(i): |Gamma~_2^ab| = 8")
+    abid = {c: i for i, c in enumerate(ab)}
+    ABT = [[abid[dkey(amul(a, b))] for b in ab] for a in ab]
+    chk(all(ABT[i][j] == ABT[j][i] for i in range(8) for j in range(8)),
+        "B1(i): abelianization is abelian")
+    ab_id = abid[dkey(ident)]
+    chk(all(ABT[i][i] == ab_id for i in range(8)),
+        "B1(i): Gamma~_2^ab is elementary abelian (Z/2)^3")
+    n_hom_i = 8   # |Hom((Z/2)^3, Z/2)| = 8, forced by (i)
+    # route (ii): brute-force character enumeration on the Cayley table
+    words = {ident: ()}
+    frontier = [ident]
+    genw = [r1m, r2m, r3m]
+    while frontier:
+        nxt = []
+        for e in frontier:
+            for gi, g in enumerate(genw):
+                p = amul(e, g)
+                if p not in words:
+                    words[p] = words[e] + (gi,)
+                    nxt.append(p)
+        frontier = nxt
+    chk(len(words) == 16, "B1(ii): word map covers Gamma~_2")
+    valid = []
+    for mask in range(8):
+        eps = [1 if not (mask >> i) & 1 else -1 for i in range(3)]
+        phi = {g: 1 for g in GamL}
+        for g, w in words.items():
+            v = 1
+            for gi in w:
+                v *= eps[gi]
+            phi[g] = v
+        ok = all(phi[amul(a, b)] == phi[a] * phi[b] for a in GamL for b in GamL)
+        if ok:
+            valid.append((tuple(eps), phi[zt]))
+    n_hom_ii = len(valid)
+    chk(n_hom_ii == 8, "B1(ii): 8 characters Gamma~_2 -> Z/2 (brute force)")
+    chk(all(vz == 1 for _, vz in valid), "B1(ii): every character kills z")
+    # route (iii): F_2 relation-matrix rank (the SNF-mod-2 route)
+    def wvec(g):
+        v = [0, 0, 0]
+        for gi in words[g]:
+            v[gi] ^= 1
+        return v
+    rows = set()
+    for a in GamL:
+        for b in GamL:
+            r = tuple((x + y + z) % 2 for x, y, z
+                      in zip(wvec(a), wvec(b), wvec(amul(a, b))))
+            rows.add(r)
+    mat = [list(r) for r in rows if any(r)]
+    rank = 0
+    for col in range(3):
+        piv = next((i for i in range(rank, len(mat)) if mat[i][col]), None)
+        if piv is None:
+            continue
+        mat[rank], mat[piv] = mat[piv], mat[rank]
+        for i in range(len(mat)):
+            if i != rank and mat[i][col]:
+                mat[i] = [(x + y) % 2 for x, y in zip(mat[i], mat[rank])]
+        rank += 1
+    n_hom_iii = 2 ** (3 - rank)
+    chk(n_hom_iii == 8, "B1(iii): relation matrix has rank 0 over F_2 -> 8 characters")
+    chk(wvec(zt) == [0, 0, 0], "B1(iii): z has trivial abelianized image")
+    chk(n_hom_i == n_hom_ii == n_hom_iii == 8, "B1: three routes agree: 8 characters")
+    log("  Hom(Gamma~_2, Z/2): 8 characters by all three routes; ALL kill z")
+    log("  => no equivariant pushforward of 1 -> Gamma~ -> N~ -> M -> 1 to a")
+    log("     Z/2-extension of M carries the spin sign: the pushforward is")
+    log("     OBSTRUCTED (z central AND a commutator).")
+    # D2 collapse by own coset enumeration
+    GamTL = sorted(Gam_t)
+    def nkey(g):
+        return min(amul(g, gp) for gp in GamTL)
+    ncos = set()
+    for e in Nt:
+        ncos.add(nkey(e))
+    chk(len(ncos) == 48, "B1/D2: |N~_fin / Gamma~_fin| = 48 = |M| (collapse)")
+    fiber_id = set(e for e in Nt if nkey(e) == nkey(ident))
+    chk(fiber_id == set(Gam_t), "B1/D2: identity fiber of N~ -> M is Gamma~_2")
+    log("  D2 collapse verified: N~_fin/Gamma~_fin has order 48 = |M| "
+        "(the Z/2 is absorbed; z in Gamma~)")
+    C3 = {
+        "z_is_commutator_q1_q2": True,
+        "num_characters_Gamma2_to_Z2": 8,
+        "all_characters_kill_z": True,
+        "D2_collapse_quotient_order": 48,
+        "arm": "SPLIT",
+        "arm_sharpened": ("pushforward-obstructed: z is central and a commutator "
+                          "in Gamma~_2, so every Z/2 character kills z and no "
+                          "pushforward Z/2-extension of M carries the spin sign; "
+                          "the naive quotient collapses to M (D2). The flat home "
+                          "induces no double cover of M by the D1 route — the "
+                          "postulate's substrate lives in the point/motion sector "
+                          "(see B2), not in a pushforward over M."),
+        "pin_dependence": "none",
+    }
+    # spatial 2O: the even spin parts of N~_fin (for B2)
+    spatial = sorted(set(e[0] for e in Nt
+                         if all(e[0][m] == Q0 for m in range(8) if GRADE[m] & 1)))
+    chk(len(spatial) == 48, "B2 prep: 48 even spin parts (the spatial 2O)")
+    return {"C1": C1, "C2": C2, "C3": C3, "spatial": spatial, "q": q,
+            "amul": amul, "ainv": ainv, "R": R, "ident": ident}
+
+# =============================================================================
+# PHASE B2 — assembly: lifts over id_S4, chi_{3/2} by Sym^3 traces
+# =============================================================================
+def sym_trace(A, n):
+    # trace of Sym^n(A) for A in SU(2) over Q(zeta_8), by explicit expansion:
+    # basis x^{n-k} y^k; x -> a x + c y, y -> b x + d y (trace is convention-free)
+    (a, b), (c, d) = A
+    def binpow(p, q_, m):
+        # coefficients of (p x + q y)^m as a list indexed by x-power
+        out = [Z0] * (m + 1)
+        pw_p = [Z1]
+        pw_q = [Z1]
+        for _ in range(m):
+            pw_p.append(zmul(pw_p[-1], p))
+            pw_q.append(zmul(pw_q[-1], q_))
+        for t in range(m + 1):   # t = power of y
+            out[m - t] = zmul(zn(comb(m, t)), zmul(pw_p[m - t], pw_q[t]))
+        return out
+    tr = Z0
+    for k in range(n + 1):
+        L1 = binpow(a, c, n - k)
+        L2 = binpow(b, d, k)
+        coef = Z0
+        for i in range(len(L1)):
+            j = (n - k) - i
+            if 0 <= j < len(L2):
+                coef = zadd(coef, zmul(L1[i], L2[j]))
+        tr = zadd(tr, coef)
+    return tr
+
+def cl_rho_key(u, q):
+    return cl_rho(u, q)
+
+def run_B2(fh_list, C4models):
+    log("")
+    log("=== B2: assembly — lifts over id_S4, chi_{3/2} on the SU(2) model ===")
+    TwoO = C4models["TwoO"]
+    minus1 = C4models["minus1"]
+    # internal rho: g B_a g^-1 in the (i, j, k) basis, via the trace pairing
+    Bq = [m2(ZI, Z0, Z0, zneg(ZI)),          # i
+          m2(Z0, Z1, zneg(Z1), Z0),          # j
+          m2(Z0, ZI, ZI, Z0)]                # k
+    for Bm in Bq:
+        chk(m2mul(Bm, Bm) == m2neg(M2_ID), "B2: quaternion basis squares to -1")
+    def rho_int(g):
+        gi = m2inv_det1(g)
+        M = [[0] * 3 for _ in range(3)]
+        for a in range(3):
+            X = m2mul(m2mul(g, Bq[a]), gi)
+            for b in range(3):
+                t = m2tr(m2mul(X, Bq[b]))
+                chk(zis_rat(t) and (t[0] / -2).denominator == 1,
+                    "B2: rho_int entries are rational integers")
+                M[b][a] = int(t[0] / -2)
+            # column must be a signed unit vector for octahedral elements
+        Mt = tuple(tuple(r) for r in M)
+        chk(idet3(Mt) == 1, "B2: rho_int lands in SO(3)")
+        return Mt
+    rho_int_map = {g: rho_int(g) for g in TwoO}
+    chk(len(set(rho_int_map.values())) == 24, "B2: rho_int is 2:1 onto O")
+    by_rot = {}
+    for g, Mm in rho_int_map.items():
+        by_rot.setdefault(Mm, []).append(g)
+    chk(all(len(v) == 2 and v[0] == m2neg(v[1]) for v in by_rot.values()),
+        "B2: fibers of rho_int are {g, -g}")
+    # parity (sgn of the underlying S4 element) via the commutator subgroup of O
+    okey, omul, oinv = C4models["okey"], C4models["omul"], C4models["oinv"]
+    O, o_ident = C4models["O"], C4models["o_ident"]
+    Kcomm = group_closure([omul(omul(a, b), omul(oinv(a), oinv(b)))
+                           for a in O for b in O], omul, o_ident)
+    chk(len(Kcomm) == 12, "B2: [O, O] has order 12 (the A4 part)")
+    def sgn_int(g):
+        return 1 if okey(g) in Kcomm else -1
+    n_odd = sum(1 for g in TwoO if sgn_int(g) == -1)
+    chk(n_odd == 24, "B2: 24 odd elements in 2O")
+    results = []
+    for fh in fh_list:
+        q = fh["q"]
+        name = "Pin+" if q == 1 else "Pin-"
+        spatial = fh["spatial"]
+        # spatial group law = Clifford multiplication (even units)
+        def smul(x, y): return cl_mul(x, y, q)
+        def sinv(x):    return cl_inv(x, q)
+        sset = set(spatial)
+        chk(all(smul(x, y) in sset for x in spatial for y in spatial),
+            "B2 %s: spatial 2O closed" % name)
+        rho_sp = {u: cl_rho(u, q) for u in spatial}
+        chk(len(set(rho_sp.values())) == 24, "B2 %s: spatial rho is 2:1" % name)
+        chk(set(rho_sp.values()) == set(by_rot),
+            "B2 %s: spatial and internal rotation images coincide (base match)" % name)
+        # find a generating pair
+        spl = sorted(spatial)
+        gens = None
+        for i in range(len(spl)):
+            for j in range(i, len(spl)):
+                if len(group_closure([spl[i], spl[j]], smul, CL_ONE)) == 48:
+                    gens = (spl[i], spl[j])
+                    break
+            if gens: break
+        chk(gens is not None, "B2 %s: generating pair found" % name)
+        ga, gb = gens
+        # words for every element in the two generators
+        words = {CL_ONE: ()}
+        frontier = [CL_ONE]
+        while frontier:
+            nxt = []
+            for e in frontier:
+                for gi, g in enumerate((ga, gb)):
+                    p = smul(e, g)
+                    if p not in words:
+                        words[p] = words[e] + (gi,)
+                        nxt.append(p)
+            frontier = nxt
+        chk(len(words) == 48, "B2 %s: word map covers spatial 2O" % name)
+        # candidate images of the generators: rho-matched, sign free
+        cand_a = by_rot[rho_sp[ga]]
+        cand_b = by_rot[rho_sp[gb]]
+        lifts = []
+        for va in cand_a:
+            for vb in cand_b:
+                phi = {}
+                good = True
+                for u, w in words.items():
+                    Vv = M2_ID
+                    for gi in w:
+                        Vv = m2mul(Vv, va if gi == 0 else vb)
+                    phi[u] = Vv
+                for x in spatial:
+                    if not good: break
+                    for y in spatial:
+                        if phi[smul(x, y)] != m2mul(phi[x], phi[y]):
+                            good = False
+                            break
+                if good:
+                    for u in spatial:
+                        chk(rho_int_map[phi[u]] == rho_sp[u],
+                            "B2 %s: lift is over id_S4 (rho-match everywhere)" % name)
+                    lifts.append(phi)
+        chk(len(lifts) == 2, "B2 %s: exactly 2 lifts over id_S4" % name)
+        for phi in lifts:
+            chk(phi[CL_MONE] == minus1, "B2 %s: lift fixes z (-1 -> -1)" % name)
+        # the two lifts differ by the sgn twist
+        p0, p1 = lifts
+        chk(all(p1[u] == (p0[u] if sgn_int(p0[u]) == 1 else m2neg(p0[u]))
+                for u in spatial),
+            "B2 %s: the two lifts differ exactly by the sgn character" % name)
+        # chi_{3/2} by explicit Sym^3 traces
+        chi32 = {g: sym_trace(g, 3) for g in TwoO}
+        for g, v in chi32.items():
+            chk(zis_real(v), "B2: chi_{3/2} values are real (Q(sqrt2))")
+        chk(all(chi32[g] == Z0 for g in TwoO if sgn_int(g) == -1),
+            "B2 %s: chi_{3/2} vanishes on ALL odd classes" % name)
+        chk(chi32[minus1] == zn(-4), "B2 %s: chi_{3/2}(z) = -4" % name)
+        norm = Z0
+        for g in TwoO:
+            norm = zadd(norm, zmul(chi32[g], chi32[g]))
+        chk(norm == zn(48), "B2 %s: |chi_{3/2}|^2 = 48 -> norm 1 (irreducible)" % name)
+        # module transport uniqueness: chi o phi identical for both lifts
+        chk(all(chi32[p0[u]] == chi32[p1[u]] for u in spatial),
+            "B2 %s: transported chi_{3/2} identical under both lifts" % name)
+        results.append((name, len(lifts)))
+        log("  %s: 2 lifts over id_S4, both fix z; chi_{3/2}: 0 on odd classes, "
+            "-4 at z, norm 1; transport unique" % name)
+    chk(results[0][1] == results[1][1] == 2, "B2: Pin-independent lift count")
+    C5 = {
+        "num_lifts_over_id_S4": 2,
+        "both_lifts_fix_z": True,
+        "chi_3half_vanishes_on_all_odd_classes": True,
+        "chi_3half_norm": 1,
+        "chi_3half_at_z": -4,
+        "module_transport_unique": True,
+        "arm": "ASSEMBLED",
+        "pin_independent": True,
+    }
+    aux = {"sgn_int": sgn_int, "TwoO": TwoO, "minus1": minus1}
+    return C5, aux
+
+# =============================================================================
+# PHASE B3 — admissibility lattices by explicit Sym^n character sums
+# =============================================================================
+def run_B3(C4models, b2aux):
+    log("")
+    log("=== B3: admissibility lattices over the diagonal lock ===")
+    TwoO = b2aux["TwoO"]
+    sgn_int = b2aux["sgn_int"]
+    minus1 = b2aux["minus1"]
+    chars = {}
+    for n in (1, 2, 3, 5, 7):
+        chars[n] = {g: sym_trace(g, n) for g in TwoO}
+        for v in chars[n].values():
+            chk(zis_real(v), "B3: character values real")
+    # 2T = kernel of sgn (the even part)
+    TwoT = [g for g in TwoO if sgn_int(g) == 1]
+    chk(len(TwoT) == 24, "B3: |2T| = 24")
+    tset = set(TwoT)
+    chk(all(m2mul(a, b) in tset for a in TwoT for b in TwoT), "B3: 2T closed")
+    chk([g for g in TwoT if g != M2_ID and m2mul(g, g) == M2_ID] == [minus1],
+        "B3: unique involution of 2T is -1 (binary tetrahedral)")
+    def ip(dom, twoJ, twoI, fr):
+        tot = Z0
+        for g in dom:
+            v = zmul(chars[twoJ][g], chars[twoI][g])
+            if fr == "sgn" and sgn_int(g) == -1:
+                v = zneg(v)
+            tot = zadd(tot, v)
+        chk(zis_rat(tot), "B3: character sum is rational")
+        m = tot[0] / len(dom)
+        chk(m.denominator == 1, "B3: multiplicity is an integer")
+        m = int(m)
+        chk(m >= 0, "B3: multiplicity is nonnegative")
+        return m
+    JJ = (1, 3, 5, 7)
+    II = (1, 3, 5)
+    lat_triv, lat_sgn, lat_2T = {}, {}, {}
+    log("  table cells m(2J,2I) [triv | sgn | 2T]:")
+    for a in JJ:
+        row = []
+        for b in II:
+            mt = ip(TwoO, a, b, "triv")
+            ms = ip(TwoO, a, b, "sgn")
+            m2t = ip(TwoT, a, b, "triv")
+            if mt: lat_triv["%d,%d" % (a, b)] = mt
+            if ms: lat_sgn["%d,%d" % (a, b)] = ms
+            if m2t: lat_2T["%d,%d" % (a, b)] = m2t
+            row.append("(%d,%d): %d|%d|%d" % (a, b, mt, ms, m2t))
+        log("    " + "  ".join(row))
+    # parity law: m != 0 -> J + I integer (2J + 2I even), checked mechanically
+    parity = all((int(k.split(",")[0]) + int(k.split(",")[1])) % 2 == 0
+                 for lat in (lat_triv, lat_sgn, lat_2T) for k in lat)
+    chk(parity, "B3: parity law holds on all three tables")
+    # parity-law content probe (integer-spin cross term must vanish; control only)
+    for b in II:
+        chk(ip(TwoO, 2, b, "triv") == 0 and ip(TwoO, 2, b, "sgn") == 0,
+            "B3 control: genuine x non-genuine cross term vanishes (2J=2)")
+    log("  parity law verified; mixed-parity control cells vanish")
+    C6 = {
+        "lattice_2O_triv": lat_triv,
+        "lattice_2O_sgn": lat_sgn,
+        "lattice_2T": lat_2T,
+        "parity_law_all_tables": True,
+        "assignment_disposition": "NEUTRAL",
+    }
+    return C6
+
+# =============================================================================
+# MAIN
+# =============================================================================
+def main():
+    log("g_2a_L1_ccleg.py — Gate G-2a-L1 CC leg (independent instrument)")
+    log("prereg md5 da9c25d19ff91f2c0809ac0027a7bebb (locked 2026-07-11)")
+    # F2 first: the discriminator control runs before any framework data
+    C4, C4models = run_F2()
+    write_json("cc_phase2.json", {"phase": 2, "C4_F2": C4,
+        "note": "F2 ran FIRST (before any framework data), per the prereg F2 clause"})
+    # flat home, both Pin types
+    fh_p = run_flat_home(+1, "Cl(3)^+ / Pin+")
+    fh_m = run_flat_home(-1, "Cl(3)^- / Pin-")
+    chk(fh_p["C1"] == fh_m["C1"], "Pin comparison: C1 identical across Pin types")
+    chk(fh_p["C2"] == fh_m["C2"], "Pin comparison: C2 identical across Pin types")
+    chk(fh_p["C3"] == fh_m["C3"], "Pin comparison: C3 identical across Pin types")
+    chk(fh_p["spatial"] == fh_m["spatial"],
+        "Pin comparison: identical spatial 2O element set in both algebras")
+    log("")
+    log("Pin+ and Pin- runs agree on C1/C2/C3 and on the spatial 2O set")
+    write_json("cc_phase1.json", {"phase": 1, "C1_F1": fh_p["C1"], "C2_M": fh_p["C2"],
+        "pin_types_run": ["Pin+", "Pin-"]})
+    write_json("cc_phase3.json", {"phase": 3, "C3_B1": fh_p["C3"],
+        "hom_routes": {"derived_subgroup": 8, "brute_force": 8, "F2_relation_rank": 8}})
+    C5, b2aux = run_B2([fh_p, fh_m], C4models)
+    write_json("cc_phase4.json", {"phase": 4, "C5_B2": C5})
+    C6 = run_B3(C4models, b2aux)
+    write_json("cc_phase5.json", {"phase": 5, "C6_B3": C6})
+    log("")
+    log("ALL CHECKS PASS — assertions: %d" % ASSERTS)
+    # consolidated checkpoint (schema g2a_l1_checkpoint_v1)
+    inst_md5 = hashlib.md5(open(os.path.abspath(__file__), "rb").read()).hexdigest()
+    log_text = "\n".join(LOG) + "\n"
+    # the run log written by the instrument itself, so its md5 is known here;
+    # the final two log lines below are part of the file before hashing
+    LOG.append("assertions total: %d" % ASSERTS)
+    LOG.append("instrument md5: %s" % inst_md5)
+    log_text = "\n".join(LOG) + "\n"
+    with open("g_2a_L1_cc_run.log", "w") as f:
+        f.write(log_text)
+    run_log_md5 = hashlib.md5(log_text.encode("utf-8")).hexdigest()
+    ckpt = {
+        "schema": "g2a_l1_checkpoint_v1",
+        "gate": "G-2a-L1",
+        "leg": "cc",
+        "prereg_md5": "da9c25d19ff91f2c0809ac0027a7bebb",
+        "instrument_md5": inst_md5,
+        "run_log_md5": run_log_md5,
+        "assertions": ASSERTS,
+        "all_checks_pass": True,
+        "pin_types_run": ["Pin+", "Pin-"],
+        "C1_F1": fh_p["C1"],
+        "C2_M": fh_p["C2"],
+        "C3_B1": fh_p["C3"],
+        "C4_F2": C4,
+        "C5_B2": C5,
+        "C6_B3": C6,
+    }
+    with open("g_2a_L1_cc_checkpoint.json", "w") as f:
+        json.dump(ckpt, f, indent=1, sort_keys=True)
+        f.write("\n")
+    print("checkpoint md5: %s"
+          % hashlib.md5(open("g_2a_L1_cc_checkpoint.json", "rb").read()).hexdigest())
+
+if __name__ == "__main__":
+    main()

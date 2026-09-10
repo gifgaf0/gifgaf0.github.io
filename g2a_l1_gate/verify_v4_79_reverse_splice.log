@@ -1,0 +1,14 @@
+edit constants extracted from foldin_v4_79_g2aL1.py: 14 strings
+V4.79 canonical: md5 6cfeca2248c3b89c4ff13ac5034f8a95, 1493745 B — matches the authorized candidate
+  E1 title present exactly once
+  E2 As-of present exactly once
+  E3 fold record present exactly once
+  E4 §2.87.J present exactly once
+  E5 annotation present exactly once
+  E6 P-4.b present exactly once
+  E7 Part VI row present exactly once
+  E8 changelog present exactly once
+reverse-splice: V4.78 reconstructed BYTE-IDENTICAL (md5 98b9f63f1158bd7e0af43f9129a51f06, 1474281 B) — PASS
+§2.52 Open 3 row: unique and byte-identical pre/post — PASS
+delta: +19464 B over V4.78 (all eight edits additive)
+RESULT: V4.79 VERIFIED CC-SIDE — authorized candidate, additive-only, reversible

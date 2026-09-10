@@ -1,0 +1,15 @@
+checkpoint quarantine/g_2a_L1_chat_checkpoint.json md5 476052b1e075db43a6e8b7a2bb5b0be3
+checkpoint g_2a_L1_cc_checkpoint.json md5 47ae0b85eee85781cddc93cb208441a7
+C1 PASS  items 7  miss 0
+C2 MISS  items 7  miss 1
+    Mplus_element_orders: chat=[1, 2, 3, 4]  cc=[1, 2, 2, 3, 4]
+C3 MISS  items 7  miss 1
+    arm_sharpened: chat='NOT-INDUCED-BY-OBSTRUCTION'  cc="pushforward-obstructed: z is central and a commutator in Gamma~_2, so every Z/2 character kills z and no pushforward Z/2-extension of M carries the spin sign; the naive quotient collapses to M (D2). The flat home induces no double cover of M by the D1 route — the postulate's substrate lives in the point/motion sector (see B2), not in a pushforward over M."
+C4 MISS  items 8  miss 1
+    GL23_transposition_class_size: chat=6  cc=12
+C5 MISS  items 8  miss 1
+    arm: chat='ASSEMBLED-RELOCATED'  cc='ASSEMBLED'
+C6 PASS  items 29  miss 0
+VERDICT chat=('SPLIT', 'ASSEMBLED-RELOCATED', 'NEUTRAL') cc=('SPLIT', 'ASSEMBLED', 'NEUTRAL')  DIVERGENT
+assertions chat=8484 cc=6447 (reported, not compared)
+RESULT: S9 TRIGGERED — counter-cross-check protocol before any verdict.

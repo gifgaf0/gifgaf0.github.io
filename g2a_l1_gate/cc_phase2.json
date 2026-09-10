@@ -1,0 +1,35 @@
+{
+ "C4_F2": {
+  "2O_all_order2_classes_of_O_lift_at_order_4": true,
+  "2O_order": 48,
+  "2O_unique_involution_is_minus_one": true,
+  "GL23_order": 48,
+  "GL23_transposition_class_has_involution_preimage": true,
+  "GL23_transposition_class_size": 12,
+  "O_class_data": [
+   [
+    1,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    6,
+    2
+   ],
+   [
+    6,
+    4
+   ],
+   [
+    8,
+    3
+   ]
+  ],
+  "discriminator_separates": true
+ },
+ "note": "F2 ran FIRST (before any framework data), per the prereg F2 clause",
+ "phase": 2
+}

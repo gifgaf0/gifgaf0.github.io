@@ -1,0 +1,13 @@
+nucleon
+proton
+neutron
+Skyrm
+Carson
+Krusch
+Manton
+Braaten
+mu_n
+magnetic moment
+1836
+Assignment II is
+Assignment I is

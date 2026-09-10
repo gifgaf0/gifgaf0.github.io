@@ -1,0 +1,37 @@
+{
+ "C1_F1": {
+  "bivector_squares_minus_one_both_algebras": true,
+  "characters_trivial_on_Gamma": true,
+  "closures_768_384_16_8": true,
+  "glide_eq_r1_circ_minusI": true,
+  "h_squared_eq_t111": true,
+  "meridian_minus_one": true,
+  "omega_squared_eq_minus_q": true
+ },
+ "C2_M": {
+  "M_direct_Z2_x_Mplus": true,
+  "Mplus_class_sizes": [
+   1,
+   3,
+   6,
+   6,
+   8
+  ],
+  "Mplus_element_orders": [
+   1,
+   2,
+   2,
+   3,
+   4
+  ],
+  "Mplus_order": 24,
+  "center_is_minusI_class": true,
+  "center_order": 2,
+  "order_M": 48
+ },
+ "phase": 1,
+ "pin_types_run": [
+  "Pin+",
+  "Pin-"
+ ]
+}

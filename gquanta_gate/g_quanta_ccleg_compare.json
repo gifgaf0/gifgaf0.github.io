@@ -1,0 +1,44 @@
+{
+  "gate": "G-QUANTA",
+  "leg": "cc",
+  "checkpoint_md5": "ca0e69a75a521f3869726693b23e3dce",
+  "rows": [
+    {
+      "object": "L_B Borromean Baryon",
+      "predicted": "PASS",
+      "machine": "PASS",
+      "concordant": true
+    },
+    {
+      "object": "K₇ Vortex",
+      "predicted": "PASS",
+      "machine": "PASS",
+      "concordant": true
+    },
+    {
+      "object": "Electron 2π Closure",
+      "predicted": "PASS",
+      "machine": "PASS",
+      "concordant": true
+    },
+    {
+      "object": "Clifford Unknot / Rule 17",
+      "predicted": "FAIL",
+      "machine": "FAIL",
+      "concordant": true
+    },
+    {
+      "object": "CD Tower Rungs (e.g., 42/84)",
+      "predicted": "FAIL",
+      "machine": "FAIL",
+      "concordant": true
+    },
+    {
+      "object": "Cluster M SLWE Matrices",
+      "predicted": "FAIL",
+      "machine": "FAIL",
+      "concordant": true
+    }
+  ],
+  "PC-3_met": true
+}

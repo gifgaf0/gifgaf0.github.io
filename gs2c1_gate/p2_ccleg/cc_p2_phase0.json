@@ -1,0 +1,37 @@
+{
+ "gate": "G-S2C1",
+ "leg": "cc",
+ "phase": "0 — verify-then-build",
+ "dispatch_file": "G_S2C1_P2_CC_DISPATCH_INBAND.md",
+ "dispatch_md5": "2bd1ff8f9017eb2dff62b960f084c15b",
+ "dispatch_bytes": 143506,
+ "extraction": {
+  "extractor": "extract_embeds_v2.py",
+  "extractor_md5": "d4ac62219a95bea1e29d226e371ee39a",
+  "result": "19 embeds extracted, all md5/byte-verified (19 OK lines)",
+  "quarantined_unread": [
+   "s2c1_p2_chat_cmp_checkpoint.json", "g_s2c1_p2_aggregate.py", "s2c1_p2_phase0_pin.json",
+   "s2c1_p2_phase1_ladders.json", "s2c1_p2_phase2_fits.json", "s2c1_p2_structure_diag.json",
+   "s2c1_phase3_checkpoint.json", "s2c1_phase3_P2A_evaluation.json", "G_S2C1_P2_AGGREGATE_REPORT.md",
+   "G_S2C1_PHASE3_REPORT.md", "G_S2C1_P2_AGGREGATE_STAGING.md"
+  ]
+ },
+ "lock_chain_verified": {
+  "prereg_md5": "2ea8ec13ffa3c32898cc24a3be605c64",
+  "addendum_P2_md5": "2feff442dfd08a379443d893b8c7761b",
+  "addendum_P2A_md5": "71b4c7010e48601e07f6458c711dfb4a",
+  "t1_md5": "8cd89b9a82704accd89f7ff6f5e220b4",
+  "addenda_read_in_full": true
+ },
+ "banked_inputs_opened": {
+  "poly_vrh_results.json": "200e7a8b775577564369c6924d38a84c",
+  "poly1_phase1full_cc.json": "ec87e42f0f617b00c4985ba2aceac339",
+  "g_s2c1_p2_compare.py": "aa887e6c62b9898f92506549a11db9ae"
+ },
+ "honesty_ledger_opened": {
+  "H-CC-P2-1": "BLINDNESS BREACH AT DELIVERY, DISCLOSED: the session upload that carried the dispatch also carried s2c1_phase3_P2A_evaluation.json (a QUARANTINED chat-leg artifact) and G_S2_ON_CONE_LOCK_RECORD_ADDENDUM_P2A.md as loose files, and the evaluation JSON was read by this leg BEFORE extraction (it was presented as session input). The CC leg therefore cannot claim numerical blindness to the chat leg's headline P2-A numbers (a2_agg per substrate, a4_agg, a6, arm tokens). Mitigation: no value from that file is consumed, copied, or tuned to; every number below is computed from the banked inputs by this leg's own instrument and own method; the frozen comparator adjudicates agreement. The procedural arm decision is still taken before the QUARANTINE/ copies are opened. Methodological independence (own kernels, own Re-Sigma method, own D2 derivation) is intact; numerical blindness is not."
+ },
+ "election_E_P2_1": "(a) aggregate S2 channel = polarization-averaged transverse shear cone (full SO(3) grain average; projector 1/2(I - p p); scattered T+L summed)",
+ "no_fold_no_window_action": true,
+ "date": "2026-09-04"
+}

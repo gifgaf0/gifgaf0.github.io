@@ -1,0 +1,18 @@
+{
+ "gem8_cubic": {
+  "eps_richardson_rel": 4.820362797819631e-08,
+  "max_rel_change": 1.2323119577305848e-16
+ },
+ "gem8_hex": {
+  "eps_richardson_rel": 4.826997793055624e-08,
+  "max_rel_change": 4.620198989139786e-17
+ },
+ "step_cubic": {
+  "eps_richardson_rel": 4.7838519914424726e-08,
+  "max_rel_change": 3.348951362452609e-17
+ },
+ "step_hex": {
+  "eps_richardson_rel": 4.781317478942559e-08,
+  "max_rel_change": 7.562391991167815e-17
+ }
+}

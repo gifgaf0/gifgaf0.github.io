@@ -1,0 +1,72 @@
+checkpoint QUARANTINE/s2c1_p2_chat_cmp_checkpoint.json md5 d9b8463851fb71285aa53506781bc75b
+checkpoint s2c1_p2_cc_cmp_checkpoint.json md5 50a9e800af7f1fe44a691ba977c62422
+  C1 PASS  step_hex Q_T_a 0.03519073886607003 vs 0.035190738866067876
+  C1 PASS  step_hex V_T 8.54777943873924 vs 8.547779438739243
+  C1 PASS  step_hex V_L 15.23248721209595 vs 15.232487212095954
+  C1 PASS  step_hex pin_pass
+  C2 PASS  step_hex KK tie-in chat 5.6e-16 cc 6.2e-14
+  C3 PASS  step_hex D0_T -2.052824e-02 vs -2.052824e-02
+  C3 PASS  step_hex D0_L -8.620711e-03 vs -8.620711e-03
+  C4 PASS  step_hex a2_agg T_analytic -1.834766e-02 vs -1.834766e-02 (rel 6.5e-14)
+  C4 PASS  step_hex a2_agg L_analytic -2.432261e-02 vs -2.432261e-02 (rel 2.3e-13)
+  C5 PASS  step_hex a4_agg +6.9541e-02 vs +6.9862e-02
+  C5 PASS  step_hex even-basis rms 8.5e-09 / 1.3e-11
+  C5 PASS  step_hex small-k confirmation 1.2e-04 / 3.6e-08
+  C6 PASS  step_hex F_AGG_DISP_pass
+  C6 PASS  step_hex F_AGG_L_pass
+  C6 PASS  step_hex F_CONV_pass
+  C6 PASS  step_hex structure_no_odd_or_log_term
+  C7 PASS  step_hex arm A3-agg DISPERSIVE (grain-scale k^2) vs A3-agg DISPERSIVE (grain-scale k^2)
+  C1 PASS  gem8_hex Q_T_a 0.05002054847853209 vs 0.050020548478532025
+  C1 PASS  gem8_hex V_T 10.248997674569612 vs 10.248997674569603
+  C1 PASS  gem8_hex V_L 19.22893895495363 vs 19.228938954953616
+  C1 PASS  gem8_hex pin_pass
+  C2 PASS  gem8_hex KK tie-in chat 6.7e-16 cc 2.1e-15
+  C3 PASS  gem8_hex D0_T -2.891781e-02 vs -2.891781e-02
+  C3 PASS  gem8_hex D0_L -1.095381e-02 vs -1.095381e-02
+  C4 PASS  gem8_hex a2_agg T_analytic -2.593369e-02 vs -2.593369e-02 (rel 6.7e-16)
+  C4 PASS  gem8_hex a2_agg L_analytic -3.440683e-02 vs -3.440683e-02 (rel 3.4e-13)
+  C5 PASS  gem8_hex a4_agg +9.8964e-02 vs +9.9422e-02
+  C5 PASS  gem8_hex even-basis rms 1.2e-08 / 1.9e-11
+  C5 PASS  gem8_hex small-k confirmation 1.2e-04 / 3.6e-08
+  C6 PASS  gem8_hex F_AGG_DISP_pass
+  C6 PASS  gem8_hex F_AGG_L_pass
+  C6 PASS  gem8_hex F_CONV_pass
+  C6 PASS  gem8_hex structure_no_odd_or_log_term
+  C7 PASS  gem8_hex arm A3-agg DISPERSIVE (grain-scale k^2) vs A3-agg DISPERSIVE (grain-scale k^2)
+  C1 PASS  step_cubic Q_T_a 0.05407762824651864 vs 0.0540776282465218
+  C1 PASS  step_cubic V_T 8.11579447743719 vs 8.115794477437195
+  C1 PASS  step_cubic V_L 14.548331863138124 vs 14.54833186313813
+  C1 PASS  step_cubic pin_pass
+  C2 PASS  step_cubic KK tie-in chat 3.3e-16 cc 5.9e-14
+  C3 PASS  step_cubic D0_T -3.151342e-02 vs -3.151342e-02
+  C3 PASS  step_cubic D0_L -1.307585e-02 vs -1.307585e-02
+  C4 PASS  step_cubic a2_agg T_analytic -2.853747e-02 vs -2.853747e-02 (rel 6.3e-14)
+  C4 PASS  step_cubic a2_agg L_analytic -3.767053e-02 vs -3.767053e-02 (rel 2.4e-13)
+  C5 PASS  step_cubic a4_agg +1.0682e-01 vs +1.0732e-01
+  C5 PASS  step_cubic even-basis rms 1.3e-08 / 2.1e-11
+  C5 PASS  step_cubic small-k confirmation 1.2e-04 / 3.6e-08
+  C6 PASS  step_cubic F_AGG_DISP_pass
+  C6 PASS  step_cubic F_AGG_L_pass
+  C6 PASS  step_cubic F_CONV_pass
+  C6 PASS  step_cubic structure_no_odd_or_log_term
+  C7 PASS  step_cubic arm A3-agg DISPERSIVE (grain-scale k^2) vs A3-agg DISPERSIVE (grain-scale k^2)
+  C1 PASS  gem8_cubic Q_T_a 0.07549430207120778 vs 0.07549430207120401
+  C1 PASS  gem8_cubic V_T 9.872492086601033 vs 9.872492086601033
+  C1 PASS  gem8_cubic V_L 18.44533274300033 vs 18.44533274300033
+  C1 PASS  gem8_cubic pin_pass
+  C2 PASS  gem8_cubic KK tie-in chat 2.2e-16 cc 5.0e-14
+  C3 PASS  gem8_cubic D0_T -4.367714e-02 vs -4.367714e-02
+  C3 PASS  gem8_cubic D0_L -1.668298e-02 vs -1.668298e-02
+  C4 PASS  gem8_cubic a2_agg T_analytic -3.971398e-02 vs -3.971398e-02 (rel 5.1e-14)
+  C4 PASS  gem8_cubic a2_agg L_analytic -5.236302e-02 vs -5.236302e-02 (rel 3.1e-13)
+  C5 PASS  gem8_cubic a4_agg +1.4925e-01 vs +1.4995e-01
+  C5 PASS  gem8_cubic even-basis rms 1.8e-08 / 2.9e-11
+  C5 PASS  gem8_cubic small-k confirmation 1.2e-04 / 3.6e-08
+  C6 PASS  gem8_cubic F_AGG_DISP_pass
+  C6 PASS  gem8_cubic F_AGG_L_pass
+  C6 PASS  gem8_cubic F_CONV_pass
+  C6 PASS  gem8_cubic structure_no_odd_or_log_term
+  C7 PASS  gem8_cubic arm A3-agg DISPERSIVE (grain-scale k^2) vs A3-agg DISPERSIVE (grain-scale k^2)
+F-AGG-UNI (reported): chat spread 1.77e-02  cc spread 1.77e-02
+RESULT: C1–C7 ALL PASS — S9 NOT triggered; two-leg aggregate result stands; fold pending author authorization.

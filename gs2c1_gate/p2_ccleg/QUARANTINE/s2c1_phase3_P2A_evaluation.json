@@ -1,0 +1,85 @@
+{
+ "addendum_P2A_md5": "71b4c7010e48601e07f6458c711dfb4a",
+ "addendum_P2_md5": "2feff442dfd08a379443d893b8c7761b",
+ "gate": "G-S2C1",
+ "leg": "chat",
+ "mechanical_arm_P2A_all": {
+  "gem8_cubic": "A3-agg DISPERSIVE (grain-scale k^2)",
+  "gem8_hex": "A3-agg DISPERSIVE (grain-scale k^2)",
+  "step_cubic": "A3-agg DISPERSIVE (grain-scale k^2)",
+  "step_hex": "A3-agg DISPERSIVE (grain-scale k^2)"
+ },
+ "per_substrate": {
+  "gem8_cubic": {
+   "CI_quadrature": 4.1181340918531445e-15,
+   "F_AGG_DISP_pass": true,
+   "F_AGG_KK_pass": true,
+   "F_AGG_L_pass": true,
+   "F_AGG_PIN_pass": true,
+   "F_CONV_pass": true,
+   "a2_L": -0.05236302368970775,
+   "a2_agg_of_record": -0.03971397679128813,
+   "a3": 0.0,
+   "a4_agg": 0.14925425810681414,
+   "a6": -0.5464825275583549,
+   "even_basis_rms": 1.8465282614685326e-08,
+   "mechanical_arm_P2A": "A3-agg DISPERSIVE (grain-scale k^2)",
+   "smallk_confirmation_rel": 0.0001161316698365944
+  },
+  "gem8_hex": {
+   "CI_quadrature": 1.5461402663470282e-15,
+   "F_AGG_DISP_pass": true,
+   "F_AGG_KK_pass": true,
+   "F_AGG_L_pass": true,
+   "F_AGG_PIN_pass": true,
+   "F_CONV_pass": true,
+   "a2_L": -0.03440682735188735,
+   "a2_agg_of_record": -0.02593369358429421,
+   "a3": 0.0,
+   "a4_agg": 0.09896419512444805,
+   "a6": -0.36153040790504276,
+   "even_basis_rms": 1.2108021478497649e-08,
+   "mechanical_arm_P2A": "A3-agg DISPERSIVE (grain-scale k^2)",
+   "smallk_confirmation_rel": 0.0001178733317235281
+  },
+  "step_cubic": {
+   "CI_quadrature": 5.7853080374211124e-15,
+   "F_AGG_DISP_pass": true,
+   "F_AGG_KK_pass": true,
+   "F_AGG_L_pass": true,
+   "F_AGG_PIN_pass": true,
+   "F_CONV_pass": true,
+   "a2_L": -0.03767052681316661,
+   "a2_agg_of_record": -0.028537471107944423,
+   "a3": 0.0,
+   "a4_agg": 0.10681725928270075,
+   "a6": -0.3904839352751149,
+   "even_basis_rms": 1.317026496328201e-08,
+   "mechanical_arm_P2A": "A3-agg DISPERSIVE (grain-scale k^2)",
+   "smallk_confirmation_rel": 0.00011531424349453534
+  },
+  "step_hex": {
+   "CI_quadrature": 1.0796098989120855e-16,
+   "F_AGG_DISP_pass": true,
+   "F_AGG_KK_pass": true,
+   "F_AGG_L_pass": true,
+   "F_AGG_PIN_pass": true,
+   "F_CONV_pass": true,
+   "a2_L": -0.024322614709244055,
+   "a2_agg_of_record": -0.018347663163947047,
+   "a3": 0.0,
+   "a4_agg": 0.0695407376703341,
+   "a6": -0.253629787389283,
+   "even_basis_rms": 8.48733544311705e-09,
+   "mechanical_arm_P2A": "A3-agg DISPERSIVE (grain-scale k^2)",
+   "smallk_confirmation_rel": 0.00011663917851345573
+  }
+ },
+ "phase": "3 / P2 \u2014 P2-A evaluation",
+ "source_md5": {
+  "phase2_fits": "0e8cc05e4868b8db086564e297cab6d5",
+  "phase3_checkpoint": "48927b9aebce27615b8f18581fe98a4f",
+  "structure_diag": "60add009c282b9d603021ba0adbfa1e2"
+ },
+ "status": "chat leg P2 mechanical arm under P2-A; P2 CC leg pending; no window action"
+}

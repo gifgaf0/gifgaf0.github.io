@@ -1,0 +1,36 @@
+{
+ "BLIND_UNTIL_CC_CHECKPOINT_HASHED": true,
+ "BRANCH_NAMING": "claude/<descriptor>",
+ "CHECKPOINT_SCHEMA": "p2_cmp_v1 \u2014 exactly the chat checkpoint's blocks/keys: per_substrate[name]{C1_pin{Q_T_a,V_T,V_L,pin_pass}, C2_KK{alpha_tie_max_rel,pass}, C3_D0{T,L}, C4_a2_agg{T_analytic,L_analytic,CI_quadrature_rel}, C5_a4_agg{T_even_basis,T_a6,even_basis_rms,smallk_confirmation_rel}, C6_controls{F_AGG_DISP_pass,F_AGG_L_pass,F_CONV_pass,structure_no_odd_or_log_term}, C7_arm, a2_over_QT, a2L_over_a2T}, F_AGG_UNI{a2_over_QT_spread_rel}, plus schema/gate/phase/leg/prereg_md5/addenda_md5/source_md5/election_E_P2_1/shared_layer_flagged",
+ "COMPARATOR_FROZEN": "g_s2c1_p2_compare.py md5 aa887e6c62b9898f92506549a11db9ae (tolerances in its header, fixed before your run); run after hashing + committing your checkpoint; the chat side re-runs it on return",
+ "DISCLOSURE": "Addendum P2-A's text (embedded raw, lock chain) necessarily reveals the chat leg's structure finding (analytic in k^2, a3 = 0) and the extraction rule; the quarantined artifacts carry the numbers. Your independence rests on your own real-part method and your own derivation of D2.",
+ "ELECTION_E_P2_1": "(a) the aggregate S2 channel = the polarization-averaged transverse shear cone (full SO(3) grain average; projector 1/2(I - p p), scattered T+L summed)",
+ "EXECUTE_CC_LEG": true,
+ "LOCK": {
+  "T1": "8cd89b9a82704accd89f7ff6f5e220b4",
+  "addendum_P2": "2feff442dfd08a379443d893b8c7761b",
+  "addendum_P2A": "71b4c7010e48601e07f6458c711dfb4a",
+  "prereg": "2ea8ec13ffa3c32898cc24a3be605c64"
+ },
+ "NO_FOLD_NO_WINDOW_ACTION": true,
+ "P4b_BASE64_ARMOR_QUARANTINE": true,
+ "REQUESTED_VARIATION": "compute Re Sigma_T by a method DIFFERENT from the chat leg's Cauchy-weight PV quadrature + regular tail: e.g. (i) a numerical Kramers-Kronig/Hilbert transform of alpha_T(k) computed on a wide k-grid, or (ii) closed-form partial fractions of the mu-integral followed by an analytic PV in q, or (iii) epsilon-regularised complex integration with Richardson extrapolation in epsilon; derive the analytic D2 yourself (do not read it off the addendum's formula until your derivation is written) and confirm the formula or disagree with it in writing",
+ "S9_ON_ANY_MISS": true,
+ "SHARED_LAYER_FLAGGED": "the SO(3)-covariance Xi and the mode kernels Phi_TM(mu) are the banked G-POLY1 layer (the chat leg imported the recovered G-POLY1 instrument for them); rebuild them yourself (your own quadrature/rotation scheme); the INDEPENDENT content of this gate is everything below",
+ "SUBSTRATE_OBJECTS_BANKED": "the four pinned polycrystal tensors in poly_vrh_results.json (md5 200e7a8b775577564369c6924d38a84c; vrh -> hex:step, hex:gem8, cubic:step, cubic:gem8; Voigt V_T = sqrt(mu_bar), V_L = sqrt(lambda_bar + 2 mu_bar)); exponential two-point spectrum eta(q) = a_g^3/(pi^2 (1+q^2 a_g^2)^2), a_g = 1; the banked Q_T^a quartet in poly1_phase1full_cc.json (your own G-POLY1 output) is the F-AGG-PIN reference",
+ "T1_SCAN": "zero hits on every CC instrument and checkpoint (pattern lines only; the numeric patterns collide with scientific-notation floats \u2014 if a machine-epsilon value hits, classify and log as H-item, do NOT reformat to dodge)",
+ "VERIFY_THEN_BUILD": true,
+ "WHAT_TO_COMPUTE": [
+  "F-AGG-PIN: reproduce the Q_T^a quartet digit-for-digit (rel <= 1e-10) before anything else",
+  "D(k) = Delta c_T/c_T(k) for the T channel (and the L channel as control) on the ladder k a_g in {0.3/2^j, j=0..8} U {0.005,0.01,0.015,0.02,0.03}; D(0) closed form = -1/4 sum_M N_M int Phi_TM dmu; sign fixed by positive attenuation (k_eff^2 = k^2 - Pi)",
+  "F-AGG-KK: your Im-part tie-in alpha_T(k) = sum_M k k_M^3 N_M/2 F_M(k_M,k) must reproduce the banked alpha_T_a grid values (poly1_phase1full_cc.json) to <= 1e-9 rel",
+  "a2_agg of record = the analytic D2 (P2-A) for T and L, quadrature-converged to <= 1e-6 rel (F-CONV: doubling of your rotation quadrature, your mu nodes, your q-integration parameters)",
+  "structure check: R(k) = Delta(k) - D2 k^2 fitted on {k^4, k^6, k^8} (rms <= 1e-7) AND tested against {k^3, k^4} and {k^4, k^4 ln k}: report which basis the data selects; a4_agg = the even-basis k^4 coefficient; small-k confirmation Delta/k^2 -> D2 at k <= 0.005 (<= 1e-3 incl. the a4 k^2 contribution)",
+  "F-AGG-DISP at tau_agg = 1e-6 with CI = your F-CONV term; F-AGG-L (L channel nonzero, analytic-controlled); F-AGG-UNI reported (a2_agg/Q_T^a across the quartet; a2_L/a2_T)",
+  "arm per substrate per Addendum P2 \u00a7Falsifiers with P2-A's extraction rule; decided BEFORE the quarantine is decoded"
+ ],
+ "dispatch": "CC LEG \u2014 Probe P2 (aggregate inheritance), Phase 3",
+ "dispatch_date": "2026-09-03",
+ "display": "Gate G-S2-ON-CONE",
+ "gate": "G-S2C1"
+}

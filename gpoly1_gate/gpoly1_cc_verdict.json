@@ -1,0 +1,165 @@
+{
+ "C1": {
+  "n": 12,
+  "worst_rel": 0.0,
+  "worst_item": "step_hex.cont_vT",
+  "threshold": 1e-08,
+  "pass": true
+ },
+ "C2": {
+  "n": 53,
+  "worst_rel": 6.661338147750939e-16,
+  "worst_item": "gem8_cubic.AU",
+  "threshold": 1e-06,
+  "pass": true
+ },
+ "C3": {
+  "n": 62,
+  "worst_rel": 1.7703616350672746e-12,
+  "worst_item": "full.gem8_hex.dc55_sq",
+  "threshold": 1e-08,
+  "pass": true
+ },
+ "C3q": {
+  "n": 56,
+  "worst_rel": 1.223132706229535e-12,
+  "worst_item": "quoted.step_hex.dc55_sq",
+  "threshold": 1e-08,
+  "pass": true
+ },
+ "C4": {
+  "n": 58,
+  "worst_rel": 2.784106278852505e-12,
+  "worst_item": "full.gem8_hex.Q_L_a",
+  "threshold": 1e-06,
+  "pass": true
+ },
+ "C4q": {
+  "n": 33,
+  "worst_rel": 7.012168623532489e-13,
+  "worst_item": "quoted.gem8_cubic.Qprime_G",
+  "threshold": 1e-06,
+  "pass": true
+ },
+ "C1_extras": {
+  "n": 10,
+  "worst_rel": 0.0,
+  "worst_item": "mix.step.v_f0"
+ },
+ "hex_K_HS_floor": {
+  "worst_rel": 2.7338020736067392e-11,
+  "worst_item": "hs.gem8_hex.K_HS[1] (residual-floor, non-verdict)",
+  "note": "degenerate-inverted band at input-identity-residual floor; optimizer operationalization documented in deviation log"
+ },
+ "C5": {
+  "rows": [
+   {
+    "cfg": "full.step_hex",
+    "fit_exponent": 3.9908574393018728,
+    "dist_from_4": 0.009142560698127244,
+    "richardson_vs_closed": 5.638958232578872e-06,
+    "exp_diff_vs_chat": 1.554312234475219e-14,
+    "worst_alpha_rel_vs_chat": 2.490230244234226e-13
+   },
+   {
+    "cfg": "full.gem8_hex",
+    "fit_exponent": 3.990836354736264,
+    "dist_from_4": 0.009163645263735809,
+    "richardson_vs_closed": 5.657315624518766e-06,
+    "exp_diff_vs_chat": 2.1316282072803006e-14,
+    "worst_alpha_rel_vs_chat": 4.897193761621565e-13
+   },
+   {
+    "cfg": "full.step_cubic",
+    "fit_exponent": 3.990855336260311,
+    "dist_from_4": 0.00914466373968903,
+    "richardson_vs_closed": 5.6682500511051614e-06,
+    "exp_diff_vs_chat": 1.1546319456101628e-14,
+    "worst_alpha_rel_vs_chat": 3.7481129311345285e-13
+   },
+   {
+    "cfg": "full.gem8_cubic",
+    "fit_exponent": 3.990838523014963,
+    "dist_from_4": 0.009161476985036998,
+    "richardson_vs_closed": 5.687009390964448e-06,
+    "exp_diff_vs_chat": 1.9095836023552692e-14,
+    "worst_alpha_rel_vs_chat": 1.1968204205459188e-13
+   },
+   {
+    "cfg": "quoted.step_hex",
+    "fit_exponent": 3.990857434334924,
+    "dist_from_4": 0.009142565665075875,
+    "richardson_vs_closed": 5.638963786247508e-06,
+    "exp_diff_vs_chat": 2.220446049250313e-14,
+    "worst_alpha_rel_vs_chat": 3.220756994437579e-13
+   },
+   {
+    "cfg": "quoted.gem8_cubic",
+    "fit_exponent": 3.9908385179772794,
+    "dist_from_4": 0.009161482022720602,
+    "richardson_vs_closed": 5.687014989486094e-06,
+    "exp_diff_vs_chat": 1.3766765505351941e-14,
+    "worst_alpha_rel_vs_chat": 1.2434497875801753e-14
+   }
+  ],
+  "pass": true
+ },
+ "C6": {
+  "rows": [
+   {
+    "item": "full.step_hex",
+    "cc": "FULL",
+    "chat": "FULL"
+   },
+   {
+    "item": "full.gem8_hex",
+    "cc": "FULL",
+    "chat": "FULL"
+   },
+   {
+    "item": "full.step_cubic",
+    "cc": "FULL",
+    "chat": "FULL"
+   },
+   {
+    "item": "full.gem8_cubic",
+    "cc": "FULL",
+    "chat": "FULL"
+   },
+   {
+    "item": "hs.step_hex",
+    "cc": "K FULL; G PENDING",
+    "chat": "K FULL; G PENDING"
+   },
+   {
+    "item": "hs.gem8_hex",
+    "cc": "K FULL; G PENDING",
+    "chat": "K FULL; G PENDING"
+   },
+   {
+    "item": "quoted.step_cubic",
+    "cc": "PARTIAL",
+    "chat": "PARTIAL"
+   },
+   {
+    "item": "C2_verdict",
+    "cc": "PASS",
+    "chat": "PASS"
+   }
+  ],
+  "pass": true
+ },
+ "C2_verdict_identity": true,
+ "R2_Qprime_G_cc": {
+  "step_hex": 0.002592174543574817,
+  "gem8_hex": 0.002571752332303918,
+  "step_cubic": 0.0025900405120530923,
+  "gem8_cubic": 0.0025732066023339767
+ },
+ "x1_layer_deltas_cc": {
+  "step_hex": 2.6096159887023518e-05,
+  "gem8_cubic": 4.683305710107e-05,
+  "step_cubic_TT": 0.00033411005637895563
+ },
+ "OVERALL": "ALL CRITERIA PASS -- no S9 items"
+}

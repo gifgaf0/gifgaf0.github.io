@@ -1,0 +1,69 @@
+{
+ "phase0b": {
+  "gem8_cubic": {
+   "K": 210.27999999999997,
+   "mu_HS_lo": 84.85472250098378,
+   "mu_HS_hi": 89.43057403507308,
+   "mu_R": 75.80731355531792,
+   "mu_V": 97.464,
+   "vT_HS": [
+    9.211662309322014,
+    9.456773976101632
+   ],
+   "vT_VR": [
+    8.706739547920215,
+    9.872385729903385
+   ],
+   "band_halfwidth_pct_HS": 1.3129737436605846,
+   "v1_reproduced": true,
+   "status": "FULL"
+  },
+  "step_hex": {
+   "K_V": 134.61222222222221,
+   "K_R_berryman": 134.62001270904943,
+   "K_R_1606": 134.61117074438891,
+   "K_R_twoform_spread_rel": 6.568470911892603e-05,
+   "K_HS": [
+    134.62001270904943,
+    134.6122800074604
+   ],
+   "G_optimizers": [
+    0.0,
+    23080.66666666667
+   ],
+   "Geffv": 115.40333333333335,
+   "Geffr": 115.41001213361841,
+   "product_selfchecks": [
+    1.561136670442345e-16,
+    1.561136670442345e-16
+   ],
+   "ordering_note": "K_R(25) exceeds K_V by ~5.8e-05 rel: C66 identity residual (measured C66 vs (C11-C12)/2) propagating; both K_R forms reported",
+   "G_HS": "PENDING-verbatim (pin S2 elided term); V/R shear bracket stands: [68.6921, 73.0607]",
+   "status": "K FULL (input-residual note); G PENDING"
+  },
+  "step_cubic": {
+   "status": "BLOCKED-ON-K (c11,c12 input-gap); K-free simplified forms out of regime, not used"
+  },
+  "gem8_hex": {
+   "status": "INPUT-GAP (tensor absent; closes on receipt of poly_vrh_results.json 200e7a8b)"
+  }
+ },
+ "tableI_control": {
+  "VR": [
+   0.05099749487588249,
+   0.11948
+  ],
+  "HS": [
+   0.07120085092718953,
+   0.10286728910004972
+  ]
+ },
+ "extends": "poly1_phase0b_v1_48d60f22.json (v1 PASS reproduced; hex K_HS added under pin S2)",
+ "_meta": {
+  "instrument": "poly1_phase1v2_chatleg.py",
+  "phase": "0b-v2",
+  "leg": "chat",
+  "pin_record_md5": "621120e50d395beea2e914d54c929600",
+  "time": "2026-08-04 21:40:59.872853"
+ }
+}

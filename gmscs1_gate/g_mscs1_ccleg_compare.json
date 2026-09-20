@@ -1,0 +1,38 @@
+{
+ "gate": "G-MSCS1",
+ "leg": "cc",
+ "checkpoint_md5": "249e11dd53c4cb82f302b15d3c94c337",
+ "rows": [
+  {
+   "id": "H-MS-1",
+   "predicted": "r_xtal(S2-E2) < 0 on both hex configurations, |r| of order 1e-2 to 1e-1; cubic smaller and axis-dependent",
+   "machine": "hex r_E2 in [-3.9352e-02, -2.7947e-02] (all < 0); cubic |r_E2| max 2.0842e-02 < hex min 2.7947e-02; sign flips 001 -> 111",
+   "concordant": true
+  },
+  {
+   "id": "H-MS-2",
+   "predicted": "r_xtal(S2-h) of order 1e-3, sign of -Cov_EM(lambda,v); |r_h| << |r_E2| on every configuration",
+   "machine": "r_h in [-1.8451e-03, -1.1128e-03], cov > 0 on all keys, worst |r_h/r_E2| = 0.133",
+   "concordant": true
+  },
+  {
+   "id": "H-MS-3",
+   "predicted": "S_t = 0 within tau_agg on all four; kappa2(S2-E2) != 0 with sign matching r_xtal(S2-E2); kappa2(S2-h) smaller by roughly the admixture factor",
+   "machine": "S_t = 0 holds (worst 4.90e-13); hex kappa2_E2 < 0 matching r_xtal_E2 < 0, kappa2_h/kappa2_E2 ~ 1.4e-3 to 1.7e-3; BUT kappa2_E2 on all four cubic keys is a symmetry null (|kappa2| ~ 1e-15), so the nonzero-sign clause fails on cubic",
+   "concordant": false
+  },
+  {
+   "id": "H-MS-4",
+   "predicted": "mean lambda_L of order 1e-2 on hex, max on the oblique qSV branch; zero at t = 0 in the aggregate; O(t^2) in t",
+   "machine": "hex lambda_mean 4.809e-03 / 4.954e-03, max branch qSV; aggregate lambda(0) = 0, lambda(t)/t^2 constant over the fit window on every key",
+   "concordant": true
+  },
+  {
+   "id": "H-MS-5",
+   "predicted": "hex and cubic kappa2(S2-E2) share a sign (structural question)",
+   "machine": "machine answer: cubic kappa2(S2-E2) is identically zero under the l = 2 fiber texture (symmetry null); there is no cubic sign to share -- hex kappa2 < 0 stands alone",
+   "concordant": false
+  }
+ ],
+ "verdict_class": "IDENTITY-DELIVERED"
+}

@@ -1,0 +1,3129 @@
+{
+  "checks": [
+    {
+      "check": "C-M-0",
+      "item": "chat: required key gate",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key leg",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key instrument",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key instrument_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key memo_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key memo_bytes",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key ledger_base_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key utc",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key elections.E-MS-1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key elections.E-MS-2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key elections.E-MS-2b",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key elections.E-MS-2c",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key elections.E-MS-3",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key elections.E-MS-4",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key elections.E-MS-5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key elections.E-MS-6",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key T1.list_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key T1.state",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key T1.numeric_collisions",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key inputs.X1_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key inputs.X1_bytes",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key quadrature.n_theta",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key quadrature.n_phi",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key quadrature.doubling_residual",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key t_grid",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key controls.F-CTRL-ISO.passed",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key controls.F-CTRL-SO3.passed",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key controls.F-CTRL-TEX.passed",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key controls.F-CTRL-POL.passed",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key controls.PIN-A2AGG.passed",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key controls.F-CTRL-ADMIX.passed",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key phase1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key phase2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key born_t0",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key falsifiers.F-MS-3.state",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key falsifiers.F-MS-2.state",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key falsifiers.F-MS-1.state",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: required key verdict_class",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: memo_md5 == lock",
+      "result": "PASS",
+      "chat": "3f30262eaec461fb5fd3202835f7de37",
+      "cc": "3f30262eaec461fb5fd3202835f7de37"
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: memo_bytes == lock",
+      "result": "PASS",
+      "chat": 34837,
+      "cc": 34837
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: ledger_base_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: T1 list md5 == lock",
+      "result": "PASS",
+      "chat": "fef2827100d3f85e0a6341b44f0c00bf",
+      "cc": "fef2827100d3f85e0a6341b44f0c00bf"
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: T1 state CLEAN",
+      "result": "PASS",
+      "chat": "CLEAN",
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: X-1 md5",
+      "result": "PASS",
+      "chat": "200e7a8b775577564369c6924d38a84c",
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: X-1 bytes",
+      "result": "PASS",
+      "chat": 2767,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: instrument_md5 real 32-hex",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: no placeholders",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: election E-MS-1 code",
+      "result": "PASS",
+      "chat": "a",
+      "cc": "a"
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: election E-MS-2 code",
+      "result": "PASS",
+      "chat": "a",
+      "cc": "a"
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: election E-MS-2b code",
+      "result": "PASS",
+      "chat": "a+b",
+      "cc": "a+b"
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: election E-MS-2c code",
+      "result": "PASS",
+      "chat": "001+111",
+      "cc": "001+111"
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: election E-MS-3 code",
+      "result": "PASS",
+      "chat": "a",
+      "cc": "a"
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: election E-MS-4 code",
+      "result": "PASS",
+      "chat": "a",
+      "cc": "a"
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: election E-MS-5 code",
+      "result": "PASS",
+      "chat": "a",
+      "cc": "a"
+    },
+    {
+      "check": "C-M-0",
+      "item": "chat: election E-MS-6 code",
+      "result": "PASS",
+      "chat": "a",
+      "cc": "a"
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key gate",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key leg",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key instrument",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key instrument_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key memo_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key memo_bytes",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key ledger_base_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key utc",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key elections.E-MS-1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key elections.E-MS-2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key elections.E-MS-2b",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key elections.E-MS-2c",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key elections.E-MS-3",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key elections.E-MS-4",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key elections.E-MS-5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key elections.E-MS-6",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key T1.list_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key T1.state",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key T1.numeric_collisions",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key inputs.X1_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key inputs.X1_bytes",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key quadrature.n_theta",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key quadrature.n_phi",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key quadrature.doubling_residual",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key t_grid",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key controls.F-CTRL-ISO.passed",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key controls.F-CTRL-SO3.passed",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key controls.F-CTRL-TEX.passed",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key controls.F-CTRL-POL.passed",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key controls.PIN-A2AGG.passed",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key controls.F-CTRL-ADMIX.passed",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key phase1",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key phase2",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key born_t0",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key falsifiers.F-MS-3.state",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key falsifiers.F-MS-2.state",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key falsifiers.F-MS-1.state",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: required key verdict_class",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: memo_md5 == lock",
+      "result": "PASS",
+      "chat": "3f30262eaec461fb5fd3202835f7de37",
+      "cc": "3f30262eaec461fb5fd3202835f7de37"
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: memo_bytes == lock",
+      "result": "PASS",
+      "chat": 34837,
+      "cc": 34837
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: ledger_base_md5",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: T1 list md5 == lock",
+      "result": "PASS",
+      "chat": "fef2827100d3f85e0a6341b44f0c00bf",
+      "cc": "fef2827100d3f85e0a6341b44f0c00bf"
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: T1 state CLEAN",
+      "result": "PASS",
+      "chat": "CLEAN",
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: X-1 md5",
+      "result": "PASS",
+      "chat": "200e7a8b775577564369c6924d38a84c",
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: X-1 bytes",
+      "result": "PASS",
+      "chat": 2767,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: instrument_md5 real 32-hex",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: no placeholders",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: election E-MS-1 code",
+      "result": "PASS",
+      "chat": "a",
+      "cc": "a"
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: election E-MS-2 code",
+      "result": "PASS",
+      "chat": "a",
+      "cc": "a"
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: election E-MS-2b code",
+      "result": "PASS",
+      "chat": "a+b",
+      "cc": "a+b"
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: election E-MS-2c code",
+      "result": "PASS",
+      "chat": "001+111",
+      "cc": "001+111"
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: election E-MS-3 code",
+      "result": "PASS",
+      "chat": "a",
+      "cc": "a"
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: election E-MS-4 code",
+      "result": "PASS",
+      "chat": "a",
+      "cc": "a"
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: election E-MS-5 code",
+      "result": "PASS",
+      "chat": "a",
+      "cc": "a"
+    },
+    {
+      "check": "C-M-0",
+      "item": "cc: election E-MS-6 code",
+      "result": "PASS",
+      "chat": "a",
+      "cc": "a"
+    },
+    {
+      "check": "C-M-0",
+      "item": "INDEPENDENCE: instrument_md5 differ",
+      "result": "PASS",
+      "chat": "db5f51dd9ef7f54dd0826991d594681b",
+      "cc": "195a2b1baf1589675d4bf18983673a23"
+    },
+    {
+      "check": "C-M-0",
+      "item": "INDEPENDENCE: checkpoints not byte-identical",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-ISO.passed (both True)",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-ISO.r_xtal_E2",
+      "result": "PASS",
+      "chat": 2.220446049250313e-16,
+      "cc": 2.220446049250313e-16
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-ISO.r_xtal_h",
+      "result": "PASS",
+      "chat": 0.0,
+      "cc": 0.0
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-ISO.lambda_max",
+      "result": "PASS",
+      "chat": 5.8657280953489826e-31,
+      "cc": 5.8657280953489826e-31
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-ISO.r_agg_max",
+      "result": "PASS",
+      "chat": 4.440892098500626e-16,
+      "cc": 2.220446049250313e-16
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-SO3.passed (both True)",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-SO3.w_S2_mean_t0",
+      "result": "PASS",
+      "chat": 0.39999999999999997,
+      "cc": 0.39999999999999997
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-SO3.dev_from_0p4",
+      "result": "PASS",
+      "chat": 4.996003610813204e-16,
+      "cc": 1.0547118733938987e-15
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-SO3.r_agg_0_E2",
+      "result": "PASS",
+      "chat": 0.0,
+      "cc": 4.440892098500626e-16
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-TEX.passed (both True)",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-TEX.r_agg_t1",
+      "result": "PASS",
+      "chat": 0.0025019145217410887,
+      "cc": 0.002501914521741977
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-POL.passed (both True)",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-POL.split_plus_minus",
+      "result": "PASS",
+      "chat": 0.0,
+      "cc": 0.0
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-POL.split_plus_avg",
+      "result": "PASS",
+      "chat": 4.799045625554363e-16,
+      "cc": 2.0816681711721685e-17
+    },
+    {
+      "check": "C1",
+      "item": "PIN-A2AGG.passed (both True)",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C1",
+      "item": "PIN-A2AGG.worst_rel_residual",
+      "result": "PASS",
+      "chat": 6.275451101635372e-14,
+      "cc": 4.376704922376667e-15
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-ADMIX.passed (both True)",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C1",
+      "item": "F-CTRL-ADMIX.r_xtal_h_projected",
+      "result": "MISS",
+      "chat": 0.0,
+      "cc": -0.001967367205683912
+    },
+    {
+      "check": "C2",
+      "item": "config key set",
+      "result": "PASS",
+      "chat": [
+        "cubic_gem8|001",
+        "cubic_gem8|111",
+        "cubic_step|001",
+        "cubic_step|111",
+        "hex_gem8|a",
+        "hex_gem8|b",
+        "hex_step|a",
+        "hex_step|b"
+      ],
+      "cc": [
+        "cubic_gem8|001",
+        "cubic_gem8|111",
+        "cubic_step|001",
+        "cubic_step|111",
+        "hex_gem8|a",
+        "hex_gem8|b",
+        "hex_step|a",
+        "hex_step|b"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].v_EM",
+      "result": "PASS",
+      "chat": 8.498926630589143,
+      "cc": 8.498926630589143
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].v_S2E2",
+      "result": "PASS",
+      "chat": 8.261235391127114,
+      "cc": 8.261235391127112
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].v_S2h",
+      "result": "PASS",
+      "chat": 8.489468358289109,
+      "cc": 8.489468358289109
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].r_xtal_E2",
+      "result": "PASS",
+      "chat": -0.02796720689487253,
+      "cc": -0.027967206894872754
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].r_xtal_h",
+      "result": "PASS",
+      "chat": -0.001112878450555299,
+      "cc": -0.001112878450555299
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].lambda_mean",
+      "result": "PASS",
+      "chat": 0.004808575724022838,
+      "cc": 0.004808575724022839
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].lambda_max",
+      "result": "PASS",
+      "chat": 0.03353758299774612,
+      "cc": 0.03353758299774612
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].cov_lambda_v",
+      "result": "PASS",
+      "chat": 0.036444417932560425,
+      "cc": 0.03644441793256045
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].lambda_max_branch",
+      "result": "PASS",
+      "chat": "qSV",
+      "cc": "qSV"
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].share_EM keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qSH",
+        "qSV"
+      ],
+      "cc": [
+        "qL",
+        "qSH",
+        "qSV"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].share_EM.qL",
+      "result": "PASS",
+      "chat": 0.004808575724022834,
+      "cc": 0.004808575724022839
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].share_EM.qSH",
+      "result": "PASS",
+      "chat": 0.49999999946246804,
+      "cc": 0.499999999462468
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].share_EM.qSV",
+      "result": "PASS",
+      "chat": 0.4951914248135092,
+      "cc": 0.4951914248135092
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].share_S2E2 keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qSH",
+        "qSV"
+      ],
+      "cc": [
+        "qL",
+        "qSH",
+        "qSV"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].share_S2E2.qL",
+      "result": "PASS",
+      "chat": 0.0020267404510848717,
+      "cc": 0.0020267404510848678
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].share_S2E2.qSH",
+      "result": "PASS",
+      "chat": 0.83333320610945,
+      "cc": 0.8333332061094499
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|a].share_S2E2.qSV",
+      "result": "PASS",
+      "chat": 0.16464005343946514,
+      "cc": 0.1646400534394651
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].v_EM",
+      "result": "PASS",
+      "chat": 8.49913805976472,
+      "cc": 8.499138059764721
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].v_S2E2",
+      "result": "PASS",
+      "chat": 8.261611551328288,
+      "cc": 8.26161155132829
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].v_S2h",
+      "result": "PASS",
+      "chat": 8.489680210591468,
+      "cc": 8.489680210591466
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].r_xtal_E2",
+      "result": "PASS",
+      "chat": -0.027947129081346778,
+      "cc": -0.027947129081346778
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].r_xtal_h",
+      "result": "PASS",
+      "chat": -0.0011128009813166084,
+      "cc": -0.0011128009813170525
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].lambda_mean",
+      "result": "PASS",
+      "chat": 0.004808600428348514,
+      "cc": 0.0048086004283485135
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].lambda_max",
+      "result": "PASS",
+      "chat": 0.033534547685208825,
+      "cc": 0.033534547685208825
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].cov_lambda_v",
+      "result": "PASS",
+      "chat": 0.03644303566084012,
+      "cc": 0.03644303566084019
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].lambda_max_branch",
+      "result": "PASS",
+      "chat": "qSV",
+      "cc": "qSV"
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].share_EM keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qSH",
+        "qSV"
+      ],
+      "cc": [
+        "qL",
+        "qSH",
+        "qSV"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].share_EM.qL",
+      "result": "PASS",
+      "chat": 0.004808600428348502,
+      "cc": 0.0048086004283485135
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].share_EM.qSH",
+      "result": "PASS",
+      "chat": 0.5,
+      "cc": 0.5
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].share_EM.qSV",
+      "result": "PASS",
+      "chat": 0.49519139957165154,
+      "cc": 0.49519139957165154
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].share_S2E2 keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qSH",
+        "qSV"
+      ],
+      "cc": [
+        "qL",
+        "qSH",
+        "qSV"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].share_S2E2.qL",
+      "result": "PASS",
+      "chat": 0.002026648513157485,
+      "cc": 0.002026648513157482
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].share_S2E2.qSH",
+      "result": "PASS",
+      "chat": 0.8333333333333336,
+      "cc": 0.8333333333333335
+    },
+    {
+      "check": "C2",
+      "item": "[hex_step|b].share_S2E2.qSV",
+      "result": "PASS",
+      "chat": 0.16464001815350915,
+      "cc": 0.16464001815350915
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].v_EM",
+      "result": "PASS",
+      "chat": 10.167571147427779,
+      "cc": 10.167571147427779
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].v_S2E2",
+      "result": "PASS",
+      "chat": 9.767584615679638,
+      "cc": 9.767584615679638
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].v_S2h",
+      "result": "PASS",
+      "chat": 10.154202161568202,
+      "cc": 10.154202161568202
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].r_xtal_E2",
+      "result": "PASS",
+      "chat": -0.039339437703303504,
+      "cc": -0.039339437703303504
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].r_xtal_h",
+      "result": "PASS",
+      "chat": -0.0013148652382883874,
+      "cc": -0.0013148652382883874
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].lambda_mean",
+      "result": "PASS",
+      "chat": 0.0049537696180639535,
+      "cc": 0.0049537696180639535
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].lambda_max",
+      "result": "PASS",
+      "chat": 0.03513301845903744,
+      "cc": 0.03513301845903746
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].cov_lambda_v",
+      "result": "PASS",
+      "chat": 0.05132899179683144,
+      "cc": 0.051328991796831605
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].lambda_max_branch",
+      "result": "PASS",
+      "chat": "qSV",
+      "cc": "qSV"
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].share_EM keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qSH",
+        "qSV"
+      ],
+      "cc": [
+        "qL",
+        "qSH",
+        "qSV"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].share_EM.qL",
+      "result": "PASS",
+      "chat": 0.004953769618063935,
+      "cc": 0.004953769618063954
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].share_EM.qSH",
+      "result": "PASS",
+      "chat": 0.49999999908685466,
+      "cc": 0.49999999908685466
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].share_EM.qSV",
+      "result": "PASS",
+      "chat": 0.49504623129508146,
+      "cc": 0.49504623129508146
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].share_S2E2 keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qSH",
+        "qSV"
+      ],
+      "cc": [
+        "qL",
+        "qSH",
+        "qSV"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].share_S2E2.qL",
+      "result": "PASS",
+      "chat": 0.002138148867835594,
+      "cc": 0.0021381488678355936
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].share_S2E2.qSH",
+      "result": "PASS",
+      "chat": 0.8333322334753969,
+      "cc": 0.8333322334753966
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|a].share_S2E2.qSV",
+      "result": "PASS",
+      "chat": 0.16452961765676766,
+      "cc": 0.16452961765676763
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].v_EM",
+      "result": "PASS",
+      "chat": 10.167412388965342,
+      "cc": 10.167412388965342
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].v_S2E2",
+      "result": "PASS",
+      "chat": 9.767300819096656,
+      "cc": 9.767300819096654
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].v_S2h",
+      "result": "PASS",
+      "chat": 10.154042977980577,
+      "cc": 10.154042977980577
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].r_xtal_E2",
+      "result": "PASS",
+      "chat": -0.03935234989611769,
+      "cc": -0.03935234989611791
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].r_xtal_h",
+      "result": "PASS",
+      "chat": -0.0013149275816995987,
+      "cc": -0.0013149275816995987
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].lambda_mean",
+      "result": "PASS",
+      "chat": 0.004953789932329422,
+      "cc": 0.004953789932329422
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].lambda_max",
+      "result": "PASS",
+      "chat": 0.035133018459037525,
+      "cc": 0.035133018459037504
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].cov_lambda_v",
+      "result": "PASS",
+      "chat": 0.05133043709649301,
+      "cc": 0.05133043709649307
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].lambda_max_branch",
+      "result": "PASS",
+      "chat": "qSV",
+      "cc": "qSV"
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].share_EM keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qSH",
+        "qSV"
+      ],
+      "cc": [
+        "qL",
+        "qSH",
+        "qSV"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].share_EM.qL",
+      "result": "PASS",
+      "chat": 0.004953789932329417,
+      "cc": 0.004953789932329422
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].share_EM.qSH",
+      "result": "PASS",
+      "chat": 0.5,
+      "cc": 0.5
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].share_EM.qSV",
+      "result": "PASS",
+      "chat": 0.4950462100676707,
+      "cc": 0.4950462100676707
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].share_S2E2 keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qSH",
+        "qSV"
+      ],
+      "cc": [
+        "qL",
+        "qSH",
+        "qSV"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].share_S2E2.qL",
+      "result": "PASS",
+      "chat": 0.002138215252862705,
+      "cc": 0.0021382152528626997
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].share_S2E2.qSH",
+      "result": "PASS",
+      "chat": 0.8333333333333337,
+      "cc": 0.8333333333333336
+    },
+    {
+      "check": "C2",
+      "item": "[hex_gem8|b].share_S2E2.qSV",
+      "result": "PASS",
+      "chat": 0.16452845141380396,
+      "cc": 0.1645284514138039
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].v_EM",
+      "result": "PASS",
+      "chat": 8.028124827494889,
+      "cc": 8.028124827494889
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].v_S2E2",
+      "result": "PASS",
+      "chat": 7.889264216956222,
+      "cc": 7.889264216956221
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].v_S2h",
+      "result": "PASS",
+      "chat": 8.015951162831872,
+      "cc": 8.015951162831872
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].r_xtal_E2",
+      "result": "PASS",
+      "chat": -0.0172967677412158,
+      "cc": -0.017296767741215913
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].r_xtal_h",
+      "result": "PASS",
+      "chat": -0.001516377102324551,
+      "cc": -0.001516377102324551
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].lambda_mean",
+      "result": "PASS",
+      "chat": 0.0083923190288783,
+      "cc": 0.0083923190288783
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].lambda_max",
+      "result": "PASS",
+      "chat": 0.03870069334173741,
+      "cc": 0.03870069334173745
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].cov_lambda_v",
+      "result": "PASS",
+      "chat": 0.04901957894779367,
+      "cc": 0.04901957894779363
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].lambda_max_branch",
+      "result": "PASS",
+      "chat": "qT2",
+      "cc": "qT2"
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].share_EM keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qT1",
+        "qT2"
+      ],
+      "cc": [
+        "qL",
+        "qT1",
+        "qT2"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].share_EM.qL",
+      "result": "PASS",
+      "chat": 0.008392319028878298,
+      "cc": 0.0083923190288783
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].share_EM.qT1",
+      "result": "PASS",
+      "chat": 0.4992967361164542,
+      "cc": 0.4992967361164543
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].share_EM.qT2",
+      "result": "PASS",
+      "chat": 0.49231094485466753,
+      "cc": 0.49231094485466753
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].share_S2E2 keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qT1",
+        "qT2"
+      ],
+      "cc": [
+        "qL",
+        "qT1",
+        "qT2"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].share_S2E2.qL",
+      "result": "PASS",
+      "chat": 0.008569676861049398,
+      "cc": 0.008569676861049402
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].share_S2E2.qT1",
+      "result": "PASS",
+      "chat": 0.4488023208911163,
+      "cc": 0.44880232089111627
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|001].share_S2E2.qT2",
+      "result": "PASS",
+      "chat": 0.5426280022478344,
+      "cc": 0.5426280022478344
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].v_EM",
+      "result": "PASS",
+      "chat": 8.028124827494889,
+      "cc": 8.028124827494889
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].v_S2E2",
+      "result": "PASS",
+      "chat": 8.120698567854001,
+      "cc": 8.120698567854001
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].v_S2h",
+      "result": "PASS",
+      "chat": 8.015951162831872,
+      "cc": 8.015951162831872
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].r_xtal_E2",
+      "result": "PASS",
+      "chat": 0.01153117849414409,
+      "cc": 0.01153117849414409
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].r_xtal_h",
+      "result": "PASS",
+      "chat": -0.001516377102324551,
+      "cc": -0.001516377102324551
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].lambda_mean",
+      "result": "PASS",
+      "chat": 0.0083923190288783,
+      "cc": 0.0083923190288783
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].lambda_max",
+      "result": "PASS",
+      "chat": 0.03870069334173741,
+      "cc": 0.03870069334173745
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].cov_lambda_v",
+      "result": "PASS",
+      "chat": 0.04901957894779367,
+      "cc": 0.04901957894779363
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].lambda_max_branch",
+      "result": "PASS",
+      "chat": "qT2",
+      "cc": "qT2"
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].share_EM keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qT1",
+        "qT2"
+      ],
+      "cc": [
+        "qL",
+        "qT1",
+        "qT2"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].share_EM.qL",
+      "result": "PASS",
+      "chat": 0.008392319028878298,
+      "cc": 0.0083923190288783
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].share_EM.qT1",
+      "result": "PASS",
+      "chat": 0.4992967361164542,
+      "cc": 0.4992967361164543
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].share_EM.qT2",
+      "result": "PASS",
+      "chat": 0.49231094485466753,
+      "cc": 0.49231094485466753
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].share_S2E2 keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qT1",
+        "qT2"
+      ],
+      "cc": [
+        "qL",
+        "qT1",
+        "qT2"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].share_S2E2.qL",
+      "result": "PASS",
+      "chat": 0.00827408047409754,
+      "cc": 0.008274080474097544
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].share_S2E2.qT1",
+      "result": "PASS",
+      "chat": 0.5330407329981224,
+      "cc": 0.5330407329981224
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_step|111].share_S2E2.qT2",
+      "result": "PASS",
+      "chat": 0.45868518652777995,
+      "cc": 0.45868518652777995
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].v_EM",
+      "result": "PASS",
+      "chat": 9.72117101507821,
+      "cc": 9.721171015078212
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].v_S2E2",
+      "result": "PASS",
+      "chat": 9.5185580718033,
+      "cc": 9.518558071803296
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].v_S2h",
+      "result": "PASS",
+      "chat": 9.703234472528251,
+      "cc": 9.703234472528251
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].r_xtal_E2",
+      "result": "PASS",
+      "chat": -0.020842442022740326,
+      "cc": -0.02084244202274077
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].r_xtal_h",
+      "result": "PASS",
+      "chat": -0.0018451010194284745,
+      "cc": -0.0018451010194286965
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].lambda_mean",
+      "result": "PASS",
+      "chat": 0.0093105038596528,
+      "cc": 0.009310503859652798
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].lambda_max",
+      "result": "PASS",
+      "chat": 0.043292701954120015,
+      "cc": 0.043292701954120015
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].cov_lambda_v",
+      "result": "PASS",
+      "chat": 0.07221172083386433,
+      "cc": 0.07221172083386443
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].lambda_max_branch",
+      "result": "PASS",
+      "chat": "qT2",
+      "cc": "qT2"
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].share_EM keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qT1",
+        "qT2"
+      ],
+      "cc": [
+        "qL",
+        "qT1",
+        "qT2"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].share_EM.qL",
+      "result": "PASS",
+      "chat": 0.009310503859652788,
+      "cc": 0.009310503859652798
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].share_EM.qT1",
+      "result": "PASS",
+      "chat": 0.49922505755529545,
+      "cc": 0.49922505755529545
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].share_EM.qT2",
+      "result": "PASS",
+      "chat": 0.49146443858505184,
+      "cc": 0.49146443858505184
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].share_S2E2 keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qT1",
+        "qT2"
+      ],
+      "cc": [
+        "qL",
+        "qT1",
+        "qT2"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].share_S2E2.qL",
+      "result": "PASS",
+      "chat": 0.009492782074764219,
+      "cc": 0.009492782074764233
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].share_S2E2.qT1",
+      "result": "PASS",
+      "chat": 0.44874904568984914,
+      "cc": 0.44874904568984897
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|001].share_S2E2.qT2",
+      "result": "PASS",
+      "chat": 0.5417581722353867,
+      "cc": 0.5417581722353866
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].v_EM",
+      "result": "PASS",
+      "chat": 9.72117101507821,
+      "cc": 9.721171015078212
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].v_S2E2",
+      "result": "PASS",
+      "chat": 9.856246310594818,
+      "cc": 9.856246310594821
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].v_S2h",
+      "result": "PASS",
+      "chat": 9.703234472528251,
+      "cc": 9.703234472528251
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].r_xtal_E2",
+      "result": "PASS",
+      "chat": 0.01389496134849355,
+      "cc": 0.013894961348493773
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].r_xtal_h",
+      "result": "PASS",
+      "chat": -0.0018451010194284745,
+      "cc": -0.0018451010194286965
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].lambda_mean",
+      "result": "PASS",
+      "chat": 0.0093105038596528,
+      "cc": 0.009310503859652798
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].lambda_max",
+      "result": "PASS",
+      "chat": 0.043292701954120015,
+      "cc": 0.043292701954120015
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].cov_lambda_v",
+      "result": "PASS",
+      "chat": 0.07221172083386433,
+      "cc": 0.07221172083386443
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].lambda_max_branch",
+      "result": "PASS",
+      "chat": "qT2",
+      "cc": "qT2"
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].share_EM keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qT1",
+        "qT2"
+      ],
+      "cc": [
+        "qL",
+        "qT1",
+        "qT2"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].share_EM.qL",
+      "result": "PASS",
+      "chat": 0.009310503859652788,
+      "cc": 0.009310503859652798
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].share_EM.qT1",
+      "result": "PASS",
+      "chat": 0.49922505755529545,
+      "cc": 0.49922505755529545
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].share_EM.qT2",
+      "result": "PASS",
+      "chat": 0.49146443858505184,
+      "cc": 0.49146443858505184
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].share_S2E2 keys",
+      "result": "PASS",
+      "chat": [
+        "qL",
+        "qT1",
+        "qT2"
+      ],
+      "cc": [
+        "qL",
+        "qT1",
+        "qT2"
+      ]
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].share_S2E2.qL",
+      "result": "PASS",
+      "chat": 0.009188985049578388,
+      "cc": 0.009188985049578397
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].share_S2E2.qT1",
+      "result": "PASS",
+      "chat": 0.5329595958441811,
+      "cc": 0.5329595958441811
+    },
+    {
+      "check": "C2",
+      "item": "[cubic_gem8|111].share_S2E2.qT2",
+      "result": "PASS",
+      "chat": 0.4578514191062405,
+      "cc": 0.4578514191062405
+    },
+    {
+      "check": "C3",
+      "item": "phase2 key set",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|a].vT_VRH",
+      "result": "PASS",
+      "chat": 8.419059637591603,
+      "cc": 8.419059637591616
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|a].vT_HS_lo",
+      "result": "PASS",
+      "chat": 8.390859731728247,
+      "cc": 8.390859731729313
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|a].vT_HS_hi",
+      "result": "PASS",
+      "chat": 8.424582419403457,
+      "cc": 8.424582419402883
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|a].r_agg_E2_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|a].r_agg_h_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|a].r_agg_E2_HS[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|a].S_t_E2",
+      "result": "PASS",
+      "chat": 1.6266231256261696e-13,
+      "cc": 1.6132521040103724e-13
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|a].S_t_h",
+      "result": "PASS",
+      "chat": 4.563941055176853e-15,
+      "cc": 3.901387545207024e-15
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|a].kappa2_E2",
+      "result": "PASS",
+      "chat": -0.0014394617694966992,
+      "cc": -0.0014394617695005832
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|a].kappa2_h",
+      "result": "PASS",
+      "chat": -2.0075101981637655e-06,
+      "cc": -2.0075102000424232e-06
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|a].halving_dev_kappa2 (chat) <= kappa2_rel",
+      "result": "PASS",
+      "chat": 4.296077191089223e-06,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|a].halving_dev_kappa2 (cc) <= kappa2_rel",
+      "result": "PASS",
+      "chat": 4.296068727221966e-06,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|a].lambda_mean_t[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|b].vT_VRH",
+      "result": "PASS",
+      "chat": 8.419278648579612,
+      "cc": 8.4192786485796
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|b].vT_HS_lo",
+      "result": "PASS",
+      "chat": 8.391084746837947,
+      "cc": 8.391084746839036
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|b].vT_HS_hi",
+      "result": "PASS",
+      "chat": 8.424803257723832,
+      "cc": 8.42480325772318
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|b].r_agg_E2_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|b].r_agg_h_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|b].r_agg_E2_HS[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|b].S_t_E2",
+      "result": "PASS",
+      "chat": 1.6125034658616313e-13,
+      "cc": 1.6400082932192235e-13
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|b].S_t_h",
+      "result": "PASS",
+      "chat": 6.550087858874976e-15,
+      "cc": 8.137135505898113e-15
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|b].kappa2_E2",
+      "result": "PASS",
+      "chat": -0.001438702718749083,
+      "cc": -0.0014387027187507326
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|b].kappa2_h",
+      "result": "PASS",
+      "chat": -2.0054031941127916e-06,
+      "cc": -2.0054031944932263e-06
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|b].halving_dev_kappa2 (chat) <= kappa2_rel",
+      "result": "PASS",
+      "chat": 4.290548556187453e-06,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|b].halving_dev_kappa2 (cc) <= kappa2_rel",
+      "result": "PASS",
+      "chat": 4.290551805693156e-06,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_step|b].lambda_mean_t[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|a].vT_VRH",
+      "result": "PASS",
+      "chat": 10.041721817369147,
+      "cc": 10.041721817369156
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|a].vT_HS_lo",
+      "result": "PASS",
+      "chat": 9.990913001571156,
+      "cc": 9.990913001573082
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|a].vT_HS_hi",
+      "result": "PASS",
+      "chat": 10.052797754949037,
+      "cc": 10.05279775494808
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|a].r_agg_E2_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|a].r_agg_h_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|a].r_agg_E2_HS[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|a].S_t_E2",
+      "result": "PASS",
+      "chat": 4.894642365145396e-13,
+      "cc": 4.88778727245365e-13
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|a].S_t_h",
+      "result": "PASS",
+      "chat": 1.9849252759426836e-14,
+      "cc": 1.8870073354479004e-14
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|a].kappa2_E2",
+      "result": "PASS",
+      "chat": -0.0018956484826701352,
+      "cc": -0.0018956484826738256
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|a].kappa2_h",
+      "result": "PASS",
+      "chat": -3.2493966959289463e-06,
+      "cc": -3.249396699531321e-06
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|a].halving_dev_kappa2 (chat) <= kappa2_rel",
+      "result": "PASS",
+      "chat": 7.51551994532953e-06,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|a].halving_dev_kappa2 (cc) <= kappa2_rel",
+      "result": "PASS",
+      "chat": 7.515517296534205e-06,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|a].lambda_mean_t[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|b].vT_VRH",
+      "result": "PASS",
+      "chat": 10.041554085160632,
+      "cc": 10.041554085160612
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|b].vT_HS_lo",
+      "result": "PASS",
+      "chat": 9.99073982971986,
+      "cc": 9.990739829721814
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|b].vT_HS_hi",
+      "result": "PASS",
+      "chat": 10.052629959294945,
+      "cc": 10.05262995929398
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|b].r_agg_E2_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|b].r_agg_h_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|b].r_agg_E2_HS[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|b].S_t_E2",
+      "result": "PASS",
+      "chat": 4.895751529361098e-13,
+      "cc": 4.90291953941434e-13
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|b].S_t_h",
+      "result": "PASS",
+      "chat": 1.861754403597132e-14,
+      "cc": 1.9232267730539364e-14
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|b].kappa2_E2",
+      "result": "PASS",
+      "chat": -0.0018961374665242264,
+      "cc": -0.0018961374665274083
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|b].kappa2_h",
+      "result": "PASS",
+      "chat": -3.2509354903061167e-06,
+      "cc": -3.250935490588331e-06
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|b].halving_dev_kappa2 (chat) <= kappa2_rel",
+      "result": "PASS",
+      "chat": 7.520240357827345e-06,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|b].halving_dev_kappa2 (cc) <= kappa2_rel",
+      "result": "PASS",
+      "chat": 7.520230342822992e-06,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[hex_gem8|b].lambda_mean_t[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|001].vT_VRH",
+      "result": "PASS",
+      "chat": 7.799046375844923,
+      "cc": 7.7990463758448945
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|001].vT_HS_lo",
+      "result": "PASS",
+      "chat": 7.758614490211087,
+      "cc": 7.758614490217017
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|001].vT_HS_hi",
+      "result": "PASS",
+      "chat": 7.867953005904775,
+      "cc": 7.867953005902295
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|001].r_agg_E2_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|001].r_agg_h_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|001].r_agg_E2_HS[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|001].S_t_E2",
+      "result": "PASS",
+      "chat": 3.872699649800502e-16,
+      "cc": 7.009496149267015e-17
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|001].S_t_h",
+      "result": "PASS",
+      "chat": 2.7381760509747877e-16,
+      "cc": 1.2375133173866637e-30
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|001].kappa2_E2",
+      "result": "PASS",
+      "chat": 3.141702123932416e-15,
+      "cc": -2.1857725036605986e-16
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|001].kappa2_h",
+      "result": "PASS",
+      "chat": -3.458500796931401e-17,
+      "cc": -3.5691728224331273e-16
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|001].halving_dev_kappa2 (chat) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 4.802491637841732,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|001].halving_dev_kappa2 (cc) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 36.70942580584521,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|001].lambda_mean_t[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|111].vT_VRH",
+      "result": "PASS",
+      "chat": 7.799046375844923,
+      "cc": 7.7990463758448945
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|111].vT_HS_lo",
+      "result": "PASS",
+      "chat": 7.758614490211087,
+      "cc": 7.758614490217017
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|111].vT_HS_hi",
+      "result": "PASS",
+      "chat": 7.867953005904775,
+      "cc": 7.867953005902295
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|111].r_agg_E2_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|111].r_agg_h_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|111].r_agg_E2_HS[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|111].S_t_E2",
+      "result": "PASS",
+      "chat": 4.1100077415202465e-16,
+      "cc": 7.00949614926752e-17
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|111].S_t_h",
+      "result": "PASS",
+      "chat": -2.925271284971396e-16,
+      "cc": 6.568330085717285e-30
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|111].kappa2_E2",
+      "result": "PASS",
+      "chat": -1.6739143857147652e-16,
+      "cc": -1.9478276488317234e-15
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|111].kappa2_h",
+      "result": "PASS",
+      "chat": 1.7403176010158433e-15,
+      "cc": -2.0861676807089763e-15
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|111].halving_dev_kappa2 (chat) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 36.70942580584538,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|111].halving_dev_kappa2 (cc) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 3.2315974980991067,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|111].lambda_mean_t[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|001].vT_VRH",
+      "result": "PASS",
+      "chat": 9.307899076533179,
+      "cc": 9.307899076533193
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|001].vT_HS_lo",
+      "result": "PASS",
+      "chat": 9.211721064370861,
+      "cc": 9.211721064384875
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|001].vT_HS_hi",
+      "result": "PASS",
+      "chat": 9.456854984588738,
+      "cc": 9.456854984584107
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|001].r_agg_E2_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|001].r_agg_h_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|001].r_agg_E2_HS[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|001].S_t_E2",
+      "result": "PASS",
+      "chat": 2.2690471976516216e-16,
+      "cc": -9.550804974045757e-16
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|001].S_t_h",
+      "result": "PASS",
+      "chat": 1.0207029061365447e-15,
+      "cc": 0.0
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|001].kappa2_E2",
+      "result": "PASS",
+      "chat": -1.4940723442743361e-16,
+      "cc": -2.9881446885486723e-16
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|001].kappa2_h",
+      "result": "PASS",
+      "chat": 1.4525703347111552e-15,
+      "cc": 0.0
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|001].halving_dev_kappa2 (chat) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 36.70942580584519,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|001].halving_dev_kappa2 (cc) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 36.70942580584519,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|001].lambda_mean_t[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|111].vT_VRH",
+      "result": "PASS",
+      "chat": 9.307899076533179,
+      "cc": 9.307899076533193
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|111].vT_HS_lo",
+      "result": "PASS",
+      "chat": 9.211721064370861,
+      "cc": 9.211721064384875
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|111].vT_HS_hi",
+      "result": "PASS",
+      "chat": 9.456854984588738,
+      "cc": 9.456854984584107
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|111].r_agg_E2_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|111].r_agg_h_VRH[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|111].r_agg_E2_HS[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|111].S_t_E2",
+      "result": "PASS",
+      "chat": -1.1819852171697386e-15,
+      "cc": 2.925271284971411e-16
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|111].S_t_h",
+      "result": "PASS",
+      "chat": 0.0,
+      "cc": 0.0
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|111].kappa2_E2",
+      "result": "PASS",
+      "chat": 1.272728293270753e-16,
+      "cc": -2.2936777285248548e-15
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|111].kappa2_h",
+      "result": "PASS",
+      "chat": 0.0,
+      "cc": 0.0
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|111].halving_dev_kappa2 (chat) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 36.70942580584462,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|111].halving_dev_kappa2 (cc) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 8.27952094619114,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|111].lambda_mean_t[12]",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "born_t0 key set",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[hex_step].D0_plus",
+      "result": "PASS",
+      "chat": -0.02052824459532726,
+      "cc": -0.020528244595327125
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[hex_step].D0_minus",
+      "result": "PASS",
+      "chat": -0.02052824459532726,
+      "cc": -0.020528244595327125
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[hex_step].D0_avg",
+      "result": "PASS",
+      "chat": -0.02052824459532726,
+      "cc": -0.02052824459532713
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[hex_step].D2_avg",
+      "result": "PASS",
+      "chat": -0.018347663163946017,
+      "cc": -0.018347663163945885
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[hex_step].a2agg_residual_rel",
+      "result": "PASS",
+      "chat": 9.076548452285695e-15,
+      "cc": 1.8909475942262037e-15
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[hex_gem8].D0_plus",
+      "result": "PASS",
+      "chat": -0.02891780760307181,
+      "cc": -0.028917807603071596
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[hex_gem8].D0_minus",
+      "result": "PASS",
+      "chat": -0.02891780760307181,
+      "cc": -0.028917807603071596
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[hex_gem8].D0_avg",
+      "result": "PASS",
+      "chat": -0.028917807603071825,
+      "cc": -0.028917807603071617
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[hex_gem8].D2_avg",
+      "result": "PASS",
+      "chat": -0.025933693584294384,
+      "cc": -0.025933693584294176
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[hex_gem8].a2agg_residual_rel",
+      "result": "PASS",
+      "chat": 7.357979369086492e-15,
+      "cc": 6.689072153715041e-16
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[cubic_step].D0_plus",
+      "result": "PASS",
+      "chat": -0.03151342243433812,
+      "cc": -0.03151342243433817
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[cubic_step].D0_minus",
+      "result": "PASS",
+      "chat": -0.03151342243433812,
+      "cc": -0.03151342243433817
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[cubic_step].D0_avg",
+      "result": "PASS",
+      "chat": -0.03151342243433812,
+      "cc": -0.031513422434338176
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[cubic_step].D2_avg",
+      "result": "PASS",
+      "chat": -0.028537471107946306,
+      "cc": -0.028537471107946338
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[cubic_step].a2agg_residual_rel",
+      "result": "PASS",
+      "chat": 3.2825286917824895e-15,
+      "cc": 4.376704922376667e-15
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[cubic_gem8].D0_plus",
+      "result": "PASS",
+      "chat": -0.04367714392697779,
+      "cc": -0.04367714392697755
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[cubic_gem8].D0_minus",
+      "result": "PASS",
+      "chat": -0.04367714392697779,
+      "cc": -0.04367714392697755
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[cubic_gem8].D0_avg",
+      "result": "PASS",
+      "chat": -0.043677143926977795,
+      "cc": -0.043677143926977566
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[cubic_gem8].D2_avg",
+      "result": "PASS",
+      "chat": -0.039713976791286285,
+      "cc": -0.03971397679128604
+    },
+    {
+      "check": "C3",
+      "item": "born_t0[cubic_gem8].a2agg_residual_rel",
+      "result": "PASS",
+      "chat": 4.542764439072047e-15,
+      "cc": 1.5724953827557158e-15
+    },
+    {
+      "check": "C4",
+      "item": "F-MS-3.state",
+      "result": "PASS",
+      "chat": "SILENT",
+      "cc": "SILENT"
+    },
+    {
+      "check": "C4",
+      "item": "F-MS-2.state",
+      "result": "PASS",
+      "chat": "REGISTERED_NOT_EXECUTED",
+      "cc": "REGISTERED_NOT_EXECUTED"
+    },
+    {
+      "check": "C4",
+      "item": "F-MS-1.state",
+      "result": "PASS",
+      "chat": "RETIRED_TO_CONTROL",
+      "cc": "RETIRED_TO_CONTROL"
+    },
+    {
+      "check": "C4",
+      "item": "verdict_class",
+      "result": "PASS",
+      "chat": "IDENTITY-DELIVERED",
+      "cc": "IDENTITY-DELIVERED"
+    },
+    {
+      "check": "C4",
+      "item": "quadrature.n_theta",
+      "result": "PASS",
+      "chat": 64,
+      "cc": 64
+    },
+    {
+      "check": "C4",
+      "item": "quadrature.n_phi",
+      "result": "PASS",
+      "chat": 128,
+      "cc": 128
+    },
+    {
+      "check": "C4",
+      "item": "chat: doubling_residual <= tol",
+      "result": "PASS",
+      "chat": 1.7763568394002505e-15,
+      "cc": null
+    },
+    {
+      "check": "C4",
+      "item": "chat: t_grid == schema",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C4",
+      "item": "cc: doubling_residual <= tol",
+      "result": "PASS",
+      "chat": 1.1102230246251565e-15,
+      "cc": null
+    },
+    {
+      "check": "C4",
+      "item": "cc: t_grid == schema",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    },
+    {
+      "check": "C5",
+      "item": "rows count",
+      "result": "PASS",
+      "chat": 5,
+      "cc": 5
+    },
+    {
+      "check": "C5",
+      "item": "rows[0].id",
+      "result": "PASS",
+      "chat": "H-MS-1",
+      "cc": "H-MS-1"
+    },
+    {
+      "check": "C5",
+      "item": "rows[0].concordant",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C5",
+      "item": "rows[1].id",
+      "result": "PASS",
+      "chat": "H-MS-2",
+      "cc": "H-MS-2"
+    },
+    {
+      "check": "C5",
+      "item": "rows[1].concordant",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C5",
+      "item": "rows[2].id",
+      "result": "PASS",
+      "chat": "H-MS-3",
+      "cc": "H-MS-3"
+    },
+    {
+      "check": "C5",
+      "item": "rows[2].concordant",
+      "result": "PASS",
+      "chat": false,
+      "cc": false
+    },
+    {
+      "check": "C5",
+      "item": "rows[3].id",
+      "result": "PASS",
+      "chat": "H-MS-4",
+      "cc": "H-MS-4"
+    },
+    {
+      "check": "C5",
+      "item": "rows[3].concordant",
+      "result": "PASS",
+      "chat": true,
+      "cc": true
+    },
+    {
+      "check": "C5",
+      "item": "rows[4].id",
+      "result": "PASS",
+      "chat": "H-MS-5",
+      "cc": "H-MS-5"
+    },
+    {
+      "check": "C5",
+      "item": "rows[4].concordant",
+      "result": "PASS",
+      "chat": false,
+      "cc": false
+    },
+    {
+      "check": "C5",
+      "item": "compare verdict_class",
+      "result": "PASS",
+      "chat": null,
+      "cc": null
+    }
+  ],
+  "n_checks": 415,
+  "n_miss": 9,
+  "misses": [
+    {
+      "check": "C1",
+      "item": "F-CTRL-ADMIX.r_xtal_h_projected",
+      "result": "MISS",
+      "chat": 0.0,
+      "cc": -0.001967367205683912
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|001].halving_dev_kappa2 (chat) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 4.802491637841732,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|001].halving_dev_kappa2 (cc) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 36.70942580584521,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|111].halving_dev_kappa2 (chat) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 36.70942580584538,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_step|111].halving_dev_kappa2 (cc) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 3.2315974980991067,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|001].halving_dev_kappa2 (chat) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 36.70942580584519,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|001].halving_dev_kappa2 (cc) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 36.70942580584519,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|111].halving_dev_kappa2 (chat) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 36.70942580584462,
+      "cc": null
+    },
+    {
+      "check": "C3",
+      "item": "[cubic_gem8|111].halving_dev_kappa2 (cc) <= kappa2_rel",
+      "result": "MISS",
+      "chat": 8.27952094619114,
+      "cc": null
+    }
+  ],
+  "S9_triggered": true,
+  "overall": "MISS -> S9",
+  "comparator": "g_mscs1_compare_v1_0.py",
+  "comparator_md5": "22432b292ae0a9d5c91a6cb7aa67502f",
+  "schema_md5": "76a42db3fd6ad82e485752bc2ddb24d5",
+  "chat_checkpoint_md5": "c04c0b8ea34cfe60f231aa06828e6ce4",
+  "cc_checkpoint_md5": "249e11dd53c4cb82f302b15d3c94c337"
+}

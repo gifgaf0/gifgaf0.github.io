@@ -1,0 +1,68 @@
+{
+  "gate": "G-MSCS1",
+  "schema_version": "1.0",
+  "state": "CANDIDATE — freezes on the author's lock word (memo_lock_md5 / memo_lock_bytes then final)",
+  "memo_lock_md5": "3f30262eaec461fb5fd3202835f7de37",
+  "memo_lock_bytes": 34837,
+  "ledger_base_md5": "d095a7003bb0d4c177e7451e1d14c4c6",
+  "t1_list_md5": "fef2827100d3f85e0a6341b44f0c00bf",
+  "x1_md5": "200e7a8b775577564369c6924d38a84c",
+  "x1_bytes": 2767,
+  "config_keys": ["hex_step|a", "hex_step|b", "hex_gem8|a", "hex_gem8|b",
+                  "cubic_step|001", "cubic_step|111", "cubic_gem8|001", "cubic_gem8|111"],
+  "base_configs": ["hex_step", "hex_gem8", "cubic_step", "cubic_gem8"],
+  "t_grid": [-0.5, -0.25, -0.1, -0.05, -0.02, 0.0, 0.02, 0.05, 0.1, 0.25, 0.5, 1.0],
+  "quadrature": {"n_theta": 64, "n_phi": 128, "doubling_tol": 1e-10},
+  "tolerances": {
+    "tau_agg": 1e-6,
+    "phase1_v_rel": 1e-8, "phase1_r_abs": 1e-8, "phase1_lambda_abs": 1e-8, "phase1_share_abs": 1e-8, "phase1_cov_abs": 1e-8,
+    "pins_rel": 1e-8, "born_rel": 1e-6, "r_agg_abs": 1e-6, "S_t_abs": 1e-6, "kappa2_rel": 1e-4, "kappa2_abs_floor": 1e-6,
+    "control_abs": 1e-6
+  },
+  "required_keys": [
+    "gate", "leg", "instrument", "instrument_md5", "memo_md5", "memo_bytes", "ledger_base_md5", "utc",
+    "elections.E-MS-1", "elections.E-MS-2", "elections.E-MS-2b", "elections.E-MS-2c", "elections.E-MS-3",
+    "elections.E-MS-4", "elections.E-MS-5", "elections.E-MS-6",
+    "T1.list_md5", "T1.state", "T1.numeric_collisions",
+    "inputs.X1_md5", "inputs.X1_bytes",
+    "quadrature.n_theta", "quadrature.n_phi", "quadrature.doubling_residual",
+    "t_grid",
+    "controls.F-CTRL-ISO.passed", "controls.F-CTRL-SO3.passed", "controls.F-CTRL-TEX.passed",
+    "controls.F-CTRL-POL.passed", "controls.PIN-A2AGG.passed", "controls.F-CTRL-ADMIX.passed",
+    "phase1", "phase2", "born_t0",
+    "falsifiers.F-MS-3.state", "falsifiers.F-MS-2.state", "falsifiers.F-MS-1.state",
+    "verdict_class"
+  ],
+  "phase1_keys": ["v_EM", "v_S2E2", "v_S2h", "r_xtal_E2", "r_xtal_h", "lambda_mean", "lambda_max",
+                  "lambda_max_branch", "cov_lambda_v", "share_EM", "share_S2E2"],
+  "phase2_keys": ["vT_VRH", "vT_HS_lo", "vT_HS_hi", "r_agg_E2_VRH", "r_agg_h_VRH", "r_agg_E2_HS",
+                  "S_t_E2", "S_t_h", "kappa2_E2", "kappa2_h", "kappa3_E2", "fit_residual",
+                  "halving_dev_kappa2", "lambda_mean_t"],
+  "born_t0_keys": ["D0_plus", "D0_minus", "D0_avg", "D2_avg", "a2agg_residual_rel"],
+  "control_float_keys": {
+    "F-CTRL-ISO": ["r_xtal_E2", "r_xtal_h", "lambda_max", "r_agg_max"],
+    "F-CTRL-SO3": ["w_S2_mean_t0", "dev_from_0p4", "r_agg_0_E2"],
+    "F-CTRL-TEX": ["r_agg_t1"],
+    "F-CTRL-POL": ["split_plus_minus", "split_plus_avg"],
+    "PIN-A2AGG": ["worst_rel_residual"],
+    "F-CTRL-ADMIX": ["r_xtal_h_projected"]
+  },
+  "compare_file_keys": ["rows", "verdict_class"],
+  "compare_row_keys": ["id", "concordant"],
+  "value_domains": {
+    "verdict_class": ["IDENTITY-DELIVERED", "PROTECTION-BREACH", "INDETERMINATE"],
+    "F-MS-3.state": ["SILENT", "FIRES"],
+    "F-MS-2.state": ["REGISTERED_NOT_EXECUTED"],
+    "F-MS-1.state": ["RETIRED_TO_CONTROL"],
+    "T1.state": ["CLEAN"],
+    "lambda_max_branch": ["qT1", "qT2", "qSV", "qSH", "qL"],
+    "election_choice": {"E-MS-1": "a", "E-MS-2": "a", "E-MS-2b": "a+b", "E-MS-2c": "001+111",
+                        "E-MS-3": "a", "E-MS-4": "a", "E-MS-5": "a", "E-MS-6": "a"}
+  },
+  "notes": [
+    "Elections are compared by the canonical choice code in value_domains.election_choice; each leg's elections.* string must START with the code in parentheses, e.g. '(a) ...', '(a+b) ...', '(001+111) ...'.",
+    "T1.state must be CLEAN on both legs; there is no LIST_ABSENT value in this gate (D-T1 retired).",
+    "Free text (reasons, notes) is never compared. Hypothesis rows compare id + concordant only.",
+    "share_EM / share_S2E2 are dicts branch->float; compared key-for-key."
+  ]
+}

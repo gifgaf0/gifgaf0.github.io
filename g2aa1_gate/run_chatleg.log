@@ -1,0 +1,12 @@
+guard md5 OK staging_memo_G_2a_A1_v2.md 626aa868844220eb6c3801ef07a77783
+guard md5 OK tools/t1/T1_forbidden_G_2a_A1.txt 2026b782db3905d9f2ce35733823618c
+guard md5 OK inputs/paper_II_3_4_4_and_3_4_7_extract.md 940b0bee4b2112e911ae738c3db2bc3d
+T1 instrument: CLEAN (numeric collisions 0)
+T1 memo: CLEAN (numeric collisions 0)
+T1 extract: CLEAN (numeric collisions 0)
+g2 built: dim 14  [0.8s]
+Phase 0 done  [6.5s]  sym_int_continuous=G2xU1_psi0 dim=15 (imaginary sector 14; psi0 phase preserves O: True) pinned=True
+Phase 1 done  [11.6s]  holds={'T1': True, 'T2': True, 'T3': True, 'T4': True}  group1344=1344 split=False
+Phase 1b done [11.6s]  admissible=['H2', 'H3']
+Phase 2 done  [12.2s]  pi1_orbit=0 loop_images=['Id', 'sigma_H']
+Phase 3 done  [12.2s]  verdict=ASSIGNMENT-I-FORCED

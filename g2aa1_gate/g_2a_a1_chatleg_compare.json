@@ -1,0 +1,3805 @@
+{
+ "cc_ckpt_md5": "8f657a23a68ef082f99a7579af78348c",
+ "chat_ckpt_md5": "8f657a23a68ef082f99a7579af78348c",
+ "comparator": "g_2a_a1_compare_v1_0",
+ "misses": [
+  {
+   "cc": "chat",
+   "chat": "chat",
+   "check": "C0",
+   "name": "leg labels chat/cc",
+   "note": "",
+   "pass": false
+  },
+  {
+   "cc": "6360709d6a7eb5fc3df7fc8fd26dc36a",
+   "chat": "6360709d6a7eb5fc3df7fc8fd26dc36a",
+   "check": "C0",
+   "name": "independence witness: instrument_md5 differ",
+   "note": "",
+   "pass": false
+  },
+  {
+   "cc": null,
+   "chat": "G2xU1_psi0",
+   "check": "C1",
+   "name": "phase0.sym_int_continuous (chat) in domain",
+   "note": "",
+   "pass": false
+  },
+  {
+   "cc": "G2xU1_psi0",
+   "chat": null,
+   "check": "C1",
+   "name": "phase0.sym_int_continuous (cc) in domain",
+   "note": "",
+   "pass": false
+  }
+ ],
+ "rows": [
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key gate present (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key gate present (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key leg present (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key leg present (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key instrument_md5 present (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key instrument_md5 present (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key memo_lock_md5 present (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key memo_lock_md5 present (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key ledger_base_md5 present (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key ledger_base_md5 present (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key t1_list_md5 present (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key t1_list_md5 present (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key action_extract_md5 present (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key action_extract_md5 present (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key t1_scan present (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key t1_scan present (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key elections present (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key elections present (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key phase0 present (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key phase0 present (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key phase1 present (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key phase1 present (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key phase1b present (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key phase1b present (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key phase2 present (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key phase2 present (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key phase3 present (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C0",
+   "name": "required key phase3 present (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "626aa868844220eb6c3801ef07a77783",
+   "chat": "626aa868844220eb6c3801ef07a77783",
+   "check": "C0",
+   "name": "memo_lock_md5 == schema (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "626aa868844220eb6c3801ef07a77783",
+   "chat": "626aa868844220eb6c3801ef07a77783",
+   "check": "C0",
+   "name": "memo_lock_md5 == schema (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "40009ec0197876b130766f1ae7494360",
+   "chat": "40009ec0197876b130766f1ae7494360",
+   "check": "C0",
+   "name": "ledger_base_md5 == schema (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "40009ec0197876b130766f1ae7494360",
+   "chat": "40009ec0197876b130766f1ae7494360",
+   "check": "C0",
+   "name": "ledger_base_md5 == schema (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "2026b782db3905d9f2ce35733823618c",
+   "chat": "2026b782db3905d9f2ce35733823618c",
+   "check": "C0",
+   "name": "t1_list_md5 == schema (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "2026b782db3905d9f2ce35733823618c",
+   "chat": "2026b782db3905d9f2ce35733823618c",
+   "check": "C0",
+   "name": "t1_list_md5 == schema (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "940b0bee4b2112e911ae738c3db2bc3d",
+   "chat": "940b0bee4b2112e911ae738c3db2bc3d",
+   "check": "C0",
+   "name": "action_extract_md5 == schema (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "940b0bee4b2112e911ae738c3db2bc3d",
+   "chat": "940b0bee4b2112e911ae738c3db2bc3d",
+   "check": "C0",
+   "name": "action_extract_md5 == schema (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "G-2a-A1",
+   "chat": "G-2a-A1",
+   "check": "C0",
+   "name": "gate label",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "chat",
+   "chat": "chat",
+   "check": "C0",
+   "name": "leg labels chat/cc",
+   "note": "",
+   "pass": false
+  },
+  {
+   "cc": null,
+   "chat": "CLEAN",
+   "check": "C0",
+   "name": "t1_scan.instrument CLEAN (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "CLEAN",
+   "chat": null,
+   "check": "C0",
+   "name": "t1_scan.instrument CLEAN (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "CLEAN",
+   "check": "C0",
+   "name": "t1_scan.memo CLEAN (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "CLEAN",
+   "chat": null,
+   "check": "C0",
+   "name": "t1_scan.memo CLEAN (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "CLEAN",
+   "check": "C0",
+   "name": "t1_scan.extract CLEAN (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "CLEAN",
+   "chat": null,
+   "check": "C0",
+   "name": "t1_scan.extract CLEAN (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": {
+    "E-A1-1": "a",
+    "E-A1-2": "a",
+    "E-A1-3": "a",
+    "E-A1-4": "a",
+    "E-A1-5": "a",
+    "E-A1-6": "a",
+    "E-A1-7": "a",
+    "E-A1-8": "a"
+   },
+   "chat": {
+    "E-A1-1": "a",
+    "E-A1-2": "a",
+    "E-A1-3": "a",
+    "E-A1-4": "a",
+    "E-A1-5": "a",
+    "E-A1-6": "a",
+    "E-A1-7": "a",
+    "E-A1-8": "a"
+   },
+   "check": "C0",
+   "name": "elections == schema (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": {
+    "E-A1-1": "a",
+    "E-A1-2": "a",
+    "E-A1-3": "a",
+    "E-A1-4": "a",
+    "E-A1-5": "a",
+    "E-A1-6": "a",
+    "E-A1-7": "a",
+    "E-A1-8": "a"
+   },
+   "chat": {
+    "E-A1-1": "a",
+    "E-A1-2": "a",
+    "E-A1-3": "a",
+    "E-A1-4": "a",
+    "E-A1-5": "a",
+    "E-A1-6": "a",
+    "E-A1-7": "a",
+    "E-A1-8": "a"
+   },
+   "check": "C0",
+   "name": "elections == schema (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "6360709d6a7eb5fc3df7fc8fd26dc36a",
+   "chat": "6360709d6a7eb5fc3df7fc8fd26dc36a",
+   "check": "C0",
+   "name": "independence witness: instrument_md5 differ",
+   "note": "",
+   "pass": false
+  },
+  {
+   "cc": 16,
+   "chat": 16,
+   "check": "C1",
+   "name": "phase0.field_real_components typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 16,
+   "chat": 16,
+   "check": "C1",
+   "name": "phase0.field_real_components equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 8,
+   "chat": 8,
+   "check": "C1",
+   "name": "phase0.complex_amplitudes typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 8,
+   "chat": 8,
+   "check": "C1",
+   "name": "phase0.complex_amplitudes equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": false,
+   "chat": false,
+   "check": "C1",
+   "name": "phase0.spinor_index_present typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": false,
+   "chat": false,
+   "check": "C1",
+   "name": "phase0.spinor_index_present equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.spatial_internal_direct_product typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.spatial_internal_direct_product equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.sym_int_pinned typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.sym_int_pinned equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "G2xU1_psi0",
+   "chat": "G2xU1_psi0",
+   "check": "C1",
+   "name": "phase0.sym_int_continuous typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "G2xU1_psi0",
+   "chat": "G2xU1_psi0",
+   "check": "C1",
+   "name": "phase0.sym_int_continuous equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 15,
+   "chat": 15,
+   "check": "C1",
+   "name": "phase0.sym_int_continuous_dim typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 15,
+   "chat": 15,
+   "check": "C1",
+   "name": "phase0.sym_int_continuous_dim equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.g2_preserves_O typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.g2_preserves_O equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.generic_so16_breaks_O typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.generic_so16_breaks_O equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 3,
+   "chat": 3,
+   "check": "C1",
+   "name": "phase0.phase_subgroup_order typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 3,
+   "chat": 3,
+   "check": "C1",
+   "name": "phase0.phase_subgroup_order equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": false,
+   "chat": false,
+   "check": "C1",
+   "name": "phase0.O_phase_invariant typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": false,
+   "chat": false,
+   "check": "C1",
+   "name": "phase0.O_phase_invariant equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.conjugation_maps_O_to_conjugate typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.conjugation_maps_O_to_conjugate equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "O(16)",
+   "chat": "O(16)",
+   "check": "C1",
+   "name": "phase0.two_body_symmetry typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "O(16)",
+   "chat": "O(16)",
+   "check": "C1",
+   "name": "phase0.two_body_symmetry equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "S15",
+   "chat": "S15",
+   "check": "C1",
+   "name": "phase0.vacuum_manifold_of_record typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "S15",
+   "chat": "S15",
+   "check": "C1",
+   "name": "phase0.vacuum_manifold_of_record equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C1",
+   "name": "phase0.pi1_V typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C1",
+   "name": "phase0.pi1_V equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C1",
+   "name": "phase0.pi4_V typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C1",
+   "name": "phase0.pi4_V equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": false,
+   "chat": false,
+   "check": "C1",
+   "name": "phase0.real_unit_splitting_term_present typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": false,
+   "chat": false,
+   "check": "C1",
+   "name": "phase0.real_unit_splitting_term_present equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.controls.L_perp_zero_mode typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.controls.L_perp_zero_mode equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.controls.F21_split_1_3_3bar typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.controls.F21_split_1_3_3bar equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.controls.generic_so16_fails_margin_positive typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.controls.generic_so16_fails_margin_positive equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "G2xU1_psi0",
+   "check": "C1",
+   "name": "phase0.sym_int_continuous (chat) in domain",
+   "note": "",
+   "pass": false
+  },
+  {
+   "cc": "G2xU1_psi0",
+   "chat": null,
+   "check": "C1",
+   "name": "phase0.sym_int_continuous (cc) in domain",
+   "note": "",
+   "pass": false
+  },
+  {
+   "cc": null,
+   "chat": "O(16)",
+   "check": "C1",
+   "name": "phase0.two_body_symmetry (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "O(16)",
+   "chat": null,
+   "check": "C1",
+   "name": "phase0.two_body_symmetry (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "S15",
+   "check": "C1",
+   "name": "phase0.vacuum_manifold_of_record (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "S15",
+   "chat": null,
+   "check": "C1",
+   "name": "phase0.vacuum_manifold_of_record (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.controls.L_perp_zero_mode true both legs",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.controls.F21_split_1_3_3bar true both legs",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "phase0.controls.generic_so16_fails_margin_positive true both legs",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 3,
+   "chat": 3,
+   "check": "C1",
+   "name": "locking_inventory list length equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C1",
+   "name": "locking_inventory[rank=0].rank typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C1",
+   "name": "locking_inventory[rank=0].rank equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "G2",
+   "chat": "G2",
+   "check": "C1",
+   "name": "locking_inventory[rank=0].H0 typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "G2",
+   "chat": "G2",
+   "check": "C1",
+   "name": "locking_inventory[rank=0].H0 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 14,
+   "chat": 14,
+   "check": "C1",
+   "name": "locking_inventory[rank=0].H0_dim typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 14,
+   "chat": 14,
+   "check": "C1",
+   "name": "locking_inventory[rank=0].H0_dim equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C1",
+   "name": "locking_inventory[rank=0].pi0_generic typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C1",
+   "name": "locking_inventory[rank=0].pi0_generic equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "chat": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "check": "C1",
+   "name": "locking_inventory[rank=0].sl2_generator_jordan_type typed",
+   "note": "type list",
+   "pass": true
+  },
+  {
+   "cc": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "chat": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "check": "C1",
+   "name": "locking_inventory[rank=0].sl2_generator_jordan_type equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C1",
+   "name": "locking_inventory[rank=0].sl2_generator_index typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C1",
+   "name": "locking_inventory[rank=0].sl2_generator_index equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "locking_inventory[rank=0].pi3_injective typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "locking_inventory[rank=0].pi3_injective equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C1",
+   "name": "locking_inventory[rank=0].pi4_quotient typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C1",
+   "name": "locking_inventory[rank=0].pi4_quotient equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "G2",
+   "chat": "G2",
+   "check": "C1",
+   "name": "locking_inventory[rank=0].H0 in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C1",
+   "name": "locking_inventory[rank=1].rank typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C1",
+   "name": "locking_inventory[rank=1].rank equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "SU3",
+   "chat": "SU3",
+   "check": "C1",
+   "name": "locking_inventory[rank=1].H0 typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "SU3",
+   "chat": "SU3",
+   "check": "C1",
+   "name": "locking_inventory[rank=1].H0 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 8,
+   "chat": 8,
+   "check": "C1",
+   "name": "locking_inventory[rank=1].H0_dim typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 8,
+   "chat": 8,
+   "check": "C1",
+   "name": "locking_inventory[rank=1].H0_dim equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C1",
+   "name": "locking_inventory[rank=1].pi0_generic typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C1",
+   "name": "locking_inventory[rank=1].pi0_generic equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "chat": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "check": "C1",
+   "name": "locking_inventory[rank=1].sl2_generator_jordan_type typed",
+   "note": "type list",
+   "pass": true
+  },
+  {
+   "cc": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "chat": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "check": "C1",
+   "name": "locking_inventory[rank=1].sl2_generator_jordan_type equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C1",
+   "name": "locking_inventory[rank=1].sl2_generator_index typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C1",
+   "name": "locking_inventory[rank=1].sl2_generator_index equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "locking_inventory[rank=1].pi3_injective typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "locking_inventory[rank=1].pi3_injective equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C1",
+   "name": "locking_inventory[rank=1].pi4_quotient typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C1",
+   "name": "locking_inventory[rank=1].pi4_quotient equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "SU3",
+   "chat": "SU3",
+   "check": "C1",
+   "name": "locking_inventory[rank=1].H0 in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 2,
+   "chat": 2,
+   "check": "C1",
+   "name": "locking_inventory[rank=2].rank typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 2,
+   "chat": 2,
+   "check": "C1",
+   "name": "locking_inventory[rank=2].rank equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "SU2_long",
+   "chat": "SU2_long",
+   "check": "C1",
+   "name": "locking_inventory[rank=2].H0 typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "SU2_long",
+   "chat": "SU2_long",
+   "check": "C1",
+   "name": "locking_inventory[rank=2].H0 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 3,
+   "chat": 3,
+   "check": "C1",
+   "name": "locking_inventory[rank=2].H0_dim typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 3,
+   "chat": 3,
+   "check": "C1",
+   "name": "locking_inventory[rank=2].H0_dim equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C1",
+   "name": "locking_inventory[rank=2].pi0_generic typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C1",
+   "name": "locking_inventory[rank=2].pi0_generic equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "chat": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "check": "C1",
+   "name": "locking_inventory[rank=2].sl2_generator_jordan_type typed",
+   "note": "type list",
+   "pass": true
+  },
+  {
+   "cc": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "chat": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "check": "C1",
+   "name": "locking_inventory[rank=2].sl2_generator_jordan_type equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C1",
+   "name": "locking_inventory[rank=2].sl2_generator_index typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C1",
+   "name": "locking_inventory[rank=2].sl2_generator_index equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "locking_inventory[rank=2].pi3_injective typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C1",
+   "name": "locking_inventory[rank=2].pi3_injective equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C1",
+   "name": "locking_inventory[rank=2].pi4_quotient typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C1",
+   "name": "locking_inventory[rank=2].pi4_quotient equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "SU2_long",
+   "chat": "SU2_long",
+   "check": "C1",
+   "name": "locking_inventory[rank=2].H0 in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T1.holds typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T1.holds equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C2",
+   "name": "phase1.T1.chi32_norm typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C2",
+   "name": "phase1.T1.chi32_norm equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 4,
+   "chat": 4,
+   "check": "C2",
+   "name": "phase1.T1.chi32_at_1 typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 4,
+   "chat": 4,
+   "check": "C2",
+   "name": "phase1.T1.chi32_at_1 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": -4,
+   "chat": -4,
+   "check": "C2",
+   "name": "phase1.T1.chi32_at_minus1 typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": -4,
+   "chat": -4,
+   "check": "C2",
+   "name": "phase1.T1.chi32_at_minus1 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": -1,
+   "chat": -1,
+   "check": "C2",
+   "name": "phase1.T1.fs_indicator typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": -1,
+   "chat": -1,
+   "check": "C2",
+   "name": "phase1.T1.fs_indicator equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T1.seven_real typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T1.seven_real equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C2",
+   "name": "phase1.T1.quartet_multiplicity_upper typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C2",
+   "name": "phase1.T1.quartet_multiplicity_upper equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T1.phase_char_on_2O_trivial typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T1.phase_char_on_2O_trivial equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "chat": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "check": "C2",
+   "name": "phase1.T1.branching_long_root typed",
+   "note": "type list",
+   "pass": true
+  },
+  {
+   "cc": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "chat": [
+    2,
+    2,
+    1,
+    1,
+    1
+   ],
+   "check": "C2",
+   "name": "phase1.T1.branching_long_root equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": [
+    3,
+    2,
+    2
+   ],
+   "chat": [
+    3,
+    2,
+    2
+   ],
+   "check": "C2",
+   "name": "phase1.T1.branching_short_root typed",
+   "note": "type list",
+   "pass": true
+  },
+  {
+   "cc": [
+    3,
+    2,
+    2
+   ],
+   "chat": [
+    3,
+    2,
+    2
+   ],
+   "check": "C2",
+   "name": "phase1.T1.branching_short_root equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": [
+    3,
+    3,
+    1
+   ],
+   "chat": [
+    3,
+    3,
+    1
+   ],
+   "check": "C2",
+   "name": "phase1.T1.branching_su3_sl2 typed",
+   "note": "type list",
+   "pass": true
+  },
+  {
+   "cc": [
+    3,
+    3,
+    1
+   ],
+   "chat": [
+    3,
+    3,
+    1
+   ],
+   "check": "C2",
+   "name": "phase1.T1.branching_su3_sl2 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": [
+    7
+   ],
+   "chat": [
+    7
+   ],
+   "check": "C2",
+   "name": "phase1.T1.branching_principal typed",
+   "note": "type list",
+   "pass": true
+  },
+  {
+   "cc": [
+    7
+   ],
+   "chat": [
+    7
+   ],
+   "check": "C2",
+   "name": "phase1.T1.branching_principal equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C2",
+   "name": "phase1.T1.control_sym3_quartet_mult typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C2",
+   "name": "phase1.T1.control_sym3_quartet_mult equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T2.holds typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T2.holds equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 14,
+   "chat": 14,
+   "check": "C2",
+   "name": "phase1.T2.dim_der typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 14,
+   "chat": 14,
+   "check": "C2",
+   "name": "phase1.T2.dim_der equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 21,
+   "chat": 21,
+   "check": "C2",
+   "name": "phase1.T2.dim_bivectors_7 typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 21,
+   "chat": 21,
+   "check": "C2",
+   "name": "phase1.T2.dim_bivectors_7 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 15,
+   "chat": 15,
+   "check": "C2",
+   "name": "phase1.T2.dim_bivectors_6 typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 15,
+   "chat": 15,
+   "check": "C2",
+   "name": "phase1.T2.dim_bivectors_6 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T2.g2_in_spin7 typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T2.g2_in_spin7 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 8,
+   "chat": 8,
+   "check": "C2",
+   "name": "phase1.T2.dim_g2_cap_su4 typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 8,
+   "chat": 8,
+   "check": "C2",
+   "name": "phase1.T2.dim_g2_cap_su4 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 48,
+   "chat": 48,
+   "check": "C2",
+   "name": "phase1.T2.spinor_2O_order typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 48,
+   "chat": 48,
+   "check": "C2",
+   "name": "phase1.T2.spinor_2O_order equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C2",
+   "name": "phase1.T2.spinor_2O_automorphism_count typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C2",
+   "name": "phase1.T2.spinor_2O_automorphism_count equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 2,
+   "chat": 2,
+   "check": "C2",
+   "name": "phase1.T2.spinor_2O_quartet_mult typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 2,
+   "chat": 2,
+   "check": "C2",
+   "name": "phase1.T2.spinor_2O_quartet_mult equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 336,
+   "chat": 336,
+   "check": "C2",
+   "name": "phase1.T2.sl27_order typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 336,
+   "chat": 336,
+   "check": "C2",
+   "name": "phase1.T2.sl27_order equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 2,
+   "chat": 2,
+   "check": "C2",
+   "name": "phase1.T2.sl27_sq1_count typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 2,
+   "chat": 2,
+   "check": "C2",
+   "name": "phase1.T2.sl27_sq1_count equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 22,
+   "chat": 22,
+   "check": "C2",
+   "name": "phase1.T2.fs_sum_ordinary typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 22,
+   "chat": 22,
+   "check": "C2",
+   "name": "phase1.T2.fs_sum_ordinary equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": [
+    -1,
+    0
+   ],
+   "chat": [
+    -1,
+    0
+   ],
+   "check": "C2",
+   "name": "phase1.T2.nu4_allowed typed",
+   "note": "type list",
+   "pass": true
+  },
+  {
+   "cc": [
+    -1,
+    0
+   ],
+   "chat": [
+    -1,
+    0
+   ],
+   "check": "C2",
+   "name": "phase1.T2.nu4_allowed equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": -1,
+   "chat": -1,
+   "check": "C2",
+   "name": "phase1.T2.involution_trace typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": -1,
+   "chat": -1,
+   "check": "C2",
+   "name": "phase1.T2.involution_trace equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T2.sigma_H_is_automorphism typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T2.sigma_H_is_automorphism equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": false,
+   "chat": false,
+   "check": "C2",
+   "name": "phase1.T2.single_unit_negation_is_automorphism typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": false,
+   "chat": false,
+   "check": "C2",
+   "name": "phase1.T2.single_unit_negation_is_automorphism equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T2.control_1344_all_automorphisms typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T2.control_1344_all_automorphisms equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 1344,
+   "chat": 1344,
+   "check": "C2",
+   "name": "phase1.T2.group1344_order typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 1344,
+   "chat": 1344,
+   "check": "C2",
+   "name": "phase1.T2.group1344_order equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": 0.7071067811865495,
+   "check": "C2",
+   "name": "phase1.T2.spinor_2O_min_automorphism_defect (chat) gt 1e-06",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 0.7071067811865495,
+   "chat": null,
+   "check": "C2",
+   "name": "phase1.T2.spinor_2O_min_automorphism_defect (cc) gt 1e-06",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T3.holds typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T3.holds equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C2",
+   "name": "phase1.T3.pi1_G2 typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C2",
+   "name": "phase1.T3.pi1_G2 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "Z",
+   "chat": "Z",
+   "check": "C2",
+   "name": "phase1.T3.pi3_G2 typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "Z",
+   "chat": "Z",
+   "check": "C2",
+   "name": "phase1.T3.pi3_G2 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C2",
+   "name": "phase1.T3.pi4_G2 typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C2",
+   "name": "phase1.T3.pi4_G2 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C2",
+   "name": "phase1.T3.pi1_V typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C2",
+   "name": "phase1.T3.pi1_V equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C2",
+   "name": "phase1.T3.pi4_V typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C2",
+   "name": "phase1.T3.pi4_V equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T3.no_internal_double_cover typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T3.no_internal_double_cover equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T3.envelope_in_O_kill typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T3.envelope_in_O_kill equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "Z2",
+   "chat": "Z2",
+   "check": "C2",
+   "name": "phase1.T3.controls_pi4_S2 typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "Z2",
+   "chat": "Z2",
+   "check": "C2",
+   "name": "phase1.T3.controls_pi4_S2 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "Z2",
+   "chat": "Z2",
+   "check": "C2",
+   "name": "phase1.T3.controls_pi4_S3 typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "Z2",
+   "chat": "Z2",
+   "check": "C2",
+   "name": "phase1.T3.controls_pi4_S3 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 24,
+   "chat": 24,
+   "check": "C2",
+   "name": "phase1.T3.controls_pi1_SO3_mod_T typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 24,
+   "chat": 24,
+   "check": "C2",
+   "name": "phase1.T3.controls_pi1_SO3_mod_T equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T4.holds typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T4.holds equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 24,
+   "chat": 24,
+   "check": "C2",
+   "name": "phase1.T4.lifts_total typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 24,
+   "chat": 24,
+   "check": "C2",
+   "name": "phase1.T4.lifts_total equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 12,
+   "chat": 12,
+   "check": "C2",
+   "name": "phase1.T4.order2_count typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 12,
+   "chat": 12,
+   "check": "C2",
+   "name": "phase1.T4.order2_count equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": [
+    -1
+   ],
+   "chat": [
+    -1
+   ],
+   "check": "C2",
+   "name": "phase1.T4.order2_traces_set typed",
+   "note": "type list",
+   "pass": true
+  },
+  {
+   "cc": [
+    -1
+   ],
+   "chat": [
+    -1
+   ],
+   "check": "C2",
+   "name": "phase1.T4.order2_traces_set equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 12,
+   "chat": 12,
+   "check": "C2",
+   "name": "phase1.T4.order4_count typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 12,
+   "chat": 12,
+   "check": "C2",
+   "name": "phase1.T4.order4_count equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": [
+    -1,
+    3
+   ],
+   "chat": [
+    -1,
+    3
+   ],
+   "check": "C2",
+   "name": "phase1.T4.order4_traces_set typed",
+   "note": "type list",
+   "pass": true
+  },
+  {
+   "cc": [
+    -1,
+    3
+   ],
+   "chat": [
+    -1,
+    3
+   ],
+   "check": "C2",
+   "name": "phase1.T4.order4_traces_set equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 3,
+   "chat": 3,
+   "check": "C2",
+   "name": "phase1.T4.perm_char_involution typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 3,
+   "chat": 3,
+   "check": "C2",
+   "name": "phase1.T4.perm_char_involution equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 2,
+   "chat": 2,
+   "check": "C2",
+   "name": "phase1.T4.rho6_char_2A typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 2,
+   "chat": 2,
+   "check": "C2",
+   "name": "phase1.T4.rho6_char_2A equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 4,
+   "chat": 4,
+   "check": "C2",
+   "name": "phase1.T4.gap typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 4,
+   "chat": 4,
+   "check": "C2",
+   "name": "phase1.T4.gap equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T4.control_F21_unsigned_1_3_3bar typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T4.control_F21_unsigned_1_3_3bar equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T4.nu2_unsigned_automorphism typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C2",
+   "name": "phase1.T4.nu2_unsigned_automorphism equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 1344,
+   "chat": 1344,
+   "check": "C2",
+   "name": "phase1.group1344.order typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 1344,
+   "chat": 1344,
+   "check": "C2",
+   "name": "phase1.group1344.order equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": false,
+   "chat": false,
+   "check": "C2",
+   "name": "phase1.group1344.split typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": false,
+   "chat": false,
+   "check": "C2",
+   "name": "phase1.group1344.split equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C2",
+   "name": "phase1.group1344.complements_found typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C2",
+   "name": "phase1.group1344.complements_found equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 64,
+   "chat": 64,
+   "check": "C2",
+   "name": "phase1.group1344.lift_pairs_tested typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 64,
+   "chat": 64,
+   "check": "C2",
+   "name": "phase1.group1344.lift_pairs_tested equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C3",
+   "name": "phase1b.P_C.complex_unit_central typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C3",
+   "name": "phase1b.P_C.complex_unit_central equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C3",
+   "name": "phase1b.P_C.e8_anticommutes typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C3",
+   "name": "phase1b.P_C.e8_anticommutes equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": false,
+   "chat": false,
+   "check": "C3",
+   "name": "phase1b.P_C.e8_central typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": false,
+   "chat": false,
+   "check": "C3",
+   "name": "phase1b.P_C.e8_central equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "CLOSED-BY-INSTANTIATION",
+   "chat": "CLOSED-BY-INSTANTIATION",
+   "check": "C3",
+   "name": "phase1b.P_C.disposition typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "CLOSED-BY-INSTANTIATION",
+   "chat": "CLOSED-BY-INSTANTIATION",
+   "check": "C3",
+   "name": "phase1b.P_C.disposition equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "fail",
+   "chat": "fail",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.i typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "fail",
+   "chat": "fail",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.i equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.ii typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.ii equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "fail",
+   "chat": "fail",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.iii typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "fail",
+   "chat": "fail",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.iii equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "n/a",
+   "chat": "n/a",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.iv typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "n/a",
+   "chat": "n/a",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.iv equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "EXCLUDED(i,iii)",
+   "chat": "EXCLUDED(i,iii)",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.code typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "EXCLUDED(i,iii)",
+   "chat": "EXCLUDED(i,iii)",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.code equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "control",
+   "chat": "control",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.role typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "control",
+   "chat": "control",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.role equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "fail",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.i (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "fail",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.i (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.ii (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.ii (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "fail",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.iii (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "fail",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.iii (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "n/a",
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.iv (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "n/a",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H1.iv (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.i typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.i equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.ii typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.ii equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.iii typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.iii equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "dynamical",
+   "chat": "dynamical",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.iv typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "dynamical",
+   "chat": "dynamical",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.iv equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "ADMISSIBLE-IMPORT",
+   "chat": "ADMISSIBLE-IMPORT",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.code typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "ADMISSIBLE-IMPORT",
+   "chat": "ADMISSIBLE-IMPORT",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.code equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "candidate",
+   "chat": "candidate",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.role typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "candidate",
+   "chat": "candidate",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.role equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.i (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.i (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.ii (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.ii (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.iii (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.iii (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "dynamical",
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.iv (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "dynamical",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H2.iv (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.i typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.i equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.ii typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.ii equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "conditional",
+   "chat": "conditional",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.iii typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "conditional",
+   "chat": "conditional",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.iii equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "kinematic",
+   "chat": "kinematic",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.iv typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "kinematic",
+   "chat": "kinematic",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.iv equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "ADMISSIBLE-IMPORT",
+   "chat": "ADMISSIBLE-IMPORT",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.code typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "ADMISSIBLE-IMPORT",
+   "chat": "ADMISSIBLE-IMPORT",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.code equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "candidate",
+   "chat": "candidate",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.role typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "candidate",
+   "chat": "candidate",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.role equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.i (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.i (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.ii (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.ii (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "conditional",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.iii (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "conditional",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.iii (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "kinematic",
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.iv (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "kinematic",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H3.iv (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "fail",
+   "chat": "fail",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.i typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "fail",
+   "chat": "fail",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.i equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.ii typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.ii equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "n/a",
+   "chat": "n/a",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.iii typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "n/a",
+   "chat": "n/a",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.iii equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "n/a",
+   "chat": "n/a",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.iv typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "n/a",
+   "chat": "n/a",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.iv equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "EXCLUDED(i)",
+   "chat": "EXCLUDED(i)",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.code typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "EXCLUDED(i)",
+   "chat": "EXCLUDED(i)",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.code equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "candidate",
+   "chat": "candidate",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.role typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "candidate",
+   "chat": "candidate",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.role equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "fail",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.i (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "fail",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.i (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "pass",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.ii (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "pass",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.ii (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "n/a",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.iii (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "n/a",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.iii (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "n/a",
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.iv (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "n/a",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H4.iv (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "fail",
+   "chat": "fail",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.i typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "fail",
+   "chat": "fail",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.i equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "fail",
+   "chat": "fail",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.ii typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "fail",
+   "chat": "fail",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.ii equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "n/a",
+   "chat": "n/a",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.iii typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "n/a",
+   "chat": "n/a",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.iii equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "n/a",
+   "chat": "n/a",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.iv typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "n/a",
+   "chat": "n/a",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.iv equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "EXCLUDED(i,ii)",
+   "chat": "EXCLUDED(i,ii)",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.code typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "EXCLUDED(i,ii)",
+   "chat": "EXCLUDED(i,ii)",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.code equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "candidate",
+   "chat": "candidate",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.role typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "candidate",
+   "chat": "candidate",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.role equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "fail",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.i (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "fail",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.i (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "fail",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.ii (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "fail",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.ii (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "n/a",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.iii (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "n/a",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.iii (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "n/a",
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.iv (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "n/a",
+   "chat": null,
+   "check": "C3",
+   "name": "phase1b.H_screen.H5.iv (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C3",
+   "name": "phase1b.I5_registered typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C3",
+   "name": "phase1b.I5_registered equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": [
+    "H2",
+    "H3"
+   ],
+   "chat": [
+    "H2",
+    "H3"
+   ],
+   "check": "C3",
+   "name": "phase1b.admissible typed",
+   "note": "type list",
+   "pass": true
+  },
+  {
+   "cc": [
+    "H2",
+    "H3"
+   ],
+   "chat": [
+    "H2",
+    "H3"
+   ],
+   "check": "C3",
+   "name": "phase1b.admissible equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "fano_line_texture_L124_homogeneous_GP_2D",
+   "chat": "fano_line_texture_L124_homogeneous_GP_2D",
+   "check": "C4",
+   "name": "phase2.object typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "fano_line_texture_L124_homogeneous_GP_2D",
+   "chat": "fano_line_texture_L124_homogeneous_GP_2D",
+   "check": "C4",
+   "name": "phase2.object equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "nonline_texture_L123",
+   "chat": "nonline_texture_L123",
+   "check": "C4",
+   "name": "phase2.control_object typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "nonline_texture_L123",
+   "chat": "nonline_texture_L123",
+   "check": "C4",
+   "name": "phase2.control_object equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "lockrec-A-2.6",
+   "chat": "lockrec-A-2.6",
+   "check": "C4",
+   "name": "phase2.profile_id typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "lockrec-A-2.6",
+   "chat": "lockrec-A-2.6",
+   "check": "C4",
+   "name": "phase2.profile_id equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C4",
+   "name": "phase2.O_nonzero_on_line typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C4",
+   "name": "phase2.O_nonzero_on_line equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C4",
+   "name": "phase2.O_zero_on_nonline typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C4",
+   "name": "phase2.O_zero_on_nonline equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "SO4_Stab_HL",
+   "chat": "SO4_Stab_HL",
+   "check": "C4",
+   "name": "phase2.stab_internal_image typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "SO4_Stab_HL",
+   "chat": "SO4_Stab_HL",
+   "check": "C4",
+   "name": "phase2.stab_internal_image equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "SU2_long",
+   "chat": "SU2_long",
+   "check": "C4",
+   "name": "phase2.stab_kernel typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "SU2_long",
+   "chat": "SU2_long",
+   "check": "C4",
+   "name": "phase2.stab_kernel equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C4",
+   "name": "phase2.stab_subdirect typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C4",
+   "name": "phase2.stab_subdirect equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C4",
+   "name": "phase2.pi0_stab typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 1,
+   "chat": 1,
+   "check": "C4",
+   "name": "phase2.pi0_stab equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": [
+    "Id",
+    "sigma_H"
+   ],
+   "chat": [
+    "Id",
+    "sigma_H"
+   ],
+   "check": "C4",
+   "name": "phase2.loop_images typed",
+   "note": "type list",
+   "pass": true
+  },
+  {
+   "cc": [
+    "Id",
+    "sigma_H"
+   ],
+   "chat": [
+    "Id",
+    "sigma_H"
+   ],
+   "check": "C4",
+   "name": "phase2.loop_images equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 4,
+   "chat": 4,
+   "check": "C4",
+   "name": "phase2.sigma_H_eigen_plus1 typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 4,
+   "chat": 4,
+   "check": "C4",
+   "name": "phase2.sigma_H_eigen_plus1 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 4,
+   "chat": 4,
+   "check": "C4",
+   "name": "phase2.sigma_H_eigen_minus1 typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 4,
+   "chat": 4,
+   "check": "C4",
+   "name": "phase2.sigma_H_eigen_minus1 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "INTERNAL-HOLONOMY-GAUGE",
+   "chat": "INTERNAL-HOLONOMY-GAUGE",
+   "check": "C4",
+   "name": "phase2.label typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "INTERNAL-HOLONOMY-GAUGE",
+   "chat": "INTERNAL-HOLONOMY-GAUGE",
+   "check": "C4",
+   "name": "phase2.label equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C4",
+   "name": "phase2.pi1_orbit typed",
+   "note": "type int",
+   "pass": true
+  },
+  {
+   "cc": 0,
+   "chat": 0,
+   "check": "C4",
+   "name": "phase2.pi1_orbit equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C4",
+   "name": "phase2.chiral_pair_character_ordinary typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C4",
+   "name": "phase2.chiral_pair_character_ordinary equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "2D witness; contractibility of the 2pi loop in the orbit only",
+   "chat": "2D witness; contractibility of the 2pi loop in the orbit only",
+   "check": "C4",
+   "name": "phase2.dimension_note typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "2D witness; contractibility of the 2pi loop in the orbit only",
+   "chat": "2D witness; contractibility of the 2pi loop in the orbit only",
+   "check": "C4",
+   "name": "phase2.dimension_note equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": 12.566370614359172,
+   "check": "C4",
+   "name": "phase2.O_line_abs (chat) gt 1e-06",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 12.566370614359172,
+   "chat": null,
+   "check": "C4",
+   "name": "phase2.O_line_abs (cc) gt 1e-06",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": 0.0,
+   "check": "C4",
+   "name": "phase2.O_nonline_abs (chat) le 1e-09",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": 0.0,
+   "chat": null,
+   "check": "C4",
+   "name": "phase2.O_nonline_abs (cc) le 1e-09",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "INTERNAL-HOLONOMY-GAUGE",
+   "check": "C4",
+   "name": "phase2.label (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "INTERNAL-HOLONOMY-GAUGE",
+   "chat": null,
+   "check": "C4",
+   "name": "phase2.label (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "ASSIGNMENT-I-FORCED",
+   "chat": "ASSIGNMENT-I-FORCED",
+   "check": "C5",
+   "name": "phase3.verdict typed",
+   "note": "type str",
+   "pass": true
+  },
+  {
+   "cc": "ASSIGNMENT-I-FORCED",
+   "chat": "ASSIGNMENT-I-FORCED",
+   "check": "C5",
+   "name": "phase3.verdict equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": [
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+   ],
+   "chat": [
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+   ],
+   "check": "C5",
+   "name": "phase3.tests_holding typed",
+   "note": "type list",
+   "pass": true
+  },
+  {
+   "cc": [
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+   ],
+   "chat": [
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+   ],
+   "check": "C5",
+   "name": "phase3.tests_holding equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": [
+    "H2",
+    "H3"
+   ],
+   "chat": [
+    "H2",
+    "H3"
+   ],
+   "check": "C5",
+   "name": "phase3.admissible_H typed",
+   "note": "type list",
+   "pass": true
+  },
+  {
+   "cc": [
+    "H2",
+    "H3"
+   ],
+   "chat": [
+    "H2",
+    "H3"
+   ],
+   "check": "C5",
+   "name": "phase3.admissible_H equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C5",
+   "name": "phase3.I5 typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C5",
+   "name": "phase3.I5 equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C5",
+   "name": "phase3.controls_all_pass typed",
+   "note": "type bool",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": true,
+   "check": "C5",
+   "name": "phase3.controls_all_pass equal",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "ASSIGNMENT-I-FORCED",
+   "check": "C5",
+   "name": "phase3.verdict (chat) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "ASSIGNMENT-I-FORCED",
+   "chat": null,
+   "check": "C5",
+   "name": "phase3.verdict (cc) in domain",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": "ASSIGNMENT-I-FORCED",
+   "check": "C5",
+   "name": "verdict recomputed == reported (chat)",
+   "note": "reported ASSIGNMENT-I-FORCED",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": true,
+   "check": "C5",
+   "name": "controls_all_pass recomputed == reported (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": [
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+   ],
+   "check": "C5",
+   "name": "tests_holding consistent with T*.holds (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C5",
+   "name": "admissible_H == phase1b.admissible (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C5",
+   "name": "I5 == phase1b.I5_registered (chat)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": "ASSIGNMENT-I-FORCED",
+   "chat": null,
+   "check": "C5",
+   "name": "verdict recomputed == reported (cc)",
+   "note": "reported ASSIGNMENT-I-FORCED",
+   "pass": true
+  },
+  {
+   "cc": true,
+   "chat": null,
+   "check": "C5",
+   "name": "controls_all_pass recomputed == reported (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": [
+    "T1",
+    "T2",
+    "T3",
+    "T4"
+   ],
+   "chat": null,
+   "check": "C5",
+   "name": "tests_holding consistent with T*.holds (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C5",
+   "name": "admissible_H == phase1b.admissible (cc)",
+   "note": "",
+   "pass": true
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C5",
+   "name": "I5 == phase1b.I5_registered (cc)",
+   "note": "",
+   "pass": true
+  }
+ ],
+ "schema_md5": "53111e0360dac138b02d5914efe85d5c",
+ "summary": {
+  "checks": 436,
+  "miss": 4,
+  "pass": 432
+ }
+}

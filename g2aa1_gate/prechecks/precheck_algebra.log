@@ -1,0 +1,14 @@
+dim Der(O) = g2 = 14
+Clifford relations L_a L_b + L_b L_a = -2 delta: OK (Cl(0,7) on R^8)
+dim span{L_a L_b, a<b<=7} = 21 (spin(7) = 21 expected)
+dim span{L_a L_b, a<b<=6} = 15 (spin(6)=su(4) = 15 expected)
+dim g2 in so(8) = 14
+dim span(g2 + spin7) = 21 (21 expected if g2 ⊂ spin(7)_L)
+dim span(g2 + su4)  = 21 → dim(g2 ∩ su(4)) = 8 (8 = su(3) expected)
+sigma_H (fix line 124, negate complement) is an automorphism: True ; trace on Im O = -1
+negating a single unit is an automorphism: False
+signed automorphism lifts of the three nontrivial pointwise-line-stabilizer collineations: 24
+   (order, trace on 7) -> count over the 24 signed automorphism lifts: {(4, 3): 6, (2, -1): 12, (4, -1): 6}
+   every ORDER-2 lift has trace -1 (permutation character 3, rho6 character 2 — the wrong-module gap is 4); the trace-3 lifts are of ORDER 4 (square to sigma_H).
+2O: |G|=48, <chi_3/2,chi_3/2> = 1.0 , chi(1)= 4.0 , chi(-1)= -4.0 , Frobenius–Schur indicator = -0.999999995
+SL(2,7): #{g: g^2=1} = 2 (2 expected: only ±I) -> [(1, 0, 0, 1), (6, 0, 0, 6)]

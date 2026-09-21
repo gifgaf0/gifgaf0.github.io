@@ -1,0 +1,4 @@
+checkpoint written: /tmp/claude-0/-home-claude/5ef9f5dc-d0a9-5e92-8f16-467e316b5b74/scratchpad/ccdet/g_2a_a1_ccleg_checkpoint.json  md5 9cc072119869986ec0175bacc18f9113
+verdict: ASSIGNMENT-I-FORCED; tests holding: ['T1', 'T2', 'T3', 'T4']; controls_all_pass: True
+phase0 full O-density stabilizer in so(16): dim 15 (g2 + u(1) on the real-unit line)
+elapsed: 2.57 s

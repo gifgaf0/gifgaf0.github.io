@@ -1,0 +1,293 @@
+{
+ "action_extract_md5": "940b0bee4b2112e911ae738c3db2bc3d",
+ "comparison_rules": {
+  "exact": "ints, bools, strings and lists compared for equality after canonical ordering of list-of-dicts by their declared sort key; lists of scalars compared as sorted lists where the key name ends with _set or is nu4_allowed, admissible, admissible_H, tests_holding, loop_images; other lists compared in order",
+  "float": "per-key rule (gt/le threshold) evaluated on each leg separately; magnitudes are not compared across legs",
+  "free_text": "never compared (any key not declared above is ignored)",
+  "harmonizations_v1_1": {
+   "R1.1-1 sym_int recording (CC-DD-2 / H-A1-1)": "phase0.sym_int_continuous and phase0.sym_int_continuous_dim are compared after normalizing each leg's record to the 7-sector (imaginary-sector) continuous symmetry, which is what every test consumes: the label 'G2xU1_psi0' with dim d normalizes to ('G2', d-1); any other label normalizes to itself. A genuine dimension disagreement (e.g. 'G2'/15 vs 'G2'/14) still misses.",
+   "R1.1-2 automorphism-count domain (CC-DD-1 / H-A1-2)": "phase1.T2.spinor_2O_automorphism_count: the domain of record is 2O minus {+-Id} (A-2.3's own min-defect domain; 'expected 0'). A leg counting over all of 2O counts exactly one more element (+Id; -Id is never an automorphism). The equality row is therefore vacuous-PASS iff both legs report spinor_2O_min_automorphism_defect > 1e-6 (no non-trivial zero-defect element on either leg) and both counts lie in {0, 1}; otherwise exact equality is required.",
+   "R1.1-3 H5 P-C booking (CC-DD-3 / H-A1-2(i))": "phase1b.H_screen.H5.i and phase1b.H_screen.H5.code: the non-centrality of e8 (the P-C exclusion of H5) may be booked as criterion (i) = fail (chat) or as the 'centrality' token in the code string with (i) = pass (CC). The two rows are vacuous-PASS iff both legs report P_C.e8_central == false, P_C.e8_anticommutes == true, H5.ii == 'fail', both H5 codes begin 'EXCLUDED(' and contain 'ii', and each leg's booking is internally consistent ((i) == 'fail' iff 'i' is listed in its code; (i) == 'pass' iff 'centrality' is listed). Otherwise exact equality is required. Every other candidate and criterion is compared exactly as in v1.0."
+  },
+  "independence_witness": "instrument_md5 must differ between legs; checkpoint bytes need not be identical"
+ },
+ "elections": {
+  "E-A1-1": "a",
+  "E-A1-2": "a",
+  "E-A1-3": "a",
+  "E-A1-4": "a",
+  "E-A1-5": "a",
+  "E-A1-6": "a",
+  "E-A1-7": "a",
+  "E-A1-8": "a"
+ },
+ "frozen": "2026-09-20",
+ "gate": "G-2a-A1",
+ "ledger_base_md5": "40009ec0197876b130766f1ae7494360",
+ "leg_domain": [
+  "chat",
+  "cc"
+ ],
+ "memo_lock_bytes": 61562,
+ "memo_lock_md5": "626aa868844220eb6c3801ef07a77783",
+ "phase0": {
+  "domains": {
+   "H0": [
+    "G2",
+    "SU3",
+    "SU2_long"
+   ],
+   "sym_int_continuous": [
+    "G2",
+    "G2xU1_psi0"
+   ],
+   "two_body_symmetry": [
+    "O(16)"
+   ],
+   "vacuum_manifold_of_record": [
+    "S15"
+   ]
+  },
+  "exact_keys": {
+   "O_phase_invariant": "bool",
+   "complex_amplitudes": "int",
+   "conjugation_maps_O_to_conjugate": "bool",
+   "controls": {
+    "F21_split_1_3_3bar": "bool",
+    "L_perp_zero_mode": "bool",
+    "generic_so16_fails_margin_positive": "bool"
+   },
+   "field_real_components": "int",
+   "g2_preserves_O": "bool",
+   "generic_so16_breaks_O": "bool",
+   "phase_subgroup_order": "int",
+   "pi1_V": "int",
+   "pi4_V": "int",
+   "real_unit_splitting_term_present": "bool",
+   "spatial_internal_direct_product": "bool",
+   "spinor_index_present": "bool",
+   "sym_int_continuous": "str",
+   "sym_int_continuous_dim": "int",
+   "sym_int_pinned": "bool",
+   "two_body_symmetry": "str",
+   "vacuum_manifold_of_record": "str"
+  },
+  "list_keys": {
+   "locking_inventory": {
+    "item_keys": {
+     "H0": "str",
+     "H0_dim": "int",
+     "pi0_generic": "int",
+     "pi3_injective": "bool",
+     "pi4_quotient": "int",
+     "rank": "int",
+     "sl2_generator_index": "int",
+     "sl2_generator_jordan_type": "list"
+    },
+    "sort_by": "rank"
+   }
+  }
+ },
+ "phase1": {
+  "T1": {
+   "exact_keys": {
+    "branching_long_root": "list",
+    "branching_principal": "list",
+    "branching_short_root": "list",
+    "branching_su3_sl2": "list",
+    "chi32_at_1": "int",
+    "chi32_at_minus1": "int",
+    "chi32_norm": "int",
+    "control_sym3_quartet_mult": "int",
+    "fs_indicator": "int",
+    "holds": "bool",
+    "phase_char_on_2O_trivial": "bool",
+    "quartet_multiplicity_upper": "int",
+    "seven_real": "bool"
+   }
+  },
+  "T2": {
+   "exact_keys": {
+    "control_1344_all_automorphisms": "bool",
+    "dim_bivectors_6": "int",
+    "dim_bivectors_7": "int",
+    "dim_der": "int",
+    "dim_g2_cap_su4": "int",
+    "fs_sum_ordinary": "int",
+    "g2_in_spin7": "bool",
+    "group1344_order": "int",
+    "holds": "bool",
+    "involution_trace": "int",
+    "nu4_allowed": "list",
+    "sigma_H_is_automorphism": "bool",
+    "single_unit_negation_is_automorphism": "bool",
+    "sl27_order": "int",
+    "sl27_sq1_count": "int",
+    "spinor_2O_automorphism_count": "int",
+    "spinor_2O_order": "int",
+    "spinor_2O_quartet_mult": "int"
+   },
+   "float_keys": {
+    "spinor_2O_min_automorphism_defect": {
+     "rule": "gt",
+     "threshold": 1e-06
+    }
+   }
+  },
+  "T3": {
+   "exact_keys": {
+    "controls_pi1_SO3_mod_T": "int",
+    "controls_pi4_S2": "str",
+    "controls_pi4_S3": "str",
+    "envelope_in_O_kill": "bool",
+    "holds": "bool",
+    "no_internal_double_cover": "bool",
+    "pi1_G2": "int",
+    "pi1_V": "int",
+    "pi3_G2": "str",
+    "pi4_G2": "int",
+    "pi4_V": "int"
+   }
+  },
+  "T4": {
+   "exact_keys": {
+    "control_F21_unsigned_1_3_3bar": "bool",
+    "gap": "int",
+    "holds": "bool",
+    "lifts_total": "int",
+    "nu2_unsigned_automorphism": "bool",
+    "order2_count": "int",
+    "order2_traces_set": "list",
+    "order4_count": "int",
+    "order4_traces_set": "list",
+    "perm_char_involution": "int",
+    "rho6_char_2A": "int"
+   }
+  },
+  "group1344": {
+   "exact_keys": {
+    "complements_found": "int",
+    "lift_pairs_tested": "int",
+    "order": "int",
+    "split": "bool"
+   }
+  }
+ },
+ "phase1b": {
+  "H_criterion_domain": [
+   "pass",
+   "fail",
+   "conditional",
+   "dynamical",
+   "kinematic",
+   "n/a"
+  ],
+  "H_item_keys": {
+   "code": "str",
+   "i": "str",
+   "ii": "str",
+   "iii": "str",
+   "iv": "str",
+   "role": "str"
+  },
+  "H_screen_candidates": [
+   "H1",
+   "H2",
+   "H3",
+   "H4",
+   "H5"
+  ],
+  "P_C": {
+   "exact_keys": {
+    "complex_unit_central": "bool",
+    "disposition": "str",
+    "e8_anticommutes": "bool",
+    "e8_central": "bool"
+   }
+  },
+  "exact_keys": {
+   "I5_registered": "bool",
+   "admissible": "list"
+  }
+ },
+ "phase2": {
+  "domains": {
+   "label": [
+    "INTERNAL-HOLONOMY-GAUGE",
+    "INTERNAL-HOLONOMY-FIXED",
+    "NONE"
+   ]
+  },
+  "exact_keys": {
+   "O_nonzero_on_line": "bool",
+   "O_zero_on_nonline": "bool",
+   "chiral_pair_character_ordinary": "bool",
+   "control_object": "str",
+   "dimension_note": "str",
+   "label": "str",
+   "loop_images": "list",
+   "object": "str",
+   "pi0_stab": "int",
+   "pi1_orbit": "int",
+   "profile_id": "str",
+   "sigma_H_eigen_minus1": "int",
+   "sigma_H_eigen_plus1": "int",
+   "stab_internal_image": "str",
+   "stab_kernel": "str",
+   "stab_subdirect": "bool"
+  },
+  "float_keys": {
+   "O_line_abs": {
+    "rule": "gt",
+    "threshold": 1e-06
+   },
+   "O_nonline_abs": {
+    "rule": "le",
+    "threshold": 1e-09
+   }
+  }
+ },
+ "phase3": {
+  "exact_keys": {
+   "I5": "bool",
+   "admissible_H": "list",
+   "controls_all_pass": "bool",
+   "tests_holding": "list",
+   "verdict": "str"
+  },
+  "verdict_domain": [
+   "ASSIGNMENT-I-FORCED",
+   "ASSIGNMENT-II-REALIZABLE",
+   "UNDECIDED-BY-SUBSTRATE",
+   "INDETERMINATE"
+  ]
+ },
+ "required_top": [
+  "gate",
+  "leg",
+  "instrument_md5",
+  "memo_lock_md5",
+  "ledger_base_md5",
+  "t1_list_md5",
+  "action_extract_md5",
+  "t1_scan",
+  "elections",
+  "phase0",
+  "phase1",
+  "phase1b",
+  "phase2",
+  "phase3"
+ ],
+ "schema": "G-2a-A1 checkpoint schema v1.1 CANDIDATE r2 (not frozen; supersedes the domain-only candidate 69ffc8fb; H-A1-1 domain widening + three recording-convention harmonizations R1.1-1..3)",
+ "t1_list_md5": "2026b782db3905d9f2ce35733823618c",
+ "t1_scan_domain": [
+  "CLEAN"
+ ],
+ "t1_scan_required": [
+  "instrument",
+  "memo",
+  "extract"
+ ],
+ "v1_1_candidate_note": "Deltas from v1.0 (53111e03): (1) phase0.domains.sym_int_continuous widened to admit the decoupled real-unit phase u(1)_{psi0} (H-A1-1 chat / H-CC-1 CC; both legs computed the identical 15-dim stabilizer g2 + u(1)_{psi0}); (2) three harmonization rules for recording conventions that differed between the two legs of run 1 while every mathematical witness agreed (the 6 definitional misses of run 1: CC-DD-1, CC-DD-2, CC-DD-3). No verdict rule, no float rule, no domain other than (1), and no required key changes. Frozen only on the author's S9 election.",
+ "verdict_rule": "INDETERMINATE if not phase3.controls_all_pass; else UNDECIDED-BY-SUBSTRATE if not phase0.sym_int_pinned; else ASSIGNMENT-II-REALIZABLE if (not phase0.spatial_internal_direct_product) or any of T1..T4 holds == false; else ASSIGNMENT-I-FORCED. controls_all_pass is recomputed by the comparator as the conjunction of: phase0.controls.*, T1.control_sym3_quartet_mult == 1, T2.control_1344_all_automorphisms, T2.spinor_2O_quartet_mult == 2, T3.controls_pi4_S2 == 'Z2', T3.controls_pi4_S3 == 'Z2', T3.controls_pi1_SO3_mod_T == 24, T4.control_F21_unsigned_1_3_3bar, T4.nu2_unsigned_automorphism, phase2.O_zero_on_nonline."
+}

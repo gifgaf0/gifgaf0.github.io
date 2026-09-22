@@ -1,0 +1,13 @@
+d41d8cd98f00b204e9800998ecf8427e  ./ESTATE_MANIFEST.md5
+c0b7bc461ffbe3e4d75b9c4ae9689fd1  ./FOLD_AUTHORIZATION_V4_84.md
+3c82ded06a150343f01c0d92947c37b7  ./G_2a_A1_CHATLEG_EXECUTION_REPORT.md
+ccf5db3b0a06a394633d30e2a4531fb3  ./G_2a_A1_TWOLEG_CLOSURE_MEMO.md
+957458a8f9cde046ca726354c2ac656f  ./cc/determinism/DETERMINISM_WITNESS.md
+9cc072119869986ec0175bacc18f9113  ./cc/determinism/g_2a_a1_ccleg_checkpoint_CHATSIDE_REEXEC.json
+c99e1ef11eba1fea5445174abbd8cbd1  ./cc/determinism/g_2a_a1_twoleg_comparison_vs_REEXEC.json
+968f490f80def721caddcf7b0f7cad94  ./cc/determinism/run_ccleg_chatside.log
+5942248e4be4b357017c6822817ca4c2  ./cc/g_2a_a1_twoleg_comparison_CHATSIDE_RUN.json
+5c8f6a3585e6d938984d994e786f599b  ./cc/g_2a_a1_twoleg_comparison_v1_1_SUPPLEMENTARY.json
+d3cced7381e5aefbec2cd0e8a60f1eb9  ./foldin_v4_84_g2aa1.py
+7ce866cc83e6a903378bba3a66c9475c  ./g_2a_a1_compare_v1_1.py
+88a92fe2bd17465841f2aacb323e2408  ./g_2a_a1_schema_v1_1_CANDIDATE_r2.json

@@ -1,0 +1,25 @@
+
+=== Pin+ / Cl(3,0) (e_i^2 = +1) ===
+  M = N/Gamma verified: Z/2 x S4; center = the -I class; M+ = S4 with classes [1,3,6,6,8]
+  B1: z = [q~1,q~2]; 8 characters on Gamma~_2, all kill z ->
+      NO equivariant pushforward of 1->Gamma~->N~->M->1 to a Z/2-extension exists.
+  D2 collapse lemma VERIFIED: the static home absorbs the sign (z in the deck image).
+
+=== Pin- / Cl(0,3) (e_i^2 = -1) ===
+  M = N/Gamma verified: Z/2 x S4; center = the -I class; M+ = S4 with classes [1,3,6,6,8]
+  B1: z = [q~1,q~2]; 8 characters on Gamma~_2, all kill z ->
+      NO equivariant pushforward of 1->Gamma~->N~->M->1 to a Z/2-extension exists.
+  D2 collapse lemma VERIFIED: the static home absorbs the sign (z in the deck image).
+
+=== F2 discriminators + B2/B3 (Spin sector; Pin-blind per bivector^2 regression) ===
+  F2 discriminator PASSES: 2O (all order-2 classes lift at order 4) vs GL(2,3) (involution preimages exist) separated.
+  B2: exactly 2 lifts over id_{S4}, both fixing z; the sgn-twist acts trivially on the
+      4-dim module (chi_3/2 odd-class-supported nowhere) -> module transport UNIQUE.
+  2O-locked, chi_FR=triv: (2J,2I)->m : {(1, 1): 1, (3, 3): 1, (3, 5): 1, (5, 3): 1, (5, 5): 2, (7, 1): 1, (7, 3): 1, (7, 5): 2}
+  2O-locked, chi_FR=sgn : (2J,2I)->m : {(1, 5): 1, (3, 3): 1, (3, 5): 1, (5, 1): 1, (5, 3): 1, (5, 5): 1, (7, 1): 1, (7, 3): 1, (7, 5): 2}
+  2T-restricted (repr.) : (2J,2I)->m : {(1, 1): 1, (1, 5): 1, (3, 3): 2, (3, 5): 2, (5, 1): 1, (5, 3): 2, (5, 5): 3, (7, 1): 2, (7, 3): 2, (7, 5): 4}
+
+ALL CHECKS PASS. Assertions: 8484
+B1: NOT-INDUCED-BY-OBSTRUCTION (z = [q~1,q~2]; all characters kill z; D2 collapse verified)
+B2: ASSEMBLED-RELOCATED on the loop-sector substrate; lifts = 2, module transport unique
+B3: admissibility lattices above; parity law machine-verified; Assignment: NEUTRAL

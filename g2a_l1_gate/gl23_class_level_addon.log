@@ -1,0 +1,3 @@
+PGL(2,3) class (size, order): [(1, 1), (3, 2), (6, 2), (6, 4), (8, 3)]
+GL(2,3) preimages of the size-6 PGL transposition class: 12 | genuine involutions among them: 12
+RESULT GL23_transposition_class_size_PGL=6 GL23_transposition_class_size_GL=12 (all 12 preimages are involutions — the 2S4^- fingerprint a fortiori)

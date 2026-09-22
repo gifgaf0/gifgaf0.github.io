@@ -1,0 +1,14 @@
+{
+ "ARMS": "untouched (prereg \u00a78); base-arm comparison is representational only",
+ "COMPARATOR_FROZEN": "g_2a_L1_compare_v1_1.py md5 faa233c06c818b6168894c579ac35876 (frozen BEFORE either leg re-emitted)",
+ "INSTRUMENT_UNTOUCHED_REQUIRED": true,
+ "NEW_ELECTIONS": "none",
+ "RECOMPUTE": false,
+ "RETURN": "g_2a_L1_cc_checkpoint_v1_1.json (md5+bytes), comparator v1.1 output verbatim, plus the ORIGINAL cc checkpoint (47ae0b85...), G_2a_L1_CCLEG_REPORT.md and g_2a_L1_ccleg.py as files \u2014 the chat side runs run-2 itself and needs them",
+ "RE_EMIT_CC_CHECKPOINT_SCHEMA_v1_1": true,
+ "RUN2_CRITERION": "comparator v1.1 on (chat v1.1, cc v1.1) -> C1-C6 ALL PASS; any MISS -> S9 stays open",
+ "T1_SCAN": "zero hits on the re-emitted checkpoint (t1_forbidden_G_2a_L1.txt, md5 04438b74)",
+ "dispatch": "S9-RESOLUTION-MINI",
+ "dispatch_date": "2026-08-27",
+ "gate": "G-2a-L1"
+}

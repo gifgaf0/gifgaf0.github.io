@@ -1,0 +1,17 @@
+{
+ "C3_B1": {
+  "D2_collapse_quotient_order": 48,
+  "all_characters_kill_z": true,
+  "arm": "SPLIT",
+  "arm_sharpened": "pushforward-obstructed: z is central and a commutator in Gamma~_2, so every Z/2 character kills z and no pushforward Z/2-extension of M carries the spin sign; the naive quotient collapses to M (D2). The flat home induces no double cover of M by the D1 route \u2014 the postulate's substrate lives in the point/motion sector (see B2), not in a pushforward over M.",
+  "num_characters_Gamma2_to_Z2": 8,
+  "pin_dependence": "none",
+  "z_is_commutator_q1_q2": true
+ },
+ "hom_routes": {
+  "F2_relation_rank": 8,
+  "brute_force": 8,
+  "derived_subgroup": 8
+ },
+ "phase": 3
+}

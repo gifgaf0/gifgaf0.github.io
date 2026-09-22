@@ -1,0 +1,21 @@
+{
+ "BLIND_UNTIL_CC_CHECKPOINT_HASHED": true,
+ "BRANCH_NAMING": "claude/<descriptor>",
+ "COMPARATOR_FROZEN": "g_2a_L1_compare.py (embedded; md5 in the manifest) \u2014 run it yourself after hashing your checkpoint; the chat side re-runs it on return",
+ "EXECUTE_CC_LEG": true,
+ "FOLD_TARGET": "next canonical after V4.78 (V4.79 at earliest), section \u00a72.87.J (reserved; content-anchored), per prereg \u00a710 \u2014 the prereg's 'V4.63' target is superseded by the sequential convention (V4.63 record clause)",
+ "FORBIDDEN": "no modification of any embed; no consultation of the quarantined chat artifacts before the CC checkpoint is hashed; no physical quantum number or adjacent-dialect soliton value in any instrument or checkpoint (prereg \u00a76 trap 1); no dynamics (trap 7); no magnetic-moment content (trap 4); the \u00a72.52 Open 3 row untouched",
+ "NEW_ELECTIONS": "none \u2014 the July 11, 2026 lock (da9c25d1) stands; no re-lock cycle",
+ "PER_PHASE_JSON_CHECKPOINTS": true,
+ "PIN_TYPES_REQUIRED": [
+  "Pin+",
+  "Pin-"
+ ],
+ "REQUESTED_VARIATION": "direct H^2(M,Z/2) cohomological route (independent cocycle/coboundary or abelianization solver) for B1; SU(2)/Q(i,sqrt2) model for the 2O side (B2/B3); own character route for the lattices",
+ "S9_ON_ANY_MISS": true,
+ "SHARED_LAYER_FLAGGED": "the S7 Gamma/N presentation (standing caveat); finite models REBUILT per leg, zero code reuse from the chat instrument",
+ "T1_SCAN": "grep -n -i -F -f t1_forbidden_G_2a_L1.txt <every CC instrument and checkpoint> must return zero hits (pattern lines only, H-2 rule); justified exemptions: the locked pre-registration and the quarantined chat artifacts, which legitimately name the sealed dialect",
+ "VERIFY_THEN_BUILD": true,
+ "dispatch_date": "2026-08-27",
+ "gate": "G-2a-L1"
+}

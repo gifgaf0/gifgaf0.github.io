@@ -1,0 +1,14 @@
+checkpoint g_2a_L1_chat_checkpoint_v1_1.json md5 8abda98d723c4ac7e23ff144ba780a11
+checkpoint g_2a_L1_cc_checkpoint_v1_1.json md5 33d60888ab115cda00fe484fee5c14c1
+schema chat=g2a_l1_checkpoint_v1_1 cc=g2a_l1_checkpoint_v1_1 (v1.1 expected: g2a_l1_checkpoint_v1_1)
+C1 PASS  compared 7  miss 0  reported-only 0
+C2 PASS  compared 7  miss 0  reported-only 0
+C3 PASS  compared 6  miss 0  reported-only 1
+    note C3_B1.arm_sharpened: chat='NOT-INDUCED-BY-OBSTRUCTION'  cc="pushforward-obstructed: z is central and a commutator in Gamma~_2, so every Z/2 character kills z and no pushforward Z/2-extension of M carries the spin sign; the naive quotient collapses to M (D2). The flat home induces no double cover of M by the D1 route — the postulate's substrate lives in the point/motion sector (see B2), not in a pushforward over M."
+C4 PASS  compared 9  miss 0  reported-only 0
+C5 PASS  compared 7  miss 0  reported-only 1
+    note C5_B2.arm [suffix]: chat='ASSEMBLED-RELOCATED'  cc='ASSEMBLED'
+C6 PASS  compared 29  miss 0  reported-only 0
+VERDICT (base arms) chat=('SPLIT', 'ASSEMBLED', 'NEUTRAL') cc=('SPLIT', 'ASSEMBLED', 'NEUTRAL')  IDENTICAL
+assertions chat=8484 cc=6447 (reported, not compared)
+RESULT: C1–C6 ALL PASS under schema v1.1 — S9 CLOSED; fold-eligible on author authorization.

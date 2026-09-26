@@ -1,0 +1,79 @@
+activation: ACTIVATE: G-MSCS2-CC-LEG-1 WITH-A3   (Addendum A-3 in force: True)
+T1: instrument CLEAN memo CLEAN
+== selftests ==
+   mandel_rotation_dev: 2.6645352591003757e-15
+   ti_projector_vs_psi_average_dev: 6.661338147750939e-16
+   fiber_rule_iso_dev: 1.3322676295501878e-15
+   K4_mean: 4.0766001685454967e-17
+   K4_sq_mean_minus_4_21: -5.551115123125783e-17
+   P4_sq_mean_minus_1_9: -2.7755575615628914e-17
+   K6_mean: 1.5612511283791264e-15
+   K6_K4_overlap: 1.1319070680748666e-16
+   P2_mean: 3.2959746043559335e-17
+   K4_range: [-0.6650100702867094, 0.9961753204696011]
+   fracE2_closed_form_dev: 6.800116025829084e-16
+   psi_moment_closed_form_dev: 2.220446049250313e-16
+   T4_voigt_table_dev: 1.3877787807814457e-17
+   marginal coefficients c4: 001 -> 1.0, 111 -> -0.6666666666666661   (c6: 0.5625695680505385, 1.0001236765342831; K6 scale 0.04617033598890424)
+== Phase 1 (single crystal; PIN-XTAL inputs) ==
+   hex_step|a: r_E2 -2.796721e-02 r_h -1.112878e-03 lam_mean 4.8086e-03 lam_max 3.3538e-02
+   hex_step|b: r_E2 -2.794713e-02 r_h -1.112801e-03 lam_mean 4.8086e-03 lam_max 3.3535e-02
+   hex_gem8|a: r_E2 -3.933944e-02 r_h -1.314865e-03 lam_mean 4.9538e-03 lam_max 3.5133e-02
+   hex_gem8|b: r_E2 -3.935235e-02 r_h -1.314928e-03 lam_mean 4.9538e-03 lam_max 3.5133e-02
+   cubic_step|001: r_E2 -1.729677e-02 r_h -1.516377e-03 lam_mean 8.3923e-03 lam_max 3.8701e-02
+   cubic_step|111: r_E2 +1.153118e-02 r_h -1.516377e-03 lam_mean 8.3923e-03 lam_max 3.8701e-02
+   cubic_gem8|001: r_E2 -2.084244e-02 r_h -1.845101e-03 lam_mean 9.3105e-03 lam_max 4.3293e-02
+   cubic_gem8|111: r_E2 +1.389496e-02 r_h -1.845101e-03 lam_mean 9.3105e-03 lam_max 4.3293e-02
+   PIN-XTAL worst rel 3.991e-13 (vs cc 1.598e-14)
+== HS references (optimized at t = 0, reused at every texture) ==
+   hex_step: lo (K0,G0)=(134.607089,60.030800) G_HS 70.4065270376 | hi (135.366590,115.559874) G_HS 70.9735889413
+   hex_step|b: lo (K0,G0)=(134.607089,60.030800) G_HS 70.4103032286 | hi (135.366589,115.559875) G_HS 70.9773099313
+   hex_gem8: lo (K0,G0)=(229.695754,84.824500) G_HS 99.8183426050 | hi (230.136056,178.294340) G_HS 101.0587427019
+   hex_gem8|b: lo (K0,G0)=(229.695754,84.824500) G_HS 99.8148823452 | hi (230.136055,178.294340) G_HS 101.0553690985
+   cubic_step: lo (K0,G0)=(123.832467,36.725200) G_HS 60.1960988077 | hi (123.832467,85.293400) G_HS 61.9046845031
+   cubic_gem8: lo (K0,G0)=(210.275500,46.349850) G_HS 84.8558049680 | hi (210.275500,131.543600) G_HS 89.4321061995
+   PIN-VRH0 worst rel 3.741e-15 (vs cc 3.986e-15)
+   PIN-HS0 worst rel 1.464e-12 (vs cc 4.632e-13)
+== PIN-K2 (the inherited l = 2 family, G-MSCS1 grid and window) ==
+   hex_step|a: kappa2_E2 -1.439461769e-03  (X-6 chat -1.439461769e-03)  dev 1.273e-12
+   hex_step|b: kappa2_E2 -1.438702719e-03  (X-6 chat -1.438702719e-03)  dev 3.571e-13
+   hex_gem8|a: kappa2_E2 -1.895648483e-03  (X-6 chat -1.895648483e-03)  dev 1.910e-12
+   hex_gem8|b: kappa2_E2 -1.896137467e-03  (X-6 chat -1.896137467e-03)  dev 1.823e-13
+   cubic_step|001: kappa2_E2 +3.101583515e-15  (X-6 chat +3.141702124e-15)  dev 3.102e-15
+   cubic_step|111: kappa2_E2 +2.876089263e-15  (X-6 chat -1.673914386e-16)  dev 2.876e-15
+   cubic_gem8|001: kappa2_E2 +1.153755866e-15  (X-6 chat -1.494072344e-16)  dev 1.154e-15
+   cubic_gem8|111: kappa2_E2 -4.371545007e-16  (X-6 chat +1.272728293e-16)  dev 4.372e-16
+== Phase 2 (l = 4 families; VRH and HS at every t4) ==
+   hex_step|a: S4 -2.190e-13 kappa44_E2 +1.604053461e-04 (HS +1.598930e-04, h -7.508e-06) kappa444 +2.215e-07 halving 1.606e-09 b1 +1.624085e-02
+   hex_step|b: S4 -2.201e-13 kappa44_E2 +1.604146650e-04 (HS +1.599026e-04, h -7.509e-06) kappa444 +2.216e-07 halving 1.606e-09 b1 +1.624180e-02
+   hex_gem8|a: S4 -2.650e-13 kappa44_E2 +1.795072958e-04 (HS +1.789306e-04, h -7.754e-06) kappa444 +2.193e-07 halving 1.984e-09 b1 +1.817488e-02
+   hex_gem8|b: S4 -2.645e-13 kappa44_E2 +1.795015136e-04 (HS +1.789247e-04, h -7.754e-06) kappa444 +2.192e-07 halving 1.983e-09 b1 +1.817430e-02
+   cubic_step|001: S4 -1.955e-11 kappa44_E2 -3.743529418e-04 (HS -3.892647e-04, h -3.803e-05) kappa444 +2.633e-06 halving 3.881e-08 b1 -3.789870e-02
+   cubic_step|111: S4 +1.304e-11 kappa44_E2 +2.495686279e-04 (HS +2.595098e-04, h -3.803e-05) kappa444 -1.755e-06 halving 2.588e-08 b1 -3.789870e-02
+   cubic_gem8|001: S4 -4.267e-11 kappa44_E2 -4.492770934e-04 (HS -4.767152e-04, h -4.536e-05) kappa444 +3.796e-06 halving 6.897e-08 b1 -4.548125e-02
+   cubic_gem8|111: S4 +2.845e-11 kappa44_E2 +2.995180623e-04 (HS +3.178101e-04, h -4.536e-05) kappa444 -2.531e-06 halving 4.598e-08 b1 -4.548125e-02
+== Phase 2 second arm: the (t2, t4) quadratic form on the 5 x 5 grid; A-3.2 Richardson ==
+   hex_step|a: kappa22 -1.439469e-03 kappa24 -1.248879e-08 kappa44 +1.603990e-04 resid 6.91e-10 | kappa24_richardson +3.006854e-13
+   hex_step|b: kappa22 -1.438710e-03 kappa24 -1.248462e-08 kappa44 +1.604084e-04 resid 6.91e-10 | kappa24_richardson +1.850372e-13
+   hex_gem8|a: kappa22 -1.895660e-03 kappa24 -1.837213e-08 kappa44 +1.794984e-04 resid 1.06e-09 | kappa24_richardson +1.364649e-12
+   hex_gem8|b: kappa22 -1.896149e-03 kappa24 -1.837608e-08 kappa44 +1.794926e-04 resid 1.07e-09 | kappa24_richardson +9.483155e-13
+   cubic_step|001: kappa22 +4.481911e-09 kappa24 +1.974043e-07 kappa44 -3.743546e-04 resid 4.68e-09 | kappa24_richardson -7.632783e-13
+   cubic_step|111: kappa22 -2.987938e-09 kappa24 +1.974043e-07 kappa44 +2.495697e-04 resid 4.59e-09 | kappa24_richardson -2.220446e-12
+   cubic_gem8|001: kappa22 +7.963760e-09 kappa24 +3.477857e-07 kappa44 -4.492800e-04 resid 8.27e-09 | kappa24_richardson +1.202742e-12
+   cubic_gem8|111: kappa22 -5.309171e-09 kappa24 +3.477857e-07 kappa44 +2.995200e-04 resid 8.10e-09 | kappa24_richardson -3.700743e-13
+== Phase 0 controls ==
+   PIN-XTAL: PASS  {'worst_rel': 3.9907334492519883e-13}
+   PIN-VRH0: PASS  {'worst_rel': 3.740581037287146e-15}
+   PIN-HS0: PASS  {'worst_rel': 1.4642081959835474e-12}
+   PIN-K2: PASS  {'worst_abs_cubic_kappa2': 3.1015835146880138e-15, 'worst_rel_hex_kappa2': 1.9101739846654823e-12}
+   F-CTRL-ISO: PASS  {'worst_abs': 4.440892098500626e-16}
+   F-CTRL-SO3: PASS  {'dev_from_0p4': 7.771561172376096e-16, 'r_agg_0_abs': 3.3306690738754696e-16}
+   F-CTRL-POS: PASS  {'min_odf_weight': 0.33498992971329056}
+   F-CTRL-L2NULL: PASS  {'worst_abs': 7.987802509504381e-15}
+   F-CTRL-L4EXHAUST: PASS  {'worst_abs_r_agg': 5.551115123125783e-16, 'worst_rel_tensor': 6.420725383328799e-15}
+   F-CTRL-C4: PASS  {'h0_effect_rel': 2.9771733495537138e-15, 'worst_rel_affine': 3.5337177708315534e-15, 'worst_rel_closed_form': 1.7155661439689658e-15}
+   F-CTRL-MARG: PASS  {'worst_abs': 1.659783421814609e-14}
+   F-CTRL-TEX4: PASS  {'r_agg_t1_abs': 0.0004118326557733809}
+   F-CTRL-QUAD: PASS  {'doubling_residual': 2.220446049250313e-16}
+== verdict: IDENTITY-DELIVERED-L4  (worst |S4| 4.267e-11; F-MS2-3 SILENT; F-MS2-4 SILENT) ==
+checkpoint -> /home/user/gifgaf0.github.io/gmscs2_gate/g_mscs2_ccleg_checkpoint.json  md5 9961745d1e1857cfab6445d4754b5060  runtime 170.003 s

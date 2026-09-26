@@ -1,0 +1,41 @@
+# T1 forbidden-string list — Gate G-MSCS2 (gate-specific), composed September 26, 2026
+# Stratum 1: the author's base list (T1_base_author_20260919.txt, md5 05302210cc4ceb70553acbe8379e9fc3, 143 B, 11 pattern lines) — the operative base by the author's election of September 23, 2026 (E-MS2-7).
+# Provenance note: the G-2a-L1 list 04438b74 (117 B, 13 patterns) was RECOVERED on main at PR #13 (g2a_l1_gate/t1_forbidden_G_2a_L1.txt); it shares no pattern with the base and is a gate-specific vocabulary quarantine — NOT used here (author's election). H-MS-0 (G-MSCS1) stands as sharpened in the V4.85 housekeeping note.
+# Scanner rule: pattern lines only ('#' lines ignored); case-sensitive substring; bare numeric patterns under the contextual numeric rule (D-W-7 lineage): a hit counts only when the maximal numeric token containing the match equals the pattern; embedded-in-a-longer-literal matches are logged as formatting collisions, not forbidden references.
+Mpc
+Gpc
+LIGO
+170817
+299792458
+SME
+GW1
+3.19
+0.019
+Hz
+GW
+# Stratum 2: the G-MSCS1 observational stratum, verbatim (the 25 patterns of T1_forbidden_G_MSCS1.txt fef2827100d3f85e0a6341b44f0c00bf beyond the base): SI speed of light in scientific form, the 2017 multi-messenger tensor-speed bound digit strings, SI speed units, event/collaboration/instrument identifiers, observational-search identifiers, the anisotropic-dispersion coefficient names of the observational dialect. No G-MSCS2-specific stratum (none foreseen at staging).
+2.99792458
+3e-15
+7e-16
+3×10⁻¹⁵
+7×10⁻¹⁶
+3×10^-15
+7×10^-16
+3 × 10^-15
+7 × 10^-16
+m/s
+km/s
+LVC
+Virgo
+KAGRA
+Fermi
+GRB
+GWTC
+Haegel
+2210.04481
+ApJL 848
+848, L13
+k_(I)
+k_(V)
+k_(E)
+k_(B)

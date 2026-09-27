@@ -1,0 +1,14 @@
+# T1 forbidden-string list, base stratum
+# Recovered from G-2a-L1 dispatch (0c5588ee)
+#
+Mpc
+Gpc
+LIGO
+170817
+299792458
+SME
+GW1
+3.19
+0.019
+Hz
+GW

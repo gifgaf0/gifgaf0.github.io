@@ -1,0 +1,33 @@
+phase0 ...
+  PIN-K2 hex_step|a       kappa2=-1.439461769e-03  X-6 -1.439461769e-03
+  PIN-K2 hex_step|b       kappa2=-1.438702719e-03  X-6 -1.438702719e-03
+  PIN-K2 hex_gem8|a       kappa2=-1.895648483e-03  X-6 -1.895648483e-03
+  PIN-K2 hex_gem8|b       kappa2=-1.896137467e-03  X-6 -1.896137467e-03
+  PIN-K2 cubic_step|001   kappa2=-4.551387049e-16  X-6 +3.141702124e-15
+  PIN-K2 cubic_step|111   kappa2=-1.673914386e-16  X-6 -1.673914386e-16
+  PIN-K2 cubic_gem8|001   kappa2=-2.155337697e-15  X-6 -1.494072344e-16
+  PIN-K2 cubic_gem8|111   kappa2=-1.601977569e-15  X-6 +1.272728293e-16
+  PIN-XTAL         passed=True  worst_rel=0.000e+00
+  PIN-VRH0         passed=True  worst_rel=0.000e+00
+  PIN-HS0          passed=True  worst_rel=0.000e+00
+  PIN-K2           passed=True  worst_rel_hex_kappa2=1.393e-12 worst_abs_cubic_kappa2=2.155e-15
+  F-CTRL-ISO       passed=True  worst_abs=4.441e-16
+  F-CTRL-SO3       passed=True  dev_from_0p4=4.996e-16 r_agg_0_abs=0.000e+00
+  F-CTRL-POS       passed=True  min_odf_weight=3.950e-01
+  F-CTRL-L2NULL    passed=True  worst_abs=5.850e-14
+  F-CTRL-L4EXHAUST passed=True  worst_rel_tensor=4.326e-14 worst_abs_r_agg=4.441e-16
+  F-CTRL-C4        passed=True  worst_rel_closed_form=2.519e-14 worst_rel_affine=4.074e-14 h0_effect_rel=2.302e-14
+  F-CTRL-MARG      passed=True  worst_abs=8.327e-16
+  F-CTRL-TEX4      passed=True  r_agg_t1_abs=4.118e-04
+  F-CTRL-QUAD      passed=True  doubling_residual=2.260e-14 k_sphere_doubling=2.220e-16 so3_doubling=2.260e-14
+phase2 ...
+  phase2 hex_step|a       S4=-2.214e-13 k44=+1.604053e-04 (win0.1 +1.604037e-04) k44_HS=+1.598930e-04 k44_h=-7.508e-06 b1=+1.6241e-02 qf k22=-1.439e-03 k24=-1.249e-08 k44=+1.603990e-04
+  phase2 hex_step|b       S4=-2.199e-13 k44=+1.604147e-04 (win0.1 +1.604131e-04) k44_HS=+1.599026e-04 k44_h=-7.509e-06 b1=+1.6242e-02 qf k22=-1.439e-03 k24=-1.248e-08 k44=+1.604084e-04
+  phase2 hex_gem8|a       S4=-2.652e-13 k44=+1.795073e-04 (win0.1 +1.795053e-04) k44_HS=+1.789306e-04 k44_h=-7.754e-06 b1=+1.8175e-02 qf k22=-1.896e-03 k24=-1.837e-08 k44=+1.794984e-04
+  phase2 hex_gem8|b       S4=-2.665e-13 k44=+1.795015e-04 (win0.1 +1.794995e-04) k44_HS=+1.789247e-04 k44_h=-7.754e-06 b1=+1.8174e-02 qf k22=-1.896e-03 k24=-1.838e-08 k44=+1.794926e-04
+  phase2 cubic_step|001   S4=-1.955e-11 k44=-3.743529e-04 (win0.1 -3.743141e-04) k44_HS=-3.892647e-04 k44_h=-3.803e-05 b1=-3.7899e-02 qf k22=+4.482e-09 k24=+1.974e-07 k44=-3.743546e-04
+  phase2 cubic_step|111   S4=+1.304e-11 k44=+2.495686e-04 (win0.1 +2.495428e-04) k44_HS=+2.595098e-04 k44_h=-3.803e-05 b1=-3.7899e-02 qf k22=-2.988e-09 k24=+1.974e-07 k44=+2.495697e-04
+  phase2 cubic_gem8|001   S4=-4.267e-11 k44=-4.492771e-04 (win0.1 -4.492081e-04) k44_HS=-4.767152e-04 k44_h=-4.536e-05 b1=-4.5481e-02 qf k22=+7.964e-09 k24=+3.478e-07 k44=-4.492800e-04
+  phase2 cubic_gem8|111   S4=+2.845e-11 k44=+2.995181e-04 (win0.1 +2.994721e-04) k44_HS=+3.178101e-04 k44_h=-4.536e-05 b1=-4.5481e-02 qf k22=-5.309e-09 k24=+3.478e-07 k44=+2.995200e-04
+verdict_class IDENTITY-DELIVERED-L4  F-MS2-3 SILENT  F-MS2-4 SILENT  T1 post CLEAN
+checkpoint g_mscs2_chatleg_checkpoint.json 1c5b6b59829d2a6b9ae2b1a7a016832d (31,575 B)

@@ -1,0 +1,27 @@
+phase0 ...
+  PIN-K2 hex_step|a       kappa2=-1.439461769e-03  X-6 -1.439461769e-03
+  PIN-K2 hex_step|b       kappa2=-1.438702719e-03  X-6 -1.438702719e-03
+  PIN-K2 hex_gem8|a       kappa2=-1.895648483e-03  X-6 -1.895648483e-03
+  PIN-K2 hex_gem8|b       kappa2=-1.896137467e-03  X-6 -1.896137467e-03
+  PIN-K2 cubic_step|001   kappa2=-4.551387049e-16  X-6 +3.141702124e-15
+  PIN-K2 cubic_step|111   kappa2=-1.673914386e-16  X-6 -1.673914386e-16
+  PIN-K2 cubic_gem8|001   kappa2=-2.155337697e-15  X-6 -1.494072344e-16
+  PIN-K2 cubic_gem8|111   kappa2=-1.601977569e-15  X-6 +1.272728293e-16
+  PIN-XTAL         passed=True  worst_rel=0.000e+00
+  PIN-VRH0         passed=True  worst_rel=0.000e+00
+  PIN-HS0          passed=True  worst_rel=0.000e+00
+  PIN-K2           passed=True  worst_rel_hex_kappa2=1.393e-12 worst_abs_cubic_kappa2=2.155e-15
+  F-CTRL-ISO       passed=True  worst_abs=4.441e-16
+  F-CTRL-SO3       passed=True  dev_from_0p4=4.996e-16 r_agg_0_abs=0.000e+00
+  F-CTRL-POS       passed=True  min_odf_weight=3.950e-01
+  F-CTRL-L2NULL    passed=True  worst_abs=5.850e-14
+  F-CTRL-L4EXHAUST passed=True  worst_rel_tensor=4.326e-14 worst_abs_r_agg=4.441e-16
+  F-CTRL-C4        passed=True  worst_rel_closed_form=2.519e-14 worst_rel_affine=4.074e-14 h0_effect_rel=2.302e-14
+  F-CTRL-MARG      passed=True  worst_abs=8.327e-16
+  F-CTRL-TEX4      passed=True  r_agg_t1_abs=4.118e-04
+  F-CTRL-QUAD      passed=True  doubling_residual=2.260e-14 k_sphere_doubling=2.220e-16 so3_doubling=2.260e-14
+phase0 complete (phase0-only run); checkpoint g_mscs2_chatleg_phase0_checkpoint.json 9e5a6e8ba0804bda778e4be52fbe2fde (7,747 B)  T1 post CLEAN
+
+real	4m0.475s
+user	3m0.548s
+sys	0m59.007s

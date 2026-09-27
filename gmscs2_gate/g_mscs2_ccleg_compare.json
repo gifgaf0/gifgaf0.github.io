@@ -1,0 +1,245 @@
+{
+ "artifact": "G-MSCS2 CC-leg hypothesis compare (memo section 6; not verdicts)",
+ "checkpoint_md5": "9961745d1e1857cfab6445d4754b5060",
+ "leg": "cc",
+ "summary": {
+  "clauses": 25,
+  "met": 20,
+  "not_met": 5
+ },
+ "rows": [
+  {
+   "hypothesis": "HYP-MS2-1",
+   "clause": "kappa44_E2 non-zero on both primary fcc keys (above the 1e-6 floor)",
+   "met": true,
+   "detail": {
+    "cubic_step|001": -0.0003743529418199647,
+    "cubic_gem8|001": -0.00044927709343161725
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-1",
+   "clause": "|kappa44_E2| of order 1e-3 .. 1e-2 on the primary fcc keys",
+   "met": false,
+   "detail": {
+    "cubic_step|001": 0.0003743529418199647,
+    "cubic_gem8|001": 0.00044927709343161725
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-1",
+   "clause": "kappa44_h smaller than kappa44_E2 in magnitude (ratio reported with <lambda_L> for scale)",
+   "met": true,
+   "detail": {
+    "kappa44_h/kappa44_E2": {
+     "cubic_step|001": 0.10158415608168724,
+     "cubic_step|111": -0.1523762341257568,
+     "cubic_gem8|001": 0.10095734531834431,
+     "cubic_gem8|111": -0.15143601797971554
+    },
+    "lambda_mean": {
+     "cubic_step|001": 0.0083923190288783,
+     "cubic_step|111": 0.0083923190288783,
+     "cubic_gem8|001": 0.0093105038596528,
+     "cubic_gem8|111": 0.0093105038596528
+    }
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-2",
+   "clause": "cubic_step|001: sign kappa44_E2 == sign r_xtal_E2 and < 0",
+   "met": true,
+   "detail": {
+    "kappa44_E2": -0.0003743529418199647,
+    "r_xtal_E2": -0.01729676774121569
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-2",
+   "clause": "cubic_step|111: sign kappa44_E2 == sign r_xtal_E2 and > 0",
+   "met": true,
+   "detail": {
+    "kappa44_E2": 0.00024956862787469286,
+    "r_xtal_E2": 0.01153117849414409
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-2",
+   "clause": "cubic_gem8|001: sign kappa44_E2 == sign r_xtal_E2 and < 0",
+   "met": true,
+   "detail": {
+    "kappa44_E2": -0.00044927709343161725,
+    "r_xtal_E2": -0.020842442022740437
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-2",
+   "clause": "cubic_gem8|111: sign kappa44_E2 == sign r_xtal_E2 and > 0",
+   "met": true,
+   "detail": {
+    "kappa44_E2": 0.00029951806228339543,
+    "r_xtal_E2": 0.01389496134849355
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-3",
+   "clause": "|S4_E2|, |S4_h| <= 1e-6 on every key",
+   "met": true,
+   "detail": {
+    "worst_S4": 4.267032120491424e-11
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-4",
+   "clause": "hex_step|a: |kappa44| < |kappa22|",
+   "met": true,
+   "detail": {
+    "kappa22": -0.0014394693020041397,
+    "kappa44": 0.00016039903763748667
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-4",
+   "clause": "hex_step|a: kappa24 non-zero (above the 1e-6 floor) with |kappa44| < |kappa24| < |kappa22|",
+   "met": false,
+   "detail": {
+    "kappa24_fit": -1.2488792577836864e-08,
+    "kappa24_richardson": 3.006854025026466e-13
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-4",
+   "clause": "hex_step|a: kappa22 reproduces kappa2_E2 (l = 2 family) to 1e-4 relative",
+   "met": true,
+   "detail": {
+    "kappa22": -0.0014394693020041397,
+    "kappa2_E2": -0.0014394617694985317
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-4",
+   "clause": "hex_step|b: |kappa44| < |kappa22|",
+   "met": true,
+   "detail": {
+    "kappa22": -0.0014387102478831734,
+    "kappa44": 0.00016040835823498604
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-4",
+   "clause": "hex_step|b: kappa24 non-zero (above the 1e-6 floor) with |kappa44| < |kappa24| < |kappa22|",
+   "met": false,
+   "detail": {
+    "kappa24_fit": -1.2484618920946934e-08,
+    "kappa24_richardson": 1.8503717077085943e-13
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-4",
+   "clause": "hex_step|b: kappa22 reproduces kappa2_E2 (l = 2 family) to 1e-4 relative",
+   "met": true,
+   "detail": {
+    "kappa22": -0.0014387102478831734,
+    "kappa2_E2": -0.0014387027187495968
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-4",
+   "clause": "hex_gem8|a: |kappa44| < |kappa22|",
+   "met": true,
+   "detail": {
+    "kappa22": -0.0018956599069480582,
+    "kappa44": 0.0001794984220250463
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-4",
+   "clause": "hex_gem8|a: kappa24 non-zero (above the 1e-6 floor) with |kappa44| < |kappa24| < |kappa22|",
+   "met": false,
+   "detail": {
+    "kappa24_fit": -1.837213389418741e-08,
+    "kappa24_richardson": 1.3646491344350882e-12
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-4",
+   "clause": "hex_gem8|a: kappa22 reproduces kappa2_E2 (l = 2 family) to 1e-4 relative",
+   "met": true,
+   "detail": {
+    "kappa22": -0.0018956599069480582,
+    "kappa2_E2": -0.0018956484826737562
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-4",
+   "clause": "hex_gem8|b: |kappa44| < |kappa22|",
+   "met": true,
+   "detail": {
+    "kappa22": -0.0018961488929958188,
+    "kappa44": 0.0001794926395035944
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-4",
+   "clause": "hex_gem8|b: kappa24 non-zero (above the 1e-6 floor) with |kappa44| < |kappa24| < |kappa22|",
+   "met": false,
+   "detail": {
+    "kappa24_fit": -1.8376076624769533e-08,
+    "kappa24_richardson": 9.483155002006545e-13
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-4",
+   "clause": "hex_gem8|b: kappa22 reproduces kappa2_E2 (l = 2 family) to 1e-4 relative",
+   "met": true,
+   "detail": {
+    "kappa22": -0.0018961488929958188,
+    "kappa2_E2": -0.001896137466524572
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-5",
+   "clause": "cubic_step|001: |b1| of order 1e-1 (0.03 .. 0.3)",
+   "met": true,
+   "detail": {
+    "biref_b1_VRH": -0.0378987033959945
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-5",
+   "clause": "cubic_step|001: |b1| * 0.25 exceeds the descriptor split |kappa44| * 0.25^2 by >= two orders",
+   "met": true,
+   "detail": {
+    "biref_at_0p25": 0.009474675848998625,
+    "descriptor_split_at_0p25": 2.3397058863747792e-05,
+    "ratio": 404.9515755024668
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-5",
+   "clause": "cubic_gem8|001: |b1| of order 1e-1 (0.03 .. 0.3)",
+   "met": true,
+   "detail": {
+    "biref_b1_VRH": -0.045481252227733915
+   }
+  },
+  {
+   "hypothesis": "HYP-MS2-5",
+   "clause": "cubic_gem8|001: |b1| * 0.25 exceeds the descriptor split |kappa44| * 0.25^2 by >= two orders",
+   "met": true,
+   "detail": {
+    "biref_at_0p25": 0.011370313056933479,
+    "descriptor_split_at_0p25": 2.8079818339476078e-05,
+    "ratio": 404.9282983055662
+   }
+  },
+  {
+   "hypothesis": "Expected class",
+   "clause": "IDENTITY-DELIVERED-L4",
+   "met": true,
+   "detail": {
+    "verdict_class": "IDENTITY-DELIVERED-L4"
+   }
+  }
+ ]
+}

@@ -1,0 +1,315 @@
+{
+ "comparison_rules": {
+  "exact": "strings/bools/ints compared for equality; elections and provenance md5s compared to this schema on each leg",
+  "float": "phase0 float rules evaluated per leg (the comparator re-evaluates the pass condition from the reported float, independent of the leg's own 'passed' flag, and also requires passed == true on both legs); phase2 arrays compared elementwise across legs at array_tol_abs; abs_keys across legs at the stated absolute tolerance; rel_keys across legs at |a-b| <= max(rel*max(|a|,|b|), floor)",
+  "free_text": "never compared",
+  "independence_witness": "instrument_md5 must differ between legs"
+ },
+ "cubic_keys": [
+  "cubic_step|001",
+  "cubic_step|111",
+  "cubic_gem8|001",
+  "cubic_gem8|111"
+ ],
+ "elections": {
+  "E-MS2-1": "a+b",
+  "E-MS2-2": "a",
+  "E-MS2-2b": "a+b",
+  "E-MS2-2c": "001+111",
+  "E-MS2-3": "a",
+  "E-MS2-4": "a",
+  "E-MS2-5": "a",
+  "E-MS2-6": "a",
+  "E-MS2-7": "05302210+MSCS1stratum",
+  "E-MS2-8": "a"
+ },
+ "frozen": "2026-09-26",
+ "gate": "G-MSCS2",
+ "hex_keys": [
+  "hex_step|a",
+  "hex_step|b",
+  "hex_gem8|a",
+  "hex_gem8|b"
+ ],
+ "keys": [
+  "hex_step|a",
+  "hex_step|b",
+  "hex_gem8|a",
+  "hex_gem8|b",
+  "cubic_step|001",
+  "cubic_step|111",
+  "cubic_gem8|001",
+  "cubic_gem8|111"
+ ],
+ "ledger_base_md5": "f36bbdb04104008783f2763f70fb916f",
+ "leg_domain": [
+  "chat",
+  "cc"
+ ],
+ "memo_lock_bytes": 46053,
+ "memo_lock_md5": "efdcabdcd937cda4acb64f941dc4bb2b",
+ "phase0": {
+  "float_rules": {
+   "F-CTRL-C4": {
+    "h0_effect_rel": {
+     "rule": "le",
+     "threshold": 1e-12
+    },
+    "worst_rel_affine": {
+     "rule": "le",
+     "threshold": 1e-12
+    },
+    "worst_rel_closed_form": {
+     "rule": "le",
+     "threshold": 1e-12
+    }
+   },
+   "F-CTRL-ISO": {
+    "worst_abs": {
+     "rule": "le",
+     "threshold": 1e-10
+    }
+   },
+   "F-CTRL-L2NULL": {
+    "worst_abs": {
+     "rule": "le",
+     "threshold": 1e-12
+    }
+   },
+   "F-CTRL-L4EXHAUST": {
+    "worst_abs_r_agg": {
+     "rule": "le",
+     "threshold": 1e-12
+    },
+    "worst_rel_tensor": {
+     "rule": "le",
+     "threshold": 1e-12
+    }
+   },
+   "F-CTRL-MARG": {
+    "worst_abs": {
+     "rule": "le",
+     "threshold": 1e-12
+    }
+   },
+   "F-CTRL-POS": {
+    "min_odf_weight": {
+     "rule": "ge",
+     "threshold": 0.0
+    }
+   },
+   "F-CTRL-QUAD": {
+    "doubling_residual": {
+     "rule": "le",
+     "threshold": 1e-10
+    }
+   },
+   "F-CTRL-SO3": {
+    "dev_from_0p4": {
+     "rule": "le",
+     "threshold": 1e-10
+    },
+    "r_agg_0_abs": {
+     "rule": "le",
+     "threshold": 1e-06
+    }
+   },
+   "F-CTRL-TEX4": {
+    "r_agg_t1_abs": {
+     "rule": "gt",
+     "threshold": 1e-06
+    }
+   },
+   "PIN-HS0": {
+    "worst_rel": {
+     "rule": "le",
+     "threshold": 1e-06
+    }
+   },
+   "PIN-K2": {
+    "worst_abs_cubic_kappa2": {
+     "rule": "le",
+     "threshold": 1e-12
+    },
+    "worst_rel_hex_kappa2": {
+     "rule": "le",
+     "threshold": 0.0001
+    }
+   },
+   "PIN-VRH0": {
+    "worst_rel": {
+     "rule": "le",
+     "threshold": 1e-08
+    }
+   },
+   "PIN-XTAL": {
+    "worst_rel": {
+     "rule": "le",
+     "threshold": 1e-08
+    }
+   }
+  },
+  "items": [
+   "PIN-XTAL",
+   "PIN-VRH0",
+   "PIN-HS0",
+   "PIN-K2",
+   "F-CTRL-ISO",
+   "F-CTRL-SO3",
+   "F-CTRL-POS",
+   "F-CTRL-L2NULL",
+   "F-CTRL-L4EXHAUST",
+   "F-CTRL-C4",
+   "F-CTRL-MARG",
+   "F-CTRL-TEX4",
+   "F-CTRL-QUAD"
+  ]
+ },
+ "phase2": {
+  "abs_keys": {
+   "S4_E2": 1e-06,
+   "S4_h": 1e-06,
+   "biref_b1_VRH": 1e-06
+  },
+  "array_keys": {
+   "lambda_mean_t4": 12,
+   "r_agg_E2_HS": 12,
+   "r_agg_E2_R": 12,
+   "r_agg_E2_V": 12,
+   "r_agg_E2_VRH": 12,
+   "r_agg_h_VRH": 12
+  },
+  "array_tol_abs": 1e-06,
+  "per_leg_rules": {
+   "halving_dev_kappa44": {
+    "floor": 1e-06,
+    "rel": 0.0001,
+    "rule": "le_rel_floor"
+   }
+  },
+  "quadform_cubic_null_abs": 1e-06,
+  "quadform_keys": {
+   "kappa22": [
+    0.0001,
+    1e-06
+   ],
+   "kappa24": [
+    0.0001,
+    1e-06
+   ],
+   "kappa44": [
+    0.0001,
+    1e-06
+   ]
+  },
+  "rel_keys": {
+   "kappa444_E2": [
+    0.0001,
+    1e-06
+   ],
+   "kappa44_E2": [
+    0.0001,
+    1e-06
+   ],
+   "kappa44_E2_HS": [
+    0.0001,
+    1e-06
+   ],
+   "kappa44_h": [
+    0.0001,
+    1e-06
+   ],
+   "vT_HS_hi": [
+    1e-06,
+    0.0
+   ],
+   "vT_HS_lo": [
+    1e-06,
+    0.0
+   ],
+   "vT_VRH": [
+    1e-08,
+    0.0
+   ]
+  }
+ },
+ "phase3": {
+  "exact_keys": {
+   "F-MS2-2": "str",
+   "F-MS2-3": "str",
+   "F-MS2-4": "str",
+   "verdict_class": "str"
+  },
+  "float_keys": {
+   "worst_S4": {
+    "rule": "le",
+    "threshold": 1e-06
+   }
+  },
+  "verdict_domain": [
+   "IDENTITY-DELIVERED-L4",
+   "PROTECTION-BREACH",
+   "L4-NULL",
+   "INDETERMINATE"
+  ]
+ },
+ "primary_cubic_keys": [
+  "cubic_step|001",
+  "cubic_gem8|001"
+ ],
+ "required_top": [
+  "gate",
+  "leg",
+  "instrument_md5",
+  "memo_lock_md5",
+  "ledger_base_md5",
+  "t1_list_md5",
+  "x1_md5",
+  "x6_chat_md5",
+  "x6_cc_md5",
+  "elections",
+  "t1_scan",
+  "phase0",
+  "phase2",
+  "phase3"
+ ],
+ "schema": "G-MSCS2 checkpoint schema v1.1 CANDIDATE (not frozen; one delta from v1.0 66f586d7: the cubic quadform null tolerance set to the gate's absolute kappa floor)",
+ "t1_list_md5": "be921b8c29f7578e85ed92f1450c1956",
+ "t1_scan_domain": [
+  "CLEAN"
+ ],
+ "t1_scan_required": [
+  "instrument",
+  "memo"
+ ],
+ "t2t4_grid": [
+  -0.25,
+  -0.125,
+  0.0,
+  0.125,
+  0.25
+ ],
+ "t4_grid": [
+  -0.5,
+  -0.25,
+  -0.1,
+  -0.05,
+  -0.02,
+  0.0,
+  0.02,
+  0.05,
+  0.1,
+  0.25,
+  0.5,
+  1.0
+ ],
+ "tolerances": {
+  "kappa_floor": 1e-06,
+  "tau_agg": 1e-06
+ },
+ "v1_1_candidate_note": "Single delta from v1.0 (66f586d7): phase2.quadform_cubic_null_abs 1e-10 -> 1e-6 (= tolerances.kappa_floor). Ground (both legs, run 1): the 7-term (t2, t4) fit on the 5 x 5 grid cannot resolve a null below the aliasing level of the discarded higher-order terms (cubic keys: t4^4 into kappa22 at ~5e-9, t2 t4^2 / higher odd terms into kappa24 at ~2-3.5e-7 under the inherited descriptor-axis l = 2 weight); the basis-independent Richardson estimator (Addendum A-3.2) gives |kappa24| <= 2.2e-12 on every key on both legs and the reading-(ii) form gives kappa22 = kappa24 = 0 by construction. A null on cubic is therefore compared at the same absolute floor every other kappa carries. No other rule, key, domain or tolerance changes. Recommended for successor gates (not applied here, so run 1's checkpoints compare unchanged): carry kappa24_richardson as a schema key.",
+ "verdict_rule": "INDETERMINATE if any phase0 item has passed == false; else PROTECTION-BREACH if max over keys of |S4_E2|,|S4_h| > tau_agg; else L4-NULL if |kappa44_E2| <= kappa_floor on both primary_cubic_keys; else IDENTITY-DELIVERED-L4. Precedence INDETERMINATE > PROTECTION-BREACH > L4-NULL > IDENTITY-DELIVERED-L4.",
+ "x1_md5": "200e7a8b775577564369c6924d38a84c",
+ "x6_cc_md5": "249e11dd53c4cb82f302b15d3c94c337",
+ "x6_chat_md5": "c04c0b8ea34cfe60f231aa06828e6ce4"
+}

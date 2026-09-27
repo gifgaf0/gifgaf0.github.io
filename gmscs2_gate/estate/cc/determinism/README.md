@@ -1,0 +1,3 @@
+# Determinism witness — G-MSCS2 CC instrument re-executed chat-side (September 26, 2026, 20:28 UTC)
+
+`g_mscs2_ccleg.py` `e58ba9a6d52daa23f8264255b6dbbb75` (CC's blind instrument, byte-exact from the return) re-run chat-side on the ten plaintext inputs with every guard held → `g_mscs2_ccleg_checkpoint_CHATSIDE_RERUN.json` md5 `68569dac878b732385f177400ae306da` (68,540 B). Against CC's checkpoint of record `9961745d1e1857cfab6445d4754b5060`: of 2,003 leaves only `utc` and `extras.elapsed_seconds` differ; with those two stripped both hash `71217c56859c923ce0b4fd0ee8a187cb` (json.dumps sort_keys, compact separators, md5). Verdict IDENTITY-DELIVERED-L4, worst |S₄| 4.267e-11, identical. Runtime 177.9 s (CC: 170.0 s). Log `run_ccleg_chatside.log`.

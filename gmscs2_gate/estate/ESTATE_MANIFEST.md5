@@ -1,0 +1,16 @@
+196dbe30e9f5ab71169e7f90c61a62c8  ./ERRATUM_V4_85_H_MS2_8.md
+7eb8d34407130010d624ded26c25b2fe  ./FOLD_AUTHORIZATION_V4_85.md
+ae032ab9d585b842cfd57410e7380d08  ./G_MSCS2_CHATLEG_EXECUTION_REPORT.md
+b6a966920a34552e0f0e2dd91f2e969f  ./G_MSCS2_PHASE0_EXECUTION_REPORT.md
+e43a07329c931004ed8139b37cb14c98  ./G_MSCS2_TWOLEG_CLOSURE_MEMO.md
+a6393324a2f27e98a1ca3cba41183f1d  ./V4_85_DELTA_ONLY.txt
+7be337ff28a8db088f872f4d67507c30  ./V4_85_HOUSEKEEPING_STAGING.md
+4b1aa5f1eb23c37f7faf906329348df5  ./cc/determinism/README.md
+68569dac878b732385f177400ae306da  ./cc/determinism/g_mscs2_ccleg_checkpoint_CHATSIDE_RERUN.json
+ebe479646620fa84e593df9919cc9418  ./cc/determinism/run_ccleg_chatside.log
+a91d84a5b5cbe24221aa2e6301c67675  ./cc/g_mscs2_twoleg_comparison_CHATSIDE_RUN.json
+91841a49770c89fb78eed404032df402  ./cc/g_mscs2_twoleg_comparison_v1_1_SUPPLEMENTARY.json
+e1f55056a1c3aae72366591c9f7e0e14  ./foldin_v4_85_gmscs2.py
+96d76bc176caa2ffc18c5ea3aa635604  ./g_mscs2_compare_v1_1.py
+d270899c95a2b69c3adf818a69667490  ./g_mscs2_schema_v1_1_CANDIDATE.json
+cd5d62164b62dbeaef33320e07a2c261  ./verify_v4_85_additive.py

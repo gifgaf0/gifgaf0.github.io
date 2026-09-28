@@ -1,0 +1,15 @@
+V4.85 d9c237a7089d3ac69ffd3056d9c69c05 1715587 B
+V4.86 d4c42a53cbd6d325ebc740879288e844 1730321 B
+ADDITIVE DIFF VERIFIED — every V4.85 line recovered in order; modified lines are pure insertions; header bumps at lines 1 and 3 only; §2.52 Open 3 row byte-identical
+delta entries: 11  lines added: 3  delta file md5: c463083460f230803077578facefbc95 15364 B
+   HEADER BUMP V4.85 line 1
+   HEADER BUMP V4.85 line 3: As-of prepend; the V4.85 tail preserved verbatim
+   INSERT before V4.85 line 39
+   INSERT before V4.85 line 39
+   MODIFY V4.85 line 39: additive insertion at col 28000
+   MODIFY V4.85 line 41: additive insertion at col 18944
+   MODIFY V4.85 line 43: additive insertion at col 17398
+   MODIFY V4.85 line 1638: additive insertion at col 7567
+   MODIFY V4.85 line 1640: additive insertion at col 10669
+   MODIFY V4.85 line 1644: additive insertion at col 22641
+   INSERT before V4.85 line 4615

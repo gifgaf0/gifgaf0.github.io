@@ -1,0 +1,30 @@
+G-MSCS-A chat leg -- instrument md5 0d0e5ecf610b34f21e8c22dd3938ce40; pinned 2d44ec01a66889f330d940dee3313bdc; memo 6ea16b952db835bb351d3dc1b474c6ed; lock record 8116cc622279b5d4e73214178ae97cd8
+  Phase 0 F-CTRL-SA-PIN          PASS
+  Phase 0 F-CTRL-SA-PIN-DERIVED  PASS
+  Phase 0 F-CTRL-SA-ZERO         PASS
+  Phase 0 F-CTRL-SA-RECON        PASS
+  Phase 0 F-CTRL-SA-S            PASS
+  Phase 0 F-CTRL-SA-K24          PASS
+  Phase 0 F-CTRL-SA-L2NULL       PASS
+  Phase 0 F-CTRL-SA-SIGN         PASS
+  Phase 0 F-CTRL-SA-GRID         PASS
+  Phase 0 F-CTRL-SA-MONO         PASS
+  Phase 0 F-CTRL-SA-MASK         PASS
+  Phase 0 F-CTRL-SA-T1           PASS
+  Phase 2 C-SYN-1   PASS
+  Phase 2 C-SYN-2   PASS
+  Phase 2 C-SYN-3   PASS
+  Phase 2 C-SYN-4   PASS
+  Phase 2 C-SYN-5   PASS
+  Phase 2 C-SYN-6   PASS
+  Phase 2 C-SYN-7   PASS
+  Phase 2 C-SYN-8   PASS
+  Phase 2 C-SYN-9   PASS
+  Phase 2 C-SYN-10  PASS
+  Phase 2 C-SYN-11  PASS
+  Phase 2 C-SYN-12  PASS
+  Phase 2 C-SYN-13  PASS
+  Phase 2 C-SYN-14  PASS
+sealed: md5 cfd62dcf060427ac3402604e6c3284ff  bytes 177  census {"fields_per_row": [11], "per_class": {"spd": 1}, "rows": 1}
+gate class: WINDOW-DELIVERED  (OOM x10 WINDOW-DELIVERED, x0.1 WINDOW-DELIVERED; robust True)
+checkpoint written: md5 4a933fdb2ee24874bf26a921d4030196  71354 B

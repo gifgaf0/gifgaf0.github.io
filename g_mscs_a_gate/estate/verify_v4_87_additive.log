@@ -1,0 +1,18 @@
+changed lines: 7
+   ('header bump: title',)
+   ('header bump: As-of prepend', 2010)
+   ('bracketed line 3', 3, 519)
+   ('bracketed line 41', 4, 677)
+   ('bracketed line 1642', 1, 604)
+   ('bracketed line 1646', 6, 1722)
+   ('bracketed line 4366', 1, 166)
+added lines: 6
+  + **V4.87 fold-in record (September 30, 2026):** GATE FOLD, Cluster J / §2.91.Q–§2.91.S succ
+  + 
+  + **T. Gate G-MSCS-A REGISTERED + LOCKED + EXECUTED (two-leg, CC-BLIND-FIRST; V4.87, Septemb
+  + 
+  + | **Gate G-MSCS-A** (§2.91.T — the sealed-anchor mini-gate on the texture constraint surfa
+  + *V4.87 (September 30, 2026): additions only — title/As-of header bump (V4.86 → V4.87; As-o
+Part VI gate rows cell counts: [('| **Gate G-MSCS1** (§2', 3), ('| **Gate G-MSCS2** (§2', 3), ('| **Gate G-MSCS-A** (§', 3)]
+added-line shape: OK
+ADDITIVE DIFF VERIFIED

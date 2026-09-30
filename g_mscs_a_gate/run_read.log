@@ -1,0 +1,41 @@
+G-MSCS-A cc leg, mode read
+guards: 9 locked artifacts at their md5 and byte counts; instrument md5 a5263388f2db2ce676060551e5636d81
+  T1 staging_memo_G_MSCS_A_v2.md      CLEAN hits=0 collisions=3
+  T1 pinned_inputs_G_MSCS_A.json      CLEAN hits=0 collisions=13
+  T1 G_MSCS_A_LOCK_RECORD.md          CLEAN hits=0 collisions=0
+  T1 g_mscs_a_schema_v1_0.json        CLEAN hits=0 collisions=0
+  T1 g_mscs_a_compare_v1_0.py         CLEAN hits=0 collisions=0
+  T1 g_mscs_a_ccleg.py                CLEAN hits=0 collisions=0
+sources: 7 files at their md5s under inputs
+Phase 0
+  F-CTRL-SA-PIN            PASS  raw_mismatches=0 worst_twoleg_kappa_rel=1.10862881023457e-09 worst_twoleg_kappa3_rel=1.7771343065301202e-08 worst_twoleg_b1_rel=6.476723471215587e-13 worst_twoleg_S_abs=2.7504827357592218e-15
+  F-CTRL-SA-PIN-DERIVED    PASS  leaf_mismatches=0 worst_scaled_dev=0.0
+  F-CTRL-SA-ZERO           PASS  worst_abs_r0=3.3306690738754696e-16
+  F-CTRL-SA-RECON          PASS  worst_abs_E2_Hill=6.845659647617054e-10 worst_rel_robust=0.0007269110377504565
+  F-CTRL-SA-S              PASS  worst_abs_bi=2.173076533532973e-12 worst_abs_fit=4.267168229021896e-11
+  F-CTRL-SA-K24            PASS  worst_abs_bi=9.423484215176359e-11 worst_abs_fit7=3.4778572462814414e-07
+  F-CTRL-SA-L2NULL         PASS  worst_abs_kappa2=1.221245327087672e-13 worst_abs_kappa22=7.963757933367799e-09 worst_abs_t2_alone_t1=3.3306690738754696e-16
+  F-CTRL-SA-SIGN           PASS  binding_end_mismatches=0
+  F-CTRL-SA-GRID           PASS  count_mismatches=0
+  F-CTRL-SA-MONO           PASS  worst_scaling_rel=2.808666774861361e-16 monotonicity_violations=0
+  F-CTRL-SA-MASK           PASS  sealed_opens_before_phase3=0
+  F-CTRL-SA-T1             PASS  hits=0 collisions=16
+Phase 2
+  C-SYN-1   PASS  symmetric budgets on the reference cell and every cell; gate 0.01:WINDOW-DELIVERED, 0.1:WINDOW-DELIVERED, 0.5:INERT-IN-D
+  C-SYN-2   PASS  asymmetric interval: binding ends by sign(kappa), t* by the binding end on every cell
+  C-SYN-3   PASS  excluding-zero intervals: (i) KILL-IN-D (ii) KILL-IN-D (iii) TUNED (iv) TUNED
+  C-SYN-4   PASS  wide interval: INERT-IN-D everywhere; gate INERT-IN-D
+  C-SYN-5   PASS  the fcc t2 family is NULL-INERT with window D under C-SYN-1
+  C-SYN-6   PASS  fifteen malformed files abort masked with reason codes; the valid file parses; no synthetic value in any output: CRLF -> CONTROL_OR_SEPARATOR_CHAR; BOM -> BOM; trailing blank line -> BLANK_LINE_AT_END; form feed in src -> CONTROL_OR_SEPARATOR_CHAR; U+2028 in src -> CONTROL_OR_SEPARATOR_CHAR; Unicode minus -> row 1 NON_ASCII lo; superscript form -> row 1 NON_ASCII hi; bar in src -> row 1 SEPARATOR_COLLISION; lo > hi -> row 1 ORDER; reading=ceiling -> row 1 READING_NOT_MAPPED; wrong delta_def -> row 1 WRONG_DELTA_DEF; missing key -> row 1 MISSING_KEY geom; wrong id -> row 1 ID_SEQUENCE; duplicate key -> row 1 DUPLICATE_KEY cl; percent-form cl -> row 1 CL_NOT_IN_OPEN_UNIT_INTERVAL_OR_hard; valid -> parsed, census 1 row
+  C-SYN-7   PASS  OOM on the C-SYN-1 intervals: worst scaling rel 2.808666774861361e-16, violations 0
+  C-SYN-8   PASS  two consistent rows: the intersection is mapped (upper end from row 1, lower end from row 2)
+  C-SYN-9   PASS  two disjoint rows: ANCHOR-INCONSISTENT
+  C-SYN-10  PASS  regime clause: a void-k row is VOID-REGIME; alone -> gate VOID; with a silent row the silent row alone is mapped
+  C-SYN-11  PASS  the point interval: t* = 0, nu infinite, NULL-FLOOR set, BINDING on every mapped cell; gate WINDOW-DELIVERED
+  C-SYN-12  PASS  tight budget: the null-floor flag recomputed per cell; set on 16 cells, clear on 20
+  C-SYN-13  PASS  the pinned MARGIN-band intervals: margin_positive:MARGIN-ONLY, margin_negative:MARGIN-ONLY
+  C-SYN-14  PASS  grid noise at zero: the rebuilt hull upper end snaps to 0 (perturbation at t = 0.02, and at t = 0 as an extra check); a positive interval classes SIGN
+Phase 3
+sealed: md5 cfd62dcf060427ac3402604e6c3284ff bytes 177 census {"fields_per_row": [11], "per_class": {"spd": 1}, "rows": 1} row md5s ['59b357fda68557002f11a40100c3ca9c']
+gate class WINDOW-DELIVERED (x10 WINDOW-DELIVERED, x0.1 WINDOW-DELIVERED, OOM-robust True); sigma_union_hi 1.235493174523598e-06 sigma_strict_hi 6.582437027892329e-07
+checkpoint written: g_mscs_a_ccleg_checkpoint.json md5 d0e129fc8c324f0779803a6e33068777 138012 B; post-write T1 hits 0 collisions 1

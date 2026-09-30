@@ -1,0 +1,26 @@
+# H-MS2-9 ERRATUM — the G-MSCS2 record (V4.85), with the sibling items H-SA-3 and H-SA-4
+
+*Drafted September 29, 2026, at the G-MSCS-A lock, for the next housekeeping PR into `gmscs2_gate/estate/` (the author's Q-SA-3 election of September 29). Append-only: none of the files it points at is edited. The next fold's bracket carries all three items (the author's Q-SA-2 election). Found by the G-MSCS-A pre-draft audit and the independent audit of its v2 memo (`6ea16b95`, §12).*
+
+## H-MS2-9 (two-leg record; honesty; a third-order coefficient misquoted — non-verdict-bearing)
+
+V4.85 states, in its fold-in record and in §2.91.S (V4.86 `d4c42a53` lines 41 and 1646, four occurrences), that the fcc reading-(i) t₂t₄² coefficient is "−5.9×10⁻⁵ / −1.0×10⁻⁴" (step / gem8). The banked CC fit — `gmscs2_gate/g_mscs2_ccleg_checkpoint.json` (`9961745d1e1857cfab6445d4754b5060`), `/phase2/<key>/quadform/x_cubic_terms_discarded`, the t₂t₄² entry (index 2) — gives **−5.90188×10⁻⁵ (step) and −8.51077×10⁻⁵ (gem8), identical on the ⟨001⟩ and ⟨111⟩ descriptor axes.** Two further banked values agree: the chat quadform-basis diagnostic (`gmscs2_gate/diag_quadform_basis.json` `d84aa1fd`, `cubic_step|001`, k7 index 5) reproduces the step value to within 4.0×10⁻¹⁰ relative; the CC A-3.1 mixed changes at (0.25, 0.25), −9.08×10⁻⁷ (step) and −1.30×10⁻⁶ (gem8), agree with the banked pair to within 1.6% and 2.0% (the quartic correction), while "−1.0×10⁻⁴" misses the gem8 change by about 20%.
+
+Origin: the figure "−1.0×10⁻⁴" first appears in the CC in-band return prose, `gmscs2_gate/G_MSCS2_CC_RETURN_INBAND.md` (`290b34315f16debd2fdc05f8d2109bee`), line 79 ("fit coefficient −5.9e-5 / −1.0e-4"), where the prose disagrees with the same leg's checkpoint; the chat closure memo `gmscs2_gate/estate/G_MSCS2_TWOLEG_CLOSURE_MEMO.md` (`e43a07329c931004ed8139b37cb14c98`), lines 45 and 56, carried it, and V4.85 took it from there. No comparator read the prose; the C-checks compare checkpoints. (Search scope: the repository history available at the audit, a shallow clone of 15 commits; within it the CC return, commit `3849c3d`, precedes the estate commit `1b15a0d`.)
+
+**Disposition:** the step value stands; the gem8 value of record is −8.51×10⁻⁵. Non-verdict-bearing: a discarded third-order term; no class, coefficient of record, tolerance, control, falsifier or H-item of G-MSCS2 rests on it.
+
+**Bracket text, appended after each of the four occurrences at the fold that carries it ("V4.8x"):** [H-MS2-9 (V4.8x): for the gem8 value read −8.51×10⁻⁵ — the banked CC fit, both descriptor axes; the step value −5.9×10⁻⁵ stands; non-verdict-bearing.]
+
+## H-SA-3 (citation precision; non-verdict-bearing)
+
+The representation theorem for material tensors of weakly-textured polycrystals is Man & Huang, *J. Elasticity* 106(1), 1–42 (online November 2010; issue January 2012), DOI 10.1007/s10659-010-9284-3. The G-MSCS2 v2 memo (`gmscs2_gate/staging_memo_G_MSCS2_v2.md`, L-MS2-2) cites it as "J. Elasticity 105, 1 (2011)", which conflates it with a different paper — Man & Huang, *J. Elasticity* 105, 29–48 (2011), the first-order Voigt–Reuss–Hill formula. V4.85 carries "Man–Huang (2011)" at V4.86 lines 41 and 1646 and "Man–Huang 2011" at line 3; the G-MSCS1 memo's "(2012)" is the issue year. Related, not an error: the banked record cites Thompson–Smith–Lee as "1984"; the NTRS record (19860013503) gives the publication date as 1986 (a NASA Lewis conference, *Analytical Ultrasonics in Materials Research and Testing*); the meeting year is not on that record.
+
+**Bracket text:** [H-SA-3 (V4.8x): Man–Huang is J. Elasticity 106(1), 1–42 (2012; online 2010), DOI 10.1007/s10659-010-9284-3 — not 105, 1 (2011), which is the first-order VRH paper (105, 29–48); attribution only.]
+
+## H-SA-4 (three round-downs in the banked record; non-verdict-bearing)
+
+1. *The κ₂₄ estimator.* V4.85 gives the basis-independent κ₂₄ estimator as "≤ 2.2×10⁻¹²" on both legs (V4.86 lines 3, 41, 1646 and 4366; the CC return line 79: "≤ 2.2e-12"). The CC checkpoint holds 2.2204×10⁻¹² (`cubic_step|111`, `/phase2/cubic_step|111/kappa24_richardson`). **Bracket:** [H-SA-4 (V4.8x): for "≤ 2.2×10⁻¹²" read "≤ 2.3×10⁻¹²" — the CC checkpoint maximum 2.2204×10⁻¹², cubic:step ⟨111⟩; non-verdict-bearing (the tolerance is 1×10⁻⁶).] (The key is written in the ledger's own "cubic:step ⟨111⟩" notation rather than the checkpoint key `cubic_step|111`, because one of its four anchors sits inside a Part VI table row, where a bare bar would split the cell.)
+2. *The S₄ and b₁ two-leg bounds.* V4.86 line 3 bounds the two-leg deviations of S₄ and b₁ at two significant digits, each rounded down from its banked maximum: the maxima, from the chat (`1c5b6b59`) and CC (`9961745d`) checkpoints, are 2.3429×10⁻¹⁵ (S₄, `hex_step|a`) and 1.5328×10⁻¹⁴ (b₁, `cubic_gem8|111`). **Bracket, line 3 only:** [H-SA-4 (V4.8x): the two-leg bounds read S₄ ≤ 2.4×10⁻¹⁵ and b₁ ≤ 1.6×10⁻¹⁴ — the banked maxima 2.3429×10⁻¹⁵ and 1.5328×10⁻¹⁴; non-verdict-bearing.] Lines 41 and 1646 give the same figures as worst-case values, correct at two digits.
+
+*Every value above is read from the banked checkpoints by named key (the G-MSCS-A pinned file `2d44ec01` carries all of them under `raw`); nothing is re-fitted.*

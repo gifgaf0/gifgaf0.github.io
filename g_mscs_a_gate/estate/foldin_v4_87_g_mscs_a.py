@@ -1,0 +1,201 @@
+#!/usr/bin/env python3
+"""foldin_v4_87_g_mscs_a.py — FOLDS V4.87: Gate G-MSCS-A (§2.91.T) — the sealed-anchor mini-gate on the texture constraint
+surface r_agg = κ₂₂t₂² + κ₄₄t₄² (the registered successor of G-MSCS1 / G-MSCS2; G-MSCS1 kill-surface item (iii)), CLOSED
+two-leg, CC-BLIND-FIRST: gate class WINDOW-DELIVERED, OOM-ROBUST, identical on both legs on the first run (HYP-SA-1
+confirmed); the constraint curve on the texture import delivered as σ-edges; kill surface item (iii) not reached; the
+three planned honesty brackets H-MS2-9, H-SA-3 and H-SA-4 appended after every anchor occurrence exactly as the erratum
+estate/H_MS2_9_ERRATUM.md (13dc2e69) specifies; the V4.86 housekeeping correction (CC's branch ref retained) cited.
+Fourteen additive edit groups on SQT_Master_Ledger_v4_86_CANONICAL.md (md5 d4c42a53…):
+  E1 title; E2 As-of prepend (accumulated); E3 V4.87 fold-in record (before V4.86); E4 new §2.91.T (bold-lettered
+  paragraph after §2.91.S, immediately before the Cluster J heading; the closure memo §5 text as drafted); E5 additive
+  bracket on §2.91.Q's V4.85 successor bracket (the sealed-anchor mini-gate EXECUTED → §2.91.T); E6 additive bracket on
+  §2.91.S's successor sentence; E7 additive housekeeping bracket on §2.91.S's estate sentence (PR #31, PR #32, the
+  V4.86 addendum correction); E8 H-MS2-9 brackets (4 occurrences: lines 41 and 1646 of V4.86); E9 H-SA-3 brackets
+  (3 occurrences: lines 3, 41, 1646); E10 H-SA-4 brackets (the κ₂₄ estimator, 4 occurrences: lines 3, 41, 1646, 4366;
+  the S₄/b₁ bounds, 1 occurrence: line 3); E11 one Part VI row (Gate G-MSCS-A, after the G-MSCS2 row); E12 one
+  changelog line.
+§2.52 Open 3: untouched — the unique Part VI row asserted byte-identical pre/post, in addition to the reverse-splice.
+Anchors read from the file (never retyped) and asserted at their expected counts; reverse-splice reconstructs V4.86
+byte-identically before the output is accepted. Append-only; nothing prior modified; no retraction; no lock record edited.
+"""
+import hashlib, sys
+
+SRC = "/home/claude/v487/SQT_Master_Ledger_v4_86_CANONICAL.md"
+OUT = "/home/claude/v487/SQT_Master_Ledger_v4_87_CANONICAL.md"
+DELTA = "/home/claude/v487/V4_87_DELTA_ONLY.txt"
+V486 = "d4c42a53cbd6d325ebc740879288e844"
+V486_BYTES = 1730321
+AUTH_MD5, AUTH_BYTES = "65ab87e41ff297216ca90e5ce8429e1e", 4481
+
+s = open(SRC, encoding="utf-8").read()
+assert hashlib.md5(s.encode("utf-8")).hexdigest() == V486, "base V4.86 md5 mismatch — halt"
+assert len(s.encode("utf-8")) == V486_BYTES
+L = s.split("\n")
+
+ROW_MS2 = L[4365]
+LINE_CH86 = L[4616]
+assert ROW_MS2.startswith("| **Gate G-MSCS2**") and s.count(ROW_MS2) == 1
+assert LINE_CH86.startswith("*V4.86 (September 27, 2026): additions only") and s.count(LINE_CH86) == 1
+assert L[4617] == "" and len(L) == 4618, "changelog is no longer the tail — re-anchor"
+O3_MARKS = [l for l in L if l.startswith("| **§2.52 Open 3**")]
+assert len(O3_MARKS) == 1 and s.count(O3_MARKS[0]) == 1
+O3_PRE = O3_MARKS[0]
+
+# ---------------------------------------------------------------- E1 title
+T_OLD = "# SQT Master Ledger — V4.86 Canonical\n"
+T_NEW = "# SQT Master Ledger — V4.87 Canonical\n"
+assert s.count(T_OLD) == 1
+
+# ---------------------------------------------------------------- E2 As-of (accumulated prepend)
+A_OLD = "**As of:** September 27, 2026 (V4.86 fold — "
+A_SUM = ("**As of:** September 30, 2026 (V4.87 fold — **GATE G-MSCS-A (the sealed-anchor mini-gate on the texture constraint surface r_agg = κ₂₂t₂² + κ₄₄t₄², the registered successor of G-MSCS1 / G-MSCS2 and G-MSCS1 kill-surface item (iii): given an author-supplied sealed bound on the fractional tensor-vs-EM speed difference δ, which weak axisymmetric texture strengths t₂, t₄ are admissible on each instantiated configuration, and can any texture inside the validated domain reproduce a δ that excludes zero?) CLOSED two-leg, CC-BLIND-FIRST — gate class WINDOW-DELIVERED, OOM-ROBUST, identical on both legs on the first run (HYP-SA-1 confirmed); every one of the 36 mapped cells BINDING on the κ of record and on the basis-independent κ, no resolution / truncation / null-floor flag; the constraint curve on the texture import delivered as σ-edges — the gate σ-union on the l = 4 strength [0, 1.2355×10⁻⁶] (CONSERVATIVE, cubic_step|001), strict [0, 6.582×10⁻⁷]; hex l = 2 σ-edges 5.63–6.46×10⁻⁷; the fcc l = 2 family NULL-INERT; kill surface item (iii) not reached; R2 conditional on E-MS-1(a), I-SA-1 (the sphere-weighted identification, declared; ST-1: along the fiber axis the split vanishes), the regime at the W^EM_∪ edge (vacuous), the leading-order aggregate and D = |t| ≤ 0.25; not a confirmation of any texture. Two-leg 1,477 checks, 49 representational misses (S9-SA-1/2), 0 after the verdict-blind projection 6daf7c06; the read of record CC's d0e129fc, untouched. H-SA-1 discharged; H-MS2-9 bracketed at this fold with H-SA-3 and H-SA-4 (erratum in g_mscs_a_gate/estate/); H-SA-5, H-SA-6, D-SA-1..3 recorded. LSF-δ six clusters, novel-in-assembly, A0 not triggered. Successors registered, unopened: the directional arm; the first-order polarization-split class; the third-order cross terms; a null-ray compactness test; t ≠ 0 second-order Born; F-MS-2 at odd spatial dispersion. Housekeeping: PR #31 and PR #32 recorded; the V4.86 addendum's correction (CC's branch ref retained) carried.** Full V4.87 record below. V4.86 fold (September 27, 2026) — ")
+assert s.count(A_OLD) == 1
+
+# ---------------------------------------------------------------- E3 fold-in record
+R_ANCH = "**V4.86 fold-in record (September 27, 2026):**"
+assert s.count(R_ANCH) == 1
+RECORD = (f"**V4.87 fold-in record (September 30, 2026):** GATE FOLD, Cluster J / §2.91.Q–§2.91.S successor, author-authorized (directive of September 30, 2026, 08:18 PDT — 'I explicitly AUTHORIZE the V4.87 fold' — recorded verbatim in `FOLD_AUTHORIZATION_V4_87.md` {AUTH_MD5}, {AUTH_BYTES:,} B; the chain of the author's words — the election of September 27, 20:31 PDT; the elections directive of September 29; 'Pinned inputs verified.', the Rodgers read and 'Lock.' of September 29, 19:00 PDT; the sealed delivery of September 29, 21:31 PDT; the CC activation flag — verbatim in the lock record 8116cc622279b5d4e73214178ae97cd8 §3 and the dispatch a934bc9463f9abf31cded093d750ed63; standing rules: append-only, anchors read from the file and asserted at their counts, reverse-splice byte-identical, the §2.52 Open 3 row untouched). "
+          "**Gate G-MSCS-A CLOSED two-leg, CC-BLIND-FIRST; §2.91.T written; the sealed-anchor mini-gate registered at §2.91.Q (V4.83) and re-registered on κ₂₂t₂² + κ₄₄t₄² at §2.91.S (V4.85) EXECUTED; G-MSCS1 kill-surface item (iii) reached for the first time and NOT fired — the sealed interval contains δ = 0 and every mapped cell is BINDING: the constraint curve on the texture import is delivered.** "
+          "Object (memo v2 6ea16b952db835bb351d3dc1b474c6ed §1): given an author-supplied sealed anchor bounding δ ≡ v_tensor/v_EM − 1, which strengths of the weak axisymmetric fiber texture — t₂ and t₄, the only texture coefficients the descriptor pair sees — are admissible on each instantiated configuration under the banked second-order surface r_agg = κ₂₂t₂² + κ₄₄t₄², and, if the anchor excludes δ = 0, can any texture inside the validated domain reproduce it? Everything G-MSCS1 / G-MSCS2 settled consumed as banked (no fit re-run, no coefficient re-selected): the eight keys, the three arms (S2-E₂ Hill primary; HS-mean and S2-h robustness), the κ of record and its basis-independent Richardson value per family, the CC 5 × 5 (t₂, t₄) grid, the null estimators N-1 … N-4 each with a fit key and a basis-independent key at the fit's resolution, every control carrying its `odf_reading` token from a closed set, every point count computed from pinned generators (the five binding process rules of the G-MSCS2 closure implemented as mechanisms, memo §A). "
+          "Pre-draft catches (memo §B): S-SA-1 the sightline — for any fiber texture the aggregate is transversely isotropic about the fiber axis, so along it the per-direction species split vanishes identically at every texture strength; a single-sightline anchor at unknown orientation is conservatively INERT, and a binding window needs the identification I-SA-1 (the sphere-weighted descriptor split as registered; declared, not derived; E-SA-3(a)); S-SA-2 the hex null rays |t₄/t₂| = 2.9957 / 2.9948 / 3.2497 / 3.2501 (Hill) along which the S2-E₂ two-parameter region reaches the domain boundary; S-SA-3 the two normalizations of t₄ and the common σ = |t|·rms measure (1/3, √(4/21), √(1/5)); S-SA-4 the fit-basis resolution of the coefficients of record (1.18–1.31×10⁻⁵ hex κ₄₄, 5.08–8.92×10⁻⁶ hex κ₂, 1.22–1.82×10⁻⁴ fcc on Hill; ≤ 2.3×10⁻⁵ HS-mean; ≤ 7.3×10⁻⁴ S2-h), the basis-independent edge serialized beside the edge of record; S-SA-5 the binding end set by sign(κ) (ST-4); S-SA-6 the first-order polarization split b₁ dominates the species split by ≥ 404.9 at the domain edge — a different observable, outside E-SA-1(a); S-SA-7 the regime clause at the W^EM_∪ edge 3.7641664288e-33 fires only for k > 7.96×10³¹ m⁻¹ (vacuous, stated); S-SA-8 the two readings of 'r_agg unchanged by t₂ on fcc'; S-SA-9 the data-driven reach (hull of the second-order box and the banked grid values inside D, widened by μ = 0.10; the kill unions [−1.3038×10⁻⁴, +2.2126×10⁻⁵] over every arm); S-SA-10 the T1-A1 collision hazard; S-SA-11 three speed statements share the dialect and only counterpart timing is δ; S-SA-12 the anchor's asymmetric two ends must survive transcription. "
+          "Lock (record 8116cc62, September 29, 2026; Addendum A-2.1–A-2.6 binding): memo v2 6ea16b95 (121,950 B; draft v1 a7d6bdbc superseded); pinned inputs 2d44ec01 (96,761 B; seven banked sources by named RFC 6901 pointer with full-md5 guards — G-MSCS2 chat 1c5b6b59 / CC 9961745d, G-MSCS1 chat c04c0b8e / CC 249e11dd, diag_kappa24 b7952dfc, diag_quadform_basis d84aa1fd, and the G-CI1 CC r2 checkpoint 845ae6be for the W^EM_∪ edge; builder 8189100e deterministic across Python 3.10–3.13; independent verifier cf004d51 re-deriving all 1,105 derived leaves and failing 37 tampered copies; the author's 'Pinned inputs verified.'); elections E-SA-0 … E-SA-11 all (a), E-SA-7 base 05302210 + the G-MSCS1 stratum; T1 gate list e274e58e (the 36 patterns of be921b8c verbatim), A1 3b753b3a (68 author-supplied patterns; 0 pre-freeze collisions), scanner 6b862900; schema v1.0 5323e11f + comparator v1.0 c5b4a7aa (22 adversarial suites) frozen pre-emission; the chat mapper 0d0e5ecf frozen with 12/12 controls and 14/14 synthetic suites green before any sealed open (pre-read checkpoint ccbb3207). Sealed anchor cfd62dcf (177 B; one `spd` row; single sightline; author-supplied, base64-armored, opened chat-side only in `census` mode before CC's read; no value in any artifact). "
+          "LSF-δ (memo §14, six clusters, ceilings per source): L-SA-1 the multi-messenger speed-difference dialect (the sign convention (tensor − EM)/EM, the two-sided asymmetric interval from the emission-delay assumptions, one sightline, group velocity, the bands); L-SA-2 direction-dependent and birefringent constraints in the effective-field-theory dialect (one sightline constrains a fixed projection; isotropic-only by assumption — the analogue of I-SA-1); L-SA-3 fiber texture → transverse isotropy and the along-axis shear degeneracy (Thomsen; Thomsen–Anderson; Chevrot–van der Hilst; Turner; Man–Huang — H-SA-3); L-SA-6 the long-wavelength regime (Stanke–Kino; Sha 2020; Huang et al. 2020; Roy–Kube 2025); L-SA-4 emergent species universality and bounds turned into constraints on a medium (Chadha–Nielsen; Collins et al.; Anber–Donoghue; Bednik–Pujolàs–Sibiryakov; Liberati–Visser–Weinfurtner; the post-2017 aether / Hořava / scalar-tensor and spacelike background-vector constraints); L-SA-5 collision check — no located work maps a multi-messenger speed bound onto an orientation-texture coefficient of a polycrystalline vacuum (nearest: Bernadotte–Klinkhamer's photon bounds on an orientation-distributed defect vacuum; Danielewski's cubic Planck crystal; the Rodgers 2026 preprint, read in full by the author: a scalar deformation potential, no ODF coupling — A0 NOT triggered). Verdict novel-in-assembly. "
+          "CC leg (blind from scratch; its own parser, binder and class logic) `g_mscs_a_ccleg.py` a5263388f2db2ce676060551e5636d81 (67,228 B; branch claude/new-session-7flqwf: pre-read commit 1752296 — merged by the author as PR #32, 6755cf7, 2026-09-29 22:04:18 −07:00 — pre-consultation checkpoint d0e129fc8c324f0779803a6e33068777 (138,012 B) at 21b7d79 05:28 UTC, return 1f4c66b9 at 48fa2a3, quarantine opened at 620c421 with the pre-read pair 706/706 PASS, addendum 1 at 13070d8): 12/12 controls (PIN 335 values re-read through the pointers, 0 mismatches; PIN-DERIVED 1,105 leaves bit-identical), 14/14 suites, T1 0 hits everywhere. Chat leg `g_mscs_a_chatleg.py` 0d0e5ecf610b34f21e8c22dd3938ce40 (51,490 B) read after CC's pre-consultation commit: checkpoint 4a933fdb2ee24874bf26a921d4030196 (71,354 B). "
+          "**Two-leg (comparator v1.0 frozen; chat 4a933fdb vs CC d0e129fc): 1,477 checks, 1,428 PASS, 49 MISS — every miss representational and both classes predicted before the run (S9-SA-1: the chat row carries `gate_class_row`, `geom`, `q` that CC's omits; S9-SA-2: the four flags of the 12 NULL-INERT records written false by the chat, null by CC — A-2.4's wording favours CC); path (a): the verdict-blind projection `s9_projection_v1_0.py` 6daf7c066d92031662159271a29591be applied to both → 2,225 / 2,225 PASS, the identity on CC's checkpoint; neither checkpoint edited; independence witness PASS. HYP-SA-1 CONFIRMED.** "
+          "**Findings of record (R1-machine two-leg; readings R2):** sealed identity identical on both legs (md5 cfd62dcf, 177 B, row md5 59b357fd); the row not VOID-REGIME and containing δ = 0; gate class WINDOW-DELIVERED, OOM ×10 and ×0.1 both WINDOW-DELIVERED (OOM-ROBUST); all 36 mapped cells BINDING on κ of record and on κ_bi (largest edge shift 3.6×10⁻⁴ relative; no RESOLUTION-SENSITIVE cell), T ≤ 2.2×10⁻⁸ (no TRUNCATION-SENSITIVE cell), ν ≤ 3.3×10⁻³ (no NULL-FLOOR-SENSITIVE cell); binding ends as ST-4; primary-arm σ₄\\* 6.963×10⁻⁷ (hex_step|a), 6.582×10⁻⁷ (hex_gem8|a), 1.2355×10⁻⁶ (cubic_step|001), 1.1278×10⁻⁶ (cubic_gem8|001) — **the gate σ-union (CONSERVATIVE, E-SA-5(a)) [0, 1.2355×10⁻⁶], the strict intersection [0, 6.582×10⁻⁷]**; hex t₂ σ₂\\* 5.63–6.46×10⁻⁷; over every key and arm the largest σ₄\\* 6.66×10⁻⁶ (S2-h) and the largest t\\* 3.87×10⁻⁵, two orders inside D; the fcc t₂ family NULL-INERT (ST-3); the hex two-parameter region admits the origin node only on the 201 × 201 area grid (H-SA-6). F-SA-1 (KILL-IN-D) not fired; F-SA-2 (MONO) not fired; F-SA-3 all misses representational. "
+          "**Honesty ledger.** H-SA-1 discharged (the V4.86 store copy byte-verified); H-SA-2 → H-MS2-9 (the fcc reading-(i) t₂t₄² gem8 coefficient misquoted as −1.0×10⁻⁴ in the V4.85 record and §2.91.S; the banked CC fit −8.51×10⁻⁵ on both descriptor axes; origin the CC in-band return prose 290b3431 line 79; non-verdict-bearing) — bracketed at this fold at its four anchors; H-SA-3 (Man–Huang is J. Elasticity 106(1), 1–42, 2012, online 2010, DOI 10.1007/s10659-010-9284-3 — not 105, 1 (2011), the first-order VRH paper 105, 29–48; attribution only) — bracketed at its three anchors; H-SA-4 (three round-downs in the banked record: the κ₂₄ estimator '≤ 2.2×10⁻¹²' vs the CC checkpoint maximum 2.2204×10⁻¹²; the S₄ and b₁ two-leg bounds vs the banked maxima 2.3429×10⁻¹⁵ and 1.5328×10⁻¹⁴; non-verdict-bearing) — bracketed at its five anchors; the erratum `estate/H_MS2_9_ERRATUM.md` 13dc2e695c9c798aad44b1f49ca3d773 carries all three (the author's Q-SA-2 / Q-SA-3 elections of September 29). H-SA-5 (A-2.2's κ-floor clause read as covering κ₃ by CC and κ only by the chat mapper; both legs pass by three orders of magnitude; the lock record's wording favours CC). H-SA-6 (ST-2's null-ray region is analytically unbounded, but its sliver is far thinner than the area-grid spacing 2.5×10⁻³, so both legs serialize `compact` = true; a null-ray sampling test registered as a successor). D-SA-1 (a synthetic A1 collided with tolerance literals; the author's A1 did not); D-SA-2 (the armored sealed file and A1 arrived inline in the directive; opened chat-side only in `census` mode; the mapper frozen before delivery); D-SA-3 (CC's pre-read commit preceded the activation flag on its stop-hook instruction, armor unopened; CC rehearsed Phase 3 on synthetic armor and fixed two self-caught bugs H-CC-1/2 before any real read). CC-DD-1 … CC-DD-12 and H-CC-1 … H-CC-5 as CC's return records. Two independent audits of the memo (v1: 18 errors; v2: 4 errors, all fixed pre-lock; the verifier rewritten after the v2 audit). "
+          "**Registers and non-claims (memo §11):** every edge, class and flag R1-machine two-leg on the pinned coefficients and the sealed text; the reading 'the texture import is bounded by the anchor' R2, conditional on E-MS-1(a), I-SA-1, the regime (E-SA-4(a)), the leading-order aggregate (no Born; kernel-labelled) and D; the polycrystal postulate R3. No confirmation of any texture; no d, no f, no SI value in any instrument except the W^EM_∪ edge and the sealed k fields inside the masked parse; no claim about the tensor messenger beyond E-MS-1(a); no helicity-±2 field (K = ∅); no reinstatement of W_∪; no evaluation of any bound outside the sealed row; no anchor value in any artifact; no retraction; §2.52 Open 3 untouched. Successors registered, unopened: the directional arm (E-SA-3(b); the L-SA-2 machinery); the first-order polarization-split class (E-SA-1(b)); the third-order cross terms; a null-ray compactness test (H-SA-6); the t ≠ 0 second-order Born; F-MS-2 at odd spatial dispersion. "
+          "**Housekeeping carried:** PR #31 (e1fa071, 2026-09-27 18:57:46 −07:00) landed gmscs2_gate/v486_estate/ (11 files) and gmscs2_gate/HK3_CC_RETURN_INBAND.md; the V4.86 addendum's correction carried — CC's branch claude/new-session-txamk5 IS retained (304a099 at the addendum's observation; c351d2a, the PR #31 head, at this fold's ls-remote), so FOLD_AUTHORIZATION_V4_86.md's 'ref not retained' was wrong; PR #32 (6755cf7, 2026-09-29 22:04:18 −07:00) merged CC's G-MSCS-A pre-read commit; CC's four later commits on claude/new-session-7flqwf (head 13070d8) not on main at fold time (ls-remote 2026-09-30 15:21:04 UTC) — they land with HK-4 together with the chat-side estate. "
+          "Estate: chat g_mscs_a_gate/ — memo v2 6ea16b95/121,950; lock record 8116cc62/17,923; pinned inputs 2d44ec01/96,761, builder 8189100e/41,342, verifier cf004d51/28,804; schema 5323e11f/9,436; comparator c5b4a7aa/16,850; T1 e274e58e/1,482 + A1 3b753b3a/1,030 + base 05302210/143 + scanner 6b862900/1,967; validator 3a11c8f1/7,604, A1 builder dc7a747e/4,367; mapper 0d0e5ecf/51,490, pre-read checkpoint ccbb3207/13,842, checkpoint 4a933fdb/71,354; freeze report 1bf60dd3; dispatch a934bc94/666,726 (23 embeds, 4 quarantined, P-4.c); the two-leg comparison a2976890 and the post-projection comparison 32bad51a with the projection 6daf7c06; closure memo 74072dcc; erratum 13dc2e69/5,267; this fold script and the authorization record. Folded as §2.91.T + one Part VI row + additive brackets on §2.91.Q (the V4.85 successor bracket), on §2.91.S (the successor sentence; the estate sentence, housekeeping) + the H-MS2-9 / H-SA-3 / H-SA-4 brackets at their anchors + this record + the title/As-of bump + one changelog line; append-only; nothing prior modified; no lock record edited; the §2.52 Open 3 row untouched.\n\n")
+
+# ---------------------------------------------------------------- E4 §2.91.T (the closure memo §5 text, as drafted)
+J_ANCH = "\n\n## J. Multi-Lens Reference and Phase Incommensurability\n"
+assert s.count(J_ANCH) == 1
+SEC_T = ("\n\n**T. Gate G-MSCS-A REGISTERED + LOCKED + EXECUTED (two-leg, CC-BLIND-FIRST; V4.87, September 29–30, 2026): the sealed-anchor mini-gate on the texture constraint surface.** Elections E-SA-0 … E-SA-11 all (a). Pinned inputs `2d44ec01` (seven banked sources by named key; builder `8189100e`; independent verifier `cf004d51`; author-verified before lock). Sealed anchor `cfd62dcf` (177 B; one `spd` row; single sightline; author-supplied, armored, never in the clear), T1-A1 `3b753b3a` (68 patterns; 0 pre-freeze collisions). **Result: WINDOW-DELIVERED, OOM-ROBUST, identical on both legs on the first run (HYP-SA-1 confirmed); every mapped cell BINDING with no resolution, truncation or null-floor flag; the gate σ-union on the l = 4 texture strength [0, 1.2355×10⁻⁶] (CONSERVATIVE, from cubic_step|001), strict [0, 6.582×10⁻⁷]; hex l = 2 σ-edges 5.63–6.46×10⁻⁷; the fcc l = 2 family NULL-INERT; kill surface item (iii) not reached.** R2 conditional on E-MS-1(a), I-SA-1 (declared; ST-1 in the record), the regime at the W^EM_∪ edge (vacuous), the leading-order aggregate and D = |t| ≤ 0.25. Two-leg: 1,477 checks, 49 representational misses (S9-SA-1/2), 0 after the verdict-blind projection `6daf7c06`; the read of record CC's `d0e129fc`, untouched. Register: H-SA-1 discharged; H-SA-2 → H-MS2-9 (bracketed at this fold with H-SA-3 and H-SA-4; erratum `estate/H_MS2_9_ERRATUM.md`); H-SA-5, H-SA-6, D-SA-1 … D-SA-3, CC-DD-1 … 12, H-CC-1 … 5 as recorded. LSF-δ: six clusters, novel-in-assembly, A0 not triggered (the Rodgers preprint read in full by the author). Successors registered, unopened: the directional arm (E-SA-3(b); L-SA-2 machinery), the first-order polarization-split class (E-SA-1(b)), the third-order cross terms, a null-ray compactness test (H-SA-6), t ≠ 0 second-order Born, F-MS-2 at odd spatial dispersion. Housekeeping: PR #31 and PR #32 recorded; the `FOLD_AUTHORIZATION_V4_86_ADDENDUM.md` correction carried. Full record at the V4.87 fold-in; the chat execution report and two-leg closure memo 74072dcc; the lock record 8116cc62 and the memo 6ea16b95 in g_mscs_a_gate/.")
+assert s.count(SEC_T) == 0
+
+# ---------------------------------------------------------------- E5 §2.91.Q V4.85 successor bracket
+Q_ANCH = "re-registered as κ₂₂t₂² + κ₄₄t₄²; the t ≠ 0 Born and F-MS-2 successors carried unopened.]**"
+assert s.count(Q_ANCH) == 1
+Q_NEW = Q_ANCH + " **[→ V4.87: the sealed-anchor mini-gate EXECUTED as Gate G-MSCS-A, §2.91.T — WINDOW-DELIVERED two-leg, OOM-ROBUST; kill-surface item (iii) reached for the first time and not fired (the sealed interval contains δ = 0); the constraint curve on the texture import delivered as σ-edges (gate σ-union [0, 1.2355×10⁻⁶] on the l = 4 strength; hex l = 2 5.63–6.46×10⁻⁷); the identification I-SA-1 declared (ST-1: along the fiber axis the split vanishes, so a single-sightline anchor is conservatively INERT); the directional arm, the polarization-split class and the third-order cross terms carried unopened.]**"
+assert s.count(Q_NEW) == 0
+
+# ---------------------------------------------------------------- E6 §2.91.S successor sentence
+S1_ANCH = "the sealed-anchor mini-gate on κ₂₂t₂² + κ₄₄t₄² (both stacking branches now carry a curve); the t ≠ 0 second-order Born (the textured SOA machinery); the third-order"
+assert s.count(S1_ANCH) == 1
+S1_NEW = S1_ANCH.replace("(both stacking branches now carry a curve);", "(both stacking branches now carry a curve) **[→ V4.87: EXECUTED as Gate G-MSCS-A, §2.91.T — WINDOW-DELIVERED two-leg on both branches; the surface r_agg = κ₂₂t₂² + κ₄₄t₄² consumed as banked, no coefficient re-fitted; the fcc l = 2 null re-witnessed as NULL-INERT; the hex null rays (S-SA-2) confirmed as the reason the S2-E₂ two-parameter region is bounded only at third order.]**;", 1)
+assert S1_NEW != S1_ANCH and s.count(S1_NEW) == 0
+
+# ---------------------------------------------------------------- E7 §2.91.S estate sentence (housekeeping)
+S2_ANCH = "The repository desk for this gate is closed.]**"
+assert s.count(S2_ANCH) == 1
+S2_NEW = S2_ANCH + " **[→ V4.87 housekeeping: the desk re-opened once — PR #31 (e1fa071, 2026-09-27 18:57:46 −07:00) landed gmscs2_gate/v486_estate/ (11 files) and HK3_CC_RETURN_INBAND.md; the V4.86 addendum's correction carried: CC's branch claude/new-session-txamk5 IS retained (304a099 at the addendum's observation of September 27, 20:53 UTC; c351d2a, the PR #31 head, at the V4.87 fold's ls-remote of September 30, 15:21 UTC) — FOLD_AUTHORIZATION_V4_86.md's 'ref not retained' was wrong; the successor gate's estate lives at g_mscs_a_gate/ (PR #32 6755cf7 for CC's pre-read commit; the rest with HK-4). The H-MS2-9 / H-SA-3 / H-SA-4 erratum for this section's record is g_mscs_a_gate/estate/H_MS2_9_ERRATUM.md 13dc2e69.]**"
+assert s.count(S2_NEW) == 0
+
+# ---------------------------------------------------------------- E8 H-MS2-9 brackets (erratum text; 'V4.8x' → 'V4.87')
+H9_BR = " **[H-MS2-9 (V4.87): for the gem8 value read −8.51×10⁻⁵ — the banked CC fit, both descriptor axes; the step value −5.9×10⁻⁵ stands; non-verdict-bearing.]**"
+H9_A = "(fit coefficient −5.9×10⁻⁵ / −1.0×10⁻⁴)"
+H9_B = "(coefficient −5.9×10⁻⁵ / −1.0×10⁻⁴)"
+H9_C = "cubic under the inherited weight t₂t₄² ≈ −5.9×10⁻⁵ / −1.0×10⁻⁴, no t₂² term of any kind"
+assert s.count(H9_A) == 1 and s.count(H9_B) == 1 and s.count(H9_C) == 2
+for a in (H9_A, H9_B, H9_C):
+    assert s.count(a + H9_BR) == 0
+
+# ---------------------------------------------------------------- E9 H-SA-3 brackets
+H3_BR = " **[H-SA-3 (V4.87): Man–Huang is J. Elasticity 106(1), 1–42 (2012; online 2010), DOI 10.1007/s10659-010-9284-3 — not 105, 1 (2011), which is the first-order VRH paper (105, 29–48); attribution only.]**"
+H3_A, H3_B = "Man–Huang (2011)", "Man–Huang 2011"
+assert s.count(H3_A) == 2 and s.count(H3_B) == 1
+assert s.count(H3_A + H3_BR) == 0 and s.count(H3_B + H3_BR) == 0
+
+# ---------------------------------------------------------------- E10 H-SA-4 brackets
+H4_K_BR = " **[H-SA-4 (V4.87): for \"≤ 2.2×10⁻¹²\" read \"≤ 2.3×10⁻¹²\" — the CC checkpoint maximum 2.2204×10⁻¹², cubic:step ⟨111⟩; non-verdict-bearing (the tolerance is 1×10⁻⁶).]**"
+H4_K = "≤ 2.2×10⁻¹²"
+H4_S_BR = " **[H-SA-4 (V4.87): the two-leg bounds read S₄ ≤ 2.4×10⁻¹⁵ and b₁ ≤ 1.6×10⁻¹⁴ — the banked maxima 2.3429×10⁻¹⁵ and 1.5328×10⁻¹⁴; non-verdict-bearing.]**"
+H4_S = "S₄ ≤ 2.3×10⁻¹⁵, b₁ ≤ 1.5×10⁻¹⁴"
+assert s.count(H4_K) == 4 and s.count(H4_S) == 1
+assert s.count(H4_K + H4_K_BR) == 0 and s.count(H4_S + H4_S_BR) == 0
+assert H4_K_BR.count(H4_K) == 1    # the bracket quotes the anchor once; the forward replace runs on the base text only
+
+# ---------------------------------------------------------------- E11 Part VI row
+ROW = ("| **Gate G-MSCS-A** (§2.91.T — the sealed-anchor mini-gate on the texture constraint surface r_agg = κ₂₂t₂² + κ₄₄t₄², the registered successor of G-MSCS1 / G-MSCS2 and G-MSCS1 kill-surface item (iii): given an author-supplied sealed bound on δ = v_tensor/v_EM − 1, which weak axisymmetric texture strengths are admissible per configuration, and can any texture inside D reproduce a δ excluding zero; draft v1 a7d6bdbc September 29; memo v2 6ea16b95 LOCKED September 29, 2026, lock record 8116cc62 + Addendum A-2, elections E-SA-0 … E-SA-11 all (a), E-SA-7 base 05302210 + the G-MSCS1 stratum, T3; pinned inputs 2d44ec01 (builder 8189100e, verifier cf004d51; author-verified before lock); comparator v1.0 c5b4a7aa + schema 5323e11f frozen pre-emission; T1 gate list e274e58e (36) + A1 3b753b3a (68), scanner 6b862900; sealed anchor cfd62dcf (177 B, one `spd` row); chat mapper 0d0e5ecf → pre-read checkpoint ccbb3207 / checkpoint 4a933fdb; dispatch a934bc94 (23 embeds, 4 quarantined, P-4.c); CC leg a5263388 blind from scratch, CC-BLIND-FIRST, pre-consultation checkpoint d0e129fc @ 21b7d79, return 1f4c66b9 @ 48fa2a3 on claude/new-session-7flqwf (pre-read commit 1752296 merged as PR #32); closure memo 74072dcc; authorization 65ab87e4) "
+       "| **CLOSED (V4.87)** — two-leg WINDOW-DELIVERED, OOM-ROBUST; comparator run 1: 1,477 checks, 1,428 PASS, 49 MISS, every miss representational and predicted (S9-SA-1 row keys; S9-SA-2 NULL-INERT flags false vs null — A-2.4 favours CC); path (a): the verdict-blind projection 6daf7c06 → 2,225 / 2,225 PASS, the identity on CC's checkpoint; independence witness PASS; HYP-SA-1 confirmed. Verdicts: every one of the 36 mapped cells BINDING on κ of record and on κ_bi (largest edge shift 3.6×10⁻⁴ relative), no RESOLUTION- / TRUNCATION- (T ≤ 2.2×10⁻⁸) / NULL-FLOOR-SENSITIVE (ν ≤ 3.3×10⁻³) cell; binding ends as ST-4; the gate σ-union on the l = 4 strength [0, 1.2355×10⁻⁶] (CONSERVATIVE, cubic:step ⟨001⟩), strict [0, 6.582×10⁻⁷] (hex:gem8 (a)); hex l = 2 σ-edges 5.63–6.46×10⁻⁷; the largest t\\* on any cell 3.87×10⁻⁵, two orders inside D; the fcc l = 2 family NULL-INERT (ST-3); the hex two-parameter region the origin node only on the 201 × 201 grid (H-SA-6: ST-2's null-ray sliver thinner than the grid spacing). Kill surface item (iii) reached for the first time and NOT fired. LSF-δ six clusters, novel-in-assembly, A0 not triggered. H-SA-1 discharged; H-MS2-9 / H-SA-3 / H-SA-4 bracketed (erratum 13dc2e69); H-SA-5, H-SA-6; D-SA-1..3; CC-DD-1..12; H-CC-1..5. R1-machine two-leg; R2 readings conditional on E-MS-1(a), I-SA-1, the regime (vacuous at the W^EM_∪ edge), the leading-order aggregate and D; polycrystal postulate R3; no confirmation of any texture, no observable, no bridge, no SI value beyond the quarantined W^EM_∪ edge, no anchor value in any artifact, no kill claimed; successors (the directional arm; the first-order polarization-split class; the third-order cross terms; a null-ray compactness test; t ≠ 0 Born; F-MS-2) registered, unopened; §2.52 Open 3 untouched. |")
+assert ROW.count("|") == ROW_MS2.count("|"), "Part VI cell-count mismatch: %d vs %d" % (ROW.count("|"), ROW_MS2.count("|"))
+assert s.count(ROW) == 0
+
+# ---------------------------------------------------------------- E12 changelog
+CH_NEW = ("*V4.87 (September 30, 2026): additions only — title/As-of header bump (V4.86 → V4.87; As-of date September 27 → September 30), the V4.87 fold-in summary prepended within the accumulated As-of header and the full V4.87 record at the top of the recent fold-in block (before V4.86), §2.91.T (Gate G-MSCS-A — the sealed-anchor mini-gate on the texture constraint surface CLOSED two-leg, CC-BLIND-FIRST, WINDOW-DELIVERED, OOM-ROBUST; the constraint curve on the texture import delivered as σ-edges; kill surface item (iii) reached and not fired; 49 representational misses resolved by the verdict-blind projection 6daf7c06; H-SA-1..6, D-SA-1..3, CC-DD-1..12, H-CC-1..5) as a new bold-lettered paragraph after §2.91.S and before the Cluster J heading, three additive brackets — on §2.91.Q's V4.85 successor bracket (the sealed-anchor mini-gate EXECUTED → §2.91.T), on §2.91.S's successor sentence and on §2.91.S's estate sentence (housekeeping: PR #31, PR #32, the V4.86 addendum's correction — CC's branch ref retained) — the three planned honesty brackets appended after every anchor occurrence as the erratum g_mscs_a_gate/estate/H_MS2_9_ERRATUM.md 13dc2e69 specifies (H-MS2-9 at its four anchors in the V4.85 record and §2.91.S; H-SA-3 at its three; H-SA-4 at its five — the κ₂₄ estimator bound in the As-of header, the V4.85 record, §2.91.S and the G-MSCS2 Part VI row, and the S₄ / b₁ bounds in the As-of header), one new Part VI row (Gate G-MSCS-A, after the G-MSCS2 row), and this changelog line. No Part V row (a gate staging memo, not a banked exploration memo). No retraction; the lock records 8116cc62 and 49232d4c not edited. The §2.52 Open 3 row untouched (asserted byte-identical). Reverse-splice byte-verified against V4.86 (d4c42a53).*")
+assert s.count(CH_NEW) == 0
+
+# ================================================================ apply (forward)
+# The honesty brackets first, on the base text only (their anchors also occur inside the new record text, which is
+# inserted afterwards and must not be re-bracketed); then the insertions.
+out = s.replace(H9_A, H9_A + H9_BR, 1)
+out = out.replace(H9_B, H9_B + H9_BR, 1)
+out = out.replace(H9_C, H9_C + H9_BR, 2)
+out = out.replace(H3_A, H3_A + H3_BR, 2)
+out = out.replace(H3_B, H3_B + H3_BR, 1)
+out = out.replace(H4_S, H4_S + H4_S_BR, 1)
+out = out.replace(H4_K, H4_K + H4_K_BR, 4)
+assert out.count(H4_K) == 8, "the κ₂₄ anchor must occur 8 times after bracketing (4 anchors + 4 quoted inside their brackets)"
+assert ROW_MS2.count(H4_K) == 1
+ROW_MS2_B = ROW_MS2.replace(H4_K, H4_K + H4_K_BR, 1)     # the G-MSCS2 row as it reads after its own H-SA-4 bracket
+assert out.count("\n" + ROW_MS2_B + "\n") == 1
+out = out.replace(T_OLD, T_NEW, 1)
+out = out.replace(A_OLD, A_SUM, 1)
+out = out.replace(R_ANCH, RECORD + R_ANCH, 1)
+out = out.replace(J_ANCH, SEC_T + J_ANCH, 1)
+out = out.replace(Q_ANCH, Q_NEW, 1)
+out = out.replace(S1_ANCH, S1_NEW, 1)
+out = out.replace(S2_ANCH, S2_NEW, 1)
+out = out.replace("\n" + ROW_MS2_B + "\n", "\n" + ROW_MS2_B + "\n" + ROW + "\n", 1)
+out = out.replace(LINE_CH86, LINE_CH86 + "\n" + CH_NEW, 1)
+
+# §2.52 Open 3 untouched (narrowed guard)
+O3_POST = [l for l in out.split("\n") if l.startswith("| **§2.52 Open 3**")]
+assert O3_POST == [O3_PRE] and out.count(O3_PRE) == 1, "§2.52 Open 3 row changed — halt"
+for frag, n in ((T_NEW, 1), (A_SUM, 1), (RECORD, 1), (SEC_T, 1), (Q_NEW, 1), (S1_NEW, 1), (S2_NEW, 1), (H9_A + H9_BR, 1), (H9_B + H9_BR, 1),
+                (H9_C + H9_BR, 2), (H3_A + H3_BR, 2), (H3_B + H3_BR, 1), (H4_S + H4_S_BR, 1), (H4_K + H4_K_BR, 4), (ROW, 1), (CH_NEW, 1)):
+    assert out.count(frag) == n, ("landed count", n, frag[:60], out.count(frag))
+open(OUT, "w", encoding="utf-8", newline="\n").write(out)
+
+# ================================================================ reverse-splice
+rev = open(OUT, encoding="utf-8").read()
+rev = rev.replace(LINE_CH86 + "\n" + CH_NEW, LINE_CH86, 1)
+rev = rev.replace("\n" + ROW_MS2_B + "\n" + ROW + "\n", "\n" + ROW_MS2_B + "\n", 1)
+rev = rev.replace(S2_NEW, S2_ANCH, 1)
+rev = rev.replace(S1_NEW, S1_ANCH, 1)
+rev = rev.replace(Q_NEW, Q_ANCH, 1)
+rev = rev.replace(SEC_T + J_ANCH, J_ANCH, 1)
+rev = rev.replace(RECORD + R_ANCH, R_ANCH, 1)
+rev = rev.replace(A_SUM, A_OLD, 1)
+rev = rev.replace(T_NEW, T_OLD, 1)
+rev = rev.replace(H4_K + H4_K_BR, H4_K, 4)
+rev = rev.replace(H4_S + H4_S_BR, H4_S, 1)
+rev = rev.replace(H3_B + H3_BR, H3_B, 1)
+rev = rev.replace(H3_A + H3_BR, H3_A, 2)
+rev = rev.replace(H9_C + H9_BR, H9_C, 2)
+rev = rev.replace(H9_B + H9_BR, H9_B, 1)
+rev = rev.replace(H9_A + H9_BR, H9_A, 1)
+rmd5 = hashlib.md5(rev.encode("utf-8")).hexdigest()
+assert rmd5 == V486, "REVERSE-SPLICE FAILED: %s" % rmd5
+assert rev == s
+
+# delta-only listing (every inserted segment, in file order of first appearance)
+segs = [("E1 title", T_NEW), ("E2 As-of summary (prepended)", A_SUM[:len(A_SUM) - len(A_OLD) + len("**As of:** September 30, 2026 (V4.87 fold — ")]),
+        ("E3 V4.87 fold-in record", RECORD), ("E4 §2.91.T", SEC_T.strip("\n")), ("E5 §2.91.Q bracket", Q_NEW[len(Q_ANCH):]),
+        ("E6 §2.91.S successor bracket", S1_NEW.replace(S1_ANCH.replace("(both stacking branches now carry a curve);", ""), "")),
+        ("E7 §2.91.S estate bracket", S2_NEW[len(S2_ANCH):]), ("E8 H-MS2-9 bracket (×4)", H9_BR), ("E9 H-SA-3 bracket (×3)", H3_BR),
+        ("E10 H-SA-4 κ₂₄ bracket (×4)", H4_K_BR), ("E10 H-SA-4 S₄/b₁ bracket (×1)", H4_S_BR), ("E11 Part VI row", ROW), ("E12 changelog", CH_NEW)]
+with open(DELTA, "w", encoding="utf-8", newline="\n") as fh:
+    fh.write("V4_87_DELTA_ONLY — every segment inserted into V4.86 (%s) to make V4.87; nothing else changed (reverse-splice byte-identical)\n\n" % V486)
+    for name, seg in segs:
+        fh.write("=== %s ===\n%s\n\n" % (name, seg))
+
+b = open(OUT, "rb").read()
+print("V4.87 FOLDED:", OUT)
+print("bytes:", len(b), " (V4.86 was %d B; delta +%d B)" % (V486_BYTES, len(b) - V486_BYTES))
+print("md5:", hashlib.md5(b).hexdigest())
+print("reverse-splice: BYTE-IDENTICAL to V4.86 (%s) — PASS" % V486)
+print("§2.52 Open 3: the Part VI row byte-identical and unique — PASS")
+print("edits landed at their counts: E1..E12 (H-MS2-9 ×4, H-SA-3 ×3, H-SA-4 ×5) — PASS")
+print("delta listing:", DELTA, hashlib.md5(open(DELTA, "rb").read()).hexdigest())

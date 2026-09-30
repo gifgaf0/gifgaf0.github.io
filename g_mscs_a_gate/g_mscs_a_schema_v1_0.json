@@ -1,0 +1,459 @@
+{
+ "anchor_tokens": {
+  "class": [
+   "spd"
+  ],
+  "delta_def": "tensor_over_EM_minus_1",
+  "geom": [
+   "single",
+   "population"
+  ],
+  "q": [
+   "phase",
+   "group"
+  ],
+  "reading_conformant": [
+   "bound"
+  ],
+  "reading_frozen_list": [
+   "bound",
+   "ceiling",
+   "margin",
+   "criterion"
+  ]
+ },
+ "arms": [
+  "E2_Hill",
+  "E2_HSmean",
+  "h_Hill"
+ ],
+ "builder_md5": "8189100ede80eac360b25a146e580abf",
+ "comparison_rules": {
+  "C-SA-0": "provenance: memo_lock_md5, pinned_inputs_md5, t1_list_md5, schema_md5, elections, ledger_base_md5 equal this schema on both legs; phase0 passed on both legs with float rules re-evaluated; phase2 suites all passed on both legs",
+  "C-SA-1": "every numeric field of phase3 (edges, windows, sigma, t_in/t_out, area fractions, nu) compared across legs at |a-b| <= edge_twoleg_rel*max(|a|,|b|) + edge_twoleg_abs_floor; null compares only to null",
+  "C-SA-2": "every class, sub-reason, flag and OOM class of phase3 identical across legs (strings/bools exact)",
+  "C-SA-3": "sealed_md5, sealed_bytes, census and row_md5s identical",
+  "C-SA-4": "pinned_inputs_md5 on both legs equals this schema's",
+  "C-SA-5": "every null of nulls within its tolerance on each leg, tokens present and identical, values across legs at pin_derived_rel",
+  "C-SA-6": "F-CTRL-SA-T1 hits == 0 on both legs; T1_post_write hits == 0 on both legs",
+  "C-SA-7": "grid counts recomputed from the generators equal the checkpoint counts on both legs",
+  "C-SA-8": "instrument_md5 differs between legs (independence witness)",
+  "free_text": "never compared"
+ },
+ "cubic_keys": [
+  "cubic_step|001",
+  "cubic_step|111",
+  "cubic_gem8|001",
+  "cubic_gem8|111"
+ ],
+ "elections": {
+  "E-SA-0": "a",
+  "E-SA-1": "a",
+  "E-SA-10": "a",
+  "E-SA-11": "a",
+  "E-SA-2": "a",
+  "E-SA-3": "a",
+  "E-SA-4": "a",
+  "E-SA-5": "a",
+  "E-SA-6": "a",
+  "E-SA-7": "05302210+MSCS1stratum",
+  "E-SA-8": "a",
+  "E-SA-9": "a"
+ },
+ "families": {
+  "cubic": [
+   "t4"
+  ],
+  "hex": [
+   "t4",
+   "t2"
+  ],
+  "null": {
+   "cubic": [
+    "t2"
+   ]
+  }
+ },
+ "frozen": "2026-09-29",
+ "gate": "G-MSCS-A",
+ "grids": {
+  "count_fields": [
+   "n_t_grid",
+   "n_fit_window_inclusive",
+   "n_fit_window_strict",
+   "n_window_0p1_inclusive",
+   "n_window_0p1_strict",
+   "n_t2t4_axis",
+   "n_t2t4_grid",
+   "n_area_grid"
+  ],
+  "rule": "generators only; the comparator recomputes every count from t_grid, t2t4_axis, D and area_grid and rejects a checkpoint whose count fields differ"
+ },
+ "hex_keys": [
+  "hex_step|a",
+  "hex_step|b",
+  "hex_gem8|a",
+  "hex_gem8|b"
+ ],
+ "keys": [
+  "hex_step|a",
+  "hex_step|b",
+  "hex_gem8|a",
+  "hex_gem8|b",
+  "cubic_step|001",
+  "cubic_step|111",
+  "cubic_gem8|001",
+  "cubic_gem8|111"
+ ],
+ "ledger_base_md5": "d4c42a53cbd6d325ebc740879288e844",
+ "leg_domain": [
+  "chat",
+  "cc"
+ ],
+ "memo_lock_bytes": 121950,
+ "memo_lock_md5": "6ea16b952db835bb351d3dc1b474c6ed",
+ "nulls": {
+  "N-1": {
+   "keys": [
+    "fit",
+    "bi"
+   ],
+   "odf_reading": "per family (hexP2/hexP4/cubK4)",
+   "scope": "every key x arm x mapped family",
+   "tolerance": 1e-06
+  },
+  "N-2": {
+   "keys": [
+    "fit7",
+    "bi_chat",
+    "bi_cc",
+    "bi_5x5"
+   ],
+   "odf_reading": "hexP2P4 (hex) / cubP2K4-i (cubic)",
+   "scope": "every key",
+   "tolerance": 1e-06
+  },
+  "N-3": {
+   "keys": [
+    "fit",
+    "bi"
+   ],
+   "odf_reading": "cubP2-i",
+   "scope": "cubic keys",
+   "tolerance": 1e-06
+  },
+  "N-4": {
+   "keys": [
+    "fit7",
+    "bi_5x5",
+    "k12_chat_t2sq"
+   ],
+   "odf_reading": "cubP2K4-i",
+   "scope": "cubic keys",
+   "tolerance": 1e-06
+  },
+  "rule": "every null record carries its odf_reading token; a record without a token is rejected; every value is compared to its tolerance on each leg and across legs at pin_derived_rel"
+ },
+ "odf_reading_tokens": [
+  "none",
+  "uniform",
+  "hexP2",
+  "hexP4",
+  "hexP2P4",
+  "cubK4",
+  "cubP2-i",
+  "cubP2-ii",
+  "cubP2K4-i",
+  "cubP2K4-ii"
+ ],
+ "optional_row_keys": [
+  "q",
+  "note"
+ ],
+ "phase0": {
+  "float_rules": {
+   "F-CTRL-SA-GRID": {
+    "count_mismatches": {
+     "rule": "eq",
+     "threshold": 0
+    }
+   },
+   "F-CTRL-SA-K24": {
+    "worst_abs_bi": {
+     "rule": "le",
+     "threshold": 1e-06
+    },
+    "worst_abs_fit7": {
+     "rule": "le",
+     "threshold": 1e-06
+    }
+   },
+   "F-CTRL-SA-L2NULL": {
+    "worst_abs_kappa2": {
+     "rule": "le",
+     "threshold": 1e-06
+    },
+    "worst_abs_kappa22": {
+     "rule": "le",
+     "threshold": 1e-06
+    },
+    "worst_abs_t2_alone_t1": {
+     "rule": "le",
+     "threshold": 1e-12
+    }
+   },
+   "F-CTRL-SA-MASK": {
+    "sealed_opens_before_phase3": {
+     "rule": "eq",
+     "threshold": 0
+    }
+   },
+   "F-CTRL-SA-MONO": {
+    "monotonicity_violations": {
+     "rule": "eq",
+     "threshold": 0
+    },
+    "worst_scaling_rel": {
+     "rule": "le",
+     "threshold": 1e-14
+    }
+   },
+   "F-CTRL-SA-PIN": {
+    "raw_mismatches": {
+     "rule": "eq",
+     "threshold": 0
+    },
+    "worst_twoleg_S_abs": {
+     "rule": "le",
+     "threshold": 1e-06
+    },
+    "worst_twoleg_b1_rel": {
+     "rule": "le",
+     "threshold": 0.0001
+    },
+    "worst_twoleg_kappa3_rel": {
+     "rule": "le",
+     "threshold": 0.0001
+    },
+    "worst_twoleg_kappa_rel": {
+     "rule": "le",
+     "threshold": 0.0001
+    }
+   },
+   "F-CTRL-SA-PIN-DERIVED": {
+    "leaf_mismatches": {
+     "rule": "eq",
+     "threshold": 0
+    },
+    "worst_scaled_dev": {
+     "rule": "le",
+     "threshold": 1.0
+    }
+   },
+   "F-CTRL-SA-RECON": {
+    "worst_abs_E2_Hill": {
+     "rule": "le",
+     "threshold": 1e-08
+    },
+    "worst_rel_robust": {
+     "rule": "le",
+     "threshold": 0.001
+    }
+   },
+   "F-CTRL-SA-S": {
+    "worst_abs_bi": {
+     "rule": "le",
+     "threshold": 1e-06
+    },
+    "worst_abs_fit": {
+     "rule": "le",
+     "threshold": 1e-06
+    }
+   },
+   "F-CTRL-SA-SIGN": {
+    "binding_end_mismatches": {
+     "rule": "eq",
+     "threshold": 0
+    }
+   },
+   "F-CTRL-SA-T1": {
+    "hits": {
+     "rule": "eq",
+     "threshold": 0
+    }
+   },
+   "F-CTRL-SA-ZERO": {
+    "worst_abs_r0": {
+     "rule": "le",
+     "threshold": 1e-12
+    }
+   }
+  },
+  "items": [
+   "F-CTRL-SA-PIN",
+   "F-CTRL-SA-PIN-DERIVED",
+   "F-CTRL-SA-ZERO",
+   "F-CTRL-SA-RECON",
+   "F-CTRL-SA-S",
+   "F-CTRL-SA-K24",
+   "F-CTRL-SA-L2NULL",
+   "F-CTRL-SA-SIGN",
+   "F-CTRL-SA-GRID",
+   "F-CTRL-SA-MONO",
+   "F-CTRL-SA-MASK",
+   "F-CTRL-SA-T1"
+  ],
+  "note": "the comparator re-evaluates every float rule from the reported float on each leg, independently of the leg's own passed flag, and also requires passed == true on both legs",
+  "odf_reading": {
+   "F-CTRL-SA-GRID": "none",
+   "F-CTRL-SA-K24": "hexP2P4/cubP2K4-i",
+   "F-CTRL-SA-L2NULL": "cubP2-ii/cubP2-i/cubP2K4-i",
+   "F-CTRL-SA-MASK": "none",
+   "F-CTRL-SA-MONO": "none",
+   "F-CTRL-SA-PIN": "none",
+   "F-CTRL-SA-PIN-DERIVED": "none",
+   "F-CTRL-SA-RECON": "hexP4/cubK4/hexP2",
+   "F-CTRL-SA-S": "hexP2/hexP4/cubK4",
+   "F-CTRL-SA-SIGN": "none",
+   "F-CTRL-SA-T1": "none",
+   "F-CTRL-SA-ZERO": "uniform"
+  }
+ },
+ "phase2": {
+  "rule": "every suite passed on both legs; suite details are free text except the boolean",
+  "suites": [
+   "C-SYN-1",
+   "C-SYN-2",
+   "C-SYN-3",
+   "C-SYN-4",
+   "C-SYN-5",
+   "C-SYN-6",
+   "C-SYN-7",
+   "C-SYN-8",
+   "C-SYN-9",
+   "C-SYN-10",
+   "C-SYN-11",
+   "C-SYN-12",
+   "C-SYN-13",
+   "C-SYN-14"
+  ]
+ },
+ "phase3": {
+  "class_precedence": [
+   "INDETERMINATE",
+   "VOID",
+   "ANCHOR-INCONSISTENT",
+   "KILL-IN-D",
+   "TUNED",
+   "MARGIN-ONLY",
+   "WINDOW-DELIVERED",
+   "INERT-IN-D"
+  ],
+  "gate_fields": [
+   "gate_class",
+   "sigma_union_hi",
+   "sigma_strict_hi",
+   "oom_class_x10",
+   "oom_class_x0p1",
+   "oom_robust",
+   "contains_zero",
+   "combined_empty",
+   "n_void_rows"
+  ],
+  "identity": [
+   "sealed_md5",
+   "sealed_bytes",
+   "census",
+   "row_md5s",
+   "t1_a1_md5"
+  ],
+  "never_serialized": [
+   "lo",
+   "hi",
+   "k_em_max",
+   "k_t_max",
+   "src",
+   "note",
+   "cl"
+  ],
+  "per_exclusion_fields": [
+   "class",
+   "subreason",
+   "t_in",
+   "t_out",
+   "can_supply_alone"
+  ],
+  "per_family_fields": [
+   "class",
+   "t_star",
+   "t_star_bi",
+   "class_bi",
+   "resolution_sensitive",
+   "sigma_star",
+   "window_lo",
+   "window_hi",
+   "trunc_T",
+   "truncation_sensitive",
+   "nu",
+   "nu_is_inf",
+   "nullfloor_sensitive",
+   "binding_end"
+  ],
+  "per_two_param_fields": [
+   "area_fraction",
+   "admissible_nodes",
+   "total_nodes",
+   "null_ray_slope",
+   "definiteness",
+   "compact"
+  ]
+ },
+ "pinned_inputs_bytes": 96761,
+ "pinned_inputs_md5": "2d44ec01a66889f330d940dee3313bdc",
+ "primary": {
+  "arm": "E2_Hill",
+  "keys": [
+   "hex_step|a",
+   "hex_gem8|a",
+   "cubic_step|001",
+   "cubic_gem8|001"
+  ]
+ },
+ "required_row_keys": [
+  "id",
+  "class",
+  "delta_def",
+  "lo",
+  "hi",
+  "cl",
+  "reading",
+  "geom",
+  "k_em_max",
+  "k_t_max",
+  "src"
+ ],
+ "scanner_md5": "6b86290090a8c84f1b1a0a99ec0bf697",
+ "schema_version": "1.0",
+ "t1_base_md5": "05302210cc4ceb70553acbe8379e9fc3",
+ "t1_list_md5": "e274e58ea50b9ed347969e507d2a4f36",
+ "tolerances": {
+  "D": 0.25,
+  "KD_CLIP": 0.3,
+  "edge_twoleg_abs_floor": 1e-18,
+  "edge_twoleg_rel": 1e-10,
+  "kappa_floor": 1e-06,
+  "l2null_t1_abs": 1e-12,
+  "mono_rel": 1e-14,
+  "mu": 0.1,
+  "nullfloor_threshold": 0.1,
+  "pin_derived_abs": 1e-16,
+  "pin_derived_rel": 1e-12,
+  "pin_twoleg_rel": 0.0001,
+  "recon_abs_E2_Hill": 1e-08,
+  "recon_rel_robust": 0.001,
+  "tau_agg": 1e-06,
+  "trunc_threshold": 0.1,
+  "zero_ctrl_abs": 1e-12
+ },
+ "verifier_md5": "cf004d517d2efe91a02c92a58e3df6bf"
+}

@@ -1,0 +1,40 @@
+# T1 forbidden-string list — Gate G-MSCS-A (gate-specific), composed at lock, September 29, 2026 (E-SA-7 as elected: "The base 05302210 + the G-MSCS1 stratum").
+# Composition: the 36 pattern lines of the G-MSCS2 gate list T1_forbidden_G_MSCS2.txt (md5 be921b8c29f7578e85ed92f1450c1956, 1,695 B) copied VERBATIM and in the same order — stratum 1 the author's base list (T1_base_author_20260919.txt, md5 05302210cc4ceb70553acbe8379e9fc3, 143 B, 11 pattern lines); stratum 2 the G-MSCS1 observational stratum (25 pattern lines). No chat-side stratum (the chat leg composes no anchor-digit pattern). The author's T1-A1 (t1_forbidden_G_MSCS_A_A1.txt) is appended at sealed delivery after the pre-freeze collision scan (memo section 4.6); the effective list is the union.
+# Scanner: t1_scan.py (md5 6b86290090a8c84f1b1a0a99ec0bf697): pattern lines only ('#' lines ignored); case-sensitive substring; bare numeric patterns under the contextual numeric rule — a hit counts only when the maximal numeric token containing the match equals the pattern; embedded matches are logged as formatting collisions. Hits are reported by pattern index only.
+# Exempt from scanning, for cause: the sealed anchor file and the list files themselves.
+Mpc
+Gpc
+LIGO
+170817
+299792458
+SME
+GW1
+3.19
+0.019
+Hz
+GW
+2.99792458
+3e-15
+7e-16
+3×10⁻¹⁵
+7×10⁻¹⁶
+3×10^-15
+7×10^-16
+3 × 10^-15
+7 × 10^-16
+m/s
+km/s
+LVC
+Virgo
+KAGRA
+Fermi
+GRB
+GWTC
+Haegel
+2210.04481
+ApJL 848
+848, L13
+k_(I)
+k_(V)
+k_(E)
+k_(B)

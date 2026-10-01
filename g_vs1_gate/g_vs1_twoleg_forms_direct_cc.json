@@ -1,0 +1,897 @@
+{
+ "results": [
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared)",
+   "key": "degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared)",
+   "key": "g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared)",
+   "key": "T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    "1",
+    "0",
+    "0",
+    "1",
+    "2"
+   ],
+   "chat": {
+    "N^2": "0",
+    "Re(psi0^2 Sbar)": "2",
+    "rho0*N": "0",
+    "rho0^2": "1",
+    "|S|^2": "1"
+   },
+   "check": "C-VS-4-direct",
+   "form": "F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared)",
+   "key": "coefficients",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared)",
+   "key": "in_T_even_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared)",
+   "key": "effective_ABc4c5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared)",
+   "key": "is_O16_point",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared)",
+   "key": "Emin",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    "F7",
+    "MI-",
+    "MP-"
+   ],
+   "chat": [
+    {
+     "rho": "0",
+     "s": "0",
+     "stratum": "F7",
+     "t": "0",
+     "t_free": false
+    },
+    {
+     "rho": "1/2",
+     "s": "1/2",
+     "stratum": "MP-",
+     "t": "-1/4",
+     "t_free": false
+    }
+   ],
+   "check": "C-VS-4-direct",
+   "form": "F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared)",
+   "key": "minimizers",
+   "result": "MISS"
+  },
+  {
+   "cc": [
+    "interior_segment"
+   ],
+   "chat": [
+    "interior segment from (0,0) to (1/2,1/2): strata F7, MI-, MP-"
+   ],
+   "check": "C-VS-4-direct",
+   "form": "F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared)",
+   "key": "degenerate_faces",
+   "result": "MISS"
+  },
+  {
+   "cc": {
+    "F7": "0",
+    "MI-": "Z",
+    "MP-": "Z"
+   },
+   "chat": {
+    "F7": "0",
+    "MP-": "Z"
+   },
+   "check": "C-VS-4-direct",
+   "form": "F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared)",
+   "key": "pi1_of_minimizing_strata",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.2 ||psi psibar^dag||^2_H",
+   "key": "degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.2 ||psi psibar^dag||^2_H",
+   "key": "g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.2 ||psi psibar^dag||^2_H",
+   "key": "T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    "1",
+    "4",
+    "2",
+    "-1",
+    "-2"
+   ],
+   "chat": {
+    "N^2": "2",
+    "Re(psi0^2 Sbar)": "-2",
+    "rho0*N": "4",
+    "rho0^2": "1",
+    "|S|^2": "-1"
+   },
+   "check": "C-VS-4-direct",
+   "form": "F-a.2 ||psi psibar^dag||^2_H",
+   "key": "coefficients",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.2 ||psi psibar^dag||^2_H",
+   "key": "in_T_even_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.2 ||psi psibar^dag||^2_H",
+   "key": "effective_ABc4c5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.2 ||psi psibar^dag||^2_H",
+   "key": "is_O16_point",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.2 ||psi psibar^dag||^2_H",
+   "key": "Emin",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    "MP+",
+    "P7",
+    "R"
+   ],
+   "chat": [
+    {
+     "rho": "0",
+     "s": "1",
+     "stratum": "P7",
+     "t": "0",
+     "t_free": false
+    },
+    {
+     "rho": "1",
+     "s": "0",
+     "stratum": "R",
+     "t": "0",
+     "t_free": false
+    }
+   ],
+   "check": "C-VS-4-direct",
+   "form": "F-a.2 ||psi psibar^dag||^2_H",
+   "key": "minimizers",
+   "result": "MISS"
+  },
+  {
+   "cc": [
+    "edge_s=1-rho"
+   ],
+   "chat": [
+    "edge s=1-rho: R, MP, P7"
+   ],
+   "check": "C-VS-4-direct",
+   "form": "F-a.2 ||psi psibar^dag||^2_H",
+   "key": "degenerate_faces",
+   "result": "MISS"
+  },
+  {
+   "cc": {
+    "MP+": "Z",
+    "P7": "Z",
+    "R": "Z"
+   },
+   "chat": {
+    "P7": "Z",
+    "R": "Z"
+   },
+   "check": "C-VS-4-direct",
+   "form": "F-a.2 ||psi psibar^dag||^2_H",
+   "key": "pi1_of_minimizing_strata",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.3 ||psibar^dag psi||^2_H",
+   "key": "degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.3 ||psibar^dag psi||^2_H",
+   "key": "g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.3 ||psibar^dag psi||^2_H",
+   "key": "T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    "1",
+    "4",
+    "2",
+    "-1",
+    "-2"
+   ],
+   "chat": {
+    "N^2": "2",
+    "Re(psi0^2 Sbar)": "-2",
+    "rho0*N": "4",
+    "rho0^2": "1",
+    "|S|^2": "-1"
+   },
+   "check": "C-VS-4-direct",
+   "form": "F-a.3 ||psibar^dag psi||^2_H",
+   "key": "coefficients",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.3 ||psibar^dag psi||^2_H",
+   "key": "in_T_even_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.3 ||psibar^dag psi||^2_H",
+   "key": "effective_ABc4c5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.3 ||psibar^dag psi||^2_H",
+   "key": "is_O16_point",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.3 ||psibar^dag psi||^2_H",
+   "key": "Emin",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    "MP+",
+    "P7",
+    "R"
+   ],
+   "chat": [
+    {
+     "rho": "0",
+     "s": "1",
+     "stratum": "P7",
+     "t": "0",
+     "t_free": false
+    },
+    {
+     "rho": "1",
+     "s": "0",
+     "stratum": "R",
+     "t": "0",
+     "t_free": false
+    }
+   ],
+   "check": "C-VS-4-direct",
+   "form": "F-a.3 ||psibar^dag psi||^2_H",
+   "key": "minimizers",
+   "result": "MISS"
+  },
+  {
+   "cc": [
+    "edge_s=1-rho"
+   ],
+   "chat": [
+    "edge s=1-rho: R, MP, P7"
+   ],
+   "check": "C-VS-4-direct",
+   "form": "F-a.3 ||psibar^dag psi||^2_H",
+   "key": "degenerate_faces",
+   "result": "MISS"
+  },
+  {
+   "cc": {
+    "MP+": "Z",
+    "P7": "Z",
+    "R": "Z"
+   },
+   "chat": {
+    "P7": "Z",
+    "R": "Z"
+   },
+   "check": "C-VS-4-direct",
+   "form": "F-a.3 ||psibar^dag psi||^2_H",
+   "key": "pi1_of_minimizing_strata",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.4 ||psi^2||^2_H",
+   "key": "degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.4 ||psi^2||^2_H",
+   "key": "g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.4 ||psi^2||^2_H",
+   "key": "T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    "1",
+    "4",
+    "0",
+    "1",
+    "-2"
+   ],
+   "chat": {
+    "N^2": "0",
+    "Re(psi0^2 Sbar)": "-2",
+    "rho0*N": "4",
+    "rho0^2": "1",
+    "|S|^2": "1"
+   },
+   "check": "C-VS-4-direct",
+   "form": "F-a.4 ||psi^2||^2_H",
+   "key": "coefficients",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.4 ||psi^2||^2_H",
+   "key": "in_T_even_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.4 ||psi^2||^2_H",
+   "key": "effective_ABc4c5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.4 ||psi^2||^2_H",
+   "key": "is_O16_point",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.4 ||psi^2||^2_H",
+   "key": "Emin",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    "F7"
+   ],
+   "chat": [
+    {
+     "rho": "0",
+     "s": "0",
+     "stratum": "F7",
+     "t": "0",
+     "t_free": false
+    }
+   ],
+   "check": "C-VS-4-direct",
+   "form": "F-a.4 ||psi^2||^2_H",
+   "key": "minimizers",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.4 ||psi^2||^2_H",
+   "key": "degenerate_faces",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.4 ||psi^2||^2_H",
+   "key": "pi1_of_minimizing_strata",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.5 N_O(psi psibar^dag) = sum_k P_k^2",
+   "key": "degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.5 N_O(psi psibar^dag) = sum_k P_k^2",
+   "key": "g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.5 N_O(psi psibar^dag) = sum_k P_k^2",
+   "key": "T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    "1",
+    "0",
+    "0",
+    "1",
+    "2"
+   ],
+   "chat": {
+    "N^2": "0",
+    "Re(psi0^2 Sbar)": "2",
+    "rho0*N": "0",
+    "rho0^2": "1",
+    "|S|^2": "1"
+   },
+   "check": "C-VS-4-direct",
+   "form": "F-a.5 N_O(psi psibar^dag) = sum_k P_k^2",
+   "key": "coefficients",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.5 N_O(psi psibar^dag) = sum_k P_k^2",
+   "key": "in_T_even_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.5 N_O(psi psibar^dag) = sum_k P_k^2",
+   "key": "effective_ABc4c5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.5 N_O(psi psibar^dag) = sum_k P_k^2",
+   "key": "is_O16_point",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.5 N_O(psi psibar^dag) = sum_k P_k^2",
+   "key": "Emin",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    "F7",
+    "MI-",
+    "MP-"
+   ],
+   "chat": [
+    {
+     "rho": "0",
+     "s": "0",
+     "stratum": "F7",
+     "t": "0",
+     "t_free": false
+    },
+    {
+     "rho": "1/2",
+     "s": "1/2",
+     "stratum": "MP-",
+     "t": "-1/4",
+     "t_free": false
+    }
+   ],
+   "check": "C-VS-4-direct",
+   "form": "F-a.5 N_O(psi psibar^dag) = sum_k P_k^2",
+   "key": "minimizers",
+   "result": "MISS"
+  },
+  {
+   "cc": [
+    "interior_segment"
+   ],
+   "chat": [
+    "interior segment from (0,0) to (1/2,1/2): strata F7, MI-, MP-"
+   ],
+   "check": "C-VS-4-direct",
+   "form": "F-a.5 N_O(psi psibar^dag) = sum_k P_k^2",
+   "key": "degenerate_faces",
+   "result": "MISS"
+  },
+  {
+   "cc": {
+    "F7": "0",
+    "MI-": "Z",
+    "MP-": "Z"
+   },
+   "chat": {
+    "F7": "0",
+    "MP-": "Z"
+   },
+   "check": "C-VS-4-direct",
+   "form": "F-a.5 N_O(psi psibar^dag) = sum_k P_k^2",
+   "key": "pi1_of_minimizing_strata",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.6 ||Im_O(psi psibar^dag)||^2_H",
+   "key": "degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.6 ||Im_O(psi psibar^dag)||^2_H",
+   "key": "g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.6 ||Im_O(psi psibar^dag)||^2_H",
+   "key": "T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    "0",
+    "2",
+    "1",
+    "-1",
+    "-2"
+   ],
+   "chat": {
+    "N^2": "1",
+    "Re(psi0^2 Sbar)": "-2",
+    "rho0*N": "2",
+    "rho0^2": "0",
+    "|S|^2": "-1"
+   },
+   "check": "C-VS-4-direct",
+   "form": "F-a.6 ||Im_O(psi psibar^dag)||^2_H",
+   "key": "coefficients",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.6 ||Im_O(psi psibar^dag)||^2_H",
+   "key": "in_T_even_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.6 ||Im_O(psi psibar^dag)||^2_H",
+   "key": "effective_ABc4c5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.6 ||Im_O(psi psibar^dag)||^2_H",
+   "key": "is_O16_point",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "F-a.6 ||Im_O(psi psibar^dag)||^2_H",
+   "key": "Emin",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    "MP+",
+    "P7",
+    "R"
+   ],
+   "chat": [
+    {
+     "rho": "0",
+     "s": "1",
+     "stratum": "P7",
+     "t": "0",
+     "t_free": false
+    },
+    {
+     "rho": "1",
+     "s": "0",
+     "stratum": "R",
+     "t": "0",
+     "t_free": false
+    }
+   ],
+   "check": "C-VS-4-direct",
+   "form": "F-a.6 ||Im_O(psi psibar^dag)||^2_H",
+   "key": "minimizers",
+   "result": "MISS"
+  },
+  {
+   "cc": [
+    "edge_s=1-rho"
+   ],
+   "chat": [
+    "edge s=1-rho: R, MP, P7"
+   ],
+   "check": "C-VS-4-direct",
+   "form": "F-a.6 ||Im_O(psi psibar^dag)||^2_H",
+   "key": "degenerate_faces",
+   "result": "MISS"
+  },
+  {
+   "cc": {
+    "MP+": "Z",
+    "P7": "Z",
+    "R": "Z"
+   },
+   "chat": {
+    "P7": "Z",
+    "R": "Z"
+   },
+   "check": "C-VS-4-direct",
+   "form": "F-a.6 ||Im_O(psi psibar^dag)||^2_H",
+   "key": "pi1_of_minimizing_strata",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "D-a.1 Re_O(psi psibar^dag) (degree 2)",
+   "key": "degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "D-a.1 Re_O(psi psibar^dag) (degree 2)",
+   "key": "g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "D-a.1 Re_O(psi psibar^dag) (degree 2)",
+   "key": "T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    "1",
+    "1"
+   ],
+   "chat": {
+    "N": "1",
+    "rho0": "1"
+   },
+   "check": "C-VS-4-direct",
+   "form": "D-a.1 Re_O(psi psibar^dag) (degree 2)",
+   "key": "coefficients",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "D-a.1 Re_O(psi psibar^dag) (degree 2)",
+   "key": "in_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "D-a.1 Re_O(psi psibar^dag) (degree 2)",
+   "key": "is_O16",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "D-a.2 Re_O(psibar^dag psi) (degree 2)",
+   "key": "degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "D-a.2 Re_O(psibar^dag psi) (degree 2)",
+   "key": "g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "D-a.2 Re_O(psibar^dag psi) (degree 2)",
+   "key": "T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    "1",
+    "1"
+   ],
+   "chat": {
+    "N": "1",
+    "rho0": "1"
+   },
+   "check": "C-VS-4-direct",
+   "form": "D-a.2 Re_O(psibar^dag psi) (degree 2)",
+   "key": "coefficients",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "D-a.2 Re_O(psibar^dag psi) (degree 2)",
+   "key": "in_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4-direct",
+   "form": "D-a.2 Re_O(psibar^dag psi) (degree 2)",
+   "key": "is_O16",
+   "result": "PASS"
+  }
+ ],
+ "summary": {
+  "cc_forms_present": [
+   "D-a.1 Re_O(psi psibar^dag) (degree 2)",
+   "D-a.2 Re_O(psibar^dag psi) (degree 2)",
+   "F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared)",
+   "F-a.2 ||psi psibar^dag||^2_H",
+   "F-a.3 ||psibar^dag psi||^2_H",
+   "F-a.4 ||psi^2||^2_H",
+   "F-a.5 N_O(psi psibar^dag) = sum_k P_k^2",
+   "F-a.6 ||Im_O(psi psibar^dag)||^2_H"
+  ],
+  "chat_forms_present": [
+   "D-a.1 Re_O(psi psibar^dag) (degree 2)",
+   "D-a.2 Re_O(psibar^dag psi) (degree 2)",
+   "F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared)",
+   "F-a.2 ||psi psibar^dag||^2_H",
+   "F-a.3 ||psibar^dag psi||^2_H",
+   "F-a.4 ||psi^2||^2_H",
+   "F-a.5 N_O(psi psibar^dag) = sum_k P_k^2",
+   "F-a.6 ||Im_O(psi psibar^dag)||^2_H"
+  ],
+  "checks": 78,
+  "misses": 24,
+  "passed": 54
+ }
+}

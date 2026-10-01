@@ -1,0 +1,6 @@
+Phase 0: {'0a': True, '0b': True, '0c': True, '0d': True, '0e': True, '0f': True} all_pass True
+Phase 1: certified dims deg2/deg4 = 2 6 T-even 5 | weyl {'2': 2, '4': 6, '6': 10} | F-VS-1 SILENT F-VS-2 SILENT
+Phase 2: pi1 per stratum {'R': 'Z', 'P7': 'Z', 'F7': '0', 'I7': 'Z', 'MP+': 'Z', 'MP-': 'Z', 'MF': 'Z', 'MI-': 'Z', 'MI+': 'Z', 'MP0': 'Z', 'MI0': 'Z'} | F-VS-3 SILENT
+Phase 3: live sources 0 | F-VS-4 SILENT
+Verdict: VC-3
+wrote g_vs1_chatleg_checkpoint.json d3d1ed074259c8924d0c29a03d320918 32101 B; T1 post-write hits [] collisions 0 ; runtime 86.1 s

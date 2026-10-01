@@ -1,0 +1,23 @@
+# G-VS1 stratum (structural gate; the Eddington quarantine is (i) the empirical spinor-condensate
+# instantiations whose coupling values could tune the C-VS-1 control, (ii) the substrate's fitted
+# numerics (MV-G1 / G-zeta1 / G-Phi1 values) which this exact-arithmetic gate must never load)
+87Rb
+23Na
+52Cr
+rubidium
+sodium
+chromium
+Bohr radius
+a_B
+scattering length
+101.8
+100.4
+50.0
+55.0
+55.946
+1.4576
+4.978
+0.227
+0.160
+0.0213
+0.0851

@@ -1,0 +1,279 @@
+{
+ "T1_post_write": {
+  "hits": [],
+  "numeric_collisions": 0
+ },
+ "T1_pre": {
+  "comparator": {
+   "hits": [],
+   "numeric_collisions": 0
+  },
+  "extract": {
+   "hits": [],
+   "numeric_collisions": 0
+  },
+  "instrument": {
+   "hits": [],
+   "numeric_collisions": 0
+  },
+  "lock_record": {
+   "hits": [],
+   "numeric_collisions": 0
+  },
+  "memo": {
+   "hits": [],
+   "numeric_collisions": 0
+  },
+  "schema": {
+   "hits": [],
+   "numeric_collisions": 0
+  }
+ },
+ "gate": "G-VS1",
+ "identity": {
+  "comparator_md5": "69011375d28ec8f63f3ac76383e98321",
+  "elections": {
+   "E-VS-1": "a",
+   "E-VS-10": "a",
+   "E-VS-2": "a",
+   "E-VS-3": "a",
+   "E-VS-4": "a",
+   "E-VS-5": "a",
+   "E-VS-6": "a",
+   "E-VS-7": "a",
+   "E-VS-8": "a",
+   "E-VS-9": "a"
+  },
+  "extract_bytes": 12912,
+  "extract_md5": "940b0bee4b2112e911ae738c3db2bc3d",
+  "instrument_md5": "0ba1abe47793375bf8d0b59573b99e64",
+  "lock_bytes": 23071,
+  "lock_md5": "71711946d1c4abb06fa17402e8d5a6c9",
+  "memo_bytes": 44709,
+  "memo_md5": "58fd02671ea77db63e22afdcc5ee93a0",
+  "octonion_convention": "Fano lines {i, i+1, i+3} mod 7 on e1..e7: (1,2,4) (2,3,5) (3,4,6) (4,5,7) (5,6,1) (6,7,2) (7,1,3); e_i e_j = e_k for (i,j,k) a line in cyclic order, e_j e_i = -e_k, e_i^2 = -e_0",
+  "primes_for_upper_bound": [
+   1048573,
+   1000037
+  ],
+  "readings": {
+   "Q-VS-1": "The carrier is not settled (not the K₇ vertices). F-b is not live.",
+   "Q-VS-2": "Confirmed: total density.",
+   "Q-VS-3": "Confirmed: π₁ phase winding.",
+   "Q-VS-4": "Confirmed: Time reversal (complex conjugation) is a symmetry.",
+   "Q-VS-5": "Confirmed: The definition of 'strictly forces' stands."
+  },
+  "scanner_md5": "6b86290090a8c84f1b1a0a99ec0bf697",
+  "schema_md5": "4690e07d5a22cc7a1c5d08db39eda3fe",
+  "t1_md5": "324f577d20e2bfba3b594d96c4ca3ba7",
+  "t1_patterns": 31,
+  "timestamp_utc": "2026-10-01T04:44:55Z",
+  "weight_coordinates": {
+   "planes_paired_to_e7": [
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "variable_weights_psi_block": [
+    [
+     0,
+     0
+    ],
+    [
+     -1,
+     -1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     -1,
+     0
+    ],
+    [
+     0,
+     -1
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "leg": "cc",
+ "mode": "preread",
+ "phase0": {
+  "0a": {
+   "PASS": true,
+   "all_antisymmetric": true,
+   "all_derivations": true,
+   "closure": true,
+   "derivation_system_rank": 50,
+   "derivation_system_unknowns": 64,
+   "dim_so4_H124": 6,
+   "dim_su2_long": 3,
+   "dim_su2_short": 3,
+   "g2_dim": 14,
+   "index_su2_long": "1",
+   "index_su2_short": "3"
+  },
+  "0b": {
+   "PASS": true,
+   "commutant_dim_on_1plus7": 2,
+   "commutant_dim_on_7": 1
+  },
+  "0c": {
+   "PASS": true,
+   "V_of_record": "S15",
+   "o16_deg2": 1,
+   "o16_deg4": 1,
+   "o16_note": "recorded, not computed: O(16) contains U(8), Inv_O16 is inside Inv_U8 = span(N_tot^k), and N_tot^k is O(16)-invariant (A-2.4)",
+   "pi1_V_of_record": "0",
+   "so16_orbit_rank_at_unit_vector": 15,
+   "u8_deg2": {
+    "certified_dim": 1,
+    "lower_bound_rank_Q": 1,
+    "upper_bounds_mod_p": {
+     "1000037": 1,
+     "1048573": 1
+    }
+   },
+   "u8_deg4": {
+    "certified_dim": 1,
+    "lower_bound_rank_Q": 1,
+    "upper_bounds_mod_p": {
+     "1000037": 1,
+     "1048573": 1
+    }
+   }
+  },
+  "0d": {
+   "PASS": true,
+   "binary_tetrahedral": {
+    "closed": true,
+    "order": 24,
+    "pi1_SO3_mod_T": "2T (order 24) by the covering SU(2) -> SO(3)/T"
+   },
+   "pi4_S2_adopted": "Z2",
+   "pi4_S3_adopted": "Z2",
+   "spin1_ferro": {
+    "K_tilde": "{+1,-1} (pi0 = Z2 from pi1(SO(3)) = Z2; both components in H_tilde^0)",
+    "PASS": true,
+    "d": 2,
+    "dim_h": 1,
+    "dim_k": 0,
+    "gram_scalar": true,
+    "orbit_rank": 3,
+    "phase_in_h": true,
+    "pi1": "Z2",
+    "pi1_SO3_adopted": "Z2",
+    "pi2": "0",
+    "pi3": "Z"
+   },
+   "spin1_polar": {
+    "K_tilde": "U(1) (double cover of SO(2), connected since pi1(S2) = 0)",
+    "PASS": true,
+    "dim_h": 1,
+    "dim_k": 1,
+    "elementary_winding": "pi",
+    "m": 2,
+    "orbit_rank": 2,
+    "phase_in_h": false,
+    "pi0_H_tilde": "Z2",
+    "pi1": "Z",
+    "pi2": "Z",
+    "pi3": "Z",
+    "witness_matrix": [
+     [
+      "1",
+      "0",
+      "0"
+     ],
+     [
+      "0",
+      "-1",
+      "0"
+     ],
+     [
+      "0",
+      "0",
+      "-1"
+     ]
+    ],
+    "witness_rotation_pi_perp": true
+   },
+   "weyl_spin1_invariant_dims": [
+    1,
+    2,
+    2
+   ]
+  },
+  "0e": {
+   "PASS": true,
+   "associative_triple_e1_e2_e4": 11,
+   "e0": 0,
+   "e1": 6,
+   "generic_triple_e1_e2_e3": 14,
+   "pair_e1_e2": 11
+  },
+  "0f": {
+   "PASS": true,
+   "annihilated": true,
+   "annihilated_names": [
+    "rho0",
+    "psi7 psibar7",
+    "N - psi7 psibar7"
+   ],
+   "full_count_deg2": {
+    "T_even_dim": 4,
+    "certified_dim": 6,
+    "explicit_annihilated": [
+     "rho0",
+     "psi7 psibar7",
+     "N - psi7 psibar7",
+     "Re(psi0 psibar7)",
+     "psi0 psibar7 - psi7 psibar0",
+     "omega_J(psi, psibar)"
+    ],
+    "lower_bound_rank_Q": 6,
+    "note": "beyond A-2.5: the complete degree-2 inventory of su(3)+u(1) on (1+1+3+3bar), certified with six explicit invariants",
+    "upper_bounds_mod_p": {
+     "1000037": 6,
+     "1048573": 6
+    }
+   },
+   "g2_u1_deg2": 2,
+   "lower_bound_deg2": 3,
+   "su3_dim": 8,
+   "upper_bounds_mod_p": {
+    "1000037": 6,
+    "1048573": 6
+   }
+  },
+  "all_pass": true
+ },
+ "phase1": null,
+ "phase2": null,
+ "phase3": null,
+ "runtime_seconds": 2,
+ "verdict": null
+}

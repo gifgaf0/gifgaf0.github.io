@@ -1,0 +1,19 @@
+changed lines: 8
+   ('header bump: title',)
+   ('header bump: As-of prepend', 808)
+   ('bracketed line 3', 0, 0)
+   ('bracketed line 39', 1, 328)
+   ('bracketed line 49', 1, 367)
+   ('bracketed line 1642', 1, 367)
+   ('bracketed line 1648', 1, 328)
+   ('bracketed line 4367', 1, 367)
+added lines: 6
+  + **V4.88 fold-in record (October 2, 2026):** GATE FOLD, Cluster J / §2.91.R successor, auth
+  + 
+  + **U. Gate G-VS1 REGISTERED + LOCKED + EXECUTED (two-leg, chat first; V4.88, September 30 –
+  + 
+  + | **Gate G-VS1** (§2.91.U — vacuum selection in the 16-component substrate, the HYP-A1-5 s
+  + *V4.88 (October 2, 2026): additions only — title/As-of header bump; the V4.88 fold-in reco
+Part VI gate rows cell counts: [('| **Gate G-MSCS1** (§2', 3), ('| **Gate G-MSCS2** (§2', 3), ('| **Gate G-MSCS-A** (§', 3)]
+added-line shape: OK
+ADDITIVE DIFF VERIFIED

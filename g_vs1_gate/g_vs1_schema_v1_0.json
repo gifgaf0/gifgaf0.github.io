@@ -1,0 +1,52 @@
+{
+  "schema": "G-VS1 checkpoint schema v1.0",
+  "gate": "G-VS1",
+  "frozen": "2026-09-30 at lock (memo v2 58fd02671ea77db63e22afdcc5ee93a0)",
+  "notes": [
+    "One JSON checkpoint per leg, sorted keys, UTF-8. Every exact number is written as a string of an integer or a reduced fraction ('3/5') or as a JSON integer; booleans as JSON booleans; homotopy groups as the strings '0', 'Z', 'Z2', 'Z<n>'.",
+    "Class codes only (VC-1..VC-4); no verdict words anywhere in a checkpoint or an instrument.",
+    "The comparator compares only the keys listed under 'compared'; free text (reasons, notes, witnesses' prose) is never compared.",
+    "pre-read checkpoint: mode = 'preread', phase1/phase2/phase3/verdict null; the comparator treats a (preread, preread) pair as a Phase-0-only comparison."
+  ],
+  "top_level_keys": ["gate", "leg", "mode", "identity", "T1_pre", "phase0", "phase1", "phase2", "phase3", "verdict", "T1_post_write", "runtime_seconds"],
+  "identity": {
+    "required": ["instrument_md5", "memo_md5", "memo_bytes", "lock_md5", "lock_bytes", "t1_md5", "t1_patterns", "scanner_md5", "extract_md5", "extract_bytes", "schema_md5", "comparator_md5", "elections", "readings", "octonion_convention", "primes_for_upper_bound", "timestamp_utc"],
+    "compared_equal": ["memo_md5", "memo_bytes", "lock_md5", "lock_bytes", "t1_md5", "t1_patterns", "scanner_md5", "extract_md5", "extract_bytes", "schema_md5", "comparator_md5", "elections"],
+    "compared_different": ["instrument_md5"]
+  },
+  "phase0": {
+    "0a": {"compared": ["g2_dim", "rank", "all_derivations", "all_antisymmetric", "closure", "dim_so4_H124", "dim_su2_long", "dim_su2_short", "index_su2_long", "index_su2_short", "PASS"]},
+    "0b": {"compared": ["commutant_dim_on_7", "commutant_dim_on_1plus7", "PASS"]},
+    "0c": {"compared": ["u8_deg2.certified_dim", "u8_deg2.lower_bound_rank_Q", "u8_deg4.certified_dim", "u8_deg4.lower_bound_rank_Q", "o16_deg2", "o16_deg4", "so16_orbit_rank_at_unit_vector", "PASS"]},
+    "0d": {"compared": ["spin1_polar.dim_h", "spin1_polar.dim_k", "spin1_polar.phase_in_h", "spin1_polar.orbit_rank", "spin1_polar.m", "spin1_polar.witness_rotation_pi_perp", "spin1_polar.pi1", "spin1_polar.elementary_winding", "spin1_polar.pi2", "spin1_polar.pi3",
+                        "spin1_ferro.dim_h", "spin1_ferro.dim_k", "spin1_ferro.phase_in_h", "spin1_ferro.orbit_rank", "spin1_ferro.d", "spin1_ferro.pi1", "spin1_ferro.pi2", "spin1_ferro.pi3",
+                        "weyl_spin1_invariant_dims", "binary_tetrahedral.order", "binary_tetrahedral.closed", "PASS"]},
+    "0e": {"compared": ["e0", "e1", "pair_e1_e2", "associative_triple_e1_e2_e4", "generic_triple_e1_e2_e3", "PASS"]},
+    "0f": {"compared": ["su3_dim", "annihilated", "lower_bound_deg2", "g2_u1_deg2", "PASS"]},
+    "compared": ["all_pass"]
+  },
+  "phase1": {
+    "certified_block_keys": ["n_monomials", "explicit_annihilated", "lower_bound_rank_Q", "upper_bounds_mod_p", "certified_dim", "T_even_dim", "bidegree"],
+    "compared": ["G2xU1_R16.deg2.certified_dim", "G2xU1_R16.deg2.lower_bound_rank_Q", "G2xU1_R16.deg2.T_even_dim", "G2xU1_R16.deg4.certified_dim", "G2xU1_R16.deg4.lower_bound_rank_Q", "G2xU1_R16.deg4.T_even_dim", "G2xU1_R16.deg4.n_monomials",
+                 "G2xU1_R14.deg2.certified_dim", "G2xU1_R14.deg4.certified_dim", "G2xU1_R14.deg6_explicit_lower",
+                 "SO7xU1_R16.deg2.certified_dim", "SO7xU1_R16.deg4.certified_dim", "SO7xU1_R14.deg2.certified_dim", "SO7xU1_R14.deg4.certified_dim",
+                 "weyl", "T_parity", "methods_agree_deg2_deg4", "locality_g2_equals_so7", "hand_count", "F_VS_1", "F_VS_2",
+                 "RUS.deg2.dim", "RUS.deg2.RUS_subspace_dim", "RUS.deg2.flags", "RUS.deg4.dim", "RUS.deg4.RUS_subspace_dim", "RUS.deg4.T_even_RUS_subspace_dim", "RUS.deg4.flags", "RUS.singlet_blind",
+                 "point_of_record.quartic_coefficients", "point_of_record.effective_ABc4c5", "point_of_record.is_origin", "basis_deg2", "basis_deg4", "extra_invariants_found"],
+    "upper_bounds_note": "the per-prime upper bounds are leg-specific (the primes are the leg's choice) and are not compared; certified_dim is"
+  },
+  "phase2": {
+    "stratum_labels": ["R", "P7", "F7", "I7", "MP+", "MP-", "MP0", "MF", "MI+", "MI-", "MI0"],
+    "per_stratum_compared": ["invariants.rho_norm", "invariants.s2_norm", "invariants.t_norm", "invariants.gram_scalar", "invariants.rank_uv", "dim_h", "dim_k", "phase_in_h", "orbit_rank_of_imaginary_part", "P_kind", "m", "dynkin_index", "dim_V", "orbit", "pi0_K", "K_connected", "pi0_H", "pi1", "elementary_winding", "pi2", "pi3", "pi1_nontrivial"],
+    "per_stratum_note": "representatives are the lock record's (A-2.6); a leg may use other rational representatives of the same strata, in which case invariants.* may differ and the comparator reports them as representational (S9-eligible) misses",
+    "compared": ["criterion_pi1_zero_iff_rho0_zero_and_S_zero", "reduction_check", "sampling.grid", "sampling.n_points", "sampling.tally", "sampling.strata_realized_as_minimizers", "sampling.cone_property", "sampling.P0_only_at_origin", "sampling.pi1_zero_iff_rho0_zero_and_S_zero_on_all_nondegenerate_minimizers", "codimension.RUS_directions_total", "codimension.effective_parameters_on_fixed_density", "F_VS_3"]
+  },
+  "phase3": {
+    "forms": ["F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared)", "F-a.2 ||psi psibar^dag||^2_H", "F-a.3 ||psibar^dag psi||^2_H", "F-a.4 ||psi^2||^2_H", "F-a.5 N_O(psi psibar^dag) = sum_k P_k^2", "F-a.6 ||Im_O(psi psibar^dag)||^2_H", "D-a.1 Re_O(psi psibar^dag) (degree 2)", "D-a.2 Re_O(psibar^dag psi) (degree 2)"],
+    "per_form_compared_deg4": ["degree", "g2_u1_invariant", "T_parity", "coefficients", "in_T_even_basis", "effective_ABc4c5", "is_O16_point", "Emin", "minimizers", "degenerate_faces", "pi1_of_minimizing_strata"],
+    "per_form_compared_deg2": ["degree", "g2_u1_invariant", "T_parity", "coefficients", "in_basis", "is_O16"],
+    "compared": ["forcing_table.F-a.status", "forcing_table.F-b.status", "forcing_table.F-c.status", "forcing_table.F-d.status", "live_sources", "F_VS_4"]
+  },
+  "verdict": {"compared": ["class_code"], "codes": ["VC-1", "VC-2", "VC-3", "VC-4"]},
+  "T1_post_write": {"compared": ["hits"], "required_value": {"hits": []}}
+}

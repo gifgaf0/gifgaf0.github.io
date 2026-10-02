@@ -1,0 +1,223 @@
+{
+ "T1_post_write": {
+  "collisions": 0,
+  "hits": []
+ },
+ "T1_pre": {
+  "G_VS1_LOCK_RECORD.md": {
+   "collisions": 0,
+   "hits": []
+  },
+  "g_vs1_chatleg.py": {
+   "collisions": 0,
+   "hits": []
+  },
+  "g_vs1_compare_v1_0.py": {
+   "collisions": 0,
+   "hits": []
+  },
+  "g_vs1_schema_v1_0.json": {
+   "collisions": 0,
+   "hits": []
+  },
+  "paper_II_3_4_4_and_3_4_7_extract.md": {
+   "collisions": 0,
+   "hits": []
+  },
+  "staging_memo_G_VS1_v2.md": {
+   "collisions": 0,
+   "hits": []
+  }
+ },
+ "gate": "G-VS1",
+ "identity": {
+  "comparator_md5": "69011375d28ec8f63f3ac76383e98321",
+  "elections": {
+   "E-VS-1": "a",
+   "E-VS-10": "a",
+   "E-VS-2": "a",
+   "E-VS-3": "a",
+   "E-VS-4": "a",
+   "E-VS-5": "a",
+   "E-VS-6": "a",
+   "E-VS-7": "a",
+   "E-VS-8": "a",
+   "E-VS-9": "a"
+  },
+  "extract_bytes": 12912,
+  "extract_md5": "940b0bee4b2112e911ae738c3db2bc3d",
+  "instrument_md5": "cb2e22308305cb6e2251531465984df5",
+  "lock_bytes": 23071,
+  "lock_md5": "71711946d1c4abb06fa17402e8d5a6c9",
+  "memo_bytes": 44709,
+  "memo_md5": "58fd02671ea77db63e22afdcc5ee93a0",
+  "octonion_convention": "Fano lines {i, i+1, i+3} mod 7 on e1..e7 (the §3.4-SIGNPHI convention); e_i e_j = e_k on a line (i,j,k) in cyclic order",
+  "primes_for_upper_bound": [
+   1048573,
+   999983
+  ],
+  "readings": {
+   "Q-VS-1": "carrier of e0 not settled (not the K7 vertices); F-b not live",
+   "Q-VS-2": "the kernel couples to the total 16-component density",
+   "Q-VS-3": "the vortex sector is the U(1) phase winding (pi_1)",
+   "Q-VS-4": "complex conjugation (time reversal) is a symmetry; the potential sector is T-even",
+   "Q-VS-5": "'strictly forces' = memo section 3's definition"
+  },
+  "scanner_md5": "6b86290090a8c84f1b1a0a99ec0bf697",
+  "schema_md5": "4690e07d5a22cc7a1c5d08db39eda3fe",
+  "t1_md5": "324f577d20e2bfba3b594d96c4ca3ba7",
+  "t1_patterns": 31,
+  "timestamp_utc": "2026-10-01 03:20:29"
+ },
+ "leg": "chat",
+ "mode": "preread",
+ "phase0": {
+  "0a": {
+   "PASS": true,
+   "all_antisymmetric": true,
+   "all_derivations": true,
+   "closure": true,
+   "dim_so4_H124": 6,
+   "dim_su2_long": 3,
+   "dim_su2_short": 3,
+   "g2_dim": 14,
+   "index_su2_long": "1",
+   "index_su2_short": "3",
+   "max_abs_entry": "1"
+  },
+  "0b": {
+   "PASS": true,
+   "commutant_dim_on_1plus7": 2,
+   "commutant_dim_on_7": 1
+  },
+  "0c": {
+   "PASS": true,
+   "V_of_record": "S15 (the accidental sphere)",
+   "dim_S15": 15,
+   "o16_argument": "O(16) ⊃ U(8): Inv_O16 ⊂ Inv_U8 = span(Ntot^k), and Ntot^k is O(16)-invariant; so dim = 1 at degrees 2 and 4",
+   "o16_deg2": 1,
+   "o16_deg4": 1,
+   "pi1_S15": "0 (adopted: spheres S^n, n>=2, are simply connected)",
+   "so16_orbit_rank_at_unit_vector": 15,
+   "u8_deg2": {
+    "T_even_dim": 1,
+    "bidegree": [
+     1,
+     1
+    ],
+    "certified_dim": 1,
+    "explicit_annihilated": {
+     "Ntot": true
+    },
+    "lower_bound_rank_Q": 1,
+    "n_monomials": 64,
+    "upper_bounds_mod_p": {
+     "1048573": 1,
+     "999983": 1
+    }
+   },
+   "u8_deg4": {
+    "T_even_dim": 1,
+    "bidegree": [
+     2,
+     2
+    ],
+    "certified_dim": 1,
+    "explicit_annihilated": {
+     "Ntot^2": true
+    },
+    "lower_bound_rank_Q": 1,
+    "n_monomials": 1296,
+    "upper_bounds_mod_p": {
+     "1048573": 1,
+     "999983": 1
+    }
+   }
+  },
+  "0d": {
+   "PASS": true,
+   "binary_tetrahedral": {
+    "closed": true,
+    "order": 24,
+    "pi1_SO3_mod_T": "2T, order 24 (SU(2) -> SO(3)/T is the universal cover with fiber 2T)"
+   },
+   "pi4_S2": "Z2 (adopted chain: Hopf fibration U(1) -> S3 -> S2 gives pi4(S2) = pi4(S3) since pi3(U(1)) = pi4(U(1)) = 0; pi4(S3) = Z2)",
+   "spin1_ferro": {
+    "K_connected": false,
+    "d": 2,
+    "d_reason": "K~ = Stab_SU(2)(u,v) = {+1, -1}, both in the identity component H~^0 (the lifted U(1) passes through -1): d = |pi0(K~ cap H~^0)| = 2",
+    "dim_h": 1,
+    "dim_k": 0,
+    "elementary_winding": "none",
+    "orbit": "V2(R3) = SO(3) = SU(2)/{+-1}",
+    "orbit_rank": 3,
+    "phase_in_h": true,
+    "pi0_H": "1",
+    "pi0_K": "Z2",
+    "pi1": "Z2",
+    "pi1_reason": "H^0 -> U(1) surjective with kernel K cap H^0; image of pi1(H^0) in pi1(G x U(1)) = Z is dZ, d = |pi0(K cap H^0)|; pi1(V) = Z/dZ",
+    "pi2": "0",
+    "pi3": "Z",
+    "pi3_reason": "k contains no su(2): pi3(H^0) = 0; pi3(V) = pi3(G) = Z"
+   },
+   "spin1_polar": {
+    "K_connected": true,
+    "dim_h": 1,
+    "dim_k": 1,
+    "elementary_winding": "pi",
+    "m": 2,
+    "orbit": "S2 = SU(2)/U(1)",
+    "orbit_rank": 2,
+    "phase_in_h": false,
+    "pi0_H": "Z2",
+    "pi0_K": "1",
+    "pi1": "Z",
+    "pi1_reason": "0 -> Z -> pi1(V) -> Z_m -> 0 with the m-th power of the lift equal to the U(1) generator (K connected): pi1 = Z",
+    "pi2": "Z",
+    "pi3": "Z",
+    "pi3_reason": "k contains no su(2): pi3(H^0) = 0; pi3(V) = pi3(G) = Z",
+    "witness_rotation_pi_perp": true
+   },
+   "textbook": {
+    "ferro": "V = SO(3): pi1 = Z2, pi2 = 0, pi3 = Z",
+    "polar": "pi1 = Z with half-quantum vortices, pi2 = Z, pi3 = Z"
+   },
+   "weyl_spin1_invariant_dims": [
+    1,
+    2,
+    2
+   ]
+  },
+  "0e": {
+   "PASS": true,
+   "associative_triple_e1_e2_e4": 11,
+   "dim_S6": 6,
+   "dim_V2R7": 11,
+   "dim_V3R7": 15,
+   "dim_g2": 14,
+   "e0": 0,
+   "e1": 6,
+   "generic_triple_e1_e2_e3": 14,
+   "pair_e1_e2": 11,
+   "reading": "rank 6 at a unit vector and 11 at an orthonormal pair = the dimensions of S6 and V2(R7): the orbits are open and compact, hence all of these connected spaces (transitivity); rank 14 < 15 at a generic triple: the orbit of a triple is a hypersurface, the invariant being phi(u,v,w)"
+  },
+  "0f": {
+   "PASS": true,
+   "annihilated": true,
+   "explicit_su3_u1_deg2_invariants": [
+    "rho0",
+    "rho7",
+    "N_minus_rho7"
+   ],
+   "g2_u1_deg2": 2,
+   "lower_bound_deg2": 3,
+   "su3_dim": 8
+  },
+  "all_pass": true
+ },
+ "phase1": null,
+ "phase2": null,
+ "phase3": null,
+ "runtime_seconds": 46.8,
+ "verdict": null
+}

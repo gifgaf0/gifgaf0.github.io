@@ -1,0 +1,3571 @@
+{
+ "results": [
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.memo_md5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.memo_bytes",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.lock_md5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.lock_bytes",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.t1_md5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.t1_patterns",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.scanner_md5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.extract_md5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.extract_bytes",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.schema_md5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.comparator_md5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.elections",
+   "result": "PASS"
+  },
+  {
+   "cc": "0ba1abe47793375bf8d0b59573b99e64",
+   "chat": "cb2e22308305cb6e2251531465984df5",
+   "check": "C-VS-0",
+   "kind": "DIFFERENT",
+   "name": "identity.instrument_md5 differ",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.g2_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": 2,
+   "chat": 14,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.rank",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.all_derivations",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.all_antisymmetric",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.closure",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.dim_so4_H124",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.dim_su2_long",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.dim_su2_short",
+   "result": "PASS"
+  },
+  {
+   "cc": 1,
+   "chat": "1",
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.index_su2_long",
+   "result": "MISS"
+  },
+  {
+   "cc": 3,
+   "chat": "3",
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.index_su2_short",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.PASS",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0b.commutant_dim_on_7",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0b.commutant_dim_on_1plus7",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0b.PASS",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.u8_deg2.certified_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.u8_deg2.lower_bound_rank_Q",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.u8_deg4.certified_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.u8_deg4.lower_bound_rank_Q",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.o16_deg2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.o16_deg4",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.so16_orbit_rank_at_unit_vector",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.PASS",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.dim_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.dim_k",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.phase_in_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.orbit_rank",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.m",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.witness_rotation_pi_perp",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.pi1",
+   "result": "PASS"
+  },
+  {
+   "cc": "pi",
+   "chat": "2pi/2",
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.elementary_winding",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.pi2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.pi3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.dim_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.dim_k",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.phase_in_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.orbit_rank",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.d",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.pi1",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.pi2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.pi3",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    1,
+    2,
+    2
+   ],
+   "chat": {
+    "2": 1,
+    "4": 2,
+    "6": 2
+   },
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.weyl_spin1_invariant_dims",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.binary_tetrahedral.order",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.binary_tetrahedral.closed",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.PASS",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0e.e0",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0e.e1",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0e.pair_e1_e2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0e.associative_triple_e1_e2_e4",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0e.generic_triple_e1_e2_e3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0e.PASS",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0f.su3_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": true,
+   "chat": {
+    "N_minus_rho7": true,
+    "rho0": true,
+    "rho7": true
+   },
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0f.annihilated",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0f.lower_bound_deg2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0f.g2_u1_deg2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0f.PASS",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.all_pass",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.G2xU1_R16.deg2.certified_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.G2xU1_R16.deg2.lower_bound_rank_Q",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.G2xU1_R16.deg2.T_even_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.G2xU1_R16.deg4.certified_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.G2xU1_R16.deg4.lower_bound_rank_Q",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.G2xU1_R16.deg4.T_even_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.G2xU1_R16.deg4.n_monomials",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.G2xU1_R14.deg2.certified_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.G2xU1_R14.deg4.certified_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.G2xU1_R14.deg6_explicit_lower",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.SO7xU1_R16.deg2.certified_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.SO7xU1_R16.deg4.certified_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.SO7xU1_R14.deg2.certified_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.SO7xU1_R14.deg4.certified_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": {
+    "G2xU1_R14": {
+     "deg2": 1,
+     "deg4": 2,
+     "deg6": 2
+    },
+    "G2xU1_R16": {
+     "deg2": 2,
+     "deg4": 6,
+     "deg6": 10
+    },
+    "SO7xU1_R14": {
+     "deg2": 1,
+     "deg4": 2,
+     "deg6": 2
+    },
+    "SO7xU1_R16": {
+     "deg2": 2,
+     "deg4": 6,
+     "deg6": 10
+    }
+   },
+   "chat": {
+    "G2xU1_R14": {
+     "2": 1,
+     "4": 2,
+     "6": 2
+    },
+    "G2xU1_R16": {
+     "2": 2,
+     "4": 6,
+     "6": 10
+    },
+    "SO7xU1_R14": {
+     "2": 1,
+     "4": 2,
+     "6": 2
+    },
+    "SO7xU1_R16": {
+     "2": 2,
+     "4": 6,
+     "6": 10
+    }
+   },
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.weyl",
+   "result": "MISS"
+  },
+  {
+   "cc": {
+    "deg2": {
+     "N": 1,
+     "rho0": 1
+    },
+    "deg4": {
+     "N^2": 1,
+     "Q": -1,
+     "Re(psi0^2 Sbar)": 1,
+     "rho0 N": 1,
+     "rho0^2": 1,
+     "|S|^2": 1
+    }
+   },
+   "chat": {
+    "N": 1,
+    "N^2": 1,
+    "Q = psi0^2 Sbar - c.c. (imaginary-valued)": -1,
+    "Re(psi0^2 Sbar)": 1,
+    "rho0": 1,
+    "rho0*N": 1,
+    "rho0^2": 1,
+    "|S|^2": 1
+   },
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.T_parity",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.methods_agree_deg2_deg4",
+   "result": "PASS"
+  },
+  {
+   "cc": true,
+   "chat": {
+    "R14": {
+     "2": true,
+     "4": true,
+     "6": true
+    },
+    "R16": {
+     "2": true,
+     "4": true,
+     "6": true
+    }
+   },
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.locality_g2_equals_so7",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.hand_count",
+   "result": "PASS"
+  },
+  {
+   "cc": false,
+   "chat": "SILENT",
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.F_VS_1",
+   "result": "MISS"
+  },
+  {
+   "cc": false,
+   "chat": "SILENT",
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.F_VS_2",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.RUS.deg2.dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.RUS.deg2.RUS_subspace_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.RUS.deg2.flags",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.RUS.deg4.dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.RUS.deg4.RUS_subspace_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.RUS.deg4.T_even_RUS_subspace_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": {
+    "N^2": true,
+    "Q": true,
+    "Re(psi0^2 Sbar)": true,
+    "rho0 N": true,
+    "rho0^2": true,
+    "|S|^2": true
+   },
+   "chat": {
+    "N^2": true,
+    "Q = psi0^2 Sbar - c.c. (imaginary-valued)": true,
+    "Re(psi0^2 Sbar)": true,
+    "rho0*N": true,
+    "rho0^2": true,
+    "|S|^2": true
+   },
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.RUS.deg4.flags",
+   "result": "MISS"
+  },
+  {
+   "cc": {
+    "N": true,
+    "N^2": true,
+    "Q": false,
+    "Re(psi0^2 Sbar)": false,
+    "rho0": false,
+    "rho0 N": false,
+    "rho0^2": false,
+    "|S|^2": true
+   },
+   "chat": {
+    "N": true,
+    "N^2": true,
+    "Q = psi0^2 Sbar - c.c. (imaginary-valued)": false,
+    "Re(psi0^2 Sbar)": false,
+    "rho0": false,
+    "rho0*N": false,
+    "rho0^2": false,
+    "|S|^2": true
+   },
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.RUS.singlet_blind",
+   "result": "MISS"
+  },
+  {
+   "cc": [
+    "1",
+    "2",
+    "1",
+    "0",
+    "0"
+   ],
+   "chat": {
+    "N^2": "1",
+    "Re(psi0^2 Sbar)": "0",
+    "rho0*N": "2",
+    "rho0^2": "1",
+    "|S|^2": "0"
+   },
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.point_of_record.quartic_coefficients",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.point_of_record.effective_ABc4c5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.point_of_record.is_origin",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.basis_deg2",
+   "result": "PASS"
+  },
+  {
+   "cc": [
+    "rho0^2",
+    "rho0 N",
+    "N^2",
+    "|S|^2",
+    "Re(psi0^2 Sbar)"
+   ],
+   "chat": [
+    "rho0^2",
+    "rho0*N",
+    "N^2",
+    "|S|^2",
+    "Re(psi0^2 Sbar)",
+    "Q = psi0^2 Sbar - c.c. (imaginary-valued)"
+   ],
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.basis_deg4",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-2",
+   "kind": "EXACT",
+   "name": "phase1.extra_invariants_found",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.R.invariants.rho_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.R.invariants.s2_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.R.invariants.t_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.R.invariants.gram_scalar",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.R.invariants.rank_uv",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.dim_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.dim_k",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.phase_in_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.orbit_rank_of_imaginary_part",
+   "result": "PASS"
+  },
+  {
+   "cc": "trivial",
+   "chat": "finite",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.P_kind",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.m",
+   "result": "PASS"
+  },
+  {
+   "cc": 1,
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.dynkin_index",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.dim_V",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.orbit",
+   "result": "PASS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.pi0_K",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.K_connected",
+   "result": "PASS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.pi0_H",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.pi1",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.elementary_winding",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.pi2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.pi3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.R.pi1_nontrivial",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.P7.invariants.rho_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.P7.invariants.s2_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.P7.invariants.t_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.P7.invariants.gram_scalar",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.P7.invariants.rank_uv",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.dim_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.dim_k",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.phase_in_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.orbit_rank_of_imaginary_part",
+   "result": "PASS"
+  },
+  {
+   "cc": "Z2",
+   "chat": "finite",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.P_kind",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.m",
+   "result": "PASS"
+  },
+  {
+   "cc": 1,
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.dynkin_index",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.dim_V",
+   "result": "PASS"
+  },
+  {
+   "cc": "S6",
+   "chat": "S6 = G2/SU(3)",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.orbit",
+   "result": "MISS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.pi0_K",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.K_connected",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.pi0_H",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.pi1",
+   "result": "PASS"
+  },
+  {
+   "cc": "pi",
+   "chat": "2pi/2",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.elementary_winding",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.pi2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.pi3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.P7.pi1_nontrivial",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.F7.invariants.rho_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.F7.invariants.s2_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.F7.invariants.t_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.F7.invariants.gram_scalar",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.F7.invariants.rank_uv",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.dim_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.dim_k",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.phase_in_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.orbit_rank_of_imaginary_part",
+   "result": "PASS"
+  },
+  {
+   "cc": "U(1)",
+   "chat": "U1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.P_kind",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.m",
+   "result": "PASS"
+  },
+  {
+   "cc": 1,
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.dynkin_index",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.dim_V",
+   "result": "PASS"
+  },
+  {
+   "cc": "V2(R7)",
+   "chat": "V2(R7) = G2/SU(2)",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.orbit",
+   "result": "MISS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.pi0_K",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.K_connected",
+   "result": "PASS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.pi0_H",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.pi1",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": "none",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.elementary_winding",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.pi2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.pi3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.F7.pi1_nontrivial",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.I7.invariants.rho_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.I7.invariants.s2_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.I7.invariants.t_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.I7.invariants.gram_scalar",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.I7.invariants.rank_uv",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.dim_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.dim_k",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.phase_in_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.orbit_rank_of_imaginary_part",
+   "result": "PASS"
+  },
+  {
+   "cc": "Z2",
+   "chat": "finite",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.P_kind",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.m",
+   "result": "PASS"
+  },
+  {
+   "cc": 1,
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.dynkin_index",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.dim_V",
+   "result": "PASS"
+  },
+  {
+   "cc": "V2(R7)",
+   "chat": "V2(R7) = G2/SU(2)",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.orbit",
+   "result": "MISS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.pi0_K",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.K_connected",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.pi0_H",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.pi1",
+   "result": "PASS"
+  },
+  {
+   "cc": "pi",
+   "chat": "2pi/2",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.elementary_winding",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.pi2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.pi3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.I7.pi1_nontrivial",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MP+.invariants.rho_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MP+.invariants.s2_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MP+.invariants.t_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MP+.invariants.gram_scalar",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MP+.invariants.rank_uv",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.dim_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.dim_k",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.phase_in_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.orbit_rank_of_imaginary_part",
+   "result": "PASS"
+  },
+  {
+   "cc": "trivial",
+   "chat": "finite",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.P_kind",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.m",
+   "result": "PASS"
+  },
+  {
+   "cc": 1,
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.dynkin_index",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.dim_V",
+   "result": "PASS"
+  },
+  {
+   "cc": "S6",
+   "chat": "S6 = G2/SU(3)",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.orbit",
+   "result": "MISS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.pi0_K",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.K_connected",
+   "result": "PASS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.pi0_H",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.pi1",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.elementary_winding",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.pi2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.pi3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP+.pi1_nontrivial",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MP-.invariants.rho_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MP-.invariants.s2_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MP-.invariants.t_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MP-.invariants.gram_scalar",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MP-.invariants.rank_uv",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.dim_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.dim_k",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.phase_in_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.orbit_rank_of_imaginary_part",
+   "result": "PASS"
+  },
+  {
+   "cc": "trivial",
+   "chat": "finite",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.P_kind",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.m",
+   "result": "PASS"
+  },
+  {
+   "cc": 1,
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.dynkin_index",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.dim_V",
+   "result": "PASS"
+  },
+  {
+   "cc": "S6",
+   "chat": "S6 = G2/SU(3)",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.orbit",
+   "result": "MISS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.pi0_K",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.K_connected",
+   "result": "PASS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.pi0_H",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.pi1",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.elementary_winding",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.pi2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.pi3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP-.pi1_nontrivial",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MP0.invariants.rho_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MP0.invariants.s2_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MP0.invariants.t_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MP0.invariants.gram_scalar",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MP0.invariants.rank_uv",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.dim_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.dim_k",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.phase_in_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.orbit_rank_of_imaginary_part",
+   "result": "PASS"
+  },
+  {
+   "cc": "trivial",
+   "chat": "finite",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.P_kind",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.m",
+   "result": "PASS"
+  },
+  {
+   "cc": 1,
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.dynkin_index",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.dim_V",
+   "result": "PASS"
+  },
+  {
+   "cc": "S6",
+   "chat": "S6 = G2/SU(3)",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.orbit",
+   "result": "MISS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.pi0_K",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.K_connected",
+   "result": "PASS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.pi0_H",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.pi1",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.elementary_winding",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.pi2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.pi3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MP0.pi1_nontrivial",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MF.invariants.rho_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MF.invariants.s2_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MF.invariants.t_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MF.invariants.gram_scalar",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MF.invariants.rank_uv",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.dim_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.dim_k",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.phase_in_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.orbit_rank_of_imaginary_part",
+   "result": "PASS"
+  },
+  {
+   "cc": "trivial",
+   "chat": "finite",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.P_kind",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.m",
+   "result": "PASS"
+  },
+  {
+   "cc": 1,
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.dynkin_index",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.dim_V",
+   "result": "PASS"
+  },
+  {
+   "cc": "V2(R7)",
+   "chat": "V2(R7) = G2/SU(2)",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.orbit",
+   "result": "MISS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.pi0_K",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.K_connected",
+   "result": "PASS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.pi0_H",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.pi1",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.elementary_winding",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.pi2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.pi3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MF.pi1_nontrivial",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MI+.invariants.rho_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MI+.invariants.s2_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MI+.invariants.t_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MI+.invariants.gram_scalar",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MI+.invariants.rank_uv",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.dim_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.dim_k",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.phase_in_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.orbit_rank_of_imaginary_part",
+   "result": "PASS"
+  },
+  {
+   "cc": "trivial",
+   "chat": "finite",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.P_kind",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.m",
+   "result": "PASS"
+  },
+  {
+   "cc": 1,
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.dynkin_index",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.dim_V",
+   "result": "PASS"
+  },
+  {
+   "cc": "V2(R7)",
+   "chat": "V2(R7) = G2/SU(2)",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.orbit",
+   "result": "MISS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.pi0_K",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.K_connected",
+   "result": "PASS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.pi0_H",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.pi1",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.elementary_winding",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.pi2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.pi3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI+.pi1_nontrivial",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MI-.invariants.rho_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MI-.invariants.s2_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MI-.invariants.t_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MI-.invariants.gram_scalar",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MI-.invariants.rank_uv",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.dim_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.dim_k",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.phase_in_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.orbit_rank_of_imaginary_part",
+   "result": "PASS"
+  },
+  {
+   "cc": "trivial",
+   "chat": "finite",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.P_kind",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.m",
+   "result": "PASS"
+  },
+  {
+   "cc": 1,
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.dynkin_index",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.dim_V",
+   "result": "PASS"
+  },
+  {
+   "cc": "V2(R7)",
+   "chat": "V2(R7) = G2/SU(2)",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.orbit",
+   "result": "MISS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.pi0_K",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.K_connected",
+   "result": "PASS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.pi0_H",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.pi1",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.elementary_winding",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.pi2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.pi3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI-.pi1_nontrivial",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MI0.invariants.rho_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MI0.invariants.s2_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MI0.invariants.t_norm",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MI0.invariants.gram_scalar",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "REPRESENTATIONAL",
+   "name": "phase2.strata.MI0.invariants.rank_uv",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.dim_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.dim_k",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.phase_in_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.orbit_rank_of_imaginary_part",
+   "result": "PASS"
+  },
+  {
+   "cc": "trivial",
+   "chat": "finite",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.P_kind",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.m",
+   "result": "PASS"
+  },
+  {
+   "cc": 1,
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.dynkin_index",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.dim_V",
+   "result": "PASS"
+  },
+  {
+   "cc": "V2(R7)",
+   "chat": "V2(R7) = G2/SU(2)",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.orbit",
+   "result": "MISS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.pi0_K",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.K_connected",
+   "result": "PASS"
+  },
+  {
+   "cc": "0",
+   "chat": "1",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.pi0_H",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.pi1",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.elementary_winding",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.pi2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.pi3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.strata.MI0.pi1_nontrivial",
+   "result": "PASS"
+  },
+  {
+   "cc": true,
+   "chat": {
+    "F7": true,
+    "I7": true,
+    "MF": true,
+    "MI+": true,
+    "MI-": true,
+    "MI0": true,
+    "MP+": true,
+    "MP-": true,
+    "MP0": true,
+    "P7": true,
+    "R": true
+   },
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.criterion_pi1_zero_iff_rho0_zero_and_S_zero",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.reduction_check",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.sampling.grid",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.sampling.n_points",
+   "result": "PASS"
+  },
+  {
+   "cc": {
+    "F7": 356,
+    "F7,I7,MF,MI+,MI-,MI0,MP+,MP-,MP0,P7,R | P0": 1,
+    "F7,I7,MP+,P7,R | edge_rho=0,edge_s=1-rho": 3,
+    "F7,I7,MP-,P7,R | edge_rho=0,edge_s=1-rho": 3,
+    "F7,I7,P7 | edge_rho=0": 82,
+    "F7,I7,P7,R | edge_rho=0": 9,
+    "F7,MF,R | edge_s=0": 3,
+    "F7,MI+,MP+ | interior_segment": 4,
+    "F7,MI-,MP- | interior_segment": 4,
+    "F7,MP+": 1,
+    "F7,MP-": 1,
+    "F7,R": 45,
+    "MF": 18,
+    "MF,MI+,MI-,MI0,MP+,MP-,MP0 | interior_segment": 6,
+    "MI+": 33,
+    "MI-": 33,
+    "MP+": 196,
+    "MP+,MP-,MP0": 1,
+    "MP+,MP-,MP0,P7,R | edge_s=1-rho": 2,
+    "MP+,P7,R | edge_s=1-rho": 5,
+    "MP-": 196,
+    "MP-,P7,R | edge_s=1-rho": 5,
+    "P7": 638,
+    "P7,R": 48,
+    "R": 708
+   },
+   "chat": {
+    "DEGENERATE: edge rho=0: P7, I7, F7 | points: F7,P7": 82,
+    "DEGENERATE: edge rho=0: P7, I7, F7 | points: F7,P7,R": 9,
+    "DEGENERATE: edge rho=0: P7, I7, F7; edge s=1-rho: R, MP, P7 | points: F7,P7,R": 6,
+    "DEGENERATE: edge s=0: R, MF, F7 | points: F7,R": 3,
+    "DEGENERATE: edge s=1-rho: R, MP, P7 | points: P7,R": 12,
+    "DEGENERATE: interior segment from (0,0) to (1/2,1/2): strata F7, MI+, MP+ | points: F7,MP+": 2,
+    "DEGENERATE: interior segment from (0,0) to (1/2,1/2): strata F7, MI-, MP- | points: F7,MP-": 2,
+    "DEGENERATE: interior segment from (0,0) to (1/3,2/3): strata F7, MI+, MP+ | points: F7,MP+": 1,
+    "DEGENERATE: interior segment from (0,0) to (1/3,2/3): strata F7, MI-, MP- | points: F7,MP-": 1,
+    "DEGENERATE: interior segment from (0,0) to (2/3,1/3): strata F7, MI+, MP+ | points: F7,MP+": 1,
+    "DEGENERATE: interior segment from (0,0) to (2/3,1/3): strata F7, MI-, MP- | points: F7,MP-": 1,
+    "DEGENERATE: interior segment from (1/2,0) to (1/2,1/2): strata MF, MI0, MP0 | points: MF,MP0": 3,
+    "DEGENERATE: interior segment from (1/4,0) to (1/4,3/4): strata MF, MI0, MP0 | points: MF,MP0": 2,
+    "DEGENERATE: interior segment from (1/8,0) to (1/8,7/8): strata MF, MI0, MP0 | points: MF,MP0": 1,
+    "DEGENERATE: whole orbit space: P0 | points: F7,P7,R": 1,
+    "F7": 356,
+    "F7,MP+": 1,
+    "F7,MP-": 1,
+    "F7,R": 45,
+    "MF": 18,
+    "MI+": 33,
+    "MI-": 33,
+    "MP+": 196,
+    "MP-": 196,
+    "MP0": 1,
+    "P7": 638,
+    "P7,R": 48,
+    "R": 708
+   },
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.sampling.tally",
+   "result": "MISS"
+  },
+  {
+   "cc": [
+    "F7",
+    "I7",
+    "MF",
+    "MI+",
+    "MI-",
+    "MI0",
+    "MP+",
+    "MP-",
+    "MP0",
+    "P7",
+    "R"
+   ],
+   "chat": [
+    "F7",
+    "MF",
+    "MI+",
+    "MI-",
+    "MP+",
+    "MP-",
+    "MP0",
+    "P7",
+    "R"
+   ],
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.sampling.strata_realized_as_minimizers",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.sampling.cone_property",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.sampling.P0_only_at_origin",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.sampling.pi1_zero_iff_rho0_zero_and_S_zero_on_all_nondegenerate_minimizers",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.codimension.RUS_directions_total",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.codimension.effective_parameters_on_fixed_density",
+   "result": "PASS"
+  },
+  {
+   "cc": false,
+   "chat": "SILENT",
+   "check": "C-VS-3",
+   "kind": "EXACT",
+   "name": "phase2.F_VS_3",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared).degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared).g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared).T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared).coefficients",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared).in_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared).is_O16",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.2 ||psi psibar^dag||^2_H.degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.2 ||psi psibar^dag||^2_H.g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.2 ||psi psibar^dag||^2_H.T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.2 ||psi psibar^dag||^2_H.coefficients",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.2 ||psi psibar^dag||^2_H.in_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.2 ||psi psibar^dag||^2_H.is_O16",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.3 ||psibar^dag psi||^2_H.degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.3 ||psibar^dag psi||^2_H.g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.3 ||psibar^dag psi||^2_H.T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.3 ||psibar^dag psi||^2_H.coefficients",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.3 ||psibar^dag psi||^2_H.in_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.3 ||psibar^dag psi||^2_H.is_O16",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.4 ||psi^2||^2_H.degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.4 ||psi^2||^2_H.g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.4 ||psi^2||^2_H.T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.4 ||psi^2||^2_H.coefficients",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.4 ||psi^2||^2_H.in_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.4 ||psi^2||^2_H.is_O16",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.5 N_O(psi psibar^dag) = sum_k P_k^2.degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.5 N_O(psi psibar^dag) = sum_k P_k^2.g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.5 N_O(psi psibar^dag) = sum_k P_k^2.T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.5 N_O(psi psibar^dag) = sum_k P_k^2.coefficients",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.5 N_O(psi psibar^dag) = sum_k P_k^2.in_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.5 N_O(psi psibar^dag) = sum_k P_k^2.is_O16",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.6 ||Im_O(psi psibar^dag)||^2_H.degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.6 ||Im_O(psi psibar^dag)||^2_H.g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.6 ||Im_O(psi psibar^dag)||^2_H.T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.6 ||Im_O(psi psibar^dag)||^2_H.coefficients",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.6 ||Im_O(psi psibar^dag)||^2_H.in_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.F-a.6 ||Im_O(psi psibar^dag)||^2_H.is_O16",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.D-a.1 Re_O(psi psibar^dag) (degree 2).degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.D-a.1 Re_O(psi psibar^dag) (degree 2).g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.D-a.1 Re_O(psi psibar^dag) (degree 2).T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.D-a.1 Re_O(psi psibar^dag) (degree 2).coefficients",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.D-a.1 Re_O(psi psibar^dag) (degree 2).in_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.D-a.1 Re_O(psi psibar^dag) (degree 2).is_O16",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.D-a.2 Re_O(psibar^dag psi) (degree 2).degree",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.D-a.2 Re_O(psibar^dag psi) (degree 2).g2_u1_invariant",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.D-a.2 Re_O(psibar^dag psi) (degree 2).T_parity",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.D-a.2 Re_O(psibar^dag psi) (degree 2).coefficients",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.D-a.2 Re_O(psibar^dag psi) (degree 2).in_basis",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_a.D-a.2 Re_O(psibar^dag psi) (degree 2).is_O16",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.forcing_table.F-a.status",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.forcing_table.F-b.status",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.forcing_table.F-c.status",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.forcing_table.F-d.status",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.live_sources",
+   "result": "PASS"
+  },
+  {
+   "cc": false,
+   "chat": "SILENT",
+   "check": "C-VS-4",
+   "kind": "EXACT",
+   "name": "phase3.F_VS_4",
+   "result": "MISS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-5",
+   "kind": "EXACT",
+   "name": "verdict.class_code",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": [],
+   "check": "C-VS-6",
+   "kind": "EXACT",
+   "name": "T1_post_write.hits (chat) empty",
+   "result": "PASS"
+  },
+  {
+   "cc": [],
+   "chat": null,
+   "check": "C-VS-6",
+   "kind": "EXACT",
+   "name": "T1_post_write.hits (cc) empty",
+   "result": "PASS"
+  }
+ ],
+ "summary": {
+  "ALL_PASS": false,
+  "checks": 415,
+  "exact_misses": 75,
+  "misses": 75,
+  "passed": 340,
+  "preread_pair": false,
+  "representational_misses": 0,
+  "schema_md5": "4690e07d5a22cc7a1c5d08db39eda3fe",
+  "verdict_codes": [
+   "VC-3",
+   "VC-3"
+  ]
+ }
+}

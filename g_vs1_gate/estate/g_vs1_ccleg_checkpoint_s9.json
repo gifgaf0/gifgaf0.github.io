@@ -1,0 +1,1597 @@
+{
+ "T1_post_write": {
+  "hits": [],
+  "numeric_collisions": 0
+ },
+ "T1_pre": {
+  "comparator": {
+   "hits": [],
+   "numeric_collisions": 0
+  },
+  "extract": {
+   "hits": [],
+   "numeric_collisions": 0
+  },
+  "instrument": {
+   "hits": [],
+   "numeric_collisions": 0
+  },
+  "lock_record": {
+   "hits": [],
+   "numeric_collisions": 0
+  },
+  "memo": {
+   "hits": [],
+   "numeric_collisions": 0
+  },
+  "schema": {
+   "hits": [],
+   "numeric_collisions": 0
+  }
+ },
+ "gate": "G-VS1",
+ "identity": {
+  "comparator_md5": "69011375d28ec8f63f3ac76383e98321",
+  "elections": {
+   "E-VS-1": "a",
+   "E-VS-10": "a",
+   "E-VS-2": "a",
+   "E-VS-3": "a",
+   "E-VS-4": "a",
+   "E-VS-5": "a",
+   "E-VS-6": "a",
+   "E-VS-7": "a",
+   "E-VS-8": "a",
+   "E-VS-9": "a"
+  },
+  "extract_bytes": 12912,
+  "extract_md5": "940b0bee4b2112e911ae738c3db2bc3d",
+  "instrument_md5": "0ba1abe47793375bf8d0b59573b99e64",
+  "lock_bytes": 23071,
+  "lock_md5": "71711946d1c4abb06fa17402e8d5a6c9",
+  "memo_bytes": 44709,
+  "memo_md5": "58fd02671ea77db63e22afdcc5ee93a0",
+  "octonion_convention": "Fano lines {i, i+1, i+3} mod 7 on e1..e7: (1,2,4) (2,3,5) (3,4,6) (4,5,7) (5,6,1) (6,7,2) (7,1,3); e_i e_j = e_k for (i,j,k) a line in cyclic order, e_j e_i = -e_k, e_i^2 = -e_0",
+  "primes_for_upper_bound": [
+   1048573,
+   1000037
+  ],
+  "readings": {
+   "Q-VS-1": "The carrier is not settled (not the K₇ vertices). F-b is not live.",
+   "Q-VS-2": "Confirmed: total density.",
+   "Q-VS-3": "Confirmed: π₁ phase winding.",
+   "Q-VS-4": "Confirmed: Time reversal (complex conjugation) is a symmetry.",
+   "Q-VS-5": "Confirmed: The definition of 'strictly forces' stands."
+  },
+  "scanner_md5": "6b86290090a8c84f1b1a0a99ec0bf697",
+  "schema_md5": "4690e07d5a22cc7a1c5d08db39eda3fe",
+  "t1_md5": "324f577d20e2bfba3b594d96c4ca3ba7",
+  "t1_patterns": 31,
+  "timestamp_utc": "2026-10-01T04:45:15Z",
+  "weight_coordinates": {
+   "planes_paired_to_e7": [
+    [
+     1,
+     3
+    ],
+    [
+     4,
+     5
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "variable_weights_psi_block": [
+    [
+     0,
+     0
+    ],
+    [
+     -1,
+     -1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     -1,
+     0
+    ],
+    [
+     0,
+     -1
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "leg": "cc",
+ "mode": "run",
+ "phase0": {
+  "0a": {
+   "PASS": true,
+   "all_antisymmetric": true,
+   "all_derivations": true,
+   "closure": true,
+   "derivation_system_rank": 50,
+   "derivation_system_unknowns": 64,
+   "dim_so4_H124": 6,
+   "dim_su2_long": 3,
+   "dim_su2_short": 3,
+   "g2_dim": 14,
+   "index_su2_long": "1",
+   "index_su2_short": "3"
+  },
+  "0b": {
+   "PASS": true,
+   "commutant_dim_on_1plus7": 2,
+   "commutant_dim_on_7": 1
+  },
+  "0c": {
+   "PASS": true,
+   "V_of_record": "S15",
+   "o16_deg2": 1,
+   "o16_deg4": 1,
+   "o16_note": "recorded, not computed: O(16) contains U(8), Inv_O16 is inside Inv_U8 = span(N_tot^k), and N_tot^k is O(16)-invariant (A-2.4)",
+   "pi1_V_of_record": "0",
+   "so16_orbit_rank_at_unit_vector": 15,
+   "u8_deg2": {
+    "certified_dim": 1,
+    "lower_bound_rank_Q": 1,
+    "upper_bounds_mod_p": {
+     "1000037": 1,
+     "1048573": 1
+    }
+   },
+   "u8_deg4": {
+    "certified_dim": 1,
+    "lower_bound_rank_Q": 1,
+    "upper_bounds_mod_p": {
+     "1000037": 1,
+     "1048573": 1
+    }
+   }
+  },
+  "0d": {
+   "PASS": true,
+   "binary_tetrahedral": {
+    "closed": true,
+    "order": 24,
+    "pi1_SO3_mod_T": "2T (order 24) by the covering SU(2) -> SO(3)/T"
+   },
+   "pi4_S2_adopted": "Z2",
+   "pi4_S3_adopted": "Z2",
+   "spin1_ferro": {
+    "K_tilde": "{+1,-1} (pi0 = Z2 from pi1(SO(3)) = Z2; both components in H_tilde^0)",
+    "PASS": true,
+    "d": 2,
+    "dim_h": 1,
+    "dim_k": 0,
+    "gram_scalar": true,
+    "orbit_rank": 3,
+    "phase_in_h": true,
+    "pi1": "Z2",
+    "pi1_SO3_adopted": "Z2",
+    "pi2": "0",
+    "pi3": "Z"
+   },
+   "spin1_polar": {
+    "K_tilde": "U(1) (double cover of SO(2), connected since pi1(S2) = 0)",
+    "PASS": true,
+    "dim_h": 1,
+    "dim_k": 1,
+    "elementary_winding": "pi",
+    "m": 2,
+    "orbit_rank": 2,
+    "phase_in_h": false,
+    "pi0_H_tilde": "Z2",
+    "pi1": "Z",
+    "pi2": "Z",
+    "pi3": "Z",
+    "witness_matrix": [
+     [
+      "1",
+      "0",
+      "0"
+     ],
+     [
+      "0",
+      "-1",
+      "0"
+     ],
+     [
+      "0",
+      "0",
+      "-1"
+     ]
+    ],
+    "witness_rotation_pi_perp": true
+   },
+   "weyl_spin1_invariant_dims": [
+    1,
+    2,
+    2
+   ]
+  },
+  "0e": {
+   "PASS": true,
+   "associative_triple_e1_e2_e4": 11,
+   "e0": 0,
+   "e1": 6,
+   "generic_triple_e1_e2_e3": 14,
+   "pair_e1_e2": 11
+  },
+  "0f": {
+   "PASS": true,
+   "annihilated": true,
+   "annihilated_names": [
+    "rho0",
+    "psi7 psibar7",
+    "N - psi7 psibar7"
+   ],
+   "full_count_deg2": {
+    "T_even_dim": 4,
+    "certified_dim": 6,
+    "explicit_annihilated": [
+     "rho0",
+     "psi7 psibar7",
+     "N - psi7 psibar7",
+     "Re(psi0 psibar7)",
+     "psi0 psibar7 - psi7 psibar0",
+     "omega_J(psi, psibar)"
+    ],
+    "lower_bound_rank_Q": 6,
+    "note": "beyond A-2.5: the complete degree-2 inventory of su(3)+u(1) on (1+1+3+3bar), certified with six explicit invariants",
+    "upper_bounds_mod_p": {
+     "1000037": 6,
+     "1048573": 6
+    }
+   },
+   "g2_u1_deg2": 2,
+   "lower_bound_deg2": 3,
+   "su3_dim": 8,
+   "upper_bounds_mod_p": {
+    "1000037": 6,
+    "1048573": 6
+   }
+  },
+  "all_pass": true
+ },
+ "phase1": {
+  "F_VS_1": false,
+  "F_VS_2": false,
+  "G2xU1_R14": {
+   "deg2": {
+    "T_even_dim": 1,
+    "bidegree": [
+     1,
+     1
+    ],
+    "certificate_met": true,
+    "certified_dim": 1,
+    "explicit_annihilated": [
+     "N"
+    ],
+    "explicit_not_annihilated": [],
+    "lower_bound_rank_Q": 1,
+    "n_monomials": 49,
+    "upper_bound_detail": {
+     "1000037": {
+      "generators_processed": 9,
+      "generators_total": 14,
+      "n_monomials": 49,
+      "nullity": 1,
+      "p": 1000037,
+      "rows_processed": 36,
+      "weight_zero_monomials": 7
+     },
+     "1048573": {
+      "generators_processed": 9,
+      "generators_total": 14,
+      "n_monomials": 49,
+      "nullity": 1,
+      "p": 1048573,
+      "rows_processed": 36,
+      "weight_zero_monomials": 7
+     }
+    },
+    "upper_bounds_mod_p": {
+     "1000037": 1,
+     "1048573": 1
+    }
+   },
+   "deg4": {
+    "T_even_dim": 2,
+    "bidegree": [
+     2,
+     2
+    ],
+    "certificate_met": true,
+    "certified_dim": 2,
+    "explicit_annihilated": [
+     "N^2",
+     "|S|^2"
+    ],
+    "explicit_not_annihilated": [],
+    "lower_bound_rank_Q": 2,
+    "n_monomials": 784,
+    "upper_bound_detail": {
+     "1000037": {
+      "generators_processed": 9,
+      "generators_total": 14,
+      "n_monomials": 784,
+      "nullity": 2,
+      "p": 1000037,
+      "rows_processed": 444,
+      "weight_zero_monomials": 52
+     },
+     "1048573": {
+      "generators_processed": 9,
+      "generators_total": 14,
+      "n_monomials": 784,
+      "nullity": 2,
+      "p": 1048573,
+      "rows_processed": 444,
+      "weight_zero_monomials": 52
+     }
+    },
+    "upper_bounds_mod_p": {
+     "1000037": 2,
+     "1048573": 2
+    }
+   },
+   "deg6_explicit_annihilated": [
+    "N^3",
+    "N |S|^2"
+   ],
+   "deg6_explicit_lower": 2
+  },
+  "G2xU1_R16": {
+   "deg2": {
+    "T_even_dim": 2,
+    "bidegree": [
+     1,
+     1
+    ],
+    "certificate_met": true,
+    "certified_dim": 2,
+    "explicit_annihilated": [
+     "rho0",
+     "N"
+    ],
+    "explicit_not_annihilated": [],
+    "lower_bound_rank_Q": 2,
+    "n_monomials": 64,
+    "upper_bound_detail": {
+     "1000037": {
+      "generators_processed": 9,
+      "generators_total": 14,
+      "n_monomials": 64,
+      "nullity": 2,
+      "p": 1000037,
+      "rows_processed": 40,
+      "weight_zero_monomials": 10
+     },
+     "1048573": {
+      "generators_processed": 9,
+      "generators_total": 14,
+      "n_monomials": 64,
+      "nullity": 2,
+      "p": 1048573,
+      "rows_processed": 40,
+      "weight_zero_monomials": 10
+     }
+    },
+    "upper_bounds_mod_p": {
+     "1000037": 2,
+     "1048573": 2
+    }
+   },
+   "deg4": {
+    "T_even_dim": 5,
+    "bidegree": [
+     2,
+     2
+    ],
+    "certificate_met": true,
+    "certified_dim": 6,
+    "explicit_annihilated": [
+     "rho0^2",
+     "rho0 N",
+     "N^2",
+     "|S|^2",
+     "Re(psi0^2 Sbar)",
+     "Q"
+    ],
+    "explicit_not_annihilated": [],
+    "lower_bound_rank_Q": 6,
+    "n_monomials": 1296,
+    "upper_bound_detail": {
+     "1000037": {
+      "generators_processed": 9,
+      "generators_total": 14,
+      "n_monomials": 1296,
+      "nullity": 6,
+      "p": 1000037,
+      "rows_processed": 768,
+      "weight_zero_monomials": 102
+     },
+     "1048573": {
+      "generators_processed": 9,
+      "generators_total": 14,
+      "n_monomials": 1296,
+      "nullity": 6,
+      "p": 1048573,
+      "rows_processed": 768,
+      "weight_zero_monomials": 102
+     }
+    },
+    "upper_bounds_mod_p": {
+     "1000037": 6,
+     "1048573": 6
+    }
+   }
+  },
+  "RUS": {
+   "definition": "RUS iff not in the Q-span of the O(16) invariant of its degree (N_tot or N_tot^2); singlet-blind iff no monomial contains psi0 or psibar0",
+   "deg2": {
+    "RUS_subspace_dim": 1,
+    "dim": 2,
+    "flags": {
+     "N": true,
+     "rho0": true
+    }
+   },
+   "deg4": {
+    "RUS_subspace_dim": 5,
+    "T_even_RUS_subspace_dim": 4,
+    "dim": 6,
+    "flags": {
+     "N^2": true,
+     "Q": true,
+     "Re(psi0^2 Sbar)": true,
+     "rho0 N": true,
+     "rho0^2": true,
+     "|S|^2": true
+    }
+   },
+   "singlet_blind": {
+    "N": true,
+    "N^2": true,
+    "Q": false,
+    "Re(psi0^2 Sbar)": false,
+    "rho0": false,
+    "rho0 N": false,
+    "rho0^2": false,
+    "|S|^2": true
+   }
+  },
+  "SO7xU1_R14": {
+   "deg2": {
+    "T_even_dim": 1,
+    "bidegree": [
+     1,
+     1
+    ],
+    "certificate_met": true,
+    "certified_dim": 1,
+    "explicit_annihilated": [
+     "N"
+    ],
+    "explicit_not_annihilated": [],
+    "lower_bound_rank_Q": 1,
+    "n_monomials": 49,
+    "upper_bound_detail": {
+     "1000037": {
+      "generators_processed": 6,
+      "generators_total": 21,
+      "n_monomials": 49,
+      "nullity": 1,
+      "p": 1000037,
+      "rows_processed": 36,
+      "weight_zero_monomials": 7
+     },
+     "1048573": {
+      "generators_processed": 6,
+      "generators_total": 21,
+      "n_monomials": 49,
+      "nullity": 1,
+      "p": 1048573,
+      "rows_processed": 36,
+      "weight_zero_monomials": 7
+     }
+    },
+    "upper_bounds_mod_p": {
+     "1000037": 1,
+     "1048573": 1
+    }
+   },
+   "deg4": {
+    "T_even_dim": 2,
+    "bidegree": [
+     2,
+     2
+    ],
+    "certificate_met": true,
+    "certified_dim": 2,
+    "explicit_annihilated": [
+     "N^2",
+     "|S|^2"
+    ],
+    "explicit_not_annihilated": [],
+    "lower_bound_rank_Q": 2,
+    "n_monomials": 784,
+    "upper_bound_detail": {
+     "1000037": {
+      "generators_processed": 6,
+      "generators_total": 21,
+      "n_monomials": 784,
+      "nullity": 2,
+      "p": 1000037,
+      "rows_processed": 524,
+      "weight_zero_monomials": 52
+     },
+     "1048573": {
+      "generators_processed": 6,
+      "generators_total": 21,
+      "n_monomials": 784,
+      "nullity": 2,
+      "p": 1048573,
+      "rows_processed": 524,
+      "weight_zero_monomials": 52
+     }
+    },
+    "upper_bounds_mod_p": {
+     "1000037": 2,
+     "1048573": 2
+    }
+   },
+   "deg6_explicit_lower": 2
+  },
+  "SO7xU1_R16": {
+   "deg2": {
+    "T_even_dim": 2,
+    "bidegree": [
+     1,
+     1
+    ],
+    "certificate_met": true,
+    "certified_dim": 2,
+    "explicit_annihilated": [
+     "rho0",
+     "N"
+    ],
+    "explicit_not_annihilated": [],
+    "lower_bound_rank_Q": 2,
+    "n_monomials": 64,
+    "upper_bound_detail": {
+     "1000037": {
+      "generators_processed": 6,
+      "generators_total": 21,
+      "n_monomials": 64,
+      "nullity": 2,
+      "p": 1000037,
+      "rows_processed": 40,
+      "weight_zero_monomials": 10
+     },
+     "1048573": {
+      "generators_processed": 6,
+      "generators_total": 21,
+      "n_monomials": 64,
+      "nullity": 2,
+      "p": 1048573,
+      "rows_processed": 40,
+      "weight_zero_monomials": 10
+     }
+    },
+    "upper_bounds_mod_p": {
+     "1000037": 2,
+     "1048573": 2
+    }
+   },
+   "deg4": {
+    "T_even_dim": 5,
+    "bidegree": [
+     2,
+     2
+    ],
+    "certificate_met": true,
+    "certified_dim": 6,
+    "explicit_annihilated": [
+     "rho0^2",
+     "rho0 N",
+     "N^2",
+     "|S|^2",
+     "Re(psi0^2 Sbar)",
+     "Q"
+    ],
+    "explicit_not_annihilated": [],
+    "lower_bound_rank_Q": 6,
+    "n_monomials": 1296,
+    "upper_bound_detail": {
+     "1000037": {
+      "generators_processed": 6,
+      "generators_total": 21,
+      "n_monomials": 1296,
+      "nullity": 6,
+      "p": 1000037,
+      "rows_processed": 920,
+      "weight_zero_monomials": 102
+     },
+     "1048573": {
+      "generators_processed": 6,
+      "generators_total": 21,
+      "n_monomials": 1296,
+      "nullity": 6,
+      "p": 1048573,
+      "rows_processed": 920,
+      "weight_zero_monomials": 102
+     }
+    },
+    "upper_bounds_mod_p": {
+     "1000037": 6,
+     "1048573": 6
+    }
+   }
+  },
+  "T_odd_deg4": "Q",
+  "T_parity": {
+   "N": 1,
+   "N^2": 1,
+   "Q": -1,
+   "Re(psi0^2 Sbar)": 1,
+   "rho0": 1,
+   "rho0 N": 1,
+   "rho0^2": 1,
+   "|S|^2": 1
+  },
+  "all_certificates_met": true,
+  "basis_deg2": [
+   "rho0",
+   "N"
+  ],
+  "basis_deg4": [
+   "rho0^2",
+   "rho0 N",
+   "N^2",
+   "|S|^2",
+   "Re(psi0^2 Sbar)"
+  ],
+  "extra_invariants_found": true,
+  "hand_count": {
+   "deg2": 2,
+   "deg4": 6,
+   "deg4_T_even": 5
+  },
+  "locality_g2_equals_so7": true,
+  "methods_agree_deg2_deg4": true,
+  "pair_rank_11": true,
+  "point_of_record": {
+   "basis_order": [
+    "rho0^2",
+    "rho0 N",
+    "N^2",
+    "|S|^2",
+    "Re(psi0^2 Sbar)"
+   ],
+   "effective_ABc4c5": [
+    "0",
+    "0",
+    "0",
+    "0"
+   ],
+   "in_T_even_basis": true,
+   "is_origin": true,
+   "quartic_coefficients": [
+    "1",
+    "2",
+    "1",
+    "0",
+    "0"
+   ]
+  },
+  "weyl": {
+   "G2xU1_R14": [
+    1,
+    2,
+    2
+   ],
+   "G2xU1_R16": [
+    2,
+    6,
+    10
+   ],
+   "SO7xU1_R14": [
+    1,
+    2,
+    2
+   ],
+   "SO7xU1_R16": [
+    2,
+    6,
+    10
+   ]
+  }
+ },
+ "phase2": {
+  "F_VS_3": false,
+  "codimension": {
+   "P0": "the origin of the effective (A, B, c4, c5) space; the whole orbit space is the minimizer set there",
+   "RUS_directions_deg2": 1,
+   "RUS_directions_deg4_T_even": 4,
+   "RUS_directions_total": 5,
+   "effective_parameters_on_fixed_density": 4
+  },
+  "criterion_pi1_zero_iff_rho0_zero_and_S_zero": true,
+  "criterion_table": {
+   "F7": {
+    "agree": true,
+    "pi1_zero": true,
+    "rho0_zero_and_S_zero": true
+   },
+   "I7": {
+    "agree": true,
+    "pi1_zero": false,
+    "rho0_zero_and_S_zero": false
+   },
+   "MF": {
+    "agree": true,
+    "pi1_zero": false,
+    "rho0_zero_and_S_zero": false
+   },
+   "MI+": {
+    "agree": true,
+    "pi1_zero": false,
+    "rho0_zero_and_S_zero": false
+   },
+   "MI-": {
+    "agree": true,
+    "pi1_zero": false,
+    "rho0_zero_and_S_zero": false
+   },
+   "MI0": {
+    "agree": true,
+    "pi1_zero": false,
+    "rho0_zero_and_S_zero": false
+   },
+   "MP+": {
+    "agree": true,
+    "pi1_zero": false,
+    "rho0_zero_and_S_zero": false
+   },
+   "MP-": {
+    "agree": true,
+    "pi1_zero": false,
+    "rho0_zero_and_S_zero": false
+   },
+   "MP0": {
+    "agree": true,
+    "pi1_zero": false,
+    "rho0_zero_and_S_zero": false
+   },
+   "P7": {
+    "agree": true,
+    "pi1_zero": false,
+    "rho0_zero_and_S_zero": false
+   },
+   "R": {
+    "agree": true,
+    "pi1_zero": false,
+    "rho0_zero_and_S_zero": false
+   }
+  },
+  "reduction_check": true,
+  "sampling": {
+   "P0_only_at_origin": true,
+   "P0_points": [
+    [
+     "0",
+     "0",
+     "0",
+     "0"
+    ]
+   ],
+   "cone_property": true,
+   "grid": [
+    "-2",
+    "-1",
+    "-1/2",
+    "0",
+    "1/2",
+    "1",
+    "2"
+   ],
+   "n_points": 2401,
+   "outcome_key_format": "sorted stratum labels joined by \",\"; degenerate faces, if any, appended after \" | \" joined by \",\"",
+   "pi1_zero_iff_rho0_zero_and_S_zero_on_all_nondegenerate_minimizers": true,
+   "strata_realized_as_minimizers": [
+    "F7",
+    "I7",
+    "MF",
+    "MI",
+    "MP",
+    "P7",
+    "R"
+   ],
+   "tally": {
+    "F7": 356,
+    "F7,I7,MF,MI,MP,P7,R": 1,
+    "F7,I7,MP,P7,R": 6,
+    "F7,I7,P7": 82,
+    "F7,I7,P7,R": 9,
+    "F7,MF,R": 3,
+    "F7,MI,MP": 8,
+    "F7,MP": 2,
+    "F7,R": 45,
+    "MF": 18,
+    "MF,MI,MP": 6,
+    "MI": 66,
+    "MP": 393,
+    "MP,P7,R": 12,
+    "P7": 638,
+    "P7,R": 48,
+    "R": 708
+   }
+  },
+  "strata": {
+   "F7": {
+    "K": "SU2_long",
+    "K_connected": true,
+    "P_kind": "U(1)",
+    "P_reason": "psi0 = 0 and Gram(u, v) scalar (S = 0): every phase is realized by a G2 rotation of the (u, v)-plane; phase_in_h = True",
+    "dim_V": 11,
+    "dim_h": 4,
+    "dim_k": 3,
+    "dynkin_index": "1",
+    "elementary_winding": null,
+    "invariants": {
+     "gram_scalar": true,
+     "rank_uv": 2,
+     "rho_norm": "0",
+     "s2_norm": "0",
+     "t_norm": "0"
+    },
+    "m": null,
+    "orbit": "V2(R7)",
+    "orbit_rank_of_imaginary_part": 11,
+    "phase_in_h": true,
+    "pi0_H": "trivial",
+    "pi0_K": "trivial",
+    "pi1": "0",
+    "pi1_nontrivial": false,
+    "pi2": "0",
+    "pi3": "0",
+    "pi3_generating_su2_in_k": true,
+    "representative": {
+     "1": [
+      "1",
+      "0"
+     ],
+     "2": [
+      "0",
+      "1"
+     ]
+    },
+    "witness": null
+   },
+   "I7": {
+    "K": "SU2_long",
+    "K_connected": true,
+    "P_kind": "Z2",
+    "P_reason": "psi0 = 0 and Gram(u, v) non-scalar: R_alpha^T Gram R_alpha = Gram only for alpha in {0, pi}; witness (sigma_H', -1) in H",
+    "dim_V": 12,
+    "dim_h": 3,
+    "dim_k": 3,
+    "dynkin_index": "1",
+    "elementary_winding": "pi",
+    "invariants": {
+     "gram_scalar": false,
+     "rank_uv": 2,
+     "rho_norm": "0",
+     "s2_norm": "49/625",
+     "t_norm": "0"
+    },
+    "m": 2,
+    "orbit": "V2(R7)",
+    "orbit_rank_of_imaginary_part": 11,
+    "phase_in_h": false,
+    "pi0_H": "Z2",
+    "pi0_K": "trivial",
+    "pi1": "Z",
+    "pi1_nontrivial": true,
+    "pi2": "0",
+    "pi3": "0",
+    "pi3_generating_su2_in_k": true,
+    "representative": {
+     "1": [
+      "3",
+      "0"
+     ],
+     "2": [
+      "0",
+      "4"
+     ]
+    },
+    "witness": {
+     "fano_line": [
+      3,
+      4,
+      6
+     ],
+     "is_automorphism": true,
+     "maps_psi_to_minus_psi": true,
+     "omega": -1,
+     "signs": [
+      1,
+      -1,
+      -1,
+      1,
+      1,
+      -1,
+      1,
+      -1
+     ]
+    }
+   },
+   "MF": {
+    "K": "SU2_long",
+    "K_connected": true,
+    "P_kind": "trivial",
+    "P_reason": "psi0 != 0: g fixes e0, so omega psi0 = psi0 forces omega = 1",
+    "dim_V": 12,
+    "dim_h": 3,
+    "dim_k": 3,
+    "dynkin_index": "1",
+    "elementary_winding": "2pi",
+    "invariants": {
+     "gram_scalar": true,
+     "rank_uv": 2,
+     "rho_norm": "1/3",
+     "s2_norm": "0",
+     "t_norm": "0"
+    },
+    "m": 1,
+    "orbit": "V2(R7)",
+    "orbit_rank_of_imaginary_part": 11,
+    "phase_in_h": false,
+    "pi0_H": "trivial",
+    "pi0_K": "trivial",
+    "pi1": "Z",
+    "pi1_nontrivial": true,
+    "pi2": "0",
+    "pi3": "0",
+    "pi3_generating_su2_in_k": true,
+    "representative": {
+     "0": [
+      "1",
+      "0"
+     ],
+     "1": [
+      "1",
+      "0"
+     ],
+     "2": [
+      "0",
+      "1"
+     ]
+    },
+    "witness": null
+   },
+   "MI+": {
+    "K": "SU2_long",
+    "K_connected": true,
+    "P_kind": "trivial",
+    "P_reason": "psi0 != 0: g fixes e0, so omega psi0 = psi0 forces omega = 1",
+    "dim_V": 12,
+    "dim_h": 3,
+    "dim_k": 3,
+    "dynkin_index": "1",
+    "elementary_winding": "2pi",
+    "invariants": {
+     "gram_scalar": false,
+     "rank_uv": 2,
+     "rho_norm": "1/26",
+     "s2_norm": "49/676",
+     "t_norm": "7/676"
+    },
+    "m": 1,
+    "orbit": "V2(R7)",
+    "orbit_rank_of_imaginary_part": 11,
+    "phase_in_h": false,
+    "pi0_H": "trivial",
+    "pi0_K": "trivial",
+    "pi1": "Z",
+    "pi1_nontrivial": true,
+    "pi2": "0",
+    "pi3": "0",
+    "pi3_generating_su2_in_k": true,
+    "representative": {
+     "0": [
+      "1",
+      "0"
+     ],
+     "1": [
+      "4",
+      "0"
+     ],
+     "2": [
+      "0",
+      "3"
+     ]
+    },
+    "witness": null
+   },
+   "MI-": {
+    "K": "SU2_long",
+    "K_connected": true,
+    "P_kind": "trivial",
+    "P_reason": "psi0 != 0: g fixes e0, so omega psi0 = psi0 forces omega = 1",
+    "dim_V": 12,
+    "dim_h": 3,
+    "dim_k": 3,
+    "dynkin_index": "1",
+    "elementary_winding": "2pi",
+    "invariants": {
+     "gram_scalar": false,
+     "rank_uv": 2,
+     "rho_norm": "1/26",
+     "s2_norm": "49/676",
+     "t_norm": "-7/676"
+    },
+    "m": 1,
+    "orbit": "V2(R7)",
+    "orbit_rank_of_imaginary_part": 11,
+    "phase_in_h": false,
+    "pi0_H": "trivial",
+    "pi0_K": "trivial",
+    "pi1": "Z",
+    "pi1_nontrivial": true,
+    "pi2": "0",
+    "pi3": "0",
+    "pi3_generating_su2_in_k": true,
+    "representative": {
+     "0": [
+      "1",
+      "0"
+     ],
+     "1": [
+      "3",
+      "0"
+     ],
+     "2": [
+      "0",
+      "4"
+     ]
+    },
+    "witness": null
+   },
+   "MI0": {
+    "K": "SU2_long",
+    "K_connected": true,
+    "P_kind": "trivial",
+    "P_reason": "psi0 != 0: g fixes e0, so omega psi0 = psi0 forces omega = 1",
+    "dim_V": 12,
+    "dim_h": 3,
+    "dim_k": 3,
+    "dynkin_index": "1",
+    "elementary_winding": "2pi",
+    "invariants": {
+     "gram_scalar": false,
+     "rank_uv": 2,
+     "rho_norm": "2/27",
+     "s2_norm": "49/729",
+     "t_norm": "0"
+    },
+    "m": 1,
+    "orbit": "V2(R7)",
+    "orbit_rank_of_imaginary_part": 11,
+    "phase_in_h": false,
+    "pi0_H": "trivial",
+    "pi0_K": "trivial",
+    "pi1": "Z",
+    "pi1_nontrivial": true,
+    "pi2": "0",
+    "pi3": "0",
+    "pi3_generating_su2_in_k": true,
+    "representative": {
+     "0": [
+      "1",
+      "1"
+     ],
+     "1": [
+      "3",
+      "0"
+     ],
+     "2": [
+      "0",
+      "4"
+     ]
+    },
+    "witness": null
+   },
+   "MP+": {
+    "K": "SU3",
+    "K_connected": true,
+    "P_kind": "trivial",
+    "P_reason": "psi0 != 0: g fixes e0, so omega psi0 = psi0 forces omega = 1",
+    "dim_V": 7,
+    "dim_h": 8,
+    "dim_k": 8,
+    "dynkin_index": "1",
+    "elementary_winding": "2pi",
+    "invariants": {
+     "gram_scalar": false,
+     "rank_uv": 1,
+     "rho_norm": "9/25",
+     "s2_norm": "256/625",
+     "t_norm": "144/625"
+    },
+    "m": 1,
+    "orbit": "S6",
+    "orbit_rank_of_imaginary_part": 6,
+    "phase_in_h": false,
+    "pi0_H": "trivial",
+    "pi0_K": "trivial",
+    "pi1": "Z",
+    "pi1_nontrivial": true,
+    "pi2": "0",
+    "pi3": "0",
+    "pi3_generating_su2_in_k": true,
+    "representative": {
+     "0": [
+      "3",
+      "0"
+     ],
+     "1": [
+      "4",
+      "0"
+     ]
+    },
+    "witness": null
+   },
+   "MP-": {
+    "K": "SU3",
+    "K_connected": true,
+    "P_kind": "trivial",
+    "P_reason": "psi0 != 0: g fixes e0, so omega psi0 = psi0 forces omega = 1",
+    "dim_V": 7,
+    "dim_h": 8,
+    "dim_k": 8,
+    "dynkin_index": "1",
+    "elementary_winding": "2pi",
+    "invariants": {
+     "gram_scalar": false,
+     "rank_uv": 1,
+     "rho_norm": "9/25",
+     "s2_norm": "256/625",
+     "t_norm": "-144/625"
+    },
+    "m": 1,
+    "orbit": "S6",
+    "orbit_rank_of_imaginary_part": 6,
+    "phase_in_h": false,
+    "pi0_H": "trivial",
+    "pi0_K": "trivial",
+    "pi1": "Z",
+    "pi1_nontrivial": true,
+    "pi2": "0",
+    "pi3": "0",
+    "pi3_generating_su2_in_k": true,
+    "representative": {
+     "0": [
+      "3",
+      "0"
+     ],
+     "1": [
+      "0",
+      "4"
+     ]
+    },
+    "witness": null
+   },
+   "MP0": {
+    "K": "SU3",
+    "K_connected": true,
+    "P_kind": "trivial",
+    "P_reason": "psi0 != 0: g fixes e0, so omega psi0 = psi0 forces omega = 1",
+    "dim_V": 7,
+    "dim_h": 8,
+    "dim_k": 8,
+    "dynkin_index": "1",
+    "elementary_winding": "2pi",
+    "invariants": {
+     "gram_scalar": false,
+     "rank_uv": 1,
+     "rho_norm": "1/3",
+     "s2_norm": "4/9",
+     "t_norm": "0"
+    },
+    "m": 1,
+    "orbit": "S6",
+    "orbit_rank_of_imaginary_part": 6,
+    "phase_in_h": false,
+    "pi0_H": "trivial",
+    "pi0_K": "trivial",
+    "pi1": "Z",
+    "pi1_nontrivial": true,
+    "pi2": "0",
+    "pi3": "0",
+    "pi3_generating_su2_in_k": true,
+    "representative": {
+     "0": [
+      "1",
+      "1"
+     ],
+     "1": [
+      "2",
+      "0"
+     ]
+    },
+    "witness": null
+   },
+   "P7": {
+    "K": "SU3",
+    "K_connected": true,
+    "P_kind": "Z2",
+    "P_reason": "psi0 = 0 and Gram(u, v) non-scalar: R_alpha^T Gram R_alpha = Gram only for alpha in {0, pi}; witness (sigma_H', -1) in H",
+    "dim_V": 7,
+    "dim_h": 8,
+    "dim_k": 8,
+    "dynkin_index": "1",
+    "elementary_winding": "pi",
+    "invariants": {
+     "gram_scalar": false,
+     "rank_uv": 1,
+     "rho_norm": "0",
+     "s2_norm": "1",
+     "t_norm": "0"
+    },
+    "m": 2,
+    "orbit": "S6",
+    "orbit_rank_of_imaginary_part": 6,
+    "phase_in_h": false,
+    "pi0_H": "Z2",
+    "pi0_K": "trivial",
+    "pi1": "Z",
+    "pi1_nontrivial": true,
+    "pi2": "0",
+    "pi3": "0",
+    "pi3_generating_su2_in_k": true,
+    "representative": {
+     "1": [
+      "1",
+      "0"
+     ]
+    },
+    "witness": {
+     "fano_line": [
+      2,
+      3,
+      5
+     ],
+     "is_automorphism": true,
+     "maps_psi_to_minus_psi": true,
+     "omega": -1,
+     "signs": [
+      1,
+      -1,
+      1,
+      1,
+      -1,
+      1,
+      -1,
+      -1
+     ]
+    }
+   },
+   "R": {
+    "K": "G2",
+    "K_connected": true,
+    "P_kind": "trivial",
+    "P_reason": "psi0 != 0: g fixes e0, so omega psi0 = psi0 forces omega = 1",
+    "dim_V": 1,
+    "dim_h": 14,
+    "dim_k": 14,
+    "dynkin_index": "1",
+    "elementary_winding": "2pi",
+    "invariants": {
+     "gram_scalar": true,
+     "rank_uv": 0,
+     "rho_norm": "1",
+     "s2_norm": "0",
+     "t_norm": "0"
+    },
+    "m": 1,
+    "orbit": "point",
+    "orbit_rank_of_imaginary_part": 0,
+    "phase_in_h": false,
+    "pi0_H": "trivial",
+    "pi0_K": "trivial",
+    "pi1": "Z",
+    "pi1_nontrivial": true,
+    "pi2": "0",
+    "pi3": "0",
+    "pi3_generating_su2_in_k": true,
+    "representative": {
+     "0": [
+      "1",
+      "0"
+     ]
+    },
+    "witness": null
+   }
+  }
+ },
+ "phase3": {
+  "F_VS_4": false,
+  "F_a": {
+   "D-a.1 Re_O(psi psibar^dag) (degree 2)": {
+    "T_parity": 1,
+    "coefficients": [
+     "1",
+     "1"
+    ],
+    "degree": 2,
+    "g2_u1_invariant": true,
+    "in_basis": true,
+    "is_O16": true
+   },
+   "D-a.2 Re_O(psibar^dag psi) (degree 2)": {
+    "T_parity": 1,
+    "coefficients": [
+     "1",
+     "1"
+    ],
+    "degree": 2,
+    "g2_u1_invariant": true,
+    "in_basis": true,
+    "is_O16": true
+   },
+   "F-a.1 |<psi,psi>|^2 (the complex bilinear norm, modulus squared)": {
+    "Emin": "0",
+    "T_parity": 1,
+    "coefficients": [
+     "1",
+     "0",
+     "0",
+     "1",
+     "2"
+    ],
+    "degenerate_faces": [
+     "interior_segment"
+    ],
+    "degree": 4,
+    "effective_ABc4c5": [
+     "1",
+     "0",
+     "1",
+     "2"
+    ],
+    "g2_u1_invariant": true,
+    "in_T_even_basis": true,
+    "is_O16_point": false,
+    "minimizers": [
+     "F7",
+     "MI",
+     "MP"
+    ],
+    "pi1_of_minimizing_strata": {
+     "F7": "0",
+     "MI": "Z",
+     "MP": "Z"
+    }
+   },
+   "F-a.2 ||psi psibar^dag||^2_H": {
+    "Emin": "-1",
+    "T_parity": 1,
+    "coefficients": [
+     "1",
+     "4",
+     "2",
+     "-1",
+     "-2"
+    ],
+    "degenerate_faces": [
+     "edge_s=1-rho"
+    ],
+    "degree": 4,
+    "effective_ABc4c5": [
+     "-1",
+     "0",
+     "-1",
+     "-2"
+    ],
+    "g2_u1_invariant": true,
+    "in_T_even_basis": true,
+    "is_O16_point": false,
+    "minimizers": [
+     "MP",
+     "P7",
+     "R"
+    ],
+    "pi1_of_minimizing_strata": {
+     "MP": "Z",
+     "P7": "Z",
+     "R": "Z"
+    }
+   },
+   "F-a.3 ||psibar^dag psi||^2_H": {
+    "Emin": "-1",
+    "T_parity": 1,
+    "coefficients": [
+     "1",
+     "4",
+     "2",
+     "-1",
+     "-2"
+    ],
+    "degenerate_faces": [
+     "edge_s=1-rho"
+    ],
+    "degree": 4,
+    "effective_ABc4c5": [
+     "-1",
+     "0",
+     "-1",
+     "-2"
+    ],
+    "g2_u1_invariant": true,
+    "in_T_even_basis": true,
+    "is_O16_point": false,
+    "minimizers": [
+     "MP",
+     "P7",
+     "R"
+    ],
+    "pi1_of_minimizing_strata": {
+     "MP": "Z",
+     "P7": "Z",
+     "R": "Z"
+    }
+   },
+   "F-a.4 ||psi^2||^2_H": {
+    "Emin": "0",
+    "T_parity": 1,
+    "coefficients": [
+     "1",
+     "4",
+     "0",
+     "1",
+     "-2"
+    ],
+    "degenerate_faces": [],
+    "degree": 4,
+    "effective_ABc4c5": [
+     "-3",
+     "4",
+     "1",
+     "-2"
+    ],
+    "g2_u1_invariant": true,
+    "in_T_even_basis": true,
+    "is_O16_point": false,
+    "minimizers": [
+     "F7"
+    ],
+    "pi1_of_minimizing_strata": {
+     "F7": "0"
+    }
+   },
+   "F-a.5 N_O(psi psibar^dag) = sum_k P_k^2": {
+    "Emin": "0",
+    "T_parity": 1,
+    "coefficients": [
+     "1",
+     "0",
+     "0",
+     "1",
+     "2"
+    ],
+    "degenerate_faces": [
+     "interior_segment"
+    ],
+    "degree": 4,
+    "effective_ABc4c5": [
+     "1",
+     "0",
+     "1",
+     "2"
+    ],
+    "g2_u1_invariant": true,
+    "in_T_even_basis": true,
+    "is_O16_point": false,
+    "minimizers": [
+     "F7",
+     "MI",
+     "MP"
+    ],
+    "pi1_of_minimizing_strata": {
+     "F7": "0",
+     "MI": "Z",
+     "MP": "Z"
+    }
+   },
+   "F-a.6 ||Im_O(psi psibar^dag)||^2_H": {
+    "Emin": "-1",
+    "T_parity": 1,
+    "coefficients": [
+     "0",
+     "2",
+     "1",
+     "-1",
+     "-2"
+    ],
+    "degenerate_faces": [
+     "edge_s=1-rho"
+    ],
+    "degree": 4,
+    "effective_ABc4c5": [
+     "-1",
+     "0",
+     "-1",
+     "-2"
+    ],
+    "g2_u1_invariant": true,
+    "in_T_even_basis": true,
+    "is_O16_point": false,
+    "minimizers": [
+     "MP",
+     "P7",
+     "R"
+    ],
+    "pi1_of_minimizing_strata": {
+     "MP": "Z",
+     "P7": "Z",
+     "R": "Z"
+    }
+   }
+  },
+  "fixed_strata_by_live_sources": {},
+  "forcing_table": {
+   "F-a": {
+    "note": "computed; each algebra-native form located in the stratum table; forces nothing (I2 is the import; Q-A1-3 the reading of record)",
+    "status": "MAP"
+   },
+   "F-b": {
+    "note": "A-2.1 / Q-VS-1: the carrier of the real unit is not settled (not the K7 vertices); the computation is the named successor S-VS-1",
+    "status": "SCREENED_OUT"
+   },
+   "F-c": {
+    "note": "A-2.1 / Q-VS-2: the kernel couples to the total density; U*rho with rho = sum |psi_k|^2 is O(16)-symmetric; recorded, not computed",
+    "status": "NOT_FORCING"
+   },
+   "F-d": {
+    "note": "the oriented term O vanishes on every uniform state; defect-sector only (memo section 3)",
+    "status": "EXCLUDED"
+   }
+  },
+  "live_source_names": [],
+  "live_sources": 0
+ },
+ "runtime_seconds": 4,
+ "verdict": {
+  "H_items_not_class_changes": {
+   "F_VS_1": false,
+   "F_VS_3": false
+  },
+  "class_code": "VC-3",
+  "precedence": "VC-4 > VC-2 > VC-1 > VC-3",
+  "reasons": [
+   "the extra (RUS) invariants are certified; every source is a map, screened out, non-forcing or excluded; live_sources = 0"
+  ]
+ }
+}

@@ -1,0 +1,590 @@
+{
+ "results": [
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.memo_md5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.memo_bytes",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.lock_md5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.lock_bytes",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.t1_md5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.t1_patterns",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.scanner_md5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.extract_md5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.extract_bytes",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.schema_md5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.comparator_md5",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-0",
+   "kind": "EXACT",
+   "name": "identity.elections",
+   "result": "PASS"
+  },
+  {
+   "cc": "0ba1abe47793375bf8d0b59573b99e64",
+   "chat": "cb2e22308305cb6e2251531465984df5",
+   "check": "C-VS-0",
+   "kind": "DIFFERENT",
+   "name": "identity.instrument_md5 differ",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.g2_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.rank",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.all_derivations",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.all_antisymmetric",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.closure",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.dim_so4_H124",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.dim_su2_long",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.dim_su2_short",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.index_su2_long",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.index_su2_short",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0a.PASS",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0b.commutant_dim_on_7",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0b.commutant_dim_on_1plus7",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0b.PASS",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.u8_deg2.certified_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.u8_deg2.lower_bound_rank_Q",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.u8_deg4.certified_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.u8_deg4.lower_bound_rank_Q",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.o16_deg2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.o16_deg4",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.so16_orbit_rank_at_unit_vector",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0c.PASS",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.dim_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.dim_k",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.phase_in_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.orbit_rank",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.m",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.witness_rotation_pi_perp",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.pi1",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.elementary_winding",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.pi2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_polar.pi3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.dim_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.dim_k",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.phase_in_h",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.orbit_rank",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.d",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.pi1",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.pi2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.spin1_ferro.pi3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.weyl_spin1_invariant_dims",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.binary_tetrahedral.order",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.binary_tetrahedral.closed",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0d.PASS",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0e.e0",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0e.e1",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0e.pair_e1_e2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0e.associative_triple_e1_e2_e4",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0e.generic_triple_e1_e2_e3",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0e.PASS",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0f.su3_dim",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0f.annihilated",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0f.lower_bound_deg2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0f.g2_u1_deg2",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.0f.PASS",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": null,
+   "check": "C-VS-1",
+   "kind": "EXACT",
+   "name": "phase0.all_pass",
+   "result": "PASS"
+  },
+  {
+   "cc": null,
+   "chat": [],
+   "check": "C-VS-6",
+   "kind": "EXACT",
+   "name": "T1_post_write.hits (chat) empty",
+   "result": "PASS"
+  },
+  {
+   "cc": [],
+   "chat": null,
+   "check": "C-VS-6",
+   "kind": "EXACT",
+   "name": "T1_post_write.hits (cc) empty",
+   "result": "PASS"
+  }
+ ],
+ "summary": {
+  "ALL_PASS": true,
+  "checks": 71,
+  "exact_misses": 0,
+  "misses": 0,
+  "passed": 71,
+  "preread_pair": true,
+  "representational_misses": 0,
+  "schema_md5": "4690e07d5a22cc7a1c5d08db39eda3fe",
+  "verdict_codes": [
+   [
+    "<MISSING>"
+   ],
+   [
+    "<MISSING>"
+   ]
+  ]
+ }
+}

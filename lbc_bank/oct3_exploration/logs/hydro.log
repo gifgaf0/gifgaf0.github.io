@@ -1,0 +1,22 @@
+[base] e=31.26602869 mu=55.856785 area=1.839630 (6s)
+[fs] twist x k=0.02: f_s=0.095176  (12s)
+[fs] twist y k=0.02: f_s=0.095176  (18s)
+[fs] twist x k=0.04: f_s=0.095160  (23s)
+[fs] twist y k=0.04: f_s=0.095160  (29s)
+[alpha] h=0.01: 43.73181  h=2h: 43.73161  Richardson 43.73188  (mu check: dmu/drho ~ 55.85225 vs mu 55.85678)
+[M=C_xxxx] h: 91.63222  2h: 91.70862  Richardson 91.60676; first-derivative (stress) check 1.09e-03
+[elastic] C_xxyy=30.50807 C_yyyy=91.60863 (C_xxxx=91.63222); mu(shear)=30.55202/30.53502 R=30.55769; (C_xxxx-C_xxyy)/2=30.56208
+[gamma] d2e/drho deps_x = 8.01530   (y: 8.01958)  (180s)
+[hydro prediction] {
+ "c_plus": 11.209094376336896,
+ "c_minus": 1.816616469693084,
+ "c_T": 5.811365191431582,
+ "c_star2": 9.635859401274352,
+ "F_minus": 0.051786597380473046,
+ "F_plus": 0.9482134026195269,
+ "Zq_minus_percell": 0.02622132389581857,
+ "Zq_plus_percell": 0.07781011360601674,
+ "static_share_minus": 0.6752552568528543,
+ "c_kappa": 6.5597689948032105,
+ "chi_static_percell": 0.04275170007727099
+}

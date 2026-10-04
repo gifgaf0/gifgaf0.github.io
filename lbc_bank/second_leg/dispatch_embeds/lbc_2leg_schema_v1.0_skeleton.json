@@ -1,0 +1,152 @@
+{
+ "schema": "lbc_2leg_schema_v1.0",
+ "leg": "cc",
+ "2d": {
+  "44": {
+   "astar": null,
+   "c2": null,
+   "cT": null,
+   "c1": null,
+   "F2": null,
+   "Z21": null,
+   "S2": null
+  },
+  "28": {
+   "astar": null,
+   "c2": null,
+   "cT": null,
+   "c1": null,
+   "F2": null,
+   "Z21": null,
+   "S2": null
+  },
+  "22": {
+   "astar": null,
+   "c2": null,
+   "cT": null,
+   "c1": null,
+   "F2": null,
+   "Z21": null,
+   "S2": null,
+   "f_s": null,
+   "fsum_resid_max": null,
+   "static_resid_max": null,
+   "cT_30deg_kf005": null
+  },
+  "16": {
+   "astar": null,
+   "c2": null,
+   "cT": null,
+   "c1": null,
+   "F2": null,
+   "Z21": null,
+   "S2": null,
+   "f_s": null
+  },
+  "14": {
+   "astar": null,
+   "c2": null,
+   "cT": null,
+   "c1": null,
+   "F2": null,
+   "Z21": null,
+   "S2": null,
+   "f_s": null
+  },
+  "13.5": {
+   "astar": null,
+   "c2": null,
+   "cT": null,
+   "c1": null,
+   "F2": null,
+   "Z21": null,
+   "S2": null,
+   "f_s": null
+  },
+  "13": {
+   "astar": null,
+   "c2": null,
+   "cT": null,
+   "c1": null,
+   "F2": null,
+   "Z21": null,
+   "S2": null,
+   "f_s": null
+  },
+  "13.25": {
+   "astar": null,
+   "c2": null,
+   "cT": null,
+   "c1": null,
+   "F2": null,
+   "Z21": null,
+   "S2": null,
+   "f_s": null
+  },
+  "35g6": {
+   "astar": null,
+   "c2": null,
+   "cT": null,
+   "c1": null,
+   "F2": null,
+   "Z21": null,
+   "S2": null
+  }
+ },
+ "hydro_g22": {
+  "f_s": null,
+  "alpha": null,
+  "M": null,
+  "Cxxyy": null,
+  "mu": null,
+  "gamma": null,
+  "F_minus": null,
+  "c_minus": null,
+  "c_plus": null,
+  "c_T": null,
+  "static_share_minus": null
+ },
+ "3d": {
+  "c2": null,
+  "cT_min": null,
+  "cT_max": null,
+  "c1_basal_q015": null,
+  "F2_basal_q015": null,
+  "Z21_basal_q015": null,
+  "S2_basal_q015": null,
+  "c_kappa": null
+ },
+ "melting": {
+  "Lambda_c": null,
+  "Lambda_u": null,
+  "energy_crossing": null,
+  "ratio_at_Lambda_c": null,
+  "F2_at_Lambda_c": null,
+  "ratio_max_metastable": null,
+  "branch_end_g": null,
+  "any_c2_ge_cT": null
+ },
+ "loss": {
+  "v467_best_orders": null,
+  "v467_worst_orders": null,
+  "main_orders_recovered": [
+   null,
+   null
+  ],
+  "main_headline_orders": [
+   null,
+   null
+  ],
+  "band_orders": [
+   null,
+   null
+  ],
+  "xi_req_main_m": [
+   null,
+   null
+  ],
+  "eq3_coefficient": null,
+  "eq4_bound": null,
+  "drag_prefactor_3d_coeff": null
+ }
+}

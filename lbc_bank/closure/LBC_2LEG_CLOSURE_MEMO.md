@@ -9,7 +9,10 @@ Two-leg closure of the numbers cited by the paper "Second sound breaks the commo
 - **3D basis.** The plane-wave basis was too small. That made the 3D shear speeds up to 6 % too low.
 - **Melting end.** The search for the end of the crystal branch mistook a collapsed, uniform state for the end of the branch.
 
-**After correction.** I fixed the three defects and recomputed everything with my own code, otherwise unchanged. The two computations now agree on all 112 numbers, to 0.1 % or better.
+**After correction.** I fixed the three defects and recomputed everything with my own code, otherwise unchanged. The two computations now agree on all 112 numbers within the comparator's tolerances:
+- every speed and weight to 0.13 % or better;
+- one weight read off at the melting boundary to 0.5 %;
+- the loss-length results to 0.02 on the paper's log scale (4 % in the required length).
 
 **Conclusions.** None changes:
 - Second sound stays below the shear ("light") speed everywhere.
@@ -101,9 +104,9 @@ Comparator (E3 rules, unchanged) against `lbc_cc_checkpoint.json`: **112 checks,
 - **2D:** speeds ≤ 0.08 %, weights ≤ 0.13 %, a* ≤ 0.024 %, f_s ≤ 0.013 %.
 - **3D:** ≤ 0.013 %.
 - **Static hydrodynamics:** ≤ 0.05 %.
-- **Melting:** Λ_c 13.0408 against 13.0446 (the first leg interpolates, the second leg root-finds); ratios ≤ 0.0004 absolute.
+- **Melting:** Λ_c 13.0408 against 13.0446 (the first leg interpolates, the second leg root-finds); ratios ≤ 0.0004 absolute; F₂ at Λ_c 0.4146 against 0.4125 (0.5 %).
 - **`branch_end_g`:** the chat value 12.37 is a bound (the lowest g at which the crystal was found), not a fold.
-- **Loss:** ≤ 0.02 orders; ξ_req ≤ 4 %.
+- **Loss:** ≤ 0.02 orders; ξ_req ≤ 4.3 %; Eq. (3) coefficient 0.57 % (at the dispatch's c_T = 7.68).
 
 **Register.** The paper-cited numbers are two-leg, with one exception: the fold location (12.33) is second-leg only and is not cited.
 

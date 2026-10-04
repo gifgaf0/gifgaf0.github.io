@@ -1,0 +1,11 @@
+res first 0.001894597991662464 lbfgs 1.195659210269383e-05 nk nan final 1.195659210269383e-05 ward 0.0015339154498424331 39s
+0.005 False cT=5.811634 others [np.float64(1.81698), np.float64(11.20772)]
+0.005 True cT=5.811588 others [np.float64(1.81698), np.float64(11.20775)]
+0.01 False cT=5.811338 others [np.float64(1.81683), np.float64(11.20724)]
+0.01 True cT=5.811153 others [np.float64(1.81684), np.float64(11.20734)]
+0.03 False cT=5.810378 others [np.float64(1.8153), np.float64(11.20321)]
+0.03 True cT=5.808699 others [np.float64(1.81534), np.float64(11.20408)]
+0.05 False cT=5.808584 others [np.float64(1.81224), np.float64(11.19511)]
+0.05 True cT=5.803879 others [np.float64(1.81234), np.float64(11.19759)]
+0.1 False cT=5.800326 others [np.float64(1.79786), np.float64(11.15526)]
+0.1 True cT=5.780743 others [np.float64(1.7982), np.float64(11.16627)]

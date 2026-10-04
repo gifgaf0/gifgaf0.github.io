@@ -26,6 +26,6 @@
 - **Light and gravitational waves in one channel**: partly settled (the speed equality is a symmetry identity in the untextured case). It is not settled for an aligned vacuum.
 - **Physical scale**: the medium has no grain size consistent with the cosmic-ray bound.
 - **Masses**: the proton mass is not yet a prediction (it uses a fitted anchor). Several mass and nuclear-decay patterns stay at the conjecture level, with stated tests.
-- **Papers in motion**: a short negative-result paper on the shared-speed-limit failure. The draft is ready; an independent recomputation of its numbers is queued.
+- **Papers in motion**: a short negative-result paper on the shared-speed-limit failure. The draft is ready. Its numbers have now been computed twice, independently. The second computation caught three small defects in the first; once those were fixed, the two agree on every number.
 
-*Every claim above is recorded with its evidence in the project's append-only ledger. Nothing here relies on unpublished numbers that have not been computed at least once, and the numbers the new paper cites are queued for an independent second computation.*
+*Every claim above is recorded with its evidence in the project's append-only ledger. Nothing here relies on unpublished numbers that have not been computed at least once, and the numbers the new paper cites agree between two independent computations.*

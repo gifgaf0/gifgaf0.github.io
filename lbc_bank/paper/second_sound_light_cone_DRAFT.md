@@ -7,9 +7,11 @@ slower sound that the whirlpools are coupled to. Fast matter would make a sonic 
 sound speed equalled the light speed to about one part in 10^23. We compute this in a standard model supersolid in two
 and three dimensions, up to the point where it melts; second sound always stays below the light speed. The general
 worry is known; what is new is the concrete supersolid calculation and its numbers.
-Status of numbers: every number below was computed once (single leg) with internal cross-checks (two sum rules, an
-independent static hydrodynamic route, an external analytic re-derivation of the hydrodynamic formulas). A blind
-second computation of the cited numbers is prepared (dispatch LBC_SECOND_LEG_DISPATCH_INBAND.md) but not yet run.
+Status of numbers: every cited number was computed twice, independently. The blind second computation
+(lbc_bank/second_leg/) agreed with the first on 108 of 112 numbers. The four misses traced to the first computation:
+2D ground states not converged tightly enough (transverse speeds 0.5-1 % low), a 3D plane-wave basis too small
+(transverse speeds up to 6 % low), and a selection artifact at the melting end. With those corrected the two agree on
+all 112 (2D <= 0.13 %, 3D <= 0.02 %); the tables use the corrected values (lbc_bank/closure/).
 Citations: each was checked against its publisher, arXiv or INSPIRE record (see the citation log in lbc_bank/paper/).
 Draft date: October 4, 2026.
 -->
@@ -21,7 +23,7 @@ Independent researcher, Hollister, California, USA
 
 ## Abstract
 
-Medium-based models of the vacuum must give matter and light one causal cone, and every excitation that matter couples to must be at least as fast as light. A supersolid is the natural medium for one popular picture: its superfluid order hosts vortex-knot "matter" and its shear rigidity carries transverse "light". We show that this picture fails generically. A supersolid has two longitudinal sounds. From zero-temperature supersolid hydrodynamics we obtain the fraction of the density response carried by the lower one (second sound), $F_- = \rho_s (M-\rho\gamma)^2/[\rho^2\rho_n (c_+^2-c_*^2)(c_+^2-c_-^2)]$. It vanishes only without superflow or under the coincidence $M=\rho\gamma$ between two independent elastic coefficients. We run Bogoliubov–de Gennes calculations for the soft-core Gross–Pitaevskii supersolid in two and three dimensions, checked against the f-sum and compressibility sum rules and against an independent static hydrodynamic route. Second sound comes out at 0.06–0.8 of the shear speed, carrying 0.2–41 % of the f-sum and 63–81 % of the static density response. Toward the first-order melting transition the ratio $c_2/c_T$ rises to 0.78 at the phase boundary and never reaches one. Vortex cores carry density deficits and circulation, so moving matter radiates second sound above $c_2<c_T$. The drag is proportional to the branch's f-sum share and independent of its speed, and the same vertex supplies the short-range static attraction between defects. Survival of ultra-high-energy cosmic rays then requires a macroscopic substrate scale ($\gtrsim 10^4$ m) or $|1-c_2/c_T| \lesssim 10^{-23}$. The result is a concrete instance of the fine-tuning problem of emergent Lorentz invariance, and we connect it to the nineteenth-century elastic-ether debate.
+Medium-based models of the vacuum must give matter and light one causal cone, and every excitation that matter couples to must be at least as fast as light. A supersolid is the natural medium for one popular picture: its superfluid order hosts vortex-knot "matter" and its shear rigidity carries transverse "light". We show that this picture fails generically. A supersolid has two longitudinal sounds. From zero-temperature supersolid hydrodynamics we obtain the fraction of the density response carried by the lower one (second sound), $F_- = \rho_s (M-\rho\gamma)^2/[\rho^2\rho_n (c_+^2-c_*^2)(c_+^2-c_-^2)]$. It vanishes only without superflow or under the coincidence $M=\rho\gamma$ between two independent elastic coefficients. We run Bogoliubov–de Gennes calculations for the soft-core Gross–Pitaevskii supersolid in two and three dimensions, checked against the f-sum and compressibility sum rules and against an independent static hydrodynamic route. Second sound comes out at 0.06–0.8 of the shear speed, carrying 0.2–41 % of the f-sum and 64–80 % of the static density response. Toward the first-order melting transition the ratio $c_2/c_T$ rises to 0.77 at the phase boundary and to 0.79 on the metastable crystal branch, then falls as second sound softens toward the crystal's spinodal; it never reaches one. Vortex cores carry density deficits and circulation, so moving matter radiates second sound above $c_2<c_T$. The drag is proportional to the branch's f-sum share and independent of its speed, and the same vertex supplies the short-range static attraction between defects. Survival of ultra-high-energy cosmic rays then requires a macroscopic substrate scale ($\gtrsim 10^4$ m) or $|1-c_2/c_T| \lesssim 10^{-23}$. The result is a concrete instance of the fine-tuning problem of emergent Lorentz invariance, and we connect it to the nineteenth-century elastic-ether debate.
 
 ---
 
@@ -64,47 +66,48 @@ Two further identities are useful. The compressibility sum rule reads $\sum_\nu 
 
 ## 4. Numbers for the soft-core supersolid
 
-**Method.** For each coupling $g$ we relax the Gross–Pitaevskii state on a primitive triangular cell ($96^2$ real-space grid), optimize the lattice constant at fixed mean density, and polish the state with decreasing time steps until the translation Ward identity holds. Bogoliubov–de Gennes (BdG) excitations follow from the Hermitian form $L^{1/2}(L+2X)L^{1/2}$ in a basis of $32^2$ plane waves (checked at $40^2$). Here $L=-\tfrac12\nabla^2+U*\rho_0-\mu$ and $X f=\psi_0\,U*(\psi_0f)$. For each mode we compute the density matrix element $\rho_\nu(\mathbf q)=\int_{\rm cell}e^{-i\mathbf q\cdot\mathbf r}\psi_0 f_{+,\nu}$ with the BdG normalization $\int(|u|^2-|v|^2)=1$, and the weight $Z_\nu=|\rho_\nu|^2$. Two sum rules are imposed at every wavevector. The f-sum $\sum_\nu\omega_\nu Z_\nu=N_{\rm cell}q^2/2$, and the static sum $\sum_\nu 2Z_\nu/\omega_\nu$, which must equal a direct solution of $(L+2X)f=-2e^{i\mathbf q\cdot\mathbf r}\psi_0$. Both hold to $10^{-6}$ in every run. Modes are identified by polarization rather than by frequency order. The transverse mode is the gapless mode with zero density weight ($\le10^{-17}$ along both inequivalent mirror directions, parallel to a lattice vector and at 30° to it). The other two gapless modes are the longitudinal pair, so an inversion $c_2>c_T$ would be detected. Speeds are least-squares slopes over $|\mathbf q|a/2\pi\in[0.03,0.10]$ for $\mathbf q$ parallel to a lattice vector (the 30° direction agrees to 0.1 %). Weights are quoted at $|\mathbf q|a/2\pi=0.05$, where $Z_\nu/q$ is flat to 1 %.
+**Method.** For each coupling $g$ we relax the Gross–Pitaevskii state on a primitive triangular cell ($96^2$ real-space grid), optimize the lattice constant at fixed mean density, and converge the state by quasi-Newton minimization of the energy at fixed norm, to a relative Gross–Pitaevskii residual below $4\times10^{-5}$. At that level no BdG eigenvalue near $\Gamma$ is negative, and the transverse speed at $q\to0$ equals the static value $\sqrt{\mu/\rho_n}$ to $4\times10^{-5}$. (A looser convergence leaves a slightly negative translational zero mode, which lowers every acoustic branch by a constant offset in $\omega^2$; at the wavevectors used below this biases the transverse speed low by up to 1 %.) Bogoliubov–de Gennes (BdG) excitations follow from the Hermitian form $L^{1/2}(L+2X)L^{1/2}$ in a basis of $32^2$ plane waves (checked at $40^2$). Here $L=-\tfrac12\nabla^2+U*\rho_0-\mu$ and $X f=\psi_0\,U*(\psi_0f)$. For each mode we compute the density matrix element $\rho_\nu(\mathbf q)=\int_{\rm cell}e^{-i\mathbf q\cdot\mathbf r}\psi_0 f_{+,\nu}$ with the BdG normalization $\int(|u|^2-|v|^2)=1$, and the weight $Z_\nu=|\rho_\nu|^2$. Two sum rules are imposed at every wavevector. The f-sum $\sum_\nu\omega_\nu Z_\nu=N_{\rm cell}q^2/2$, and the static sum $\sum_\nu 2Z_\nu/\omega_\nu$, which must equal a direct solution of $(L+2X)f=-2e^{i\mathbf q\cdot\mathbf r}\psi_0$. Both hold to $10^{-6}$ in every run. Modes are identified by polarization rather than by frequency order. The transverse mode is the gapless mode with zero density weight ($\le10^{-17}$ along both inequivalent mirror directions, parallel to a lattice vector and at 30° to it). The other two gapless modes are the longitudinal pair, so an inversion $c_2>c_T$ would be detected. Speeds are least-squares slopes over $|\mathbf q|a/2\pi\in[0.03,0.10]$ for $\mathbf q$ parallel to a lattice vector (the 30° direction agrees to 0.1 %). Weights are quoted at $|\mathbf q|a/2\pi=0.05$, where $Z_\nu/q$ is flat to 1 %.
 
-**The canonical state** ($g=22$, lattice constant $a=1.4575$, $\mu=55.85$) has superfluid fraction $f_s=0.095$. The three branches are $c_2=1.80$, $c_T=5.77$ and $c_1=11.15$, so second sound runs at $0.31\,c_T$. It carries $Z_2/Z_1=0.33$ of first sound's spectral weight, 5.1 % of the f-sum and 67 % of the static density response. Table 1 compares the BdG numbers with an independent static route. There the superfluid fraction comes from the energy of a phase twist [43], $E(k)-E(0)=\tfrac12Nf_sk^2$, and the moduli from finite strains of the relaxed cell; no excitation is computed. Inserted into Sec. 3, these give the BdG weights to 1 %. Along the way the elastic tensor turns out to be of Cauchy class: $C_{xxyy}/C_{xyxy}=0.998$. The ratio $c_T/c_1=0.52$ therefore lies below the Cauchy value $1/\sqrt3$ not because of the lattice, but because $c_T^2=\mu/\rho_n$ [41] while first sound is stiffened by the superfluid compressibility. In Eq. (1), $M/\rho\gamma=11.4$: the two coefficients whose equality would decouple second sound differ by an order of magnitude.
+**The canonical state** ($g=22$, lattice constant $a=1.4575$, $\mu=55.85$) has superfluid fraction $f_s=0.095$. The three branches are $c_2=1.80$, $c_T=5.80$ and $c_1=11.17$, so second sound runs at $0.31\,c_T$. It carries $Z_2/Z_1=0.34$ of first sound's spectral weight, 5.1 % of the f-sum and 67 % of the static density response. Table 1 compares the BdG numbers with an independent static route. There the superfluid fraction comes from the energy of a phase twist [43], $E(k)-E(0)=\tfrac12Nf_sk^2$, and the moduli from finite strains of the relaxed cell; no excitation is computed. Inserted into Sec. 3, these give the BdG weights to 1 %. Along the way the elastic tensor turns out to be of Cauchy class: $C_{xxyy}/C_{xyxy}=0.998$. The ratio $c_T/c_1=0.52$ therefore lies below the Cauchy value $1/\sqrt3$ not because of the lattice, but because $c_T^2=\mu/\rho_n$ [41] while first sound is stiffened by the superfluid compressibility. In Eq. (1), $M/\rho\gamma=11.4$: the two coefficients whose equality would decouple second sound differ by an order of magnitude.
 
-*Table 1. Canonical 2D state ($g=22$): BdG versus static hydrodynamics (speeds in units $\hbar/mR$).*
+*Table 1. Canonical 2D state ($g=22$): BdG versus static hydrodynamics (speeds in units $\hbar/mR$). BdG speeds are least-squares slopes over $|\mathbf q|a/2\pi\in[0.03,0.10]$ and include the weak dispersion of the branches; at $q\to0$ the BdG values are $c_2=1.817$, $c_T=5.812$, $c_1=11.208$.*
 
 | quantity | BdG | static route (Sec. 3) |
 |---|---|---|
-| $c_2$ (= $c_-$) | 1.802 | 1.817 |
-| $c_T$ | 5.773 | 5.811 ($=\sqrt{\mu/\rho_n}$) |
-| $c_1$ (= $c_+$) | 11.154 | 11.209 |
-| $F_-$ (f-sum share) | 0.0513 | 0.0518 |
-| $Z_2/Z_1$ | 0.334 | 0.337 |
-| $S_-$ (static share) | 0.673 | 0.675 |
-| $\chi(q\to0,0)$ per cell | 0.04276 | 0.04275 |
+| $c_2$ (= $c_-$) | 1.803 | 1.817 |
+| $c_T$ | 5.803 | 5.811 ($=\sqrt{\mu/\rho_n}$) |
+| $c_1$ (= $c_+$) | 11.170 | 11.209 |
+| $F_-$ (f-sum share) | 0.0515 | 0.0518 |
+| $Z_2/Z_1$ | 0.336 | 0.337 |
+| $S_-$ (static share) | 0.675 | 0.675 |
+| $\chi(q\to0,0)$ per cell | 0.04275 | 0.04275 |
 | inputs | — | $f_s=0.0952$, $\alpha=43.73$, $M=91.61$, $C_{xxyy}=30.51$, $\mu=30.56$, $\gamma=8.02$ |
 
-**Generality.** Table 2 shows the interaction sweep from $g=44$ down to the melting transition, plus one state with a different kernel shape ($U=g\,e^{-(r/R)^6}$, $g=35$). Across the stable supersolid phase second sound runs at 0.07–0.78 of the shear speed. It carries 0.3–41 % of the f-sum and 63–81 % of the static response. Its weight never vanishes, and it falls smoothly with $f_s$, as Eq. (1) requires.
+**Generality.** Table 2 shows the interaction sweep from $g=44$ down to the melting transition, plus one state with a different kernel shape ($U=g\,e^{-(r/R)^6}$, $g=35$). Across the stable supersolid phase second sound runs at 0.07–0.77 of the shear speed. It carries 0.3–41 % of the f-sum and 64–80 % of the static response. Its weight never vanishes, and it falls smoothly with $f_s$, as Eq. (1) requires.
 
 *Table 2. Soft-core supersolid in 2D. Speeds in units $\hbar/mR$; $F_2$ and $S_2$ are second sound's shares of the f-sum and of the static response; $Z_2/Z_1$ is its spectral weight relative to first sound.*
 
 | $g$ | $a$ | $f_s$ | $c_2$ | $c_T$ | $c_1$ | $c_2/c_T$ | $F_2$ | $Z_2/Z_1$ | $S_2$ |
 |---|---|---|---|---|---|---|---|---|---|
-| 44 | 1.393 | — | 0.595 | 8.669 | 16.07 | 0.069 | 0.003 | 0.087 | 0.70 |
-| 34 | 1.417 | — | 0.948 | 7.432 | 14.01 | 0.128 | 0.010 | 0.148 | 0.69 |
-| 28 | 1.435 | — | 1.286 | 6.630 | 12.65 | 0.194 | 0.021 | 0.214 | 0.68 |
-| 22 | 1.458 | 0.095 | 1.802 | 5.773 | 11.15 | 0.312 | 0.051 | 0.334 | 0.67 |
-| 20 | 1.467 | 0.132 | 2.038 | 5.479 | 10.61 | 0.372 | 0.072 | 0.400 | 0.68 |
-| 18 | 1.477 | 0.189 | 2.326 | 5.179 | 10.03 | 0.449 | 0.104 | 0.498 | 0.68 |
-| 16 | 1.488 | 0.278 | 2.688 | 4.876 | 9.39 | 0.551 | 0.159 | 0.661 | 0.70 |
-| 15 | 1.495 | 0.345 | 2.911 | 4.724 | 9.04 | 0.616 | 0.205 | 0.801 | 0.71 |
-| 14 | 1.502 | 0.436 | 3.172 | 4.570 | 8.64 | 0.694 | 0.277 | 1.050 | 0.74 |
-| 13.5 | 1.506 | 0.497 | 3.315 | 4.492 | 8.40 | 0.738 | 0.333 | 1.284 | 0.77 |
-| 13.0* | 1.510 | 0.576 | 3.449 | 4.408 | 8.10 | 0.783 | 0.422 | 1.772 | 0.81 |
-| 12.7† | 1.513 | 0.640 | 3.469 | 4.348 | 7.84 | 0.798 | 0.513 | 2.583 | 0.86 |
-| 12.5† | 1.516 | 0.699 | 3.290 | 4.260 | 7.52 | 0.772 | — | — | — |
-| 35 (γ6) | 1.438 | — | 2.174 | 6.617 | 13.50 | 0.329 | 0.043 | 0.279 | 0.63 |
+| 44 | 1.393 | — | 0.596 | 8.709 | 16.09 | 0.068 | 0.003 | 0.088 | 0.70 |
+| 34 | 1.417 | — | 0.950 | 7.464 | 14.03 | 0.127 | 0.010 | 0.149 | 0.69 |
+| 28 | 1.435 | — | 1.288 | 6.658 | 12.67 | 0.194 | 0.021 | 0.215 | 0.68 |
+| 22 | 1.457 | 0.095 | 1.803 | 5.803 | 11.17 | 0.311 | 0.051 | 0.336 | 0.67 |
+| 20 | 1.467 | 0.132 | 2.039 | 5.508 | 10.62 | 0.370 | 0.072 | 0.403 | 0.68 |
+| 18 | 1.477 | 0.189 | 2.326 | 5.208 | 10.04 | 0.447 | 0.104 | 0.501 | 0.68 |
+| 16 | 1.488 | 0.278 | 2.689 | 4.906 | 9.41 | 0.548 | 0.160 | 0.665 | 0.70 |
+| 15 | 1.495 | 0.345 | 2.912 | 4.754 | 9.05 | 0.613 | 0.206 | 0.807 | 0.71 |
+| 14 | 1.502 | 0.436 | 3.173 | 4.604 | 8.65 | 0.689 | 0.278 | 1.059 | 0.74 |
+| 13.5 | 1.506 | 0.497 | 3.317 | 4.529 | 8.42 | 0.732 | 0.335 | 1.295 | 0.77 |
+| 13.0* | 1.510 | 0.576 | 3.451 | 4.455 | 8.13 | 0.775 | 0.423 | 1.787 | 0.81 |
+| 12.7† | 1.513 | 0.640 | 3.475 | 4.410 | 7.88 | 0.788 | 0.513 | 2.596 | 0.86 |
+| 12.5† | 1.515 | 0.699 | 3.321 | 4.379 | 7.61 | 0.758 | 0.615 | — | — |
+| 12.4† | 1.517 | — | 2.878 | 4.362 | 7.36 | 0.660 | 0.691 | — | — |
+| 35 (γ6) | 1.438 | — | 2.177 | 6.647 | 13.53 | 0.328 | 0.043 | 0.281 | 0.64 |
 
-\* just below the coexistence boundary $\Lambda_c=13.04$ (Sec. 5). † metastable continuation of the crystal branch; the branch ends near $g=12.47$.
+\* just below the coexistence boundary $\Lambda_c=13.04$ (Sec. 5). † metastable continuation of the crystal branch; below $g\approx12.38$–$12.40$ its long-wavelength second-sound frequency becomes imaginary (Sec. 5).
 
-**Three dimensions.** In 3D the same functional (step kernel, $\Lambda=\bar\rho U_0R^3$ at twice its roton threshold) selects a close-packed stack. The hexagonal (AB) stacking is lowest, nearly degenerate with fcc. We computed the BdG weights on the AB crystal ($a=1.386$, $c=2.260$) in a basis of 1,355 plane waves, with the state relaxed inside that basis so that the Goldstone modes are exact. The sum rules again hold to $10^{-6}$. Second sound is at $c_2=0.477$, against shear speeds of 7.3–8.2 (the lattice is elastically anisotropic) and first sound at 15.8–16.9. That gives $c_2/c_T\simeq0.06$. Second sound carries only 0.17–0.18 % of the f-sum but $Z_2/Z_1=0.058$–$0.063$ and 66–69 % of the static response. The compressibility speed is $c_\kappa=9.38=1.22\,c_T$.
+**Three dimensions.** In 3D the same functional (step kernel, $\Lambda=\bar\rho U_0R^3$ at twice its roton threshold) selects a close-packed stack. The hexagonal (AB) stacking is lowest, nearly degenerate with fcc. We computed the BdG weights on the AB crystal ($a=1.386$, $c=2.260$) in a basis of 3,455 plane waves ($|\mathbf G|\le30$), with the state converged inside that basis. (With 1,355 waves, $|\mathbf G|\le22$, the three translational Goldstone modes acquire small negative $\omega^2$ and the transverse speeds come out up to 6 % low.) The sum rules again hold to $10^{-6}$. At $|\mathbf q|=0.15$ second sound is at $c_2=0.471$, against shear speeds of 7.75–8.04 (the lattice is elastically anisotropic) and first sound at 16.1–17.0. That gives $c_2/c_T\simeq0.06$. Second sound carries only 0.17 % of the f-sum but $Z_2/Z_1=0.057$–$0.063$ and 66–69 % of the static response. The compressibility speed is $c_\kappa=9.38\approx1.2\,c_T$.
 
 ## 5. Approach to melting
 
@@ -112,7 +115,7 @@ Does $c_2/c_T$ reach one anywhere inside the supersolid phase? At fixed density 
 $$\Lambda\,(\mu_c-\varepsilon_c)=\frac{\mu_c^2}{2\pi},$$
 with $\mu_c$ the Gross–Pitaevskii chemical potential of the crystal. Following the crystal branch continuously (Table 2) gives $\Lambda_c=13.04$. The uniform-side boundary is $\Lambda_u=\mu_c(\Lambda_c)/\pi=12.23$, and the fixed-density energy crossing at $g=12.57$ lies between them, close to the 12.7 reported in Ref. [35].
 
-Approaching the boundary, $c_2/c_T$ rises monotonically to 0.78 at $\Lambda_c$. On the metastable branch it peaks at 0.80 near $g=12.7$ and then turns down before the branch ends near $g=12.47$. **The ratio never reaches one.** This agrees with the ordering reported in Ref. [38] and extends it to the phase boundary. Coupling to the slow branch strengthens on the way: its f-sum share grows to 0.41 at $\Lambda_c$ and $Z_2$ comes to exceed $Z_1$. Moving the medium toward melting does not help.
+Approaching the boundary, $c_2/c_T$ rises monotonically to 0.77 at $\Lambda_c$. On the metastable branch it peaks at 0.79 near $g=12.7$ and then falls (Table 2): second sound softens as the crystal approaches its spinodal, and below $g\approx12.38$–$12.40$ its long-wavelength frequency becomes imaginary, so the crystal stops being a local minimum. **The ratio never reaches one.** The end of the metastable branch realizes the labile limit of Sec. 9, $c_2\to0$, rather than a shared cone. This agrees with the ordering reported in Ref. [38] and extends it to the phase boundary. Coupling to the slow branch strengthens on the way: its f-sum share grows to 0.41 at $\Lambda_c$ and $Z_2$ comes to exceed $Z_1$. Moving the medium toward melting does not help.
 
 Hydrodynamics does not exclude $c_->c_T$ in principle. If the modulation could vanish continuously, with $\rho_n$, $M$ and $\mu$ all scaling as the modulation squared, the dispersion polynomial would factor as $(x-M/\rho_n)(x-\rho\alpha)$. The lower longitudinal speed would then tend to $\min(\sqrt{M/\rho_n},\sqrt{\rho\alpha})$, which can exceed $c_T=\sqrt{\mu/\rho_n}$. In the soft-core model the first-order transition intervenes first. Either way the two speeds are set by different material combinations, and equality is a coincidence.
 
@@ -132,14 +135,14 @@ for a point-like defect and per unit length of a straight filament, respectively
 **Radiation.** A source of multipole order $\ell$ oscillating at frequency $\Omega$ with a fixed density vertex puts power $P_\nu\propto F_\nu\,\Omega^{2\ell+d+1}/c_\nu^{2\ell+d+2}$ into branch $\nu$ in $d$ dimensions. A slow branch is therefore favoured by a high power of $c_1/c_2$. With the 3D numbers ($c_1/c_2=33.6$, $F_2/F_1=0.0017$) a quadrupole radiates $\approx9\times10^{10}$ times more power into second sound than into first sound.
 
 **Loss length.** As an order-of-magnitude estimate, take a defect of size $\xi$ with static deficit $\delta N=\epsilon\rho\xi^3$ and rest energy $E_0=\tau\rho c_T^2\xi^3$, with $\epsilon$ and $\tau$ dimensionless. The static relation $\delta n=\chi(q,0)V$ with $\chi(q\to0,0)=-\rho/c_\kappa^2$ gives $|V|\simeq c_\kappa^2\delta N/\rho$ up to $q\sim1/\xi$. Equation (2) then gives the energy-loss length of an ultrarelativistic defect with Lorentz factor $\gamma$ ($v\to c_T$):
-$$\ell\simeq\frac{16\pi\tau}{\epsilon^2}\left(\frac{c_T}{c_\kappa}\right)^4\frac{\gamma\,\xi}{F_2}\approx1.3\times10^5\,\gamma\,\xi ,\tag{3}$$
-using the 3D values, $\tau=10$ and $\epsilon=1$. Cosmic-ray protons of $3\times10^{11}$ GeV ($\gamma\approx3.2\times10^{11}$) that cross the Galaxy (10 kpc) require $\ell\gtrsim3\times10^{20}$ m, hence $\xi\gtrsim10^4$ m: a macroscopic grain. At the Planck length Eq. (3) falls short by about 40 orders of magnitude. A more detailed evaluation with explicit two-component vortex-ring profiles gives the same order (supplementary S5). Since Eq. (2) has no near-threshold suppression for linear branches, the only escape is kinematic: every particle must stay below $c_2$, which for the most energetic cosmic rays means
+$$\ell\simeq\frac{16\pi\tau}{\epsilon^2}\left(\frac{c_T}{c_\kappa}\right)^4\frac{\gamma\,\xi}{F_2}\approx1.5\times10^5\,\gamma\,\xi ,\tag{3}$$
+using the 3D values ($c_T\approx7.85$, the mean over directions and polarizations; $c_\kappa=9.38$; $F_2=0.0017$), $\tau=10$ and $\epsilon=1$. Cosmic-ray protons of $3\times10^{11}$ GeV ($\gamma\approx3.2\times10^{11}$) that cross the Galaxy (10 kpc) require $\ell\gtrsim3\times10^{20}$ m, hence $\xi\gtrsim6\times10^3$ m: a macroscopic grain. At the Planck length Eq. (3) falls short by about 39 orders of magnitude. A more detailed evaluation with explicit two-component vortex-ring profiles gives the same order (supplementary S5). Since Eq. (2) has no near-threshold suppression for linear branches, the only escape is kinematic: every particle must stay below $c_2$, which for the most energetic cosmic rays means
 $$1-\frac{c_2}{c_T}\lesssim\frac{1}{2\gamma^2}\approx5\times10^{-24},\tag{4}$$
-the same order as Coleman and Glashow's bound on vacuum Cerenkov radiation of charged particles [12]. In the computed model $1-c_2/c_T$ lies between 0.2 and 0.94.
+the same order as Coleman and Glashow's bound on vacuum Cerenkov radiation of charged particles [12]. In the computed model $1-c_2/c_T$ lies between 0.21 and 0.94.
 
 ## 8. Binding and drag share a vertex
 
-Two static defects with vertices $V_1$ and $V_2$ interact through the medium with $U_{\rm ind}(\mathbf q)=V_1(\mathbf q)V_2(\mathbf q)\,\chi(\mathbf q,0)$. For like defects this is attractive. Its range is set by the vertices, because $\chi(q,0)$ is finite as $q\to0$ in a compressible medium. The result is a short-range attraction over a healing length or lattice spacing, the analogue of the phonon-induced Yukawa attraction between impurities in a condensate [50,51]. In the supersolid, 63–81 % of $\chi(q,0)$ is carried by second sound (Tables 1–2). The vertex that binds defects at short range is the vertex that makes them radiate when fast, and the same branch carries most of both. One cannot be removed without most of the other.
+Two static defects with vertices $V_1$ and $V_2$ interact through the medium with $U_{\rm ind}(\mathbf q)=V_1(\mathbf q)V_2(\mathbf q)\,\chi(\mathbf q,0)$. For like defects this is attractive. Its range is set by the vertices, because $\chi(q,0)$ is finite as $q\to0$ in a compressible medium. The result is a short-range attraction over a healing length or lattice spacing, the analogue of the phonon-induced Yukawa attraction between impurities in a condensate [50,51]. In the supersolid, 64–80 % of $\chi(q,0)$ is carried by second sound (Tables 1–2). The vertex that binds defects at short range is the vertex that makes them radiate when fast, and the same branch carries most of both. One cannot be removed without most of the other.
 
 ## 9. Escapes, and the elastic-ether debate
 
@@ -149,7 +152,7 @@ Each route has a supersolid counterpart.
 
 *Green's limit* ($\alpha\to\infty$) sends $c_+\to\infty$ and, by Eq. (1), $F_-\to0$ as $\alpha^{-2}$. Second sound decouples from density. It does not disappear, however: it survives at $c_*=\sqrt{\rho_sM/\rho\rho_n}$ as a density-free counterflow of superfluid against lattice, and a moving vortex still drives it through its circulation (Sec. 6). An incompressible medium also admits no core deficit, so Green's limit removes the density vertex but not the current vertex.
 
-*The labile limit* ($c_-\to0$) is the worst case: every moving defect radiates.
+*The labile limit* ($c_-\to0$) is the worst case: every moving defect radiates. The soft-core crystal reaches it at the end of its metastable branch (Sec. 5).
 
 *MacCullagh's medium* is the genuine exception, because it has no longitudinal restoring force at all. The longitudinal sector is excluded by initial conditions rather than by a large speed, and that is untenable once matter is a moving density source, which keeps generating compressional disturbances. A rotational medium also has no condensate phase. Adding superfluid order to host vortex matter brings back a compressional phase mode whose speed is set by compressibility, not by rotational stiffness. The Cosserat-supersolid proposal [28] belongs to this lineage. Our result is that its no-drag claim holds only if second sound is tuned to the shear speed, Eq. (4).
 
@@ -157,17 +160,17 @@ Each route has a supersolid counterpart.
 
 In a supersolid model of the vacuum, matter's speed limit is set by the slowest longitudinal sound its cores couple to, and light's speed is the shear speed. No symmetry ties the two together. In the soft-core Gross–Pitaevskii supersolid second sound is slower than shear throughout the stable phase, in two and three dimensions, and the coupling to it is generic, Eq. (1). Fast matter therefore radiates into the vacuum, and a common causal cone requires the two speeds to agree to about $10^{-23}$. The general principle, that multiple sound speeds mean multiple metrics and tuning, is established [1–8]. This paper supplies the concrete mechanism and numbers for the supersolid class and refutes, within it, the claim that superfluidity lets matter move without drag.
 
-The limitations are those of the model. We use mean-field Gross–Pitaevskii theory at zero temperature, one family of soft-core kernels plus one variant, and linear response. The size of the coupling is model-dependent, but the conclusion survives any reasonable change: the deficit in Eq. (3) is about 40 orders of magnitude. The regime $c_2>c_T$, where matter could outrun light, is not realized here. It is not excluded in media with a continuous transition, but it would fail the same test from the other side.
+The limitations are those of the model. We use mean-field Gross–Pitaevskii theory at zero temperature, one family of soft-core kernels plus one variant, and linear response. The size of the coupling is model-dependent, but the conclusion survives any reasonable change: the deficit in Eq. (3) is about 39 orders of magnitude. The regime $c_2>c_T$, where matter could outrun light, is not realized here. It is not excluded in media with a continuous transition, but it would fail the same test from the other side.
 
 The contrast with relativistic field theory is instructive. In a Lorentz-invariant theory a moving soliton is the boost of a static one, so it never radiates, and matter and light share the cone automatically [62]. Skyrmions [59] and the knotted solitons of the Faddeev–Niemi model [60,61] realize "matter as knots" in that setting. A medium vacuum that wants knot matter has to reproduce this property, rather than approximate it by tuning.
 
 ## Acknowledgments
 
-Numerical work and drafting were assisted by an AI system (Claude, Anthropic). The hydrodynamic formulas were re-derived independently by a separate reviewer.
+Numerical work and drafting were assisted by an AI system (Claude, Anthropic). The hydrodynamic formulas were re-derived independently by a separate reviewer, and every cited number was recomputed in an independent, blind second computation.
 
 ## Data and code availability
 
-All scripts and data are in the supplementary material (repository `gifgaf0/gifgaf0.github.io`, directory `lbc_bank/`; the index with paths and checksums is `lbc_bank/README.md`). S1 `lbc_weights.py` (2D BdG weights and sum rules); S2 `lbc_hydro.py` (static hydrodynamic route); S3 `lbc_3d.py` (3D weights); S4 `lbc_sweep_low.py`, `lbc_sweep_refine.py` (interaction sweep, coexistence boundary); S5 `step3_loss_length.py` (loss length with explicit two-component profiles); S6 `paper_identities_check.py` and the external re-derivation `verify_lbc_external.py`; `paper_tables.py` and all JSON outputs, with checksums.
+All scripts and data are in the supplementary material (repository `gifgaf0/gifgaf0.github.io`, directory `lbc_bank/`; the index with paths and checksums is `lbc_bank/README.md`). S1 `lbc_weights.py` (2D BdG weights and sum rules); S2 `lbc_hydro.py` (static hydrodynamic route); S3 `lbc_3d.py` (3D weights); S4 `lbc_sweep_low.py`, `lbc_sweep_refine.py` (interaction sweep, coexistence boundary); S5 `step3_loss_length.py` (loss length with explicit two-component profiles); S6 `paper_identities_check.py` and the external re-derivation `verify_lbc_external.py`; S7 `second_leg/` (the independent second computation of every cited number); S8 `closure/` (the corrected first computation: converged 2D states, the 3D basis at $|\mathbf G|\le30$, the melting end, and the comparison of the two computations; the tables of this paper are `closure/paper_tables_v2.json`); all JSON outputs, with checksums.
 
 ## References
 

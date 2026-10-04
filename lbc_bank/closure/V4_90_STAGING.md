@@ -58,3 +58,7 @@ The V4.89 discipline applies:
 Estimated size is about +2.4 kB. Whether the store has room for the swap needs checking at fold time.
 
 *No fold is authorized by this note.*
+
+---
+
+*Folded on the author's word ("Go ahead and fold v 4.90", October 4, 2026, 14:16 PDT) as V4.90, md5 `ef69a573`. See `../estate/FOLD_AUTHORIZATION_V4_90.md`. The ledger text is this note rendered as single paragraphs, with one clause added to the §2.91.V bracket (the 3D ratio c₂/c_T ≈ 0.06, was 0.062).*

@@ -1,0 +1,44 @@
+3x3 plane-wave matrix (theta, drho, u):
+⎡  2                          ⎤
+⎢-q ⋅ρₛ  -ⅈ⋅ω       ω⋅q⋅ρₙ    ⎥
+⎢                             ⎥
+⎢ ⅈ⋅ω     -α        -ⅈ⋅γ⋅q    ⎥
+⎢                             ⎥
+⎢                    2    2   ⎥
+⎣ω⋅q⋅ρₙ  ⅈ⋅γ⋅q  - M⋅q  + ω ⋅ρₙ⎦
+
+Dispersion polynomial (normalised, = 0):
+M*alpha*rho_s + X**2*rho_n + X*(-M - alpha*rho_n**2 - alpha*rho_n*rho_s + 2*gamma*rho_n) - gamma**2*rho_s
+  == rho_n X^2 - [M + rho_n(rho alpha - 2 gamma)] X + rho_s(alpha M - gamma^2)   [checked]
+
+Transverse: c_T^2 = mu/rho_n
+Hamiltonian route agrees with EL dispersion at 5 random stable points.
+
+checks: rho_s->0  roots: [0, M/rho_n + alpha*rho_n - 2*gamma]
+        rho_n->0  root : rho_s*(M*alpha - gamma**2)/M
+
+(2a) fixed gamma, alpha = 1/eps^2:
+  c-^2 coefficients of eps^0, eps^1, eps^2(=1/alpha): {0: M*rho_s/(rho_n*(rho_n + rho_s)), 1: 0, 2: -rho_s*(M - gamma*rho_n - gamma*rho_s)**2/(rho_n*(rho_n + rho_s)**3)}
+   eps^0 == f_s M/rho_n : True
+   eps^2 == -rho_s (gamma - M/rho)^2/(rho rho_n) : True
+  c+^2 coefficients of eps^-2(=alpha), eps^-1, eps^0: {-2: rho_n + rho_s, -1: 0, 0: (M - 2*gamma*rho_n - 2*gamma*rho_s)/(rho_n + rho_s)}  eps^0 == M/rho - 2gamma: True
+
+(2b) gamma = g sqrt(alpha), alpha = 1/eps^2:
+  c-^2 coefficients of eps^0, eps^1(=alpha^-1/2): {0: -rho_s*(-M + g**2)/(rho_n*(rho_n + rho_s)), 1: -2*g*rho_s*(-M + g**2)/(rho_n*(rho_n + rho_s)**2)}
+   eps^0 == f_s (M-g^2)/rho_n : True ; eps^1 == eps^0 * 2g/rho : True
+  c+^2 coefficients of eps^-2, eps^-1, eps^0: {-2: rho_n + rho_s, -1: -2*g, 0: (M*rho_n + g**2*rho_s)/(rho_n*(rho_n + rho_s))}  eps^0 == M/rho + f_s g^2/rho_n: True
+
+d=2: full-vector det / [1D longitudinal(M=lam+2mu) * (rho_n X - mu)^1] = -q**6
+
+d=3: full-vector det / [1D longitudinal(M=lam+2mu) * (rho_n X - mu)^2] = -q**8
+
+d=2: char. poly of energy Hessian (lambda = K - 2mu/d): (-4*mu + z)*(-2*mu + z)*(2*K*alpha - 2*K*z - alpha*z - 2*gamma**2 + z**2)
+  PD <=> (mu>0, alpha>0, alpha K > gamma^2): mismatches in random test = 0
+
+d=3: char. poly of energy Hessian (lambda = K - 2mu/d): (-4*mu + z)**3*(-2*mu + z)**2*(3*K*alpha - 3*K*z - alpha*z - 3*gamma**2 + z**2)
+  PD <=> (mu>0, alpha>0, alpha K > gamma^2): mismatches in random test = 0
+
+Green-limit c-^2/c_T^2 (isotropic) = K*f_s/mu - f_s*g**2/mu + 2*f_s - 2*f_s/d
+  with K - g^2 > 0 (stability)  ->  c-^2/c_T^2 > 2(d-1) f_s/d ;  inf attained as K - g^2 -> 0+: 2*f_s*(d - 1)/d
+  d=2: bound c-^2/c_T^2 > 1 f_s ;  c->c_T guaranteed for f_s >= 1
+  d=3: bound c-^2/c_T^2 > 4/3 f_s ;  c->c_T guaranteed for f_s >= 3/4

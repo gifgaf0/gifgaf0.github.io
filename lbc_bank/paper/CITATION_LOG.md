@@ -31,7 +31,7 @@
 | 25 | Zaanen–Nussinov–Mukhin, Ann. Phys. 310, 181 (2004) | VERIFIED | |
 | 26 | Beekman et al., Phys. Rep. 683, 1 (2017) | VERIFIED | |
 | 27 | Pretko–Radzihovsky, PRL 120, 195301 (2018) | VERIFIED | |
-| 28 | Cox, Zenodo 10.5281/zenodo.20705475 (2026) | VERIFIED (record) | Preprint, not peer reviewed. The no-drag quote is from the record; the PDF body is unread — check before posting. |
+| 28 | Cox, Zenodo 10.5281/zenodo.20705475 (2026) | VERIFIED (record and body) | Preprint, not peer reviewed. The no-drag quote is from the record and is also in the abstract and Sec. 2.1 of the v4 text. The body was read in full on 2026-10-04 (`../lit/COX_V4_BODY_READ.md`). The section citations in the paper (5.7.4, 5.11, 6.6.1, 6.7, 9.6, 10.6.5, 20.2, 25.3, 25.9) were checked against the v4 text. |
 | 29 | Frank, Proc. Phys. Soc. A 62, 131 (1949) | VERIFIED (metadata) | |
 | 30 | Eshelby, Proc. Phys. Soc. A 62, 307 (1949) | VERIFIED (metadata) | |
 | 31 | Pomeau–Rica, PRL 72, 2426 (1994) | VERIFIED (metadata) | |

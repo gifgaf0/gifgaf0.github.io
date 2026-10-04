@@ -1,6 +1,6 @@
 # Venue recommendation and submission path
 
-**Plain-language summary.** Post the paper on Zenodo first. The independent second computation has come back. It disagreed with the first on four numbers, all traced to defects in the first computation; after their correction the two agree on every cited number. Then submit it to *Classical and Quantum Gravity*, the journal where the closest prior work (the analogue-gravity "one metric needs fine tuning" papers) appeared. *Physical Review D* is the backup. Three things to do before posting are listed at the end.
+**Plain-language summary.** Post the paper on Zenodo first. The independent second computation has come back. It disagreed with the first on four numbers, all traced to defects in the first computation; after their correction the two agree on every cited number. Then submit it to *Classical and Quantum Gravity*, the journal where the closest prior work (the analogue-gravity "one metric needs fine tuning" papers) appeared. *Physical Review D* is the backup. What remains before posting is listed at the end.
 
 ## Recommendation
 
@@ -16,6 +16,10 @@
 ## Before posting
 
 - **Second leg: done** (PR #36; 108/112 on first comparison, four first-leg defects corrected, 112/112 after correction; see `../closure/LBC_2LEG_CLOSURE_MEMO.md`). The tables now carry the corrected values.
-- **Read the body of Cox's preprint** (Ref. [28], Zenodo v4, 6.7 MB PDF; our literature sweep could not parse it) for any treatment of second sound, longitudinal sound or Cherenkov drag. The paper quotes only its record's no-drag sentence. If the body treats second sound, revise the framing in Secs. 1 and 9.
+- **Cox's preprint body: read** (Ref. [28], v4, in full, October 4, 2026; `../lit/COX_V4_BODY_READ.md`). It never treats second sound, the Landau velocity or Cherenkov drag, so the novelty claim stands. Reading it did change the paper, however:
+  - the proposal takes Green's route (one longitudinal sound at about 10²⁰ c), not MacCullagh's;
+  - at its own superfluid fraction our hydrodynamics puts its omitted second sound above the light speed (checked twice; supplementary S6), so its matter (defects whose limiting speed is the light speed) escapes our drag argument.
+
+  Secs. 1, 5, 9 and 10 now say this, and the paper no longer claims to refute the proposal.
 - **Optional and cheap:** add the current-vertex (circulation) weights to Sec. 6. The phase-mode projection uses the same BdG eigenvectors as the density weights. This would turn the qualitative "a density-neutral vortex still couples" into a number.
 - Remove the cover note at the top of the draft, and choose how to word the AI-assistance acknowledgment.

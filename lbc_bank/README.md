@@ -3,7 +3,7 @@
 **Plain-language summary.** This folder holds the evidence for one result, plus an exploration that followed it.
 
 - **The result.** In the program's supersolid model of the vacuum, the knots that stand for particles also couple to a second compression sound that is slower than light. Fast matter therefore sheds energy into it, and matter and light cannot share one speed limit. The ledger records this as V4.89, §2.91.V, single leg.
-- **The paper.** A short negative-result paper on that finding is in `paper/`. Its numbers were recomputed independently and blind (`second_leg/`, from the dispatch in `dispatch/`). The second computation caught three defects in the first, which are fixed in `closure/`. The two now agree on every cited number.
+- **The paper.** A short negative-result paper on that finding is in `paper/`. The one earlier proposal of a supersolid vacuum (Cox) has been read in full; it never treats second sound, and the paper describes it accordingly (`lit/COX_V4_BODY_READ.md`). Its numbers were recomputed independently and blind (`second_leg/`, from the dispatch in `dispatch/`). The second computation caught three defects in the first, which are fixed in `closure/`. The two now agree on every cited number.
 - **The exploration (Phase 2, not on the ledger).** It screens other kinds of vacuum against the shared-speed-limit requirement. It also tests whether a three-ring ("Borromean") baryon is topologically protected. In the standard two-field class it is not.
 - **Not here.** The canonical ledger is not in this repository.
 
@@ -18,12 +18,12 @@
 | `step4/` | Sweep toward melting (2D): c₂/c_T ≤ 0.78 in the supersolid phase, never 1. Coexistence boundary Λ_c ≈ 13.04 | Cited by §2.91.V; superseded by `closure/` (0.77 at Λ_c; the end of the metastable branch corrected) |
 | `external_review/` | The external reviewer's check `verify_lbc_external.py` (md5 cc12e688), and a path-adjusted runner | Cited by §2.91.V |
 | `estate/` | Fold authorization (author's words verbatim), the fold script `foldin_v4_89_lbc_bank.py` (c8e9b4a5), the independent additivity check (09ae3719), and the author's brief of 3 Oct 2026 | Provenance |
-| `paper/` | Draft "Second sound breaks the common light cone of a supersolid vacuum", outline and abstract, venue note, citation log, sympy identity checks, table builder | Draft; tables carry the two-leg (corrected) values |
+| `paper/` | Draft "Second sound breaks the common light cone of a supersolid vacuum", outline and abstract, venue note, citation log, sympy identity checks, table builder; the Green's-limit check `green_limit_check.py` and its blind second leg `green_limit_second_leg/` | Draft; tables carry the two-leg (corrected) values |
 | `dispatch/` | `LBC_SECOND_LEG_DISPATCH_INBAND.md` (md5 e5153dc527bf989eed0261e8aed91831). Activation line: `ACTIVATE: LBC-2LEG-1`. Comparator (112 checks; self-test 112/112 PASS; a negative control catches injected misses), schema skeleton, T1 list and scanner, builders | Run by the second leg (PR #36) |
 | `second_leg/` (on `main` via PR #36) | The second leg's blind recomputation: instruments, results, notes, an adversarial review, its checkpoint (md5 b19d8b62), and the comparison against the first leg (108/112) | Second leg of record |
 | `closure/` | `LBC_2LEG_CLOSURE_MEMO.md`: chat-side check of the four misses (all first-leg defects), the corrected first leg (`lbc_chat_checkpoint_v2.json`, md5 aa01ea0a), and the comparison against the second leg (112/112). `V4_90_STAGING.md` is the proposed ledger record; it is not folded | Two-leg closure |
-| `lit/` | Three citation-verified literature sweeps (prior art for the paper; vacuum Cherenkov and supersolid drag; solitons, q-theory and prior-address map) and `sym6_check.py` | Working notes |
-| `phase2/` | Phase 2 report: shared-light-cone screen, prior-address map, three ranked questions. Also the Q1 calculation: S³ degree of Borromean configurations, Gauss linking numbers, Kauffman bracket, PSL(2,7) subgroup check. `independent_check/` holds an independent check by a separate agent using different methods; it confirmed every claim | Exploration mode |
+| `lit/` | Three citation-verified literature sweeps (prior art for the paper; vacuum Cherenkov and supersolid drag; solitons, q-theory and prior-address map) and `sym6_check.py`. `COX_V4_BODY_READ.md`: the body of Cox's *Cosserat Supersolid* v4, read in full, with the reading tools in `cox_v4_read/` (the text itself is not included) | Working notes; the Cox read resolves the open item in `A1_prior_art.md` |
+| `phase2/` | Phase 2 report: shared-light-cone screen, prior-address map, three ranked questions. Also the Q1 calculation: S³ degree of Borromean configurations, Gauss linking numbers, Kauffman bracket, PSL(2,7) subgroup check. `independent_check/` holds an independent check by a separate agent using different methods; it confirmed every claim | Exploration mode. Its carry-over note that the Cox preprint body was unread is resolved by `lit/COX_V4_BODY_READ.md` |
 | `deps/g_tsh1_chatleg.py` | The G-TSH1 instrument the 2D scripts import (md5 621559e1). Copied from branch `claude/sqt-framework-perspectives-kMZyw`, `gate_tsh1_staging/` | Dependency of record |
 
 ## Paper supplementary index
@@ -35,7 +35,7 @@
 | S3 | `oct3_exploration/lbc_3d.py` (3D weights) |
 | S4 | `step4/lbc_sweep_low.py`, `step4/lbc_sweep_refine.py` (interaction sweep, coexistence boundary) |
 | S5 | `step3/step3_loss_length.py` (loss length) |
-| S6 | `paper/paper_identities_check.py` (symbolic identities), `external_review/verify_lbc_external.py` (independent re-derivation) |
+| S6 | `paper/paper_identities_check.py` (symbolic identities), `external_review/verify_lbc_external.py` (independent re-derivation), `paper/green_limit_check.py` and `paper/green_limit_second_leg/` (Green's-limit relation of Sec. 5, two legs) |
 | S7 | `second_leg/` (independent second computation of every cited number) |
 | S8 | `closure/` (corrected first computation; the comparison of the two) |
 | Tables | `closure/build_v2.py` → `closure/paper_tables_v2.json` (current); `paper/paper_tables.py` → `paper/paper_tables.json` (first computation, superseded) |

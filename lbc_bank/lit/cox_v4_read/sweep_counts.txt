@@ -1,0 +1,35 @@
+second sound                   0   
+first sound                    0   
+fourth sound                   0   
+longitudinal                 254   10.6.2 Helmholtz decomposition: the fo×17; 10.6.7 Transverse–longitudinal mode co×15; 26.1 The multivector strain: branches ×14; 2 Ncluster×12; 5.11 The two-Green’s-function picture ×11; G.2 Higher-order corrections to the tr×10
+compression                  418   25.9 Newton’s constant from the lattic×30; 25.3 Elastostatic derivation of the re×14; 5.7.9 Open calculation: the spectral m×11; 5.11 The two-Green’s-function picture ×11; 5.12.6 Photon entanglement versus mass×11; 32.11.1 Speculation: the fluid phase a×11
+bulk modulus                  51   25.9 Newton’s constant from the lattic×6; 25.3 Elastostatic derivation of the re×4; 28.2 Singularity resolution: incompres×3; 32.8 The vacuum energy problem×3; 26 GLOSSARY×2; 1.8 Monograph structure×2
+Cherenkov                      1   9.4 Quantitative dispersion analysis×1
+Landau (crit/vel)              0   
+critical velocity              0   
+drag                          32   25.13.5 The Kerr metric from gravitoma×6; 22.10 The anomalous magnetic moment fr×2; 24.17 Scope and open questions×2; 25.8.1 The gravitational field variabl×2; 25.11 The strong-field regime×2; 25.13.4 Asymmetric breakdown at the bl×2
+friction                      14   9.6 Defect propagation versus Umklapp ×5; 3 Gn, with Gn a dimensionless strain–c×4; 4.3 The quantum rolling constraint: de×1; 4.5 The D4 dictionary and the tangenti×1; 8.17 Isospin as the McKay dual of D4×1; 11.4 Statistical mechanics on the four×1
+dissipat                      14   28.12 Fokker–Planck dynamics of the ph×7; 19.6.4 The curvature-leakage parameter×2; 4.5 The D4 dictionary and the tangenti×1; 7.1.1 What light is×1; 7.2 The transfer matrix×1; 8.12 The self-energy eigenvector and t×1
+Mach                           0   
+supersonic                     0   
+superluminal                  21   4.14.1 Environment-dependent G×2; 5.12.5 No-signalling from the lattice ×2; 25.12 The nonlinear gravitational fiel×2; G.1 Connection to extended electrodyna×2; H.8 Two further consequences used down×2; 5.6.3 Dynamical relaxation: the lattic×1
+subluminal                     1   25.5 The geodesic equation from Fermat×1
+aether wind                    2   1.8 Monograph structure×1; 2.1 The medium×1
+Einstein-aether                2   5.12.4 No-signalling and the preferred×2
+GW170817                       3   5.12.4 No-signalling and the preferred×1; 28.4 The interior effective geometry×1; H.8 Two further consequences used down×1
+Coleman-Glashow               18   13.1 The electromagnetic mass correcti×5; H.8 Two further consequences used down×4; 9.4 Quantitative dispersion analysis×2; 9.5 Compatibility with deep inelastic ×2; 29.2.4 The transition strength from th×2; 9.2.1 The spatial reciprocal lattice i×1
+Moore-Nelson                   3   4.14.1 Environment-dependent G×1; 22.3.3 The defect–phonon vertex from P×1; H.8 Two further consequences used down×1
+two-fluid                      0   
+superfluid fraction          175   5.7.8 The superfluid fraction as a boo×35; 9.3.3 What superfluid fraction is requ×21; 9.3.2 Supersolid non-classical rotatio×19; 5.7.4 Step 4: The superfluid completio×11; 23.1 The strong vertex: colour from st×11; 9.4 Quantitative dispersion analysis×10
+Goldstone                     30   4.12.4 Step 4: Constitutive normalisat×2; 8.9 The complete D4 phonon spectrum×2; 16.2.5 Cross-reference: hadrons and th×2; 20.10.5 Non-standard neutrino interact×2; 24.14.1 The pion decay constant from t×2; 25.9 Newton’s constant from the lattic×2
+phase mode                     9   14.5 The charm quark: antibonding stat×2; 5.7.4 Step 4: The superfluid completio×1; 5.7.8 The superfluid fraction as a boo×1; 10.3 Recovery of Maxwell’s equations×1; 13.1 The electromagnetic mass correcti×1; 14.3 Up and down quark masses×1
+Frank/Eshelby                 72   22.9 Conservation laws and the lattice×6; 14.6 The disclination dipole and the q×4; 21.1 Why vacancies have the right prop×4; 11 Nc − 2 Nf×4; 20.7 Dirac nature and lepton number co×3; 23.1 The strong vertex: colour from st×3
+relativistic dislocation       1   3 Gn, with Gn a dimensionless strain–c×1
+speed limit                    1   28.11 Critical collapse: the echo at t×1
+radiation reaction             6   21.5 Summary and open calculations×1; 22.5 Thomson scattering: the first dyn×1; 22.6 Compton scattering and the Klein–×1; 22.10 The anomalous magnetic moment fr×1; 28.6 Hawking radiation as lattice phon×1; 28.12 Fokker–Planck dynamics of the ph×1
+sound speed                   13   25.6 The optical metric and the Schwar×3; 29.1.7 The growing crystal: expansion ×2; 5.3 T∗ = 220 MeV×2; 5.2 The quantum potential from Kortewe×1; 5.11 The two-Green’s-function picture ×1; 6.5 The bootstrap equations as consist×1
+c_L                           15   5.12.5 No-signalling from the lattice ×4; 4.14.1 Environment-dependent G×2; 10.6.3 The scalar field C and its wave×2; G.1 Connection to extended electrodyna×2; 8.7.1 The harmonic level: u4 as a Kalu×1; 9.3.1 Cosserat correction to ⟨u×1
+Poli/Kunimi/Martone            5   32.8 The vacuum energy problem×2; 5.7.4 Step 4: The superfluid completio×1; 11 Nc − 2 Nf×1; 25.9 Newton’s constant from the lattic×1
+Barcelo/Visser/Liberati        8   H.8 Two further consequences used down×6; 28.6 Hawking radiation as lattice phon×1; 28.13 Connection to the gravastar prog×1
+mono-/bi-metric                0   
+sections found: 785

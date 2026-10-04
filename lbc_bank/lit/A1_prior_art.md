@@ -36,7 +36,7 @@ Sweep date: 2026-10-03. Tools: WebSearch and WebFetch only.
   - light as the transverse shear wave;
   - particles as dislocations.
 
-  But its record description asserts the opposite of the thesis: *"The superfluid lets matter drift through without drag, so there is no aether wind for an interferometer to catch."* Its 6.7 MB PDF could not be parsed with WebFetch, so whether the body discusses second sound is **unverified**. Check the PDF by hand before asserting novelty.
+  But its record description asserts the opposite of the thesis: *"The superfluid lets matter drift through without drag, so there is no aether wind for an interferometer to catch."* Its 6.7 MB PDF could not be parsed with WebFetch, so whether the body discusses second sound is **unverified**. Check the PDF by hand before asserting novelty. *[Resolved 2026-10-04: the v4 body was read in full (`COX_V4_BODY_READ.md`). It never treats second sound, the Landau velocity or Cherenkov radiation; its one longitudinal sound is superluminal (Green's route).]*
 - **The condensed-matter ingredients do exist, separately:**
   - In the soft-core 2D Gross–Pitaevskii supersolid, the ordering is c₂ < c_T < c₁, and second sound carries weak but nonzero density weight (Poli et al., PRA 2024).
   - Drag and critical-velocity calculations exist for supersolids (Martone–Shlyapnikov 2018; Kunimi–Kato 2012).
@@ -243,7 +243,7 @@ Sweep date: 2026-10-03. Tools: WebSearch and WebFetch only.
 - Quote (v2): "a medium that is crystalline (rigid to shear, supporting transverse waves at c) yet simultaneously superfluid (frictionless to translation, undetectable by inertial motion)"
 - Against the two tests in item 3:
   - **(i) Yes**, at preprint level: vacuum as supersolid, light as shear, matter as defects.
-  - **(ii) Not found.** None of the three record descriptions mentions longitudinal or second sound, Landau velocity or Cherenkov radiation, and the record asserts zero drag. The body is unchecked: the PDF (`cosseratSupersolidv4.pdf`, 6.7 MB) came back as binary through WebFetch, and the GitHub repository is blocked by robots.txt.
+  - **(ii) Not found.** None of the three record descriptions mentions longitudinal or second sound, Landau velocity or Cherenkov radiation, and the record asserts zero drag. The body is unchecked: the PDF (`cosseratSupersolidv4.pdf`, 6.7 MB) came back as binary through WebFetch, and the GitHub repository is blocked by robots.txt. *[Resolved 2026-10-04: the v4 body was read in full (`COX_V4_BODY_READ.md`). It never treats second sound, the Landau velocity or Cherenkov radiation; its one longitudinal sound is superluminal (Green's route).]*
 
 **Other supersolid-vacuum items (peripheral).**
 - **[VERIFIED preprint]** H. H. Chien (ed.), "Elastic Membrane Cosmology 12.3: The Supersolid Vacuum, Spacetime Phase Transitions, and the Hydrodynamic Unification of the Dark Sector," Zenodo v29 (6 Feb 2026), DOI 10.5281/zenodo.18503038.
@@ -424,7 +424,7 @@ Sweep date: 2026-10-03. Tools: WebSearch and WebFetch only.
 **Judgement.**
 - **The general statement is published.** Different excitations of an emergent medium have different limiting speeds; matter faster than a slower mode it couples to radiates; a common cone needs tuning or a long RG flow. The best citations are Collins et al. 2004, Barceló–Liberati–Visser 2002, Visser–Weinfurtner 2005, Liberati–Visser–Weinfurtner 2006, Anber–Donoghue 2011, Coleman–Glashow 1997, Moore–Nelson 2001 and Elliott–Moore–Stoica 2005, with Chadha–Nielsen 1983 as the counterpoint.
 - **The specific supersolid computation is not published (not found).** That is: light = shear speed; cores coupling to density hence to both longitudinal branches; c₂ < c_T with nonzero density weight; Landau–Cherenkov drag setting the matter speed limit.
-  - The closest overlap is Cox's 2026 Zenodo monograph, which asserts the opposite (no drag) and whose body is unverified.
+  - The closest overlap is Cox's 2026 Zenodo monograph, which asserts the opposite (no drag) and whose body is unverified. *[Resolved 2026-10-04: the v4 body was read in full (`COX_V4_BODY_READ.md`). It never treats second sound, the Landau velocity or Cherenkov radiation; its one longitudinal sound is superluminal (Green's route).]*
   - The condensed-matter premise (c₂ < c_T < c₁ in soft-core supersolids) is published by Poli et al. 2024.
 - **Historical framing.** Green's dilemma (longitudinal speed indefinitely great or indefinitely small) is the classical precursor. The thesis amounts to the observation that in a supersolid the extra longitudinal branch cannot be pushed out of the way. Second sound is generically slower than shear, as in the soft-core case, and carries density weight.
 
@@ -454,7 +454,7 @@ Sweep date: 2026-10-03. Tools: WebSearch and WebFetch only.
 
 ## 7. Not verified / open
 
-- The body of Cox's *Cosserat Supersolid* PDF (v4, `cosseratSupersolidv4.pdf`, 6.7 MB). Check by hand for any treatment of second sound or longitudinal sound, Landau velocity or Cherenkov radiation before claiming novelty.
+- The body of Cox's *Cosserat Supersolid* PDF (v4, `cosseratSupersolidv4.pdf`, 6.7 MB). Check by hand for any treatment of second sound or longitudinal sound, Landau velocity or Cherenkov radiation before claiming novelty. *[Resolved 2026-10-04: the v4 body was read in full (`COX_V4_BODY_READ.md`). It never treats second sound, the Landau velocity or Cherenkov radiation; its one longitudinal sound is superluminal (Green's route).]*
 - An explicit Volovik passage on species-dependent light cones.
 - Millette's STCED claims.
 - Comer's original first/second-sound paper (only the Living Review's report of it was fetched).

@@ -1,0 +1,33 @@
+/tmp/claude-0/-home-claude-gifgaf0-github-io/b6f78e01-abcd-58dd-b0ba-f9859dbecce8/scratchpad/secondleg_vortex/q1_q2.py:2: SyntaxWarning: invalid escape sequence '\i'
+  Units hbar = m = 1.  Fourier convention f(q) = \int d^dx e^{-i q.x} f(x).
+======================================================================
+Q1: straight vortex in d=2
+v = -kappa*y/(2*pi*(y**2 + (V*t - x)**2)) , -kappa*(V*t - x)/(2*pi*(y**2 + (V*t - x)**2))
+lap theta_v      = 0
+div v            = 0
+curl_z v (r!=0)  = 0
+d_t theta_v + V.v = 0
+circulation      = kappa
+v(q) = -i kappa (zhat x q)/q^2 = [I*kappa*q_y/(q_x**2 + q_y**2), -I*kappa*q_x/(q_x**2 + q_y**2)]
+q.v(q) = 0
+i q x v(q) (z) = kappa (= kappa: point vorticity)
+moving: v(q,t) = v(q) exp(-i q.V t)  ->  source frequency omega = q.V
+  q=(0.7, 0.4): numeric v(q)=[-0.+3.86658j  0.-6.76651j]  analytic=[0.+3.86658j 0.-6.76651j]  q.v_num=(-0-0j)
+  q=(-1.1, 0.9): numeric v(q)=[-0.+2.79944j  0.+3.42154j]  analytic=[0.+2.79944j 0.+3.42154j]  q.v_num=0j
+======================================================================
+Q2: expansion to first order in fluctuations (with Galilean completion)
+linear terms, given quadratic L :
+    -rho_n*v_x*Derivative(u_x(t, x, y), t) - rho_n*v_y*Derivative(u_y(t, x, y), t) - rho_s*v_x*Derivative(phi(t, x, y), x) - rho_s*v_y*Derivative(phi(t, x, y), y) + (V*v_x - U(t, x, y))*drho(t, x, y)
+linear terms, Galilean-completed:
+    -rho_n*v_x*Derivative(u_x(t, x, y), t) - rho_n*v_y*Derivative(u_y(t, x, y), t) - rho_s*v_x*Derivative(phi(t, x, y), x) - rho_s*v_y*Derivative(phi(t, x, y), y) + (-rho_n - rho_s)*Derivative(phi(t, x, y), t) + (V*v_x - v_x**2/2 - v_y**2/2 - U(t, x, y))*drho(t, x, y)
+completed - given: -rho_n*Derivative(phi(t, x, y), t) - rho_s*Derivative(phi(t, x, y), t) - v_x**2*drho(t, x, y)/2 - v_y**2*drho(t, x, y)/2
+extra QUADRATIC terms from completion: -(v_x*Derivative(phi(t, x, y), x) + v_y*Derivative(phi(t, x, y), y))*drho(t, x, y)
+coefficient of drho : V*v_x - v_x**2/2 - v_y**2/2 - U(t, x, y)    [= V.v - |v|^2/2 - U]
+coeffs of (phi_x, phi_y, phi_t): [-rho_s*v_x, -rho_s*v_y, -rho_n - rho_s]   -> -rho_s v.grad(phi) - rho d_t phi
+coeffs of (d_t u_x, d_t u_y): [-rho_n*v_x, -rho_n*v_y]   -> -rho_n v.d_t u
+-- spatial integrals with test fields (vortex at origin, V = x-hat) --
+  int v.grad(phi)       = +2.63e-09   (vanishes: div v = 0)
+  int v.d_t u_L (shape) = +2.63e-09   (vanishes: v transverse)
+  int v.u_T (shape)     = -0.2084   (survives)
+  int (V.v) drho        = +0.6242   (survives)
+  int |v|^2/2 drho      = +1.1284   (survives)

@@ -1,0 +1,13 @@
+[soft_g44] a*=1.3926604917101186 contrast=142730.08 f_s(lr)=0.005539 f_s(y)=0.005539 f_s(twist)=0.005539 (3s)
+[soft_g34] a*=1.4162852718534507 contrast=20435.02 f_s(lr)=0.017811 f_s(y)=0.017811 f_s(twist)=0.017811 (6s)
+[soft_g28] a*=1.4344408087047005 contrast=5335.61 f_s(lr)=0.039140 f_s(y)=0.039140 f_s(twist)=0.039140 (9s)
+[g6_g35] a*=1.4375363580092537 contrast=1021.38 f_s(lr)=0.094071 f_s(y)=0.094071 f_s(twist)=0.094071 (26s)
+[meta g=13.0] seed step contrast=25.49 uniform=False (26s)
+[meta g=12.9] seed step contrast=23.19 uniform=False (26s)
+[meta g=12.8] seed step contrast=20.93 uniform=False (26s)
+[meta g=12.7] seed step contrast=18.69 uniform=False (26s)
+[meta g=12.6] seed step contrast=16.42 uniform=False (27s)
+[meta g=12.5] a=1.515298 contrast=14.07 uniform=False f_s(lr)=0.697845 f_s(twist)=0.697836 (27s)
+[meta g=12.45] seed step contrast=12.81 uniform=False (27s)
+[meta g=12.4] a=1.516810 contrast=11.42 uniform=False f_s(lr)=0.739575 f_s(twist)=0.739525 (28s)
+FS_ROWS_CC DONE

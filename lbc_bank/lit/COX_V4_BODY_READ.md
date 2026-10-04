@@ -10,7 +10,8 @@
 - **What our own equations say about it.** The book counts the superfluid's own sound mode once, but folds it into its single compression wave, so a second branch never appears. Our hydrodynamics supplies it.
   - With the book's own numbers (80 % superfluid, almost incompressible), the missing second sound comes out faster than light, at 1.03 to 1.55 times c. Two independent computations agree.
   - So our sonic-boom argument does not catch the proposal's particles. They are crystal defects, chiefly dislocations, and their speed limit is the light speed.
-  - It would catch a version that is less than 75 % superfluid, and any version whose matter is vortex knots.
+  - It would catch a version that is less than 75 % superfluid, through defects that couple to second sound, such as edge dislocations, which strain the lattice.
+- **Correction (October 4, later).** Two statements here about vortex matter did not survive the vortex-coupling derivation (paper Sec. 6, derived twice): that the argument would catch any version whose matter is vortex knots, and that such matter could outrun light. A vortex couples to shear through the normal fraction, so in this corner its drag-free range also ends at the shear speed. Both statements are corrected below, and the modulus written M_µ is now M̃, so that µ means only the shear modulus.
 - **For our paper.**
   - Its novelty claim stands: nobody, this proposal included, has computed how matter couples to second sound in a supersolid vacuum.
   - But the paper no longer claims to refute the proposal. Sections 1, 5, 9 and 10 now describe it accurately.
@@ -134,14 +135,14 @@ The book never writes supersolid hydrodynamics. So we ask what the standard zero
 
 **Green's limit (α → ∞).** First sound runs off, c₊ → ∞, and second sound settles at
 
-  c₋²/c_T² → f_s M_µ/µ,  with M_µ = lim (M − γ²/α).
+  c₋²/c_T² → f_s M̃/µ,  with M̃ = lim (M − γ²/α).
 
 Here:
 - f_s = ρ_s/ρ is the superfluid fraction;
 - c_T² = µ/ρ_n;
-- M_µ is the lattice's uniaxial modulus at fixed chemical potential. M_µ = M if the density–strain coupling γ stays finite.
+- M̃ is the lattice's uniaxial modulus at fixed chemical potential. M̃ = M if the density–strain coupling γ stays finite.
 
-**The bound.** Take an isotropic lattice in d dimensions, with K the lattice bulk modulus at fixed density. Positive-definite energy requires µ > 0, α > 0 and αK > γ², and therefore M_µ ≥ 2(d−1)µ/d. In Green's limit this gives c₋ > c_T whenever f_s > d/[2(d−1)]:
+**The bound.** Take an isotropic lattice in d dimensions, with K the lattice bulk modulus at fixed density. Positive-definite energy requires µ > 0, α > 0 and αK > γ², and therefore M̃ ≥ 2(d−1)µ/d. In Green's limit this gives c₋ > c_T whenever f_s > d/[2(d−1)]:
 - **three dimensions:** f_s > 3/4;
 - **two dimensions:** never, since it would need f_s = 1;
 - **four dimensions:** f_s > 2/3 (relevant because the book's lattice is four-dimensional, D4 with a compact direction).
@@ -170,8 +171,8 @@ Here:
 **Consequence.**
 - At the book's own f_s = 4/5, the omitted second sound is faster than light for every stable isotropic lattice, in three or four dimensions. If γ stays finite it is about 1.5 c.
 - The book takes its matter to be limited to the shear speed, so the Landau–Cherenkov drag of the paper's Sec. 7 is closed to it.
-- The drag opens only if f_s M_µ/µ < 1, which requires f_s < 3/4 (2/3 in four dimensions). That lies inside the book's stated range (0.49–0.98), but not at its derived value.
-- Nor does this help vortex matter. In the same medium vortex matter would be drag-free up to c₋ > c_T, so it could outrun light.
+- The drag opens only if f_s M̃/µ < 1, which requires f_s < 3/4 (2/3 in four dimensions). That lies inside the book's stated range (0.49–0.98), but not at its derived value.
+- Vortex matter in the same medium is no exception: it couples to shear through the normal fraction (paper Sec. 6), so its drag-free range also ends at the shear speed. (An earlier version of this memo said it could outrun light; that is withdrawn.)
 
 **Limits of this check.**
 - It assumes the book's medium obeys standard supersolid hydrodynamics, which the book neither states nor contradicts.

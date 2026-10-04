@@ -3,7 +3,7 @@
 **Plain-language summary.** This folder holds the evidence for one result, plus an exploration that followed it.
 
 - **The result.** In the program's supersolid model of the vacuum, the knots that stand for particles also couple to a second compression sound that is slower than light. Fast matter therefore sheds energy into it, and matter and light cannot share one speed limit. The ledger records this as V4.89, §2.91.V, single leg; V4.90 adds the two-leg closure of the paper's numbers.
-- **The paper.** A short negative-result paper on that finding is in `paper/`. The one earlier proposal of a supersolid vacuum (Cox) has been read in full; it never treats second sound, and the paper describes it accordingly (`lit/COX_V4_BODY_READ.md`). Its numbers were recomputed independently and blind (`second_leg/`, from the dispatch in `dispatch/`). The second computation caught three defects in the first, which are fixed in `closure/`. The two now agree on every cited number.
+- **The paper.** A short negative-result paper on that finding is in `paper/`. The one earlier proposal of a supersolid vacuum (Cox) has been read in full; it never treats second sound, and the paper describes it accordingly (`lit/COX_V4_BODY_READ.md`). Its numbers were recomputed independently and blind (`second_leg/`, from the dispatch in `dispatch/`). The second computation caught three defects in the first, which are fixed in `closure/`. The two now agree on every cited number. After an outside review (October 4) the paper derives how a vortex couples to the medium, twice, and withdraws two claims the derivation does not support.
 - **The exploration (Phase 2, not on the ledger).** It screens other kinds of vacuum against the shared-speed-limit requirement. It also tests whether a three-ring ("Borromean") baryon is topologically protected. In the standard two-field class it is not.
 - **Not here.** The canonical ledger is not in this repository.
 
@@ -18,11 +18,11 @@
 | `step4/` | Sweep toward melting (2D): c₂/c_T ≤ 0.78 in the supersolid phase, never 1. Coexistence boundary Λ_c ≈ 13.04 | Cited by §2.91.V; superseded by `closure/` (0.77 at Λ_c; the end of the metastable branch corrected) |
 | `external_review/` | The external reviewer's check `verify_lbc_external.py` (md5 cc12e688), and a path-adjusted runner | Cited by §2.91.V |
 | `estate/` | Fold authorizations (author's words verbatim) for V4.89 and V4.90; the fold scripts `foldin_v4_89_lbc_bank.py` (c8e9b4a5) and `foldin_v4_90_lbc_closure.py` (964e49c5); the independent additivity checks (09ae3719, f6617f30); the author's brief of 3 Oct 2026 | Provenance |
-| `paper/` | Draft "Second sound breaks the common light cone of a supersolid vacuum", outline and abstract, venue note, citation log, sympy identity checks, table builder; the Green's-limit check `green_limit_check.py` and its blind second leg `green_limit_second_leg/` | Draft; tables carry the two-leg (corrected) values |
+| `paper/` | Draft "Second sound breaks the common light cone of a supersolid vacuum", outline and abstract, venue note, citation log, sympy identity checks, table builder; the Green's-limit check `green_limit_check.py` and its blind second leg `green_limit_second_leg/`; the vortex-coupling check `vortex_coupling_check.py` and its blind second leg `vortex_coupling_second_leg/`; `revision_numbers_check.py`, the arithmetic behind the October 4 revision | Draft; tables carry the two-leg (corrected) values |
 | `dispatch/` | `LBC_SECOND_LEG_DISPATCH_INBAND.md` (md5 e5153dc527bf989eed0261e8aed91831). Activation line: `ACTIVATE: LBC-2LEG-1`. Comparator (112 checks; self-test 112/112 PASS; a negative control catches injected misses), schema skeleton, T1 list and scanner, builders | Run by the second leg (PR #36) |
 | `second_leg/` (on `main` via PR #36) | The second leg's blind recomputation: instruments, results, notes, an adversarial review, its checkpoint (md5 b19d8b62), and the comparison against the first leg (108/112) | Second leg of record |
-| `closure/` | `LBC_2LEG_CLOSURE_MEMO.md`: chat-side check of the four misses (all first-leg defects), the corrected first leg (`lbc_chat_checkpoint_v2.json`, md5 aa01ea0a), and the comparison against the second leg (112/112). `V4_90_STAGING.md` is the staged ledger record, folded as V4.90 on 4 Oct 2026 | Two-leg closure; ledger V4.90 |
-| `lit/` | Three citation-verified literature sweeps (prior art for the paper; vacuum Cherenkov and supersolid drag; solitons, q-theory and prior-address map) and `sym6_check.py`. `COX_V4_BODY_READ.md`: the body of Cox's *Cosserat Supersolid* v4, read in full, with the reading tools in `cox_v4_read/` (the text itself is not included) | Working notes; the Cox read resolves the open item in `A1_prior_art.md` |
+| `closure/` | `LBC_2LEG_CLOSURE_MEMO.md`: chat-side check of the four misses (all first-leg defects), the corrected first leg (`lbc_chat_checkpoint_v2.json`, md5 aa01ea0a), and the comparison against the second leg (112/112). `V4_90_STAGING.md` is the staged ledger record, folded as V4.90 on 4 Oct 2026. Added for the revision: the remaining Table 2 superfluid fractions, computed twice (`fs_rows.py` with the first leg's code, `fs_rows_cc.py` with the second leg's); the Table 2 rows outside the blind comparison, recomputed with the second leg's code, not blind (`table2_cc_rows.py`); and why that code's c₁ at g = 12.4 is a mislabelled mode (`table2_cc_g124_modecheck.py`). `NEXT_FOLD_NOTE.md`: one ledger figure the revision changes, for the next fold | Two-leg closure; ledger V4.90 |
+| `lit/` | Three citation-verified literature sweeps (prior art for the paper; vacuum Cherenkov and supersolid drag; solitons, q-theory and prior-address map) and `sym6_check.py`. `COX_V4_BODY_READ.md`: the body of Cox's *Cosserat Supersolid* v4, read in full, with the reading tools in `cox_v4_read/` (the text itself is not included); two of its statements about vortex matter were corrected on 4 Oct 2026 after the vortex-coupling derivation | Working notes; the Cox read resolves the open item in `A1_prior_art.md` |
 | `phase2/` | Phase 2 report: shared-light-cone screen, prior-address map, three ranked questions. Also the Q1 calculation: S³ degree of Borromean configurations, Gauss linking numbers, Kauffman bracket, PSL(2,7) subgroup check. `independent_check/` holds an independent check by a separate agent using different methods; it confirmed every claim | Exploration mode. Its carry-over note that the Cox preprint body was unread is resolved by `lit/COX_V4_BODY_READ.md` |
 | `deps/g_tsh1_chatleg.py` | The G-TSH1 instrument the 2D scripts import (md5 621559e1). Copied from branch `claude/sqt-framework-perspectives-kMZyw`, `gate_tsh1_staging/` | Dependency of record |
 
@@ -35,10 +35,10 @@
 | S3 | `oct3_exploration/lbc_3d.py` (3D weights) |
 | S4 | `step4/lbc_sweep_low.py`, `step4/lbc_sweep_refine.py` (interaction sweep, coexistence boundary) |
 | S5 | `step3/step3_loss_length.py` (loss length) |
-| S6 | `paper/paper_identities_check.py` (symbolic identities), `external_review/verify_lbc_external.py` (independent re-derivation), `paper/green_limit_check.py` and `paper/green_limit_second_leg/` (Green's-limit relation of Sec. 5, two legs) |
-| S7 | `second_leg/` (independent second computation of every cited number) |
-| S8 | `closure/` (corrected first computation; the comparison of the two) |
-| Tables | `closure/build_v2.py` → `closure/paper_tables_v2.json` (current); `paper/paper_tables.py` → `paper/paper_tables.json` (first computation, superseded) |
+| S6 | `paper/paper_identities_check.py` (symbolic identities), `external_review/verify_lbc_external.py` (independent re-derivation), `paper/green_limit_check.py` and `paper/green_limit_second_leg/` (Green's-limit relation of Sec. 5, two legs), `paper/vortex_coupling_check.py` and `paper/vortex_coupling_second_leg/` (vortex couplings of Sec. 6, two legs) |
+| S7 | `second_leg/` (the blind second computation; on `main`) |
+| S8 | `closure/` (corrected first computation; the comparison of the two; the Table 2 entries the blind comparison did not cover: `fs_rows.py`, `fs_rows_cc.py`, `table2_cc_rows.py`, `table2_cc_g124_modecheck.py`) |
+| Tables | `closure/build_v2.py` → `closure/paper_tables_v2.json` (current); `paper/paper_tables.py` → `paper/paper_tables.json` (first computation, superseded); `paper/revision_numbers_check.py` (the derived numbers and Table 2 notes of the October 4 revision; run from `paper/`; output `paper/revision_numbers_check.out`) |
 
 ## Re-running
 
@@ -50,6 +50,7 @@ The scripts are kept byte-identical to the versions whose checksums are cited, s
 - `/home/claude/lbc_exploration` → `lbc_bank/oct3_exploration/`
 - `/home/claude/bank` → `lbc_bank/step3/` and `lbc_bank/paper/`
 - `/home/claude/fold` → wherever the canonical ledgers are kept (not in this repository)
+- `/tmp/claude-0/-home-claude-gifgaf0-github-io/b6f78e01-…/scratchpad` (imported as `cc2d`) → `lbc_bank/second_leg/` on `main`: `cc2d.py` there is the same file (md5 e6da46ef; the scripts assert it)
 
 `phase2/q1_degree_check.py` and `phase2/q1_group_check.py` have no path dependencies. `python3 q1_degree_check.py 128 192 256` takes about two minutes.
 

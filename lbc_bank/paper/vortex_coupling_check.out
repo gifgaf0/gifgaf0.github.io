@@ -1,0 +1,32 @@
+{
+ "C1_laplacian_theta_v": "0",
+ "C1_div_v": "0",
+ "C1_theta_t_plus_V_dot_v": "0",
+ "C1_curl_v_away_from_axis": "0",
+ "C2_q_dot_v": "0",
+ "C2_i_q_cross_v_equals_kappa": "-kappa",
+ "C3_linear_terms": {
+  "rho v.grad phi (from -(rho/2)|grad theta|^2)": "0",
+  "rho_n v.grad phi (from (rho_n/2)|u_t - grad theta|^2)": "0",
+  "-rho_n u_L,t . v": "0",
+  "-rho_n u_T,t . v": "-kappa*omega*rho_n*uT_q/sqrt(q_x**2 + q_y**2)"
+ },
+ "C3_vanishing": {
+  "rho v.grad phi (from -(rho/2)|grad theta|^2)": true,
+  "rho_n v.grad phi (from (rho_n/2)|u_t - grad theta|^2)": true,
+  "-rho_n u_L,t . v": true,
+  "-rho_n u_T,t . v": false
+ },
+ "C3_density_source": "from -dr*theta_t with theta_t = -V.v (C1): +dr (V.v); Galilean completion adds -dr |v|^2/2",
+ "C4_resonance_cos_theta": "[c/V]",
+ "C4_condition": "cos_theta = c/V must lie in [-1, 1]: emission iff V > c (shear: V > c_T; density: V > c_nu)",
+ "C5_chi_limit_alpha_inf": "0",
+ "C5_chi_limit_alpha_inf_gamma_g_sqrt_alpha": "0",
+ "C6_omega_first_order": "Matrix([[I*pi*Q_y*R**2*kappa, -I*pi*Q_x*R**2*kappa, 0]])",
+ "C6_omega_equals_-i_kappa_pi_R2_(z x Q)": true,
+ "C6_vQ_equals_pi_kappa_R2_(z - Qhat(Qhat.z))": true,
+ "C6_V_dot_v": "pi*R**2*V*kappa*(Q_x**2 + Q_y**2)/(Q_x**2 + Q_y**2 + Q_z**2)",
+ "C6_ratio_flow_over_deficit_vertex": "2*pi**2*V/(c_kappa*epsilon)",
+ "C6_ratio_at_V=c_T=7.85,c_k=9.38,eps=1": 16.519487110565343
+}
+ALL CHECKS PASS

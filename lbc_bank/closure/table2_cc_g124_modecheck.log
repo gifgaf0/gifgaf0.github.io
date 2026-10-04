@@ -1,0 +1,8 @@
+same state as table2_cc_rows.py (c2, cT, F2, c1 to 1e-6): {'c2': [2.8783084261808694, 2.8783084309181795, True], 'cT': [4.361651905183191, 4.361651898645226, True], 'F2': [0.6913590542185868, 0.6913590716271141, True], 'c1': [10.786270410504185, 10.786270392004619, True]}
+frac 0.030: label-1 v/q 7.326 (F 0.1901, second-even True); continuity v/q 7.326 (F 0.1901)
+frac 0.050: label-1 v/q 7.338 (F 0.1863, second-even True); continuity v/q 7.338 (F 0.1863)
+frac 0.075: label-1 v/q 12.772 (F 0.2071, second-even False); continuity v/q 7.355 (F 0.1776)
+frac 0.100: label-1 v/q 10.843 (F 0.2834, second-even False); continuity v/q 7.367 (F 0.1628)
+c1: instrument label 10.7863; continuity 7.3576; first leg 7.3576; table 7.36
+lowest gapped omega per q: [3.221, 3.506, 3.968, 4.492]
+MODECHECK DONE

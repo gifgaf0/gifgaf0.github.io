@@ -1,0 +1,6 @@
+# E2 scan (dispatch t1_scan.py) with base list E1, run on the files added after the comparison
+compare_out.json: CLEAN  hits=[]  numeric_collisions=0
+cc_diagnose_misses.py: CLEAN  hits=[]  numeric_collisions=0
+diagnose_out.json: CLEAN  hits=[]  numeric_collisions=1
+LBC_2LEG_CC_RETURN.md: CLEAN  hits=[]  numeric_collisions=0
+exit=0

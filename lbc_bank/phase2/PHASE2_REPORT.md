@@ -37,7 +37,7 @@ I stop here. You pick the next question.
 
 ## 1. Rules as applied
 
-- **Prior Address.** Literature first. Three sweeps were done before this report (`lit/A1_prior_art.md`, `lit/A2_cherenkov_supersolid.md`, `lit/B_solitons_qtheory.md`), plus five targeted checks today (§7). Every source below was fetched and matched. The few that were not are marked.
+- **Prior Address.** Literature first. Three sweeps were done before this report (`lit/A1_prior_art.md`, `lit/A2_cherenkov_supersolid.md`, `lit/B_solitons_qtheory.md`), plus eight targeted checks today (listed first under Sources). Every source below was fetched and matched. The few that were not are marked.
 - **Eddington guard.** No numerology. The tetrahedral group of order 12 in the spin-2 condensate papers below is a coincidence of names with the program's |T| = 12 alpha-decay capacity. Nothing here connects them.
 - **M.CW.** The degree calculation uses no physical inputs at all; it is pure topology. The proton-lifetime estimate in Q1 imports two external numbers, named where used: the Super-K bound and a hadronic attempt rate. It is an order-of-magnitude statement only.
 
@@ -106,7 +106,7 @@ I stop here. You pick the next question.
 
 **Decisive test, in three cheap-to-moderate steps.**
 1. **Bookkeeping.** Is the core one complex (U(1)) field? If yes, the claim is dead as topology. It survives only as energetic metastability, which needs a barrier.
-   - This step may already be answered on the record. G-VS1 (§2.91.U, V4.88) found the protected vortex sector to be the U(1) winding: π₁ = ℤ on every stratum except ferro-7, with half-quantum vortices on the polar strata. That group is Abelian, so Poénaru–Toulouse's commutator obstruction to crossing is trivial.
+   - This step may already be answered on the record. G-VS1 (§2.91.U, V4.88) found the protected vortex sector to be the U(1) winding: π₁ = ℤ on every stratum except ferro-7 (and one accidental point), with half-quantum vortices on the polar strata. That group is Abelian, so Poénaru–Toulouse's commutator obstruction to crossing is trivial.
    - If the core's lines are those vortices, nothing topological protects their Borromean linking. Only two options remain: a non-Abelian sector that is not yet on the record, or energetic metastability.
 2. **Computation.** If the core has non-Abelian charges in some group G, enumerate the G-colourings of the Borromean rings. These are the homomorphisms from the link group, read off the closed braid (σ₁σ₂⁻¹)³, to G. Keep those whose three meridians pairwise do not commute. Then evaluate Annala et al.'s coloured-link invariant on each.
    - This is exactly the ledger's own candidate (b) under §2.70, "homomorphisms to non-abelian targets such as PSL(2,7)". The step gives it a physical meaning and a published criterion.
@@ -120,7 +120,7 @@ I stop here. You pick the next question.
 **Why.** The screen's only symmetric pass has T_μν ∝ g_μν, i.e. p = −ε. This is the brief's lead (a), §2.90's tensioned ground state read as perfect tension, and Klinkhamer–Volovik's self-sustained vacuum.
 
 **Expectation: no.**
-- In a relativistic elastic medium, shear waves travel at v² = μ/(ε + p) [Battye–Moss 2009]. The enthalpy ε + p is the medium's inertia, and it is what a rest frame is made of.
+- In a relativistic elastic medium, shear waves travel at v² = μ/(ε + p) [Battye–Moss 2009, the isotropic limit of their cubic solid]. The enthalpy ε + p is the medium's inertia, and it is what a rest frame is made of.
 - Perfect tension sets ε + p = 0. Then either μ = 0 (no shear light) or the shear speed is infinite.
 - The program's light is c_T² = μ/ρ_n, which needs the inertia ρ_n > 0, so it needs a rest frame.
 - Separately, a network of tensioned filaments or sheets has w = −1/3 or −2/3 [Bucher–Spergel 1999], never −1. So §2.90's lattice of tensioned threads is not a perfect-tension vacuum in any case. Note that w = −1/3 is exactly the line below which expansion accelerates (ä ∝ −(ε + 3p)).
@@ -169,7 +169,7 @@ The expectation was NO: the charge counts pairwise cross-component links and is 
 ### 5.2 Setup
 
 - **Fields.** Two complex fields z₁, z₂ with n = (z₁, z₂)/|(z₁, z₂)| on S³. This is the standard class of a vortex core in one condensate inside a second condensate.
-- **Boundary condition.** z₁ → 0 and z₂ → 1 at infinity. This is the program's declared envelope-dominated vacuum (ρ₁∞ = 0).
+- **Boundary condition.** z₁ → 0 and z₂ → 1 at infinity. This is the program's declared envelope-dominated vacuum (ρ₁∞ = 0). The identity map (a) has z₂ → i instead, an equivalent constant.
 - **Charge.** B = (1/2π²)∫det[n, ∂ₓn, ∂ᵧn, ∂_z n] d³x, computed as det[Z, ∂Z]/|Z|⁴ with analytic derivatives. Midpoint rule on [−6.5, 6.5]³ at N = 128, 192 and 256.
 - **Geometry.**
   - Borromean rings: three mutually perpendicular ellipses with semi-axes 2 and 1, z₁ = f_A f_B f_C (1+r²)⁻³ e^{−r²/6.25}.
@@ -189,7 +189,7 @@ The expectation was NO: the charge counts pairwise cross-component links and is 
 | f | Borromean A, B, C | D₁, D₂, D₃, one through each ring | 3 | **3.000000** | 3 |
 
 **Checks.**
-- (a) The identity map's integrand equals 8/(1+r²)³ pointwise to 4 × 10⁻¹⁵.
+- (a) The identity map's integrand equals 8/(1+r²)³ pointwise, to within 5 × 10⁻¹⁵ relative.
 - **Link type.** Pairwise Gauss linking numbers are 0 for both ring triples. A Kauffman-bracket state sum on a generic projection gives:
   - the Borromean triple: the Jones polynomial of the Borromean rings, −t³ + 3t² − 2t + 4 − 2t⁻¹ + 3t⁻² − t⁻³;
   - the pulled-apart triple: that of the 3-component unlink, t + 2 + t⁻¹.
@@ -199,11 +199,12 @@ The expectation was NO: the charge counts pairwise cross-component links and is 
   - B(b) = 0;
   - B(d) = 0;
   - B(c) = B(e).
+- **Independent check** (`independent_check/`). A separate agent that had not seen this work, and was barred from opening or running these scripts, used different methods. It counted signed preimages of regular values (root finding, no spatial integral) at two amplitudes. It got B(b) = 0, B(c) = 1, B(e) = 1 and B(f) = 3. SnapPy identified the ring triple as the Borromean rings (L6a4). The checker also confirmed the PSL(2,7)/SL(2,7) subgroup facts, the Super-K exponent (152.05), and all seven new literature attributions.
 
 ### 5.4 Why: an analytic argument the numbers confirm
 
 - Take the target point (z₁, z₂) = (0, −1). Its preimages are the points on z₁'s vortex lines where z₂ is real and negative.
-- Along ring i, the phase of z₂ winds lk(ring i, zero set of z₂) times. So the signed count of preimages, which is the degree, is Σᵢ lk(ring i, z₂'s lines).
+- Along ring i, the phase of z₂ winds lk(ring i, zero set of z₂) times. So the signed count of preimages, which is the degree, is Σᵢ lk(ring i, z₂'s lines). The overall sign is fixed by convention; calibration a′ gives +1 here.
 - The point at infinity maps to (0, 1), not (0, −1), so it never contributes.
 - The rings' linking among themselves never enters.
 - By Hopf's degree theorem (standard), based maps S³ → S³ are classified up to homotopy by this number. Two consequences:
@@ -244,13 +245,14 @@ The expectation was NO: the charge counts pairwise cross-component links and is 
 - `Q1_EXPECTATION_pre_compute.md` and `Q1_EXPECTATION_ADDENDUM_pre_compute.md`: filed before computing.
 - `q1_degree_check.py` (md5 3085e8c3b83b54c26d1a9de4ccf611fe) → `q1_degree_check.json` (8fb234d860aa98f620102634da5f2606) and `.log`. It covers the degree integrals, the Gauss linking integrals and the Kauffman bracket. Run with `python3 q1_degree_check.py 128 192 256` (about 2 minutes).
 - `q1_group_check.py` (823f9c8a3dd9f06050b85187e1467b06) → `q1_group_check.json` (c023bae0b87c3a4684f1170645d2d951): the Q₈/A₄/S₄ content of PSL(2,7) and SL(2,7).
+- `independent_check/`: the separate agent's scripts and logs, with a README.
 - `../lit/`: the three literature sweeps and `sym6_check.py`.
 
 ## Sources
 
 **New checks for this report** (fetched 4 October 2026):
 - T. Annala, R. Zamora-Zamora, M. Möttönen, "Topologically protected vortex knots and links," Commun. Phys. 5, 309 (2022). [nature.com](https://www.nature.com/articles/s42005-022-01071-2)
-- M. Kobayashi, Y. Kawaguchi, M. Nitta, M. Ueda, "Collision dynamics and rung formation of non-Abelian vortices," PRL 103, 115301 (2009). [APS](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.103.115301), [ar5iv](https://ar5iv.labs.arxiv.org/html/0810.5441)
+- M. Kobayashi, Y. Kawaguchi, M. Nitta, M. Ueda, "Collision Dynamics and Rung Formation of Non-Abelian Vortices," PRL 103, 115301 (2009). [APS](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.103.115301), [ar5iv](https://ar5iv.labs.arxiv.org/html/0810.5441)
 - V. Poénaru, G. Toulouse, "The crossing of defects in ordered media and the topology of 3-manifolds," J. Physique 38, 887 (1977). [journal page](https://jphys.journaldephysique.org/articles/jphys/abs/1977/08/jphys_1977__38_8_887_0/jphys_1977__38_8_887_0.html)
 - H. Guan, S. Zuccher, X. Liu, "Topological cascade of quantum Borromean rings," Phys. Fluids 37, 024126 (2025). [author PDF](https://zucchers.github.io/downloads/GZL_POF2025.pdf)
 - G. W. Semenoff, F. Zhou, "Discrete symmetries and 1/3-quantum vortices in condensates of F=2 cold atoms," PRL 98, 100401 (2007). [INSPIRE](https://inspirehep.net/api/arxiv/cond-mat/0610162). Background for Q1 only: the cyclic spin-2 phase has both non-Abelian charges and fractional vortices.

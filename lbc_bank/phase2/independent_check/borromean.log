@@ -1,0 +1,21 @@
+/usr/local/lib/python3.13/dist-packages/plink/gui.py:33: UserWarning: Plink failed to import tkinter, GUI will not be available
+  warnings.warn('Plink failed to import tkinter, GUI will not be available')
+=== original A,B,C (configs c,b,f)
+ Gauss lk(A,B), lk(B,C), lk(A,C): [np.float64(-0.0), np.float64(-0.0), np.float64(0.0)]
+ dir=[0.31, 0.47, 0.83]: #crossings=12, min height gap=0.865, comps=3, linking matrix=[[0, 0, 0], [0, 0, 0], [0, 0, 0]], writhe=0, own-Jones=-t**3 + 3*t**2 - 2*t + 4 - 2/t + 3/t**2 - 1/t**3, simplified crossings=6, split diagram pieces=1
+   SnapPy: volume=7.327725 identify=[t12067(0,0)(0,0)(0,0), 6^3_2(0,0)(0,0)(0,0), L6a4(0,0)(0,0)(0,0), ooct02_00005(0,0)(0,0)(0,0)]
+ dir=[-0.62, 0.21, 0.75]: #crossings=12, min height gap=0.889, comps=3, linking matrix=[[0, 0, 0], [0, 0, 0], [0, 0, 0]], writhe=0, own-Jones=-t**3 + 3*t**2 - 2*t + 4 - 2/t + 3/t**2 - 1/t**3, simplified crossings=8, split diagram pieces=1
+   SnapPy: volume=7.327725 identify=[t12067(0,0)(0,0)(0,0), 6^3_2(0,0)(0,0)(0,0), L6a4(0,0)(0,0)(0,0), ooct02_00005(0,0)(0,0)(0,0)]
+ dir=[0.55, -0.66, 0.51]: #crossings=12, min height gap=0.990, comps=3, linking matrix=[[0, 0, 0], [0, 0, 0], [0, 0, 0]], writhe=0, own-Jones=-t**3 + 3*t**2 - 2*t + 4 - 2/t + 3/t**2 - 1/t**3, simplified crossings=6, split diagram pieces=1
+   SnapPy: volume=7.327725 identify=[t12067(0,0)(0,0)(0,0), 6^3_2(0,0)(0,0)(0,0), L6a4(0,0)(0,0)(0,0), ooct02_00005(0,0)(0,0)(0,0)]
+=== shifted (config e)
+ Gauss lk(A,B), lk(B,C), lk(A,C): [np.float64(0.0), np.float64(0.0), np.float64(-0.0)]
+ dir=[0.31, 0.47, 0.83]: #crossings=4, min height gap=1.612, comps=3, linking matrix=[[0, 0, 0], [0, 0, 0], [0, 0, 0]], writhe=0, own-Jones=t + 2 + 1/t, simplified crossings=0, split diagram pieces=1
+ dir=[-0.62, 0.21, 0.75]: #crossings=4, min height gap=1.714, comps=3, linking matrix=[[0, 0, 0], [0, 0, 0], [0, 0, 0]], writhe=0, own-Jones=t + 2 + 1/t, simplified crossings=0, split diagram pieces=1
+ dir=[0.55, -0.66, 0.51]: #crossings=2, min height gap=1.274, comps=2, linking matrix=[[0, 0], [0, 0]], writhe=0, own-Jones=-sqrt(t) - 1/sqrt(t), simplified crossings=0, split diagram pieces=1
+reference: SnapPy L6a4 volume = 7.327724753417752 ; own-Jones of spherogram's L6a4 PD (writhe from spherogram) = -t**3 + 3*t**2 - 2*t + 4 - 2/t + 3/t**2 - 1/t**3
+sanity: own-Jones of spherogram K3a1 (trefoil) = -t**4 + t**3 + t writhe 3
+
+real	0m23.118s
+user	0m21.550s
+sys	0m1.420s

@@ -1,0 +1,12 @@
+config (c) A0=1.0: th=0.3: n=1 signs=[1] deg=1; th=1.7: n=1 signs=[1] deg=1; th=2.9: n=1 signs=[1] deg=1; th=-2.2: n=1 signs=[1] deg=1; th=4.4: n=1 signs=[1] deg=1
+config (c) A0=250.0: th=0.3: n=1 signs=[1] deg=1; th=1.7: n=1 signs=[1] deg=1; th=2.9: n=1 signs=[1] deg=1; th=-2.2: n=1 signs=[1] deg=1; th=4.4: n=1 signs=[1] deg=1
+config (e) A0=1.0: th=0.3: n=1 signs=[1] deg=1; th=1.7: n=1 signs=[1] deg=1; th=2.9: n=1 signs=[1] deg=1; th=-2.2: n=1 signs=[1] deg=1; th=4.4: n=1 signs=[1] deg=1
+config (e) A0=250.0: th=0.3: n=1 signs=[1] deg=1; th=1.7: n=1 signs=[1] deg=1; th=2.9: n=1 signs=[1] deg=1; th=-2.2: n=1 signs=[1] deg=1; th=4.4: n=1 signs=[1] deg=1
+config (b) A0=1.0: th=0.3: n=0 signs=[] deg=0; th=1.7: n=0 signs=[] deg=0; th=2.9: n=0 signs=[] deg=0; th=-2.2: n=0 signs=[] deg=0; th=4.4: n=0 signs=[] deg=0
+config (b) A0=250.0: th=0.3: n=0 signs=[] deg=0; th=1.7: n=0 signs=[] deg=0; th=2.9: n=0 signs=[] deg=0; th=-2.2: n=0 signs=[] deg=0; th=4.4: n=0 signs=[] deg=0
+config (f) A0=1.0: th=0.3: n=3 signs=[1, 1, 1] deg=3; th=1.7: n=3 signs=[1, 1, 1] deg=3; th=2.9: n=3 signs=[1, 1, 1] deg=3; th=-2.2: n=3 signs=[1, 1, 1] deg=3; th=4.4: n=3 signs=[1, 1, 1] deg=3
+config (f) A0=250.0: th=0.3: n=3 signs=[1, 1, 1] deg=3; th=1.7: n=3 signs=[1, 1, 1] deg=3; th=2.9: n=3 signs=[1, 1, 1] deg=3; th=-2.2: n=3 signs=[1, 1, 1] deg=3; th=4.4: n=3 signs=[1, 1, 1] deg=3
+
+real	0m6.227s
+user	0m6.009s
+sys	0m0.268s

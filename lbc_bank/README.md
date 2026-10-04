@@ -21,7 +21,7 @@
 | `paper/` | Draft "Second sound breaks the common light cone of a supersolid vacuum", outline and abstract, venue note, citation log, sympy identity checks, table builder | Draft; numbers awaiting the second leg |
 | `dispatch/` | `LBC_SECOND_LEG_DISPATCH_INBAND.md` (md5 e5153dc527bf989eed0261e8aed91831), prepared and not run. Activation line: `ACTIVATE: LBC-2LEG-1`. Comparator (112 checks; self-test 112/112 PASS; a negative control catches injected misses), schema skeleton, T1 list and scanner, builders | Prepared, not run |
 | `lit/` | Three citation-verified literature sweeps (prior art for the paper; vacuum Cherenkov and supersolid drag; solitons, q-theory and prior-address map) and `sym6_check.py` | Working notes |
-| `phase2/` | Phase 2 report: shared-light-cone screen, prior-address map, three ranked questions. Also the Q1 calculation: S³ degree of Borromean configurations, Gauss linking numbers, Kauffman bracket, PSL(2,7) subgroup check | Exploration mode |
+| `phase2/` | Phase 2 report: shared-light-cone screen, prior-address map, three ranked questions. Also the Q1 calculation: S³ degree of Borromean configurations, Gauss linking numbers, Kauffman bracket, PSL(2,7) subgroup check. `independent_check/` holds an independent check by a separate agent using different methods; it confirmed every claim | Exploration mode |
 | `deps/g_tsh1_chatleg.py` | The G-TSH1 instrument the 2D scripts import (md5 621559e1). Copied from branch `claude/sqt-framework-perspectives-kMZyw`, `gate_tsh1_staging/` | Dependency of record |
 
 ## Paper supplementary index

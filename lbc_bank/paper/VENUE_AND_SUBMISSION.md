@@ -27,4 +27,5 @@
   - the survival conditions are complete;
   - the Green's-limit decoupling is stated for constant ρ_n;
   - the Table 2 note gives the right cause.
-- Remove the cover note at the top of the draft. Confirm the AI-assistance acknowledgment, which now says every check was made by AI agents, not human referees. Consider the neutral title the cover note suggests.
+- **Approved by the author** (October 4, 18:08 PDT: "Approved draft"; `APPROVAL_V1.md`). The title and the acknowledgments stay as worded. The posting version is built: `submission/second_sound_light_cone_v1.pdf`, the approved text with the cover note removed and nothing else changed.
+- **Left for the author:** upload the PDF and the supplementary zip to Zenodo, merge PR #35, then submit to *Classical and Quantum Gravity*.

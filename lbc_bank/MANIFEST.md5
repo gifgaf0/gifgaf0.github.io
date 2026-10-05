@@ -1,4 +1,4 @@
-614072164993dd716be49c5dc5286d4c  README.md
+1adeacc6e08b6051b4615dfea79ccab5  README.md
 9b63354c7df6c6d6e160e6408459404f  STEP1_SCOPE_CHECK.md
 7c3a13ecddf252968e79f46eb249fc20  closure/LBC_2LEG_CLOSURE_MEMO.md
 95f201b25b5f8ec610ec3c387e1658c1  closure/NEXT_FOLD_NOTE.md
@@ -76,9 +76,10 @@ fbfee40581572275ba459480c5503668  oct3_exploration/logs/g6.log
 339fea634334bf2bbebb751c50e26624  oct3_exploration/logs/hydro.log
 aafba6f3ff14ec324cab4b0deb6dca96  oct3_exploration/logs/run3d.log
 3d31301bd2e3dcc356df7ccef963faf8  oct3_exploration/logs/sweep.log
+646d5c3aa99ef2266fafd5e0cb7d09e4  paper/APPROVAL_V1.md
 dad7cc7544adbe5dde7c8b92cb7286b5  paper/CITATION_LOG.md
 4933b3a791b7f4b1efc89dc88e87d43a  paper/PAPER_OUTLINE_AND_ABSTRACT.md
-14bac4963db05b6187fb3c9aafa7f63f  paper/VENUE_AND_SUBMISSION.md
+ef67d345e0485a82e3aefd8b0d1d9995  paper/VENUE_AND_SUBMISSION.md
 34efbae7d91589b1653eb9751f25d535  paper/green_limit_check.out
 c0f7c3a72e51907276cfb30adffad0a7  paper/green_limit_check.py
 f415f565f0c4e924136710442731aacf  paper/green_limit_second_leg/derive.py
@@ -91,6 +92,10 @@ a3583d9aec92f479a7c231d27624d44a  paper/green_limit_second_leg/q5_numbers_output
 c0211c2958f2cb94858431837129f0f4  paper/revision_numbers_check.out
 8c43d0e34587d70fee3255a49eafbac6  paper/revision_numbers_check.py
 a47080c26bb0a9c601912a5fa925a9f9  paper/second_sound_light_cone_DRAFT.md
+3951a3fd47d5184d35a5a04d25d16c84  paper/submission/build_v1.py
+0dc9b1ea59384bdca33e9980b6cbb8ef  paper/submission/second_sound_light_cone_v1.md
+30ede2b2bf134caeb7f6f891d834ba5e  paper/submission/second_sound_light_cone_v1.pdf
+727a1ad4cd7283305729583a4744860e  paper/submission/second_sound_light_cone_v1.tex
 85914b1cae43b627ed03cf43d72fabfe  paper/vortex_coupling_check.out
 d2289ddfb44490a66b01c5126e5ad99e  paper/vortex_coupling_check.py
 dd74c58730e0f757ed4fc7c1d4b4002c  paper/vortex_coupling_second_leg/q1_q2.out

@@ -1,0 +1,20 @@
+L=24.0, N=128, dx=0.1875, build+FFT 24.8s
+  n=(1, 0, 0) qR=0.262 sin^2=1.000: zhat.v FFT=+18.18913 (Im 9.3e-15)  exact=+19.37965  small-qR=+19.73921  rel.err=6.14e-02  |q.v|/|v|q=1.6e-03
+  n=(2, 0, 0) qR=0.524 sin^2=1.000: zhat.v FFT=+18.57129 (Im 5.5e-15)  exact=+18.48770  small-qR=+19.73921  rel.err=4.52e-03  |q.v|/|v|q=2.2e-04
+  n=(3, 0, 0) qR=0.785 sin^2=1.000: zhat.v FFT=+17.14616 (Im 8.5e-15)  exact=+17.20125  small-qR=+19.73921  rel.err=3.20e-03  |q.v|/|v|q=2.4e-04
+  n=(0, 0, 1) qR=0.262 sin^2=0.000: zhat.v FFT=+2.40815 (Im 3.6e-16)  exact=+0.00000  small-qR=+0.00000  rel.err=2.41e+12  |q.v|/|v|q=1.0e+00
+  n=(0, 0, 2) qR=0.524 sin^2=0.000: zhat.v FFT=-0.16275 (Im 3.6e-17)  exact=+0.00000  small-qR=+0.00000  rel.err=1.63e+11  |q.v|/|v|q=1.0e+00
+  n=(1, 0, 1) qR=0.370 sin^2=0.500: zhat.v FFT=+9.77596 (Im 5.9e-15)  exact=+9.61513  small-qR=+9.86960  rel.err=1.67e-02  |q.v|/|v|q=4.3e-02
+  n=(2, 0, 2) qR=0.740 sin^2=0.500: zhat.v FFT=+9.03599 (Im 5.0e-15)  exact=+9.03218  small-qR=+9.86960  rel.err=4.22e-04  |q.v|/|v|q=4.2e-03
+  n=(2, 1, 1) qR=0.641 sin^2=0.833: zhat.v FFT=+15.14286 (Im 9.0e-15)  exact=+15.09050  small-qR=+16.44934  rel.err=3.47e-03  |q.v|/|v|q=8.4e-03
+  n=(4, 0, 0) qR=1.047 sin^2=1.000: zhat.v FFT=+15.65663 (Im 8.1e-15)  exact=+15.62621  small-qR=+19.73921  rel.err=1.95e-03  |q.v|/|v|q=1.9e-04
+L=30.0, N=160, dx=0.1875, build+FFT 48.7s
+  n=(1, 0, 0) qR=0.209 sin^2=1.000: zhat.v FFT=+18.30647 (Im 1.0e-14)  exact=+19.49999  small-qR=+19.73921  rel.err=6.12e-02  |q.v|/|v|q=1.3e-03
+  n=(2, 0, 0) qR=0.419 sin^2=1.000: zhat.v FFT=+18.98160 (Im 6.6e-15)  exact=+18.89826  small-qR=+19.73921  rel.err=4.41e-03  |q.v|/|v|q=1.7e-04
+  n=(3, 0, 0) qR=0.628 sin^2=1.000: zhat.v FFT=+17.95903 (Im 8.7e-15)  exact=+18.01424  small-qR=+19.73921  rel.err=3.06e-03  |q.v|/|v|q=1.8e-04
+  n=(0, 0, 1) qR=0.209 sin^2=0.000: zhat.v FFT=+2.40452 (Im 3.1e-16)  exact=+0.00000  small-qR=+0.00000  rel.err=2.40e+12  |q.v|/|v|q=1.0e+00
+  n=(0, 0, 2) qR=0.419 sin^2=0.000: zhat.v FFT=-0.16370 (Im 3.5e-17)  exact=+0.00000  small-qR=+0.00000  rel.err=1.64e+11  |q.v|/|v|q=1.0e+00
+  n=(1, 0, 1) qR=0.296 sin^2=0.500: zhat.v FFT=+9.86053 (Im 6.0e-15)  exact=+9.69777  small-qR=+9.86960  rel.err=1.68e-02  |q.v|/|v|q=4.2e-02
+  n=(2, 0, 2) qR=0.592 sin^2=0.500: zhat.v FFT=+9.29888 (Im 6.1e-15)  exact=+9.29556  small-qR=+9.86960  rel.err=3.57e-04  |q.v|/|v|q=4.1e-03
+  n=(2, 1, 1) qR=0.513 sin^2=0.833: zhat.v FFT=+15.58173 (Im 9.3e-15)  exact=+15.52924  small-qR=+16.44934  rel.err=3.38e-03  |q.v|/|v|q=8.1e-03
+  n=(4, 0, 0) qR=0.838 sin^2=1.000: zhat.v FFT=+16.93661 (Im 8.2e-15)  exact=+16.90614  small-qR=+19.73921  rel.err=1.80e-03  |q.v|/|v|q=1.4e-04

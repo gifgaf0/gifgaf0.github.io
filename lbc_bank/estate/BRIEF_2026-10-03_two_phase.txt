@@ -1,0 +1,121 @@
+TWO-PHASE BRIEF: bank the longitudinal-sector result, then explore new questions
+Base: V4.88 plus the Oct 3 LBC exploration. Attached: LBC_EXPLORATION_REPORT.md,
+its scripts and JSON, and verify_lbc.py (an external check from a separate review).
+
+Phase 1 records a result and prepares a paper. Keep the discipline proportionate:
+one short fold, no new gates, and full two-leg verification only for numbers the
+paper will cite (prepare that dispatch; don't run it). Phase 2 is exploration
+mode: no lock, no two-leg, no fold. Prior Address, Eddington and M.CW apply
+throughout. Every deliverable opens with a plain-language summary. The project
+store is full: write new files to the repo and keep ledger additions short.
+
+INPUTS FROM THE EXTERNAL REVIEW
+1. The hydro response was re-derived independently from the Son/Yoo-Dorsey
+   Lagrangian and matches LBC exactly: same c±, F₋ = 0.051787, the
+   compressibility sum rule closes, hydro χ_static = BdG to 4 digits.
+2. Citation fix: arXiv:2407.01072 is Poli, Baillie, Ferlaino & Blakie,
+   PRA 110, 053301 (2024). Platt, Baillie & Blakie wrote 2412.15552.
+3. Radiation fix: at fixed density coupling, the power a multipole-ℓ source
+   puts into branch ν in d dimensions scales as F_ν Ω^(2ℓ+d+1) / c_ν^(2ℓ+d+2).
+   The 3D quadrupole slow/fast ratio is ~9×10^10, not ~10^6.
+4. Drag: with χ = ρq² Σ_ν F_ν / (ω² − c_ν²q²), a density-coupled source moving
+   at v > c_ν feels drag_ν = (ρ F_ν / 8πv²) ∫ q³ |V(q)|² dq in 3D. It scales
+   with the branch's f-sum share and doesn't depend on its speed. (Compare the
+   supersonic impurity drag of Astrakharchik & Pitaevskii, PRA 70, 013608.)
+5. Stale survivor: the LBC report calls the coupling-class annex unresolved.
+   Branch C (V4.65) resolved it with ε ≠ 0, so the drive-mediated-only class
+   doesn't describe the declared knots.
+6. Static binding: density-coupled knots attract over a short range (about a
+   healing length or lattice spacing), like impurities in a BEC. About 2/3 of
+   that static response runs through the slow branch: the same vertex as the drag.
+
+PHASE 1 — BANK
+1. Check the scope reading before recording it. Claim: the V4.67 drag is a
+   property of knots moving through the substrate, not of the gravity reading
+   of the longitudinal channel. So it limits matter propagation in the
+   instantiated substrate, and the transverse line inherits it (same substrate,
+   same knots). Search the ledger for anything that removes the knots' coupling
+   to the longitudinal sector in the transverse line. If you find it, report it
+   and skip step 2.
+2. Fold (author-authorized, conditional on step 1): one short entry with the
+   scope note, the LBC record at its honest register (single leg + internal
+   hydro route + external analytic check), and items 2, 3 and 5 as errata.
+   Add one annotation at the head of the transverse line, not one per row.
+3. Re-evaluate the V4.67 loss length on the measured 3D slow branch
+   (c₂ ≈ 0.062 c_T, F₂ ≈ 0.17%) instead of the retired 0.382c branch. State
+   your expectation first. Mine: about three orders recovered from F₂ (item 4),
+   so still roughly 39 orders short.
+4. Extend the LBC sweep below g = 22 toward the supersolid–superfluid
+   transition. Does c₂/c_T reach 1 anywhere inside the supersolid phase? Either
+   answer goes in the paper.
+5. STATUS.md: one page, plain English, no internal codes. What's established,
+   what's dead and why, what's open.
+6. Paper: short, standalone, negative result. Outline and abstract first, then
+   the draft.
+   - Working thesis (test it, don't assume it): in this model class, matter's
+     speed limit is set by the slowest longitudinal sound its cores couple to,
+     light's speed is the shear speed, and no symmetry ties the two together.
+     Where c₂ < c_T (the measured regime), fast matter radiates into the vacuum;
+     where c₂ > c_T, matter could outrun light. One shared light cone needs
+     c₂ = c_T to extraordinary precision.
+   - Content: why the model class is a supersolid (vortex matter needs phase
+     order, transverse light needs shear rigidity); the F₋ formula (zero only by
+     tuning); the 2D and 3D numbers; the forced core deficit (filled-core
+     residual); drag and loss length; the step-4 result; the binding/drag
+     pairing; the elastic-ether history (Green, Cauchy, and MacCullagh, whose
+     rotational medium is the exception to address).
+   - Prior-art sweep first: superfluid-vacuum programs (Volovik, Huang,
+     Zloshchastiev, Sbitnev); crystal vacua (Kleinert's world crystal,
+     Danielewski, Bernadotte–Klinkhamer); any supersolid-vacuum proposals;
+     vacuum Cherenkov in Einstein-aether (Jacobson–Mattingly, Elliott–Moore–
+     Stoica, Moore–Nelson); mono-metricity in analogue gravity. If the thesis
+     is already published, say so and reframe.
+   - Standard physics language only, no SQT codes. Scripts as supplementary
+     material. Verify every citation against its source.
+   - Second-leg dispatch covering the LBC weights, the step-3 loss length and
+     the step-4 sweep.
+   - Recommend a venue (a Zenodo preprint first is fine).
+
+PHASE 2 — EXPLORE (exploration mode)
+Starting requirement: a medium-based vacuum must give matter and light one
+shared light cone, and every mode matter couples to must be at least that fast.
+Two leads from the review:
+  (a) Equation of state. A vacuum with no preferred frame must have
+      T_μν ∝ g_μν, so pressure = −energy density: pure tension. Any medium with
+      ρ + p ≠ 0 has a rest frame. That's §2.90's "vacuum in perfect tension"
+      picture, and the starting point of Klinkhamer–Volovik q-theory.
+  (b) Relativistic solitons. In a Lorentz-invariant field theory a moving
+      soliton is just a boosted static one: it never radiates, and the shared
+      light cone is automatic. Skyrmions (baryons as topological solitons, with
+      short-range nuclear binding) and Faddeev–Niemi / Battye–Sutcliffe knots
+      (Hopf charge = linking number) are the established home of matter as knots.
+Tasks:
+1. Literature first: Barceló–Liberati–Visser (Analogue Gravity review);
+   Liberati–Visser–Weinfurtner 2006; Volovik (Fermi points; The Universe in a
+   Helium Droplet); Klinkhamer–Volovik q-theory; Coleman–Glashow 1999 (maximal
+   attainable velocities); Skyrme 1961; Adkins–Nappi–Witten 1983;
+   Faddeev–Niemi 1997; Battye–Sutcliffe 1998; near-BPS Skyrme models.
+2. Write the shared-light-cone screen as a short checklist: what light is; what
+   matter is; matter's limiting speed; the slowest mode matter couples to; any
+   preferred-frame friction. Apply it to the MV-G1 supersolid, a two-component
+   superfluid, a MacCullagh-type rotational medium, a Fermi-point vacuum, and a
+   Lorentz-invariant field vacuum. Table: PASS / FAIL / PASS-only-by-tuning.
+3. Prior-address map: for each banked survivor that touches matter (Q = L, the
+   two-component baryon, Borromean linking = baryon number, the Z₃ vacuum
+   form), does the Skyrme/Hopfion literature already have it, partly have it,
+   or not?
+4. Propose 2–3 new questions, each ending at an observable or a decisive test,
+   ranked. For the top one, state an expectation and run a first calculation
+   only if it's cheap. Candidates, not requirements:
+   - the two-component baryon in a Faddeev–Skyrme-type theory, and what it
+     predicts beyond the Skyrme literature;
+   - whether §2.90 says anything testable beyond "a cosmological constant";
+   - whether knots can emerge with a shared light cone in a Fermi-point medium.
+5. Stop and report. I'll pick the next question.
+
+DELIVERABLES
+Phase 1: the step-1 finding; the fold, if cleared; the step-3 and step-4
+results; STATUS.md; the paper outline, abstract and draft; the second-leg
+dispatch; a venue recommendation.
+Phase 2: one plain-language report with the screen table, the prior-address
+map, and the ranked questions.

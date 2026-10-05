@@ -1,0 +1,71 @@
+link type: {'borromean_config_ABC': [{'projection_euler_angles': (0.37, 0.81, 0.23), 'crossings': 12, 'bracket_seq_step_A4_normalized': [-1, 3, -2, 4, -2, 3, -1], 'is_borromean_jones': True, 'is_unlink3_jones': False}, {'projection_euler_angles': (1.1, 0.4, 2.0), 'crossings': 8, 'bracket_seq_step_A4_normalized': [-1, 3, -2, 4, -2, 3, -1], 'is_borromean_jones': True, 'is_unlink3_jones': False}, {'projection_euler_angles': (2.2, 1.3, 0.7), 'crossings': 12, 'bracket_seq_step_A4_normalized': [-1, 3, -2, 4, -2, 3, -1], 'is_borromean_jones': True, 'is_unlink3_jones': False}], 'split_config_A_Bs_Cs': [{'projection_euler_angles': (0.37, 0.81, 0.23), 'crossings': 4, 'bracket_seq_step_A4_normalized': [-1, -2, -1], 'is_borromean_jones': False, 'is_unlink3_jones': True}, {'projection_euler_angles': (1.1, 0.4, 2.0), 'crossings': 6, 'bracket_seq_step_A4_normalized': [-1, -2, -1], 'is_borromean_jones': False, 'is_unlink3_jones': True}, {'projection_euler_angles': (2.2, 1.3, 0.7), 'crossings': 0, 'bracket_seq_step_A4_normalized': [-1, -2, -1], 'is_borromean_jones': False, 'is_unlink3_jones': True}]}
+N= 128 a   B = +0.996414   |dens| integral = 0.9964   (1s)
+N= 128 a1  B = +0.999999   |dens| integral = 1.0040   (2s)
+N= 128 b   B = +0.000000   |dens| integral = 0.1443   (3s)
+N= 128 c   B = +1.000000   |dens| integral = 1.0241   (5s)
+N= 128 d   B = +0.000000   |dens| integral = 0.1038   (6s)
+N= 128 e   B = +0.999964   |dens| integral = 1.0185   (7s)
+N= 128 f   B = +3.000003   |dens| integral = 3.0170   (9s)
+N= 192 a   B = +0.996413   |dens| integral = 0.9964   (13s)
+N= 192 a1  B = +1.000000   |dens| integral = 1.0040   (17s)
+N= 192 b   B = -0.000000   |dens| integral = 0.1444   (22s)
+N= 192 c   B = +1.000000   |dens| integral = 1.0240   (26s)
+N= 192 d   B = +0.000000   |dens| integral = 0.1038   (31s)
+N= 192 e   B = +1.000000   |dens| integral = 1.0185   (35s)
+N= 192 f   B = +3.000000   |dens| integral = 3.0170   (41s)
+N= 256 a   B = +0.996413   |dens| integral = 0.9964   (50s)
+N= 256 a1  B = +1.000000   |dens| integral = 1.0040   (59s)
+N= 256 b   B = -0.000000   |dens| integral = 0.1444   (71s)
+N= 256 c   B = +1.000000   |dens| integral = 1.0240   (83s)
+N= 256 d   B = +0.000000   |dens| integral = 0.1038   (95s)
+N= 256 e   B = +1.000000   |dens| integral = 1.0185   (107s)
+N= 256 f   B = +3.000000   |dens| integral = 3.0170   (121s)
+{
+ "a1": {
+  "B": 0.9999999997194053,
+  "nearest_int": 1,
+  "pred_s0_sum_lk": 1,
+  "match": true
+ },
+ "b": {
+  "B": -1.5143294018666318e-18,
+  "nearest_int": 0,
+  "pred_s0_sum_lk": 0,
+  "match": true
+ },
+ "c": {
+  "B": 0.9999999998810503,
+  "nearest_int": 1,
+  "pred_s0_sum_lk": 1,
+  "match": true
+ },
+ "d": {
+  "B": 9.052310893148387e-11,
+  "nearest_int": 0,
+  "pred_s0_sum_lk": 0,
+  "match": true
+ },
+ "e": {
+  "B": 0.9999999990862694,
+  "nearest_int": 1,
+  "pred_s0_sum_lk": 1,
+  "match": true
+ },
+ "f": {
+  "B": 2.999999999424471,
+  "nearest_int": 3,
+  "pred_s0_sum_lk": 3,
+  "match": true
+ },
+ "a": {
+  "B": 0.9964133060315177,
+  "expected_abs_box_value_at_least": 0.9940730107226124
+ },
+ "expectation_falsifiers": {
+  "B(b) != 0": false,
+  "B(d) != 0": false,
+  "B(c) != B(e)": false
+ }
+}
+pairwise Gauss linking: {'A-B': 0.0, 'B-C': 0.0, 'C-A': 0.0, 'A-Bs': -0.0, 'Bs-Cs': 0.0, 'Cs-A': 0.0, 'A-D1': 1.00001, 'B-D1': 0.0, 'C-D1': 0.0, 'A-Dn': 0.0, 'B-Dn': 0.0, 'C-Dn': 0.0, 'Bs-D1': 0.0, 'Cs-D1': 0.0, 'A-D2': 0.0, 'B-D2': 1.00001, 'C-D2': 0.0, 'A-D3': 0.0, 'B-D3': 0.0, 'C-D3': 1.00001, 'D1-D2': 0.0, 'D2-D3': -0.0, 'D3-D1': -0.0}
+json md5 8fb234d860aa98f620102634da5f2606

@@ -1,0 +1,78 @@
+{
+ "1_dispersion_matches_paper": true,
+ "1_ratio_det_over_paper_poly": "-q**4",
+ "2_lim_cminus2_fixed_gamma": "M*rho_s/(rho_n*(rho_n + rho_s))",
+ "2_equals_cstar2": true,
+ "2_lim_cplus2_over_rho_alpha": "1",
+ "3_lim_cminus2_gamma_scaling": "rho_s*(M - g**2)/(rho_n*(rho_n + rho_s))",
+ "3_equals_rho_s(M-g^2)/(rho rho_n)": true,
+ "4_cstar2_over_cT2": "M*rho_s/(mu*(rho_n + rho_s))",
+ "4_equals_fs_M_over_mu": true,
+ "5_M_iso": "K + 2*mu - 2*mu/d",
+ "5_M_iso_equals_K_plus_2(d-1)mu/d": true,
+ "5_dilatation_block_det": "K*alpha - gamma**2",
+ "5_threshold_fs_general": "d/(2*(d - 1))",
+ "5_threshold_fs_3D": "3/4",
+ "5_threshold_fs_2D": "1",
+ "6_cox_mapping_numeric": {
+  "fs=0.80,gamma_frac=0": {
+   "c_minus_over_cT": 1.5491933384829668,
+   "c_plus_over_cT": 7.745966692414834e+19
+  },
+  "fs=0.80,gamma_frac=0.999999": {
+   "c_minus_over_cT": 1.032796849981641,
+   "c_plus_over_cT": 7.745966692414834e+19
+  },
+  "fs=0.49,gamma_frac=0": {
+   "c_minus_over_cT": 1.2124355652982142,
+   "c_plus_over_cT": 1.2369316876852981e+20
+  },
+  "fs=0.49,gamma_frac=0.999999": {
+   "c_minus_over_cT": 0.8082913872273105,
+   "c_plus_over_cT": 1.2369316876852981e+20
+  },
+  "fs=0.75,gamma_frac=0": {
+   "c_minus_over_cT": 1.5,
+   "c_plus_over_cT": 8.660254037844386e+19
+  },
+  "fs=0.75,gamma_frac=0.999999": {
+   "c_minus_over_cT": 1.0000012499985937,
+   "c_plus_over_cT": 8.660254037844386e+19
+  },
+  "fs=0.98,gamma_frac=0": {
+   "c_minus_over_cT": 1.7146428199482247,
+   "c_plus_over_cT": 2.449489742783178e+19
+  },
+  "fs=0.98,gamma_frac=0.999999": {
+   "c_minus_over_cT": 1.1430966421662256,
+   "c_plus_over_cT": 2.449489742783178e+19
+  }
+ },
+ "6_closed_forms_3D": {
+  "fs=4/5, M=3mu, gamma=0: sqrt(f_s M/mu)": 1.5491933384829668,
+  "fs=4/5, stability floor: sqrt(4 f_s/3)": 1.0327955589886446,
+  "fs=0.49..0.98, M=3mu, gamma=0": [
+   1.2124355652982142,
+   1.7146428199482247
+  ],
+  "fs=0.49..0.98, stability floor": [
+   0.8082903768654761,
+   1.1430952132988164
+  ]
+ },
+ "6b_general_d": {
+  "d=2": {
+   "threshold_fs": "1",
+   "floor_at_fs_4_5": 0.8944271909999159
+  },
+  "d=3": {
+   "threshold_fs": "3/4",
+   "floor_at_fs_4_5": 1.0327955589886446
+  },
+  "d=4": {
+   "threshold_fs": "2/3",
+   "floor_at_fs_4_5": 1.0954451150103321
+  }
+ }
+}
+ALL SYMBOLIC CHECKS PASS

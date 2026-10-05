@@ -1,0 +1,35 @@
+Fourier-space EOM matrix A (Hermitian): Matrix([[-alpha, I*omega, -I*gamma*q], [-I*omega, -q**2*rho_s, omega*q*rho_n], [I*gamma*q, omega*q*rho_n, -M*q**2 + omega**2*rho_n]])
+chi derived = -q**2*(M*q**2*rho_s - omega**2*rho_n**2 - omega**2*rho_n*rho_s)/(M*alpha*q**4*rho_s - M*omega**2*q**2 - alpha*omega**2*q**2*rho_n**2 - alpha*omega**2*q**2*rho_n*rho_s - gamma**2*q**4*rho_s + 2*gamma*omega**2*q**2*rho_n + omega**4*rho_n)
+chi derived - chi given = 0
+f-sum: w^2 chi/q^2 at w->oo = (rho_n**2 + rho_n*rho_s)/rho_n
+chi = q^2 [Z_+/(w^2-c_+^2 q^2) + Z_-/(w^2-c_-^2 q^2)],  Z_+-= +-(rho rho_n c_+-^2 - rho_s M)/(rho_n(c_+^2-c_-^2))
+Z_+ + Z_- = rho_n + rho_s
+partial-fraction check: 1.396137702906 vs chi 1.396137702906;  Z_+=0.7874, Z_-=0.3626
+D(X0=rho_s M/(rho rho_n)) = -rho_s*(M - gamma*rho_n - gamma*rho_s)**2/(rho_n + rho_s)**2  <= 0  => c_-^2 <= X0 <= c_+^2  => Z_+, Z_- >= 0
+transverse response u_T = STh/(mu*q**2 - omega**2*rho_n)  -> pole w^2 = (mu/rho_n) q^2
+
+Green limit, gamma fixed:  alpha*chi -> -1
+Green limit, gamma = g sqrt(alpha):  alpha*chi -> (M*q**2*rho_s - omega**2*rho_n**2 - omega**2*rho_n*rho_s)/(-M*q**2*rho_s + g**2*q**2*rho_s + omega**2*rho_n**2 + omega**2*rho_n*rho_s)
+gamma fixed: c_-^2 = rho_s M/(rho rho_n) + delta/(rho rho_n alpha),  delta = -rho_s*(M - gamma*rho_n - gamma*rho_s)**2/(rho_n + rho_s)**2
+             Z_- ~ -delta/(rho rho_n alpha^2) = rho_s*(M - gamma*rho_n - gamma*rho_s)**2/(rho_n*(rho_n + rho_s)**3) /alpha^2
+
+  alpha     c_-^2(gam fixed)  alpha^2 Z_-   c_+^2/alpha | c_-^2(gam=g sqrt a)  alpha Z_-
+     1e+02   2.952061        2.425115     1.1574    |  2.168280           0.952002
+     1e+03   2.973509        2.341284     1.1507    |  1.972839           1.054327
+     1e+04   2.975612        2.333011     1.1501    |  1.909588           1.083110
+     1e+05   2.975822        2.332185     1.1500    |  1.889496           1.091742
+     1e+06   2.975843        2.332102     1.1500    |  1.883136           1.094422
+  predicted:   c_-^2 -> 2.975845   a^2 Z_- -> 2.332093  c_+^2/a -> rho = 1.15 | c_-^2 -> 1.880193   a Z_- -> 1.095652
+
+Residue of G (in w) at the lower pole w0 = c_- q (q=1): couplings of each source channel
+  alpha=1e+02: |R_rr|=7.057e-05 |R_thth|=4.977e-01 |R_uu|=3.844e-01 |R_r,th|=5.926e-03 |R_r,u|=5.209e-03  rank-1 check |R_rr R_thth-R_rth R_thr|=3.7e-19
+  alpha=1e+04: |R_rr|=6.762e-09 |R_thth|=4.823e-01 |R_uu|=3.920e-01 |R_r,th|=5.711e-05 |R_r,u|=5.149e-05  rank-1 check |R_rr R_thth-R_rth R_thr|=5.5e-21
+  alpha=1e+06: |R_rr|=6.759e-13 |R_thth|=4.822e-01 |R_uu|=3.921e-01 |R_r,th|=5.709e-07 |R_r,u|=5.148e-07  rank-1 check |R_rr R_thth-R_rth R_thr|=5.2e-23
+  -> drho channel decouples (R_rr ~ alpha^-2, R_r,x ~ alpha^-1); theta and u_L channels stay O(1).
+  vortex longitudinal source vector (S_r, S_th, S_u) = (V.v - |v|^2/2, div(rho_s v) = 0, [rho_n d_t v]_L = 0)
+
+Prescribed core mass deficit Dc moving with the vortex (alpha -> oo, gamma fixed):
+  u_L from Berry-term coupling  : -I*Dc*omega**2*rho_n/(q*(M*q**2*rho_s - omega**2*rho_n**2 - omega**2*rho_n*rho_s))
+  u_L from gamma-term coupling  : I*Dc*gamma*q*rho_s/(M*q**2*rho_s - omega**2*rho_n**2 - omega**2*rho_n*rho_s)
+  u_L from energy vertex alpha*Dc on drho (equivalent form): I*Dc*(gamma*q**2*rho_s - omega**2*rho_n)/(q*(M*q**2*rho_s - omega**2*rho_n**2 - omega**2*rho_n*rho_s))
+  u_L from alpha-independent drho vertex S (e.g. V.v):       0

@@ -1,0 +1,6 @@
+original D1 {'A': np.float64(1.0), 'B': np.float64(0.0), 'C': np.float64(0.0)}
+original D2 {'A': np.float64(0.0), 'B': np.float64(1.0), 'C': np.float64(0.0)}
+original D3 {'A': np.float64(0.0), 'B': np.float64(0.0), 'C': np.float64(1.0)}
+translated (e) D1 {'A': np.float64(1.0), 'B': np.float64(-0.0), 'C': np.float64(0.0)}
+translated (e) D2 {'A': np.float64(0.0), 'B': np.float64(-0.0), 'C': np.float64(-0.0)}
+translated (e) D3 {'A': np.float64(0.0), 'B': np.float64(0.0), 'C': np.float64(-0.0)}

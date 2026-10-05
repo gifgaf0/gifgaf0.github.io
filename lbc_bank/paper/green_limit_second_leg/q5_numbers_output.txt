@@ -1,0 +1,28 @@
+f_s = 4/5, K/mu = 5/3, M/mu = 3, rho^2 alpha/mu = 3e40;  gamma in units mu/rho
+(i)  gamma = 0                                 c-/cT =    1.54919333848   c+/cT = 7.74596669241e+19
+     marginal |gamma| = sqrt(alpha K) = 2.2360679775e+20
+(ii) gamma = +sqrt(aK)(1-1e-6)                 c-/cT =    1.03279684998   c+/cT = 7.74596669241e+19
+(ii) gamma = -sqrt(aK)(1-1e-6)                 c-/cT =    1.03279684998   c+/cT = 7.74596669241e+19
+(ii) gamma = +sqrt(aK)(1-1e-12)                c-/cT =    1.03279555899   c+/cT = 7.74596669241e+19
+(ii) gamma = -sqrt(aK)(1-1e-12)                c-/cT =    1.03279555899   c+/cT = 7.74596669241e+19
+(ii) gamma = +sqrt(aK)(1-1e-30)                c-/cT =    1.03279555899   c+/cT = 7.74596669241e+19
+(ii) gamma = -sqrt(aK)(1-1e-30)                c-/cT =    1.03279555899   c+/cT = 7.74596669241e+19
+(ii) gamma = +sqrt(aK)(1-0)                    c-/cT =    1.03279555899   c+/cT = 7.74596669241e+19
+(ii) gamma = -sqrt(aK)(1-0)                    c-/cT =    1.03279555899   c+/cT = 7.74596669241e+19
+
+Green-limit closed forms at f_s = 4/5:
+  sqrt(f_s M/mu)        = 1.54919333848   (gamma = 0 / fixed gamma)
+  sqrt(f_s (M-K)/mu)    = 1.03279555899   (gamma^2 -> alpha K) = 4(b) bound sqrt(4 f_s/3)
+  sqrt(rho_n rho alpha/mu) = 7.74596669241e+19   leading c+/cT
+  finite-alpha deviations:  (i) c-/cT - sqrt(f_s M/mu) = -7.746e-41
+                            (ii,+,delta=0) c-/cT - sqrt(4 f_s/3) = 7.698e-21
+
+Hamiltonian-route cross-check (mpmath eig of 4x4 generator):
+  gamma=0      eig-> c/cT = ['1.54919333848', '7.74596669241e+19']   rel.diff = 1.26e-40, 6.24e-41
+  gamma=+marg  eig-> c/cT = ['1.03279555899', '7.74596669241e+19']   rel.diff = 1.26e-40, 2.35e-40
+
+gamma = 0 at other f_s (same K, alpha); 4(b) bound sqrt(2(d-1) f_s/d) = sqrt(4 f_s/3):
+  f_s = 0.49: c-/cT = 1.212435565  (c-^2/cT^2 = 1.47),  bound c-/cT > 0.8082903769  (c-^2/cT^2 > 0.6533333333),  c+/cT = 1.2369317e+20
+  f_s = 0.98: c-/cT = 1.71464282  (c-^2/cT^2 = 2.94),  bound c-/cT > 1.143095213  (c-^2/cT^2 > 1.306666667),  c+/cT = 2.4494897e+19
+
+float64, f_s=0.8, gamma=0: naive (S-sqrt(S^2-4P))/2 -> c-^2/cT^2 = 0.0 ; stable 2P/(S+sqrt) -> 2.4

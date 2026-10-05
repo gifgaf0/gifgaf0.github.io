@@ -1,0 +1,30 @@
+omega(q): numeric line integral vs closed form -2 pi i kappa R J1(q_perp R) (z x qhat_perp)
+  q=(0.3, 0.1, 0.2): max|diff| = 1.99e-14
+  q=(1.7, -0.4, 0.9): max|diff| = 1.85e-14
+  q=(0.05, 0.02, -0.03): max|diff| = 1.18e-14
+2 J1(a)/a = 1 - a**2/8 + a**4/192 + O(a**5)
+V.v(q) small qR = pi*R**2*V*kappa*(-a**2*sin(vartheta)**2 + 8)*sin(vartheta)**2/8
+  qhat=[1. 0. 0.]: v(q)=[ 0.       0.      19.73921]  pred=[ 0.       0.      19.73921]  |Im|=1.9e-12  q.v=0.0e+00
+  qhat=[0. 0. 1.]: v(q)=[-0. -0.  0.]  pred=[0. 0. 0.]  |Im|=9.2e-13  q.v=0.0e+00
+  qhat=[0.707 0.    0.707]: v(q)=[-9.8696  0.      9.8696]  pred=[-9.8696  0.      9.8696]  |Im|=1.4e-12  q.v=2.0e-19
+  qhat=[ 0.557  0.743 -0.371]: v(q)=[ 4.08397  5.4453  17.01656]  pred=[ 4.08397  5.4453  17.01656]  |Im|=3.0e-11  q.v=1.6e-19
+
+Ratio |V.v(q)| / (c^2 eps xi^3) = pi kappa V R^2 sin^2(th) / (eps c^2 xi^3)
+  with R = xi = 1/c:  = (pi kappa/eps)(V/c) sin^2(th)
+  |V.v|max = pi kappa V R^2 = 1.76114;  deficit vertex = 0.10661;  ratio(th=90deg) = 16.5195
+  2 pi^2 V/c = 16.5195;  angle-avg <sin^2>=2/3 -> 11.0130;  ratio^2 = 272.9
+  V/c = 0.8369  (< 1: no Cherenkov cone at speed c)
+   on Cherenkov cone of a slower branch c=4.690: sin^2 = 1-c^2/V^2 = 0.6431 -> ratio 10.623
+   on Cherenkov cone of a slower branch c=6.566: sin^2 = 1-c^2/V^2 = 0.3004 -> ratio 4.962
+   qR=0.1: 2J1(qR)/(qR) = 0.9988  (q perp V)
+   qR=0.3: 2J1(qR)/(qR) = 0.9888  (q perp V)
+   qR=1.0: 2J1(qR)/(qR) = 0.8801  (q perp V)
+
+Thin-ring speed kappa/(4 pi R)[ln(8R/xi) - a] at R=xi: prefactor 4.6900, ln 8 = 2.0794
+   solid core 1/4            : V = 8.580
+   hollow core 1/2           : V = 7.408
+   GP (Roberts-Grant) 0.615  : V = 6.868
+   V = 7.85 requires a = 0.406
+   Bernoulli FT(|v|^2/2)(q->0) ~ (kappa^2 R/2)(ln 8R/xi - 1.75) [solid] = 0.6933
+   Bernoulli FT(|v|^2/2)(q->0) ~ (kappa^2 R/2)(ln 8R/xi - 2.0) [hollow] = 0.1672
+   Bernoulli FT(|v|^2/2)(q->0) ~ (kappa^2 R/2)(ln 8R/xi - 1.615) [GP] = 0.9774

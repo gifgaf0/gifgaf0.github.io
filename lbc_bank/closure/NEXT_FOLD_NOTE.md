@@ -10,3 +10,5 @@
 **Suggested bracket at the end of §2.91.V** (about 230 characters):
 
 > [→ V4.91: 3D quadrupole slow/fast ratio ≈ 10¹¹ (1.1–1.8×10¹¹ at the corrected c₁/c₂ = 34–36), not 9×10¹⁰. The paper now derives the vortex couplings, two-leg (Sec. 6); no ledger claim changes.]
+
+**Folded as V4.91** on the author's word ("Go ahead a fold the updated figure", October 4, 2026, 20:21 PDT). The bracket went in shortened to the figure alone; the sentence on the vortex couplings moved to the fold-in record. See `../estate/FOLD_AUTHORIZATION_V4_91.md`.

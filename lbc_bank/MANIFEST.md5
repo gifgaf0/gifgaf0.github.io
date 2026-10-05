@@ -1,7 +1,7 @@
-1adeacc6e08b6051b4615dfea79ccab5  README.md
+56348bde5f77e07b5bb70d9b41a8b0a4  README.md
 9b63354c7df6c6d6e160e6408459404f  STEP1_SCOPE_CHECK.md
 7c3a13ecddf252968e79f46eb249fc20  closure/LBC_2LEG_CLOSURE_MEMO.md
-95f201b25b5f8ec610ec3c387e1658c1  closure/NEXT_FOLD_NOTE.md
+c685e459c482a851a48878a799174d72  closure/NEXT_FOLD_NOTE.md
 49048cfd41ccd5b25a3d22982da8987b  closure/V4_90_STAGING.md
 fb670f17b2f193b92b8e096def0c712c  closure/build_v2.py
 871a5d826fbee5ac0ed1627416318350  closure/chi_g22.log
@@ -48,10 +48,13 @@ d8235acc8547dac6d838f9f01f139a84  dispatch/lbc_2leg_schema_v1.0_skeleton.json
 c9557c9c53cf4e302f207341af48b9e5  estate/BRIEF_2026-10-03_two_phase.txt
 7d311424b2889648d7d55f5b8773b63f  estate/FOLD_AUTHORIZATION_V4_89.md
 48eca99565e0ba36527db6d7f92feecb  estate/FOLD_AUTHORIZATION_V4_90.md
+9efe5a73a5f8c8e6cd07ce7060bc3f7e  estate/FOLD_AUTHORIZATION_V4_91.md
 c8e9b4a5daa9b8299c2329f13e2ba206  estate/foldin_v4_89_lbc_bank.py
 964e49c5dd161ed5e0a2eeb4a688ba0c  estate/foldin_v4_90_lbc_closure.py
+769808e91e246e800edb675624f6d051  estate/foldin_v4_91_radiation_ratio.py
 09ae37199431ae36490e6be7b3db5929  estate/verify_v4_89_additive.py
 f6617f30a20006162d403021c323988c  estate/verify_v4_90_additive.py
+4d8df9ddb52f23c9cc3f2a9cfbf8e824  estate/verify_v4_91_additive.py
 cc12e688b5d16adfc0b22e7bfdc7f274  external_review/verify_lbc_external.py
 972fce2a6954f2449272b9af9be941d1  external_review/verify_lbc_run.py
 4434c61e40211fb4a5536b33f69f0d49  lit/A1_prior_art.md

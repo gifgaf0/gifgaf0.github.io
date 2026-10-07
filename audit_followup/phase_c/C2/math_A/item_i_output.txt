@@ -1,0 +1,26 @@
+I1. identity 7 XOR a == -a (mod 7)
+   a=0: 7^a=7, -a mod 7=0, equal mod 7: True
+   a=1: 7^a=6, -a mod 7=6, equal mod 7: True
+   a=2: 7^a=5, -a mod 7=5, equal mod 7: True
+   a=3: 7^a=4, -a mod 7=4, equal mod 7: True
+   a=4: 7^a=3, -a mod 7=3, equal mod 7: True
+   a=5: 7^a=2, -a mod 7=2, equal mod 7: True
+   a=6: 7^a=1, -a mod 7=1, equal mod 7: True
+   a=7: 7^a=0, -a mod 7=0, equal mod 7: True
+   holds for a=1..7: True  (7^a = 7-a for 0<=a<=7)
+
+I2. L_{e7} on e1..e6
+   cyclic labelling (verify_2_84_partA.py): [(1, '+e3'), (2, '+e6'), (3, '-e1'), (4, '+e5'), (5, '-e4'), (6, '-e2')]
+   CD/XOR labelling (sedenion_Fp.py):      [(1, '-e6'), (2, '+e5'), (3, '+e4'), (4, '-e3'), (5, '-e2'), (6, '+e1')]
+   cyclic: QR<->QNR swap: True;  pairing is a -> -a (mod 7) [the 7^a identity]: False;  a -> 3a on QR: True
+   XOR: QR<->QNR swap: True;  pairing is a -> -a (mod 7) [the 7^a identity]: True;  a -> 3a on QR: False
+
+I3. Stab(e7) in the unsigned automorphism group F21 of each table: orbits on {1..6}
+   cyclic: |F21| = 21, |Stab(e7)| = 3, orbits = [[1, 2, 4], [3, 5, 6]]
+   XOR: |F21| = 21, |Stab(e7)| = 3, orbits = [[1, 4, 5], [2, 3, 6]]
+
+I4. cyclic labelling: J-pairs [(1, 3), (2, 6), (4, 5)]; the 8 transversals, of which Fano lines: [[1, 2, 4], [1, 5, 6], [2, 3, 5], [3, 4, 6]]
+   -> QR = {1,2,4} is one of 4 line-transversals; J maps each to its complementary non-line transversal
+
+I5. Fano planes on labels 1..7: 30; planes whose three lines through 7 each pair a QR with a QNR: 12
+   perfect matchings of {1..6}: 15, QR/QNR-transversal ones: 6; each matching lies in 2 planes

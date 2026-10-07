@@ -1,0 +1,52 @@
+==============================================================================
+H1. PSL(2,7) = GL(3,2) on the 21 Fano flags
+==============================================================================
+  orbit of a flag: 21 (transitive: True)
+  flag stabilizers: {(8, 'D4 (dihedral, order 8)'): 21}
+  pointwise stabilizers of the flag's line: {(4, 'V4 = C2 x C2'): 21};  contained in the flag stabilizer (index 2): True
+  example flag 1 in [1, 2, 3]: |Stab| = 8, element orders {1: 1, 2: 5, 4: 2}, abelian False -> D4 (dihedral, order 8)
+  V4 x C2 would be abelian with element orders {1:1, 2:7}; the flag stabilizer is not.
+
+==============================================================================
+H2. The 21 code spaces C(m,L) rebuilt exactly over Q
+==============================================================================
+  code spaces: 21; dims Counter({2: 21}); flag = (m, m u interior) is a line: True; distinct flags: 21; distinct subspaces: 21
+
+==============================================================================
+H3. Unsigned lift (tqc_stabilizer_group.py): stabilizers and orbits
+==============================================================================
+  stabilizer (unsigned lift) of each code space: {(4, 'V4 = C2 x C2'): 21}
+  equals the pointwise stabilizer of L (ledger's claim): True
+  orbit of a code space under the 168 unsigned lifts: sizes {42: 21}; how many images are code spaces: {21: 21}
+  -> under the unsigned lift GL(3,2) does NOT act on the set of 21 code spaces (orbit 42, half
+     of the images are not code spaces), so 168/|Stab| = 21 cannot hold for it.
+
+==============================================================================
+H4. Signed CD lifts (sedenion automorphisms): action on the 21 code spaces
+==============================================================================
+  signed lifts: 2688
+  orbit of C(m=1, L=[1, 6, 7]) under the signed lifts: 42 code spaces
+  every signed lift maps code spaces to code spaces, equivariantly with the flag action: False
+  per code space: (|Stab| in the 2688-group, |image in PSL(2,7)|, type of image, image == flag stabilizer): {(64, 8, 'D4 (dihedral, order 8)', True): 21}
+
+==============================================================================
+H5. §2.62.B 'Sign Duality': does the negated CD orientation give the same 21 spaces?
+==============================================================================
+  negated-orientation intersections: dims Counter({2: 21}); identical to the canonical 21: False; overlap with canonical: 0
+  the 6 mixed sign triplets per point: pairwise intersection dims {2: 42, 0: 84}
+  unsigned-lift orbit of C0 (42 spaces) == canonical 21 + negated 21: True
+  signed-lift orbit of C0 (42 spaces) == canonical 21 + negated 21: True
+  signed lifts preserving the canonical 21-family: 21 (index 128); e8-sign of those: {1: 21}
+  on the canonical family these act through the flag action (equivariant): True
+  of these, lifts of the identity collineation (they fix every code space): 1
+  within that subgroup: (|Stab C|, |image in PSL(2,7)|, type): {(1, 1, 'order 1, abelian=True, orders={1: 1}'): 21}  -> 21/21 = 1 per code space, image order 8 = flag stabilizer
+
+==============================================================================
+H6. Unsigned lift on the 42 spaces = 21 flags x {canonical, negated}
+==============================================================================
+  every unsigned-lift image of a code space is a (flag, sign) space with flag = g(flag): True
+  the set of g mapping C+(f) into {C+(f), C-(f)} == flag stabilizer D4 (for all 21 f): True
+  D4 \ V4 (the non-pointwise coset) swaps C+(f) <-> C-(f): True
+  -> V4 = stabilizer of the single subspace under the unsigned lift (orbit 42 = 168/4);
+     D4 = flag stabilizer = stabilizer of the pair {C+(f), C-(f)} (orbit 21 = 168/8).
+  orbit of C0 under the 1344 lifts with e8 -> +e8: 42 spaces

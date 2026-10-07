@@ -1,0 +1,278 @@
+{
+ "A1_census": {
+  "1": {
+   "total": 15,
+   "zd": 0,
+   "moreno_pred": 0,
+   "agree": 15,
+   "formula": 0,
+   "rank_dist": {
+    "16": 15
+   },
+   "rank911": {
+    "16": 15
+   },
+   "rank103": {
+    "16": 15
+   }
+  },
+  "2": {
+   "total": 210,
+   "zd": 84,
+   "moreno_pred": 84,
+   "agree": 210,
+   "formula": 84,
+   "rank_dist": {
+    "12": 84,
+    "16": 126
+   },
+   "rank911": {
+    "12": 84,
+    "16": 126
+   },
+   "rank103": {
+    "12": 84,
+    "16": 126
+   }
+  },
+  "3": {
+   "total": 1820,
+   "zd": 0,
+   "moreno_pred": 0,
+   "agree": 1820,
+   "formula": 0,
+   "rank_dist": {
+    "16": 1820
+   },
+   "rank911": {
+    "16": 1820
+   },
+   "rank103": {
+    "16": 1820
+   }
+  },
+  "4": {
+   "total": 10920,
+   "zd": 1764,
+   "moreno_pred": 1764,
+   "agree": 10920,
+   "formula": 1764,
+   "rank_dist": {
+    "12": 1764,
+    "16": 9156
+   },
+   "rank911": {
+    "12": 1764,
+    "16": 9156
+   },
+   "rank103": {
+    "12": 1764,
+    "16": 9156
+   }
+  },
+  "5": {
+   "total": 48048,
+   "zd": 0,
+   "moreno_pred": 0,
+   "agree": 48048,
+   "formula": 0,
+   "rank_dist": {
+    "16": 48048
+   },
+   "rank911": {
+    "16": 48048
+   },
+   "rank103": {
+    "16": 48048
+   }
+  },
+  "6": {
+   "total": 160160,
+   "zd": 11200,
+   "moreno_pred": 11200,
+   "agree": 160160,
+   "formula": 11200,
+   "rank_dist": {
+    "12": 11200,
+    "16": 148960
+   },
+   "rank911": null,
+   "rank103": null
+  },
+  "7": {
+   "total": 411840,
+   "zd": 0,
+   "moreno_pred": 0,
+   "agree": 411840,
+   "formula": 0,
+   "rank_dist": {
+    "16": 411840
+   },
+   "rank911": null,
+   "rank103": null
+  },
+  "8": {
+   "total": 823680,
+   "zd": 42000,
+   "moreno_pred": 42000,
+   "agree": 823680,
+   "formula": 42000,
+   "rank_dist": {
+    "12": 42000,
+    "16": 781680
+   },
+   "rank911": null,
+   "rank103": null
+  },
+  "9": {
+   "total": 1281280,
+   "zd": 0,
+   "moreno_pred": 0,
+   "agree": 1281280,
+   "formula": 0,
+   "rank_dist": {
+    "16": 1281280
+   },
+   "rank911": null,
+   "rank103": null
+  },
+  "10": {
+   "total": 1537536,
+   "zd": 40320,
+   "moreno_pred": 40320,
+   "agree": 1537536,
+   "formula": 40320,
+   "rank_dist": {
+    "12": 40320,
+    "16": 1497216
+   },
+   "rank911": null,
+   "rank103": null
+  },
+  "11": {
+   "total": 1397760,
+   "zd": 0,
+   "moreno_pred": 0,
+   "agree": 1397760,
+   "formula": 0,
+   "rank_dist": {
+    "16": 1397760
+   },
+   "rank911": null,
+   "rank103": null
+  },
+  "12": {
+   "total": 931840,
+   "zd": 4480,
+   "moreno_pred": 4480,
+   "agree": 931840,
+   "formula": 4480,
+   "rank_dist": {
+    "12": 4480,
+    "16": 927360
+   },
+   "rank911": null,
+   "rank103": null
+  },
+  "13": {
+   "total": 430080,
+   "zd": 0,
+   "moreno_pred": 0,
+   "agree": 430080,
+   "formula": 0,
+   "rank_dist": {
+    "16": 430080
+   },
+   "rank911": null,
+   "rank103": null
+  },
+  "14": {
+   "total": 122880,
+   "zd": 0,
+   "moreno_pred": 0,
+   "agree": 122880,
+   "formula": 0,
+   "rank_dist": {
+    "16": 122880
+   },
+   "rank911": null,
+   "rank103": null
+  },
+  "15": {
+   "total": 16384,
+   "zd": 0,
+   "moreno_pred": 0,
+   "agree": 16384,
+   "formula": 0,
+   "rank_dist": {
+    "16": 16384
+   },
+   "rank911": null,
+   "rank103": null
+  }
+ },
+ "A1_total": 7174453,
+ "A1_total_zd": 99848,
+ "A2_n4_kernel_table": [
+  [
+   [
+    "2",
+    "True",
+    "(2, 2, 2, 2)",
+    "4",
+    "4",
+    "4"
+   ],
+   84
+  ],
+  [
+   [
+    "0",
+    "False",
+    "(-1, -1, -1, 4)",
+    "0",
+    "0",
+    "2"
+   ],
+   224
+  ],
+  [
+   [
+    "0",
+    "False",
+    "(-1, -1, 4, 4)",
+    "0",
+    "0",
+    "2"
+   ],
+   1120
+  ],
+  [
+   [
+    "0",
+    "True",
+    "(2, 2, 4, 4)",
+    "2",
+    "2",
+    "4"
+   ],
+   336
+  ]
+ ],
+ "A3": {
+  "dichotomy_ok": true,
+  "e8_cancel_pairs_found": 1680,
+  "e8_cancel_by_nx_ny": {
+   "(4, 4)": 1680
+  },
+  "e8_cancel_with_two_term_x": 0,
+  "identity_edge_ranks": [
+   16
+  ]
+ },
+ "A4": {
+  "suff": 300,
+  "nec": 300,
+  "N": 300
+ }
+}

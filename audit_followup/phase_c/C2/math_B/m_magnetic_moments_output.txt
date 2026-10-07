@@ -1,0 +1,45 @@
+==============================================================================
+ITEM (m) -- quark-model magnetic moments, exact (math_B leg)
+==============================================================================
+dimension of the 3-quark spin(x)flavour space: 64
+rank of the total symmetrizer (dim of the totally symmetric subspace): 20
+eigenvalues of S^2 on the symmetric subspace: {15/4: 16, 3/4: 4}
+eigenvalues of I^2 on the symmetric subspace: {15/4: 16, 3/4: 4}
+S^2 and I^2 commute on it: True
+   dim(sym; S^2 = 3/4, I^2 = 3/4) = 4
+   dim(sym; S^2 = 3/4, I^2 = 15/4) = 0
+   dim(sym; S^2 = 15/4, I^2 = 3/4) = 0
+   dim(sym; S^2 = 15/4, I^2 = 15/4) = 16
+
+proton (spin up):   +2|u^u^dv> -1|u^uvd^> -1|u^d^uv> +2|u^dvu^> -1|uvu^d^> -1|uvd^u^> -1|d^u^uv> -1|d^uvu^> +2|dvu^u^>   (norm^2 = 18)
+neutron (spin up):  +1|u^d^dv> +1|u^dvd^> -2|uvd^d^> +1|d^u^dv> -2|d^uvd^> -2|d^d^uv> +1|d^dvu^> +1|dvu^d^> +1|dvd^u^>   (norm^2 = 18)
+   proton  I^2 = 3/4, I_z = 1/2, S^2 = 3/4, S_z = 1/2
+   neutron I^2 = 3/4, I_z = -1/2
+   I^2 p == (3/4) p exactly: True;  I^2 n == (3/4) n: True
+
+mu_p = -(mu_d - 4*mu_u)/3
+mu_n = (4*mu_d - mu_u)/3
+   in the proton: <sum over u quarks sigma_z> = 4/3, <sigma_z(d)> = -1/3
+   in the neutron: <sum over d quarks sigma_z> = 4/3, <sigma_z(u)> = -1/3
+
+Delta++ (uuu) (S = 3/2, M = 3/2): +1|u^u^u^>   (norm^2 = 1)
+   I^2 = 15/4; mu = 3*mu_u; <sum_u sigma_z> = 3, <sum_d sigma_z> = 0
+
+Delta+  (uud) (S = 3/2, M = 3/2): +1|u^u^d^> +1|u^d^u^> +1|d^u^u^>   (norm^2 = 3)
+   I^2 = 15/4; mu = mu_d + 2*mu_u; <sum_u sigma_z> = 2, <sum_d sigma_z> = 1
+
+Delta0  (udd) (S = 3/2, M = 3/2): +1|u^d^d^> +1|d^u^d^> +1|d^d^u^>   (norm^2 = 3)
+   I^2 = 15/4; mu = 2*mu_d + mu_u; <sum_u sigma_z> = 1, <sum_d sigma_z> = 2
+
+Delta-  (ddd) (S = 3/2, M = 3/2): +1|d^d^d^>   (norm^2 = 1)
+   I^2 = 15/4; mu = 3*mu_d; <sum_u sigma_z> = 0, <sum_d sigma_z> = 3
+
+at mu_u = -2 mu_d:
+   mu_p = -3*mu_d,  mu_n = 2*mu_d,  mu_p/mu_n = -3/2
+   mu(Delta++) = -6*mu_d
+   mu(Delta+) = -3*mu_d
+   mu(Delta0) = 0
+   mu(Delta-) = 3*mu_d
+
+general ratio mu_p/mu_n = (-mu_d + 4*mu_u)/(4*mu_d - mu_u)
+check against closed forms: True True True

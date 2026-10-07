@@ -1,0 +1,7 @@
+P4 {'mu_p': '-mu_d/3 + 4*mu_u/3', 'mu_n': '4*mu_d/3 - mu_u/3', 'p_is_highest_weight_spin_half': True, 'mu_Delta': {'Delta++': '3*mu_u', 'Delta+': 'mu_d + 2*mu_u', 'Delta0': '2*mu_d + mu_u', 'Delta-': '3*mu_d'}, 'proton_sum_sigma_z_u': '4/3', 'proton_sigma_z_d': '-1/3', 'mu_Delta0_at_mu_u_eq_-2mu_d': '0', 'mu_p_over_mu_n_at_mu_u_eq_-2mu_d': '-3/2'}
+c {'|SL(2,7)|': 336, 'element_orders': {1: 1, 2: 1, 3: 56, 4: 42, 6: 56, 7: 48, 8: 84, 14: 48}, 'has_order_24': False, 'number_of_g_with_g_u_ginv_eq_u^k': {1: 14, 2: 14, 3: 0, 4: 14, 5: 0, 6: 0}, 's_equals_minus_t': True, 's_u_sinv': (1, 2, 0, 1), 'u2': (1, 2, 0, 1), 'u3': (1, 3, 0, 1)}
+a {'clean_ZD_counts_n2_n4_n6': {2: 84, 4: 1764, 6: 11200}, 'example_product_is_zero': True, 'example_has_e8_terms': 2}
+d {'edges': 42, 'size2_matchings': 651}
+h {'|GL(3,2)|': 168, 'flag_stabiliser_order': 8, 'abelian': False, 'involutions': 5, 'type': 'D4'}
+P1 {'b': 1.003, 'sigma_combined': 0.0112, 'sigma_from_b_eq_0': 89.7}
+P2 {'cells_per_grain_max': [4.96, 19.82], 'floor_20_cells_empties_window': True, 'floor_10_cells_survives_only_below': 3.7641664288000004e-34}

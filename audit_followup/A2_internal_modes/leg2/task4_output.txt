@@ -1,0 +1,209 @@
+{
+ "requested": {
+  "P0 (U(8))": {
+   "dimG": 64,
+   "n_BG": 15,
+   "rank_rho": 14,
+   "n_B": 7,
+   "n_A": 1,
+   "unbroken": 49
+  },
+  "R (SO7xU1psi0xU1_7)": {
+   "dimG": 23,
+   "n_BG": 1,
+   "rank_rho": 0,
+   "n_B": 0,
+   "n_A": 1,
+   "unbroken": 22
+  },
+  "P7 (SO7xU1psi0xU1_7)": {
+   "dimG": 23,
+   "n_BG": 7,
+   "rank_rho": 0,
+   "n_B": 0,
+   "n_A": 7,
+   "unbroken": 16
+  },
+  "F7 (SO7xU1psi0xU1_7)": {
+   "dimG": 23,
+   "n_BG": 11,
+   "rank_rho": 10,
+   "n_B": 5,
+   "n_A": 1,
+   "unbroken": 12
+  }
+ },
+ "supplementary_G2xU1psi0": {
+  "R": {
+   "dimG": 15,
+   "n_BG": 1,
+   "rank_rho": 0,
+   "n_B": 0,
+   "n_A": 1,
+   "unbroken": 14
+  },
+  "P7": {
+   "dimG": 15,
+   "n_BG": 6,
+   "rank_rho": 0,
+   "n_B": 0,
+   "n_A": 6,
+   "unbroken": 9
+  },
+  "F7": {
+   "dimG": 15,
+   "n_BG": 11,
+   "rank_rho": 10,
+   "n_B": 5,
+   "n_A": 1,
+   "unbroken": 4
+  }
+ },
+ "supplementary_G2xU1psi0xU1_7": {
+  "R": {
+   "dimG": 16,
+   "n_BG": 1,
+   "rank_rho": 0,
+   "n_B": 0,
+   "n_A": 1,
+   "unbroken": 15
+  },
+  "P7": {
+   "dimG": 16,
+   "n_BG": 7,
+   "rank_rho": 0,
+   "n_B": 0,
+   "n_A": 7,
+   "unbroken": 9
+  },
+  "F7": {
+   "dimG": 16,
+   "n_BG": 11,
+   "rank_rho": 10,
+   "n_B": 5,
+   "n_A": 1,
+   "unbroken": 5
+  }
+ },
+ "supplementary_P0_under_SO7xU1xU1(generic nhat)": {
+  "dimG": 23,
+  "n_BG": 13,
+  "rank_rho": 10,
+  "n_B": 5,
+  "n_A": 3,
+  "unbroken": 10
+ },
+ "bogoliubov_check": {
+  "P0": {
+   "potential": "P0-type quartic (see code)",
+   "mu": 1.0,
+   "stationarity_residual": 0.0,
+   "min_hessian_eig": -0.0,
+   "linear": 1,
+   "quadratic": 7,
+   "gapped": 0,
+   "exponents": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    1.0
+   ],
+   "gaps": [],
+   "linear_speeds": [
+    1.0
+   ]
+  },
+  "R": {
+   "potential": "R-type quartic (see code)",
+   "mu": 1.0,
+   "stationarity_residual": 0.0,
+   "min_hessian_eig": 0.0,
+   "linear": 1,
+   "quadratic": 0,
+   "gapped": 7,
+   "exponents": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "gaps": [
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3
+   ],
+   "linear_speeds": [
+    1.0
+   ]
+  },
+  "P7": {
+   "potential": "P7-type quartic (see code)",
+   "mu": 0.8,
+   "stationarity_residual": 1.1102230246251565e-16,
+   "min_hessian_eig": -0.0,
+   "linear": 7,
+   "quadratic": 0,
+   "gapped": 1,
+   "exponents": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.0
+   ],
+   "gaps": [
+    0.5
+   ],
+   "linear_speeds": [
+    0.447214,
+    0.447214,
+    0.447214,
+    0.447214,
+    0.447214,
+    0.447214,
+    0.894427
+   ]
+  },
+  "F7": {
+   "potential": "F7-type quartic (see code)",
+   "mu": 1.0,
+   "stationarity_residual": 2.7755575615628914e-17,
+   "min_hessian_eig": -0.0,
+   "linear": 1,
+   "quadratic": 5,
+   "gapped": 2,
+   "exponents": [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    1.0,
+    0.0,
+    0.0
+   ],
+   "gaps": [
+    0.3,
+    0.4
+   ],
+   "linear_speeds": [
+    1.0
+   ]
+  }
+ }
+}

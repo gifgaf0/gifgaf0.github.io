@@ -1,0 +1,115 @@
+{
+ "task1_invariant_counts": {
+  "R14_a_d2": {
+   "all": 1,
+   "T_even": 1
+  },
+  "R14_a_d4": {
+   "all": 2,
+   "T_even": 2
+  },
+  "R14_a_d6": {
+   "all": 2,
+   "T_even": 2
+  },
+  "R14_b_d2": {
+   "all": 3,
+   "T_even": 2
+  },
+  "R14_b_d4": {
+   "all": 6,
+   "T_even": 4
+  },
+  "R14_b_d6": {
+   "all": 10,
+   "T_even": 6
+  },
+  "R14_c_d2": {
+   "all": 1,
+   "T_even": 1
+  },
+  "R14_c_d4": {
+   "all": 2,
+   "T_even": 2
+  },
+  "R14_c_d6": {
+   "all": 4,
+   "T_even": 3
+  },
+  "R16_a_d2": {
+   "all": 2,
+   "T_even": 2
+  },
+  "R16_a_d4": {
+   "all": 6,
+   "T_even": 5
+  },
+  "R16_a_d6": {
+   "all": 10,
+   "T_even": 8
+  },
+  "R16_b_d2": {
+   "all": 4,
+   "T_even": 3
+  },
+  "R16_b_d4": {
+   "all": 10,
+   "T_even": 7
+  },
+  "R16_b_d6": {
+   "all": 20,
+   "T_even": 13
+  },
+  "R16_c_d2": {
+   "all": 2,
+   "T_even": 2
+  },
+  "R16_c_d4": {
+   "all": 4,
+   "T_even": 4
+  },
+  "R16_c_d6": {
+   "all": 8,
+   "T_even": 7
+  }
+ },
+ "task1_methods_agree": {
+  "A_vs_B_all_degrees": true,
+  "A_vs_C_degrees_2_4": true,
+  "bigraded_A_vs_B": true
+ },
+ "task4_watanabe_murayama": {
+  "P0 (U(8))": {
+   "dimG": 64,
+   "n_BG": 15,
+   "rank_rho": 14,
+   "n_B": 7,
+   "n_A": 1,
+   "unbroken": 49
+  },
+  "R (SO7xU1psi0xU1_7)": {
+   "dimG": 23,
+   "n_BG": 1,
+   "rank_rho": 0,
+   "n_B": 0,
+   "n_A": 1,
+   "unbroken": 22
+  },
+  "P7 (SO7xU1psi0xU1_7)": {
+   "dimG": 23,
+   "n_BG": 7,
+   "rank_rho": 0,
+   "n_B": 0,
+   "n_A": 7,
+   "unbroken": 16
+  },
+  "F7 (SO7xU1psi0xU1_7)": {
+   "dimG": 23,
+   "n_BG": 11,
+   "rank_rho": 10,
+   "n_B": 5,
+   "n_A": 1,
+   "unbroken": 12
+  }
+ }
+}

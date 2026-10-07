@@ -1,0 +1,19 @@
+state: a*=1.4574710088  mu=55.852268 (banked 55.852268)  GP residual 1.20e-05  (33s)
+n=24 0deg   eps0(Gamma)=-4.77e-12  exponent p=1.9999  m*=10.50626  m/m*=0.095181  (f_s banked 0.095176; rel diff 5.68e-05)  gap to band 2 at Gamma 14.7588  eps0/q at smallest q 5.13e-04
+n=24 30deg  eps0(Gamma)=-4.77e-12  exponent p=1.9999  m*=10.50625  m/m*=0.095181  (f_s banked 0.095176; rel diff 5.78e-05)  gap to band 2 at Gamma 14.7588  eps0/q at smallest q 5.13e-04
+n=24 90deg  eps0(Gamma)=-4.77e-12  exponent p=1.9999  m*=10.50625  m/m*=0.095181  (f_s banked 0.095176; rel diff 5.78e-05)  gap to band 2 at Gamma 14.7588  eps0/q at smallest q 5.13e-04
+n=32 0deg   eps0(Gamma)=-1.44e-11  exponent p=1.9999  m*=10.50626  m/m*=0.095181  (f_s banked 0.095176; rel diff 5.68e-05)  gap to band 2 at Gamma 14.7588  eps0/q at smallest q 5.13e-04
+n=32 30deg  eps0(Gamma)=-1.44e-11  exponent p=1.9999  m*=10.50625  m/m*=0.095181  (f_s banked 0.095176; rel diff 5.78e-05)  gap to band 2 at Gamma 14.7588  eps0/q at smallest q 5.13e-04
+n=32 90deg  eps0(Gamma)=-1.44e-11  exponent p=1.9999  m*=10.50625  m/m*=0.095181  (f_s banked 0.095176; rel diff 5.78e-05)  gap to band 2 at Gamma 14.7588  eps0/q at smallest q 5.13e-04
+n=40 0deg   eps0(Gamma)=+2.00e-11  exponent p=1.9999  m*=10.50626  m/m*=0.095181  (f_s banked 0.095176; rel diff 5.68e-05)  gap to band 2 at Gamma 14.7588  eps0/q at smallest q 5.13e-04
+n=40 30deg  eps0(Gamma)=+2.00e-11  exponent p=1.9999  m*=10.50625  m/m*=0.095181  (f_s banked 0.095176; rel diff 5.77e-05)  gap to band 2 at Gamma 14.7588  eps0/q at smallest q 5.13e-04
+n=40 90deg  eps0(Gamma)=+2.00e-11  exponent p=1.9999  m*=10.50625  m/m*=0.095181  (f_s banked 0.095176; rel diff 5.78e-05)  gap to band 2 at Gamma 14.7588  eps0/q at smallest q 5.13e-04
+  M=b1/2         |q|=2.4890  lowest L_perp eigenvalues [ 0.12252 13.50721 14.42724 25.1542 ]
+  M'=b2/2        |q|=2.4890  lowest L_perp eigenvalues [ 0.12252 13.50721 14.42724 25.1542 ]
+  K=(2b1+b2)/3   |q|=2.8740  lowest L_perp eigenvalues [ 0.13811 13.83934 13.83934 27.87627]
+  K'=(b1+2b2)/3  |q|=2.8740  lowest L_perp eigenvalues [ 0.13811 13.83934 13.83934 27.87627]
+done (69s)
+
+real	1m9.136s
+user	1m36.945s
+sys	0m2.985s

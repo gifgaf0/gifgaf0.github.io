@@ -1,0 +1,30 @@
+Molien R14 group (a): dims at degree 0..8 = [1, 0, 1, 0, 2, 0, 2, 0, 3]   (max |raw - int| = 1.3e-15)
+Molien R14 group (b): dims at degree 0..8 = [1, 0, 3, 0, 6, 0, 10, 0, 15]   (max |raw - int| = 3.4e-15)
+Molien R14 group (c): dims at degree 0..8 = [1, 0, 1, 0, 2, 0, 4, 0, 5]   (max |raw - int| = 3.1e-15)
+Molien R16 group (a): dims at degree 0..8 = [1, 0, 2, 0, 6, 0, 10, 0, 19]   (max |raw - int| = 1.4e-14)
+Molien R16 group (b): dims at degree 0..8 = [1, 0, 4, 0, 10, 0, 20, 0, 35]   (max |raw - int| = 7.1e-15)
+Molien R16 group (c): dims at degree 0..8 = [1, 0, 2, 0, 4, 0, 8, 0, 13]   (max |raw - int| = 5.3e-15)
+ring R14_a: all 1/2/2  T-even 1/2/2  (deg 2/4/6)  matches Molien: True
+ring R14_b: all 3/6/10  T-even 2/4/6  (deg 2/4/6)  matches Molien: True
+ring R14_c: all 1/2/4  T-even 1/2/3  (deg 2/4/6)  matches Molien: True
+ring R16_a: all 2/6/10  T-even 2/5/8  (deg 2/4/6)  matches Molien: True
+ring R16_b: all 4/10/20  T-even 3/7/13  (deg 2/4/6)  matches Molien: True
+ring R16_c: all 2/4/8  T-even 2/4/7  (deg 2/4/6)  matches Molien: True
+derivation algebra of the octonion table: dim = 14 (g2 expects 14)
+WM P0 (U(8), any direction; here e0)            U(8) [dynamics of record]              n_BG=15 rank(rho)=14 -> quadratic n_B=7  linear n_A=1
+WM P0 (U(8), a 7-sector direction)              U(8) [dynamics of record]              n_BG=15 rank(rho)=14 -> quadratic n_B=7  linear n_A=1
+WM R (psi = e0)                                 G2xU1psi0 [action]                     n_BG= 1 rank(rho)= 0 -> quadratic n_B=0  linear n_A=1
+WM R (psi = e0)                                 SO7xU1psi0xU1_7 [deg<=4 accidental]    n_BG= 1 rank(rho)= 0 -> quadratic n_B=0  linear n_A=1
+WM P7 (psi = e1)                                G2xU1psi0 [action]                     n_BG= 6 rank(rho)= 0 -> quadratic n_B=0  linear n_A=6
+WM P7 (psi = e1)                                SO7xU1psi0xU1_7 [deg<=4 accidental]    n_BG= 7 rank(rho)= 0 -> quadratic n_B=0  linear n_A=7
+WM F7 (psi = (e1 + i e2)/sqrt2)                 G2xU1psi0 [action]                     n_BG=11 rank(rho)=10 -> quadratic n_B=5  linear n_A=1
+WM F7 (psi = (e1 + i e2)/sqrt2)                 SO7xU1psi0xU1_7 [deg<=4 accidental]    n_BG=11 rank(rho)=10 -> quadratic n_B=5  linear n_A=1
+WM I7 (psi = 0.9 e1 + 0.4 i e2)                 SO7xU1psi0xU1_7 [deg<=4 accidental]    n_BG=12 rank(rho)=10 -> quadratic n_B=5  linear n_A=2
+WM MP (psi = 0.6 e0 + 0.8 e1)                   SO7xU1psi0xU1_7 [deg<=4 accidental]    n_BG= 8 rank(rho)= 0 -> quadratic n_B=0  linear n_A=8
+WM MF (psi = 0.6 e0 + 0.8 (e1 + i e2)/sqrt2)    SO7xU1psi0xU1_7 [deg<=4 accidental]    n_BG=12 rank(rho)=10 -> quadratic n_B=5  linear n_A=2
+WM MI (psi = 0.6 e0 + 0.7 e1 + 0.3 i e2)        SO7xU1psi0xU1_7 [deg<=4 accidental]    n_BG=13 rank(rho)=10 -> quadratic n_B=5  linear n_A=3
+done
+
+real	0m0.943s
+user	0m1.064s
+sys	0m0.056s

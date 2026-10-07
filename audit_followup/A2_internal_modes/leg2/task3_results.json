@@ -1,0 +1,120 @@
+{
+ "P7_case_i": {
+  "potential": "-mu7 N + g77/2 N^2 - c/2 |S|^2",
+  "vmin": -0.6250000000000001,
+  "n_minima": 300,
+  "n_starts": 300,
+  "max_dev_polar": 1.9984014443252818e-15,
+  "max_imag_n": 1.7669222549861694e-08,
+  "theta_clusters_mod_pi": 266,
+  "theta_spread": [
+   0.0014199678013699535,
+   3.1218975607139448
+  ]
+ },
+ "P7_case_ii_lam6=0.05": {
+  "potential": "case (i) + g6 N^3 + lam6 Re(S^3), g6=0.1 (bounds V below)",
+  "vmin": -0.551131711043872,
+  "n_minima": 300,
+  "n_starts": 300,
+  "max_dev_polar": 8.659739592076221e-15,
+  "max_imag_n": 3.509929637130737e-08,
+  "theta_clusters_mod_pi": [
+   [
+    0.523599,
+    103
+   ],
+   [
+    1.570796,
+    97
+   ],
+   [
+    2.617994,
+    100
+   ]
+  ],
+  "n_components": 3,
+  "spacing_over_pi": [
+   0.333333,
+   0.333333,
+   0.333333
+  ]
+ },
+ "P7_case_ii_lam6=-0.05": {
+  "potential": "case (i) + g6 N^3 + lam6 Re(S^3), g6=0.1 (bounds V below)",
+  "vmin": -0.551131711043872,
+  "n_minima": 300,
+  "n_starts": 300,
+  "max_dev_polar": 4.440892098500626e-15,
+  "max_imag_n": 2.5665406373631145e-08,
+  "theta_clusters_mod_pi": [
+   [
+    0.0,
+    97
+   ],
+   [
+    1.047198,
+    98
+   ],
+   [
+    2.094395,
+    105
+   ]
+  ],
+  "n_components": 3,
+  "spacing_over_pi": [
+   0.333333,
+   0.333333,
+   0.333333
+  ]
+ },
+ "half_quantum_loop_barrier": {
+  "case_i": 3.3306690738754696e-16,
+  "case_ii(lam6=+0.05, start at a minimum theta*=pi/6)": 0.1141743604263451,
+  "expected_case_ii_barrier_2*lam6*N*^3": 0.11417436042634498
+ },
+ "mixed_c_lam6=0.0": {
+  "vmin": -0.7272727272727275,
+  "n_minima": 300,
+  "rho0_range": [
+   0.5454544951988276,
+   0.5454545853856717
+  ],
+  "max_dev_polar": 1.2212453270876722e-14,
+  "theta7_clusters_mod_pi": 297,
+  "theta0_spread": [
+   -3.1365434552246763,
+   3.1324964549709398
+  ],
+  "relative_phase_clusters": 286
+ },
+ "mixed_c_lam6=0.05": {
+  "vmin": -0.6992250471290121,
+  "n_minima": 300,
+  "rho0_range": [
+   0.622985400848406,
+   0.6229854762901709
+  ],
+  "max_dev_polar": 9.547918011776346e-15,
+  "theta7_clusters_mod_pi": 3,
+  "theta0_spread": [
+   -3.1321339769424648,
+   3.1345303601855092
+  ],
+  "relative_phase_clusters": 288
+ },
+ "mixed_with_(a)-locking_term_Re(psi0^2 Sbar)": {
+  "vmin": -0.7812500000000003,
+  "n_minima": 300,
+  "theta0_spread": [
+   -3.1403409144318175,
+   3.123041116277605
+  ],
+  "relative_phase_2(theta0-theta7)_clusters": [
+   [
+    0.0,
+    300
+   ]
+  ]
+ }
+}

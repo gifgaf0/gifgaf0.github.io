@@ -1,0 +1,102 @@
+11c11
+< April 2026, revised May 2026
+---
+> April 2026, revised May 2026 and October 2026
+35c35,39
+< an appendix.
+---
+> an appendix. The statements of Theorem 2.3 and Lemmas 2.8–2.9 are
+> instances of classical facts: G acts 2-transitively on the seven cosets
+> of S₄, so (G, S₄) is a Gelfand pair, and the distance-transitive
+> representations of the groups G with PSL₂(q) ◁ G ≤ PΓL₂(q) are
+> classified [15]; this note records the case q = 7 in spectral language.
+113a118,133
+> Prior art. The spectral statements of Section 2 are instances of
+> classical facts, recorded here for q = 7. The group G acts
+> 2-transitively on the seven cosets of S₄, so the permutation character
+> is 1 + χ_(ρ₆) (Lemma 2.8) and (G, S₄) is a Gelfand pair; the rigidity of
+> Lemma 2.9 is Schur’s lemma for this rank-2 action, and the eigenvalue
+> 2/3 is read off from the central character of the class 2A on ρ₆.
+> Multiplicity-free permutation representations of the finite linear
+> groups were studied by Inglis, Liebeck and Saxl [16]. Praeger, Saxl and
+> Yokoyama [18] reduced the classification of primitive
+> distance-transitive graphs to the almost simple and affine cases, and
+> Faradžev and Ivanov [15] classified the distance-transitive
+> representations of the groups G with PSL₂(q) ◁ G ≤ PΓL₂(q). The terms
+> spectral rigidity and spectral crystallization used in this note are
+> descriptive names for these facts; no further theorem is attached to
+> them, and no novelty is claimed for these statements.
+> 
+448c468,472
+< the representation-theoretic gap in L²(G).
+---
+> the representation-theoretic gap in L²(G). With the generating set S,
+> the eigenvalues of the full group Laplacian on L²(G) are 0, 2/3, 1, 8/7
+> and 4/3 on ρ₁, ρ₆, ρ₈, ρ₇ and ρ₃, so δ is one of several differences
+> among them (the next eigenvalue above 2/3 belongs to ρ₈); the
+> coincidence should be weighed against that choice.
+456c480
+< freely on any sphere S_(n) for any n. Consequently, S⁷/G is an orbifold,
+---
+> freely on any sphere S^(n) for any n. Consequently, S⁷/G is an orbifold,
+481,488c505,520
+< 4.2, the quotient S⁷/G is a 7-dimensional orbifold with non-isolated
+< singular strata: S³ strata from the 21 class-2A elements (codimension 4)
+< and S¹ strata from classes 3A, 7A, 7B (codimension 6, total 104
+< elements). The Kawasaki orbifold index theorem [8] applies only to
+< isolated singularities. The mixed-dimensional, non-isolated
+< stratification present in S⁷/G requires either the groupoid index theory
+< of Pflaum–Posthuma–Tang [9] or the L²-cohomology methods for singular
+< spaces (Cheeger). The η-invariant of S⁷/PSL(2,7) is currently unknown.
+---
+> 4.2, the quotient S⁷/G, for the action of G on S⁷ ⊂ ℝ⁸ through its
+> 8-dimensional irreducible representation ρ₈, is a 7-dimensional orbifold
+> with non-isolated singular strata: S³ strata from the 21 class-2A
+> elements (codimension 4) and S¹ strata from classes 3A, 4A, 7A, 7B
+> (codimension 6, total 146 elements; the circle fixed by an element of
+> order 4 lies inside the 3-sphere fixed by its square). Because S⁷/G is
+> the quotient of a closed manifold by a finite group, index problems on
+> it reduce to G-equivariant ones on S⁷: the index on G-invariant sections
+> is the average over G of the Lefschetz numbers given by the
+> Atiyah–Singer fixed-point formula, whose fixed-point sets may have any
+> dimension [13]. Kawasaki’s index theorem for compact V-manifolds [17],
+> whose complex case is the Riemann–Roch theorem of [8], treats the same
+> problem intrinsically, and groupoid methods [9] extend it further. The
+> η-invariant of S⁷/PSL(2,7) is correspondingly the average over G of
+> equivariant η-invariants [14], a finite sum over conjugacy classes
+> computable from the fixed-point data above; it is not computed here.
+514a547,548
+> The October 2026 revision (version 3) was prepared with the same
+> assistance; its new counts were checked by explicit computation.
+540c574
+< [8] Kawasaki, T. (1978). The Riemann-Roch theorem for complex
+---
+> [8] Kawasaki, T. (1979). The Riemann-Roch theorem for complex
+555a590,610
+> [13] Atiyah, M. F., & Singer, I. M. (1968). The index of elliptic
+> operators: III. Annals of Mathematics, 87, 546–604.
+> 
+> [14] Donnelly, H. (1978). Eta invariants for G-spaces. Indiana
+> University Mathematics Journal, 27, 889–918.
+> 
+> [15] Faradžev, I. A., & Ivanov, A. A. (1990). Distance-transitive
+> representations of groups G with PSL₂(q) ◁ G ≤ PΓL₂(q). European Journal
+> of Combinatorics, 11, 347–356.
+> 
+> [16] Inglis, N. F. J., Liebeck, M. W., & Saxl, J. (1986).
+> Multiplicity-free permutation representations of finite linear groups.
+> Mathematische Zeitschrift, 192, 329–337.
+> 
+> [17] Kawasaki, T. (1981). The index of elliptic operators over
+> V-manifolds. Nagoya Mathematical Journal, 84, 135–157.
+> 
+> [18] Praeger, C. E., Saxl, J., & Yokoyama, K. (1987). Distance
+> transitive graphs and finite simple groups. Proceedings of the London
+> Mathematical Society (3), 55, 1–21.
+> 
+558,559c613,614
+< We realize M₃ ≅ D₄ as the stabilizer in GL(3,2) of the flag (P₁, L₁₂₄),
+< where P₁ = (1,0,0) and L₁₂₄ = span_(ℤ₂){e₁, e₂} = {P₁, P₂, P₄} is the
+---
+> We realize D₄ as the stabilizer in GL(3,2) of the flag (P₁, L₁₂₄), where
+> P₁ = (1,0,0) and L₁₂₄ = span_(ℤ₂){e₁, e₂} = {P₁, P₂, P₄} is the

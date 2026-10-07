@@ -1,0 +1,9 @@
+V4.93 md5: 0aa63a0bec9becbfb911dba3454255f2 bytes: 1822335 delta: 21933
+title rewrites: 1; As-of rewrites: 1; in-line bracket appends: 34; inserted lines: 24 (13187 B); V4.92 lines carried unchanged: 4635 of 4671
+appends on the expected 34 lines: True | missing: [] | extra: []
+appends by part: {'§2.93.B1': 15, '§2.93.B2': 3, '§2.93.B3': 10, '§2.93.B4': 4, '§2.93.B5': 2}
+inserted blocks (V4.93 1-based line ranges): [(38, 39), (1691, 1708), (4434, 4436), (4694, 4694)]
+insertions at the declared places (record / §2.93 / three Part VI rows / changelog): True
+inserted headings: ['### §2.93 — The October 2026 Audit Follow-Up, Phase B: Papers and Calculators (V4.93)']
+§2.52 Open 3 row identical and unique: True
+ADDITIVITY CHECK: PASS

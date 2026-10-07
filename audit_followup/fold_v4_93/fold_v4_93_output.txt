@@ -1,0 +1,6 @@
+V4.93 FOLDED: /home/claude/fold/SQT_Master_Ledger_v4_93_CANONICAL.md
+bytes: 1822335 (V4.92 1800402 B; delta +21933 B); chars delta +21217
+md5: 0aa63a0bec9becbfb911dba3454255f2
+brackets: 34 | §2.93 chars: 9993 | record chars: 1262 | rows chars: 1284
+reverse-splice: BYTE-IDENTICAL to V4.92 (a98cf1b6f12578537e11270d2cdf0fda) — PASS
+§2.52 Open 3: Part VI row byte-identical and unique — PASS; all fragments landed exactly once — PASS

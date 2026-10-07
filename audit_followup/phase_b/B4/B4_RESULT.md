@@ -68,6 +68,7 @@ Nothing is published. Whether to correct the deposit is the author's decision; a
 2. Claim one robust break, at Z = 88, or run a pre-registered N-controlled test before claiming Z = 92. Remove §3.3's "it is not driven by a correlation between N and Z"; §4.7 and the fixed-N comparison contradict it.
 3. §4.5: remove "the terminus toward which all actinide chains converge". Remove "No parameter is adjusted", or state that the U↔θ map is read from the data. Replace ref. [11], which does not contain J(θ), or drop §4.5–§4.6. They are the paper's only tie to the SQT framework, and the draft notes already suggest moving them to a footnote.
 4. Ref. [9] is marked "[Citation pending]" in the text; complete it or remove the sentence.
+5. *(Added at the V4.93 fold.)* The abstract says the Cm→Cf half of the Curium prediction "is confirmed". §4.6 says that step "shows no statistically significant elevation" (t = +0.4) and that the prediction "is not confirmed". Make the abstract match §4.6.
 
 ## Files
 
@@ -77,3 +78,13 @@ Nothing is published. Whether to correct the deposit is the author's decision; a
 | `b4_checks_output.txt` / `b4_checks.json` | `22c0670766c968357f5eaee2e4fa111b` / `40e53f8e779771872d15e94fa759035b` |
 | `source/alpha_decay_three_regime_paper.md` (store text) | `770ac49755f559841e0e6d7c9b083f1b` |
 | `source/ame2020_qvalues.py` (store script) | `25ddfab78ff7348bffcbaef5c40fcdee` |
+
+## Fold-time corrections (V4.93)
+
+The ledger entry was folded as §2.93.B4 (`fold_v4_93/`). The folded text supersedes the proposal above, and four statements in this file were tightened there.
+- **U conventions.** The paper counts U = Z − 80, from mercury, so Ra is U = 8. The ledger's slot framework counts U differently: §2.45-NGA puts U = 8 at Rn (Z = 86), and §3.A.4 puts ²⁴⁰Pu (Z = 94) at U = 16. The retraction table's sentence "Its regime edges, U = 4, 8 and 12, are the retracted 4-8-12 sequence" is therefore withdrawn. The narrower statement stands: reading the edges as capacities (8 = dim 𝕆, 12 = |A₄|, as `alpha_decay_paper_v2_summary.md` of April 16 and the project description do) depends on measuring U from Z = 80. Measured from ²⁰⁸Pb, the edges sit at ΔU = 6 and 10, as the paper's §4.5 itself notes.
+- **§2.45-NGA.** The bracket is stated in terms of Z: the regime I/II break is at Z = 88 (Ra), and the closure invoked is at Z = 86 (Rn). The parenthesis "(Rn is Z = 86, U = 6 …)" in the table above used the paper's U.
+- **The ferromagnetism link.** The item the ledger marks "refuted, R3" (M.CW instances) is the ferromagnetism conjecture's Gate-1 spin-flip reading, not Lemma θ. The folded text cites only §3.01 and §3.02 against Lemma θ.
+- **§2.21.** The folded bracket drops the decay-chain sentence, which concerns the paper's §4.5, not §2.21.
+
+The Curium finding is unchanged ("the prediction … failed, as the paper reports" refers to §4.6). Correction 5 is new.

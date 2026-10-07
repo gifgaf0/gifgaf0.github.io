@@ -87,6 +87,8 @@
 
 The V4.6 fold record (L20) repeats "K₇'s symmetry group PSL(2,7)". It is a historical log and is not touched, as in Phase A.
 
+*Fold-time addition (V4.93).* A sweep of the whole ledger at fold time found five more dependents, and the fold brackets them too: §2.D-FC's Paper I cross-reference (L534) and its premise sentence (L539); §2.74 Part II, item 2 (L2219); the V4.7 §2.E-QQ entry (L2920); and §2.86's cross-references (L3207). Paper I (v2.1) calls PSL(2,7) the automorphism group of the Fano plane, not of K₇. The §2.D-FC wording was also tightened: "no spin cover" became "no genuinely projective (spin) representations". A ℤ₂ central extension of AGL(1,7) exists through its abelianization, but with a trivial Schur multiplier every projective representation is linear. See `fold_v4_93/FOLD_AUTHORIZATION_V4_93.md`.
+
 **Outside the ledger.**
 - **Paper II-A v2.2, §1.1** (`Gifford_Paper_IIA_Bjerknes_Gravity_v2_2_2026.md`) says the gauge paper "established … 16 sub-1% numerical predictions for particle properties" and "golden ratio as flux eigenvalue". Both were already inaccurate before B1:
   - v6.3 lists five claims, not sixteen predictions;

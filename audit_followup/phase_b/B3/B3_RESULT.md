@@ -97,6 +97,8 @@ They call the result a leading-order fit. No draft extends the claim to coupling
 
 Historical logs (As-of lines, fold-in records such as L129) are not touched.
 
+*Fold-time addition (V4.93).* A sweep of the whole ledger at fold time found four more dependents, and the fold brackets them too: the §2.1 W and Z rows (L395, L396); §2.83 Part II's reading of F₇* as acting "on Fano triangles" (L1008); and the Flag 4 list item (L3913). The §2.1 bracket also notes that without W and Z the fit is 6 rows against 6 fitted Z_f plus ξ_vac, so dof is still −1. One correction to the table above: the ledger's §2.1 table has no L column, so the L-convention point is about the calculators' and Paper VII's L values. See `fold_v4_93/FOLD_AUTHORIZATION_V4_93.md`.
+
 ## Left for the author
 
 - **Adoption.** Deploying `index_v3_1_DRAFT.html` as `index.html`, replacing the store calculators and adopting the Paper VII draft are the author's actions. The repo is public, so these drafts are visible on the branch now.

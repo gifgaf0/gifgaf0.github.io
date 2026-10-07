@@ -28,3 +28,7 @@ Donnelly's equivariant η is a finite sum over the conjugacy classes of PSL(2,7)
 | Line | Entry | Bracket |
 |---|---|---|
 | L4553 | Part VI, "Full Donnelly η-defect sum for the FR parity" | Its purpose (an FR sign from the internal geometry) closed at V4.84 (§2.91.R: π₁(Orbit) = 0, no spin sign). No longer needed for μ_n; optional. The S⁷/PSL(2,7) η is a finite Donnelly sum, computable in-house. A short note to Flach is drafted (B5), not sent. |
+
+## Fold-time note (V4.93)
+
+The fold softened one phrase. §2.91.R (V4.84) still lists "the FR/η parity of Gate 2b" among the things a derived μ_n would rest on. So the folded bracket says the S⁷/PSL(2,7) computation is no longer needed *for that purpose*, an FR sign from the internal geometry, rather than "no longer needed for μ_n". The fold also bracketed §2.87's sentence that made the two questions one. The note to Flach is unaffected: it speaks only of the internal geometry.

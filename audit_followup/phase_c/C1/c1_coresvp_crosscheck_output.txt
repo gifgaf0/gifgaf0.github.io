@@ -1,0 +1,4 @@
+{'label': 'spec n=512, uniform A, m<=512', 'n': 512, 'q': 4294977961, 'sigma_s': 0.3536, 'sigma_e': 1.0, 'm_max': 512, 'beta': 72, 'm_used': 424, 'd': 937, 'log2_classical_coreSVP': 21.0, 'log2_quantum_coreSVP': 19.1}
+{'label': 'spec n=512, uniform A, m<=1024', 'n': 512, 'q': 4294977961, 'sigma_s': 0.3536, 'sigma_e': 1.0, 'm_max': 1024, 'beta': 72, 'm_used': 424, 'd': 937, 'log2_classical_coreSVP': 21.0, 'log2_quantum_coreSVP': 19.1}
+{'label': 'rank-collapse reduction, n=76, m<=436', 'n': 76, 'q': 4294977961, 'sigma_s': 1.0, 'sigma_e': 1.0, 'm_max': 436, 'beta': 40, 'm_used': 8, 'd': 85, 'log2_classical_coreSVP': 11.7, 'log2_quantum_coreSVP': 10.6}
+{'label': 'toy q=911, n=512, uniform A, m<=512', 'n': 512, 'q': 911, 'sigma_s': 0.3536, 'sigma_e': 1.0, 'm_max': 512, 'beta': 383, 'm_used': 304, 'd': 817, 'log2_classical_coreSVP': 111.8, 'log2_quantum_coreSVP': 101.5}

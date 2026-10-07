@@ -1,0 +1,12 @@
+p=       911 k= 8  leg1 [76, 76, 76]  leg2 [76, 76, 76] (own [76, 76, 76])  controls [128] / [128]  <=112: True  full: True
+p=       911 k=16  leg1 [76, 76, 76]  leg2 [76, 76, 76] (own [76, 76, 76])  controls [256] / [256]  <=112: True  full: True
+p=       911 k=32  leg1 [76, 76, 76]  leg2 [76, 76, 76] (own [76, 76, 76])  controls [512] / [512]  <=112: True  full: True
+p=       911 k=64  leg1 [76, 76, 76]  leg2 [76, 76, 76] (own [76, 76, 76])  controls [1024] / [1024]  <=112: True  full: True
+p=4294977961 k= 8  leg1 [76, 76, 76]  leg2 [76, 76, 76] (own [76, 76, 76])  controls [128] / [128]  <=112: True  full: True
+p=4294977961 k=16  leg1 [76, 76, 76]  leg2 [76, 76, 76] (own [76, 76, 76])  controls [256] / [256]  <=112: True  full: True
+p=4294977961 k=32  leg1 [76, 76, 76]  leg2 [76, 76, 76] (own [76, 76, 76])  controls [512] / [512]  <=112: True  full: True
+p=4294977961 k=64  leg1 [76, 76, 76]  leg2 [76, 76, 76] (own [76, 76, 76])  controls [1024] / [1024]  <=112: True  full: True
+curve p=911 agree: True [(1, 16), (2, 32), (3, 48), (4, 64), (5, 72), (6, 74), (7, 76), (8, 76), (9, 76), (10, 76)]
+exact ranks agree everywhere: True
+universal N: {'shape': [256, 112], 'rank_Q': 76, 'rank_mod_911': 76, 'rank_mod_spec': 76}
+DR-C1-1: PASS — WIDENED (rank <= 112 at every k tested, both legs)

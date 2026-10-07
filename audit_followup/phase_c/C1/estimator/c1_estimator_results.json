@@ -1,0 +1,682 @@
+{
+ "spec_uniform_m512": {
+  "params": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='SLWE spec, uniform A, one public key')",
+  "rough": {
+   "usvp": {
+    "rop": "2.13233103964357e6",
+    "red": "2.13233103964357e6",
+    "delta": "1.01071962688388",
+    "beta": "72",
+    "d": "937",
+    "tag": "usvp",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='SLWE spec, uniform A, one public key')"
+   },
+   "dual_hybrid": {
+    "rop": "5.61649298741985e6",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='SLWE spec, uniform A, one public key')",
+    "red": "4.79134743254184e6",
+    "guess": "825145.554878011",
+    "beta": "76",
+    "p": "3",
+    "zeta": "0",
+    "t": "0",
+    "beta_": "76",
+    "N": "1265.67576072535",
+    "m": "512"
+   }
+  },
+  "rough_seconds": 0.9,
+  "full": {
+   "arora-gb": {
+    "rop": "14944177504954373924864750710038351350546166143019532041686463640624496809849921487903396495231652006170985128691125926377600",
+    "dreg": "38",
+    "mem": "200856576688420631312184186398372358544836293965804167990383395598400",
+    "t": "2",
+    "m": "38093942497117861386300003946315065122208487852338755847168",
+    "tag": "arora-gb",
+    "problem": "LWEParameters(n=100, q=4294977961, Xs=T(p=32, m=32, n=100), Xe=D(\u03c3=1.00), m=512, tag='SLWE spec, uniform A, one public key')",
+    "repetitions": "74402231439683323020117195207646611566813452836599132514",
+    "zeta": "412",
+    "|S|": "1",
+    "prop": "885135349/14300458491657832983578611183597351655232989180383287228788099880"
+   },
+   "bkw": {
+    "rop": "4.656198134075979e+33",
+    "m": "8.763591298253969e+29",
+    "mem": "1743032559824743760173844202982",
+    "b": "3",
+    "t1": "0",
+    "t2": "22",
+    "ell": "2",
+    "#cod": "442",
+    "#top": "0",
+    "#test": "72",
+    "tag": "coded-bkw",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=3.74), m=876359129825396867269157453824, tag='SLWE spec, uniform A, one public key')"
+   },
+   "usvp": {
+    "rop": "4.70426665418183e15",
+    "red": "4.70426665418183e15",
+    "delta": "1.01071962688388",
+    "beta": "72",
+    "d": "937",
+    "tag": "usvp",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='SLWE spec, uniform A, one public key')"
+   },
+   "bdd": {
+    "rop": "2.19445072161629e15",
+    "red": "1.88997207540465e15",
+    "svp": "3.04478646211643e14",
+    "beta": "67",
+    "eta": "92",
+    "d": "980",
+    "tag": "bdd",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='SLWE spec, uniform A, one public key')"
+   },
+   "bdd_hybrid": {
+    "rop": "2.22343169999304e15",
+    "red": "1.91895305375633e15",
+    "svp": "3.04478646236703e14",
+    "beta": "67",
+    "eta": "92",
+    "zeta": "0",
+    "|S|": "1",
+    "d": "994",
+    "prob": "0.9999999776659878",
+    "repetitions": "1",
+    "tag": "hybrid",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='SLWE spec, uniform A, one public key')"
+   },
+   "bdd_mitm_hybrid": {
+    "rop": "3.41523353376433e17",
+    "red": "2.13039940834366e17",
+    "svp": "1.28483412542068e17",
+    "beta": "64",
+    "eta": "2",
+    "zeta": "105",
+    "|S|": "541404358233313123",
+    "d": "879",
+    "prob": "0.0201789181513094",
+    "repetitions": "226",
+    "tag": "hybrid",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='SLWE spec, uniform A, one public key')"
+   },
+   "dual": {
+    "rop": "1.00365437401097e16",
+    "mem": "151890283",
+    "m": "496",
+    "beta": "72",
+    "d": "1008",
+    "repetitions": "1",
+    "tag": "dual"
+   },
+   "dual_hybrid": {
+    "rop": "3.09323585909530e15",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='SLWE spec, uniform A, one public key')",
+    "red": "3.02603406034534e15",
+    "guess": "6.72017987499545e13",
+    "beta": "66",
+    "p": "2",
+    "zeta": "0",
+    "t": "30",
+    "beta_": "93",
+    "N": "401882.526459877",
+    "m": "512"
+   }
+  },
+  "full_log2_rop": {
+   "arora-gb": 412.4986672624348,
+   "bkw": 111.84277958148942,
+   "usvp": 52.062891262770954,
+   "bdd": 50.962781296844504,
+   "bdd_hybrid": 50.98170951156417,
+   "bdd_mitm_hybrid": 58.24476184650073,
+   "dual": 53.15611205566675,
+   "dual_hybrid": 51.45803826636384
+  },
+  "full_seconds": 33.5,
+  "min_log2_rop": 50.962781296844504
+ },
+ "spec_uniform_m1024": {
+  "params": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=1024, tag='SLWE spec, uniform A, public key + one ciphertext')",
+  "rough": {
+   "usvp": {
+    "rop": "2.13233103964357e6",
+    "red": "2.13233103964357e6",
+    "delta": "1.01071962688388",
+    "beta": "72",
+    "d": "937",
+    "tag": "usvp",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=1024, tag='SLWE spec, uniform A, public key + one ciphertext')"
+   },
+   "dual_hybrid": {
+    "rop": "5.61649298741985e6",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=1024, tag='SLWE spec, uniform A, public key + one ciphertext')",
+    "red": "4.79134743254184e6",
+    "guess": "825145.554878011",
+    "beta": "76",
+    "p": "3",
+    "zeta": "0",
+    "t": "0",
+    "beta_": "76",
+    "N": "1265.67576072535",
+    "m": "512"
+   }
+  },
+  "rough_seconds": 1.3,
+  "full": {
+   "arora-gb": {
+    "rop": "16159745804566948421910946623234290931348755538940362636362585695440180048541444293776370638932041676350275348965611200",
+    "dreg": "33",
+    "mem": "592881929668498422061334733555356353066798267922945803110222400",
+    "t": "2",
+    "m": "27910413314720017253328715762646681376667604961119484480512",
+    "tag": "arora-gb",
+    "problem": "LWEParameters(n=101, q=4294977961, Xs=T(p=32, m=32, n=101), Xe=D(\u03c3=1.00), m=1024, tag='SLWE spec, uniform A, public key + one ciphertext')",
+    "repetitions": "27256263002656266848953823986959649781901957969843246563",
+    "zeta": "411",
+    "|S|": "1",
+    "prop": "23922577/141588697937206267164144665184132194606267219607755319096911880"
+   },
+   "bkw": {
+    "rop": "4.656198134075979e+33",
+    "m": "8.763591298253969e+29",
+    "mem": "1743032559824743760173844202982",
+    "b": "3",
+    "t1": "0",
+    "t2": "22",
+    "ell": "2",
+    "#cod": "442",
+    "#top": "0",
+    "#test": "72",
+    "tag": "coded-bkw",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=3.46), m=876359129825396867269157453824, tag='SLWE spec, uniform A, public key + one ciphertext')"
+   },
+   "usvp": {
+    "rop": "4.70426665418183e15",
+    "red": "4.70426665418183e15",
+    "delta": "1.01071962688388",
+    "beta": "72",
+    "d": "937",
+    "tag": "usvp",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=1024, tag='SLWE spec, uniform A, public key + one ciphertext')"
+   },
+   "bdd": {
+    "rop": "2.19445072161629e15",
+    "red": "1.88997207540465e15",
+    "svp": "3.04478646211643e14",
+    "beta": "67",
+    "eta": "92",
+    "d": "980",
+    "tag": "bdd",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=1024, tag='SLWE spec, uniform A, public key + one ciphertext')"
+   },
+   "bdd_hybrid": {
+    "rop": "2.22343169999304e15",
+    "red": "1.91895305375633e15",
+    "svp": "3.04478646236703e14",
+    "beta": "67",
+    "eta": "92",
+    "zeta": "0",
+    "|S|": "1",
+    "d": "994",
+    "prob": "0.9999999776659878",
+    "repetitions": "1",
+    "tag": "hybrid",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=1024, tag='SLWE spec, uniform A, public key + one ciphertext')"
+   },
+   "bdd_mitm_hybrid": {
+    "rop": "3.41523353376433e17",
+    "red": "2.13039940834366e17",
+    "svp": "1.28483412542068e17",
+    "beta": "64",
+    "eta": "2",
+    "zeta": "105",
+    "|S|": "541404358233313123",
+    "d": "879",
+    "prob": "0.0201789181513094",
+    "repetitions": "226",
+    "tag": "hybrid",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=1024, tag='SLWE spec, uniform A, public key + one ciphertext')"
+   },
+   "dual": {
+    "rop": "1.00365437401097e16",
+    "mem": "151890283",
+    "m": "496",
+    "beta": "72",
+    "d": "1008",
+    "repetitions": "1",
+    "tag": "dual"
+   },
+   "dual_hybrid": {
+    "rop": "3.09323585909530e15",
+    "problem": "LWEParameters(n=512, q=4294977961, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=1024, tag='SLWE spec, uniform A, public key + one ciphertext')",
+    "red": "3.02603406034534e15",
+    "guess": "6.72017987499545e13",
+    "beta": "66",
+    "p": "2",
+    "zeta": "0",
+    "t": "30",
+    "beta_": "93",
+    "N": "401882.526459877",
+    "m": "512"
+   }
+  },
+  "full_log2_rop": {
+   "arora-gb": 392.679919701149,
+   "bkw": 111.84277958148942,
+   "usvp": 52.062891262770954,
+   "bdd": 50.962781296844504,
+   "bdd_hybrid": 50.98170951156417,
+   "bdd_mitm_hybrid": 58.24476184650073,
+   "dual": 53.15611205566675,
+   "dual_hybrid": 51.45803826636384
+  },
+  "full_seconds": 31.0,
+  "min_log2_rop": 50.962781296844504
+ },
+ "rank_collapse_n76": {
+  "params": "LWEParameters(n=76, q=4294977961, Xs=D(\u03c3=1.00), Xe=D(\u03c3=1.00), m=436, tag='after the rank collapse: secret = noise on 76 coordinates')",
+  "rough": {
+   "usvp": {
+    "rop": "3281.18221860709",
+    "red": "3281.18221860709",
+    "delta": "1.01295000000000",
+    "beta": "40",
+    "d": "85",
+    "tag": "usvp",
+    "problem": "LWEParameters(n=76, q=4294977961, Xs=D(\u03c3=1.00), Xe=D(\u03c3=1.00), m=436, tag='after the rank collapse: secret = noise on 76 coordinates')"
+   },
+   "dual_hybrid": {
+    "rop": "4408.62564928714",
+    "problem": "LWEParameters(n=76, q=4294977961, Xs=D(\u03c3=1.00), Xe=D(\u03c3=1.00), m=436, tag='after the rank collapse: secret = noise on 76 coordinates')",
+    "red": "3281.18221860709",
+    "guess": "1127.44343068005",
+    "beta": "40",
+    "p": "3",
+    "zeta": "0",
+    "t": "0",
+    "beta_": "40",
+    "N": "0.693147535751567",
+    "m": "76"
+   }
+  },
+  "rough_seconds": 1.1,
+  "full": {
+   "arora-gb": {
+    "rop": "+Infinity"
+   },
+   "bkw": {
+    "rop": "1.2909095625912724e+23",
+    "m": "1.8446835685475716e+20",
+    "mem": "368936713709514350420",
+    "b": "2",
+    "t1": "0",
+    "t2": "20",
+    "ell": "1",
+    "#cod": "74",
+    "#top": "0",
+    "#test": "3",
+    "tag": "coded-bkw",
+    "problem": "LWEParameters(n=76, q=4294977961, Xs=D(\u03c3=1.00), Xe=D(\u03c3=3.00), m=184468356854757163008, tag='after the rank collapse: secret = noise on 76 coordinates')"
+   },
+   "usvp": {
+    "rop": "4.11113000593000e11",
+    "red": "4.11113000593000e11",
+    "delta": "1.01295000000000",
+    "beta": "40",
+    "d": "85",
+    "tag": "usvp",
+    "problem": "LWEParameters(n=76, q=4294977961, Xs=D(\u03c3=1.00), Xe=D(\u03c3=1.00), m=436, tag='after the rank collapse: secret = noise on 76 coordinates')"
+   },
+   "bdd": {
+    "rop": "4.02580828956592e11",
+    "red": "4.01977148361600e11",
+    "svp": "6.03680594992248e8",
+    "beta": "40",
+    "eta": "28",
+    "d": "84",
+    "tag": "bdd",
+    "problem": "LWEParameters(n=76, q=4294977961, Xs=D(\u03c3=1.00), Xe=D(\u03c3=1.00), m=436, tag='after the rank collapse: secret = noise on 76 coordinates')"
+   },
+   "bdd_hybrid": {
+    "rop": "2.83947055304056e12",
+    "red": "2.83215042622400e12",
+    "svp": "7.32012681655926e9",
+    "beta": "40",
+    "eta": "1",
+    "zeta": "5",
+    "|S|": "3125",
+    "d": "350",
+    "prob": "1.00000000000000",
+    "repetitions": "1",
+    "tag": "hybrid",
+    "problem": "LWEParameters(n=76, q=4294977961, Xs=D(\u03c3=1.00), Xe=D(\u03c3=1.00), m=436, tag='after the rank collapse: secret = noise on 76 coordinates')"
+   },
+   "bdd_mitm_hybrid": {
+    "rop": "2.62058569731222e12",
+    "red": "2.60374610908900e12",
+    "svp": "1.68395882232193e10",
+    "beta": "40",
+    "eta": "2",
+    "zeta": "15",
+    "|S|": "25417304461",
+    "d": "325",
+    "prob": "0.994830773465253",
+    "repetitions": "1",
+    "tag": "hybrid",
+    "problem": "LWEParameters(n=76, q=4294977961, Xs=D(\u03c3=1.00), Xe=D(\u03c3=1.00), m=436, tag='after the rank collapse: secret = noise on 76 coordinates')"
+   },
+   "dual": {
+    "rop": "2.94178495887780e12",
+    "mem": "41",
+    "m": "286",
+    "beta": "40",
+    "d": "362",
+    "repetitions": "1",
+    "tag": "dual"
+   },
+   "dual_hybrid": {
+    "rop": "1.82803802843456e12",
+    "problem": "LWEParameters(n=76, q=4294977961, Xs=D(\u03c3=1.00), Xe=D(\u03c3=1.00), m=436, tag='after the rank collapse: secret = noise on 76 coordinates')",
+    "red": "1.82342706071256e12",
+    "guess": "4.61096772200103e9",
+    "beta": "40",
+    "p": "3",
+    "zeta": "0",
+    "t": "10",
+    "beta_": "57",
+    "N": "451.793222007787",
+    "m": "76"
+   }
+  },
+  "full_log2_rop": {
+   "arora-gb": Infinity,
+   "bkw": 76.77273411553215,
+   "usvp": 38.58074403861221,
+   "bdd": 38.550487516000906,
+   "bdd_hybrid": 41.368759088902884,
+   "bdd_mitm_hybrid": 41.25302642681357,
+   "dual": 41.41982892973485,
+   "dual_hybrid": 40.7334332215516
+  },
+  "full_seconds": 3.8,
+  "min_log2_rop": 38.550487516000906
+ },
+ "uniform_q911": {
+  "params": "LWEParameters(n=512, q=911, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 911, uniform A')",
+  "rough": {
+   "usvp": {
+    "rop": "4.63436883607391e33",
+    "red": "4.63436883607391e33",
+    "delta": "1.00410352331032",
+    "beta": "383",
+    "d": "817",
+    "tag": "usvp",
+    "problem": "LWEParameters(n=512, q=911, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 911, uniform A')"
+   },
+   "dual_hybrid": {
+    "rop": "4.42849787989157e31",
+    "problem": "LWEParameters(n=512, q=911, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 911, uniform A')",
+    "red": "4.40832032246429e31",
+    "guess": "2.01775574272797e29",
+    "beta": "360",
+    "p": "2",
+    "zeta": "0",
+    "t": "80",
+    "beta_": "360",
+    "N": "1.48741127939823e22",
+    "m": "512"
+   }
+  },
+  "rough_seconds": 3.1,
+  "full": {
+   "arora-gb": {
+    "rop": "14944177504954373924864750710038351350546166143019532041686463640624496809849921487903396495231652006170985128691125926377600",
+    "dreg": "38",
+    "mem": "200856576688420631312184186398372358544836293965804167990383395598400",
+    "t": "2",
+    "m": "38093942497117861386300003946315065122208487852338755847168",
+    "tag": "arora-gb",
+    "problem": "LWEParameters(n=100, q=911, Xs=T(p=32, m=32, n=100), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 911, uniform A')",
+    "repetitions": "74402231439683323020117195207646611566813452836599132514",
+    "zeta": "412",
+    "|S|": "1",
+    "prop": "885135349/14300458491657832983578611183597351655232989180383287228788099880"
+   },
+   "bkw": {
+    "rop": "6.221860141818228e+36",
+    "m": "2.0520624757603492e+33",
+    "mem": "3945434445570694345692934876975621",
+    "b": "11",
+    "t1": "0",
+    "t2": "11",
+    "ell": "10",
+    "#cod": "390",
+    "#top": "0",
+    "#test": "123",
+    "tag": "coded-bkw",
+    "problem": "LWEParameters(n=512, q=911, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=4.00), m=2052062475760349248459206467518464, tag='descriptive: q = 911, uniform A')"
+   },
+   "usvp": {
+    "rop": "1.66901119317790e41",
+    "red": "1.66901119317790e41",
+    "delta": "1.00410352331032",
+    "beta": "383",
+    "d": "817",
+    "tag": "usvp",
+    "problem": "LWEParameters(n=512, q=911, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 911, uniform A')"
+   },
+   "bdd": {
+    "rop": "1.11400321065579e40",
+    "red": "5.45251608309494e39",
+    "svp": "5.68751602346298e39",
+    "beta": "365",
+    "eta": "396",
+    "d": "817",
+    "tag": "bdd",
+    "problem": "LWEParameters(n=512, q=911, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 911, uniform A')"
+   },
+   "bdd_hybrid": {
+    "rop": "4.41405395019155e39",
+    "red": "2.41362075738229e39",
+    "svp": "2.00043319280927e39",
+    "beta": "273",
+    "eta": "247",
+    "zeta": "137",
+    "|S|": "37539",
+    "d": "650",
+    "prob": "1.85323899601284e-7",
+    "repetitions": "24849304",
+    "tag": "hybrid",
+    "problem": "LWEParameters(n=512, q=911, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 911, uniform A')"
+   },
+   "bdd_mitm_hybrid": {
+    "rop": "2.30300503653516e38",
+    "red": "6.02152882233013e37",
+    "svp": "1.70085215430214e38",
+    "beta": "226",
+    "eta": "2",
+    "zeta": "322",
+    "|S|": "9872362372285062976563910178758401093782288649",
+    "d": "435",
+    "prob": "5.09059067743959e-10",
+    "repetitions": "9046435821",
+    "tag": "hybrid",
+    "problem": "LWEParameters(n=512, q=911, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 911, uniform A')"
+   },
+   "dual": {
+    "rop": "1.45435890594526e43",
+    "mem": "6955316710475652179944739234",
+    "m": "353",
+    "beta": "402",
+    "d": "865",
+    "repetitions": "1",
+    "tag": "dual"
+   },
+   "dual_hybrid": {
+    "rop": "3.58135624666969e38",
+    "problem": "LWEParameters(n=512, q=911, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 911, uniform A')",
+    "red": "3.57871166096359e38",
+    "guess": "2.64458570610196e35",
+    "beta": "346",
+    "p": "2",
+    "zeta": "0",
+    "t": "100",
+    "beta_": "352",
+    "N": "4.88732872240073e21",
+    "m": "512"
+   }
+  },
+  "full_log2_rop": {
+   "arora-gb": 412.4986672624348,
+   "bkw": 122.22675738153849,
+   "usvp": 136.93804552050963,
+   "bdd": 133.03287718615314,
+   "bdd_hybrid": 131.69729996348207,
+   "bdd_mitm_hybrid": 127.4367851719423,
+   "dual": 143.3832914208941,
+   "dual_hybrid": 128.0737736400835
+  },
+  "full_seconds": 26.0,
+  "min_log2_rop": 122.22675738153849
+ },
+ "uniform_q2731": {
+  "params": "LWEParameters(n=512, q=2731, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 2731, uniform A')",
+  "rough": {
+   "usvp": {
+    "rop": "1.01683475587129e29",
+    "red": "1.01683475587129e29",
+    "delta": "1.00454259262657",
+    "beta": "330",
+    "d": "857",
+    "tag": "usvp",
+    "problem": "LWEParameters(n=512, q=2731, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 2731, uniform A')"
+   },
+   "dual_hybrid": {
+    "rop": "1.94756624134441e27",
+    "problem": "LWEParameters(n=512, q=2731, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 2731, uniform A')",
+    "red": "1.77515061606219e27",
+    "guess": "1.72415625282226e26",
+    "beta": "310",
+    "p": "2",
+    "zeta": "0",
+    "t": "70",
+    "beta_": "310",
+    "N": "1.26690698957270e19",
+    "m": "512"
+   }
+  },
+  "rough_seconds": 3.1,
+  "full": {
+   "arora-gb": {
+    "rop": "14944177504954373924864750710038351350546166143019532041686463640624496809849921487903396495231652006170985128691125926377600",
+    "dreg": "38",
+    "mem": "200856576688420631312184186398372358544836293965804167990383395598400",
+    "t": "2",
+    "m": "38093942497117861386300003946315065122208487852338755847168",
+    "tag": "arora-gb",
+    "problem": "LWEParameters(n=100, q=2731, Xs=T(p=32, m=32, n=100), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 2731, uniform A')",
+    "repetitions": "74402231439683323020117195207646611566813452836599132514",
+    "zeta": "412",
+    "|S|": "1",
+    "prop": "885135349/14300458491657832983578611183597351655232989180383287228788099880"
+   },
+   "bkw": {
+    "rop": "2.385330928911439e+35",
+    "m": "6.345811748270468e+31",
+    "mem": "126761263768192553767020822254565",
+    "b": "9",
+    "t1": "0",
+    "t2": "15",
+    "ell": "8",
+    "#cod": "410",
+    "#top": "0",
+    "#test": "103",
+    "tag": "coded-bkw",
+    "problem": "LWEParameters(n=512, q=2731, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=3.87), m=63458117482704675752352229097472, tag='descriptive: q = 2731, uniform A')"
+   },
+   "usvp": {
+    "rop": "7.62477875981656e36",
+    "red": "7.62477875981656e36",
+    "delta": "1.00454259262657",
+    "beta": "330",
+    "d": "857",
+    "tag": "usvp",
+    "problem": "LWEParameters(n=512, q=2731, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 2731, uniform A')"
+   },
+   "bdd": {
+    "rop": "7.92432596604681e35",
+    "red": "5.34277540920942e35",
+    "svp": "2.58155055683739e35",
+    "beta": "316",
+    "eta": "344",
+    "d": "859",
+    "tag": "bdd",
+    "problem": "LWEParameters(n=512, q=2731, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 2731, uniform A')"
+   },
+   "bdd_hybrid": {
+    "rop": "8.02271961999173e35",
+    "red": "5.44116906315434e35",
+    "svp": "2.58155055683739e35",
+    "beta": "316",
+    "eta": "344",
+    "zeta": "0",
+    "|S|": "1",
+    "d": "869",
+    "prob": "1.0",
+    "repetitions": "1",
+    "tag": "hybrid",
+    "problem": "LWEParameters(n=512, q=2731, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 2731, uniform A')"
+   },
+   "bdd_mitm_hybrid": {
+    "rop": "2.01130104874450e35",
+    "red": "6.96310674277798e34",
+    "svp": "1.31499037446670e35",
+    "beta": "206",
+    "eta": "2",
+    "zeta": "297",
+    "|S|": "2414926855783080481941870426179620219786339",
+    "d": "491",
+    "prob": "1.31201283436560e-8",
+    "repetitions": "351000390",
+    "tag": "hybrid",
+    "problem": "LWEParameters(n=512, q=2731, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 2731, uniform A')"
+   },
+   "dual": {
+    "rop": "2.34597170615600e38",
+    "mem": "2553628150579078575538908",
+    "m": "382",
+    "beta": "344",
+    "d": "894",
+    "repetitions": "1",
+    "tag": "dual"
+   },
+   "dual_hybrid": {
+    "rop": "2.77947665841613e34",
+    "problem": "LWEParameters(n=512, q=2731, Xs=T(p=32, m=32, n=512), Xe=D(\u03c3=1.00), m=512, tag='descriptive: q = 2731, uniform A')",
+    "red": "2.75623322935805e34",
+    "guess": "2.32434290580810e32",
+    "beta": "296",
+    "p": "2",
+    "zeta": "0",
+    "t": "90",
+    "beta_": "306",
+    "N": "1.26433106442561e19",
+    "m": "512"
+   }
+  },
+  "full_log2_rop": {
+   "arora-gb": 412.4986672624348,
+   "bkw": 117.52167275348545,
+   "usvp": 122.52010689295106,
+   "bdd": 119.2537715475656,
+   "bdd_hybrid": 119.27157469953,
+   "bdd_mitm_hybrid": 117.27561235945123,
+   "dual": 127.46345321941246,
+   "dual_hybrid": 114.42036849279391
+  },
+  "full_seconds": 27.1,
+  "min_log2_rop": 114.42036849279391
+ }
+}

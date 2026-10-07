@@ -1,0 +1,81 @@
+{
+  "sector_colors": {
+    "3": {
+      "0": "1",
+      "1": "3",
+      "2": "3bar",
+      "3": "1"
+    },
+    "3bar": {
+      "0": "1",
+      "1": "3bar",
+      "2": "3",
+      "3": "1"
+    }
+  },
+  "additive": false,
+  "any_option_reproduces_paper_Y": false,
+  "any_option_reproduces_paper_table": false,
+  "paper_labels_realizable": false,
+  "induced_pairs": {
+    "3": {
+      "0": [
+        "1",
+        "0",
+        true
+      ],
+      "1": [
+        "3",
+        "1/3",
+        false
+      ],
+      "2": [
+        "3bar",
+        "-2/3",
+        true
+      ],
+      "3": [
+        "1",
+        "1",
+        true
+      ]
+    },
+    "3bar": {
+      "0": [
+        "1",
+        "0",
+        true
+      ],
+      "1": [
+        "3bar",
+        "1/3",
+        true
+      ],
+      "2": [
+        "3",
+        "-2/3",
+        false
+      ],
+      "3": [
+        "1",
+        "1",
+        true
+      ]
+    }
+  },
+  "pulls": {
+    "sin_vs_Vus_direct": 7.599,
+    "sin_vs_lambda_fit": 8.469,
+    "tan_vs_Vus_over_Vud_direct": 0.449,
+    "tan_vs_Kmu2_over_Vud": -0.755,
+    "tan_vs_fit": -0.221
+  },
+  "aut_order": 42,
+  "equals_AGL17": true,
+  "keeps_each_family": 21,
+  "orientation_preserving": 42,
+  "orientation_reversing": 0,
+  "stab_S7_family_plus": 168,
+  "stab_cap_aut": 21,
+  "method_C1": "complex octonions C(x)O (table e_i e_{i+1}=e_{i+3}), Furey alpha_i as 8x8 left-multiplication matrices, vacuum (omega omega^dag)1=(1+i e7)/2, Fock states = minimal left ideal; T^a=sum alpha_i^dag M^a_ij alpha_j; colour by cubic Casimir (+10/9 -> 3, -10/9 -> 3bar) and (T3,T8) weights; exact sympy; no Kronecker/Jordan-Wigner"
+}

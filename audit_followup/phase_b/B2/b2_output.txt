@@ -1,0 +1,16 @@
+(1) classes: [('1A', 1, 1), ('2A', 2, 21), ('3A', 3, 56), ('4A', 4, 42), ('7A', 7, 24), ('7B', 7, 24)]
+(2) rho_8 character by class: {'1A': 8.0, '2A': 0.0, '3A': -1.0, '4A': 0.0, '7A': 1.0, '7B': 1.0} | <chi,chi> = 1.0
+(2) fixed-subspace dimension by class: {'1A': 8, '2A': 4, '3A': 2, '4A': 2, '7A': 2, '7B': 2}
+(2) fixed set on S^7 by class: {'1A': 'S^7', '2A': 'S^3', '3A': 'S^1', '4A': 'S^1', '7A': 'S^1', '7B': 'S^1'}
+(2) elements fixing a circle: 146 = 3A:56 + 4A:42 + 7A:24 + 7B:24; elements fixing an S^3: 21; without 4A: 104
+(2) Fix(4A element) inside Fix(its square, 2A): True | square in 2A
+(3) number of subgroups: 179
+(3) maximal subgroups by type (count of subgroups): {'7:3': 8, 'S4': 14}
+(3) conjugacy classes of maximal subgroups: [('7:3', 8), ('S4', 7), ('S4', 7)]
+(3) subgroups of order 8: 21; all D4: True; each inside an S4: True; any maximal: False
+(4) chi_6 by class: {'1A': 6, '2A': 2, '3A': 0, '4A': 0, '7A': -1, '7B': -1} | <chi6,chi6> = 1.0
+(4) n_1(H; rho_6) per maximal class (type, class size, value): [('7:3', 8, 0.0), ('S4', 7, 1.0), ('S4', 7, 1.0)] | all values by type: {'7:3': {0.0}, 'S4': {1.0}}
+(4) n_1(D4; rho_6) = 2.0 (D4 not maximal; for the record)
+(4) outer automorphism maps S4 class 1 to class 2: True | fixes chi_6 (7A<->7B swap leaves chi_6): True
+(5) multiplicities in L^2(G/D4): {'rho1': 1.0, 'rho6': 2.0, 'rho7': 0.0, 'rho8': 1.0} | dimension check: 21.0
+wrote b2_results.json

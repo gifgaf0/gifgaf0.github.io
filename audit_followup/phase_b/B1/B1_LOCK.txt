@@ -1,0 +1,3 @@
+B1_PREREG.md md5 5374289db16dcdd73f90875cc89b7ee3 (9960 B)
+Locked by commit on branch claude/audit-followup-oct6 before any B1 computation file existed.
+Object of record: gauge paper v6.3, ledger anchor md5 8c01f4c9d849bbab1eaff826fd353c3f (Zenodo record 21316171).

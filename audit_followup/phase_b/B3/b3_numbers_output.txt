@@ -1,0 +1,25 @@
+mW_pred                  82127.5
+mW_vs_PDG2024_pct        2.1878
+mW_pull                  132.204
+mW_vs_noCDF_pct          2.19949
+mW_pull_noCDF            147.293
+sin2_pred                0.236068
+sin2_vs_MSbar_MZ_pct     2.0658
+sin2_pull_MSbar          119.449
+sin2_vs_onshell_pct      5.63271
+sin2_pull_onshell        125.88
+sin2_vs_eff_pct          1.92478
+sin2_vs_Q0_pct           -1.11508
+mZ_pred                  93964
+mZ_vs_PDG2024_pct        3.04422
+mZ_pull                  1387.98
+e    pred 0.492491  PDG2024 0.51099895  -3.622%  pull None
+u    pred 2.03914  PDG2024 2.16  -5.595%  pull -1.7
+d    pred 4.58899  PDG2024 4.7  -2.362%  pull -1.6
+mu   pred 97.7876  PDG2024 105.6583755  -7.449%  pull None
+s    pred 90.9252  PDG2024 93.5  -2.754%  pull -3.2
+c    pred 1245.67  PDG2024 1273.0  -2.147%  pull -5.9
+tau  pred 1752.43  PDG2024 1776.93  -1.379%  pull -272.3
+b    pred 4162.59  PDG2024 4183.0  -0.488%  pull -2.9
+t    pred 171185  PDG2024 172570.0  -0.803%  pull -4.8
+{'L_B_inverted': 60.1935, 'm_p_at_58_006': 758.6885, 'm_p_at_58_0526': 762.1515, 'pct_at_58_006': -19.1398, 'm_p_A70_at_58_006': 2655.4098}

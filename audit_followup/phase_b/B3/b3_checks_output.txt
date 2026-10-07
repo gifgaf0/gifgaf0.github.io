@@ -1,0 +1,25 @@
+== F7_and_PSL27
+  SL(2,7) order: 336
+  PSL(2,7) order: 168
+  PSL(2,7) element orders {order: count}: {1: 1, 2: 21, 3: 56, 4: 42, 7: 48}
+  PSL(2,7) has an element of order 6: False
+  SL(2,7) diagonal torus: element orders: [1, 2, 3, 3, 6, 6]
+  order of diag(3,5) in SL(2,7): 6
+  image of the torus in PSL(2,7): size: 3
+== fano_triangle_stabilizer
+  GL(3,2) order: 168
+  points: 7
+  non-collinear triples (triangles): 28
+  |Stab(triangle)|: 6
+  Stab abelian: False
+  Stab element orders: [1, 2, 2, 2, 3, 3]
+  permutations of the three points realized: 6
+  Stab ≅ S3 (all 6 permutations, faithful): True
+== L_column
+  trefoil per diameter from PP2014 (32.7429345/2): 16.37146725
+  calculator up-quark L: 16.372
+  DDS lower bound per radius (2 x 15.66): 31.32
+  quark L values below the per-radius bound: [16.372, 21.04, 23.6, 29.13]
+  up quark output at L = 16.372 (MeV): 2.039142012531309
+  up quark output at L = 32.7429 (per radius, MeV): 15.59473242097775
+  electron output at L = 2π (per radius, MeV): 0.49249081405440565

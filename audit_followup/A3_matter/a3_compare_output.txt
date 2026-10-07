@@ -1,0 +1,51 @@
+quantity                                | first leg | second leg | rel diff | result
+---------------------------------------------------------------------------------------------------
+four-arc total length (per tube radius) | 58.0526017386 | 58.0526017386 | 1.2e-16 | PASS
+four-arc component length               | 19.3508672462 | 19.3508672462 | 0.0e+00 | PASS
+link thickness (tube radius)            | 1 | 1 | 0.0e+00 | PASS
+min inter-component distance            | 2 | 2 | 0.0e+00 | PASS
+single-component thickness 2(sqrt7-1)/2 | 1.64575131106 | 1.64575131106 | 1.3e-16 | PASS
+pairwise linking numbers                | [0.0, 0.0, 0.0] | [0.0, 0.0, 0.0] | - | PASS
+L(m_p; 20/6)                            | 60.1934596388 | 60.1934596388 | 0.0e+00 | PASS
+m_p at L = 58.006                       | 758.688512012 | 758.688512012 | 1.9e-15 | PASS
+m_p at four-arc length                  | 762.151463091 | 762.151463091 | 6.0e-16 | PASS
+A/Zf reproducing 80.95                  | 0.499884232289 | 0.499884232289 | 2.2e-16 | PASS
+nearest p/q for 80.95                   | 1/2 | 1/2 | - | PASS
+L(m_p; 1/2)                             | 80.947332926 | 80.947332926 | 0.0e+00 | PASS
+L(m_p; 70/6)                            | 47.6901564515 | 47.6901564515 | 1.5e-16 | PASS
+m(70/6, 58.006)                         | 2655.40979204 | 2655.40979204 | 1.9e-15 | PASS
+m(1, 2pi) continuum r_eff               | 0.492490814054 | 0.492490814054 | 1.1e-16 | PASS
+multivariable Delta                     | (t1-1)*(t2-1)*(t3-1) | (t1-1)*(t2-1)*(t3-1) | - | PASS
+Delta(t,t,t)                            | (t-1)**3 | (t-1)**3 | - | PASS
+one-variable Delta_L                    | (t-1)**4 | (t-1)**4 | - | PASS
+sum of squares Delta(t,t,t)             | 20 | 20 | - | PASS
+sum of squares Delta_L                  | 70 | 70 | - | PASS
+up: predicted mass                      | 2.03914201253 | 2.03914201253 | 4.4e-16 | PASS
+up: error vs PDG 2024 (%)               | -5.59527719762 | -5.59527719762 | 6.7e-15 | PASS
+up: DR-A3-7 classification              | NOT HOLDING | NOT HOLDING | - | PASS
+down: predicted mass                    | 4.58899003574 | 4.58899003574 | 1.9e-16 | PASS
+down: error vs PDG 2024 (%)             | -2.36191413319 | -2.36191413319 | 1.0e-14 | PASS
+down: DR-A3-7 classification            | NOT HOLDING | NOT HOLDING | - | PASS
+charm: predicted mass                   | 1245.67448979 | 1245.67448979 | 5.5e-16 | PASS
+charm: error vs PDG 2024 (%)            | -2.14654439993 | -2.14654439993 | 2.5e-14 | PASS
+charm: DR-A3-7 classification           | NOT HOLDING | NOT HOLDING | - | PASS
+bottom: predicted mass                  | 4162.58572853 | 4162.58572853 | 4.4e-16 | PASS
+bottom: error vs PDG 2024 (%)           | -0.488029439876 | -0.488029439876 | 9.6e-14 | PASS
+bottom: DR-A3-7 classification          | holds | holds | - | PASS
+top: predicted mass                     | 171184.72216 | 171184.72216 | 5.1e-16 | PASS
+top: error vs PDG 2024 (%)              | -0.802733870544 | -0.802733870544 | 6.3e-14 | PASS
+top: DR-A3-7 classification             | holds | holds | - | PASS
+tau: predicted mass                     | 1752.42612132 | 1752.42612132 | 1.3e-15 | PASS
+tau: error vs PDG 2024 (%)              | -1.37900078654 | -1.37900078654 | 9.2e-14 | PASS
+tau: DR-A3-7 classification             | holds | holds | - | PASS
+W: predicted mass                       | 82127.5138315 | 82127.5138315 | 1.1e-15 | PASS
+W: error vs PDG 2024 (%)                | 2.18779561266 | 2.18779561266 | 5.2e-14 | PASS
+W: DR-A3-7 classification               | reported | reported | - | PASS
+Z: predicted mass                       | 93963.9615448 | 93963.9615448 | 1.1e-15 | PASS
+Z: error vs PDG 2024 (%)                | 3.04421803832 | 3.04421803832 | 3.7e-14 | PASS
+Z: DR-A3-7 classification               | reported | reported | - | PASS
+DR-A3-2 verification (1) fails          | True | True | - | PASS
+DR-A3-2 clause 2 fires                  | False | False | - | PASS
+
+46/46 PASS
+second-leg implied_by_rules: {"DR-A3-1": {"L_fourarc": "58.0526017386331", "within_0p2pct": true, "verdict": "UNITS MATCH (given prereg's quotation of E.1.1)"}, "DR-A3-2": {"U": "58.006", "clause1": "FAILS -> RETRACTS to Conjecture status", "clause2": "not triggered as written"}, "DR-A3-3": {"60.194": "(I) inversion with A/Zf = 20/6 = 10/3 (rel. diff -8.98e-06)", "58.05": "(G) explicit embedded four-arc configuration, length 58.05260174", "80.95": "(I) inversion with A/Zf = 1/2 (rel. diff -3.29e-05)"}, "DR-A3-4": {"within": true}, "DR-A3-5": {"sumsq_delta_ttt": 20, "sumsq_delta_L": 70}, "DR-A3-7": {"not_holding": ["Up", "Down", "Charm"]}}

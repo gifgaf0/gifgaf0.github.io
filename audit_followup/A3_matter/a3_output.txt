@@ -1,0 +1,60 @@
+=== DR-A3-1  four-arc Borromean configuration (tube radius 1, arc radius 2)
+  join gaps (position, tangent): [('2.2e-16', '1.6e-16'), ('6.3e-16', '4.0e-16'), ('2.2e-16', '1.6e-16'), ('3.3e-16', '5.6e-17')]
+  per-arc sweeps (deg): lobe 228.590378, waist 48.590378
+  component length 16*arctan(sqrt7) = 19.350867246211;  total 48*arctan(sqrt7) = 58.052601738633
+  identity check: 48 atan(sqrt7) - (12 pi + 24 asin(3/4)) = 0.00e+00
+  polyline component lengths [19.350847024550355, 19.35086220125824, 19.350865985624544] -> Richardson 19.350867247080 (closed 19.350867246211, diff 8.7e-10)
+  min inter-component distance on dense samples (KD-tree): ['2.000000000', '2.000000000', '2.000000000']
+  refined min distance C1-C2 over exact arcs: 2.000000000000  (contact distance 2 => tube radius 1)
+  fraction of C1 samples within 1e-3 of contact with C2 or C3: 1.0000
+  component self-distance: min over arc-separation >= pi: 2.828501; >= L/4: 3.291506; min doubly-critical chord (approx) 3.2915  (2(sqrt7-1) = 3.291503)
+  centerline max |x| = 3.645751283 (sqrt7+1 = 3.645751311); min |x| = 1.645751311 (sqrt7-1 = 1.645751311)
+  linking numbers (signed crossings, generic projection): {'12': 0.0, '23': 0.0, '13': 0.0}
+  C2 through plane of C1: [(0.0, -1.645751, True, -1), (0.0, 1.645751, True, 1)]
+  C3 through plane of C1: [(3.645682, 0.0, False, -1), (-3.645682, 0.0, False, 1)]
+  C1 through plane of C2: [(3.645682, 0.0, False, -1), (-3.645682, 0.0, False, 1)]
+  C3 through plane of C2: [(0.0, -1.645751, True, -1), (0.0, 1.645751, True, 1)]
+  C1 through plane of C3: [(0.0, -1.645751, True, -1), (0.0, 1.645751, True, 1)]
+  C2 through plane of C3: [(3.645682, 0.0, False, -1), (-3.645682, 0.0, False, 1)]
+
+=== DR-A3-2/3/4  mass-formula numbers
+  Phi = 6.250027519360; xi_vac = 161.803398875; m0 = 0.511/exp(2pi/Phi) = 0.186991725556 MeV
+  L(m_p; A/Zf = 20/6) = 60.1934596388 (exact m0); 60.1935552514 (m0 = 0.18699 as in sqt_open_problem_5.py)
+  m(20/6, L=58.006) = 758.688512 MeV (-19.140%);  m(20/6, L=58.0526) = 762.151463 MeV (-18.771%)
+  A/Zf reproducing L = 80.95: 0.4998842323; nearest p/q (<=20) = 1/2; invert -> L = 80.94733293 (rel diff from 80.95 -3.29e-05); xi_vac/2 = 80.901699
+  A = 70 (one-variable Alexander): L(m_p) = 47.69015645; m(70/6, 58.006) = 2655.4098 MeV
+  electron check: m(1, 2pi) with the continuum r_eff = 0.492491 MeV (r_eff(2pi) = 1.038097; the definitional r_eff = 1 gives 0.511)
+  U = 58.006000 < 59.894: verification (1) FAILS = True; clause 2 fires = False
+
+=== DR-A3-5  Alexander polynomials of the Borromean rings = closure of (s1 s2^-1)^3
+  braid permutation on strands: {0: 0, 1: 1, 2: 2}  (identity => 3 components)
+  2x2 minors of the Alexander matrix (row deleted, column deleted):
+    (0, 0): (t1 - 1)**2*(t2 - 1)*(t3 - 1)/(t1*t2*t3)
+    (0, 1): -(t1 - 1)*(t2 - 1)**2*(t3 - 1)/(t1*t2*t3)
+    (0, 2): (t1 - 1)*(t2 - 1)*(t3 - 1)**2/(t1*t2*t3)
+    (1, 0): -(t1 - 1)**2*(t2 - 1)*(t3 - 1)/(t2*t3)
+    (1, 1): (t1 - 1)*(t2 - 1)**2*(t3 - 1)/(t2*t3)
+    (1, 2): -(t1 - 1)*(t2 - 1)*(t3 - 1)**2/(t2*t3)
+    (2, 0): (t1 - 1)**2*(t2 - 1)*(t3 - 1)/t3
+    (2, 1): -(t1 - 1)*(t2 - 1)**2*(t3 - 1)/t3
+    (2, 2): (t1 - 1)*(t2 - 1)*(t3 - 1)**2/t3
+  multivariable Delta(t1,t2,t3) (up to units) = (t1 - 1)*(t2 - 1)*(t3 - 1)
+  Delta(t,t,t) = (t - 1)**3  coefficients [1, -3, 3, -1]  sum of squares 20
+  one-variable (Torres (t-1)Delta(t,t,t)) = (t - 1)**4  coefficients [1, -4, 6, -4, 1]  sum of squares 70
+  one-variable (direct minor, units stripped) = (t - 1)**4;  reduced Burau = (t - 1)**4
+
+=== DR-A3-7  mass table: reproduction and PDG 2024
+  up     pred       2.0391 (printed 2.039, rel +7.0e-05)  PDG24 2.16 +- 0.07  err -5.595% (printed -5.602%)  pull -1.7  -> NOT HOLDING (outside PDG 2024 1-sigma)
+  down   pred       4.5890 (printed 4.589, rel -2.2e-06)  PDG24 4.7 +- 0.07  err -2.362% (printed -2.362%)  pull -1.6  -> NOT HOLDING (>2%)
+  charm  pred    1245.6745 (printed 1245.7, rel -2.0e-05)  PDG24 1273.0 +- 4.6  err -2.147% (printed -2.145%)  pull -5.9  -> NOT HOLDING (>2%)
+  bottom pred    4162.5857 (printed 4162.6, rel -3.4e-06)  PDG24 4183.0 +- 7.0  err -0.488% (printed -0.488%)  pull -2.9  -> within 2%
+  top    pred  171184.7222 (printed 171185.0, rel -1.6e-06)  PDG24 172570.0 +- 290.0  err -0.803% (printed -0.803%)  pull -4.8  -> within 2%
+  tau    pred    1752.4261 (printed 1752.4, rel +1.5e-05)  PDG24 1776.93 +- 0.09  err -1.379% (printed -1.380%)  pull -272.3  -> within 2%
+  W      pred   82127.5138 (printed 82128.0, rel -5.9e-06)  PDG24 80369.2 +- 13.3  err +2.188% (printed +2.188%)  pull +132.2  -> reported
+  Z      pred   93963.9615 (printed 93964.0, rel -4.1e-07)  PDG24 91188.0 +- 2.0  err +3.044% (printed +3.044%)  pull +1388.0  -> reported
+  degrees of freedom: 8 rows - 8 per-row selected inputs - 1 shared continuous selection = -1 (discrete selections listed separately, not counted)
+
+=== DR-A3-6  required suppression exp(-S) < 1/(nu tau_p), tau_p > 2.4e34 yr = 7.574e+41 s
+  core rate c/xi_phys = 5.181e+43 /s -> S >= 197.1;  hadronic rate m_p c^2/hbar = 1.425e+24 /s -> S >= 152.0
+
+done

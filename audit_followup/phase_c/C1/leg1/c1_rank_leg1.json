@@ -1,0 +1,331 @@
+{
+ "construction": "tools/sqt_slwe.py keygen (Singer-orbit rows) + rank_flat flattening; table tools/sedenion_Fp.py",
+ "runs": [
+  {
+   "p": 911,
+   "k": 8,
+   "trial": 0,
+   "n": 128,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.0
+  },
+  {
+   "p": 911,
+   "k": 8,
+   "trial": 1,
+   "n": 128,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.0
+  },
+  {
+   "p": 911,
+   "k": 8,
+   "trial": 2,
+   "n": 128,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.0
+  },
+  {
+   "p": 911,
+   "k": 16,
+   "trial": 0,
+   "n": 256,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.0
+  },
+  {
+   "p": 911,
+   "k": 16,
+   "trial": 1,
+   "n": 256,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.0
+  },
+  {
+   "p": 911,
+   "k": 16,
+   "trial": 2,
+   "n": 256,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.0
+  },
+  {
+   "p": 911,
+   "k": 32,
+   "trial": 0,
+   "n": 512,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.2
+  },
+  {
+   "p": 911,
+   "k": 32,
+   "trial": 1,
+   "n": 512,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.1
+  },
+  {
+   "p": 911,
+   "k": 32,
+   "trial": 2,
+   "n": 512,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.1
+  },
+  {
+   "p": 911,
+   "k": 64,
+   "trial": 0,
+   "n": 1024,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.5
+  },
+  {
+   "p": 911,
+   "k": 64,
+   "trial": 1,
+   "n": 1024,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.5
+  },
+  {
+   "p": 911,
+   "k": 64,
+   "trial": 2,
+   "n": 1024,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.5
+  },
+  {
+   "p": 4294977961,
+   "k": 8,
+   "trial": 0,
+   "n": 128,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.0
+  },
+  {
+   "p": 4294977961,
+   "k": 8,
+   "trial": 1,
+   "n": 128,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.0
+  },
+  {
+   "p": 4294977961,
+   "k": 8,
+   "trial": 2,
+   "n": 128,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.0
+  },
+  {
+   "p": 4294977961,
+   "k": 16,
+   "trial": 0,
+   "n": 256,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.0
+  },
+  {
+   "p": 4294977961,
+   "k": 16,
+   "trial": 1,
+   "n": 256,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.0
+  },
+  {
+   "p": 4294977961,
+   "k": 16,
+   "trial": 2,
+   "n": 256,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.0
+  },
+  {
+   "p": 4294977961,
+   "k": 32,
+   "trial": 0,
+   "n": 512,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.1
+  },
+  {
+   "p": 4294977961,
+   "k": 32,
+   "trial": 1,
+   "n": 512,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.2
+  },
+  {
+   "p": 4294977961,
+   "k": 32,
+   "trial": 2,
+   "n": 512,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.1
+  },
+  {
+   "p": 4294977961,
+   "k": 64,
+   "trial": 0,
+   "n": 1024,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.6
+  },
+  {
+   "p": 4294977961,
+   "k": 64,
+   "trial": 1,
+   "n": 1024,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.5
+  },
+  {
+   "p": 4294977961,
+   "k": 64,
+   "trial": 2,
+   "n": 1024,
+   "rank": 76,
+   "blocks_period_7": true,
+   "seconds": 0.5
+  }
+ ],
+ "controls": [
+  {
+   "p": 911,
+   "k": 8,
+   "n": 128,
+   "rank_uniform": 128
+  },
+  {
+   "p": 911,
+   "k": 16,
+   "n": 256,
+   "rank_uniform": 256
+  },
+  {
+   "p": 911,
+   "k": 32,
+   "n": 512,
+   "rank_uniform": 512
+  },
+  {
+   "p": 911,
+   "k": 64,
+   "n": 1024,
+   "rank_uniform": 1024
+  },
+  {
+   "p": 4294977961,
+   "k": 8,
+   "n": 128,
+   "rank_uniform": 128
+  },
+  {
+   "p": 4294977961,
+   "k": 16,
+   "n": 256,
+   "rank_uniform": 256
+  },
+  {
+   "p": 4294977961,
+   "k": 32,
+   "n": 512,
+   "rank_uniform": 512
+  },
+  {
+   "p": 4294977961,
+   "k": 64,
+   "n": 1024,
+   "rank_uniform": 1024
+  }
+ ],
+ "curve_p911": [
+  {
+   "k": 1,
+   "n": 16,
+   "rank": 16
+  },
+  {
+   "k": 2,
+   "n": 32,
+   "rank": 32
+  },
+  {
+   "k": 3,
+   "n": 48,
+   "rank": 48
+  },
+  {
+   "k": 4,
+   "n": 64,
+   "rank": 64
+  },
+  {
+   "k": 5,
+   "n": 80,
+   "rank": 72
+  },
+  {
+   "k": 6,
+   "n": 96,
+   "rank": 74
+  },
+  {
+   "k": 7,
+   "n": 112,
+   "rank": 76
+  },
+  {
+   "k": 8,
+   "n": 128,
+   "rank": 76
+  },
+  {
+   "k": 9,
+   "n": 144,
+   "rank": 76
+  },
+  {
+   "k": 10,
+   "n": 160,
+   "rank": 76
+  }
+ ],
+ "verdict_inputs": {
+  "max_rank": 76,
+  "all_le_112": true,
+  "all_controls_full": true,
+  "distinct_ranks": [
+   76
+  ]
+ }
+}

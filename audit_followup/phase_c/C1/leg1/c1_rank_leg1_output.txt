@@ -1,0 +1,34 @@
+p=911 k= 8 trial=0 n= 128 rank=  76 period7=True
+p=911 k= 8 trial=1 n= 128 rank=  76 period7=True
+p=911 k= 8 trial=2 n= 128 rank=  76 period7=True
+p=911 k= 8 CONTROL uniform rank=128 of 128
+p=911 k=16 trial=0 n= 256 rank=  76 period7=True
+p=911 k=16 trial=1 n= 256 rank=  76 period7=True
+p=911 k=16 trial=2 n= 256 rank=  76 period7=True
+p=911 k=16 CONTROL uniform rank=256 of 256
+p=911 k=32 trial=0 n= 512 rank=  76 period7=True
+p=911 k=32 trial=1 n= 512 rank=  76 period7=True
+p=911 k=32 trial=2 n= 512 rank=  76 period7=True
+p=911 k=32 CONTROL uniform rank=512 of 512
+p=911 k=64 trial=0 n=1024 rank=  76 period7=True
+p=911 k=64 trial=1 n=1024 rank=  76 period7=True
+p=911 k=64 trial=2 n=1024 rank=  76 period7=True
+p=911 k=64 CONTROL uniform rank=1024 of 1024
+p=4294977961 k= 8 trial=0 n= 128 rank=  76 period7=True
+p=4294977961 k= 8 trial=1 n= 128 rank=  76 period7=True
+p=4294977961 k= 8 trial=2 n= 128 rank=  76 period7=True
+p=4294977961 k= 8 CONTROL uniform rank=128 of 128
+p=4294977961 k=16 trial=0 n= 256 rank=  76 period7=True
+p=4294977961 k=16 trial=1 n= 256 rank=  76 period7=True
+p=4294977961 k=16 trial=2 n= 256 rank=  76 period7=True
+p=4294977961 k=16 CONTROL uniform rank=256 of 256
+p=4294977961 k=32 trial=0 n= 512 rank=  76 period7=True
+p=4294977961 k=32 trial=1 n= 512 rank=  76 period7=True
+p=4294977961 k=32 trial=2 n= 512 rank=  76 period7=True
+p=4294977961 k=32 CONTROL uniform rank=512 of 512
+p=4294977961 k=64 trial=0 n=1024 rank=  76 period7=True
+p=4294977961 k=64 trial=1 n=1024 rank=  76 period7=True
+p=4294977961 k=64 trial=2 n=1024 rank=  76 period7=True
+p=4294977961 k=64 CONTROL uniform rank=1024 of 1024
+curve p=911 (k, rank): [(1, 16), (2, 32), (3, 48), (4, 64), (5, 72), (6, 74), (7, 76), (8, 76), (9, 76), (10, 76)]
+verdict inputs: {'max_rank': 76, 'all_le_112': True, 'all_controls_full': True, 'distinct_ranks': [76]}

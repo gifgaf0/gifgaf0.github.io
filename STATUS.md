@@ -13,6 +13,12 @@
   - the gauge paper's hypercharge sign rule and its Cabibbo value both fail;
   - "zero free parameters" becomes a fit with its inputs named, and the W-mass and weak-angle formulas are retired;
   - the alpha-decay paper's second break does not survive a comparison at fixed neutron number.
+- **It then banked the cryptography result and cleaned up the ledger:**
+  - the program's lattice cryptosystem fails at its own parameters, and a short negative-result note is drafted;
+  - the "tired light" redshift idea fails against supernova time dilation;
+  - the electron's 2π closure, and the mass exponent built on it, now rest on an unmade choice of vacuum;
+  - the neutron-moment "factor of 4" was the wrong quartet;
+  - fourteen mathematical slips are corrected.
 
 ## Established
 
@@ -20,6 +26,11 @@
   - **PSL(2,7) spectral rigidity.** The results are correct and public on Zenodo, but not new: the structure is a known one (a "Gelfand pair"). Three journals declined the paper, so there will be no further submission. A version 3 is drafted: it cites the classical literature and corrects one count (146 group elements fix circles, not 104).
   - **Gauge-group paper.** The Császár-polyhedron paper is published on Zenodo. A correction (v6.4) is drafted, because its hypercharge sign rule and its Cabibbo value fail (next section). What remains new is matching the three fermion modes to the polyhedron's three Hamiltonian cycles.
   - **The polyhedron's symmetry.** The Császár polyhedron's faces have a symmetry group of order 42 (AGL(1,7)). PSL(2,7), of order 168, is the symmetry group of each of its two Fano planes, not of the polyhedron. Several ledger entries had assumed otherwise, and the gauge paper never claimed it; those entries are now annotated.
+  - **Sedenion zero divisors.** Moreno's 1998 criterion proves the even-term rule for clean zero divisors, and all 7.2 million clean elements were checked exactly. Several smaller facts were corrected:
+    - every Fano symmetry lifts to an octonion symmetry once signs are allowed;
+    - K₈ has six 1-factorizations, not two;
+    - a stabilizer the ledger called V₄ × ℤ₂ is the dihedral group D₄;
+    - the structures known in the literature as de Marrais's "box-kites" are now credited where they appear.
   - **Ropelength paper.** Its twist-knot family reproduces published knot minimizations to 0.26 %.
   - **Tight Borromean rings.** The tightest known Borromean rings need 58.006 units of rope per unit of tube radius. The four-arc version the ledger uses needs 48·arctan √7 = 58.053, computed twice.
 - **The model medium exists and behaves as claimed.**
@@ -33,6 +44,7 @@
 - **Vortex protection.**
   - Ordinary vortex windings can be protected, but only if a particular symmetry-breaking term is chosen. The geometry allows that term but does not force it, so it is an input, not a derivation.
   - The "half-quantum" vortices are protected only by accident: the action's true symmetry allows a term that removes that protection.
+  - The electron's "2π closure" therefore holds only if that input is made (new). The same applies to the 2π/Φ mass exponent and to two "stable quantum" verdicts that rest on it. The vacuum of record protects no winding at all. No number changes, because the mass scale was fitted anyway.
 
 ## Dead, and why
 
@@ -64,6 +76,13 @@
 - **The W-mass and weak-angle formulas** (new). m_W = m₀φ²⁷ gives 82.13 GeV against a measured 80.37 GeV, 132 standard deviations away. sin²θ_W = φ⁻³ never said at which energy, or in which scheme, it should hold. Both are retired.
 - **The Cabibbo angle as 3/13** (new). The gauge paper states it as sin θ_C, which the data exclude by 7.6–8.5 standard deviations. Read as tan θ_C it fits, but that reading was chosen after seeing the data.
 - **The gauge paper's hypercharge sign rule** (new). Its charges do not add up across the three modes, and with either color convention one quark sector gets a charge no real quark of that color has. Furey's own charges stand.
+- **The lattice cryptosystem ("SLWE")** (new, October 7).
+  - Its structured public matrix collapses to rank 76 at every module rank from 7 up, whatever the seeds, because it factors through one fixed 256 × 112 matrix of rank 76.
+  - Even with a fully random matrix, the specified parameters give about 2^51 security by the standard lattice estimator, not 2^128: the modulus is far too large for the noise.
+  - Decryption never fails (the noise is at most 258 against a threshold of about 10⁹). The earlier failure-rate figure came from a Gaussian tail outside the noise's range.
+  - A short negative-result note for the IACR ePrint archive is drafted and awaits the author.
+- **The ζ-tax ("tired light") redshift** (new). It made redshift a small amplitude loss at every lattice corner. That reddens light without stretching time. Distant supernovae are time-stretched by exactly the cosmological factor (DES 2024: exponent 1.003 ± 0.011, where tired light gives 0).
+- **"The factor of 4 is the spin-3/2 quartet"** (new). The 4 in the quark-model neutron moment is a spin-½ coupling weight. The spin-3/2 states are the Δ resonances, whose neutral member has zero moment in the same model. The Gate 2a work since June keeps its mathematics, but not this reading.
 - **A second alpha-decay break at uranium** (new). Compared at the same neutron number, the step at Z = 92 changes sign and is smaller than the drift with neutron number. The break at radium (Z = 88) holds at every neutron number and has a standard explanation (octupole deformation).
 - **Earlier retractions on the record:** an octonion-structure hypothesis, a "harmonic saturation" mass rule, and a meson-nonet interpretation.
 
@@ -79,10 +98,17 @@
   - Against current data (PDG 2024), the down and charm quarks miss by more than 2 %, and the up quark falls outside its error band.
   - The quark rope lengths in the calculators are measured per tube diameter, the electron's and the proton's per radius. The table depends on that mix.
   - Several mass and nuclear-decay patterns stay at the conjecture level, with stated tests.
-- **Physical scale.** The medium has no grain size consistent with the cosmic-ray bound.
+- **Physical scale.**
+  - The medium has no grain size consistent with the cosmic-ray bound.
+  - The light-side window for the polycrystal's grains is only 5–20 lattice cells wide, under a Planck-scale lattice that the ledger never licensed for light. A rule that grains be much larger than a cell would close it. The minimum is the author's to set.
 - **Papers in motion.**
   - **The negative-result paper** on the shared-speed-limit failure. The author approved v1 on 4 October. Every fix the audit asked for was already in it, so it can be posted as approved.
-  - **Drafts awaiting the author's approval** (nothing is published or sent): the gauge-paper correction (v6.4); the PSL(2,7) note v3; Paper VII and the three calculators, with "Zero Free Parameters" replaced by a leading-order fit whose inputs are named; and a short note to Flach saying the η-invariant computation he was asked about is no longer needed.
+  - **Drafts awaiting the author's approval** (nothing is published or sent):
+    - the gauge-paper correction (v6.4);
+    - the PSL(2,7) note v3;
+    - Paper VII and the three calculators, with "Zero Free Parameters" replaced by a leading-order fit whose inputs are named;
+    - a short note to Flach saying the η-invariant computation he was asked about is no longer needed;
+    - the SLWE negative-result note for IACR ePrint.
   - **The alpha-decay paper** now has a ledger entry. Its data are sound. The text needs corrections, which are the author's call: 51 steps, not 74; one robust break, not two; and the abstract's Curium sentence.
 
-*Every claim above is recorded with its evidence in the project's append-only ledger (now V4.93). Nothing here relies on numbers that have not been computed at least once. Every number behind a verdict this week was computed twice, independently, except the gravity dispositions, which rest on standard theorems and published measurements. The Phase B corrections are annotations, each computed once.*
+*Every claim above is recorded with its evidence in the project's append-only ledger (now V4.94). Nothing here relies on numbers that have not been computed at least once. Every number behind a verdict this week was computed twice, independently. There are two exceptions: the gravity dispositions, which rest on standard theorems and published measurements, and the cryptosystem's security figures, which come from the standard lattice estimator with an independent cross-check. The Phase B corrections are annotations, each computed once. In Phase C, every downgrade and reversal had a second computation, and the rest are annotations.*

@@ -1,0 +1,39 @@
+C1  occupation numbers on the 8 basis states: [0, 1, 1, 2, 1, 2, 2, 3]
+C1  modes in 3   : N=0  dim=1  color=1     C2=[0.0]
+C1  modes in 3   : N=1  dim=3  color=3     C2=[1.333333333]
+C1  modes in 3   : N=2  dim=3  color=3bar  C2=[1.333333333]
+C1  modes in 3   : N=3  dim=1  color=1     C2=[0.0]
+C1  modes in 3bar: N=0  dim=1  color=1     C2=[0.0]
+C1  modes in 3bar: N=1  dim=3  color=3bar  C2=[1.333333333]
+C1  modes in 3bar: N=2  dim=3  color=3     C2=[1.333333333]
+C1  modes in 3bar: N=3  dim=1  color=1     C2=[0.0]
+C1  N=1 and N=2 sectors conjugate for both mode reps: True
+C2  paper's Y(N): {0: '0', 1: '1/3', 2: '-2/3', 3: '1'}
+C2  best affine through N=0,1: a=0, b=1/3; residuals {0: '0', 1: '0', 2: '-4/3', 3: '0'}; additive: False
+C2  second differences (zero for any a + bN): ['-4/3', '8/3']
+C3  q=N/3       rho=3    table=[('1', '0'), ('3', '1/3'), ('3bar', '2/3'), ('1', '1')]  paper Y? False  paper table? False  SM-consistent? False
+C3  q=N/3       rho=3bar table=[('1', '0'), ('3bar', '1/3'), ('3', '2/3'), ('1', '1')]  paper Y? False  paper table? False  SM-consistent? True
+C3  q=-N/3      rho=3    table=[('1', '0'), ('3', '-1/3'), ('3bar', '-2/3'), ('1', '-1')]  paper Y? False  paper table? False  SM-consistent? True
+C3  q=-N/3      rho=3bar table=[('1', '0'), ('3bar', '-1/3'), ('3', '-2/3'), ('1', '-1')]  paper Y? False  paper table? False  SM-consistent? False
+C3  q=(3-N)/3   rho=3    table=[('1', '1'), ('3', '2/3'), ('3bar', '1/3'), ('1', '0')]  paper Y? False  paper table? False  SM-consistent? True
+C3  q=(3-N)/3   rho=3bar table=[('1', '1'), ('3bar', '2/3'), ('3', '1/3'), ('1', '0')]  paper Y? False  paper table? False  SM-consistent? False
+C3  q=-(3-N)/3  rho=3    table=[('1', '-1'), ('3', '-2/3'), ('3bar', '-1/3'), ('1', '0')]  paper Y? False  paper table? False  SM-consistent? False
+C3  q=-(3-N)/3  rho=3bar table=[('1', '-1'), ('3bar', '-2/3'), ('3', '-1/3'), ('1', '0')]  paper Y? False  paper table? False  SM-consistent? True
+C3  paper's labels (N=1 and N=2 both 3bar) realizable by an induced action: False
+C4  rho=3   : N=0:(1,0) pass, N=1:(3,1/3) FAIL, N=2:(3bar,-2/3) pass, N=3:(1,1) pass
+C4  rho=3bar: N=0:(1,0) pass, N=1:(3bar,1/3) pass, N=2:(3,-2/3) FAIL, N=3:(1,1) pass
+DR-B1-1 verdict: N-I
+C5  3/13 = 0.230769; tan inputs: direct 0.230376±0.000876, Kmu2 0.231084±0.000418, fit 0.230932±0.000735
+C5  pull sin_vs_Vus_direct            +7.599 sigma
+C5  pull sin_vs_lambda_fit            +8.469 sigma
+C5  pull tan_vs_Vus_over_Vud_direct   +0.449 sigma
+C5  pull tan_vs_Kmu2_over_Vud         -0.755 sigma
+C5  pull tan_vs_fit                   -0.221 sigma
+DR-B1-2 sin reading excluded (|z|>3 against both): True | relative deviations {'direct_pct': 2.88, 'fit_pct': 2.56}
+C6  faces: two line-disjoint Fano planes; each edge in 2 faces; vertex links 6-cycles; chi=0; orientable
+C6  |Aut(face set)| = 42; equals AGL(1,7): True; orientation-preserving 42, reversing 0
+C6  automorphisms keeping Fano+ : 21 (= F21: True); |Stab_S7(Fano+)| = 168; Stab(Fano+) ∩ Aut(faces) = 21
+C6  Fano planes on 7 labelled points: 30; line-disjoint from Fano+: 8; Fano- among them: True
+C6  |AGL(1,7)| factorisation [2, 3, 7]; squarefree: True (all Sylow subgroups cyclic, Schur multiplier trivial)
+DR-B1-3 every automorphism orientation-preserving: True
+wrote b1_results.json

@@ -1,0 +1,46 @@
+{
+ "a_3d_trace": "0",
+ "a_3d_navier_residual_zero": true,
+ "a_W_dilatation_pair": "0",
+ "a_2d_trace": "0",
+ "kelvin_solves_navier": true,
+ "dipole_W_scaling": "lambda**(-3)",
+ "dipole_W_isotropic_limit": "0",
+ "dipole_W_angular_average": "0",
+ "monopole_W_scaling": "1/lambda",
+ "monopole_dipole_W_scaling": "lambda**(-2)",
+ "c_prestress_dilatation_residual_zero": true,
+ "kcep": {
+  "eta": -1.5e-15,
+  "sigma_stat": 2.3e-15,
+  "sigma_sys": 1.5e-15,
+  "eta_bound_2sigma": 6.991812087098392e-15,
+  "components": {
+   "electron": {
+    "f_Ti": 0.0002521310714688617,
+    "f_Pt": 0.00021933747976256385,
+    "delta_f": 3.2793591706297846e-05,
+    "delta_coupling_bound": 2.1320665786528193e-10
+   },
+   "binding": {
+    "f_Ti": 0.009450330526254463,
+    "f_Pt": 0.008540483691249314,
+    "delta_f": 0.000909846835005149,
+    "delta_coupling_bound": 7.684603405867565e-12
+   },
+   "coulomb": {
+    "f_Ti": 0.0020290055506025106,
+    "f_Pt": 0.004051781318554483,
+    "delta_f": 0.0020227757679519725,
+    "delta_coupling_bound": 3.456543329158767e-12
+   },
+   "neutron_excess": {
+    "f_Ti": 0.08078634549898672,
+    "f_Pt": 0.2003444669988313,
+    "delta_f": 0.11955812149984457,
+    "delta_coupling_bound": 5.848044448496526e-14
+   }
+  },
+  "eta_if_binding_not_gravitating": 0.000909846835005149
+ }
+}

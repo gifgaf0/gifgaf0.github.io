@@ -1,0 +1,163 @@
+{
+ "H_coefficients": {
+  "c_plus": 0,
+  "c_cross": 0,
+  "c_x": "cos(chi)/2",
+  "c_y": "sin(chi)/2",
+  "c_b": 0,
+  "c_l": "lambda/sqrt(2)"
+ },
+ "A_patterns": {
+  "F_plus": "(1+cos^2 th)/2 cos2ph cos2psi - cos th sin2ph sin2psi",
+  "F_cross": "-(1+cos^2 th)/2 cos2ph sin2psi - cos th sin2ph cos2psi",
+  "F_x": "sin th (cos th cos2ph cos psi - sin2ph sin psi)",
+  "F_y": "-sin th (cos th cos2ph sin psi + sin2ph cos psi)",
+  "F_b": "-(1/2) sin^2 th cos2ph",
+  "F_l": "(sqrt2/2) sin^2 th cos2ph = -sqrt2 F_b"
+ },
+ "A_spin_weight_max_harmonics_m0_to_m4": {
+  "transverse": [
+   1.2902005852577503e-17,
+   0.23441882984497855,
+   1.5780651032462334e-17,
+   2.2401321611173794e-17,
+   8.748498989069794e-18
+  ],
+  "longitudinal": [
+   0.4774056413583783,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "tensor_control": [
+   2.5153490401663703e-17,
+   6.819233034607865e-17,
+   0.49985837526338917,
+   6.568485700904813e-17,
+   3.502654060779446e-17
+  ],
+  "breathing_control": [
+   0.47740564135837843,
+   1.2673532155508897e-17,
+   1.089938620363491e-17,
+   1.6601436358540797e-17,
+   2.6889103608640864e-17
+  ]
+ },
+ "A_random_anisotropic_map_max_harmonics": [
+  6.396792817664476e-17,
+  0.6755867035207717,
+  5.5532544211761e-17,
+  6.208675302378358e-17,
+  3.315765848483072e-17
+ ],
+ "D_detector_gain": {
+  "transverse_vertical": "-alpha2 + 2*beta - 2",
+  "transverse_horizontal": "-alpha2 + alpha3 + 2*beta - 2",
+  "longitudinal_vertical": "-alpha2 + 2*beta + 2*beta_L - 2",
+  "longitudinal_horizontal": "-alpha2 + alpha3 + 2*beta + 2*beta_L - 2"
+ },
+ "I_inventory": "16 spatial scalars (h=0) + one vector u (h=0,+-1); no rank-2 propagating field; agrees with K = empty (G-CI1)",
+ "B_bounds": {
+  "texture_strength_max": 1.2355e-06,
+  "v_over_c": 0.001233586736861806,
+  "motion_TT_power_fraction_toy": 1.0188080506904825e-06,
+  "motion_TT_power_fraction_over_vc2": 0.6695037061462521,
+  "second_order_relative_amplitude": 1e-21
+ },
+ "S1_E2_vector_over_GR_power_same_static_strength": 0.25,
+ "S2_orf_table": [
+  {
+   "xi": 0.35,
+   "tensor": 0.33344968583314166,
+   "HD_closed": 0.3334496858331417,
+   "vector": 1.8654906514568415,
+   "breathing": 0.492421589105922,
+   "breathing_closed": 0.4924215891059224
+  },
+  {
+   "xi": 0.7,
+   "tensor": 0.09306311577226156,
+   "HD_closed": 0.09306311577226156,
+   "vector": 0.1812840663989025,
+   "breathing": 0.47060527341056146,
+   "breathing_closed": 0.4706052734105611
+  },
+  {
+   "xi": 1.0,
+   "tensor": -0.06439385756731669,
+   "HD_closed": -0.06439385756731669,
+   "vector": -0.37510455258051933,
+   "breathing": 0.4425377882335178,
+   "breathing_closed": 0.44253778823351747
+  },
+  {
+   "xi": 1.4,
+   "tensor": -0.15122541893936006,
+   "HD_closed": -0.1512254189393601,
+   "vector": -0.5207785267987787,
+   "breathing": 0.3962458928625301,
+   "breathing_closed": 0.39624589286253015
+  },
+  {
+   "xi": 1.8,
+   "tensor": -0.1029338895467903,
+   "HD_closed": -0.10293388954679028,
+   "vector": -0.3129803275501713,
+   "breathing": 0.3465997381633641,
+   "breathing_closed": 0.3465997381633641
+  },
+  {
+   "xi": 2.2,
+   "tensor": 0.026996427435480252,
+   "HD_closed": 0.026996427435480252,
+   "vector": 0.02253668825003394,
+   "breathing": 0.30143736034308183,
+   "breathing_closed": 0.3014373603430818
+  },
+  {
+   "xi": 2.6,
+   "tensor": 0.16449064601654115,
+   "HD_closed": 0.16449064601654115,
+   "vector": 0.32514471667415024,
+   "breathing": 0.26788890582888164,
+   "breathing_closed": 0.2678889058288816
+  },
+  {
+   "xi": 3.0,
+   "tensor": 0.24376411992257604,
+   "HD_closed": 0.24376411992257613,
+   "vector": 0.4875094617757086,
+   "breathing": 0.2512509379249443,
+   "breathing_closed": 0.25125093792494435
+  }
+ ],
+ "S2_vector_fit": {
+  "A": 0.5000000000001599,
+  "max_resid": 2.9809488211185453e-13,
+  "A_rational": "1/2"
+ },
+ "V_branch_speed_ratios_3D": {
+  "c2/cT": [
+   0.05858208955223881,
+   0.0607741935483871
+  ],
+  "c1/cT": [
+   2.002487562189055,
+   2.193548387096774
+  ]
+ },
+ "V_anchors": {
+  "GW170817_log10BF_tensor_over_vector": "20.81 +- 0.08",
+  "GW170817_log10BF_tensor_over_scalar": "23.09 +- 0.08",
+  "GW170814_BF_tensor_over_vector": "> 200",
+  "GW170814_BF_tensor_over_scalar": "> 1000",
+  "Takeda2021_lnB_tensor_over_vector_GW170817": "21.078 (51.043 with jet prior)"
+ },
+ "V_rule_outcome": "no tensor component -> clause 1: the reading 'the spin-2 radiative sector shares the transverse channel' is FALSIFIED by GW170817's polarization test",
+ "checks": {
+  "passed": 43,
+  "total": 43
+ }
+}

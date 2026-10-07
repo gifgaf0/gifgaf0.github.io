@@ -1,0 +1,222 @@
+AUDIT FOLLOW-UP BRIEF: polarization gate first, then the rest of the Oct 6 audit
+Base: V4.88 plus the bank-phase fold, if it landed. Attached:
+ledger_audit_findings_2026-10-06.md (eight section reviews). Its first table was
+checked against the ledger and outside sources. Everything else is a lead:
+verify it before acting.
+
+HOW TO WORK
+- Keep the discipline proportionate. Pre-register the decision rule for anything
+  that can kill or downgrade. Use a blind second leg only where a new number or
+  derivation decides a verdict. Everything else is an annotation.
+- Work out the blast radius every time. For each kill or downgrade, list every
+  entry that depends on it and annotate those entries in the same fold. V4.67
+  retired the gravity bridge but missed that the drag constrains matter itself.
+  Don't repeat that.
+- Prior Address, Eddington and M.CW apply. Every deliverable opens with a
+  plain-language summary. The project store is full, so write to the repo.
+  One short fold per phase.
+- Draft, don't publish or send. Zenodo versions, journal notes and the note to
+  Flach come back to me for approval.
+- Phases B and C don't depend on Phase A. Report at the end of each phase.
+
+PHASE A: KILL SURFACES
+
+A1. Polarization gate. Do this first.
+Question: what polarization content does the transverse line's gravitational-
+wave channel (S2) present to a detector, and does it survive the LIGO–Virgo
+polarization tests?
+Known: L1642 records that the S2 strain "carries helicity 0/±1, never pure ±2"
+(E-P2-1(a), elected). Line 3 records no gapless helicity-±2 branch (G-CI1,
+K = ∅). The ledger has used GW170817 only as a speed check. Zero hits for any
+polarization test.
+  1. Literature first: Eardley, Lee, Lightman, Wagoner & Will 1973 (the six
+     polarization classes); Will, Living Rev. Relativ. 17, 4 (2014); LVC
+     GW170814, PRL 119, 141101; LVC tests of GR with GW170817,
+     arXiv:1811.00364 (pure tensor over pure vector at log10 BF +20.81, over
+     pure scalar at +23.09); the GWTC-3 tests-of-GR polarization results;
+     NANOGrav 15-yr Hellings–Downs; polarization content in Einstein-aether.
+  2. Fix the decision rule before deriving anything. If the S2 response has no
+     tensor component:
+     - the reading "the spin-2 radiative sector shares the transverse channel"
+       is FALSIFIED by GW170817's polarization test;
+     - the GW170817 "structural pass" is withdrawn wherever it appears;
+     - the transverse line keeps only the EM carrier.
+     If there is a tensor component, report its fraction and run the
+     comparison.
+  3. Derive the detector response from the framework's own couplings: how a
+     passing S2 wave moves test masses and changes light travel time along an
+     interferometer arm. Classify the antenna pattern as tensor, vector or
+     scalar. My expectation: a shear wave's strain sym(k̂⊗e⊥) has one index
+     along k̂, so the response is pure vector, plus scalar if the helicity-0
+     part survives grain averaging. Before concluding, check whether anything
+     in the 16-component inventory could supply helicity ±2. The internal
+     modes are spatial scalars, so probably not.
+  4. Secondary arms, structural only (no magnitudes needed):
+     - binary radiation from a vector channel (dipole terms, quadrupole
+       coefficient) against the double pulsar (Kramer et al. 2021);
+     - the pulsar-timing overlap function for the derived modes against
+       Hellings–Downs.
+  5. Blast radius. Annotate every entry that leans on the GW pass or on
+     c_GW = c_EM by carrier identity: §2.88.E, §2.91.H, Q3 item (1), the
+     ANNEX-CDEF-1 notes, the A-SHEAR consonance.
+  Second leg: an independent derivation of step 3's helicity-to-antenna
+  mapping. Nothing else in A1 needs two legs.
+
+A2. Internal modes of the 16-component substrate.
+Question: in the instantiated crystal, under the action of record, how do the
+internal (L_⊥) branches disperse, and do knots couple to them?
+  - My expectation: the two-body sector is gapless (L_⊥ψ₀ = 0). With
+    first-order GP dynamics it disperses quadratically (ω ≈ k²/2m*), so its
+    Landau critical velocity is zero. The oriented three-body term gaps modes
+    only near Fano-line cores (§2.88.D.2), not in the bulk. If knots couple at
+    linear order, moving matter feels friction at every speed unless I6 gaps
+    the bulk internal sector.
+  - Read m* off the lowest L_⊥ band in the existing MV-G1 data.
+  - Count Goldstone modes on each G-VS1 stratum, linear vs quadratic.
+  - Compute the linear coupling of a moving Fano-line core, and of a filled
+    filament core, to these modes.
+  - Recheck G-VS1's invariant counting under the action's actual symmetry,
+    G₂ × U(1)_ψ₀ × ℤ₃, not G₂ × U(1)_global. Check whether the half-quantum
+    protection on the polar strata survives a ℤ₃-allowed Re(ψ·ψ)³ term.
+  - Optional: does quantum zero-point energy select the vacuum stratum
+    (order-by-disorder, using the G-ζ1 machinery)? That could replace the I6
+    import with a computation.
+
+A3. The matter sector.
+  - Ropelength. Confirm whether L_B's units match the standard ropelength
+    convention. If they do, the ideal Borromean ropelength cannot exceed
+    58.006, the presumed minimizer (Cantarella, Fu, Kusner, Sullivan & Wrinkle,
+    Geom. Topol. 10 (2006)). Then the 60.194 ± 0.3 check (L649) fails; apply
+    §2.15's own rule (L652).
+    - Settle which of the three proton lengths on record stands: 60.194,
+      ~58.05 (§2.82) and 80.95 (V4.40).
+    - Note that 60.194 is m_p inverted, so "m_p within 0.15%" is not a
+      prediction.
+  - Reconnection. Vortex knots in GP fluids untie by reconnection (Kleckner,
+    Kauffman & Irvine, Nat. Phys. 12, 650 (2016)). State what, if anything,
+    stops filament cores 2–4ξ apart from crossing, given a proton lifetime
+    above 10^34 years. If nothing does, record that "linking = baryon number"
+    is unprotected.
+  - Mass table. Relabel it as a fit with stated degrees of freedom, update to
+    PDG 2024, and report W (+2.2%) and Z (+3.05%) honestly.
+
+A4. The surviving gravity entries. Annotate or downgrade:
+  - §2.89. A locally flat bowl removes tidal effects, not the pull. Neutrons
+    and atoms are measured falling in Earth's field (COW, qBounce, atom
+    interferometry). Restate as tidal-only, or downgrade.
+  - §2.90. Point defects in an isotropic linear elastic medium do not interact
+    (Eshelby); in anisotropic media the interaction falls as 1/r³. Show how
+    §2.90 evades this, or downgrade it. The Λ conflict also stands.
+  - Equivalence principle. Any surviving mechanism must couple universally to
+    mass-energy, including binding energy and electrons (ε_e), at MICROSCOPE's
+    ~10^-15 level. Make this a standing kill condition.
+Phase A report: the verdicts, the blast radius, and what the substrate program
+still stands on, in plain language.
+
+PHASE B: PUBLIC WORK (drafts only)
+B0. Second-sound paper, before posting. Skip any item already applied.
+  - Secs. 6, 9 and 10: derive the vortex couplings from the Lagrangian instead
+    of asserting them. Expected:
+    - a vortex moving at V couples to the longitudinal modes through
+      −δρθ̇ = δρ(V·v_s), a density vertex with the same F_ν weights;
+    - that vertex is fixed by the circulation quantum, so filling the core
+      can't remove it;
+    - the vortex's divergence-free flow couples to shear through −ρ_n u̇·v_s,
+      not to density-free second sound.
+    Re-derive the Green's-limit claims about vortex matter, or mark them open.
+  - Anchor the loss length to the proton's size: ≤ 1 fm gives ~19 orders
+    short. The abstract's "≳10^4 m" should match the text's 6 km and refer to
+    defects, not the substrate.
+  - The abstract's |1 − c₂/c_T| ≲ 10^-23 is derived for one side only. Add the
+    Coleman–Glashow argument or drop the absolute value, and mention the
+    Green's-limit exception.
+  - μ is both the chemical potential and the shear modulus, and M_μ/μ mixes
+    them. Rename the shear modulus.
+  - P(c*²) = −ρ_s(M−ργ)²/ρ² holds for the χ denominator, not the monic
+    polynomial.
+  - Table 2: note that speeds are window slopes while weights are read at one
+    q, which gives up to 9% mismatch near melting. Fill in f_s for g ≥ 28.
+  - Update c₁/c₂ in the radiation estimate (≈34–36, giving ~10^11), and
+    reconcile "64–80%" with the table's 0.81.
+  - Change "popular picture" to a proposed picture. Say the independent checks
+    in the acknowledgments were also AI-run.
+B1. Gauge paper v6.3.
+  - Find any claim that PSL(2,7) is the Császár polyhedron's automorphism or
+    symmetry group. The face structure's group is AGL(1,7), order 42 (§2.86);
+    PSL(2,7) fixes only one face Fano plane.
+  - Confirm 3/13 is stated as tan θ_C (= |V_us/V_ud|), not sin θ_C.
+  - Close the open Furey-reparametrization item: the J = L_e₀ sign dressing vs
+    Furey, PLB 742 (2015).
+  - Draft the correction, and note whether v5 is still under review at Finite
+    Fields and Their Applications.
+B2. PSL(2,7) Zenodo note.
+  - Add the June prior art: Faradžev–Ivanov 1990; Praeger–Saxl–Yokoyama 1987;
+    Inglis–Liebeck–Saxl.
+  - Check whether Open Problem 4.4 omits the 4A class. The circle fixed sets
+    total 146 elements, not 104.
+  - Check Theorem 2.1's D₄ maximality, and fix §1.1's status line.
+  - Draft v3.
+B3. Paper VII §9.1 and both calculators.
+  - Replace "Zero Free Parameters" with scoped wording: leading order, imports
+    named.
+  - Retire or scope sin²θ_W = φ⁻³ and m_W = m₀φ²⁷ (82.13 GeV vs 80.369
+    measured).
+B4. Alpha-decay paper.
+  - Add a ledger entry.
+  - Check the deposited text against the retractions: slot counting and the
+    Harmonic Saturation Theorem (§3.A.3); §2.45-NGA; Cluster D (Pb-208
+    already has Q_α > 0).
+B5. Flach: draft a short note for me to send.
+  - The ledger's reason for the η computation, an FR spin sign from internal
+    geometry, closed at V4.84 (π₁(Orbit) = 0).
+  - Confirm which space the problem statement used. If it was ℙ¹(2,3,7):
+    - on a two-dimensional orbifold the Dirac η-invariant vanishes by
+      chirality symmetry;
+    - the order-2 cone point may also obstruct a spin structure;
+    - the meaningful version lives on the 3-manifold Σ(2,3,7).
+  - If the S⁷/PSL(2,7) version is still wanted, Donnelly's η-defect is a
+    finite sum we can compute in-house.
+
+PHASE C: BANK AND CLEAN UP
+C1. Crypto negative result.
+  - Confirm by direct computation that the Singer-orbit public matrix has rank
+    ≤ 112 at several module ranks: k = 8, 16, 32, 64.
+  - Run the lattice estimator on the spec parameters with a uniform matrix.
+  - State correctness as a worst-case noise bound (DFR = 0), replacing the
+    2^(-6.4×10^15) figure.
+  - Annotate the dependent rows (OP-2.58.2c/2e/5, §2.58.B, §2.66.1, §2.66.2)
+    and carry the §3.05 correction into §§2.59–2.61.
+  - Draft a short standalone note. IACR ePrint is the natural venue.
+C2. Annotation batch, one fold. Verify each item first.
+  - ζ-tax gate 3. A per-vertex amplitude redshift is tired-light-class, and
+    DES measures b = 1.003 ± 0.005 ± 0.010 (arXiv:2406.05050). Close the gate
+    as failed, or recast it as a frame/metric redshift.
+  - Polycrystal. Grains are capped at 3.76×10^-33 m, while a_phys is
+    1.9–7.6×10^-34 m, i.e. 5–20 cells. Add a grain ≫ lattice validity floor,
+    and resolve whether ξ = ℓ_P is licensed on the transverse line.
+  - §2.50.A and OP-2.14. Re-read the 2π closure after G-VS1: π₁ = 0 at the
+    vacuum of record, and the minimal winding is π on the polar strata. Make
+    OP-2.14 and the G-QUANTA rows conditional.
+  - μ_n. The 4 in μ_n = (4μ_d − μ_u)/3 is a Clebsch–Gordan coefficient of the
+    spin-½ nucleon. The spin-3/2 quartet is the Δ, and μ(Δ⁰) = 0.
+  - §2.52 Open 3. Add the G-ζ1 result, and leave the freeze in place.
+  - Math corrections:
+    - OP-2.81.1/2 via Moreno's criterion;
+    - signed vs unsigned Fano lifts;
+    - §2.77's inner/outer automorphism and the M₄(ℂ) span;
+    - "42 size-2 matchings";
+    - K₈ has six 1-factorizations;
+    - arctan(1/√2) = 35.26°;
+    - log(4π)/log 7 = 1.3007;
+    - the §2.62.C stabilizer is D₄;
+    - the §2.84A labeling coincidence;
+    - OP-2.74.1c.i;
+    - de Marrais pointers in §2.55, §2.68.4 and §2.41.B;
+    - the α⁻¹ entries: 84/arctan(1/√2) = 136.48 sits below 137.036, and one
+      match is claimed from two starting values.
+
+DELIVERABLES
+Phase A: the polarization gate (prereg, derivation, second-leg check, verdict,
+blast radius), the internal-mode results, the matter and gravity dispositions,
+one fold, and a plain-language status. Phase B: drafts only. Phase C: the
+crypto note draft and one annotation fold.

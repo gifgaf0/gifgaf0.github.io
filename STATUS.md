@@ -1,25 +1,42 @@
-# Status — October 7, 2026
+# Status — October 8, 2026
 
-**In one paragraph.** This program explores whether the vacuum could be a physical medium: a crystal that is also a superfluid (a *supersolid*), with light as its shear waves and particles as knotted vortices in it.
-- **Mathematics:** in good shape and public.
-- **The medium:** built and measured in detail.
-- **The central idea has failed.** In this kind of medium, matter and light cannot share one speed limit unless two unrelated numbers are tuned to agree to about one part in 10²³. That failure is being written up as a standalone negative result.
-- **This week's audit follow-up removed most of the remaining physics claims:**
+**In one paragraph.** This program explored whether the vacuum could be a physical medium: a crystal that is also a superfluid (a *supersolid*), with light as its shear waves and particles as knotted vortices in it. **The author closed it on October 7 (ledger V4.97, §2.97).** The October audit tested every place where the picture could break, and it broke at each one:
+- gravitational waves have the wrong polarization;
+- moving matter would lose energy to a sound slower than light;
+- the knots are not protected from untying;
+- the proton-mass match was the proton mass run backwards;
+- to let light through, the lattice cells would have to be finer than the Planck length.
+
+**What carries forward:**
+- the mathematics, at its registers;
+- three standalone results: the second-sound paper (a negative result about supersolid vacua in general), the negative result on the program's lattice cryptosystem, and the alpha-decay data with its break at radium;
+- the idea that ran through the program, as a conjecture only: matter is energy held in place by geometry, and a structure lasts when it stores energy efficiently enough.
+
+No successor program is opened; the ledger records the conditions one would have to meet (§2.97.D). Corrections to the public work are drafted for the author. Nothing is published, deposited or sent.
+
+## How it closed (October 6–8)
+
+- **The central idea failed first.** In a supersolid medium, matter and light cannot share one speed limit unless two unrelated numbers are tuned to agree to about one part in 10²³. That is written up as the standalone second-sound paper.
+- **The audit follow-up then removed the remaining physics claims:**
   - gravitational waves have no carrier in the medium;
   - the proton-mass "prediction" was the proton mass run backwards, and its one real test fails;
   - nothing protects baryon number;
   - neither static picture of gravity holds up.
-- **It also corrected the public work, as drafts for the author's approval (nothing is published or sent):**
+- **It corrected the public work, as drafts for the author's approval:**
   - the gauge paper's hypercharge sign rule and its Cabibbo value both fail;
   - "zero free parameters" becomes a fit with its inputs named, and the W-mass and weak-angle formulas are retired;
   - the alpha-decay paper's second break does not survive a comparison at fixed neutron number.
-- **It then banked the cryptography result and cleaned up the ledger:**
+- **It banked the cryptography result and cleaned up the ledger:**
   - the program's lattice cryptosystem fails at its own parameters, and a short negative-result note is drafted;
   - the "tired light" redshift idea fails against supernova time dilation;
-  - the electron's 2π closure, and the mass exponent built on it, now rest on an unmade choice of vacuum;
+  - the electron's 2π closure, and the mass exponent built on it, rest on an unmade choice of vacuum;
   - the neutron-moment "factor of 4" was the wrong quartet;
   - fourteen mathematical slips are corrected.
-- **Last, it asked how fine the vacuum's lattice would have to be for light to get through.** The highest-energy photons on record cap the vacuum's grains at about the Planck length, so the lattice cells would have to be finer than the Planck length.
+- **It asked how fine the vacuum's lattice would have to be for light to get through.** The highest-energy photons on record cap the grains at about the Planck length. At the author's floor of 50 cells per grain, the cells must be finer than 0.026 Planck lengths.
+- **The author then closed the program (V4.97).** Every open task in the ledger was sorted:
+  - 43 task rows now point to the closing entry. 27 close with the program; 14 keep their mathematics open while the physical reading closes; 2 move to a "successor intake" list that is not opened.
+  - The mathematics, crypto and author-action rows are untouched.
+  - Two rows are left for the author to classify.
 
 ## Established
 
@@ -87,35 +104,40 @@
 - **A second alpha-decay break at uranium** (new). Compared at the same neutron number, the step at Z = 92 changes sign and is smaller than the drift with neutron number. The break at radium (Z = 88) holds at every neutron number and has a standard explanation (octupole deformation).
 - **Earlier retractions on the record:** an octonion-structure hypothesis, a "harmonic saturation" mass rule, and a meson-nonet interpretation.
 
-## Open
+## Still open
 
-- **What would rescue a medium vacuum?**
-  - It needs a medium in which matter is not a defect dragging through a slower sound.
-  - The leading candidates are vacua with no preferred frame (pressure equal to minus energy density), with particles as relativistic knotted solitons (Skyrme and Faddeev–Niemi type), which carry their own light cone.
-  - Two questions are registered: whether a non-commuting vortex sector or an energy barrier could protect a Borromean baryon (G-RCX1, which would need a decay suppression of about e⁻¹⁵⁰), and whether quantum fluctuations select the vacuum (G-OBD1).
-- **A standing test for any gravity idea (KC-EP).** Everything must fall alike to about one part in 10¹⁵ (the MICROSCOPE satellite). That covers electrons, nuclear binding energy and electric field energy, not only the knots.
+- **Mathematics.** The ledger's open mathematical questions stay open, for example:
+  - the symbolic proof of the rank-12 zero-divisor kernel;
+  - the four-term zero-divisor kernel;
+  - the Yang–Baxter orbit questions;
+  - the η-invariant sum on S⁷/PSL(2,7), if it is still wanted.
+  
+  Where a task joined a mathematical question to a physical reading, only the reading closed.
+- **The successor intake (listed, not opened).**
+  - What protects a knotted or linked configuration in a relativistic field? This is the old Borromean-protection question (G-RCX1), re-scoped. The answer class on record is a conserved topological charge.
+  - Whether a Faddeev–Hopf field soliton can form a Borromean three-strand at all.
+  - The composite-quanta discriminator (Derrick's theorem; the Vakulenko–Kapitanskii bound).
+- **Standing tests for any successor.**
+  - KC-EP: everything must fall alike to about one part in 10¹⁵ (the MICROSCOPE satellite), electrons, binding energy and field energy included.
+  - The cosmic-ray, double-pulsar and dipole kill conditions apply to any proposed medium.
+  - So do the method rules (prior address first, no Eddington maneuver, the category wall).
+- **Drafts awaiting the author's approval** (nothing is published or sent):
+  - the gauge-paper correction (v6.4);
+  - the PSL(2,7) note v3;
+  - Paper VII and the three calculators, with "Zero Free Parameters" replaced by a leading-order fit whose inputs are named;
+  - a short note to Flach saying the η-invariant computation he was asked about is no longer needed;
+  - the SLWE negative-result note for IACR ePrint;
+  - the alpha-decay paper's corrections: 51 steps, not 74; one robust break, not two; and the abstract's Curium sentence.
+- **The second-sound paper.** The author approved v1 on 4 October. Every fix the audit asked for was already in it, so it can be posted as approved.
+
+## Archived with the program
+
 - **Masses.**
   - The mass table is a fit with no spare degrees of freedom: with the W and Z formulas retired, 6 rows against at least 7 chosen inputs.
   - Against current data (PDG 2024), the down and charm quarks miss by more than 2 %, and the up quark falls outside its error band.
-  - The quark rope lengths in the calculators are measured per tube diameter, the electron's and the proton's per radius. The table depends on that mix.
-  - Several mass and nuclear-decay patterns stay at the conjecture level, with stated tests.
 - **Physical scale.**
   - The medium has no grain size consistent with the cosmic-ray bound.
-  - **Light sets its own limit (new, October 7).**
-    - LHAASO's PeV photons from the Cygnus region and the Crab Nebula reach us. That caps the vacuum's grains at 2.1 × 10⁻³⁵ m, about 1.3 Planck lengths.
-    - A grain of N lattice cells therefore needs cells finer than the Planck length for any N ≥ 2: 0.064 Planck lengths at N = 20, 0.013 at N = 100.
-    - The ledger's declared lattice, 12–47 Planck lengths per cell, does not fit even one cell in a grain.
-    - This is a bound, computed twice independently.
-    - The author has set the minimum at 50 cells per grain (October 7), the low end of what the materials literature supports. With that floor the cells must be finer than 0.026 Planck lengths, and the declared lattice leaves no light window on any photon arm.
-  - Any coherent alignment of the grains must be below about 10⁻³⁵ (from gamma-ray-burst polarization). Randomly oriented grains satisfy this easily, and the lattice's own dispersion is no constraint.
-- **Papers in motion.**
-  - **The negative-result paper** on the shared-speed-limit failure. The author approved v1 on 4 October. Every fix the audit asked for was already in it, so it can be posted as approved.
-  - **Drafts awaiting the author's approval** (nothing is published or sent):
-    - the gauge-paper correction (v6.4);
-    - the PSL(2,7) note v3;
-    - Paper VII and the three calculators, with "Zero Free Parameters" replaced by a leading-order fit whose inputs are named;
-    - a short note to Flach saying the η-invariant computation he was asked about is no longer needed;
-    - the SLWE negative-result note for IACR ePrint.
-  - **The alpha-decay paper** now has a ledger entry. Its data are sound. The text needs corrections, which are the author's call: 51 steps, not 74; one robust break, not two; and the abstract's Curium sentence.
+  - LHAASO's PeV photons cap the grains at 2.1 × 10⁻³⁵ m, about 1.3 Planck lengths, so cells must be finer than the Planck length for any grain of two or more cells.
+  - The ledger's declared lattice, 12–47 Planck lengths per cell, fits no cell in a grain.
 
-*Every claim above is recorded with its evidence in the project's append-only ledger (now V4.96). Nothing here relies on numbers that have not been computed at least once. Every number behind a verdict this week was computed twice, independently. There are two exceptions: the gravity dispositions, which rest on standard theorems and published measurements, and the cryptosystem's security figures, which come from the standard lattice estimator with an independent cross-check. The Phase B corrections are annotations, each computed once. In Phase C, every downgrade and reversal had a second computation, and the rest are annotations.*
+*Every claim above is recorded with its evidence in the project's append-only ledger (now V4.97). Nothing here relies on numbers that have not been computed at least once. Every number behind a verdict this week was computed twice, independently. There are two exceptions: the gravity dispositions, which rest on standard theorems and published measurements, and the cryptosystem's security figures, which come from the standard lattice estimator with an independent cross-check. The Phase B corrections are annotations, each computed once. In Phase C, every downgrade and reversal had a second computation, and the rest are annotations. The closing entry (V4.97) is a decision record and derives nothing.*

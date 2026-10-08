@@ -7,7 +7,9 @@ makes four changes the brief asks for:
   (2) Paper VII's §10 (gravitational waves crossing a conformal boundary) is removed, leaving a short note in its place
       so the section numbers and later cross-references still make sense;
   (3) "Theorem 1" is renamed "Fit 1", since the mass relation is a leading-order fit with named inputs;
-  (4) each file gets an "Archived at V4.97" header; each calculator also gets a visible banner line at the top.
+  (4) each file gets an "Archived at V4.97" header; each calculator also gets a visible banner line at the top;
+  (5) added October 8, 2026, on the author's decision: v1.9.1's "Cosmic Echoes" tab, the calculator's version of
+      Paper VII §10, is removed, and the archived header says so.
 Every replacement is anchored and counted; the result must contain no "Theorem 1" and no "DRAFT" label.
 """
 import hashlib, os, re
@@ -118,6 +120,24 @@ ban_jsx = ("\n          <div role=\"note\" style={{ background:\"#2a2410\", colo
 # the banner goes just before the line that carries the version label (inside the same header block)
 txt[K] = txt[K][:line_start] + ban_jsx + txt[K][line_start:]
 print("[v191] visible banner")
+# (5) The author's decision of October 8, 2026, 08:43 PDT: "v1.9.1 'Cosmic Echoes' tab: Remove it entirely to maintain
+#     consistency with the archiving of Paper VII §10." The tab's component, its entry in the tab list and its render
+#     line are removed; the archived header says so. Nothing else in v1.9.1 changes.
+once(K, JSX_HEAD, JSX_HEAD + "//  The \"Cosmic Echoes\" tab (Paper VII §10's gravity filtration) was removed at the author's\n"
+     "//  direction on October 8, 2026, as §10 was.\n", "header note: Cosmic Echoes removed")
+e_a = txt[K].index("//  TAB 13 — COSMIC ECHOES\n")
+e_a = txt[K].rfind("\n// ═", 0, e_a) + 1
+e_b = txt[K].index("//  TAB 14 — FREEZE-OUT\n")
+e_b = txt[K].rfind("\n// ═", 0, e_b) + 1
+echo_block = txt[K][e_a:e_b]
+assert echo_block.count("\nfunction ") == 1 and "\nfunction CosmologicalEchoes() {\n" in echo_block
+assert echo_block.endswith("\n}\n\n") and "FREEZE" not in echo_block
+txt[K] = txt[K][:e_a] + txt[K][e_b:]
+print(f"[v191] Cosmic Echoes component removed ({len(echo_block)} chars)")
+once(K, "    { id:\"echoes\",   label:\"Cosmic Echoes\",  col:CYA },\n", "", "Cosmic Echoes tab entry removed")
+once(K, "        {tab === \"echoes\"    && <CosmologicalEchoes />}\n", "", "Cosmic Echoes render line removed")
+assert "CosmologicalEchoes" not in txt[K] and "\"echoes\"" not in txt[K]
+assert txt[K].lower().count("cosmic echoes") == 1          # only the header note
 n_v191 = rename_theorem1(K)
 
 for k in txt:

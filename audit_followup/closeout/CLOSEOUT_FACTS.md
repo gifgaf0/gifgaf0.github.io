@@ -41,3 +41,13 @@ These cannot be undone, so they are not done.
 - Item 2 above names V4.95. The store's copy has been **V4.96** since October 7, 20:13 PDT (2026-10-08 03:13:44 UTC). Re-read on October 8, it is byte-identical to the V4.96 fold output (md5 `120b076a…`).
 - "5,709 B free" was the store's counter at the V4.96 fold, and the counter is not in bytes. V4.96 and the two store calculators alone come to 2,019,219 B, more than the 1,997,416 it reports for every file in the store. After the Flach note it reports 2,584 free, in its own units.
 - The decision is unchanged: deleting the store's ledger copy waits for the author (`../CLOSEOUT_REPORT.md`, section 4).
+
+## Addendum, October 8, 2026, 08:43 PDT: the author's answers and decisions
+The directive is saved verbatim in `../inputs/DIRECTIVE_2026-10-08_finalize_v4_99.md`. For the items above:
+- **F3, second part:** "Yes, the deposited v1 alpha-decay paper is exactly the same text as the May 28 store copy."
+- **F2, F4, F6, F7:** "Confirmed. All defaults you applied are correct. For the PSL(2,7) note, we will proceed with Title Option A."
+- **Waiting item 1, the ledger in the repository: done.**
+  - V4.98 was committed at the root of the branch in `5d9577c`, replacing `FOLD_LEDGER_2026-06-18.md`.
+  - V4.99 then replaced it at the root in `64af32c`.
+  - Nothing was pushed to `main`.
+- **Waiting item 2, the store copy: done.** V4.96 was deleted from the store at 08:48 PDT. The counter fell from 1,997,416 to 1,353,522.

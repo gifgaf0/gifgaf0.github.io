@@ -46,3 +46,6 @@ Two further changes follow from these:
 
 - **Used:** the DOI 10.5281/zenodo.20448930 and the deposit date May 29, 2026 (the author's F3); Hollister, CA (F5).
 - **Not answered (F3's second part): is the deposit the same text as the May 28 store copy?** Version 2 is built on the store copy. If the deposited version 1 differs, the same five corrections apply, but the anchors in `build_v2.py` may need to move.
+
+## Addendum, October 8, 2026: F3 answered
+You confirmed that the deposited version 1 is exactly the May 28 store copy (the directive of 08:43 PDT). So `v1_to_v2.diff` is the diff from the deposited text, and the anchors in `build_v2.py` stand as they are. Nothing is deposited.

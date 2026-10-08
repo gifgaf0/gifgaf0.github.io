@@ -1,0 +1,50 @@
+{
+ "desktop": {
+  "stub": {
+   "title": "SQT Geometric Mass Calculator (archived)",
+   "text": "SQT Geometric Mass Calculator: archived\n\nThis page hosted a calculator for a fitted mass table with named inputs. The research program it belonged to was closed in October 2026 (ledger V4.97).\n\nThe last version of the calculator is kept, with that note at its top: calculator v3.1 (archived).",
+   "href": "archive/calculator_v3_1.html",
+   "hscroll": false
+  },
+  "archive": {
+   "url": "http://127.0.0.1:8765/site_root/archive/calculator_v3_1.html",
+   "title": "SQT Geometric Mass Calculator v3.1",
+   "banner": "Archived, V4.97: a fitted mass table with named inputs; the program it belonged to is closed.",
+   "tabs": {
+    "Mass Audit": 3189,
+    "Calculator": 1540,
+    "Constants": 3425,
+    "Baryon": 2823,
+    "Spectrum": 1441,
+    "Worticity": 2194
+   }
+  },
+  "errors": [
+   "console: Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "external": []
+ },
+ "phone": {
+  "stub": {
+   "title": "SQT Geometric Mass Calculator (archived)",
+   "text": "SQT Geometric Mass Calculator: archived\n\nThis page hosted a calculator for a fitted mass table with named inputs. The research program it belonged to was closed in October 2026 (ledger V4.97).\n\nThe last version of the calculator is kept, with that note at its top: calculator v3.1 (archived).",
+   "href": "archive/calculator_v3_1.html",
+   "hscroll": false
+  },
+  "archive": {
+   "url": "http://127.0.0.1:8765/site_root/archive/calculator_v3_1.html",
+   "title": "SQT Geometric Mass Calculator v3.1",
+   "banner": "Archived, V4.97: a fitted mass table with named inputs; the program it belonged to is closed.",
+   "tabs": {
+    "Mass Audit": 3189,
+    "Calculator": 1540,
+    "Constants": 3425,
+    "Baryon": 2823,
+    "Spectrum": 1441,
+    "Worticity": 2194
+   }
+  },
+  "errors": [],
+  "external": []
+ }
+}

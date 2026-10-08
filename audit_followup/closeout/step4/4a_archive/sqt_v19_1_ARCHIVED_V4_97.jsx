@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 //  ARCHIVED AT V4.97 (October 8, 2026). The research program this calculator belonged to (Superfluid
 //  Quantum Topology) was closed on October 7, 2026 (Master Ledger V4.97, §2.97). Kept as a record:
 //  a leading-order fit with named inputs, not a derivation.
+//  The "Cosmic Echoes" tab (Paper VII §10's gravity filtration) was removed at the author's
+//  direction on October 8, 2026, as §10 was.
 // ══════════════════════════════════════════════════════════════
 //  SQT v1.9.1 (October 2026; archived at V4.97) · CONSTANTS: one anchor (m_e), one selected scale (ξ_vac = 100φ)
 //  and per-particle selections (knot, A, Z_f, L). A leading-order fit, not a zero-parameter derivation (ledger §2.92).
@@ -940,48 +942,6 @@ function LensEquation() {
 }
 
 // ══════════════════════════════════════════════════════════════
-//  TAB 13 — COSMIC ECHOES
-// ══════════════════════════════════════════════════════════════
-function CosmologicalEchoes() {
-  const [src, setSrc] = useState(100);
-  const Fg    = kappa / 4;
-  const trans = Math.exp(-Fg);
-  const surv  = src * trans;
-  return (
-    <div>
-      <SectionHead col={CYA}>COSMOLOGICAL BOUNDARY TRANSMITTANCE</SectionHead>
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:20, marginBottom:16 }}>
-        <div style={{ background:PNL, border:`1px solid ${BRD}`, borderRadius:6, padding:"20px" }}>
-          <div style={{ fontFamily:MONO, fontSize:9, color:GRY, letterSpacing:2, marginBottom:10 }}>GRAVITY AS VACUUM GEOMETRY</div>
-          <div style={{ fontSize:11, color:GRY, lineHeight:1.8, marginBottom:14 }}>Gravity is not an r-residual force — it is the fundamental geometry of the superfluid medium itself (K(0) = −φ²). Gravitational waves can cross the conformal boundary, resisted by the bulk modulus across all 4 spacetime dimensions.</div>
-          <div style={{ background:DIM, borderLeft:`3px solid ${CYA}`, borderRadius:3, padding:"12px 14px" }}>
-            <div style={{ fontFamily:MONO, fontSize:9, color:CYA, letterSpacing:1, marginBottom:4 }}>4D FILTRATION CONSTANT</div>
-            <div style={{ fontFamily:MONO, fontSize:13, color:TXT }}>F_g = κ/4 = 1/(4φ⁴) = {Fg.toFixed(8)}</div>
-          </div>
-        </div>
-        <div>
-          <Slider label="Initial echo amplitude (%)" min={1} max={100} step={1} value={src} onChange={setSrc} display={`${src}%`} col={CYA}/>
-          <div style={{ background:PNL, border:`1px solid ${CYA}`, borderTop:`3px solid ${CYA}`, borderRadius:4, padding:"18px" }}>
-            <div style={{ fontFamily:MONO, fontSize:9, color:GRY, letterSpacing:2, marginBottom:6 }}>AEON N+1 SURVIVING ENERGY</div>
-            <div style={{ fontFamily:MONO, fontSize:36, color:CYA, marginBottom:4 }}>{surv.toFixed(3)}%</div>
-            <div style={{ fontFamily:MONO, fontSize:12, color:RED, marginBottom:12 }}>Dissipated: −{(src-surv).toFixed(3)}%</div>
-            <div style={{ height:6, background:DIM, borderRadius:3, overflow:"hidden", display:"flex", marginBottom:4 }}>
-              <div style={{ width:`${surv}%`, height:"100%", background:CYA }}/>
-              <div style={{ width:`${src-surv}%`, height:"100%", background:RED }}/>
-            </div>
-            <div style={{ fontSize:9, color:GRY, marginTop:4 }}>Transmittance: exp(−κ/4) ≈ {(trans*100).toFixed(4)}%</div>
-          </div>
-        </div>
-      </div>
-      <div style={{ background:"#0a0a14", border:`1px solid ${CYA}44`, borderLeft:`3px solid ${CYA}`, borderRadius:4, padding:"14px 18px" }}>
-        <div style={{ fontFamily:MONO, fontSize:9, color:CYA, letterSpacing:2, marginBottom:6 }}>PRIOR AEON FOSSIL RECORD</div>
-        <div style={{ fontSize:11, color:GRY, lineHeight:1.75 }}>~{(trans*100).toFixed(2)}% of a gravitational echo's Worticity signature survives the conformal crossover. This explains why supermassive black hole collision signatures may leave concentric ring patterns in the CMB temperature anisotropy.</div>
-      </div>
-    </div>
-  );
-}
-
-// ══════════════════════════════════════════════════════════════
 //  TAB 14 — FREEZE-OUT
 // ══════════════════════════════════════════════════════════════
 function ThermodynamicFreezeOut() {
@@ -1848,7 +1808,6 @@ export default function SQT180() {
     { id:"finestr",  label:"Fine Structure", col:CYA },
     { id:"baryon",   label:"Baryon ★",       col:RED },
     { id:"lens",     label:"Lens Eq",        col:ORG },
-    { id:"echoes",   label:"Cosmic Echoes",  col:CYA },
     { id:"freeze",   label:"Freeze-Out",     col:AMB },
     { id:"topzf",    label:"Top Zf ★",       col:PRP },
   ];
@@ -1912,7 +1871,6 @@ export default function SQT180() {
         {tab === "neutrino"  && <NeutrinoSector />}
         {tab === "weak"      && <ElectroweakSector />}
         {tab === "lens"      && <LensEquation />}
-        {tab === "echoes"    && <CosmologicalEchoes />}
         {tab === "freeze"    && <ThermodynamicFreezeOut />}
         {tab === "topzf"     && <TopZfTab />}
         {tab === "finestr"   && <FineStructureTab />}

@@ -36,3 +36,13 @@ Nothing is deployed or deposited.
 
 - **v1.9.1's "Cosmic Echoes" tab** is the calculator's version of Paper VII §10: gravitational waves crossing an aeon boundary, attenuated by κ/4. The brief named only Paper VII's §10, so the tab is kept as written, under the archive banner. Removing it is one more anchored edit.
 - **Where the store copies live.** These files replace the store calculators and Paper VII only when you put them there. The project store is nearly full: see the report.
+
+## Addendum, October 8, 2026: the Cosmic Echoes tab removed
+You decided: "Remove it entirely to maintain consistency with the archiving of Paper VII §10." `make_archived.py` gains step (5):
+- the tab's component (`CosmologicalEchoes`, 3,201 characters) is removed;
+- so are its entry in the tab list and its render line;
+- the archived header comment says so.
+
+The new `sqt_v19_1_ARCHIVED_V4_97.jsx` has md5 `f3373e56f4d361c5c109b228458ad31c` (124,649 B). Paper VII and v2.1 rebuild byte-identical (`420b1f4d…`, `2b34a35e…`).
+
+**Re-checked** (`v191arch.json`, regenerated). The file compiles and renders, and every remaining tab and button was clicked through. The only console error is the missing favicon. Each tab's text equals the previous check's minus the "COSMIC ECHOES" tab label, and nothing else differs. The internal comment numbering ("TAB 14 — FREEZE-OUT") is left as it was.

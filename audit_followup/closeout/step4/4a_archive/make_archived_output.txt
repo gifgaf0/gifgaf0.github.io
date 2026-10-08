@@ -16,8 +16,12 @@
 [v191] label (header)
 [v191] label (footer)
 [v191] visible banner
+[v191] header note: Cosmic Echoes removed
+[v191] Cosmic Echoes component removed (3201 chars)
+[v191] Cosmic Echoes tab entry removed
+[v191] Cosmic Echoes render line removed
 [v191] renamed Theorem 1 → Fit 1: 4 occurrences
 sqt_paper_VII_ARCHIVED_V4_97.md 420b1f4d73bb5b1ce763bb7d02667262 119361
 SQTCalculator_v2_1_ARCHIVED_V4_97.jsx 2b34a35e3c3e613e766fcc5e5a387fe8 21649
-sqt_v19_1_ARCHIVED_V4_97.jsx 859ba79fa4103f4602e107ae6be89e15 128088
+sqt_v19_1_ARCHIVED_V4_97.jsx f3373e56f4d361c5c109b228458ad31c 124649
 Theorem 1 renamed: {'paper': 23, 'v191': 4}

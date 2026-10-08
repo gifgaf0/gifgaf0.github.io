@@ -233,3 +233,9 @@ Nothing here changes the ledger. The fold (V4.97) applies it. The 17 bullets of 
 - The "Closed / dropped" bullets: **17**, all out of scope.
 
 Source: `co1_classify.py` (this table, `co1_classification.json`).
+
+## Addendum, October 8, 2026: the author's classifications (V4.99)
+- **OP-C7-1** and **OP-2.77-FB**, left under (h), are classified **(b), mathematics only, staying open**. Like the other mathematics rows they get no pointer; V4.99 records the classification on the V4.97 record and in §2.99.
+- **§4.14** (a Part IV section, not a Part VI row) is classified **(a)**: it closes with the program. V4.99 adds pointers on its Status line and on the Part IV banner.
+- Tally after: (b) mathematics only 18 → 20; (h) 2 → 0. In scope still 94, out of scope 69.
+- The "Readings to confirm" above were not addressed in the directive. They stand as folded.

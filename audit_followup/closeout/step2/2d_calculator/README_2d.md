@@ -20,3 +20,18 @@
 Either way it goes live on GitHub Pages within minutes.
 
 **Optional, not done.** The page loads React and Babel from unpkg without exact versions (`react@18`, `@babel/standalone`). For an archive meant to keep working, pinning exact versions would protect it from future library changes.
+
+## Addendum, October 8, 2026: option B applied on the branch
+You chose option B ("Finalize the 2d_calculator option B (stub replacement)"). On branch `claude/audit-followup-oct6`:
+- `index.html` at the repository root is now the stub (`index_stub_DRAFT.html`, md5 `73f80792…`);
+- `archive/calculator_v3_1.html` at the root is the archived calculator (md5 `bc921784…`).
+
+They go live only when the pull request is merged into `main`.
+
+**Checked** (`render_root_check.js`, `root_render_check.json`). In headless Chromium at desktop and phone widths, with React and Babel served locally:
+- the stub shows its text with no horizontal scroll;
+- its link opens `archive/calculator_v3_1.html`;
+- the banner reads as drafted, and all six tabs render;
+- the only console error is the missing favicon, which the live site also lacks.
+
+The React and Babel versions are still unpinned, as noted above.

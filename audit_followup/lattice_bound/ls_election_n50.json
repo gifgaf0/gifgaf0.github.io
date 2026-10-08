@@ -1,0 +1,77 @@
+{
+ "N": 50,
+ "arms": {
+  "A0": {
+   "EMPTY_D": true,
+   "EMPTY_P": false,
+   "N_times_band_lo_over_d": 2.522470827851557,
+   "a_max_lP": 4.657886813278124,
+   "a_max_m": 7.528332851394835e-35,
+   "d_max_m": 3.7641664256974174e-33,
+   "declared_chain_window_empty": true,
+   "leg_rel_dev": 4.36257713439541e-15
+  },
+  "A1": {
+   "EMPTY_D": true,
+   "EMPTY_P": true,
+   "N_times_band_lo_over_d": 451.66874133477774,
+   "a_max_lP": 0.026013275949109467,
+   "a_max_m": 4.2044087319127926e-37,
+   "d_max_m": 2.1022043659563965e-35,
+   "declared_chain_window_empty": true,
+   "leg_rel_dev": 4.449936760105044e-15
+  },
+  "A2": {
+   "EMPTY_D": true,
+   "EMPTY_P": true,
+   "N_times_band_lo_over_d": 457.55783311954366,
+   "a_max_lP": 0.02567846675429731,
+   "a_max_m": 4.15029502839668e-37,
+   "d_max_m": 2.0751475141983402e-35,
+   "declared_chain_window_empty": true,
+   "leg_rel_dev": 4.507957348244967e-15
+  },
+  "A3": {
+   "EMPTY_D": true,
+   "EMPTY_P": true,
+   "N_times_band_lo_over_d": 54.570334919210964,
+   "a_max_lP": 0.21530715586266744,
+   "a_max_m": 3.479912671988156e-36,
+   "d_max_m": 1.739956335994078e-34,
+   "declared_chain_window_empty": true,
+   "leg_rel_dev": 4.423997433629692e-15
+  },
+  "A4": {
+   "EMPTY_D": true,
+   "EMPTY_P": true,
+   "N_times_band_lo_over_d": 90.48725217638254,
+   "a_max_lP": 0.12984573322025517,
+   "a_max_m": 2.098638155459035e-36,
+   "d_max_m": 1.0493190777295175e-34,
+   "declared_chain_window_empty": true,
+   "leg_rel_dev": 4.482969946511188e-15
+  }
+ },
+ "combined": {
+  "EMPTY_D": true,
+  "EMPTY_P": true,
+  "N_band": [
+   9.495e-33,
+   3.794e-32
+  ],
+  "R4_x0p1_a_max_lP": 0.011918888455104339,
+  "R4_x10_a_max_lP": 0.05532257956228856,
+  "R4_x10_a_max_m": 8.94153958304467e-37,
+  "a_max_lP": 0.02567846675429731,
+  "a_max_m": 4.15029502839668e-37,
+  "binding": "attenuation",
+  "d_comb_m": 2.0751475141983402e-35,
+  "decisive_arm": "A2",
+  "declared_chain_window_empty_every_arm": true
+ },
+ "pins": {
+  "leg2/ls_leg2.json": "1880f014d2fd00b468aa6af3a9ce9e8d",
+  "ls_compare.json": "a672887a43e912ef1d77d00dc5a83d5a",
+  "ls_leg1.json": "9fd7a9ea0b1a0027b036d4e30d511068"
+ }
+}

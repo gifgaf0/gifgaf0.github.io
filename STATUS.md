@@ -105,7 +105,8 @@
     - LHAASO's PeV photons from the Cygnus region and the Crab Nebula reach us. That caps the vacuum's grains at 2.1 × 10⁻³⁵ m, about 1.3 Planck lengths.
     - A grain of N lattice cells therefore needs cells finer than the Planck length for any N ≥ 2: 0.064 Planck lengths at N = 20, 0.013 at N = 100.
     - The ledger's declared lattice, 12–47 Planck lengths per cell, does not fit even one cell in a grain.
-    - This is a bound, computed twice independently. The minimum number of cells per grain is the author's to set; the materials literature supports about 50–100.
+    - This is a bound, computed twice independently.
+    - The author has set the minimum at 50 cells per grain (October 7), the low end of what the materials literature supports. With that floor the cells must be finer than 0.026 Planck lengths, and the declared lattice leaves no light window on any photon arm.
   - Any coherent alignment of the grains must be below about 10⁻³⁵ (from gamma-ray-burst polarization). Randomly oriented grains satisfy this easily, and the lattice's own dispersion is no constraint.
 - **Papers in motion.**
   - **The negative-result paper** on the shared-speed-limit failure. The author approved v1 on 4 October. Every fix the audit asked for was already in it, so it can be posted as approved.

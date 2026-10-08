@@ -140,6 +140,16 @@ A textured aggregate is birefringent at first order, Δn = b₁·t₄. The bound
 
 The literature supports **N ≈ 50–100** as the floor at which a grain behaves as a bulk crystal to a few percent. Every option with N ≥ 2 puts the cells below the Planck length, and under the declared chain no option leaves a window. The choice is the author's.
 
+## The author's election (October 7, 2026, 19:16 PDT)
+
+> I select N = 50
+
+- **At this floor the photon data require a ≤ 4.15 × 10⁻³⁷ m, which is 0.026 ℓ_P.** That is 0.055 ℓ_P with τ × 10. The Crab arm alone gives 0.026 ℓ_P and the anchor arm alone 4.66 ℓ_P.
+- **Under the declared chain, the window is empty on every arm.** Fifty cells of the declared lattice span at least 9.50 × 10⁻³³ m, which is 2.5 times W^EM_∪'s own edge.
+- **Any lattice at or above ℓ_P leaves no window.**
+
+The details are in `ELECTION_N50.md` and `ls_election_n50.py`. A fold recording the election (V4.96) is staged in `../fold_v4_96/`.
+
 ## Process
 
 - **Prior Address**: `LS_PRIOR_ADDRESS.md`.

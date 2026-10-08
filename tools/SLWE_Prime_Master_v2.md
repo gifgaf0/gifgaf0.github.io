@@ -322,6 +322,22 @@ exists, treat these as upper bounds.
 > security-table numbers therefore apply **with the post-Brief-06
 > wrapper**, not with the original construction. The k = 4 toy
 > measurements in §4.5 are unaffected (4 < 7).
+>
+> **Correction (October 8, 2026; SQT ledger V4.94, §2.94.C1).** The security table above does not describe the
+> specified scheme. Its SQT-SLWE rows use the Kyber-calibrated formula and assume full rank. The spec is n = 512,
+> q = 4,294,977,961, a sparse ternary secret of weight 64 and CBD(2) noise. Under `malb/lattice-estimator`
+> (commit 53da5982, default attacks):
+> - **With a uniform matrix** (Brief 06's randomized A at δ = 1), the spec gives **2^51.0** (bdd; usvp 2^52.1 at
+>   β = 72). An independent core-SVP estimate gives the same β, and m = 1024 changes nothing. The modulus is far too
+>   large for the noise.
+> - **With the Singer-orbit matrix of §4.3**, the rank is exactly 76 at k = 8, 16, 32 and 64 and at most 76 for every
+>   k, not only at k = 32: M = (S ⊗ I₁₆)·N_k, with N a fixed 256 × 112 matrix of rank 76. The noise is then the short
+>   vector of a 76-dimensional instance (estimator 2^38.6, descriptive).
+> - **Descriptive, with a uniform matrix at n = 512:** q = 911 gives 2^122.2 and q = 2731 gives 2^114.4, with the spec's
+>   secret and noise. No (q, η) search was made, and no figure is on record for q = 3329.
+>
+> The structural-attack table below rests on the same formula and the same full-rank assumption. Decryption never
+> fails at the spec: |N| ≤ 258 against q/4 ≈ 1.07×10⁹. A negative-result note is drafted for IACR ePrint.
 
 **Structural attack scenarios (k=32, n=512, q=3329):**
 
@@ -497,6 +513,7 @@ is the central unanswered question.
 | v2.0 | May 10, 2026 | Full update: corrected SQT-SLWE scheme (conjugate-norm inner product), five geometric tests, calibrated BKZ security table, annihilator attack at module scale, GSO profile analysis, invariant sublattice resolution, consolidated open problems |
 | v2.1 (post-v2.0 notes only) | May 10, 2026 | §5.1 Test 1 note added: pure Singer A is rank-deficient at k=32 (F_p-rank 76, column period 112); §4.4 security-table note added: estimates apply only with the Brief 06 randomised A construction; §7 OP-G added; OP-Crypto-1 marked Closed (Brief 05 ran the BKZ-style GSO at N=512 and surfaced the rank deficit). §§1–4 unchanged in body; §5–9 notes added but no existing text removed. Source briefs: `tools/BRIEF_05_GS_PROFILE.md`, `tools/BRIEF_06_OP_G.md`. |
 | v2.2 | May 10, 2026 | Close OP §2.24.1 and §2.24.2 per chain probe (4e8a5dc). Add OP §2.24.5. Append-only. |
+| v2.3 (correction note only) | October 8, 2026 | §4.4: correction note giving the SQT ledger's §2.94.C1 figures (spec 2^51.0 with a uniform matrix; Singer-orbit rank 76 for every k ≥ 7; descriptive 2^122.2 at q = 911 and 2^114.4 at q = 2731). Append-only: no existing text changed. |
 
 ---
 

@@ -1,0 +1,18 @@
+LS comparison (leg-1 json 9fd7a9ea0b1a0027b036d4e30d511068)
+declared band [1.899e-34, 7.588e-34] m = [11.75, 46.95] l_P
+arm        d_max (m)    N_P       N_D       | N=20: a_max/l_P  EMPTY_P EMPTY_D | N=100: a_max/l_P  EMPTY_P EMPTY_D | N=1000: a_max/l_P  EMPTY_P EMPTY_D
+A0         3.7642e-33   232.894   19.8218   | 1.1645e+01 False True | 2.3289e+00 False True | 2.3289e-01 True True
+A1         2.1022e-35   1.301     0.1107    | 6.5033e-02 True True | 1.3007e-02 True True | 1.3007e-03 True True
+A2         2.0751e-35   1.284     0.1093    | 6.4196e-02 True True | 1.2839e-02 True True | 1.2839e-03 True True
+A3         1.7400e-34   10.765    0.9162    | 5.3827e-01 True True | 1.0765e-01 True True | 1.0765e-02 True True
+A4         1.0493e-34   6.492     0.5526    | 3.2461e-01 True True | 6.4923e-02 True True | 6.4923e-03 True True
+combined   2.0751e-35   1.284     0.1093    | 6.4196e-02 True True | 1.2839e-02 True True | 1.2839e-03 True True
+comb R4x10 4.4708e-35   2.766     0.2354    | 1.3831e-01 True True | 2.7661e-02 True True | 2.7661e-03 True True
+reference readings (E_ref, D_ref):
+  A0   d 5.9716e-34 m  N_P 36.947  N_D 3.1446
+  A1   d 1.5517e-35 m  N_P 0.960  N_D 0.0817
+  A2   d 5.8892e-36 m  N_P 0.364  N_D 0.0310
+  A3   d 9.1197e-35 m  N_P 5.642  N_D 0.4802
+  A4   d 7.0985e-35 m  N_P 4.392  N_D 0.3738
+dispersion bound 1.7571e-27 m: EMPTY_P False, EMPTY_D False (not binding at any N)
+second-leg trigger: {"EMPTY_P_at_20": true, "EMPTY_D_at_20": true, "fires": true, "literal_every_arm_every_N_ge_20_P": false, "literal_every_arm_every_N_ge_20_D": true}

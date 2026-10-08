@@ -1,0 +1,16 @@
+V4.99 file: /home/claude/fold/SQT_Master_Ledger_v4_99_CANONICAL.md md5: a86fa0907310b34413b42d7ebdbcb067 bytes: 1913925 delta: 5005
+title: 1; As-of: 1; appends: 4; inserted lines: 17; unchanged: 4896 of 4902
+appends on the expected 4 lines: True | missing: [] | extra: []
+host keywords and pointer facts as typed: True | failing: []
+inserted blocks: [(39, 40), (1887, 1900), (4918, 4918)]
+insertions at the declared places (record / §2.99 / changelog): True
+§2.92.A unchanged: True
+§2.52 Open 3 row unchanged: True
+§2.97 heading unchanged: True
+§2.97 C(f) unchanged: True
+Substrate program row unchanged: True
+§2.98 heading unchanged: True
+OP-C7-1 row unchanged: True
+OP-2.77-FB row unchanged: True
+'[→ V4.99 (§2.99): ' occurrences: 4 (expected 4, all in appends)
+ADDITIVITY CHECK: PASS

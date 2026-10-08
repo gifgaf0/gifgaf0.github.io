@@ -1,0 +1,6 @@
+V4.98 FOLDED: /home/claude/fold/SQT_Master_Ledger_v4_98_CANONICAL.md
+bytes: 1908920 (V4.97 1903201 B; delta +5719 B); chars delta +5541
+md5: 5c50db1147527b25c87b5962b5e955ed
+pointers: 7 | §2.98 chars: 1927 | record chars: 797
+reverse-splice: BYTE-IDENTICAL to V4.97 (a5a07bcd4f8ca13c87f65974d5580f24) — PASS
+all fragments landed exactly once — PASS

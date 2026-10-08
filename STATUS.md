@@ -121,13 +121,15 @@ No successor program is opened; the ledger records the conditions one would have
   - KC-EP: everything must fall alike to about one part in 10¹⁵ (the MICROSCOPE satellite), electrons, binding energy and field energy included.
   - The cosmic-ray, double-pulsar and dipole kill conditions apply to any proposed medium.
   - So do the method rules (prior address first, no Eddington maneuver, the category wall).
-- **Drafts awaiting the author's approval** (nothing is published or sent):
-  - the gauge-paper correction (v6.4);
-  - the PSL(2,7) note v3;
-  - Paper VII and the three calculators, with "Zero Free Parameters" replaced by a leading-order fit whose inputs are named;
-  - a short note to Flach saying the η-invariant computation he was asked about is no longer needed;
-  - the SLWE negative-result note for IACR ePrint;
-  - the alpha-decay paper's corrections: 51 steps, not 74; one robust break, not two; and the abstract's Curium sentence.
+- **Drafts awaiting the author's approval** (nothing is published, deposited, deployed or sent). They are in `audit_followup/closeout/`:
+  - **the gauge-paper correction (v6.4).** It is retitled "Gauge Group and Generation Structure from the Császár Polyhedron". It also fixes three statements: the quaternions' symmetry group is SO(3), a torus in space has an even spin structure, and the seven-vertex torus's uniqueness is classical. A Zenodo version note goes with it;
+  - **the PSL(2,7) note v3**, which now says it *records* classical results. It is built with each of two proposed titles and has a version note;
+  - **the alpha-decay paper v2.** It claims one robust break, at radium (Z = 88), and counts 51 steps, not 74. The sections that leaned on the closed framework are removed. A version note goes with it;
+  - **the public calculator, archived.** Either it keeps a one-line "Archived" banner, or a short page points to the archived copy;
+  - **the second-sound paper's posting version**, byline Matthew Gifford, for a last read;
+  - **the SLWE negative-result note** in final form for IACR ePrint, with a one-sentence AI-assistance acknowledgement to approve;
+  - **Paper VII and the two store calculators, archived.** The corrections are applied, the gravitational-wave section is removed, and "Theorem 1" is renamed "Fit 1";
+  - **a short note to Flach**, kept in the project store rather than this public repository, saying the η-invariant computation he was asked about is no longer needed.
 - **The second-sound paper.** The author approved v1 on 4 October. Every fix the audit asked for was already in it, so it can be posted as approved.
 
 ## Archived with the program
@@ -140,4 +142,4 @@ No successor program is opened; the ledger records the conditions one would have
   - LHAASO's PeV photons cap the grains at 2.1 × 10⁻³⁵ m, about 1.3 Planck lengths, so cells must be finer than the Planck length for any grain of two or more cells.
   - The ledger's declared lattice, 12–47 Planck lengths per cell, fits no cell in a grain.
 
-*Every claim above is recorded with its evidence in the project's append-only ledger (now V4.97). Nothing here relies on numbers that have not been computed at least once. Every number behind a verdict this week was computed twice, independently. There are two exceptions: the gravity dispositions, which rest on standard theorems and published measurements, and the cryptosystem's security figures, which come from the standard lattice estimator with an independent cross-check. The Phase B corrections are annotations, each computed once. In Phase C, every downgrade and reversal had a second computation, and the rest are annotations. The closing entry (V4.97) is a decision record and derives nothing.*
+*Every claim above is recorded with its evidence in the project's append-only ledger (now V4.98). Nothing here relies on numbers that have not been computed at least once. Every number behind a verdict this week was computed twice, independently. There are two exceptions: the gravity dispositions, which rest on standard theorems and published measurements, and the cryptosystem's security figures, which come from the standard lattice estimator with an independent cross-check. The Phase B corrections are annotations, each computed once. In Phase C, every downgrade and reversal had a second computation, and the rest are annotations. The closing entry (V4.97) is a decision record and derives nothing. V4.98 corrects six small mathematical slips.*

@@ -108,3 +108,12 @@ The B.3 quotations appear only in the approved draft and are taken as the author
 
 - **The canonical ledger in the repository** ("lives in the repository from now on"). The repository is public and serves `main` as a website. Committing the ledger reverses the June 18 policy, and it cannot be undone once pushed. Until the author confirms, the ledger stays out of the repository, as before. It is reproducible exactly from the fold scripts and the base md5.
 - **Deleting V4.95 from the project store**, to make room for STATUS.md and the phase reports.
+
+## Addendum, October 8, 2026: fold note (3) withdrawn at V4.98
+
+Fact 3 above is withdrawn, and §2.97.B.2's "(§2.93.B4, R2)" was correct as you wrote it.
+- §2.93.B4 labels its arithmetic "Data (R1)".
+- Its own disposition reads "The data and the Z = 88 observation are banked (R2)".
+- §2.93's register line gives "R1 for the arithmetic, R2 for the dispositions".
+
+B.2 quotes that disposition. The V4.97 record keeps its text and carries a [→ V4.98 (§2.98)] pointer that withdraws the note (`../fold_v4_98/FOLD_AUTHORIZATION_V4_98.md`).

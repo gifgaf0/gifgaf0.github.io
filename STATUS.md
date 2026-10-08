@@ -12,7 +12,7 @@
 - three standalone results: the second-sound paper (a negative result about supersolid vacua in general), the negative result on the program's lattice cryptosystem, and the alpha-decay data with its break at radium;
 - the idea that ran through the program, as a conjecture only: matter is energy held in place by geometry, and a structure lasts when it stores energy efficiently enough.
 
-No successor program is opened; the ledger records the conditions one would have to meet (§2.97.D). Corrections to the public work are drafted for the author. Nothing is published, deposited or sent.
+No successor program is opened; the ledger records the conditions one would have to meet (§2.97.D). Corrections to the public work are drafted for the author, and the author's decisions of October 8 are applied (V4.99). The canonical ledger now lives in this repository, at the root. Nothing is published, deposited or sent.
 
 ## How it closed (October 6–8)
 
@@ -36,7 +36,7 @@ No successor program is opened; the ledger records the conditions one would have
 - **The author then closed the program (V4.97).** Every open task in the ledger was sorted:
   - 43 task rows now point to the closing entry. 27 close with the program; 14 keep their mathematics open while the physical reading closes; 2 move to a "successor intake" list that is not opened.
   - The mathematics, crypto and author-action rows are untouched.
-  - Two rows are left for the author to classify.
+  - On October 8 the author classified the last two rows (OP-C7-1, OP-2.77-FB) as mathematics that stays open, and closed §4.14, the Doc-3 intake audit, with the program (V4.99).
 
 ## Established
 
@@ -121,15 +121,17 @@ No successor program is opened; the ledger records the conditions one would have
   - KC-EP: everything must fall alike to about one part in 10¹⁵ (the MICROSCOPE satellite), electrons, binding energy and field energy included.
   - The cosmic-ray, double-pulsar and dipole kill conditions apply to any proposed medium.
   - So do the method rules (prior address first, no Eddington maneuver, the category wall).
-- **Drafts awaiting the author's approval** (nothing is published, deposited, deployed or sent). They are in `audit_followup/closeout/`:
+- **Drafts for the author to deposit, post or merge** (nothing is published, deposited, deployed or sent). They are in `audit_followup/closeout/`:
   - **the gauge-paper correction (v6.4).** It is retitled "Gauge Group and Generation Structure from the Császár Polyhedron". It also fixes three statements: the quaternions' symmetry group is SO(3), a torus in space has an even spin structure, and the seven-vertex torus's uniqueness is classical. A Zenodo version note goes with it;
-  - **the PSL(2,7) note v3**, which now says it *records* classical results. It is built with each of two proposed titles and has a version note;
-  - **the alpha-decay paper v2.** It claims one robust break, at radium (Z = 88), and counts 51 steps, not 74. The sections that leaned on the closed framework are removed. A version note goes with it;
-  - **the public calculator, archived.** Either it keeps a one-line "Archived" banner, or a short page points to the archived copy;
+  - **the PSL(2,7) note v3**, which now says it *records* classical results. The author chose title A, "The Seven-Point Coset Geometry of PSL(2,7): Spectral Gap, Cheeger Constant and a Smith Obstruction". A version note goes with it;
+  - **the alpha-decay paper v2.** It claims one robust break, at radium (Z = 88), and counts 51 steps, not 74. The sections that leaned on the closed framework are removed. It is built on the deposited text, which the author confirmed is the store copy. A version note goes with it;
+  - **the public calculator, archived.** The author chose the short page: on this branch, `index.html` says the calculator is archived and links to `archive/calculator_v3_1.html`. It goes live when the pull request is merged;
   - **the second-sound paper's posting version**, byline Matthew Gifford, for a last read;
-  - **the SLWE negative-result note** in final form for IACR ePrint, with a one-sentence AI-assistance acknowledgement to approve;
-  - **Paper VII and the two store calculators, archived.** The corrections are applied, the gravitational-wave section is removed, and "Theorem 1" is renamed "Fit 1";
+  - **the SLWE negative-result note**, final, for the author to submit to IACR ePrint. It cites this repository at commit `b09929a`;
+  - **Paper VII and the two store calculators, archived.** The corrections are applied, the gravitational-wave section is removed, and "Theorem 1" is renamed "Fit 1". The calculator's "Cosmic Echoes" tab, its version of that section, is removed too;
   - **a short note to Flach**, kept in the project store rather than this public repository, saying the η-invariant computation he was asked about is no longer needed.
+  
+  The branch `claude/audit-followup-oct6` is ready for one pull request into `main`. A merge commit, not a squash, keeps the commits the ledger and the ePrint cite.
 - **The second-sound paper.** The author approved v1 on 4 October. Every fix the audit asked for was already in it, so it can be posted as approved.
 
 ## Archived with the program
@@ -142,4 +144,4 @@ No successor program is opened; the ledger records the conditions one would have
   - LHAASO's PeV photons cap the grains at 2.1 × 10⁻³⁵ m, about 1.3 Planck lengths, so cells must be finer than the Planck length for any grain of two or more cells.
   - The ledger's declared lattice, 12–47 Planck lengths per cell, fits no cell in a grain.
 
-*Every claim above is recorded with its evidence in the project's append-only ledger (now V4.98). Nothing here relies on numbers that have not been computed at least once. Every number behind a verdict this week was computed twice, independently. There are two exceptions: the gravity dispositions, which rest on standard theorems and published measurements, and the cryptosystem's security figures, which come from the standard lattice estimator with an independent cross-check. The Phase B corrections are annotations, each computed once. In Phase C, every downgrade and reversal had a second computation, and the rest are annotations. The closing entry (V4.97) is a decision record and derives nothing. V4.98 corrects six small mathematical slips.*
+*Every claim above is recorded with its evidence in the project's append-only ledger (now V4.99, `SQT_Master_Ledger_v4_99_CANONICAL.md` at the root of this repository). Nothing here relies on numbers that have not been computed at least once. Every number behind a verdict this week was computed twice, independently. There are two exceptions: the gravity dispositions, which rest on standard theorems and published measurements, and the cryptosystem's security figures, which come from the standard lattice estimator with an independent cross-check. The Phase B corrections are annotations, each computed once. In Phase C, every downgrade and reversal had a second computation, and the rest are annotations. The closing entry (V4.97) is a decision record and derives nothing. V4.98 corrects six small mathematical slips. V4.99 records the author's close-out decisions and corrects §2.22's count of imaginary units.*

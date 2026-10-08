@@ -121,3 +121,44 @@ Everything below is on branch `claude/audit-followup-oct6` unless marked "store"
    - For the ePrint, a commit hash in place of the branch name, so the reference stays valid.
 
 **Not done, as the brief says:** no successor opened; nothing published, deposited, deployed, submitted or sent; no letters on the branch.
+
+## Addendum, October 8, 2026: your decisions carried out
+
+**Plain-language summary.** Everything in your directive of 08:43 PDT is done and staged on the branch for the pull request. Nothing went to `main`, and nothing is published, deposited, submitted or sent.
+
+| Commit | What |
+|---|---|
+| `5d9577c` | V4.98 at the repository root, replacing `FOLD_LEDGER_2026-06-18.md` |
+| `64af32c` | V4.99 folded (§2.99) and in V4.98's place at the root: md5 `a86fa0907310b34413b42d7ebdbcb067`, 1,913,925 B |
+| `b09929a` | Calculator option B at the site root; the Cosmic Echoes tab removed from v1.9.1; title A, F3 and the classifications recorded |
+| `f5cc0dc` | The ePrint in final form, citing `b09929a` |
+| the commit adding this addendum | STATUS.md updated |
+
+**V4.99** adds four pointers and §2.99:
+- §2.22's imaginary-unit counts are corrected;
+- OP-C7-1 and OP-2.77-FB are classified (b), mathematics, open;
+- §4.14 closes with the program;
+- F7 and the decision not to banner C, G, J and K are confirmed;
+- the ledger's move into the repository is recorded.
+
+The reverse splice is exact and the independent check passes (`fold_v4_99/`).
+
+**Three things to know.**
+1. **§2.22 needed 0, 1, 3, 7, 15, not just 3, 7, 15.**
+   - §2.22 lists all five algebras, ℝ to 𝕊. The pointer gives the full list and notes that 3, 7 and 15 (for ℍ, 𝕆 and 𝕊) are the §2.53 correction.
+   - The same parenthetical's "30 imaginaries plus 1 real" is corrected too: 31 is the sum of the dimensions, which is 5 real units and 26 imaginaries.
+   - My close-out report had shortened the list; the V4.98 record gives it in full.
+2. **`FOLD_LEDGER_2026-06-18.md` was more than a placeholder.** It was the June 18 fold record: the pathion result filed as prior art, gate G-Φ1, and the literature-first rule. All three are in the ledger, and the file stays in the repository's history.
+3. **Found, not annotated.** §2.22's next sentence says zero divisors appear only beyond 𝕊. The sedenions themselves have them, which is V4.98's C.COSM.2 point. It is left for your word.
+
+**The store.** V4.96 was deleted at 08:48 PDT; the counter fell from 1,997,416 to 1,353,522 of 2,000,000. Five files were written to the store as copies of the files on this branch: `claude/STATUS.md`, `claude/PHASE_A_REPORT.md`, `claude/PHASE_B_REPORT.md`, `claude/PHASE_C_REPORT.md` and `claude/CLOSEOUT_REPORT.md`.
+
+**Merging.** Use a merge commit, not a squash or rebase: the ledger cites `5d9577c`, and the ePrint cites `b09929a`. The merge also puts the calculator stub live.
+
+**Left for you:**
+- open and merge the pull request;
+- deposit the gauge paper v6.4, the PSL(2,7) note v3 (title A) and the alpha-decay paper v2, with their Zenodo notes;
+- post the second-sound paper;
+- submit the ePrint;
+- send the Flach note;
+- if you want them there, put the archived Paper VII and calculators in the store in place of the old ones.

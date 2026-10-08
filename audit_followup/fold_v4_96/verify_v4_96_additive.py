@@ -110,7 +110,8 @@ if place_ok:
     rec, sec, chg = (frame(x) for x in blocks)
     place_ok &= (len(rec[0]) == 1 and rec[0][0].startswith("**V4.96 fold-in record (")
                  and rec[2].startswith("**V4.95 fold-in record (October 7, 2026):**") and rec[4] == 2)
-    place_ok &= (len(sec[0]) == 4 and sec[0][0].startswith("### §2.96 — ")
+    place_ok &= (len(sec[0]) == 6 and sec[0][0].startswith("### §2.96 — ")
+                 and sec[0][4].startswith("**What rests on which data.**")
                  and sec[1].startswith("**The floor, registers and non-claims.** The homogenization literature")
                  and sec[2] == "## J. Multi-Lens Reference and Phase Incommensurability" and sec[3] == 2 and sec[4] == 2)
     place_ok &= (len(chg[0]) == 1 and chg[0][0].startswith("*V4.96 (") and "additions only" in chg[0][0]

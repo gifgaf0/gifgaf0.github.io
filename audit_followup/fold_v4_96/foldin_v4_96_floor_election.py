@@ -117,8 +117,9 @@ S296 = [
     "### §2.96 — The Polycrystal Floor Elected: N = 50 (V4.96)",
     f"*(Folded V4.96, {DATE}: the author's election of the polycrystal validity floor — \"I select N = 50\" (October 7, "
     f"2026, 19:16 PDT) — and fold word \"{args.word}\" ({args.when}). The consequences are computed from §2.95's two-leg "
-    "numbers by `lattice_bound/ls_election_n50.py`: no new derivation, and no scale is pinned. The affected entries carry "
-    "[→ V4.96 (§2.96)] pointers.)*",
+    "numbers by `lattice_bound/ls_election_n50.py`: no new derivation, and no scale is pinned. \"What rests on which "
+    "data\" adds the two sentences the author asked for with the fold word, the second scoped to the TeV arms (see "
+    "`FOLD_AUTHORIZATION_V4_96.md`). The affected entries carry [→ V4.96 (§2.96)] pointers.)*",
     "**In plain language.** The author has set the minimum vacuum grain at 50 lattice cells, the low end of what the "
     "materials literature supports for a grain to behave as a bulk crystal. With that floor the photon data require a "
     "lattice spacing of at most 4.15×10⁻³⁷ m, 0.026 Planck lengths. The ledger's declared lattice, 12–47 Planck lengths, "
@@ -128,7 +129,15 @@ S296 = [
     "declared chain (a_phys ∈ [1.899, 7.588]×10⁻³⁴ m; G-S2C1-W's E-W-1(a)), fifty cells span 9.50×10⁻³³–3.79×10⁻³² m, "
     "wider than every arm's d_max, including W^EM_∪'s edge of 3.764×10⁻³³ m (by a factor of 2.52): the window is empty "
     "on every arm. (3) A lattice at or above ℓ_P leaves no window, since the combined bound allows at most 1.28 cells "
-    "per grain at a = ℓ_P. **Registers and non-claims.** The election is the author's (T3-immutable); the consequences "
+    "per grain at a = ℓ_P.",
+    "**What rests on which data.** With the PeV bound, the no-window verdict holds for every N ≥ 2 (for a Planck-length "
+    "lattice at 10× the loss, every N ≥ 3); N = 50 sets only the quoted spacing (0.026 ℓ_P, or 0.055 at 10× the loss). "
+    "Without the PeV data, W^EM_∪'s original anchor alone would need N ≥ 20 for the declared-chain verdict and would fit "
+    "a Planck-length lattice up to N ≈ 233. The TeV arms close most of that without PeV photons: Mrk 501 (16 TeV) and "
+    "GRB 221009A (7.7 TeV) fit a Planck-length lattice only up to N = 6 and N = 10 (13 and 23 at 10× the loss) and leave "
+    "the declared chain no window for any N ≥ 2, so the Planck-lattice verdict at N = 50 does not depend on the PeV data, "
+    "which extend it from N ≥ 7 down to N ≥ 2 (from N ≥ 14 to N ≥ 3 at 10× the loss).",
+    "**Registers and non-claims.** The election is the author's (T3-immutable); the consequences "
     "are R1 arithmetic on two-leg numbers, and (2) is conditional on E-W-1(a). No scale is pinned and no lower limit on "
     "a is declared. W^EM_∪ of record, the G-S2C1-W verdict and the polycrystal postulate's register (R3) stand as "
     "recorded; A1, A2, the second-sound drag and KC-EP are untouched. Nothing is published or sent.",
@@ -142,7 +151,9 @@ RECORD = (f"**V4.96 fold-in record ({DATE}):** POLYCRYSTAL FLOOR ELECTED — the
           f"(October 7, 2026, 19:16 PDT) and fold word \"{args.word}\" ({args.when}); `FOLD_AUTHORIZATION_V4_96.md`. The "
           "consequences were computed from the §2.95 two-leg numbers (`ls_election_n50.py`; both legs' d_max agree to "
           "10⁻¹²): a ≤ 4.15×10⁻³⁷ m (0.026 ℓ_P); under the declared chain the window is empty on every arm, including "
-          "W^EM_∪'s anchor; a lattice at or above ℓ_P leaves no window. Recorded as §2.96, with "
+          "W^EM_∪'s anchor; a lattice at or above ℓ_P leaves no window. At the author's request §2.96 also records which "
+          "verdicts rest on which data: the PeV arms exclude a Planck-length lattice for every N ≥ 2, and the TeV arms "
+          "alone already do so for N ≥ 7. Recorded as §2.96, with "
           f"{NBR} in-line [→ V4.96] pointers. No scale pinned; nothing published or sent. Estate: `audit_followup/` on "
           f"branch `claude/audit-followup-oct6` (head at fold `{args.head}`); `git ls-remote` {args.ls_remote}: main = "
           f"`{args.main}`. No §3.x; no observable bridge.\n\n")

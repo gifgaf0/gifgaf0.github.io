@@ -1,8 +1,8 @@
-V4.96 file: /home/claude/fold/SQT_Master_Ledger_v4_96_DRYRUN_NOT_CANONICAL.md md5: 64d13c0f09fb4941cdd2802a02a30877 bytes: 1876442 delta: 5064
-title rewrites: 1; As-of rewrites: 1; in-line pointer appends: 10; inserted lines: 11 (2996 B); V4.95 lines carried unchanged: 4715 of 4727
+V4.96 file: /home/claude/fold/SQT_Master_Ledger_v4_96_DRYRUN_NOT_CANONICAL.md md5: 13a75b3ecdce5a7390bd70ae384e8484 bytes: 1877597 delta: 6219
+title rewrites: 1; As-of rewrites: 1; in-line pointer appends: 10; inserted lines: 15 (4151 B); V4.95 lines carried unchanged: 4715 of 4727
 appends on the expected 10 lines: True | missing: [] | extra: []
 every host line contains its typed keyword: True | failing: []
-inserted blocks (V4.96 1-based line ranges): [(38, 39), (1737, 1744), (4737, 4737)]
+inserted blocks (V4.96 1-based line ranges): [(38, 39), (1737, 1748), (4741, 4741)]
 insertions at the declared places (record / §2.96 / changelog): True
 inserted headings: ['### §2.96 — The Polycrystal Floor Elected: N = 50 (V4.96)']
 §2.92.A unchanged: True

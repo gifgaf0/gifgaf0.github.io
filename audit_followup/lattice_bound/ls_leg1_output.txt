@@ -1,0 +1,52 @@
+LS leg 1 (prereg ea6651ce6b1b0c480476c8b506bc0d99)
+anchor reproduction: phase-2 Q 3.7641664257e-33 (dev 8.24e-10), banked Q 3.7641663853e-33 (dev 1.16e-08) vs record 3.7641664288e-33
+D_lt: z=0.186 725.495274 Mpc, z=0.151 603.224519 Mpc, z=0.034 147.521153 Mpc
+c_geo = Q_T^a/(8 eps_T^2): hex:step 0.5273, hex:gem8 0.5251, cubic:step 0.3977, cubic:gem8 0.3807
+
+arm  source                         d_rec (m)      d_ref (m)      x_max        valid      E4D rec  
+A0   1ES 1101-232 (anchor, TR-4)    3.764166e-33   5.971601e-34   6.597e-14    True       6.463e+72
+A1   Crab Nebula (LHAASO)           2.102204e-35   1.551709e-35   1.193e-13    True       3.710e+79
+A2   Cygnus bubble (LHAASO)         2.075148e-35   5.889200e-36   2.629e-13    True       3.857e+79
+A3   GRB 221009A (LHAASO KM2A)      1.739956e-34   9.119674e-35   1.269e-14    True       6.543e+76
+A4   Mrk 501 (HEGRA 1997)           1.049319e-34   7.098466e-35   1.179e-14    True       2.983e+77
+per-config bound of record:
+  A0 hex:step 3.764166e-33  hex:gem8 3.347820e-33  cubic:step 3.261913e-33  cubic:gem8 2.918593e-33
+  A1 hex:step 2.102204e-35  hex:gem8 1.869684e-35  cubic:step 1.821707e-35  cubic:gem8 1.629970e-35
+  A2 hex:step 2.075148e-35  hex:gem8 1.845620e-35  cubic:step 1.798260e-35  cubic:gem8 1.608991e-35
+  A3 hex:step 1.739956e-34  hex:gem8 1.547504e-34  cubic:step 1.507794e-34  cubic:gem8 1.349097e-34
+  A4 hex:step 1.049319e-34  hex:gem8 9.332562e-35  cubic:step 9.093083e-35  cubic:gem8 8.136026e-35
+report-only readings (hex:step): A3-lp 5.6925e-35 m; A3-13 8.6550e-35 m; A2-gaia 1.9112e-35 m; A1-2kpc 1.9268e-35 m
+combined: d_comb = 2.075148e-35 m (decisive A2); R4 x10 4.470770e-35, x0.1 9.631982e-36; ordering ['A2', 'A1', 'A4', 'A3', 'A0']
+
+a_max(N) = d_max/N  [metres | Planck lengths]
+arm           N=20                          N=100                         N=1000                        
+A0            1.8821e-34 | 1.1645e+01       3.7642e-35 | 2.3289e+00       3.7642e-36 | 2.3289e-01       
+A1            1.0511e-36 | 6.5033e-02       2.1022e-37 | 1.3007e-02       2.1022e-38 | 1.3007e-03       
+A2            1.0376e-36 | 6.4196e-02       2.0751e-37 | 1.2839e-02       2.0751e-38 | 1.2839e-03       
+A3            8.6998e-36 | 5.3827e-01       1.7400e-36 | 1.0765e-01       1.7400e-37 | 1.0765e-02       
+A4            5.2466e-36 | 3.2461e-01       1.0493e-36 | 6.4923e-02       1.0493e-37 | 6.4923e-03       
+combined      1.0376e-36 | 6.4196e-02       2.0751e-37 | 1.2839e-02       2.0751e-38 | 1.2839e-03       
+combined_R4x102.2354e-36 | 1.3831e-01       4.4708e-37 | 2.7661e-02       4.4708e-38 | 2.7661e-03       
+
+texture: t_max = Dn_max/|b1|; headline key hex_step|a
+  R-T1 (Dn 2e-37): headline 1.2315e-35; hex_step|a 1.2315e-35, hex_step|b 1.2314e-35, hex_gem8|a 1.1004e-35, hex_gem8|b 1.1005e-35, cubic_step|001 5.2772e-36, cubic_step|111 5.2772e-36, cubic_gem8|001 4.3974e-36, cubic_gem8|111 4.3974e-36
+  R-T2 (Dn 4e-32): headline 2.4629e-30; hex_step|a 2.4629e-30, hex_step|b 2.4628e-30, hex_gem8|a 2.2008e-30, hex_gem8|b 2.2009e-30, cubic_step|001 1.0554e-30, cubic_step|111 1.0554e-30, cubic_gem8|001 8.7948e-31, cubic_gem8|111 8.7948e-31
+  R-T0 (Dn 2e-38): headline 1.2315e-36; hex_step|a 1.2315e-36, hex_step|b 1.2314e-36, hex_gem8|a 1.1004e-36, hex_gem8|b 1.1005e-36, cubic_step|001 5.2772e-37, cubic_step|111 5.2772e-37, cubic_gem8|001 4.3974e-37, cubic_gem8|111 4.3974e-37
+  stat cubic (c=5.25, key cubic_step|001): t_max 5.2772e-36, M_min 1.8852e+71
+     at anchor_edge d=3.7642e-33: L_min 2.1583e-09 m, M_Fresnel 1.1589e+137, sigma_t 6.7305e-69, t_max/sigma_t 7.8407e+32
+     at d_comb d=2.0751e-35: L_min 1.1899e-11 m, M_Fresnel 6.9170e+143, sigma_t 2.7550e-72, t_max/sigma_t 1.9155e+36
+  stat hex (c=9.00, key hex_step|a): t_max 1.2315e-35, M_min 5.9347e+70
+     at anchor_edge d=3.7642e-33: L_min 1.4683e-09 m, M_Fresnel 1.1589e+137, sigma_t 8.8123e-69, t_max/sigma_t 1.3974e+33
+     at d_comb d=2.0751e-35: L_min 8.0944e-12 m, M_Fresnel 6.9170e+143, sigma_t 3.6071e-72, t_max/sigma_t 3.4140e+36
+
+dispersion: a_max^disp = hbar c/(E_QG2 sqrt(2|a2|))
+  record_6.9e11GeV|GK          1.7571e-27 m = 1.0872e+08 l_P
+  record_6.9e11GeV|GM          1.4078e-27 m = 8.7101e+07 l_P
+  abstract_6e-8EPl|GK          1.6551e-27 m = 1.0240e+08 l_P
+  abstract_6e-8EPl|GM          1.3260e-27 m = 8.2044e+07 l_P
+  record record_6.9e11GeV|GK; group-velocity check 1.2e-16
+
+combined a_max(N) = min(d_comb/N, a_max^disp):
+  N=20    1.0376e-36 m = 6.4196e-02 l_P (binding: attenuation)
+  N=100   2.0751e-37 m = 1.2839e-02 l_P (binding: attenuation)
+  N=1000  2.0751e-38 m = 1.2839e-03 l_P (binding: attenuation)

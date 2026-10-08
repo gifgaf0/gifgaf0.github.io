@@ -117,3 +117,6 @@ Fact 3 above is withdrawn, and §2.97.B.2's "(§2.93.B4, R2)" was correct as you
 - §2.93's register line gives "R1 for the arithmetic, R2 for the dispositions".
 
 B.2 quotes that disposition. The V4.97 record keeps its text and carries a [→ V4.98 (§2.98)] pointer that withdraws the note (`../fold_v4_98/FOLD_AUTHORIZATION_V4_98.md`).
+
+## Addendum, October 8, 2026: the store copy is V4.96
+"Deleting V4.95 from the project store" above should name V4.96. The store's copy has been V4.96 since October 7, 20:13 PDT, byte-identical to this fold's base (md5 `120b076a…`). See `../closeout/CLOSEOUT_FACTS.md` (addendum) and `../CLOSEOUT_REPORT.md`, section 4.

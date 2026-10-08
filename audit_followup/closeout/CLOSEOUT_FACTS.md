@@ -36,3 +36,8 @@ These cannot be undone, so they are not done.
 2. **Deleting V4.95 from the project store.**
    - The store has 5,709 B free. STATUS.md and the three phase reports need about 37 KB, so they fit only if the canonical leaves the store.
    - Until the author confirms, the store keeps V4.95. Small items are written to the store when they fit.
+
+## Addendum, October 8, 2026: the store copy
+- Item 2 above names V4.95. The store's copy has been **V4.96** since October 7, 20:13 PDT (2026-10-08 03:13:44 UTC). Re-read on October 8, it is byte-identical to the V4.96 fold output (md5 `120b076a…`).
+- "5,709 B free" was the store's counter at the V4.96 fold, and the counter is not in bytes. V4.96 and the two store calculators alone come to 2,019,219 B, more than the 1,997,416 it reports for every file in the store. After the Flach note it reports 2,584 free, in its own units.
+- The decision is unchanged: deleting the store's ledger copy waits for the author (`../CLOSEOUT_REPORT.md`, section 4).

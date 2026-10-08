@@ -1,0 +1,23 @@
+[paper] archived header
+[paper] corrections marked applied (1)
+[paper] corrections marked applied (2)
+[paper] corrections marked applied (3)
+[paper] §10 removed (6836 chars) and replaced by a note
+[paper] special case: Theorems 1, 3
+[paper] special case: Theorems 1 and 2
+[paper] special case: Theorems 1–3
+[paper] renamed Theorem 1 → Fit 1: 23 occurrences
+[v21] archived header comment
+[v21] label (comment)
+[v21] label (footer)
+[v21] visible banner
+[v191] archived header comment
+[v191] label (comment)
+[v191] label (header)
+[v191] label (footer)
+[v191] visible banner
+[v191] renamed Theorem 1 → Fit 1: 4 occurrences
+sqt_paper_VII_ARCHIVED_V4_97.md 420b1f4d73bb5b1ce763bb7d02667262 119361
+SQTCalculator_v2_1_ARCHIVED_V4_97.jsx 2b34a35e3c3e613e766fcc5e5a387fe8 21649
+sqt_v19_1_ARCHIVED_V4_97.jsx 859ba79fa4103f4602e107ae6be89e15 128088
+Theorem 1 renamed: {'paper': 23, 'v191': 4}

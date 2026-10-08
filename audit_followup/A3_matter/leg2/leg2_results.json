@@ -1,0 +1,836 @@
+{
+ "meta": {
+  "script": "leg2_a3.py",
+  "mp_dps": 50,
+  "numpy": "2.5.3",
+  "sympy": "1.14.0",
+  "mpmath": "1.3.0",
+  "python": "3.13.16",
+  "runtime_s": 47.6
+ },
+ "T1": {
+  "arcs": [
+   {
+    "component": 1,
+    "arc": "lobe(+v)",
+    "kind": "convex",
+    "centre": [
+     0.0,
+     1.645751311064591,
+     0.0
+    ],
+    "radius": 2.0,
+    "sweep_rad": 3.989654732571274,
+    "length": 7.979309465142548,
+    "centre_lies_on_component": 2,
+    "centre_distance_to_it": 0.0
+   },
+   {
+    "component": 1,
+    "arc": "waist(-u)",
+    "kind": "concave",
+    "centre": [
+     -3.645751311064591,
+     0.0,
+     0.0
+    ],
+    "radius": 2.0,
+    "sweep_rad": 0.848062078981481,
+    "length": 1.696124157962962,
+    "centre_lies_on_component": 3,
+    "centre_distance_to_it": 0.0
+   },
+   {
+    "component": 1,
+    "arc": "lobe(-v)",
+    "kind": "convex",
+    "centre": [
+     0.0,
+     -1.645751311064591,
+     0.0
+    ],
+    "radius": 2.0,
+    "sweep_rad": 3.989654732571274,
+    "length": 7.979309465142548,
+    "centre_lies_on_component": 2,
+    "centre_distance_to_it": 0.0
+   },
+   {
+    "component": 1,
+    "arc": "waist(+u)",
+    "kind": "concave",
+    "centre": [
+     3.645751311064591,
+     0.0,
+     0.0
+    ],
+    "radius": 2.0,
+    "sweep_rad": 0.848062078981481,
+    "length": 1.696124157962962,
+    "centre_lies_on_component": 3,
+    "centre_distance_to_it": 0.0
+   },
+   {
+    "component": 2,
+    "arc": "lobe(+v)",
+    "kind": "convex",
+    "centre": [
+     0.0,
+     0.0,
+     1.645751311064591
+    ],
+    "radius": 2.0,
+    "sweep_rad": 3.989654732571274,
+    "length": 7.979309465142548,
+    "centre_lies_on_component": 3,
+    "centre_distance_to_it": 0.0
+   },
+   {
+    "component": 2,
+    "arc": "waist(-u)",
+    "kind": "concave",
+    "centre": [
+     0.0,
+     -3.645751311064591,
+     0.0
+    ],
+    "radius": 2.0,
+    "sweep_rad": 0.848062078981481,
+    "length": 1.696124157962962,
+    "centre_lies_on_component": 1,
+    "centre_distance_to_it": 0.0
+   },
+   {
+    "component": 2,
+    "arc": "lobe(-v)",
+    "kind": "convex",
+    "centre": [
+     0.0,
+     0.0,
+     -1.645751311064591
+    ],
+    "radius": 2.0,
+    "sweep_rad": 3.989654732571274,
+    "length": 7.979309465142548,
+    "centre_lies_on_component": 3,
+    "centre_distance_to_it": 0.0
+   },
+   {
+    "component": 2,
+    "arc": "waist(+u)",
+    "kind": "concave",
+    "centre": [
+     0.0,
+     3.645751311064591,
+     0.0
+    ],
+    "radius": 2.0,
+    "sweep_rad": 0.848062078981481,
+    "length": 1.696124157962962,
+    "centre_lies_on_component": 1,
+    "centre_distance_to_it": 0.0
+   },
+   {
+    "component": 3,
+    "arc": "lobe(+v)",
+    "kind": "convex",
+    "centre": [
+     1.645751311064591,
+     0.0,
+     0.0
+    ],
+    "radius": 2.0,
+    "sweep_rad": 3.989654732571274,
+    "length": 7.979309465142548,
+    "centre_lies_on_component": 1,
+    "centre_distance_to_it": 0.0
+   },
+   {
+    "component": 3,
+    "arc": "waist(-u)",
+    "kind": "concave",
+    "centre": [
+     0.0,
+     0.0,
+     -3.645751311064591
+    ],
+    "radius": 2.0,
+    "sweep_rad": 0.848062078981481,
+    "length": 1.696124157962962,
+    "centre_lies_on_component": 2,
+    "centre_distance_to_it": 0.0
+   },
+   {
+    "component": 3,
+    "arc": "lobe(-v)",
+    "kind": "convex",
+    "centre": [
+     -1.645751311064591,
+     0.0,
+     0.0
+    ],
+    "radius": 2.0,
+    "sweep_rad": 3.989654732571274,
+    "length": 7.979309465142548,
+    "centre_lies_on_component": 1,
+    "centre_distance_to_it": 0.0
+   },
+   {
+    "component": 3,
+    "arc": "waist(+u)",
+    "kind": "concave",
+    "centre": [
+     0.0,
+     0.0,
+     3.645751311064591
+    ],
+    "radius": 2.0,
+    "sweep_rad": 0.848062078981481,
+    "length": 1.696124157962962,
+    "centre_lies_on_component": 2,
+    "centre_distance_to_it": 0.0
+   }
+  ],
+  "joins_max_position_gap": 6.280369834735101e-16,
+  "joins_max_tangent_gap": 4.002966042486721e-16,
+  "L_total_closed_form": "12*pi + 24*asin(3/4)",
+  "L_total": "58.05260173863306305482238",
+  "L_component": "19.35086724621102101827413",
+  "L_total_12digits": "58.0526017386",
+  "polygon_lengths": [
+   58.05254519847012,
+   58.052587590941314,
+   58.05259820173515,
+   58.052600854213686
+  ],
+  "richardson_h4": [
+   58.05260173979319,
+   58.05260173835365
+  ],
+  "richardson_abs_err": 2.794138254103018e-10,
+  "rel_diff_vs_58_05": 4.4818925634161154e-05,
+  "rel_diff_vs_58_006": 0.0008033951424518679,
+  "within_0p2pct_of_58_05": true,
+  "min_curvature_radius_numeric": 1.9999999883409283,
+  "curvature_radius_analytic": 2.0,
+  "min_intercomponent_distance": 1.9999999999999996,
+  "intercomponent_pair_min": {
+   "C1->C2": 1.9999999999999996,
+   "C1->C3": 1.9999999999999998,
+   "C2->C1": 1.9999999999999998,
+   "C2->C3": 1.9999999999999996,
+   "C3->C1": 1.9999999999999996,
+   "C3->C2": 1.9999999999999998
+  },
+  "contact_fraction": {
+   "C1->C2": 0.8248243075651096,
+   "C1->C3": 0.1753823894171145,
+   "C1->any": 1.0,
+   "C2->C1": 0.1753823894171145,
+   "C2->C3": 0.8248243075651096,
+   "C2->any": 1.0,
+   "C3->C1": 0.8248243075651096,
+   "C3->C2": 0.1753823894171145,
+   "C3->any": 1.0
+  },
+  "kdtree_pair_min": {
+   "C1-C2": 1.9999999999999996,
+   "C1-C3": 1.9999999999999996,
+   "C2-C3": 1.9999999999999996
+  },
+  "thickness_link": 0.9999999999999998,
+  "thickness_single_component": 1.6457513110645905,
+  "thickness_cross_pairs": 0.9999999999999998,
+  "doubly_critical_self_chords": [
+   {
+    "length": 3.2915026221291814,
+    "arcs": [
+     "waist(-u)",
+     "waist(+u)"
+    ]
+   },
+   {
+    "length": 4.0,
+    "arcs": [
+     "lobe(+v)",
+     "lobe(+v)"
+    ]
+   },
+   {
+    "length": 4.0,
+    "arcs": [
+     "lobe(+v)",
+     "waist(+u)"
+    ]
+   },
+   {
+    "length": 4.0,
+    "arcs": [
+     "lobe(+v)",
+     "waist(-u)"
+    ]
+   },
+   {
+    "length": 4.0,
+    "arcs": [
+     "lobe(-v)",
+     "lobe(-v)"
+    ]
+   },
+   {
+    "length": 4.0,
+    "arcs": [
+     "lobe(-v)",
+     "waist(+u)"
+    ]
+   },
+   {
+    "length": 4.0,
+    "arcs": [
+     "waist(-u)",
+     "lobe(-v)"
+    ]
+   },
+   {
+    "length": 7.291502622129181,
+    "arcs": [
+     "lobe(+v)",
+     "lobe(-v)"
+    ]
+   }
+  ],
+  "min_doubly_critical_self_distance": 3.2915026221291814,
+  "min_selfdistance_by_arc_cutoff": {
+   "3.141593": 2.830493436048649,
+   "6.283185": 3.291503637015973
+  },
+  "max_core_radius": 3.6457513110645907,
+  "min_core_radius": 1.6457513110645907,
+  "enclosing_sphere": 4.645751311064591,
+  "central_ball": 0.6457513110645907,
+  "linking_numbers": {
+   "lk(C1,C2)": 2.7092410937849054e-11,
+   "lk(C1,C3)": 4.299332460416539e-11,
+   "lk(C2,C3)": -1.2392881123462635e-11
+  },
+  "piercings": {
+   "C2 through D1": {
+    "plane_crossings": 2,
+    "piercings": 2,
+    "signs": [
+     -1,
+     1
+    ],
+    "signed_sum": 0,
+    "points": [
+     [
+      0.0,
+      -1.645751728,
+      0.0
+     ],
+     [
+      0.0,
+      1.645751728,
+      0.0
+     ]
+    ]
+   },
+   "C3 through D1": {
+    "plane_crossings": 2,
+    "piercings": 0,
+    "signs": [],
+    "signed_sum": 0,
+    "points": []
+   },
+   "C1 through D2": {
+    "plane_crossings": 2,
+    "piercings": 0,
+    "signs": [],
+    "signed_sum": 0,
+    "points": []
+   },
+   "C3 through D2": {
+    "plane_crossings": 2,
+    "piercings": 2,
+    "signs": [
+     -1,
+     1
+    ],
+    "signed_sum": 0,
+    "points": [
+     [
+      0.0,
+      0.0,
+      -1.645751728
+     ],
+     [
+      0.0,
+      0.0,
+      1.645751728
+     ]
+    ]
+   },
+   "C1 through D3": {
+    "plane_crossings": 2,
+    "piercings": 2,
+    "signs": [
+     -1,
+     1
+    ],
+    "signed_sum": 0,
+    "points": [
+     [
+      -1.645751728,
+      0.0,
+      0.0
+     ],
+     [
+      1.645751728,
+      0.0,
+      0.0
+     ]
+    ]
+   },
+   "C2 through D3": {
+    "plane_crossings": 2,
+    "piercings": 0,
+    "signs": [],
+    "signed_sum": 0,
+    "points": []
+   }
+  },
+  "cyclic_piercing_pattern": true,
+  "isotopy_to_ellipses": {
+   "min_intercomponent_distance_over_family": 1.419618646692396,
+   "min_radius_over_family": 1.645751317616519,
+   "samples": 41,
+   "radial_function_error": 1.3322676295501878e-15
+  },
+  "L_per_tube_radius": "58.052601738633063055",
+  "L_per_tube_diameter": "29.026300869316531527"
+ },
+ "T2": {
+  "m_at_Ae_1_L_2pi": "0.492490814054405616",
+  "phi": "1.61803398874989484820458683437",
+  "Phi": "6.25002751936008520754483273919",
+  "xi": "161.803398874989484820458683437",
+  "m0_MeV": "0.18699172555600655695700138716",
+  "a": {
+   "L": "60.19345963876359765545377",
+   "L_12": "60.1934596388",
+   "L_bisect": "60.19345963876359765545377",
+   "minus_60_194": "-0.000540361236402",
+   "within_0p001_of_60_194": true,
+   "rel_diff_from_60_194": -8.976994989572791e-06
+  },
+  "b": {
+   "m_at_58_006": "758.68851201206092668",
+   "m_at_T1_length": "762.1514630912349294",
+   "rel_to_mp_58_006": -0.1913981105563622,
+   "rel_to_mp_T1": -0.1877073353023058
+  },
+  "c": {
+   "aoz_exact_for_80_95": "0.49988423228937152661",
+   "nearest_rational": "1/2",
+   "next_rationals": [
+    "9/19",
+    "10/19",
+    "8/17"
+   ],
+   "L_with_nearest": "80.947332926007791158",
+   "rel_diff_from_80_95": -3.294717717367316e-05,
+   "within_0p1pct": true,
+   "xi_over_2": "80.90169943749474241",
+   "rel_80_95_vs_xi_over_2": 0.0005970277860797592
+  },
+  "d": {
+   "L_70_6": "47.690156451500870217",
+   "L_70_6_12": "47.6901564515",
+   "m_70_6_at_58_006": "2655.4097920422132434",
+   "m_70_6_at_T1": "2667.5301208193222529"
+  },
+  "monotone": true
+ },
+ "T3": {
+  "rows": [
+   {
+    "name": "Up",
+    "A": "3",
+    "Zf": "3",
+    "L": "16.372",
+    "recomputed": "2.0391420125313095708",
+    "printed": "2.039",
+    "rel_recomputed_vs_printed": 6.964812717487531e-05,
+    "flag_gt_0p1pct": false,
+    "pdg": "2.16",
+    "sigma": "0.07",
+    "err_pct_recomputed": -5.595277197624557,
+    "pull_recomputed": -1.726542678124149,
+    "err_pct_printed": -5.601851851851851,
+    "pull_printed": -1.7285714285714286,
+    "verdict_recomputed": "NOT HOLDING",
+    "verdict_printed": "NOT HOLDING",
+    "up_1sigma_interval": [
+     2.09,
+     2.23
+    ]
+   },
+   {
+    "name": "Down",
+    "A": "11",
+    "Zf": "9",
+    "L": "21.04",
+    "recomputed": "4.588990035740208512",
+    "printed": "4.589",
+    "rel_recomputed_vs_printed": -2.171335757569849e-06,
+    "flag_gt_0p1pct": false,
+    "pdg": "4.70",
+    "sigma": "0.07",
+    "err_pct_recomputed": -2.361914133187053,
+    "pull_recomputed": -1.5858566322827354,
+    "err_pct_printed": -2.3617021276595747,
+    "pull_printed": -1.5857142857142856,
+    "verdict_recomputed": "NOT HOLDING",
+    "verdict_printed": "NOT HOLDING",
+    "up_1sigma_interval": null
+   },
+   {
+    "name": "Charm",
+    "A": "5",
+    "Zf": "1/48",
+    "L": "23.60",
+    "recomputed": "1245.6744897889200238",
+    "printed": "1245.7",
+    "rel_recomputed_vs_printed": -2.047861530061506e-05,
+    "flag_gt_0p1pct": false,
+    "pdg": "1273.0",
+    "sigma": "4.6",
+    "err_pct_recomputed": -2.146544399927728,
+    "pull_recomputed": -5.940328306756516,
+    "err_pct_printed": -2.1445404556166534,
+    "pull_printed": -5.934782608695652,
+    "verdict_recomputed": "NOT HOLDING",
+    "verdict_printed": "NOT HOLDING",
+    "up_1sigma_interval": null
+   },
+   {
+    "name": "Bottom",
+    "A": "119",
+    "Zf": "3/4",
+    "L": "37.31",
+    "recomputed": "4162.5857285299824423",
+    "printed": "4162.6",
+    "rel_recomputed_vs_printed": -3.4284990192566457e-06,
+    "flag_gt_0p1pct": false,
+    "pdg": "4183",
+    "sigma": "7",
+    "err_pct_recomputed": -0.48802943987610703,
+    "pull_recomputed": -2.9163244957167938,
+    "err_pct_printed": -0.4876882620129094,
+    "pull_printed": -2.914285714285714,
+    "verdict_recomputed": "holds",
+    "verdict_printed": "holds",
+    "up_1sigma_interval": null
+   },
+   {
+    "name": "Top",
+    "A": "119",
+    "Zf": "1/(8 phi^4)",
+    "L": "37.31",
+    "recomputed": "171184.72215960136962",
+    "printed": "171185",
+    "rel_recomputed_vs_printed": -1.62304173046927e-06,
+    "flag_gt_0p1pct": false,
+    "pdg": "172570",
+    "sigma": "290",
+    "err_pct_recomputed": -0.8027338705444923,
+    "pull_recomputed": -4.776820139305622,
+    "err_pct_printed": -0.8025728689807036,
+    "pull_printed": -4.775862068965517,
+    "verdict_recomputed": "holds",
+    "verdict_printed": "holds",
+    "up_1sigma_interval": null
+   },
+   {
+    "name": "Tau",
+    "A": "3",
+    "Zf": "1/(2 pi)",
+    "L": "3 Phi phi^2 = 49.0883534289207",
+    "recomputed": "1752.4261213236918173",
+    "printed": "1752.4",
+    "rel_recomputed_vs_printed": 1.4906028128176952e-05,
+    "flag_gt_0p1pct": false,
+    "pdg": "1776.93",
+    "sigma": "0.09",
+    "err_pct_recomputed": -1.3790007865424176,
+    "pull_recomputed": -272.2653186256465,
+    "err_pct_printed": -1.3804708120184812,
+    "pull_printed": -272.55555555555554,
+    "verdict_recomputed": "holds",
+    "verdict_printed": "holds",
+    "up_1sigma_interval": null
+   },
+   {
+    "name": "W",
+    "A": "-",
+    "Zf": "-",
+    "L": "m0 phi^27",
+    "recomputed": "82127.513831526055259",
+    "printed": "82128",
+    "rel_recomputed_vs_printed": -5.91964340961354e-06,
+    "flag_gt_0p1pct": false,
+    "pdg": "80369.2",
+    "sigma": "13.3",
+    "err_pct_recomputed": 2.1877956126551656,
+    "pull_recomputed": 132.20404748316204,
+    "err_pct_printed": 2.188400531546911,
+    "pull_printed": 132.2406015037594,
+    "verdict_recomputed": "reported (>2%: yes)",
+    "verdict_printed": "reported (>2%: yes)",
+    "up_1sigma_interval": null
+   },
+   {
+    "name": "Z",
+    "A": "-",
+    "Zf": "-",
+    "L": "m_W/sqrt(1-phi^-3)",
+    "recomputed": "93963.961544783130864",
+    "printed": "93964",
+    "rel_recomputed_vs_printed": -4.092547876754484e-07,
+    "flag_gt_0p1pct": false,
+    "pdg": "91188.0",
+    "sigma": "2.0",
+    "err_pct_recomputed": 3.0442180383198783,
+    "pull_recomputed": 1387.9807723915653,
+    "err_pct_printed": 3.044260209676712,
+    "pull_printed": 1388.0,
+    "verdict_recomputed": "reported (>2%: yes)",
+    "verdict_printed": "reported (>2%: yes)",
+    "up_1sigma_interval": null
+   }
+  ],
+  "not_holding_recomputed": [
+   "Up",
+   "Down",
+   "Charm"
+  ],
+  "not_holding_printed": [
+   "Up",
+   "Down",
+   "Charm"
+  ],
+  "Lq": "16.362784476306894522",
+  "tau_L": "49.088353428920683566"
+ },
+ "T4": {
+  "validation": [
+   {
+    "link": "unknot s1 (B2)",
+    "word": [
+     1
+    ],
+    "mu": 1,
+    "multivar": "1",
+    "onevar": "1",
+    "conway": "1",
+    "burau": "1"
+   },
+   {
+    "link": "trefoil s1^3 (B2)",
+    "word": [
+     1,
+     1,
+     1
+    ],
+    "mu": 1,
+    "multivar": "t1**2 - t1 + 1",
+    "onevar": "t**2 - t + 1",
+    "conway": "z**2 + 1",
+    "burau": "t**2 - t + 1"
+   },
+   {
+    "link": "figure-eight (s1 s2^-1)^2",
+    "word": [
+     1,
+     -2,
+     1,
+     -2
+    ],
+    "mu": 1,
+    "multivar": "t1**2 - 3*t1 + 1",
+    "onevar": "t**2 - 3*t + 1",
+    "conway": "1 - z**2",
+    "burau": "t**2 - 3*t + 1"
+   },
+   {
+    "link": "Hopf s1^2",
+    "word": [
+     1,
+     1
+    ],
+    "mu": 2,
+    "multivar": "1",
+    "onevar": "t - 1",
+    "conway": "z",
+    "burau": "t - 1"
+   },
+   {
+    "link": "T(2,4) s1^4",
+    "word": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "mu": 2,
+    "multivar": "t1*t2 + 1",
+    "onevar": "(t - 1)*(t**2 + 1)",
+    "conway": "z**3 + 2*z",
+    "burau": "(t - 1)*(t**2 + 1)"
+   },
+   {
+    "link": "Whitehead s1 s2^-1 s1 s2^-2",
+    "word": [
+     1,
+     -2,
+     1,
+     -2,
+     -2
+    ],
+    "mu": 2,
+    "multivar": "(t1 - 1)*(t2 - 1)",
+    "onevar": "(t - 1)**3",
+    "conway": "z**3",
+    "burau": "(t - 1)**3"
+   }
+  ],
+  "wirtinger_presentation": {
+   "arcs_to_component": [
+    1,
+    2,
+    3,
+    1,
+    3,
+    2
+   ],
+   "relations": [
+    "x4 = x2 x1 x2^-1   (crossing sign +1)",
+    "x5 = x4^-1 x3 x4   (crossing sign -1)",
+    "x6 = x5 x2 x5^-1   (crossing sign +1)",
+    "x1 = x6^-1 x4 x6   (crossing sign -1)",
+    "x3 = x1 x5 x1^-1   (crossing sign +1)",
+    "x2 = x3^-1 x6 x3   (crossing sign -1)"
+   ]
+  },
+  "multivariable": "t1*t2*t3 - t1*t2 - t1*t3 + t1 - t2*t3 + t2 + t3 - 1",
+  "multivariable_factored": "(t1 - 1)*(t2 - 1)*(t3 - 1)",
+  "symmetric": true,
+  "delta_ttt": "t**3 - 3*t**2 + 3*t - 1",
+  "delta_ttt_factored": "(t - 1)**3",
+  "delta_ttt_coeffs": [
+   1,
+   -3,
+   3,
+   -1
+  ],
+  "delta_L": "t**4 - 4*t**3 + 6*t**2 - 4*t + 1",
+  "delta_L_factored": "(t - 1)**4",
+  "delta_L_coeffs": [
+   1,
+   -4,
+   6,
+   -4,
+   1
+  ],
+  "torres_holds": true,
+  "sumsq_delta_ttt": 20,
+  "sumsq_delta_L": 70,
+  "conway": "z**4",
+  "conway_matches": true,
+  "burau": "(t - 1)**4",
+  "burau_matches": true,
+  "projection_check": {
+   "four-arc configuration (1.0, 1.013, 0.987)": {
+    "crossings": 12,
+    "delta": "(t1 - 1)*(t2 - 1)*(t3 - 1)",
+    "same_as_braid": true,
+    "lk_from_crossings": {
+     "12": 0.0,
+     "13": 0.0,
+     "23": 0.0
+    },
+    "min_depth_gap": 2.1511608112922067
+   },
+   "four-arc configuration sublink without C1": "0",
+   "four-arc configuration sublink without C2": "0",
+   "four-arc configuration sublink without C3": "0",
+   "four-arc configuration (0.31, -0.77, 0.56)": {
+    "crossings": 12,
+    "delta": "(t1 - 1)*(t2 - 1)*(t3 - 1)",
+    "same_as_braid": true,
+    "lk_from_crossings": {
+     "12": 0.0,
+     "13": 0.0,
+     "23": 0.0
+    },
+    "min_depth_gap": 2.0383326341103163
+   },
+   "three perpendicular ellipses (1.0, 1.013, 0.987)": {
+    "crossings": 12,
+    "delta": "(t1 - 1)*(t2 - 1)*(t3 - 1)",
+    "same_as_braid": true,
+    "lk_from_crossings": {
+     "12": 0.0,
+     "13": 0.0,
+     "23": 0.0
+    },
+    "min_depth_gap": 1.9212196979111291
+   },
+   "three perpendicular ellipses sublink without C1": "0",
+   "three perpendicular ellipses sublink without C2": "0",
+   "three perpendicular ellipses sublink without C3": "0",
+   "three perpendicular ellipses (0.31, -0.77, 0.56)": {
+    "crossings": 12,
+    "delta": "(t1 - 1)*(t2 - 1)*(t3 - 1)",
+    "same_as_braid": true,
+    "lk_from_crossings": {
+     "12": 0.0,
+     "13": 0.0,
+     "23": 0.0
+    },
+    "min_depth_gap": 1.5566391549154872
+   }
+  }
+ },
+ "implied_by_rules": {
+  "DR-A3-1": {
+   "L_fourarc": "58.0526017386331",
+   "within_0p2pct": true,
+   "verdict": "UNITS MATCH (given prereg's quotation of E.1.1)"
+  },
+  "DR-A3-2": {
+   "U": "58.006",
+   "clause1": "FAILS -> RETRACTS to Conjecture status",
+   "clause2": "not triggered as written"
+  },
+  "DR-A3-3": {
+   "60.194": "(I) inversion with A/Zf = 20/6 = 10/3 (rel. diff -8.98e-06)",
+   "58.05": "(G) explicit embedded four-arc configuration, length 58.05260174",
+   "80.95": "(I) inversion with A/Zf = 1/2 (rel. diff -3.29e-05)"
+  },
+  "DR-A3-4": {
+   "within": true
+  },
+  "DR-A3-5": {
+   "sumsq_delta_ttt": 20,
+   "sumsq_delta_L": 70
+  },
+  "DR-A3-7": {
+   "not_holding": [
+    "Up",
+    "Down",
+    "Charm"
+   ]
+  }
+ }
+}

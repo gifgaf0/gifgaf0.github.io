@@ -1,0 +1,6 @@
+sum15 : [(1, 14, 5, -1), (2, 13, 3, -1), (3, 12, 1, 1), (4, 11, 6, -1), (5, 10, 4, 1), (6, 9, 2, 1)]
+imaginaries : {'R': 0, 'C': 1, 'H': 3, 'O': 7, 'S': 15}
+jones_7_1 : {3: 1, 5: 1, 6: -1, 7: 1, 8: -1, 9: 1, 10: -1}
+sedenion_zero_divisor : (e1 + e10)(e4 - e15) = 0
+junctions : {'hexagonal': (3, 120, 360), 'triangular': (6, 60, 360)}
+ALL CHECKS PASS

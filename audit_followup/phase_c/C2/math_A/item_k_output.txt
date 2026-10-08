@@ -1,0 +1,13 @@
+§2.55 (L1965-L1990): literature/attribution keyword hits: [(1967, 'assessor')]
+§2.68.4 (L2034-L2055): literature/attribution keyword hits: NONE
+§2.41.B (L1746-L1779): literature/attribution keyword hits: NONE
+  (the only §2.55 hit, L1967, is the V4.17 forward pointer's word 'assessor-sum', not an attribution)
+  L1972: - The 84 ZDs partition into **7 orbits of 12 elements** under the Fano-plane action, indexed by a "missing element" m ∈ {1..7}.
+  L1973: - For ZD x in the orbit with missing element m, the kernel ker(L_x) is a 4-dimensional subspace supported on **the cross-edges of the two Fano lines through m** (other than the line on which x sits). This is the Fano-line co-line structure: each kernel is "off" the line of its parent and "on" the two co-lines through the same third point.
+  L2036: The 42-edge combinatorial object identified above appears under at least nine independent headings in the existing ledger and the Rosetta Stone manuscript. They describe the same object through different lenses:
+  L2050: **What the unification establishes (Tier 2).** These nine entries describe the same 42-edge graph (or its 84-channel directed double-cover). The objects are the same; the descriptions differ in counting basis (42 unordered vs 84 ordered vs 21 underlying K₇ edges vs 21 × 4 directional flow channels), algebraic origin (sedenion ZDs vs CD torus fold vs Császár-Szilassi dual factorization), combinator
+  L1760: **The 168 co-occurrence is a coincidence (G-2a.3, R1; Eddington guard discharged).** The census found 168 unordered annihilating pairs among the 84 ZDs, equal to |PSL(2,7)|. Decisive test: the 84 ZDs form a 4-regular annihilation graph of **7 components × 12 vertices** (so 168 = 84×4/2 = 7×24 is *forced* combinatorics), each component labelled by a distinct missing Fano index; and of the 168 Fano 
+
+assessors: 42; grouped by strut constant a XOR b' -> 7 groups of sizes [6, 6, 6, 6, 6, 6, 6]
+each group's supports miss exactly its strut constant (the §2.31/§2.55 'missing element' m): True
+for all 84 two-term ZDs x: ker L_x contains exactly 4 clean two-term vectors, one diagonal of each of the 4 co-assessors (box-kite minus x's assessor and its strut-opposite): True; they span ker L_x (dim 4): True

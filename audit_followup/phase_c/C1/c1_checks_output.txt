@@ -1,0 +1,6 @@
+exact CBD tail: {'N_distribution': 'CBD(258) = Bin(516,1/2) - 258', 'log2_P(|N|>227)_q911': -353.5208293237424, 'log2_P(|N|>682)_q2731': -inf, 'log2_P(|N|>q_spec/4)': '-inf (support ends at 258)'}
+zero divisors with a 4-dim kernel: 84
+kernel basis max |entry|: 1 | confined noise (σ=2) max |entry|: 2
+{'noise': 'CBD eta=2 (spec)', 'worst_case_|N|': 258, 'q_spec/4': 1073744490.25, 'DFR_zero_at_spec': True, 'margin_factor': 4161800.3, 'q_min_for_DFR_zero': 1033, 'q911/4': 227.75, 'DFR_zero_at_911': False}
+{'noise': 'CBD eta=512 (top of the §2.66.1 sweep)', 'worst_case_|N|': 66048, 'q_spec/4': 1073744490.25, 'DFR_zero_at_spec': True, 'margin_factor': 16257.0, 'q_min_for_DFR_zero': 264193, 'q911/4': 227.75, 'DFR_zero_at_911': False}
+{'noise': 'confined kernel noise, sigma=2 (e, e1), CBD2 e2', 'worst_case_|N|': 258, 'q_spec/4': 1073744490.25, 'DFR_zero_at_spec': True, 'margin_factor': 4161800.3, 'q_min_for_DFR_zero': 1033, 'q911/4': 227.75, 'DFR_zero_at_911': False}

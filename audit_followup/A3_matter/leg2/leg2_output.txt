@@ -1,0 +1,192 @@
+
+==============================================================================
+T1  Four-arc Borromean configuration (DR-A3-1)
+==============================================================================
+Rhombus: side 4, half-diagonals a = sqrt7+1 = 3.645751311064591 (u axis), b = sqrt7-1 = 1.645751311064591 (v axis)
+  check a^2+b^2 = 16.000000000000000 (=16), 2a-2b = 4.000000000000000 (=4)
+Choice: CONVEX lobes = arcs centred at the minor-diagonal vertices (0,+-b);
+        CONCAVE waists = arcs centred at the major-diagonal vertices (+-a,0).
+  (Opposite assignment: waists centred at (0,+-b) would reach v = b-2 = -0.354 and -b+2 = +0.354,
+   i.e. cross each other, and the far point would sit at sqrt7+3, not sqrt7+1. Rejected.)
+  lobe sweep = pi + asin(3/4) = 3.989654732571 rad (228.590378 deg); waist sweep = asin(3/4) = 0.848062078981 rad (48.590378 deg)
+Joins (position gap, tangent gap, join point):
+   2.22e-16  1.57e-16  (-1.822875655532, 0.822875655532)
+   6.28e-16  4.00e-16  (-1.822875655532, -0.822875655532)
+   2.22e-16  1.57e-16  (1.822875655532, -0.822875655532)
+   3.33e-16  5.55e-17  (1.822875655532, 0.822875655532)
+Total turning = 6.283185307179586 (2 pi = 6.283185307179586)
+Arc table (component C1 in the xy-plane; C2 = sigma(C1), C3 = sigma(C2), sigma(x,y,z)=(z,x,y)):
+  C1 lobe(+v)  convex  centre (+0.000000,+1.645751,+0.000000) sweep 3.989654732571 rad  len 7.979309465143  centre on C2 (dist 0.0e+00)
+  C1 waist(-u) concave centre (-3.645751,+0.000000,+0.000000) sweep 0.848062078981 rad  len 1.696124157963  centre on C3 (dist 0.0e+00)
+  C1 lobe(-v)  convex  centre (+0.000000,-1.645751,+0.000000) sweep 3.989654732571 rad  len 7.979309465143  centre on C2 (dist 0.0e+00)
+  C1 waist(+u) concave centre (+3.645751,+0.000000,+0.000000) sweep 0.848062078981 rad  len 1.696124157963  centre on C3 (dist 0.0e+00)
+  C2 lobe(+v)  convex  centre (+0.000000,+0.000000,+1.645751) sweep 3.989654732571 rad  len 7.979309465143  centre on C3 (dist 0.0e+00)
+  C2 waist(-u) concave centre (+0.000000,-3.645751,+0.000000) sweep 0.848062078981 rad  len 1.696124157963  centre on C1 (dist 0.0e+00)
+  C2 lobe(-v)  convex  centre (+0.000000,+0.000000,-1.645751) sweep 3.989654732571 rad  len 7.979309465143  centre on C3 (dist 0.0e+00)
+  C2 waist(+u) concave centre (+0.000000,+3.645751,+0.000000) sweep 0.848062078981 rad  len 1.696124157963  centre on C1 (dist 0.0e+00)
+  C3 lobe(+v)  convex  centre (+1.645751,+0.000000,+0.000000) sweep 3.989654732571 rad  len 7.979309465143  centre on C1 (dist 0.0e+00)
+  C3 waist(-u) concave centre (+0.000000,+0.000000,-3.645751) sweep 0.848062078981 rad  len 1.696124157963  centre on C2 (dist 0.0e+00)
+  C3 lobe(-v)  convex  centre (-1.645751,+0.000000,+0.000000) sweep 3.989654732571 rad  len 7.979309465143  centre on C1 (dist 0.0e+00)
+  C3 waist(+u) concave centre (+0.000000,+0.000000,+3.645751) sweep 0.848062078981 rad  len 1.696124157963  centre on C2 (dist 0.0e+00)
+
+(b) per component: 2 lobes x 2(pi+asin(3/4)) + 2 waists x 2 asin(3/4) = 4 pi + 8 asin(3/4)
+    L_total = 12 pi + 24 asin(3/4) = 12 pi + 24 atan(3/sqrt7) = 12 pi + 48 atan((sqrt7-1)/(sqrt7+1))
+    L_total   = 58.05260173863306305482238
+    L_comp    = 19.35086724621102101827413
+    alt forms = 58.05260173863306305482238 , 58.05260173863306305482238
+    float sum of R|sweep| over 12 arcs = 58.052601738633058
+    inscribed polygons N=2k..16k: 58.052545198470, 58.052587590941, 58.052598201735, 58.052600854214
+    Richardson (h^2): 58.052601721765, 58.052601738666, 58.052601738373 ; (h^4): 58.052601739793, 58.052601738354
+    |extrapolated - closed form| = 2.79e-10
+    rel. diff vs CKS02 'about 58.05' = 4.4818926e-5 (0.00448 %); vs 58.006 = 0.00080339514 (0.08034 %)
+
+(c) Embedding of radius-1 tubes
+    curvature radius: analytic 2 on all 12 arcs; numeric min circumradius of triples = 1.999999988341
+    min dist C1->C2 = 1.9999999999999996   (fraction of C_i samples at exactly 2 +- 1e-12: 0.8248)
+    min dist C1->C3 = 1.9999999999999998   (fraction of C_i samples at exactly 2 +- 1e-12: 0.1754)
+    min dist C2->C1 = 1.9999999999999998   (fraction of C_i samples at exactly 2 +- 1e-12: 0.1754)
+    min dist C2->C3 = 1.9999999999999996   (fraction of C_i samples at exactly 2 +- 1e-12: 0.8248)
+    min dist C3->C1 = 1.9999999999999996   (fraction of C_i samples at exactly 2 +- 1e-12: 0.8248)
+    min dist C3->C2 = 1.9999999999999998   (fraction of C_i samples at exactly 2 +- 1e-12: 0.1754)
+    fraction of each component in contact (dist = 2 to some other component): C1->any 1.000000, C2->any 1.000000, C3->any 1.000000
+    KD-tree cross-check (sample-to-sample, h=1e-3): {'C1-C2': 1.9999999999999996, 'C1-C3': 1.9999999999999996, 'C2-C3': 1.9999999999999996}
+    thickness (inf of point-tangent radius rho_pt over 7260 samples):
+      whole link   = 1.000000000000000  (pair: [0.       1.645751 0.      ] / [1.411582 3.062591 0.      ])
+      same comp    = 1.645751311064590  (sqrt7-1 = 1.645751311064591)
+      cross comp   = 1.000000000000000
+    doubly-critical self-chords (exact): 3.291502622129 [waist(-u),waist(+u)]; 4.000000000000 [lobe(+v),lobe(+v)]; 4.000000000000 [lobe(+v),waist(+u)]; 4.000000000000 [lobe(+v),waist(-u)]; 4.000000000000 [lobe(-v),lobe(-v)]; 4.000000000000 [lobe(-v),waist(+u)]; 4.000000000000 [waist(-u),lobe(-v)]; 7.291502622129 [lobe(+v),lobe(-v)]
+      min = 3.291502622129181  (2(sqrt7-1) = 3.291502622129181)
+    min self-distance over pairs with arc separation >= pi : 2.830493436 ; >= 2pi : 3.291503637
+    max |core| = 3.645751311064591 (sqrt7+1 = 3.645751311064591) -> tube inside sphere radius 4.645751311064591 (sqrt7+2)
+    min |core| = 1.645751311064591 (sqrt7-1 = 1.645751311064591) -> tube clears ball radius 0.645751311064591 (sqrt7-2)
+
+(d) Linking numbers (exact polygon solid-angle formula) and disc piercings
+    test: Hopf pair lk = -1.000000000000 ; separated pair lk = -0.000000000000
+    lk(C1,C2) = +2.709e-11, lk(C1,C3) = +4.299e-11, lk(C2,C3) = -1.239e-11
+    C2 through D1: plane crossings 2, disc piercings 2, signs [-1, 1], signed sum 0, at [[0.0, -1.645751728, 0.0], [0.0, 1.645751728, 0.0]]
+    C3 through D1: plane crossings 2, disc piercings 0, signs [], signed sum 0, at []
+    C1 through D2: plane crossings 2, disc piercings 0, signs [], signed sum 0, at []
+    C3 through D2: plane crossings 2, disc piercings 2, signs [-1, 1], signed sum 0, at [[0.0, 0.0, -1.645751728], [0.0, 0.0, 1.645751728]]
+    C1 through D3: plane crossings 2, disc piercings 2, signs [-1, 1], signed sum 0, at [[-1.645751728, 0.0, 0.0], [1.645751728, 0.0, 0.0]]
+    C2 through D3: plane crossings 2, disc piercings 0, signs [], signed sum 0, at []
+    cyclic pattern (D_i pierced twice, opposite signs, by C_(i+1) only): True
+    radial-graph check: max |radial_C point - curve| = 1.33e-15
+    isotopy r_s = (1-s) r_C + s r_E (ellipse semi-axes sqrt7-1, sqrt7+1; axis points fixed):
+      min over s of min inter-component distance = 1.419619 ; min radius = 1.645751 ; at s=1 (ellipses) 1.419619
+
+(e) L per tube RADIUS   = 58.052601738633063055
+    L per tube DIAMETER = 29.026300869316531527
+
+==============================================================================
+T2  Mass-formula inversions (DR-A3-2/3/4)
+==============================================================================
+phi = 1.618033988749894848204587
+Phi = 2 pi - phi^2/(8 pi^2) = 6.250027519360085207544833
+xi  = 100 phi = 161.8033988749894848204587
+m0  = 0.511/exp(2 pi/Phi) = 0.1869917255560065569570014 MeV
+note: m(A/Zf=1, L=2 pi) = 0.492490814054406 MeV under the formula as stated (r_eff(2 pi) = 1.03809721762858, not 1)
+
+(a) L(m_p=938.272; A/Zf=20/6) = 60.19345963876359765545377   [Lambert W_-1]
+                               = 60.19345963876359765545377   [bisection]   |diff| = 1.71e-49
+    back-substitution m = 938.272 MeV
+    L - 60.194 = -0.0005403612364  (DR-A3-4 window +-0.001: True)
+
+(b) m(20,6, L=58.006)        = 758.68851201206092668 MeV  (m/m_p - 1 = -0.19139811)
+    m(20,6, L=T1=58.0526017386331) = 762.1514630912349294 MeV  (m/m_p - 1 = -0.18770734)
+
+(c) A/Zf reproducing L=80.95 exactly: 0.49988423228937152661
+    nearest p/q (p,q<=20): 1/2 ; next: 9/19 (-0.0262), 10/19 (0.02643), 8/17 (-0.0293)
+    L(m_p; A/Zf=1/2) = 80.947332926007791158 ; rel diff from 80.95 = -3.2947177e-5 (-0.00329 %)
+    (for reference 50 phi = xi/2 = 80.9016994374947 ; 80.95/(xi/2) - 1 = 0.000597028)
+
+(d) L(m_p; A/Zf=70/6) = 47.690156451500870217  (bisection 47.690156451500870217)
+    m(70,6, L=58.006) = 2655.4097920422132434 MeV ; m(70,6, L=T1) = 2667.5301208193222529 MeV
+    m(L) strictly increasing on (0,500]: True (inversion unique)
+
+==============================================================================
+T3  Mass table (DR-A3-7)
+==============================================================================
+row     inputs (A, Zf, L)          recomputed             printed    rec/prt-1  >0.1%?    | err% rec  pull rec  | err% prt  pull prt  | verdict     
+Up      3, 3, 16.372               2.03914201253131       2.039      +6.965e-05 ok        |  -5.5953%    -1.727 |  -5.6019%    -1.729 | NOT HOLDING / NOT HOLDING
+Down    11, 9, 21.04               4.58899003574021       4.589      -2.171e-06 ok        |  -2.3619%    -1.586 |  -2.3617%    -1.586 | NOT HOLDING / NOT HOLDING
+Charm   5, 1/48, 23.60             1245.67448978892       1245.7     -2.048e-05 ok        |  -2.1465%    -5.940 |  -2.1445%    -5.935 | NOT HOLDING / NOT HOLDING
+Bottom  119, 3/4, 37.31            4162.58572852998       4162.6     -3.428e-06 ok        |  -0.4880%    -2.916 |  -0.4877%    -2.914 | holds / holds
+Top     119, 1/(8 phi^4), 37.31    171184.722159601       171185     -1.623e-06 ok        |  -0.8027%    -4.777 |  -0.8026%    -4.776 | holds / holds
+Tau     3, 1/(2 pi), 3 Phi phi^2   1752.42612132369       1752.4     +1.491e-05 ok        |  -1.3790%  -272.265 |  -1.3805%  -272.556 | holds / holds
+W       -, -, m0 phi^27            82127.5138315261       82128      -5.920e-06 ok        |  +2.1878%  +132.204 |  +2.1884%  +132.241 | reported (>2%: yes) / reported (>2%: yes)
+Z       -, -, m_W/sqrt(1-p         93963.9615447831       93964      -4.093e-07 ok        |  +3.0442% +1387.981 |  +3.0443% +1388.000 | reported (>2%: yes) / reported (>2%: yes)
+Lq = Phi phi^2 = 16.362784476306894522 ; tau L = 3 Lq = 49.088353428920683566
+NOT HOLDING rows (recomputed): ['Up', 'Down', 'Charm'] ; (printed): ['Up', 'Down', 'Charm']
+
+==============================================================================
+T4  Alexander polynomials by Fox calculus (DR-A3-5)
+==============================================================================
+Validation on known links (Fox multivariable | Fox one-variable | Conway skein | Burau):
+  unknot s1 (B2)                 mu=1  Delta=1 | 1 | nabla=1 | 1
+  trefoil s1^3 (B2)              mu=1  Delta=t1**2 - t1 + 1 | t**2 - t + 1 | nabla=z**2 + 1 | t**2 - t + 1
+  figure-eight (s1 s2^-1)^2      mu=1  Delta=t1**2 - 3*t1 + 1 | t**2 - 3*t + 1 | nabla=1 - z**2 | t**2 - 3*t + 1
+  Hopf s1^2                      mu=2  Delta=1 | t - 1 | nabla=z | t - 1
+  T(2,4) s1^4                    mu=2  Delta=t1*t2 + 1 | (t - 1)*(t**2 + 1) | nabla=z**3 + 2*z | (t - 1)*(t**2 + 1)
+  Whitehead s1 s2^-1 s1 s2^-2    mu=2  Delta=(t1 - 1)*(t2 - 1) | (t - 1)**3 | nabla=z**3 | (t - 1)**3
+
+Borromean rings = closure of (s1 s2^-1)^3 in B3: 6 arcs, 6 crossings, 3 components
+Wirtinger presentation (generator x_k = meridian of arc k; arc -> component):
+  arcs: x1->C1, x2->C2, x3->C3, x4->C1, x5->C3, x6->C2
+  x4 = x2 x1 x2^-1   (crossing sign +1)
+  x5 = x4^-1 x3 x4   (crossing sign -1)
+  x6 = x5 x2 x5^-1   (crossing sign +1)
+  x1 = x6^-1 x4 x6   (crossing sign -1)
+  x3 = x1 x5 x1^-1   (crossing sign +1)
+  x2 = x3^-1 x6 x3   (crossing sign -1)
+Fox Jacobian (abelianised, rows cleared of negative powers):
+  [t2, 1 - t1, 0, -1, 0, 0]
+  [0, 0, 1, t3 - 1, -t1, 0]
+  [0, t3, 0, 0, 1 - t2, -1]
+  [-t2, 0, 0, 1, 0, t1 - 1]
+  [1 - t3, 0, -1, 0, t1, 0]
+  [0, -t3, t2 - 1, 0, 0, 1]
+(a) Delta(t1,t2,t3) = t1*t2*t3 - t1*t2 - t1*t3 + t1 - t2*t3 + t2 + t3 - 1  = (t1 - 1)*(t2 - 1)*(t3 - 1)   (same for all 36 choices of deleted row/column)
+    symmetry Delta(1/t) ~ Delta(t): True ; Torres Delta(t1,t2,1) = 0
+(b) Delta(t,t,t) = t**3 - 3*t**2 + 3*t - 1 = (t - 1)**3 ; coefficients [1, -3, 3, -1]
+(c) Delta_L(t) = gcd of all 36 (n-1)-minors at t_i = t = t**4 - 4*t**3 + 6*t**2 - 4*t + 1 = (t - 1)**4 ; coefficients [1, -4, 6, -4, 1]
+    Torres: Delta_L(t) == (t-1) Delta(t,t,t) up to units: True
+(d) sum of squared coefficients: Delta(t,t,t) -> 20 ; Delta_L(t) -> 70
+Cross-checks: Conway (skein recursion on descending diagrams) nabla(z) = z**4
+    nabla(t^1/2 - t^-1/2) normalised = (t - 1)**4 ; equals Delta_L: True
+    reduced Burau (braid relation holds: True): Delta = (t - 1)**4 ; equals Delta_L: True
+
+T1 geometry cross-check: generic projection of the actual 3-D curves -> Wirtinger -> Fox
+  four-arc configuration         view (1.0, 1.013, 0.987)  crossings 12  min depth gap 2.1512  min sin(angle) 0.905  Delta = (t1 - 1)*(t2 - 1)*(t3 - 1)  same as braid: True  lk {'12': 0.0, '13': 0.0, '23': 0.0}
+      sublink without C1: Delta(t1,t2) = 0
+      sublink without C2: Delta(t1,t2) = 0
+      sublink without C3: Delta(t1,t2) = 0
+  four-arc configuration         view (0.31, -0.77, 0.56)  crossings 12  min depth gap 2.0383  min sin(angle) 0.802  Delta = (t1 - 1)*(t2 - 1)*(t3 - 1)  same as braid: True  lk {'12': 0.0, '13': 0.0, '23': 0.0}
+  three perpendicular ellipses   view (1.0, 1.013, 0.987)  crossings 12  min depth gap 1.9212  min sin(angle) 0.769  Delta = (t1 - 1)*(t2 - 1)*(t3 - 1)  same as braid: True  lk {'12': 0.0, '13': 0.0, '23': 0.0}
+      sublink without C1: Delta(t1,t2) = 0
+      sublink without C2: Delta(t1,t2) = 0
+      sublink without C3: Delta(t1,t2) = 0
+  three perpendicular ellipses   view (0.31, -0.77, 0.56)  crossings 12  min depth gap 1.5566  min sin(angle) 0.678  Delta = (t1 - 1)*(t2 - 1)*(t3 - 1)  same as braid: True  lk {'12': 0.0, '13': 0.0, '23': 0.0}
+
+==============================================================================
+SUMMARY: numbers -> locked rules (as implied by this leg's numbers)
+==============================================================================
+DR-A3-1  four-arc length 58.0526017386 ; within 0.2% of 58.05: True -> 58.05 and 58.006 are per unit tube RADIUS
+         Paper VII E.1.1 quoted in prereg as 'L/R (arc-length divided by tube radius)' -> UNITS MATCH
+DR-A3-2  U = min(58.006, 58.05260174) = 58.006 ; U < 59.894: True -> verification (1) FAILS -> RETRACTS to Conjecture status
+         (diameter convention, for completeness: U/2 = 29.003 < 59.894: True)
+         clause 2: configuration shorter than 58.005 computed here: False -> not triggered as written (58.006 is an upper bound on the minimum, not a lower bound)
+         m_p(20/6) at L=58.006: 758.68851201 MeV ; at L=58.05260174: 762.15146309 MeV
+DR-A3-3  60.194  (I) inversion with A/Zf = 20/6 = 10/3 (rel. diff -8.98e-06)   [above U = 58.006]
+DR-A3-3  58.05   (G) explicit embedded four-arc configuration, length 58.05260174   [above U = 58.006]
+DR-A3-3  80.95   (I) inversion with A/Zf = 1/2 (rel. diff -3.29e-05)   [above U = 58.006]
+         (I) values retired as lengths. Shortest (G) among the three = 58.05 (four-arc, 58.05260174);
+         58.006 (CFKSW B0, quoted, not computed here) is shorter, so the ideal minimum <= 58.006.
+DR-A3-4  L(m_p; 20/6) - 60.194 = -0.000540361 ; within +-0.001: True -> proton 0.000% and neutron -0.138% are calibration outputs (annotation)
+DR-A3-5  sum sq coeff: Delta(t,t,t) = 20 ; Delta_L(t) = 70 -> differ: annotate 'A = 20' with both; 20 is the diagonal Delta(t,t,t) without the Torres factor (t-1)
+DR-A3-7  NOT HOLDING rows (recomputed) ['Up', 'Down', 'Charm'] ; (printed) ['Up', 'Down', 'Charm'] ; any row >0.1% off print: False
+         W error +2.1878% (pull +132.2) -- reported
+         Z error +3.0442% (pull +1388.0) -- reported
+
+==============================================================================
+done in 47.6 s; wrote leg2_results.json
+==============================================================================

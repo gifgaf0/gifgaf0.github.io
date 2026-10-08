@@ -1,0 +1,16 @@
+{
+ "size2_matchings": 651,
+ "classification": {
+  "('2 distinct labels', 'not annihilating')": 21,
+  "('3 distinct labels', 'not annihilating')": 210,
+  "('4 labels containing a Fano line', 'not annihilating')": 336,
+  "('4 labels = Fano-line complement', '+- annihilating')": 42,
+  "('4 labels = Fano-line complement', '++ annihilating')": 42
+ },
+ "ledger_quads": 42,
+ "equal_pp_class": true,
+ "lc84": 84,
+ "lc84_equals_coassessor": true,
+ "Y_cap_quads": 0,
+ "ordered_pp": 84
+}

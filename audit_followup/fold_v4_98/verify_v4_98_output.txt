@@ -1,0 +1,13 @@
+V4.98 file: /home/claude/fold/SQT_Master_Ledger_v4_98_CANONICAL.md md5: 5c50db1147527b25c87b5962b5e955ed bytes: 1908920 delta: 5719
+title: 1; As-of: 1; appends: 7; inserted lines: 21; unchanged: 4872 of 4881
+appends on the expected 7 lines: True | missing: [] | extra: []
+host keywords and pointer facts as typed: True | failing: []
+inserted blocks: [(39, 40), (1868, 1885), (4901, 4901)]
+insertions at the declared places (record / §2.98 / changelog): True
+§2.92.A unchanged: True
+§2.52 Open 3 row unchanged: True
+§2.97 heading unchanged: True
+§2.97 C(f) unchanged: True
+Substrate program row unchanged: True
+'[→ V4.98 (§2.98): ' occurrences: 7 (expected 7, all in appends)
+ADDITIVITY CHECK: PASS

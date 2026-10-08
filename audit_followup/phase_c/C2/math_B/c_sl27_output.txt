@@ -1,0 +1,145 @@
+==============================================================================
+ITEM (c) -- SL(2,7) facts (math_B leg, independent computation)
+==============================================================================
+|SL(2,7)| = 336
+Element-order histogram (order: count): {1: 1, 2: 1, 3: 56, 4: 42, 6: 56, 7: 48, 8: 84, 14: 48}
+Set of element orders: [1, 2, 3, 4, 6, 7, 8, 14]
+Maximum element order: 14 | elements of order 24: 0
+Divisibility sanity: 336 = 336 ; 24 divides 336 but no element has order 24
+Number of conjugacy classes: 11
+Classes (order, size, a representative):
+   order  1  size  1  rep (1, 0, 0, 1)
+   order  2  size  1  rep (6, 0, 0, 6)
+   order  3  size 56  rep (0, 1, 6, 6)
+   order  4  size 42  rep (0, 1, 6, 0)
+   order  6  size 56  rep (0, 1, 6, 1)
+   order  7  size 24  rep (0, 1, 6, 2)
+   order  7  size 24  rep (0, 3, 2, 2)
+   order  8  size 42  rep (0, 1, 6, 3)
+   order  8  size 42  rep (0, 1, 6, 4)
+   order 14  size 24  rep (0, 1, 6, 5)
+   order 14  size 24  rep (0, 3, 2, 5)
+Sorted class sizes: [1, 1, 24, 24, 24, 24, 42, 42, 42, 56, 56]
+
+--- u = [[1,1],[0,1]] and its powers ---
+   u^1 = (1, 1, 0, 1): same SL(2,7)-class as u? True; #g in SL(2,7) with g u g^-1 = u^1: 14   (k is a QR mod 7)
+   u^2 = (1, 2, 0, 1): same SL(2,7)-class as u? True; #g in SL(2,7) with g u g^-1 = u^2: 14   (k is a QR mod 7)
+   u^3 = (1, 3, 0, 1): same SL(2,7)-class as u? False; #g in SL(2,7) with g u g^-1 = u^3: 0   (k is a non-residue mod 7)
+   u^4 = (1, 4, 0, 1): same SL(2,7)-class as u? True; #g in SL(2,7) with g u g^-1 = u^4: 14   (k is a QR mod 7)
+   u^5 = (1, 5, 0, 1): same SL(2,7)-class as u? False; #g in SL(2,7) with g u g^-1 = u^5: 0   (k is a non-residue mod 7)
+   u^6 = (1, 6, 0, 1): same SL(2,7)-class as u? False; #g in SL(2,7) with g u g^-1 = u^6: 0   (k is a non-residue mod 7)
+   {k : g u g^-1 = u^k for some g in SL(2,7)} = [1, 2, 4]
+   |N_SL(2,7)(<u>)| = 42 (all upper triangular: True)
+
+--- s = diag(3,5), t = diag(4,2) ---
+   det s = 1, order(s) = 6; det t = 1, order(t) = 3
+   t u t^-1 = (1, 2, 0, 1)  (u^2 = (1, 2, 0, 1))
+   s u s^-1 = (1, 2, 0, 1)  (u^2 = (1, 2, 0, 1), u^3 = (1, 3, 0, 1))
+   s == -t ?  True;   s^2 == t^2 ?  True
+   s t s^-1 == t ? True
+   |<u,t>| = 21 (F21), -I in F21? False, s in F21? False
+   #g in SL(2,7) with g u g^-1 = u^3 and g t g^-1 = t : 0
+   #g in SL(2,7) with g u g^-1 = u^3 (any action on t) : 0
+   |N_SL(2,7)(F21)| = 42; induced u -> u^k with k in [1, 2, 4] (Inn(F21) acts on <u> by k in [1, 2, 4])
+   d = diag(3,1): det d = 3 (Legendre -1: non-square)
+   d u d^-1 = (1, 3, 0, 1) (= u^3? True);  d t d^-1 == t? True
+   Ad(d) preserves SL(2,7): True
+   classes moved by Ad(d) (index -> image): [(5, 6), (6, 5), (9, 10), (10, 9)]  => Ad(d) is NOT inner (inner automorphisms fix every class)
+   orders of moved classes: [(7, 7), (7, 7), (14, 14), (14, 14)]
+   #g in SL(2,7) with Ad(g) = Ad(d) on F21 : 0
+
+--- 8-dim induced rep rho = Ind_B^G(lambda), lambda(diag(a,1/a) n) = (a/7) ---
+   homomorphism check over all 336^2 pairs: failures = 0
+   rho(-I) == -Id_8: True
+   <chi_rho, chi_rho> = 2  (2 => sum of two inequivalent irreducibles)
+   chi_rho on classes (order:value): [(1, 8), (2, -8), (3, 2), (4, 0), (6, -2), (7, 1), (7, 1), (8, 0), (8, 0), (14, -1), (14, -1)]
+   <u, l> with l = [[1,0],[1,1]] has order 336
+   commutant dimension (exact, from generators u,l): 2
+   T (integer commutant element) commutes with all 336 rho(g): True
+   T = [[0, -1, -1, 1, -1, 1, 1, -1], [1, 0, -1, -1, 1, -1, 1, -1], [1, 1, 0, -1, -1, 1, -1, -1], [-1, 1, 1, 0, -1, -1, 1, -1], [1, -1, 1, 1, 0, -1, -1, -1], [-1, 1, -1, 1, 1, 0, -1, -1], [-1, -1, 1, -1, 1, 1, 0, -1], [1, 1, 1, 1, 1, 1, 1, 0]]
+   T^2 = 0 T + -7 I ; discriminant = -28 = {2: 2, 7: 1, -1: 1}
+   eigenvalues of T: mu1 = (0 + 1*sqrt(-7)), mu2 = (0 + -1*sqrt(-7))
+   P1^2 == P1: True;  P2^2 == P2: True;  P1+P2 == I: True
+   rank P1 = 4, rank P2 = 4, tr P1 = 4, tr P2 = 4
+
+   component A: invariance rho(g)B = B sigma(g) for all g: True
+   component A: sigma(-I) == -Id_4: True
+   component A: sigma(I) == Id_4: True
+   component A: <chi,chi> = 1  (exact; 1 => irreducible)
+   component A: character on classes (order, size, value):
+        order  1  size  1  chi = 4
+        order  2  size  1  chi = -4
+        order  3  size 56  chi = 1
+        order  4  size 42  chi = 0
+        order  6  size 56  chi = -1
+        order  7  size 24  chi = (1/2 + 1/2*sqrt(-7))
+        order  7  size 24  chi = (1/2 + -1/2*sqrt(-7))
+        order  8  size 42  chi = 0
+        order  8  size 42  chi = 0
+        order 14  size 24  chi = (-1/2 + 1/2*sqrt(-7))
+        order 14  size 24  chi = (-1/2 + -1/2*sqrt(-7))
+
+   component B: invariance rho(g)B = B sigma(g) for all g: True
+   component B: sigma(-I) == -Id_4: True
+   component B: sigma(I) == Id_4: True
+   component B: <chi,chi> = 1  (exact; 1 => irreducible)
+   component B: character on classes (order, size, value):
+        order  1  size  1  chi = 4
+        order  2  size  1  chi = -4
+        order  3  size 56  chi = 1
+        order  4  size 42  chi = 0
+        order  6  size 56  chi = -1
+        order  7  size 24  chi = (1/2 + -1/2*sqrt(-7))
+        order  7  size 24  chi = (1/2 + 1/2*sqrt(-7))
+        order  8  size 42  chi = 0
+        order  8  size 42  chi = 0
+        order 14  size 24  chi = (-1/2 + -1/2*sqrt(-7))
+        order 14  size 24  chi = (-1/2 + 1/2*sqrt(-7))
+
+   sigma4  := component A  (chi(u) = (1/2 + 1/2*sqrt(-7)) = 1 + zeta_QR, zeta_QR = (-1+sqrt(-7))/2)
+   sigma4' := component B  (chi(u) = (1/2 + -1/2*sqrt(-7)))
+   chi_sigma4' == conj(chi_sigma4) on all g: True
+   chi_sigma4 + chi_sigma4' == chi_rho on all g: True
+   multiplicity of the trivial F21-character in sigma4|F21: 1
+
+--- twisting by automorphisms ---
+   chi_sigma4(d g d^-1) == chi_sigma4'(g) for all g (Ad(d) maps sigma4 to sigma4'): True
+   chi_sigma4(d g d^-1) == chi_sigma4(g) for all g: False
+   chi_sigma4(s g s^-1) == chi_sigma4(g) for all g (Ad(s) inner, fixes sigma4): True
+
+--- order-4 elements ---
+   number of order-4 elements: 42; all square to -I: True
+   one conjugacy class? True
+   |subgroup generated by the order-4 elements| = 336
+   closed under inversion; g^-1 == -g for each: True
+   [sigma4] exact rank of span{sigma(x): x of order 4} = 15   (all traceless: True)
+   [sigma4] numeric singular values of the 42x16 matrix: 1.712e+01, 1.208e+01, 9.875e+00, 4.980e+00, 4.222e+00, 3.742e+00, 3.742e+00, 3.478e+00, 2.925e+00, 2.828e+00, 2.281e+00, 2.125e+00, 9.803e-01, 8.761e-01, 7.723e-01, 5.791e-16
+   [sigma4] exact dimension of the algebra generated by the 42 images = 16 (closure rounds: 2)
+   [sigma4'] exact rank of span{sigma(x): x of order 4} = 15   (all traceless: True)
+   [sigma4'] numeric singular values of the 42x16 matrix: 1.712e+01, 1.208e+01, 9.875e+00, 4.980e+00, 4.222e+00, 3.742e+00, 3.742e+00, 3.478e+00, 2.925e+00, 2.828e+00, 2.281e+00, 2.125e+00, 9.803e-01, 8.761e-01, 7.723e-01, 5.791e-16
+   [sigma4'] exact dimension of the algebra generated by the 42 images = 16 (closure rounds: 2)
+
+--- anticommutation census for Gamma_x = -i sigma4(x) (ledger L2844-L2853 re-check) ---
+   (anticommutation is invariant under the scalar -i, so it is tested on sigma4(x) directly)
+   anticommuting unordered pairs: 168
+   anticommuting unordered triples: 112
+   anticommuting unordered quadruples: 0
+   pairs with x y = -y x in SL(2,7): 168
+   distinct subgroups generated by anticommuting pairs: 14, orders [8]
+   omega = G1 G2 G3 over the triples (index order): {'G1G2G3 = +i I4': 56, 'G1G2G3 = -i I4': 56}
+   algebra generated by ONE anticommuting pair (one Q8): dimension 4
+   algebra generated by the 6 order-4 elements of one Q8: dimension 4
+   algebra generated by the order-4 elements of two distinct Q8s: dimension 8 (they generate a subgroup of order 16)
+   End(sigma4): <|chi|^2, |chi|^2> = 3 (sum of squared multiplicities); trivial multiplicity <|chi|^2, 1> = 1  => End(sigma4) = scalars + two further irreducibles, and the 15-dim span is the full traceless part
+
+--- sigma4 restricted to 2O (normalizer of a Q8; preimage of an S4 of PSL(2,7)) ---
+   |N_SL(2,7)(Q8)| = 48; contains -I: True; element orders: {1: 1, 2: 1, 3: 8, 4: 18, 6: 8, 8: 12}
+   <chi_sigma4|2O, chi_sigma4|2O> = 1  (1 => sigma4|2O irreducible, 4-dim, genuine)
+   chi_sigma4 on 2O equals the spin-3/2 character (by element order; order-8 values 0): True
+
+SUMMARY (item c)
+   element orders of SL(2,7): [1, 2, 3, 4, 6, 7, 8, 14]; order-24 elements: 0
+   u ~ u^k in SL(2,7) exactly for k in [1, 2, 4]; u^3 is NOT conjugate to u; s u s^-1 = u^2; s = -t
+   chi (u->u^3, t->t) is induced by Ad(diag(3,1)), diag(3,1) in GL(2,7) with non-square det; no element of SL(2,7) induces it; Ad(diag(3,1)) swaps sigma4<->sigma4': True
+   span of the 42 order-4 images: sigma4 15, sigma4' 15 (15 = all traceless 4x4)
+   algebra generated by them:     sigma4 16, sigma4' 16 (16 = M4(C))

@@ -1,0 +1,291 @@
+{
+ "molien": {
+  "R14_a": {
+   "counts_deg0_to_8": [
+    1,
+    0,
+    1,
+    0,
+    2,
+    0,
+    2,
+    0,
+    3
+   ],
+   "max_rounding_dev": 1.3322676295501878e-15
+  },
+  "R14_b": {
+   "counts_deg0_to_8": [
+    1,
+    0,
+    3,
+    0,
+    6,
+    0,
+    10,
+    0,
+    15
+   ],
+   "max_rounding_dev": 3.4106051316484816e-15
+  },
+  "R14_c": {
+   "counts_deg0_to_8": [
+    1,
+    0,
+    1,
+    0,
+    2,
+    0,
+    4,
+    0,
+    5
+   ],
+   "max_rounding_dev": 3.1086244689504383e-15
+  },
+  "R16_a": {
+   "counts_deg0_to_8": [
+    1,
+    0,
+    2,
+    0,
+    6,
+    0,
+    10,
+    0,
+    19
+   ],
+   "max_rounding_dev": 1.4210854715202004e-14
+  },
+  "R16_b": {
+   "counts_deg0_to_8": [
+    1,
+    0,
+    4,
+    0,
+    10,
+    0,
+    20,
+    0,
+    35
+   ],
+   "max_rounding_dev": 7.105427357601002e-15
+  },
+  "R16_c": {
+   "counts_deg0_to_8": [
+    1,
+    0,
+    2,
+    0,
+    4,
+    0,
+    8,
+    0,
+    13
+   ],
+   "max_rounding_dev": 5.329070518200751e-15
+  }
+ },
+ "rings": {
+  "R14_a": {
+   "all": [
+    1,
+    0,
+    1,
+    0,
+    2,
+    0,
+    2
+   ],
+   "T_even": [
+    1,
+    0,
+    1,
+    0,
+    2,
+    0,
+    2
+   ],
+   "matches_molien": true
+  },
+  "R14_b": {
+   "all": [
+    1,
+    0,
+    3,
+    0,
+    6,
+    0,
+    10
+   ],
+   "T_even": [
+    1,
+    0,
+    2,
+    0,
+    4,
+    0,
+    6
+   ],
+   "matches_molien": true
+  },
+  "R14_c": {
+   "all": [
+    1,
+    0,
+    1,
+    0,
+    2,
+    0,
+    4
+   ],
+   "T_even": [
+    1,
+    0,
+    1,
+    0,
+    2,
+    0,
+    3
+   ],
+   "matches_molien": true
+  },
+  "R16_a": {
+   "all": [
+    1,
+    0,
+    2,
+    0,
+    6,
+    0,
+    10
+   ],
+   "T_even": [
+    1,
+    0,
+    2,
+    0,
+    5,
+    0,
+    8
+   ],
+   "matches_molien": true
+  },
+  "R16_b": {
+   "all": [
+    1,
+    0,
+    4,
+    0,
+    10,
+    0,
+    20
+   ],
+   "T_even": [
+    1,
+    0,
+    3,
+    0,
+    7,
+    0,
+    13
+   ],
+   "matches_molien": true
+  },
+  "R16_c": {
+   "all": [
+    1,
+    0,
+    2,
+    0,
+    4,
+    0,
+    8
+   ],
+   "T_even": [
+    1,
+    0,
+    2,
+    0,
+    4,
+    0,
+    7
+   ],
+   "matches_molien": true
+  }
+ },
+ "g2_dimension": 14,
+ "watanabe_murayama": {
+  "P0 (U(8), any direction; here e0) | U(8) [dynamics of record]": {
+   "n_BG": 15,
+   "rank_rho": 14,
+   "n_B": 7,
+   "n_A": 1
+  },
+  "P0 (U(8), a 7-sector direction) | U(8) [dynamics of record]": {
+   "n_BG": 15,
+   "rank_rho": 14,
+   "n_B": 7,
+   "n_A": 1
+  },
+  "R (psi = e0) | G2xU1psi0 [action]": {
+   "n_BG": 1,
+   "rank_rho": 0,
+   "n_B": 0,
+   "n_A": 1
+  },
+  "R (psi = e0) | SO7xU1psi0xU1_7 [deg<=4 accidental]": {
+   "n_BG": 1,
+   "rank_rho": 0,
+   "n_B": 0,
+   "n_A": 1
+  },
+  "P7 (psi = e1) | G2xU1psi0 [action]": {
+   "n_BG": 6,
+   "rank_rho": 0,
+   "n_B": 0,
+   "n_A": 6
+  },
+  "P7 (psi = e1) | SO7xU1psi0xU1_7 [deg<=4 accidental]": {
+   "n_BG": 7,
+   "rank_rho": 0,
+   "n_B": 0,
+   "n_A": 7
+  },
+  "F7 (psi = (e1 + i e2)/sqrt2) | G2xU1psi0 [action]": {
+   "n_BG": 11,
+   "rank_rho": 10,
+   "n_B": 5,
+   "n_A": 1
+  },
+  "F7 (psi = (e1 + i e2)/sqrt2) | SO7xU1psi0xU1_7 [deg<=4 accidental]": {
+   "n_BG": 11,
+   "rank_rho": 10,
+   "n_B": 5,
+   "n_A": 1
+  },
+  "I7 (psi = 0.9 e1 + 0.4 i e2) | SO7xU1psi0xU1_7 [deg<=4 accidental]": {
+   "n_BG": 12,
+   "rank_rho": 10,
+   "n_B": 5,
+   "n_A": 2
+  },
+  "MP (psi = 0.6 e0 + 0.8 e1) | SO7xU1psi0xU1_7 [deg<=4 accidental]": {
+   "n_BG": 8,
+   "rank_rho": 0,
+   "n_B": 0,
+   "n_A": 8
+  },
+  "MF (psi = 0.6 e0 + 0.8 (e1 + i e2)/sqrt2) | SO7xU1psi0xU1_7 [deg<=4 accidental]": {
+   "n_BG": 12,
+   "rank_rho": 10,
+   "n_B": 5,
+   "n_A": 2
+  },
+  "MI (psi = 0.6 e0 + 0.7 e1 + 0.3 i e2) | SO7xU1psi0xU1_7 [deg<=4 accidental]": {
+   "n_BG": 13,
+   "rank_rho": 10,
+   "n_B": 5,
+   "n_A": 3
+  }
+ }
+}

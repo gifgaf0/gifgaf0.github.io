@@ -1,0 +1,330 @@
+
+==============================================================================
+C1. 8-dim Fock space on the complex octonions C(x)O (no Kronecker product)
+==============================================================================
+Octonion multiplication table: e_i e_{i+1} = e_{i+3}, indices mod 7 in 1..7;
+e_0 = 1, e_k^2 = -1, each quaternionic triple (a,b,c) gives e_a e_b = e_c,
+cyclic e_b e_c = e_a, e_c e_a = e_b, and anticommutation e_b e_a = -e_c, etc.
+  triples (a,b,c) with e_a e_b = e_c: [(1, 2, 4), (2, 3, 5), (3, 4, 6), (4, 5, 7), (5, 6, 1), (6, 7, 2), (7, 1, 3)]
+  multiplication table, entry = e_row * e_col:
+              e1    e2    e3    e4    e5    e6    e7
+      e1      -1   +e4   +e7   -e2   +e6   -e5   -e3
+      e2     -e4    -1   +e5   +e1   -e3   +e7   -e6
+      e3     -e7   -e5    -1   +e6   +e2   -e4   +e1
+      e4     +e2   -e1   -e6    -1   +e7   +e3   -e5
+      e5     -e6   +e3   -e2   -e7    -1   +e1   +e4
+      e6     +e5   -e7   +e4   -e3   -e1    -1   +e2
+      e7     +e3   +e6   -e1   +e5   -e4   -e2    -1
+    [ok] every pair of imaginary units lies in exactly one triple (Fano plane, table well defined)
+    [ok] L_{e0} = identity
+    [ok] L_{ek} real antisymmetric for k = 1..7
+    [ok] left Clifford relations {L_j, L_k} = -2 delta_jk (j,k = 1..7)  [left alternativity]
+    [ok] right Clifford relations {R_j, R_k} = -2 delta_jk (j,k = 1..7)  [right alternativity]
+    [ok] non-associative: (e1 e2) e3 != e1 (e2 e3)
+
+Furey ladder operators (left multiplication on C(x)O):
+  alpha1     = (I/2) e4 + (-1/2) e5
+  alpha1^dag = (I/2) e4 + (1/2) e5
+  alpha2     = (I/2) e1 + (-1/2) e3
+  alpha2^dag = (I/2) e1 + (1/2) e3
+  alpha3     = (I/2) e2 + (-1/2) e6
+  alpha3^dag = (I/2) e2 + (1/2) e6
+  L(alpha1)  (rows/cols = 1, e1..e7):
+     [    0    0    0    0 -i/2  1/2    0    0 ]
+     [    0    0 -i/2    0    0    0 -1/2    0 ]
+     [    0  i/2    0  1/2    0    0    0    0 ]
+     [    0    0 -1/2    0    0    0  i/2    0 ]
+     [  i/2    0    0    0    0    0    0 -1/2 ]
+     [ -1/2    0    0    0    0    0    0 -i/2 ]
+     [    0  1/2    0 -i/2    0    0    0    0 ]
+     [    0    0    0    0  1/2  i/2    0    0 ]
+  L(alpha2)  (rows/cols = 1, e1..e7):
+     [    0 -i/2    0  1/2    0    0    0    0 ]
+     [  i/2    0    0    0    0    0    0 -1/2 ]
+     [    0    0    0    0 -i/2 -1/2    0    0 ]
+     [ -1/2    0    0    0    0    0    0 -i/2 ]
+     [    0    0  i/2    0    0    0  1/2    0 ]
+     [    0    0  1/2    0    0    0 -i/2    0 ]
+     [    0    0    0    0 -1/2  i/2    0    0 ]
+     [    0  1/2    0  i/2    0    0    0    0 ]
+  L(alpha3)  (rows/cols = 1, e1..e7):
+     [    0    0 -i/2    0    0    0  1/2    0 ]
+     [    0    0    0    0  i/2  1/2    0    0 ]
+     [  i/2    0    0    0    0    0    0 -1/2 ]
+     [    0    0    0    0  1/2 -i/2    0    0 ]
+     [    0 -i/2    0 -1/2    0    0    0    0 ]
+     [    0 -1/2    0  i/2    0    0    0    0 ]
+     [ -1/2    0    0    0    0    0    0 -i/2 ]
+     [    0    0  1/2    0    0    0  i/2    0 ]
+    [ok] L_{alpha_i^dag} equals the conjugate transpose of L_{alpha_i} (i = 1,2,3)
+    [ok] {alpha_i, alpha_j^dag} = delta_ij * 1_8 (all i,j)
+    [ok] {alpha_i, alpha_j} = 0 and {alpha_i^dag, alpha_j^dag} = 0 (all i,j)
+  => the table e_i e_{i+1} = e_{i+3} works as given; no adjustment was needed.
+  N = sum_i L(alpha_i)^dag L(alpha_i)  (rows/cols = 1, e1..e7):
+     [    3/2      0      0      0      0      0      0  3*i/2 ]
+     [      0    3/2      0   -i/2      0      0      0      0 ]
+     [      0      0    3/2      0      0      0   -i/2      0 ]
+     [      0    i/2      0    3/2      0      0      0      0 ]
+     [      0      0      0      0    3/2   -i/2      0      0 ]
+     [      0      0      0      0    i/2    3/2      0      0 ]
+     [      0      0    i/2      0      0      0    3/2      0 ]
+     [ -3*i/2      0      0      0      0      0      0    3/2 ]
+  number operator N = sum alpha_i^dag alpha_i ; charpoly = x*(x - 3)*(x - 2)**3*(x - 1)**3
+    [ok] N has eigenvalues 0,1,2,3 with multiplicities 1,3,3,1
+
+Vacuum from the idempotent omega omega^dag, omega = alpha1 alpha2 alpha3 (operator chain):
+  v0 = (omega omega^dag) 1 = (1/2) + (I/2) e7
+    [ok] omega omega^dag is a hermitian idempotent of rank 1 and trace 1
+    [ok] omega omega^dag = |v0><v0| / <v0|v0>  (projector onto v0)
+    [ok] alpha_i v0 = 0 for i = 1,2,3
+    [ok] joint kernel of alpha_1, alpha_2, alpha_3 is 1-dimensional
+
+Fock states realised as complex octonions:
+  N=0: v0                       = (1/2) + (I/2) e7
+  N=1: a1^dag v0                = (I/2) e4 + (1/2) e5
+  N=1: a2^dag v0                = (I/2) e1 + (1/2) e3
+  N=1: a3^dag v0                = (I/2) e2 + (1/2) e6
+  N=2: a1^dag a2^dag v0         = (-1/2) e2 + (-I/2) e6
+  N=2: a1^dag a3^dag v0         = (1/2) e1 + (I/2) e3
+  N=2: a2^dag a3^dag v0         = (-1/2) e4 + (-I/2) e5
+  N=3: a3^dag a2^dag a1^dag v0  = (-I/2) + (-1/2) e7
+    [ok] each Fock vector is an N-eigenvector with the expected eigenvalue
+    [ok] the 8 Fock vectors are pairwise orthogonal with equal norm^2 = 1/2 (they span C(x)O = C^8)
+
+Left ideal generated by the idempotent:
+    [ok] the 64 monomials in L_{e1..e6} are linearly independent (generate M_8(C) = Cl_6(C))
+    [ok] dim of left ideal M_8(C) * (omega omega^dag) = 8 (= 8, minimal left ideal)
+    [ok] Fock elements {W, a_i^dag W, a_i^dag a_j^dag W, a3^dag a2^dag a1^dag W} (W = omega omega^dag) span that ideal
+    [ok] ideal element X W acting on 1 gives the Fock octonion X v0 (ideal ~ C(x)O as modules)
+
+Gell-Mann structure constants (1-based, sorted index triples):
+  f_abc: {'123': '1', '147': '1/2', '156': '-1/2', '246': '1/2', '257': '1/2', '345': '1/2', '367': '-1/2', '458': 'sqrt(3)/2', '678': 'sqrt(3)/2'}
+  d_abc: {'118': 'sqrt(3)/3', '146': '1/2', '157': '1/2', '228': 'sqrt(3)/3', '247': '-1/2', '256': '1/2', '338': 'sqrt(3)/3', '344': '1/2', '355': '1/2', '366': '-1/2', '377': '-1/2', '448': '-sqrt(3)/6', '558': '-sqrt(3)/6', '668': '-sqrt(3)/6', '778': '-sqrt(3)/6', '888': '-sqrt(3)/3'}
+    [ok] tr(lambda_a lambda_b) = 2 delta_ab; f_123 = 1; d_888 = -1/sqrt(3)
+
+Colour-classification criterion for an N-sector V_N (dimension d):
+  restrict T^a to V_N (exact), C2 = sum_a T^a T^a, C3 = sum_abc d_abc T^a T^b T^c;
+  '1'    : d = 1 and every T^a = 0 on V_N;
+  '3'    : d = 3, C2 = 4/3, C3 = +10/9 (the rep with generators lambda/2);
+  '3bar' : d = 3, C2 = 4/3, C3 = -10/9 (generators -conj(lambda)/2).
+  Cross-check by (T3, T8) weights: '3' has {(1/2, sqrt3/6), (-1/2, sqrt3/6), (0, -sqrt3/3)},
+  '3bar' the negatives; equivalently T8 = (+,+,--) for 3 and (-,-,++) for 3bar.
+
+--- rho = 3:  M^a = lambda^a/2 ---
+    [ok] [M^a, M^b] = i f_abc M^c (rho = 3 is a representation)
+    [ok] [T^a, T^b] = i f_abc T^c on C(x)O (rho = 3)
+    [ok] [T^a, alpha_k^dag] = sum_i M^a_ik alpha_i^dag  (creation operators transform as 3)
+    [ok] [T^a, N] = 0 (rho = 3)
+  N=0: dim 1; C2 = 0, C3 = 0; (T3,T8) weights: (0, 0)
+        -> Casimir label '1', weight label '1'
+    [ok] N=0 sector invariant, Casimirs scalar, Cartan diagonal, labels agree (rho=3)
+  N=1: dim 3; C2 = 4/3, C3 = 10/9; (T3,T8) weights: (-1/2, sqrt(3)/6), (0, -sqrt(3)/3), (1/2, sqrt(3)/6)
+        -> Casimir label '3', weight label '3'
+    [ok] N=1 sector invariant, Casimirs scalar, Cartan diagonal, labels agree (rho=3)
+  N=2: dim 3; C2 = 4/3, C3 = -10/9; (T3,T8) weights: (-1/2, -sqrt(3)/6), (0, sqrt(3)/3), (1/2, -sqrt(3)/6)
+        -> Casimir label '3bar', weight label '3bar'
+    [ok] N=2 sector invariant, Casimirs scalar, Cartan diagonal, labels agree (rho=3)
+  N=3: dim 1; C2 = 0, C3 = 0; (T3,T8) weights: (0, 0)
+        -> Casimir label '1', weight label '1'
+    [ok] N=3 sector invariant, Casimirs scalar, Cartan diagonal, labels agree (rho=3)
+
+--- rho = 3bar:  M^a = -conj(lambda^a)/2 ---
+    [ok] [M^a, M^b] = i f_abc M^c (rho = 3bar is a representation)
+    [ok] [T^a, T^b] = i f_abc T^c on C(x)O (rho = 3bar)
+    [ok] [T^a, alpha_k^dag] = sum_i M^a_ik alpha_i^dag  (creation operators transform as 3bar)
+    [ok] [T^a, N] = 0 (rho = 3bar)
+  N=0: dim 1; C2 = 0, C3 = 0; (T3,T8) weights: (0, 0)
+        -> Casimir label '1', weight label '1'
+    [ok] N=0 sector invariant, Casimirs scalar, Cartan diagonal, labels agree (rho=3bar)
+  N=1: dim 3; C2 = 4/3, C3 = -10/9; (T3,T8) weights: (-1/2, -sqrt(3)/6), (0, sqrt(3)/3), (1/2, -sqrt(3)/6)
+        -> Casimir label '3bar', weight label '3bar'
+    [ok] N=1 sector invariant, Casimirs scalar, Cartan diagonal, labels agree (rho=3bar)
+  N=2: dim 3; C2 = 4/3, C3 = 10/9; (T3,T8) weights: (-1/2, sqrt(3)/6), (0, -sqrt(3)/3), (1/2, sqrt(3)/6)
+        -> Casimir label '3', weight label '3'
+    [ok] N=2 sector invariant, Casimirs scalar, Cartan diagonal, labels agree (rho=3bar)
+  N=3: dim 1; C2 = 0, C3 = 0; (T3,T8) weights: (0, 0)
+        -> Casimir label '1', weight label '1'
+    [ok] N=3 sector invariant, Casimirs scalar, Cartan diagonal, labels agree (rho=3bar)
+
+C1 result (induced colour of each N-sector):
+  rho = 3   : N=0 -> 1, N=1 -> 3, N=2 -> 3bar, N=3 -> 1
+  rho = 3bar: N=0 -> 1, N=1 -> 3bar, N=2 -> 3, N=3 -> 1
+
+==============================================================================
+S1. Supplementary: G2 = Der(O), the stabiliser of e7, and the N-sectors
+==============================================================================
+(Not one of C1..C6; ties the T^a to the paper's Section-3 colour group.)
+  dim Der(O) = 14;  dim {D in Der(O): D e7 = 0} = 8
+    [ok] dim Der(O) = 14 (g2) and its stabiliser of e7 has dim 8 (su(3))
+    [ok] -i T^a is a real antisymmetric 8x8 matrix (T^a generates real rotations of O)
+    [ok] span_R{-i T^a} = stabiliser of e7 in g2 (ranks: Der7 8, T 8, joint 8)
+    [ok] N=1 sector = {x in span_C(e1..e6): e7 x = +i x}; N=2 sector = {... e7 x = -i x}
+    [ok] complex conjugation maps the N=1 sector onto the N=2 sector (and N=0 onto N=3)
+  => the paper's Section-3 colour algebra (stabiliser of e7 in G2) IS span{T^a};
+     on the six units e1..e6 it acts as (N=1 sector) + (N=2 sector) = 3 + 3bar,
+     the two sectors being complex conjugates of each other inside C(x)O.  Since the
+     colour group acts by real automorphisms of O, N=1 and N=2 always carry mutually
+     conjugate (inequivalent) representations, whatever labelling of generators is used.
+
+==============================================================================
+C2. Is Y(N) = (-1)^(N+1) N/3 additive, i.e. of the form a + b N ?
+==============================================================================
+  paper's Y: {0: '0', 1: '1/3', 2: '-2/3', 3: '1'}
+  unique a + bN through N=0,1: a = 0, b = 1/3 -> predicts {0: '0', 1: '1/3', 2: '2/3', 3: '1'}
+  second differences Y(N+2) - 2Y(N+1) + Y(N): ['-4/3', '8/3'] (all zero iff affine)
+  general per-mode form c + y_a n_a + y_b n_b + y_g n_g solvable over the 8 states: False
+  additive = False
+    [ok] C2 a+bN test and per-mode linear test agree
+
+==============================================================================
+C3. Furey's options: q(N) in {N/3, -N/3, (3-N)/3, -(3-N)/3} x rho in {3, 3bar}
+==============================================================================
+  correlation rule: 3 -> q = 2/3 (mod 1), 3bar -> q = 1/3 (mod 1), 1 -> q = 0 (mod 1)
+  paper's table: N=0:(1,0), N=1:(3bar,1/3), N=2:(3bar,-2/3), N=3:(1,1)
+  q(N)      rho   | N=0          N=1          N=2          N=3          | (i) q=Y  (ii) =table  (iii) corr
+  N/3       3     | (1,0)        (3,1/3)      (3bar,2/3)   (1,1)        | False    False      False
+  N/3       3bar  | (1,0)        (3bar,1/3)   (3,2/3)      (1,1)        | False    False      True
+  -N/3      3     | (1,0)        (3,-1/3)     (3bar,-2/3)  (1,-1)       | False    False      True
+  -N/3      3bar  | (1,0)        (3bar,-1/3)  (3,-2/3)     (1,-1)       | False    False      False
+  (3-N)/3   3     | (1,1)        (3,2/3)      (3bar,1/3)   (1,0)        | False    False      True
+  (3-N)/3   3bar  | (1,1)        (3bar,2/3)   (3,1/3)      (1,0)        | False    False      False
+  -(3-N)/3  3     | (1,-1)       (3,-2/3)     (3bar,-1/3)  (1,0)        | False    False      False
+  -(3-N)/3  3bar  | (1,-1)       (3bar,-2/3)  (3,-1/3)     (1,0)        | False    False      True
+  any option reproduces paper's Y on all four sectors: False
+  any option reproduces paper's full (colour, charge) table: False
+  options satisfying the correlation: 4 of 8 -> ['q=N/3, rho=3bar', 'q=-N/3, rho=3', 'q=(3-N)/3, rho=3', 'q=-(3-N)/3, rho=3bar']
+  some induced action makes N=1 and N=2 both 3bar: False
+  (note: (rho=3bar, q=N/3) is the SM assignment nu, dbar(3bar,+1/3), u(3,+2/3), e+ of Furey's S^u;
+   (rho=3, q=-N/3) is its conjugate S^d.)
+
+==============================================================================
+C4. Paper's (colour, Y) pairs under the induced colours
+==============================================================================
+  rho = 3   : N=0:(1,0) pass, N=1:(3,1/3) FAIL, N=2:(3bar,-2/3) pass, N=3:(1,1) pass
+  rho = 3bar: N=0:(1,0) pass, N=1:(3bar,1/3) pass, N=2:(3,-2/3) FAIL, N=3:(1,1) pass
+
+==============================================================================
+C5. Pulls z = (3/13 - x)/sigma_x against PDG 2024
+==============================================================================
+  3/13 = 0.230769230769231
+  sin_vs_Vus_direct            x = 0.22431000 +- 0.00085000  z = +7.599095  -> +7.599   (mp50: 7.59909502262)
+  sin_vs_lambda_fit            x = 0.22501000 +- 0.00068000  z = +8.469457  -> +8.469   (mp50: 8.46945701357)
+  tan_vs_Vus_over_Vud_direct   x = 0.23037579 +- 0.00087626  z = +0.448993  -> +0.449   (mp50: 0.448993223599)
+  tan_vs_Kmu2_over_Vud         x = 0.23108445 +- 0.00041778  z = -0.754523  -> -0.755   (mp50: -0.754522719283)
+  tan_vs_fit                   x = 0.23093191 +- 0.00073512  z = -0.221302  -> -0.221   (mp50: -0.221301840793)
+    [ok] C5 double-precision and 50-digit pulls agree and round identically to 3 decimals
+
+==============================================================================
+C6. Csaszar 7-vertex torus: automorphisms and orientation (brute force over S_7)
+==============================================================================
+    [ok] 14 distinct faces
+    [ok] 21 edges = all pairs of Z_7 (K_7), each in exactly two faces
+    [ok] every vertex link is a single 6-cycle (closed surface); chi = 7 - 21 + 14 = 0
+    [ok] each family is a Fano plane (every pair of Z_7 in exactly one triple of the family)
+  rank d2 = 13, rank d1 = 6, dim ker d2 = 1, b1 = 2
+    [ok] d1 d2 = 0; H2 has rank 1; b1 = 2 (torus)
+    [ok] orientation class s in {+-1}^14 with d2 s = 0 over Z
+  orientation class s (face in increasing order : sign):
+    013:+, 124:+, 235:+, 346:+, 045:+, 156:+, 026:+, 023:-, 134:-, 245:-, 356:-, 046:-, 015:-, 126:-
+  |Aut(face set)| = 42; equals AGL(1,7) = {x -> a x + b}: True (|AGL(1,7)| = 42)
+  automorphisms preserving each family: 21; swapping the two families: 21
+  multipliers a among family-preserving automorphisms: [1, 2, 4]; among family-swapping: [3, 5, 6]
+  orientation: preserving 42, reversing 0 (sigma_# s = +s / -s)
+  per automorphism x -> a x + b (family behaviour; sign of sigma_# s for b = 0..6):
+    a = 1: keeps families  orientation signs: + + + + + + +
+    a = 2: keeps families  orientation signs: + + + + + + +
+    a = 3: swaps families  orientation signs: + + + + + + +
+    a = 4: keeps families  orientation signs: + + + + + + +
+    a = 5: swaps families  orientation signs: + + + + + + +
+    a = 6: swaps families  orientation signs: + + + + + + +
+  |Stab_S7(family {i,i+1,i+3})| = 168;  |Stab cap Aut| = 21
+    [ok] every automorphism induces a chain map (d2 S2 = S1 d2) and maps s to +s or -s
+    [ok] keep-family + swap-family counts add up to |Aut|
+
+==============================================================================
+Summary of internal checks
+==============================================================================
+  52 checks, 0 failed
+
+leg2_results.json written:
+{
+  "sector_colors": {
+    "3": {
+      "0": "1",
+      "1": "3",
+      "2": "3bar",
+      "3": "1"
+    },
+    "3bar": {
+      "0": "1",
+      "1": "3bar",
+      "2": "3",
+      "3": "1"
+    }
+  },
+  "additive": false,
+  "any_option_reproduces_paper_Y": false,
+  "any_option_reproduces_paper_table": false,
+  "paper_labels_realizable": false,
+  "induced_pairs": {
+    "3": {
+      "0": [
+        "1",
+        "0",
+        true
+      ],
+      "1": [
+        "3",
+        "1/3",
+        false
+      ],
+      "2": [
+        "3bar",
+        "-2/3",
+        true
+      ],
+      "3": [
+        "1",
+        "1",
+        true
+      ]
+    },
+    "3bar": {
+      "0": [
+        "1",
+        "0",
+        true
+      ],
+      "1": [
+        "3bar",
+        "1/3",
+        true
+      ],
+      "2": [
+        "3",
+        "-2/3",
+        false
+      ],
+      "3": [
+        "1",
+        "1",
+        true
+      ]
+    }
+  },
+  "pulls": {
+    "sin_vs_Vus_direct": 7.599,
+    "sin_vs_lambda_fit": 8.469,
+    "tan_vs_Vus_over_Vud_direct": 0.449,
+    "tan_vs_Kmu2_over_Vud": -0.755,
+    "tan_vs_fit": -0.221
+  },
+  "aut_order": 42,
+  "equals_AGL17": true,
+  "keeps_each_family": 21,
+  "orientation_preserving": 42,
+  "orientation_reversing": 0,
+  "stab_S7_family_plus": 168,
+  "stab_cap_aut": 21,
+  "method_C1": "complex octonions C(x)O (table e_i e_{i+1}=e_{i+3}), Furey alpha_i as 8x8 left-multiplication matrices, vacuum (omega omega^dag)1=(1+i e7)/2, Fock states = minimal left ideal; T^a=sum alpha_i^dag M^a_ij alpha_j; colour by cubic Casimir (+10/9 -> 3, -10/9 -> 3bar) and (T3,T8) weights; exact sympy; no Kronecker/Jordan-Wigner"
+}

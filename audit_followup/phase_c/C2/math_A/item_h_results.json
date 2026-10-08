@@ -1,0 +1,32 @@
+{
+ "flag_stabilizer": {
+  "order": 8,
+  "type": "D4 (dihedral, order 8)",
+  "orders": {
+   "1": 1,
+   "2": 5,
+   "4": 2
+  }
+ },
+ "unsigned": {
+  "stab": "{(4, 'V4 = C2 x C2'): 21}",
+  "pw_equal": true,
+  "orbit": "{42: 21}",
+  "images_that_are_codespaces": "{21: 21}"
+ },
+ "signed": {
+  "n_lifts": 2688,
+  "equivariant": false,
+  "stab": "{(64, 8, 'D4 (dihedral, order 8)', True): 21}"
+ },
+ "H6": {
+  "eq42": true,
+  "pair_stab_is_D4": true,
+  "D4_minus_V4_swaps": true,
+  "orbit_1344": 42
+ },
+ "negated_family_identical": false,
+ "negated_overlap": 0,
+ "family_preserving_lifts": 21,
+ "family_stab": "{(1, 1, 'order 1, abelian=True, orders={1: 1}'): 21}"
+}

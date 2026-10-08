@@ -1,0 +1,264 @@
+
+========================================================================================================
+TASK 0  Provenance
+========================================================================================================
+  spec file: /home/claude/gifgaf0.github.io/audit_followup/A1_polarization/A1_PREREG.md
+  md5      : d5f6aa3bd50743c5d69e54338494bb27
+  [PASS] 0.1 locked spec md5 matches d5f6aa3bd50743c5d69e54338494bb27
+  python 3.13.16  numpy 2.5.3  sympy 1.14.0
+
+========================================================================================================
+TASK 1  Kinematics of a plane displacement wave (symbolic)
+========================================================================================================
+
+--- 1.1 strain of u = a f(t - k.x/c)
+  [PASS] 1.1a eps = sym(grad u) = -(f'/c) sym(k (x) a)  [exact; arbitrary a, k(theta,phi), f]
+  [PASS] 1.1b rotation omega = curl(u)/2 = -(f'/2c) k x a  (helicity +-1 transverse axial vector; no rank-2 content)
+  eps_ij = -(f'/2c) (k_i a_j + a_i k_j);  a = a_par k + a_perp  ->  eps = -(f'/c)[a_par k k + sym(k (x) a_perp)]
+
+--- 1.2 TT projection Lambda(k) eps
+  [PASS] 1.2a Lambda(k) eps == 0 identically (spherical k(theta,phi), arbitrary a1,a2,a3, arbitrary f)
+  [PASS] 1.2b Lambda(k) sym(k (x) a) reduces to 0 modulo |k|^2 = 1 (polynomial ideal; no angle parametrisation)
+      (as raw polynomials, without using |k| = 1, the entries are nonzero: True -> the identity uses only k.k = 1)
+  [PASS] 1.2c Lambda(k) sym(k (x) v) == 0 for ANY vector v (covers any plane-wave vector field: mirror offsets, k x a, ...)
+  [PASS] 1.2d Lambda(k)[sym(k (x) a)] == 0 mod |k| = 1
+  [PASS] 1.2d Lambda(k)[(k.a) I] == 0 mod |k| = 1
+  [PASS] 1.2d Lambda(k)[(k.a) k k] == 0 mod |k| = 1
+  [PASS] 1.2d Lambda(k)[sym(k (x) (k x a))  [hemitropic]] == 0 mod |k| = 1
+      => any symmetric tensor linear in the amplitude of ONE plane wave, built with an isotropic (even chiral)
+         response, has zero TT part. Reason: k is invariant under rotations about k (helicity 0) and a carries
+         helicities 0, +-1 only, so nothing linear in a can carry helicity +-2.
+
+--- 1.3 helicity decomposition about k
+  [PASS] 1.3a rotation by alpha about k: e_(+-) -> exp(+-i alpha) e_(+-)
+  [PASS] 1.3b helicity basis {E_+2, E_-2, E_+1, E_-1, E_0l = kk, E_0b = P/sqrt2} is orthonormal (Hermitian)
+  components of sym(k (x) a) (multiply by -f'/c for eps):
+     helicity +2             : 0
+     helicity -2             : 0
+     helicity +1             : -I*a1*sin(phi)/2 + a1*cos(phi)*cos(theta)/2 + a2*sin(phi)*cos(theta)/2 + I*a2*cos(phi)/2 - a3*sin(theta)/2
+     helicity -1             : I*a1*sin(phi)/2 + a1*cos(phi)*cos(theta)/2 + a2*sin(phi)*cos(theta)/2 - I*a2*cos(phi)/2 - a3*sin(theta)/2
+     helicity 0_l (k k)      : a1*sin(theta)*cos(phi) + a2*sin(phi)*sin(theta) + a3*cos(theta)
+     helicity 0_b (P/sqrt2)  : 0
+  [PASS] 1.3c helicity +-2 components of eps vanish identically (arbitrary a, k)
+  [PASS] 1.3d helicity +-1 components = a_(+-)/sqrt2 with a_(+-) = conj(e_(+-)).a  (the transverse part of a)
+  [PASS] 1.3e helicity-0: k k component = k.a (longitudinal); transverse-trace (breathing) component = 0
+  [PASS] 1.3f reconstruction sum_lambda h_lambda E_lambda = sym(k (x) a) (completeness)
+  [PASS] 1.3g eps(R_k(alpha) a) satisfies (d^3/dalpha^3 + d/dalpha) eps = 0  -> harmonics in alpha only 0, +-1
+  [PASS] 1.3h control: second-order a_perp(x)a_perp is NOT annihilated by the spin-1 operator but IS by the spin-2 one
+  [PASS] 1.3i control: general a(x)a is annihilated only by the {0,+-1,+-2} operator (d^5 + 5d^3 + 4d)
+
+--- 1.4 the fixed six-tensor basis of the brief (symbolic in theta, phi, psi)
+  [PASS] 1.4a Gram matrix e_A : e_B = 2 delta_AB (orthogonal basis of symmetric 3x3 tensors)
+  [PASS] 1.4b Lambda(k) e_+ = e_+, Lambda(k) e_cross = e_cross; Lambda kills e_x, e_y, e_b, e_l
+  transverse test wave a_T = cos(chi) p + sin(chi) q : {'plus': 0, 'cross': 0, 'x': cos(chi)/2, 'y': sin(chi)/2, 'b': 0, 'l': 0}
+  longitudinal test wave a_L = k                     : {'plus': 0, 'cross': 0, 'x': 0, 'y': 0, 'b': 0, 'l': sqrt(2)/2}
+  [PASS] 1.4c transverse: c_x = cos(chi)/2, c_y = sin(chi)/2, c_+ = c_cross = c_b = c_l = 0  (exact)
+  [PASS] 1.4d longitudinal: c_l = 1/sqrt2, all others 0 (exact; note c_b = 0: no breathing content)
+  [PASS] 1.4e antenna patterns F_A = D:e_A in closed form (F_+,F_cross ~ 2psi; F_x,F_y ~ psi; F_b,F_l psi-free; F_l = -sqrt2 F_b)
+     F_plus  = (cos(theta)**2/2 + 1/2)*cos(2*phi)*cos(2*psi) - sin(2*phi)*sin(2*psi)*cos(theta)
+     F_cross = (-cos(theta)**2/2 - 1/2)*sin(2*psi)*cos(2*phi) - sin(2*phi)*cos(2*psi)*cos(theta)
+     F_x     = (-sin(2*phi)*sin(psi) + cos(2*phi)*cos(psi)*cos(theta))*sin(theta)
+     F_y     = -(sin(2*phi)*cos(psi) + sin(psi)*cos(2*phi)*cos(theta))*sin(theta)
+     F_b     = -sin(theta)**2*cos(2*phi)/2
+     F_l     = sqrt(2)*sin(theta)**2*cos(2*phi)/2
+  [PASS] 1.4f R_T = D:eps_T = sum c_A F_A = (1/2) sin(th)[cos(th) cos(2ph) cos(psi+chi) - sin(2ph) sin(psi+chi)]  (spin weight 1)
+  [PASS] 1.4g R_L = D:eps_L = (1/2) sin(th)^2 cos(2ph)  (psi-independent: spin weight 0)
+
+========================================================================================================
+TASK 2  Antenna mapping on the fixed grid (numerical, three routes + finite arms + psi-Fourier)
+========================================================================================================
+  grid: 180 transverse points, 60 longitudinal points
+     max |cA1_vs_cA2| = 2.422e-16
+     max |cA_vs_closed| = 2.220e-16
+     max |R_sum_vs_DDeps| = 1.665e-16
+     max |R_vs_closed| = 2.220e-16
+     max |F_vs_closed| = 2.776e-16
+     max |recon| = 1.665e-16
+     max |T_tensor_coeffs| = 8.630e-17
+     max |T_scalar_coeffs| = 1.110e-16
+     max |L_nonl_coeffs| = 1.665e-16
+     max |TT_norm| = 8.520e-17
+  [PASS] 2.1 route A1 (projection) == route A2 (6x6 solve) for all c_A to 1e-14
+  [PASS] 2.2 numeric c_A == symbolic closed form (c_x = cos chi/2, c_y = sin chi/2; c_l = 1/sqrt2) to 1e-14
+  [PASS] 2.3 R = sum_A c_A F_A == D:eps == closed form to 1e-14
+  [PASS] 2.4 numeric F_A == closed forms of 1.4e to 1e-14; basis reconstruction exact
+  [PASS] 2.5 transverse wave: |c_+|, |c_cross| <= 1e-15 and |c_b|, |c_l| <= 1e-15 at every grid point (pure x/y = vector)
+  [PASS] 2.6 longitudinal wave: only c_l nonzero (|others| <= 1e-15) (pure scalar, longitudinal)
+  [PASS] 2.7 Lambda(k) eps numerically ~0 at every grid point (max entry <= 1e-15)
+  wrote /home/claude/a1_leg2/leg2_grid.json
+
+--- 2.B finite arms: integrate the displacement gradient along each arm (complex-step derivative of u itself)
+  [PASS] 2.B1 uniform strain (ramp f): -[dL_x - dL_y]/(2L) from direct arm integration == grid R (all 240 points) to 1e-13   :: max diff 1.67e-16
+  [PASS] 2.B2 finite arm: quadrature of grad u == closed form (u.a)[f(t - L k.u/c) - f(t)] to 1e-13   :: max diff 6.66e-16
+  finite-arm (L/lambda = 0.30) differential length, max psi-harmonic amplitude |H_m| over sky x chi x t:
+     transverse  : m=0: 6.42e-17  m=1: 9.26e-01  m=2: 8.13e-17  m=3: 9.19e-17  m=4: 8.73e-17  m=5: 6.49e-17
+     longitudinal: m=0: 1.51e+00  m=1: 0.00e+00  m=2: 0.00e+00  m=3: 0.00e+00  m=4: 0.00e+00  m=5: 0.00e+00
+  [PASS] 2.B3 transverse wave, finite arms: |H_m>=2| <= 1e-14 * |H_1|  (spin weight 1, not 2)   :: H1=9.262e-01, max H>=2 = 9.19e-17
+  [PASS] 2.B4 longitudinal wave, finite arms: only m = 0 (spin weight 0)
+     GR control  : m=0: 9.54e-18  m=1: 2.37e-17  m=2: 1.07e-01  m=3: 1.53e-17  m=4: 7.85e-18  m=5: 1.39e-17
+  [PASS] 2.B5 positive control: a TT (metric-type) wave through the same pipeline shows ONLY m = +-2
+
+--- 2.C Fourier analysis in psi of R = sum c_A F_A and of each F_A
+     R_T(psi)    : m=0: 3.00e-17  m=1: 2.47e-01  m=2: 2.83e-17  m=3: 3.06e-17  m=4: 2.50e-17  m=5: 2.65e-17
+     R_L(psi)    : m=0: 4.97e-01  m=1: 0.00e+00  m=2: 0.00e+00  m=3: 0.00e+00  m=4: 0.00e+00  m=5: 0.00e+00
+     F_plus      : m=0: 3.12e-17  m=1: 8.97e-17  m=2: 4.86e-01  m=3: 6.72e-17  m=4: 4.38e-17  m=5: 6.79e-17
+     F_cross     : m=0: 2.95e-17  m=1: 9.33e-17  m=2: 4.86e-01  m=3: 5.07e-17  m=4: 3.10e-17  m=5: 4.96e-17
+     F_x         : m=0: 2.88e-17  m=1: 4.93e-01  m=2: 4.10e-17  m=3: 4.99e-17  m=4: 2.15e-17  m=5: 2.58e-17
+     F_y         : m=0: 5.20e-17  m=1: 4.93e-01  m=2: 2.29e-17  m=3: 5.33e-17  m=4: 3.51e-17  m=5: 2.76e-17
+     F_b         : m=0: 4.97e-01  m=1: 2.27e-17  m=2: 1.88e-17  m=3: 1.84e-17  m=4: 3.00e-17  m=5: 1.87e-17
+     F_l         : m=0: 7.04e-01  m=1: 0.00e+00  m=2: 0.00e+00  m=3: 0.00e+00  m=4: 0.00e+00  m=5: 0.00e+00
+  [PASS] 2.C1 R_T(psi): only m = +-1 (no m=0, no m=+-2)
+  [PASS] 2.C2 R_L(psi): only m = 0
+  [PASS] 2.C3 method calibration: F_+,F_cross are spin 2; F_x,F_y spin 1; F_b,F_l spin 0
+
+--- 2.D sky/polarisation averages (Gauss-Legendre in cos(theta) x uniform phi, psi, chi; exact for these trig polynomials)
+     <F_A^2>: plus=0.199999999999998, cross=0.199999999999998, x=0.200000000000003, y=0.200000000000003, b=0.066666666666665, l=0.133333333333329
+  [PASS] 2.D1 <F_+^2>=<F_cross^2>=<F_x^2>=<F_y^2>=1/5, <F_b^2>=1/15, <F_l^2>=2/15
+     <R_T^2> = 0.050000000000002 (expect 1/20), <R_L^2> = 0.066666666666665 (expect 1/15); tensor part R_tensor = c_+ F_+ + c_cross F_cross = 0
+  [PASS] 2.D2 <R_T^2> = 1/20, <R_L^2> = 1/15; tensor fraction f_T = <R_tensor^2>/<R^2> = 0 exactly (c_+ = c_cross = 0)
+
+========================================================================================================
+TASK 3  The medium's own detector (no metric assumed)
+========================================================================================================
+  Model (first order in the wave, eikonal along the unperturbed ray, c = c_T = 1):
+    arm unit vector u, length L, BS at 0, end mirror at L u; probe polarisation e (e . u = 0);
+    mirrors at material points: X_M(t) = X_M + u(X_M,t) [+ optional offset Delta(X_M,t)];
+    probe speed relative to the local medium  c [1 + d],  d = alpha tr(eps) + beta u.eps.u + gamma e.eps.e
+                                                         + zeta e.eps.(dir x e)   (zeta: hemitropic, odd in dir);
+    probe advected by the local medium velocity w = du/dt (Galilean, first order).
+    Round-trip time for detection at t (emission t0 = t - 2L/c):
+      T - 2L/c = [2 u.U_E(t0+L/c) - u.U_B(t0) - u.U_B(t)]/c
+                 - (1/c) int_0^L [d_fwd(s u, t0+s/c) + d_bwd(s u, t0+(2L-s)/c)] ds
+                 - (1/c^2) int_0^L [u.w(s u, t0+s/c) - u.w(s u, t0+(2L-s)/c)] ds
+    Differential signal  S = (T_x - T_y)  with probe polarisations e1 (x-arm), e2 (y-arm).
+  acoustoelastic constants used: {'alpha': 0.37, 'beta': -0.81, 'gamma': 1.23, 'zeta': 0.58}
+
+--- 3.1 rigid translation of medium + mirrors gives no signal (mirror motion and advection cancel exactly)
+  [PASS] 3.1 single-arm delay under u = a f(t) vanishes (finite L, generic f)   :: max 3.11e-15
+
+--- 3.2 detector tensor G of the medium interferometer (long-wavelength), probed with static homogeneous strains
+  V (e1 = e2 = z, vertical)                    G =
+[[ 1.81  0.    0.  ]
+ [ 0.   -1.81  0.  ]
+ [ 0.    0.    0.  ]]
+      G = 2 B_eff D + G_rest with B_eff = 1.810000000000, |G_rest| = 0.00e+00, tr G = 0.0e+00
+  [PASS] 3.2 [V] G == (1-beta)(xx-yy) - gamma(e1e1 - e2e2) (alpha and zeta drop out); traceless
+  Hperp (e1 = y on x-arm, e2 = x on y-arm)     G =
+[[ 3.04  0.    0.  ]
+ [ 0.   -3.04  0.  ]
+ [ 0.    0.    0.  ]]
+      G = 2 B_eff D + G_rest with B_eff = 3.040000000000, |G_rest| = 0.00e+00, tr G = 0.0e+00
+  [PASS] 3.2 [Hperp] G == (1-beta)(xx-yy) - gamma(e1e1 - e2e2) (alpha and zeta drop out); traceless
+  M (e1 = z, e2 = x; asymmetric control)       G =
+[[ 3.04  0.    0.  ]
+ [ 0.   -1.81  0.  ]
+ [ 0.    0.   -1.23]]
+      G = 2 B_eff D + G_rest with B_eff = 2.425000000000, |G_rest| = 1.23e+00, tr G = 0.0e+00
+  [PASS] 3.2 [M] G == (1-beta)(xx-yy) - gamma(e1e1 - e2e2) (alpha and zeta drop out); traceless
+  [PASS] 3.2b config V: G = 2(1-beta) D;  config Hperp: G = 2(1-beta+gamma) D  (standard L-shape detector tensor)
+
+--- 3.3 plane test waves, long-wavelength (ramp f -> uniform strain eps = -(1/c) sym(k (x) a)): reduce to standard patterns
+  [PASS] 3.3 [V] medium-detector signal = -(4L/c^2) B_eff * R_grid at all 240 grid points (B_eff = 1.81)   :: max diff 1.94e-16
+  [PASS] 3.3 [Hperp] medium-detector signal = -(4L/c^2) B_eff * R_grid at all 240 grid points (B_eff = 3.04)   :: max diff 2.22e-16
+  => transverse: S/T0 = -(f'/c) B_eff [cos(chi) F_x + sin(chi) F_y]   (vector patterns only)
+     longitudinal: S/T0 = -(f'/c) B_eff sin^2(theta) cos(2 phi) = -(f'/c) B_eff sqrt2 F_l = +(f'/c) 2 B_eff F_b (scalar)
+
+--- 3.4 finite arms (L/lambda = 0.3), generic waveform, all couplings on, + universal mirror offsets
+  offsets=none          V (e1 = e2 = z, vertical)                    transverse |H_m|: 2.0e-16 2.2e+00 1.9e-16 2.6e-16 1.9e-16 2.6e-16
+                                                                           longitud.  |H_m|: 4.1e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00
+  [PASS] 3.4 [none offsets, V] transverse: |H_m>=2| <= 1e-13 |H_1|; longitudinal: only m=0
+  offsets=none          Hperp (e1 = y on x-arm, e2 = x on y-arm)     transverse |H_m|: 4.1e-16 3.8e+00 3.3e-16 3.7e-16 3.7e-16 3.3e-16
+                                                                           longitud.  |H_m|: 5.8e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00
+  [PASS] 3.4 [none offsets, Hperp] transverse: |H_m>=2| <= 1e-13 |H_1|; longitudinal: only m=0
+  offsets=none          M (e1 = z, e2 = x; asymmetric control)       transverse |H_m|: 3.3e-16 3.0e+00 2.6e-16 4.3e-16 2.1e-16 2.1e-16
+                                                                           longitud.  |H_m|: 5.8e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00
+  [PASS] 3.4 [none offsets, M] transverse: |H_m>=2| <= 1e-13 |H_1|; longitudinal: only m=0
+  offsets=universal     V (e1 = e2 = z, vertical)                    transverse |H_m|: 3.9e-16 2.9e+00 3.0e-16 3.9e-16 2.6e-16 3.8e-16
+                                                                           longitud.  |H_m|: 6.9e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00
+  [PASS] 3.4 [universal offsets, V] transverse: |H_m>=2| <= 1e-13 |H_1|; longitudinal: only m=0
+  offsets=universal     Hperp (e1 = y on x-arm, e2 = x on y-arm)     transverse |H_m|: 4.0e-16 3.9e+00 3.1e-16 4.3e-16 2.9e-16 2.7e-16
+                                                                           longitud.  |H_m|: 8.7e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00
+  [PASS] 3.4 [universal offsets, Hperp] transverse: |H_m>=2| <= 1e-13 |H_1|; longitudinal: only m=0
+  offsets=universal     M (e1 = z, e2 = x; asymmetric control)       transverse |H_m|: 4.5e-16 3.4e+00 2.8e-16 3.6e-16 2.9e-16 3.5e-16
+                                                                           longitud.  |H_m|: 8.6e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00
+  [PASS] 3.4 [universal offsets, M] transverse: |H_m>=2| <= 1e-13 |H_1|; longitudinal: only m=0
+  offsets=non-universal V (e1 = e2 = z, vertical)                    transverse |H_m|: 1.7e-16 1.8e+00 1.8e-16 1.9e-16 1.4e-16 1.9e-16
+                                                                           longitud.  |H_m|: 3.1e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00
+  [PASS] 3.4 [non-universal offsets, V] transverse: |H_m>=2| <= 1e-13 |H_1|; longitudinal: only m=0
+  offsets=non-universal Hperp (e1 = y on x-arm, e2 = x on y-arm)     transverse |H_m|: 2.7e-16 3.3e+00 3.0e-16 3.9e-16 3.0e-16 3.7e-16
+                                                                           longitud.  |H_m|: 4.8e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00
+  [PASS] 3.4 [non-universal offsets, Hperp] transverse: |H_m>=2| <= 1e-13 |H_1|; longitudinal: only m=0
+  offsets=non-universal M (e1 = z, e2 = x; asymmetric control)       transverse |H_m|: 2.2e-16 2.6e+00 2.6e-16 2.3e-16 2.1e-16 3.3e-16
+                                                                           longitud.  |H_m|: 4.7e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00
+  [PASS] 3.4 [non-universal offsets, M] transverse: |H_m>=2| <= 1e-13 |H_1|; longitudinal: only m=0
+  => for every coupling, offset model and probe-polarisation choice the differential signal is linear in the
+     amplitude vector a; rotating a about k by psi can only produce harmonics 0, +-1. No helicity-2 term.
+
+========================================================================================================
+TASK 4  Other possible sources of helicity 2
+========================================================================================================
+
+--- 4a internal field components that are scalars under spatial rotation
+  [PASS] 4a.1 most general symmetric tensor linear in a rotation-scalar amplitude: beta1 I + beta2 k k ; Lambda(k) of it == 0
+      rotation-scalars carry helicity 0 only (breathing/longitudinal patterns, psi-independent).
+      Only an internal field transforming as a spatial tensor of rank >= 2 (j >= 2) could carry +-2.
+
+--- 4b anisotropic single crystal (cubic 4th-rank response, strength eta) and its grain average
+  [PASS] 4b.1 orientation average of sum_n c_n^(x4) -> (1/5)(dd+dd+dd) (Monte Carlo, 2e4 grains, tol 2e-2)   :: max dev 2.00e-03
+     single crystal, eta = 0.10: |Lambda(k) T_eff| / |eps| ranges 4.862e-04 .. 4.954e-02 over the sky grid
+     R = D:T_eff psi-harmonics: m=0:1.4e-17 m=1:2.5e-01 m=2:1.8e-17 m=3:2.8e-17 m=4:9.0e-18 m=5:2.0e-17
+     c_+(psi) of T_eff harmonics: m=0:4.7e-18 m=1:3.5e-03 m=2:8.4e-18 m=3:1.1e-02 m=4:8.5e-18 m=5:1.1e-17
+  [PASS] 4b.2 single crystal: Lambda(k) T_eff != 0 at O(eta) (tensor-pattern projection appears) ...
+  [PASS] 4b.3 ... but R(psi) stays spin-weight 1 (|H_m>=2| <= 1e-14 |H_1|): c_+, c_cross vary as psi, 3psi, not 2psi
+  [PASS] 4b.4 untextured aggregate (exact orientation average): Lambda(k) T_eff == 0
+     rotation-scalar amplitude through the crystal map: max |Lambda(k) T| = 3.261e-02, R(psi) harmonics m=0..2: 1.5e-01 0.0e+00 0.0e+00
+  [PASS] 4b.6 scalar amplitude x single-crystal map: TT projection O(eta) appears but R is psi-independent (spin 0)
+     N randomly oriented grains on the probe path (T_eff = eps + eta <Qdev>_N : eps):
+        N =      1   rms |TT|/|eps| = 2.811e-02   (eta/sqrt(N) = 1.000e-01)
+        N =     10   rms |TT|/|eps| = 8.636e-03   (eta/sqrt(N) = 3.162e-02)
+        N =    100   rms |TT|/|eps| = 2.618e-03   (eta/sqrt(N) = 1.000e-02)
+        N =   1000   rms |TT|/|eps| = 8.507e-04   (eta/sqrt(N) = 3.162e-03)
+        N =  10000   rms |TT|/|eps| = 2.524e-04   (eta/sqrt(N) = 1.000e-03)
+  [PASS] 4b.5 residual tensor projection of a textured average falls as N^(-1/2) (fitted slope -0.510)
+     single-crystal tensor fraction (Lambda-projection definition): f_T ~ 7.529e-04 for eta = 0.10  (K = f_T/eta^2 = 0.075)
+
+--- 4c detector moving at V relative to the medium (Galilean-advection toy, quasi-static)
+     |V|/c = 1.2e-03: |Lambda(k) T_eff|/|eps| up to 1.200e-03;  rel. deviation from -Lambda(k) sym(V (x) a)/c: 8.9e-07
+     |Lambda(n_tilt) T_eff| with n_tilt = (k + V/c)/|k + V/c|: 1.06e-09  (O(v^2))
+     R(psi) harmonics with V on: m=0:1.4e-17 m=1:2.5e-01 m=2:2.0e-17 m=3:3.4e-17 m=4:1.2e-17 m=5:2.1e-17
+  [PASS] 4c.1 moving detector: Lambda(k) T_eff = -(1/c) Lambda(k) sym(V (x) a) + O(v^2) (tensor-pattern projection O(v/c))
+  [PASS] 4c.2 ... equivalently a pure helicity-1 wave about the tilted axis k + V/c (residual O(v^2))
+  [PASS] 4c.3 ... and R(psi) is still spin-weight 1 (|H_m>=2| <= 1e-12 |H_1|)
+     f_T about the phase normal k, 6 V-directions: 1.097e-06, 1.097e-06, 6.857e-07, 9.600e-07, 8.367e-07, 9.490e-07
+     mean f_T(k)            = 9.376e-07 = 0.651 (v/c)^2
+     mean f_T(ray k - V/c)  = 3.750e-06 = 2.605 (v/c)^2   (axis = detector-frame ray / apparent-source direction)
+     mean f_T(tilt k + V/c) = 1.610e-18                  (axis about which the toy response is pure helicity 1)
+  [PASS] 4c.4 detector-motion tensor fraction is O((v/c)^2) ~ 1e-6 and depends on which O(v/c)-shifted axis defines 'k'
+     caveat: the same Galilean toy gives a Michelson-Morley round-trip anisotropy up to 7.20e-07 (~(v/c)^2/2);
+     modern MM/Kennedy-Thorndike bounds are many orders smaller, so a viable medium needs an emergent-Lorentz
+     compensation whose effect on the O(v/c) cross term is model-dependent (it can cancel it).
+
+--- 4d second order in the wave amplitude
+  [PASS] 4d.1 (grad u)(grad u)^T = (f'/c)^2 a (x) a  [left Cauchy-Green];  (grad u)^T(grad u) = (f'/c)^2 |a|^2 k (x) k [Green-Lagrange]
+  [PASS] 4d.2 Lambda(k)(a (x) a) = (1/2)[cos(2 alpha) e+ + sin(2 alpha) e_cross] for transverse a: genuine helicity +-2 (spin weight 2)
+  [PASS] 4d.3 Lambda(k)(k (x) k) == 0: the Green-Lagrange quadratic term is helicity 0 only
+     second-order tensor term / first-order vector term ~ |grad u| ~ h ~ 1e-21  ->  f_T ~ h^2 ~ 1e-42;
+     it oscillates at 2f (and 0), so it does not even share the linear waveform.
+
+--- 4e (extra) non-plane fields: superposed waves with directions differing by delta
+     |Lambda(k)[sym(k a) + sym(k' a')]| / delta = 0.7071, 0.7071, 0.7071  -> TT part ~ delta
+  [PASS] 4e.1 TT part of a two-direction superposition scales linearly with the angle delta
+     GW170817 scale: a mid-path deflection delta delays a path by D delta^2/(2c); coherence within ~10 ms over ~40 Mpc needs delta <~ 2.2e-09 rad -> TT amplitude fraction <~ 2e-09, f_T <~ 5e-18
+
+========================================================================================================
+SUMMARY
+========================================================================================================
+  checks: 74 passed, 0 failed
+
+  CLASSIFICATION (isotropic medium, detector at rest in it, linear order):
+    eps = -(f'/c) sym(k (x) a);  Lambda(k) eps == 0 identically (any k, any a).
+    transverse wave  (a = cos chi p + sin chi q): c_x = cos(chi)/2, c_y = sin(chi)/2, all else 0 -> VECTOR (helicity +-1);
+                     R = (1/2) sin(th)[cos(th) cos(2ph) cos(psi+chi) - sin(2ph) sin(psi+chi)], spin weight 1.
+    longitudinal wave (a = k): c_l = 1/sqrt2, all else 0 (c_b = 0) -> SCALAR (helicity 0, longitudinal);
+                     R = (1/2) sin^2(th) cos(2ph), spin weight 0.
+    tensor content: none (c_+ = c_cross = 0; no 2psi harmonic), also for the medium's own interferometer.

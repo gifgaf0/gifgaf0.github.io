@@ -1,0 +1,97 @@
+#!/usr/bin/env python3
+"""C2 second reading (C2_PREREG.md, "Legs"): the decisive facts for P1 and P3 are quotations, so a second reading suffices.
+This script re-reads them, and the P2/P5 facts, verbatim from the V4.93 canonical at their stated lines, and records the DES
+measurement exactly as read from two independent web copies of the paper's abstract (the shell cannot reach the web).
+
+Ledger: /home/claude/fold/SQT_Master_Ledger_v4_93_CANONICAL.md (md5 asserted). Line numbers are 1-based.
+"""
+import hashlib, json, os, sys
+
+LEDGER = "/home/claude/fold/SQT_Master_Ledger_v4_93_CANONICAL.md"
+MD5 = "0aa63a0bec9becbfb911dba3454255f2"
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+raw = open(LEDGER, "rb").read()
+assert hashlib.md5(raw).hexdigest() == MD5, "V4.93 md5 mismatch"
+L = raw.decode("utf-8").split("\n")
+
+Q = {
+    # ---- P1: the banked ζ-tax entry's mechanism, the gate, and the welding lemma
+    "P1": [
+        (4364, "Hypothesizes ζ = 1 − π/√12 is a discrete per-vertex amplitude penalty Φ_out = Φ_in(1−ζ) at every p6m "
+               "corner, from which four objects are claimed to emerge: cosmological redshift"),
+        (4599, "| **ζ-tax gate 3** (cosmological redshift framing commitment in one direction with stated falsification "
+               "gate) | **Open** — required for any R2 promotion |"),
+        (4378, "for any frame/metric redshift mechanism, (1+z) = Δτ_r/Δτ_e *identically*"),
+        (4378, "tired-light-class redshift (intervals preserved) would require per-photon energy extraction"),
+        (4378, "that is a per-vertex amplitude penalty Φ_out = Φ_in(1−ζ)"),
+        (4378, "The welding lemma's reach — any frame/metric redshift carries dilation, while a tired-light-class "
+               "(per-vertex amplitude) reading would not — bears on the ζ-tax redshift element and is **flagged, not "
+               "adjudicated** here."),
+    ],
+    # ---- P3: G-VS1 (§2.91.U) and §2.92.B
+    "P3": [
+        (1672, "π₁(V) = ℤ on every stratum except F7 (ψ₀ = 0, S = 0: P = U(1), π₁ = 0) and the accidental point P0 (the "
+               "O(16) sphere of record, HYP-A1-5)"),
+        (1672, "elementary winding π on the polar strata P7, I7 (half-quantum vortices), 2π wherever e₀ carries weight"),
+        (1672, "protection is a selection — by the import I6 (registered, not made) or by the dynamical clause (M.CW)"),
+        (1672, "§2.50.A's closure not re-read (the half-quantum fact registered only)"),
+        (1672, "so the half-quantum protection on P7/I7 is ACCIDENTAL (DOWNGRADED: with Re S³, V_P7 → three copies of S⁶, "
+               "π₁ = 0); robust protection = ψ₀ windings only."),
+        (1682, "the half-quantum protection on P7 and I7 is accidental; robust protection is ψ₀ windings only"),
+        (1379, "The electron's status as the 2π first-stable-closure on the K₇ lattice (§2.50) makes it the structural "
+               "reference unit of the per-particle mass function."),
+        (4610, "secondary 2π/Φ validated as canonical via §2.50 + §2.50.A consumption."),
+        (4425, "PASS L_B Borromean / K₇ vortex (witness, GP class) / electron 2π"),
+    ],
+    # ---- P2: the window, the a_phys chain, and what licenses ξ = ℓ_P
+    "P2": [
+        (1658, "W^EM_∪ of record = (0, 3.7641664288e-33] SI length units."),
+        (3, "(ξ = ℓ_P, C = ξ/a ∈ [0.0213, 0.0851] ⇒ a_phys ∈ [1.899, 7.588]×10⁻³⁴ m)"),
+        (63, "E-W-1 (a) declared chain ξ = ℓ_P + G-C1 C-interval"),
+        (4424, "R2 reading conditional on E-W-1..3"),
+        (293, "conversion of any substrate statement to SI still requires the transverse scale import, named and "
+              "unexercised (T4 discipline binding; ξ = ℓ_P not licensed, the ANNEX-SC-1 substitution clause standing; the "
+              "G-SCALE1 corollary stays channel-specific to the longitudinal KC3 constraint)"),
+        (1632, "scale placement ONLY"),
+        (1632, "the kill is against the SURFACE-class longitudinal loss channel as closed in §2.91.G, not against the "
+               "Planck placement"),
+    ],
+    # ---- P5: the G-ζ1 result and the freeze
+    "P5": [
+        (1526, "PASS window [0.0881, 0.0981]; **no probe enters it**; closest approach 0.36 = **3.87× above ζ**; the "
+               "registered channel sits at t→1 = 10.7×."),
+        (1528, "**PRIMARY — DEGENERATE:** the registered pulsation-coupling channel is gapless and transparent"),
+        (1530, "**Falsifier (1) fires → H′ RETIRED**, filed as **§3.A.9**"),
+        (1530, "**Untouched:** the §2.52 Open 3 row (standing instruction)"),
+        (4393, "| **§2.52 Open 3** (pulsation = ζ from §3.4) | **Open** — most structurally important; closure of §2.52 "
+               "Open 2 (anharmonic δ = 0.01829) gated on this |"),
+    ],
+}
+
+out, bad = {}, 0
+for item, quotes in Q.items():
+    out[item] = []
+    for n, q in quotes:
+        ok = q in L[n - 1]
+        bad += not ok
+        out[item].append({"line": n, "found_verbatim": ok, "quote": q})
+        print(f"{item} L{n}: {'OK ' if ok else 'MISSING'} {q[:90]!r}")
+
+# DES: read twice from the web (WebSearch + WebFetch in this session and the previous one); recorded, not fetched here
+out["P1_DES"] = {
+    "paper": "White, R. M. T. et al. (DES Collaboration), 'The Dark Energy Survey Supernova Program: slow supernovae show "
+             "cosmological time dilation out to z ~ 1', MNRAS 533(3), 3365-3378 (2024), arXiv:2406.05050",
+    "quote": "we fit each target supernova to a stacked light curve ... and find b = 1.003 ± 0.005 (stat) ± 0.010 (sys)",
+    "quote_2": "ruling out any non-time-dilating cosmological models at very high significance",
+    "reading_1": "University of Portsmouth research portal record (previous session)",
+    "reading_2": "ORNL impact portal record https://impact.ornl.gov/en/publications/the-dark-energy-survey-supernova-program-"
+                 "slow-supernovae-show-cos/ (this session)",
+    "arithmetic": {"sigma_combined": round((0.005 ** 2 + 0.010 ** 2) ** 0.5, 4),
+                   "sigmas_from_b_eq_0": round(1.003 / (0.005 ** 2 + 0.010 ** 2) ** 0.5, 1),
+                   "tired_light_share_of_ln(1+z)_if_added_to_expansion": "1 - b = -0.003 ± 0.011"},
+}
+json.dump(out, open(os.path.join(HERE, "c2_quotes_check.json"), "w"), indent=1, ensure_ascii=False)
+print("DES:", out["P1_DES"]["quote"], "| σ from 0:", out["P1_DES"]["arithmetic"]["sigmas_from_b_eq_0"])
+print("ALL QUOTES FOUND VERBATIM" if bad == 0 else f"{bad} QUOTES MISSING")
+sys.exit(1 if bad else 0)

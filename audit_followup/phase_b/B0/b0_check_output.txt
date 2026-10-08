@@ -1,0 +1,23 @@
+v1 md5    0dc9b1ea59384bdca33e9980b6cbb8ef (APPROVAL_V1.md: 0dc9b1ea59384bdca33e9980b6cbb8ef)
+draft md5 a47080c26bb0a9c601912a5fa925a9f9 (approved draft: a47080c26bb0a9c601912a5fa925a9f9)
+item 1: PRESENT (v1 line 114) — vortex density vertex from -δρθ̇, same F_ν weights
+item 1: PRESENT (v1 line 114) — strength fixed by the circulation quantum; core filling cannot remove it
+item 1: PRESENT (v1 line 113) — divergence-free flow drives shear through -ρ_n u̇·v_s
+item 1: PRESENT (v1 line 143) — Green's-limit claims re-derived (ρ_n constant) or left open
+item 2: PRESENT (v1 line 129) — loss length anchored to proton size: ~19 orders short
+item 2: PRESENT (v1 line 8) — abstract: defects kilometres across (text: 6×10³ m)
+item 3: PRESENT (v1 line 8) — abstract one-sided: within 10⁻²³ of shear, or faster than shear
+item 3: PRESENT (v1 line 131) — Coleman–Glashow argument
+item 3: PRESENT (v1 line 8) — Green's-limit exception in the abstract
+item 4: PRESENT (v1 line 51) — chemical potential renamed μ_c; μ is the shear modulus only
+item 4: PRESENT (v1 line 104) — M̃ (fixed chemical potential) replaces the mixed ratio
+item 5: PRESENT (v1 line 43) — P(c*²) for the monic polynomial carries 1/ρ_n
+item 6: PRESENT (v1 line 70) — Table 2 note: window slopes vs weights at one q, up to 9%
+item 6: PRESENT (v1 line 74) — f_s filled for g ≥ 28
+item 7: PRESENT (v1 line 125) — c₁/c₂ = 34–36 giving ~10¹¹
+item 7: PRESENT (v1 line 90) — 64–80 % reconciled with the table's 0.81 (metastable row)
+item 8: PRESENT (v1 line 161) — acknowledgments: checks were AI-run
+item 8: PRESENT — 'popular picture' gone
+P(c*^2), monic: -rho_s*(M - gamma*rho_n - gamma*rho_s)**2/(rho_n*(rho_n + rho_s)**2) | equals -rho_s(M-rho*gamma)^2/(rho^2 rho_n): True
+rho_n * P(c*^2) (chi denominator per q^4): -rho_s*(M - gamma*rho_n - gamma*rho_s)**2/(rho_n + rho_s)**2
+ALL B0 ITEMS PRESENT IN v1: True

@@ -1,0 +1,23 @@
+== (a) second leg ==
+  dichotomy e_a e_(b+8) in <e0,e8> iff a=b (tool table): True
+  x=e1+e2+e11+e12, y=e3-e4+e13-e14: x*y == 0 mod 911: True; e8 terms [(11, 3, 1), (12, 4, -1)]
+  rank L_(e_a +- e_(a+8)) mod 911: {16}
+  clean n=4: ZDs (tool table, plain Gauss-Jordan mod 911) = 1764
+  clean n=5: ZDs (tool table, plain Gauss-Jordan mod 911) = 0
+  clean n=6: ZDs (tool table, plain Gauss-Jordan mod 911) = 11200
+== (d) second leg ==
+  size-2 matchings of K77-M (choose 2 A-vertices, 2 B-vertices, a non-identity bijection): 651
+  ++ quadruples: 42; all disjoint edge pairs with 4 labels = a Fano-line complement: True
+== (h) second leg ==
+  sympy GL(3,2) order: 168
+  flag (1,{1,2,3}) stabilizer: order 8, abelian False, element orders {1: 1, 2: 5, 4: 2}; sympy is_isomorphic(D4, H) = True (is_isomorphic(H, D4) = False: sympy's test is not symmetric here)
+  classification: order 8, non-abelian, 5 involutions (Q8 has 1) -> D4: True
+  pointwise stabilizer of {1,2,3}: order 4, abelian True
+  canonical code spaces 21, negated-orientation spaces 21, common: 0
+  unsigned-lift orbit of C(m=1, first pair): 42 spaces; stabilizer order 4; orbit == canonical+negated: True
+== (b) second leg ==
+  signed octonion automorphisms (tool table): 1344; per collineation: {8}; unsigned: 21
+  element orders: {1: 1, 2: 91, 3: 224, 4: 84, 6: 224, 7: 384, 8: 336}; elements of order 8 exist -> not AGL(3,2)/its dual (where (v,g)^4 = ((1+g)^3 v, 1) = 1), hence the extension 2^3.PSL(2,7) is NON-split: True
+  Y (all-plus) = 42 pairs, preserved by 21/168 collineations; sign-blind Y^E = 126 pairs, preserved by 168/168
+== (j) second leg ==
+  TS_O1 size 21: signs of e_a e_b = {1: 21}; TS_O2 size 21: {-1: 21}

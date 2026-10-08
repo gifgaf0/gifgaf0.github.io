@@ -1,0 +1,18 @@
+(a) 3D centre of dilatation u = C x/r^3:  tr(eps) = 0 ;  Navier residual = [0, 0, 0]
+(a) 2D centre of dilatation u = C x/rho^2: tr(eps) = 0
+(a') Kelvin G solves Navier away from 0: True
+(a') tetragonal force dipoles: W(lambda x)/W(x) = lambda**(-3)
+(a') isotropic limit (p1=p3, q1=q3): W = 0
+(a') orientation average of the tetragonal dipole-dipole energy: 0
+(b) monopole-monopole: W(lambda x)/W(x) = 1/lambda  (the only 1/r term; it needs net forces F1, F2 != 0)
+(b) monopole-dipole: W(lambda x)/W(x) = lambda**(-2)
+(c) prestressed Navier operator on the dilatation field: residual = [0, 0, 0]
+
+KC-EP: MICROSCOPE eta(Ti,Pt) = -1.5e-15 +- 2.3e-15 (stat) +- 1.5e-15 (syst); 2-sigma |eta| < 7.0e-15
+  electron        f_Ti = 2.521e-04  f_Pt = 2.193e-04  |df| = 3.28e-05  -> anomalous coupling |delta| < 2e-10
+  binding         f_Ti = 9.450e-03  f_Pt = 8.540e-03  |df| = 9.10e-04  -> anomalous coupling |delta| < 8e-12
+  coulomb         f_Ti = 2.029e-03  f_Pt = 4.052e-03  |df| = 2.02e-03  -> anomalous coupling |delta| < 3e-12
+  neutron_excess  f_Ti = 8.079e-02  f_Pt = 2.003e-01  |df| = 1.20e-01  -> anomalous coupling |delta| < 6e-14
+  if binding energy carried no persistent deficit (the §2.90 'transient, no topology: zero' class): |eta| ~ 9.1e-04 = 1e+11 x the MICROSCOPE bound
+
+done

@@ -1,0 +1,69 @@
+{
+ "B1_pure_automorphisms": 21,
+ "B2_signed_automorphisms": 1344,
+ "B2_lifts_per_collineation": [
+  8
+ ],
+ "B2_split": false,
+ "B2_reversal_hist": {
+  "0": 21,
+  "4": 147
+ },
+ "B2_orders_outside_F21": {
+  "2": 21,
+  "4": 42,
+  "3": 42,
+  "7": 42
+ },
+ "B3_signed_sed_auts": 2688,
+ "B3_unsigned_sed_auts": 21,
+ "B4_Y_reproduced": true,
+ "B4_Ysgn": 504,
+ "B4_YE": 126,
+ "B4_naive_preservers_Y": 21,
+ "B4_naive_preservers_YE": 168,
+ "B4_signed_orbits_on_Ysgn": [
+  84,
+  84,
+  336
+ ],
+ "B4_OPOS_to_ONEG_maps": 168,
+ "B4_profiles": {
+  "(False, -1, ((1, 1, -1), (1, -1, -1), (-1, 1, -1), (-1, -1, -1)))": 21,
+  "(False, -1, ((1, 1, -1), (1, -1, 1), (-1, 1, 1), (-1, -1, -1)))": 21,
+  "(True, 1, ((1, 1, 1), (1, 1, -1), (-1, -1, 1), (-1, -1, -1)))": 42,
+  "(False, -1, ((1, -1, 1), (1, -1, -1), (-1, 1, 1), (-1, 1, -1)))": 42
+ },
+ "B5": {
+  "edges": 168,
+  "comps": [
+   12,
+   12,
+   12,
+   12,
+   12,
+   12,
+   12
+  ],
+  "unsigned_preservers": 21,
+  "signed_preservers": 2688,
+  "n_lifts": 2688
+ },
+ "B5_ann_orbits": [
+  168
+ ],
+ "B5_1344_orbits": [
+  168
+ ],
+ "B5_1344_stab": 8,
+ "B5_kernel_moves": [
+  0,
+  96,
+  96,
+  96,
+  96,
+  96,
+  96,
+  96
+ ]
+}

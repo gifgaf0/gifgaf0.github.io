@@ -1,0 +1,12 @@
+V4.94 md5: 708df4cf8f4703088c89b4fad96584bd bytes: 1862277 delta: 39942
+title rewrites: 1; As-of rewrites: 1; in-line bracket appends: 113; inserted lines: 16 (11833 B); V4.93 lines carried unchanged: 4580 of 4695
+appends on the expected 113 lines: True | missing: [] | extra: []
+each append carries its line's part (C1 / C2): True | mismatched: []
+every host line contains its typed keyword: True | failing: []
+appends by part: {'C1': 34, 'C2': 79}
+inserted blocks (V4.94 1-based line ranges): [(38, 39), (1712, 1721), (4449, 4451), (4710, 4710)]
+insertions at the declared places (record / §2.94 / three Part VI rows / changelog): True
+inserted headings: ['### §2.94 — The October 2026 Audit Follow-Up, Phase C: the Crypto Negative Result and the Annotation Batch (V4.94)']
+§2.52 Open 3: V4.93 row + exactly the one authorized append (G-ζ1; Open and frozen): True
+'[→ V4.94 (§2.94.C' occurrences in V4.94: 115 = 113 appends + 2 in inserted text (expected 2, the §2.94 preamble naming the pointer forms)
+ADDITIVITY CHECK: PASS

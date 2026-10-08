@@ -1,0 +1,6 @@
+DRY RUN (not canonical): /home/claude/fold/SQT_Master_Ledger_v4_97_DRYRUN_NOT_CANONICAL.md
+bytes: 1903182 (V4.96 1877637 B; delta +25545 B); chars delta +25053
+md5: 4ac263042ec9fa336f8feb30f24a2263
+in-line pointers: 46 (43 rows + 3 Preamble/§2.91.D) | banners: 11 | §2.97 chars: 11513 | record chars: 2586
+reverse-splice: BYTE-IDENTICAL to V4.96 (120b076a613b7ef4074193c03df2cf0d) — PASS
+all fragments landed exactly once — PASS

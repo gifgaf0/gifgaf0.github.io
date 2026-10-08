@@ -1,0 +1,19 @@
+edges of K77-M: 42;  unordered edge pairs: 861;  size-2 matchings: 651
+  check by formula C(42,2) - 14*C(6,2) = 861 - 210 = 651
+classification of the 651 size-2 matchings (label pattern, annihilation of the signed diagonals):
+     21  ('2 distinct labels', 'not annihilating')
+    210  ('3 distinct labels', 'not annihilating')
+     42  ('4 labels = Fano-line complement', '++ annihilating')
+     42  ('4 labels = Fano-line complement', '+- annihilating')
+    336  ('4 labels containing a Fano line', 'not annihilating')
+
+moreno_quadruple_geometry_search.py Stage-1 definition reproduces 42 quadruples
+  all are size-2 matchings: True
+  they equal the '++ annihilating' class above: True
+  every quadruple's 4 labels form a Fano-line complement: True
+  any diagonal (identity) edge involved: False
+  size-2 matchings with 4 labels forming a line complement: 84; equal to the set of mutually annihilating (any signs) assessor pairs: True
+  each of these 84 lies inside one box-kite (equal strut constant a XOR b'): True
+  quadruples per line complement: [6, 6, 6, 6, 6, 6, 6]
+  ordered (L,R) with (e_L)(e_R)=0 (both +): 84;  two-term ZD elements e_a +- e_b: 84 (the §2.31 '84' counts elements, not ordered pairs)
+  Y (§2.75) as edge pairs: 42; Y subset of the 84 line-complement matchings: True; |Y cap Moreno quadruples| = 0

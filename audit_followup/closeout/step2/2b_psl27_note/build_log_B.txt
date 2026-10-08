@@ -1,0 +1,23 @@
+Merged 0 runs
+edit: E1 date line
+edit: E2 abstract
+edit: E3 prior-art paragraph
+edit: E4 Open Problem 4.4
+edit: E5 Open Problem 4.1
+edit: E6 AI declaration
+edit: E7 reference [8] year
+edit: E8 Appendix A label
+edit: E10 Proposition 4.2 superscript
+edit: E9 references [13]-[18]
+tracked-change ids used: 9001 to 9032
+edit: E11 abstract: establish → record
+edit: E12 abstract: establish → record
+edit: E13 title line 1 (B)
+edit: E13 title line 2 (B)
+edit: E14 running head (B)
+tracked-change ids used: 9101 to 9110
+71d0bdd3f21f8bce089729a31f03cc9a  /tmp/claude-0/-home-claude-gifgaf0-github-io/4969e416-9041-5d46-bec2-c00bd1f3ce7d/scratchpad/b2v3c/B/unpacked/word/document.xml
+
+Paragraphs: 203 → 210 (+7)
+All validations PASSED!
+Successfully accepted all tracked changes: /tmp/claude-0/-home-claude-gifgaf0-github-io/4969e416-9041-5d46-bec2-c00bd1f3ce7d/scratchpad/b2v3c/B/PSL27_v3_CLOSEOUT_DRAFT_titleB_tracked.docx -> /tmp/claude-0/-home-claude-gifgaf0-github-io/4969e416-9041-5d46-bec2-c00bd1f3ce7d/scratchpad/b2v3c/B/PSL27_v3_CLOSEOUT_DRAFT_titleB_clean.docx

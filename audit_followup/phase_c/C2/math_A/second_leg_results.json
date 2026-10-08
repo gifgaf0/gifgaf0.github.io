@@ -1,0 +1,38 @@
+{
+ "a": {
+  "dichotomy": true,
+  "counts": {
+   "4": 1764,
+   "5": 0,
+   "6": 11200
+  }
+ },
+ "d": {
+  "m2": 651,
+  "quads": 42
+ },
+ "h": {
+  "flag_stab": 8,
+  "D4": true,
+  "sympy_iso_D4_H": true,
+  "unsigned_orbit": 42,
+  "unsigned_stab": 4,
+  "negated_common": 0
+ },
+ "b": {
+  "auts": 1344,
+  "order8": 336,
+  "Y": 42,
+  "YE": 126,
+  "presY": 21,
+  "presYE": 168
+ },
+ "j": {
+  "O1": {
+   "1": 21
+  },
+  "O2": {
+   "-1": 21
+  }
+ }
+}

@@ -1,0 +1,1727 @@
+{
+ "base": "/home/claude/fold/SQT_Master_Ledger_v4_96_CANONICAL.md",
+ "base_md5": "120b076a613b7ef4074193c03df2cf0d",
+ "counts": {
+  "table rows": 163,
+  "in scope": 94,
+  "out of scope": 69,
+  "pointers": 43,
+  "closed/dropped bullets (all out of scope)": 17
+ },
+ "tally": {
+  "(a) + pointer": 27,
+  "(f)": 1,
+  "(b) math": 18,
+  "(a)": 4,
+  "(e) + pointer": 2,
+  "(d)": 4,
+  "(c)": 17,
+  "(b) split + pointer": 14,
+  "B.4": 2,
+  "(h)": 2,
+  "(e)": 1,
+  "(b) split": 2
+ },
+ "rows": [
+  {
+   "line": 4432,
+   "section": "High-priority structural gates",
+   "name": "L4.5 gate",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "named in C(a)",
+   "task_head": "**L4.5 gate** (two-part condition per §2.64: continuum integration reproduces discrete minimum up to controlled error AND error matches coarse-graining predicti"
+  },
+  {
+   "line": 4433,
+   "section": "High-priority structural gates",
+   "name": "§2.52 Open 3",
+   "label": "Open",
+   "rule": "(f)",
+   "pointer": null,
+   "note": "the freeze is honoured: no pointer, text untouched; listed as closed in the new 'Substrate program' row",
+   "task_head": "**§2.52 Open 3** (pulsation = ζ from §3.4)"
+  },
+  {
+   "line": 4434,
+   "section": "High-priority structural gates",
+   "name": "§2.50 gate",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "named in C(a)",
+   "task_head": "**§2.50 gate** (2π from K₇ geometry without electron-mass circularity)"
+  },
+  {
+   "line": 4435,
+   "section": "High-priority structural gates",
+   "name": "§4.7 / Conjecture 1 Item 2 (top-quark knot)",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "Part IV §4.7 named in C(a)",
+   "task_head": "**§4.7 / Conjecture 1 Item 2** (top-quark knot assignment 7₁ vs 8₁ vs 8₁₇)"
+  },
+  {
+   "line": 4436,
+   "section": "High-priority structural gates",
+   "name": "§2.7 ε-per-edge",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "named in C(a)",
+   "task_head": "**§2.7 ε-per-edge** (K₇ dihedral derivation)"
+  },
+  {
+   "line": 4437,
+   "section": "High-priority structural gates",
+   "name": "§2.45-NGA Bjerknes gate",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "named in C(a)",
+   "task_head": "**§2.45-NGA Bjerknes gate** (§3.4 forces bilateral splitting of 36° deficit; operative prior-address path for cos(π/10))"
+  },
+  {
+   "line": 4438,
+   "section": "High-priority structural gates",
+   "name": "§2.53 bilateral fold from §3.4",
+   "label": "Partially executed (lead: ADVANCED)",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "ADVANCED read as partially executed (flagged); the open content is the substrate metric/dynamics import (I1–I3)",
+   "task_head": "**§2.53 bilateral fold from §3.4**"
+  },
+  {
+   "line": 4439,
+   "section": "High-priority structural gates",
+   "name": "§2.70 verification check",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.3)",
+   "task_head": "**§2.70 verification check** (confirm \"F₇*\" in §2.15 proof sketch is the bare cyclic group of order 6, not a richer non-abelian carrier)"
+  },
+  {
+   "line": 4440,
+   "section": "High-priority structural gates",
+   "name": "§2.71 candidate-location audit",
+   "label": "Open",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "a structural cross-check between sections; stays open",
+   "task_head": "**§2.71 candidate-location audit** (whether §2.25 / §2.55 / §2.16 / §2.68.7 independently produce 3+3+1 structure matching §2.71's partition)"
+  },
+  {
+   "line": 4441,
+   "section": "High-priority structural gates",
+   "name": "G-ζ1",
+   "label": "Open (registered V4.35)",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "named in C(a); its cell records EXECUTED (V4.36, DEGENERATE)",
+   "task_head": "**G-ζ1** (per-layer coherent attenuation derived from the instantiated substrate: Bogoliubov–Bloch band structure on the MV-G1 crystallized p6m state, imports l"
+  },
+  {
+   "line": 4442,
+   "section": "High-priority structural gates",
+   "name": "G-INT1",
+   "label": "Executed",
+   "rule": "out",
+   "pointer": null,
+   "note": "EXECUTED (V4.47)",
+   "task_head": "**G-INT1** (internal octonion-sector channel of the instantiated substrate: BdG fluctuation spectrum around a Fano-line defect core with the oriented three-body"
+  },
+  {
+   "line": 4443,
+   "section": "High-priority structural gates",
+   "name": "M.ONT gate",
+   "label": "Open (registered V4.35)",
+   "rule": "(a)",
+   "pointer": "a_mont",
+   "note": "named in C(a); its cell records DECLARED (V4.51) and the annexes",
+   "task_head": "**M.ONT gate** (declare the canonical particle ontology — filament / texture / two-component — and annotate the affected-entries list — Paper I-A; Paper VII Con"
+  },
+  {
+   "line": 4444,
+   "section": "High-priority structural gates",
+   "name": "Gate G-κ1",
+   "label": "Open (registered V4.51)",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "named in C(a); its cell records EXECUTED (V4.52)",
+   "task_head": "**Gate G-κ1** (channel-(iii) parameterization — curvature-coupled core dilation: derive from the §3.4 substrate action + the class-(b) roton kernel (G-C1/V4.48)"
+  },
+  {
+   "line": 4445,
+   "section": "High-priority structural gates",
+   "name": "Gate G-2a-S4",
+   "label": "Executed",
+   "rule": "out",
+   "pointer": null,
+   "note": "EXECUTED (V4.53)",
+   "task_head": "**Gate G-2a-S4** (the exchange/Schur–Weyl route — is strand exchange realizable as a motion, and is the symmetric channel the unique irreducible block?)"
+  },
+  {
+   "line": 4446,
+   "section": "High-priority structural gates",
+   "name": "Gate G-2a-S5",
+   "label": "Executed",
+   "rule": "out",
+   "pointer": null,
+   "note": "REGISTERED + EXECUTED (V4.54)",
+   "task_head": "**Gate G-2a-S5** (the distinct-S₄ identification — is the motion-group S₄ canonically the Fano line-stabilizer S₄ over the §2.73 base?)"
+  },
+  {
+   "line": 4447,
+   "section": "High-priority structural gates",
+   "name": "Gate G-2a-S6",
+   "label": "Executed",
+   "rule": "out",
+   "pointer": null,
+   "note": "REGISTERED + EXECUTED (V4.55)",
+   "task_head": "**Gate G-2a-S6** (the spatial-O leg — in what sense, at what import cost, is the motion/stabilizer S₄ the spatial octahedral group?)"
+  },
+  {
+   "line": 4448,
+   "section": "High-priority structural gates",
+   "name": "Gate G-2a-S7",
+   "label": "Executed",
+   "rule": "out",
+   "pointer": null,
+   "note": "REGISTERED + EXECUTED (V4.56)",
+   "task_head": "**Gate G-2a-S7** (the flat crystallographic home — execute §2.87.E's R3 bank: N(Γ)/Γ = Isom(flat Borromean orbifold); decisive bits B1 odd coset / B2 translatio"
+  },
+  {
+   "line": 4449,
+   "section": "High-priority structural gates",
+   "name": "Gate G-2a-S8",
+   "label": "Executed",
+   "rule": "out",
+   "pointer": null,
+   "note": "REGISTERED + EXECUTED (V4.57)",
+   "task_head": "**Gate G-2a-S8** (the spinorial structure of the flat home — execute §2.87.F's R3 bank item (a): does the flat home force the per-strand spinor signs? decisive "
+  },
+  {
+   "line": 4450,
+   "section": "High-priority structural gates",
+   "name": "Gate G-2a-S9",
+   "label": "Executed",
+   "rule": "out",
+   "pointer": null,
+   "note": "REGISTERED + EXECUTED (V4.60)",
+   "task_head": "**Gate G-2a-S9** (the Pin fork — execute §2.87.G's R3 bank item (b): the orientation-reversing spinorial sector; decisive bits B1 the amphichiral square / B2 th"
+  },
+  {
+   "line": 4451,
+   "section": "High-priority structural gates",
+   "name": "Gate G-2a-S10",
+   "label": "Executed",
+   "rule": "out",
+   "pointer": null,
+   "note": "REGISTERED + LOCKED + EXECUTED (V4.62)",
+   "task_head": "**Gate G-2a-S10** (the ℤ/4 cone-loop layer — execute §2.87.G's R3 bank item (a): the invariant content of the half-meridian order-4 monodromies over the full no"
+  },
+  {
+   "line": 4452,
+   "section": "High-priority structural gates",
+   "name": "Gate G-IIB-L1",
+   "label": "Registered",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "named in C(a); its cell records EXECUTED (V4.64)",
+   "task_head": "**Gate G-IIB-L1** (the Lemma 3.1 linear-order non-sourcing proof — the mandatory first computation of the Paper II-B phase per BD-IIB-1 + A1 §A1.3: prove at lin"
+  },
+  {
+   "line": 4453,
+   "section": "High-priority structural gates",
+   "name": "Gate G-CC-ε1",
+   "label": "Registered",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "named in C(a); its cell records EXECUTED (V4.66)",
+   "task_head": "**Gate G-CC-ε1** (the residual-deficit derivation — from the declared Branch-C two-component structure, derive or bound the residual total-density deficit ε of "
+  },
+  {
+   "line": 4454,
+   "section": "High-priority structural gates",
+   "name": "Gate G-SCALE1",
+   "label": "Registered",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "the substrate-scale import; its cell records DECLARED + EXECUTED, FAIL (V4.67); treated like the named executed gates",
+   "task_head": "**Gate G-SCALE1** (the substrate-scale pinning — the ξ-pinning successor named in the G-CC-ε1-R2 report: declare or derive the substrate healing/lattice scale ξ"
+  },
+  {
+   "line": 4455,
+   "section": "High-priority structural gates",
+   "name": "Gate G-TSH1",
+   "label": "Executed",
+   "rule": "out",
+   "pointer": null,
+   "note": "REGISTERED + LOCKED + EXECUTED (V4.68)",
+   "task_head": "**Gate G-TSH1** (the transverse-carrier / A-SHEAR adjudication — Q1 shear-channel existence/linearity on MV-G1; Q2 import classification of R_T = c_T/c_L1 acros"
+  },
+  {
+   "line": 4456,
+   "section": "High-priority structural gates",
+   "name": "Gate G-TSH2",
+   "label": "Executed",
+   "rule": "out",
+   "pointer": null,
+   "note": "REGISTERED + LOCKED + EXECUTED (V4.69)",
+   "task_head": "**Gate G-TSH2** (the axis-(ii) kernel-shape resolution — the §2.91.I-registered successor: classify the kernel-shape dependence of R_T ≡ c_T/c_L1 on the p6m GP "
+  },
+  {
+   "line": 4457,
+   "section": "High-priority structural gates",
+   "name": "Gate G-TSH3",
+   "label": "Executed",
+   "rule": "out",
+   "pointer": null,
+   "note": "REGISTERED + LOCKED + EXECUTED (V4.70)",
+   "task_head": "**Gate G-TSH3** (the kernel-set extension — the §2.91.J-registered successor: extend the certified kernel set by GEM-3/GEM-4/GEM-8 + cap-p2 across two new analy"
+  },
+  {
+   "line": 4458,
+   "section": "High-priority structural gates",
+   "name": "Gate G-TSH4",
+   "label": "Executed",
+   "rule": "out",
+   "pointer": null,
+   "note": "REGISTERED + LOCKED + EXECUTED (V4.72)",
+   "task_head": "**Gate G-TSH4** (the 3D-stack shear gate — §2.91.I Q3 item (3) / the §2.88.B caveat; Phase-0 structure competition {AA, AB, ABC, FCC, BCC} × {step, gem8} at Λ ="
+  },
+  {
+   "line": 4459,
+   "section": "High-priority structural gates",
+   "name": "Gate G-POLY1",
+   "label": "Partially executed",
+   "rule": "(a)",
+   "pointer": null,
+   "note": "named in C(a), but its cell records CLOSED: GATE COMPLETE (V4.76), so no pointer (flagged)",
+   "task_head": "**Gate G-POLY1** (the polycrystalline-vacuum promotion gate — the §2.91.L splitting-burden resolution candidate's promotion path; VRH → Hashin–Shtrikman → Rayle"
+  },
+  {
+   "line": 4460,
+   "section": "High-priority structural gates",
+   "name": "Gate G-CI1",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.77)",
+   "task_head": "**Gate G-CI1** (the Q3(1) carrier-identity gate: Phase 1 internal helicity-±2 branch inventory; Phase 2 regime machinery on the §2.91.M aggregate; Phase 3 seale"
+  },
+  {
+   "line": 4461,
+   "section": "High-priority structural gates",
+   "name": "Gate G-BKZ32",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.78)",
+   "task_head": "**Gate G-BKZ32** (Cluster M — the OP-2.58.2d LLL/BKZ-execution item: BKZ-32 as a structure-detection microscope on the F21/ZD SLWE lattice; prereg 044b114c; T1 "
+  },
+  {
+   "line": 4462,
+   "section": "High-priority structural gates",
+   "name": "Gate G-2a-L1",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.79)",
+   "task_head": "**Gate G-2a-L1** (§2.87.J — the spin–isospin locking assembly, the Gate-2a bounded next target after S1–S10; prereg da9c25d1 LOCKED July 11, 2026; chat leg 2f0f"
+  },
+  {
+   "line": 4463,
+   "section": "High-priority structural gates",
+   "name": "Gate G-S2C1",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.80)",
+   "task_head": "**Gate G-S2C1** (§2.91.O — the S2-on-cone gate, the G-CI1 successor adjudicating the radiative B-2 burden; prereg 2ea8ec13 LOCKED Sept 2; amendments A-1 8bf51bd"
+  },
+  {
+   "line": 4464,
+   "section": "High-priority structural gates",
+   "name": "Gate G-S2C1-W",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.81)",
+   "task_head": "**Gate G-S2C1-W** (the W_∪′ re-derivation mini-gate, PF-S2 successor; staging memo 1ebb6a82 LOCKED September 8, 2026, lock record 5f963ed8, Addenda 1/2 12580917"
+  },
+  {
+   "line": 4465,
+   "section": "High-priority structural gates",
+   "name": "Gate G-QUANTA",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.82); its discriminator is listed in the Successor intake by reference (C(e))",
+   "task_head": "**Gate G-QUANTA** (§2.91.P — the topological-stability / composite-quanta discriminator: continuous charge ∧ Derrick-evading functional; staging memo v2 0039d00"
+  },
+  {
+   "line": 4466,
+   "section": "High-priority structural gates",
+   "name": "Gate G-MSCS1",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.83)",
+   "task_head": "**Gate G-MSCS1** (§2.91.Q — the multi-species channel-speed gate: the §2.91.I Q3 item-(1) species-universality residue; memo v2 3f30262e LOCKED September 19, 20"
+  },
+  {
+   "line": 4467,
+   "section": "High-priority structural gates",
+   "name": "Gate G-2a-A1",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.84)",
+   "task_head": "**Gate G-2a-A1** (§2.91.R — Gate 2a: Baryon Spin Geometry & Factor Assignment, decided on the instantiated substrate; memo v2 626aa868 LOCKED September 20, 2026"
+  },
+  {
+   "line": 4468,
+   "section": "High-priority structural gates",
+   "name": "Gate G-MSCS2",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.85)",
+   "task_head": "**Gate G-MSCS2** (§2.91.S — the l = 4 (cubic-effective) texture family, the E-MS-5 registered successor of G-MSCS1: first-order protection at l = 4 and the quad"
+  },
+  {
+   "line": 4469,
+   "section": "High-priority structural gates",
+   "name": "Gate G-MSCS-A",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.87)",
+   "task_head": "**Gate G-MSCS-A** (§2.91.T — the sealed-anchor mini-gate on the texture constraint surface r_agg = κ₂₂t₂² + κ₄₄t₄², the registered successor of G-MSCS1 / G-MSCS"
+  },
+  {
+   "line": 4470,
+   "section": "High-priority structural gates",
+   "name": "Gate G-VS1",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.88)",
+   "task_head": "**Gate G-VS1** (§2.91.U — vacuum selection in the 16-component substrate, the HYP-A1-5 successor; delivery gate E-VS-10(a))"
+  },
+  {
+   "line": 4471,
+   "section": "High-priority structural gates",
+   "name": "Audit follow-up, Phase A",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.92)",
+   "task_head": "**Audit follow-up, Phase A** (§2.92 — A1 polarization gate, A2 internal modes, A3 matter sector, A4 gravity entries; brief of October 6, 2026; pre-registrations"
+  },
+  {
+   "line": 4472,
+   "section": "High-priority structural gates",
+   "name": "Gate G-OBD1",
+   "label": "Registered",
+   "rule": "(a)",
+   "pointer": "a_obd",
+   "note": "named in C(a): closed unopened",
+   "task_head": "**Gate G-OBD1** (registered by §2.92.B: the zero-point (BdG) energy of each G-VS1 stratum — does order-by-disorder select a stratum, turning import I6 into a co"
+  },
+  {
+   "line": 4473,
+   "section": "High-priority structural gates",
+   "name": "Gate G-RCX1",
+   "label": "Registered",
+   "rule": "(e)",
+   "pointer": "e_rcx",
+   "note": "named in C(e); re-scoped in the intake block",
+   "task_head": "**Gate G-RCX1** (registered by §2.92.C: what protects Borromean linking — a non-Abelian core sector (PSL(2,7) colourings of the link group plus the Annala et al"
+  },
+  {
+   "line": 4474,
+   "section": "High-priority structural gates",
+   "name": "Audit follow-up, Phase B",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.93)",
+   "task_head": "**Audit follow-up, Phase B** (§2.93 — B0 second-sound paper, B1 gauge paper, B2 PSL(2,7) note, B3 Paper VII and the calculators, B4 alpha-decay paper, B5 the η/"
+  },
+  {
+   "line": 4475,
+   "section": "High-priority structural gates",
+   "name": "Phase B drafts awaiting the author",
+   "label": "Open",
+   "rule": "(d)",
+   "pointer": null,
+   "note": "named in C(d)",
+   "task_head": "**Phase B drafts awaiting the author** (gauge paper v6.4 → Zenodo; PSL(2,7) note v3 → Zenodo; public calculator v3.1 → `index.html`; `SQTCalculator.jsx` v2.1 an"
+  },
+  {
+   "line": 4476,
+   "section": "High-priority structural gates",
+   "name": "Alpha-decay paper: correction of the deposit",
+   "label": "Open",
+   "rule": "(d)",
+   "pointer": null,
+   "note": "named in C(d)",
+   "task_head": "**Alpha-decay paper: correction of the deposit** (§2.93.B4 — 74 → 51 steps; one robust break at Z = 88, or a pre-registered N-controlled test before claiming Z "
+  },
+  {
+   "line": 4477,
+   "section": "High-priority structural gates",
+   "name": "Audit follow-up, Phase C",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.94)",
+   "task_head": "**Audit follow-up, Phase C** (§2.94 — C1 the SLWE negative result; C2 the annotation batch; brief of October 6, 2026; pre-registrations 778e3d4a (C1) and e538b2"
+  },
+  {
+   "line": 4478,
+   "section": "High-priority structural gates",
+   "name": "Phase C draft awaiting the author",
+   "label": "Open",
+   "rule": "(d)",
+   "pointer": null,
+   "note": "named in C(d)",
+   "task_head": "**Phase C draft awaiting the author** (the SLWE negative-result note → IACR ePrint; the crypto-project files `tools/lattice_estimate_results.md` and `tools/SLWE"
+  },
+  {
+   "line": 4479,
+   "section": "High-priority structural gates",
+   "name": "Polycrystal validity floor",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": null,
+   "note": "its cell records ELECTED (V4.96), so no pointer",
+   "task_head": "**Polycrystal validity floor** (§2.94.C2 P2 — elect N, the minimum number of lattice cells per grain for W^EM_∪; under the declared a_phys chain the edge is 4.9"
+  },
+  {
+   "line": 4480,
+   "section": "High-priority structural gates",
+   "name": "Lattice-spacing bound",
+   "label": "Recorded",
+   "rule": "out",
+   "pointer": null,
+   "note": "RECORDED (V4.95), a bound, not a task",
+   "task_head": "**Lattice-spacing bound** (§2.95 — the largest lattice spacing all photon data allow, a_max(N), for N cells per grain; brief of October 7, 2026; pre-registratio"
+  },
+  {
+   "line": 4481,
+   "section": "High-priority structural gates",
+   "name": "G-C1 gate",
+   "label": "Executed",
+   "rule": "out",
+   "pointer": null,
+   "note": "EXECUTED (V4.48)",
+   "task_head": "**G-C1 gate** (angle-3 / the §2.64 inverse problem — given the GP+roton soft-core p6m crystal with constant a, is C = ξ_vac/a forced to a pure number by the tri"
+  },
+  {
+   "line": 4482,
+   "section": "High-priority structural gates",
+   "name": "G-2a-S1 / G-2a-S2",
+   "label": "Executed",
+   "rule": "out",
+   "pointer": null,
+   "note": "EXECUTED (V4.49)",
+   "task_head": "**G-2a-S1 / G-2a-S2** (Gate 2a structural screens — Route 1 necessary-condition screen [does 2O admissibly host the locked spin-SU(2), transverse to color?] + R"
+  },
+  {
+   "line": 4488,
+   "section": "Cryptographic thread open problems",
+   "name": "OP-2.58.1.a",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED by §2.66 + §2.66.1",
+   "task_head": "**OP-2.58.1.a** (CBD-baseline DFR at spec)"
+  },
+  {
+   "line": 4489,
+   "section": "Cryptographic thread open problems",
+   "name": "OP-2.58.1.b",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto",
+   "task_head": "**OP-2.58.1.b** (ZD-vs-CBD DFR differential; sharpened)"
+  },
+  {
+   "line": 4490,
+   "section": "Cryptographic thread open problems",
+   "name": "OP-2.58.2",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto",
+   "task_head": "**OP-2.58.2** (Fano-line class leakage from public A)"
+  },
+  {
+   "line": 4491,
+   "section": "Cryptographic thread open problems",
+   "name": "OP-2.58.2c",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto (moot per §2.94.C1)",
+   "task_head": "**OP-2.58.2c** (production-scale empirical retest at k=32, q=2³²)"
+  },
+  {
+   "line": 4492,
+   "section": "Cryptographic thread open problems",
+   "name": "OP-2.58.2d",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto (closed at the public-matrix level, V4.78)",
+   "task_head": "**OP-2.58.2d** (LLL/BKZ reduction via fpylll)"
+  },
+  {
+   "line": 4493,
+   "section": "Cryptographic thread open problems",
+   "name": "OP-2.58.2e",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto",
+   "task_head": "**OP-2.58.2e** (Leftover Hash Lemma argument for A·s mod q uniformity)"
+  },
+  {
+   "line": 4494,
+   "section": "Cryptographic thread open problems",
+   "name": "OP-2.58.3",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto",
+   "task_head": "**OP-2.58.3** (Strategy 2 leakage analysis)"
+  },
+  {
+   "line": 4495,
+   "section": "Cryptographic thread open problems",
+   "name": "OP-2.58.4",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto (its own words: a physics-crypto connection); untouched per C(c)",
+   "task_head": "**OP-2.58.4** (φ⁻¹ scale signature via K₇,₇ weighting)"
+  },
+  {
+   "line": 4496,
+   "section": "Cryptographic thread open problems",
+   "name": "OP-2.58.5",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto",
+   "task_head": "**OP-2.58.5** (joint q-η optimization at k=32)"
+  },
+  {
+   "line": 4497,
+   "section": "Cryptographic thread open problems",
+   "name": "OP-2.59-A, B, C",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto",
+   "task_head": "**OP-2.59-A, B, C** (decoder DFR; tighter bounds under Fano-line model; encoder/decoder coherence)"
+  },
+  {
+   "line": 4498,
+   "section": "Cryptographic thread open problems",
+   "name": "RD-01 to RD-04",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto",
+   "task_head": "**RD-01 to RD-04** (research directions from §2.61 4-layer architecture)"
+  },
+  {
+   "line": 4499,
+   "section": "Cryptographic thread open problems",
+   "name": "OP-2.62.3",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto thread",
+   "task_head": "**OP-2.62.3** (21 code spaces over ℂ instead of F_p)"
+  },
+  {
+   "line": 4500,
+   "section": "Cryptographic thread open problems",
+   "name": "OP-2.62.4",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto thread",
+   "task_head": "**OP-2.62.4** (tiling factor 6 structural interpretation)"
+  },
+  {
+   "line": 4501,
+   "section": "Cryptographic thread open problems",
+   "name": "Phase B Entry 006",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED by §2.69",
+   "task_head": "**Phase B Entry 006** (mod-455 residue distribution at 256-bit)"
+  },
+  {
+   "line": 4502,
+   "section": "Cryptographic thread open problems",
+   "name": "§2.66.2 source recovery or §2.66.3 re-derivation",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto",
+   "task_head": "**§2.66.2 source recovery or §2.66.3 re-derivation**"
+  },
+  {
+   "line": 4503,
+   "section": "Cryptographic thread open problems",
+   "name": "Cluster M citation hygiene sweep",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto",
+   "task_head": "**Cluster M citation hygiene sweep**"
+  },
+  {
+   "line": 4509,
+   "section": "Sedenion / Fano-line structure open problems",
+   "name": "OP-2.25.2-V1",
+   "label": "Open",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics",
+   "task_head": "**OP-2.25.2-V1** (rank-12 symbolic proof via G₂ on octonion imaginaries)"
+  },
+  {
+   "line": 4510,
+   "section": "Sedenion / Fano-line structure open problems",
+   "name": "OP-2.25.2-V2",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (superseded by §2.55)",
+   "task_head": "**OP-2.25.2-V2** (kernel involution abstract identification)"
+  },
+  {
+   "line": 4511,
+   "section": "Sedenion / Fano-line structure open problems",
+   "name": "OP-2.25.2-V3",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.17)",
+   "task_head": "**OP-2.25.2-V3** (Fano-line lift to 3-term and higher ZDs)"
+  },
+  {
+   "line": 4512,
+   "section": "Sedenion / Fano-line structure open problems",
+   "name": "OP-2.81.1",
+   "label": "Open",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics",
+   "task_head": "**OP-2.81.1** (characterize the n=4 ZD kernel: 1764=84×21, clean-vs-mixed split, box-kite / sum-of-assessors link to §2.58.B.1)"
+  },
+  {
+   "line": 4513,
+   "section": "Sedenion / Fano-line structure open problems",
+   "name": "OP-2.81.2",
+   "label": "Open",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics; its cell records CLOSED (V4.94)",
+   "task_head": "**OP-2.81.2** (prove the even-term parity for general n, beyond the n≤5 empirical check)"
+  },
+  {
+   "line": 4514,
+   "section": "Sedenion / Fano-line structure open problems",
+   "name": "OP-2.25.2-V4",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.17)",
+   "task_head": "**OP-2.25.2-V4** (non-mod-455 prime test)"
+  },
+  {
+   "line": 4520,
+   "section": "Capacity / statistics open problems (§2.67 / §2.68 thread)",
+   "name": "OP-2.67.1",
+   "label": "Superseded",
+   "rule": "out",
+   "pointer": null,
+   "note": "Split by §2.68.5 into 1a / 1b / 1c (the children are rows)",
+   "task_head": "**OP-2.67.1** (Moreno-quadruple K₇-pair geometry; original framing from §2.67.8)"
+  },
+  {
+   "line": 4521,
+   "section": "Capacity / statistics open problems (§2.67 / §2.68 thread)",
+   "name": "OP-2.67.1a",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (Tier 2)",
+   "task_head": "**OP-2.67.1a** (algebraic-combinatorial structure of Moreno quadruples in Fano-plane terms)"
+  },
+  {
+   "line": 4522,
+   "section": "Capacity / statistics open problems (§2.67 / §2.68 thread)",
+   "name": "OP-2.67.1b (original)",
+   "label": "Superseded",
+   "rule": "out",
+   "pointer": null,
+   "note": "REFRAMED by §2.68.8.2 (the reframed row follows)",
+   "task_head": "**OP-2.67.1b** (originally: derive K₇,₇ − M on p6m from capacity exhaustion)"
+  },
+  {
+   "line": 4523,
+   "section": "Capacity / statistics open problems (§2.67 / §2.68 thread)",
+   "name": "OP-2.67.1b reframed",
+   "label": "Open",
+   "rule": "(b) split",
+   "pointer": "b_6771b",
+   "note": "derive CD doubling from p6m capacity exhaustion: an algebraic question read physically (K₇ closures on the vacuum lattice)",
+   "task_head": "**OP-2.67.1b reframed** (derive the sedenion algebra 𝕆 → 𝕊 from p6m capacity-exhaustion condition)"
+  },
+  {
+   "line": 4524,
+   "section": "Capacity / statistics open problems (§2.67 / §2.68 thread)",
+   "name": "OP-2.67.1c",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a_6771c",
+   "note": "its own words: a physical-mechanism question (exchange statistics)",
+   "task_head": "**OP-2.67.1c** (derive exchange sign τ = −1 from ZD annihilation; closes G4 of §2.67.6)"
+  },
+  {
+   "line": 4525,
+   "section": "Capacity / statistics open problems (§2.67 / §2.68 thread)",
+   "name": "OP-2.67.6",
+   "label": "Standing",
+   "rule": "B.4",
+   "pointer": null,
+   "note": "named in §2.97.B.4: the gates stay in force for any statistics-from-geometry claim",
+   "task_head": "**OP-2.67.6** (any future statistics-from-geometry derivation must clear all four gates G1–G4 of §2.67.6)"
+  },
+  {
+   "line": 4531,
+   "section": "Geometric / combinatorial open problems",
+   "name": "OP-C7-1",
+   "label": "Open",
+   "rule": "(h)",
+   "pointer": null,
+   "note": "its target, '§2.7 Open Problem 3', is not defined in the ledger",
+   "task_head": "**OP-C7-1** (category-mismatch metric; would close §2.7 Open Problem 3)"
+  },
+  {
+   "line": 4532,
+   "section": "Geometric / combinatorial open problems",
+   "name": "OP-C7-2",
+   "label": "Open",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics (the K₇ embedding's symmetry)",
+   "task_head": "**OP-C7-2** (max geometric symmetry of K₇ embedding; Bokowski-Eggert 1991 may settle)"
+  },
+  {
+   "line": 4533,
+   "section": "Geometric / combinatorial open problems",
+   "name": "OP-C7-3",
+   "label": "Open",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics",
+   "task_head": "**OP-C7-3** (84 = 7 × 12 alternative factorization check; §2.55 gives 7 × 3 × 4 instead)"
+  },
+  {
+   "line": 4534,
+   "section": "Geometric / combinatorial open problems",
+   "name": "OP-C7-4",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto (its sub-items live in §§2.58, 2.62)",
+   "task_head": "**OP-C7-4** (Fano-line classifier shield-vs-leakage; sub-items distributed across §§2.58.*, 2.62.*)"
+  },
+  {
+   "line": 4535,
+   "section": "Geometric / combinatorial open problems",
+   "name": "OP-2.56-A",
+   "label": "Open",
+   "rule": "(b) split",
+   "pointer": "b_256a",
+   "note": "tags framework numbers, mostly physical claims, against a mathematical inventory",
+   "task_head": "**OP-2.56-A** (audit pass: tag every framework numerical claim against 20-element 5-fold inventory)"
+  },
+  {
+   "line": 4536,
+   "section": "Geometric / combinatorial open problems",
+   "name": "OP-2.56-B",
+   "label": "Open (lead: Partially open)",
+   "rule": "(b) split",
+   "pointer": "b_256b",
+   "note": "asks whether two values are physical parameters; a geometric address is active",
+   "task_head": "**OP-2.56-B** (cos(18°) and sin(36°) unmapped value identification; chord-CR partial address ruled out per §3.06; seven-circles-experiment partial address unaff"
+  },
+  {
+   "line": 4537,
+   "section": "Geometric / combinatorial open problems",
+   "name": "OP-2.56-C",
+   "label": "Open",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics (5-fold / 7-fold register coupling)",
+   "task_head": "**OP-2.56-C** (5-fold and 7-fold register coupling structure)"
+  },
+  {
+   "line": 4538,
+   "section": "Geometric / combinatorial open problems",
+   "name": "OP-2.63",
+   "label": "Open",
+   "rule": "(b) split",
+   "pointer": "b_263",
+   "note": "a geometry question about the vacuum fold of §2.26",
+   "task_head": "**OP-2.63** (explicit fold geometry from which Császár torus emerges as angle-θ cross-section)"
+  },
+  {
+   "line": 4544,
+   "section": "Lower-priority items",
+   "name": "'Zero Free Parameters' string update",
+   "label": "Open",
+   "rule": "(d)",
+   "pointer": null,
+   "note": "an author action (drafted at V4.93; Step 4a)",
+   "task_head": "**\"Zero Free Parameters\" string update** (Paper VII §9.1; `sqt_v20_merged.jsx` header; `SQTCalculator.jsx` header + constants banner) → replace with the **scope"
+  },
+  {
+   "line": 4545,
+   "section": "Lower-priority items",
+   "name": "§2.46 simulation rerun",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "the four-prime ladder's physical scale intersections",
+   "task_head": "§2.46 simulation rerun (periodic 2-ladder, reset at k = 8; check k = 35 and k = 42 alignment)"
+  },
+  {
+   "line": 4546,
+   "section": "Lower-priority items",
+   "name": "§2.47 6% gap derivation",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "the proton estimate (mass table)",
+   "task_head": "§2.47 6% gap derivation (3-cycle proton, {3,5,7} operators over 24 steps, −1.13 ζ-layers net)"
+  },
+  {
+   "line": 4547,
+   "section": "Lower-priority items",
+   "name": "§3.4 Bjerknes-action Lagrangian audit",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "Bjerknes action, named in C(a)",
+   "task_head": "§3.4 Bjerknes-action Lagrangian audit (Paper II scope)"
+  },
+  {
+   "line": 4548,
+   "section": "Lower-priority items",
+   "name": "§3.4-G0",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.26)",
+   "task_head": "§3.4-G0 (symmetry-allowed term list; single-scalar kernel)"
+  },
+  {
+   "line": 4549,
+   "section": "Lower-priority items",
+   "name": "§3.4-MV-G1",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.26)",
+   "task_head": "§3.4-MV-G1 (roton → p6m vacuum)"
+  },
+  {
+   "line": 4550,
+   "section": "Lower-priority items",
+   "name": "§3.4-G1′",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.26)",
+   "task_head": "§3.4-G1′ (symmetric Fano 3-body)"
+  },
+  {
+   "line": 4551,
+   "section": "Lower-priority items",
+   "name": "§3.4-G1″",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.26)",
+   "task_head": "§3.4-G1″ (oriented Fano 3-body)"
+  },
+  {
+   "line": 4552,
+   "section": "Lower-priority items",
+   "name": "§3.4-G2-orient",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (R1, V4.27)",
+   "task_head": "§3.4-G2-orient (Fano-line linking charge on a charge-1 hopfion)"
+  },
+  {
+   "line": 4553,
+   "section": "Lower-priority items",
+   "name": "§3.4-G2-Borromean",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.27)",
+   "task_head": "§3.4-G2-Borromean (does the pairwise charge reach the baryon?)"
+  },
+  {
+   "line": 4554,
+   "section": "Lower-priority items",
+   "name": "§3.4-G2-Milnor",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.29; retraction V4.31 reversed V4.32)",
+   "task_head": "§3.4-G2-Milnor (φ-weighted Milnor μ̄₁₂₃ on the Borromean strands)"
+  },
+  {
+   "line": 4555,
+   "section": "Lower-priority items",
+   "name": "§3.4-G2-Milnor-INT",
+   "label": "Partially executed (lead: PARTIAL)",
+   "rule": "(b) split",
+   "pointer": "b_milnor",
+   "note": "curve computations (R1) joined to a physical sign reading (R3)",
+   "task_head": "§3.4-G2-Milnor-INT (third-order-helicity / Massey integral)"
+  },
+  {
+   "line": 4556,
+   "section": "Lower-priority items",
+   "name": "§3.4-G2-knot",
+   "label": "Open",
+   "rule": "(e)",
+   "pointer": "e",
+   "note": "named in C(e)",
+   "task_head": "§3.4-G2-knot (field-soliton Borromean realization)"
+  },
+  {
+   "line": 4557,
+   "section": "Lower-priority items",
+   "name": "§3.4-G2-CHIRAL",
+   "label": "Open (V4.31)",
+   "rule": "(e)",
+   "pointer": null,
+   "note": "named in C(e), but its cell records ✓ CLOSED (V4.32, §3.09), so no pointer; listed in the intake by reference (flagged)",
+   "task_head": "§3.4-G2-CHIRAL (recompute the baryon magnitude/sign on a manifestly-chiral Borromean)"
+  },
+  {
+   "line": 4558,
+   "section": "Lower-priority items",
+   "name": "§3.4-SIGNPHI",
+   "label": "Confirmed",
+   "rule": "out",
+   "pointer": null,
+   "note": "Consistency-CONFIRMED (V4.33)",
+   "task_head": "§3.4-SIGNPHI (sign(φ)↔QR/QNR consistency check; Paper II §3.4.6)"
+  },
+  {
+   "line": 4559,
+   "section": "Lower-priority items",
+   "name": "§3.4-G1‴ / G4",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "Bjerknes pulsation = ζ",
+   "task_head": "§3.4-G1‴ / G4 (collective tiling; Bjerknes pulsation = ζ)"
+  },
+  {
+   "line": 4560,
+   "section": "Lower-priority items",
+   "name": "§2.51",
+   "label": "Reserved",
+   "rule": "out",
+   "pointer": null,
+   "note": "Reserved; no content assigned",
+   "task_head": "§2.51 (reserved; no content assigned)"
+  },
+  {
+   "line": 4566,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "§2.73 Gate A",
+   "label": "Open",
+   "rule": "(b) split",
+   "pointer": "b_273",
+   "note": "serves the R3 physical mapping; §2.73's algebra is R2",
+   "task_head": "**§2.73 Gate A** (coarse-graining projection over 2·std subspace)"
+  },
+  {
+   "line": 4567,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "§2.73 Gate B",
+   "label": "Open",
+   "rule": "(b) split",
+   "pointer": "b_273",
+   "note": "serves the R3 physical mapping; §2.73's algebra is R2",
+   "task_head": "**§2.73 Gate B** (Lorentz signature derivation from sedenion non-associative / exchange algebra)"
+  },
+  {
+   "line": 4568,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "§2.74 Part IV physical mapping",
+   "label": "Open (R3)",
+   "rule": "(b) split",
+   "pointer": "b_274map",
+   "note": "the R3 mapping of §2.74's R2 duality",
+   "task_head": "**§2.74 Part IV physical mapping** (load tax ↔ vertex / crossing tax ↔ face)"
+  },
+  {
+   "line": 4569,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "§2.74 Part VI OQ1",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.5)",
+   "task_head": "**§2.74 Part VI OQ1** (PSL(2,7) orbit decomposition of 42 YB pairs)"
+  },
+  {
+   "line": 4570,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "§2.74 Part VI OQ2",
+   "label": "Open",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics",
+   "task_head": "**§2.74 Part VI OQ2** (Frobenius-algebra refinement of Császár vs Szilassi)"
+  },
+  {
+   "line": 4571,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "§2.74 Part VI OQ3",
+   "label": "Open",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "a bilinear-form question on the Császár/Szilassi duality",
+   "task_head": "**§2.74 Part VI OQ3** (Hodge-style pairing realizing anchor/circulation duality as non-degenerate bilinear form)"
+  },
+  {
+   "line": 4572,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.74.1c",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED in §2.76",
+   "task_head": "**OP-2.74.1c** (Layer 1.5 defect-rank-8 generator orbit membership)"
+  },
+  {
+   "line": 4573,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.74.1a",
+   "label": "Open",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics",
+   "task_head": "**OP-2.74.1a** (full Aut(𝕊)-style symmetry of the 42-pair set, allowing signed permutations and/or non-octad-fixing automorphisms)"
+  },
+  {
+   "line": 4574,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.74.1b",
+   "label": "Open",
+   "rule": "(b) split",
+   "pointer": "b_2741b",
+   "note": "its own words: a physical mapping of the YB orbits",
+   "task_head": "**OP-2.74.1b** (physical mapping of two F₂₁ YB orbits to CD-seam crossing orientation)"
+  },
+  {
+   "line": 4575,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.74.1c.i",
+   "label": "Open",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics; its cell records ANSWERED (V4.94)",
+   "task_head": "**OP-2.74.1c.i** (finer F₂₁-invariant splitting the six sum-15 twosets 3-3 between TS_O1 and TS_O2)"
+  },
+  {
+   "line": 4576,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.74.1c.ii",
+   "label": "Open",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics",
+   "task_head": "**OP-2.74.1c.ii** (role of identity-doubled twoset orbit TS_IDOUB; connection to §2.31 backbone)"
+  },
+  {
+   "line": 4577,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.74.1c.iii",
+   "label": "Open",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics; its cell records ANSWERED (V4.94)",
+   "task_head": "**OP-2.74.1c.iii** ((T_A, T_C) uniquely YB-coupled among L1.5 pairs; investigate privileged status)"
+  },
+  {
+   "line": 4578,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.78.1",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.17)",
+   "task_head": "**OP-2.78.1** (pin which of the eight conjugate Borel F₂₁ ⊂ PSL(2,7) is §2.76's 𝒴-preserving TS_O1/TS_O2)"
+  },
+  {
+   "line": 4579,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.78.2",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.17)",
+   "task_head": "**OP-2.78.2** (is \"preserves 𝒴\" ≡ \"fixes the TS_O1/TS_O2 partition\"; is the partition-stabilizer F₂₁ order 21 or N_singer order 42)"
+  },
+  {
+   "line": 4580,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.78.3",
+   "label": "Open (lead: Open / redirect)",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics",
+   "task_head": "**OP-2.78.3** (redirect: the substantive open structure is the §2.74 L1.5 braid-defect thread, not the assessor orbits)"
+  },
+  {
+   "line": 4581,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.79.1",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.17)",
+   "task_head": "**OP-2.79.1** (confirm comp_E's Singer-invariant 2-block partition IS §2.76's 𝒴-pinned TS_O1/TS_O2; exhibit the explicit Borel identification)"
+  },
+  {
+   "line": 4582,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "§2.58.B implementation",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.17)",
+   "task_head": "**§2.58.B implementation** (Brief 10.5: ZD-noise SLWE as inspectable code)"
+  },
+  {
+   "line": 4583,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "§3.1 ephemeral-distribution fix",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto-side",
+   "task_head": "**§3.1 ephemeral-distribution fix** (correct `r ← 𝕊_q^k` to sparse-ternary r in SLWE_Prime_Master_v1.md)"
+  },
+  {
+   "line": 4584,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.58.1a harness port",
+   "label": "Open",
+   "rule": "(c)",
+   "pointer": null,
+   "note": "crypto-side",
+   "task_head": "**OP-2.58.1a harness port** (port the adjoint/DFR harness to k=32, q≡1 mod455; merge with OP-C DFR)"
+  },
+  {
+   "line": 4585,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "`_cd_conj` shared-tool convergence",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.17)",
+   "task_head": "**`_cd_conj` shared-tool convergence** (add the CD-conjugate helper to the framework `sedenion_Fp.py`)"
+  },
+  {
+   "line": 4586,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.79.2",
+   "label": "Open",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics (an intertwiner question)",
+   "task_head": "**OP-2.79.2** (σ₄/σ₄' [§2.77] ↔ two-YB-orbit parallel: a natural intertwiner commuting with the QR↔QNR involution, or a coincidence of the shared order-21 F₂₁ s"
+  },
+  {
+   "line": 4587,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.75-CR",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED-with-result (V4.6)",
+   "task_head": "**OP-2.75-CR** (representation-theoretic action of QR↔QNR on K₇ spin reps; spin-flip vs Galois-twist)"
+  },
+  {
+   "line": 4588,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.77-σ4",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED-with-result (V4.6)",
+   "task_head": "**OP-2.77-σ4** (explicit construction of σ₄ ↔ σ₄' Galois twist by direct character computation)"
+  },
+  {
+   "line": 4589,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.77-WD",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED-with-negative-result (V4.7)",
+   "task_head": "**OP-2.77-WD** (Weyl doublet identification; mapping σ₄ ⊕ σ₄' to ψ_L ⊕ ψ_R Dirac bispinor)"
+  },
+  {
+   "line": 4590,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.77-FB",
+   "label": "Open",
+   "rule": "(h)",
+   "pointer": null,
+   "note": "a terminology audit across physics and mathematics entries; no rule fits it cleanly",
+   "task_head": "**OP-2.77-FB** (framework-wide terminology audit — V4.7 expanded scope)"
+  },
+  {
+   "line": 4591,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.25.2 branch (a)",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED-NEGATIVE (V4.18)",
+   "task_head": "**OP-2.25.2 branch (a)** (pure-knot-theory: prove R = 4r for ideal Euclidean Borromean rings)"
+  },
+  {
+   "line": 4592,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.25.2 branch (b)",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "the proton-radius route r_p/λ̄_p = 4",
+   "task_head": "**OP-2.25.2 branch (b)** (order-7 cone holonomy selects a non-canonical conformation with enclosing-ratio 4 under tension)"
+  },
+  {
+   "line": 4593,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "§2.82 Eddington flags",
+   "label": "Standing (lead: ACTIVE)",
+   "rule": "B.4",
+   "pointer": null,
+   "note": "Eddington guards; the standard stays in force (§2.97.B.4)",
+   "task_head": "**§2.82 Eddington flags** (1: bracketing-trap intermediate-surface selection to hit 4; 2: √7-as-F₇ conflation)"
+  },
+  {
+   "line": 4594,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.E-QQ.QQ1",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "SCOPE-CORRECTED (V4.14), re-classified R2-forced",
+   "task_head": "**OP-2.E-QQ.QQ1** (binary-polyhedral subgroup identification of SL(2,7); 2 ⊕ 2 decomposition of σ₄|_H)"
+  },
+  {
+   "line": 4595,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.E-QQ.QQ2",
+   "label": "Open (re-opened V4.14)",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics",
+   "task_head": "**OP-2.E-QQ.QQ2** (explicit Pauli-matrix isomorphism Cℓ(0,2)_σ₄ ≅ Pauli algebra in identified H-basis)"
+  },
+  {
+   "line": 4596,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.E-QQ.QQ3",
+   "label": "Open (lead: OPEN in full)",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "the ferromagnetism carrier mapping",
+   "task_head": "**OP-2.E-QQ.QQ3** (physical mapping of per-vortex carrier to identified H-doublet; Path B of ferromagnetism conjecture re-grounding)"
+  },
+  {
+   "line": 4597,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "§2.E-QQ promotion gate to R2",
+   "label": "Open (re-opened V4.14)",
+   "rule": "(b) split",
+   "pointer": "b_eqq",
+   "note": "R2 representation theory joined to an R3 physical reading",
+   "task_head": "**§2.E-QQ promotion gate to R2** (explicit construction satisfying QQ1 + QQ2 with binary polyhedral H ⊆ SL(2,7) acting on σ₄ as 2 ⊕ 2)"
+  },
+  {
+   "line": 4598,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.E-QQ.G1",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED-POSITIVE (V4.14)",
+   "task_head": "**OP-2.E-QQ.G1** (Frobenius–Schur reality structure of σ₄ and its restrictions)"
+  },
+  {
+   "line": 4599,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.E-QQ.E1",
+   "label": "Open",
+   "rule": "(b) split",
+   "pointer": "b_e1",
+   "note": "its own words: a physical interpretation of an algebraic pair",
+   "task_head": "**OP-2.E-QQ.E1** (physical interpretation of SL(2,3) Galois pair ρ_{2ω} ⊕ ρ_{2ω²} as chirality structure, distinct from F₂₁ Galois twist)"
+  },
+  {
+   "line": 4600,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "OP-2.E-QQ.E2",
+   "label": "Open",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics (bookkeeping)",
+   "task_head": "**OP-2.E-QQ.E2** (binary octahedral 2O ⊂ SL(2,7) restriction; preimage of S_4 ⊂ PSL(2,7), order 48; contains SL(2,3) of index 2)"
+  },
+  {
+   "line": 4601,
+   "section": "§2.73 / §2.74 / §2.75 / §2.76 / §2.77 / §2.E-WD / §2.E-QQ open items (added V4.3 / V4.4 / V4.5 / V4.6 / V4.7)",
+   "name": "Reframed Gate 1 Condition 1 (ferromagnetism)",
+   "label": "Refuted",
+   "rule": "out",
+   "pointer": null,
+   "note": "Structurally refuted (V4.6); Path B is the QQ3 row",
+   "task_head": "**Reframed Gate 1 Condition 1 of `unaudited_conjecture_incomplete_closure_ferromagnetism.md`** (original spin-flip form)"
+  },
+  {
+   "line": 4607,
+   "section": "§2.85 / §2.86 open items (added V4.21)",
+   "name": "μ_n spinor-promotion gate",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "μ_n, named in C(a)",
+   "task_head": "**μ_n spinor-promotion gate** (does the K₇ tube excitation carry a spinor phase — the central −1 ↦ −Id / 2π-C double cover promoting the ordinary S₄ on U(L) to "
+  },
+  {
+   "line": 4608,
+   "section": "§2.85 / §2.86 open items (added V4.21)",
+   "name": "Kernel-level S₄-invariance of U(L)",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.21)",
+   "task_head": "**Kernel-level S₄-invariance of U(L)** (does the full line-stabilizer S₄ preserve U(L) as a sedenion subspace, not merely as a support permutation)"
+  },
+  {
+   "line": 4609,
+   "section": "§2.85 / §2.86 open items (added V4.21)",
+   "name": "σ₄ restricted to 2O ↔ spin-3/2",
+   "label": "Open",
+   "rule": "(b) split",
+   "pointer": null,
+   "note": "its cell records CLOSED-POSITIVE (V4.22), so no pointer",
+   "task_head": "**σ₄\\|_{2O} ↔ spin-3/2** (does SL(2,7)'s 4-dim genuine spin irrep σ₄ [§2.77 / §2.D-FC] restrict to the spin-3/2 of 2O = 2·S₄ ⊂ SL(2,7), the preimage of S₄ ⊂ PSL"
+  },
+  {
+   "line": 4610,
+   "section": "§2.85 / §2.86 open items (added V4.21)",
+   "name": "§2.85 Condition 3",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "downstream of the μ_n gate",
+   "task_head": "**§2.85 Condition 3** (the Szilassi / outer-automorphism swap of the two S₄ classes [§2.74] acts as the spin parity relating 2·S₄'s two chiralities)"
+  },
+  {
+   "line": 4611,
+   "section": "§2.85 / §2.86 open items (added V4.21)",
+   "name": "§2.86 v₀-independence flag",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED-NEGATIVE (V4.21)",
+   "task_head": "**§2.86 v₀-independence flag** (`fano_knot_derivation.py`: is the generation/color assignment v₀-independent)"
+  },
+  {
+   "line": 4612,
+   "section": "§2.85 / §2.86 open items (added V4.21)",
+   "name": "§2.86 'faces = Clifford'",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED-NEGATIVE (V4.21)",
+   "task_head": "**§2.86 \"faces = Clifford\" as a product identity**"
+  },
+  {
+   "line": 4618,
+   "section": "§2.87 open items (added V4.22)",
+   "name": "Gate 2a",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "named in C(a); its dynamical clause is the open content",
+   "task_head": "**Gate 2a — is the baryon's spin geometry ρ₆/Cℓ(6)?** (does the K₇ tube's spin structure derive from the ρ₆ coset geometry / Spin(6) = SU(4), with the spatial 2"
+  },
+  {
+   "line": 4619,
+   "section": "§2.87 open items (added V4.22)",
+   "name": "ℂ⊗𝕆 ↔ octonion-substrate dictionary",
+   "label": "Open",
+   "rule": "(b) split",
+   "pointer": "b_dict",
+   "note": "algebraic identifications joined to a substrate and particle map",
+   "task_head": "**ℂ⊗𝕆 ↔ octonion-substrate dictionary** (the explicit Furey linkage: how Cℓ(6) = ℂ⊗𝕆 maps onto the SQT octonionic substrate)"
+  },
+  {
+   "line": 4620,
+   "section": "§2.87 open items (added V4.22)",
+   "name": "Full Donnelly η-defect sum",
+   "label": "Open",
+   "rule": "(b) split",
+   "pointer": null,
+   "note": "the split is already recorded (V4.93: the purpose closed at V4.84; the η sum stays open)",
+   "task_head": "**Full Donnelly η-defect sum for the FR parity** (the complete equivariant APS η of the relevant Dirac operator, mod 2)"
+  },
+  {
+   "line": 4621,
+   "section": "§2.87 open items (added V4.22)",
+   "name": "ρ₈ orbifold is bosonic",
+   "label": "Recorded",
+   "rule": "out",
+   "pointer": null,
+   "note": "Recorded finding (V4.22)",
+   "task_head": "**ρ₈ orbifold S⁷/PSL(2,7) is bosonic** (χ₈(2A) = 0 ⟹ k = 2 ⟹ w₂ = 0; central → +Id)"
+  },
+  {
+   "line": 4622,
+   "section": "§2.87 open items (added V4.22)",
+   "name": "Factor-assignment question",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": null,
+   "note": "its cell records CLOSED (V4.84), so no pointer",
+   "task_head": "**Factor-assignment question** (Assignment I: ρ₆-ℂ⊗𝕆 = color, spin in ℂ⊗ℍ [standard Furey]; vs Assignment II: ρ₆-ℂ⊗𝕆 read as the spin factor)"
+  },
+  {
+   "line": 4623,
+   "section": "§2.87 open items (added V4.22)",
+   "name": "Soliton spin-isospin locking derivation",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "Gate 2a's dynamical target",
+   "task_head": "**Soliton spin-isospin locking derivation** (hedgehog on the K₇-tube, §2.25 layer — does the energy-minimizer lock spatial 2O to the spin/isospin 2O?)"
+  },
+  {
+   "line": 4624,
+   "section": "§2.87 open items (added V4.22)",
+   "name": "Single-σ₄ unification fork",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED-NEGATIVE (V4.24)",
+   "task_head": "**Single-σ₄ unification fork** (spin-3/2 and color 3⊕1 on the *same* σ₄)"
+  },
+  {
+   "line": 4630,
+   "section": "OP-2a / §2.41.B open items (added V4.23)",
+   "name": "G-2a.2",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED (V4.23)",
+   "task_head": "**G-2a.2 — Galois-split obstruction as a theorem**"
+  },
+  {
+   "line": 4631,
+   "section": "OP-2a / §2.41.B open items (added V4.23)",
+   "name": "G-2a.3",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED-NEGATIVE (V4.23)",
+   "task_head": "**G-2a.3 — the 168 = \\|PSL(2,7)\\| co-occurrence**"
+  },
+  {
+   "line": 4632,
+   "section": "OP-2a / §2.41.B open items (added V4.23)",
+   "name": "G-2a.4",
+   "label": "Closed",
+   "rule": "out",
+   "pointer": null,
+   "note": "CLOSED-NEGATIVE (V4.24)",
+   "task_head": "**G-2a.4 — Szilassi swap = octonion-copy exchange A↔B?** (is the Szilassi vertex↔face dual the same operation as the sedenion-doubling copy exchange)"
+  },
+  {
+   "line": 4633,
+   "section": "OP-2a / §2.41.B open items (added V4.23)",
+   "name": "A2 alpha-decay count gate",
+   "label": "Open",
+   "rule": "(b) split",
+   "pointer": "b_a2",
+   "note": "a count (mathematics) against an ejection mechanism (physics)",
+   "task_head": "**A2 alpha-decay count gate** (does the rung-3→4 step's 28 = C(8,2) quaternion bridges + 84 ZDs, ratio 3, carry an ejection *mechanism* or only the §2.29 count "
+  },
+  {
+   "line": 4634,
+   "section": "OP-2a / §2.41.B open items (added V4.23)",
+   "name": "§2.41 / §2.53 rung-numbering reconciliation",
+   "label": "Open",
+   "rule": "(b) split",
+   "pointer": "b_rung",
+   "note": "numbering conventions joined to the electron-anchor placement",
+   "task_head": "**§2.41 / §2.53 rung-numbering reconciliation** (§2.41 numbers S₃=1, A₄=2, PSL(2,7)=3 skipping A₅; §2.53 numbers by CD algebra incl. A₅)"
+  },
+  {
+   "line": 4635,
+   "section": "OP-2a / §2.41.B open items (added V4.23)",
+   "name": "§2.41.A rung-4 deferral",
+   "label": "Open (residual piece)",
+   "rule": "(b) math",
+   "pointer": null,
+   "note": "pure mathematics (the squaring-map link)",
+   "task_head": "**§2.41.A rung-4 deferral** (the squaring-map ↔ §2.62.B CD-orientation link)"
+  },
+  {
+   "line": 4641,
+   "section": "ζ-tax unified picture promotion gates (banked entry; V4.4)",
+   "name": "ζ-tax gate 1",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "named in C(a)",
+   "task_head": "**ζ-tax gate 1** (§3.4.1 (a) viewed in reverse: discrete ∇_r path integral drops out ζ penalty organically)"
+  },
+  {
+   "line": 4642,
+   "section": "ζ-tax unified picture promotion gates (banked entry; V4.4)",
+   "name": "ζ-tax gate 2",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "named in C(a)",
+   "task_head": "**ζ-tax gate 2** (phase-locking kinematics beyond de Broglie standing wave produces content beyond standard picture)"
+  },
+  {
+   "line": 4643,
+   "section": "ζ-tax unified picture promotion gates (banked entry; V4.4)",
+   "name": "ζ-tax gate 3",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": null,
+   "note": "its cell records CLOSED — FAILED as framed (V4.94), so no pointer",
+   "task_head": "**ζ-tax gate 3** (cosmological redshift framing commitment in one direction with stated falsification gate)"
+  },
+  {
+   "line": 4644,
+   "section": "ζ-tax unified picture promotion gates (banked entry; V4.4)",
+   "name": "ζ-tax gate 4",
+   "label": "Open",
+   "rule": "(a)",
+   "pointer": "a",
+   "note": "named in C(a)",
+   "task_head": "**ζ-tax gate 4** (8D→0D loop reconciliation with C.COSM.2 Position A)"
+  }
+ ],
+ "closed_bullets": [
+  {
+   "line": 4648,
+   "text": "- §2.9-CT (predicated on §2.9; dropped with §2.9 retirement)."
+  },
+  {
+   "line": 4649,
+   "text": "- §2.52 Open 1 (π/33 identity): CLOSED — 33 absent from all framework structures."
+  },
+  {
+   "line": 4650,
+   "text": "- §2.62.A Q1: CLOSED by §2.62.B (CD sign selection rule)."
+  },
+  {
+   "line": 4651,
+   "text": "- §2.62.A Q2: CLOSED by §2.62.C (V₄ stabilizer)."
+  },
+  {
+   "line": 4652,
+   "text": "- OQ-01 (orbit-schedule problem from §2.60): CLOSED by §2.61 (polynomial verdict). [→ V4.94 (§2.94.C1): closed on §2.60's sum-14 model, the rule §3.05 supersede"
+  },
+  {
+   "line": 4653,
+   "text": "- §6.4 gate of `borromean_circumscription_derivation.md` (chord-CR derives cos(π/10) at R/r = 3): CLOSED negatively by §3.06."
+  },
+  {
+   "line": 4654,
+   "text": "- **OP-2.14** (m₀ exponent: 2π/Φ vs 4π/Φ): CLOSED by §2.14 (May 24, 2026) — primary 4π/Φ hypothesis falsified by structural algebra; secondary 2π/Φ validated as"
+  },
+  {
+   "line": 4655,
+   "text": "- **OP-2.58.1.a** (CBD-baseline DFR at spec): CLOSED by §2.66 + §2.66.1 (formal closure document, May 20, 2026) — null finding, ~10¹⁵ bits of headroom against 2"
+  },
+  {
+   "line": 4656,
+   "text": "- **Phase B Entry 006** (mod-455 residue distribution at 256-bit, corrected falsification condition): CLOSED by §2.69 (May 24, 2026) — null finding; octonionic-"
+  },
+  {
+   "line": 4657,
+   "text": "- **User-proposed 1+3 split of §2.55 kernel under S₃** (session-internal exploration, May 24, 2026): CLOSED by §2.72 — hypothesis did not survive computation; a"
+  },
+  {
+   "line": 4658,
+   "text": "- **§2.70 verification check** (V4.3, May 25, 2026): CLOSED — F₇* confirmed bare ℤ/6ℤ; A₃ ⊂ S₃ action on F₇* is trivially rigid since gcd(|A₃|, |Aut(ℤ/6ℤ)|) = g"
+  },
+  {
+   "line": 4659,
+   "text": "- **§2.74 Part VI Open Question 1** (PSL(2,7) orbit decomposition of 42 YB pairs; V4.5, May 26, 2026): CLOSED by §2.75. Negative on full PSL(2,7) (147 of 168 el"
+  },
+  {
+   "line": 4660,
+   "text": "- **OP-2.74.1c** (Layer 1.5 defect-rank-8 generator orbit membership; raised in §2.75 Part VIII, May 26, 2026): CLOSED by §2.76 (same V4.5 patch) — L1.5 generat"
+  },
+  {
+   "line": 4661,
+   "text": "- **OP-2.E-QQ.QQ1** (binary-polyhedral subgroup identification of SL(2,7); 2 ⊕ 2 decomposition of σ₄|_H; V4.9, May 27, 2026): ~~CLOSED-POSITIVE~~ → **SCOPE-CORR"
+  },
+  {
+   "line": 4662,
+   "text": "- **OP-2.E-QQ.QQ2** (explicit Pauli-matrix isomorphism Cℓ(0,2)_σ₄ ≅ Pauli algebra; V4.9, May 27, 2026): ~~CLOSED-POSITIVE~~ → **RETRACTED as a finding V4.14 (§2"
+  },
+  {
+   "line": 4663,
+   "text": "- **§2.E-QQ promotion gate to R2** (V4.9, May 27, 2026): ~~MET~~ → **RE-OPENED V4.14 (§2.E-QQ.G.5).** No SQT-specific physical content established. §2.E-QQ at R"
+  },
+  {
+   "line": 4664,
+   "text": "- **OP-2.E-QQ.G1** (Frobenius–Schur reality structure of σ₄; V4.14, May 28, 2026): CLOSED-POSITIVE — ν(σ₄) = 0 (complex type), σ̄₄ = σ₄', no invariant bilinear "
+  }
+ ]
+}

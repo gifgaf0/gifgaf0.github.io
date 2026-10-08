@@ -1,0 +1,57 @@
+{
+ "identity_holds": true,
+ "cyclic_swap": true,
+ "cyclic_is_minus_a": false,
+ "cyclic_is_3a": true,
+ "XOR_swap": true,
+ "XOR_is_minus_a": true,
+ "XOR_is_3a": false,
+ "cyclic_stab7_orbits": [
+  [
+   1,
+   2,
+   4
+  ],
+  [
+   3,
+   5,
+   6
+  ]
+ ],
+ "XOR_stab7_orbits": [
+  [
+   1,
+   4,
+   5
+  ],
+  [
+   2,
+   3,
+   6
+  ]
+ ],
+ "line_transversals": [
+  [
+   1,
+   2,
+   4
+  ],
+  [
+   1,
+   5,
+   6
+  ],
+  [
+   2,
+   3,
+   5
+  ],
+  [
+   3,
+   4,
+   6
+  ]
+ ],
+ "planes": 30,
+ "planes_with_swap": 12
+}

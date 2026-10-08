@@ -1,0 +1,9 @@
+g1 fixes P1: True | g2 fixes P1: True
+orders: g1 2 g2 4 g1g2 3 | g1g2 = [[1, 1, 0], [0, 0, 1], [0, 1, 1]]
+g1 on lines: {'L1': 'L1', 'L2': 'L3', 'L3': 'L2', 'L4': 'L4'}
+g2 on lines: {'L1': 'L4', 'L2': 'L3', 'L3': 'L1', 'L4': 'L2'}
+g1g2 on lines (apply g2 then g1): {'L1': 'L4', 'L2': 'L2', 'L3': 'L1', 'L4': 'L3'}
+|<g1,g2>| = 24 | all fix P1: True
+Appendix A: h1h2 = [[1, 1, 1], [0, 1, 1], [0, 0, 1]] order 4 | h2h1 = [[1, 1, 0], [0, 1, 1], [0, 0, 1]]
+h1, h2 preserve L124: True
+Delta^G eigenvalues: {'rho1': '0', 'rho3': '4/3', "rho3'": '4/3', 'rho6': '2/3', 'rho7': '8/7', 'rho8': '1'} | rho7-rho6 = 10/21 | rho8-rho6 = 1/3

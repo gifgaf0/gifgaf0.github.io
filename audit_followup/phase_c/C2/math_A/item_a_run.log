@@ -1,0 +1,73 @@
+==============================================================================
+A0. Table check
+==============================================================================
+mismatches vs tools/sedenion_Fp.py MULT: 0
+
+==============================================================================
+A1. Exhaustive census of ALL clean elements, n = 1..15 (exact rank over Z)
+==============================================================================
+  n= 1: clean=      15  ZD(exact)=     0  Moreno-pred=     0  formula=     0  agree=True  ranks={16: 15}   [0s]
+         mod 911 ranks {16: 15}; mod 103 ranks {16: 15}
+  n= 2: clean=     210  ZD(exact)=    84  Moreno-pred=    84  formula=    84  agree=True  ranks={12: 84, 16: 126}   [0s]
+         mod 911 ranks {12: 84, 16: 126}; mod 103 ranks {12: 84, 16: 126}
+  n= 3: clean=    1820  ZD(exact)=     0  Moreno-pred=     0  formula=     0  agree=True  ranks={16: 1820}   [0s]
+         mod 911 ranks {16: 1820}; mod 103 ranks {16: 1820}
+  n= 4: clean=   10920  ZD(exact)=  1764  Moreno-pred=  1764  formula=  1764  agree=True  ranks={12: 1764, 16: 9156}   [1s]
+         mod 911 ranks {12: 1764, 16: 9156}; mod 103 ranks {12: 1764, 16: 9156}
+  n= 5: clean=   48048  ZD(exact)=     0  Moreno-pred=     0  formula=     0  agree=True  ranks={16: 48048}   [6s]
+         mod 911 ranks {16: 48048}; mod 103 ranks {16: 48048}
+  n= 6: clean=  160160  ZD(exact)= 11200  Moreno-pred= 11200  formula= 11200  agree=True  ranks={12: 11200, 16: 148960}   [13s]
+  n= 7: clean=  411840  ZD(exact)=     0  Moreno-pred=     0  formula=     0  agree=True  ranks={16: 411840}   [29s]
+  n= 8: clean=  823680  ZD(exact)= 42000  Moreno-pred= 42000  formula= 42000  agree=True  ranks={12: 42000, 16: 781680}   [63s]
+  n= 9: clean= 1281280  ZD(exact)=     0  Moreno-pred=     0  formula=     0  agree=True  ranks={16: 1281280}   [116s]
+  n=10: clean= 1537536  ZD(exact)= 40320  Moreno-pred= 40320  formula= 40320  agree=True  ranks={12: 40320, 16: 1497216}   [181s]
+  n=11: clean= 1397760  ZD(exact)=     0  Moreno-pred=     0  formula=     0  agree=True  ranks={16: 1397760}   [240s]
+  n=12: clean=  931840  ZD(exact)=  4480  Moreno-pred=  4480  formula=  4480  agree=True  ranks={12: 4480, 16: 927360}   [281s]
+  n=13: clean=  430080  ZD(exact)=     0  Moreno-pred=     0  formula=     0  agree=True  ranks={16: 430080}   [299s]
+  n=14: clean=  122880  ZD(exact)=     0  Moreno-pred=     0  formula=     0  agree=True  ranks={16: 122880}   [305s]
+  n=15: clean=   16384  ZD(exact)=     0  Moreno-pred=     0  formula=     0  agree=True  ranks={16: 16384}   [305s]
+  TOTAL clean elements = 7174453  (expected (3^15-1)/2 = 7174453)
+  TOTAL clean ZDs      = 99848
+  Moreno criterion == exact rank test on every element: True
+  mismatch examples: []
+  ZDs at odd n: 0
+  rank of every ZD (all n): [12]
+  ledger table check (n=2..5 at p=911: 84, 0, 1764, 0): [84, 0, 1764, 0]; mod-911 rank disagreements with exact: {}
+
+==============================================================================
+A2. n = 4 kernel structure (OP-2.81.1): clean-vs-mixed split by Moreno type
+==============================================================================
+  key = (overlap m=|A cap B'|, RREF-basis-clean?, RREF basis term-counts, #clean 2-term in ker, rank of their span, rank of span of clean 2+4-term in ker)
+    1120  (0, False, (-1, -1, 4, 4), 0, 0, 2)   e.g. S=(1, 2, 12, 14) eps=(1, 1, 1, 1)
+     336  (0, True, (2, 2, 4, 4), 2, 2, 4)   e.g. S=(1, 2, 12, 15) eps=(1, 1, 1, 1)
+     224  (0, False, (-1, -1, -1, 4), 0, 0, 2)   e.g. S=(1, 2, 11, 12) eps=(1, 1, 1, 1)
+      84  (2, True, (2, 2, 2, 2), 4, 4, 4)   e.g. S=(1, 2, 9, 10) eps=(1, 1, 1, -1)
+  ledger example support (1, 2, 9, 10): 4 ZD sign patterns; Moreno overlap m = 2
+  ledger example support (1, 2, 12, 15): 8 ZD sign patterns; Moreno overlap m = 0
+
+==============================================================================
+A3. §2.68.8.1 doubling-axis argument
+==============================================================================
+  (a) e_a e_(b+8) lands on <e0,e8> exactly for a=b: True; value for a=b: {(8, -1)} (= -e8);  a!=b lands in 9..15: True
+  (b) (e_a+e_b)(e_c+e_d) = e_a e_c + e_a e_d + e_b e_c + e_b e_d : the product e_a e_b of the
+      two components of ONE factor is not a term; for x = e_a + e_(a+8) the internal product
+      e_a e_(a+8) = -e8 never enters x*y unless y itself contains e_a or e_(a+8).
+  (c) indices used by the 42 assessors: [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15] (all of 1..15 except 8)
+      every i in that set has e_i e_(i^8) = +-e8: [(1, 9, -1), (2, 10, -1), (3, 11, -1), (4, 12, -1), (5, 13, -1), (6, 14, -1), (7, 15, -1), (9, 1, 1), (10, 2, 1), (11, 3, 1), (12, 4, 1), (13, 5, 1), (14, 6, 1), (15, 7, 1)]
+      e.g. e1 (in ZD e1+e10) times e9 (in ZD e9+e2): e1 e9 = -1 e8;  e10 e2 = +1 e8
+  (d) clean ZD pairs (x, y) with x y = 0 whose e8-component receives >= 2 nonzero terms (which therefore cancel): 1680 found, by (n_x, n_y): {(4, 4): 1680} (search over clean n=2,4 ZDs x and clean 2/4-term y in ker L_x)
+      x = +e1 +e2 +e11 +e12 ;  y = +e3 -e4 +e13 -e14 ;  e8-terms [(11, 3, 1), (12, 4, -1)] ;  x*y == 0: True
+      x = +e1 +e2 +e11 -e12 ;  y = +e3 +e4 -e13 +e14 ;  e8-terms [(11, 3, 1), (12, 4, -1)] ;  x*y == 0: True
+      x = +e1 +e2 -e11 +e12 ;  y = +e3 +e4 +e13 -e14 ;  e8-terms [(11, 3, -1), (12, 4, 1)] ;  x*y == 0: True
+      of these, with x two-term: 0
+  (e) rank L_x for x = e_a +- e_(a+8), a=1..7: {16} (16 = not a ZD); Moreno: (a-part, b-part) = (e_a, +-e_a) not orthogonal
+  (f) 2D coordinate planes span(e_i,e_j) and whether e_i +- e_j is a ZD: [((1, 2), []), ((1, 9), []), ((3, 11), []), ((0, 1), []), ((9, 10), [])]
+      span(e_i,e_j) with i,j <= 7 lies in the octonions (division algebra): no ZD at all;
+      so <e0,e8> is not 'the unique 2-dimensional subspace containing no Moreno-form ZDs'.
+
+==============================================================================
+A4. Moreno criterion on NON-clean integer sedenions (random sanity, exact)
+==============================================================================
+  sufficiency: 300/300 constructed (u, e_k u) are ZDs
+  random integer elements: criterion == singularity in 300/300
+wrote item_a_output.txt, item_a_results.json

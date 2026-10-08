@@ -1,0 +1,212 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Sed}{\mathbb{S}}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\re}{Re}
+
+\title{A rank collapse in a sedenion Module-LWE proposal,\\ and why a uniform matrix does not repair it}
+\author{Matthew Gifford\\ \small Independent researcher, Hollister, California, USA}
+\date{\small October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We report a negative result on SLWE, a Module-LWE variant over the sixteen-dimensional sedenion algebra proposed in the
+author's own research programme. Its public matrix is built from orbits of an order-7 coordinate permutation (a
+``Singer cycle''). First, the flattened public matrix factors through a fixed $256\times112$ integer matrix of rank 76,
+so its rank over $\F_q$ is at most 76 for every module rank $k$, and exactly 76 for generic seeds once $k\ge 7$, whereas a
+uniform matrix of the same shape has rank $16k$. Recovering the noise then reduces to an LWE instance of dimension 76,
+which the lattice estimator places at about $2^{39}$ operations. Second, replacing the matrix by a uniform one does not
+help at the proposed parameters ($n=512$, $q\approx2^{32}$, centred binomial noise with $\eta=2$, ternary secrets of
+weight 64): the estimator gives about $2^{51}$. Third, decryption at those parameters is deterministic: the noise is
+bounded by 258, far below $q/4$; a failure rate of $2^{-6.4\times10^{15}}$ reported earlier came from a Gaussian tail
+evaluated outside the support of a bounded sum. All computations are reproducible from public scripts.
+\end{abstract}
+
+\section{Introduction}
+
+SLWE was proposed inside a larger, physics-motivated programme that uses the sedenions $\Sed$ (the Cayley--Dickson
+double of the octonions) and their zero divisors. The idea was to keep the shape of Module-LWE~\cite{Regev,LS15} while replacing the ring by
+$\Sed_q=\Sed\otimes\F_q$ and to give the public matrix a symmetry inherited from the Fano plane: each row is the orbit of
+a random seed under a cyclic permutation $\sigma$ of order 7. Correctness was obtained with a bilinear ``norm'' pairing
+rather than the (non-associative) algebra product. The scheme was never published as secure; its documentation listed
+the hardness of its structured matrix as open.
+
+This note settles the question negatively and records three facts that may be useful beyond this proposal.
+\begin{enumerate}
+\item A coordinate permutation applied to seeds produces a matrix that is linear in the seeds through a fixed
+  ``design matrix''. The rank of that design matrix bounds the rank of the public matrix for every module rank
+  (Section~\ref{sec:rank}).
+\item Non-associativity of the algebra plays no role once decryption uses a bilinear form: every map the attacker needs
+  is $\F_q$-linear on $\F_q^{16k}$.
+\item At $q\approx2^{32}$ with noise of standard deviation about 1, LWE in dimension 512 is easy whatever the matrix
+  (Section~\ref{sec:uniform}). The modulus-to-noise ratio, not the algebra, governs security.
+\end{enumerate}
+
+\section{The scheme}
+
+Let $\Sed_q$ be the sedenions over $\F_q$ with basis $e_0,\dots,e_{15}$, built by four Cayley--Dickson doublings
+$(a,b)(c,d)=(ac-\bar d b,\ da+b\bar c)$. Write $L(a)\in\F_q^{16\times16}$ for left multiplication by $a$ and
+$\langle u,v\rangle=\re(\bar u v)=\sum_t u_t v_t$ for the norm pairing, extended to $\Sed_q^k$ by summing over
+components. The identity $L(a)^{\mathsf T}=L(\bar a)$ gives $\langle A s,r\rangle=\langle s,A^{H}r\rangle$ with
+$A^{H}_{ij}=\overline{A_{ji}}$, which is what decryption needs.
+
+\begin{itemize}
+\item \textbf{KeyGen.} $s\in\Sed_q^k$ is sparse ternary (weight $h_s$). $A\in\Sed_q^{k\times k}$ has
+  $A_{ij}=\sigma^{j}(\mathrm{seed}_i)$ with independent uniform seeds, where $\sigma$ moves the coefficient of $e_t$ to
+  $e_{(t\bmod7)+1}$ for $t=1..7$, moves that of $e_{t+8}$ to $e_{(t\bmod7)+9}$, and fixes $e_0,e_8$. The noise $e$ is
+  centred binomial (or confined to the four-dimensional kernel of a zero divisor~\cite{Moreno}). The public key is $(A,\ b=As+e)$.
+\item \textbf{Encaps.} $r$ is sparse ternary (weight $h_r$), with $c_1=A^{H}r+e_1$ and
+  $c_2=\langle b,r\rangle+e_2+m\lfloor q/2\rceil$.
+\item \textbf{Decaps.} Round $c_2-\langle s,c_1\rangle=m\lfloor q/2\rceil+N$ with
+  $N=\langle e,r\rangle-\langle s,e_1\rangle+e_2$.
+\end{itemize}
+The proposed parameters are $k=32$ (so $n=16k=512$), $q=4\,294\,977\,961$ (the least prime $\equiv1\pmod{455}$ above
+$2^{32}$), $h_s=h_r=64$, and noise CBD$(\eta=2)$.
+
+\section{The rank collapse}\label{sec:rank}
+
+Let $M\in\F_q^{16k\times16k}$ be the matrix of $s\mapsto As$, i.e.\ $M_{16i+u,\,16j+c}=$ coefficient $u$ of
+$\sigma^{j}(\mathrm{seed}_i)\,e_c$.
+
+\begin{proposition}\label{prop:rank}
+Let $N\in\mathbb{Z}^{256\times112}$ have entries $N_{16m+u,\,16j+c}=$ coefficient $u$ of $\sigma^{j}(e_m)\,e_c$
+($0\le m,u,c\le15$, $0\le j\le6$). Then $M=(S\otimes I_{16})\,N_k$, where $S\in\F_q^{k\times16}$ holds the seeds and
+$N_k$ consists of the column blocks $j\bmod 7$ of $N$, $j=0,\dots,k-1$. Hence $\rank M\le\rank N$ for every $k$.
+Moreover $\rank_{\mathbb{Q}}N=76$, and $\rank N=76$ modulo $911$ and modulo $q$.
+\end{proposition}
+
+\begin{proof}
+The product is bilinear and $\sigma$ is linear, so $\sigma^{j}(\mathrm{seed}_i)\,e_c=\sum_m(\mathrm{seed}_i)_m\,
+\sigma^{j}(e_m)\,e_c$. That is the stated factorisation. Since $\sigma^7=\mathrm{id}$, column block $j$ of $N_k$ equals
+block $j\bmod7$, so $N_k$ has at most the columns of $N$. The ranks of $N$ were computed exactly (Section~\ref{sec:repro}).
+\end{proof}
+
+The bound is attained. Table~\ref{tab:rank} lists exact ranks from two independent implementations (one built on the
+proposal's reference code, one written blind from a textual specification), with three seed sets per case and a
+uniform control. The collapse starts at $k=5$; from $k=7$ on the rank is 76 for every seed set tried.
+
+\begin{table}[h]\centering\small
+\begin{tabular}{lcccccccccccc}\toprule
+$k$ & 1&2&3&4&5&6&7&8&16&32&64\\\midrule
+$16k$ & 16&32&48&64&80&96&112&128&256&512&1024\\
+$\rank M$ (Singer) & 16&32&48&64&72&74&76&76&76&76&76\\
+$\rank M$ (uniform) & 16&32&48&64&80&96&112&128&256&512&1024\\\bottomrule
+\end{tabular}
+\caption{Exact ranks over $\F_{911}$ (the values for $k\in\{8,16,32,64\}$ are identical over $\F_q$ with
+$q=4\,294\,977\,961$, for three seed sets each, in both implementations).}\label{tab:rank}
+\end{table}
+
+\begin{remark}
+$\sigma$ is not an automorphism of the sedenion product, so the ``symmetry'' of $A$ is a relabelling of coordinates. The
+argument above uses only linearity.
+\end{remark}
+
+\begin{corollary}
+Let $V$ be the column space of $M$ ($\dim V=\rho\le76$). Then $e\in b+V$. Choose $\rho$ coordinates $I$ on which a basis
+of $V$ is invertible. Then $e_{\bar I}=-C e_I+(b_{\bar I}+C b_I)$ for a public $C$, an LWE instance with secret $e_I$ of
+dimension $\rho$ and $16k-\rho$ samples. The same holds for $e_1$ and the column space of $M^{H}$. Given $e$ and $e_1$, any
+$r'$ with $M^{H}r'=c_1-e_1$ gives $c_2-\langle b-e,r'\rangle=m\lfloor q/2\rceil+\langle e,r\rangle+e_2$, which reveals $m$.
+\end{corollary}
+
+For $\rho=76$, $q=4\,294\,977\,961$, CBD$(2)$ secret and noise and $m=436$ samples, the lattice
+estimator~\cite{APS15,estimator} reports $2^{38.6}$ operations (uSVP and BDD). Its block size is at the floor of its
+model ($\beta=40$), so reduction at the scale of LLL already suffices. Distinguishing $(A,b)$ from uniform is easier
+still: it needs only Gaussian elimination, because $A$ itself is rank-deficient.
+
+\section{A uniform matrix does not repair the parameters}\label{sec:uniform}
+
+A later revision of the proposal replaced the Singer matrix by a uniform one. Table~\ref{tab:est} shows the estimator's
+default attack set at the proposed parameters with a uniform matrix. The cheapest attack costs about $2^{51}$. An
+independent implementation of the primal ``2016 estimate''~\cite{ADPS16} (smallest $\beta$ with
+$\sigma\sqrt\beta\le\delta_\beta^{2\beta-d-1}\mathrm{Vol}^{1/d}$, the secret rescaled to the noise width) gives $\beta=72$,
+$d=937$, a core-SVP cost of $2^{0.292\beta}=2^{21}$~\cite{BDGL16}, the same as the estimator's own rough uSVP figure.
+The cause is the modulus: with $q/\sigma\approx2^{32}$, a block size near 70 already exposes the short vector in
+dimension about 940.
+
+\begin{table}[h]\centering\small
+\begin{tabular}{lll}\toprule
+$q$ & cheapest attack ($\log_2$ rop) & uSVP ($\log_2$ rop, $\beta$)\\\midrule
+$4\,294\,977\,961$ (proposal) & 51.0 (BDD) & 52.1, $\beta=72$\\
+$2731$ & 114.4 (dual hybrid) & 122.5, $\beta=330$\\
+$911$ & 122.2 (BKW); 127.4 without BKW & 136.9, $\beta=383$\\\bottomrule
+\end{tabular}
+\caption{Lattice estimator~\cite{estimator}, commit \texttt{53da598}, default attacks and cost model~\cite{MATZOV}, at $n=512$, $m=512$, ternary
+secret of weight 64 and CBD$(2)$ noise, with a uniform public matrix. The columns $q=911$ and $q=2731$ (the two smallest
+primes $\equiv1\pmod{455}$) are for orientation only.}\label{tab:est}
+\end{table}
+
+Even the smallest admissible prime falls short of $2^{128}$ at $n=512$ with these distributions, so a secure instance
+would need a larger dimension or wider noise. We have not searched that space.
+
+\section{Correctness is deterministic}
+
+Each coordinate of $e$, $e_1$ and $e_2$ lies in $[-2,2]$. The confined zero-divisor noise has the same bound, since the
+kernel bases have entries in $\{0,\pm1\}$ and the noise is $2\sum_j\alpha_jk_j$ with $\alpha_j\in\{-1,0,1\}$. So
+\[
+|N|\le 2h_r+2h_s+2=258<\lfloor q/4\rfloor\approx1.07\times10^{9},
+\]
+and decryption never fails at the proposed parameters. It never fails for any $q>1032$. For CBD noise the distribution
+is in fact exact: given $r$ and $s$, $N$ is a sum of $2(h_r+h_s+1)$ independent symmetric binomial draws, i.e.\
+$N\sim\mathrm{CBD}(258)$. At $q=911$ this gives $\Pr[|N|>227]=2^{-353.5}$ exactly.
+
+An earlier analysis reported $\log_2\mathrm{DFR}\approx-6.4\times10^{15}$. That number is the Gaussian tail at
+$z=q/(4\sigma_N)\approx9.5\times10^{7}$ with $\sigma_N\approx11.4$. It evaluates the tail about $4\times10^{6}$ times
+beyond the largest value $N$ can take. The correct statement is $\mathrm{DFR}=0$.
+
+\section{Conclusion}
+
+The Singer-orbit public matrix makes SLWE insecure at every module rank. A uniform matrix does not rescue the proposed
+parameters, which reach about $2^{51}$. The scheme's correctness was never in question. The general lesson is
+elementary but easy to miss. A structured matrix built by acting on random seeds is the image of a fixed design matrix,
+and that matrix's rank should be the first thing checked.
+
+\section{Reproducibility}\label{sec:repro}
+
+All scripts, outputs and checksums are in the public repository \texttt{gifgaf0/gifgaf0.github.io} at commit
+\begin{center}\texttt{b09929ada97cc3c5bfc0f5f327518cd82e342fea}\end{center}
+\noindent in the directory \texttt{audit\_followup/phase\_c/C1/}:
+\begin{itemize}
+\item the two rank implementations: \texttt{leg1/}, and \texttt{leg2/}, written blind from the pre-registration
+  \texttt{C1\_PREREG.md};
+\item their comparison and the computation of $\rank N$: \texttt{c1\_compare.py};
+\item the estimator runs: \texttt{estimator/}, using passagemath~10.8.12 and lattice-estimator commit
+  \texttt{53da5982597709ba0fdf94ea37a84d822310fd84};
+\item the core-SVP cross-check: \texttt{c1\_coresvp\_crosscheck.py};
+\item the noise bounds and exact tails: \texttt{c1\_checks.py}.
+\end{itemize}
+Exact ranks were computed with python-flint.
+
+\paragraph{Acknowledgements.} AI agents (Anthropic's Claude) drafted this note and wrote and ran all of its computations, including both independent rank implementations; the author directed the work, reviewed the text, and takes responsibility for it.
+
+\begin{thebibliography}{9}\small
+\bibitem{ADPS16} E.~Alkim, L.~Ducas, T.~P\"oppelmann, P.~Schwabe. Post-quantum key exchange --- a new hope.
+  \emph{25th USENIX Security Symposium}, 2016, 327--343.
+\bibitem{APS15} M.~R.~Albrecht, R.~Player, S.~Scott. On the concrete hardness of Learning with Errors.
+  \emph{J.\ Math.\ Cryptol.} 9(3) (2015), 169--203.
+\bibitem{estimator} M.~R.~Albrecht et al. The lattice estimator.
+  \url{https://github.com/malb/lattice-estimator}, commit \texttt{53da598}.
+\bibitem{BDGL16} A.~Becker, L.~Ducas, N.~Gama, T.~Laarhoven. New directions in nearest neighbor searching with
+  applications to lattice sieving. \emph{SODA} 2016, 10--24.
+\bibitem{LS15} A.~Langlois, D.~Stehl\'e. Worst-case to average-case reductions for module lattices.
+  \emph{Des.\ Codes Cryptogr.} 75 (2015), 565--599.
+\bibitem{MATZOV} MATZOV. Report on the security of LWE: improved dual lattice attack. 2022.
+  doi:10.5281/zenodo.6412487.
+\bibitem{Moreno} R.~G.~Moreno. The zero divisors of the Cayley--Dickson algebras over the real numbers.
+  arXiv:q-alg/9710013, 1997.
+\bibitem{Regev} O.~Regev. On lattices, learning with errors, random linear codes, and cryptography.
+  \emph{J.\ ACM} 56(6) (2009), article 34.
+\end{thebibliography}
+\end{document}

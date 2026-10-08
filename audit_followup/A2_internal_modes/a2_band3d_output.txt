@@ -1,0 +1,12 @@
+[3D AB] a=1.385965 c=2.259597 Lam=43.427469 grid=(42, 72, 68)  mu=117.802182  projected residual 2.18e-09  (8s)
+   NG=1355  L_perp at Gamma: [-0.        0.004882  0.004979]
+   basal_x  exponent p=2.0000  m*=314.2040  m/m*=0.003183
+   basal_y  exponent p=2.0000  m*=314.2041  m/m*=0.003183
+   axial_z  exponent p=1.9999  m*=320.6771  m/m*=0.003118
+   basal_x  relaxed-twist f_s = 0.003183  vs band m/m* = 0.003183
+   axial_z  relaxed-twist f_s = 0.003118  vs band m/m* = 0.003118
+done (20s)
+
+real	0m20.569s
+user	0m32.220s
+sys	0m1.385s

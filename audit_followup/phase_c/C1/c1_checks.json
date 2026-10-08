@@ -1,0 +1,623 @@
+{
+ "two_term_cross_edge_zds_with_4dim_kernel": 84,
+ "kernel_basis_max_abs_entry": 1,
+ "confined_noise_max_abs_entry_sigma2": 2,
+ "worst_case_bounds": [
+  {
+   "noise": "CBD eta=2 (spec)",
+   "worst_case_|N|": 258,
+   "q_spec/4": 1073744490.25,
+   "DFR_zero_at_spec": true,
+   "margin_factor": 4161800.3,
+   "q_min_for_DFR_zero": 1033,
+   "q911/4": 227.75,
+   "DFR_zero_at_911": false
+  },
+  {
+   "noise": "CBD eta=512 (top of the \u00a72.66.1 sweep)",
+   "worst_case_|N|": 66048,
+   "q_spec/4": 1073744490.25,
+   "DFR_zero_at_spec": true,
+   "margin_factor": 16257.0,
+   "q_min_for_DFR_zero": 264193,
+   "q911/4": 227.75,
+   "DFR_zero_at_911": false
+  },
+  {
+   "noise": "confined kernel noise, sigma=2 (e, e1), CBD2 e2",
+   "worst_case_|N|": 258,
+   "q_spec/4": 1073744490.25,
+   "DFR_zero_at_spec": true,
+   "margin_factor": 4161800.3,
+   "q_min_for_DFR_zero": 1033,
+   "q911/4": 227.75,
+   "DFR_zero_at_911": false
+  }
+ ],
+ "gaussian_tail_as_in_2_66_1": {
+  "sigma_N": 11.36,
+  "z": 94537930.96027574,
+  "log2_DFR_gaussian": -6446986037676690.0,
+  "support_of_N": 258,
+  "note": "the tail is evaluated ~4e6 times beyond the support"
+ },
+ "sum_to_14_rule": {
+  "pairs_checked": 21,
+  "holds": 6,
+  "fails": [
+   [
+    1,
+    3
+   ],
+   [
+    1,
+    5
+   ],
+   [
+    1,
+    7
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    2,
+    6
+   ],
+   [
+    2,
+    7
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    3,
+    6
+   ],
+   [
+    3,
+    7
+   ],
+   [
+    4,
+    5
+   ],
+   [
+    4,
+    6
+   ],
+   [
+    4,
+    7
+   ],
+   [
+    5,
+    6
+   ],
+   [
+    5,
+    7
+   ],
+   [
+    6,
+    7
+   ]
+  ],
+  "partners_equal_kernel_support": true,
+  "detail": [
+   {
+    "pair": [
+     1,
+     2
+    ],
+    "third_point": 3,
+    "kernel_support_labels": [
+     4,
+     5,
+     6,
+     7
+    ],
+    "co_line_partners": [
+     [
+      4,
+      7
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    "sum_to_14_holds": true
+   },
+   {
+    "pair": [
+     1,
+     3
+    ],
+    "third_point": 2,
+    "kernel_support_labels": [
+     4,
+     5,
+     6,
+     7
+    ],
+    "co_line_partners": [
+     [
+      4,
+      6
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    "sum_to_14_holds": false
+   },
+   {
+    "pair": [
+     1,
+     4
+    ],
+    "third_point": 5,
+    "kernel_support_labels": [
+     2,
+     3,
+     6,
+     7
+    ],
+    "co_line_partners": [
+     [
+      2,
+      7
+     ],
+     [
+      3,
+      6
+     ]
+    ],
+    "sum_to_14_holds": true
+   },
+   {
+    "pair": [
+     1,
+     5
+    ],
+    "third_point": 4,
+    "kernel_support_labels": [
+     2,
+     3,
+     6,
+     7
+    ],
+    "co_line_partners": [
+     [
+      2,
+      6
+     ],
+     [
+      3,
+      7
+     ]
+    ],
+    "sum_to_14_holds": false
+   },
+   {
+    "pair": [
+     1,
+     6
+    ],
+    "third_point": 7,
+    "kernel_support_labels": [
+     2,
+     3,
+     4,
+     5
+    ],
+    "co_line_partners": [
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "sum_to_14_holds": true
+   },
+   {
+    "pair": [
+     1,
+     7
+    ],
+    "third_point": 6,
+    "kernel_support_labels": [
+     2,
+     3,
+     4,
+     5
+    ],
+    "co_line_partners": [
+     [
+      2,
+      4
+     ],
+     [
+      3,
+      5
+     ]
+    ],
+    "sum_to_14_holds": false
+   },
+   {
+    "pair": [
+     2,
+     3
+    ],
+    "third_point": 1,
+    "kernel_support_labels": [
+     4,
+     5,
+     6,
+     7
+    ],
+    "co_line_partners": [
+     [
+      4,
+      5
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    "sum_to_14_holds": false
+   },
+   {
+    "pair": [
+     2,
+     4
+    ],
+    "third_point": 6,
+    "kernel_support_labels": [
+     1,
+     3,
+     5,
+     7
+    ],
+    "co_line_partners": [
+     [
+      1,
+      7
+     ],
+     [
+      3,
+      5
+     ]
+    ],
+    "sum_to_14_holds": true
+   },
+   {
+    "pair": [
+     2,
+     5
+    ],
+    "third_point": 7,
+    "kernel_support_labels": [
+     1,
+     3,
+     4,
+     6
+    ],
+    "co_line_partners": [
+     [
+      1,
+      6
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "sum_to_14_holds": true
+   },
+   {
+    "pair": [
+     2,
+     6
+    ],
+    "third_point": 4,
+    "kernel_support_labels": [
+     1,
+     3,
+     5,
+     7
+    ],
+    "co_line_partners": [
+     [
+      1,
+      5
+     ],
+     [
+      3,
+      7
+     ]
+    ],
+    "sum_to_14_holds": false
+   },
+   {
+    "pair": [
+     2,
+     7
+    ],
+    "third_point": 5,
+    "kernel_support_labels": [
+     1,
+     3,
+     4,
+     6
+    ],
+    "co_line_partners": [
+     [
+      1,
+      4
+     ],
+     [
+      3,
+      6
+     ]
+    ],
+    "sum_to_14_holds": false
+   },
+   {
+    "pair": [
+     3,
+     4
+    ],
+    "third_point": 7,
+    "kernel_support_labels": [
+     1,
+     2,
+     5,
+     6
+    ],
+    "co_line_partners": [
+     [
+      1,
+      6
+     ],
+     [
+      2,
+      5
+     ]
+    ],
+    "sum_to_14_holds": true
+   },
+   {
+    "pair": [
+     3,
+     5
+    ],
+    "third_point": 6,
+    "kernel_support_labels": [
+     1,
+     2,
+     4,
+     7
+    ],
+    "co_line_partners": [
+     [
+      1,
+      7
+     ],
+     [
+      2,
+      4
+     ]
+    ],
+    "sum_to_14_holds": false
+   },
+   {
+    "pair": [
+     3,
+     6
+    ],
+    "third_point": 5,
+    "kernel_support_labels": [
+     1,
+     2,
+     4,
+     7
+    ],
+    "co_line_partners": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      7
+     ]
+    ],
+    "sum_to_14_holds": false
+   },
+   {
+    "pair": [
+     3,
+     7
+    ],
+    "third_point": 4,
+    "kernel_support_labels": [
+     1,
+     2,
+     5,
+     6
+    ],
+    "co_line_partners": [
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      6
+     ]
+    ],
+    "sum_to_14_holds": false
+   },
+   {
+    "pair": [
+     4,
+     5
+    ],
+    "third_point": 1,
+    "kernel_support_labels": [
+     2,
+     3,
+     6,
+     7
+    ],
+    "co_line_partners": [
+     [
+      2,
+      3
+     ],
+     [
+      6,
+      7
+     ]
+    ],
+    "sum_to_14_holds": false
+   },
+   {
+    "pair": [
+     4,
+     6
+    ],
+    "third_point": 2,
+    "kernel_support_labels": [
+     1,
+     3,
+     5,
+     7
+    ],
+    "co_line_partners": [
+     [
+      1,
+      3
+     ],
+     [
+      5,
+      7
+     ]
+    ],
+    "sum_to_14_holds": false
+   },
+   {
+    "pair": [
+     4,
+     7
+    ],
+    "third_point": 3,
+    "kernel_support_labels": [
+     1,
+     2,
+     5,
+     6
+    ],
+    "co_line_partners": [
+     [
+      1,
+      2
+     ],
+     [
+      5,
+      6
+     ]
+    ],
+    "sum_to_14_holds": false
+   },
+   {
+    "pair": [
+     5,
+     6
+    ],
+    "third_point": 3,
+    "kernel_support_labels": [
+     1,
+     2,
+     4,
+     7
+    ],
+    "co_line_partners": [
+     [
+      1,
+      2
+     ],
+     [
+      4,
+      7
+     ]
+    ],
+    "sum_to_14_holds": false
+   },
+   {
+    "pair": [
+     5,
+     7
+    ],
+    "third_point": 2,
+    "kernel_support_labels": [
+     1,
+     3,
+     4,
+     6
+    ],
+    "co_line_partners": [
+     [
+      1,
+      3
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    "sum_to_14_holds": false
+   },
+   {
+    "pair": [
+     6,
+     7
+    ],
+    "third_point": 1,
+    "kernel_support_labels": [
+     2,
+     3,
+     4,
+     5
+    ],
+    "co_line_partners": [
+     [
+      2,
+      3
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    "sum_to_14_holds": false
+   }
+  ]
+ },
+ "exact_cbd_tail": {
+  "N_distribution": "CBD(258) = Bin(516,1/2) - 258",
+  "log2_P(|N|>227)_q911": -353.5208293237424,
+  "log2_P(|N|>682)_q2731": -Infinity,
+  "log2_P(|N|>q_spec/4)": "-inf (support ends at 258)"
+ }
+}

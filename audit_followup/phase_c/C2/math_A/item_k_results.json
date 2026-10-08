@@ -1,0 +1,6 @@
+{
+ "groups": 7,
+ "missing_ok": true,
+ "kernel_ok": true,
+ "span_ok": true
+}

@@ -1,0 +1,34 @@
+sector color rho=3 N=0            leg1=1                            leg2=1                            PASS
+sector color rho=3 N=1            leg1=3                            leg2=3                            PASS
+sector color rho=3 N=2            leg1=3bar                         leg2=3bar                         PASS
+sector color rho=3 N=3            leg1=1                            leg2=1                            PASS
+sector color rho=3bar N=0         leg1=1                            leg2=1                            PASS
+sector color rho=3bar N=1         leg1=3bar                         leg2=3bar                         PASS
+sector color rho=3bar N=2         leg1=3                            leg2=3                            PASS
+sector color rho=3bar N=3         leg1=1                            leg2=1                            PASS
+additive                          leg1=False                        leg2=False                        PASS
+an option reproduces paper Y      leg1=False                        leg2=False                        PASS
+an option reproduces paper table  leg1=False                        leg2=False                        PASS
+paper labels realizable           leg1=False                        leg2=False                        PASS
+induced pair rho=3 N=0            leg1=['1', '0', True]             leg2=['1', '0', True]             PASS
+induced pair rho=3 N=1            leg1=['3', '1/3', False]          leg2=['3', '1/3', False]          PASS
+induced pair rho=3 N=2            leg1=['3bar', '-2/3', True]       leg2=['3bar', '-2/3', True]       PASS
+induced pair rho=3 N=3            leg1=['1', '1', True]             leg2=['1', '1', True]             PASS
+induced pair rho=3bar N=0         leg1=['1', '0', True]             leg2=['1', '0', True]             PASS
+induced pair rho=3bar N=1         leg1=['3bar', '1/3', True]        leg2=['3bar', '1/3', True]        PASS
+induced pair rho=3bar N=2         leg1=['3', '-2/3', False]         leg2=['3', '-2/3', False]         PASS
+induced pair rho=3bar N=3         leg1=['1', '1', True]             leg2=['1', '1', True]             PASS
+pull sin_vs_Vus_direct            leg1=7.5991                       leg2=7.599                        PASS
+pull sin_vs_lambda_fit            leg1=8.4695                       leg2=8.469                        PASS
+pull tan_vs_Vus_over_Vud_direct   leg1=0.449                        leg2=0.449                        PASS
+pull tan_vs_Kmu2_over_Vud         leg1=-0.7545                      leg2=-0.755                       PASS
+pull tan_vs_fit                   leg1=-0.2213                      leg2=-0.221                       PASS
+C6 aut_order                      leg1=42                           leg2=42                           PASS
+C6 equals_AGL17                   leg1=True                         leg2=True                         PASS
+C6 keeps_each_Fano_plane          leg1=21                           leg2=21                           PASS
+C6 orientation_preserving         leg1=42                           leg2=42                           PASS
+C6 orientation_reversing          leg1=0                            leg2=0                            PASS
+C6 stab_S7_FanoPlus               leg1=168                          leg2=168                          PASS
+C6 stab_cap_aut                   leg1=21                           leg2=21                           PASS
+
+32/32 PASS

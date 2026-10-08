@@ -1,0 +1,149 @@
+[     0.0s] C1 leg 2 (blind) -- start 2026-10-07T19:31:03.950750+00:00
+[     0.0s] python 3.13.16 | python-flint 0.9.0 | Linux-6.18.44-fc-v77-x86_64-with-glibc2.39
+[     0.0s] prereg md5 778e3d4a2417b2361282730781a295e4 | script md5 6df3de127cbb12320c340321893e9063
+[     0.0s] randomness: random.Random(int(sha256('SQT-C1-leg2|' + tag))) ; randrange(p) per coordinate
+[     0.0s] 
+[     0.0s] == primes ==
+[     0.0s] p=911  prime(MR)=True prime(flint)=True  p mod 455 = 1
+[     0.0s] p=4294977961  prime(MR)=True prime(flint)=True  p mod 455 = 1
+[     0.0s] smallest prime > 2^32 with p = 1 mod 455: 4294977961 (spec q = 4294977961) -> True
+[     0.0s] 
+[     0.0s] == sanity checks of the algebra ==
+[     0.2s] exact (over Z): e_i e_j = +-e_(i xor j) for all i,j: True ; imaginary units anticommute: True ; e1e2=e3: True ; e1e4=e5: True ; e1e8=e9: True
+[     0.2s] exact witness of sedenion non-alternativity: {"x": "e_1 + e_10", "y": "e_4", "(xx)y": {"4": -2}, "x(xy)": {"4": -2, "15": -2}}
+[     0.2s] same witness family inside the octonions (e_a+e_b, e_c with a,b,c<=7): 0 counterexamples
+[     0.2s] sign table (row i, col j: coefficient of e_(i xor j) in e_i e_j):
+[     0.2s]    e_0 : +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1 +1
+[     0.2s]    e_1 : +1 -1 +1 -1 +1 -1 -1 +1 +1 -1 -1 +1 -1 +1 +1 -1
+[     0.2s]    e_2 : +1 -1 -1 +1 +1 +1 -1 -1 +1 +1 -1 -1 -1 -1 +1 +1
+[     0.2s]    e_3 : +1 +1 -1 -1 +1 -1 +1 -1 +1 -1 +1 -1 -1 +1 -1 +1
+[     0.2s]    e_4 : +1 -1 -1 -1 -1 +1 +1 +1 +1 +1 +1 +1 -1 -1 -1 -1
+[     0.2s]    e_5 : +1 +1 -1 +1 -1 -1 -1 +1 +1 -1 +1 -1 +1 -1 +1 -1
+[     0.2s]    e_6 : +1 +1 +1 -1 -1 +1 -1 -1 +1 -1 -1 +1 +1 -1 -1 +1
+[     0.2s]    e_7 : +1 -1 +1 +1 -1 -1 +1 -1 +1 +1 -1 -1 +1 +1 -1 -1
+[     0.2s]    e_8 : +1 -1 -1 -1 -1 -1 -1 -1 -1 +1 +1 +1 +1 +1 +1 +1
+[     0.2s]    e_9 : +1 +1 -1 +1 -1 +1 +1 -1 -1 -1 -1 +1 -1 +1 +1 -1
+[     0.2s]    e_10: +1 +1 +1 -1 -1 -1 +1 +1 -1 +1 -1 -1 -1 -1 +1 +1
+[     0.2s]    e_11: +1 -1 +1 +1 -1 +1 -1 +1 -1 -1 +1 -1 -1 +1 -1 +1
+[     0.2s]    e_12: +1 +1 +1 +1 +1 -1 -1 -1 -1 +1 +1 +1 -1 -1 -1 -1
+[     0.2s]    e_13: +1 -1 +1 -1 +1 +1 +1 -1 -1 -1 +1 -1 +1 -1 +1 -1
+[     0.2s]    e_14: +1 -1 -1 +1 +1 -1 +1 +1 -1 -1 -1 +1 +1 -1 -1 +1
+[     0.2s]    e_15: +1 +1 -1 -1 +1 +1 -1 +1 -1 +1 -1 -1 +1 +1 -1 -1
+[     1.0s] p=911: nonzero structure constants: 256
+[     1.0s] p=911:   e_i_squared_eq_minus_e0_i_1_to_15 = True
+[     1.0s] p=911:   e_i_squared_failures = []
+[     1.0s] p=911:   e0_identity_on_basis_both_sides = True
+[     1.0s] p=911:   e0_identity_on_100_random_both_sides = True
+[     1.0s] p=911:   trials = 200
+[     1.0s] p=911:   octonion_left_alternative_(xx)y=x(xy)_pass = 200
+[     1.0s] p=911:   octonion_right_alternative_(yx)x=y(xx)_pass = 200
+[     1.0s] p=911:   octonion_product_closed_in_e0..e7 = 200
+[     1.0s] p=911:   octonion_norm_multiplicative_pass = 200
+[     1.0s] p=911:   sedenion_left_alternative_(xx)y=x(xy)_pass = 0
+[     1.0s] p=911:   sedenion_right_alternative_(yx)x=y(xx)_pass = 0
+[     1.0s] p=911:   sedenion_norm_multiplicative_pass = 0
+[     1.0s] p=911:   sedenion_flexible_(xy)x=x(yx)_pass = 200
+[     1.0s] p=911:   left_mult_matrix_equals_direct_product_30_random = True
+[     1.0s] p=911:   sigma: sigma^7_is_identity_on_random_vector = True
+[     1.0s] p=911:   sigma: sigma^7_is_identity_on_basis = True
+[     1.0s] p=911:   sigma: sigma^d_not_identity_for_d_1_to_6 = True
+[     1.0s] p=911:   sigma: fixes_e0_e8 = True
+[     1.0s] p=911:   sigma: e1->e2, e7->e1, e9->e10, e15->e9 = True
+[     1.0s] p=911:   sigma: image_index_of_e_i = {0: 0, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 1, 8: 8, 9: 10, 10: 11, 11: 12, 12: 13, 13: 14, 14: 15, 15: 9}
+[     1.0s] p=911:   sigma: descriptive_sigma_is_algebra_automorphism = False
+[     1.8s] p=4294977961: nonzero structure constants: 256
+[     1.8s] p=4294977961:   e_i_squared_eq_minus_e0_i_1_to_15 = True
+[     1.8s] p=4294977961:   e_i_squared_failures = []
+[     1.8s] p=4294977961:   e0_identity_on_basis_both_sides = True
+[     1.8s] p=4294977961:   e0_identity_on_100_random_both_sides = True
+[     1.8s] p=4294977961:   trials = 200
+[     1.8s] p=4294977961:   octonion_left_alternative_(xx)y=x(xy)_pass = 200
+[     1.8s] p=4294977961:   octonion_right_alternative_(yx)x=y(xx)_pass = 200
+[     1.8s] p=4294977961:   octonion_product_closed_in_e0..e7 = 200
+[     1.8s] p=4294977961:   octonion_norm_multiplicative_pass = 200
+[     1.8s] p=4294977961:   sedenion_left_alternative_(xx)y=x(xy)_pass = 0
+[     1.8s] p=4294977961:   sedenion_right_alternative_(yx)x=y(xx)_pass = 0
+[     1.8s] p=4294977961:   sedenion_norm_multiplicative_pass = 0
+[     1.8s] p=4294977961:   sedenion_flexible_(xy)x=x(yx)_pass = 200
+[     1.8s] p=4294977961:   left_mult_matrix_equals_direct_product_30_random = True
+[     1.8s] p=4294977961:   sigma: sigma^7_is_identity_on_random_vector = True
+[     1.8s] p=4294977961:   sigma: sigma^7_is_identity_on_basis = True
+[     1.8s] p=4294977961:   sigma: sigma^d_not_identity_for_d_1_to_6 = True
+[     1.8s] p=4294977961:   sigma: fixes_e0_e8 = True
+[     1.8s] p=4294977961:   sigma: e1->e2, e7->e1, e9->e10, e15->e9 = True
+[     1.8s] p=4294977961:   sigma: image_index_of_e_i = {0: 0, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 1, 8: 8, 9: 10, 10: 11, 11: 12, 12: 13, 13: 14, 14: 15, 15: 9}
+[     1.8s] p=4294977961:   sigma: descriptive_sigma_is_algebra_automorphism = False
+[     1.8s] 
+[     1.8s] == main runs: Singer-orbit public matrix, k in (8, 16, 32, 64), 3 seed sets each ==
+[     1.9s]   singer set 0           p=911        k=8  n=128  rank flint=76   own=76    <=112:True  blocks j==j+7 (1 pairs): True  distinct col blocks=7  rank(S)=8  [build 0.0s, flint 0.00s, own 0.1s]
+[     2.0s]   singer set 1           p=911        k=8  n=128  rank flint=76   own=76    <=112:True  blocks j==j+7 (1 pairs): True  distinct col blocks=7  rank(S)=8  [build 0.0s, flint 0.00s, own 0.1s]
+[     2.0s]   singer set 2           p=911        k=8  n=128  rank flint=76   own=76    <=112:True  blocks j==j+7 (1 pairs): True  distinct col blocks=7  rank(S)=8  [build 0.0s, flint 0.00s, own 0.1s]
+[     2.5s]   singer set 0           p=911        k=16 n=256  rank flint=76   own=76    <=112:True  blocks j==j+7 (9 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.0s, flint 0.02s, own 0.4s]
+[     2.9s]   singer set 1           p=911        k=16 n=256  rank flint=76   own=76    <=112:True  blocks j==j+7 (9 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.0s, flint 0.02s, own 0.4s]
+[     3.3s]   singer set 2           p=911        k=16 n=256  rank flint=76   own=76    <=112:True  blocks j==j+7 (9 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.0s, flint 0.01s, own 0.4s]
+[     5.0s]   singer set 0           p=911        k=32 n=512  rank flint=76   own=76    <=112:True  blocks j==j+7 (25 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.0s, flint 0.04s, own 1.6s]
+[     7.2s]   singer set 1           p=911        k=32 n=512  rank flint=76   own=76    <=112:True  blocks j==j+7 (25 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.0s, flint 0.04s, own 2.0s]
+[     9.2s]   singer set 2           p=911        k=32 n=512  rank flint=76   own=76    <=112:True  blocks j==j+7 (25 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.1s, flint 0.04s, own 1.9s]
+[    16.0s]   singer set 0           p=911        k=64 n=1024 rank flint=76   own=76    <=112:True  blocks j==j+7 (57 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.2s, flint 0.20s, own 6.3s]
+[    23.0s]   singer set 1           p=911        k=64 n=1024 rank flint=76   own=76    <=112:True  blocks j==j+7 (57 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.2s, flint 0.19s, own 6.5s]
+[    29.9s]   singer set 2           p=911        k=64 n=1024 rank flint=76   own=76    <=112:True  blocks j==j+7 (57 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.2s, flint 0.21s, own 6.4s]
+[    30.1s]   singer set 0           p=4294977961 k=8  n=128  rank flint=76   own=76    <=112:True  blocks j==j+7 (1 pairs): True  distinct col blocks=7  rank(S)=8  [build 0.0s, flint 0.00s, own 0.1s]
+[    30.2s]   singer set 1           p=4294977961 k=8  n=128  rank flint=76   own=76    <=112:True  blocks j==j+7 (1 pairs): True  distinct col blocks=7  rank(S)=8  [build 0.0s, flint 0.00s, own 0.1s]
+[    30.3s]   singer set 2           p=4294977961 k=8  n=128  rank flint=76   own=76    <=112:True  blocks j==j+7 (1 pairs): True  distinct col blocks=7  rank(S)=8  [build 0.0s, flint 0.00s, own 0.1s]
+[    31.0s]   singer set 0           p=4294977961 k=16 n=256  rank flint=76   own=76    <=112:True  blocks j==j+7 (9 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.0s, flint 0.01s, own 0.6s]
+[    31.7s]   singer set 1           p=4294977961 k=16 n=256  rank flint=76   own=76    <=112:True  blocks j==j+7 (9 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.0s, flint 0.01s, own 0.6s]
+[    32.3s]   singer set 2           p=4294977961 k=16 n=256  rank flint=76   own=76    <=112:True  blocks j==j+7 (9 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.0s, flint 0.01s, own 0.6s]
+[    35.0s]   singer set 0           p=4294977961 k=32 n=512  rank flint=76   own=76    <=112:True  blocks j==j+7 (25 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.1s, flint 0.04s, own 2.6s]
+[    38.3s]   singer set 1           p=4294977961 k=32 n=512  rank flint=76   own=76    <=112:True  blocks j==j+7 (25 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.1s, flint 0.05s, own 3.1s]
+[    41.2s]   singer set 2           p=4294977961 k=32 n=512  rank flint=76   own=76    <=112:True  blocks j==j+7 (25 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.1s, flint 0.06s, own 2.8s]
+[    53.3s]   singer set 0           p=4294977961 k=64 n=1024 rank flint=76   own=76    <=112:True  blocks j==j+7 (57 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.2s, flint 0.23s, own 11.5s]
+[    65.3s]   singer set 1           p=4294977961 k=64 n=1024 rank flint=76   own=76    <=112:True  blocks j==j+7 (57 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.2s, flint 0.20s, own 11.5s]
+[    77.1s]   singer set 2           p=4294977961 k=64 n=1024 rank flint=76   own=76    <=112:True  blocks j==j+7 (57 pairs): True  distinct col blocks=7  rank(S)=16  [build 0.2s, flint 0.20s, own 11.3s]
+[    77.1s] 
+[    77.1s] == controls: fully uniform A ==
+[    77.2s]   control                p=911        k=8  n=128  rank flint=128  own=128   full(16k=128):True  [build 0.0s, flint 0.00s, own 0.1s]
+[    78.0s]   control                p=911        k=16 n=256  rank flint=256  own=256   full(16k=256):True  [build 0.0s, flint 0.01s, own 0.8s]
+[    84.1s]   control                p=911        k=32 n=512  rank flint=512  own=512   full(16k=512):True  [build 0.1s, flint 0.06s, own 6.0s]
+[   130.5s]   control                p=911        k=64 n=1024 rank flint=1024 own=1024  full(16k=1024):True  [build 0.2s, flint 0.31s, own 45.9s]
+[   130.6s]   control                p=4294977961 k=8  n=128  rank flint=128  own=128   full(16k=128):True  [build 0.0s, flint 0.00s, own 0.1s]
+[   131.9s]   control                p=4294977961 k=16 n=256  rank flint=256  own=256   full(16k=256):True  [build 0.0s, flint 0.01s, own 1.2s]
+[   141.4s]   control                p=4294977961 k=32 n=512  rank flint=512  own=512   full(16k=512):True  [build 0.1s, flint 0.07s, own 9.4s]
+[   220.5s]   control                p=4294977961 k=64 n=1024 rank flint=1024 own=1024  full(16k=1024):True  [build 0.3s, flint 0.43s, own 78.3s]
+[   220.5s] 
+[   220.5s] == descriptive curve at p = 911, k = 1..10 (one seed list of 10; the matrix at k uses seeds 0..k-1) ==
+[   220.5s]   curve                  p=911        k=1  n=16   rank flint=16   own=16    <=112:True  blocks j==j+7 (0 pairs): None  distinct col blocks=1  rank(S)=1  [build 0.0s, flint 0.00s, own 0.0s]
+[   220.5s]   curve                  p=911        k=2  n=32   rank flint=32   own=32    <=112:True  blocks j==j+7 (0 pairs): None  distinct col blocks=2  rank(S)=2  [build 0.0s, flint 0.00s, own 0.0s]
+[   220.5s]   curve                  p=911        k=3  n=48   rank flint=48   own=48    <=112:True  blocks j==j+7 (0 pairs): None  distinct col blocks=3  rank(S)=3  [build 0.0s, flint 0.00s, own 0.0s]
+[   220.5s]   curve                  p=911        k=4  n=64   rank flint=64   own=64    <=112:True  blocks j==j+7 (0 pairs): None  distinct col blocks=4  rank(S)=4  [build 0.0s, flint 0.00s, own 0.0s]
+[   220.6s]   curve                  p=911        k=5  n=80   rank flint=72   own=72    <=112:True  blocks j==j+7 (0 pairs): None  distinct col blocks=5  rank(S)=5  [build 0.0s, flint 0.00s, own 0.0s]
+[   220.6s]   curve                  p=911        k=6  n=96   rank flint=74   own=74    <=112:True  blocks j==j+7 (0 pairs): None  distinct col blocks=6  rank(S)=6  [build 0.0s, flint 0.00s, own 0.0s]
+[   220.7s]   curve                  p=911        k=7  n=112  rank flint=76   own=76    <=112:True  blocks j==j+7 (0 pairs): None  distinct col blocks=7  rank(S)=7  [build 0.0s, flint 0.00s, own 0.1s]
+[   220.8s]   curve                  p=911        k=8  n=128  rank flint=76   own=76    <=112:True  blocks j==j+7 (1 pairs): True  distinct col blocks=7  rank(S)=8  [build 0.0s, flint 0.00s, own 0.1s]
+[   220.9s]   curve                  p=911        k=9  n=144  rank flint=76   own=76    <=112:True  blocks j==j+7 (2 pairs): True  distinct col blocks=7  rank(S)=9  [build 0.0s, flint 0.00s, own 0.1s]
+[   221.0s]   curve                  p=911        k=10 n=160  rank flint=76   own=76    <=112:True  blocks j==j+7 (3 pairs): True  distinct col blocks=7  rank(S)=10  [build 0.0s, flint 0.00s, own 0.1s]
+[   221.0s] 
+[   221.0s] == extra (descriptive): seed-free matrix N[16m+r][16j+c] = coeff r of sigma^j(e_m) e_c, 256 x 112 ==
+[   221.1s] p=911: rank N flint=76 own=76
+[   221.1s] p=4294977961: rank N flint=76 own=76
+[   221.1s] all Singer runs consistent with rank(N) (rank(M) <= rank(N); = when rank(S)=16, k>=7): True
+[   221.1s] 
+[   221.1s] == summary ==
+[   221.1s] k   prime        n     Singer ranks (flint)   (own)              control flint/own
+[   221.1s] 8   911          128   [76, 76, 76]           [76, 76, 76]       128/128
+[   221.1s] 16  911          256   [76, 76, 76]           [76, 76, 76]       256/256
+[   221.1s] 32  911          512   [76, 76, 76]           [76, 76, 76]       512/512
+[   221.1s] 64  911          1024  [76, 76, 76]           [76, 76, 76]       1024/1024
+[   221.1s] 8   4294977961   128   [76, 76, 76]           [76, 76, 76]       128/128
+[   221.1s] 16  4294977961   256   [76, 76, 76]           [76, 76, 76]       256/256
+[   221.1s] 32  4294977961   512   [76, 76, 76]           [76, 76, 76]       512/512
+[   221.1s] 64  4294977961   1024  [76, 76, 76]           [76, 76, 76]       1024/1024
+[   221.1s] curve p=911: k=1:16, k=2:32, k=3:48, k=4:64, k=5:72, k=6:74, k=7:76, k=8:76, k=9:76, k=10:76
+[   221.1s] all_main_singer_ranks_le_112: True
+[   221.1s] all_controls_full_rank_16k: True
+[   221.1s] flint_equals_own_everywhere: True
+[   221.1s] own_elimination_runs: 42
+[   221.1s] period7_block_equality_all_singer_matrices_k_ge_8: True
+[   221.1s] period7_pairs_checked_total: 558
+[   221.1s] distinct_column_blocks_eq_min_k_7: True
+[   221.1s] seeds_with_le_2_nonzero_coords_total: 0
+[   221.1s] finished 2026-10-07T19:34:45.027424+00:00 (wall 221.1s)

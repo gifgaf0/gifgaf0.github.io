@@ -1,0 +1,29 @@
+[hunk] G1 — version line v6.3 -> v6.4
+[hunk] G2 — v6.4 revision note (correction declaration)
+[hunk] G3 — Abstract, first sentence: hypercharge and Cabibbo claims scoped
+[hunk] G4 — Abstract, stages (iii) and (iv)
+[hunk] G5 — Section 1: outline sentence
+[hunk] G6 — Section 3: faces are two line-disjoint Fano planes; Aut(face set) = AGL(1,7); PSL(2,7) per plane
+[hunk] G7 — Section 3: the Fano± bipartition no longer said to provide hypercharge
+[hunk] G8 — Section 5, first paragraph: Furey 2015's operator is a charge
+[hunk] G9 — Section 5: sign dressing withdrawn, Furey's Q = N/3 restored, audit item closed negative, novelty confined to (a)
+[hunk] G10 — Section 6.1: the displayed equation states the number, not |V_us|
+[hunk] G11 — Section 6.1: physical-interpretation sentence scoped
+[hunk] G12 — Section 6.1: comparison updated to PDG 2024; sin reading excluded; tan reading post hoc
+[hunk] G13 — Section 8: chirality given its combinatorial basis
+[hunk] G14 — Section 9: verified claim (3) withdrawn
+[hunk] G15 — Section 9: verified claim (5) withdrawn from the verified list
+[hunk] G16 — Section 9: Conjecture 3 (post-hoc observation) added
+[hunk] G17 — Open Problem (ix) restated; RG running closed negative
+[hunk] G18 — Section 11: mixing-angle wording scoped
+[hunk] G19 — Section 11: 'Cabibbo 3/13 result' -> 'the 3/13 ratio'
+[hunk] G20 — Section 12: hypercharge sentence corrected
+[hunk] G21 — Section 12: Cabibbo sentence corrected
+[hunk] G22 — Section 12: claim and conjecture counts
+[hunk] G23 — References: Grossman et al. (2022) at 17 and PDG (2024) at 24 inserted alphabetically; tail renumbered to 25
+[v6.3] md5 = 8c01f4c9d849bbab1eaff826fd353c3f
+[v6.4 DRAFT] md5 = afbbf56dc1f0b5573d8beb1431555567; bytes 42923 -> 50350; lines 267 -> 277
+reverse-splice reconstruction: OK (v6.4 draft minus hunks == v6.3 byte-exact)
+structural issues: none
+hunks: 23; table written to v64_hunk_table.md
+edit script md5: dcbf9608f8a877970e0464ae2283b2af

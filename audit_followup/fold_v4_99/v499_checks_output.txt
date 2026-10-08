@@ -1,0 +1,7 @@
+dimensions : {'R': 1, 'C': 2, 'H': 4, 'O': 8, 'S': 16}
+imaginary_units : {'R': 0, 'C': 1, 'H': 3, 'O': 7, 'S': 15}
+sum_dimensions : 31
+sum_imaginaries : 26
+real_units : 5
+slip_line_in_V4.98 : 625
+ALL CHECKS PASS

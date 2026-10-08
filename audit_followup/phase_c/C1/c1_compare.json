@@ -1,0 +1,351 @@
+{
+ "rule": "C1_PREREG.md \u00a72: PASS iff both legs give rank <= 112 at k in {8,16,32,64}, both primes, every seed set, and every uniform control is full rank",
+ "table": [
+  {
+   "p": 911,
+   "k": 8,
+   "n": 128,
+   "leg1": [
+    76,
+    76,
+    76
+   ],
+   "leg2_flint": [
+    76,
+    76,
+    76
+   ],
+   "leg2_own": [
+    76,
+    76,
+    76
+   ],
+   "control_leg1": [
+    128
+   ],
+   "control_leg2": [
+    128
+   ],
+   "both_le_112": true,
+   "controls_full": [
+    128
+   ],
+   "exact_agreement": true
+  },
+  {
+   "p": 911,
+   "k": 16,
+   "n": 256,
+   "leg1": [
+    76,
+    76,
+    76
+   ],
+   "leg2_flint": [
+    76,
+    76,
+    76
+   ],
+   "leg2_own": [
+    76,
+    76,
+    76
+   ],
+   "control_leg1": [
+    256
+   ],
+   "control_leg2": [
+    256
+   ],
+   "both_le_112": true,
+   "controls_full": [
+    256
+   ],
+   "exact_agreement": true
+  },
+  {
+   "p": 911,
+   "k": 32,
+   "n": 512,
+   "leg1": [
+    76,
+    76,
+    76
+   ],
+   "leg2_flint": [
+    76,
+    76,
+    76
+   ],
+   "leg2_own": [
+    76,
+    76,
+    76
+   ],
+   "control_leg1": [
+    512
+   ],
+   "control_leg2": [
+    512
+   ],
+   "both_le_112": true,
+   "controls_full": [
+    512
+   ],
+   "exact_agreement": true
+  },
+  {
+   "p": 911,
+   "k": 64,
+   "n": 1024,
+   "leg1": [
+    76,
+    76,
+    76
+   ],
+   "leg2_flint": [
+    76,
+    76,
+    76
+   ],
+   "leg2_own": [
+    76,
+    76,
+    76
+   ],
+   "control_leg1": [
+    1024
+   ],
+   "control_leg2": [
+    1024
+   ],
+   "both_le_112": true,
+   "controls_full": [
+    1024
+   ],
+   "exact_agreement": true
+  },
+  {
+   "p": 4294977961,
+   "k": 8,
+   "n": 128,
+   "leg1": [
+    76,
+    76,
+    76
+   ],
+   "leg2_flint": [
+    76,
+    76,
+    76
+   ],
+   "leg2_own": [
+    76,
+    76,
+    76
+   ],
+   "control_leg1": [
+    128
+   ],
+   "control_leg2": [
+    128
+   ],
+   "both_le_112": true,
+   "controls_full": [
+    128
+   ],
+   "exact_agreement": true
+  },
+  {
+   "p": 4294977961,
+   "k": 16,
+   "n": 256,
+   "leg1": [
+    76,
+    76,
+    76
+   ],
+   "leg2_flint": [
+    76,
+    76,
+    76
+   ],
+   "leg2_own": [
+    76,
+    76,
+    76
+   ],
+   "control_leg1": [
+    256
+   ],
+   "control_leg2": [
+    256
+   ],
+   "both_le_112": true,
+   "controls_full": [
+    256
+   ],
+   "exact_agreement": true
+  },
+  {
+   "p": 4294977961,
+   "k": 32,
+   "n": 512,
+   "leg1": [
+    76,
+    76,
+    76
+   ],
+   "leg2_flint": [
+    76,
+    76,
+    76
+   ],
+   "leg2_own": [
+    76,
+    76,
+    76
+   ],
+   "control_leg1": [
+    512
+   ],
+   "control_leg2": [
+    512
+   ],
+   "both_le_112": true,
+   "controls_full": [
+    512
+   ],
+   "exact_agreement": true
+  },
+  {
+   "p": 4294977961,
+   "k": 64,
+   "n": 1024,
+   "leg1": [
+    76,
+    76,
+    76
+   ],
+   "leg2_flint": [
+    76,
+    76,
+    76
+   ],
+   "leg2_own": [
+    76,
+    76,
+    76
+   ],
+   "control_leg1": [
+    1024
+   ],
+   "control_leg2": [
+    1024
+   ],
+   "both_le_112": true,
+   "controls_full": [
+    1024
+   ],
+   "exact_agreement": true
+  }
+ ],
+ "curve_p911": {
+  "leg1": [
+   [
+    1,
+    16
+   ],
+   [
+    2,
+    32
+   ],
+   [
+    3,
+    48
+   ],
+   [
+    4,
+    64
+   ],
+   [
+    5,
+    72
+   ],
+   [
+    6,
+    74
+   ],
+   [
+    7,
+    76
+   ],
+   [
+    8,
+    76
+   ],
+   [
+    9,
+    76
+   ],
+   [
+    10,
+    76
+   ]
+  ],
+  "leg2": [
+   [
+    1,
+    16
+   ],
+   [
+    2,
+    32
+   ],
+   [
+    3,
+    48
+   ],
+   [
+    4,
+    64
+   ],
+   [
+    5,
+    72
+   ],
+   [
+    6,
+    74
+   ],
+   [
+    7,
+    76
+   ],
+   [
+    8,
+    76
+   ],
+   [
+    9,
+    76
+   ],
+   [
+    10,
+    76
+   ]
+  ],
+  "agree": true
+ },
+ "PASS": true,
+ "exact_ranks_agree_everywhere": true,
+ "universal_N": {
+  "shape": [
+   256,
+   112
+  ],
+  "rank_Q": 76,
+  "rank_mod_911": 76,
+  "rank_mod_spec": 76
+ }
+}

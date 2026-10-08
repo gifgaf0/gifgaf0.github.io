@@ -1,0 +1,20 @@
+V4.97 file: /home/claude/fold/SQT_Master_Ledger_v4_97_CANONICAL.md md5: a5a07bcd4f8ca13c87f65974d5580f24 bytes: 1903201 delta: 25564
+title rewrites: 1; As-of rewrites: 1; Status rewrites: 1; in-line pointer appends: 46; inserted lines: 139 (20094 B); V4.96 lines carried unchanged: 4693 of 4742
+appends on the expected 46 lines: True | missing: [] | extra: []
+every host line contains its typed keyword: True | failing: []
+each pointer says what its rule says: True | failing: []
+inserted blocks: 16 [(38, 39), (393, 394), (462, 463), (511, 512), (619, 620), (665, 666), (1375, 1376), (1444, 1445), (1765, 1864), (3895, 3896), (4122, 4123), (4395, 4396), (4504, 4505), (4605, 4606), (4771, 4782), (4880, 4880)]
+record: True | §2.97 = approved draft + its two fill-ins: True | Part VI rows: True | intake block: True | changelog: True | banners under the 11 headings: True | unexplained blocks: []
+inserted headings: ['### §2.97 — Closing the Substrate Program (V4.97)', '## Successor intake (not opened) (added V4.97)']
+§2.92.A unchanged: True
+§2.52 Open 3 row unchanged: True
+§2.52 body (Open 3) unchanged: True
+§2.52 heading unchanged: True
+G-POLY1 row unchanged: True
+§3.4-G2-CHIRAL row unchanged: True
+ζ-tax gate 3 row unchanged: True
+floor row unchanged: True
+factor-assignment row unchanged: True
+G-QUANTA row unchanged: True
+'[→ V4.97 (§2.97): ' occurrences: 57 (expected 57 = 46 appends + 11 banners); inside inserted text: 11 (expected 11, the banners)
+ADDITIVITY CHECK: PASS

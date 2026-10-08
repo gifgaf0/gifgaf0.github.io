@@ -1,0 +1,323 @@
+{
+ "four_arc": {
+  "component_length": 19.35086724621102,
+  "total_length_per_radius": 58.05260173863306,
+  "total_length_per_diameter": 29.02630086931653,
+  "polyline_richardson_component": 19.35086724707998,
+  "vs_CKS02_5805_rel": 4.481892563412215e-05,
+  "vs_58006_rel": 0.000803395142451776,
+  "lobe_sweep_deg": 228.59037789072914,
+  "waist_sweep_deg": 48.590377890729144
+ },
+ "embedding": {
+  "min_inter_component_kdtree": [
+   1.9999999999999996,
+   1.9999999999999996,
+   1.9999999999999996
+  ],
+  "min_inter_component_refined": 1.9999999999999996,
+  "curvature_radius": 2.0,
+  "self_dist_sep_ge_pi": 2.828500743416513,
+  "self_dist_sep_ge_quarter": 3.2915057512752735,
+  "doubly_critical_min": 3.2915057512752735,
+  "doubly_critical_exact": 3.2915026221291814,
+  "link_thickness": 0.9999999999999998,
+  "frac_contact": 1.0,
+  "enclosing_radius_centerline": 3.645751282848888,
+  "central_ball_centerline": 1.6457513110645907
+ },
+ "linking": {
+  "12": 0.0,
+  "23": 0.0,
+  "13": 0.0
+ },
+ "piercing": {
+  "C2 through plane of C1": [
+   [
+    0.0,
+    -1.645751,
+    true,
+    -1
+   ],
+   [
+    0.0,
+    1.645751,
+    true,
+    1
+   ]
+  ],
+  "C3 through plane of C1": [
+   [
+    3.645682,
+    0.0,
+    false,
+    -1
+   ],
+   [
+    -3.645682,
+    0.0,
+    false,
+    1
+   ]
+  ],
+  "C1 through plane of C2": [
+   [
+    3.645682,
+    0.0,
+    false,
+    -1
+   ],
+   [
+    -3.645682,
+    0.0,
+    false,
+    1
+   ]
+  ],
+  "C3 through plane of C2": [
+   [
+    0.0,
+    -1.645751,
+    true,
+    -1
+   ],
+   [
+    0.0,
+    1.645751,
+    true,
+    1
+   ]
+  ],
+  "C1 through plane of C3": [
+   [
+    0.0,
+    -1.645751,
+    true,
+    -1
+   ],
+   [
+    0.0,
+    1.645751,
+    true,
+    1
+   ]
+  ],
+  "C2 through plane of C3": [
+   [
+    3.645682,
+    0.0,
+    false,
+    -1
+   ],
+   [
+    -3.645682,
+    0.0,
+    false,
+    1
+   ]
+  ]
+ },
+ "mass": {
+  "PHI": 6.250027519360085,
+  "xi_vac": 161.80339887498948,
+  "m0_exact": 0.18699172555600657,
+  "L_B_inverted": 60.1934596387636,
+  "L_B_inverted_m0_018699": 60.193555251427924,
+  "m_p_at_58006": 758.6885120120625,
+  "m_p_at_four_arc": 762.1514630912345,
+  "AZ_for_8095": 0.4998842322893714,
+  "nearest_pq": [
+   1,
+   2
+  ],
+  "L_inverted_nearest_pq": 80.94733292600779,
+  "xi_vac_half": 80.90169943749474,
+  "L_inverted_A70": 47.690156451500876,
+  "m_at_58006_A70": 2655.409792042218,
+  "m_e_continuum_reff": 0.49249081405440565
+ },
+ "verdicts": {
+  "U": 58.006,
+  "verification1_window": [
+   59.894000000000005,
+   60.494
+  ],
+  "verification1_fails": true,
+  "U_diameter": 29.003,
+  "verification1_fails_diameter": true,
+  "clause2_fires": false,
+  "paper_vii_E13_row": "[58.006, 59.894): prediction falsified at leading order",
+  "L_B_within_0p001": true
+ },
+ "alexander": {
+  "multivariable": "(t1 - 1)*(t2 - 1)*(t3 - 1)",
+  "diag": "(t - 1)**3",
+  "diag_coeffs": [
+   1,
+   -3,
+   3,
+   -1
+  ],
+  "diag_sum_sq": 20,
+  "one_var": "(t - 1)**4",
+  "one_var_coeffs": [
+   1,
+   -4,
+   6,
+   -4,
+   1
+  ],
+  "one_var_sum_sq": 70,
+  "one_var_direct": "(t - 1)**4",
+  "burau": "(t - 1)**4",
+  "agree": true
+ },
+ "mass_table": [
+  {
+   "row": "up",
+   "A": 3,
+   "Zf": 3,
+   "L": 16.372,
+   "pred": 2.039142012531309,
+   "printed": 2.039,
+   "rel_vs_printed": 6.964812717446979e-05,
+   "pdg": 2.16,
+   "sigma": 0.07,
+   "err_pct": -5.595277197624594,
+   "err_pct_printed": -5.601851851851851,
+   "pull": -1.7265426781241606,
+   "rule": "NOT HOLDING (outside PDG 2024 1-sigma)"
+  },
+  {
+   "row": "down",
+   "A": 11,
+   "Zf": 9,
+   "L": 21.04,
+   "pred": 4.58899003574021,
+   "printed": 4.589,
+   "rel_vs_printed": -2.1713357573778354e-06,
+   "pdg": 4.7,
+   "sigma": 0.07,
+   "err_pct": -2.361914133187029,
+   "err_pct_printed": -2.3617021276595693,
+   "pull": -1.5858566322827194,
+   "rule": "NOT HOLDING (>2%)"
+  },
+  {
+   "row": "charm",
+   "A": 5,
+   "Zf": 0.020833333333333332,
+   "L": 23.6,
+   "pred": 1245.6744897889207,
+   "printed": 1245.7,
+   "rel_vs_printed": -2.047861530010109e-05,
+   "pdg": 1273.0,
+   "sigma": 4.6,
+   "err_pct": -2.146544399927674,
+   "err_pct_printed": -2.14454045561665,
+   "pull": -5.940328306756368,
+   "rule": "NOT HOLDING (>2%)"
+  },
+  {
+   "row": "bottom",
+   "A": 119,
+   "Zf": 0.75,
+   "L": 37.31,
+   "pred": 4162.585728529984,
+   "printed": 4162.6,
+   "rel_vs_printed": -3.4284990188718242e-06,
+   "pdg": 4183.0,
+   "sigma": 7.0,
+   "err_pct": -0.48802943987606007,
+   "err_pct_printed": -0.4876882620129007,
+   "pull": -2.916324495716513,
+   "rule": "within 2%"
+  },
+  {
+   "row": "top",
+   "A": 119,
+   "Zf": 0.01823725421878943,
+   "L": 37.31,
+   "pred": 171184.72215960146,
+   "printed": 171185.0,
+   "rel_vs_printed": -1.6230417299591007e-06,
+   "pdg": 172570.0,
+   "sigma": 290.0,
+   "err_pct": -0.8027338705444417,
+   "err_pct_printed": -0.8025728689807035,
+   "pull": -4.776820139305321,
+   "rule": "within 2%"
+  },
+  {
+   "row": "tau",
+   "A": 3,
+   "Zf": 0.15915494309189535,
+   "L": 49.08835342892068,
+   "pred": 1752.4261213236941,
+   "printed": 1752.4,
+   "rel_vs_printed": 1.4906028129446515e-05,
+   "pdg": 1776.93,
+   "sigma": 0.09,
+   "err_pct": -1.3790007865422909,
+   "err_pct_printed": -1.3804708120184797,
+   "pull": -272.2653186256215,
+   "rule": "within 2%"
+  },
+  {
+   "row": "W",
+   "pred": 82127.51383152614,
+   "printed": 82128.0,
+   "rel_vs_printed": -5.919643408546485e-06,
+   "pdg": 80369.2,
+   "sigma": 13.3,
+   "err_pct": 2.1877956126552784,
+   "err_pct_printed": 2.1884005315469146,
+   "pull": 132.20404748316886,
+   "rule": "reported"
+  },
+  {
+   "row": "Z",
+   "pred": 93963.96154478323,
+   "printed": 93964.0,
+   "rel_vs_printed": -4.0925478658883786e-07,
+   "pdg": 91188.0,
+   "sigma": 2.0,
+   "err_pct": 3.0442180383199906,
+   "err_pct_printed": 3.044260209676712,
+   "pull": 1387.9807723916165,
+   "rule": "reported"
+  }
+ ],
+ "dof": {
+  "rows": 8,
+  "per_row_selected_continuous": [
+   "Zf(up)=3",
+   "Zf(down)=9",
+   "Zf(charm)=1/48",
+   "Zf(bottom)=3/4",
+   "Zf(top)=kappa/8",
+   "Zf(tau)=1/2pi",
+   "W exponent 27",
+   "Z angle sin^2=phi^-3"
+  ],
+  "shared_selected": [
+   "xi_vac = 100 phi"
+  ],
+  "discrete_shared": [
+   "r_eff(2pi) := 1 normalisation (the 3.81% slack; a common ~3.8% factor on every row)"
+  ],
+  "discrete_per_row": [
+   "knot assignment",
+   "A convention (crossing number for up; Alexander sum of squares otherwise; Delta(t,t,t) for the proton)",
+   "L thickness convention (lead)"
+  ],
+  "residual": -1
+ },
+ "reconnection": {
+  "tau_p_s": 7.573824e+41,
+  "nu_core": 5.181169435260272e+43,
+  "S_core": 197.08687669381263,
+  "nu_had": 1.4254861069662225e+24,
+  "S_had": 152.0472420196769
+ }
+}

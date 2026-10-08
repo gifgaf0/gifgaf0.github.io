@@ -1,0 +1,10 @@
+V4.95 md5: 3b6c11c33fdc88566f8cc1774d2d6a7b bytes: 1871378 delta: 9101
+title rewrites: 1; As-of rewrites: 1; in-line pointer appends: 9; inserted lines: 16 (6524 B); V4.94 lines carried unchanged: 4700 of 4711
+appends on the expected 9 lines: True | missing: [] | extra: []
+every host line contains its typed keyword: True | failing: []
+inserted blocks (V4.95 1-based line ranges): [(38, 39), (1723, 1734), (4466, 4466), (4726, 4726)]
+insertions at the declared places (record / §2.95 / one Part VI row / changelog): True
+inserted headings: ['### §2.95 — The Lattice-Spacing Bound: How Fine the Lattice Must Be for the Light Window (V4.95)']
+§2.92.A (the A1 verdict) unchanged: True
+'[→ V4.95 (§2.95): ' occurrences in V4.95: 9 (expected 9, all in appends); '[→ V4.95' inside inserted text: 3 (the §2.95 preamble, the record and the changelog each name the pointer form once)
+ADDITIVITY CHECK: PASS

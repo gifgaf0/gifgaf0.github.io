@@ -1,0 +1,25 @@
+{
+ "b": {
+  "collineations": 168,
+  "sign_vectors_per_collineation": [
+   8
+  ],
+  "signed_automorphisms_total": 1344,
+  "unsigned_automorphisms": 21,
+  "line_orientations_reversed_unsigned_histogram": {
+   "0": 21,
+   "4": 147
+  },
+  "two_term_cross_copy_zds_in_annihilating_pairs": 84,
+  "annihilating_unordered_pairs": 168,
+  "signed_CD_lifts_tested": 2688,
+  "signed_CD_lifts_preserving_annihilation_graph": 2688,
+  "unsigned_lifts_preserving_annihilation_graph": 21
+ },
+ "c": {
+  "order_4_elements": 42,
+  "subgroup_they_generate": 336,
+  "|SL(2,7)|": 336,
+  "consequence": "by Burnside, the images of the order-4 elements under an irreducible 4-dim representation generate the full matrix algebra M4(C) (dimension 16)"
+ }
+}

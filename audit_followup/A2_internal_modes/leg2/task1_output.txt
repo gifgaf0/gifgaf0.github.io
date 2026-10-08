@@ -1,0 +1,54 @@
+=== Setup (derived g2) ===
+{"algebra_checks": {"alternative": true, "norm_multiplicative": true, "moufang": true, "phi_totally_antisymmetric": true, "lines": [[1, 2, 4], [2, 3, 5], [3, 4, 6], [4, 5, 7], [5, 6, 1], [6, 7, 2], [7, 1, 3]], "lines_from_phi": [[1, 2, 4], [1, 3, 7], [1, 5, 6], [2, 3, 5], [2, 6, 7], [3, 4, 6], [4, 5, 7]], "convention_holds": true, "non_associative_witness_(e1e2)e3!=e1(e2e3)": true}, "g2_checks": {"dim": 14, "kill_e0": true, "antisymmetric": true, "lie_closed": true, "commutant_dim_on_7": 1, "commutant_dim_on_1+7": 2, "preserves_phi": true, "dim_stab_so7_of_phi": 14}, "transitivity": {"rank_single": 6, "rank_pair": 11, "rank_triple": 14}}
+Cartan/weights: {"pairs_from_L_e7": [[1, 3], [2, 6], [4, 5]], "H_coeffs": [["-1", "0", "1"], ["-1", "1", "0"]], "centraliser_dim": 2, "weights_of_7": [[-1, -1], [1, 1], [0, 1], [0, -1], [1, 0], [-1, 0], [0, 0]], "weight_vectors": ["e1-i e3", "e1+i e3", "e2-i e6", "e2+i e6", "e4-i e5", "e4+i e5", "e7"], "n_roots": 12, "roots": [[-2, -1], [-1, -2], [-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1], [1, 2], [2, 1]], "positive_roots": [[0, 1], [1, -1], [1, 0], [1, 1], [1, 2], [2, 1]], "simple_roots(short,long)": [[0, 1], [1, -1]], "E_rational_after_normalisation": true, "F_rational_after_normalisation": true, "weyl_group_order": 12}
+[A] R^14 group (a) degree 2: all=1 T-even=1  (dim V0=7, rank=6; T-even V0=4, rank=3)
+[A] R^14 group (a) degree 4: all=2 T-even=2  (dim V0=52, rank=50; T-even V0=28, rank=26)
+[A] R^14 group (a) degree 6: all=2 T-even=2  (dim V0=282, rank=280; T-even V0=144, rank=142)
+[A] R^14 group (b) degree 2: all=3 T-even=2  (dim V0=15, rank=12; T-even V0=8, rank=6)
+[A] R^14 group (b) degree 4: all=6 T-even=4  (dim V0=148, rank=142; T-even V0=76, rank=72)
+[A] R^14 group (b) degree 6: all=10 T-even=6  (dim V0=1026, rank=1016; T-even V0=516, rank=510)
+[A] R^14 group (c) degree 2: all=1 T-even=1  (dim V0=7, rank=6; T-even V0=4, rank=3)
+[A] R^14 group (c) degree 4: all=2 T-even=2  (dim V0=52, rank=50; T-even V0=28, rank=26)
+[A] R^14 group (c) degree 6: all=4 T-even=3  (dim V0=342, rank=338; T-even V0=174, rank=171)
+[A] R^16 group (a) degree 2: all=2 T-even=2  (dim V0=10, rank=8; T-even V0=6, rank=4)
+[A] R^16 group (a) degree 4: all=6 T-even=5  (dim V0=102, rank=96; T-even V0=54, rank=49)
+[A] R^16 group (a) degree 6: all=10 T-even=8  (dim V0=696, rank=686; T-even V0=354, rank=346)
+[A] R^16 group (b) degree 2: all=4 T-even=3  (dim V0=16, rank=12; T-even V0=9, rank=6)
+[A] R^16 group (b) degree 4: all=10 T-even=7  (dim V0=164, rank=154; T-even V0=85, rank=78)
+[A] R^16 group (b) degree 6: all=20 T-even=13  (dim V0=1190, rank=1170; T-even V0=601, rank=588)
+[A] R^16 group (c) degree 2: all=2 T-even=2  (dim V0=8, rank=6; T-even V0=5, rank=3)
+[A] R^16 group (c) degree 4: all=4 T-even=4  (dim V0=60, rank=56; T-even V0=33, rank=29)
+[A] R^16 group (c) degree 6: all=8 T-even=7  (dim V0=402, rank=394; T-even V0=207, rank=200)
+[A] time 0.7s
+[A-x] R^14 (c) d6: all-positive-roots 4/3, all-12-roots 4/3
+[A-x] R^16 (a) d4: all-positive-roots 6/5, all-12-roots 6/5
+[A-x] R^16 (c) d6: all-positive-roots 8/7, all-12-roots 8/7
+[A-x] R^16 (b) d4: all-positive-roots 10/7, all-12-roots 10/7
+[B] Molien-Weyl controls: {'trivial': 1, 'Lambda2(7)': 0, 'Lambda3(7)': 1, 'Sym2(7)': 1, 'Sym3(7)': 0}
+[B] I(p,q) = dim (Sym^p 7 x Sym^q 7)^G2 : {'0,0': 1, '0,1': 0, '0,2': 1, '0,3': 0, '0,4': 1, '0,5': 0, '0,6': 1, '1,0': 0, '1,1': 1, '1,2': 0, '1,3': 1, '1,4': 0, '1,5': 1, '2,0': 1, '2,1': 0, '2,2': 2, '2,3': 0, '2,4': 2, '3,0': 0, '3,1': 1, '3,2': 0, '3,3': 2, '4,0': 1, '4,1': 0, '4,2': 2, '5,0': 0, '5,1': 1, '6,0': 1}
+[B] tr(T|Inv(p,p)) : {0: 1, 1: 1, 2: 2, 3: 2}
+[A vs B] bigraded I(p,q) agree: True; T-even (p,p) agree: True
+[A vs B] all group counts agree: True
+[C] R^14 d2: {'a': {'all': 1, 'T_even': 1, 'trace_T': 1.0, 'gap': 2.0000000000000098}, 'b': {'all': 3, 'T_even': 2, 'trace_T': 1.0, 'gap': 6.000000000000001}, 'c': {'all': 1, 'T_even': 1, 'trace_T': 1.0, 'gap': 6.000000000000001}}  (0.0s)
+[C] R^14 d4: {'a': {'all': 2, 'T_even': 2, 'trace_T': 2.0, 'gap': 1.8557440321946292}, 'b': {'all': 6, 'T_even': 4, 'trace_T': 2.0, 'gap': 5.888548132432562}, 'c': {'all': 2, 'T_even': 2, 'trace_T': 2.0, 'gap': 5.888548132432562}}  (4.0s)
+[C] R^16 d2: {'a': {'all': 2, 'T_even': 2, 'trace_T': 2.0, 'gap': 2.0}, 'b': {'all': 4, 'T_even': 3, 'trace_T': 2.0, 'gap': 2.0}, 'c': {'all': 2, 'T_even': 2, 'trace_T': 2.0, 'gap': 2.0}}  (0.0s)
+[C] R^16 d4: {'a': {'all': 6, 'T_even': 5, 'trace_T': 4.0, 'gap': 1.0}, 'b': {'all': 10, 'T_even': 7, 'trace_T': 4.0, 'gap': 1.0}, 'c': {'all': 4, 'T_even': 4, 'trace_T': 4.0, 'gap': 1.0}}  (14.3s)
+[A vs C] degrees 2,4 agree: True
+[Task2] candidate basis checks: {"2": {"names": ["N"], "invariant_under_14_derivations": true, "Z3_invariant": true, "T_even": true, "rank": 1}, "4": {"names": ["N^2", "|S|^2"], "invariant_under_14_derivations": true, "Z3_invariant": true, "T_even": true, "rank": 2}, "6": {"names": ["N^3", "N|S|^2", "Re(S^3)"], "invariant_under_14_derivations": true, "Z3_invariant": true, "T_even": true, "rank": 3}}
+[Task2] polar-orbit values over theta = [0.0, 0.5236, 1.0472, 1.5708, 2.0944, 2.618, 3.1416]
+   N       : [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+   N^2     : [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+   |S|^2   : [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+   N^3     : [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+   N|S|^2  : [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+   Re(S^3) : [1.0, -1.0, 1.0, -1.0, 1.0, -1.0, 1.0]
+[Task2] machine kernel (group c, T-even, deg 6, R^14) on polar orbit: {"kernel_dim": 3, "n_theta_dependent_directions": 1, "singular_values": [0.0025695059159385617, 2.090747589262693e-19, 1.7480667289174636e-20], "fits": [{"const": -0.0, "cos6theta": 0.0, "max_resid": 2.601643712433785e-20, "max_imag": 9.733434267911477e-21}, {"const": -0.0, "cos6theta": 0.00097656, "max_resid": 4.336808689942018e-19, "max_imag": 6.776263578034403e-20}, {"const": 0.00048828, "cos6theta": -0.0, "max_resid": 3.2526065174565133e-19, "max_imag": 1.829897094643918e-20}]}
+
+FINAL TABLE (all / T-even)
+R^14 (a): d2: 1/1  d4: 2/2  d6: 2/2
+R^14 (b): d2: 3/2  d4: 6/4  d6: 10/6
+R^14 (c): d2: 1/1  d4: 2/2  d6: 4/3
+R^16 (a): d2: 2/2  d4: 6/5  d6: 10/8
+R^16 (b): d2: 4/3  d4: 10/7  d6: 20/13
+R^16 (c): d2: 2/2  d4: 4/4  d6: 8/7
+total time 26.3s

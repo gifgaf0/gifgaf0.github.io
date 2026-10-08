@@ -19,6 +19,7 @@
   - the electron's 2π closure, and the mass exponent built on it, now rest on an unmade choice of vacuum;
   - the neutron-moment "factor of 4" was the wrong quartet;
   - fourteen mathematical slips are corrected.
+- **Last, it asked how fine the vacuum's lattice would have to be for light to get through.** The highest-energy photons on record cap the vacuum's grains at about the Planck length, so the lattice cells would have to be finer than the Planck length.
 
 ## Established
 
@@ -100,7 +101,12 @@
   - Several mass and nuclear-decay patterns stay at the conjecture level, with stated tests.
 - **Physical scale.**
   - The medium has no grain size consistent with the cosmic-ray bound.
-  - The light-side window for the polycrystal's grains is only 5–20 lattice cells wide, under a Planck-scale lattice that the ledger never licensed for light. A rule that grains be much larger than a cell would close it. The minimum is the author's to set.
+  - **Light sets its own limit (new, October 7).**
+    - LHAASO's PeV photons from the Cygnus region and the Crab Nebula reach us. That caps the vacuum's grains at 2.1 × 10⁻³⁵ m, about 1.3 Planck lengths.
+    - A grain of N lattice cells therefore needs cells finer than the Planck length for any N ≥ 2: 0.064 Planck lengths at N = 20, 0.013 at N = 100.
+    - The ledger's declared lattice, 12–47 Planck lengths per cell, does not fit even one cell in a grain.
+    - This is a bound, computed twice independently. The minimum number of cells per grain is the author's to set; the materials literature supports about 50–100.
+  - Any coherent alignment of the grains must be below about 10⁻³⁵ (from gamma-ray-burst polarization). Randomly oriented grains satisfy this easily, and the lattice's own dispersion is no constraint.
 - **Papers in motion.**
   - **The negative-result paper** on the shared-speed-limit failure. The author approved v1 on 4 October. Every fix the audit asked for was already in it, so it can be posted as approved.
   - **Drafts awaiting the author's approval** (nothing is published or sent):
@@ -111,4 +117,4 @@
     - the SLWE negative-result note for IACR ePrint.
   - **The alpha-decay paper** now has a ledger entry. Its data are sound. The text needs corrections, which are the author's call: 51 steps, not 74; one robust break, not two; and the abstract's Curium sentence.
 
-*Every claim above is recorded with its evidence in the project's append-only ledger (now V4.94). Nothing here relies on numbers that have not been computed at least once. Every number behind a verdict this week was computed twice, independently. There are two exceptions: the gravity dispositions, which rest on standard theorems and published measurements, and the cryptosystem's security figures, which come from the standard lattice estimator with an independent cross-check. The Phase B corrections are annotations, each computed once. In Phase C, every downgrade and reversal had a second computation, and the rest are annotations.*
+*Every claim above is recorded with its evidence in the project's append-only ledger (now V4.95). Nothing here relies on numbers that have not been computed at least once. Every number behind a verdict this week was computed twice, independently. There are two exceptions: the gravity dispositions, which rest on standard theorems and published measurements, and the cryptosystem's security figures, which come from the standard lattice estimator with an independent cross-check. The Phase B corrections are annotations, each computed once. In Phase C, every downgrade and reversal had a second computation, and the rest are annotations.*

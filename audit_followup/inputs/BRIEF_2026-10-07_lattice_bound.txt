@@ -1,0 +1,79 @@
+LATTICE-SPACING BOUND BRIEF: how fine must the lattice be for the light window
+to stay open?
+Base: V4.94. This computes a bound. It is not a verdict on anything already
+decided.
+
+WHY
+Phase C left the polycrystal floor open.
+- The light window caps grains at 3.764×10⁻³³ m (W^EM_∪ of record).
+- Under the declared chain (ξ = ℓ_P, C = ξ/a ∈ [0.0213, 0.0851]), the lattice
+  spacing is 1.9–7.6×10⁻³⁴ m, so a grain holds only 5–20 cells.
+- But ξ = ℓ_P is not licensed on the light side. That chain also pins the
+  healing length, not the cell, to ℓ_P, which puts the cells at 12–47 Planck
+  lengths.
+So turn the question around: what is the largest lattice spacing a_max that
+all photon data allow, as a function of the minimum cells per grain, N?
+
+HOW TO WORK
+- Pre-register the photon arms, the optical-depth threshold and the
+  birefringence limit before computing. Do the comparison last.
+- One leg is enough. If the window comes out empty for every N ≥ 20 on every
+  arm, run a blind second leg on the decisive arm before folding.
+- Prior Address first:
+  - the homogenization / representative-volume-element literature: how many
+    cells a grain needs for effective-medium averaging to hold. Ranganathan &
+    Ostoja-Starzewski and Stanke & Kino are already cited;
+  - LHAASO's PeV source catalogue;
+  - astrophysical bounds on vacuum birefringence (Kostelecký & Mewes and
+    successors);
+  - LHAASO's quadratic Lorentz-violation bound.
+- State the result as a bound ("the data require a ≤ …"), not a prediction.
+  Don't re-pin ξ or any other scale after seeing numbers.
+- One short fold recording the bound is authorized. Put a plain-language
+  summary first. Write to the repo.
+
+TASKS
+1. Recover the photon anchor behind W^EM_∪: unseal the G-S2C1-W / G-CI1 anchor
+   file under the ledger's own rules, or restate it. Then restate the
+   grain-scattering condition:
+   - attenuation α ∝ k⁴ d³ ⟨(δC/C)²⟩, with the fluctuation factor fixed by the
+     G-TSH4 measurements;
+   - optical depth τ = α·D below the pre-registered threshold;
+   - the Rayleigh regime (k·d ≪ 1) checked on every arm.
+2. Recompute d_max on each photon arm:
+   - the original anchor;
+   - LHAASO's PeV photons from the Crab Nebula (about 1.1 PeV, about 2 kpc);
+   - GRB 221009A (LHAASO photons up to 13–18 TeV, z ≈ 0.15);
+   - the most constraining distant TeV source you can document.
+   My expectation: d_max ∝ (E⁴·D)^(-1/3), so the Crab arm shrinks the window
+   by a factor of roughly 40–2,000 relative to a 0.1–2 TeV anchor at
+   cosmological distance.
+3. Tabulate a_max(N) = d_max / N on each arm, for N = 20, 100 and 1,000, in
+   metres and in Planck lengths. Report the floor N that the homogenization
+   literature supports, but leave the choice of N to me.
+4. Texture. A textured aggregate is birefringent at first order:
+   Δn ≈ b₁·t, with b₁ ≈ 1.6–4.5×10⁻² from the banked Voigt birefringence.
+   - Turn the astrophysical vacuum-birefringence limit into a bound on t.
+   - Compare it with the statistical texture expected from randomly oriented
+     grains.
+   This bound does not depend on the lattice spacing.
+5. Dispersion.
+   - Confirm that a centrosymmetric lattice gives no effect linear in energy
+     (dimension 5).
+   - Convert LHAASO's quadratic bound (E_QG,2 > 6×10⁻⁸ E_P) into a bound on a.
+     My expectation is only a ≲ 10⁷ ℓ_P, so dispersion isn't the binding
+     constraint.
+6. Combine.
+   - Take a_max(N) as the minimum over the arms, and say where the Planck
+     length falls.
+   - List what the result touches: the light-only transverse carrier, the
+     polycrystal-floor row, and the ANNEX-SC-1 / G-S2C1-W chain.
+   - Say in one sentence what it does not touch: the A1 polarization verdict,
+     the A2 internal-mode friction, the second-sound drag and KC-EP.
+
+DELIVERABLES
+- A plain-language summary.
+- A table of a_max(N) by arm.
+- The texture bound.
+- The fold.
+- The polycrystal-floor options for me to choose from.

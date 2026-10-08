@@ -1,5 +1,7 @@
 # V4.96 — staged, awaiting the author's fold word
 
+**Update: FOLDED** on the author's word "Fold it as V4.96 now." (October 7, 2026, 20:05 PDT). The result is md5 `120b076a613b7ef4074193c03df2cf0d`; see `FOLD_AUTHORIZATION_V4_96.md`. The text below is the staging note, kept as it was.
+
 **Plain-language summary.** This fold would record the author's polycrystal-floor election (N = 50, "I select N = 50", October 7, 2026, 19:16 PDT) and its consequences in the ledger: a short §2.96 and ten pointers. It has been dry-run on V4.95 and passes its own reverse-splice check and the independent additivity check. It is not canonical until the author gives the fold word.
 
 **What it adds** (dry run: +5,064 B):

@@ -35,7 +35,7 @@ These are computed by `ls_election_n50.py` from both legs' d_max values, which a
 
 ## Ledger
 
-The election waits for a fold. A staged V4.96 fold is in `fold_v4_96/`, and it has been dry-run and verified. It records:
+**Folded as V4.96** on the author's word (October 7, 2026, 20:05 PDT; md5 `120b076a613b7ef4074193c03df2cf0d`; `fold_v4_96/FOLD_AUTHORIZATION_V4_96.md`). At the author's request, §2.96 also says which verdicts rest on which data. With the PeV arms, a Planck-length lattice is excluded for every N ≥ 2. The TeV arms alone already exclude it for N ≥ 7, so at N = 50 that verdict does not depend on the PeV data. The fold records:
 - the election, on the polycrystal-floor row;
 - these consequences, in a short §2.96;
 - pointers on:
@@ -46,4 +46,4 @@ The election waits for a fold. A staged V4.96 fold is in `fold_v4_96/`, and it h
   - §2.92.E;
   - the polycrystal postulate's two homes (§2.91.M / G-POLY1 and the Part V VRH row).
 
-It becomes canonical on the author's fold word.
+The staging note is kept in `fold_v4_96/STAGED.md`.

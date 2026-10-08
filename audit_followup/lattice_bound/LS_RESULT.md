@@ -148,7 +148,7 @@ The literature supports **N ≈ 50–100** as the floor at which a grain behaves
 - **Under the declared chain, the window is empty on every arm.** Fifty cells of the declared lattice span at least 9.50 × 10⁻³³ m, which is 2.5 times W^EM_∪'s own edge.
 - **Any lattice at or above ℓ_P leaves no window.**
 
-The details are in `ELECTION_N50.md` and `ls_election_n50.py`. A fold recording the election (V4.96) is staged in `../fold_v4_96/`.
+The details are in `ELECTION_N50.md` and `ls_election_n50.py`. The election is folded as V4.96 (§2.96). §2.96 also records that the TeV arms alone already exclude a Planck-length lattice for N ≥ 7, while the PeV arms extend that to N ≥ 2.
 
 ## Process
 

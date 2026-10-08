@@ -1,0 +1,11 @@
+V4.96 file: /home/claude/fold/SQT_Master_Ledger_v4_96_CANONICAL.md md5: 120b076a613b7ef4074193c03df2cf0d bytes: 1877637 delta: 6259
+title rewrites: 1; As-of rewrites: 1; in-line pointer appends: 10; inserted lines: 15 (4191 B); V4.95 lines carried unchanged: 4715 of 4727
+appends on the expected 10 lines: True | missing: [] | extra: []
+every host line contains its typed keyword: True | failing: []
+inserted blocks (V4.96 1-based line ranges): [(38, 39), (1737, 1748), (4741, 4741)]
+insertions at the declared places (record / §2.96 / changelog): True
+inserted headings: ['### §2.96 — The Polycrystal Floor Elected: N = 50 (V4.96)']
+§2.92.A unchanged: True
+§2.52 Open 3 unchanged: True
+'[→ V4.96 (§2.96): ' occurrences: 10 (expected 10, all in appends); '[→ V4.96' inside inserted text: 3 (expected 3: the §2.96 preamble, the record and the changelog each name the pointer form once)
+ADDITIVITY CHECK: PASS

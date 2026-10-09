@@ -23,14 +23,15 @@
 \maketitle
 
 \begin{abstract}
-We report a negative result on SLWE, a Module-LWE variant over the sixteen-dimensional sedenion algebra proposed in the
-author's own research programme. Its public matrix is built from orbits of an order-7 coordinate permutation (a
+We report a negative result on SLWE, a Module-LWE variant over the sixteen-dimensional sedenion algebra that the
+author proposed in an earlier paper with a claim of NIST Category~5 security. Its public matrix is built from orbits of an order-7 coordinate permutation (a
 ``Singer cycle''). First, the flattened public matrix factors through a fixed $256\times112$ integer matrix of rank 76,
 so its rank over $\F_q$ is at most 76 for every module rank $k$, and exactly 76 for generic seeds once $k\ge 7$, whereas a
-uniform matrix of the same shape has rank $16k$. Recovering the noise then reduces to an LWE instance of dimension 76,
-which the lattice estimator places at about $2^{39}$ operations. Second, replacing the matrix by a uniform one does not
-help at the proposed parameters ($n=512$, $q\approx2^{32}$, centred binomial noise with $\eta=2$, ternary secrets of
-weight 64): the estimator gives about $2^{51}$. Third, decryption at those parameters is deterministic: the noise is
+uniform matrix of the same shape has rank $16k$. This invalidates the security claim at both published parameter sets.
+Recovering the noise then reduces to an LWE instance of dimension 76, which the lattice estimator places at about
+$2^{39}$ operations at the first set ($n=512$, $q\approx2^{32}$). Second, replacing the matrix by a uniform one does not
+help at that set (centred binomial noise with $\eta=2$, ternary secrets of weight 64): the estimator gives about
+$2^{51}$. Third, decryption at those parameters is deterministic: the noise is
 bounded by 258, far below $q/4$; a failure rate of $2^{-6.4\times10^{15}}$ reported earlier came from a Gaussian tail
 evaluated outside the support of a bounded sum. All computations are reproducible from public scripts.
 \end{abstract}
@@ -41,10 +42,16 @@ SLWE was proposed inside a larger, physics-motivated programme that uses the sed
 double of the octonions) and their zero divisors. The idea was to keep the shape of Module-LWE~\cite{Regev,LS15} while replacing the ring by
 $\Sed_q=\Sed\otimes\F_q$ and to give the public matrix a symmetry inherited from the Fano plane: each row is the orbit of
 a random seed under a cyclic permutation $\sigma$ of order 7. Correctness was obtained with a bilinear ``norm'' pairing
-rather than the (non-associative) algebra product. The scheme was never published as secure; its documentation listed
-the hardness of its structured matrix as open.
+rather than the (non-associative) algebra product.
 
-This note settles the question negatively and records three facts that may be useful beyond this proposal.
+Both versions of the paper that proposed SLWE~\cite{Gif26a} claimed NIST Category~5 security. Version~1 used $n=512$
+and $q\approx2^{32}$. Version~2 found that modulus far too large (its primal estimate put version~1 below Category~1),
+moved to $k=64$ and $q=911$ ($n=1024$), and claimed Category~5 from a primal estimate, leaving the dual and hybrid
+attacks to be checked. It kept the Singer-orbit matrix, whose rank it had tested only at $k=4$. The project's working
+specification~\cite{Gif26b} recorded on May~10, 2026 that this matrix is rank-deficient at $k=32$, and replaced it by a
+uniform one.
+
+This note shows that neither version is secure and records three facts that may be useful beyond this proposal.
 \begin{enumerate}
 \item A coordinate permutation applied to seeds produces a matrix that is linear in the seeds through a fixed
   ``design matrix''. The rank of that design matrix bounds the rank of the public matrix for every module rank
@@ -52,7 +59,9 @@ This note settles the question negatively and records three facts that may be us
 \item Non-associativity of the algebra plays no role once decryption uses a bilinear form: every map the attacker needs
   is $\F_q$-linear on $\F_q^{16k}$.
 \item At $q\approx2^{32}$ with noise of standard deviation about 1, LWE in dimension 512 is easy whatever the matrix
-  (Section~\ref{sec:uniform}). The modulus-to-noise ratio, not the algebra, governs security.
+  (Section~\ref{sec:uniform}). The modulus-to-noise ratio, not the algebra, governs security. Version~2
+  of~\cite{Gif26a} reached the same conclusion with a primal estimate; Section~\ref{sec:uniform} confirms it with the
+  standard estimator.
 \end{enumerate}
 
 \section{The scheme}
@@ -73,8 +82,9 @@ $A^{H}_{ij}=\overline{A_{ji}}$, which is what decryption needs.
 \item \textbf{Decaps.} Round $c_2-\langle s,c_1\rangle=m\lfloor q/2\rceil+N$ with
   $N=\langle e,r\rangle-\langle s,e_1\rangle+e_2$.
 \end{itemize}
-The proposed parameters are $k=32$ (so $n=16k=512$), $q=4\,294\,977\,961$ (the least prime $\equiv1\pmod{455}$ above
-$2^{32}$), $h_s=h_r=64$, and noise CBD$(\eta=2)$.
+Version~1's parameters are $k=32$ (so $n=16k=512$), $q=4\,294\,977\,961$ (the least prime $\equiv1\pmod{455}$ above
+$2^{32}$), $h_s=h_r=64$, and noise CBD$(\eta=2)$. Version~2's are $k=64$ ($n=1024$) and $q=911$ (the least prime
+$\equiv1\pmod{455}$), with the same weights and noise.
 
 \section{The rank collapse}\label{sec:rank}
 
@@ -96,7 +106,9 @@ block $j\bmod7$, so $N_k$ has at most the columns of $N$. The ranks of $N$ were 
 
 The bound is attained. Table~\ref{tab:rank} lists exact ranks from two independent implementations (one built on the
 proposal's reference code, one written blind from a textual specification), with three seed sets per case and a
-uniform control. The collapse starts at $k=5$; from $k=7$ on the rank is 76 for every seed set tried.
+uniform control. The collapse starts at $k=5$; from $k=7$ on the rank is 76 for every seed set tried. Version~2's
+parameters, $k=64$ over $\F_{911}$, are in the table: the rank is 76, not 1024. Its own rank test used $k=4$, where the
+matrix has 64 columns, below the cap of 76, so the collapse could not show there.
 
 \begin{table}[h]\centering\small
 \begin{tabular}{lcccccccccccc}\toprule
@@ -124,12 +136,14 @@ $r'$ with $M^{H}r'=c_1-e_1$ gives $c_2-\langle b-e,r'\rangle=m\lfloor q/2\rceil+
 For $\rho=76$, $q=4\,294\,977\,961$, CBD$(2)$ secret and noise and $m=436$ samples, the lattice
 estimator~\cite{APS15,estimator} reports $2^{38.6}$ operations (uSVP and BDD). Its block size is at the floor of its
 model ($\beta=40$), so reduction at the scale of LLL already suffices. Distinguishing $(A,b)$ from uniform is easier
-still: it needs only Gaussian elimination, because $A$ itself is rank-deficient.
+still: it needs only Gaussian elimination, because $A$ itself is rank-deficient. At version~2's parameters the same
+reduction gives dimension 76 with 948 samples; we did not run the estimator there.
 
-\section{A uniform matrix does not repair the parameters}\label{sec:uniform}
+\section{A uniform matrix does not repair version~1's parameters}\label{sec:uniform}
 
-A later revision of the proposal replaced the Singer matrix by a uniform one. Table~\ref{tab:est} shows the estimator's
-default attack set at the proposed parameters with a uniform matrix. The cheapest attack costs about $2^{51}$. An
+The working specification~\cite{Gif26b} replaced the Singer matrix by a uniform one and kept version~1's parameters.
+Table~\ref{tab:est} shows the estimator's default attack set at those parameters with a uniform matrix. The cheapest
+attack costs about $2^{51}$. An
 independent implementation of the primal ``2016 estimate''~\cite{ADPS16} (smallest $\beta$ with
 $\sigma\sqrt\beta\le\delta_\beta^{2\beta-d-1}\mathrm{Vol}^{1/d}$, the secret rescaled to the noise width) gives $\beta=72$,
 $d=937$, a core-SVP cost of $2^{0.292\beta}=2^{21}$~\cite{BDGL16}, the same as the estimator's own rough uSVP figure.
@@ -139,37 +153,41 @@ dimension about 940.
 \begin{table}[h]\centering\small
 \begin{tabular}{lll}\toprule
 $q$ & cheapest attack ($\log_2$ rop) & uSVP ($\log_2$ rop, $\beta$)\\\midrule
-$4\,294\,977\,961$ (proposal) & 51.0 (BDD) & 52.1, $\beta=72$\\
+$4\,294\,977\,961$ (version~1) & 51.0 (BDD) & 52.1, $\beta=72$\\
 $2731$ & 114.4 (dual hybrid) & 122.5, $\beta=330$\\
 $911$ & 122.2 (BKW); 127.4 without BKW & 136.9, $\beta=383$\\\bottomrule
 \end{tabular}
 \caption{Lattice estimator~\cite{estimator}, commit \texttt{53da598}, default attacks and cost model~\cite{MATZOV}, at $n=512$, $m=512$, ternary
 secret of weight 64 and CBD$(2)$ noise, with a uniform public matrix. The columns $q=911$ and $q=2731$ (the two smallest
-primes $\equiv1\pmod{455}$) are for orientation only.}\label{tab:est}
+primes $\equiv1\pmod{455}$) are for orientation only; version~2 pairs $q=911$ with $n=1024$.}\label{tab:est}
 \end{table}
 
 Even the smallest admissible prime falls short of $2^{128}$ at $n=512$ with these distributions, so a secure instance
-would need a larger dimension or wider noise. We have not searched that space.
+would need a larger dimension or wider noise. We have not searched that space. Version~2's parameters ($n=1024$,
+$q=911$) are not in the table: with the Singer matrix they fall to Section~\ref{sec:rank}, and with a uniform matrix the
+scheme becomes generic Module-LWE with sparse secrets, which we did not estimate.
 
-\section{Correctness is deterministic}
+\section{Correctness}
 
 Each coordinate of $e$, $e_1$ and $e_2$ lies in $[-2,2]$. The confined zero-divisor noise has the same bound, since the
 kernel bases have entries in $\{0,\pm1\}$ and the noise is $2\sum_j\alpha_jk_j$ with $\alpha_j\in\{-1,0,1\}$. So
 \[
 |N|\le 2h_r+2h_s+2=258<\lfloor q/4\rfloor\approx1.07\times10^{9},
 \]
-and decryption never fails at the proposed parameters. It never fails for any $q>1032$. For CBD noise the distribution
+and decryption never fails at version~1's parameters. It never fails for any $q>1032$; at version~2's $q=911$ it can
+fail, though rarely. For CBD noise the distribution
 is in fact exact: given $r$ and $s$, $N$ is a sum of $2(h_r+h_s+1)$ independent symmetric binomial draws, i.e.\
-$N\sim\mathrm{CBD}(258)$. At $q=911$ this gives $\Pr[|N|>227]=2^{-353.5}$ exactly.
+$N\sim\mathrm{CBD}(258)$. At $q=911$ this gives $\Pr[|N|>227]=2^{-353.5}$ exactly, consistent with version~2's
+Gaussian bound of $2^{-295}$.
 
 An earlier analysis reported $\log_2\mathrm{DFR}\approx-6.4\times10^{15}$. That number is the Gaussian tail at
 $z=q/(4\sigma_N)\approx9.5\times10^{7}$ with $\sigma_N\approx11.4$. It evaluates the tail about $4\times10^{6}$ times
-beyond the largest value $N$ can take. The correct statement is $\mathrm{DFR}=0$.
+beyond the largest value $N$ can take. At that modulus the correct statement is $\mathrm{DFR}=0$.
 
 \section{Conclusion}
 
-The Singer-orbit public matrix makes SLWE insecure at every module rank. A uniform matrix does not rescue the proposed
-parameters, which reach about $2^{51}$. The scheme's correctness was never in question. The general lesson is
+The Singer-orbit public matrix makes SLWE insecure at every module rank, including both published parameter sets. A
+uniform matrix does not rescue version~1's parameters, which reach about $2^{51}$. The scheme's correctness was never in question. The general lesson is
 elementary but easy to miss. A structured matrix built by acting on random seeds is the image of a fixed design matrix,
 and that matrix's rank should be the first thing checked.
 
@@ -191,7 +209,7 @@ Exact ranks were computed with python-flint.
 
 \paragraph{Acknowledgements.} AI agents (Anthropic's Claude) drafted this note and wrote and ran all of its computations, including both independent rank implementations; the author directed the work, reviewed the text, and takes responsibility for it.
 
-\begin{thebibliography}{9}\small
+\begin{thebibliography}{99}\small
 \bibitem{ADPS16} E.~Alkim, L.~Ducas, T.~P\"oppelmann, P.~Schwabe. Post-quantum key exchange --- a new hope.
   \emph{25th USENIX Security Symposium}, 2016, 327--343.
 \bibitem{APS15} M.~R.~Albrecht, R.~Player, S.~Scott. On the concrete hardness of Learning with Errors.
@@ -200,6 +218,10 @@ Exact ranks were computed with python-flint.
   \url{https://github.com/malb/lattice-estimator}, commit \texttt{53da598}.
 \bibitem{BDGL16} A.~Becker, L.~Ducas, N.~Gama, T.~Laarhoven. New directions in nearest neighbor searching with
   applications to lattice sieving. \emph{SODA} 2016, 10--24.
+\bibitem{Gif26a} M.~Gifford. Fluid Lattice Topology: bridging PSL(2,7) vacuum geometry and non-associative
+  post-quantum cryptography. Zenodo, 2026, versions 1 and 2. doi:10.5281/zenodo.20078312.
+\bibitem{Gif26b} M.~Gifford. Sedenion Module-LWE and $\Phi$-modular prime project: master reference document, v2.1
+  (May 10, 2026). File \texttt{tools/SLWE\_Prime\_Master\_v2.md} in the repository of Section~\ref{sec:repro}.
 \bibitem{LS15} A.~Langlois, D.~Stehl\'e. Worst-case to average-case reductions for module lattices.
   \emph{Des.\ Codes Cryptogr.} 75 (2015), 565--599.
 \bibitem{MATZOV} MATZOV. Report on the security of LWE: improved dual lattice attack. 2022.

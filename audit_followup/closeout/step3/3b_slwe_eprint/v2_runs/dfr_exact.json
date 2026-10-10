@@ -1,0 +1,212 @@
+{
+ "model": "N ~ CBD(258) = Bin(516,1/2) - 258 exactly (weight-64 r and s, CBD(2) noise)",
+ "rules": [
+  "threshold",
+  "nearest",
+  "sqt_slwe",
+  "round2v"
+ ],
+ "encodings": [
+  "floor(q/2)",
+  "ceil(q/2)"
+ ],
+ "round2v_integer_form_checked_against_literal_form": "q = 900..1199, every v",
+ "q911": {
+  "log2_P(|N|>227)": -353.5208293237424,
+  "log2_failure_rate": {
+   "threshold | m*floor(q/2)": -353.9066096915343,
+   "threshold | m*ceil(q/2)": -353.9066096915343,
+   "nearest | m*floor(q/2)": -353.9066096915343,
+   "nearest | m*ceil(q/2)": -353.9066096915343,
+   "sqt_slwe | m*floor(q/2)": -351.44728232008663,
+   "sqt_slwe | m*ceil(q/2)": -353.9066096915343,
+   "round2v | m*floor(q/2)": -353.9066096915343,
+   "round2v | m*ceil(q/2)": -353.9066096915343
+  }
+ },
+ "worst_case_scan": {
+  "q_range": [
+   900,
+   5000
+  ],
+  "by_rule": {
+   "threshold | m*floor(q/2)": {
+    "failing_q_in_1025_1199": [
+     1025,
+     1026,
+     1027,
+     1028,
+     1029,
+     1030,
+     1031,
+     1032,
+     1033
+    ],
+    "largest_failing_q": 1033,
+    "never_fails_for_q_from": 1034
+   },
+   "threshold | m*ceil(q/2)": {
+    "failing_q_in_1025_1199": [
+     1025,
+     1026,
+     1027,
+     1028,
+     1029,
+     1030,
+     1031,
+     1032,
+     1033
+    ],
+    "largest_failing_q": 1033,
+    "never_fails_for_q_from": 1034
+   },
+   "nearest | m*floor(q/2)": {
+    "failing_q_in_1025_1199": [
+     1025,
+     1026,
+     1027,
+     1028,
+     1029,
+     1030,
+     1031,
+     1032,
+     1033
+    ],
+    "largest_failing_q": 1033,
+    "never_fails_for_q_from": 1034
+   },
+   "nearest | m*ceil(q/2)": {
+    "failing_q_in_1025_1199": [
+     1025,
+     1026,
+     1027,
+     1028,
+     1029,
+     1030,
+     1031,
+     1032,
+     1033
+    ],
+    "largest_failing_q": 1033,
+    "never_fails_for_q_from": 1034
+   },
+   "sqt_slwe | m*floor(q/2)": {
+    "failing_q_in_1025_1199": [
+     1025,
+     1026,
+     1027,
+     1028,
+     1029,
+     1030,
+     1031,
+     1032,
+     1033,
+     1035
+    ],
+    "largest_failing_q": 1035,
+    "never_fails_for_q_from": 1036
+   },
+   "sqt_slwe | m*ceil(q/2)": {
+    "failing_q_in_1025_1199": [
+     1025,
+     1026,
+     1027,
+     1028,
+     1029,
+     1030,
+     1031,
+     1032,
+     1033
+    ],
+    "largest_failing_q": 1033,
+    "never_fails_for_q_from": 1034
+   },
+   "round2v | m*floor(q/2)": {
+    "failing_q_in_1025_1199": [
+     1025,
+     1026,
+     1027,
+     1028,
+     1029,
+     1030,
+     1031,
+     1032,
+     1033
+    ],
+    "largest_failing_q": 1033,
+    "never_fails_for_q_from": 1034
+   },
+   "round2v | m*ceil(q/2)": {
+    "failing_q_in_1025_1199": [
+     1025,
+     1026,
+     1027,
+     1028,
+     1029,
+     1030,
+     1031,
+     1032,
+     1033
+    ],
+    "largest_failing_q": 1033,
+    "never_fails_for_q_from": 1034
+   }
+  },
+  "never_fails_under_every_rule_and_encoding_for_q_from": 1036,
+  "least_prime_from_there": 1039,
+  "naive_bound_from_258_lt_q_over_4": "q > 1032"
+ },
+ "q1033": {
+  "is_prime": true,
+  "failing_(m,N)": {
+   "threshold | m*floor(q/2)": [
+    [
+     1,
+     -258
+    ]
+   ],
+   "threshold | m*ceil(q/2)": [
+    [
+     1,
+     258
+    ]
+   ],
+   "nearest | m*floor(q/2)": [
+    [
+     1,
+     -258
+    ]
+   ],
+   "nearest | m*ceil(q/2)": [
+    [
+     1,
+     258
+    ]
+   ],
+   "sqt_slwe | m*floor(q/2)": [
+    [
+     1,
+     -258
+    ]
+   ],
+   "sqt_slwe | m*ceil(q/2)": [
+    [
+     1,
+     258
+    ]
+   ],
+   "round2v | m*floor(q/2)": [
+    [
+     1,
+     -258
+    ]
+   ],
+   "round2v | m*ceil(q/2)": [
+    [
+     1,
+     258
+    ]
+   ]
+  }
+ }
+}

@@ -1,0 +1,15 @@
+p=911        k=1  n=16   leg1 [16, 16, 16] control 16   | leg2 [16, 16, 16] (own [16, 16, 16]) control 16 (own 16)  matches Table 1: True
+p=911        k=2  n=32   leg1 [32, 32, 32] control 32   | leg2 [32, 32, 32] (own [32, 32, 32]) control 32 (own 32)  matches Table 1: True
+p=911        k=3  n=48   leg1 [48, 48, 48] control 48   | leg2 [48, 48, 48] (own [48, 48, 48]) control 48 (own 48)  matches Table 1: True
+p=911        k=4  n=64   leg1 [64, 64, 64] control 64   | leg2 [64, 64, 64] (own [64, 64, 64]) control 64 (own 64)  matches Table 1: True
+p=911        k=5  n=80   leg1 [72, 72, 72] control 80   | leg2 [72, 72, 72] (own [72, 72, 72]) control 80 (own 80)  matches Table 1: True
+p=911        k=6  n=96   leg1 [74, 74, 74] control 96   | leg2 [74, 74, 74] (own [74, 74, 74]) control 96 (own 96)  matches Table 1: True
+p=911        k=7  n=112  leg1 [76, 76, 76] control 112  | leg2 [76, 76, 76] (own [76, 76, 76]) control 112 (own 112)  matches Table 1: True
+p=4294977961 k=1  n=16   leg1 [16, 16, 16] control 16   | leg2 [16, 16, 16] (own [16, 16, 16]) control 16 (own 16)  matches Table 1: True
+p=4294977961 k=2  n=32   leg1 [32, 32, 32] control 32   | leg2 [32, 32, 32] (own [32, 32, 32]) control 32 (own 32)  matches Table 1: True
+p=4294977961 k=3  n=48   leg1 [48, 48, 48] control 48   | leg2 [48, 48, 48] (own [48, 48, 48]) control 48 (own 48)  matches Table 1: True
+p=4294977961 k=4  n=64   leg1 [64, 64, 64] control 64   | leg2 [64, 64, 64] (own [64, 64, 64]) control 64 (own 64)  matches Table 1: True
+p=4294977961 k=5  n=80   leg1 [72, 72, 72] control 80   | leg2 [72, 72, 72] (own [72, 72, 72]) control 80 (own 80)  matches Table 1: True
+p=4294977961 k=6  n=96   leg1 [74, 74, 74] control 96   | leg2 [74, 74, 74] (own [74, 74, 74]) control 96 (own 96)  matches Table 1: True
+p=4294977961 k=7  n=112  leg1 [76, 76, 76] control 112  | leg2 [76, 76, 76] (own [76, 76, 76]) control 112 (own 112)  matches Table 1: True
+all rows match Table 1 (Singer row 16, 32, 48, 64, 72, 74, 76; uniform row 16k): True

@@ -2,6 +2,10 @@
 
 **Last updated:** May 8, 2026
 
+> **Notice (October 10, 2026).** Module-SLWE is broken. Its wrapper's shared secret also carries at most one bit,
+> since it is SHA-256(bit ‖ ciphertext). So the SLWE half adds nothing to the hybrid's security, which rests on
+> ML-KEM-1024 alone. See the notice in `README.md`. The status below is as of May 8 and is kept as written.
+
 ## Phase: Brief 01 + skeleton protocol stack landed; full SLWE pending
 
 ### Done

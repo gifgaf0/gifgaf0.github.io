@@ -98,7 +98,7 @@ No successor program is opened; the ledger records the conditions one would have
   - Its structured public matrix collapses to rank 76 at every module rank from 7 up, whatever the seeds, because it factors through one fixed 256 × 112 matrix of rank 76.
   - Even with a fully random matrix, the specified parameters give about 2^51 security by the standard lattice estimator, not 2^128: the modulus is far too large for the noise.
   - Decryption never fails (the noise is at most 258 against a threshold of about 10⁹). The earlier failure-rate figure came from a Gaussian tail outside the noise's range.
-  - A short negative-result note for the IACR ePrint archive is drafted and awaits the author.
+  - A short negative-result note is deposited on Zenodo (doi:10.5281/zenodo.23270249, October 9).
 - **The ζ-tax ("tired light") redshift** (new). It made redshift a small amplitude loss at every lattice corner. That reddens light without stretching time. Distant supernovae are time-stretched by exactly the cosmological factor (DES 2024: exponent 1.003 ± 0.011, where tired light gives 0).
 - **"The factor of 4 is the spin-3/2 quartet"** (new). The 4 in the quark-model neutron moment is a spin-½ coupling weight. The spin-3/2 states are the Δ resonances, whose neutral member has zero moment in the same model. The Gate 2a work since June keeps its mathematics, but not this reading.
 - **A second alpha-decay break at uranium** (new). Compared at the same neutron number, the step at Z = 92 changes sign and is smaller than the drift with neutron number. The break at radium (Z = 88) holds at every neutron number and has a standard explanation (octupole deformation).
@@ -121,17 +121,17 @@ No successor program is opened; the ledger records the conditions one would have
   - KC-EP: everything must fall alike to about one part in 10¹⁵ (the MICROSCOPE satellite), electrons, binding energy and field energy included.
   - The cosmic-ray, double-pulsar and dipole kill conditions apply to any proposed medium.
   - So do the method rules (prior address first, no Eddington maneuver, the category wall).
-- **Drafts for the author to deposit, post or merge** (nothing is published, deposited, deployed or sent). They are in `audit_followup/closeout/`:
+- **The author's deposits and postings.** The drafts are in `audit_followup/closeout/`. Each one is deposited, posted or sent by the author, not from here:
   - **the gauge-paper correction (v6.4).** It is retitled "Gauge Group and Generation Structure from the Császár Polyhedron". It also fixes three statements: the quaternions' symmetry group is SO(3), a torus in space has an even spin structure, and the seven-vertex torus's uniqueness is classical. A Zenodo version note goes with it;
   - **the PSL(2,7) note v3**, which now says it *records* classical results. The author chose title A, "The Seven-Point Coset Geometry of PSL(2,7): Spectral Gap, Cheeger Constant and a Smith Obstruction". A version note goes with it;
   - **the alpha-decay paper v2.** It claims one robust break, at radium (Z = 88), and counts 51 steps, not 74. The sections that leaned on the closed framework are removed. It is built on the deposited text, which the author confirmed is the store copy. A version note goes with it;
-  - **the public calculator, archived.** The author chose the short page: on this branch, `index.html` says the calculator is archived and links to `archive/calculator_v3_1.html`. It goes live when the pull request is merged;
+  - **the public calculator, archived.** The author chose the short page, and it is live since October 8: `index.html` says the calculator is archived and links to `archive/calculator_v3_1.html`;
   - **the second-sound paper's posting version**, byline Matthew Gifford, for a last read;
-  - **the SLWE negative-result note**, final, for the author to submit to IACR ePrint. It cites this repository at commit `b09929a`;
+  - **the SLWE negative-result note, deposited on Zenodo on October 9** (doi:10.5281/zenodo.23270249). It cites *Fluid Lattice Topology*, the paper that proposed the scheme, and this repository at commit `b09929a`. Posting it to IACR ePrint as well is optional. A notice for that paper's own Zenodo record is drafted;
   - **Paper VII and the two store calculators, archived.** The corrections are applied, the gravitational-wave section is removed, and "Theorem 1" is renamed "Fit 1". The calculator's "Cosmic Echoes" tab, its version of that section, is removed too;
   - **a short note to Flach**, kept in the project store rather than this public repository, saying the η-invariant computation he was asked about is no longer needed.
   
-  The branch `claude/audit-followup-oct6` is ready for one pull request into `main`. A merge commit, not a squash, keeps the commits the ledger and the ePrint cite.
+  The close-out branch was merged into `main` on October 8 (pull request #38) with a merge commit, which keeps the commits the ledger and the note cite.
 - **The second-sound paper.** The author approved v1 on 4 October. Every fix the audit asked for was already in it, so it can be posted as approved.
 
 ## Archived with the program

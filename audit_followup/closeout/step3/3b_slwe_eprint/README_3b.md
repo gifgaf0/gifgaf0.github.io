@@ -61,3 +61,9 @@ You directed: "Use the latest commit hash from the claude/audit-followup-oct6 br
 **For you to decide: the title.** "…and why a uniform matrix does not repair it" holds for version 1's parameters, which is where the working specification made the matrix uniform. For version 2's parameters with a uniform matrix, the note makes no claim. A narrower title would be "…and why a uniform matrix does not repair its original parameters". The title is unchanged.
 
 The cited commit `b09929a` is still the right reference: the scripts in `audit_followup/phase_c/C1/` are unchanged. Nothing is submitted or deposited.
+
+## Addendum, October 9, 2026: deposited on Zenodo
+You deposited the note as Zenodo record **10.5281/zenodo.23270249**: version v1, a preprint under CC BY 4.0, published October 9, 2026.
+- Its one file, `slwe_negative_result_final-1.pdf`, has md5 `bb5d256ad7dd58f72dd4468aa41ada55`. That is byte for byte the PDF in this folder.
+- The title stays as it was.
+- The record lists no related identifiers yet. `FLT_V3_NOTICE_DRAFT.md` now cites this DOI and suggests the identifiers for both records.

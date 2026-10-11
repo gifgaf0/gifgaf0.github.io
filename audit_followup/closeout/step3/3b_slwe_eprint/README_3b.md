@@ -67,3 +67,69 @@ You deposited the note as Zenodo record **10.5281/zenodo.23270249**: version v1,
 - Its one file, `slwe_negative_result_final-1.pdf`, has md5 `bb5d256ad7dd58f72dd4468aa41ada55`. That is byte for byte the PDF in this folder.
 - The title stays as it was.
 - The record lists no related identifiers yet. `FLT_V3_NOTICE_DRAFT.md` now cites this DOI and suggests the identifiers for both records.
+
+## Addendum, October 10, 2026: the note revised after an independent audit
+**Plain-language summary.** An independent audit of the deposited note (your cryptography agent's, revision 2) found four wrong statements and one overstatement. The mathematics stands, and so does the main result. The revised note corrects them and adds the estimates the first version left out. You said "Yes" to making the changes (16:01 PDT). A second, separate check of the revision against its sources found more to fix; those fixes are in. Nothing is deposited.
+
+**Corrections to this README's October 9 addendum** (append-only, so they are stated here):
+- Item 1 there says the working specification "switched to a uniform matrix". The title paragraph says the title "holds for version 1's parameters, which is where the working specification made the matrix uniform". Both are wrong about where:
+  - the specification never used version 1's parameters: it targets q ≈ 3329, with toy runs at q = 911;
+  - its uniform matrix comes from Brief 06, which was tested at p = 8191 and put into the key generation of the hybrid-KEM wrapper;
+  - that wrapper's target is k = 32 with q ≈ 2³² (`hybrid_kem/SPEC.md`), so the pairing of a uniform matrix with q ≈ 2³² comes from the hybrid-KEM design;
+  - the C1 audit was the first to estimate that pairing.
+- Item 4 there gives 2⁻³⁵³·⁵ as the failure probability at q = 911. That figure is the tail P(|N| > 227). The failure rate is 2⁻³⁵³·⁹; with the decoder of `tools/sqt_slwe.py` and its encoding m⌊q/2⌋ it is 2⁻³⁵¹·⁴.
+- The October 9 edits called q = 4 294 977 961 and weight 64 "version 1's parameters". Version 1 gives only q ≈ 2³² with q ≡ 1 (mod 455), and sparse ternary secrets. The exact prime was fixed by the C1 pre-registration; weight 64 is version 2's, and the ledger's.
+
+**Where the four errors came from.**
+- Error 2's sentence ("kept version 1's parameters") was written in the October 9 edits.
+- Errors 1 and 3 became errors in those edits. The edits tied sentences of the Phase C draft to *Fluid Lattice Topology*, but in the draft "reported earlier" and "the proposed parameters" had referred to the project's own documents.
+- Error 4 ("q > 1032") was in the Phase C draft. I passed over it in two reviews and edited that sentence on October 9 without catching it.
+
+**What the revision changes.** `build_v2.py` makes 23 edits to the first version's source; reversing them gives the first version byte for byte. In the note, "version 1" and "version 2" mean the proposing paper's versions. The note's own versions are "the first version of this note" and "this revision", and its date line reads "October 2026 (revised)".
+1. **Abstract.**
+   - The ledger's 2^(−6.4×10¹⁵) is out; Section 5 attributes it to the ledger.
+   - It adds version 2's figures: 2⁴⁰ after the rank collapse, and 2¹⁶⁷ with a uniform matrix against about 2²⁷² for Category 5.
+   - "Sixteen-dimensional" becomes "16-dimensional", which also removes the first version's 5.8 pt overrun in the first line.
+2. **Section 2.**
+   - It says what version 1 specifies (n = 512, q ≈ 2³² with q ≡ 1 (mod 455), sparse ternary secrets), and that the prime, weight 64 and CBD(2) are the note's instantiation.
+   - A footnote says that ⌊q/2⌉ stands for either rounding of q/2, since Section 5 now shows the choice matters at the boundary.
+3. **Section 3.** Version 2 after the collapse: 2^40.4.
+4. **Section 4.** It is retitled "A uniform matrix does not restore the claimed security".
+   - The uniform matrix is credited to Brief 06, with the hybrid-KEM wrapper's target (k = 32, q ≈ 2³²) and [6]'s statement that its security table applies with this matrix.
+   - Table 2 gains a "claimed" column, [6]'s q = 3329 row (2^112.2) and version 2's parameters (2^167.2).
+   - [6]'s rows carry its own labels "L5" and "L3", since its scale is not NIST's: it rates Kyber-1024 "L3".
+   - With weight-64 secrets both of [6]'s rows fall below 2^128. A dense secret lifts q = 911 only to 2^149.
+   - 3329 is not ≡ 1 (mod 455); 2731, the nearest such prime below it, gives 2^114.
+   - Version 2 with a uniform matrix:
+     - every lattice attack in the estimator's default set is printed: 2^167 MITM hybrid, 2^181 hybrid, 2^239 dual hybrid, 2^249 BDD, 2^254 uSVP at β = 800, 2^268 dual;
+     - all are below 2^272, and the primal hybrid attacks put the parameters below Category 3.
+     - "Category 1" and "Category 3", as first drafted, were loose: NIST's call also defines Categories 2 and 4 (2^146 and 2^210 gates).
+5. **Section 5.**
+   - At q = 1033 the worst case |N| = 258 fails under every decoder and rounding tried. The first prime with no failures is 1039.
+   - The failure rate at q = 911 is given next to the tail.
+   - The 2^(−6.4×10¹⁵) is attributed to the ledger.
+6. **Conclusion.** It covers both parameter sets, "under every lattice attack in the estimator's default set".
+7. **Section 7.** It cites commit `d96d1f7451ffca96468ce1918f595370154558af`, which adds `v2_runs/` (with checksums), lists the three new scripts, and keeps each centred display with its sentence.
+8. **"Changes in this revision".** A new paragraph lists the four errors and the Table 1 wording. The acknowledgement adds that a separate Claude agent audited the first version.
+9. **References.**
+   - [6] is now cited as v2.0 with notes to v2.4.
+   - New entries: Brief 06 (as a project brief, without a byline, since the file has none), the hybrid-KEM specification, the ledger's section 2.66.1, and NIST's 2016 call.
+
+| File | md5 | |
+|---|---|---|
+| `slwe_negative_result_v2.pdf` | `50599a25b50cce62ecef8ad60d632f65` | 6 pages; rebuilds byte-identical with `SOURCE_DATE_EPOCH`. No overfull boxes, and no new bitmap fonts |
+| `slwe_negative_result_v2.tex` | `a12cef5cc2c741d9a0d08ba6408ffe83` | |
+| `build_v2.py` | | Builds both from the first version's source (md5 `b470bae5…`) and checks the reverse |
+| `v2_runs/` | | The new runs, in commit `d96d1f7`; its README gives the figures and checksums |
+| `ZENODO_V2_DRAFT.md` | | Settings and description for the new Zenodo version |
+| `FLT_V3_NOTICE_DRAFT.md` | | Updated: a uniform matrix restores neither version's claim. It cites the note's all-versions DOI |
+
+**Keep the cited commit reachable.** Merge with a merge commit, not a squash or rebase, so `d96d1f7` stays in `main`'s history. Deposit after the merge: until then the commit is not on GitHub.
+
+**The title question of October 9 is settled.** With a uniform matrix, version 2's parameters reach about 2^167, below Category 5 under every lattice attack in the estimator's default set, so the title holds for both parameter sets. It is unchanged.
+
+**Also in commit `d96d1f7`** (append-only addenda):
+- `tools/SLWE_Prime_Master_v2.md` ([6]), v2.4. My October 8 note there called the C1 instantiation "the spec". The addendum states [6]'s own target and gives the estimator's figures for its own rows: at q = 911, 2^122.2 by BKW and 2^127.4 otherwise; at q = 3329, 2^112.2.
+- `audit_followup/phase_c/C1/C1_RESULT.md`, on its "q > 1032" threshold and its tail-versus-rate wording.
+
+**Not changed: the ledger.** Its V4.94 brackets and §2.66.1 still say "q > 1032". Correcting that needs a fold, which is your call.

@@ -14,8 +14,8 @@ audit found four statements that are wrong, all of them about other documents or
 The first version also described Table 1 as having three seed sets and a uniform control for every k; that held only
 for k >= 8. This revision corrects all of these, runs the missing k <= 7 cases (same values), gives the failure rate at
 q = 911 next to the tail, and adds what the first version left out: version 2's parameters after the rank collapse
-(2^40.4) and with a uniform matrix (2^167.2; every lattice attack in the estimator's default set below the 2^272 of
-Category 5), and [6]'s q = 3329 row. ("Version 1/2" means the proposing paper's versions, as in the note.)
+(2^40.4) and with a uniform matrix (2^167.2, between ML-KEM-512 and ML-KEM-768 under the same estimator), and [6]'s
+q = 3329 row. ("Version 1/2" means the proposing paper's versions, as in the note.)
 Where the errors came from: error 2's sentence was written in the October 9 edits of build_final.py. Errors 1 and 3
 became errors in those edits, which tied sentences of the Phase C draft to the proposing paper; in the draft, "reported
 earlier" and "the proposed parameters" referred to the project's own documents. Error 4 was in the Phase C draft.
@@ -31,7 +31,7 @@ SRC_MD5 = "b470bae54a389b5aa2f9a8b52c5bd279"
 t = open(SRC, encoding="utf-8").read()
 assert hashlib.md5(t.encode()).hexdigest() == SRC_MD5
 OLD_COMMIT = "b09929ada97cc3c5bfc0f5f327518cd82e342fea"
-REF_COMMIT = "d96d1f7451ffca96468ce1918f595370154558af"   # the commit that adds v2_runs/ and [6]'s v2.4 addendum
+REF_COMMIT = "4eb30148edfe6e4949e16b6ecfc6d04f4512b6e1"   # holds v2_runs/ (incl. the ML-KEM yardstick) and [6]'s v2.4 addendum
 ACK_OLD = ("\\paragraph{Acknowledgements.} AI agents (Anthropic's Claude) drafted this note and wrote and ran all of its "
            "computations, including both independent rank implementations; the author directed the work, reviewed the "
            "text, and takes responsibility for it.")
@@ -48,7 +48,7 @@ as version~1's own; they are our instantiation. And it said that decryption neve
 at $q=1033$. It also described Table~\ref{tab:rank} as having three seed sets and a uniform control for every $k$, which
 held only for $k\ge8$; the runs for $k\le7$ are now made, with the same values. This revision also gives the failure
 rate at $q=911$ next to the tail, adds estimates for version~2's parameters and for the $q=3329$ row of~\cite{Gif26b},
-and compares both rows of~\cite{Gif26b} with their claims.
+compares both rows of~\cite{Gif26b} with their claims, and measures version~2 against ML-KEM under the same estimator.
 
 """
 E = [
@@ -64,8 +64,9 @@ bounded by 258, far below $q/4$; a failure rate of $2^{-6.4\times10^{15}}$ repor
 evaluated outside the support of a bounded sum. All computations are reproducible from public scripts.""",
      r"""$2^{39}$ operations at the first set ($n=512$, $q\approx2^{32}$) and $2^{40}$ at the second ($n=1024$, $q=911$). Second,
 replacing the matrix by a uniform one does not restore the claim (centred binomial noise with $\eta=2$, ternary secrets
-of weight 64): the estimator gives about $2^{51}$ at the first set and about $2^{167}$ at the second, against roughly
-$2^{272}$ for Category~5. Third, decryption at the first set never fails: the noise is bounded by 258, far below $q/4$.
+of weight 64): the estimator gives about $2^{51}$ at the first set and about $2^{167}$ at the second, against $2^{262}$
+for ML-KEM-1024, a Category~5 standard. Third, decryption at the first set never fails: the noise is bounded by 258, far
+below $q/4$.
 All computations are reproducible from public scripts."""),
     # ---- introduction: say where version 2's open attacks are checked
     (r"""moved to $k=64$ and $q=911$ ($n=1024$), and claimed Category~5 from a primal estimate, leaving the dual and hybrid
@@ -147,11 +148,13 @@ smallest admissible prime gives at most about $2^{127}$ with weight-64 secrets a
 Version~2 took a larger dimension. With a uniform matrix, the estimator's cheapest attack on its parameters is the
 primal hybrid with a meet-in-the-middle step, at about $2^{167}$; without that step the hybrid costs $2^{181}$. The other
 lattice attacks cost $2^{239}$ (dual hybrid), $2^{249}$ (BDD), $2^{254}$ (primal uSVP, the attack version~2 used, at
-$\beta=800$ against its claimed $\beta\approx942$) and $2^{268}$ (dual). NIST's thresholds are about $2^{143}$ classical
-gates for Category~1, $2^{207}$ for Category~3 and $2^{272}$ for Category~5~\cite{NIST16}; version~2 measured its own
-gate count against the last. Reading the estimator's operation counts as gate counts, every lattice attack in the
-default set is below $2^{272}$, so version~2's Category~5 claim fails even with a uniform matrix, and the primal hybrid
-attacks put its parameters below Category~3. We have not searched the space of $q$, $\eta$ and secret weight further."""),
+$\beta=800$ against its claimed $\beta\approx942$) and $2^{268}$ (dual). These operation counts cannot simply be read as
+NIST's gate counts~\cite{NIST16}. Read that way, the lattice problems of ML-KEM-512, -768 and -1024~\cite{FIPS203},
+standardized at Categories~1, 3 and~5, would each fall short of their own thresholds: the same estimator gives them
+$2^{140}$, $2^{196}$ and $2^{262}$ (compression ignored), against $2^{143}$, $2^{207}$ and $2^{272}$. Measured against
+ML-KEM instead, version~2's parameters fall between ML-KEM-512 and ML-KEM-768, about 95 bits below ML-KEM-1024, mostly
+because the hybrid attacks exploit the sparse secret. Version~2's Category~5 claim therefore fails even with a uniform
+matrix. We have not searched the space of $q$, $\eta$ and secret weight further."""),
     # ---- §5: the false threshold (audit item 4), and the failure rate next to the tail
     (r"\section{Correctness}", r"\section{Correctness}\label{sec:correct}"),
     (r"""and decryption never fails at version~1's parameters. It never fails for any $q>1032$; at version~2's $q=911$ it can
@@ -175,7 +178,7 @@ That number is the Gaussian tail at"""),
     # ---- conclusion
     (r"""uniform matrix does not rescue version~1's parameters, which reach about $2^{51}$. The scheme's correctness was never in question. The general lesson is""",
      r"""uniform matrix does not restore the claimed security: version~1's setting reaches about $2^{51}$, and version~2's
-parameters about $2^{167}$, below Category~5 under every lattice attack in the estimator's default set. The scheme's correctness
+parameters about $2^{167}$, some 95 bits below ML-KEM-1024 under the same estimator. The scheme's correctness
 was never in question. The general lesson is"""),
     # ---- §7: the new commit, and the new runs
     (r"\begin{center}\texttt{" + OLD_COMMIT + r"}\end{center}",
@@ -190,8 +193,8 @@ The runs added in this revision are in the directory\par\nopagebreak\smallskip
 \begin{itemize}
 \item Table~\ref{tab:rank} for $k\le7$, with three seed sets and a uniform control at both primes in both
   implementations: \texttt{table1\_k1to7.py};
-\item the estimator at version~2's parameters, at the $q=3329$ row of~\cite{Gif26b} and with dense ternary secrets:
-  \texttt{v2\_estimator\_run.py};
+\item the estimator at version~2's parameters, at the $q=3329$ row of~\cite{Gif26b}, with dense ternary secrets, and for
+  ML-KEM's lattice problems: \texttt{v2\_estimator\_run.py};
 \item the exact failure rates and the decoder scan of Section~\ref{sec:correct}: \texttt{dfr\_exact.py}.
 \end{itemize}
 Exact ranks were computed with python-flint."""),
@@ -212,6 +215,7 @@ Exact ranks were computed with python-flint."""),
     (r"""\bibitem{Regev} O.~Regev.""",
      r"""\bibitem{NIST16} NIST. Submission requirements and evaluation criteria for the post-quantum cryptography
   standardization process. December 2016.
+\bibitem{FIPS203} NIST. FIPS 203: Module-lattice-based key-encapsulation mechanism standard. August 2024.
 \bibitem{Regev} O.~Regev."""),
 ]
 out = t
@@ -229,7 +233,8 @@ for bad in ("reported earlier came", "kept version~1's parameters", "Version~1's
             "for orientation only", "as written", "version~2)}", OLD_COMMIT):
     assert bad not in out, bad
 assert out.count(REF_COMMIT) == 1 and out.count("\\cite{Led}") == 3 and out.count("\\cite{Brief06}") == 1
-assert out.count("\\cite{NIST16}") == 1 and out.count("\\cite{KEM}") == 1 and "mg1388484" not in out
+assert out.count("\\cite{NIST16}") == 1 and out.count("\\cite{KEM}") == 1 and out.count("\\cite{FIPS203}") == 1
+assert "2^{272}$, so" not in out and "default set is below" not in out and "mg1388484" not in out
 base = os.path.join(HERE, "slwe_negative_result_v2")
 open(base + ".tex", "w", encoding="utf-8").write(out)
 env = dict(os.environ, SOURCE_DATE_EPOCH="1791644400", FORCE_SOURCE_DATE="1")    # 2026-10-10 15:00 UTC

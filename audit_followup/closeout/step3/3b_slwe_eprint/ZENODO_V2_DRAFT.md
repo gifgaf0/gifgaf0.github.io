@@ -15,7 +15,7 @@ which breaks both published parameter sets.
 
 | File | md5 | |
 |---|---|---|
-| `slwe_negative_result_v2.pdf` | `50599a25b50cce62ecef8ad60d632f65` | 6 pages. `build_v2.py` builds it from the first version's source and rebuilds it byte-identical |
+| `slwe_negative_result_v2.pdf` | `312841740b484f731d452c11e445a260` | 6 pages. `build_v2.py` builds it from the first version's source and rebuilds it byte-identical |
 
 ## Record settings
 
@@ -25,7 +25,7 @@ which breaks both published parameter sets.
 - **Version:** v2. **Licence:** CC BY 4.0, as before. **Publication date:** the day you deposit.
 - **Related identifiers.** Zenodo links the new version to the first one by itself. Suggested additions:
   - doi:10.5281/zenodo.20078312 (*Fluid Lattice Topology*), relation "references";
-  - `https://github.com/gifgaf0/gifgaf0.github.io/tree/d96d1f7451ffca96468ce1918f595370154558af`, relation
+  - `https://github.com/gifgaf0/gifgaf0.github.io/tree/4eb30148edfe6e4949e16b6ecfc6d04f4512b6e1`, relation
     "is supplemented by". This is the commit that the revised note's Section 7 cites, and it holds every script the
     note uses.
 
@@ -40,8 +40,8 @@ which breaks both published parameter sets.
 > lattice estimator places at about 2^39 operations at the first set (n = 512, q ≈ 2^32) and 2^40 at the second
 > (n = 1024, q = 911). Second, replacing the matrix by a uniform one does not restore the claim (centred binomial noise
 > with η = 2, ternary secrets of weight 64): the estimator gives about 2^51 at the first set and about 2^167 at the
-> second, against roughly 2^272 for Category 5. Third, decryption at the first set never fails: the noise is bounded by
-> 258, far below q/4. All computations are reproducible from public scripts.
+> second, against 2^262 for ML-KEM-1024, a Category 5 standard. Third, decryption at the first set never fails: the
+> noise is bounded by 258, far below q/4. All computations are reproducible from public scripts.
 >
 > **Changes in this version.** The first version of this note contained four errors, corrected here.
 > 1. Its abstract cited a failure rate of 2^(−6.4×10^15) as "reported earlier", which reads as a claim of the proposing
@@ -56,8 +56,9 @@ which breaks both published parameter sets.
 > The first version also described Table 1 as having three seed sets and a uniform control for every k. That held only
 > for k ≥ 8; the runs for k ≤ 7 are now made, with the same values. This version also gives the exact failure rate at
 > q = 911 next to the tail. It adds estimates for the paper's version 2 parameters, after the rank collapse (2^40.4) and
-> with a uniform matrix (2^167.2; every lattice attack in the estimator's default set is below 2^272). It also compares
-> the working specification's own rows with their claims: at q = 911, at most about 2^127; at q = 3329, about 2^112.
+> with a uniform matrix (2^167.2). Under the same estimator that falls between ML-KEM-512 and ML-KEM-768, and about 95
+> bits below ML-KEM-1024. It also compares the working specification's own rows with their claims: at q = 911, at most
+> about 2^127; at q = 3329, about 2^112.
 
 ## The notice for *Fluid Lattice Topology*
 

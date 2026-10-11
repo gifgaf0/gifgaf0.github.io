@@ -133,3 +133,14 @@ You deposited the note as Zenodo record **10.5281/zenodo.23270249**: version v1,
 - `audit_followup/phase_c/C1/C1_RESULT.md`, on its "q > 1032" threshold and its tail-versus-rate wording.
 
 **Not changed: the ledger.** Its V4.94 brackets and §2.66.1 still say "q > 1032". Correcting that needs a fold, which is your call.
+
+## Addendum, October 10, 2026 (evening): the yardstick for "Category 5"
+**Plain-language summary.** The revised note had argued that version 2 fails Category 5 because every lattice attack in the estimator comes in below 2^272. That test is too strict: by it, standardized ML-KEM would fail its own categories too. The note now measures version 2 against ML-KEM under the same estimator. The conclusion stands: version 2 falls between ML-KEM-512 and ML-KEM-768, about 95 bits below ML-KEM-1024. You said "Yes" to this change (19:15 PDT).
+- **The new runs.** The estimator's own Kyber512/768/1024 sets are ML-KEM's lattice problems, with compression ignored. They give 2^139.7, 2^196.4 and 2^262.3, below the AES-based thresholds of 2^143, 2^207 and 2^272. The cases are in `v2_runs/v2_estimator_run.py`; the earlier cases were not rerun and are unchanged.
+- **Superseded wording.** The note's Section 4, abstract, conclusion and "Changes" paragraph are reworded to this comparison, and FIPS 203 is cited. So are `ZENODO_V2_DRAFT.md`, the notice and `STATUS.md`. This supersedes the earlier addendum's item 4 wording ("all are below 2^272 … below Category 3"); its other items stand.
+- **The cited commit.** Section 7 now cites `4eb30148edfe6e4949e16b6ecfc6d04f4512b6e1`, which adds these runs on top of `d96d1f7`. Keep both by merging with a merge commit.
+
+| File | md5 | |
+|---|---|---|
+| `slwe_negative_result_v2.pdf` | `312841740b484f731d452c11e445a260` | 6 pages; rebuilds byte-identical. This supersedes the md5s in the addendum above |
+| `slwe_negative_result_v2.tex` | `da095ae29e3076a977ffb47ab72e3473` | |

@@ -1,4 +1,4 @@
-# Status — October 8, 2026
+# Status — October 10, 2026
 
 **In one paragraph.** This program explored whether the vacuum could be a physical medium: a crystal that is also a superfluid (a *supersolid*), with light as its shear waves and particles as knotted vortices in it. **The author closed it on October 7 (ledger V4.97, §2.97).** The October audit tested every place where the picture could break, and it broke at each one:
 - gravitational waves have the wrong polarization;
@@ -12,7 +12,7 @@
 - three standalone results: the second-sound paper (a negative result about supersolid vacua in general), the negative result on the program's lattice cryptosystem, and the alpha-decay data with its break at radium;
 - the idea that ran through the program, as a conjecture only: matter is energy held in place by geometry, and a structure lasts when it stores energy efficiently enough.
 
-No successor program is opened; the ledger records the conditions one would have to meet (§2.97.D). Corrections to the public work are drafted for the author, and the author's decisions of October 8 are applied (V4.99). The canonical ledger now lives in this repository, at the root. Nothing is published, deposited or sent.
+No successor program is opened; the ledger records the conditions one would have to meet (§2.97.D). Corrections to the public work are drafted for the author, and the author's decisions of October 8 are applied (V4.99). The canonical ledger now lives in this repository, at the root. Nothing is published, deposited or sent from here.
 
 ## How it closed (October 6–8)
 
@@ -96,9 +96,9 @@ No successor program is opened; the ledger records the conditions one would have
 - **The gauge paper's hypercharge sign rule** (new). Its charges do not add up across the three modes, and with either color convention one quark sector gets a charge no real quark of that color has. Furey's own charges stand.
 - **The lattice cryptosystem ("SLWE")** (new, October 7).
   - Its structured public matrix collapses to rank 76 at every module rank from 7 up, whatever the seeds, because it factors through one fixed 256 × 112 matrix of rank 76.
-  - Even with a fully random matrix, the specified parameters give about 2^51 security by the standard lattice estimator, not 2^128: the modulus is far too large for the noise.
-  - Decryption never fails (the noise is at most 258 against a threshold of about 10⁹). The earlier failure-rate figure came from a Gaussian tail outside the noise's range.
-  - A short negative-result note is deposited on Zenodo (doi:10.5281/zenodo.23270249, October 9).
+  - Even with a fully random matrix, version 1's parameters give about 2^51 to 2^53 by the standard lattice estimator, not 2^128: the modulus is far too large for the noise. Version 2's parameters give about 2^167: between ML-KEM-512 and ML-KEM-768 under the same estimator, and about 95 bits below ML-KEM-1024, so its Category 5 claim fails too.
+  - At version 1's setting decryption never fails (the noise is at most 258 against a threshold of about 10⁹). The earlier failure-rate figure came from a Gaussian tail outside the noise's range.
+  - A short negative-result note is deposited on Zenodo (doi:10.5281/zenodo.23270249, October 9). An independent audit then found four wrong statements in it: three about earlier documents, and one about which moduli are safe. A revised note is drafted (October 10) for the author to deposit as version 2 of the record.
 - **The ζ-tax ("tired light") redshift** (new). It made redshift a small amplitude loss at every lattice corner. That reddens light without stretching time. Distant supernovae are time-stretched by exactly the cosmological factor (DES 2024: exponent 1.003 ± 0.011, where tired light gives 0).
 - **"The factor of 4 is the spin-3/2 quartet"** (new). The 4 in the quark-model neutron moment is a spin-½ coupling weight. The spin-3/2 states are the Δ resonances, whose neutral member has zero moment in the same model. The Gate 2a work since June keeps its mathematics, but not this reading.
 - **A second alpha-decay break at uranium** (new). Compared at the same neutron number, the step at Z = 92 changes sign and is smaller than the drift with neutron number. The break at radium (Z = 88) holds at every neutron number and has a standard explanation (octupole deformation).
@@ -127,7 +127,7 @@ No successor program is opened; the ledger records the conditions one would have
   - **the alpha-decay paper v2.** It claims one robust break, at radium (Z = 88), and counts 51 steps, not 74. The sections that leaned on the closed framework are removed. It is built on the deposited text, which the author confirmed is the store copy. A version note goes with it;
   - **the public calculator, archived.** The author chose the short page, and it is live since October 8: `index.html` says the calculator is archived and links to `archive/calculator_v3_1.html`;
   - **the second-sound paper's posting version**, byline Matthew Gifford, for a last read;
-  - **the SLWE negative-result note, deposited on Zenodo on October 9** (doi:10.5281/zenodo.23270249). It cites *Fluid Lattice Topology*, the paper that proposed the scheme, and this repository at commit `b09929a`. Posting it to IACR ePrint as well is optional. A notice for that paper's own Zenodo record is drafted;
+  - **the SLWE negative-result note, deposited on Zenodo on October 9** (doi:10.5281/zenodo.23270249). It cites *Fluid Lattice Topology*, the paper that proposed the scheme, and this repository at commit `b09929a`. Posting it to IACR ePrint as well is optional. A notice for that paper's own Zenodo record is drafted. **A revised note** corrects four statements and cites commit `4eb3014`; it is drafted as a new Zenodo version (`ZENODO_V2_DRAFT.md`). If the note goes to ePrint, the revised one is the one to post;
   - **Paper VII and the two store calculators, archived.** The corrections are applied, the gravitational-wave section is removed, and "Theorem 1" is renamed "Fit 1". The calculator's "Cosmic Echoes" tab, its version of that section, is removed too;
   - **a short note to Flach**, kept in the project store rather than this public repository, saying the η-invariant computation he was asked about is no longer needed.
   

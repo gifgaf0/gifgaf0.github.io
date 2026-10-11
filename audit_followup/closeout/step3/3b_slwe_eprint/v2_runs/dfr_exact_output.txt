@@ -1,0 +1,19 @@
+q = 911: log2 P(|N| > 227) = -353.5208
+  failure rate, threshold with m*floor(q/2): 2^-353.9066
+  failure rate, threshold with m*ceil(q/2) : 2^-353.9066
+  failure rate, nearest   with m*floor(q/2): 2^-353.9066
+  failure rate, nearest   with m*ceil(q/2) : 2^-353.9066
+  failure rate, sqt_slwe  with m*floor(q/2): 2^-351.4473
+  failure rate, sqt_slwe  with m*ceil(q/2) : 2^-353.9066
+  failure rate, round2v   with m*floor(q/2): 2^-353.9066
+  failure rate, round2v   with m*ceil(q/2) : 2^-353.9066
+  threshold m*floor(q/2): largest failing q = 1033; failing q in 1025..1199: [1028, 1029, 1030, 1031, 1032, 1033] (last six)
+  threshold m*ceil(q/2) : largest failing q = 1033; failing q in 1025..1199: [1028, 1029, 1030, 1031, 1032, 1033] (last six)
+  nearest   m*floor(q/2): largest failing q = 1033; failing q in 1025..1199: [1028, 1029, 1030, 1031, 1032, 1033] (last six)
+  nearest   m*ceil(q/2) : largest failing q = 1033; failing q in 1025..1199: [1028, 1029, 1030, 1031, 1032, 1033] (last six)
+  sqt_slwe  m*floor(q/2): largest failing q = 1035; failing q in 1025..1199: [1029, 1030, 1031, 1032, 1033, 1035] (last six)
+  sqt_slwe  m*ceil(q/2) : largest failing q = 1033; failing q in 1025..1199: [1028, 1029, 1030, 1031, 1032, 1033] (last six)
+  round2v   m*floor(q/2): largest failing q = 1033; failing q in 1025..1199: [1028, 1029, 1030, 1031, 1032, 1033] (last six)
+  round2v   m*ceil(q/2) : largest failing q = 1033; failing q in 1025..1199: [1028, 1029, 1030, 1031, 1032, 1033] (last six)
+never fails under every rule and encoding for q >= 1036 (checked to 5000); least such prime: 1039
+q = 1033 (prime: True), failing (m, N): {'threshold | m*floor(q/2)': [(1, -258)], 'threshold | m*ceil(q/2)': [(1, 258)], 'nearest | m*floor(q/2)': [(1, -258)], 'nearest | m*ceil(q/2)': [(1, 258)], 'sqt_slwe | m*floor(q/2)': [(1, -258)], 'sqt_slwe | m*ceil(q/2)': [(1, 258)], 'round2v | m*floor(q/2)': [(1, -258)], 'round2v | m*ceil(q/2)': [(1, 258)]}

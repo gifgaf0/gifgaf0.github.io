@@ -128,3 +128,16 @@ On the actual kernels (all 84 zero divisors at p = 911):
 | `c1_coresvp_crosscheck.py` / `.json` / `_output.txt` | `9be0adfa…` / `05be2746…` / `265b01cc…` |
 | `estimator/c1_estimator_run.py` / `c1_estimator_results.json` / `c1_estimator_run.log` | `694c08d4…` / `3f5c0116…` / `11dc269e…` |
 | `c1_checks.py` / `.json` / `_output.txt` | `a1c75aaa…` / `9e809fd1…` / `cc58d1e6…` |
+
+## Addendum, October 10, 2026: the "q > 1032" threshold
+An independent audit of the SLWE note found that "q > 1032" is not where decryption stops failing. It appears in the DR-C1-3 table and in the OP-2.58.5 annotation above.
+- **Where 1032 comes from.** It is 4 × 258, from requiring 258 < q/4. That ignores the half unit lost in rounding q/2.
+- **What actually happens.** At q = 1033, a prime, the worst case |N| = 258 decodes wrongly. That holds under every decoder and rounding tried: thresholds at q/4 and 3q/4, the nearest point, rounding 2v/q, and the decoder of `tools/sqt_slwe.py`, each with m⌊q/2⌋ or m⌈q/2⌉. From q = 1036 on nothing fails, and the first prime with DFR = 0 is 1039.
+- **The other rows and records.**
+  - The confined-noise row has the same worst case, 258, so the same threshold.
+  - `c1_checks.json` records the old bound as `q_min_for_DFR_zero: 1033` (4 × 258 + 1).
+  - The CBD(η = 512) row's "q > 264,192" rests on the same rule and is not recomputed here.
+- **The q = 911 figure.** 2^−353.5 is the tail P(|N| > 227). The failure rate at q = 911, for a uniform message bit, is 2^−353.91. With the decoder of `tools/sqt_slwe.py` and the encoding m⌊q/2⌋ it is 2^−351.45.
+- **Script:** `audit_followup/closeout/step3/3b_slwe_eprint/v2_runs/dfr_exact.py`.
+
+Append-only: nothing above is changed. The SQT ledger carries the same "q > 1032" in its V4.94 brackets and in §2.66.1. Correcting it there needs a fold, which is the author's call.

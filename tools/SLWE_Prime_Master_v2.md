@@ -338,6 +338,21 @@ exists, treat these as upper bounds.
 >
 > The structural-attack table below rests on the same formula and the same full-rank assumption. Decryption never
 > fails at the spec: |N| ≤ 258 against q/4 ≈ 1.07×10⁹. A negative-result note is drafted for IACR ePrint.
+>
+> **Addendum (October 10, 2026; v2.4).** The October 8 note above calls n = 512, q = 4,294,977,961, a weight-64 secret
+> and CBD(2) noise "the spec". Those are version 1 of *Fluid Lattice Topology* (n = 512, q ≈ 2³²) as the project later
+> instantiated it: ledger §2.66.1 took weight 64 and η = 2, and the C1 pre-registration fixed the prime. They are not
+> this document's own target, which is k = 32 with q ≈ 3329 (§4.1; the toy runs use q = 911). Against this document's
+> own security table, with a uniform matrix (lattice estimator, commit 53da5982, default attacks, weight-64 ternary
+> secret, CBD(2) noise, m = 512):
+> - **q = 911, claimed L5 (408b classical):** 2^122.2 (BKW, which needs about 2^110.7 samples against the 512 a public
+>   key gives) and 2^127.4 without BKW; 2^148.5 even with a dense ternary secret.
+> - **q = 3329, claimed L3 (341b classical):** 2^112.2 (dual hybrid); uSVP 2^120.3 at β = 322.
+>
+> With weight-64 secrets, neither row reaches 2^128. Also, 3329 is not ≡ 1 (mod 455) (3329 mod 455 = 144); the nearest
+> primes ≡ 1 (mod 455) are 2731 and 8191. Runs: `audit_followup/phase_c/C1/estimator/` (q = 911, weight 64) and
+> `audit_followup/closeout/step3/3b_slwe_eprint/v2_runs/` (q = 3329, and the dense secret). Append-only: no existing
+> text changed.
 
 **Structural attack scenarios (k=32, n=512, q=3329):**
 
@@ -514,6 +529,7 @@ is the central unanswered question.
 | v2.1 (post-v2.0 notes only) | May 10, 2026 | §5.1 Test 1 note added: pure Singer A is rank-deficient at k=32 (F_p-rank 76, column period 112); §4.4 security-table note added: estimates apply only with the Brief 06 randomised A construction; §7 OP-G added; OP-Crypto-1 marked Closed (Brief 05 ran the BKZ-style GSO at N=512 and surfaced the rank deficit). §§1–4 unchanged in body; §5–9 notes added but no existing text removed. Source briefs: `tools/BRIEF_05_GS_PROFILE.md`, `tools/BRIEF_06_OP_G.md`. |
 | v2.2 | May 10, 2026 | Close OP §2.24.1 and §2.24.2 per chain probe (4e8a5dc). Add OP §2.24.5. Append-only. |
 | v2.3 (correction note only) | October 8, 2026 | §4.4: correction note giving the SQT ledger's §2.94.C1 figures (spec 2^51.0 with a uniform matrix; Singer-orbit rank 76 for every k ≥ 7; descriptive 2^122.2 at q = 911 and 2^114.4 at q = 2731). Append-only: no existing text changed. |
+| v2.4 (addendum only) | October 10, 2026 | §4.4: addendum saying that the v2.3 note's "spec" is version 1 of *Fluid Lattice Topology* as the project instantiated it, not this document's target (q ≈ 3329), and giving estimator figures for this document's own rows with a uniform matrix: q = 911, 2^122.2 (BKW) and 2^127.4 otherwise, 2^148.5 with a dense ternary secret; q = 3329, 2^112.2. Append-only: no existing text changed. |
 
 ---
 

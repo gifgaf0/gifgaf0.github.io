@@ -1,0 +1,351 @@
+{
+ "purpose": "Table 1, k = 1..7: three seed sets and a uniform control per (p, k), in both implementations",
+ "legs": {
+  "leg1": "audit_followup/phase_c/C1/leg1/c1_rank_leg1.py (reference construction, flint rank)",
+  "leg2": "audit_followup/phase_c/C1/leg2/c1_leg2.py (blind; flint rank and own exact elimination)"
+ },
+ "environment": {
+  "python": "3.13.16",
+  "python_flint": "0.9.0"
+ },
+ "rows": [
+  {
+   "p": 911,
+   "k": 1,
+   "n": 16,
+   "leg1_singer": [
+    16,
+    16,
+    16
+   ],
+   "leg1_uniform": 16,
+   "leg2_singer_flint": [
+    16,
+    16,
+    16
+   ],
+   "leg2_singer_own": [
+    16,
+    16,
+    16
+   ],
+   "leg2_uniform_flint": 16,
+   "leg2_uniform_own": 16,
+   "matches_table1": true
+  },
+  {
+   "p": 911,
+   "k": 2,
+   "n": 32,
+   "leg1_singer": [
+    32,
+    32,
+    32
+   ],
+   "leg1_uniform": 32,
+   "leg2_singer_flint": [
+    32,
+    32,
+    32
+   ],
+   "leg2_singer_own": [
+    32,
+    32,
+    32
+   ],
+   "leg2_uniform_flint": 32,
+   "leg2_uniform_own": 32,
+   "matches_table1": true
+  },
+  {
+   "p": 911,
+   "k": 3,
+   "n": 48,
+   "leg1_singer": [
+    48,
+    48,
+    48
+   ],
+   "leg1_uniform": 48,
+   "leg2_singer_flint": [
+    48,
+    48,
+    48
+   ],
+   "leg2_singer_own": [
+    48,
+    48,
+    48
+   ],
+   "leg2_uniform_flint": 48,
+   "leg2_uniform_own": 48,
+   "matches_table1": true
+  },
+  {
+   "p": 911,
+   "k": 4,
+   "n": 64,
+   "leg1_singer": [
+    64,
+    64,
+    64
+   ],
+   "leg1_uniform": 64,
+   "leg2_singer_flint": [
+    64,
+    64,
+    64
+   ],
+   "leg2_singer_own": [
+    64,
+    64,
+    64
+   ],
+   "leg2_uniform_flint": 64,
+   "leg2_uniform_own": 64,
+   "matches_table1": true
+  },
+  {
+   "p": 911,
+   "k": 5,
+   "n": 80,
+   "leg1_singer": [
+    72,
+    72,
+    72
+   ],
+   "leg1_uniform": 80,
+   "leg2_singer_flint": [
+    72,
+    72,
+    72
+   ],
+   "leg2_singer_own": [
+    72,
+    72,
+    72
+   ],
+   "leg2_uniform_flint": 80,
+   "leg2_uniform_own": 80,
+   "matches_table1": true
+  },
+  {
+   "p": 911,
+   "k": 6,
+   "n": 96,
+   "leg1_singer": [
+    74,
+    74,
+    74
+   ],
+   "leg1_uniform": 96,
+   "leg2_singer_flint": [
+    74,
+    74,
+    74
+   ],
+   "leg2_singer_own": [
+    74,
+    74,
+    74
+   ],
+   "leg2_uniform_flint": 96,
+   "leg2_uniform_own": 96,
+   "matches_table1": true
+  },
+  {
+   "p": 911,
+   "k": 7,
+   "n": 112,
+   "leg1_singer": [
+    76,
+    76,
+    76
+   ],
+   "leg1_uniform": 112,
+   "leg2_singer_flint": [
+    76,
+    76,
+    76
+   ],
+   "leg2_singer_own": [
+    76,
+    76,
+    76
+   ],
+   "leg2_uniform_flint": 112,
+   "leg2_uniform_own": 112,
+   "matches_table1": true
+  },
+  {
+   "p": 4294977961,
+   "k": 1,
+   "n": 16,
+   "leg1_singer": [
+    16,
+    16,
+    16
+   ],
+   "leg1_uniform": 16,
+   "leg2_singer_flint": [
+    16,
+    16,
+    16
+   ],
+   "leg2_singer_own": [
+    16,
+    16,
+    16
+   ],
+   "leg2_uniform_flint": 16,
+   "leg2_uniform_own": 16,
+   "matches_table1": true
+  },
+  {
+   "p": 4294977961,
+   "k": 2,
+   "n": 32,
+   "leg1_singer": [
+    32,
+    32,
+    32
+   ],
+   "leg1_uniform": 32,
+   "leg2_singer_flint": [
+    32,
+    32,
+    32
+   ],
+   "leg2_singer_own": [
+    32,
+    32,
+    32
+   ],
+   "leg2_uniform_flint": 32,
+   "leg2_uniform_own": 32,
+   "matches_table1": true
+  },
+  {
+   "p": 4294977961,
+   "k": 3,
+   "n": 48,
+   "leg1_singer": [
+    48,
+    48,
+    48
+   ],
+   "leg1_uniform": 48,
+   "leg2_singer_flint": [
+    48,
+    48,
+    48
+   ],
+   "leg2_singer_own": [
+    48,
+    48,
+    48
+   ],
+   "leg2_uniform_flint": 48,
+   "leg2_uniform_own": 48,
+   "matches_table1": true
+  },
+  {
+   "p": 4294977961,
+   "k": 4,
+   "n": 64,
+   "leg1_singer": [
+    64,
+    64,
+    64
+   ],
+   "leg1_uniform": 64,
+   "leg2_singer_flint": [
+    64,
+    64,
+    64
+   ],
+   "leg2_singer_own": [
+    64,
+    64,
+    64
+   ],
+   "leg2_uniform_flint": 64,
+   "leg2_uniform_own": 64,
+   "matches_table1": true
+  },
+  {
+   "p": 4294977961,
+   "k": 5,
+   "n": 80,
+   "leg1_singer": [
+    72,
+    72,
+    72
+   ],
+   "leg1_uniform": 80,
+   "leg2_singer_flint": [
+    72,
+    72,
+    72
+   ],
+   "leg2_singer_own": [
+    72,
+    72,
+    72
+   ],
+   "leg2_uniform_flint": 80,
+   "leg2_uniform_own": 80,
+   "matches_table1": true
+  },
+  {
+   "p": 4294977961,
+   "k": 6,
+   "n": 96,
+   "leg1_singer": [
+    74,
+    74,
+    74
+   ],
+   "leg1_uniform": 96,
+   "leg2_singer_flint": [
+    74,
+    74,
+    74
+   ],
+   "leg2_singer_own": [
+    74,
+    74,
+    74
+   ],
+   "leg2_uniform_flint": 96,
+   "leg2_uniform_own": 96,
+   "matches_table1": true
+  },
+  {
+   "p": 4294977961,
+   "k": 7,
+   "n": 112,
+   "leg1_singer": [
+    76,
+    76,
+    76
+   ],
+   "leg1_uniform": 112,
+   "leg2_singer_flint": [
+    76,
+    76,
+    76
+   ],
+   "leg2_singer_own": [
+    76,
+    76,
+    76
+   ],
+   "leg2_uniform_flint": 112,
+   "leg2_uniform_own": 112,
+   "matches_table1": true
+  }
+ ],
+ "all_match_table1": true,
+ "seconds": 2.1
+}

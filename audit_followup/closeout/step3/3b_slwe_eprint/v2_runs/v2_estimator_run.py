@@ -11,6 +11,11 @@ Same tool, commit and cost model as audit_followup/phase_c/C1/estimator/c1_estim
   q3329_uniform_n512   the q = 3329 row of the working specification's security table (k = 32, n = 512), uniform matrix.
   q911_dense_n512      the q = 911 row (k = 32, n = 512) with a dense ternary secret instead of weight 64.
   v1_dense_n512        version 1's setting (n = 512, q = 4 294 977 961) with a dense ternary secret instead of weight 64.
+  mlkem512_lwe, mlkem768_lwe, mlkem1024_lwe
+                       for comparison: the estimator's own Kyber512/768/1024 parameter sets (estimator/schemes.py), i.e.
+                       the lattice problems of ML-KEM-512/768/1024, which FIPS 203 places in NIST Categories 1, 3 and 5.
+                       Added October 10, 2026, so that version 2's figures are judged against standardized schemes under
+                       the same estimator, rather than by reading operation counts as NIST gate counts.
 
 The weight-64 cases at n = 512 and q in {4 294 977 961, 2731, 911} are C1's and are not rerun here.
 Run under Sage (passagemath) with the estimator checkout on PYTHONPATH:
@@ -20,6 +25,7 @@ import json, os, sys, time
 from sage.all import log, RR
 from sage.version import version as SAGE_VERSION
 from estimator import LWE, ND
+from estimator.schemes import Kyber512, Kyber768, Kyber1024
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 Q1 = 4294977961
@@ -34,6 +40,9 @@ CASES = [
                                        tag="q = 911, n = 512, dense ternary secret, uniform A")),
     ("v1_dense_n512", LWE.Parameters(n=512, q=Q1, Xs=ND.Uniform(-1, 1), Xe=ND.CenteredBinomial(2), m=512,
                                      tag="version 1's setting, dense ternary secret, uniform A")),
+    ("mlkem512_lwe", Kyber512),
+    ("mlkem768_lwe", Kyber768),
+    ("mlkem1024_lwe", Kyber1024),
 ]
 which = sys.argv[1:] or [c[0] for c in CASES]
 path = os.path.join(HERE, "v2_estimator_results.json")

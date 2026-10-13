@@ -32,3 +32,5 @@ V4.100 says the first of these was not yet done, so the fold adds a short §2.10
 5. Put V4.101 at the root in V4.100's place.
 6. Write `FOLD_AUTHORIZATION_V4_101.md`.
 7. Commit and push. If PR #43 is still open, the fold joins it; otherwise it goes on a new branch with its own pull request.
+
+**Folded** on October 13, 2026, at 15:01 PDT, on the author's word of 15:00 PDT ("Fold"). The result is V4.101, md5 `4a67c760…` (1,926,632 B). The reverse splice is exact and the independent check passes. PR #43 had already been merged at 14:41 PDT, so the fold goes on `claude/ledger-v4-101-fold` with its own pull request. See `FOLD_AUTHORIZATION_V4_101.md`.

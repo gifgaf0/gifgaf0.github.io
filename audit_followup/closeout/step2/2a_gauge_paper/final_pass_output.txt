@@ -1,0 +1,4 @@
+wrote /home/claude/gifgaf0.github.io/audit_followup/closeout/step2/2a_gauge_paper/Gifford_Csaszar_Gauge_Group_v6_4_2026_FINAL.md
+bytes: 52639 -> 54151 | hunks: 31 | md5: f24dcc37690a7d2083fba3eb590bba8a
+reverse splice to the close-out draft: PASS | Section 6 numbered 6.1–6.3: PASS | bold labels closed: PASS
+targeted statements gone: PASS | references 1–27 unchanged: PASS | all 27 references cited in the main text: PASS

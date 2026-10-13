@@ -1,0 +1,12 @@
+source: Gifford_Csaszar_Gauge_Group_v6_4_2026_FINAL.md md5 f24dcc37690a7d2083fba3eb590bba8a
+output: Gifford_Csaszar_Gauge_Group_v6_4_2026.pdf md5 d1b8507a5efe0c67edd4c6178c3c61d9 | 130736 bytes | 14 pages
+SOURCE_DATE_EPOCH=1791849600 (2026-10-13T00:00:00Z) | two builds identical: True
+missing glyphs, overfull lines, undefined references, font substitutions: none
+underfull lines (loose, not overfull): 1
+text layer equals the Markdown text (43662 characters, markup and whitespace removed): True
+fonts:
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+YVAFNG+FreeSerifBold                 CID TrueType      Identity-H       yes yes yes      4  0
+OGNRWC+FreeSerif                     CID TrueType      Identity-H       yes yes yes      6  0
+FASRIL+FreeSerifItalic               CID TrueType      Identity-H       yes yes yes      8  0

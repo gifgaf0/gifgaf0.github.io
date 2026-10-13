@@ -65,3 +65,8 @@ which breaks both published parameter sets.
 `FLT_V3_NOTICE_DRAFT.md` is updated to match. It now says that a uniform matrix restores neither version's security.
 It cites the note as a whole, through the record's "all versions" DOI: Zenodo shows that DOI on the record page, under
 "Cite all versions". A DOI for one version would leave readers on the first version.
+
+## Addendum, October 13, 2026: deposited; the description needs re-pasting
+- **The deposit.** The author deposited the revised note as version 2: doi:10.5281/zenodo.23352161, registered 21:52 UTC, a version of 10.5281/zenodo.23270248 (DataCite).
+- **The description's problem.** The description above is wrapped at fixed width. As DataCite harvested it, the words at each wrap point run together ("authorproposed", "anorder-7" and 22 more), and the four numbered changes lost their numbers.
+- **The fix.** `ZENODO_V2_DESCRIPTION_UNWRAPPED.txt` holds the same 455 words with one line per paragraph or item, checked word for word against the block above. Pasting it in place of the current description changes metadata only.

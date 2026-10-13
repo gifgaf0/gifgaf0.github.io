@@ -1,0 +1,9 @@
+V4.101 file: /home/claude/fold/SQT_Master_Ledger_v4_101_CANONICAL.md md5: 4a67c76037b63adc6037aec0d7f2ac4d bytes: 1926632 delta: 3518
+title: 1; As-of: 1; appends: 4; inserted lines: 14; unchanged: 4931 of 4937
+appends exactly on the four typed hosts, each stating its fact: True
+inserted blocks (1-based): [(38, 39), (1920, 1930), (4950, 4950)]
+insertions at the declared places (record / §2.101 after §2.100 / changelog): True
+typed facts present in §2.101 / record: True
+§2.100 heading/header/registers, §2.99 heading and the V4.100 record unchanged: True
+'[→ V4.101 (§2.101): ' occurrences: 4 (expected 4, all in appends)
+ADDITIVITY CHECK: PASS

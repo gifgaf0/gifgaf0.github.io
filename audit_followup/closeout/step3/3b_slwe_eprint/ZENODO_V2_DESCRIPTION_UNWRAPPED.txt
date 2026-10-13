@@ -1,0 +1,13 @@
+We report a negative result on SLWE, a Module-LWE variant over the 16-dimensional sedenion algebra that the author proposed in an earlier paper with a claim of NIST Category 5 security. Its public matrix is built from orbits of an order-7 coordinate permutation (a "Singer cycle"). First, the flattened public matrix factors through a fixed 256 × 112 integer matrix of rank 76. So its rank over F_q is at most 76 for every module rank k, and exactly 76 for generic seeds once k ≥ 7, whereas a uniform matrix of the same shape has rank 16k. This invalidates the security claim at both published parameter sets. Recovering the noise then reduces to an LWE instance of dimension 76, which the lattice estimator places at about 2^39 operations at the first set (n = 512, q ≈ 2^32) and 2^40 at the second (n = 1024, q = 911). Second, replacing the matrix by a uniform one does not restore the claim (centred binomial noise with η = 2, ternary secrets of weight 64): the estimator gives about 2^51 at the first set and about 2^167 at the second, against 2^262 for ML-KEM-1024, a Category 5 standard. Third, decryption at the first set never fails: the noise is bounded by 258, far below q/4. All computations are reproducible from public scripts.
+
+Changes in this version. The first version of this note contained four errors, corrected here.
+
+1. Its abstract cited a failure rate of 2^(−6.4×10^15) as "reported earlier", which reads as a claim of the proposing paper. The figure comes from the project's own ledger.
+
+2. It said the project's working specification kept the parameters of the paper's version 1. That document targets q ≈ 3329.
+
+3. It presented the prime 4 294 977 961 and the secret weight 64 as the paper's version 1 parameters. They are the note's instantiation.
+
+4. It said decryption never fails for any q > 1032. It fails at q = 1033; the first prime at which it never fails is 1039.
+
+The first version also described Table 1 as having three seed sets and a uniform control for every k. That held only for k ≥ 8; the runs for k ≤ 7 are now made, with the same values. This version also gives the exact failure rate at q = 911 next to the tail. It adds estimates for the paper's version 2 parameters, after the rank collapse (2^40.4) and with a uniform matrix (2^167.2). Under the same estimator that falls between ML-KEM-512 and ML-KEM-768, and about 95 bits below ML-KEM-1024. It also compares the working specification's own rows with their claims: at q = 911, at most about 2^127; at q = 3329, about 2^112.

@@ -150,3 +150,10 @@ You deposited the note as Zenodo record **10.5281/zenodo.23270249**: version v1,
 - ***Fluid Lattice Topology*.** Deposited by the author on October 13 as doi:10.5281/zenodo.23351706 (Zenodo v4), from `flt_v3/`. The PDF on Zenodo has md5 `6bd55206…`, which is the file built there.
 - **The note.** At the fold of V4.100, DataCite lists one version under the note's all-versions DOI (10.5281/zenodo.23270248). The revision (`slwe_negative_result_v2.pdf`, md5 `31284174…`) waits for the author, with its deposit text in `ZENODO_V2_DRAFT.md`.
 - **The ledger.** V4.100 records the threshold correction and the deposits (§2.100).
+
+## Addendum, October 13, 2026 (afternoon): the revised note is deposited
+- **The deposit.** The author deposited the revision as version 2 of the note: doi:10.5281/zenodo.23352161 (DataCite: a version of 10.5281/zenodo.23270248, registered 21:52 UTC).
+- **What it completes.** The figures that the notice on *Fluid Lattice Topology* quotes are now on Zenodo.
+- **The description.** It was pasted from the wrapped draft, so words run together at the wrap points. `ZENODO_V2_DESCRIPTION_UNWRAPPED.txt` is the paste-ready text.
+- **The gauge record.** Its description was updated to the v6.4 abstract by 21:39 UTC (DataCite).
+- **The ledger.** V4.100 says the revision was not yet deposited. A V4.101 entry recording both is staged in `audit_followup/fold_v4_101/`.

@@ -21,3 +21,9 @@
   - **the first version (doi:10.5281/zenodo.23270249):** it lists no related identifiers. Adding the same two is optional; its Section 7 cites commit `b09929ada97cc3c5bfc0f5f327518cd82e342fea` (`https://github.com/gifgaf0/gifgaf0.github.io/tree/b09929ada97cc3c5bfc0f5f327518cd82e342fea`).
 
   Adding related identifiers edits metadata only, so it needs no new version.
+
+## Addendum, October 13, 2026: deposited
+- **The deposit.** The author deposited *Fluid Lattice Topology* with this notice on October 13, 2026: doi:10.5281/zenodo.23351706 (Zenodo version v4). The notice opens both the PDF and the record's description.
+- **The DOI.** The note's all-versions DOI is filled in as 10.5281/zenodo.23270248, which resolves to the note's record.
+- **The files.** The text and its build are in `flt_v3/` (README there). The deposited text is version 2's, with the editorial suggestions taken out.
+- **Still open.** The notice's figures for version 2's parameters are in the note's revision, which is not yet deposited (`ZENODO_V2_DRAFT.md`).

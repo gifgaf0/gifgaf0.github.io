@@ -144,3 +144,9 @@ You deposited the note as Zenodo record **10.5281/zenodo.23270249**: version v1,
 |---|---|---|
 | `slwe_negative_result_v2.pdf` | `312841740b484f731d452c11e445a260` | 6 pages; rebuilds byte-identical. This supersedes the md5s in the addendum above |
 | `slwe_negative_result_v2.tex` | `da095ae29e3076a977ffb47ab72e3473` | |
+
+## Addendum, October 13, 2026: the notice is deposited; the revised note is not yet
+**Plain-language summary.** *Fluid Lattice Topology* now carries the notice on Zenodo. The revised note, whose figures the notice quotes, is still to be deposited.
+- ***Fluid Lattice Topology*.** Deposited by the author on October 13 as doi:10.5281/zenodo.23351706 (Zenodo v4), from `flt_v3/`. The PDF on Zenodo has md5 `6bd55206…`, which is the file built there.
+- **The note.** At the fold of V4.100, DataCite lists one version under the note's all-versions DOI (10.5281/zenodo.23270248). The revision (`slwe_negative_result_v2.pdf`, md5 `31284174…`) waits for the author, with its deposit text in `ZENODO_V2_DRAFT.md`.
+- **The ledger.** V4.100 records the threshold correction and the deposits (§2.100).

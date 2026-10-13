@@ -286,6 +286,8 @@ def decaps(sk, c1, c2, k):
     m_dec = ((v + p // 4) * 2 // p) % 2
     return m_dec, v
 
+# WARNING (October 10, 2026): do not use. This derives the key from c2, which is part of the public ciphertext, so
+# anyone can compute it; a KEM must derive its key from the decrypted message. Nothing in this repository calls it.
 def hash_shared_key(c2):
     """Derive a shared key from the encapsulated scalar."""
     return hashlib.sha256(c2.to_bytes(4, 'big')).hexdigest()[:32]

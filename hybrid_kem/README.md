@@ -10,6 +10,18 @@ quantum computer.
 
 **Status:** under construction. Not for production use. See `SPEC.md`.
 
+> **Notice (October 10, 2026).** The Module-SLWE half of this testbed adds no security.
+> - **It is broken.** Its Singer-orbit public matrix has rank at most 76 at every module rank. So its public key can
+>   be told apart from random, and its noise recovered from a 76-dimensional problem. With a uniform matrix it still
+>   falls far short of its claims. See the SLWE negative-result note (Zenodo, doi:10.5281/zenodo.23270249) and its
+>   revision in `audit_followup/closeout/step3/3b_slwe_eprint/`.
+> - **Even unbroken, it would add at most one bit.** `kem_slwe/slwe_toy.py` derives its shared secret as
+>   SHA-256(bit ‖ ciphertext), so anyone holding the ciphertext needs only two guesses.
+> - **So item 2 under "What this is" does not hold:** SLWE gives no diversification. The combiner (item 1) is
+>   unaffected, and the hybrid is secure if ML-KEM-1024 is, as "What this is NOT" says.
+>
+> The text below is kept as written.
+
 ## What this is
 
 A working laboratory where:

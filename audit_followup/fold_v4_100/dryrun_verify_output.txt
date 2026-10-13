@@ -1,0 +1,14 @@
+V4.100 file: /home/claude/fold/SQT_Master_Ledger_v4_100_DRYRUN_NOT_CANONICAL.md md5: 4be96ae3bcb11ff6c4ca3b9308c43641 bytes: 1919341 delta: 5416
+title: 1; As-of: 1; appends: 5; inserted lines: 16; unchanged: 4912 of 4919
+appends on the expected 5 lines: True | missing: [] | extra: []
+host keywords and pointer facts as typed: True | failing: []
+inserted blocks: [(38, 39), (1904, 1916), (4934, 4934)]
+insertions at the declared places (record / §2.100 / changelog): True
+§2.94 heading unchanged: True
+§2.94 C1 paragraph unchanged: True
+§2.97 heading unchanged: True
+§2.99 heading unchanged: True
+§2.52 Open 3 row unchanged: True
+§2.97 C(f) unchanged: True
+'[→ V4.100 (§2.100): ' occurrences: 5 (expected 5, all in appends)
+ADDITIVITY CHECK: PASS

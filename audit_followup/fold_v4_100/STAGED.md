@@ -43,3 +43,5 @@ No verdict, register or row status changes.
   - Two pointers are added, on the gauge paper's §2.93.B1 entry and on the "Phase B drafts awaiting the author" row. The Phase C row's pointer now names the FLT notice.
 - **Where the facts come from.** The deposit facts were read from the Zenodo record pages and DataCite on October 13.
 - **The new dry run** (placeholders as before): +8,980 B and seven pointers. The reverse splice is byte-identical to V4.99. The independent check, updated for the seven lines, the new heading and the deposit facts, passes (`dryrun_oct13_fold_output.txt`, `dryrun_oct13_verify_output.txt`). The October 10 dry-run files are kept as they were.
+
+**Folded** on October 13, 2026, at 14:31 PDT, on the author's word of 14:20 PDT. The result is V4.100, md5 `35a20a1f…` (1,923,114 B). The reverse splice is exact and the independent check passes. See `FOLD_AUTHORIZATION_V4_100.md`.

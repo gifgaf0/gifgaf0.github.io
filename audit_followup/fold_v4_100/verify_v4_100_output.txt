@@ -1,0 +1,15 @@
+V4.100 file: /home/claude/fold/SQT_Master_Ledger_v4_100_CANONICAL.md md5: 35a20a1f2db1ad66663b4cd60b7c8234 bytes: 1923114 delta: 9189
+title: 1; As-of: 1; appends: 7; inserted lines: 18; unchanged: 4910 of 4919
+appends on the expected 7 lines: True | missing: [] | extra: []
+host keywords and pointer facts as typed: True | failing: []
+inserted blocks: [(38, 39), (1903, 1917), (4936, 4936)]
+insertions at the declared places (record / §2.100 / changelog): True
+deposit facts present in the inserted text: True | missing: []
+§2.94 heading unchanged: True
+§2.94 C1 paragraph unchanged: True
+§2.97 heading unchanged: True
+§2.99 heading unchanged: True
+§2.52 Open 3 row unchanged: True
+§2.97 C(f) unchanged: True
+'[→ V4.100 (§2.100): ' occurrences: 7 (expected 7, all in appends)
+ADDITIVITY CHECK: PASS

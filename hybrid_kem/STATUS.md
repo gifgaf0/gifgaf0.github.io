@@ -1,6 +1,6 @@
 # Project Status
 
-**Last updated:** October 14, 2026
+**Last updated:** October 15, 2026
 
 > **Notice (October 14, 2026).** SLWE is off the KEM path; the status below replaces the May 8 status, which
 > remains in git history. The October 10 notice is kept as written:
@@ -39,7 +39,14 @@ artifact but no longer sits on the KEM path.
 - [x] **Symbolic analysis** — Tamarin models, all lemmas verified with tamarin-prover 1.12.0 + Maude 3.5.1 (see `analysis/README.md`):
   - `analysis/hybrid_ake.spthy`: secrecy, forward secrecy, injective agreement both directions.
   - `analysis/hybrid_ake_ext.spthy`: adds an ephemeral-key-reveal oracle (key secrecy shown session-local; authentication shown robust to ephemeral leakage) and a second ciphersuite (cross-suite downgrade resistance).
-- [x] **Computational analysis** — `docs/HYBRID_AKE_COMPUTATIONAL.md`: a reduction-based (game-hopping) proof sketch in a Bellare–Rogaway model. Authentication reduces to composite-signature EUF-CMA + collision resistance of `H`; key indistinguishability with forward secrecy reduces to hybrid-KEM IND-CCA + HKDF-as-PRF. Two hybrid-robustness lemmas carry the bounds down to "secure as long as either leg (ML-KEM / X25519) and either signature component (ML-DSA / Ed25519) holds". Paper-body rigour, not yet mechanized (CryptoVerif is the recommended next step; its host was unreachable in the build environment).
+- [x] **Computational analysis** — `docs/HYBRID_AKE_COMPUTATIONAL.md`: a reduction-based (game-hopping) proof sketch in a Bellare–Rogaway model. Authentication reduces to composite-signature EUF-CMA + collision resistance of `H`; key indistinguishability with forward secrecy reduces to hybrid-KEM IND-CCA + HKDF-as-PRF. Two hybrid-robustness lemmas carry the bounds down to "secure as long as either leg (ML-KEM / X25519) and either signature component (ML-DSA / Ed25519) holds". Paper-body rigour; mechanized below.
+- [x] **Mechanized computational proofs** — `analysis/cryptoverif/`, all queries proved with CryptoVerif 2.13 (`make cryptoverif`, ~8 s):
+  - `hybrid_ake.ocv`: Theorems 1–2 — injective agreement both directions; real-or-random key secrecy with forward secrecy and long-term-key KCI; post-quantum-sound library; no `n_S²` loss in the bound.
+  - `hybrid_ake_ephleak.ocv`: the same with ephemeral-key reveal on adversary-chosen sessions.
+  - `composite_sig.m4.ocv`: Lemma 2 in both directions — **correction**: needs collision resistance of the pre-hash `PH`.
+  - `kem_bbfgs.m4.ocv`, `kem_xwing.m4.ocv`: Lemma 1 for both profiles, both directions, each as the exact IND-CCA2 equivalence the protocol model assumes — **correction**: X-Wing relying on X25519 also needs C2PRI of ML-KEM (as in the X-Wing paper); the ML-KEM-1024 profile does not.
+  - `mutations.py`: 7 mutation tests (e.g. `ct` and `vk_R` in the transcript are load-bearing; the context strings are a redundant second layer).
+  - Corrections recorded in `docs/HYBRID_AKE_COMPUTATIONAL.md` §7; original text kept.
 - [x] **Test suite** — 272 passing (`pytest`), KATs byte-exact against the vectors above.
 
 ### Next (optional)

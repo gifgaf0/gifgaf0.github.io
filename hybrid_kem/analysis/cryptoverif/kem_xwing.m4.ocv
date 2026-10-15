@@ -1,0 +1,257 @@
+(* Hybrid KEM, profile "xwing" (X-Wing, draft-connolly-cfrg-xwing-kem-11) --
+   Lemma 1 of docs/HYBRID_AKE_COMPUTATIONAL.md, mechanized for this profile.
+
+   Construction (combiner/xwing.py):
+      pk = pk_M || pk_X, ct = ct_M || ct_X        (fixed-length fields)
+      (ss_M, ct_M) <- ML-KEM-768.Encaps(pk_M)
+      e <-R X25519 scalars; ct_X = X25519(e, 9); ss_X = X25519(e, pk_X)
+      ss = SHA3-256(ss_M || ss_X || ct_X || pk_X || XWingLabel)
+   The ML-KEM ciphertext and public key are NOT hashed: X-Wing relies on
+   ML-KEM binding its shared secret to its ciphertext instead.
+
+   Claim: X-Wing is IND-CCA2 if EITHER leg is secure. Preprocessed with m4
+   into two models (see Makefile); each proves the IND_CCA2_KEM equivalence
+   of CryptoVerif's library for the hybrid KEM, as in kem_bbfgs.m4.ocv:
+   - MLKEM_SECURE : ML-KEM-768 is IND-CCA2 and SHA3-256 keyed by its first
+                    32 bytes (ss_M) is a PRF. X25519 is fully broken: the
+                    adversary gets every honest X25519 secret key.
+                    Post-quantum library only (-lib pq).
+   - X25519_SECURE: strong Diffie-Hellman in the X25519 group, SHA3-256 as
+                    a random oracle, and ML-KEM C2PRI (ciphertext
+                    second-preimage resistance) -- exactly the assumptions of
+                    the X-Wing paper classical theorem. ML-KEM is otherwise
+                    fully broken: the adversary gets every honest ML-KEM
+                    secret key. Classical (default) library.
+
+   The X-Wing decapsulation key is a 32-byte seed expanded by SHAKE-256 into
+   the ML-KEM seed and the X25519 scalar; here the two are sampled
+   independently (SHAKE-256 as a PRG). X25519 is a prime-order group. *)
+
+ifdef(`MLKEM_SECURE',`
+proof {
+   (* Left side = real X-Wing. Make explicit the case distinctions of the
+      ideal side (encapsulation to an honest key; decapsulation of one of
+      its challenge ciphertexts), and use ML-KEM correctness in the latter. *)
+   insert after "OEncap(pk_R" "find i1 <= N suchthat defined(sM[i1], x[i1]) && pk_R = cpk(mpkgen(sM[i1]), exp(g, x[i1])) then";
+   insert after "ODecap(cd" "find u0 <= Qe suchthat defined(i1_2[u0], ctM[u0], ctX[u0]) && (i1_2[u0] = i) && (cct_(ctM[u0], ctX[u0]) = cd) then";
+   replace at_nth 1 1 "= {_}mdecap" "minjbot(ssM[u0])";
+   (* Hops: IND-CCA2 of ML-KEM-768, then SHA3-256 as a PRF keyed by ss_M. *)
+   crypto ind_cca2(mencap) sM;
+   crypto prf(comb) *;
+   remove_assign binder ctM;
+   SArename pkX;
+   SArename ctX;
+   simplify;
+   (* Right side = ideal KEM: same hops. *)
+   start_from_other_end;
+   crypto ind_cca2(mencap) "sM_[0-9]*";
+   crypto prf(comb) *;
+   remove_assign binder ce;
+   remove_assign binder "ctM_[0-9]*";
+   SArename ctX_1;
+   simplify;
+   success
+}
+')
+ifdef(`X25519_SECURE',`
+proof {
+   (* Left side = real X-Wing: case distinctions and ML-KEM correctness. *)
+   insert after "OEncap(pk_R" "find i1 <= N suchthat defined(sM[i1], x[i1]) && pk_R = cpk(mpkgen(sM[i1]), exp(g, x[i1])) then";
+   insert after "ODecap(cd" "find u0 <= Qe suchthat defined(i1_2[u0], ctM[u0], ctX[u0]) && (i1_2[u0] = i) && (cct_(ctM[u0], ctX[u0]) = cd) then";
+   replace at_nth 1 1 "= {_}mdecap" "minjbot(ssM[u0])";
+   (* Expose the components of random-oracle queries, so that the Diffie-Hellman step can see
+      the Diffie-Hellman value in them. *)
+   insert after "OH(x1" "let xw_input(ssM0: msec, dh0: G, ctX0: G, pkX0: G) = x1 in";
+   SArename e;
+   (* Hop: SHA3-256 as a random oracle. Here C2PRI of ML-KEM removes
+      decapsulation queries that would reach the challenge input. *)
+   crypto rom(comb);
+   (* Hop: strong Diffie-Hellman for the static key x and the ephemerals. *)
+   crypto stdh(exp) [variables: x -> a, e_5 -> b, e_6 -> b .];
+   SArename pkXd;
+   SArename pkX;
+   SArename ssM;
+   remove_assign useless;
+   simplify;
+   (* Right side = ideal KEM. *)
+   start_from_other_end;
+   insert after "OH(x1" "let xw_input(ssM0: msec, dh0: G, ctX0: G, pkX0: G) = x1_1 in";
+   crypto rom(comb);
+   (* A neutral case distinction (both branches run the same code) on
+      whether an oracle query contains a challenge Diffie-Hellman value, so
+      that the strong-DH step applies on this side too; it then shows the
+      first branch is unreachable. *)
+   insert after "let xw_input(ssM0_1" "find jc <= Qe suchthat defined(e_4[jc], i1_1[jc], x_1[i1_1[jc]]) && (dh0_1 = exp(g, mult(x_1[i1_1[jc]], e_4[jc]))) then";
+   crypto stdh(exp) [variables: x_1 -> a, e_3 -> b, e_4 -> b .];
+   remove_assign binder ce;
+   simplify;
+   success
+}
+')
+
+param N, Qe, Qdperuser.
+
+(* ---------------- ML-KEM-768 ---------------- *)
+type mseed [large, fixed].
+type mpkey [bounded].
+type mskey [bounded].
+type msec [large, fixed].
+type mct [bounded].
+type mencout [bounded].
+proba Pmcca.
+proba Pmkeycoll.
+proba Pmctxtcoll.
+
+ifdef(`MLKEM_SECURE',`
+expand IND_CCA2_KEM(mseed, mpkey, mskey, msec, mct, mencout, mpkgen, mskgen, mencap, mpair, mdecap, minjbot, Pmcca, Pmkeycoll, Pmctxtcoll).
+')
+ifdef(`X25519_SECURE',`
+type mencseed [bounded].
+expand KEM_all_args(mseed, mpkey, mskey, mencseed, msec, mct, mencout, mpkgen, mskgen, mencap, mencap_r, mpair, mdecap, minjbot, Pmkeycoll, Pmctxtcoll).
+(* Implicit rejection: decapsulation under a well-formed key never fails. *)
+equation forall s: mseed, c: mct; mdecap(c, mskgen(s)) <> bottom.
+(* C2PRI (ciphertext second-preimage resistance, X-Wing paper Def. 7): for
+   an honestly generated key pair and an honest encapsulation (k0, c0), an
+   adversary that knows the decapsulation key finds no c <> c0 that
+   decapsulates to k0. A collision statement lets the adversary depend on the
+   random choices s, r, i.e. know the key; knowing the coins r adds nothing
+   beyond the key and c0. The X-Wing paper proves C2PRI for ML-KEM-768 from
+   its hash functions (in the ROM), independently of lattice hardness. *)
+proba Pbind.
+collision s <-R mseed; r <-R mencseed; forall c: mct;
+   return(mdecap(c, mskgen(s)) = minjbot(1-proj-mpair(mencap_r(mpkgen(s), r))))
+   <=(Pbind(time))=> return(c = 2-proj-mpair(mencap_r(mpkgen(s), r))).
+')
+
+(* ---------------- X25519 ---------------- *)
+type G [large, bounded].
+type Z [large, bounded].
+proba PCollKey1.
+proba PCollKey2.
+expand DH_basic(G, Z, g, exp, expp, mult).
+expand DH_proba_collision(G, Z, g, exp, expp, mult, PCollKey1, PCollKey2).
+
+(* ---------------- combiner ---------------- *)
+type csec [large, fixed].
+type cpkey [bounded].
+type cskey [bounded].
+type cct [bounded].
+type cencout [bounded].
+type comb_in [bounded].
+
+fun cpk(mpkey, G): cpkey [bijective].
+fun csk(mskey, Z, mpkey, G): cskey [bijective].
+fun cct_(mct, G): cct [bijective].
+fun cpair(csec, cct): cencout [bijective].
+fun cinjbot(csec): bitstringbot [data].
+equation forall k: csec; cinjbot(k) <> bottom.
+
+ifdef(`MLKEM_SECURE',`
+(* SHA3-256(ss_M || ss_X || ct_X || pk_X || label) as a PRF keyed by its
+   32-byte prefix ss_M. *)
+fun xw_input(G, G, G): comb_in [data].
+proba Pprf.
+expand PRF(msec, comb_in, csec, comb, Pprf).
+
+letfun cencap(pk: cpkey) =
+   let cpk(pkM: mpkey, pkX: G) = pk in
+   let mpair(ssM: msec, ctM: mct) = mencap(pkM) in
+   e <-R Z;
+   ctX: G <- exp(g, e);
+   ssX: G <- exp(pkX, e);
+   cpair(comb(ssM, xw_input(ssX, ctX, pkX)), cct_(ctM, ctX)).
+
+letfun cdecap(c: cct, sk: cskey) =
+   let csk(skM: mskey, xs: Z, pkMd: mpkey, pkXd: G) = sk in
+   let cct_(ctMd: mct, ctXd: G) = c in
+   (let minjbot(ssMd: msec) = mdecap(ctMd, skM) in
+       cinjbot(comb(ssMd, xw_input(exp(ctXd, xs), ctXd, pkXd)))
+    else bottom).
+')
+ifdef(`X25519_SECURE',`
+(* SHA3-256 as a random oracle; strong Diffie-Hellman in the X25519 group
+   (the assumption of the X-Wing paper). *)
+fun xw_input(msec, G, G, G): comb_in [data].
+type hashkey [large, fixed].
+
+expand ROM_hash_large(hashkey, comb_in, csec, comb, comb_oracle, qH).
+proba pStDH.
+proba pDistRerandom.
+expand StDH(G, Z, g, exp, expp, mult, pStDH, pDistRerandom).
+
+letfun cencap(hk: hashkey, pk: cpkey) =
+   let cpk(pkM: mpkey, pkX: G) = pk in
+   let mpair(ssM: msec, ctM: mct) = mencap(pkM) in
+   e <-R Z;
+   ctX: G <- exp(g, e);
+   ssX: G <- exp(pkX, e);
+   cpair(comb(hk, xw_input(ssM, ssX, ctX, pkX)), cct_(ctM, ctX)).
+
+letfun cdecap(hk: hashkey, c: cct, sk: cskey) =
+   let csk(skM: mskey, xs: Z, pkMd: mpkey, pkXd: G) = sk in
+   let cct_(ctMd: mct, ctXd: G) = c in
+   (let minjbot(ssMd: msec) = mdecap(ctMd, skM) in
+       cinjbot(comb(hk, xw_input(ssMd, exp(ctXd, xs), ctXd, pkXd)))
+    else bottom).
+')
+
+table E(N, cct, csec).
+
+ifdef(`MLKEM_SECURE',`
+equivalence
+   ((foreach i <= N do Osetup() := sM <-R mseed; x <-R Z; return(); (
+       (Opk() := return(cpk(mpkgen(sM), exp(g, x)))) |
+       (Oleak() := return(x)) |
+       (foreach id <= Qdperuser do
+          ODecap(cd: cct) := return(cdecap(cd, csk(mskgen(sM), x, mpkgen(sM), exp(g, x))))))) |
+    (foreach ie <= Qe do
+       OEncap(pk_R: cpkey) := return(cencap(pk_R))))
+
+   ((foreach i <= N do Osetup() := sM <-R mseed; x <-R Z; return(); (
+       (Opk() := return(cpk(mpkgen(sM), exp(g, x)))) |
+       (Oleak() := return(x)) |
+       (foreach id <= Qdperuser do
+          ODecap(cd: cct) :=
+             get E(=i, =cd, k2) in return(cinjbot(k2))
+             else return(cdecap(cd, csk(mskgen(sM), x, mpkgen(sM), exp(g, x))))))) |
+    (foreach ie <= Qe do
+       OEncap(pk_R: cpkey) :=
+          find i1 <= N suchthat defined(sM[i1], x[i1]) && pk_R = cpk(mpkgen(sM[i1]), exp(g, x[i1])) then
+            (let cpair(k0: csec, ce: cct) = cencap(pk_R) in
+             k1 <-R csec;
+             insert E(i1, ce, k1);
+             return(cpair(k1, ce)))
+          else
+             return(cencap(pk_R))))
+')
+ifdef(`X25519_SECURE',`
+equivalence
+   Ostart() := hk <-R hashkey; return();
+   ((foreach i <= N do Osetup() := sM <-R mseed; x <-R Z; return(); (
+       (Opk() := return(cpk(mpkgen(sM), exp(g, x)))) |
+       (Oleak() := return(sM)) |
+       (foreach id <= Qdperuser do
+          ODecap(cd: cct) := return(cdecap(hk, cd, csk(mskgen(sM), x, mpkgen(sM), exp(g, x))))))) |
+    (foreach ie <= Qe do
+       OEncap(pk_R: cpkey) := return(cencap(hk, pk_R))) |
+    run comb_oracle(hk))
+
+   Ostart() := hk <-R hashkey; return();
+   ((foreach i <= N do Osetup() := sM <-R mseed; x <-R Z; return(); (
+       (Opk() := return(cpk(mpkgen(sM), exp(g, x)))) |
+       (Oleak() := return(sM)) |
+       (foreach id <= Qdperuser do
+          ODecap(cd: cct) :=
+             get E(=i, =cd, k2) in return(cinjbot(k2))
+             else return(cdecap(hk, cd, csk(mskgen(sM), x, mpkgen(sM), exp(g, x))))))) |
+    (foreach ie <= Qe do
+       OEncap(pk_R: cpkey) :=
+          find i1 <= N suchthat defined(sM[i1], x[i1]) && pk_R = cpk(mpkgen(sM[i1]), exp(g, x[i1])) then
+            (let cpair(k0: csec, ce: cct) = cencap(hk, pk_R) in
+             k1 <-R csec;
+             insert E(i1, ce, k1);
+             return(cpair(k1, ce)))
+          else
+             return(cencap(hk, pk_R))) |
+    run comb_oracle(hk))
+')

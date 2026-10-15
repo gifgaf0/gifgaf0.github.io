@@ -79,10 +79,14 @@ in `analysis/`: session-key secrecy, forward secrecy, and injective agreement in
 both directions are machine-verified (symbolic model; see `analysis/README.md`
 for the abstractions and what the result does and does not cover). A
 complementary **computational** analysis is in `docs/HYBRID_AKE_COMPUTATIONAL.md`
-— a game-hopping reduction (paper rigour, not yet mechanized) of authentication
-to composite-signature EUF-CMA and of key indistinguishability with forward
-secrecy to hybrid-KEM IND-CCA, with the quantitative "secure if either leg
-holds" bound made explicit.
+— a game-hopping reduction of authentication to composite-signature EUF-CMA and
+of key indistinguishability with forward secrecy to hybrid-KEM IND-CCA, with the
+quantitative "secure if either leg holds" bound made explicit — and it is
+**machine-checked with CryptoVerif** in `analysis/cryptoverif/` (Theorems 1–2 and
+both hybrid-robustness lemmas, for both KEM profiles). The mechanization made two
+side conditions of "either leg" explicit: the composite signature also relies on
+a collision-resistant pre-hash, and X-Wing relying on X25519 alone also relies on
+ML-KEM's C2PRI (as in the X-Wing paper).
 
 ## Quick start
 

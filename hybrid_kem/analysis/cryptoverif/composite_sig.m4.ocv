@@ -1,0 +1,90 @@
+(* Composite ML-DSA + EdDSA signature -- Lemma 2 of
+   docs/HYBRID_AKE_COMPUTATIONAL.md, mechanized.
+
+   Construction (draft-ietf-lamps-pq-composite-sigs-19, as implemented in
+   sig_composite/composite_mldsa.py):
+      M'   = Prefix || Label || len(ctx) || ctx || PH(M)
+      sig  = (ML-DSA.Sign(skM, M', ctx = Label), EdDSA.Sign(skT, M'))
+      valid iff both component signatures verify on M'.
+   PH is SHA-512 (id-MLDSA65-Ed25519-SHA512) or SHAKE256/64 bytes
+   (id-MLDSA87-Ed448-SHAKE256). Prefix and Label are constants of the
+   profile and len(ctx) is a single byte, so M' is an injective function of
+   (ctx, PH(M)); the fixed FIPS 204 context Label is folded into the ML-DSA
+   component.
+
+   Claim: the composite is EUF-CMA if EITHER component is EUF-CMA, plus
+   collision resistance of PH. The file is preprocessed with m4 into two
+   models (see Makefile):
+   - MLDSA_SECURE : ML-DSA is UF-CMA; EdDSA is fully broken -- the adversary
+                    is given its secret key at the start.
+   - EDDSA_SECURE : EdDSA is UF-CMA (deterministic signature); ML-DSA is
+                    fully broken -- the adversary is given its secret key.
+   Only post-quantum-library assumptions are used (-lib pq). *)
+
+param NS, NV.
+
+type ctxstr [bounded].          (* context string, at most 255 bytes *)
+type phout [large, fixed].      (* PH(M) *)
+type mprime [bounded].          (* the message representative M' *)
+
+type keyseedM [large, fixed].   (* ML-DSA component *)
+type pkeyM [bounded].
+type skeyM [bounded].
+type sigM [bounded].
+type keyseedT [large, fixed].   (* EdDSA component *)
+type pkeyT [bounded].
+type skeyT [bounded].
+type sigT [bounded].
+type hashkey [large, fixed].
+
+fun mp(ctxstr, phout): mprime [data].
+
+(* PH: collision resistant (keyed family, key public). *)
+proba Phash.
+expand CollisionResistant_hash(hashkey, bitstring, phout, PH, PHoracle, Phash).
+
+proba PsignM.
+proba PcollM.
+proba PsignT.
+proba PcollT.
+
+ifdef(`MLDSA_SECURE',`
+expand UF_CMA_proba_signature(keyseedM, pkeyM, skeyM, mprime, sigM, skgenM, pkgenM, signM, checkM, PsignM, PcollM).
+expand det_signature(keyseedT, pkeyT, skeyT, mprime, sigT, skgenT, pkgenT, signT, checkT, PcollT).
+')
+ifdef(`EDDSA_SECURE',`
+expand proba_signature(keyseedM, pkeyM, skeyM, mprime, sigM, skgenM, pkgenM, signM, checkM, PcollM).
+expand UF_CMA_det_signature(keyseedT, pkeyT, skeyT, mprime, sigT, skgenT, pkgenT, signT, checkT, PsignT, PcollT).
+')
+
+event signed(ctxstr, bitstring).
+event accepted(ctxstr, bitstring).
+
+(* EUF-CMA of the composite: every (ctx, M) accepted under the honest
+   composite key was signed by the honest signer. *)
+query ctx: ctxstr, m: bitstring; event(accepted(ctx, m)) ==> event(signed(ctx, m)).
+
+process
+   Ostart() :=
+      hk <-R hashkey;
+      rM <-R keyseedM;
+      rT <-R keyseedT;
+      return(pkgenM(rM), pkgenT(rT));
+      (run PHoracle(hk) |
+ifdef(`MLDSA_SECURE',`
+       (Obroken() := return(rT)) |
+')
+ifdef(`EDDSA_SECURE',`
+       (Obroken() := return(rM)) |
+')
+       (foreach iS <= NS do
+          Osign(ctx: ctxstr, m: bitstring) :=
+             event signed(ctx, m);
+             x: mprime <- mp(ctx, PH(hk, m));
+             return(signM(x, skgenM(rM)), signT(x, skgenT(rT)))) |
+       (foreach iV <= NV do
+          Overify(ctx': ctxstr, m': bitstring, sM: sigM, sT: sigT) :=
+             x': mprime <- mp(ctx', PH(hk, m'));
+             if checkM(x', pkgenM(rM), sM) && checkT(x', pkgenT(rT), sT) then
+             event accepted(ctx', m');
+             return()))

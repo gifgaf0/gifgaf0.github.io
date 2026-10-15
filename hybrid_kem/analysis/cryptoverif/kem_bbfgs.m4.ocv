@@ -1,0 +1,206 @@
+(* Hybrid KEM, profile "mlkem1024+x25519" -- Lemma 1 of
+   docs/HYBRID_AKE_COMPUTATIONAL.md, mechanized for this profile.
+
+   Construction (hybrid_kem.py, combiner/kdf_combiner.py):
+      pk = (pk_M, pk_X), sk = (sk_M, sk_X, pk_M, pk_X), ct = (ct_M, ct_X)
+      (ss_M, ct_M) <- ML-KEM-1024.Encaps(pk_M)
+      e <-R X25519 scalars; ct_X = X25519(e, 9); ss_X = X25519(e, pk_X)
+      ss = HKDF-SHA256(salt = SHA256("hybrid-kem-v1"), ikm = ss_M || ss_X,
+                       info = LP(ct_M, ct_X, pk_M, pk_X), L = 32)
+   Decapsulation recomputes ss_M, ss_X and the same HKDF call.
+
+   Claim: the hybrid KEM is IND-CCA2 if EITHER leg is secure. This file is
+   preprocessed with m4 into two models (see Makefile); each proves the
+   same equivalence as the IND_CCA2_KEM macro of CryptoVerif's library (the
+   assumption the protocol model hybrid_ake.ocv makes on the KEM), so the
+   resulting bound plugs directly into the protocol proof:
+   - MLKEM_SECURE : ML-KEM-1024 is IND-CCA2 and HKDF, keyed by ss_M (a
+                    prefix of its ikm), is a PRF. X25519 is fully broken:
+                    the adversary gets every honest X25519 secret key.
+                    Post-quantum library only (-lib pq).
+   - X25519_SECURE: X25519 satisfies the PRF-ODH assumption for HKDF keyed
+                    by the DH value ss_X (standard model). ML-KEM is fully
+                    broken: the adversary gets every honest ML-KEM secret
+                    key. Classical (default) library.
+
+   X25519 is modelled as a prime-order group (cofactor clearing and
+   clamping are not modelled), which is the usual abstraction. *)
+
+ifdef(`MLKEM_SECURE',`
+proof {
+   (* Left side = real hybrid KEM. First make explicit the two case
+      distinctions that the ideal side makes: (1) encapsulation to an
+      honest hybrid public key; (2) decapsulation of a ciphertext returned
+      by such an encapsulation, for the same user. *)
+   insert after "OEncap(pk_R" "find i1 <= N suchthat defined(sM[i1], x[i1]) && pk_R = cpk(mpkgen(sM[i1]), exp(g, x[i1])) then";
+   insert after "ODecap(cd" "find u0 <= Qe suchthat defined(i1_2[u0], ctM_2[u0], ctX_2[u0]) && (i1_2[u0] = i) && (cct_(ctM_2[u0], ctX_2[u0]) = cd) then";
+   (* In case (2), ML-KEM correctness: the decapsulated ML-KEM secret is
+      the encapsulated one (CryptoVerif checks this equality). *)
+   replace at_nth 1 1 "= {_}mdecap" "minjbot(ssM_2[u0])";
+   (* Hops: IND-CCA2 of ML-KEM-1024, then the combiner as a PRF keyed by
+      the (now uniformly random) ML-KEM secret. *)
+   crypto ind_cca2(mencap) sM;
+   crypto prf(comb) *;
+   (* Cosmetic: split/inline variables so the game matches the other side. *)
+   remove_assign binder ctM_2;
+   SArename pkX_2;
+   SArename ctX_2;
+   simplify;
+   (* Right side = ideal KEM (IND_CCA2_KEM): same two hops. *)
+   start_from_other_end;
+   crypto ind_cca2(mencap) "sM_[0-9]*";
+   crypto prf(comb) *;
+   remove_assign binder ce;
+   remove_assign binder "ctM_[0-9]*";
+   SArename ctX_6;
+   simplify;
+   (* Both sides are now the same game. *)
+   success
+}
+')
+ifdef(`X25519_SECURE',`
+proof {
+   (* Left side = real hybrid KEM: same two case distinctions, and ML-KEM
+      correctness in case (2) (here ML-KEM has no security assumption). *)
+   insert after "OEncap(pk_R" "find i1 <= N suchthat defined(sM[i1], x[i1]) && pk_R = cpk(mpkgen(sM[i1]), exp(g, x[i1])) then";
+   insert after "ODecap(cd" "find u0 <= Qe suchthat defined(i1_2[u0], ctM_2[u0], ctX_2[u0]) && (i1_2[u0] = i) && (cct_(ctM_2[u0], ctX_2[u0]) = cd) then";
+   replace at_nth 1 1 "= {_}mdecap" "minjbot(ssM_2[u0])";
+   (* Separate the ephemeral of honest-key encapsulations (e_5) from the
+      others, then apply PRF-ODH with the static X25519 key x as a (many
+      decapsulation queries) and the honest ephemeral e_5 as b. *)
+   SArename e;
+   crypto prf_odh(comb) [variables: x -> a, e_5 -> b .];
+   SArename ssMd;
+   SArename ssM_2;
+   SArename ctM_2;
+   SArename ctX_2;
+   remove_assign useless;
+   simplify;
+   (* Right side = ideal KEM: PRF-ODH as well. *)
+   start_from_other_end;
+   crypto prf_odh(comb) [variables: x_1 -> a, e_4 -> b .];
+   remove_assign binder ce;
+   simplify;
+   success
+}
+')
+
+param N, Qe, Qdperuser.
+
+(* ---------------- ML-KEM-1024 ---------------- *)
+type mseed [large, fixed].
+type mpkey [bounded].
+type mskey [bounded].
+type msec [large, fixed].
+type mct [bounded].
+type mencout [bounded].
+proba Pmcca.
+proba Pmkeycoll.
+proba Pmctxtcoll.
+
+ifdef(`MLKEM_SECURE',`
+expand IND_CCA2_KEM(mseed, mpkey, mskey, msec, mct, mencout, mpkgen, mskgen, mencap, mpair, mdecap, minjbot, Pmcca, Pmkeycoll, Pmctxtcoll).
+')
+ifdef(`X25519_SECURE',`
+expand KEM(mseed, mpkey, mskey, msec, mct, mencout, mpkgen, mskgen, mencap, mpair, mdecap, minjbot, Pmkeycoll, Pmctxtcoll).
+')
+
+(* ---------------- X25519 ---------------- *)
+type G [large, bounded].
+type Z [large, bounded].
+proba PCollKey1.
+proba PCollKey2.
+expand DH_basic(G, Z, g, exp, expp, mult).
+expand DH_proba_collision(G, Z, g, exp, expp, mult, PCollKey1, PCollKey2).
+
+(* ---------------- combiner ---------------- *)
+type csec [large, fixed].        (* 32-byte hybrid shared secret *)
+type cpkey [bounded].
+type cskey [bounded].
+type cct [bounded].
+type cencout [bounded].
+type comb_in [bounded].
+
+(* The length-prefixed wire formats parse uniquely. *)
+fun cpk(mpkey, G): cpkey [bijective].
+fun csk(mskey, Z, mpkey, G): cskey [bijective].
+fun cct_(mct, G): cct [bijective].
+fun cpair(csec, cct): cencout [bijective].
+fun cinjbot(csec): bitstringbot [data].
+equation forall k: csec; cinjbot(k) <> bottom.
+
+ifdef(`MLKEM_SECURE',`
+(* HKDF(salt, ss_M || ss_X, LP(ct_M, ct_X, pk_M, pk_X)) as a PRF keyed by
+   ss_M, with input (ss_X, ct_M, ct_X, pk_M, pk_X). *)
+fun comb_input(G, mct, G, mpkey, G): comb_in [data].
+proba Pprf.
+expand PRF(msec, comb_in, csec, comb, Pprf).
+letfun combine(ssM: msec, ssX: G, ctM: mct, ctX: G, pkM: mpkey, pkX: G) =
+   comb(ssM, comb_input(ssX, ctM, ctX, pkM, pkX)).
+')
+ifdef(`X25519_SECURE',`
+(* The same HKDF call viewed as a function of the DH value ss_X = exp(g, x e):
+   PRF-ODH with many oracle queries for the static key x (decapsulation)
+   and none for the ephemeral e. *)
+fun comb_input(msec, mct, G, mpkey, G): comb_in [data].
+proba PPRF_ODH.
+expand mnPRF_ODH(G, Z, comb_in, csec, g, exp, expp, mult, comb, PPRF_ODH, PCollKey1).
+letfun combine(ssM: msec, ssX: G, ctM: mct, ctX: G, pkM: mpkey, pkX: G) =
+   comb(ssX, comb_input(ssM, ctM, ctX, pkM, pkX)).
+')
+
+letfun cencap(pk: cpkey) =
+   let cpk(pkM: mpkey, pkX: G) = pk in
+   let mpair(ssM: msec, ctM: mct) = mencap(pkM) in
+   e <-R Z;
+   ctX: G <- exp(g, e);
+   ssX: G <- exp(pkX, e);
+   cpair(combine(ssM, ssX, ctM, ctX, pkM, pkX), cct_(ctM, ctX)).
+
+letfun cdecap(c: cct, sk: cskey) =
+   let csk(skM: mskey, xs: Z, pkMd: mpkey, pkXd: G) = sk in
+   let cct_(ctMd: mct, ctXd: G) = c in
+   (let minjbot(ssMd: msec) = mdecap(ctMd, skM) in
+       cinjbot(combine(ssMd, exp(ctXd, xs), ctMd, ctXd, pkMd, pkXd))
+    else bottom).
+
+table E(N, cct, csec).
+
+(* The IND_CCA2_KEM equivalence (library macro, oracle ind_cca2) for the
+   hybrid KEM, with an extra oracle Oleak revealing the broken leg's
+   secret key of each honest user. *)
+equivalence
+   ((foreach i <= N do Osetup() := sM <-R mseed; x <-R Z; return(); (
+       (Opk() := return(cpk(mpkgen(sM), exp(g, x)))) |
+ifdef(`MLKEM_SECURE',`
+       (Oleak() := return(x)) |
+')
+ifdef(`X25519_SECURE',`
+       (Oleak() := return(sM)) |
+')
+       (foreach id <= Qdperuser do
+          ODecap(cd: cct) := return(cdecap(cd, csk(mskgen(sM), x, mpkgen(sM), exp(g, x))))))) |
+    (foreach ie <= Qe do
+       OEncap(pk_R: cpkey) := return(cencap(pk_R))))
+
+   ((foreach i <= N do Osetup() := sM <-R mseed; x <-R Z; return(); (
+       (Opk() := return(cpk(mpkgen(sM), exp(g, x)))) |
+ifdef(`MLKEM_SECURE',`
+       (Oleak() := return(x)) |
+')
+ifdef(`X25519_SECURE',`
+       (Oleak() := return(sM)) |
+')
+       (foreach id <= Qdperuser do
+          ODecap(cd: cct) :=
+             get E(=i, =cd, k2) in return(cinjbot(k2))
+             else return(cdecap(cd, csk(mskgen(sM), x, mpkgen(sM), exp(g, x))))))) |
+    (foreach ie <= Qe do
+       OEncap(pk_R: cpkey) :=
+          find i1 <= N suchthat defined(sM[i1], x[i1]) && pk_R = cpk(mpkgen(sM[i1]), exp(g, x[i1])) then
+            (let cpair(k0: csec, ce: cct) = cencap(pk_R) in
+             k1 <-R csec;
+             insert E(i1, ce, k1);
+             return(cpair(k1, ce)))
+          else
+             return(cencap(pk_R))))

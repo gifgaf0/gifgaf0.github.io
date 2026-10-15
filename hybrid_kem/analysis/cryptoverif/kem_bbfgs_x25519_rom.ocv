@@ -1,0 +1,146 @@
+(* Hybrid KEM, profile "mlkem1024+x25519": relying on X25519 alone, with
+   SHA3/HKDF in the random-oracle model -- an alternative to the X25519 leg
+   of kem_bbfgs.m4.ocv that uses only standard assumptions.
+
+   Construction (hybrid_kem.py, combiner/kdf_combiner.py):
+      ss = HKDF-SHA256(salt = SHA256("hybrid-kem-v1"), ikm = ss_M || ss_X,
+                       info = LP(ct_M, ct_X, pk_M, pk_X), L = 32)
+
+   Assumptions: strong Diffie-Hellman in the X25519 group; the HKDF call,
+   as a function of (ss_M, ss_X, ct_M, ct_X, pk_M, pk_X), is a random oracle.
+   ML-KEM-1024 has no security assumption at all: the adversary gets every
+   honest ML-KEM secret key. Unlike X-Wing, no binding property of ML-KEM is
+   needed, because the combiner hashes ct_M. Classical (default) library.
+
+   Proves the IND_CCA2_KEM equivalence of CryptoVerif's library for the
+   hybrid KEM, as kem_bbfgs.m4.ocv does, with the random-oracle key and
+   oracle added on both sides. X25519 is a prime-order group (see
+   README.md, "Modelling choices"). *)
+
+proof {
+   (* Left side = real hybrid KEM. Make explicit the two case distinctions
+      of the ideal side (encapsulation to an honest key; decapsulation of one
+      of its challenge ciphertexts), and use ML-KEM correctness in the
+      latter. *)
+   insert after "OEncap(pk_R" "find i1 <= N suchthat defined(sM[i1], x[i1]) && pk_R = cpk(mpkgen(sM[i1]), exp(g, x[i1])) then";
+   insert after "ODecap(cd" "find u0 <= Qe suchthat defined(i1_2[u0], ctM[u0], ctX[u0]) && (i1_2[u0] = i) && (cct_(ctM[u0], ctX[u0]) = cd) then";
+   replace at_nth 1 1 "= {_}mdecap" "minjbot(ssM[u0])";
+   (* Expose the components of random-oracle queries, so that the
+      Diffie-Hellman step can see the shared secret in them. *)
+   insert after "OH(x1" "let bb_input(ssM0: msec, dh0: G, ctM0: mct, ctX0: G, pkM0: mpkey, pkX0: G) = x1 in";
+   SArename e;
+   crypto rom(comb);
+   crypto stdh(exp) [variables: x -> a, e_5 -> b, e_6 -> b .];
+   SArename pkXd;
+   SArename pkMd;
+   SArename pkX;
+   SArename ssM;
+   remove_assign useless;
+   simplify;
+   (* Right side = ideal KEM. *)
+   start_from_other_end;
+   insert after "OH(x1" "let bb_input(ssM0: msec, dh0: G, ctM0: mct, ctX0: G, pkM0: mpkey, pkX0: G) = x1_1 in";
+   crypto rom(comb);
+   insert after "let bb_input(ssM0_1" "find jc <= Qe suchthat defined(e_4[jc], i1_1[jc], x_1[i1_1[jc]]) && (dh0_1 = exp(g, mult(x_1[i1_1[jc]], e_4[jc]))) then";
+   crypto stdh(exp) [variables: x_1 -> a, e_3 -> b, e_4 -> b .];
+   remove_assign binder ce;
+   simplify;
+   success
+}
+
+param N, Qe, Qdperuser.
+
+(* ---------------- ML-KEM-1024 (no assumption) ---------------- *)
+type mseed [large, fixed].
+type mpkey [bounded].
+type mskey [bounded].
+type msec [large, fixed].
+type mct [bounded].
+type mencout [bounded].
+type mencseed [bounded].
+proba Pmkeycoll.
+proba Pmctxtcoll.
+expand KEM_all_args(mseed, mpkey, mskey, mencseed, msec, mct, mencout, mpkgen, mskgen, mencap, mencap_r, mpair, mdecap, minjbot, Pmkeycoll, Pmctxtcoll).
+(* Implicit rejection: decapsulation under a well-formed key never fails. *)
+equation forall s: mseed, c: mct; mdecap(c, mskgen(s)) <> bottom.
+
+(* ---------------- X25519 ---------------- *)
+type G [large, bounded].
+type Z [large, bounded].
+proba PCollKey1.
+proba PCollKey2.
+expand DH_basic(G, Z, g, exp, expp, mult).
+expand DH_proba_collision(G, Z, g, exp, expp, mult, PCollKey1, PCollKey2).
+proba pStDH.
+proba pDistRerandom.
+expand StDH(G, Z, g, exp, expp, mult, pStDH, pDistRerandom).
+
+(* ---------------- combiner ---------------- *)
+type csec [large, fixed].
+type cpkey [bounded].
+type cskey [bounded].
+type cct [bounded].
+type cencout [bounded].
+type comb_in [bounded].
+
+fun cpk(mpkey, G): cpkey [bijective].
+fun csk(mskey, Z, mpkey, G): cskey [bijective].
+fun cct_(mct, G): cct [bijective].
+fun cpair(csec, cct): cencout [bijective].
+fun cinjbot(csec): bitstringbot [data].
+equation forall k: csec; cinjbot(k) <> bottom.
+
+(* The HKDF call as a random oracle on (ss_M, ss_X, ct_M, ct_X, pk_M, pk_X);
+   the salt and the length-prefixed framing are fixed. *)
+fun bb_input(msec, G, mct, G, mpkey, G): comb_in [data].
+type hashkey [large, fixed].
+expand ROM_hash_large(hashkey, comb_in, csec, comb, comb_oracle, qH).
+
+letfun cencap(hk: hashkey, pk: cpkey) =
+   let cpk(pkM: mpkey, pkX: G) = pk in
+   let mpair(ssM: msec, ctM: mct) = mencap(pkM) in
+   e <-R Z;
+   ctX: G <- exp(g, e);
+   ssX: G <- exp(pkX, e);
+   cpair(comb(hk, bb_input(ssM, ssX, ctM, ctX, pkM, pkX)), cct_(ctM, ctX)).
+
+letfun cdecap(hk: hashkey, c: cct, sk: cskey) =
+   let csk(skM: mskey, xs: Z, pkMd: mpkey, pkXd: G) = sk in
+   let cct_(ctMd: mct, ctXd: G) = c in
+   (let minjbot(ssMd: msec) = mdecap(ctMd, skM) in
+       cinjbot(comb(hk, bb_input(ssMd, exp(ctXd, xs), ctMd, ctXd, pkMd, pkXd)))
+    else bottom).
+
+table E(N, cct, csec).
+
+(* The IND_CCA2_KEM equivalence, with Oleak revealing each honest user's
+   ML-KEM secret key and the random oracle available on both sides. *)
+equivalence
+   Ostart() := hk <-R hashkey; return();
+   ((foreach i <= N do Osetup() := sM <-R mseed; x <-R Z; return(); (
+       (Opk() := return(cpk(mpkgen(sM), exp(g, x)))) |
+       (Oleak() := return(sM)) |
+       (foreach id <= Qdperuser do
+          ODecap(cd: cct) := return(cdecap(hk, cd, csk(mskgen(sM), x, mpkgen(sM), exp(g, x))))))) |
+    (foreach ie <= Qe do
+       OEncap(pk_R: cpkey) := return(cencap(hk, pk_R))) |
+    run comb_oracle(hk))
+
+   Ostart() := hk <-R hashkey; return();
+   ((foreach i <= N do Osetup() := sM <-R mseed; x <-R Z; return(); (
+       (Opk() := return(cpk(mpkgen(sM), exp(g, x)))) |
+       (Oleak() := return(sM)) |
+       (foreach id <= Qdperuser do
+          ODecap(cd: cct) :=
+             get E(=i, =cd, k2) in return(cinjbot(k2))
+             else return(cdecap(hk, cd, csk(mskgen(sM), x, mpkgen(sM), exp(g, x))))))) |
+    (foreach ie <= Qe do
+       OEncap(pk_R: cpkey) :=
+          find i1 <= N suchthat defined(sM[i1], x[i1]) && pk_R = cpk(mpkgen(sM[i1]), exp(g, x[i1])) then
+            (let cpair(k0: csec, ce: cct) = cencap(hk, pk_R) in
+             k1 <-R csec;
+             insert E(i1, ce, k1);
+             return(cpair(k1, ce)))
+          else
+             return(cencap(hk, pk_R))) |
+    run comb_oracle(hk))

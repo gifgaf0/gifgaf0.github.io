@@ -28,8 +28,9 @@ LOGS = logs
 PQ_SRC  = hybrid_ake hybrid_ake_ephleak
 PQ_GEN  = composite_sig.MLDSA_SECURE composite_sig.EDDSA_SECURE \
           kem_bbfgs.MLKEM_SECURE kem_xwing.MLKEM_SECURE
+STD_SRC = kem_bbfgs_x25519_rom
 STD_GEN = kem_bbfgs.X25519_SECURE kem_xwing.X25519_SECURE
-ALL     = $(PQ_SRC) $(PQ_GEN) $(STD_GEN)
+ALL     = $(PQ_SRC) $(PQ_GEN) $(STD_SRC) $(STD_GEN)
 
 .PHONY: all protocol composite kem mutations clean
 .SECONDARY:
@@ -53,6 +54,7 @@ all: $(ALL:%=$(LOGS)/%.log)
 protocol:  $(PQ_SRC:%=$(LOGS)/%.log)
 composite: $(LOGS)/composite_sig.MLDSA_SECURE.log $(LOGS)/composite_sig.EDDSA_SECURE.log
 kem:       $(LOGS)/kem_bbfgs.MLKEM_SECURE.log $(LOGS)/kem_bbfgs.X25519_SECURE.log \
+           $(LOGS)/kem_bbfgs_x25519_rom.log \
            $(LOGS)/kem_xwing.MLKEM_SECURE.log $(LOGS)/kem_xwing.X25519_SECURE.log
 
 # m4 variants <model>.<VARIANT>.ocv of <model>.m4.ocv
@@ -70,6 +72,9 @@ $(PQ_SRC:%=$(LOGS)/%.log): $(LOGS)/%.log: %.ocv
 $(PQ_GEN:%=$(LOGS)/%.log): $(LOGS)/%.log: $(GEN)/%.ocv
 	@mkdir -p $(LOGS)
 	$(CRYPTOVERIF) $(PQ) $< > $@ 2>&1 || true
+$(STD_SRC:%=$(LOGS)/%.log): $(LOGS)/%.log: %.ocv
+	@mkdir -p $(LOGS)
+	$(CRYPTOVERIF) $(STD) $< > $@ 2>&1 || true
 $(STD_GEN:%=$(LOGS)/%.log): $(LOGS)/%.log: $(GEN)/%.ocv
 	@mkdir -p $(LOGS)
 	$(CRYPTOVERIF) $(STD) $< > $@ 2>&1 || true

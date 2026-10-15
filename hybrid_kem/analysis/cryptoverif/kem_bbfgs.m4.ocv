@@ -14,17 +14,24 @@
    same equivalence as the IND_CCA2_KEM macro of CryptoVerif's library (the
    assumption the protocol model hybrid_ake.ocv makes on the KEM), so the
    resulting bound plugs directly into the protocol proof:
-   - MLKEM_SECURE : ML-KEM-1024 is IND-CCA2 and HKDF, keyed by ss_M (a
-                    prefix of its ikm), is a PRF. X25519 is fully broken:
-                    the adversary gets every honest X25519 secret key.
-                    Post-quantum library only (-lib pq).
-   - X25519_SECURE: X25519 satisfies the PRF-ODH assumption for HKDF keyed
-                    by the DH value ss_X (standard model). ML-KEM is fully
-                    broken: the adversary gets every honest ML-KEM secret
-                    key. Classical (default) library.
+   - `MLKEM_SECURE' : ML-KEM-1024 is IND-CCA2 and HKDF, keyed by ss_M (the
+                    first half of its ikm), is a PRF. This split-key PRF
+                    assumption is outside the published HMAC dual-PRF results;
+                    CryptoVerif's PQ-TLS model makes the same kind of
+                    assumption. X25519 is fully broken: the adversary gets
+                    every honest X25519 secret key. Post-quantum library only
+                    (-lib pq).
+   - `X25519_SECURE': a PRF-ODH variant: HKDF keyed by the DH value ss_X,
+                    which is the second half of its ikm (standard model, but
+                    a non-standard assumption). kem_bbfgs_x25519_rom.ocv
+                    proves the same statement from strong DH with HKDF as a
+                    random oracle. ML-KEM is fully broken: the adversary gets
+                    every honest ML-KEM secret key. Classical (default)
+                    library.
 
-   X25519 is modelled as a prime-order group (cofactor clearing and
-   clamping are not modelled), which is the usual abstraction. *)
+   X25519 is modelled as a prime-order group (cofactor, clamping and
+   low-order points are not modelled), as in CryptoVerif's HPKE analysis;
+   see README.md. *)
 
 ifdef(`MLKEM_SECURE',`
 proof {

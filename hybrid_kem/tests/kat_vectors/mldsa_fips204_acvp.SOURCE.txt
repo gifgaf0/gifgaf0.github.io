@@ -1,0 +1,4 @@
+ML-DSA (FIPS 204) known-answer vectors.
+Source: pyca/cryptography_vectors 50.0.1, asymmetric/MLDSA/kat_MLDSA_{44,65,87}_det_pure.rsp
+(NIST ACVP ML-DSA sigGen, deterministic, pure). One record per level.
+Fields: xi = KeyGen seed; pk; msg; ctx; sm = signature||message.

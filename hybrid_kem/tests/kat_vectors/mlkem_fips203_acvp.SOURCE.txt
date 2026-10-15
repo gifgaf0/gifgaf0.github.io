@@ -1,0 +1,5 @@
+ML-KEM (FIPS 203) known-answer vectors.
+Source: pyca/cryptography_vectors 50.0.1, asymmetric/MLKEM/kat_MLKEM_{768,1024}.rsp
+(NIST ACVP ML-KEM vectors, final FIPS 203). One record per level.
+Fields: d,z = KeyGen seed (d||z); pk = encapsulation key; ct_n,ss_n and ct,ss
+= two (ciphertext, shared-secret) decapsulation pairs. Licensed CC0 upstream.

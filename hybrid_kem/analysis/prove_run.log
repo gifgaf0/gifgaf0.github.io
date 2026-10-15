@@ -1,0 +1,528 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory HybridAKE] Theory loaded
+[Theory HybridAKE] Theory translated
+[Theory HybridAKE] Derivation checks started
+[Theory HybridAKE] Derivation checks ended
+[Theory HybridAKE] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+theory HybridAKE
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: decap/2, encap/2, fst/1, h/1, kdf/2, kempk/1, pair/2, pk/1,
+           sign/2, snd/1, true/0, verify/3
+equations:
+    decap(k, encap(kempk(k), m)) = m,
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Equality:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+rule (modulo E) Register_ltk:
+   [ Fr( ~ltk ) ]
+  --[ Register( pk(~ltk) ) ]->
+   [ !Ltk( pk(~ltk), ~ltk ), !Pk( pk(~ltk) ), Out( pk(~ltk) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Reveal_ltk:
+   [ !Ltk( pkA, ~ltk ) ] --[ Compromise( pkA ) ]-> [ Out( ~ltk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) I_1:
+   [ !Ltk( pk(~ltkI), ~ltkI ), Fr( ~e ) ]
+  --[ I_Start( pk(~ltkI), ~e ) ]->
+   [ St_I1( pk(~ltkI), ~ltkI, ~e ), Out( <'suite', pk(~ltkI), kempk(~e)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) R_1:
+   [ !Ltk( pk(~ltkR), ~ltkR ), In( <'suite', pkI, epk> ), Fr( ~ss ) ]
+  --[
+  R_Running( pk(~ltkR), pkI,
+             h(<'suite', pkI, pk(~ltkR), epk, encap(epk, ~ss)>),
+             kdf(~ss, h(<'suite', pkI, pk(~ltkR), epk, encap(epk, ~ss)>))
+  ),
+  Ct( encap(epk, ~ss) )
+  ]->
+   [
+   St_R( pk(~ltkR), ~ltkR, pkI,
+         h(<'suite', pkI, pk(~ltkR), epk, encap(epk, ~ss)>),
+         sign(<'respAuth', h(<'suite', pkI, pk(~ltkR), epk, encap(epk, ~ss)>)>,
+              ~ltkR),
+         kdf(~ss, h(<'suite', pkI, pk(~ltkR), epk, encap(epk, ~ss)>))
+   ),
+   Out( <pk(~ltkR), encap(epk, ~ss), 
+         sign(<'respAuth', h(<'suite', pkI, pk(~ltkR), epk, encap(epk, ~ss)>)>,
+              ~ltkR)
+        >
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) I_2:
+   [ St_I1( pk(~ltkI), ~ltkI, ~e ), In( <pkR, ct, sigR> ) ]
+  --[
+  Eq( verify(sigR,
+             <'respAuth', h(<'suite', pk(~ltkI), pkR, kempk(~e), ct>)>, pkR),
+      true
+  ),
+  I_Commit( pk(~ltkI), pkR, h(<'suite', pk(~ltkI), pkR, kempk(~e), ct>),
+            kdf(decap(~e, ct), h(<'suite', pk(~ltkI), pkR, kempk(~e), ct>))
+  ),
+  I_Running( pk(~ltkI), pkR, h(<'suite', pk(~ltkI), pkR, kempk(~e), ct>),
+             kdf(decap(~e, ct), h(<'suite', pk(~ltkI), pkR, kempk(~e), ct>))
+  )
+  ]->
+   [
+   Out( sign(<'initAuth', 
+              h(<h(<'suite', pk(~ltkI), pkR, kempk(~e), ct>), sigR>)>,
+             ~ltkI)
+   )
+   ]
+
+  /*
+  rule (modulo AC) I_2:
+     [ St_I1( pk(~ltkI), ~ltkI, ~e ), In( <pkR, ct, sigR> ) ]
+    --[
+    Eq( z, true ),
+    I_Commit( pk(~ltkI), pkR, h(<'suite', pk(~ltkI), pkR, kempk(~e), ct>),
+              kdf(z.1, h(<'suite', pk(~ltkI), pkR, kempk(~e), ct>))
+    ),
+    I_Running( pk(~ltkI), pkR, h(<'suite', pk(~ltkI), pkR, kempk(~e), ct>),
+               kdf(z.1, h(<'suite', pk(~ltkI), pkR, kempk(~e), ct>))
+    )
+    ]->
+     [
+     Out( sign(<'initAuth', 
+                h(<h(<'suite', pk(~ltkI), pkR, kempk(~e), ct>), sigR>)>,
+               ~ltkI)
+     )
+     ]
+    variants (modulo AC)
+    1. ~e    = ~e.15
+       ~ltkI = ~ltkI.16
+       ct    = ct.17
+       pkR   = pkR.18
+       sigR  = sigR.19
+       z     = verify(sigR.19,
+                      <'respAuth', h(<'suite', pk(~ltkI.16), pkR.18, kempk(~e.15), ct.17>)>,
+                      pkR.18)
+       z.1   = decap(~e.15, ct.17)
+    
+    2. ~e    = ~e.19
+       ~ltkI = ~ltkI.20
+       ct    = encap(kempk(~e.19), z.27)
+       pkR   = pkR.22
+       sigR  = sigR.23
+       z     = verify(sigR.23,
+                      <'respAuth', 
+                       h(<'suite', pk(~ltkI.20), pkR.22, kempk(~e.19), encap(kempk(~e.19), z.27)
+                         >)
+                      >,
+                      pkR.22)
+       z.1   = z.27
+    
+    3. ~e    = ~e.23
+       ~ltkI = ~ltkI.24
+       ct    = ct.25
+       pkR   = pk(x.44)
+       sigR  = sign(<'respAuth', 
+                     h(<'suite', pk(~ltkI.24), pk(x.44), kempk(~e.23), ct.25>)>,
+                    x.44)
+       z     = true
+       z.1   = decap(~e.23, ct.25)
+    
+    4. ~e    = ~e.23
+       ~ltkI = ~ltkI.24
+       ct    = encap(kempk(~e.23), z.31)
+       pkR   = pk(x.44)
+       sigR  = sign(<'respAuth', 
+                     h(<'suite', pk(~ltkI.24), pk(x.44), kempk(~e.23), 
+                        encap(kempk(~e.23), z.31)>)
+                    >,
+                    x.44)
+       z     = true
+       z.1   = z.31
+  */
+
+rule (modulo E) R_2:
+   [ St_R( pkR, ~ltkR, pkI, TH, sigR, sess ), In( sigI ) ]
+  --[
+  Eq( verify(sigI, <'initAuth', h(<TH, sigR>)>, pkI), true ),
+  R_Commit( pkR, pkI, TH, sess )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) R_2:
+     [ St_R( pkR, ~ltkR, pkI, TH, sigR, sess ), In( sigI ) ]
+    --[ Eq( z, true ), R_Commit( pkR, pkI, TH, sess ) ]->
+     [ ]
+    variants (modulo AC)
+    1. TH    = TH.9
+       pkI   = pkI.9
+       sigI  = sigI.9
+       sigR  = sigR.9
+       z     = verify(sigI.9, <'initAuth', h(<TH.9, sigR.9>)>, pkI.9)
+    
+    2. TH    = x.9
+       pkI   = pk(x.10)
+       sigI  = sign(<'initAuth', h(<x.9, x.13>)>, x.10)
+       sigR  = x.13
+       z     = true
+  */
+
+lemma executable:
+  exists-trace
+  "∃ pkI pkR TH sess #i #j.
+    (((I_Commit( pkI, pkR, TH, sess ) @ #i) ∧
+      (R_Commit( pkR, pkI, TH, sess ) @ #j)) ∧
+     (¬(∃ #r. Compromise( pkI ) @ #r))) ∧
+    (¬(∃ #r. Compromise( pkR ) @ #r))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ pkI pkR TH sess #i #j.
+  (I_Commit( pkI, pkR, TH, sess ) @ #i) ∧
+  (R_Commit( pkR, pkI, TH, sess ) @ #j)
+ ∧
+  (∀ #r. (Compromise( pkI ) @ #r) ⇒ ⊥) ∧
+  (∀ #r. (Compromise( pkR ) @ #r) ⇒ ⊥)"
+*/
+simplify
+solve( St_I1( pk(~ltkI), ~ltkI, ~e ) ▶₀ #i )
+  case I_1
+  solve( St_R( pk(x), ~ltkR, pk(~ltkI),
+               h(<'suite', pk(~ltkI), pk(x), kempk(~e), ct>), sigR,
+               kdf(z, h(<'suite', pk(~ltkI), pk(x), kempk(~e), ct>))
+         ) ▶₀ #j )
+    case R_1
+    solve( !KU( sign(<'respAuth', 
+                      h(<'suite', pk(~ltkI), pk(~ltkR), kempk(~e), encap(kempk(~e), ~ss)>)>,
+                     ~ltkR)
+           ) @ #vk.4 )
+      case R_1
+      solve( !KU( sign(<'initAuth', 
+                        h(<h(<'suite', pk(~ltkI), pk(~ltkR), kempk(~e), encap(kempk(~e), ~ss)>), 
+                           sign(<'respAuth', 
+                                 h(<'suite', pk(~ltkI), pk(~ltkR), kempk(~e), encap(kempk(~e), ~ss)>)>,
+                                ~ltkR)
+                          >)
+                       >,
+                       ~ltkI)
+             ) @ #vk.5 )
+        case I_2
+        solve( !KU( pk(~ltkR) ) @ #vk.4 )
+          case I_1
+          solve( !KU( pk(~ltkI) ) @ #vk.9 )
+            case I_1
+            solve( !KU( kempk(~e) ) @ #vk.10 )
+              case I_1
+              solve( !KU( encap(kempk(~e), ~ss) ) @ #vk.8 )
+                case R_1
+                SOLVED // trace found
+              qed
+            qed
+          qed
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma key_secrecy:
+  all-traces
+  "∀ pkI pkR TH sess #i.
+    (((I_Commit( pkI, pkR, TH, sess ) @ #i) ∧ (∃ #h. Register( pkR ) @ #h)) ∧
+     (¬(∃ #r. Compromise( pkR ) @ #r))) ⇒
+    (¬(∃ #j. K( sess ) @ #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ pkI pkR TH sess #i.
+  (I_Commit( pkI, pkR, TH, sess ) @ #i)
+ ∧
+  (∃ #h. (Register( pkR ) @ #h)) ∧
+  (∀ #r. (Compromise( pkR ) @ #r) ⇒ ⊥) ∧
+  (∃ #j. (K( sess ) @ #j))"
+*/
+simplify
+solve( St_I1( pk(~ltkI), ~ltkI, ~e ) ▶₀ #i )
+  case I_1
+  solve( splitEqs(0) )
+    case split_case_1
+    solve( !KU( kdf(decap(~e, ct),
+                    h(<'suite', pk(~ltkI), pk(~ltk), kempk(~e), ct>))
+           ) @ #vk.5 )
+      case c_kdf
+      solve( !KU( decap(~e, ct) ) @ #vk.6 )
+        case c_decap
+        by solve( !KU( ~e ) @ #vk.8 )
+      qed
+    qed
+  next
+    case split_case_2
+    solve( !KU( kdf(z,
+                    h(<'suite', pk(~ltkI), pk(~ltk), kempk(~e), encap(kempk(~e), z)>))
+           ) @ #vk.5 )
+      case c_kdf
+      solve( !KU( h(<'suite', pk(~ltkI), pk(~ltk), kempk(~e), 
+                     encap(kempk(~e), z)>)
+             ) @ #vk.7 )
+        case c_h
+        solve( !KU( sign(<'respAuth', 
+                          h(<'suite', pk(~ltkI), pk(~ltk), kempk(~e), encap(kempk(~e), z)>)>,
+                         ~ltk)
+               ) @ #vk.8 )
+          case R_1
+          solve( !KU( ~ss ) @ #vk.10 )
+            case R_1
+            by solve( !KU( ~e ) @ #vk.17 )
+          qed
+        next
+          case c_sign
+          solve( !KU( ~ltk ) @ #vk.16 )
+            case Reveal_ltk
+            by contradiction /* from formulas */
+          qed
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma forward_secrecy:
+  all-traces
+  "∀ pkI pkR TH sess #i.
+    (((I_Commit( pkI, pkR, TH, sess ) @ #i) ∧ (∃ #h. Register( pkR ) @ #h)) ∧
+     (∀ #r. (Compromise( pkR ) @ #r) ⇒ (#i < #r))) ⇒
+    (¬(∃ #j. K( sess ) @ #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ pkI pkR TH sess #i.
+  (I_Commit( pkI, pkR, TH, sess ) @ #i)
+ ∧
+  (∃ #h. (Register( pkR ) @ #h)) ∧
+  (∀ #r. (Compromise( pkR ) @ #r) ⇒ #i < #r) ∧
+  (∃ #j. (K( sess ) @ #j))"
+*/
+simplify
+solve( St_I1( pk(~ltkI), ~ltkI, ~e ) ▶₀ #i )
+  case I_1
+  solve( splitEqs(0) )
+    case split_case_1
+    solve( !KU( kdf(decap(~e, ct),
+                    h(<'suite', pk(~ltkI), pk(~ltk), kempk(~e), ct>))
+           ) @ #vk.5 )
+      case c_kdf
+      solve( !KU( decap(~e, ct) ) @ #vk.6 )
+        case c_decap
+        by solve( !KU( ~e ) @ #vk.8 )
+      qed
+    qed
+  next
+    case split_case_2
+    solve( !KU( kdf(z,
+                    h(<'suite', pk(~ltkI), pk(~ltk), kempk(~e), encap(kempk(~e), z)>))
+           ) @ #vk.5 )
+      case c_kdf
+      solve( !KU( h(<'suite', pk(~ltkI), pk(~ltk), kempk(~e), 
+                     encap(kempk(~e), z)>)
+             ) @ #vk.7 )
+        case c_h
+        solve( !KU( sign(<'respAuth', 
+                          h(<'suite', pk(~ltkI), pk(~ltk), kempk(~e), encap(kempk(~e), z)>)>,
+                         ~ltk)
+               ) @ #vk.8 )
+          case R_1
+          solve( !KU( ~ss ) @ #vk.10 )
+            case R_1
+            by solve( !KU( ~e ) @ #vk.17 )
+          qed
+        next
+          case c_sign
+          solve( !KU( ~ltk ) @ #vk.16 )
+            case Reveal_ltk
+            by contradiction /* cyclic */
+          qed
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma responder_auth_injective:
+  all-traces
+  "∀ pkI pkR TH sess #i.
+    (((I_Commit( pkI, pkR, TH, sess ) @ #i) ∧ (∃ #h. Register( pkR ) @ #h)) ∧
+     (¬(∃ #r. Compromise( pkR ) @ #r))) ⇒
+    (∃ #j.
+      ((R_Running( pkR, pkI, TH, sess ) @ #j) ∧ (#j < #i)) ∧
+      (¬(∃ pkI2 pkR2 sess2 #i2.
+          (I_Commit( pkI2, pkR2, TH, sess2 ) @ #i2) ∧ (¬(#i2 = #i)))))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ pkI pkR TH sess #i.
+  (I_Commit( pkI, pkR, TH, sess ) @ #i)
+ ∧
+  (∃ #h. (Register( pkR ) @ #h)) ∧
+  (∀ #r. (Compromise( pkR ) @ #r) ⇒ ⊥) ∧
+  (∀ #j.
+    (R_Running( pkR, pkI, TH, sess ) @ #j)
+   ⇒
+    ((¬(#j < #i)) ∨
+     (∃ pkI2 pkR2 sess2 #i2.
+       (I_Commit( pkI2, pkR2, TH, sess2 ) @ #i2) ∧ ¬(#i2 = #i))))"
+*/
+simplify
+solve( St_I1( pk(~ltkI), ~ltkI, ~e ) ▶₀ #i )
+  case I_1
+  solve( splitEqs(0) )
+    case split_case_1
+    solve( !KU( sign(<'respAuth', 
+                      h(<'suite', pk(~ltkI), pk(~ltk), kempk(~e), ct>)>,
+                     ~ltk)
+           ) @ #vk.4 )
+      case R_1
+      by contradiction /* non-normal terms */
+    next
+      case c_sign
+      solve( !KU( ~ltk ) @ #vk.6 )
+        case Reveal_ltk
+        by contradiction /* from formulas */
+      qed
+    qed
+  next
+    case split_case_2
+    solve( !KU( sign(<'respAuth', 
+                      h(<'suite', pk(~ltkI), pk(~ltk), kempk(~e), encap(kempk(~e), z)>)>,
+                     ~ltk)
+           ) @ #vk.4 )
+      case R_1
+      solve( (#i2 < #i)  ∥ (#i < #i2) )
+        case case_1
+        solve( St_I1( pk(~ltkI), ~ltkI, ~e ) ▶₀ #i2 )
+          case I_1
+          by contradiction /* cyclic */
+        qed
+      next
+        case case_2
+        solve( St_I1( pk(~ltkI), ~ltkI, ~e ) ▶₀ #i2 )
+          case I_1
+          by contradiction /* cyclic */
+        qed
+      qed
+    next
+      case c_sign
+      solve( !KU( ~ltk ) @ #vk.6 )
+        case Reveal_ltk
+        by contradiction /* from formulas */
+      qed
+    qed
+  qed
+qed
+
+lemma initiator_auth_injective:
+  all-traces
+  "∀ pkR pkI TH sess #i.
+    (((R_Commit( pkR, pkI, TH, sess ) @ #i) ∧ (∃ #h. Register( pkI ) @ #h)) ∧
+     (¬(∃ #r. Compromise( pkI ) @ #r))) ⇒
+    (∃ #j.
+      ((I_Running( pkI, pkR, TH, sess ) @ #j) ∧ (#j < #i)) ∧
+      (¬(∃ pkR2 pkI2 sess2 #i2.
+          (R_Commit( pkR2, pkI2, TH, sess2 ) @ #i2) ∧ (¬(#i2 = #i)))))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ pkR pkI TH sess #i.
+  (R_Commit( pkR, pkI, TH, sess ) @ #i)
+ ∧
+  (∃ #h. (Register( pkI ) @ #h)) ∧
+  (∀ #r. (Compromise( pkI ) @ #r) ⇒ ⊥) ∧
+  (∀ #j.
+    (I_Running( pkI, pkR, TH, sess ) @ #j)
+   ⇒
+    ((¬(#j < #i)) ∨
+     (∃ pkR2 pkI2 sess2 #i2.
+       (R_Commit( pkR2, pkI2, TH, sess2 ) @ #i2) ∧ ¬(#i2 = #i))))"
+*/
+simplify
+solve( St_R( pkR, ~ltkR, pk(~ltk), TH, sigR, sess ) ▶₀ #i )
+  case R_1
+  solve( !KU( sign(<'initAuth', 
+                    h(<h(<'suite', pk(~ltk), pk(~ltkR), epk, encap(epk, ~ss)>), 
+                       sign(<'respAuth', h(<'suite', pk(~ltk), pk(~ltkR), epk, encap(epk, ~ss)>)
+                            >,
+                            ~ltkR)
+                      >)
+                   >,
+                   ~ltk)
+         ) @ #vk )
+    case I_2
+    solve( (#i2 < #i)  ∥ (#i < #i2) )
+      case case_1
+      solve( St_R( pkR2, ~ltkR.1, pk(x),
+                   h(<'suite', pk(~ltk), pk(~ltkR), kempk(~e), encap(kempk(~e), ~ss)>),
+                   sigR, sess2
+             ) ▶₀ #i2 )
+        case R_1
+        by contradiction /* cyclic */
+      qed
+    next
+      case case_2
+      solve( St_R( pkR2, ~ltkR.1, pk(x),
+                   h(<'suite', pk(~ltk), pk(~ltkR), kempk(~e), encap(kempk(~e), ~ss)>),
+                   sigR, sess2
+             ) ▶₀ #i2 )
+        case R_1
+        by contradiction /* cyclic */
+      qed
+    qed
+  next
+    case c_sign
+    solve( !KU( ~ltk ) @ #vk.7 )
+      case Reveal_ltk
+      by contradiction /* from formulas */
+    qed
+  qed
+qed
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: hybrid_ake.spthy
+
+  processing time: 1.39s
+  
+  executable (exists-trace): verified (10 steps)
+  key_secrecy (all-traces): verified (13 steps)
+  forward_secrecy (all-traces): verified (13 steps)
+  responder_auth_injective (all-traces): verified (15 steps)
+  initiator_auth_injective (all-traces): verified (10 steps)
+
+==============================================================================

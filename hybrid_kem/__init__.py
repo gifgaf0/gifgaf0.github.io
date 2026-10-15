@@ -7,9 +7,11 @@ entropy primitives. Submodules expose more for testing and integration.
 from .combiner.kdf_combiner import combine as combine_kems
 from .entropy import DRBG, HealthTests, QRNGSource
 from .hybrid_kem import HybridKEM
+from .sig_composite.composite_mldsa import CompositeMLDSA
 
 __all__ = [
     "DRBG",
+    "CompositeMLDSA",
     "HealthTests",
     "HybridKEM",
     "QRNGSource",

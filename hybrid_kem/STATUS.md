@@ -40,18 +40,20 @@ artifact but no longer sits on the KEM path.
   - `analysis/hybrid_ake.spthy`: secrecy, forward secrecy, injective agreement both directions.
   - `analysis/hybrid_ake_ext.spthy`: adds an ephemeral-key-reveal oracle (key secrecy shown session-local; authentication shown robust to ephemeral leakage) and a second ciphersuite (cross-suite downgrade resistance).
 - [x] **Computational analysis** — `docs/HYBRID_AKE_COMPUTATIONAL.md`: a reduction-based (game-hopping) proof sketch in a Bellare–Rogaway model. Authentication reduces to composite-signature EUF-CMA + collision resistance of `H`; key indistinguishability with forward secrecy reduces to hybrid-KEM IND-CCA + HKDF-as-PRF. Two hybrid-robustness lemmas carry the bounds down to "secure as long as either leg (ML-KEM / X25519) and either signature component (ML-DSA / Ed25519) holds". Paper-body rigour; mechanized below.
-- [x] **Mechanized computational proofs** — `analysis/cryptoverif/`, all queries proved with CryptoVerif 2.13 (`make cryptoverif`, ~8 s):
-  - `hybrid_ake.ocv`: Theorems 1–2 — injective agreement both directions; real-or-random key secrecy with forward secrecy and long-term-key KCI; post-quantum-sound library; no `n_S²` loss in the bound.
-  - `hybrid_ake_ephleak.ocv`: the same with ephemeral-key reveal on adversary-chosen sessions.
+- [x] **Mechanized computational proofs** — `analysis/cryptoverif/`, all queries proved with CryptoVerif 2.13 (`make cryptoverif`, ~12 s); independently reviewed after merge, with the corrections in `docs/HYBRID_AKE_COMPUTATIONAL.md` §7.1:
+  - `hybrid_ake.ocv`: Theorems 1–2 — injective agreement both directions; per-role real-or-random secrecy of all fresh keys, with forward secrecy, long-term-key KCI and RevealKey on request; cross-role key uniqueness; post-quantum-sound library. *(Corrected October 15: the earlier "no `n_S²` loss" claim was wrong. The multi-instance KEM term costs about `n_S²` when reduced to single-instance IND-CCA2; only the signature and PRF terms are tighter than the sketch.)*
+  - `hybrid_ake_ephleak.ocv`: the same with *static* ephemeral-key reveal on adversary-chosen sessions.
   - `composite_sig.m4.ocv`: Lemma 2 in both directions — **correction**: needs collision resistance of the pre-hash `PH`.
-  - `kem_bbfgs.m4.ocv`, `kem_xwing.m4.ocv`: Lemma 1 for both profiles, both directions, each as the exact IND-CCA2 equivalence the protocol model assumes — **correction**: X-Wing relying on X25519 also needs C2PRI of ML-KEM (as in the X-Wing paper); the ML-KEM-1024 profile does not.
-  - `mutations.py`: 7 mutation tests (e.g. `ct` and `vk_R` in the transcript are load-bearing; the context strings are a redundant second layer).
-  - Corrections recorded in `docs/HYBRID_AKE_COMPUTATIONAL.md` §7; original text kept.
+  - `kem_bbfgs.m4.ocv`, `kem_bbfgs_x25519_rom.ocv`, `kem_xwing.m4.ocv`: Lemma 1 for both profiles, both directions, each as the IND-CCA2 equivalence the protocol model assumes — **correction**: X-Wing relying on X25519 also needs C2PRI of ML-KEM (as in the X-Wing paper); the ML-KEM-1024 profile does not. The ML-KEM-1024 combiner's PRF assumptions are a split-key PRF and a PRF-ODH variant (non-standard); its X25519 direction is also proved from standard assumptions (strong DH + ROM). X25519 is modelled as a prime-order group.
+  - `mutations.py`: 16 mutation tests (`ct` and `vk_R` in the transcript are load-bearing; the context strings are a redundant second layer; every freshness/RevealKey guard is load-bearing).
+  - Corrections recorded in `docs/HYBRID_AKE_COMPUTATIONAL.md` §7 and §7.1; original text kept.
 - [x] **Test suite** — 272 passing (`pytest`), KATs byte-exact against the vectors above.
 
 ### Next (optional)
 1. Replace `QRNGSource(provider="local")` with a validated hardware noise source for any real deployment, and run the SP 800-90B non-IID estimators on its raw output (the continuous RCT/APT are in place; the one-time entropy estimate is a deployment step).
 3. Cross-check ML-KEM / ML-DSA against liboqs in CI when the binding is installed.
+4. Decide whether X-Wing should follow draft-11 on low-order X25519 points: `combiner/xwing.py` currently raises (pyca rejects all-zero X25519 outputs) where the draft returns a shared secret. No secrecy impact; conformance only (`analysis/cryptoverif/README.md`, implementation note).
+5. Cofactor-aware X25519 in the CryptoVerif KEM models (`DH_X25519_expth`, as in CryptoVerif's WireGuard analysis), replacing the prime-order abstraction.
 
 ### Decisions locked
 - Hybrid is standards-only: ML-KEM (FIPS 203) + X25519 (RFC 7748). No research scheme on the KEM path.

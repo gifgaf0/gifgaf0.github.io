@@ -125,5 +125,5 @@ Install the two tools (official GitHub release binaries), then run:
 # tamarin-prover 1.12.0 + maude 3.5.1 on PATH, MAUDE_LIB set to Maude's prelude dir
 make prove        # proves all lemmas (~2 s)
 # CryptoVerif 2.13 built in $HOME/cryptoverif2.13 (see cryptoverif/README.md)
-make cryptoverif  # all computational models (~8 s)
+make cryptoverif  # all computational models (~12 s)
 ```

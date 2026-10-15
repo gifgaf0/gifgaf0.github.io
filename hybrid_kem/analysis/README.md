@@ -4,6 +4,12 @@ Machine-checked symbolic analysis of the authenticated handshake specified in
 `../docs/HYBRID_AKE_SPEC.md` and implemented in
 `../protocols/authenticated_handshake.py`.
 
+> **Computational analysis.** `cryptoverif/` complements this with
+> machine-checked *computational* proofs (CryptoVerif 2.13): the same goals with
+> real primitives under their standard assumptions, probability bounds, and the
+> hybrid robustness of the KEM and composite signature, which the symbolic model
+> abstracts. See `cryptoverif/README.md`.
+
 - `hybrid_ake.spthy` — the base Tamarin model (mutually-authenticated protocol).
 - `hybrid_ake_ext.spthy` — the extended model: adds an **ephemeral-key-reveal**
   oracle and a **second ciphersuite** (see "Extended model" below).
@@ -105,6 +111,7 @@ primitives meet their stated security*. It does not re-derive the hybrid
 robustness of the primitives themselves — that each is secure as long as either
 component is — which is a property of the KEM / composite-signature
 constructions (argued in the spec), nor does it provide a computational proof.
+Both are now covered by the CryptoVerif models in `cryptoverif/`.
 In the base model, ephemeral-key-reveal is out of scope and a single ciphersuite
 is used; the extended model (`hybrid_ake_ext.spthy`) adds both. Even there, the
 primitives remain idealised (no computational proof), and reveal of the
@@ -117,4 +124,6 @@ Install the two tools (official GitHub release binaries), then run:
 ```bash
 # tamarin-prover 1.12.0 + maude 3.5.1 on PATH, MAUDE_LIB set to Maude's prelude dir
 make prove        # proves all lemmas (~2 s)
+# CryptoVerif 2.13 built in $HOME/cryptoverif2.13 (see cryptoverif/README.md)
+make cryptoverif  # all computational models (~8 s)
 ```

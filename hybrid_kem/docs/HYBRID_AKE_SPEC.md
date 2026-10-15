@@ -134,12 +134,15 @@ component is secure, and G3/G5 hold as long as *either* signature component is
 unforgeable. The symbolic analysis abstracts each hybrid primitive as a single
 idealised primitive and therefore establishes the handshake-level goals assuming
 the primitive meets its stated (hybrid) security; it does not re-derive the
-hybrid robustness of the primitives themselves.
+hybrid robustness of the primitives themselves. The computational analysis
+(§9) does, and adds two side conditions: collision resistance of the composite
+signature's pre-hash, and, for X-Wing relying on X25519, C2PRI of ML-KEM.
 
 ## 8. Non-goals and limitations
 
-- Not a standardised or formally reviewed protocol; no computational proof. For
-  production, use TLS 1.3 with a hybrid group from a maintained library.
+- Not a standardised or formally reviewed protocol. Its computational proof
+  (`analysis/cryptoverif/`) is machine-checked but self-made, not peer reviewed.
+  For production, use TLS 1.3 with a hybrid group from a maintained library.
 - No negotiation: exactly one suite per handshake (named in `SUITE_ID`).
 - No 0-RTT, no session resumption, no re-keying, no record layer.
 - No protection against ephemeral-key compromise (not modelled); forward secrecy
@@ -148,8 +151,15 @@ hybrid robustness of the primitives themselves.
 - Denial of service is out of scope (KEM/signature work is done before
   authentication in responder-only mode).
 
-## 9. Symbolic analysis
+## 9. Symbolic and computational analysis
 
 A Tamarin model of this specification and the machine-checked results for
 G1–G5 and downgrade binding are in `hybrid_kem/analysis/` (`hybrid_ake.spthy`,
-`RESULTS.md`).
+`hybrid_ake_ext.spthy`, `README.md`).
+
+Machine-checked computational proofs (CryptoVerif) of G1–G5, with probability
+bounds, and of the hybrid robustness of both primitives are in
+`hybrid_kem/analysis/cryptoverif/`. They make the robustness claim of §7
+precise: the composite signature also needs a collision-resistant pre-hash, and
+X-Wing's X25519 direction also needs C2PRI of ML-KEM (see
+`docs/HYBRID_AKE_COMPUTATIONAL.md` §7).

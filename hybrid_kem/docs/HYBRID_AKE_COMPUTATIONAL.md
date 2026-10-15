@@ -16,6 +16,14 @@ distribution host is unreachable through the network allowlist), so it is left
 as future work. Numerical constants in the bounds are the usual
 loss factors; they are stated to show the shape of the reduction, not tuned.
 
+> **Update (October 15, 2026).** The CryptoVerif mechanization is done:
+> `../analysis/cryptoverif/` machine-checks Theorems 1–2 and Lemmas 1–2
+> (CryptoVerif 2.13). It also **corrects** two statements of this sketch — Lemma 2
+> needs collision resistance of the composite pre-hash, and Lemma 1 for X-Wing
+> needs ML-KEM's C2PRI when relying on X25519 — and gives a tighter Theorem 2
+> bound. The original text below is kept as written; corrected statements are
+> marked ⚠ and the corrections are in §7.
+
 ---
 
 ## 1. Primitives and assumptions
@@ -50,7 +58,8 @@ salt `TH` is public and distinct per session, which is the regime HKDF targets.
 These make precise the claim the symbolic model abstracted: each hybrid
 primitive is secure if **either** of its components is.
 
-**Lemma 1 (hybrid KEM).** The hybrid KEM (X-Wing = ML-KEM-768 + X25519 with the
+**Lemma 1 (hybrid KEM).** ⚠ *Refined in §7: the X25519 assumption differs per
+profile, and X-Wing's X25519 direction also needs C2PRI of ML-KEM.* The hybrid KEM (X-Wing = ML-KEM-768 + X25519 with the
 SHA3-256 combiner, or ML-KEM-1024 + X25519 with the BBF-GS transcript-binding
 combiner) is IND-CCA if *either* component is secure:
 `Adv^{ind-cca}_{KEM} ≤ min( Adv^{ind-cca}_{ML-KEM}, Adv^{dh}_{X25519} ) + ε_comb`,
@@ -58,7 +67,8 @@ where `ε_comb` is the combiner's statistical / PRF loss. For X-Wing this is the
 content of its security analysis [XWing, GHP18, BBFGS19]; the combiner is a
 dual-PRF so breaking the KEM requires breaking both legs.
 
-**Lemma 2 (composite signature).** The composite signature (`σ = (σ_1, σ_2)`,
+**Lemma 2 (composite signature).** ⚠ *Corrected in §7: the bound is missing
+`+ 2·Adv^cr_PH`.* The composite signature (`σ = (σ_1, σ_2)`,
 both required to verify) is EUF-CMA if *either* component is EUF-CMA:
 `Adv^{euf-cma}_{Sig} ≤ min( Adv^{euf-cma}_{ML-DSA}, Adv^{euf-cma}_{Ed} )`.
 *Proof.* A composite forgery on a fresh `m*` is a pair `(σ_1*, σ_2*)` that both
@@ -199,6 +209,10 @@ to break exactly that session's key and nothing else.
 
 ## 5. Concrete statement over the real primitives
 
+⚠ *This substitutes Lemmas 1–2 as originally stated; with the corrected
+lemmas of §7 add `2·Adv^cr_PH` to the signature term and, for X-Wing, the C2PRI
+term to the X25519 alternative. §7 also gives the tighter mechanized bound.*
+
 Substituting Lemmas 1–2:
 ```
 Adv^{ki}(A) ⪅ n_S^2 · [ min(Adv^{ind-cca}_{ML-KEM}, Adv^{dh}_{X25519}) + ε_comb
@@ -219,6 +233,7 @@ hybrid guarantee, now at the computational level rather than only symbolically.
   paper-body rigour. A CryptoVerif development would discharge the PRF/IND-CCA
   rewrites and the multi-session bookkeeping mechanically and remove the `n_S^2`
   guessing via its built-in session reasoning; it is the recommended next step.
+  *(Done October 15, 2026; see §7.)*
 - **Model choice.** A BR-style model is used; a Canetti–Krawczyk or eCK model
   (with session-state reveal) would be stronger. The present freshness forbids
   ephemeral reveal of the Test session, so no eCK-style key-compromise-
@@ -236,6 +251,87 @@ hybrid guarantee, now at the computational level rather than only symbolically.
 
 For production, prefer TLS 1.3 with a standardised hybrid group and a reviewed
 implementation; this analysis is for the research construction in this package.
+
+---
+
+## 7. Mechanization (CryptoVerif) and corrections — October 15, 2026
+
+All four claims above are machine-checked with CryptoVerif 2.13 in
+`../analysis/cryptoverif/` (models, proof scripts, bounds in `RESULTS.txt`,
+mutation tests; `README.md` there has the details). The protocol and the
+post-quantum legs are checked with CryptoVerif's post-quantum-sound library.
+
+**Theorem 1** — proved as two injective correspondences (responder and, in
+mutual mode, initiator authentication), each agreeing on the whole transcript
+(both identities, `pk_e`, `ct`, and `sig_R` for the initiator) and on the key,
+for `NK` honest parties running any number of sessions in both roles and both
+modes, with adaptive corruption of every long-term key.
+Bound: `NK·Adv^euf-cma_Sig + O(1)·Adv^cr_H + collisions`.
+
+**Theorem 2** — proved as real-or-random secrecy of all keys of sessions whose
+peer was honest and uncorrupted at acceptance (initiators, and mutual-mode
+responders), with corruption at any time afterwards and of the session's own
+key at any time (forward secrecy; resistance to key-compromise impersonation of
+the long-term key). A second model adds ephemeral-key reveal on sessions the
+adversary chooses; everything still holds, with the freshness clause (ii) above
+shown necessary (mutation test). Bound:
+
+```
+Adv^ki ≤ 2·Adv^ind-cca_KEM(multi-instance) + 2·NK·Adv^euf-cma_Sig
+         + 2·(#encapsulations)·Adv^prf_KDF + O(1)·Adv^cr_H + collisions
+```
+
+There is no session-guessing loss, so the `n_S^2` factors of §4–§5 are an
+artefact of the sketch's proof strategy, not of the protocol.
+
+**Lemma 2 — corrected.** The components sign `M' = Prefix ‖ Label ‖ len(ctx) ‖
+ctx ‖ PH(M)`, so a composite forgery on a fresh `M` is a component forgery only
+when `PH(M)` is also fresh. The proof of Lemma 2 above omits this step. The
+correct statement is
+
+```
+Adv^euf-cma_Sig ≤ min(Adv^euf-cma_ML-DSA, Adv^euf-cma_Ed) + 2·Adv^cr_PH
+```
+
+with `PH` = SHA-512 (`id-MLDSA65-Ed25519-SHA512`) or SHAKE256/64
+(`id-MLDSA87-Ed448-SHAKE256`). Without collision resistance of `PH` the proof
+fails, and a `PH` collision would transfer a signature between messages.
+
+**Lemma 1 — refined, per profile and per leg.** Each statement below is proved
+as the exact IND-CCA2 equivalence the protocol model assumes, with the other
+leg's secret key given to the adversary:
+
+| Profile | Relying on ML-KEM | Relying on X25519 |
+|---|---|---|
+| `mlkem1024+x25519` (BBF-G-S HKDF combiner) | ML-KEM-1024 IND-CCA2 + HKDF a PRF keyed by `ss_M` | PRF-ODH for HKDF keyed by `ss_X` (standard model) |
+| `xwing` (SHA3-256 combiner) | ML-KEM-768 IND-CCA2 + SHA3-256 a PRF keyed by `ss_M` | strong DH + SHA3-256 as a random oracle **+ C2PRI of ML-KEM-768** |
+
+The last cell is the correction. X-Wing does not hash `ct_M`; if ML-KEM were
+broken including its ciphertext binding, a second ciphertext decapsulating to
+the same `ss_M` would decapsulate the whole hybrid to the challenge key. These
+are exactly the X-Wing paper's assumptions (its classical theorem uses C2PRI),
+and that paper proves C2PRI for ML-KEM-768 from its hash functions alone, so the
+X-Wing guarantee still survives a break of the lattice problem — but the
+"either leg" claim is not symmetric, and the bound in Lemma 1 should read
+
+```
+Adv^ind-cca_X-Wing ≤ min(Adv^ind-cca_ML-KEM + Adv^prf_SHA3,
+                         Adv^sdh_X25519 + Adv^c2pri_ML-KEM)       (up to the stated factors)
+```
+
+**Design elements the proofs depend on** (mutation tests): `ct` in `TH` (or a
+man in the middle swaps it), and `vk_R` in `TH` (or initiator authentication
+fails by unknown key share). The two context strings are a second layer of role
+separation: the proofs still go through without them, because the two signed
+hash inputs already have different field counts, and fail only when both
+separations are removed.
+
+**Not mechanized.** The composition of the hybrid-primitive results (Lemmas 1–2)
+into the protocol bound is the standard substitution, done by hand. Modelling
+choices that limit the statement are listed in the CryptoVerif README: one
+ciphersuite, static ephemeral reveal, perfect KEM correctness, X25519 as a
+prime-order group, and keys of potentially partnered sessions withheld rather
+than revealed.
 
 ---
 

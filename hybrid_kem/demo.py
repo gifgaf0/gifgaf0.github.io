@@ -18,6 +18,7 @@ from hybrid_kem.entropy.drbg import DRBG, HMAC_SHA256
 from hybrid_kem.entropy.health_tests import HealthTests
 from hybrid_kem.entropy.qrng_source import QRNGSource
 from hybrid_kem.hybrid_kem import PROFILES, HybridKEM
+from hybrid_kem.sig_composite.composite_mldsa import CompositeMLDSA
 
 
 def _seeded_drbg() -> DRBG:
@@ -44,6 +45,16 @@ def main() -> int:
         assert ss_enc == ss_dec, "decaps did not recover the encapsulated secret"
         log.info("  pk=%d B  sk=%d B  ct=%d B  ss=%s",
                  len(pk), len(sk), len(ct), ss_enc.hex())
+
+    for profile in ("id-MLDSA65-Ed25519-SHA512", "id-MLDSA87-Ed448-SHAKE256"):
+        c = CompositeMLDSA(profile=profile)
+        sk_pk = c.keygen(_seeded_drbg())
+        pk, sk = sk_pk
+        sig = c.sign(sk, b"hybrid-kem demo message", context=b"demo")
+        ok = c.verify(pk, sig, b"hybrid-kem demo message", context=b"demo")
+        assert ok, "composite signature did not verify"
+        log.info("sig profile=%s  pk=%d B  sk=%d B  sig=%d B  verify=%s",
+                 profile, len(pk), len(sk), len(sig), ok)
     return 0
 
 

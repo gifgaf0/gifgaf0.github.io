@@ -29,12 +29,17 @@ artifact but no longer sits on the KEM path.
   - X25519: RFC 7748 §5.2, `tests/test_kat_x25519.py`.
   - X-Wing: draft-11 Appendix C, all 3 vectors (keygen + decaps), `tests/test_kat_xwing.py`.
   - DRBG: SP 800-90A CTR/HMAC `.rsp`, `tests/test_drbg.py`.
-- [x] **Test suite** — 226 passing (`pytest`), KATs byte-exact against the vectors above.
+- [x] **Signature leg** — composite ML-DSA + EdDSA (`draft-ietf-lamps-pq-composite-sigs-19`):
+  - `sig_standard/mldsa_wrapper.py`: ML-DSA-44/65/87 via pyca (FIPS 204), deterministic keygen from the DRBG.
+  - `sig_classical/eddsa.py`: Ed25519 and Ed448 legs (RFC 8032).
+  - `sig_composite/composite_mldsa.py`: `id-MLDSA65-Ed25519-SHA512` and `id-MLDSA87-Ed448-SHAKE256` profiles, M' = Prefix ‖ Label ‖ len(ctx) ‖ ctx ‖ PH(M), components concatenated.
+  - KATs: ML-DSA NIST ACVP (`test_kat_mldsa.py`), Ed25519/Ed448 RFC 8032 (`test_kat_eddsa.py`), composite draft-19 Appendix E — both profiles, with/without context (`test_kat_composite_sig.py`).
+- [x] **Test suite** — 259 passing (`pytest`), KATs byte-exact against the vectors above.
 
 ### Next (optional)
-1. Add ML-DSA (FIPS 204) signatures as a parallel standards leg, if a signed handshake is wanted.
+1. Wire the composite signature into an authenticated handshake (sign the KEM public key / transcript).
 2. Replace `QRNGSource(provider="local")` with a validated hardware noise source for any real deployment, and run the SP 800-90B non-IID estimators on its raw output (the continuous RCT/APT are in place; the one-time entropy estimate is a deployment step).
-3. Cross-check ML-KEM against liboqs in CI (`MLKEMWrapper.cross_check`) when the binding is installed.
+3. Cross-check ML-KEM / ML-DSA against liboqs in CI when the binding is installed.
 
 ### Decisions locked
 - Hybrid is standards-only: ML-KEM (FIPS 203) + X25519 (RFC 7748). No research scheme on the KEM path.

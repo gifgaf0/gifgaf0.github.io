@@ -25,6 +25,27 @@ breaks X25519 leaves ML-KEM's. Prefer `xwing` — it is the interoperable,
 externally vetted construction; use `mlkem1024+x25519` when a Category-5 target
 is required (X-Wing specifies no 1024 variant).
 
+## Signatures (composite ML-DSA + EdDSA)
+
+A matching hybrid signature, `CompositeMLDSA`, implements
+`draft-ietf-lamps-pq-composite-sigs-19`. A composite signature verifies only if
+*both* components do, so it stays unforgeable as long as either ML-DSA or EdDSA
+does.
+
+| Profile | Components | Pre-hash |
+|---|---|---|
+| `id-MLDSA65-Ed25519-SHA512` (default) | ML-DSA-65 + Ed25519 | SHA-512 |
+| `id-MLDSA87-Ed448-SHAKE256` | ML-DSA-87 + Ed448 | SHAKE256/64 |
+
+```python
+from hybrid_kem import CompositeMLDSA
+
+c = CompositeMLDSA("id-MLDSA65-Ed25519-SHA512")
+pk, sk = c.keygen()
+sig = c.sign(sk, message, context=b"my-app")
+assert c.verify(pk, sig, message, context=b"my-app")
+```
+
 ## Quick start
 
 ```bash
@@ -71,6 +92,11 @@ Every primitive is pinned to a published answer (vectors vendored under
 - **X-Wing** — draft-11 Appendix C, all three vectors (keygen and decapsulation,
   which runs the full combiner). Encapsulation is randomised and covered by
   round-trip tests.
+- **ML-DSA-44/65/87** — NIST ACVP (final FIPS 204): keygen-from-seed and
+  verification of the published signature.
+- **Ed25519 / Ed448** — RFC 8032 (full deterministic signing).
+- **Composite signatures** — draft-19 Appendix E, both profiles, with and
+  without context.
 - **DRBG** — SP 800-90A CTR-DRBG and HMAC-DRBG `.rsp` vectors.
 
 ## Entropy
@@ -91,6 +117,9 @@ hybrid_kem/
 ├── kem_standard/          # ML-KEM (FIPS 203) via pyca/cryptography
 ├── kem_classical/         # X25519 leg (RFC 7748)
 ├── combiner/              # xwing.py (X-Wing) + kdf_combiner.py (BBF-G-S)
+├── sig_standard/          # ML-DSA (FIPS 204) via pyca/cryptography
+├── sig_classical/         # Ed25519 / Ed448 legs (RFC 8032)
+├── sig_composite/         # composite ML-DSA + EdDSA (LAMPS draft-19)
 ├── entropy/               # SP 800-90A DRBG, SP 800-90B health tests, QRNG
 ├── kem_slwe/              # research scheme — NOT on the KEM path
 └── tests/                 # suite + tests/kat_vectors/ (published vectors)
@@ -101,6 +130,9 @@ hybrid_kem/
 - FIPS 203 (ML-KEM): https://csrc.nist.gov/pubs/fips/203/final
 - RFC 7748 (X25519): https://www.rfc-editor.org/rfc/rfc7748
 - X-Wing: https://datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem/
+- FIPS 204 (ML-DSA): https://csrc.nist.gov/pubs/fips/204/final
+- RFC 8032 (EdDSA): https://www.rfc-editor.org/rfc/rfc8032
+- Composite ML-DSA: https://datatracker.ietf.org/doc/draft-ietf-lamps-pq-composite-sigs/
 - BBF-G-S 2019 (KEM combiners): https://eprint.iacr.org/2018/903
 - SP 800-90A (DRBGs): https://csrc.nist.gov/pubs/sp/800/90/a/r1/final
 - SP 800-90B (entropy sources): https://csrc.nist.gov/pubs/sp/800/90/b/final

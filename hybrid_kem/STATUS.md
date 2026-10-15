@@ -35,6 +35,8 @@ artifact but no longer sits on the KEM path.
   - `sig_composite/composite_mldsa.py`: `id-MLDSA65-Ed25519-SHA512` and `id-MLDSA87-Ed448-SHAKE256` profiles, M' = Prefix ‖ Label ‖ len(ctx) ‖ ctx ‖ PH(M), components concatenated.
   - KATs: ML-DSA NIST ACVP (`test_kat_mldsa.py`), Ed25519/Ed448 RFC 8032 (`test_kat_eddsa.py`), composite draft-19 Appendix E — both profiles, with/without context (`test_kat_composite_sig.py`).
 - [x] **Authenticated handshake** — `protocols/authenticated_handshake.py`: ephemeral hybrid-KEM agreement + composite-signature transcript authentication (TLS 1.3 / SIGMA pattern), responder-only and mutual modes. Transcript binds both identities, their verification keys, the ephemeral KEM key, the ciphertext and the suite; session key is HKDF(ss; salt=transcript hash). Tests cover agreement, mutual auth, and the tamper / wrong-key / forged-signature / downgrade cases (`tests/test_authenticated_handshake.py`).
+- [x] **Protocol spec** — `docs/HYBRID_AKE_SPEC.md`: primitives, wire formats, key schedule, threat model, security goals G1–G5, limitations.
+- [x] **Symbolic analysis** — `analysis/hybrid_ake.spthy`: a Tamarin model; all lemmas verified (secrecy, forward secrecy, injective agreement both directions) with tamarin-prover 1.12.0 + Maude 3.5.1. See `analysis/README.md`.
 - [x] **Test suite** — 272 passing (`pytest`), KATs byte-exact against the vectors above.
 
 ### Next (optional)

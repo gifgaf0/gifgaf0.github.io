@@ -1,0 +1,143 @@
+/*
+  HYBRID-AKE v1 -- symbolic model (Tamarin) of the authenticated handshake in
+  hybrid_kem/protocols/authenticated_handshake.py, per docs/HYBRID_AKE_SPEC.md.
+
+  Mutually-authenticated protocol is modelled; the responder-authenticated mode
+  is the sub-protocol without msg3, and its single guarantee is exactly the
+  responder-authentication lemma below.
+
+  Abstractions (symbolic / Dolev-Yao):
+   - The hybrid KEM is one idealised KEM: the encapsulator draws a fresh shared
+     secret ~ss and binds it into ct = encap(pk_e, ~ss); only the holder of the
+     ephemeral secret recovers it (decap). Models "ss secret unless sk_e known".
+   - The composite signature is one idealised EUF-CMA signature (builtin).
+   - H and KDF are free functions (one-way, collision-free).
+   The hybrid robustness of the primitives (secure if either component is) is a
+   property of the primitives, argued in the spec, not re-derived here.
+
+  Parties are identified by their long-term signature public key pk(ltk).
+  The attacker may adaptively compromise any long-term key (Compromise).
+  The ephemeral KEM secret is never revealed.
+*/
+
+theory HybridAKE
+begin
+
+builtins: signing
+
+functions: kempk/1, encap/2, decap/2, h/1, kdf/2
+equations: decap(k, encap(kempk(k), m)) = m
+
+/* ----- signature verification via the standard equality restriction ----- */
+restriction Equality:
+  "All x y #i. Eq(x, y) @ #i ==> x = y"
+
+/* ----- long-term key registration and compromise ----- */
+rule Register_ltk:
+  [ Fr(~ltk) ]
+  --[ Register(pk(~ltk)) ]->
+  [ !Ltk(pk(~ltk), ~ltk), !Pk(pk(~ltk)), Out(pk(~ltk)) ]
+
+rule Reveal_ltk:
+  [ !Ltk(pkA, ~ltk) ]
+  --[ Compromise(pkA) ]->
+  [ Out(~ltk) ]
+
+/* ----- msg1: initiator sends suite, its identity, and a fresh ephemeral ----- */
+rule I_1:
+  let pkI  = pk(~ltkI)
+      epk  = kempk(~e)
+      msg1 = <'suite', pkI, epk>
+  in
+  [ !Ltk(pkI, ~ltkI), Fr(~e) ]
+  --[ I_Start(pkI, ~e) ]->
+  [ St_I1(pkI, ~ltkI, ~e), Out(msg1) ]
+
+/* ----- msg2: responder encapsulates, signs the transcript, derives key ----- */
+rule R_1:
+  let pkR  = pk(~ltkR)
+      ct   = encap(epk, ~ss)
+      TH   = h(<'suite', pkI, pkR, epk, ct>)
+      sigR = sign(<'respAuth', TH>, ~ltkR)
+      sess = kdf(~ss, TH)
+      msg2 = <pkR, ct, sigR>
+  in
+  [ !Ltk(pkR, ~ltkR), In(<'suite', pkI, epk>), Fr(~ss) ]
+  --[ R_Running(pkR, pkI, TH, sess), Ct(ct) ]->
+  [ St_R(pkR, ~ltkR, pkI, TH, sigR, sess), Out(msg2) ]
+
+/* ----- initiator verifies sigR, derives key, commits, signs back ----- */
+rule I_2:
+  let pkI  = pk(~ltkI)
+      epk  = kempk(~e)
+      TH   = h(<'suite', pkI, pkR, epk, ct>)
+      sess = kdf(decap(~e, ct), TH)
+      sigI = sign(<'initAuth', h(<TH, sigR>)>, ~ltkI)
+  in
+  [ St_I1(pkI, ~ltkI, ~e), In(<pkR, ct, sigR>) ]
+  --[ Eq(verify(sigR, <'respAuth', TH>, pkR), true),
+      I_Commit(pkI, pkR, TH, sess),
+      I_Running(pkI, pkR, TH, sess) ]->
+  [ Out(<sigI>) ]
+
+/* ----- responder verifies sigI (mutual), commits ----- */
+rule R_2:
+  let msgI = <'initAuth', h(<TH, sigR>)>
+  in
+  [ St_R(pkR, ~ltkR, pkI, TH, sigR, sess), In(<sigI>) ]
+  --[ Eq(verify(sigI, msgI, pkI), true),
+      R_Commit(pkR, pkI, TH, sess) ]->
+  [ ]
+
+/* =====================  SECURITY GOALS  ===================== */
+
+/* sanity: an honest mutual run reaching agreement on (TH, key) exists */
+lemma executable:
+  exists-trace
+  "Ex pkI pkR TH sess #i #j.
+      I_Commit(pkI, pkR, TH, sess) @ #i
+    & R_Commit(pkR, pkI, TH, sess) @ #j
+    & not (Ex #r. Compromise(pkI) @ #r)
+    & not (Ex #r. Compromise(pkR) @ #r)"
+
+/* An honest peer is one whose key was genuinely registered (so its secret is a
+   fresh value no one output) and never compromised. Requiring registration
+   excludes attacker-fabricated keys such as pk(c) for a public constant c. */
+
+/* G1 -- session-key secrecy (peer honest) */
+lemma key_secrecy:
+  "All pkI pkR TH sess #i.
+      I_Commit(pkI, pkR, TH, sess) @ #i
+    & (Ex #h. Register(pkR) @ #h)
+    & not (Ex #r. Compromise(pkR) @ #r)
+    ==> not (Ex #j. K(sess) @ #j)"
+
+/* G2 -- forward secrecy: secret even if the peer's key leaks AFTER the commit */
+lemma forward_secrecy:
+  "All pkI pkR TH sess #i.
+      I_Commit(pkI, pkR, TH, sess) @ #i
+    & (Ex #h. Register(pkR) @ #h)
+    & (All #r. Compromise(pkR) @ #r ==> #i < #r)
+    ==> not (Ex #j. K(sess) @ #j)"
+
+/* G3 -- responder authentication: injective agreement on (TH, key) */
+lemma responder_auth_injective:
+  "All pkI pkR TH sess #i.
+      I_Commit(pkI, pkR, TH, sess) @ #i
+    & (Ex #h. Register(pkR) @ #h)
+    & not (Ex #r. Compromise(pkR) @ #r)
+    ==> ( Ex #j. R_Running(pkR, pkI, TH, sess) @ #j & #j < #i
+          & not (Ex pkI2 pkR2 sess2 #i2.
+                   I_Commit(pkI2, pkR2, TH, sess2) @ #i2 & not (#i2 = #i)) )"
+
+/* G5 -- initiator authentication (mutual): injective agreement on (TH, key) */
+lemma initiator_auth_injective:
+  "All pkR pkI TH sess #i.
+      R_Commit(pkR, pkI, TH, sess) @ #i
+    & (Ex #h. Register(pkI) @ #h)
+    & not (Ex #r. Compromise(pkI) @ #r)
+    ==> ( Ex #j. I_Running(pkI, pkR, TH, sess) @ #j & #j < #i
+          & not (Ex pkR2 pkI2 sess2 #i2.
+                   R_Commit(pkR2, pkI2, TH, sess2) @ #i2 & not (#i2 = #i)) )"
+
+end

@@ -71,8 +71,13 @@ assert key_i == key_r            # authenticated 32-byte session key
 
 Omit `identity`/`require_peer` for responder-only authentication (the common
 "server-authenticated" case). This is an engineering construction following a
-reviewed design, not itself a standardised or formally analysed protocol — for
-production use TLS 1.3 with hybrid groups from a maintained library.
+reviewed design, not itself a standardised protocol — for production use TLS 1.3
+with hybrid groups from a maintained library.
+
+The handshake is specified in `docs/HYBRID_AKE_SPEC.md` and has a Tamarin model
+in `analysis/`: session-key secrecy, forward secrecy, and injective agreement in
+both directions are machine-verified (symbolic model; see `analysis/README.md`
+for the abstractions and what the result does and does not cover).
 
 ## Quick start
 

@@ -1,0 +1,172 @@
+/*
+  HYBRID-AKE v1 -- extended symbolic model (Tamarin).
+
+  Extends hybrid_ake.spthy with two stronger attacker capabilities:
+
+   (1) EPHEMERAL-KEY REVEAL. The initiator's ephemeral KEM secret ~e may be
+       revealed to the attacker (rule Reveal_eph, action EphReveal(epk)). This
+       lets us state forward secrecy precisely and show that
+         - session-key secrecy is exactly session-local: a key is secret iff the
+           peer is honest AND that session's ephemeral was not revealed;
+         - authentication (injective agreement) is ROBUST to ephemeral reveal
+           (it rests on the long-term signature, not on the ephemeral).
+
+   (2) TWO CIPHERSUITES ('suiteA', 'suiteB'), chosen honestly by the initiator
+       and carried in the (attacker-malleable) first message, so downgrade
+       resistance becomes a real cross-suite agreement check rather than a
+       single-suite corollary.
+
+  Same idealised primitives and Dolev-Yao attacker as the base model; the
+  attacker may also adaptively compromise long-term keys.
+*/
+
+theory HybridAKE_Ext
+begin
+
+builtins: signing
+
+functions: kempk/1, encap/2, decap/2, h/1, kdf/2
+equations: decap(k, encap(kempk(k), m)) = m
+
+restriction Equality:
+  "All x y #i. Eq(x, y) @ #i ==> x = y"
+
+/* ----- registration and long-term-key compromise ----- */
+rule Register_ltk:
+  [ Fr(~ltk) ]
+  --[ Register(pk(~ltk)) ]->
+  [ !Ltk(pk(~ltk), ~ltk), Out(pk(~ltk)) ]
+
+rule Reveal_ltk:
+  [ !Ltk(pkA, ~ltk) ]
+  --[ Compromise(pkA) ]->
+  [ Out(~ltk) ]
+
+/* ----- the initiator honestly chooses one of two ciphersuites ----- */
+rule Offer_suiteA: [ ] --[ ]-> [ Suite('suiteA') ]
+rule Offer_suiteB: [ ] --[ ]-> [ Suite('suiteB') ]
+
+/* ----- ephemeral-key reveal oracle (keyed by the ephemeral public key) ----- */
+rule Reveal_eph:
+  [ !EphKey(epk, ~e) ]
+  --[ EphReveal(epk) ]->
+  [ Out(~e) ]
+
+/* ----- msg1 ----- */
+rule I_1:
+  let pkI  = pk(~ltkI)
+      epk  = kempk(~e)
+      msg1 = <suite, pkI, epk>
+  in
+  [ !Ltk(pkI, ~ltkI), Fr(~e), Suite(suite) ]
+  --[ I_Start(pkI, epk) ]->
+  [ St_I1(pkI, ~ltkI, ~e, suite), !EphKey(epk, ~e), Out(msg1) ]
+
+/* ----- msg2 ----- */
+rule R_1:
+  let pkR  = pk(~ltkR)
+      ct   = encap(epk, ~ss)
+      TH   = h(<suite, pkI, pkR, epk, ct>)
+      sigR = sign(<'respAuth', TH>, ~ltkR)
+      sess = kdf(~ss, TH)
+      msg2 = <pkR, ct, sigR>
+  in
+  [ !Ltk(pkR, ~ltkR), In(<suite, pkI, epk>), Fr(~ss) ]
+  --[ R_Running(pkR, pkI, suite, epk, TH, sess) ]->
+  [ St_R(pkR, ~ltkR, pkI, suite, epk, TH, sigR, sess), Out(msg2) ]
+
+/* ----- initiator verifies, commits, signs back ----- */
+rule I_2:
+  let pkI  = pk(~ltkI)
+      epk  = kempk(~e)
+      TH   = h(<suite, pkI, pkR, epk, ct>)
+      sess = kdf(decap(~e, ct), TH)
+      sigI = sign(<'initAuth', h(<TH, sigR>)>, ~ltkI)
+  in
+  [ St_I1(pkI, ~ltkI, ~e, suite), In(<pkR, ct, sigR>) ]
+  --[ Eq(verify(sigR, <'respAuth', TH>, pkR), true),
+      I_Commit(pkI, pkR, suite, epk, TH, sess),
+      I_Running(pkI, pkR, suite, epk, TH, sess) ]->
+  [ Out(<sigI>) ]
+
+/* ----- responder verifies initiator (mutual), commits ----- */
+rule R_2:
+  [ St_R(pkR, ~ltkR, pkI, suite, epk, TH, sigR, sess), In(<sigI>) ]
+  --[ Eq(verify(sigI, <'initAuth', h(<TH, sigR>)>, pkI), true),
+      R_Commit(pkR, pkI, suite, epk, TH, sess) ]->
+  [ ]
+
+/* =====================  SECURITY GOALS  ===================== */
+
+/* sanity: an honest mutual run (no compromise, no eph reveal) agrees on a key */
+lemma executable:
+  exists-trace
+  "Ex pkI pkR s epk TH sess #i #j.
+      I_Commit(pkI, pkR, s, epk, TH, sess) @ #i
+    & R_Commit(pkR, pkI, s, epk, TH, sess) @ #j
+    & not (Ex #r. Compromise(pkI) @ #r)
+    & not (Ex #r. Compromise(pkR) @ #r)
+    & not (Ex #r. EphReveal(epk) @ #r)"
+
+/* the ephemeral-reveal oracle is effective: revealing a session's ephemeral
+   lets the attacker learn that session's key (the expected, intended effect) */
+lemma eph_reveal_breaks_session:
+  exists-trace
+  "Ex pkI pkR s epk TH sess #i #e #k.
+      I_Commit(pkI, pkR, s, epk, TH, sess) @ #i
+    & EphReveal(epk) @ #e
+    & K(sess) @ #k"
+
+/* G1 -- key secrecy is exactly session-local: peer honest AND this session's
+   ephemeral not revealed */
+lemma key_secrecy:
+  "All pkI pkR s epk TH sess #i.
+      I_Commit(pkI, pkR, s, epk, TH, sess) @ #i
+    & (Ex #h. Register(pkR) @ #h)
+    & not (Ex #r. Compromise(pkR) @ #r)
+    & not (Ex #r. EphReveal(epk) @ #r)
+    ==> not (Ex #k. K(sess) @ #k)"
+
+/* G2 -- forward secrecy: secret even if the peer's long-term key leaks AFTER
+   the commit, provided this session's ephemeral was not revealed */
+lemma forward_secrecy:
+  "All pkI pkR s epk TH sess #i.
+      I_Commit(pkI, pkR, s, epk, TH, sess) @ #i
+    & (Ex #h. Register(pkR) @ #h)
+    & (All #r. Compromise(pkR) @ #r ==> #i < #r)
+    & not (Ex #r. EphReveal(epk) @ #r)
+    ==> not (Ex #k. K(sess) @ #k)"
+
+/* G3 -- responder authentication, injective agreement. NOTE: the ephemeral may
+   be revealed here and the lemma still holds -- authentication is independent
+   of ephemeral secrecy. */
+lemma responder_auth_injective:
+  "All pkI pkR s epk TH sess #i.
+      I_Commit(pkI, pkR, s, epk, TH, sess) @ #i
+    & (Ex #h. Register(pkR) @ #h)
+    & not (Ex #r. Compromise(pkR) @ #r)
+    ==> ( Ex #j. R_Running(pkR, pkI, s, epk, TH, sess) @ #j & #j < #i
+          & not (Ex pkI2 pkR2 s2 epk2 sess2 #i2.
+                   I_Commit(pkI2, pkR2, s2, epk2, TH, sess2) @ #i2 & not (#i2 = #i)) )"
+
+/* G5 -- initiator authentication (mutual), injective agreement, robust to eph reveal */
+lemma initiator_auth_injective:
+  "All pkR pkI s epk TH sess #i.
+      R_Commit(pkR, pkI, s, epk, TH, sess) @ #i
+    & (Ex #h. Register(pkI) @ #h)
+    & not (Ex #r. Compromise(pkI) @ #r)
+    ==> ( Ex #j. I_Running(pkI, pkR, s, epk, TH, sess) @ #j & #j < #i
+          & not (Ex pkR2 pkI2 s2 epk2 sess2 #i2.
+                   R_Commit(pkR2, pkI2, s2, epk2, TH, sess2) @ #i2 & not (#i2 = #i)) )"
+
+/* Downgrade resistance: if the initiator commits with ciphersuite s and the
+   peer is honest, the responder ran with the SAME suite s (no cross-suite
+   confusion between 'suiteA' and 'suiteB'). */
+lemma suite_agreement:
+  "All pkI pkR s epk TH sess #i.
+      I_Commit(pkI, pkR, s, epk, TH, sess) @ #i
+    & (Ex #h. Register(pkR) @ #h)
+    & not (Ex #r. Compromise(pkR) @ #r)
+    ==> (Ex #j. R_Running(pkR, pkI, s, epk, TH, sess) @ #j)"
+
+end

@@ -1,0 +1,5 @@
+X-Wing known-answer vectors (ML-KEM-768 + X25519).
+Source: github.com/dconnolly/draft-connolly-cfrg-xwing-kem, spec/test-vectors.json
+(Appendix C of draft-connolly-cfrg-xwing-kem-11, 2026-09-23).
+Fields per vector: seed (32B secret key), eseed (encaps randomness, unused here
+because pyca ML-KEM encaps is not derandomisable), pk, ct, ss.

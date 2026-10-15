@@ -34,11 +34,11 @@ artifact but no longer sits on the KEM path.
   - `sig_classical/eddsa.py`: Ed25519 and Ed448 legs (RFC 8032).
   - `sig_composite/composite_mldsa.py`: `id-MLDSA65-Ed25519-SHA512` and `id-MLDSA87-Ed448-SHAKE256` profiles, M' = Prefix ‖ Label ‖ len(ctx) ‖ ctx ‖ PH(M), components concatenated.
   - KATs: ML-DSA NIST ACVP (`test_kat_mldsa.py`), Ed25519/Ed448 RFC 8032 (`test_kat_eddsa.py`), composite draft-19 Appendix E — both profiles, with/without context (`test_kat_composite_sig.py`).
-- [x] **Test suite** — 259 passing (`pytest`), KATs byte-exact against the vectors above.
+- [x] **Authenticated handshake** — `protocols/authenticated_handshake.py`: ephemeral hybrid-KEM agreement + composite-signature transcript authentication (TLS 1.3 / SIGMA pattern), responder-only and mutual modes. Transcript binds both identities, their verification keys, the ephemeral KEM key, the ciphertext and the suite; session key is HKDF(ss; salt=transcript hash). Tests cover agreement, mutual auth, and the tamper / wrong-key / forged-signature / downgrade cases (`tests/test_authenticated_handshake.py`).
+- [x] **Test suite** — 272 passing (`pytest`), KATs byte-exact against the vectors above.
 
 ### Next (optional)
-1. Wire the composite signature into an authenticated handshake (sign the KEM public key / transcript).
-2. Replace `QRNGSource(provider="local")` with a validated hardware noise source for any real deployment, and run the SP 800-90B non-IID estimators on its raw output (the continuous RCT/APT are in place; the one-time entropy estimate is a deployment step).
+1. Replace `QRNGSource(provider="local")` with a validated hardware noise source for any real deployment, and run the SP 800-90B non-IID estimators on its raw output (the continuous RCT/APT are in place; the one-time entropy estimate is a deployment step).
 3. Cross-check ML-KEM / ML-DSA against liboqs in CI when the binding is installed.
 
 ### Decisions locked

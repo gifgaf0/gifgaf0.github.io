@@ -46,6 +46,34 @@ sig = c.sign(sk, message, context=b"my-app")
 assert c.verify(pk, sig, message, context=b"my-app")
 ```
 
+## Authenticated handshake
+
+`protocols/authenticated_handshake.py` ties the two together into an
+authenticated key exchange: an *ephemeral* hybrid-KEM agreement for secrecy, and
+a composite signature over the full transcript for authentication — the TLS 1.3
+/ SIGMA pattern, built from the primitives above. The initiator derives a key
+only if the responder's signature verifies; the transcript binds both
+identities, their keys, the ciphertext and the suite.
+
+```python
+from hybrid_kem.protocols.authenticated_handshake import Identity, Initiator, Responder
+
+server, client = Identity.generate("server"), Identity.generate("client")
+resp = Responder("xwing", identity=server, require_peer=client.public)  # mutual
+init = Initiator("xwing", peer=server.public, identity=client)
+
+st_i, m1 = init.start()          # client -> server
+st_r, m2 = resp.respond(m1)      # server -> client (encapsulate + sign transcript)
+key_i, m3 = init.finish(st_i, m2)  # client verifies server, derives key, signs back
+key_r = resp.confirm(st_r, m3)   # server verifies client
+assert key_i == key_r            # authenticated 32-byte session key
+```
+
+Omit `identity`/`require_peer` for responder-only authentication (the common
+"server-authenticated" case). This is an engineering construction following a
+reviewed design, not itself a standardised or formally analysed protocol — for
+production use TLS 1.3 with hybrid groups from a maintained library.
+
 ## Quick start
 
 ```bash
@@ -120,6 +148,7 @@ hybrid_kem/
 ├── sig_standard/          # ML-DSA (FIPS 204) via pyca/cryptography
 ├── sig_classical/         # Ed25519 / Ed448 legs (RFC 8032)
 ├── sig_composite/         # composite ML-DSA + EdDSA (LAMPS draft-19)
+├── protocols/             # authenticated_handshake.py (AKE over KEM + composite sig)
 ├── entropy/               # SP 800-90A DRBG, SP 800-90B health tests, QRNG
 ├── kem_slwe/              # research scheme — NOT on the KEM path
 └── tests/                 # suite + tests/kat_vectors/ (published vectors)

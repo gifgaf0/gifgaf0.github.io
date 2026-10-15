@@ -1,5 +1,14 @@
 """Protocol-layer constructions for the hybrid PQC testbed."""
 
+from .authenticated_handshake import (
+    AuthenticationError,
+    HandshakeError,
+    Identity,
+    Initiator,
+    PeerIdentity,
+    ProtocolError,
+    Responder,
+)
 from .pre_shifted_layering import (
     INNER_PERIOD,
     LAYER_REALIGN_LCM,
@@ -13,6 +22,13 @@ from .pre_shifted_layering import (
 )
 
 __all__ = [
+    "AuthenticationError",
+    "HandshakeError",
+    "Identity",
+    "Initiator",
+    "PeerIdentity",
+    "ProtocolError",
+    "Responder",
     "INNER_PERIOD",
     "LAYER_REALIGN_LCM",
     "LayeredProtocolState",

@@ -18,6 +18,11 @@ from hybrid_kem.entropy.drbg import DRBG, HMAC_SHA256
 from hybrid_kem.entropy.health_tests import HealthTests
 from hybrid_kem.entropy.qrng_source import QRNGSource
 from hybrid_kem.hybrid_kem import PROFILES, HybridKEM
+from hybrid_kem.protocols.authenticated_handshake import (
+    Identity,
+    Initiator,
+    Responder,
+)
 from hybrid_kem.sig_composite.composite_mldsa import CompositeMLDSA
 
 
@@ -55,6 +60,19 @@ def main() -> int:
         assert ok, "composite signature did not verify"
         log.info("sig profile=%s  pk=%d B  sk=%d B  sig=%d B  verify=%s",
                  profile, len(pk), len(sk), len(sig), ok)
+
+    # Mutual-authenticated handshake over the hybrid KEM + composite signature.
+    server = Identity.generate("server.example")
+    client = Identity.generate("client.example")
+    resp = Responder("xwing", identity=server, require_peer=client.public)
+    init = Initiator("xwing", peer=server.public, identity=client)
+    st_i, m1 = init.start()
+    st_r, m2 = resp.respond(m1)
+    key_i, m3 = init.finish(st_i, m2)
+    key_r = resp.confirm(st_r, m3)
+    assert key_i == key_r, "handshake keys disagree"
+    log.info("handshake (mutual, xwing): msgs=%d/%d/%d B  session key agreed=%s",
+             len(m1), len(m2), len(m3), key_i == key_r)
     return 0
 
 

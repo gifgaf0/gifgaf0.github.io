@@ -338,31 +338,31 @@ the theorem. All are published, and all are breaks of proposed or withdrawn cons
 
 - **Structured-code substitution — the McEliece family (T2).** Random binary Goppa codes
   give a sound McEliece instance; substituting a *structured* code to shrink the key has been
-  broken repeatedly — generalized Reed–Solomon codes (Sidelnikov–Shestakov), quasi-cyclic and
-  dyadic variants, and algebraic-geometry codes — by distinguishers that recover the hidden
-  code structure. The shape is identical to §3: structure added for size became a
-  distinguisher. *(Citations to verify.)*
+  broken repeatedly — generalized Reed–Solomon codes (Sidelnikov–Shestakov, 1992), compact
+  quasi-cyclic and dyadic variants (Faugère–Otmani–Perret–Tillich, EUROCRYPT 2010), and
+  algebraic-geometry codes (Couvreur–Márquez-Corbella–Pellikaan, 2014) — by structural attacks
+  that recover the hidden code from the public generator matrix. The shape is identical to §3:
+  structure added for size became the lever.
 
 - **Overstretched NTRU (T2).** A large modulus at fixed noise causes a **dense sublattice**
   to appear, broken by subfield / sublattice attacks (Albrecht–Bai–Ducas; Kirchner–Fouque),
   with the onset later pinned as the "fatigue point" (Ducas–van Woerden). Here the structural
   artifact is created by a parameter choice made for functionality rather than by an explicit
   generator, but the lever is again a fixed low-dimensional structure in the public object.
-  *(Citations to verify.)*
 
 - **Principal-ideal lattices and short generators (T2).** Compact key constructions over
   principal ideals (e.g. Soliloquy) admit short-generator recovery (Campbell–Groves–Shepherd;
   Cramer–Ducas–Peikert–Regev): the ideal structure chosen for compactness is the recovery
-  route. *(Citations to verify.)*
+  route.
 
 - **SIDH/SIKE — auxiliary structure for functionality (analogy, not T1).** The torsion-point
-  images `φ(P), φ(Q)` are published to let the key exchange complete; the 2022 attacks
-  (Castryck–Decru; Maino–Martindale–Panny–Pope–Wesolowski; Robert, polynomial-time in full
-  generality), via Kani's theorem embedding the secret isogeny into a higher-dimensional
-  abelian variety, turn exactly that auxiliary structure into key recovery. This is *not* a
-  rank ceiling and not an instance of the §2 theorem; it is the same meta-lesson — the
-  structure published to make the scheme work was the attack surface — and we include it to
-  mark the boundary of the linear-image argument. *(Citations to verify.)*
+  images `φ(P), φ(Q)` are published to let the key exchange complete; the 2022 attacks, all
+  published at EUROCRYPT 2023 (Castryck–Decru; Maino–Martindale–Panny–Pope–Wesolowski; Robert,
+  polynomial-time in full generality), via Kani's theorem embedding the secret isogeny into a
+  higher-dimensional abelian variety, turn exactly that auxiliary structure into key recovery.
+  This is *not* a rank ceiling and not an instance of the §2 theorem; it is the same meta-lesson
+  — the structure published to make the scheme work was the attack surface — and we include it
+  to mark the boundary of the linear-image argument.
 
 The unifying question the taxonomy recommends asking of any structured proposal is simply:
 *what did the structure I added give the attacker?* For the linear-image cases, §4 answers it
@@ -388,8 +388,10 @@ single test.
 - **Idealised adversary for the recovery corollary.** Corollary 2 states the dimension to
   which recovery reduces; the concrete cost is then a lattice-estimator question (and depends,
   as §3.5 shows, on parameters the rank test is silent about).
-- **References are leads.** The citations in §5 and below are given to be verified against the
-  primary sources before any external use.
+- **References verified.** The citations in §5 and below were checked against primary sources
+  (IACR ePrint, the journal and conference records, DBLP, and authors' own pages) in October
+  2026. The two self-references to the author's own Zenodo depositions still need their current
+  version DOIs pinned.
 
 ---
 
@@ -414,26 +416,54 @@ and takes responsibility for it.
 
 ---
 
-## References *(leads — verify against primary sources before use)*
+## References
 
-- [Gifford 2026a] M. Gifford. *A rank collapse in a sedenion Module-LWE proposal, and why a
-  uniform matrix does not repair it.* Zenodo, 2026. (Pin the current version DOI.)
-- [Gifford 2026b] M. Gifford. *Fluid Lattice Topology: bridging PSL(2,7) vacuum geometry and
-  non-associative post-quantum cryptography.* Zenodo, 2026 (v3 carries the withdrawal notice).
-- M. R. Albrecht, R. Player, S. Scott. *On the concrete hardness of Learning with Errors.*
-  J. Math. Cryptol. 9(3), 2015; and the lattice-estimator, `github.com/malb/lattice-estimator`.
-- M. R. Albrecht, S. Bai, L. Ducas. *A subfield lattice attack on overstretched NTRU
-  assumptions.* CRYPTO 2016. P. Kirchner, P.-A. Fouque, related subfield attacks. L. Ducas,
-  W. van Woerden, *NTRU fatigue*, 2021.
-- V. M. Sidelnikov, S. O. Shestakov. *On the insecurity of cryptosystems based on generalized
-  Reed–Solomon codes.* 1992. (and structured/quasi-cyclic/dyadic and AG-code distinguisher
-  lines — Faugère–Otmani–Perret–Tillich; Couvreur et al.)
-- P. Campbell, M. Groves, D. Shepherd. *Soliloquy.* 2014. R. Cramer, L. Ducas, C. Peikert,
-  O. Regev. *Recovering short generators of principal ideals in cyclotomic rings.* EUROCRYPT 2016.
-- W. Castryck, T. Decru. *An efficient key recovery attack on SIDH.* EUROCRYPT 2023 (eprint
-  2022/975). L. Maino, C. Martindale, L. Panny, G. Pope, B. Wesolowski (eprint 2022/1026).
-  D. Robert. *Breaking SIDH in polynomial time* (eprint 2022/1038). E. Kani, 1997.
-- NIST FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), FIPS 205 (SLH-DSA) — correctly-designed controls.
+*Verified against primary sources (IACR ePrint, journal/conference records, DBLP, authors'
+pages), October 2026. The two Gifford self-references need their current Zenodo version DOIs
+pinned before external use.*
+
+**Primitives and controls**
 - O. Regev. *On lattices, learning with errors, random linear codes, and cryptography.*
-  J. ACM 56(6), 2009. A. Langlois, D. Stehlé. *Worst-case to average-case reductions for module
-  lattices.* Des. Codes Cryptogr. 75, 2015.
+  J. ACM 56(6), article 34, 2009.
+- A. Langlois, D. Stehlé. *Worst-case to average-case reductions for module lattices.*
+  Des. Codes Cryptogr. 75(3):565–599, 2015. (ePrint 2012/090.)
+- M. R. Albrecht, R. Player, S. Scott. *On the concrete hardness of Learning with Errors.*
+  J. Math. Cryptol. 9(3):169–203, 2015 (ePrint 2015/046); the lattice-estimator,
+  `github.com/malb/lattice-estimator`.
+- NIST. *FIPS 203* (ML-KEM), *FIPS 204* (ML-DSA), *FIPS 205* (SLH-DSA), August 2024
+  — correctly-designed controls.
+
+**Structure-induced breaks (the §5 taxonomy)**
+- V. M. Sidelnikov, S. O. Shestakov. *On the insecurity of cryptosystems based on generalized
+  Reed–Solomon codes.* Discrete Math. Appl. 2(4):439–444, 1992 (transl. of Diskretnaya
+  Matematika 4(3), 1992).
+- J.-C. Faugère, A. Otmani, L. Perret, J.-P. Tillich. *Algebraic Cryptanalysis of McEliece
+  Variants with Compact Keys.* EUROCRYPT 2010, LNCS 6110, 279–298.
+- A. Couvreur, I. Márquez-Corbella, R. Pellikaan. *A polynomial time attack against algebraic
+  geometry code based public key cryptosystems.* ISIT 2014 (ePrint 2014/064).
+- M. R. Albrecht, S. Bai, L. Ducas. *A subfield lattice attack on overstretched NTRU
+  assumptions: cryptanalysis of some FHE and graded encoding schemes.* CRYPTO 2016
+  (ePrint 2016/127).
+- P. Kirchner, P.-A. Fouque. *Revisiting lattice attacks on overstretched NTRU parameters.*
+  EUROCRYPT 2017.
+- L. Ducas, W. van Woerden. *NTRU Fatigue: How Stretched is Overstretched?* ASIACRYPT 2021
+  (ePrint 2021/999).
+- P. Campbell, M. Groves, D. Shepherd. *Soliloquy: A Cautionary Tale.* ETSI 2nd Quantum-Safe
+  Crypto Workshop, 2014.
+- R. Cramer, L. Ducas, C. Peikert, O. Regev. *Recovering short generators of principal ideals
+  in cyclotomic rings.* EUROCRYPT 2016 (ePrint 2015/313).
+- W. Castryck, T. Decru. *An efficient key recovery attack on SIDH.* EUROCRYPT 2023
+  (ePrint 2022/975).
+- L. Maino, C. Martindale, L. Panny, G. Pope, B. Wesolowski. *A direct key recovery attack on
+  SIDH.* EUROCRYPT 2023 (ePrint 2022/1026).
+- D. Robert. *Breaking SIDH in polynomial time.* EUROCRYPT 2023 (ePrint 2022/1038).
+- E. Kani. *The number of curves of genus two with elliptic differentials.* J. reine angew.
+  Math. 485:93–121, 1997.
+
+**Case study (author's own)**
+- [Gifford 2026a] M. Gifford. *A rank collapse in a sedenion Module-LWE proposal, and why a
+  uniform matrix does not repair it.* Zenodo, 2026. (Pin the current version DOI; v1 was
+  10.5281/zenodo.23270249.)
+- [Gifford 2026b] M. Gifford. *Fluid Lattice Topology: bridging PSL(2,7) vacuum geometry and
+  non-associative post-quantum cryptography.* Zenodo, 2026 (v3 carries the withdrawal notice;
+  10.5281/zenodo.20078312).

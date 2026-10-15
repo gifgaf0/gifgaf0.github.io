@@ -39,6 +39,7 @@ artifact but no longer sits on the KEM path.
 - [x] **Symbolic analysis** — Tamarin models, all lemmas verified with tamarin-prover 1.12.0 + Maude 3.5.1 (see `analysis/README.md`):
   - `analysis/hybrid_ake.spthy`: secrecy, forward secrecy, injective agreement both directions.
   - `analysis/hybrid_ake_ext.spthy`: adds an ephemeral-key-reveal oracle (key secrecy shown session-local; authentication shown robust to ephemeral leakage) and a second ciphersuite (cross-suite downgrade resistance).
+- [x] **Computational analysis** — `docs/HYBRID_AKE_COMPUTATIONAL.md`: a reduction-based (game-hopping) proof sketch in a Bellare–Rogaway model. Authentication reduces to composite-signature EUF-CMA + collision resistance of `H`; key indistinguishability with forward secrecy reduces to hybrid-KEM IND-CCA + HKDF-as-PRF. Two hybrid-robustness lemmas carry the bounds down to "secure as long as either leg (ML-KEM / X25519) and either signature component (ML-DSA / Ed25519) holds". Paper-body rigour, not yet mechanized (CryptoVerif is the recommended next step; its host was unreachable in the build environment).
 - [x] **Test suite** — 272 passing (`pytest`), KATs byte-exact against the vectors above.
 
 ### Next (optional)

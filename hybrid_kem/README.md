@@ -77,7 +77,12 @@ with hybrid groups from a maintained library.
 The handshake is specified in `docs/HYBRID_AKE_SPEC.md` and has a Tamarin model
 in `analysis/`: session-key secrecy, forward secrecy, and injective agreement in
 both directions are machine-verified (symbolic model; see `analysis/README.md`
-for the abstractions and what the result does and does not cover).
+for the abstractions and what the result does and does not cover). A
+complementary **computational** analysis is in `docs/HYBRID_AKE_COMPUTATIONAL.md`
+— a game-hopping reduction (paper rigour, not yet mechanized) of authentication
+to composite-signature EUF-CMA and of key indistinguishability with forward
+secrecy to hybrid-KEM IND-CCA, with the quantitative "secure if either leg
+holds" bound made explicit.
 
 ## Quick start
 

@@ -3,8 +3,8 @@
 """
 design_matrix_rank.py -- a pre-standardization diagnostic for seed-generated public keys.
 
-THE IDEA (see the companion outline, sections 2 and 4)
-------------------------------------------------------
+THE IDEA (see the companion note, sections 2 and 4)
+---------------------------------------------------
 Many public-key constructions build their public object by applying a *fixed family
 of linear maps* to random seeds -- to compress a key, to inherit a symmetry, or to
 support a reduction. Whenever they do, the flattened public object factors as
@@ -24,20 +24,23 @@ common left annihilators and fixed invariant subspaces are the same phenomenon.
 
 THE SATURATION RULE (why this hides)
 ------------------------------------
-If the generator contributes only c independent images, then for instances with
-fewer than c columns the generated object is GENERICALLY FULL RANK and looks exactly
-like a uniform control. The ceiling only separates once the instance is large enough
-to exhaust the generator. *A rank check run below saturation returns a clean result
-even for a broken scheme.* This tool therefore refuses to certify from a sub-saturation
-check and reproduces the saturation curve explicitly.
+Let rho = rank D. A rank check on a realized instance of ambient dimension n can
+certify only rho >= n: a full-rank result at n <= rho is exactly what a scheme with
+ceiling rho also produces. The deficiency is guaranteed to show only once n > rho.
+In the built-in case (rho = 76) the realized object is full rank for every k <= 4
+(n <= 64), identical to a uniform control, and first falls short at k = 5 (rank 72
+of 80). *A rank check run below the ceiling returns a clean result even for a broken
+scheme.* This tool therefore computes rho from the design itself, which bounds every
+instance size at once, and prints the empirical curve explicitly.
 
 THE DIAGNOSTIC
 --------------
   1. Rewrite the construction as M = R.D; isolate the fixed design matrix D.
-  2. Count c = independent generator images (columns of D); note the saturation size.
-  3. Compute rank D EXACTLY over the real field F_q (not floating point), and compare
-     against ambient at an instance size ABOVE saturation.
-  4. Cross-check against a uniform control of identical shape.
+  2. Count c = independent generator images (columns of D).
+  3. Compute rho = rank D EXACTLY over the real field F_q (not floating point); it
+     bounds rank M at every instance size at once.
+  4. Cross-check by realizing M at a size whose ambient dimension exceeds rho,
+     against a uniform control of identical shape.
   5. Flag a ceiling (distinguisher + dimension-reduced recovery) or a nontrivial common
      invariant subspace.
 
@@ -317,11 +320,15 @@ def diagnose(scheme: GeneratorScheme, primes=DEFAULT_PRIMES, max_k=8, seed_sets=
           f"  ceiling rho = {rho}.")
 
     ceiling = rho < d_full
-    print(f"\n[2] Ceiling:  rank M <= rho = {rho}  for EVERY instance size k  "
-          f"(M = R.D, R only multiplies the fixed D).")
-    print(f"    Saturation: a uniform control reaches rank {rho} at k = "
-          f"{sat_k - 1 if sat_k>1 else 1}..{sat_k}; any empirical check at k < {sat_k} "
-          f"cannot reveal the ceiling.")
+    if ceiling:
+        print(f"\n[2] Ceiling:  rank M <= rho = {rho}  for EVERY instance size k  "
+              f"(M = R.D, R only multiplies the fixed D).")
+        print(f"    Visibility: a realized instance can show the ceiling only once its ambient "
+              f"dimension exceeds {rho} (first at k = {sat_k});")
+        print(f"    a check at k < {sat_k} certifies only rho >= ambient(k) and cannot reveal it.")
+    else:
+        print(f"\n[2] No ceiling: the design matrix has full rank ({rho} = min dim), so it imposes "
+              f"no bound below the ambient dimension.")
 
     # 3. Empirical saturation curve: realized scheme vs uniform control.
     print(f"\n[3] Empirical rank vs a uniform control (over F_{primes[0]}, {seed_sets} seed sets):")

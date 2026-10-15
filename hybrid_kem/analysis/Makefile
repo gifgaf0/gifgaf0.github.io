@@ -3,7 +3,7 @@
 #   Tamarin: https://github.com/tamarin-prover/tamarin-prover/releases/tag/1.12.0
 #   Maude:   https://github.com/maude-lang/Maude/releases/tag/Maude3.5.1
 
-.PHONY: prove prove-ext check
+.PHONY: prove prove-ext check cryptoverif
 prove:
 	tamarin-prover --prove hybrid_ake.spthy
 
@@ -13,3 +13,8 @@ prove-ext:
 check:
 	tamarin-prover hybrid_ake.spthy
 	tamarin-prover hybrid_ake_ext.spthy
+
+# Computational models (CryptoVerif 2.13); see cryptoverif/README.md.
+# Pass CVHOME=/path/to/cryptoverif2.13 if it is not in $(HOME)/cryptoverif2.13.
+cryptoverif:
+	$(MAKE) -C cryptoverif

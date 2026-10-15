@@ -1,0 +1,337 @@
+(* HYBRID-AKE v1 -- computational model with EPHEMERAL-KEY REVEAL
+   (CryptoVerif, oracles front-end). Extends hybrid_ake.ocv exactly as
+   ../hybrid_ake_ext.spthy extends ../hybrid_ake.spthy: the adversary may
+   additionally run initiator sessions whose ephemeral KEM secret it learns
+   (RevealEph). The choice is made when the session starts (static reveal);
+   the session's own key and that of every responder session that
+   encapsulated to the revealed key are never tested, which is the freshness
+   clause (ii) of docs/HYBRID_AKE_COMPUTATIONAL.md. Authentication is still
+   required for these sessions, so the agreement queries now also show that
+   it does not depend on the ephemeral staying secret.
+
+   Everything below the next line is as in hybrid_ake.ocv except the
+   additions marked [EPH].
+
+   ---- original header of hybrid_ake.ocv ----
+
+   Mechanizes Theorems 1 and 2 of docs/HYBRID_AKE_COMPUTATIONAL.md for the
+   protocol of docs/HYBRID_AKE_SPEC.md, as implemented in
+   protocols/authenticated_handshake.py.
+
+   Primitives and the assumptions made on them (all in CryptoVerif's
+   post-quantum library, so `cryptoverif -lib pq` gives a post-quantum sound
+   proof):
+   - KEM  : the hybrid KEM, as one IND-CCA2 KEM (perfectly correct).
+   - Sig  : the composite signature, as one UF-CMA signature with adaptive
+            corruption of the signing key.
+   - H    : SHA3-256, collision resistant (modelled as a keyed family).
+   - KDF  : HKDF-SHA256 with ikm = ss and salt = TH, a PRF keyed by ss.
+            (INFO and SUITE_ID are constants and are folded into kdf.)
+   That each hybrid primitive meets its assumption if EITHER component does
+   is proved separately (composite_sig.m4.ocv, kem_*.m4.ocv).
+
+   Parties. NK honest parties, each with a long-term composite key, can be
+   corrupted at any time (Ocorrupt returns the key seed). Each honest party
+   runs, in parallel and any number of times:
+   - initiator sessions, in mutual mode (signs msg3) or anonymous mode
+     (responder-only authentication; the party's key is not used);
+   - responder sessions in mutual mode (requires a peer identity, verifies
+     msg3) or in responder-only mode (accepts any initiator).
+   The adversary chooses every session's peer and may pick dishonest peers
+   whose keys it generated itself, or honest peers.
+
+   Simplifications (documented in README.md in this directory):
+   a single ciphersuite, so SUITE_ID is a constant and the suite check is
+   trivial; the length-prefixed encodings are modelled by injective,
+   pairwise-disjoint constructors; the initiator identity field (id_I, vk_I)
+   is one bitstring, iid_none when anonymous. *)
+
+proof {
+   (* Game hop 1: UF-CMA of the composite signature, for every honest
+      long-term key, with adaptive corruption. This alone proves both
+      injective-agreement queries. *)
+   crypto uf_cma_corrupt(sign) rK;
+   success;
+   simplify;
+   (* In the three branches where an initiator's key is tested, its
+      ciphertext is an honest responder's encapsulation to its own ephemeral
+      key. By KEM correctness, replace the decapsulated secret by the
+      responder's encapsulated one (CryptoVerif checks each equality).
+      Branches, in game order: mutual initiator matched with a
+      responder-only session; with a mutual responder; anonymous initiator
+      matched with a responder-only session. The u_* indices are the find
+      indices CryptoVerif 2.13 introduces in hop 1 (they differ from
+      hybrid_ake.ocv because the leaky initiators add signature checks). *)
+   replace at_nth 6 1 "kdf({_}ssI" "ssA[u_33, u_34]";
+   replace at_nth 5 1 "kdf({_}ssI" "ssR[u_35, u_36]";
+   replace at_nth 2 1 "kdf({_}ssI" "ssA[u_43, u_44]";
+   (* Game hop 2: IND-CCA2 of the (hybrid) KEM for all ephemeral keys:
+      honest encapsulations now yield fresh random shared secrets. *)
+   crypto ind_cca2(encap) seedE;
+   (* Game hop 3: the KDF is a PRF keyed by the shared secret: session keys
+      become fresh random values, equal exactly for matching transcripts. *)
+   crypto prf(kdf) *;
+   success
+}
+
+
+param NK, NI, NR, NRa, NL.
+
+(* ---------------- types ---------------- *)
+
+type idname [bounded].               (* human-readable names *)
+type keyseed [large, fixed].         (* long-term signature key seed *)
+type pkey [bounded].                 (* composite verification key *)
+type skey [bounded].
+type sigmsg [bounded].               (* (context string, message) pairs *)
+type signature [bounded].
+
+type kemseed [large, fixed].         (* ephemeral KEM key seed *)
+type kempkey [bounded].
+type kemskey [bounded].
+type kemsec [large, fixed].          (* KEM shared secret ss *)
+type ciphertext [bounded].
+type encapout [bounded].
+
+type hashkey [large, fixed].
+type hashinput.
+type hashoutput [large, fixed].      (* transcript hash TH *)
+type sesskey [large, fixed].         (* 32-byte session key *)
+
+(* ---------------- primitives ---------------- *)
+
+(* Hybrid KEM: IND-CCA2. *)
+proba Pkemcca.
+proba Pkemkeycoll.
+proba Pkemctxtcoll.
+expand IND_CCA2_KEM(kemseed, kempkey, kemskey, kemsec, ciphertext, encapout,
+                    kempkgen, kemskgen, encap, kempair, decap, injbot,
+                    Pkemcca, Pkemkeycoll, Pkemctxtcoll).
+
+(* Composite signature: UF-CMA (with corruption via uf_cma_corrupt). *)
+proba Psign.
+proba Psigncoll.
+expand UF_CMA_proba_signature(keyseed, pkey, skey, sigmsg, signature,
+                              skgen, pkgen, sign, check, Psign, Psigncoll).
+
+(* The two signed message types, separated by the context strings
+   CTX_R = "hybrid-ake/responder-auth/v1" and
+   CTX_I = "hybrid-ake/initiator-auth/v1". *)
+fun msgR(hashoutput): sigmsg [data].
+fun msgI(hashoutput): sigmsg [data].
+equation forall x: hashoutput, y: hashoutput; msgR(x) <> msgI(y).
+
+(* Transcript hash H = SHA3-256: collision resistant. *)
+proba Phash.
+expand CollisionResistant_hash(hashkey, hashinput, hashoutput, H, Horacle, Phash).
+
+(* LP(SUITE_ID, id_I, vk_I, id_R, vk_R, pk_e, ct)  and  LP(TH, sig_R).
+   Different field counts, so the two length-prefixed encodings never
+   collide (a byte string parses as at most one of them). *)
+fun th_in(bitstring, idname, pkey, kempkey, ciphertext): hashinput [data].
+fun th2_in(hashoutput, signature): hashinput [data].
+equation forall a: bitstring, b: idname, c: pkey, d: kempkey, e: ciphertext,
+                x: hashoutput, s: signature;
+   th_in(a, b, c, d, e) <> th2_in(x, s).
+
+(* Initiator identity field (id_I, vk_I): empty in anonymous mode. *)
+fun iid_some(idname, pkey): bitstring [data].
+const iid_none: bitstring.
+equation forall n: idname, k: pkey; iid_some(n, k) <> iid_none.
+
+(* Session-key derivation K = HKDF(ikm = ss, salt = TH, info): PRF in ss. *)
+proba Pprf.
+expand PRF(kemsec, hashoutput, sesskey, kdf, Pprf).
+
+(* Key leakage to the adversary (RevealKey). *)
+fun Leak(sesskey): bitstring [data].
+const NoLeak: bitstring.
+equation forall k: sesskey; Leak(k) <> NoLeak.
+
+(* [EPH] Revealed ephemeral seed, sent with msg1 of a leaky session. *)
+fun ELeak(kemseed): bitstring [data].
+
+(* Placeholder msg3 in anonymous mode (nothing is sent). *)
+const nosig: signature.
+
+(* ---------------- events and queries ---------------- *)
+
+(* beginR: responder sent msg2 for this transcript and key.
+   endI  : initiator accepted with an honest peer uncorrupted at acceptance. *)
+event beginR(bitstring, idname, pkey, kempkey, ciphertext, sesskey).
+event endI(bitstring, idname, pkey, kempkey, ciphertext, sesskey).
+(* beginI: initiator accepted and signed msg3 (mutual mode).
+   endR  : mutual responder accepted msg3 from an honest peer uncorrupted
+           at acceptance. *)
+event beginI(bitstring, idname, pkey, kempkey, ciphertext, signature, sesskey).
+event endR(bitstring, idname, pkey, kempkey, ciphertext, signature, sesskey).
+
+(* G3/G4: responder authentication, injective agreement on the full
+   transcript (both identities, pk_e, ct) and on the session key. *)
+query iid: bitstring, idR: idname, vkR: pkey, pkE: kempkey, ct: ciphertext, k: sesskey;
+   inj-event(endI(iid, idR, vkR, pkE, ct, k)) ==> inj-event(beginR(iid, idR, vkR, pkE, ct, k))
+   public_vars keyI, keyR.
+
+(* G5/G4: initiator authentication (mutual mode), injective agreement. *)
+query iid: bitstring, idR: idname, vkR: pkey, pkE: kempkey, ct: ciphertext, sR: signature, k: sesskey;
+   inj-event(endR(iid, idR, vkR, pkE, ct, sR, k)) ==> inj-event(beginI(iid, idR, vkR, pkE, ct, sR, k))
+   public_vars keyI, keyR.
+
+(* G1/G2: real-or-random secrecy of the session keys of every session whose
+   peer was honest and uncorrupted when it accepted (several test queries).
+   Corruption after acceptance, and corruption of the session's own key at
+   any time, are allowed: this is forward secrecy (and KCI resistance). *)
+query secret keyI.
+query secret keyR.
+
+(* ---------------- protocol ---------------- *)
+
+(* Initiator session of honest party (myid, myvk, myr). *)
+let initiator(hk1: hashkey, myid: idname, myvk: pkey, myr: keyseed) =
+   OI1(anon: bool, idPI: idname, vkPI: pkey) :=
+      (* idPI, vkPI: the expected responder, obtained out of band *)
+      seedE <-R kemseed;
+      pkE: kempkey <- kempkgen(seedE);
+      iidI: bitstring <- (if anon then iid_none else iid_some(myid, myvk));
+      return(iidI, pkE);
+
+   OI2(idRI: idname, vkRI: pkey, ctI: ciphertext, sigRI: signature) :=
+      if idRI = idPI && vkRI = vkPI then
+      let injbot(ssI: kemsec) = decap(ctI, kemskgen(seedE)) in
+      thI: hashoutput <- H(hk1, th_in(iidI, idRI, vkRI, pkE, ctI));
+      if check(msgR(thI), vkRI, sigRI) then
+      kI: sesskey <- kdf(ssI, thI);
+      sigI: signature <-
+         (if anon then nosig else
+          sI <- sign(msgI(H(hk1, th2_in(thI, sigRI))), skgen(myr));
+          event beginI(iidI, idRI, vkRI, pkE, ctI, sigRI, kI);
+          sI);
+      leakI: bitstring <-
+         (find jP <= NK suchthat defined(vkK[jP]) && vkRI = vkK[jP] then
+             (if defined(corruptK[jP]) then
+                (* peer corrupted before we accept: reveal the key, unless an
+                   honest responder session holds the same transcript (its
+                   partner, whose key may be tested) *)
+                find jR <= NR, jRK <= NK suchthat defined(thR[jR, jRK]) && thI = thR[jR, jRK] then NoLeak
+                orfind jA <= NRa, jAK <= NK suchthat defined(thA[jA, jAK]) && thI = thA[jA, jAK] then NoLeak
+                else Leak(kI)
+              else
+                (* honest peer, not corrupted when we accept: tested *)
+                event endI(iidI, idRI, vkRI, pkE, ctI, kI);
+                keyI: sesskey <- kI;
+                NoLeak)
+          else
+             (* dishonest peer: same rule as for a corrupted one *)
+             find jR' <= NR, jRK' <= NK suchthat defined(thR[jR', jRK']) && thI = thR[jR', jRK'] then NoLeak
+             orfind jA' <= NRa, jAK' <= NK suchthat defined(thA[jA', jAK']) && thI = thA[jA', jAK'] then NoLeak
+             else Leak(kI));
+      return(sigI, leakI).
+
+(* Responder session, mutual mode: requires peer (idPR, vkPR). *)
+let responder(hk2: hashkey, myid: idname, myvk: pkey, myr: keyseed) =
+   OR1(idPR: idname, vkPR: pkey, iidR: bitstring, pkER: kempkey) :=
+      if iidR = iid_some(idPR, vkPR) then
+      let kempair(ssR: kemsec, ctR: ciphertext) = encap(pkER) in
+      thR: hashoutput <- H(hk2, th_in(iidR, myid, myvk, pkER, ctR));
+      sigR: signature <- sign(msgR(thR), skgen(myr));
+      kR: sesskey <- kdf(ssR, thR);
+      event beginR(iidR, myid, myvk, pkER, ctR, kR);
+      return(myid, myvk, ctR, sigR);
+
+   OR2(sigIR: signature) :=
+      if check(msgI(H(hk2, th2_in(thR, sigR))), vkPR, sigIR) then
+      leakR: bitstring <-
+         (find jP2 <= NK suchthat defined(vkK[jP2]) && vkPR = vkK[jP2] then
+             (if defined(corruptK[jP2]) then
+                (* partner candidate: an honest initiator that sent this
+                   msg1 and expects us *)
+                find jI <= NI, jIK <= NK suchthat
+                   defined(pkE[jI, jIK], iidI[jI, jIK], idPI[jI, jIK], vkPI[jI, jIK]) &&
+                   pkER = pkE[jI, jIK] && iidR = iidI[jI, jIK] &&
+                   myid = idPI[jI, jIK] && myvk = vkPI[jI, jIK]
+                then NoLeak
+                else Leak(kR)
+              else
+                (* [EPH] not tested if we encapsulated to a revealed
+                   ephemeral key: the adversary can decapsulate *)
+                find jL <= NL, jLK <= NK suchthat defined(pkEL[jL, jLK]) && pkER = pkEL[jL, jLK] then
+                  event endR(iidR, myid, myvk, pkER, ctR, sigR, kR);
+                  Leak(kR)
+                else
+                  event endR(iidR, myid, myvk, pkER, ctR, sigR, kR);
+                  keyR: sesskey <- kR;
+                  NoLeak)
+          else
+             find jI' <= NI, jIK' <= NK suchthat
+                defined(pkE[jI', jIK'], iidI[jI', jIK'], idPI[jI', jIK'], vkPI[jI', jIK']) &&
+                pkER = pkE[jI', jIK'] && iidR = iidI[jI', jIK'] &&
+                myid = idPI[jI', jIK'] && myvk = vkPI[jI', jIK']
+             then NoLeak
+             else Leak(kR));
+      return(leakR).
+
+(* Responder session, responder-only mode: any initiator. Its key is never
+   tested (the initiator is not authenticated); it is revealed unless an
+   honest initiator that sent this msg1 and expects us exists. *)
+let responder_anon(hk3: hashkey, myid: idname, myvk: pkey, myr: keyseed) =
+   OA1(iidA: bitstring, pkEA: kempkey) :=
+      let kempair(ssA: kemsec, ctA: ciphertext) = encap(pkEA) in
+      thA: hashoutput <- H(hk3, th_in(iidA, myid, myvk, pkEA, ctA));
+      sigA: signature <- sign(msgR(thA), skgen(myr));
+      kA: sesskey <- kdf(ssA, thA);
+      event beginR(iidA, myid, myvk, pkEA, ctA, kA);
+      leakA: bitstring <-
+         (find jI2 <= NI, jIK2 <= NK suchthat
+             defined(pkE[jI2, jIK2], iidI[jI2, jIK2], idPI[jI2, jIK2], vkPI[jI2, jIK2]) &&
+             pkEA = pkE[jI2, jIK2] && iidA = iidI[jI2, jIK2] &&
+             myid = idPI[jI2, jIK2] && myvk = vkPI[jI2, jIK2]
+          then NoLeak
+          else Leak(kA));
+      return(myid, myvk, ctA, sigA, leakA).
+
+(* [EPH] Initiator session whose ephemeral KEM secret is revealed when it
+   starts. Same code as initiator, with the seed returned with msg1 and the
+   session key always revealed; endI/beginI are still emitted, so the
+   authentication queries cover these sessions too. *)
+let initiator_leak(hk4: hashkey, myid: idname, myvk: pkey, myr: keyseed) =
+   OL1(anonL: bool, idPL: idname, vkPL: pkey) :=
+      seedL <-R kemseed;
+      pkEL: kempkey <- kempkgen(seedL);
+      iidL: bitstring <- (if anonL then iid_none else iid_some(myid, myvk));
+      return(iidL, pkEL, ELeak(seedL));
+
+   OL2(idRL: idname, vkRL: pkey, ctL: ciphertext, sigRL: signature) :=
+      if idRL = idPL && vkRL = vkPL then
+      let injbot(ssL: kemsec) = decap(ctL, kemskgen(seedL)) in
+      thL: hashoutput <- H(hk4, th_in(iidL, idRL, vkRL, pkEL, ctL));
+      if check(msgR(thL), vkRL, sigRL) then
+      kL: sesskey <- kdf(ssL, thL);
+      sigL: signature <-
+         (if anonL then nosig else
+          sL <- sign(msgI(H(hk4, th2_in(thL, sigRL))), skgen(myr));
+          event beginI(iidL, idRL, vkRL, pkEL, ctL, sigRL, kL);
+          sL);
+      (find jP3 <= NK suchthat defined(vkK[jP3]) && vkRL = vkK[jP3] then
+          if defined(corruptK[jP3]) then
+             return(sigL, Leak(kL))
+          else
+             event endI(iidL, idRL, vkRL, pkEL, ctL, kL);
+             return(sigL, Leak(kL))
+       else
+          return(sigL, Leak(kL))).
+
+process
+   Ostart() :=
+      hk <-R hashkey;
+      return();
+      (run Horacle(hk) |
+       foreach iK <= NK do
+          Ogen(idK: idname) :=
+             rK <-R keyseed;
+             vkK: pkey <- pkgen(rK);
+             return(vkK);
+             ((Ocorrupt() := corruptK: bool <- true; return(rK)) |
+              (foreach iI <= NI do run initiator(hk, idK, vkK, rK)) |
+              (foreach iR <= NR do run responder(hk, idK, vkK, rK)) |
+              (foreach iA <= NRa do run responder_anon(hk, idK, vkK, rK)) |
+              (foreach iL <= NL do run initiator_leak(hk, idK, vkK, rK))))

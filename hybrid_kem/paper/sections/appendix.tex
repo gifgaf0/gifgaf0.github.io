@@ -1,0 +1,181 @@
+\section{Model excerpts}\label{app:excerpts}
+
+\paragraph{Initiator: acceptance, freshness and RevealKey.} From
+\file{hybrid_ake.ocv}. Oracle \texttt{OI2} processes $m_2$, and \texttt{OI3}
+is RevealKey for the session. \texttt{vkK}, \texttt{corruptK} are the honest
+keys and their corruption flags; \texttt{thR}, \texttt{revR}, \texttt{keyR}
+(and \texttt{thA}, \texttt{revA} for responder-only sessions) are the other
+sessions' transcripts, reveal flags and test keys.
+\begin{lstlisting}
+OI2(idRI: idname, vkRI: pkey, ctI: ciphertext, sigRI: signature) :=
+   if idRI = idPI && vkRI = vkPI then
+   let injbot(ssI: kemsec) = decap(ctI, kemskgen(seedE)) in
+   thI: hashoutput <- H(hk1, th_in(iidI, idRI, vkRI, pkE, ctI));
+   if check(msgR(thI), vkRI, sigRI) then
+   kI: sesskey <- kdf(ssI, thI);
+   sigI: signature <- (if anon then nosig else
+        sI <- sign(msgI(H(hk1, th2_in(thI, sigRI))), skgen(myr));
+        event beginI(iidI, idRI, vkRI, pkE, ctI, sigRI, kI); sI);
+   testI: bool <-
+      (find jP <= NK suchthat defined(vkK[jP]) && vkRI = vkK[jP] then
+          (if defined(corruptK[jP]) then false else
+             event endI(iidI, idRI, vkRI, pkE, ctI, kI);
+             find jR1 <= NR, jRK1 <= NK suchthat defined(thR[jR1, jRK1], revR[jR1, jRK1])
+                  && thI = thR[jR1, jRK1] then false
+             orfind jA1 <= NRa, jAK1 <= NK suchthat defined(thA[jA1, jAK1], revA[jA1, jAK1])
+                  && thI = thA[jA1, jAK1] then false
+             else keyI: sesskey <- kI; true)
+       else false);
+   return(sigI);
+
+OI3() :=
+   if testI then return(NoLeak) else
+   find jR2 <= NR, jRK2 <= NK suchthat defined(thR[jR2, jRK2], keyR[jR2, jRK2])
+        && thI = thR[jR2, jRK2] then return(NoLeak)
+   else revI: bool <- true; return(Leak(kI)).
+\end{lstlisting}
+
+\paragraph{Composite signature.} From \file{composite_sig.m4.ocv}, in the
+variant in which ML-DSA is unforgeable and EdDSA's key is given to the
+adversary (\texttt{Obroken}).
+\begin{lstlisting}
+query ctx: ctxstr, m: bitstring; event(accepted(ctx, m)) ==> event(signed(ctx, m)).
+
+process
+   Ostart() :=
+      hk <-R hashkey; rM <-R keyseedM; rT <-R keyseedT;
+      return(pkgenM(rM), pkgenT(rT));
+      (run PHoracle(hk) |
+       (Obroken() := return(rT)) |
+       (foreach iS <= NS do
+          Osign(ctx: ctxstr, m: bitstring) :=
+             event signed(ctx, m);
+             x: mprime <- mp(ctx, PH(hk, m));
+             return(signM(x, skgenM(rM)), signT(x, skgenT(rT)))) |
+       (foreach iV <= NV do
+          Overify(ctx': ctxstr, m': bitstring, sM: sigM, sT: sigT) :=
+             x': mprime <- mp(ctx', PH(hk, m'));
+             if checkM(x', pkgenM(rM), sM) && checkT(x', pkgenT(rT), sT) then
+             event accepted(ctx', m');
+             return()))
+\end{lstlisting}
+
+\section{X25519 inputs with an all-zero output}\label{app:loworder}
+
+Let $p = 2^{255} - 19$ and $A = 486662$. Curve25519 is the Montgomery curve
+$E : v^2 = u^3 + A u^2 + u$ over $\Fp$, and $E'$ is its quadratic twist.
+Every $u \in \Fp$ is the u-coordinate of a point of $E$ or of $E'$, and
+u-coordinate arithmetic is the same on both. RFC~7748's X25519 decodes the
+peer's 32-byte input by clearing the top bit and reducing mod $p$, clamps the
+scalar to $k = 8m$ with $2^{251} \le m < 2^{252}$, and outputs the
+u-coordinate of $[k]P$, encoded as 0 when $[k]P$ is the point at infinity
+$\mathcal{O}$ or $(0,0)$.
+
+The list below is well known; Mbed~TLS, for example, rejects exactly these
+values~\cite{mbedtls}. We include a self-contained proof that it is
+complete, because our tests check that proof's computational steps.
+
+\begin{lemma}
+The X25519 output is all-zero exactly when the decoded input lies in
+$S = \{0,\ 1,\ p-1,\ u_{8a},\ u_{8b}\}$, where
+{\small
+\begin{align*}
+u_{8a} &= 325606250916557431795983626356110631294008115727848805560023387167927233504,\\
+u_{8b} &= 39382357235489614581723060781553021112529911719440698176882885853963445705823.
+\end{align*}}
+Exactly fourteen 32-byte strings decode into $S$.
+\end{lemma}
+
+\begin{proof}
+\emph{$S$ is the set of u-coordinates of points of order dividing 8 on $E$ or
+$E'$.} On u-coordinates, doubling is
+$u([2]P) = (u^2 - 1)^2 / \bigl(4u(u^2 + Au + 1)\bigr)$. A point has order~2
+when the denominator vanishes. Since $A^2 - 4$ is a non-square mod $p$,
+$u^2 + Au + 1$ has no root in $\Fp$, so the only such point is $(0,0)$. A
+point has order~4 when $u([2]P) = 0$, that is $u = \pm 1$. A point has
+order~8 when $[2]P$ has order~4, that is when $u([2]P) = \pm 1$. Then $u$ is a
+root of
+\[
+  f_{+}(u) = (u^2-1)^2 - 4u(u^2+Au+1) \quad\text{or}\quad
+  f_{-}(u) = (u^2-1)^2 + 4u(u^2+Au+1).
+\]
+The number of distinct roots of a polynomial $f$ in $\Fp$ is the degree of
+$\gcd(f, u^p - u)$, which we compute with $u^p \bmod f$ by square-and-multiply.
+$f_{+}$ has exactly two roots in $\Fp$, $u_{8a}$ and $u_{8b}$, and $f_{-}$ has
+none.
+
+\emph{For clamped scalars, the output is all-zero exactly on $S$.}
+$\#E = 8\ell$ and $\#E' = 4\ell'$, with $\ell$ and $\ell'$ primes greater
+than $2^{252}$~\cite{Ber06}. If $u \in S$, then $P$ has order dividing~8,
+which divides $k$, so $[k]P = \mathcal{O}$. Conversely, if the output is 0
+then $[k]P \in \{\mathcal{O}, (0,0)\}$, so $[2k]P = \mathcal{O}$. Write the
+order of $P$ as $2^a q$, with $q \in \{1, \ell\}$ on $E$ or $q \in \{1, \ell'\}$
+on $E'$. Then $q$ divides $2k = 16m$. Since $q$ is odd, it divides $m$, and
+since $m < 2^{252} < q$ when $q > 1$, we get $q = 1$. So $P$ has order
+dividing 8 and $u \in S$.
+
+\emph{Encodings.} An integer below $2^{255}$ is congruent to $s \in S$ if it
+is $s$ or $s + p$, and $s + p < 2^{255}$ only for $s < 19$. So $0$ and $1$ have
+two representatives each ($0, p$ and $1, p+1$), and the other three elements
+of $S$ have one. That makes seven integers, each with the top bit clear or
+set: fourteen strings.
+\end{proof}
+
+\paragraph{Tests.} The 63 tests in \file{tests/test_xwing_low_order.py}
+check the following.
+\begin{itemize}[itemsep=1pt,topsep=3pt]
+  \item An independent RFC~7748 ladder in Python reproduces the first test
+  vector of RFC~7748 \S5.2 and the first iteration of its iterated test, and agrees with
+  pyca on 64 random inputs. On it, each element of $S$ has the stated order,
+  and each of the fourteen encodings gives an all-zero output for several
+  clamped scalars.
+  \item The completeness argument above, run in code: $A^2-4$ is a
+  non-square, and the root counts of $f_{+}$ and $f_{-}$ are 2 and 0, with
+  $u_{8a}, u_{8b}$ roots of $f_{+}$. The root counter is first checked on
+  polynomials with known root counts.
+  \item pyca raises on each of the fourteen encodings. The implementation's
+  low-order test is true on them, and false on 256 random inputs and on near
+  misses such as $2$, $9$, $p-2$, $p+2$, $u_{8a}+1$ and $u_{8b}-1$, on all of
+  which pyca succeeds.
+  \item For each encoding, decapsulation of $\ct_M \| \ct_X$ with a low-order
+  $\ct_X$, and encapsulation to $\pk_M \| \pk_X$ with a low-order $\pk_X$,
+  return $\text{SHA3-256}(\ssv_M \| 0^{32} \| \ct_X \| \pk_X \| \mathsf{XWingLabel})$,
+  recomputed independently.
+  \item A simulated pyca error on a non-low-order input propagates, and
+  wrong-length inputs still raise.
+  \item The ML-KEM-1024 profile raises on each encoding, in both
+  directions.
+\end{itemize}
+
+\section{Reproducing the results}\label{app:repro}
+
+The artifact is the \file{hybrid_kem/} directory of
+\url{https://github.com/gifgaf0/gifgaf0.github.io} at commit
+\texttt{74affcf}~\cite{Artifact}; its \file{RESULTS.txt} lists every proved
+bound with its running-time terms. This paper's sources are in
+\file{hybrid_kem/paper/} on the branch \ident{claude/hybrid-ake-paper}, which
+contains that commit. The CryptoVerif results were produced with
+CryptoVerif~2.13, built from its source tarball with OCaml~4.14.1 on Ubuntu
+24.04. The tarball's SHA-512 is pinned in the opam repository
+(\ident{packages/cryptoverif/cryptoverif.2.13/opam}):
+\par\smallskip
+{\centering\footnotesize\ttfamily
+f05b70ff9ab72daf6d58fd598b89fcbf8415cf1adfd0c93be8f98c18364d7da1\\
+c968be0a42cba7e0b17081f0bf73dd0b1c291ebc6df4306e93008a4a57e5ac61\par}
+\noindent The following commands reproduce the results.
+
+\noindent\begin{minipage}{\linewidth}
+\begin{lstlisting}[language=bash,morekeywords={cd,make,tar,python3,git,pip}]
+tar xzf cryptoverif2.13.tar.gz && (cd cryptoverif2.13 && ./build)
+CV=$PWD/cryptoverif2.13
+git clone https://github.com/gifgaf0/gifgaf0.github.io && cd gifgaf0.github.io
+git checkout 74affcf
+pip install cryptography==50.0.1 gmpy2 requests numpy scipy mpmath pytest
+cd hybrid_kem/analysis/cryptoverif
+make CVHOME=$CV              # 9 models; writes RESULTS.txt
+make mutations CVHOME=$CV    # 22 mutation tests
+cd ../../..
+python3 -m pytest hybrid_kem/tests                # 335 tests
+python3 hybrid_kem/tests/low_order_mutants.py     # 9 mutants of the fix
+\end{lstlisting}
+\end{minipage}

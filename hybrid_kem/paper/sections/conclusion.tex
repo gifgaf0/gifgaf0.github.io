@@ -1,0 +1,35 @@
+\section{Conclusion}\label{sec:conclusion}
+
+We mechanized the computational security of a hybrid post-quantum
+handshake, including the ``either component'' lemmas for X-Wing, an
+ML-KEM-1024 transcript-hashing combiner and composite ML-DSA/EdDSA
+signatures. The machine-checked results hold. What the exercise produced
+beyond them was a list of things that had been wrong: three errors in the
+sketch, six claims in our own write-ups, and one divergence between the
+implementation and its specification's algorithm. Two mechanisms caught
+them: modelling the constructions exactly, and reviews of the claims by a
+reader who had not written them. Tests at the models' abstraction boundary
+then confirmed the implementation divergence that a review had flagged.
+Mutation tests made it possible to say what each proof depends on, once they
+covered what they claimed to cover.
+
+Several directions remain open: a cofactor-aware model of X25519;
+mechanizing the composition steps that we did by hand; a tight multi-user
+bound for the hybrid KEM; and adaptive ephemeral and state reveal. The
+specifications also disagree on the all-zero X25519 output: X-Wing specifies
+no check, while RFC~9180 and RFC~10024 require one. Implementations built on
+X25519 functions that reject that output will keep diverging from X-Wing
+unless the specifications settle the question.
+
+\paragraph{Acknowledgements and AI disclosure.} This work was AI-assisted
+throughout. The protocol specification, its implementation, the Tamarin
+models, the pen-and-paper sketch, the CryptoVerif models and proof scripts,
+the mutation and implementation tests, and this paper, including its
+revisions and the check of its references, were produced with Claude
+(Anthropic) at the author's direction. Both reviews of
+\cref{sec:reviewcaught} were done by separate Claude instances. Every
+machine-checked result was re-run from a clean checkout of the artifact.
+% TODO(author): IACR's Board has proposed that human authors verify that they
+% understand and endorse their entire submission, including AI-generated parts.
+% Do that before submitting; only then is the next sentence true.
+The author takes responsibility for its content.

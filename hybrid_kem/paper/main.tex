@@ -1,0 +1,162 @@
+% What the Proofs Caught -- machine-checked security of HYBRID-AKE.
+% Build: latexmk -pdf main.tex   (or: make)
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,tabularx,multirow,array}
+\usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{etoolbox}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+\makeatletter
+\g@addto@macro\UrlBreaks{\do\_\do\-\do\/\do\.}
+\makeatother
+
+\setlist{itemsep=2pt,topsep=4pt}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{4}
+\renewcommand{\arraystretch}{1.12}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+% ---------------------------------------------------------------- theorems
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+% ---------------------------------------------------------------- notation
+\newcommand{\LP}{\mathrm{LP}}
+\newcommand{\Hash}{\mathsf{H}}
+\newcommand{\KDF}{\mathsf{KDF}}
+\newcommand{\PH}{\mathsf{PH}}
+\newcommand{\THH}{\mathit{TH}}
+\newcommand{\ct}{\mathit{ct}}
+\newcommand{\ssv}{\mathit{ss}}
+\newcommand{\pk}{\mathit{pk}}
+\newcommand{\sk}{\mathit{sk}}
+\newcommand{\vk}{\mathit{vk}}
+\newcommand{\id}{\mathit{id}}
+\newcommand{\pke}{\mathit{pk}_e}
+\newcommand{\ske}{\mathit{sk}_e}
+\newcommand{\SUITE}{\mathsf{SUITE\_ID}}
+\newcommand{\CTXR}{\mathsf{CTX}_R}
+\newcommand{\CTXI}{\mathsf{CTX}_I}
+\newcommand{\Adv}{\mathrm{Adv}}
+\newcommand{\cvp}[1]{\mathsf{#1}}         % a probability name used in the models
+\newcommand{\calls}[1]{\#\mathsf{#1}}     % number of calls to an oracle
+\newcommand{\file}[1]{\nolinkurl{#1}}     % file names: breakable at _ and -
+\newcommand{\ident}[1]{\nolinkurl{#1}}    % identifiers: breakable at _ and -
+\newcommand{\Fp}{\mathbb{F}_p}
+
+% ---------------------------------------------------------------- listings
+\lstdefinelanguage{CryptoVerif}{
+  morekeywords={proof,crypto,success,simplify,replace,at_nth,insert,after,
+    SArename,remove_assign,binder,useless,start_from_other_end,
+    find,suchthat,defined,orfind,if,then,else,let,in,return,foreach,do,
+    event,query,equation,expand,fun,type,param,proba,collision,forall,
+    letfun,equivalence,process,run,get,table,true,false,secret,
+    public_vars,inj,proc},
+  sensitive=true,
+  morecomment=[s]{(*}{*)},
+  morestring=[b]",
+}
+\lstset{
+  language=CryptoVerif,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{NavyBlue},
+  commentstyle=\itshape\color{gray},
+  stringstyle=\color{MidnightBlue},
+  columns=fullflexible,
+  showstringspaces=false,
+  keepspaces=true,
+  breaklines=true,
+  frame=lines,
+  framesep=4pt,
+  xleftmargin=4pt,
+  xrightmargin=4pt,
+  aboveskip=8pt,
+  belowskip=6pt,
+}
+
+% ---------------------------------------------------------------- metadata
+\hypersetup{
+  pdftitle={What the Proofs Caught: Machine-Checked Security of a Hybrid Post-Quantum Key Exchange},
+  pdfauthor={Matt Gifford},
+}
+
+\title{What the Proofs Caught:\\[2pt]
+\large Machine-Checked Security of a Hybrid Post-Quantum Key Exchange\\
+with X-Wing and Composite Signatures}
+\author{Matt Gifford\\[2pt]
+\small Independent researcher}
+\date{Draft, 16 October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+We give machine-checked computational proofs, in CryptoVerif, for
+HYBRID-AKE, a SIGMA-like handshake whose session key comes from an
+ephemeral hybrid KEM (X-Wing, or ML-KEM-1024 with X25519 under a
+transcript-hashing combiner) and whose authentication comes from composite
+ML-DSA/EdDSA signatures over the transcript. We prove injective agreement in
+both directions, real-or-random secrecy of every fresh session key with
+forward secrecy, key-compromise impersonation resistance and key reveal, and
+cross-role key uniqueness, using only CryptoVerif's post-quantum-sound
+library. Separately, we prove that each hybrid primitive meets the
+assumption the protocol proof makes on it if either of its components does.
+
+The paper is organised around what this process caught. The pen-and-paper
+sketch that preceded the mechanization had dropped two conditions that its
+primary sources state: the composite signature also needs a
+collision-resistant pre-hash, and X-Wing relying on X25519 also needs
+ciphertext second-preimage resistance of ML-KEM. Its authentication bound
+also lacked a factor for the number of parties. The ML-KEM-1024 combiner
+needs no security assumption on ML-KEM in that direction, because it hashes
+the ML-KEM ciphertext. Twenty-two mutation tests, including one for each
+freshness guard of the main protocol model, show what each proof depends
+on. A review of our first
+write-up, by a separate instance of the AI assistant used throughout this
+work, found claims the models did not support: a tighter bound than proved,
+non-standard assumptions not flagged as such, and restrictions on the
+adversary disclosed in the notes but not in the result statements. It also noted that our
+X-Wing implementation raised an error on low-order X25519 points, where the
+specification's algorithm returns a shared secret, a divergence reported
+earlier for another library. We fixed it and give a self-contained proof of
+which inputs are affected. All models, proof scripts and tests are public.
+\end{abstract}
+
+\input{sections/intro}
+\input{sections/background}
+\input{sections/model}
+\input{sections/mechanization}
+\input{sections/mutations}
+\input{sections/caught}
+\input{sections/limitations}
+\input{sections/related}
+\input{sections/conclusion}
+
+\apptocmd{\thebibliography}{\raggedright}{}{\PackageWarning{main}{bibliography patch failed}}
+\bibliographystyle{alpha}
+\bibliography{refs}
+
+\appendix
+\input{sections/appendix}
+
+\end{document}

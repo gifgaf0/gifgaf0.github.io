@@ -1,0 +1,236 @@
+\section{Security model and results}\label{sec:model}
+
+\subsection{Parties, oracles and freshness}\label{sec:freshness}
+
+The protocol model has $N_K$ honest parties. Each one runs, in parallel and
+any number of times, initiator sessions in mutual or anonymous mode,
+mutual-mode responder sessions, and responder-only sessions. The adversary
+controls the network and chooses every session's peer. That peer may be
+honest, or dishonest with keys the adversary generated itself. Every
+long-term key can be corrupted at any time; the corruption oracle returns
+the key seed.
+
+\begin{definition}[Freshness]
+An initiator session or a mutual-mode responder session is \emph{fresh} if
+it accepted with an honest peer that was not corrupted when it accepted, and
+no partner session (a session of the other role with the same transcript
+$\THH$) had its key revealed. Responder-only sessions are never fresh, since
+they do not authenticate the initiator. Their keys are covered through their
+initiator partners.
+\end{definition}
+
+The keys of all fresh initiator sessions form one test set (\texttt{keyI}),
+and those of all fresh mutual-mode responders another (\texttt{keyR}).
+Secrecy is real-or-random over the whole set, so it covers many test queries
+at once. As in CryptoVerif's TLS~1.3 analysis~\cite{BBK17}, each role's set
+is proved secret with the other role's set kept private, since partners share
+a key. A separate key-uniqueness query shows that the two roles' keys
+coincide only for matching transcripts.
+
+\paragraph{RevealKey.} Every accepted session that is not fresh can have its
+key revealed on request (oracles \texttt{OI3}, \texttt{OR3}, \texttt{OA2}). A
+reveal is refused only when a partner's key is under test, and a session
+whose partner was revealed is not tested. Corruption of the peer after
+acceptance is allowed, which gives forward secrecy. Corruption of the
+session's own long-term key at any time is also allowed, which gives
+key-compromise impersonation resistance.
+
+\paragraph{Ephemeral-key reveal.} A second protocol model,
+\file{hybrid_ake_ephleak.ocv}, adds initiator sessions whose ephemeral
+secret key is handed to the adversary. The adversary chooses this when the
+session starts, so the reveal is \emph{static}. A revealed session is not
+fresh, and neither is a responder session that encapsulated to a revealed
+ephemeral key.
+
+\subsection{Results}\label{sec:results}
+
+We write $t$ for the adversary's running time plus the cost of simulating
+the rest of the game; CryptoVerif gives each term its own time bound, listed
+in the artifact's \file{RESULTS.txt}. $\calls{O}$ is the number of calls to
+oracle $\mathsf{O}$: $\calls{OI1}$ counts initiator sessions, $\calls{OR1}$
+mutual-mode responder sessions, $\calls{OA1}$ responder-only sessions and
+$\calls{OI2}$ initiator decapsulations, and $\calls{OA2}$ counts reveal
+queries to responder-only sessions. $N_I$, $N_R$ and $N_{Ra}$ are the
+per-party caps on each kind of session. $\cvp{Pkemcca}$, $\cvp{Psign}$,
+$\cvp{Pprf}$ and $\cvp{Phash}$ are the adversary's advantages against the
+KEM, the signature, the KDF and the transcript hash; the second argument of
+$\cvp{Pprf}$ is the number of queries per PRF key.
+$\varepsilon_{\mathrm{coll}}$ collects terms for collisions between honestly
+generated KEM keys, KEM ciphertexts and signature keys; these are
+statistically negligible.
+
+\begin{theorem}[Authentication; machine-checked]\label{thm:auth}
+If the initiator accepts with an honest peer that was uncorrupted at
+acceptance, then that peer ran a responder session with the same identities,
+$\pke$, $\ct$ and session key, and distinct accepting initiators correspond to
+distinct responder sessions (injective agreement). Symmetrically, in mutual
+mode, an accepting responder's initiator signed the same transcript,
+$\sigma_R$ and key. Both hold with the session keys public, each with
+advantage at most
+\[
+  N_K \cdot \cvp{Psign}(t, N_I + N_R + N_{Ra}) + 6\,\cvp{Phash}(t) + \varepsilon_{\mathrm{coll}}.
+\]
+\end{theorem}
+
+\begin{theorem}[Key secrecy; machine-checked]\label{thm:secrecy}
+For each role, the keys of all fresh sessions of that role are
+indistinguishable from independent random keys, with the other role's fresh
+keys hidden from the adversary, with advantage at most
+\[
+\begin{aligned}
+  &2\,\cvp{Pkemcca}(t, \calls{OI1}, \calls{OA1} + \calls{OR1}, \calls{OI2})
+   + 2 N_K \cdot \cvp{Psign}(t, N_I + N_R + N_{Ra})\\
+  &\quad + 2(\calls{OR1} + \calls{OA1})\,\cvp{Pprf}(t, 2)
+   + 24\,\cvp{Phash}(t) + \varepsilon_{\mathrm{coll}}.
+\end{aligned}
+\]
+An accepting initiator and an accepting mutual-mode responder with honest,
+uncorrupted peers hold the same key only if they hold the same transcript.
+The advantage for this key-uniqueness property is about half the bound
+above, since each assumption term appears once instead of twice, plus
+$(2\calls{OI2}\calls{OR1} + \calls{OA2}\calls{OR1} + \calls{OR1}^2/2)/|\mathit{sesskey}|$.
+\end{theorem}
+
+The assumptions behind \cref{thm:auth,thm:secrecy} are: the KEM is IND-CCA2
+in CryptoVerif's multi-key, multi-challenge sense; the signature is UF-CMA
+with adaptive corruption, which the library bounds by $N_K$ times the
+single-key advantage; $\Hash$ is collision resistant; and HKDF with
+$\mathit{ikm} = \ssv$ and $\mathit{salt} = \THH$ is a PRF keyed by $\ssv$.
+HKDF-Extract is HMAC keyed by the salt, so the last assumption keys HMAC
+through its message input: this is the swap-PRF, or ``dual-PRF'', property.
+Backendal, Bellare, G\"unther and Scarlata prove it for HMAC in the standard
+model, for keys drawn uniformly from sets they call feasible. They assume
+that the compression function is a PRF and collision resistant, and that a
+related function is a related-key PRF~\cite{BBGS23}. Every set
+$\{0,1\}^\ell$ with $\ell$ at most the 512-bit block length is feasible, so
+the 32-byte $\ssv$ qualifies. It is uniform once the IND-CCA2 step has
+replaced it with a random value, which is where the proof uses the PRF
+assumption. Their analysis does not consider quantum adversaries, so for the
+post-quantum claim the swap-PRF property of HMAC is an assumption rather
+than a theorem.
+
+With static ephemeral-key reveal (\file{hybrid_ake_ephleak.ocv}), all of
+the above is proved again. The bounds gain the revealed sessions'
+signing queries and key-collision terms, and key uniqueness is stated for
+fresh keys only: uniqueness for keys derived from a shared secret the
+adversary knows would need collision resistance of HKDF, which we do not
+assume.
+
+\begin{lemma}[Hybrid KEMs; machine-checked]\label{lem:kem}
+Assume ML-KEM is perfectly correct. For each profile, the hybrid KEM
+satisfies CryptoVerif's IND-CCA2 KEM equivalence, which is the assumption
+\cref{thm:secrecy} makes, whenever one of the following holds; the other
+leg's secret keys are given to the adversary:
+\begin{center}
+\small\upshape
+\begin{tabularx}{\linewidth}{@{}lLL@{}}
+\toprule
+Profile & Relying on ML-KEM & Relying on X25519\\
+\midrule
+X-Wing & ML-KEM-768 IND-CCA2; SHA3-256 a PRF keyed by $\ssv_M$
+       & strong DH; SHA3-256 a random oracle; \textbf{ML-KEM-768 C2PRI}\\
+ML-KEM-1024 + X25519 & ML-KEM-1024 IND-CCA2; HKDF a PRF keyed by $\ssv_M$
+       (\emph{split-key}, non-standard)
+       & strong DH; HKDF a random oracle; no security assumption on ML-KEM.
+       Also proved from a PRF-ODH variant (non-standard).\\
+\bottomrule
+\end{tabularx}
+\end{center}
+With $N$ users, $Q_e$ encapsulations, $Q_d$ decapsulations per user and
+$\calls{ODecap}$ decapsulations in all, the bounds are at most, up to
+collision terms:
+\begin{itemize}
+  \item ML-KEM leg, either profile:
+  $2\,\cvp{Pmcca}(t, N, Q_e, \calls{ODecap}) + 4 Q_e\,\cvp{Pprf}(t, Q_d + 1)$;
+  \item X-Wing, X25519 leg:
+  $2 N Q_e\,\cvp{pStDH}(t, \ldots) + 3 N Q_e\,\cvp{Pc2pri}(t) + (2Q_e + 2N)\,\cvp{pDistRerandom}$;
+  \item ML-KEM-1024 + X25519, X25519 leg: the X-Wing bound without the
+  $\cvp{Pc2pri}$ term (random-oracle proof), or $2 N Q_e$ times the PRF-ODH
+  advantage (PRF-ODH proof).
+\end{itemize}
+Here $\cvp{Pmcca}$ is ML-KEM's multi-key, multi-challenge IND-CCA2
+advantage, $\cvp{pStDH}$ the strong Diffie--Hellman advantage, and
+$\cvp{Pc2pri}$ the C2PRI advantage. $\cvp{pDistRerandom}$ is the probability
+of distinguishing a rerandomised exponent from a fresh one: 0 for a
+prime-order group with exponents uniform in $(\mathbb{Z}/q\mathbb{Z})^*$,
+and $2^{-126}$ for Curve25519
+according to CryptoVerif's library, the counterpart of the X-Wing paper's
+$\Delta_N$. Perfect correctness of ML-KEM is assumed through the library's
+correctness equation; its decapsulation failure rate $\delta$ adds at most
+$\calls{ODecap} \cdot \delta$, by hand.
+\end{lemma}
+
+\begin{lemma}[Composite signature; machine-checked]\label{lem:sig}
+The composite signature is EUF-CMA if ML-DSA is, with EdDSA's secret key
+given to the adversary, and if EdDSA is, with ML-DSA's secret key given to
+the adversary, provided $\PH$ is collision resistant in both cases. With $N_S$
+signing queries,
+\[
+  \Adv^{\text{euf-cma}}_{\text{composite}}
+  \le \min\bigl(\Adv^{\text{euf-cma}}_{\text{ML-DSA}}(t, N_S),\ \Adv^{\text{euf-cma}}_{\text{EdDSA}}(t, N_S)\bigr)
+  + 2\,\Adv^{\text{cr}}_{\PH}(t).
+\]
+\end{lemma}
+
+\subsection{What is machine-checked and what is not}\label{sec:status}
+
+CryptoVerif checks each model separately. \Cref{tab:status} records the
+status of every claim in this paper, and the four steps below compose the
+results by hand.
+
+\begin{enumerate}
+  \item \emph{KEM.} Each KEM model proves CryptoVerif's IND-CCA2 KEM
+  equivalence, which \cref{thm:secrecy} assumes, up to presentation: users
+  are created by a setup oracle with a pair of seeds; an extra oracle hands
+  out the broken leg's key; and the random-oracle models add the oracle and
+  its key on both sides. None of these weakens the substitution of a
+  \cref{lem:kem} bound for $\cvp{Pkemcca}$. In the protocol, $N = \calls{OI1}$,
+  $Q_e = \calls{OR1} + \calls{OA1}$, and each ephemeral key is decapsulated
+  at most once.
+  \item \emph{Signature.} \Cref{lem:sig} is single-key. The protocol uses the
+  library's multi-key UF-CMA-with-corruption macro, whose bound is
+  $N_K \cdot \cvp{Psign}$ for a single-key $\cvp{Psign}$.
+  \item \emph{KEM side conditions.} The protocol model also uses the KEM
+  macro's perfect-correctness equation and its collision statements for
+  honestly generated keys and ciphertexts. No KEM model proves these. The
+  collision statements hold statistically for both hybrids, because every
+  honest key and ciphertext contains a fresh X25519 point. Correctness costs
+  ML-KEM's decapsulation failure rate for each decapsulation: $2^{-164.8}$
+  for ML-KEM-768 and $2^{-174.8}$ for ML-KEM-1024~\cite[Table~1]{FIPS203}.
+  \item \emph{One hash, several idealisations.} SHA3-256 is treated as a
+  collision-resistant hash for the transcript, as a PRF in X-Wing's ML-KEM
+  direction, and as a random oracle in X-Wing's X25519 direction, each in a
+  different model; ML-KEM also applies it to its encapsulation keys. This is
+  sound only because these uses have disjoint input lengths. The transcript
+  input is several kilobytes, since it contains at least one composite
+  verification key, a hybrid public key and a hybrid ciphertext. The $m_3$
+  input contains a composite signature of more than 3~KB. The X-Wing combiner
+  input is 134 bytes, and ML-KEM's encapsulation keys are 1,184 or 1,568
+  bytes.
+\end{enumerate}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}LlL@{}}
+\toprule
+Claim & Status & Where\\
+\midrule
+\Cref{thm:auth}: injective agreement, both directions & machine-checked & \file{hybrid_ake.ocv}\\
+\Cref{thm:secrecy}: secrecy of fresh keys, key uniqueness & machine-checked & \file{hybrid_ake.ocv}\\
+\Cref{thm:auth,thm:secrecy} with static ephemeral reveal & machine-checked & \file{hybrid_ake_ephleak.ocv}\\
+\Cref{lem:kem}, both profiles, both legs & machine-checked & \file{kem_xwing.m4.ocv}, \file{kem_bbfgs.m4.ocv}, \file{kem_bbfgs_x25519_rom.ocv}\\
+\Cref{lem:sig}, both components & machine-checked & \file{composite_sig.m4.ocv}\\
+Substituting \cref{lem:kem,lem:sig} into \cref{thm:auth,thm:secrecy} & by hand & \cref{sec:status}, items 1--2\\
+KEM correctness and collision side conditions & by hand & item 3\\
+ML-KEM correctness inside the KEM models & by hand & \cref{lem:kem}\\
+Disjoint inputs for the uses of SHA3-256 & by hand & item 4\\
+HMAC swap-PRF for the KDF's key distribution & assumed (classical proof) & \cite{BBGS23}\\
+From per-role multi-test secrecy to a single-Test game & not mechanized & ---\\
+Cross-suite downgrade resistance & symbolic only (Tamarin) & \cref{sec:related}\\
+X25519 cofactor, twist, low-order points, encodings & not modelled & \cref{sec:limits}\\
+\bottomrule
+\end{tabularx}
+\caption{Status of each claim.}
+\label{tab:status}
+\end{table}

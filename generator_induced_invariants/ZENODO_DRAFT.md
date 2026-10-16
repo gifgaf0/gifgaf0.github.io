@@ -9,16 +9,16 @@ diagnostic the note describes. Nothing here is deposited.
   `ZENODO_DESCRIPTION.txt` as the description. That file has one line per paragraph, because the SLWE note's
   hard-wrapped description lost words at every wrap point when DataCite harvested it ("authorproposed", "anorder-7").
 - The note's Section 7 says that a copy of the diagnostic accompanies it on Zenodo, so upload both files.
-- The note cites the repository by file path and SHA-256, not by commit, so it can be deposited before or after the
-  pull request is merged. The repository link under "Related identifiers" should point at a commit on `main`, so add
-  that one after the merge.
+- **Deposit only after the pull request is merged.** The note's Section 7 says the file with the printed SHA-256 is in
+  the public repository, and until the merge `main` still holds the previous version (SHA-256 `bb22d680…0f401b94`).
+  The repository link under "Related identifiers" should also point at a commit on `main`.
 
 ## Files
 
 | File | md5 | |
 |---|---|---|
-| `generator_induced_invariants_v1.pdf` | `3f8efeb998786ecb0ab84c3b344855c3` | 11 pages. `build_pdf.py` builds it and rebuilds it byte-identical |
-| `design_matrix_rank.py` | `b348a30837d79bd128d59b39c11a832c` | from `diagnostics/`; SHA-256 `b6a368c9…4e147f9818`, as printed in the note's Section 7 |
+| `generator_induced_invariants_v1.pdf` | `a2a1f2d0496743d43d5217fe1f6159c7` | 12 pages. `build_pdf.py` builds it and rebuilds it byte-identical |
+| `design_matrix_rank.py` | `7da8ea561cb2a7e4329f4802cd6ff8d1` | from `diagnostics/`; SHA-256 `24a0d4c6…ba54e876`, as printed in the note's Section 7 |
 
 Zenodo shows each uploaded file's md5 on the record page; it should match the table.
 
@@ -46,7 +46,7 @@ Zenodo shows each uploaded file's md5 on the record page; it should match the ta
 ## Description
 
 Paste `ZENODO_DESCRIPTION.txt` as it is. Its first paragraph is the note's abstract, checked word for word against the
-PDF (302 words); the second points to the full break; the third describes the accompanying script.
+PDF (319 words); the second points to the full break; the third describes the accompanying script.
 
 ## IACR ePrint (optional)
 

@@ -28,7 +28,7 @@ Tested with TeX Live 2023 (Ubuntu 24.04 packages `texlive-latex-extra`,
 
 ## Before submitting
 
-- [ ] Author name and affiliation in `main.tex` (currently `Matt [Surname]`).
+- [x] Author name in `main.tex`: Matt Gifford, independent researcher.
 - [ ] Read the whole paper and check it against the artifact. The IACR Board
       has proposed that human authors verify that they understand and endorse
       their entire submission, including AI-generated parts; the last
@@ -41,14 +41,9 @@ Tested with TeX Live 2023 (Ubuntu 24.04 packages `texlive-latex-extra`,
 - [ ] Re-run `make` and `make mutations` in `../analysis/cryptoverif/`,
       `pytest hybrid_kem/tests` and `python3 hybrid_kem/tests/low_order_mutants.py`
       at the artifact commit, `74affcf`.
-- [ ] Keep the artifact commit reachable. #49 was merged at `67cc5f6`, before
-      `74affcf` (the 22 mutation tests and the low-order mutant script) was
-      pushed, so `74affcf` is in #50. Appendix C tells readers to
-      `git checkout 74affcf` after a fresh clone, which fails once no branch
-      or tag contains that commit, as after a squash or rebase merge followed
-      by deleting the branches. Merge #50 with a merge commit, or tag the
-      commit (for example `git tag hybrid-ake-paper-v1 74affcf`) and push the
-      tag. To cite a commit on `main` instead, update `refs.bib` (`Artifact`),
-      Appendix C and the table above.
+- [x] Keep the artifact commit reachable. #50, which carried `74affcf` (the
+      22 mutation tests and the low-order mutant script), was merged with a
+      merge commit, so `74affcf` is in `main`'s history and Appendix C's
+      `git checkout 74affcf` works from a fresh clone.
 - [ ] Choose ePrint keywords and a licence (ePrint requires one at submission;
       it cannot be changed afterwards).

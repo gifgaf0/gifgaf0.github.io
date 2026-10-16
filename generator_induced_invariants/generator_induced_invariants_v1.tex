@@ -29,6 +29,8 @@
 \makeatother
 % DOIs: clickable, never hyphenated
 \newcommand{\doi}[1]{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+% List bullets from the math symbol font (Type 1), not the text-companion font, which pdflatex would embed as a bitmap
+\renewcommand{\labelitemi}{$\bullet$}
 
 \title{Generator-induced invariants in lattice public keys:\\ a pre-standardization rank diagnostic}
 \author{Matthew Gifford\\ \small Independent researcher, Hollister, California, USA}
@@ -40,24 +42,27 @@
 \begin{abstract}
 A public-key construction that builds its public object by applying a fixed family of linear maps to random
 seeds---to compress the key, to inherit a symmetry, or to support a reduction---produces an object that is the image of
-a single fixed \emph{design matrix}. Every invariant of that matrix, its rank first of all, is then imposed on the
-public object whatever the seeds. When the rank $\rho$ of the design matrix is below the ambient dimension, the public
-key is distinguishable from uniform by exact linear algebra, and recovering the noise reduces to an LWE instance of
-dimension at most $\rho$. The argument takes one line---the rank of a product is at most the rank of either factor---yet the
-weakness is easy to miss: a rank check on a realized instance of dimension $n$ can certify only $\rho\ge n$, so a check
-run below the ceiling returns a clean result on a broken scheme. We make this concrete with a reproducible case study,
-a withdrawn sedenion Module-LWE proposal whose public matrix has rank at most 76 at every module rank and whose own
-structural check, run at module rank 4, could not see the ceiling. We package the lesson as an exact and cheap
-diagnostic---compute the rank of the design matrix over the working field, then confirm it on an instance larger than
-the ceiling against a uniform control---with a dependency-free implementation that reproduces the case study, and we
-place the mechanism among published breaks in which structure introduced for a benefit became the attack surface. The
-diagnostic is necessary, not sufficient, and costs less than the lattice estimate it should precede.
+a single fixed \emph{design matrix}. The row space of that matrix, and with it its rank, is then imposed on the public
+object whatever the seeds. When the rank $\rho$ of the design matrix is below the ambient dimension, every public key is
+rank-deficient: exact linear algebra distinguishes it from the uniform matrix a security reduction assumes, and
+recovering the noise reduces to an LWE instance of dimension at most $\rho$. The argument takes one line---the rank of a
+product is at most the rank of either factor---yet the weakness is easy to miss: a rank check on a realized instance of
+dimension $n$ can certify only $\rho\ge n$, so a check run below the ceiling returns a clean result on a broken scheme.
+We make this concrete with a reproducible case study, a withdrawn sedenion Module-LWE proposal whose public matrix has
+rank at most 76 at every module rank and whose own structural check, run at module rank 4, could not see the ceiling.
+We package the lesson as an exact and cheap diagnostic---count, then compute the rank of the design matrix over the
+working field at the deployed size, and confirm it on an instance larger than the ceiling---with a dependency-free
+implementation that reproduces the case study and passes two structured, sound controls, and we place the mechanism
+among published breaks in which structure introduced for a benefit became the attack surface. Passing the diagnostic is
+necessary for any security argument that assumes a uniform, full-rank matrix, but not sufficient, and it costs less than
+the lattice estimate it should precede.
 \end{abstract}
 
 \paragraph{Epistemic conventions.} As in the author's other work, claims are tiered. Every proposition and corollary
-below is T1: proven from the stated definitions, or verified by exact computation. Section~\ref{sec:pattern} classifies
-published breaks; that classification is interpretive, and where it reaches beyond Proposition~\ref{prop:ceiling} it
-says so.
+below is T1: proven from the stated definitions, or verified by exact computation. The remarks are held to the same
+standard: they state only what follows from the propositions, from the cited literature, or from exact computation that
+the accompanying self-test checks. Section~\ref{sec:pattern} classifies published breaks; that classification is
+interpretive, and where it reaches beyond Proposition~\ref{prop:ceiling} it says so.
 
 \section{Introduction}\label{sec:intro}
 
@@ -68,10 +73,12 @@ introduced for a reason: a smaller key, a symmetry the designer believes is beni
 argument that the construction reduces to a well-studied problem.
 
 The thesis of this note is that such a generator is a fixed linear gadget, and that random seeds fed through a fixed
-linear gadget cannot produce anything outside its image. If the gadget carries an invariant---a rank ceiling, a fixed
-subspace, a common kernel---the public object inherits it however much entropy the seeds carry. When the invariant is
-a rank ceiling below the ambient dimension, the consequences are immediate: the public key is distinguishable from
-uniform, and recovery drops from the ambient dimension to at most the rank of the design matrix.
+linear gadget cannot produce anything outside its image. If that image is confined---a rank ceiling, equivalently a
+kernel common to every key---the public object inherits the confinement however much entropy the seeds carry. When the
+ceiling is below the ambient dimension, the consequences are immediate: the public key is distinguishable from the
+uniform matrix a reduction assumes, and recovery drops from the ambient dimension to at most the rank of the design
+matrix. Not every invariant of a generator is a weakness: the multiplication maps of Ring- and Module-LWE share fixed
+subspaces and are sound, and Remark~\ref{rem:inv} says what separates the two.
 
 None of the linear algebra is deep, and that is the point. The mechanism is elementary, and the diagnostic that catches
 it takes seconds of exact arithmetic. Yet the weakness is easy to ship, because a rank check on a realized instance
@@ -84,8 +91,9 @@ small an instance.
 \begin{enumerate}
 \item A general statement (Section~\ref{sec:mech}): a seed-generated public object factors as $M=R\cdot D$ with $D$ a
   fixed design matrix, so $\rank M\le\rank D$ for every instance size and every draw of the seeds. The same
-  factorization gives a kernel shared by every public key (a distinguisher) and confines the LWE error to a subspace
-  of dimension at most $\rank D$ (a reduced recovery problem).
+  factorization gives a kernel shared by every public key (a distinguisher) and confines the LWE error to an affine
+  subspace of dimension at most $\rank D$ (a reduced recovery problem), and two counts bound $\rank D$ before anything
+  is computed.
 \item A visibility principle (Proposition~\ref{prop:vis}): a full-rank check at ambient dimension $n$ certifies only
   $\rank D\ge n$, and a deficiency is guaranteed to show only once $n>\rank D$. Computing $\rank D$ from the design
   certifies every size at once.
@@ -93,14 +101,15 @@ small an instance.
   mechanism gives a ceiling of 76 at every module rank, with an account of why the scheme's own check, run at module
   rank 4, could not see it.
 \item An exact, cheap diagnostic (Section~\ref{sec:diag}) with a dependency-free implementation that reproduces the case
-  study as a regression test.
+  study as a regression test, takes its verdict at the deployed size, and passes two structured, sound controls: a
+  sedenion module matrix with independent uniform entries and an ML-KEM-shaped module lattice.
 \item A short classification of published breaks of the same shape (Section~\ref{sec:pattern}), with an account
   (Section~\ref{sec:limits}) of what the theorem does and does not cover.
 \end{enumerate}
 
 \paragraph{Scope.} This is a defensive, methodological note. The case study is the author's own withdrawn proposal, and
-the NIST standards~\cite{FIPS} appear only as correctly designed controls. No attack on any deployed or standardized
-system is given or implied.
+the ML-KEM design~\cite{FIPS} appears only as a correctly designed control, which the diagnostic passes. No attack on
+any deployed or standardized system is given or implied.
 
 \section{The mechanism}\label{sec:mech}
 
@@ -108,15 +117,19 @@ system is given or implied.
 
 Let $\F$ be a field. A \emph{seed-generated public object} is built as follows. The scheme fixes a finite family of
 $\F$-linear maps $T_0,\dots,T_{r-1}\colon\F^d\to\F^d$ (the \emph{generator}), draws independent random seeds, applies
-the generator to the seeds, and combines the results $\F$-linearly. Write $M$ for the matrix of the $\F$-linear map the
-scheme exposes---for an LWE-type key, the map $s\mapsto As$. Because the assembly is linear in the seeds and linear in
-the fixed generator images, $M$ is bilinear in the two and factors as
+the generator to the seeds, and combines the results $\F$-linearly. A \emph{seed} here is the vector of coefficients the
+generator consumes, after any nonlinear expansion: ML-KEM derives its matrix from one 32-byte string, but its generator
+consumes $256k^2$ coefficients~\cite{FIPS}. Write $M$ for the matrix of the $\F$-linear map the scheme exposes---for an
+LWE-type key, the map $s\mapsto As$. Because the assembly is linear in the seeds and linear in the fixed generator
+images, $M$ is bilinear in the two and factors as
 \[
   M \;=\; R\cdot D,
 \]
-where $R\in\F^{a\times N}$ carries all of the seed randomness (its entries are linear in the seed coordinates) and
-$D\in\F^{N\times b}$ is \emph{fixed}: its entries are determined by the generator and the combination rule and do not
-depend on the seeds. We call $D$ the \emph{design matrix}.
+where $R\in\F^{a\times g}$ carries all of the seed randomness (its entries are linear in the seed coordinates) and
+$D\in\F^{g\times b}$ is \emph{fixed}: its entries are determined by the generator and the combination rule and do not
+depend on the seeds. We call $D$ the \emph{design matrix}. Only its row space matters below, so $D$ may be replaced by
+any matrix with the same row space, for instance with repeated rows removed. A uniform object factors trivially, with
+$D$ the identity.
 
 \subsection{The rank ceiling}
 
@@ -132,22 +145,36 @@ The content lies entirely in the fact that $D$ is fixed. Seed entropy moves $M$ 
 raise the rank above $\rank D$. If $\rank D$ is below the ambient dimension, every public key the scheme can emit is
 rank-deficient, with probability one.
 
+Two counts bound $\rank D$ before anything is computed: the number of distinct rows of $D$ and the number of distinct
+columns. When each block row of $M$ reuses one seed of length $\ell$ through the generator, as in the case study, the
+design needs only $\ell d$ rows for $d\times d$ blocks, whatever the generator; and $D$ has no more distinct columns than
+there are distinct generator images (Section~\ref{sec:vis}). If either count is below the ambient dimension at the
+deployed size, the scheme fails without further computation.
+
 \begin{corollary}[distinguisher]\label{cor:dist}
-Let $\rho=\rank D<b$. Then $\ker D\subseteq\ker M$ for every public key, and $\dim\ker D=b-\rho$. In particular, for any
-fixed nonzero $x\in\ker D$---computable from the design alone---every public key satisfies $Mx=0$, while a uniform
-$M\in\F_q^{a\times b}$ does so with probability $q^{-a}$.
+Let $\rho=\rank D<b$. Then $\ker D\subseteq\ker M$ for every public key, and $\dim\ker D=b-\rho$. In particular, a fixed
+nonzero $x\in\ker D$---computable from the design alone---satisfies $Mx=0$ for every public key. A uniform
+$M\in\F_q^{a\times b}$ does so with probability $q^{-a}$, and so does a module matrix whose entries are independent
+uniform elements of a $d$-dimensional algebra, provided right multiplication by some block $x_j$ of $x$ is invertible.
 \end{corollary}
 
 \begin{proof}
 If $Dx=0$ then $Mx=R(Dx)=0$; the dimension count is rank--nullity. For uniform $M$, each of the $a$ rows is orthogonal
-to $x\neq0$ independently with probability $1/q$.
+to $x\neq0$ independently with probability $1/q$. For independent uniform entries $A_{ij}$, block row $i$ of $Mx$ is
+$\sum_j A_{ij}x_j$; the term $A_{ij}x_j$ is uniform when right multiplication by $x_j$ is invertible, so the block row
+vanishes with probability $q^{-d}$, independently over the $a/d$ block rows.
 \end{proof}
+
+A structured matrix is distinguishable from a uniform $M\in\F_q^{a\times b}$ whether or not it is weak---ML-KEM's is,
+through its negacyclic blocks---so the comparison that matters is with the distribution the scheme's security argument
+assumes. The corollary covers both cases; Section~\ref{sec:ceiling} applies it to the case study.
 
 \begin{corollary}[recovery]\label{cor:rec}
 Write the public key in LWE form $t=Ms+e$ with $M\in\F_q^{a\times b}$, and let $V=\col(M)$ and $\rho_M=\dim V\le\rank D$.
 Then $t-e\in V$, so $e$ lies in the known affine subspace $t+V$ of dimension $\rho_M$. Choosing $\rho_M$ coordinates $I$
 on which a basis of $V$ is invertible expresses the remaining $a-\rho_M$ coordinates of $e$ as fixed affine functions of
-$e_I$: an LWE instance with secret $e_I$ of dimension $\rho_M$ and $a-\rho_M$ samples.
+$e_I$: an LWE instance with secret $e_I$ of dimension $\rho_M$ and $a-\rho_M$ samples. Equivalently, a parity-check
+matrix $L$ for $V$, with $LM=0$, gives $Lt=Le$.
 \end{corollary}
 
 \begin{proof}
@@ -155,18 +182,35 @@ Every $v\in V$ is determined by $v_I$, with $v_{\bar I}=Cv_I$ for a matrix $C$ c
 $v=t-e$ this gives $e_{\bar I}=Ce_I+(t_{\bar I}-Ct_I)$, in which $e_I$ and $e_{\bar I}$ are short.
 \end{proof}
 
-\begin{remark}
-Rank is the cheapest invariant to read off, but not the only one: any fixed subspace that $D$ preserves or annihilates
-transfers to $M$ by the same argument and gives a projection that shrinks the secret. The rank ceiling is the easiest
-to test and, when present, the most damaging.
+\paragraph{From noise to message.} Recovering the noise suffices to decrypt whenever decryption is linear. Suppose a
+ciphertext is $u=M^{*}r+e_1$ and $v=\langle t,r\rangle+e_2+\mathrm{encode}(m)$, where $M^{*}$ is the adjoint of $M$ for
+the pairing used in decryption and $r$, $e_1$, $e_2$ are short. Since $\rank M^{*}=\rank M$, the argument of
+Corollary~\ref{cor:rec} applied to $u$ recovers $e_1$ as it recovered $e$. Any $s'$ with $Ms'=t-e$ then gives
+$\langle s',u-e_1\rangle=\langle Ms',r\rangle=\langle t-e,r\rangle$, so
+$v-\langle s',u-e_1\rangle=\langle e,r\rangle+e_2+\mathrm{encode}(m)$, a small perturbation of the encoded message.
+
+\begin{remark}\label{rem:inv}
+Rank is the cheapest invariant to read off, and the only one this argument transfers: the factorization gives
+$\row(M)\subseteq\row(D)$, equivalently $\ker D\subseteq\ker M$, and nothing more. A subspace that every key preserves is
+a different matter, because it need not be a weakness. Over $\F_{3329}$ the polynomial $X^{256}+1$ splits into 128
+quadratic factors, so every multiplication map of ML-KEM's ring preserves the same 128 two-dimensional subspaces (its
+NTT slots); over $\F_{8380417}$ it splits into linear factors, so the multiplication maps of ML-DSA share 256
+eigenvectors~\cite{FIPS}. Projecting onto such a subspace does shrink the secret, yet both schemes are sound, because the
+projected noise is close to uniform. An invariant subspace is a weakness only when the projection keeps the noise short,
+as the restriction to coordinates in Corollary~\ref{cor:rec} does, and as evaluation at a suitable root of the defining
+polynomial (for instance $1$) does in the provably weak instances of Ring-LWE~\cite{ELOS15,CIV16}; Peikert~\cite{Pei16}
+shows that those attacks do not apply when the error is wide enough relative to the ring's geometry. A test for
+invariant subspaces must check that condition, not the subspace alone, and this note's diagnostic does not attempt it.
 \end{remark}
 
 \subsection{Why the ceiling hides}\label{sec:vis}
 
 The design matrix of an instance is assembled from the generator images that instance uses. Suppose the generator
 contributes $c$ independent images in total; for a cyclic generator of order $r$ acting on a $d$-dimensional alphabet,
-$c\le rd$, and the column space of the design stops growing once an instance uses all $r$ powers. Let $\rho=\rank D$ for
-the full design, let $M_k$ be the realized public map at instance size $k$, and let $n(k)$ be the smaller dimension of
+$c\le rd$, and the column space of the design stops growing once an instance uses all $r$ powers. Let $D$ be the
+\emph{full design}, which contains every generator image, and let $\rho=\rank D$. Let $M_k=R_kD_k$ be the realized public
+map at instance size $k$, and assume that $D_k$ is assembled from columns of $D$, so that $\col(D_k)\subseteq\col(D)$ and
+$\rank D_k\le\rho$; this holds whenever the generator has finitely many images. Let $n(k)$ be the smaller dimension of
 $M_k$, which is the rank a uniform matrix of that shape has with high probability.
 
 \begin{proposition}[visibility]\label{prop:vis}
@@ -180,19 +224,20 @@ $M_k$, which is the rank a uniform matrix of that shape has with high probabilit
 \end{proposition}
 
 \begin{proof}
-Proposition~\ref{prop:ceiling} and the shape of $M_k$ give $\rank M_k\le\min(n(k),\rho)$. If $\rank M_k=n(k)$, this
-forces $n(k)\le\rho$ and constrains $\rho$ no further. Table~\ref{tab:rank} exhibits a design with $\rho=76$ whose
-realizations have full rank at every $k\le4$ ($n(k)\le64$), although the deployed size has $n(k')=1024$. Part~(ii) is
-immediate.
+Proposition~\ref{prop:ceiling} applied to $M_k=R_kD_k$, together with $\rank D_k\le\rho$ and the shape of $M_k$, gives
+$\rank M_k\le\min(n(k),\rho)$. If $\rank M_k=n(k)$, this forces $n(k)\le\rho$ and constrains $\rho$ no further.
+Table~\ref{tab:rank} exhibits a design with $\rho=76$ whose realizations have full rank at every $k\le4$ ($n(k)\le64$),
+although the deployed size has $n(k')=1024$. Part~(ii) is immediate.
 \end{proof}
 
-\begin{remark}
-In the case study the realized rank is exactly $\min(n(k),\rho)$ at every size tested (Table~\ref{tab:rank}): full rank
-up to the ceiling, and pinned at $\rho$ once the generator's images repeat ($k\ge7$, since $\sigma^7=\mathrm{id}$). The
-deficiency therefore first appears at the smallest $k$ with $n(k)>\rho$, here $k=5$, and a check at $k=4$ is precisely
-the uninformative case~(i). This ``full rank up to the ceiling'' behaviour is a property of the case-study design,
-established by exact computation. It is not a theorem about all designs; a design that falls short before its ceiling
-simply shows its deficiency earlier.
+\begin{remark}\label{rem:tight}
+In the case study of Section~\ref{sec:case}, the realized rank equals $\rank N_k$, the rank of the design restricted to
+the powers $\sigma^0,\dots,\sigma^{k-1}$ that an instance of size $k$ uses, at every size tested (Table~\ref{tab:rank}):
+$16k$ for $k\le4$, then 72 and 74 at $k=5$ and $6$, and $\rho=76$ from $k=7$, once all seven powers appear
+($\sigma^7=\mathrm{id}$). Proposition~\ref{prop:ceiling} is therefore tight here for generic seeds. The deficiency first
+appears at $k=5$, the smallest $k$ with $n(k)>\rho$, and a check at $k=4$ is precisely the uninformative case~(i). This
+is a property of the case-study design, established by exact computation and checked by the self-test; it is not a
+theorem about all designs.
 \end{remark}
 
 Two practical rules follow. An empirical rank check certifies only the size it is run at, so a check below the deployed
@@ -217,11 +262,13 @@ was meant to preserve the algebra's zero-divisor interface. Non-associativity wa
 attack class and so to reduce security to that of a generic module lattice. Two parameter sets were published with a
 claim of NIST Category~5: $n=512$ ($k=32$) with $q\approx2^{32}$, and $k=64$ ($n=1024$) with $q=911$.
 
-\subsection{The factorization and the ceiling}
+\subsection{The factorization and the ceiling}\label{sec:ceiling}
 
 Let $M\in\F_q^{16k\times16k}$ be the matrix of $s\mapsto As$, so that $M_{16i+u,\,16j+c}$ is coefficient $u$ of
-$\sigma^{j}(\mathrm{seed}_i)\,e_c$. Because $\sigma$ is linear and the sedenion product is bilinear, $M$ factors exactly as
-in Section~\ref{sec:mech}:
+$\sigma^{j}(\mathrm{seed}_i)\,e_c$. Concretely, $\sigma$ fixes $e_0$ and $e_8$, maps $e_t\mapsto e_{t+1}$ for
+$1\le t\le6$ and $e_7\mapsto e_1$, and acts in the same way on $e_9,\dots,e_{15}$; the product is the Cayley--Dickson
+doubling $(a,b)(c,d)=(ac-\bar d b,\;da+b\bar c)$. Because $\sigma$ is linear and the sedenion product is bilinear, $M$
+factors exactly as in Section~\ref{sec:mech}:
 \[
   M=(S\otimes I_{16})\,N_k,
 \]
@@ -230,29 +277,44 @@ matrix $N\in\mathbb{Z}^{256\times112}$ whose entry $N_{16m+u,\,16j+c}$ is coeffi
 (this is $D$). Since $\sigma^7=\mathrm{id}$, the column blocks of $N_k$ repeat with period 7, so $\col(N_k)\subseteq\col(N)$,
 with equality once $k\ge7$.
 
-Exact computation gives $\rank N=76$ over $\mathbb{Q}$ and modulo $911$ and $q=4\,294\,977\,961$~\cite{GifNote}; the
-accompanying diagnostic re-derives it modulo $911$, $2731$, $2^{31}-1$ and $q$. By Proposition~\ref{prop:ceiling},
-$\rank A\le76$ at every module rank, against $16k$ for a uniform matrix. Table~\ref{tab:rank} lists the exact ranks.
+Counting alone already bounds the rank. The design $N$ has 256 rows---16 seed coordinates times 16 rows per block---and
+112 columns---seven powers of $\sigma$ times 16---so $\rank M\le112$ at every $k$, and for $k>7$ the repetition
+$A_{i,j+7}=A_{ij}$ is visible in the deployed matrix by inspection. Exact computation sharpens 112 to 76: $\rank N=76$
+over $\mathbb{Q}$ and modulo $911$ and $q=4\,294\,977\,961$~\cite{GifNote}. Because $N$ has integer entries, its rank
+modulo any prime is at most its rank over $\mathbb{Q}$, so the ceiling of 76 holds at every modulus at once. Over
+$\F_{911}$, which contains the seventh roots of unity, a discrete Fourier transform over the power index $j$ splits
+$\col(N)$ into a part of dimension 16 for the trivial character and six parts of dimension 10, so
+$76=16+6\cdot10$~\cite{GifNote}. The other common Cayley--Dickson convention, $(a,b)(c,d)=(ac-d\bar b,\;\bar a d+cb)$,
+gives the same ranks. The accompanying diagnostic re-derives $\rank N=76$ over $\mathbb{Q}$ by fraction-free elimination
+and modulo $911$, $2731$, $2^{31}-1$ and $q$. By Proposition~\ref{prop:ceiling}, $\rank M\le76$ at every module rank,
+against $16k$ for a matrix with uniform entries. Table~\ref{tab:rank} lists the exact ranks.
 
 \begin{table}[h]\centering\small
 \begin{tabular}{lccccccccccc}\toprule
 $k$ & 1&2&3&4&5&6&7&8&16&32&64\\\midrule
 $n(k)=16k$ & 16&32&48&64&80&96&112&128&256&512&1024\\
 $\rank M_k$ (Singer orbit) & 16&32&48&64&\textbf{72}&\textbf{74}&\textbf{76}&\textbf{76}&\textbf{76}&\textbf{76}&\textbf{76}\\
-$\rank M_k$ (uniform) & 16&32&48&64&80&96&112&128&256&512&1024\\\bottomrule
+$\rank M_k$ (uniform entries) & 16&32&48&64&80&96&112&128&256&512&1024\\\bottomrule
 \end{tabular}
-\caption{Exact rank of the flattened public map at module rank $k$, Singer-orbit versus uniform matrix, over $\F_{911}$
-and over $\F_q$ with $q=4\,294\,977\,961$ (identical at both primes), as reported in~\cite{GifNote}; the columns $k\le8$
-are regenerated by the self-test of the accompanying diagnostic (Section~\ref{sec:diag}). Bold entries fall short of
-$n(k)$. The columns $k\le4$ are identical for the two matrices: a check there cannot see the ceiling
+\caption{Exact rank of the flattened public map at module rank $k$: Singer orbit versus a matrix with independent
+uniform sedenion entries, the distribution the scheme's reduction assumed (a uniform matrix over $\F_q$ has the same
+ranks). The values over $\F_{911}$ and over $\F_q$ with $q=4\,294\,977\,961$ are identical; the Singer-orbit row is as
+reported in~\cite{GifNote}. The self-test of the accompanying diagnostic (Section~\ref{sec:diag}) regenerates the columns
+$k\le8$ over $\F_{911}$ and checks that each Singer-orbit entry equals $\rank N_k$. Bold entries fall short of $n(k)$.
+The columns $k\le4$ are identical for the two matrices: a check there cannot see the ceiling
 (Proposition~\ref{prop:vis}(i)).}\label{tab:rank}
 \end{table}
 
 By Corollary~\ref{cor:rec}, recovering the noise is an LWE instance of dimension 76 with $16k-76$ samples. The lattice
 estimator~\cite{APS15,estimator} places it at $2^{38.6}$ operations at the first parameter set (436 samples) and at
 $2^{40.4}$ at the second (948 samples), with the block size at the floor of its model, so that reduction at the scale of
-LLL suffices~\cite{GifNote}. Distinguishing the public key from uniform is cheaper still: by
-Corollary~\ref{cor:dist}, it takes Gaussian elimination.
+LLL suffices~\cite{GifNote}. The encryption map is the conjugate transpose of $A$~\cite{GifNote}, of the same rank, so
+each ciphertext's noise falls in the same way, and the argument after Corollary~\ref{cor:rec} then yields the message;
+\cite{GifNote} recovers the noise and the encrypted bit exactly at the first parameter set. Distinguishing the public
+matrix from the distribution its reduction assumed is cheaper still: by Corollary~\ref{cor:dist}, it takes Gaussian
+elimination. A fixed $x\in\ker N_8$ is annihilated by every Singer-orbit key at $k=8$, while right multiplication by one
+of its blocks is invertible, so a matrix with independent uniform sedenion entries annihilates it only with probability
+$q^{-128}$; the self-test checks both facts over $\F_{911}$.
 
 \subsection{Why the scheme's own check missed it}\label{sec:missed}
 
@@ -262,20 +324,24 @@ relative to a uniform matrix~\cite{GifFLT}. It was run on a $64\times64$ proxy a
 itself labelled it a toy-scale result that ``does not establish anything at production dimension''.
 
 Proposition~\ref{prop:vis} makes that caveat exact. At $k=4$ the public map has $n(4)=64$ columns, below the ceiling of
-76, so by part~(i) a full-rank result certified only $\rho\ge64$. The deployed matrix at $k=64$ has $n=1024$; every value
-$64\le\rho<1024$ was left open, and the truth was $\rho=76$. The check returned a clean result not because the scheme
-was sound but because it was run below the ceiling. Table~\ref{tab:rank} shows the trap at a glance: the columns $k\le4$
-are identical for the Singer-orbit and the uniform matrix, and they separate only from $k=5$.
+76, so by part~(i) a full-rank result certified only $\rho\ge64$. An instance of size 4 also uses only four of the seven
+powers of $\sigma$, so even the repetition $A_{i,j+7}=A_{ij}$ of the deployed matrix was absent from it. The deployed
+matrix at $k=64$ has $n=1024$; every value $64\le\rho<1024$ was left open, and the truth was $\rho=76$. The check returned
+a clean result not because the scheme was sound but because it was run below the ceiling. Table~\ref{tab:rank} shows the
+trap at a glance: the columns $k\le4$ are identical for the Singer-orbit and the uniform matrix, and they separate only
+from $k=5$.
 
 \subsection{Non-associativity was beside the point}
 
 The scheme's security narrative rested on the non-associativity of the sedenions and on the $\sigma$-symmetry of $A$.
 Neither bears on the break. Decryption uses the bilinear conjugate-norm pairing, so every map the attacker needs is
 $\F_q$-linear, and the argument of Section~\ref{sec:mech} uses only linearity. The permutation $\sigma$ is not an
-automorphism of the sedenion product but a relabelling of coordinates, so the ``symmetry'' of $A$ is not an algebraic
-symmetry at all~\cite{GifNote}. The lesson travels: advertised algebraic richness can be orthogonal to the property
-that carries security, and a security argument phrased in terms of the rich structure may be answering the wrong
-question.
+automorphism of the sedenion product but a relabelling of coordinates: it breaks $\sigma(xy)=\sigma(x)\sigma(y)$ on 144
+of the 256 products of basis elements~\cite{GifNote}. It is not even a collineation of the Fano plane as the product labels
+it, whose lines are $\{1,2,3\}$, $\{1,4,5\}$, $\{1,6,7\}$, $\{2,4,6\}$, $\{2,5,7\}$, $\{3,4,7\}$ and $\{3,5,6\}$: it
+sends $\{1,2,3\}$ to $\{2,3,4\}$. So the ``symmetry'' of $A$ is not an algebraic symmetry at all. The lesson travels:
+advertised algebraic richness can be orthogonal to the property that carries security, and a security argument phrased
+in terms of the rich structure may be answering the wrong question.
 
 \subsection{The repair that was not one}\label{sec:repair}
 
@@ -283,47 +349,56 @@ Once the deficiency was found, the natural repair was to replace the Singer-orbi
 removes the ceiling. It does not rescue the claim: at the first parameter set the modulus-to-noise ratio alone puts the
 cheapest attack near $2^{51}$, and at the second near $2^{167}$, about 95 bits below the $2^{262}$ the same estimator
 gives ML-KEM-1024~\cite{GifNote}. Clearing the structural flag one has found does not clear a parameter problem one has
-not. The rank test of Section~\ref{sec:diag} is necessary, never sufficient.
+not. Passing the rank test of Section~\ref{sec:diag} is necessary for a uniform-matrix security argument, never
+sufficient.
 
 \section{The diagnostic}\label{sec:diag}
 
 The mechanism gives a checklist that a designer or evaluator can run before trusting a compressed or structured public
 key, at a cost far below the lattice estimate it should precede.
-\begin{enumerate}
+\begin{enumerate}\setcounter{enumi}{-1}
+\item \textbf{Count.} Count the distinct rows and the distinct columns of the design at the deployed size; $\rank D$ is
+  at most the smaller. If that is below the ambient dimension, the scheme fails before any elimination (in the case
+  study, 112 against 512 and 1024).
 \item \textbf{Factor.} Write the construction as $M=R\cdot D$, separating the seed randomness $R$ from the fixed
-  generator gadget $D$. If no such factorization exists because the public object is uniform, there is nothing to
-  check here.
-\item \textbf{Build the full design.} Include every distinct generator image, so that $D$ covers all instance sizes (for
-  a cyclic generator of order $r$, all $r$ powers).
+  generator gadget $D$. For a uniform object the factorization is trivial, with $D$ the identity, and the test passes.
+\item \textbf{Build the design} at each deployed size and, if the generator has finitely many images, the full design
+  that contains them all (for a cyclic generator of order $r$, all $r$ powers), which bounds every size at once.
 \item \textbf{Compute the ceiling exactly.} Compute $\rho=\rank D$ over the working field $\F_q$ with exact arithmetic,
-  not floating point, and over a second characteristic to confirm that the value is not an artifact of one prime. This
-  bounds $\rank M$ at every instance size at once (Proposition~\ref{prop:ceiling}).
-\item \textbf{Confirm on a large enough instance.} Realize $M$ at a size with $n(k)>\rho$ and compare its rank with a
-  uniform matrix of the same shape over several seed sets. A check below that size is uninformative
-  (Proposition~\ref{prop:vis}); a realized rank above $\rho$ contradicts Proposition~\ref{prop:ceiling} and means the
-  factorization is wrong.
-\item \textbf{Flag.} Report a ceiling if $\rho$ is below the ambient dimension at the deployed size, and a projection
-  weakness if $D$ preserves or annihilates a nontrivial fixed subspace. Either gives a distinguisher
-  (Corollary~\ref{cor:dist}) and a reduced recovery problem (Corollary~\ref{cor:rec}).
+  not floating point. When $D$ has integer entries, also compute its rank over $\mathbb{Q}$: the rank modulo any prime
+  is at most that, so it bounds every modulus at once (Proposition~\ref{prop:ceiling}).
+\item \textbf{Confirm on a large enough instance.} Realize $M$ at the smallest size with $n(k)>\rank D_k$ and compare its
+  rank, over several seed sets, with matrices of the same shape drawn from the distribution the scheme's security
+  argument assumes. A check below that size is uninformative (Proposition~\ref{prop:vis}); a realized rank above
+  $\rank D_k$ contradicts Proposition~\ref{prop:ceiling} and means the factorization is wrong.
+\item \textbf{Flag.} Report a ceiling if $\rho$ is below the ambient dimension at the deployed size. It gives a
+  distinguisher (Corollary~\ref{cor:dist}) and a recovery problem of dimension at most $\rho$
+  (Corollary~\ref{cor:rec}), at which the lattice estimate must be rerun. Invariant subspaces are not flagged: they are a
+  weakness only under the condition of Remark~\ref{rem:inv}, which this test does not check.
 \end{enumerate}
 The test is exact linear algebra on a matrix the size of the design: it takes seconds, needs no lattice reduction or
 estimator, and costs less than the Core-SVP estimate a candidate already runs. It belongs \emph{before} that estimate,
-because a positive result makes the estimate moot.
+because a positive result changes the dimension at which the estimate must be run and, when $\rho$ is as small as in the
+case study, makes it moot.
 
 \paragraph{Where to look.} The factorization of step~1 exists whenever the public object is a generator applied to
-seeds: cyclic or orbit-generated matrices, group-action public keys, structured-code substitutions, and any object
-described as compressed, symmetric, or inheriting an algebraic structure. A uniform key, for which no such
-factorization exists, is the sound design this test compares against.
+seeds: cyclic or orbit-generated matrices, images under linear group actions, structured-code substitutions, and any
+object described as compressed, symmetric, or inheriting an algebraic structure.
 
 \paragraph{Implementation.} A standalone implementation in pure Python, with no dependencies, accompanies this note
 (\texttt{design\_matrix\_rank.py}; Section~\ref{sec:repro}). A user describes a construction by implementing four
-methods: \texttt{design\_matrix()}, \texttt{realize()}, \texttt{ambient\_rank()} and \texttt{random\_seeds()}. The tool
-then runs steps 3 and 4 and the rank part of step 5, and prints a verdict. It ships with the case study of
-Section~\ref{sec:case} (verdict \emph{fail}: ceiling 76, the same over four characteristics) and a uniform control
-(verdict \emph{pass}). A \texttt{--self-test} mode reproduces the columns $k\le8$ of Table~\ref{tab:rank} over three seed
-sets and $\rank N=76$ over four characteristics, and exits with an error on any mismatch, so it doubles as a regression
-test pinned to the published result. The empirical curve it prints marks every size below the ceiling as one at which
-the collapse is invisible: Section~\ref{sec:missed} in executable form.
+methods---\texttt{design\_matrix(k)}, \texttt{realize()}, \texttt{ambient\_rank()} and \texttt{random\_seeds()}---and
+listing its parameter sets, each a deployed size with its working modulus; optional methods supply the full design and a
+sampler for the distribution the security argument assumes. On the designs the user supplies (steps 1 and 2), the tool
+runs steps 0, 3, 4 and 5, takes its verdict at each deployed size, and reports an error if a realized rank exceeds
+$\rank D_k$. It ships with the case study of Section~\ref{sec:case} (verdict \emph{fail}: ceiling 76 at both parameter
+sets, and 112 by counting alone) and two structured, sound controls (verdict \emph{pass}): a sedenion module matrix with
+independent uniform entries, and an ML-KEM-shaped module of independent uniform elements of
+$\mathbb{Z}_{3329}[X]/(X^{256}+1)$ at $k=2,3,4$. A \texttt{--self-test} mode reproduces the columns $k\le8$ of
+Table~\ref{tab:rank}, $\rank N=76$ and the other facts this note computes, checks the verdicts on the case study, on the
+controls and on designs built to fail, and exits with an error on any mismatch, so it doubles as a regression test
+pinned to the published result. The empirical curve it prints marks every size below the ceiling as one at which the
+collapse is invisible: Section~\ref{sec:missed} in executable form.
 
 \section{The pattern recurs}\label{sec:pattern}
 
@@ -331,7 +406,7 @@ The case study is one instance of a recurring shape: \emph{a structural feature 
 invariant, or an auxiliary datum, that an attacker reads off.} Only the first item below is an instance of
 Proposition~\ref{prop:ceiling}. The others are published breaks, cited as established results; what we add is the
 classification---that each turns a structure introduced for a benefit into the lever---which is interpretive, not a
-theorem. All are breaks of proposed or withdrawn constructions.
+theorem. All are breaks of proposed or withdrawn constructions or instantiations.
 \begin{itemize}
 \item \textbf{A rank ceiling from a generator.} The case study of Section~\ref{sec:case}. Benefit sought: a compressed
   key and an inherited symmetry. Lever: the rank of the design matrix. This is the linear-image case that
@@ -339,14 +414,29 @@ theorem. All are breaks of proposed or withdrawn constructions.
 \item \textbf{Structured codes in McEliece.} Random binary Goppa codes give a sound McEliece instance, but substituting
   a structured code to shrink the key has failed repeatedly: generalized Reed--Solomon codes~\cite{SS92}, compact
   quasi-cyclic and dyadic variants~\cite{FOPT10}, and algebraic-geometry codes~\cite{CMP14}, each broken by a structural
-  attack that recovers the hidden code from the public generator matrix. Structure added for size became the lever.
+  attack that recovers the hidden code from the public generator matrix. Dimension counts are a common tool, as in
+  Section~4: the attack on algebraic-geometry codes works with componentwise products of the public code, whose
+  dimensions are abnormally small for such codes~\cite{CMP14}, and even binary Goppa codes become distinguishable from
+  random codes at high rate, where a linear system built from the public key has an abnormally large solution
+  space~\cite{FGOPT13}. Structure added for size became the lever.
+\item \textbf{Layers in multivariate signatures.} Rainbow, a finalist in the third round of NIST's process, layered
+  Unbalanced Oil and Vinegar for efficiency. The layers make some linear combinations of the public quadratic forms
+  abnormally low in rank, the lever of MinRank attacks; Beullens' rectangular MinRank attack~\cite{Beu21} and his key
+  recovery, which takes about a weekend on a laptop at the level-I parameters~\cite{Beu22}, exploit exactly that
+  structure.
 \item \textbf{Overstretched NTRU.} With a large modulus at fixed noise, a dense sublattice appears, which subfield and
   sublattice attacks exploit~\cite{ABD16,KF17}; the onset was later located as the ``fatigue point''~\cite{DvW21}. Here
   the structure comes from a parameter choice made for functionality rather than from an explicit generator, but the
-  lever is again a fixed low-dimensional structure in the public object.
+  lever is again a fixed low-dimensional structure in the public object. It is also the published counterpart of
+  Section~\ref{sec:repair}: there too a modulus too large for its noise, not a generator, was the lever.
 \item \textbf{Principal ideals and short generators.} Compact key constructions over principal ideals, such as
   Soliloquy~\cite{CGS14}, admit short-generator recovery~\cite{CDPR16}: the ideal structure chosen for compactness is
   the route to the key.
+\item \textbf{Weak instances of Ring-LWE.} Every multiplication map of a Ring-LWE ring preserves the same subspaces. For
+  some defining polynomials and error distributions, projecting onto one of them keeps the error short and breaks the
+  instance~\cite{ELOS15,CIV16}; with errors wide enough relative to the ring's geometry the projection is
+  harmless~\cite{Pei16}. This is the invariant-subspace case of Remark~\ref{rem:inv}, together with the condition it
+  needs.
 \item \textbf{SIDH and SIKE: auxiliary data for functionality (an analogy).} The images $\phi(P),\phi(Q)$ of torsion
   points are published so that the key exchange can complete. The 2022 attacks, all published at EUROCRYPT
   2023~\cite{CD23,MMPPW23,Rob23}, use Kani's theorem~\cite{Kani97} to embed the secret isogeny in a higher-dimensional
@@ -365,15 +455,18 @@ others it is a design discipline rather than a single test.
 \item \textbf{Linear-image generators only.} Proposition~\ref{prop:ceiling} is exact and general for public objects
   bilinear in the seeds and a fixed generator. Nonlinear generators, and the SIDH case of Section~\ref{sec:pattern}, lie
   outside it; there the comparison is an analogy, and Section~\ref{sec:pattern} says so.
-\item \textbf{Necessary, not sufficient.} A full-rank design matrix with no invariant subspace shows only that this
-  class of weakness is absent. Section~\ref{sec:repair} is the cautionary case: with the structure removed, the scheme
-  still failed on its modulus-to-noise ratio, which this test does not judge.
-\item \textbf{Structure is not the enemy.} Module-LWE and binary-Goppa McEliece are structured and sound. The claim is
-  narrow and testable: generator-induced invariants must be computed, over the working field and for the full design,
-  before a structured public object is trusted.
+\item \textbf{Necessary for a uniform-matrix argument, not sufficient.} A full-rank design shows only that this class of
+  weakness is absent. Invariant subspaces, which every ring-structured design has, are a weakness only under the
+  condition of Remark~\ref{rem:inv}, which the test does not check. Section~\ref{sec:repair} is the cautionary case: with
+  the structure removed, the scheme still failed on its modulus-to-noise ratio, which this test does not judge.
+\item \textbf{Structure is not the enemy.} Module-LWE and binary-Goppa McEliece are structured and sound, and the
+  ML-KEM-shaped control passes the diagnostic. The claim is narrow and testable: generator-induced invariants must be
+  computed, over the working field and for the design at the deployed size, before a structured public object is
+  trusted.
 \item \textbf{Dimension, not cost.} Corollary~\ref{cor:rec} gives the dimension to which recovery reduces; the concrete
   cost is a lattice-estimator question that depends, as Section~\ref{sec:repair} shows, on parameters the rank test does
-  not see.
+  not see. A ceiling close to the ambient dimension may leave the reduced problem hard; the case study is fatal because
+  $\rho=76$.
 \end{itemize}
 
 \Needspace{12\baselineskip}  % keep the heading, its lead-in and the table together
@@ -384,19 +477,23 @@ this note on Zenodo:
 \begin{center}\small
 \begin{tabular}{@{}ll@{}}
 file & \texttt{generator\_induced\_invariants/diagnostics/design\_matrix\_rank.py}\\
-SHA-256 & \texttt{bb22d680f7b82e3d69e722923654a87ea4c558cbe9f932ea4c1a0b9a0f401b94}\\
+SHA-256 & \texttt{b6a368c9b9f1e269b9dca93bc0d5f8c81ab5f5797687352fe3c4154e147f9818}\\
 self-test & \texttt{python3 design\_matrix\_rank.py --self-test}
 \end{tabular}
 \end{center}
-It runs under Python~3.8 or later with no other dependencies. The self-test reproduces the columns $k\le8$ of
-Table~\ref{tab:rank} and $\rank N=76$ modulo $911$, $2731$, $2^{31}-1$ and $q=4\,294\,977\,961$, by exact Gaussian
-elimination over $\F_p$. The full break of the case-study scheme---both independent rank implementations, one written
-blind from a textual specification, the exact ranks computed with python-flint, and the lattice-estimator runs---is
-archived with~\cite{GifNote}.
+It runs under Python~3.8 or later with no other dependencies. The self-test regenerates the columns $k\le8$ of
+Table~\ref{tab:rank} over $\F_{911}$ and checks that they equal $\rank N_k$; it re-derives $\rank N=76$ over $\mathbb{Q}$
+by fraction-free elimination and modulo $911$, $2731$, $2^{31}-1$ and $q=4\,294\,977\,961$, and over $\mathbb{Q}$ under
+the other Cayley--Dickson convention; it checks the count of 112, the split $76=16+6\cdot10$, the 144 failing basis
+products, the image of $\{1,2,3\}$ under $\sigma$ and the kernel test of Section~\ref{sec:ceiling}; and it checks the
+verdicts on the case study, on both controls, on two designs built to fail, and on one whose design does not factor its
+realization. The full break of the case-study scheme---both independent rank implementations, one written blind from a
+textual specification, the exact ranks computed with python-flint, and the lattice-estimator runs---is archived
+with~\cite{GifNote}.
 
 \paragraph{Acknowledgements.} AI agents (Anthropic's Claude) drafted this note, generalized its mechanism from the case
-study, and wrote and ran the accompanying diagnostic. The author directed the work, reviewed the text, and takes
-responsibility for it.
+study, and wrote and ran the accompanying diagnostic; a review by Google's Gemini suggested the seed-length count of
+Section~\ref{sec:mech}. The author directed the work, reviewed the text, and takes responsibility for it.
 
 \begin{thebibliography}{99}\small
 \bibitem{ABD16} M.~R.~Albrecht, S.~Bai, L.~Ducas. A subfield lattice attack on overstretched NTRU assumptions:
@@ -404,20 +501,28 @@ responsibility for it.
 \bibitem{APS15} M.~R.~Albrecht, R.~Player, S.~Scott. On the concrete hardness of Learning with Errors.
   \emph{J.\ Math.\ Cryptol.} 9(3) (2015), 169--203.
 \bibitem{estimator} M.~R.~Albrecht et al. The lattice estimator. \url{https://github.com/malb/lattice-estimator}.
+\bibitem{Beu21} W.~Beullens. Improved cryptanalysis of UOV and Rainbow. \emph{EUROCRYPT} 2021. IACR ePrint 2020/1343.
+\bibitem{Beu22} W.~Beullens. Breaking Rainbow takes a weekend on a laptop. \emph{CRYPTO} 2022. IACR ePrint 2022/214.
 \bibitem{CGS14} P.~Campbell, M.~Groves, D.~Shepherd. Soliloquy: a cautionary tale. \emph{ETSI 2nd Quantum-Safe Crypto
   Workshop}, 2014.
 \bibitem{CD23} W.~Castryck, T.~Decru. An efficient key recovery attack on SIDH. \emph{EUROCRYPT} 2023. IACR ePrint
   2022/975.
+\bibitem{CIV16} W.~Castryck, I.~Iliashenko, F.~Vercauteren. Provably weak instances of Ring-LWE revisited.
+  \emph{EUROCRYPT} 2016. IACR ePrint 2016/239.
 \bibitem{CMP14} A.~Couvreur, I.~M\'arquez-Corbella, R.~Pellikaan. A polynomial time attack against algebraic geometry
   code based public key cryptosystems. \emph{IEEE ISIT} 2014. IACR ePrint 2014/064.
 \bibitem{CDPR16} R.~Cramer, L.~Ducas, C.~Peikert, O.~Regev. Recovering short generators of principal ideals in
   cyclotomic rings. \emph{EUROCRYPT} 2016. IACR ePrint 2015/313.
 \bibitem{DvW21} L.~Ducas, W.~van Woerden. NTRU fatigue: how stretched is overstretched? \emph{ASIACRYPT} 2021. IACR
   ePrint 2021/999.
+\bibitem{ELOS15} Y.~Elias, K.~E.~Lauter, E.~Ozman, K.~E.~Stange. Provably weak instances of Ring-LWE. \emph{CRYPTO}
+  2015. IACR ePrint 2015/106.
+\bibitem{FGOPT13} J.-C.~Faug\`ere, V.~Gauthier-Uma\~na, A.~Otmani, L.~Perret, J.-P.~Tillich. A distinguisher for
+  high-rate McEliece cryptosystems. \emph{IEEE Trans.\ Inf.\ Theory}, 2013. IACR ePrint 2010/331.
 \bibitem{FOPT10} J.-C.~Faug\`ere, A.~Otmani, L.~Perret, J.-P.~Tillich. Algebraic cryptanalysis of McEliece variants
   with compact keys. \emph{EUROCRYPT} 2010, LNCS 6110, 279--298.
 \bibitem{GifFLT} M.~Gifford. Fluid Lattice Topology: bridging PSL(2,7) vacuum geometry and non-associative post-quantum
-  cryptography. Zenodo, 2026; version 3 (Zenodo version v4), with a notice withdrawing its security claims,
+  cryptography. Zenodo, 2026; the version with a notice withdrawing its security claims is
   doi:\doi{10.5281/zenodo.23351706}, on the record \doi{10.5281/zenodo.20078312}.
 \bibitem{GifNote} M.~Gifford. A rank collapse in a sedenion Module-LWE proposal, and why a uniform matrix does not
   repair it. Zenodo, 2026, version 2. doi:\doi{10.5281/zenodo.23352161} (all versions:
@@ -431,7 +536,8 @@ responsibility for it.
 \bibitem{MMPPW23} L.~Maino, C.~Martindale, L.~Panny, G.~Pope, B.~Wesolowski. A direct key recovery attack on SIDH.
   \emph{EUROCRYPT} 2023. IACR ePrint 2022/1026.
 \bibitem{FIPS} NIST. FIPS 203: Module-lattice-based key-encapsulation mechanism standard; FIPS 204: Module-lattice-based
-  digital signature standard; FIPS 205: Stateless hash-based digital signature standard. August 2024.
+  digital signature standard. August 2024.
+\bibitem{Pei16} C.~Peikert. How (not) to instantiate Ring-LWE. \emph{SCN} 2016. IACR ePrint 2016/351.
 \bibitem{Regev} O.~Regev. On lattices, learning with errors, random linear codes, and cryptography.
   \emph{J.\ ACM} 56(6) (2009), article 34.
 \bibitem{Rob23} D.~Robert. Breaking SIDH in polynomial time. \emph{EUROCRYPT} 2023. IACR ePrint 2022/1038.

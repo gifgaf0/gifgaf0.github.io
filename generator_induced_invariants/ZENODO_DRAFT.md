@@ -17,8 +17,8 @@ diagnostic the note describes. Nothing here is deposited.
 
 | File | md5 | |
 |---|---|---|
-| `generator_induced_invariants_v1.pdf` | `9b8c10acf6095fc94b52050a47377746` | 9 pages. `build_pdf.py` builds it and rebuilds it byte-identical |
-| `design_matrix_rank.py` | `9ec9a318d3eaff738faed3b182ce8348` | from `diagnostics/`; SHA-256 `bb22d680…0f401b94`, as printed in the note's Section 7 |
+| `generator_induced_invariants_v1.pdf` | `3f8efeb998786ecb0ab84c3b344855c3` | 11 pages. `build_pdf.py` builds it and rebuilds it byte-identical |
+| `design_matrix_rank.py` | `b348a30837d79bd128d59b39c11a832c` | from `diagnostics/`; SHA-256 `b6a368c9…4e147f9818`, as printed in the note's Section 7 |
 
 Zenodo shows each uploaded file's md5 on the record page; it should match the table.
 
@@ -46,7 +46,7 @@ Zenodo shows each uploaded file's md5 on the record page; it should match the ta
 ## Description
 
 Paste `ZENODO_DESCRIPTION.txt` as it is. Its first paragraph is the note's abstract, checked word for word against the
-PDF (273 words); the second points to the full break; the third describes the accompanying script.
+PDF (302 words); the second points to the full break; the third describes the accompanying script.
 
 ## IACR ePrint (optional)
 

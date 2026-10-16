@@ -126,9 +126,10 @@ depends on. An independent review of our first write-up found claims the
 models did not support: a tighter bound than proved, non-standard assumptions
 not flagged as such, and a weaker adversary than described.
 Comparing the models with the implementation found that our X-Wing raised an
-error on low-order X25519 points, where the specification returns a shared
-secret; we fixed it and characterise the affected inputs completely. All
-models, proof scripts and tests are public.
+error on low-order X25519 points, where the specification's algorithm returns
+a shared secret. The same divergence had been reported for another library;
+we fixed ours and characterise the affected inputs completely. All models,
+proof scripts and tests are public.
 \end{abstract}
 
 \input{sections/intro}

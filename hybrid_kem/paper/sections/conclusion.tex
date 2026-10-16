@@ -13,9 +13,11 @@ it possible to say what each proof depends on.
 
 Several directions remain open: a cofactor-aware model of X25519;
 mechanizing the composition steps that we did by hand; a tight multi-user
-bound for the hybrid KEM; adaptive ephemeral and state reveal; and checking
-whether other X-Wing implementations built on X25519 APIs that reject
-all-zero outputs diverge in the same way.
+bound for the hybrid KEM; and adaptive ephemeral and state reveal. The
+specifications also disagree on the all-zero X25519 output: X-Wing specifies
+no check, while RFC~9180 and RFC~10024 require one. Implementations built on
+X25519 functions that reject that output will keep diverging from X-Wing
+unless the specifications settle the question.
 
 \paragraph{Acknowledgements and AI disclosure.} The CryptoVerif models,
 proof scripts, mutation tests, implementation tests and a first draft of

@@ -1,152 +1,255 @@
-% PROVISIONAL: entries from memory, pending verification against primary sources.
+% References checked against primary sources on 15-16 October 2026.
+% Each entry's comment names the page it was checked against. alpha.bst does
+% not print url/doi fields, so URLs that matter to a reader are in `note' or
+% `howpublished'.
 
 @article{XWing,
   author  = {Manuel Barbosa and Deirdre Connolly and Jo{\~a}o Diogo Duarte and Aaron Kaiser and Peter Schwabe and Karolin Varner and Bas Westerbaan},
   title   = {{X-Wing}: The Hybrid {KEM} You've Been Looking For},
-  journal = {IACR Communications in Cryptology},
+  journal = {{IACR} Communications in Cryptology},
   volume  = {1},
   number  = {1},
   year    = {2024},
-  note    = {DOI 10.62056/a3qj89n4e. Cryptology ePrint Archive, Paper 2024/039},
+  doi     = {10.62056/a3qj89n4e},
+  note    = {Full version: Cryptology {ePrint} Archive, Paper 2024/039},
 }
+% verified: https://cic.iacr.org/p/1/1/21 ; https://eprint.iacr.org/2024/039
 
-@misc{XWingDraft,
-  author       = {Deirdre Connolly and Peter Schwabe and Bas Westerbaan},
-  title        = {{X-Wing}: general-purpose hybrid post-quantum {KEM}},
-  howpublished = {Internet-Draft draft-connolly-cfrg-xwing-kem-11, IETF},
-  year         = {2026},
+@techreport{XWingDraft,
+  author      = {Deirdre Connolly and Peter Schwabe and Bas Westerbaan},
+  title       = {{X-Wing}: general-purpose hybrid post-quantum {KEM}},
+  type        = {Internet-Draft},
+  number      = {draft-connolly-cfrg-xwing-kem-11},
+  institution = {Internet Engineering Task Force},
+  year        = {2026},
+  month       = sep,
+  note        = {Work in progress},
 }
+% verified: https://datatracker.ietf.org/doc/html/draft-connolly-cfrg-xwing-kem-11 (23 September 2026)
 
-@misc{Composite,
-  author       = {Mike Ounsworth and John Gray and Massimiliano Pala and Jan Klaussner and Scott Fluhrer},
-  title        = {Composite {ML-DSA} for use in {X.509} Public Key Infrastructure},
-  howpublished = {Internet-Draft draft-ietf-lamps-pq-composite-sigs-19, IETF},
-  year         = {2026},
+@techreport{Composite,
+  author      = {Mike Ounsworth and John Gray and Massimiliano Pala and Jan Klau{\ss}ner and Scott Fluhrer},
+  title       = {Composite Module-Lattice-Based Digital Signature Algorithm ({ML-DSA}) for use in {X.509} Public Key Infrastructure},
+  type        = {Internet-Draft},
+  number      = {draft-ietf-lamps-pq-composite-sigs-19},
+  institution = {Internet Engineering Task Force},
+  year        = {2026},
+  month       = apr,
+  note        = {Work in progress},
 }
+% verified: https://datatracker.ietf.org/doc/html/draft-ietf-lamps-pq-composite-sigs-19 (21 April 2026)
 
 @techreport{FIPS203,
   author      = {{National Institute of Standards and Technology}},
   title       = {Module-Lattice-Based Key-Encapsulation Mechanism Standard},
-  institution = {NIST},
   type        = {Federal Information Processing Standards Publication},
-  number      = {203},
+  number      = {FIPS 203},
+  institution = {National Institute of Standards and Technology},
   year        = {2024},
+  month       = aug,
+  doi         = {10.6028/NIST.FIPS.203},
 }
+% verified: https://csrc.nist.gov/pubs/fips/203/final ; Table 1: ML-KEM-768 2^-164.8, ML-KEM-1024 2^-174.8
 
 @techreport{FIPS204,
   author      = {{National Institute of Standards and Technology}},
   title       = {Module-Lattice-Based Digital Signature Standard},
-  institution = {NIST},
   type        = {Federal Information Processing Standards Publication},
-  number      = {204},
+  number      = {FIPS 204},
+  institution = {National Institute of Standards and Technology},
   year        = {2024},
+  month       = aug,
+  doi         = {10.6028/NIST.FIPS.204},
 }
+% verified: https://csrc.nist.gov/pubs/fips/204/final
 
 @techreport{FIPS202,
   author      = {{National Institute of Standards and Technology}},
   title       = {{SHA-3} Standard: Permutation-Based Hash and Extendable-Output Functions},
-  institution = {NIST},
   type        = {Federal Information Processing Standards Publication},
-  number      = {202},
+  number      = {FIPS 202},
+  institution = {National Institute of Standards and Technology},
   year        = {2015},
+  month       = aug,
+  doi         = {10.6028/NIST.FIPS.202},
 }
+% verified: https://csrc.nist.gov/publications/detail/fips/202/final
 
 @misc{RFC7748,
   author       = {Adam Langley and Mike Hamburg and Sean Turner},
   title        = {Elliptic Curves for Security},
   howpublished = {RFC 7748},
   year         = {2016},
+  month        = jan,
+  doi          = {10.17487/RFC7748},
 }
+% verified: https://www.rfc-editor.org/info/rfc7748
 
 @misc{RFC9180,
   author       = {Richard Barnes and Karthikeyan Bhargavan and Benjamin Lipp and Christopher A. Wood},
   title        = {Hybrid Public Key Encryption},
   howpublished = {RFC 9180},
   year         = {2022},
+  month        = feb,
+  doi          = {10.17487/RFC9180},
 }
+% verified: https://www.rfc-editor.org/info/rfc9180 ; Sec. 7.1.4 read directly
+
+@misc{RFC10024,
+  author       = {Kris Kwiatkowski and Panos Kampanakis and Bas Westerbaan and Douglas Stebila},
+  title        = {Post-Quantum Traditional ({PQ/T}) Hybrid Key Agreement Mechanisms for {TLS} 1.3},
+  howpublished = {RFC 10024},
+  year         = {2026},
+  month        = aug,
+}
+% verified: https://www.rfc-editor.org/rfc/rfc10024 (Proposed Standard; Sec. 4.3 read directly). Authors' given names
+% are as in the TLS working-group drafts; the RFC header shows initials (K. Kwiatkowski, P. Kampanakis, B. E. Westerbaan, D. Stebila).
 
 @misc{RFC8032,
   author       = {Simon Josefsson and Ilari Liusvaara},
   title        = {Edwards-Curve Digital Signature Algorithm ({EdDSA})},
   howpublished = {RFC 8032},
   year         = {2017},
+  month        = jan,
+  doi          = {10.17487/RFC8032},
 }
+% verified: https://rfc-editor.org/info/rfc8032
 
 @misc{RFC5869,
   author       = {Hugo Krawczyk and Pasi Eronen},
   title        = {{HMAC}-based Extract-and-Expand Key Derivation Function ({HKDF})},
   howpublished = {RFC 5869},
   year         = {2010},
+  month        = may,
+  doi          = {10.17487/RFC5869},
 }
+% verified: https://www.rfc-editor.org/info/rfc5869
 
 @article{Bla08,
   author  = {Bruno Blanchet},
   title   = {A Computationally Sound Mechanized Prover for Security Protocols},
-  journal = {IEEE Transactions on Dependable and Secure Computing},
+  journal = {{IEEE} Transactions on Dependable and Secure Computing},
   volume  = {5},
   number  = {4},
   pages   = {193--207},
   year    = {2008},
+  doi     = {10.1109/TDSC.2007.1005},
 }
+% verified: https://api.crossref.org/works/10.1109/TDSC.2007.1005
 
 @misc{CryptoVerif,
-  author       = {Bruno Blanchet and others},
-  title        = {{CryptoVerif}: Cryptographic Protocol Verifier in the Computational Model},
-  howpublished = {Version 2.13},
-  year         = {2025},
+  author       = {Bruno Blanchet and David Cad{\'e} and Aymeric Fromherz and Charlie Jacomme},
+  title        = {{CryptoVerif}: Computationally Sound Cryptographic Protocol Verifier. User Manual},
+  howpublished = {Inria},
+  year         = {2026},
+  month        = sep,
+  note         = {Tool version 2.13. \url{https://bblanche.gitlabpages.inria.fr/cryptoverif/}},
 }
+% partially verified: manual title page (dated 7 September 2026); version 2.13 published 9 September 2026 per
+% https://opam.ocaml.org/packages/cryptoverif
 
 @inproceedings{BJ24,
   author    = {Bruno Blanchet and Charlie Jacomme},
-  title     = {Post-quantum sound {CryptoVerif} and verification of hybrid {TLS} and {SSH} key-exchanges},
-  booktitle = {37th IEEE Computer Security Foundations Symposium, {CSF} 2024},
+  title     = {Post-Quantum Sound {CryptoVerif} and Verification of Hybrid {TLS} and {SSH} Key-Exchanges},
+  booktitle = {37th {IEEE} Computer Security Foundations Symposium, {CSF} 2024},
+  pages     = {543--556},
+  publisher = {IEEE},
   year      = {2024},
+  doi       = {10.1109/CSF61375.2024.00050},
 }
+% verified: https://dblp.org/pid/195/3195 ; Crossref metadata for the DOI
 
 @inproceedings{CV2EC,
   author    = {Bruno Blanchet and Pierre Boutry and Christian Doczkal and Benjamin Gr{\'e}goire and Pierre-Yves Strub},
   title     = {{CV2EC}: Getting the Best of Both Worlds},
-  booktitle = {37th IEEE Computer Security Foundations Symposium, {CSF} 2024},
+  booktitle = {37th {IEEE} Computer Security Foundations Symposium, {CSF} 2024},
   pages     = {279--294},
+  publisher = {IEEE Computer Society},
   year      = {2024},
-  note      = {DOI 10.1109/CSF61375.2024.00019},
+  doi       = {10.1109/CSF61375.2024.00019},
 }
+% verified: https://researchportal.ip-paris.fr/en/publications/cv2ec-getting-the-best-of-both-worlds/ ;
+% findings read in https://pqshield.com/wp-content/uploads/2024/08/main.pdf (Sec. IV-B)
 
 @inproceedings{BBK17,
   author    = {Karthikeyan Bhargavan and Bruno Blanchet and Nadim Kobeissi},
   title     = {Verified Models and Reference Implementations for the {TLS} 1.3 Standard Candidate},
-  booktitle = {IEEE Symposium on Security and Privacy, {S\&P} 2017},
+  booktitle = {2017 {IEEE} Symposium on Security and Privacy},
   pages     = {483--502},
+  publisher = {IEEE},
   year      = {2017},
+  doi       = {10.1109/SP.2017.26},
 }
+% verified: https://api.crossref.org/works/10.1109/SP.2017.26
 
 @inproceedings{ABHKLR21,
   author    = {Jo{\"e}l Alwen and Bruno Blanchet and Eduard Hauck and Eike Kiltz and Benjamin Lipp and Doreen Riepel},
   title     = {Analysing the {HPKE} Standard},
-  booktitle = {Advances in Cryptology -- {EUROCRYPT} 2021},
+  booktitle = {Advances in Cryptology -- {EUROCRYPT} 2021, Part~I},
   series    = {LNCS},
   volume    = {12696},
   pages     = {87--116},
+  publisher = {Springer},
   year      = {2021},
+  doi       = {10.1007/978-3-030-77870-5_4},
+  note      = {Full version: Cryptology {ePrint} Archive, Paper 2020/1499},
 }
+% verified: https://link.springer.com/chapter/10.1007/978-3-030-77870-5_4 ; https://eprint.iacr.org/2020/1499
 
 @inproceedings{LBB19,
   author    = {Benjamin Lipp and Bruno Blanchet and Karthikeyan Bhargavan},
   title     = {A Mechanised Cryptographic Proof of the {WireGuard} Virtual Private Network Protocol},
-  booktitle = {IEEE European Symposium on Security and Privacy, {EuroS\&P} 2019},
+  booktitle = {2019 {IEEE} European Symposium on Security and Privacy ({EuroS\&P})},
   pages     = {231--246},
+  publisher = {IEEE},
   year      = {2019},
+  doi       = {10.1109/EuroSP.2019.00026},
 }
+% verified: https://api.crossref.org/works/10.1109/EuroSP.2019.00026
+
+@inproceedings{BJKS24,
+  author    = {Karthikeyan Bhargavan and Charlie Jacomme and Franziskus Kiefer and Rolfe Schmidt},
+  title     = {Formal Verification of the {PQXDH} Post-Quantum Key Agreement Protocol for End-to-End Secure Messaging},
+  booktitle = {33rd {USENIX} Security Symposium},
+  pages     = {469--486},
+  publisher = {USENIX Association},
+  year      = {2024},
+}
+% verified: https://usenix.org/conference/usenixsecurity24/presentation/bhargavan
+
+@misc{BDDJK26,
+  author       = {David Baelde and Antoine Dallon and St{\'e}phanie Delaune and Charlie Jacomme and Adrien Koutsos},
+  title        = {Robust Logical Foundations for Mechanizing Post-Quantum Cryptography in {Squirrel}},
+  howpublished = {Full version, v1.1. An extended abstract is to appear at {ACM} {CCS} 2026},
+  year         = {2026},
+  month        = aug,
+  note         = {\url{https://adrienkoutsos.fr/papers/ho-pq-squirrel.pdf}},
+}
+% verified: https://adrienkoutsos.fr/papers/ho-pq-squirrel.pdf (title page)
+
+@article{OPS25,
+  author  = {Sabine Oechsner and Vitor Pereira and Peter Scholl},
+  title   = {Who Verifies the Verifiers? {Lessons} Learned From Formally Verified Line-Point Zero-Knowledge},
+  journal = {{IACR} Communications in Cryptology},
+  volume  = {2},
+  number  = {3},
+  year    = {2025},
+  doi     = {10.62056/a0wa0lmol},
+}
+% verified: https://cic.iacr.org/p/2/3/24
 
 @inproceedings{GHP18,
   author    = {Federico Giacon and Felix Heuer and Bertram Poettering},
   title     = {{KEM} Combiners},
-  booktitle = {Public-Key Cryptography -- {PKC} 2018},
+  booktitle = {Public-Key Cryptography -- {PKC} 2018, Part~I},
   series    = {LNCS},
   volume    = {10769},
   pages     = {190--218},
+  publisher = {Springer},
   year      = {2018},
+  doi       = {10.1007/978-3-319-76578-5_7},
 }
+% verified: https://link.springer.com/book/10.1007/978-3-319-76578-5
 
 @inproceedings{BBFGS19,
   author    = {Nina Bindel and Jacqueline Brendel and Marc Fischlin and Brian Goncalves and Douglas Stebila},
@@ -155,38 +258,52 @@
   series    = {LNCS},
   volume    = {11505},
   pages     = {206--226},
+  publisher = {Springer},
   year      = {2019},
+  doi       = {10.1007/978-3-030-25510-7_12},
 }
+% verified: https://link.springer.com/chapter/10.1007/978-3-030-25510-7_12
 
 @inproceedings{CDM24,
   author    = {Cas Cremers and Alexander Dax and Niklas Medinger},
   title     = {Keeping Up with the {KEMs}: Stronger Security Notions for {KEMs} and Automated Analysis of {KEM}-based Protocols},
-  booktitle = {ACM Conference on Computer and Communications Security, {CCS} 2024},
+  booktitle = {2024 {ACM} {SIGSAC} Conference on Computer and Communications Security, {CCS} '24},
+  pages     = {1046--1060},
+  publisher = {ACM},
   year      = {2024},
+  doi       = {10.1145/3658644.3670283},
 }
+% verified: https://api.crossref.org/works/10.1145/3658644.3670283
 
 @misc{Sch24,
   author       = {Sophie Schmieg},
   title        = {Unbindable {Kemmy} {Schmidt}: {ML-KEM} is neither {MAL-BIND-K-CT} nor {MAL-BIND-K-PK}},
-  howpublished = {Cryptology ePrint Archive, Paper 2024/523},
+  howpublished = {Cryptology {ePrint} Archive, Paper 2024/523},
   year         = {2024},
 }
+% verified: https://eprint.iacr.org/2024/523
 
 @misc{KLS26,
   author       = {Taehun Kang and Changmin Lee and Yongha Son},
   title        = {On the Necessity of Public Contexts in Hybrid {KEMs}: A Case Study of {X-Wing}},
-  howpublished = {Cryptology ePrint Archive, Paper 2026/140},
+  howpublished = {Cryptology {ePrint} Archive, Paper 2026/140},
   year         = {2026},
 }
+% verified: https://eprint.iacr.org/2026/140
 
 @inproceedings{BBGS23,
   author    = {Matilda Backendal and Mihir Bellare and Felix G{\"u}nther and Matteo Scarlata},
   title     = {When Messages Are Keys: Is {HMAC} a Dual-{PRF}?},
   booktitle = {Advances in Cryptology -- {CRYPTO} 2023},
   series    = {LNCS},
+  volume    = {14083},
+  pages     = {661--693},
+  publisher = {Springer},
   year      = {2023},
-  note      = {Cryptology ePrint Archive, Paper 2023/861},
+  doi       = {10.1007/978-3-031-38548-3_22},
+  note      = {Full version: Cryptology {ePrint} Archive, Paper 2023/861},
 }
+% verified: https://link.springer.com/chapter/10.1007/978-3-031-38548-3_22 ; https://eprint.iacr.org/2023/861
 
 @inproceedings{BBM00,
   author    = {Mihir Bellare and Alexandra Boldyreva and Silvio Micali},
@@ -195,8 +312,11 @@
   series    = {LNCS},
   volume    = {1807},
   pages     = {259--274},
+  publisher = {Springer},
   year      = {2000},
+  doi       = {10.1007/3-540-45539-6_18},
 }
+% verified: https://link.springer.com/chapter/10.1007/3-540-45539-6_18
 
 @inproceedings{Kra03,
   author    = {Hugo Krawczyk},
@@ -205,8 +325,11 @@
   series    = {LNCS},
   volume    = {2729},
   pages     = {400--425},
+  publisher = {Springer},
   year      = {2003},
+  doi       = {10.1007/978-3-540-45146-4_24},
 }
+% verified: https://link.springer.com/chapter/10.1007/978-3-540-45146-4_24
 
 @inproceedings{Kra10,
   author    = {Hugo Krawczyk},
@@ -215,8 +338,11 @@
   series    = {LNCS},
   volume    = {6223},
   pages     = {631--648},
+  publisher = {Springer},
   year      = {2010},
+  doi       = {10.1007/978-3-642-14623-7_34},
 }
+% verified: https://link.springer.com/chapter/10.1007/978-3-642-14623-7_34
 
 @inproceedings{BR93,
   author    = {Mihir Bellare and Phillip Rogaway},
@@ -225,8 +351,11 @@
   series    = {LNCS},
   volume    = {773},
   pages     = {232--249},
+  publisher = {Springer},
   year      = {1994},
+  doi       = {10.1007/3-540-48329-2_21},
 }
+% verified: https://link.springer.com/chapter/10.1007/3-540-48329-2_21 (proceedings published 1994)
 
 @inproceedings{CK01,
   author    = {Ran Canetti and Hugo Krawczyk},
@@ -235,8 +364,11 @@
   series    = {LNCS},
   volume    = {2045},
   pages     = {453--474},
+  publisher = {Springer},
   year      = {2001},
+  doi       = {10.1007/3-540-44987-6_28},
 }
+% verified: https://link.springer.com/chapter/10.1007/3-540-44987-6_28
 
 @article{DFGS21,
   author  = {Benjamin Dowling and Marc Fischlin and Felix G{\"u}nther and Douglas Stebila},
@@ -245,15 +377,21 @@
   volume  = {34},
   number  = {4},
   year    = {2021},
+  note    = {Article 37},
+  doi     = {10.1007/s00145-021-09384-1},
 }
+% verified: https://api.crossref.org/works/10.1007/s00145-021-09384-1
 
 @inproceedings{SSW20,
   author    = {Peter Schwabe and Douglas Stebila and Thom Wiggers},
   title     = {Post-Quantum {TLS} Without Handshake Signatures},
-  booktitle = {ACM Conference on Computer and Communications Security, {CCS} 2020},
+  booktitle = {2020 {ACM} {SIGSAC} Conference on Computer and Communications Security, {CCS} '20},
   pages     = {1461--1480},
+  publisher = {ACM},
   year      = {2020},
+  doi       = {10.1145/3372297.3423350},
 }
+% verified: https://api.crossref.org/works/10.1145/3372297.3423350
 
 @inproceedings{BHMS17,
   author    = {Nina Bindel and Udyani Herath and Matthew McKague and Douglas Stebila},
@@ -262,16 +400,22 @@
   series    = {LNCS},
   volume    = {10346},
   pages     = {384--405},
+  publisher = {Springer},
   year      = {2017},
+  doi       = {10.1007/978-3-319-59879-6_22},
 }
+% verified: https://link.springer.com/chapter/10.1007/978-3-319-59879-6_22
 
 @inproceedings{CJ19,
   author    = {Cas Cremers and Dennis Jackson},
   title     = {Prime, Order Please! {Revisiting} Small Subgroup and Invalid Curve Attacks on Protocols using {Diffie-Hellman}},
-  booktitle = {32nd IEEE Computer Security Foundations Symposium, {CSF} 2019},
+  booktitle = {32nd {IEEE} Computer Security Foundations Symposium, {CSF} 2019},
   pages     = {78--93},
+  publisher = {IEEE},
   year      = {2019},
+  doi       = {10.1109/CSF.2019.00013},
 }
+% verified: https://api.crossref.org/works/10.1109/CSF.2019.00013 (end page inferred from the next paper's first page)
 
 @inproceedings{Ber06,
   author    = {Daniel J. Bernstein},
@@ -280,8 +424,11 @@
   series    = {LNCS},
   volume    = {3958},
   pages     = {207--228},
+  publisher = {Springer},
   year      = {2006},
+  doi       = {10.1007/11745853_14},
 }
+% verified: https://link.springer.com/chapter/10.1007/11745853_14
 
 @inproceedings{Kup06,
   author    = {Orna Kupferman},
@@ -290,8 +437,19 @@
   series    = {LNCS},
   volume    = {4137},
   pages     = {37--51},
+  publisher = {Springer},
   year      = {2006},
+  doi       = {10.1007/11817949_3},
 }
+% verified: https://link.springer.com/chapter/10.1007/11817949_3
+
+@misc{Noble26,
+  title        = {ml\_kem768\_x25519 rejects degenerate {X25519} elements that {X-Wing} accepts},
+  howpublished = {Issue~\#53, paulmillr/noble-post-quantum, GitHub},
+  year         = {2026},
+  note         = {\url{https://github.com/paulmillr/noble-post-quantum/issues/53}},
+}
+% verified: https://github.com/paulmillr/noble-post-quantum/issues/53 (title and content read; opened 28 August 2026 according to the bibliography check)
 
 @misc{pyca,
   author       = {{Python Cryptographic Authority}},
@@ -303,7 +461,7 @@
 
 @misc{Artifact,
   title        = {{HYBRID-AKE}: models, proofs, tests and implementation},
-  howpublished = {\url{https://github.com/gifgaf0/gifgaf0.github.io/tree/67cc5f6b53dba900b4bbdd8674c1de28da4c08af/hybrid_kem}},
-  note         = {Commit 67cc5f6},
+  howpublished = {GitHub repository gifgaf0/gifgaf0.github.io, directory \texttt{hybrid\_kem}, commit 67cc5f6},
   year         = {2026},
+  note         = {\url{https://github.com/gifgaf0/gifgaf0.github.io/tree/67cc5f6b53dba900b4bbdd8674c1de28da4c08af/hybrid_kem}},
 }

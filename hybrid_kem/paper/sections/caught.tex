@@ -4,7 +4,8 @@
 machine-checked proof. Two were errors in the pen-and-paper sketch that the
 mechanization replaced, five were claims in our own write-up that the models
 did not support, and one was a divergence between the implementation and its
-specification.
+specification's algorithm, which had already been reported for another
+library.
 
 \begin{table}[t]
 \centering
@@ -14,7 +15,7 @@ specification.
 Finding & Found by & Resolution\\
 \midrule
 \multicolumn{3}{@{}l}{\emph{In the proof sketch (\cref{sec:sketchcaught})}}\\
-Composite signature needs a collision-resistant pre-hash & mechanization & \cref{lem:sig} gains $2\,\Adv^{\text{cr}}_{\PH}$; mutation test\\
+Composite signature needs a collision-resistant pre-hash & mechanization & \cref{lem:sig} gains $2\,\Adv^{\text{cr}}_{\PH}$, as the draft states~\cite[\S1.3]{Composite}; mutation test\\
 X-Wing relying on X25519 needs C2PRI of ML-KEM & mechanization & \cref{lem:kem} gains $\cvp{Pc2pri}$, as in~\cite[Thm.~1]{XWing}; mutation test\\[3pt]
 \multicolumn{3}{@{}l}{\emph{In our write-up of the first mechanization (\cref{sec:reviewcaught})}}\\
 ``No session-guessing loss'': bound claimed tighter than the sketch's & review & retracted: the multi-instance KEM term costs ${\approx}\,n_S^2$ when reduced to single-instance IND-CCA2\\
@@ -23,7 +24,7 @@ Non-standard KDF assumptions not flagged as such & review & named precisely; a r
 RevealKey withheld whenever a \emph{possible} partner existed & review & RevealKey on request with partner-based freshness; key uniqueness and six guard mutants added\\
 Adaptive ephemeral reveal claimed, static modelled & review & claims say ``static''\\[3pt]
 \multicolumn{3}{@{}l}{\emph{In the implementation (\cref{sec:lowcaught})}}\\
-X-Wing raised an error on low-order X25519 points & review, then tests & fixed to follow the draft; 63 tests; the ML-KEM-1024 profile keeps RFC~9180's check\\
+X-Wing raised an error on low-order X25519 points & review, then tests & fixed to follow the draft; 63 tests; reported earlier for another library~\cite{Noble26}; the ML-KEM-1024 profile keeps RFC~9180's check\\
 \bottomrule
 \end{tabularx}
 \caption{Findings. ``Review'' is the independent review of
@@ -36,7 +37,9 @@ X-Wing raised an error on low-order X25519 points & review, then tests & fixed t
 Before the mechanization, the repository contained a reduction-based proof
 sketch in a Bellare--Rogaway-style model~\cite{BR93,CK01}. It had two
 theorems for the protocol and two lemmas for the hybrid primitives. The
-theorems survived, with different bounds. Both lemmas were wrong as stated.
+theorems survived, with different bounds. Both lemmas were wrong as stated,
+and in both cases the primary source states the condition that the sketch
+dropped.
 
 \paragraph{The composite signature.} The sketch stated
 $\Adv^{\text{euf-cma}}_{\text{composite}} \le \min(\Adv^{\text{euf-cma}}_{\text{ML-DSA}}, \Adv^{\text{euf-cma}}_{\text{EdDSA}})$,
@@ -47,7 +50,9 @@ only through $\PH(M^*)$. If $\PH(M^*) = \PH(M)$ for a message $M$ signed
 earlier under the same context, the composite signature on $M$ is also a
 valid signature on $M^*$. Modelling the draft's message representative
 exactly made the missing assumption unavoidable: the proof needs collision
-resistance of $\PH$, and the corrected bound is \cref{lem:sig}. The mutant
+resistance of $\PH$, and the corrected bound is \cref{lem:sig}. The draft
+states this condition itself~\cite[\S1.3]{Composite}; the sketch had
+dropped it. The mutant
 \ident{composite_no_prehash_collision_resistance} confirms that the
 proof fails without it. With SHA-512 or SHAKE256 as $\PH$, the extra term is
 negligible in practice, but the sketch's claim that the composite is as
@@ -140,12 +145,15 @@ side conditions to be listed; they are in \cref{sec:status}.
 X-Wing~\cite{XWingDraft} takes X25519 from RFC~7748~\cite[\S5]{RFC7748} and
 applies no check to its output. Encapsulate and Decapsulate
 (\S5.4--5.5 of the draft) pass the raw Diffie--Hellman value to the
-combiner, and the draft gives Decapsulate no failure case. Our
-implementation computed X25519 with pyca/cryptography (version 50.0.1),
-which raises \texttt{ValueError} when the output is all-zero. As a result,
-our X-Wing decapsulation raised on any ciphertext whose X25519 part is a
-low-order point, and encapsulation raised on any such public key, where the
-specification derives a key.
+combiner, and the draft gives Decapsulate no failure case. It does not
+forbid a check either. RFC~7748 makes the all-zero check optional
+(``MAY''~\cite[\S6.1]{RFC7748}), while RFC~9180 requires DHKEM recipients to perform it
+(\S7.1.4)~\cite{RFC9180} and RFC~10024 requires it for hybrid key agreement
+in TLS~1.3 (\S4.3)~\cite{RFC10024}. Our implementation computed X25519 with
+pyca/cryptography (version 50.0.1), which raises \texttt{ValueError} when the
+output is all-zero. As a result, our X-Wing decapsulation raised on any
+ciphertext whose X25519 part is a low-order point, and encapsulation raised
+on any such public key, where the draft's algorithm derives a key.
 
 Neither the models nor the known-answer tests could see this. The models
 treat X25519 as a prime-order group, which has no low-order points. The
@@ -153,8 +161,15 @@ draft's test vectors use honestly generated values, which are never
 low-order. The divergence did not affect secrecy. Honest parties never
 produce these points, and whether a point is low-order is a function of
 public data, so the error gave an adversary nothing it could not compute
-itself. It was a conformance difference: a peer following the specification
-derives a key where ours raised.
+itself. It was an interoperability difference: a peer that follows the
+draft's algorithm derives a key where ours raised, so two implementations of
+the same KEM disagreed about which inputs have a key.
+
+The divergence was not new. The same behaviour had been reported for the
+noble library's ML-KEM-768/X25519 KEM, whose X25519 implementation throws on
+an all-zero output~\cite{Noble26}. What we add is a complete characterisation
+of the affected inputs, a fix that still raises every other error, and tests
+that pin both.
 
 \paragraph{The fix.} For clamped scalars, the X25519 output is all-zero
 exactly when the peer's u-coordinate, decoded as RFC~7748 prescribes (top bit
@@ -201,10 +216,12 @@ the RFC~9180 leg as well. The full test suite (335 tests) passes.
 \paragraph{Mechanize the primitive lemmas, not only the protocol.} Both
 errors in the sketch were in ``secure if either component is'' lemmas,
 written as a minimum of two advantages without side assumptions. Statements
-of that shape read as obviously true. In both cases the missing assumption
-appeared as soon as the construction was modelled byte-for-byte as
-specified: the composite's message representative, and X-Wing's choice of
-combiner inputs.
+of that shape read as obviously true. In both cases the primary source
+states the missing condition, the composite draft~\cite[\S1.3]{Composite}
+and the X-Wing paper~\cite[Thm.~1]{XWing}, and the sketch's paraphrase
+dropped it. Mechanization put it back as soon as the construction was
+modelled byte-for-byte as specified: the composite's message representative,
+and X-Wing's choice of combiner inputs.
 
 \paragraph{A checked proof does not check its description.} Every review
 finding concerned something we said about the models: how tight the bound

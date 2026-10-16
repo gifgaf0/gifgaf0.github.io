@@ -29,16 +29,18 @@ negative controls and an independent review caught, at three levels:
   they need. The composite signature is unforgeable when either component is
   only if its pre-hash is also collision resistant. X-Wing is secure relying
   on X25519 only if ML-KEM is also ciphertext second-preimage resistant
-  (C2PRI), which is exactly what the X-Wing paper's classical theorem
-  assumes~\cite{XWing}.
+  (C2PRI). Both conditions are stated in the primary sources, the
+  composite-signature draft~\cite{Composite} and the X-Wing paper's
+  classical theorem~\cite{XWing}; the sketch had dropped them.
   \item \emph{Our own write-up.} An independent review of the first version
   of the mechanization found claims that the models did not support: a
   tighter bound than proved, non-standard assumptions not flagged as such,
   and an adversary weaker than described.
   \item \emph{The implementation.} Comparing the models' idealised X25519
   with the code showed that our X-Wing implementation raised an error on
-  low-order X25519 points, where the X-Wing specification returns a shared
-  secret.
+  low-order X25519 points, where the X-Wing specification's algorithm
+  returns a shared secret. The same divergence had been reported for another
+  library~\cite{Noble26}.
 \end{enumerate}
 
 \paragraph{Contributions.}
@@ -67,6 +69,12 @@ negative controls and an independent review caught, at three levels:
 \end{itemize}
 All models, proof scripts, mutation tests, implementation tests and the
 sources of this paper are public~\cite{Artifact}.
+
+We are not aware of earlier machine-checked proofs of X-Wing or of composite
+ML-DSA/EdDSA signatures. The closest mechanized work covers generic KEM
+combiners and KEM-based hybrid key exchanges in Squirrel~\cite{BDDJK26}, and
+the hybrid TLS~1.3 and SSH key exchanges in CryptoVerif~\cite{BJ24}
+(\cref{sec:related}).
 
 \paragraph{How this work was done.}
 The models, proof scripts, tests and a first draft of this paper were

@@ -71,7 +71,7 @@ resistance (\cref{sec:related}).
 The KEM is one of two profiles.
 
 \paragraph{X-Wing.} ML-KEM-768 with X25519~\cite{RFC7748}, as specified in
-the IETF draft \ident{draft-connolly-cfrg-xwing-kem-11}~\cite{XWingDraft}. Public keys and
+the Internet-Draft \ident{draft-connolly-cfrg-xwing-kem-11}~\cite{XWingDraft}. Public keys and
 ciphertexts are concatenations, $\pk = \pk_M \| \pk_X$ and
 $\ct = \ct_M \| \ct_X$, and the shared secret is
 \[
@@ -99,9 +99,10 @@ recipients~\cite[\S7.1.4]{RFC9180}.
 
 \subsection{Composite signatures}\label{sec:composite}
 
-The signature is a composite of ML-DSA and EdDSA following the IETF draft
-\ident{draft-ietf-lamps-pq-composite-sigs-19}~\cite{Composite}, in the
-profiles \ident{id-MLDSA65-Ed25519-SHA512} and
+\begin{sloppypar}
+The signature is a composite of ML-DSA and EdDSA, following the IETF LAMPS
+working-group draft \ident{draft-ietf-lamps-pq-composite-sigs-19}~\cite{Composite}.
+We use its profiles \ident{id-MLDSA65-Ed25519-SHA512} and
 \ident{id-MLDSA87-Ed448-SHAKE256}. To sign a message $M$ with context
 $\mathit{ctx}$, both components sign the same message representative
 \[
@@ -111,6 +112,7 @@ ML-DSA with its context set to $\mathsf{Label}$. $\PH$ is SHA-512 or
 SHAKE256 with 64-byte output, depending on the profile. A composite
 signature is the pair of component signatures, and it is valid only if both
 verify.
+\end{sloppypar}
 
 \subsection{CryptoVerif}\label{sec:cv}
 

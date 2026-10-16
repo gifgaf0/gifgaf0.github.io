@@ -15,11 +15,12 @@ Both parties compute the transcript hash and the session key as
 \begin{align*}
   \THH &= \Hash\bigl(\LP(\SUITE, \id_I, \vk_I, \id_R, \vk_R, \pke, \ct)\bigr),\\
   K   &= \mathrm{HKDF}\bigl(\mathit{ikm} = \ssv,\ \mathit{salt} = \THH,\
-         \mathit{info} = \mathsf{INFO} \,\|\, \text{``\ ''} \,\|\, \SUITE,\ L = 32\bigr),
+         \mathit{info} = \mathsf{INFO} \,\|\, \texttt{0x20} \,\|\, \SUITE,\ L = 32\bigr),
 \end{align*}
 where $\Hash$ is SHA3-256~\cite{FIPS202}, HKDF~\cite{RFC5869,Kra10} is
 instantiated with SHA-256, and $\LP$ concatenates its arguments, each
-prefixed by its 4-byte big-endian length. $\SUITE$ names the KEM and
+prefixed by its 4-byte big-endian length; \texttt{0x20} is a single space
+byte. $\SUITE$ names the KEM and
 signature profiles, and $\id_I,\vk_I$ are empty in responder-authenticated
 mode. The responder signs $\THH$ under the context string
 $\CTXR = \text{\texttt{"hybrid-ake/responder-auth/v1"}}$. In mutual mode the
@@ -82,11 +83,14 @@ combiner deliberately omits $\ct_M$ and $\pk_M$; the X-Wing paper justifies
 this by proving that ML-KEM-768 is ciphertext second-preimage resistant
 (C2PRI) when its hash functions are random oracles~\cite[Thm.~3]{XWing}. The
 decapsulation key is a 32-byte seed, expanded with SHAKE-256 into the ML-KEM
-seed and the X25519 scalar.
+seed and the X25519 scalar. (The published X-Wing paper puts the label first
+in the hash input~\cite{XWing}; draft-11 puts it last, and we follow the
+draft.)
 
-\paragraph{ML-KEM-1024 + X25519.} X-Wing specifies no ML-KEM-1024 variant, so
-for NIST Category~5 the implementation uses a transcript-binding combiner in
-the style of~\cite{BBFGS19}:
+\paragraph{ML-KEM-1024 + X25519.} X-Wing specifies no ML-KEM-1024 variant,
+although the combiner it uses is also secure with
+ML-KEM-1024~\cite{Starfighters}. For NIST Category~5 the implementation
+instead uses a transcript-binding combiner in the style of~\cite{BBFGS19}:
 \begin{align*}
   \ssv = \mathrm{HKDF\text{-}SHA256}\bigl(
     &\mathit{salt} = \text{SHA-256}(\text{\texttt{"hybrid-kem-v1"}}),\
@@ -94,8 +98,9 @@ the style of~\cite{BBFGS19}:
     &\mathit{info} = \LP(\ct_M, \ct_X, \pk_M, \pk_X)\bigr).
 \end{align*}
 It hashes both ciphertexts and both public keys. Its X25519 leg rejects an
-all-zero Diffie--Hellman output, as RFC~9180 requires of DHKEM
-recipients~\cite[\S7.1.4]{RFC9180}.
+all-zero Diffie--Hellman output in both directions. That follows RFC~9180's
+rule for DHKEM recipients~\cite[\S7.1.4]{RFC9180}, although the profile is
+not DHKEM.
 
 \subsection{Composite signatures}\label{sec:composite}
 

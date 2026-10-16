@@ -71,13 +71,18 @@ scalar to $k = 8m$ with $2^{251} \le m < 2^{252}$, and outputs the
 u-coordinate of $[k]P$, encoded as 0 when $[k]P$ is the point at infinity
 $\mathcal{O}$ or $(0,0)$.
 
+The list below is well known; Mbed~TLS, for example, rejects exactly these
+values~\cite{mbedtls}. We include a self-contained proof that it is
+complete, because our tests check that proof's computational steps.
+
 \begin{lemma}
 The X25519 output is all-zero exactly when the decoded input lies in
 $S = \{0,\ 1,\ p-1,\ u_{8a},\ u_{8b}\}$, where
+{\small
 \begin{align*}
 u_{8a} &= 325606250916557431795983626356110631294008115727848805560023387167927233504,\\
 u_{8b} &= 39382357235489614581723060781553021112529911719440698176882885853963445705823.
-\end{align*}
+\end{align*}}
 Exactly fourteen 32-byte strings decode into $S$.
 \end{lemma}
 
@@ -119,8 +124,8 @@ set: fourteen strings.
 \paragraph{Tests.} The 63 tests in \file{tests/test_xwing_low_order.py}
 check the following.
 \begin{itemize}
-  \item An independent RFC~7748 ladder in Python reproduces RFC~7748's
-  test vector and the first iteration of its iterated test, and agrees with
+  \item An independent RFC~7748 ladder in Python reproduces the first test
+  vector of RFC~7748 \S5.2 and the first iteration of its iterated test, and agrees with
   pyca on 64 random inputs. On it, each element of $S$ has the stated order,
   and each of the fourteen encodings gives an all-zero output for several
   clamped scalars.
@@ -146,23 +151,29 @@ check the following.
 
 The artifact is the \file{hybrid_kem/} directory of
 \url{https://github.com/gifgaf0/gifgaf0.github.io} at commit
-\texttt{67cc5f6}~\cite{Artifact}. The CryptoVerif results were produced with
+\texttt{74affcf}~\cite{Artifact}. This paper's sources are in
+\file{hybrid_kem/paper/} on the branch \ident{claude/hybrid-ake-paper}, which
+contains that commit. The CryptoVerif results were produced with
 CryptoVerif~2.13, built from its source tarball with OCaml~4.14.1 on Ubuntu
 24.04. The tarball's SHA-512 is pinned in the opam repository
-(\texttt{packages/cryptoverif/cryptoverif.2.13/opam}):
+(\ident{packages/cryptoverif/cryptoverif.2.13/opam}):
 \begin{center}
 \footnotesize\ttfamily
 f05b70ff9ab72daf6d58fd598b89fcbf8415cf1adfd0c93be8f98c18364d7da1\\
 c968be0a42cba7e0b17081f0bf73dd0b1c291ebc6df4306e93008a4a57e5ac61
 \end{center}
-\begin{lstlisting}[language=bash,morekeywords={cd,make,tar,python3}]
+\begin{lstlisting}[language=bash,morekeywords={cd,make,tar,python3,git,pip}]
 tar xzf cryptoverif2.13.tar.gz && (cd cryptoverif2.13 && ./build)
 CV=$PWD/cryptoverif2.13
 git clone https://github.com/gifgaf0/gifgaf0.github.io && cd gifgaf0.github.io
+git checkout 74affcf
+pip install cryptography gmpy2 requests numpy scipy mpmath pytest
 cd hybrid_kem/analysis/cryptoverif
 make CVHOME=$CV              # 9 models; writes RESULTS.txt
-make mutations CVHOME=$CV    # 16 mutation tests
-cd ../../.. && python3 -m pytest hybrid_kem/tests   # 335 tests
+make mutations CVHOME=$CV    # 22 mutation tests
+cd ../../..
+python3 -m pytest hybrid_kem/tests                # 335 tests
+python3 hybrid_kem/tests/low_order_mutants.py     # 9 mutants of the fix
 \end{lstlisting}
 \file{RESULTS.txt} in the artifact lists every proved bound with its
 running-time terms.

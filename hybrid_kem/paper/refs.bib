@@ -461,7 +461,35 @@
 
 @misc{Artifact,
   title        = {{HYBRID-AKE}: models, proofs, tests and implementation},
-  howpublished = {GitHub repository gifgaf0/gifgaf0.github.io, directory \texttt{hybrid\_kem}, commit 67cc5f6},
+  howpublished = {GitHub repository gifgaf0/gifgaf0.github.io, directory \texttt{hybrid\_kem}, commit 74affcf},
   year         = {2026},
-  note         = {\url{https://github.com/gifgaf0/gifgaf0.github.io/tree/67cc5f6b53dba900b4bbdd8674c1de28da4c08af/hybrid_kem}},
+  note         = {\url{https://github.com/gifgaf0/gifgaf0.github.io/tree/74affcfcd58e31596b9ec73270fa104ef8c74066/hybrid_kem}},
 }
+
+@misc{Starfighters,
+  author       = {Deirdre Connolly and Kathrin H{\"o}velmanns and Andreas H{\"u}lsing and Stavros Kousidis and Matthias Meijers},
+  title        = {Starfighters --- on the General Applicability of {X-Wing}},
+  howpublished = {Cryptology {ePrint} Archive, Paper 2025/1397},
+  year         = {2025},
+}
+% verified: https://pub.sandboxaq.com/publications/starfighters----on-the-general-applicability-of-x-wing
+% ("we show that QSF can also be used with all of these, including ML-KEM-1024")
+
+@article{MSS26,
+  author  = {Lise Millerjord and Douglas Stebila and Camryn Steckel},
+  title   = {Split-key {PRFs} and extended hybrid security for {KEM} combiners},
+  journal = {{IACR} Communications in Cryptology},
+  volume  = {2},
+  number  = {4},
+  year    = {2026},
+  doi     = {10.62056/ah890lmol},
+}
+% verified: https://www.douglas.stebila.ca/research/papers/CIC-MilSteSte26
+
+@misc{mbedtls,
+  author       = {{Mbed TLS}},
+  title        = {Reject low-order points on {Curve25519} early},
+  howpublished = {Mbed TLS, commit f29857ca},
+  note         = {Rejects $u \in \{0, 1, p-1\}$ and the two order-8 u-coordinates, citing \url{https://cr.yp.to/ecdh.html\#validate}},
+}
+% verified: https://pigweed.googlesource.com/third_party/github/ARMmbed/mbedtls/+/f29857ca0aae2fd9680c08cf9814cdbe0db624da%5E%21/

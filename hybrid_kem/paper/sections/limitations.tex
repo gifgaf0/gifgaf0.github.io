@@ -16,15 +16,21 @@ Diffie--Hellman macros, would close part of it. We have not attempted one.
 \paragraph{Composition is by hand.} CryptoVerif checks each model
 separately. Substituting \cref{lem:kem,lem:sig} into
 \cref{thm:auth,thm:secrecy}, the KEM side conditions, and the argument that
-SHA3-256's three idealisations do not interfere are all done on paper
+SHA3-256's several idealisations do not interfere are all done on paper
 (\cref{sec:status}). So is the step from per-role multi-test secrecy to the
-single-Test game of the original sketch.
+single-Test game of the original sketch. Inside the KEM models, ML-KEM is
+perfectly correct, and its decapsulation failure rate is added by hand.
 
 \paragraph{Remaining assumptions.} The ML-KEM leg of the ML-KEM-1024 profile
-still rests on a split-key PRF assumption for HKDF, which no published result
-covers. The protocol's KDF rests on HMAC's swap-PRF property for a key
-distribution whose feasibility in the sense of~\cite{BBGS23} we have argued
-but not checked.
+still rests on HKDF being a split-key PRF~\cite{GHP18,MSS26}, and we know of
+no proof of that for HKDF in this configuration. The protocol's KDF rests on
+HMAC's swap-PRF property. Backendal et al.\ prove it in the standard model
+for feasible key sets~\cite{BBGS23}, but, as far as we can tell, only against
+classical adversaries. The post-quantum soundness of our protocol proof is
+therefore relative to that property holding against quantum adversaries,
+which we assume. The ML-KEM directions of \cref{lem:kem} likewise assume
+that SHA3-256 and HKDF are PRFs against quantum adversaries, as the X-Wing
+paper's post-quantum theorem does for SHA3-256~\cite{XWing}.
 
 \paragraph{The adversary.} Ephemeral-key reveal is static. Session-state
 reveal and reveal of the responder's encapsulation coins are not modelled. A
@@ -44,10 +50,10 @@ primitive, and we make no claim about side channels. The proof scripts name
 variables that CryptoVerif generates and count occurrences, so they are tied
 to CryptoVerif~2.13 and break when a model changes.
 
-\paragraph{Review.} The development was AI-assisted, and its independent
-review was done by a separate instance of the same AI system. That review
-found real problems, but it shares blind spots with the development that a
-human expert might not. Neither the models nor this paper has had external
+\paragraph{Review.} The development was AI-assisted throughout, and both
+reviews were done by separate instances of the same AI system. They found
+real problems, but they may share blind spots with the development that a
+human expert would not. Neither the models nor this paper has had external
 peer review.
 
 \paragraph{Scope.} HYBRID-AKE is an engineering design, not a standard. For

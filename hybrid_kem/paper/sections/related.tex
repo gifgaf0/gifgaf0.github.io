@@ -6,11 +6,15 @@ group with SHA3-256 as a random oracle and C2PRI of
 ML-KEM~\cite[Thm.~1]{XWing}, and post-quantum, from IND-CCA of ML-KEM and
 SHA3-256 as a PRF in the standard model~\cite[Thm.~2]{XWing}. It also
 proves ML-KEM-768 C2PRI with its hash functions as random
-oracles~\cite[Thm.~3]{XWing}. Our KEM models restate these two theorems as
-CryptoVerif equivalences, with X25519 as a prime-order group. Generic KEM
+oracles~\cite[Thm.~3]{XWing}. Our KEM models prove analogues of the first
+two theorems as CryptoVerif equivalences, with X25519 as a prime-order group
+and ML-KEM perfectly correct. Connolly et al.\ show that X-Wing's combiner applies
+to other KEMs, ML-KEM-1024 among them~\cite{Starfighters}. Generic KEM
 combiners and their security were studied by Giacon, Heuer and
-Poettering~\cite{GHP18} and by Bindel et al.~\cite{BBFGS19}, whose
-transcript-hashing combiner our ML-KEM-1024 profile follows. Binding
+Poettering~\cite{GHP18}, who introduced split-key PRFs, and by Bindel et
+al.~\cite{BBFGS19}, whose transcript-hashing combiner our ML-KEM-1024
+profile follows. Millerjord, Stebila and Steckel study split-key PRFs
+further and give a standard-model construction~\cite{MSS26}. Binding
 properties of KEMs, including those ML-KEM lacks, were systematised by
 Cremers, Dax and Medinger~\cite{CDM24} and by Schmieg~\cite{Sch24}. Kang,
 Lee and Son~\cite{KLS26} study which public values a hybrid KEM's combiner
@@ -59,7 +63,10 @@ machine-checked version of that statement.
 
 \paragraph{Low-order points.} Cremers and Jackson analyse small-subgroup and
 invalid-curve attacks on protocols that use Diffie--Hellman, and model such
-groups in Tamarin~\cite{CJ19}. The specifications disagree on the all-zero
+groups in Tamarin~\cite{CJ19}. The five low-order u-coordinates of
+Curve25519 and its twist are well known; Mbed~TLS, for example, rejects
+exactly these values~\cite{mbedtls}. The specifications disagree on the
+all-zero
 X25519 output. RFC~7748 lets implementations check for it~\cite{RFC7748};
 RFC~9180 requires DHKEM recipients to abort on it~\cite{RFC9180}; RFC~10024
 requires the check for hybrid key agreement in TLS~1.3~\cite{RFC10024}; and

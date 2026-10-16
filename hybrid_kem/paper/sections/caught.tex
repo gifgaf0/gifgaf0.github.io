@@ -1,34 +1,40 @@
 \section{What was caught}\label{sec:caught}
 
 \Cref{tab:findings} summarises the findings. None was an error in a
-machine-checked proof. Two were errors in the pen-and-paper sketch that the
-mechanization replaced, five were claims in our own write-up that the models
-did not support, and one was a divergence between the implementation and its
-specification's algorithm, which had already been reported for another
-library.
+machine-checked proof. Three were errors in the pen-and-paper sketch that the
+mechanization replaced. Five concerned our first write-up of the
+mechanization: three overstatements, and two restrictions that it disclosed
+in its notes but left out of the statements of the results. One concerned our
+second write-up, and one was a divergence between the implementation and its
+specification's algorithm, already reported for another library. Two reviews
+contributed: one of the merged mechanization, and one of a draft of this
+paper. Separate instances of the AI assistant carried out both
+(\cref{sec:intro}).
 
-\begin{table}[t]
+\begin{table}[!tbp]
 \centering
 \footnotesize
-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.30\linewidth}>{\raggedright\arraybackslash}p{0.13\linewidth}L@{}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.31\linewidth}>{\raggedright\arraybackslash}p{0.14\linewidth}L@{}}
 \toprule
 Finding & Found by & Resolution\\
 \midrule
 \multicolumn{3}{@{}l}{\emph{In the proof sketch (\cref{sec:sketchcaught})}}\\
 Composite signature needs a collision-resistant pre-hash & mechanization & \cref{lem:sig} gains $2\,\Adv^{\text{cr}}_{\PH}$, as the draft states~\cite[\S1.3]{Composite}; mutation test\\
-X-Wing relying on X25519 needs C2PRI of ML-KEM & mechanization & \cref{lem:kem} gains $\cvp{Pc2pri}$, as in~\cite[Thm.~1]{XWing}; mutation test\\[3pt]
-\multicolumn{3}{@{}l}{\emph{In our write-up of the first mechanization (\cref{sec:reviewcaught})}}\\
-``No session-guessing loss'': bound claimed tighter than the sketch's & review & retracted: the multi-instance KEM term costs ${\approx}\,n_S^2$ when reduced to single-instance IND-CCA2\\
-Non-standard KDF assumptions not flagged as such & review & named precisely; a random-oracle proof from standard assumptions added\\
-``Exactly the X-Wing paper's assumptions'' & review & qualified: prime-order group here, nominal group there\\
-RevealKey withheld whenever a \emph{possible} partner existed & review & RevealKey on request with partner-based freshness; key uniqueness and six guard mutants added\\
-Adaptive ephemeral reveal claimed, static modelled & review & claims say ``static''\\[3pt]
+X-Wing relying on X25519 needs C2PRI of ML-KEM & mechanization & \cref{lem:kem} gains $\cvp{Pc2pri}$, as in~\cite[Thm.~1]{XWing}; mutation test\\
+Theorem~1's reduction guesses an honest party, but its bound has no factor for the guess & second review & the mechanized bound has it: $N_K \cdot \cvp{Psign}$\\[3pt]
+\multicolumn{3}{@{}l}{\emph{In our first write-up of the mechanization (\cref{sec:reviewcaught})}}\\
+``No session-guessing loss'': bound claimed tighter than the sketch's & first review & retracted: the multi-instance KEM term costs ${\approx}\,n_S^2$ when reduced to single-instance IND-CCA2\\
+Non-standard KDF assumptions not flagged as such & first review & named precisely; a random-oracle proof from standard assumptions added\\
+``Exactly the X-Wing paper's assumptions'' & first review & qualified: prime-order group here, nominal group there\\
+Result statements omitted a disclosed restriction: keys of possible partners withheld from RevealKey & first review & restriction removed: RevealKey on request with partner-based freshness; key uniqueness added\\
+Result statements omitted that ephemeral reveal is static & first review & claims say ``static''\\[3pt]
+\multicolumn{3}{@{}l}{\emph{In our second write-up (\cref{sec:reviewcaught})}}\\
+Mutation coverage overstated: six guard mutants covered seven of twelve guards & second review & one mutant per guard; 22 tests in all\\[3pt]
 \multicolumn{3}{@{}l}{\emph{In the implementation (\cref{sec:lowcaught})}}\\
-X-Wing raised an error on low-order X25519 points & review, then tests & fixed to follow the draft; 63 tests; reported earlier for another library~\cite{Noble26}; the ML-KEM-1024 profile keeps RFC~9180's check\\
+X-Wing raised an error on low-order X25519 points & first review; confirmed by tests & fixed to follow the draft; 63 tests and nine mutants of the fix; reported earlier for another library~\cite{Noble26}; the ML-KEM-1024 profile keeps its check\\
 \bottomrule
 \end{tabularx}
-\caption{Findings. ``Review'' is the independent review of
-\cref{sec:reviewcaught}.}
+\caption{Findings, by where the error was and what found it.}
 \label{tab:findings}
 \end{table}
 
@@ -36,10 +42,12 @@ X-Wing raised an error on low-order X25519 points & review, then tests & fixed t
 
 Before the mechanization, the repository contained a reduction-based proof
 sketch in a Bellare--Rogaway-style model~\cite{BR93,CK01}. It had two
-theorems for the protocol and two lemmas for the hybrid primitives. The
-theorems survived, with different bounds. Both lemmas were wrong as stated,
-and in both cases the primary source states the condition that the sketch
-dropped.
+theorems for the protocol and two lemmas for the hybrid primitives. Both
+theorems were re-proved in a modified model (\cref{sec:freshness}), with
+per-role sets of test keys, RevealKey on request, and static rather than
+adaptive ephemeral reveal. Both lemmas were wrong as stated, and in both
+cases the primary source states the condition that the sketch dropped. The
+sketch's Theorem~1 bound also lacked a factor.
 
 \paragraph{The composite signature.} The sketch stated
 $\Adv^{\text{euf-cma}}_{\text{composite}} \le \min(\Adv^{\text{euf-cma}}_{\text{ML-DSA}}, \Adv^{\text{euf-cma}}_{\text{EdDSA}})$,
@@ -51,42 +59,52 @@ earlier under the same context, the composite signature on $M$ is also a
 valid signature on $M^*$. Modelling the draft's message representative
 exactly made the missing assumption unavoidable: the proof needs collision
 resistance of $\PH$, and the corrected bound is \cref{lem:sig}. The draft
-states this condition itself~\cite[\S1.3]{Composite}; the sketch had
-dropped it. The mutant
-\ident{composite_no_prehash_collision_resistance} confirms that the
-proof fails without it. With SHA-512 or SHAKE256 as $\PH$, the extra term is
-negligible in practice, but the sketch's claim that the composite is as
+states this condition itself~\cite[\S1.3]{Composite}; the sketch had dropped
+it. The mutant \ident{composite_no_prehash_collision_resistance} confirms that
+the proof fails without it. With SHA-512 or SHAKE256 as $\PH$, the extra term
+is negligible in practice. Still, the sketch's claim that the composite is as
 strong as its stronger component holds only together with a hash
 assumption.
 
 \paragraph{X-Wing.} The sketch stated, for both profiles,
 $\Adv^{\text{ind-cca}}_{\text{KEM}} \le \min(\Adv^{\text{ind-cca}}_{\text{ML-KEM}}, \Adv^{\text{dh}}_{\text{X25519}}) + \varepsilon_{\text{comb}}$,
 on the grounds that the combiner is a dual PRF. For X-Wing relying on
-X25519, this misses C2PRI of ML-KEM. In the mechanized proof the assumption
-is used at exactly one point: after the random-oracle step, it rules out
-decapsulation queries $(\ct_M', \ct_X^*)$ with $\ct_M' \ne \ct_M^*$ that
-would reach the challenge's oracle input (\cref{sec:mech:kem}). This is the
-X-Wing paper's own classical theorem~\cite[Thm.~1]{XWing}, which bounds
-X-Wing's IND-CCA advantage by $2\Delta_N$ plus the strong-DH and C2PRI
-advantages. The X-Wing paper also proves that ML-KEM-768 is C2PRI when its
-hash functions are random oracles~\cite[Thm.~3]{XWing}, so X-Wing's
-guarantee survives a break of the lattice problem. But the ``either leg''
-statement is not symmetric: the X25519 leg needs a property of the ML-KEM
-leg. The ML-KEM-1024 profile, which hashes $\ct_M$, needs no property of
-ML-KEM in its X25519 direction, so the sketch's symmetric form does hold for
-it, once its unspecified Diffie--Hellman assumption is made precise as
-strong Diffie--Hellman with a random oracle. The mutant
+X25519, this misses C2PRI of ML-KEM. The mechanized proof applies that
+assumption after the random-oracle step to rule out decapsulation queries
+$(\ct_M', \ct_X^*)$ with $\ct_M' \ne \ct_M^*$ that would reach the
+challenge's oracle input (\cref{sec:mech:kem}). This matches the X-Wing
+paper's classical theorem~\cite[Thm.~1]{XWing}, which bounds the IND-CCA
+advantage of its generic construction, of which X-Wing is an instance, by
+$2\Delta_N$ plus the strong-DH and C2PRI advantages. The X-Wing paper also
+proves that ML-KEM-768 is C2PRI when its hash functions are random
+oracles~\cite[Thm.~3]{XWing}, so X-Wing's guarantee survives a break of the
+lattice problem. But the ``either leg'' statement is not symmetric: the
+X25519 leg needs a property of the ML-KEM leg. The ML-KEM-1024 profile,
+which hashes $\ct_M$, needs no security assumption on ML-KEM in its X25519
+direction. The sketch's symmetric form does hold for it, once its
+unspecified Diffie--Hellman assumption is made precise as strong
+Diffie--Hellman with a random oracle. The mutant
 \ident{bbfgs_rom_no_ctM_in_combiner} shows that hashing $\ct_M$ is the
 reason.
 
-\subsection{In our write-up: an independent review}\label{sec:reviewcaught}
+\paragraph{Theorem~1's bound.} The sketch's reduction for Theorem~1 ``plants
+the challenge vk at a guessed honest party'' and answers that party's
+signing queries with its oracle, but its bound is
+$\Adv^{\text{euf-cma}}_{\text{Sig}}$, with no factor for the guess. Guessing
+among $n_P$ honest parties loses a factor of $n_P$. The mechanized bound has
+the corresponding factor, $N_K \cdot \cvp{Psign}$, through the library's
+UF-CMA-with-corruption macro. We had compared the two bounds without
+noticing this; the second review caught it.
+
+\subsection{In our write-ups: the reviews}\label{sec:reviewcaught}
 
 After the first version of the mechanization was merged, a separate instance
-of the AI assistant reviewed it. It had the repository but not the
-development history. It re-ran every model, probed the proofs, and found no
-unsound step and no vacuous query. It did find places where the write-up
-claimed more than the models prove. We re-checked each finding with
-CryptoVerif before acting on it.
+of the AI assistant reviewed it. It could read the repository and its
+history, but not the development conversation. It re-ran every model,
+probed the proofs, and found no unsound step and no vacuous query. It did
+find places where the write-up claimed more than the models prove. We
+re-checked the model-related findings with CryptoVerif before acting on
+them.
 
 \paragraph{Tightness.} The first write-up said the mechanized bound had ``no
 session-guessing loss'', so that the $n_S^2$ factors of the sketch's bound
@@ -105,14 +123,15 @@ need a tight multi-user bound for the KEM, which we do not claim.
 
 \paragraph{Non-standard assumptions not flagged.} The sketch justified ``HKDF
 is a PRF keyed by its input keying material'' by HMAC being a
-PRF~\cite{Kra10}. HKDF-Extract keys HMAC with the salt, however, so keying it
-through the ikm uses HMAC's message input. That is the swap-PRF property,
-which Backendal et al.\ prove only for feasible key sets~\cite{BBGS23}
-(\cref{sec:results}). For the ML-KEM-1024 combiner, the first write-up stated
-both legs' assumptions without saying that neither is standard: one is a
-split-key PRF and the other a PRF-ODH variant (\cref{sec:mech:kem}). We now
-name each assumption precisely, and we added the random-oracle proof from
-standard assumptions for that combiner's X25519 leg.
+``(dual-)PRF''~\cite{Kra10}. HKDF-Extract keys HMAC with the salt, however,
+so keying it through the ikm uses HMAC's message input. That is the swap-PRF
+property, which Backendal et al.\ prove only for feasible key
+sets~\cite{BBGS23} (\cref{sec:results}). For the ML-KEM-1024 combiner, the
+first write-up stated both legs' assumptions without saying that neither is
+standard: one is a split-key PRF and the other a PRF-ODH variant
+(\cref{sec:mech:kem}). We now name each assumption precisely, and we added
+the random-oracle proof from standard assumptions for that combiner's
+X25519 leg.
 
 \paragraph{Modelling of X25519.} The first write-up said the X-Wing models
 make ``exactly the X-Wing paper's assumptions''. They do, up to one
@@ -121,16 +140,22 @@ group. The review also noted that pyca/cryptography raises an error on an
 all-zero X25519 output, while the models have no such failure; this led to
 \cref{sec:lowcaught}.
 
-\paragraph{The adversary was weaker than described.} In the first protocol
-model, RevealKey refused to reveal a session's key whenever a \emph{possible}
-partner existed, matching on $m_1$ alone, before the transcript was fixed.
-So the adversary could not reveal some keys that the freshness definition
-allows it to reveal. We replaced this with RevealKey on request for every
-non-fresh session and partner-based freshness on the full transcript
-(\cref{sec:freshness}). We also added the key-uniqueness query, and the six
-freshness mutants, which check that every guard is needed. All queries
-remained provable. The sketch's ephemeral reveal was adaptive while the
-model's is static, and the claims now say so.
+\paragraph{Restrictions missing from the result statements.} The first
+write-up disclosed two restrictions, in its modelling notes and in a list of
+modelling choices that limit the statement. Keys of sessions with a
+\emph{possible} honest partner were withheld from RevealKey, which the notes
+called ``a small weakening of the adversary that the model does not
+mechanically justify''. And ephemeral-key reveal was static. For an
+initiator, a possible partner was a responder session with the same
+transcript. For a responder, it was an initiator that had sent the same
+$m_1$ and expected this responder, matched before the transcript was fixed.
+The statements of the results, however, carried neither restriction; they
+said that all four claims of the sketch were machine-checked. We removed the
+first
+restriction: every non-fresh session's key can now be revealed on request,
+with partner-based freshness on the full transcript (\cref{sec:freshness}).
+We also added the key-uniqueness query and guard mutants. All queries
+remained provable. The claims now say that ephemeral reveal is static.
 
 \paragraph{Evidence that was weaker than it looked.} The first version of the
 $\ct$ mutant showed only that the full proof script aborted once $\ct$ was
@@ -140,6 +165,16 @@ real model as a control and on the mutant, and checks the agreement queries
 directly (\cref{sec:mutations}). The review also asked for the composition
 side conditions to be listed; they are in \cref{sec:status}.
 
+\paragraph{The second review.} A second instance reviewed a draft of this
+paper together with the repository. Besides many corrections to the draft,
+it found two things in the repository. One was the missing factor in the
+sketch's Theorem~1 (\cref{sec:sketchcaught}). The other was that our claim
+that the mutation tests ``remove each [freshness] guard in turn'' overstated
+their coverage. The six freshness mutants then covered seven of the model's
+twelve guards, two of them only together. We added mutants until every
+guard had its own, writing the expected outcomes before running them. All
+twenty-two tests behave as expected (\cref{sec:mutations}).
+
 \subsection{In the implementation: low-order X25519 points}\label{sec:lowcaught}
 
 X-Wing~\cite{XWingDraft} takes X25519 from RFC~7748~\cite[\S5]{RFC7748} and
@@ -147,13 +182,15 @@ applies no check to its output. Encapsulate and Decapsulate
 (\S5.4--5.5 of the draft) pass the raw Diffie--Hellman value to the
 combiner, and the draft gives Decapsulate no failure case. It does not
 forbid a check either. RFC~7748 makes the all-zero check optional
-(``MAY''~\cite[\S6.1]{RFC7748}), while RFC~9180 requires DHKEM recipients to perform it
-(\S7.1.4)~\cite{RFC9180} and RFC~10024 requires it for hybrid key agreement
-in TLS~1.3 (\S4.3)~\cite{RFC10024}. Our implementation computed X25519 with
-pyca/cryptography (version 50.0.1), which raises \texttt{ValueError} when the
-output is all-zero. As a result, our X-Wing decapsulation raised on any
-ciphertext whose X25519 part is a low-order point, and encapsulation raised
-on any such public key, where the draft's algorithm derives a key.
+(``MAY''~\cite[\S6.1]{RFC7748}), while RFC~9180 requires DHKEM recipients to
+perform it (\S7.1.4)~\cite{RFC9180} and RFC~10024 requires it for hybrid key
+agreement in TLS~1.3 (\S4.3)~\cite{RFC10024}. Our implementation computed
+X25519 with pyca/cryptography (version 50.0.1), which raises
+\texttt{ValueError} when the output is all-zero. The first review noted this
+divergence from the models, and tests confirmed what it meant for X-Wing:
+our decapsulation raised on any ciphertext whose X25519 part is a low-order
+point, and our encapsulation raised on any such public key, where the
+draft's algorithm derives a key.
 
 Neither the models nor the known-answer tests could see this. The models
 treat X25519 as a prime-order group, which has no low-order points. The
@@ -167,19 +204,20 @@ the same KEM disagreed about which inputs have a key.
 
 The divergence was not new. The same behaviour had been reported for the
 noble library's ML-KEM-768/X25519 KEM, whose X25519 implementation throws on
-an all-zero output~\cite{Noble26}. What we add is a complete characterisation
-of the affected inputs, a fix that still raises every other error, and tests
-that pin both.
+an all-zero output~\cite{Noble26}. Neither is the list of affected inputs,
+which libraries such as Mbed~TLS check against~\cite{mbedtls}. What we add is
+a fix that still raises every other error, a self-contained proof that the
+list is complete, and tests that pin both.
 
 \paragraph{The fix.} For clamped scalars, the X25519 output is all-zero
 exactly when the peer's u-coordinate, decoded as RFC~7748 prescribes (top bit
 masked, value reduced mod $p$), is one of five values. These are $0$, $1$,
 $p-1$, and the u-coordinates of the two pairs of points of order~8.
-\Cref{app:loworder} proves the characterisation complete: seven integers
-below $2^{255}$ represent these residues, giving fourteen 32-byte encodings.
-The implementation now catches pyca's error and returns the RFC~7748 value,
-32 zero bytes, only if the peer's input decodes to one of the five values;
-any other error is raised again:
+\Cref{app:loworder} proves this: seven integers below $2^{255}$ represent
+these residues, giving fourteen 32-byte encodings. The implementation now
+catches pyca's error and returns the RFC~7748 value, 32 zero bytes, only if
+the peer's input decodes to one of the five values; any other error is
+raised again:
 \begin{lstlisting}[language=Python,morekeywords={try,except,raise,def,return,if,in}]
 def _x25519_dh(sk, peer_pk):
     priv = x25519.X25519PrivateKey.from_private_bytes(sk)
@@ -191,53 +229,61 @@ def _x25519_dh(sk, peer_pk):
             return bytes(32)          # the RFC 7748 output
         raise
 \end{lstlisting}
-The ML-KEM-1024 profile keeps the check, because RFC~9180 requires DHKEM
-recipients to abort on an all-zero output~\cite[\S7.1.4]{RFC9180}. Its models
-do not include that rejection either, but the same argument applies: it
-depends only on public data.
+The ML-KEM-1024 profile keeps its check, following RFC~9180's rule for DHKEM
+recipients~\cite[\S7.1.4]{RFC9180} in both directions. Its models do not
+include that rejection either, but the same argument applies: it depends
+only on public data.
 
 \paragraph{Tests.} Sixty-three new tests cover the fix, and \cref{app:loworder}
-describes them in detail. An independent RFC~7748 Montgomery ladder,
-checked against RFC~7748's test vectors and against pyca on random inputs,
-confirms that each of the fourteen encodings gives an all-zero output.
-Counting roots over $\Fp$ confirms that no other u-coordinate has order
-dividing~8. pyca rejects each encoding, so the fallback is reachable, and it
-accepts random and near-miss inputs, so the fallback is not taken
-spuriously. Decapsulation and encapsulation return the draft's value,
-recomputed with \texttt{hashlib} rather than through the code under test,
-and the ML-KEM-1024 profile still rejects. Nine mutants of the fix each make
-some of these tests fail. They remove the fallback, catch every error, drop
-one point from the set, skip the top-bit mask or the reduction mod $p$,
-revert either direction, return a wrong constant, or apply the fallback to
-the RFC~9180 leg as well. The full test suite (335 tests) passes.
+describes them in detail. An independent RFC~7748 Montgomery ladder, checked
+against RFC~7748's first test vector and the first iteration of its iterated
+test and against pyca on random inputs, confirms that each of the fourteen
+encodings gives an all-zero output. Counting roots over $\Fp$ confirms that
+no other u-coordinate has order dividing~8. pyca rejects each encoding, so
+the fallback is reachable, and it accepts random and near-miss inputs, so the
+fallback is not taken spuriously. Decapsulation and encapsulation return the
+draft's value, recomputed with \texttt{hashlib} rather than through the code
+under test, and the ML-KEM-1024 profile still rejects. A script in the
+artifact, \file{tests/low_order_mutants.py}, applies nine mutants of the fix
+and checks that each makes some of these tests fail. The mutants remove the
+fallback, catch every error, drop one point from the set, skip the top-bit
+mask or the reduction mod $p$, revert either direction, return a wrong
+constant, or apply the fallback to the RFC~9180 leg as well. The full test
+suite (335 tests) passes.
 
 \subsection{Lessons}\label{sec:lessons}
 
-\paragraph{Mechanize the primitive lemmas, not only the protocol.} Both
-errors in the sketch were in ``secure if either component is'' lemmas,
-written as a minimum of two advantages without side assumptions. Statements
-of that shape read as obviously true. In both cases the primary source
-states the missing condition, the composite draft~\cite[\S1.3]{Composite}
+\paragraph{Mechanize the primitive lemmas, not only the protocol.} Two of
+the three errors in the sketch were in ``secure if either component is''
+lemmas, written as a minimum of two advantages without side assumptions.
+Statements of that shape read as obviously true. In both cases the primary
+source states the missing condition, the composite draft~\cite[\S1.3]{Composite}
 and the X-Wing paper~\cite[Thm.~1]{XWing}, and the sketch's paraphrase
 dropped it. Mechanization put it back as soon as the construction was
 modelled byte-for-byte as specified: the composite's message representative,
 and X-Wing's choice of combiner inputs.
 
-\paragraph{A checked proof does not check its description.} Every review
-finding concerned something we said about the models: how tight the bound
-is, what an assumption is called, how strong the adversary is. CryptoVerif
-checks none of these. Claims should be read off the bound's terms and the
-library macros' definitions, and checked against the models by someone who
-did not write them.
+\paragraph{Compare bounds term by term.} The mechanized Theorem~1 bound had
+the factor $N_K$ that the sketch's lacked, and we did not notice until a
+reviewer compared the two terms. A mechanized bound is evidence about the
+pen-and-paper one only if someone reads it that way.
 
-\paragraph{Make negative controls test the property, not the script.} A
-proof script that aborts after a mutation is weak evidence, since scripts
-abort for many reasons. A mutant should check that the query it targets is
-no longer proved, next to a control in which the same proof succeeds on the
-unmutated model.
+\paragraph{A checked proof does not check its description.} Most review
+findings concerned what we said about the models: how tight the bound is,
+what an assumption is called, which restrictions the claims carry, how much
+the mutation tests cover. CryptoVerif checks none of these. Claims should be
+read off the bound's terms and the library macros' definitions, and checked
+against the models by someone who did not write them.
+
+\paragraph{Make negative controls test the property, and count what they
+cover.} A proof script that aborts after a mutation is weak evidence, since
+scripts abort for many reasons. A mutant should check that the query it
+targets is no longer proved, next to a control in which the same proof
+succeeds on the unmutated model. Coverage should be checked against an
+explicit list of what is meant to be covered, such as the model's guards.
 
 \paragraph{Test at the abstraction boundary.} The implementation diverged
 exactly where the models abstract (low-order points do not exist in a
 prime-order group) and where the test vectors do not reach (they are honest
-values). Tests derived from the models' abstractions, rather than from the
-specification's happy path, are the ones that find such divergences.
+values). The review found the divergence by asking what the abstraction
+leaves out, and tests at that boundary confirmed it.

@@ -16,10 +16,16 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage[capitalise,noabbrev]{cleveref}
 \makeatletter
-\g@addto@macro\UrlBreaks{\do\_\do\-}
+\g@addto@macro\UrlBreaks{\do\_\do\-\do\/\do\.}
 \makeatother
 
 \setlist{itemsep=2pt,topsep=4pt}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.75}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{4}
 \renewcommand{\arraystretch}{1.12}
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 
@@ -75,6 +81,7 @@
   commentstyle=\itshape\color{gray},
   stringstyle=\color{MidnightBlue},
   columns=fullflexible,
+  showstringspaces=false,
   keepspaces=true,
   breaklines=true,
   frame=lines,
@@ -105,31 +112,33 @@ with X-Wing and Composite Signatures}
 \begin{abstract}
 \noindent
 We give machine-checked computational proofs, in CryptoVerif, for
-HYBRID-AKE, a SIGMA-style handshake whose session key comes from an
+HYBRID-AKE, a SIGMA-like handshake whose session key comes from an
 ephemeral hybrid KEM (X-Wing, or ML-KEM-1024 with X25519 under a
 transcript-hashing combiner) and whose authentication comes from composite
-ML-DSA/EdDSA signatures. We prove injective agreement in both directions,
-real-or-random secrecy of every fresh session key with forward secrecy,
-key-compromise impersonation resistance and key reveal, and cross-role key
-uniqueness, using only CryptoVerif's post-quantum-sound library. Separately,
-we prove that each hybrid primitive meets the assumption the protocol proof
-makes on it if either of its components does.
+ML-DSA/EdDSA signatures over the transcript. We prove injective agreement in
+both directions, real-or-random secrecy of every fresh session key with
+forward secrecy, key-compromise impersonation resistance and key reveal, and
+cross-role key uniqueness, using only CryptoVerif's post-quantum-sound
+library. Separately, we prove that each hybrid primitive meets the
+assumption the protocol proof makes on it if either of its components does.
 
-The paper is organised around what this process caught. Mechanization
-corrected two of the four results of the pen-and-paper sketch that preceded
-it: the composite signature also needs a collision-resistant pre-hash, and
-X-Wing relying on X25519 also needs ciphertext second-preimage resistance of
-ML-KEM, as the X-Wing paper's classical theorem assumes; the ML-KEM-1024
-combiner avoids that assumption because it hashes the ML-KEM ciphertext.
-Sixteen mutation tests show which design elements and model guards each proof
-depends on. An independent review of our first write-up found claims the
-models did not support: a tighter bound than proved, non-standard assumptions
-not flagged as such, and a weaker adversary than described.
-Comparing the models with the implementation found that our X-Wing raised an
-error on low-order X25519 points, where the specification's algorithm returns
-a shared secret. The same divergence had been reported for another library;
-we fixed ours and characterise the affected inputs completely. All models,
-proof scripts and tests are public.
+The paper is organised around what this process caught. The pen-and-paper
+sketch that preceded the mechanization had dropped two conditions that its
+primary sources state: the composite signature also needs a
+collision-resistant pre-hash, and X-Wing relying on X25519 also needs
+ciphertext second-preimage resistance of ML-KEM. Its authentication bound
+also lacked a factor for the number of parties. The ML-KEM-1024 combiner
+needs no security assumption on ML-KEM in that direction, because it hashes
+the ML-KEM ciphertext. Twenty-two mutation tests, one for each freshness
+guard among them, show what each proof depends on. A review of our first
+write-up, by a separate instance of the AI assistant used throughout this
+work, found claims the models did not support: a tighter bound than proved,
+non-standard assumptions not flagged as such, and restrictions on the
+adversary disclosed in the notes but not in the result statements. It also noted that our
+X-Wing implementation raised an error on low-order X25519 points, where the
+specification's algorithm returns a shared secret, a divergence reported
+earlier for another library. We fixed it and give a self-contained proof of
+which inputs are affected. All models, proof scripts and tests are public.
 \end{abstract}
 
 \input{sections/intro}

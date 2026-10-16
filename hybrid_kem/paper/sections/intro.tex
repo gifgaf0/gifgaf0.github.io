@@ -11,36 +11,41 @@ guarantees only through a composition argument, and that argument is usually
 made on paper.
 
 This paper reports a machine-checked computational analysis, in
-CryptoVerif~\cite{Bla08,CryptoVerif}, of HYBRID-AKE: a small SIGMA-style
+CryptoVerif~\cite{Bla08,CryptoVerif}, of HYBRID-AKE: a small SIGMA-like
 handshake~\cite{Kra03} that derives its key from an ephemeral hybrid KEM and
-authenticates with composite signatures over the transcript. We mechanize
-both layers. The protocol proof assumes one IND-CCA2 KEM and one UF-CMA
-signature; separate proofs show that each hybrid primitive meets that
+authenticates with composite signatures over the transcript, with no MAC. We
+mechanize both layers. The protocol proof assumes one IND-CCA2 KEM and one
+UF-CMA signature; separate proofs show that each hybrid primitive meets that
 assumption if either of its components does. The protocol proof and the
 post-quantum legs use only CryptoVerif's post-quantum-sound
 library~\cite{BJ24}.
 
 The protocol is not the point. It is an engineering design, close to TLS~1.3
 and SIGMA, and it is not standardised. What we report is what mechanization,
-negative controls and an independent review caught, at three levels:
+negative controls and review caught, at three levels:
 \begin{enumerate}
   \item \emph{The proof sketch.} A pen-and-paper sketch preceded the
-  mechanization. Two of its four results were stated without an assumption
+  mechanization. Two of its four results were stated without a condition
   they need. The composite signature is unforgeable when either component is
   only if its pre-hash is also collision resistant. X-Wing is secure relying
   on X25519 only if ML-KEM is also ciphertext second-preimage resistant
   (C2PRI). Both conditions are stated in the primary sources, the
   composite-signature draft~\cite{Composite} and the X-Wing paper's
-  classical theorem~\cite{XWing}; the sketch had dropped them.
-  \item \emph{Our own write-up.} An independent review of the first version
-  of the mechanization found claims that the models did not support: a
-  tighter bound than proved, non-standard assumptions not flagged as such,
-  and an adversary weaker than described.
-  \item \emph{The implementation.} Comparing the models' idealised X25519
-  with the code showed that our X-Wing implementation raised an error on
-  low-order X25519 points, where the X-Wing specification's algorithm
-  returns a shared secret. The same divergence had been reported for another
-  library~\cite{Noble26}.
+  classical theorem~\cite{XWing}; the sketch had dropped them. Its
+  authentication bound also lacked a factor for the number of parties.
+  \item \emph{Our own write-up.} A review of the first version of the
+  mechanization, by a separate instance of the AI assistant used throughout
+  this work, found claims that the models did not support: a tighter bound
+  than proved, non-standard assumptions not flagged as such, and two
+  restrictions on the adversary that the write-up disclosed but the
+  statements of the results did not carry. A second review, of a draft of this paper,
+  found that we had also overstated the coverage of our mutation tests.
+  \item \emph{The implementation.} The first review also noted that
+  pyca/cryptography raises an error on an all-zero X25519 output, which the
+  models cannot express. Tests confirmed that our X-Wing implementation
+  raised an error on low-order X25519 points, where the X-Wing
+  specification's algorithm returns a shared secret. The same divergence had
+  been reported for another library~\cite{Noble26}.
 \end{enumerate}
 
 \paragraph{Contributions.}
@@ -54,37 +59,51 @@ negative controls and an independent review caught, at three levels:
   transcript-hashing combiner relying on either leg, including a
   random-oracle proof from standard assumptions; and EUF-CMA of the composite
   signature relying on either component (\cref{sec:model,sec:mech}).
-  \item Sixteen mutation tests, each deleting one design element or
-  assumption, with controls (\cref{sec:mutations}). They show that the KEM
-  ciphertext and the responder's key must be in the signed transcript, that
-  every freshness guard in the protocol model has an effect, that X-Wing
-  needs C2PRI where the transcript-hashing combiner does not, and that the
-  role-separating context strings are redundant given the encodings.
+  \item Twenty-two mutation tests, each deleting one design element,
+  assumption or model guard, with controls (\cref{sec:mutations}). Twelve of
+  them remove the twelve freshness and RevealKey guards of the protocol
+  model one at a time. They show that the proofs depend on the KEM
+  ciphertext and the responder's key being in the signed transcript, that
+  every freshness guard has an effect, that X-Wing's proof needs C2PRI where
+  the transcript-hashing combiner's does not, and that the role-separating
+  context strings are redundant given the encodings.
   \item A catalogue of the findings above, with their causes and fixes, and
   the lessons we draw from them (\cref{sec:caught}).
-  \item For the implementation finding, a fix and a complete
-  characterisation of the X25519 inputs that produce an all-zero output,
-  checked against an independent RFC~7748 implementation and by counting
-  roots over $\Fp$ (\cref{sec:lowcaught,app:loworder}).
+  \item For the implementation finding, a fix, a self-contained proof of the
+  known list of X25519 inputs that produce an all-zero output, and tests
+  that check it against an independent RFC~7748 implementation and by
+  counting roots over $\Fp$, with nine mutants of the fix that the tests must
+  catch (\cref{sec:lowcaught,app:loworder}).
 \end{itemize}
-All models, proof scripts, mutation tests, implementation tests and the
-sources of this paper are public~\cite{Artifact}.
+All models, proof scripts, mutation tests and implementation
+tests are public~\cite{Artifact}, and the sources of this paper are in the
+same repository.
 
-We are not aware of earlier machine-checked proofs of X-Wing or of composite
-ML-DSA/EdDSA signatures. The closest mechanized work covers generic KEM
-combiners and KEM-based hybrid key exchanges in Squirrel~\cite{BDDJK26}, and
-the hybrid TLS~1.3 and SSH key exchanges in CryptoVerif~\cite{BJ24}
-(\cref{sec:related}).
+To our knowledge, these are the first machine-checked proofs of X-Wing's
+IND-CCA2 security relying on either leg, stated as multi-user KEM
+equivalences, and of the EUF-CMA security of the draft composite
+ML-DSA/EdDSA signatures. We claim no novelty for the conditions themselves
+(C2PRI and the collision-resistant pre-hash), for the list of low-order
+points, or for the per-role secrecy pattern, which comes from CryptoVerif's
+TLS~1.3 analysis~\cite{BBK17}. The closest mechanized work covers generic KEM
+combiners and KEM-based hybrid key exchanges in Squirrel~\cite{BDDJK26},
+PQXDH~\cite{BJKS24}, and the hybrid TLS~1.3 and SSH key exchanges in
+CryptoVerif~\cite{BJ24} (\cref{sec:related}).
 
 \paragraph{How this work was done.}
-The models, proof scripts, tests and a first draft of this paper were
-written with an AI assistant (Claude, by Anthropic) at the author's
-direction. The independent review of \cref{sec:reviewcaught} was carried out
-by a separate instance of the same assistant that had not seen the
-development. We state this because it bears on how the results should be
-weighed. The machine-checked statements rest on CryptoVerif's soundness and
-on the models matching the specification. The review, by contrast, is not a
-substitute for expert peer review (\cref{sec:limits}).
+This work was AI-assisted throughout. As the repository history shows, the
+protocol specification, its implementation, the Tamarin models and the
+pen-and-paper sketch were written with an AI assistant (Claude, by
+Anthropic) at the author's direction, as were the CryptoVerif models, proof
+scripts, tests and a first draft of this paper. Both reviews described here
+were carried out by separate instances of the same assistant. They could
+read the repository and its history but not the development conversation.
+We state this because it bears on how the results should be weighed. The
+errors of \cref{sec:sketchcaught} are errors in an AI-written sketch, caught
+by an AI-assisted mechanization. The machine-checked statements rest on
+CryptoVerif's soundness and on the models matching the specification. The
+reviews, by contrast, are not a substitute for expert peer review
+(\cref{sec:limits}).
 
 \paragraph{Outline.}
 \Cref{sec:background} describes the protocol, its primitives and

@@ -1,8 +1,9 @@
 \section{Mechanization}\label{sec:mech}
 
-The development has nine CryptoVerif models: two protocol models, five KEM
-models (two of them m4 variants of one file each, plus one standalone) and
-two composite-signature models (m4 variants of one file). Together they come
+The development has nine CryptoVerif models: two protocol models; five KEM
+models, namely two variants each of \file{kem_xwing.m4.ocv} and
+\file{kem_bbfgs.m4.ocv} and the standalone \file{kem_bbfgs_x25519_rom.ocv};
+and two variants of the composite-signature model. Together they come
 to about 1,400 lines, including comments, and \texttt{make} checks all of them
 in under 20~seconds on two cores. \Cref{tab:models} lists them.
 
@@ -24,7 +25,9 @@ Model & Proves & Library & Queries\\
 \bottomrule
 \end{tabularx}
 \caption{The nine models. ``pq'' is CryptoVerif's post-quantum-sound library.
-The X25519 directions are classical by nature.}
+The X25519 directions use the default library and are classical by nature.
+The composite's EdDSA direction runs with the post-quantum library, but its
+assumption, unforgeability of EdDSA, holds only classically.}
 \label{tab:models}
 \end{table}
 
@@ -76,38 +79,51 @@ the adversary the broken leg's secret: this is what ``the other leg is fully
 broken'' means. Every proof starts by inserting into the real process the
 two case distinctions that the ideal one makes: is the encapsulation for an
 honest key, and is the decapsulated ciphertext one of that user's challenge
-ciphertexts. It then uses ML-KEM correctness on the second. After that, the
-ML-KEM direction applies IND-CCA2 of ML-KEM and then the PRF assumption on
-the combiner, keyed by the now uniformly random $\ssv_M$. The X25519 direction
-applies the random oracle and then strong Diffie--Hellman. In both cases
+ciphertexts. It then uses ML-KEM's correctness on the second, through the
+library's perfect-correctness equation. After that, the ML-KEM direction
+applies IND-CCA2 of ML-KEM and then the PRF assumption on the combiner, keyed
+by the now uniformly random $\ssv_M$. The X25519 direction applies the random
+oracle and then strong Diffie--Hellman, except in the PRF-ODH model, which
+applies the PRF-ODH assumption directly. In all cases
 \ident{start_from_other_end} transforms the ideal process to the same
 final game.
 
 \paragraph{C2PRI.} In X-Wing's X25519 direction, ML-KEM has no security
 assumption except C2PRI (Definition~7 of~\cite{XWing}): for an honestly
 generated key pair and an honest encapsulation $(k_0, c_0)$, an adversary
-who knows the decapsulation key finds no $c \ne c_0$ that decapsulates to
-$k_0$. We state it as a CryptoVerif collision statement, so the adversary
-may depend on the key seed $s$ and the encapsulation coins $r$:
+given the decapsulation key, $k_0$ and $c_0$ finds no $c \ne c_0$ that
+decapsulates to $k_0$. We state it as a CryptoVerif collision statement:
 \begin{lstlisting}
 collision s <-R mseed; r <-R mencseed; forall c: mct;
    return(mdecap(c, mskgen(s)) = minjbot(1-proj-mpair(mencap_r(mpkgen(s), r))))
    <=(Pbind(time))=> return(c = 2-proj-mpair(mencap_r(mpkgen(s), r))).
 \end{lstlisting}
-($\cvp{Pbind}$ is $\cvp{Pc2pri}$ in \cref{lem:kem}.) The statement is a two-way
-rewrite, so it also asserts that $c_0$ decapsulates to $k_0$; its probability
-therefore absorbs ML-KEM's correctness error. It concerns honestly generated
+($\cvp{Pbind}$ is $\cvp{Pc2pri}$ in \cref{lem:kem}.) For an honestly
+generated key seed $s$ and honest encapsulation coins $r$, the statement
+replaces the test $\mathsf{mdecap}(c, \mathit{sk}) = k_0$ by the test
+$c = c_0$, at cost $\cvp{Pbind}$. It is slightly stronger than Definition~7
+in two ways: the adversary may also depend on $r$, and the statement implies
+that $c_0$ itself decapsulates to $k_0$. For ML-KEM, neither adds more than
+the decapsulation failure probability $\delta$. Given the decapsulation key
+and $c_0$, decryption recovers the encapsulation message, which determines
+the coins, except with probability $\delta$; and $c_0$ fails to decapsulate
+to $k_0$ only with probability $\delta$. So $\cvp{Pbind}$ is at most the
+C2PRI advantage plus $\delta$. The statement concerns honestly generated
 keys and challenges only. It is neither the malicious-key binding that
-ML-KEM lacks~\cite{Sch24} nor needed in that form.
+ML-KEM lacks~\cite{Sch24} nor needed in that form. The proof applies it three
+times, all after the random-oracle step, which gives the factor $3NQ_e$ in
+\cref{lem:kem}.
 
-The assumption is used exactly where X-Wing's design requires it. X-Wing
-does not hash $\ct_M$. If an adversary that knows ML-KEM's secret key could
+The assumption is needed because of X-Wing's design. X-Wing does not hash
+$\ct_M$. If an adversary that knows ML-KEM's secret key could
 find a second ciphertext $\ct_M' \ne \ct_M^*$ with the same $\ssv_M$, then
 $\ct_M' \,\|\, \ct_X^*$ would decapsulate to the challenge key, which the
 decapsulation oracle would then reveal. The ML-KEM-1024 combiner hashes
 $\ct_M$, so a second ciphertext changes the hash input. That is why its
-X25519-direction proofs need no property of ML-KEM at all;
-\cref{sec:mutations} checks both facts.
+X25519-direction proofs need no security assumption on ML-KEM. They use only
+its correctness, its implicit rejection, and the negligible chance that
+honestly generated keys or ciphertexts collide. \Cref{sec:mutations} checks
+both facts.
 
 \paragraph{Two routes for the ML-KEM-1024 profile.} The first X25519-direction
 proof for this profile, in \file{kem_bbfgs.m4.ocv}, uses the library's
@@ -117,8 +133,11 @@ the assumption is a non-standard variant. \file{kem_bbfgs_x25519_rom.ocv}
 proves the same statement from strong Diffie--Hellman with HKDF as a random
 oracle, which are standard assumptions. The ML-KEM direction of this profile
 assumes HKDF is a PRF keyed by the $\ssv_M$ half of $\ssv_M \,\|\, \ssv_X$.
-This \emph{split-key} assumption is outside what~\cite{BBGS23} prove,
-because their key is the whole message input. CryptoVerif's PQ-TLS model
+That makes HKDF a split-key PRF in the sense of Giacon, Heuer and
+Poettering~\cite{GHP18}, a notion that Millerjord, Stebila and Steckel study
+further~\cite{MSS26}. We know of no proof that HKDF is one in this
+configuration. It is also outside what~\cite{BBGS23} prove, because their
+key is the whole message input. CryptoVerif's PQ-TLS model
 makes the same kind of assumption for HKDF-Extract over a concatenated hybrid
 secret~\cite{BJ24}.
 

@@ -9,9 +9,9 @@ diagnostic the note describes. Nothing here is deposited.
   `ZENODO_DESCRIPTION.txt` as the description. That file has one line per paragraph, because the SLWE note's
   hard-wrapped description lost words at every wrap point when DataCite harvested it ("authorproposed", "anorder-7").
 - The note's Section 7 says that a copy of the diagnostic accompanies it on Zenodo, so upload both files.
-- **Deposit only after the pull request is merged.** The note's Section 7 says the file with the printed SHA-256 is in
-  the public repository, and until the merge `main` still holds the previous version (SHA-256 `bb22d680…0f401b94`).
-  The repository link under "Related identifiers" should also point at a commit on `main`.
+- **Ready to deposit.** PR #52 was merged on 2026-10-16 as `848e588`, so `main` now holds the tool whose SHA-256 the
+  note's Section 7 prints. `build_pdf.py` was rerun on `main` after the merge: it passes every check, and the PDF
+  rebuilds byte-identical to the md5 below.
 
 ## Files
 
@@ -40,8 +40,8 @@ Zenodo shows each uploaded file's md5 on the record page; it should match the ta
     link uses the all-versions DOI, as the *Fluid Lattice Topology* notice does, so that readers land on the latest
     version.
   - doi:10.5281/zenodo.20078312 (*Fluid Lattice Topology*), relation "references".
-  - After the merge: `https://github.com/gifgaf0/gifgaf0.github.io/tree/<merge commit>/generator_induced_invariants`,
-    relation "is supplemented by".
+  - `https://github.com/gifgaf0/gifgaf0.github.io/tree/848e5888b442368ffdb37672dcb9011169859840/generator_induced_invariants`
+    (the merge commit of PR #52), relation "is supplemented by".
 
 ## Description
 

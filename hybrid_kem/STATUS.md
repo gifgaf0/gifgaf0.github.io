@@ -45,14 +45,14 @@ artifact but no longer sits on the KEM path.
   - `hybrid_ake_ephleak.ocv`: the same with *static* ephemeral-key reveal on adversary-chosen sessions.
   - `composite_sig.m4.ocv`: Lemma 2 in both directions — **correction**: needs collision resistance of the pre-hash `PH`.
   - `kem_bbfgs.m4.ocv`, `kem_bbfgs_x25519_rom.ocv`, `kem_xwing.m4.ocv`: Lemma 1 for both profiles, both directions, each as the IND-CCA2 equivalence the protocol model assumes — **correction**: X-Wing relying on X25519 also needs C2PRI of ML-KEM (as in the X-Wing paper); the ML-KEM-1024 profile does not. The ML-KEM-1024 combiner's PRF assumptions are a split-key PRF and a PRF-ODH variant (non-standard); its X25519 direction is also proved from standard assumptions (strong DH + ROM). X25519 is modelled as a prime-order group.
-  - `mutations.py`: 16 mutation tests (`ct` and `vk_R` in the transcript are load-bearing; the context strings are a redundant second layer; every freshness/RevealKey guard is load-bearing).
+  - `mutations.py`: 22 mutation tests (`ct` and `vk_R` in the transcript are load-bearing; the context strings are a redundant second layer; each of the twelve freshness/RevealKey guards is load-bearing, one mutant per guard).
   - Corrections recorded in `docs/HYBRID_AKE_COMPUTATIONAL.md` §7 and §7.1; original text kept.
 - [x] **Test suite** — 335 passing (`pytest`), KATs byte-exact against the vectors above.
 
 ### Next (optional)
 1. Replace `QRNGSource(provider="local")` with a validated hardware noise source for any real deployment, and run the SP 800-90B non-IID estimators on its raw output (the continuous RCT/APT are in place; the one-time entropy estimate is a deployment step).
 3. Cross-check ML-KEM / ML-DSA against liboqs in CI when the binding is installed.
-4. ~~Decide whether X-Wing should follow draft-11 on low-order X25519 points: `combiner/xwing.py` currently raises (pyca rejects all-zero X25519 outputs) where the draft returns a shared secret. No secrecy impact; conformance only (`analysis/cryptoverif/README.md`, implementation note).~~ **Done October 15, 2026:** `combiner/xwing.py` follows the draft, returning the all-zero X25519 value in both encapsulation and decapsulation (`tests/test_xwing_low_order.py`). The `mlkem1024+x25519` profile still rejects all-zero outputs, as RFC 9180 §7.1.4 requires of DHKEM recipients.
+4. ~~Decide whether X-Wing should follow draft-11 on low-order X25519 points: `combiner/xwing.py` currently raises (pyca rejects all-zero X25519 outputs) where the draft returns a shared secret. No secrecy impact; conformance only (`analysis/cryptoverif/README.md`, implementation note).~~ **Done October 15, 2026:** `combiner/xwing.py` follows the draft, returning the all-zero X25519 value in both encapsulation and decapsulation (`tests/test_xwing_low_order.py`; `tests/low_order_mutants.py` checks the tests catch nine mutants of the fix). The `mlkem1024+x25519` profile still rejects all-zero outputs, as RFC 9180 §7.1.4 requires of DHKEM recipients.
 5. Cofactor-aware X25519 in the CryptoVerif KEM models (`DH_X25519_expth`, as in CryptoVerif's WireGuard analysis), replacing the prime-order abstraction.
 
 ### Decisions locked

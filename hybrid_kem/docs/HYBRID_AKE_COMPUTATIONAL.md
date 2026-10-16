@@ -367,6 +367,14 @@ then fails, so the reveal oracles have effect. The ephemeral-reveal model is
 revealed, whereas §2's RevealEph is adaptive. Its uniqueness query is stated
 for fresh keys only.
 
+> **Update (October 16, 2026).** Two statements in the paragraph above were
+> imprecise. "Matched on msg1 alone" holds for the responders' reveal guards;
+> the initiator's matched on the full transcript. And "Mutation tests remove
+> each freshness guard in turn" overstated the coverage at the time: six
+> mutants covered seven of the twelve guards, two only together. There are
+> now twelve guard mutants, one per guard (22 mutation tests in all), and all
+> behave as expected (`analysis/cryptoverif/README.md`, Review history).
+
 **Tightness — the §7 claim was wrong.** The mechanized bound has no
 session-guessing step, but its KEM term is a *multi-key, multi-challenge*
 IND-CCA2 advantage (`#OI1` ephemeral keys; up to `#OR1 + #OA1` challenges, since

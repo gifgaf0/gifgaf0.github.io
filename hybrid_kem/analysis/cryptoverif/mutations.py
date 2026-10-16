@@ -10,8 +10,9 @@ depend on that element; a failure here is therefore a finding, not noise.
 Failing to prove is not by itself an attack: CryptoVerif is sound but not
 complete. Each entry says what the mutation removes and why a proof should
 need it. Entries marked "control" are expected to stay proved; the
-fresh_* entries check that every freshness and RevealKey guard of the
-protocol model is load-bearing, i.e. that the reveal oracles have effect.
+fresh_* entries remove the twelve freshness and RevealKey guards of the
+protocol model one at a time, checking that each is load-bearing (so the
+reveal oracles have effect and no guard is dead code).
 
 Usage (normally via `make mutations`):
     python3 mutations.py --cryptoverif PATH --libdir DIR [--m4 m4]
@@ -92,7 +93,8 @@ def mutations() -> list[Mutation]:
     no_ctx = [(CTX_DECL, "letfun msgI(x: hashoutput) = msgR(x).")]
     secrecy = ["query secret keyI.\n", "query secret keyR.\n"]
     all_ake = {"inj-event(endR": True, "inj-event(endI": True,
-               "secrecy of keyI": True, "secrecy of keyR": True}
+               "secrecy of keyI": True, "secrecy of keyR": True,
+               "event(endI(iid1": True}          # key uniqueness
 
     def guard(name, old, new, query, why):
         return Mutation(
@@ -176,18 +178,45 @@ def mutations() -> list[Mutation]:
             proof=AUTH_ONLY_PROOF, drop_queries=secrecy,
             expect={"inj-event(endR": False},
         ),
-        guard("test_I_despite_revealed_partner",
+        # Initiator freshness (testI): honest peer, uncorrupted peer, no
+        # revealed mutual-responder partner, no revealed responder-only partner.
+        guard("test_I_dishonest_peer",
+              "          else false);\n      return(sigI);",
+              "          else (keyI: sesskey <- kI; true));\n      return(sigI);",
+              "secrecy of keyI",
+              "an initiator is tested even if its peer is not an honest party"),
+        guard("test_I_corrupted_peer",
+              "             (if defined(corruptK[jP]) then false\n",
+              "             (if false then false\n",
+              "secrecy of keyI",
+              "an initiator is tested even if its peer was corrupted before it accepted"),
+        guard("test_I_despite_revealed_R",
               "                find jR1 <= NR, jRK1 <= NK suchthat defined(thR[jR1, jRK1], revR[jR1, jRK1]) && thI = thR[jR1, jRK1] then false\n"
-              "                orfind jA1 <= NRa, jAK1 <= NK suchthat defined(thA[jA1, jAK1], revA[jA1, jAK1]) && thI = thA[jA1, jAK1] then false\n"
-              "                else\n",
+              "                orfind jA1",
+              "                find jA1", "secrecy of keyI",
+              "an initiator is tested even if its mutual-responder partner's key was revealed"),
+        guard("test_I_despite_revealed_A",
+              "                orfind jA1 <= NRa, jAK1 <= NK suchthat defined(thA[jA1, jAK1], revA[jA1, jAK1]) && thI = thA[jA1, jAK1] then false\n",
               "", "secrecy of keyI",
-              "an initiator is tested even if a partner's key was revealed"),
+              "an initiator is tested even if its responder-only partner's key was revealed"),
         guard("reveal_I_despite_tested_R",
               "      find jR2 <= NR, jRK2 <= NK suchthat defined(thR[jR2, jRK2], keyR[jR2, jRK2]) && thI = thR[jR2, jRK2] then\n"
               "         return(NoLeak)\n"
               "      else\n",
               "", "secrecy of keyR",
               "an initiator's key is revealed even if its partner's is tested"),
+        # Mutual-responder freshness (testR): honest peer, uncorrupted peer,
+        # no revealed initiator partner.
+        guard("test_R_dishonest_peer",
+              "          else false);\n      return();",
+              "          else (keyR: sesskey <- kR; true));\n      return();",
+              "secrecy of keyR",
+              "a mutual responder is tested even if its peer is not an honest party"),
+        guard("test_R_corrupted_peer",
+              "             (if defined(corruptK[jP2]) then false\n",
+              "             (if false then false\n",
+              "secrecy of keyR",
+              "a mutual responder is tested even if its peer was corrupted before it accepted"),
         guard("test_R_despite_revealed_I",
               "                find jI1 <= NI, jIK1 <= NK suchthat defined(thI[jI1, jIK1], revI[jI1, jIK1]) && thR = thI[jI1, jIK1] then false\n"
               "                else\n",
@@ -209,6 +238,10 @@ def mutations() -> list[Mutation]:
               "      if testI then return(NoLeak) else",
               "      if false then return(NoLeak) else", "secrecy of keyI",
               "RevealKey also answers for a tested initiator"),
+        guard("reveal_tested_R",
+              "      if testR then return(NoLeak) else",
+              "      if false then return(NoLeak) else", "secrecy of keyR",
+              "RevealKey also answers for a tested mutual responder"),
         Mutation(
             name="ephleak_test_revealed_sessions",
             source="hybrid_ake_ephleak.ocv",

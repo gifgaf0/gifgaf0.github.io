@@ -40,13 +40,15 @@ Tested with TeX Live 2023 (Ubuntu 24.04 packages `texlive-latex-extra`,
       also written with an AI assistant. Correct them if that is wrong.
 - [ ] Re-run `make` and `make mutations` in `../analysis/cryptoverif/`,
       `pytest hybrid_kem/tests` and `python3 hybrid_kem/tests/low_order_mutants.py`
-      at the commit cited as the artifact. If PR #49 is merged first, cite the
-      merge commit instead and update `refs.bib` (`Artifact`) and Appendix C.
-- [ ] Keep the artifact commit reachable. Appendix C tells readers to
+      at the artifact commit, `74affcf`.
+- [ ] Keep the artifact commit reachable. #49 was merged at `67cc5f6`, before
+      `74affcf` (the 22 mutation tests and the low-order mutant script) was
+      pushed, so `74affcf` is in #50. Appendix C tells readers to
       `git checkout 74affcf` after a fresh clone, which fails once no branch
-      or tag contains that commit. A squash or rebase merge of #49 followed by
-      deleting its branch would do that. Merge #49 with a merge commit, or tag
-      the cited commit (for example `git tag hybrid-ake-paper-v1 74affcf`)
-      and push the tag.
+      or tag contains that commit, as after a squash or rebase merge followed
+      by deleting the branches. Merge #50 with a merge commit, or tag the
+      commit (for example `git tag hybrid-ake-paper-v1 74affcf`) and push the
+      tag. To cite a commit on `main` instead, update `refs.bib` (`Artifact`),
+      Appendix C and the table above.
 - [ ] Choose ePrint keywords and a licence (ePrint requires one at submission;
       it cannot be changed afterwards).

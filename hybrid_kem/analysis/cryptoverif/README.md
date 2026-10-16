@@ -157,15 +157,19 @@ and `PsignT(t, NS) + 2·Phash(t)` with ML-DSA broken. Hence
   WireGuard analysis [LBB19] (`DH_X25519_expth`, gap-DH on the subgroup), was not
   attempted. The 32-byte X-Wing seed is modelled as two independent seeds
   (SHAKE-256 as a PRG).
-- **Implementation note (outside the models).** pyca/cryptography raises
-  `ValueError` when an X25519 shared secret is all-zero, i.e. on a low-order
-  point. So this repository's `xwing.decapsulate` raises on a ciphertext whose
-  X25519 part is a low-order point, and `xwing.encapsulate` raises on such a
-  public key (checked with pyca 50.0.1). X-Wing draft-11 has no such check
-  (§5.5: Decapsulate returns the shared secret). Honest peers never produce
-  these values, and for clamped scalars the failure depends only on the public
-  point, so secrecy is unaffected. It is a conformance difference, not covered
-  by the known-answer tests. The models follow the draft.
+- **Implementation note (outside the models).** X-Wing draft-11 applies no
+  check to the X25519 output (§5.4, §5.5), and the models follow the draft:
+  decapsulation always returns a key. pyca/cryptography raises `ValueError`
+  when an X25519 output is all-zero, which for clamped scalars happens exactly
+  on low-order points. Since October 15, 2026, `combiner/xwing.py` then uses
+  the RFC 7748 value, 32 zero bytes, as the draft does, in both encapsulation
+  and decapsulation. Before, it passed the error on (checked with
+  pyca 50.0.1), a conformance difference that the known-answer tests did not
+  cover. `tests/test_xwing_low_order.py` now pins the behaviour. The
+  `mlkem1024+x25519` profile still rejects all-zero outputs, as RFC 9180
+  §7.1.4 requires of DHKEM recipients. Its models don't include that
+  rejection, but it depends only on the public point, so the adversary learns
+  nothing from it that it couldn't compute, and secrecy is unaffected.
 
 ## Freshness and RevealKey
 
@@ -299,6 +303,11 @@ with OCaml 4.14.1 on Ubuntu 24.04.
   - The `ct` mutation now checks the agreement queries directly, and six
     freshness-guard mutations and a combiner mutation were added.
   - m4 no longer rewrites model comments.
+- **October 15, 2026 — X-Wing low-order points.** `combiner/xwing.py` now
+  follows draft-11 on low-order X25519 points: it returns the all-zero X25519
+  value instead of passing on pyca's `ValueError` (implementation note above;
+  `tests/test_xwing_low_order.py`). No model changed; one model comment was
+  updated.
 
 ## References
 

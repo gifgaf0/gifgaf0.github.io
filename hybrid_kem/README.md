@@ -133,7 +133,9 @@ Every primitive is pinned to a published answer (vectors vendored under
 - **X25519** — RFC 7748 §5.2.
 - **X-Wing** — draft-11 Appendix C, all three vectors (keygen and decapsulation,
   which runs the full combiner). Encapsulation is randomised and covered by
-  round-trip tests.
+  round-trip tests. Low-order X25519 points follow the draft too: the all-zero
+  X25519 value goes into the combiner, with no error
+  (`tests/test_xwing_low_order.py`).
 - **ML-DSA-44/65/87** — NIST ACVP (final FIPS 204): keygen-from-seed and
   verification of the published signature.
 - **Ed25519 / Ed448** — RFC 8032 (full deterministic signing).

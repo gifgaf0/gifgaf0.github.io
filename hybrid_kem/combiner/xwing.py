@@ -26,6 +26,20 @@ pyca exposes no message-injection hook, so a derandomised ``EncapsulateDerand``
 cannot be reproduced through pyca and is intentionally not offered here. The
 KATs therefore pin conformance through the deterministic directions, which
 exercise the combiner in full; ``encapsulate`` is covered by round-trip tests.
+
+Low-order X25519 points. X-Wing takes X25519 from RFC 7748 §5 and applies no
+check to its output: Encapsulate and Decapsulate (draft §5.4, §5.5) pass the
+raw value to the combiner, and the draft gives Decapsulate no failure case.
+pyca/cryptography instead raises ``ValueError`` when the X25519 output is
+all-zero, which for the clamped scalars of X25519 happens exactly when the
+peer's u-coordinate is a low-order point. ``_x25519_dh`` therefore returns the
+RFC 7748 result, 32 zero bytes, in that case: it does so only after
+confirming, from the public input alone, that the point is low-order, and
+re-raises any other error. Honest parties never produce such points, and the
+combiner still hashes the all-zero value together with ``ss_M``, ``ct_X`` and
+``pk_X``. ``tests/test_xwing_low_order.py`` pins this behaviour. (The
+``mlkem1024+x25519`` profile keeps rejecting all-zero outputs, as RFC 9180
+§7.1.4 requires of DHKEM recipients; see ``kem_classical/x25519_kem.py``.)
 """
 
 from __future__ import annotations
@@ -61,10 +75,52 @@ def _x25519_base(sk: bytes) -> bytes:
     )
 
 
+# The field prime of Curve25519, and the u-coordinates (mod p) of every point
+# of order dividing 8 on Curve25519 or its quadratic twist: 0 (order 2), 1 and
+# p - 1 (order 4), and the two u-coordinates of the order-8 points. For the
+# clamped scalars of X25519 (multiples of 8), these are exactly the inputs on
+# which the RFC 7748 output is all-zero. tests/test_xwing_low_order.py checks
+# each value with an independent RFC 7748 ladder and against pyca/cryptography,
+# and shows by counting roots over F_p that the list is complete.
+_P25519 = 2**255 - 19
+_LOW_ORDER_U = frozenset({
+    0,
+    1,
+    325606250916557431795983626356110631294008115727848805560023387167927233504,
+    39382357235489614581723060781553021112529911719440698176882885853963445705823,
+    _P25519 - 1,
+})
+
+
+def _is_low_order(u: bytes) -> bool:
+    """Whether the X25519 input ``u`` encodes a low-order point.
+
+    Decodes as RFC 7748 does (little-endian, top bit masked, reduced mod p), so
+    non-canonical encodings and a set top bit are covered. Depends only on the
+    public input, never on a secret key.
+    """
+    if len(u) != 32:
+        return False
+    value = int.from_bytes(u, "little") & ((1 << 255) - 1)
+    return value % _P25519 in _LOW_ORDER_U
+
+
 def _x25519_dh(sk: bytes, peer_pk: bytes) -> bytes:
+    """X25519(sk, peer_pk) as RFC 7748 defines it, including the all-zero output.
+
+    pyca refuses to return an all-zero shared secret and raises ``ValueError``.
+    X-Wing has no such check (see the module docstring), so when the peer's
+    point is low-order -- the only case in which the output is all-zero -- this
+    returns the RFC 7748 value, 32 zero bytes. Any other error propagates.
+    """
     priv = x25519.X25519PrivateKey.from_private_bytes(sk)
     peer = x25519.X25519PublicKey.from_public_bytes(peer_pk)
-    return priv.exchange(peer)
+    try:
+        return priv.exchange(peer)
+    except ValueError:
+        if _is_low_order(peer_pk):
+            return bytes(32)
+        raise
 
 
 def _expand_decapsulation_key(seed: bytes):

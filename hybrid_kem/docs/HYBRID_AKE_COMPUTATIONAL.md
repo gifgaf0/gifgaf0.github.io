@@ -409,6 +409,13 @@ a shared secret in that case. Honest peers never send such values, and the
 failure depends only on public data, so secrecy is unaffected. It is a
 conformance difference, not covered by the known-answer tests.
 
+> **Update (October 15, 2026): fixed.** `combiner/xwing.py` now follows
+> draft-11: on a low-order X25519 point it returns the RFC 7748 all-zero value,
+> in both encapsulation and decapsulation, instead of raising
+> (`tests/test_xwing_low_order.py`). The `mlkem1024+x25519` profile still
+> rejects all-zero outputs, as RFC 9180 §7.1.4 requires of DHKEM recipients;
+> that rejection depends only on public data.
+
 **Composition side conditions.** Besides substituting the Lemma 1–2 bounds by
 hand, the protocol model uses the KEM macro's perfect correctness and its
 collision statements for honest keys and ciphertexts. These hold statistically

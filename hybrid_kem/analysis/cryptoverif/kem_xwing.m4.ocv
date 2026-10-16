@@ -28,8 +28,8 @@
    the ML-KEM seed and the X25519 scalar; here the two are sampled
    independently (SHAKE-256 as a PRG). X25519 is a prime-order group
    (cofactor, clamping and low-order points are not modelled; the decapsulation
-   modelled here always returns a key, as in the draft, whereas
-   combiner/xwing.py raises on low-order X25519 points); see README.md. *)
+   modelled here always returns a key, as in the draft and in
+   combiner/xwing.py); see README.md. *)
 
 ifdef(`MLKEM_SECURE',`
 proof {

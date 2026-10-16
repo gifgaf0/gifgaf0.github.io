@@ -3,9 +3,10 @@
    ../hybrid_ake_ext.spthy extends ../hybrid_ake.spthy: the adversary may
    additionally run initiator sessions whose ephemeral KEM secret it learns
    (RevealEph). The choice is made when the session starts (static reveal);
-   the session's own key and that of every responder session that
-   encapsulated to the revealed key are never tested, which is the freshness
-   clause (ii) of docs/HYBRID_AKE_COMPUTATIONAL.md. Authentication is still
+   such a session's key, and that of every responder session that
+   encapsulated to the revealed key, are not fresh (never under test, and
+   revealable on request), which is the freshness clause (ii) of
+   docs/HYBRID_AKE_COMPUTATIONAL.md. Authentication is still
    required for these sessions, so the agreement queries now also show that
    it does not depend on the ephemeral staying secret.
 
@@ -13,6 +14,7 @@
    additions marked [EPH].
 
    ---- original header of hybrid_ake.ocv ----
+HYBRID-AKE v1 -- computational model (CryptoVerif, oracles front-end).
 
    Mechanizes Theorems 1 and 2 of docs/HYBRID_AKE_COMPUTATIONAL.md for the
    protocol of docs/HYBRID_AKE_SPEC.md, as implemented in
@@ -26,9 +28,14 @@
             corruption of the signing key.
    - H    : SHA3-256, collision resistant (modelled as a keyed family).
    - KDF  : HKDF-SHA256 with ikm = ss and salt = TH, a PRF keyed by ss.
-            (INFO and SUITE_ID are constants and are folded into kdf.)
+            This is the swap-PRF ("dual-PRF") property of HMAC, keyed
+            through its message input, which Backendal-Bellare-Guenther-
+            Scarlata (CRYPTO 2023) prove for feasible key sets, such as the
+            fixed-length keys of TLS 1.3. INFO and SUITE_ID are constants
+            and are folded into kdf.
    That each hybrid primitive meets its assumption if EITHER component does
-   is proved separately (composite_sig.m4.ocv, kem_*.m4.ocv).
+   is proved separately (composite_sig.m4.ocv, kem_bbfgs.m4.ocv,
+   kem_bbfgs_x25519_rom.ocv, kem_xwing.m4.ocv).
 
    Parties. NK honest parties, each with a long-term composite key, can be
    corrupted at any time (Ocorrupt returns the key seed). Each honest party
@@ -61,7 +68,10 @@ proof {
       responder-only session; with a mutual responder; anonymous initiator
       matched with a responder-only session. The u_* indices are the find
       indices CryptoVerif 2.13 introduces in hop 1 (they differ from
-      hybrid_ake.ocv because the leaky initiators add signature checks). *)
+      hybrid_ake.ocv because the leaky initiators add signature checks), and
+      at_nth counts the occurrences of kdf(ssI, .) in that game: both must be
+      regenerated if the model changes. A replace that lands on the wrong
+      branch fails, since CryptoVerif proves each equality. *)
    replace at_nth 6 1 "kdf({_}ssI" "ssA[u_33, u_34]";
    replace at_nth 5 1 "kdf({_}ssI" "ssR[u_35, u_36]";
    replace at_nth 2 1 "kdf({_}ssI" "ssA[u_43, u_44]";
@@ -134,7 +144,12 @@ equation forall a: bitstring, b: idname, c: pkey, d: kempkey, e: ciphertext,
                 x: hashoutput, s: signature;
    th_in(a, b, c, d, e) <> th2_in(x, s).
 
-(* Initiator identity field (id_I, vk_I): empty in anonymous mode. *)
+(* Initiator identity field (id_I, vk_I): empty in anonymous mode. At the
+   byte level, anonymous mode sends LP("", "") = iid_some("", ""), so the
+   disequation below holds only for non-empty verification keys. That is
+   enough: an empty vk never verifies (composite_mldsa.py checks the key
+   length) and is never an honest key, so no session that accepts an
+   authenticated peer can involve it. *)
 fun iid_some(idname, pkey): bitstring [data].
 const iid_none: bitstring.
 equation forall n: idname, k: pkey; iid_some(n, k) <> iid_none.
@@ -177,10 +192,34 @@ query iid: bitstring, idR: idname, vkR: pkey, pkE: kempkey, ct: ciphertext, sR: 
    inj-event(endR(iid, idR, vkR, pkE, ct, sR, k)) ==> inj-event(beginI(iid, idR, vkR, pkE, ct, sR, k))
    public_vars keyI, keyR.
 
-(* G1/G2: real-or-random secrecy of the session keys of every session whose
-   peer was honest and uncorrupted when it accepted (several test queries).
-   Corruption after acceptance, and corruption of the session's own key at
-   any time, are allowed: this is forward secrecy (and KCI resistance). *)
+(* Key uniqueness across roles, for keys under test: a fresh initiator and a
+   fresh mutual responder hold the same key only if they hold the same
+   transcript. [EPH] Unlike hybrid_ake.ocv, this is stated for fresh sessions
+   only: a session whose ephemeral was revealed derives its key from a shared
+   secret the adversary knows, and with the KDF assumed to be only a PRF,
+   nothing excludes two such known-key derivations from colliding across
+   different transcripts (that would need collision resistance of HKDF,
+   which is not assumed). Those keys are not secret anyway. *)
+event freshI(bitstring, idname, pkey, kempkey, ciphertext, sesskey).
+event freshR(bitstring, idname, pkey, kempkey, ciphertext, signature, sesskey).
+query iid1: bitstring, n1: idname, v1: pkey, p1: kempkey, c1: ciphertext,
+      iid2: bitstring, n2: idname, v2: pkey, p2: kempkey, c2: ciphertext,
+      s2: signature, k: sesskey;
+   event(freshI(iid1, n1, v1, p1, c1, k)) && event(freshR(iid2, n2, v2, p2, c2, s2, k)) ==>
+   iid1 = iid2 && n1 = n2 && v1 = v2 && p1 = p2 && c1 = c2
+   public_vars keyI, keyR.
+
+(* G1/G2: real-or-random secrecy, with several test queries, of the keys of
+   all FRESH sessions of each role. A session is fresh when it accepted with
+   an honest peer that was not corrupted at acceptance, and no partner
+   session (same transcript) had its key revealed. Corruption of the peer
+   after acceptance, and of the session's own long-term key at any time, are
+   allowed: forward secrecy and resistance to key-compromise impersonation.
+   Every accepted session that is not fresh can have its key revealed on
+   request (RevealKey: oracles OI3, OR3, OA2), which is refused only when a
+   partner's key is under test. As in CryptoVerif's TLS 1.3 analysis, each
+   role's test variable is proved secret with the other role's not public,
+   since partners share a key. *)
 query secret keyI.
 query secret keyR.
 
@@ -206,26 +245,31 @@ let initiator(hk1: hashkey, myid: idname, myvk: pkey, myr: keyseed) =
           sI <- sign(msgI(H(hk1, th2_in(thI, sigRI))), skgen(myr));
           event beginI(iidI, idRI, vkRI, pkE, ctI, sigRI, kI);
           sI);
-      leakI: bitstring <-
+      (* Freshness. Partners that can have accepted (and so been revealed)
+         before us are responder sessions with the same transcript. *)
+      testI: bool <-
          (find jP <= NK suchthat defined(vkK[jP]) && vkRI = vkK[jP] then
-             (if defined(corruptK[jP]) then
-                (* peer corrupted before we accept: reveal the key, unless an
-                   honest responder session holds the same transcript (its
-                   partner, whose key may be tested) *)
-                find jR <= NR, jRK <= NK suchthat defined(thR[jR, jRK]) && thI = thR[jR, jRK] then NoLeak
-                orfind jA <= NRa, jAK <= NK suchthat defined(thA[jA, jAK]) && thI = thA[jA, jAK] then NoLeak
-                else Leak(kI)
+             (if defined(corruptK[jP]) then false
               else
-                (* honest peer, not corrupted when we accept: tested *)
                 event endI(iidI, idRI, vkRI, pkE, ctI, kI);
-                keyI: sesskey <- kI;
-                NoLeak)
-          else
-             (* dishonest peer: same rule as for a corrupted one *)
-             find jR' <= NR, jRK' <= NK suchthat defined(thR[jR', jRK']) && thI = thR[jR', jRK'] then NoLeak
-             orfind jA' <= NRa, jAK' <= NK suchthat defined(thA[jA', jAK']) && thI = thA[jA', jAK'] then NoLeak
-             else Leak(kI));
-      return(sigI, leakI).
+                find jR1 <= NR, jRK1 <= NK suchthat defined(thR[jR1, jRK1], revR[jR1, jRK1]) && thI = thR[jR1, jRK1] then false
+                orfind jA1 <= NRa, jAK1 <= NK suchthat defined(thA[jA1, jAK1], revA[jA1, jAK1]) && thI = thA[jA1, jAK1] then false
+                else
+                  event freshI(iidI, idRI, vkRI, pkE, ctI, kI);
+                  keyI: sesskey <- kI;
+                  true)
+          else false);
+      return(sigI);
+
+   OI3() :=
+      (* RevealKey, for a session that is not under test, unless the key of a
+         partner (a mutual responder with the same transcript) is. *)
+      if testI then return(NoLeak) else
+      find jR2 <= NR, jRK2 <= NK suchthat defined(thR[jR2, jRK2], keyR[jR2, jRK2]) && thI = thR[jR2, jRK2] then
+         return(NoLeak)
+      else
+         revI: bool <- true;
+         return(Leak(kI)).
 
 (* Responder session, mutual mode: requires peer (idPR, vkPR). *)
 let responder(hk2: hashkey, myid: idname, myvk: pkey, myr: keyseed) =
@@ -240,39 +284,37 @@ let responder(hk2: hashkey, myid: idname, myvk: pkey, myr: keyseed) =
 
    OR2(sigIR: signature) :=
       if check(msgI(H(hk2, th2_in(thR, sigR))), vkPR, sigIR) then
-      leakR: bitstring <-
+      (* Freshness. When our peer is honest and uncorrupted, the partner
+         initiator (same transcript) signed msg3, so it accepted before us
+         and may already have been revealed. *)
+      testR: bool <-
          (find jP2 <= NK suchthat defined(vkK[jP2]) && vkPR = vkK[jP2] then
-             (if defined(corruptK[jP2]) then
-                (* partner candidate: an honest initiator that sent this
-                   msg1 and expects us *)
-                find jI <= NI, jIK <= NK suchthat
-                   defined(pkE[jI, jIK], iidI[jI, jIK], idPI[jI, jIK], vkPI[jI, jIK]) &&
-                   pkER = pkE[jI, jIK] && iidR = iidI[jI, jIK] &&
-                   myid = idPI[jI, jIK] && myvk = vkPI[jI, jIK]
-                then NoLeak
-                else Leak(kR)
+             (if defined(corruptK[jP2]) then false
               else
-                (* [EPH] not tested if we encapsulated to a revealed
-                   ephemeral key: the adversary can decapsulate *)
-                find jL <= NL, jLK <= NK suchthat defined(pkEL[jL, jLK]) && pkER = pkEL[jL, jLK] then
-                  event endR(iidR, myid, myvk, pkER, ctR, sigR, kR);
-                  Leak(kR)
+                event endR(iidR, myid, myvk, pkER, ctR, sigR, kR);
+                (* [EPH] not fresh if we encapsulated to a revealed ephemeral
+                   key: the adversary can decapsulate *)
+                find jL <= NL, jLK <= NK suchthat defined(pkEL[jL, jLK]) && pkER = pkEL[jL, jLK] then false
+                orfind jI1 <= NI, jIK1 <= NK suchthat defined(thI[jI1, jIK1], revI[jI1, jIK1]) && thR = thI[jI1, jIK1] then false
                 else
-                  event endR(iidR, myid, myvk, pkER, ctR, sigR, kR);
+                  event freshR(iidR, myid, myvk, pkER, ctR, sigR, kR);
                   keyR: sesskey <- kR;
-                  NoLeak)
-          else
-             find jI' <= NI, jIK' <= NK suchthat
-                defined(pkE[jI', jIK'], iidI[jI', jIK'], idPI[jI', jIK'], vkPI[jI', jIK']) &&
-                pkER = pkE[jI', jIK'] && iidR = iidI[jI', jIK'] &&
-                myid = idPI[jI', jIK'] && myvk = vkPI[jI', jIK']
-             then NoLeak
-             else Leak(kR));
-      return(leakR).
+                  true)
+          else false);
+      return();
+
+   OR3() :=
+      (* RevealKey, unless the partner initiator's key is under test. *)
+      if testR then return(NoLeak) else
+      find jI2 <= NI, jIK2 <= NK suchthat defined(thI[jI2, jIK2], keyI[jI2, jIK2]) && thR = thI[jI2, jIK2] then
+         return(NoLeak)
+      else
+         revR: bool <- true;
+         return(Leak(kR)).
 
 (* Responder session, responder-only mode: any initiator. Its key is never
-   tested (the initiator is not authenticated); it is revealed unless an
-   honest initiator that sent this msg1 and expects us exists. *)
+   under test (the initiator is not authenticated); it can be revealed on
+   request unless the partner initiator's key is under test. *)
 let responder_anon(hk3: hashkey, myid: idname, myvk: pkey, myr: keyseed) =
    OA1(iidA: bitstring, pkEA: kempkey) :=
       let kempair(ssA: kemsec, ctA: ciphertext) = encap(pkEA) in
@@ -280,19 +322,20 @@ let responder_anon(hk3: hashkey, myid: idname, myvk: pkey, myr: keyseed) =
       sigA: signature <- sign(msgR(thA), skgen(myr));
       kA: sesskey <- kdf(ssA, thA);
       event beginR(iidA, myid, myvk, pkEA, ctA, kA);
-      leakA: bitstring <-
-         (find jI2 <= NI, jIK2 <= NK suchthat
-             defined(pkE[jI2, jIK2], iidI[jI2, jIK2], idPI[jI2, jIK2], vkPI[jI2, jIK2]) &&
-             pkEA = pkE[jI2, jIK2] && iidA = iidI[jI2, jIK2] &&
-             myid = idPI[jI2, jIK2] && myvk = vkPI[jI2, jIK2]
-          then NoLeak
-          else Leak(kA));
-      return(myid, myvk, ctA, sigA, leakA).
+      return(myid, myvk, ctA, sigA);
+
+   OA2() :=
+      find jI3 <= NI, jIK3 <= NK suchthat defined(thI[jI3, jIK3], keyI[jI3, jIK3]) && thA = thI[jI3, jIK3] then
+         return(NoLeak)
+      else
+         revA: bool <- true;
+         return(Leak(kA)).
 
 (* [EPH] Initiator session whose ephemeral KEM secret is revealed when it
    starts. Same code as initiator, with the seed returned with msg1 and the
-   session key always revealed; endI/beginI are still emitted, so the
-   authentication queries cover these sessions too. *)
+   session key always revealed (its partners are never fresh, so this is
+   allowed); endI/beginI are still emitted, so the authentication queries
+   cover these sessions too. *)
 let initiator_leak(hk4: hashkey, myid: idname, myvk: pkey, myr: keyseed) =
    OL1(anonL: bool, idPL: idname, vkPL: pkey) :=
       seedL <-R kemseed;
@@ -319,6 +362,7 @@ let initiator_leak(hk4: hashkey, myid: idname, myvk: pkey, myr: keyseed) =
              return(sigL, Leak(kL))
        else
           return(sigL, Leak(kL))).
+
 
 process
    Ostart() :=

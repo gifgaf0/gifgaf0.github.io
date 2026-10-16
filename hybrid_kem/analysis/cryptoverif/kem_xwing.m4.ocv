@@ -12,20 +12,24 @@
    Claim: X-Wing is IND-CCA2 if EITHER leg is secure. Preprocessed with m4
    into two models (see Makefile); each proves the IND_CCA2_KEM equivalence
    of CryptoVerif's library for the hybrid KEM, as in kem_bbfgs.m4.ocv:
-   - MLKEM_SECURE : ML-KEM-768 is IND-CCA2 and SHA3-256 keyed by its first
+   - `MLKEM_SECURE' : ML-KEM-768 is IND-CCA2 and SHA3-256 keyed by its first
                     32 bytes (ss_M) is a PRF. X25519 is fully broken: the
                     adversary gets every honest X25519 secret key.
                     Post-quantum library only (-lib pq).
-   - X25519_SECURE: strong Diffie-Hellman in the X25519 group, SHA3-256 as
+   - `X25519_SECURE': strong Diffie-Hellman in the X25519 group, SHA3-256 as
                     a random oracle, and ML-KEM C2PRI (ciphertext
-                    second-preimage resistance) -- exactly the assumptions of
-                    the X-Wing paper classical theorem. ML-KEM is otherwise
-                    fully broken: the adversary gets every honest ML-KEM
-                    secret key. Classical (default) library.
+                    second-preimage resistance) -- the assumptions of the
+                    X-Wing paper classical theorem, except that X25519 is a
+                    prime-order group here and a nominal group there. ML-KEM
+                    is otherwise fully broken: the adversary gets every
+                    honest ML-KEM secret key. Classical (default) library.
 
    The X-Wing decapsulation key is a 32-byte seed expanded by SHAKE-256 into
    the ML-KEM seed and the X25519 scalar; here the two are sampled
-   independently (SHAKE-256 as a PRG). X25519 is a prime-order group. *)
+   independently (SHAKE-256 as a PRG). X25519 is a prime-order group
+   (cofactor, clamping and low-order points are not modelled; the decapsulation
+   modelled here always returns a key, as in the draft and in
+   combiner/xwing.py); see README.md. *)
 
 ifdef(`MLKEM_SECURE',`
 proof {

@@ -23,6 +23,14 @@ loss factors; they are stated to show the shape of the reduction, not tuned.
 > needs ML-KEM's C2PRI when relying on X25519 — and gives a tighter Theorem 2
 > bound. The original text below is kept as written; corrected statements are
 > marked ⚠ and the corrections are in §7.
+>
+> **Update (October 15, 2026, after an independent post-merge review).** §7 itself
+> overstated three things, corrected in §7.1, which keeps §7 as written and marks
+> it ⚠: the Theorem 2 bound is *not* tighter than the sketch's in the usual
+> sense; two KDF assumptions of the ML-KEM-1024 profile are non-standard
+> variants (a standard-assumption alternative is now proved); and the X25519
+> modelling differs from the X-Wing paper's. The protocol models were also
+> strengthened, with RevealKey on request and a key-uniqueness query.
 
 ---
 
@@ -268,7 +276,8 @@ for `NK` honest parties running any number of sessions in both roles and both
 modes, with adaptive corruption of every long-term key.
 Bound: `NK·Adv^euf-cma_Sig + O(1)·Adv^cr_H + collisions`.
 
-**Theorem 2** — proved as real-or-random secrecy of all keys of sessions whose
+**Theorem 2** — ⚠ *restated precisely in §7.1 (freshness, RevealKey, static
+RevealEph).* Proved as real-or-random secrecy of all keys of sessions whose
 peer was honest and uncorrupted at acceptance (initiators, and mutual-mode
 responders), with corruption at any time afterwards and of the session's own
 key at any time (forward secrecy; resistance to key-compromise impersonation of
@@ -282,7 +291,8 @@ Adv^ki ≤ 2·Adv^ind-cca_KEM(multi-instance) + 2·NK·Adv^euf-cma_Sig
 ```
 
 There is no session-guessing loss, so the `n_S^2` factors of §4–§5 are an
-artefact of the sketch's proof strategy, not of the protocol.
+artefact of the sketch's proof strategy, not of the protocol. ⚠ *Wrong as
+stated; see §7.1.*
 
 **Lemma 2 — corrected.** The components sign `M' = Prefix ‖ Label ‖ len(ctx) ‖
 ctx ‖ PH(M)`, so a composite forgery on a fresh `M` is a component forgery only
@@ -303,13 +313,14 @@ leg's secret key given to the adversary:
 
 | Profile | Relying on ML-KEM | Relying on X25519 |
 |---|---|---|
-| `mlkem1024+x25519` (BBF-G-S HKDF combiner) | ML-KEM-1024 IND-CCA2 + HKDF a PRF keyed by `ss_M` | PRF-ODH for HKDF keyed by `ss_X` (standard model) |
+| `mlkem1024+x25519` (BBF-G-S HKDF combiner) | ML-KEM-1024 IND-CCA2 + HKDF a PRF keyed by `ss_M` ⚠ | PRF-ODH for HKDF keyed by `ss_X` (standard model) ⚠ |
 | `xwing` (SHA3-256 combiner) | ML-KEM-768 IND-CCA2 + SHA3-256 a PRF keyed by `ss_M` | strong DH + SHA3-256 as a random oracle **+ C2PRI of ML-KEM-768** |
 
 The last cell is the correction. X-Wing does not hash `ct_M`; if ML-KEM were
 broken including its ciphertext binding, a second ciphertext decapsulating to
 the same `ss_M` would decapsulate the whole hybrid to the challenge key. These
-are exactly the X-Wing paper's assumptions (its classical theorem uses C2PRI),
+are exactly the X-Wing paper's assumptions (its classical theorem uses C2PRI; ⚠
+*up to the modelling of X25519, §7.1*),
 and that paper proves C2PRI for ML-KEM-768 from its hash functions alone, so the
 X-Wing guarantee still survives a break of the lattice problem — but the
 "either leg" claim is not symmetric, and the bound in Lemma 1 should read
@@ -332,6 +343,87 @@ choices that limit the statement are listed in the CryptoVerif README: one
 ciphersuite, static ephemeral reveal, perfect KEM correctness, X25519 as a
 prime-order group, and keys of potentially partnered sessions withheld rather
 than revealed.
+
+### 7.1 Corrections from the independent post-merge review — October 15, 2026
+
+An independent review of the CryptoVerif models (after PR #47 was merged) found
+no unsound proof step and no vacuous query; it reproduced every result. It
+found that §7 above claims more than the models prove in the places marked ⚠.
+The models were changed where that strengthened the result. Each item was
+re-checked with CryptoVerif before being recorded here.
+
+**Theorem 2, restated.** The protocol models now give the adversary RevealKey
+on request for every accepted session that is not fresh. A session is *fresh*
+when it accepted with an honest peer uncorrupted at acceptance and no partner
+(same transcript) had its key revealed. A reveal is refused only when a
+partner's key is under test. Proved: per-role real-or-random secrecy, with many
+test queries, of all fresh initiator keys and of all fresh mutual-responder
+keys, plus **cross-role key uniqueness** (equal keys imply equal transcripts).
+Before this change, some non-fresh keys were withheld whenever a *possible*
+partner existed (matched on msg1 alone), which weakened the adversary. Mutation
+tests remove each freshness guard in turn and the corresponding secrecy query
+then fails, so the reveal oracles have effect. The ephemeral-reveal model is
+**static**: the adversary chooses when a session starts whether its ephemeral is
+revealed, whereas §2's RevealEph is adaptive. Its uniqueness query is stated
+for fresh keys only.
+
+**Tightness — the §7 claim was wrong.** The mechanized bound has no
+session-guessing step, but its KEM term is a *multi-key, multi-challenge*
+IND-CCA2 advantage (`#OI1` ephemeral keys; up to `#OR1 + #OA1` challenges, since
+one msg1 can be sent to every responder). Reducing that to single-key,
+single-challenge IND-CCA2 generically loses a factor of about keys × challenges
+(Bellare–Boldyreva–Micali, EUROCRYPT 2000), i.e. `≈ n_S²`, the same order as §4.
+What is genuinely better than the sketch is that the signature term is
+`NK·Adv^euf-cma` rather than `n_S²·Adv^euf-cma`, and the PRF term is linear in
+the sessions. A tighter overall statement needs a tight multi-user bound for the
+KEM, which is not claimed.
+
+**KDF assumptions, named precisely.**
+- Protocol: `K = HKDF(ikm = ss, salt = TH, ...)` as a PRF keyed by `ss` is the
+  swap-PRF ("dual-PRF") property of HMAC, proved by Backendal–Bellare–Günther–
+  Scarlata (CRYPTO 2023) for "feasible" key sets, which they show includes the
+  fixed-length keys of TLS 1.3 and KEMTLS. `ss` is of that kind; feasibility
+  was not checked formally.
+- `mlkem1024+x25519`, ML-KEM direction (⚠ in the table above): HKDF keyed by the
+  `ss_M` half of `ikm = ss_M ‖ ss_X` is a **split-key** PRF assumption. It is
+  outside the published HMAC results and is the same kind of assumption as
+  CryptoVerif's PQ-TLS model (Blanchet–Jacomme, CSF 2024).
+- `mlkem1024+x25519`, X25519 direction (⚠): the PRF-ODH assumption used puts the
+  DH value in the second half of the ikm, a **non-standard variant**. The same
+  statement is now also proved from standard assumptions, strong DH with HKDF
+  as a random oracle (`kem_bbfgs_x25519_rom.ocv`). That proof needs no binding
+  property of ML-KEM, because this combiner hashes `ct_M`; a mutation test
+  removes `ct_M` and the proof fails.
+
+**X25519 modelling (⚠).** All models treat X25519 as a prime-order group
+(clamping, cofactor and low-order points are not modelled), as CryptoVerif's
+HPKE analysis does. The X-Wing paper models X25519 as a "nominal group", with a
+statistical term in its bound. So "exactly the X-Wing paper's assumptions"
+holds up to that modelling difference. A cofactor-aware model, as in
+CryptoVerif's WireGuard analysis, was not attempted.
+
+**Implementation note.** This repository's X-Wing raises `ValueError` on a
+ciphertext (or public key) whose X25519 part is a low-order point, because
+pyca/cryptography rejects all-zero X25519 outputs. X-Wing draft-11 §5.5 returns
+a shared secret in that case. Honest peers never send such values, and the
+failure depends only on public data, so secrecy is unaffected. It is a
+conformance difference, not covered by the known-answer tests.
+
+> **Update (October 15, 2026): fixed.** `combiner/xwing.py` now follows
+> draft-11: on a low-order X25519 point it returns the RFC 7748 all-zero value,
+> in both encapsulation and decapsulation, instead of raising
+> (`tests/test_xwing_low_order.py`). The `mlkem1024+x25519` profile still
+> rejects all-zero outputs, as RFC 9180 §7.1.4 requires of DHKEM recipients;
+> that rejection depends only on public data.
+
+**Composition side conditions.** Besides substituting the Lemma 1–2 bounds by
+hand, the protocol model uses the KEM macro's perfect correctness and its
+collision statements for honest keys and ciphertexts. These hold statistically
+for the hybrid KEM (honest values contain fresh X25519 points), and correctness
+costs ML-KEM's decapsulation failure rate per decapsulation, 2^-164.8
+(ML-KEM-768) or 2^-174.8 (ML-KEM-1024) per FIPS 203. SHA3-256 is idealised
+differently in different models (collision-resistant hash, PRF, random oracle);
+that relies on their inputs having disjoint lengths, argued by hand.
 
 ---
 

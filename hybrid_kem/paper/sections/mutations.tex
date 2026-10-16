@@ -1,0 +1,84 @@
+\section{Mutation tests}\label{sec:mutations}
+
+A proved query can be weaker than it looks. The model may not depend on the
+design element it is meant to justify, an oracle meant to help the adversary
+may never fire, or an assumption may be stronger than needed. Symbolic tools
+answer part of this with reachability lemmas; our Tamarin model, for
+instance, proves that an honest run exists. CryptoVerif has no such lemmas,
+so we use mutation tests. Each test deletes one design element or
+assumption, runs CryptoVerif again with the same proof, and checks the
+outcome against an expectation fixed in advance: the dependent query must
+fail, and, where stated, the other queries must still be proved. Two
+\emph{controls} must stay proved. A script, \file{mutations.py}, applies the
+edits to fresh copies of the models; \texttt{make mutations} runs all sixteen
+tests in about a minute. \Cref{tab:mutations} lists them, and all sixteen
+behave as expected.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.33\linewidth}L>{\raggedright\arraybackslash}p{0.26\linewidth}@{}}
+\toprule
+Mutant & Change & Outcome\\
+\midrule
+\multicolumn{3}{@{}l}{\emph{Protocol design}}\\
+\ident{ake_auth_only_baseline} & none; authentication-only proof (control) & both agreements proved\\
+\ident{ake_no_ct_in_transcript} & $\ct$ removed from $\THH$ & both agreements \textbf{not} proved\\
+\ident{ake_no_ct_in_transcript_full_proof} & the same, with the full proof & aborts: the KEM-correctness step fails\\
+\ident{ake_no_vkR_in_transcript} & $\vk_R$ removed from $\THH$ & initiator authentication \textbf{not} proved; rest proved\\
+\ident{ake_no_context_strings} & $\CTXR = \CTXI$ (control) & all proved\\
+\ident{ake_no_context_strings_no_encoding_separation} & both role separations removed & initiator authentication \textbf{not} proved\\[3pt]
+\multicolumn{3}{@{}l}{\emph{Freshness and RevealKey guards}}\\
+\ident{fresh_test_I_despite_revealed_partner} & initiator tested although a partner was revealed & \texttt{keyI} \textbf{not} proved\\
+\ident{fresh_reveal_I_despite_tested_R} & initiator revealed although its partner is tested & \texttt{keyR} \textbf{not} proved\\
+\ident{fresh_test_R_despite_revealed_I} & responder tested although its partner was revealed & \texttt{keyR} \textbf{not} proved\\
+\ident{fresh_reveal_R_despite_tested_I} & responder revealed although its partner is tested & \texttt{keyI} \textbf{not} proved\\
+\ident{fresh_reveal_A_despite_tested_I} & responder-only key revealed although its partner is tested & \texttt{keyI} \textbf{not} proved\\
+\ident{fresh_reveal_tested_I} & RevealKey answers for a tested initiator & \texttt{keyI} \textbf{not} proved\\
+\ident{ephleak_test_revealed_sessions} & responders that encapsulated to a revealed ephemeral key count as fresh & \texttt{keyR} \textbf{not} proved; rest proved\\[3pt]
+\multicolumn{3}{@{}l}{\emph{Primitives}}\\
+\ident{composite_no_prehash_collision_resistance} & no assumption on $\PH$ & composite EUF-CMA \textbf{not} proved\\
+\ident{xwing_x25519_branch_no_c2pri} & no C2PRI for ML-KEM & X-Wing IND-CCA2 (X25519 leg) \textbf{not} proved\\
+\ident{bbfgs_rom_no_ctM_in_combiner} & $\ct_M$ removed from the ML-KEM-1024 combiner & IND-CCA2 (X25519 leg, ROM) \textbf{not} proved\\
+\bottomrule
+\end{tabularx}
+\caption{The sixteen mutation tests and their outcomes. All behave as
+expected.}
+\label{tab:mutations}
+\end{table}
+
+\paragraph{What they show.} The protocol mutants identify the transcript
+fields that authentication depends on. Without $\ct$ in $\THH$, a man in the
+middle can replace the responder's ciphertext with its own encapsulation to
+$\pke$, and both agreement queries fail. Without $\vk_R$, the initiator's
+$m_3$ no longer commits to the responder it accepted. Under plain UF-CMA, a
+signature can verify under a second, adversarial key, so initiator
+authentication is not proved. The two context strings turn out to be a
+second, redundant layer of role separation. The proofs survive their removal
+because the two signed encodings already have different field counts, and
+they fail only when both separations go.
+
+The six freshness mutants are vacuity checks on the model itself. Each
+removes one guard of the freshness definition or of RevealKey, and the
+corresponding secrecy query then fails. A guard whose removal changed
+nothing would mean that the reveal oracle never fires in that situation, and
+the secrecy result would hold for a weaker adversary than described. The
+mutants check that each guard is needed, not that it is as weak as it could
+be. The first version of the model refused reveals more often than
+necessary, and these mutants would not have caught that
+(\cref{sec:reviewcaught}).
+
+The primitive mutants show the assumptions are necessary to the proofs:
+collision resistance of the pre-hash for the composite, and C2PRI for
+X-Wing. Together, the last two mutants make the contrast between the
+combiners concrete. X-Wing's X25519-direction proof needs C2PRI because the
+combiner omits $\ct_M$. The ML-KEM-1024 combiner needs no property of ML-KEM
+at all, but only because it hashes $\ct_M$; once $\ct_M$ is removed, its
+proof fails too.
+
+\paragraph{What they do not show.} CryptoVerif is sound but not complete,
+so a failed proof is not by itself an attack. For the $\ct$, pre-hash and
+C2PRI mutants there is a concrete attack, sketched above and in
+\cref{sec:mech:kem}. For the others, the failure shows only that the proof
+uses the element, not that every proof must. The mutants also say nothing
+about elements we did not think to remove.

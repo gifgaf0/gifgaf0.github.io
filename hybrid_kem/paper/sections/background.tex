@@ -1,0 +1,140 @@
+\section{The protocol, its primitives, and CryptoVerif}\label{sec:background}
+
+\subsection{HYBRID-AKE}\label{sec:protocol}
+
+Two parties derive a 32-byte session key. Each authenticating party has a
+long-term composite signature key pair $(\vk,\sk)$ and a name $\id$; a
+verifier obtains its peer's $\vk$ out of band. The initiator generates a
+fresh ephemeral KEM key pair $(\pke,\ske)$ for each session and erases
+$\ske$ once the key is derived. The protocol runs in two modes:
+\emph{responder-authenticated}, in two messages with an anonymous initiator,
+and \emph{mutually authenticated}, in three. \Cref{fig:protocol} shows the
+message flow.
+
+Both parties compute the transcript hash and the session key as
+\begin{align*}
+  \THH &= \Hash\bigl(\LP(\SUITE, \id_I, \vk_I, \id_R, \vk_R, \pke, \ct)\bigr),\\
+  K   &= \mathrm{HKDF}\bigl(\mathit{ikm} = \ssv,\ \mathit{salt} = \THH,\
+         \mathit{info} = \mathsf{INFO} \,\|\, \text{``\ ''} \,\|\, \SUITE,\ L = 32\bigr),
+\end{align*}
+where $\Hash$ is SHA3-256~\cite{FIPS202}, HKDF~\cite{RFC5869,Kra10} is
+instantiated with SHA-256, and $\LP$ concatenates its arguments, each
+prefixed by its 4-byte big-endian length. $\SUITE$ names the KEM and
+signature profiles, and $\id_I,\vk_I$ are empty in responder-authenticated
+mode. The responder signs $\THH$ under the context string
+$\CTXR = \text{\texttt{"hybrid-ake/responder-auth/v1"}}$. In mutual mode the
+initiator signs $\Hash(\LP(\THH, \sigma_R))$ under
+$\CTXI = \text{\texttt{"hybrid-ake/initiator-auth/v1"}}$, which binds its
+signature to the responder's. The initiator accepts $K$ only after verifying
+$\sigma_R$; a mutual-mode responder accepts only after verifying $\sigma_I$.
+
+\begin{figure}[t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}l@{\hspace{4pt}}c@{\hspace{4pt}}l@{}}
+\textbf{Initiator} $I$ & & \textbf{Responder} $R$\\[2pt]
+\hline\\[-8pt]
+$(\pke,\ske) \gets \mathsf{KeyGen}()$ & & \\
+ & $\xrightarrow{\ m_1 \,=\, \LP(\SUITE,\ \id_I,\ \vk_I,\ \pke)\ }$ & \\
+ & & check $\SUITE$\\
+ & & $(\ct,\ssv) \gets \mathsf{Encaps}(\pke)$\\
+ & & compute $\THH$\\
+ & & $\sigma_R \gets \mathsf{Sign}(\sk_R, \THH, \CTXR)$\\
+ & & $K \gets \KDF(\ssv; \THH)$\\
+ & $\xleftarrow{\ m_2 \,=\, \LP(\id_R,\ \vk_R,\ \ct,\ \sigma_R)\ }$ & \\
+$\ssv \gets \mathsf{Decaps}(\ske, \ct)$ & & \\
+compute $\THH$ & & \\
+require $\mathsf{Verify}(\vk_R, \sigma_R, \THH, \CTXR)$ & & \\
+$K \gets \KDF(\ssv; \THH)$ & & \\
+\multicolumn{3}{@{}l}{\emph{mutual mode only}, with $h = \Hash(\LP(\THH,\sigma_R))$:}\\
+$\sigma_I \gets \mathsf{Sign}(\sk_I, h, \CTXI)$ & & \\
+ & $\xrightarrow{\ m_3 \,=\, \LP(\sigma_I)\ }$ & \\
+ & & require $\mathsf{Verify}(\vk_I, \sigma_I, h, \CTXI)$\\[2pt]
+\hline
+\end{tabular}
+\caption{HYBRID-AKE. $\THH$ and $\KDF(\ssv;\THH)$ are as in
+\cref{sec:protocol}; $\mathsf{KeyGen}$, $\mathsf{Encaps}$ and $\mathsf{Decaps}$
+are the hybrid KEM's, and $\mathsf{Sign}$ and $\mathsf{Verify}$ the composite
+signature's. In responder-authenticated mode, $\id_I$ and $\vk_I$ are empty
+and $m_3$ is not sent.}
+\label{fig:protocol}
+\end{figure}
+
+The protocol has one implementation, in Python on top of
+pyca/cryptography~\cite{pyca}, and a symbolic analysis in Tamarin covering
+the same goals, an ephemeral-key-reveal oracle and cross-suite downgrade
+resistance (\cref{sec:related}).
+
+\subsection{The hybrid KEMs}\label{sec:kems}
+
+The KEM is one of two profiles.
+
+\paragraph{X-Wing.} ML-KEM-768 with X25519~\cite{RFC7748}, as specified in
+the IETF draft \ident{draft-connolly-cfrg-xwing-kem-11}~\cite{XWingDraft}. Public keys and
+ciphertexts are concatenations, $\pk = \pk_M \| \pk_X$ and
+$\ct = \ct_M \| \ct_X$, and the shared secret is
+\[
+  \ssv = \text{SHA3-256}\bigl(\ssv_M \,\|\, \ssv_X \,\|\, \ct_X \,\|\, \pk_X \,\|\, \mathsf{XWingLabel}\bigr),
+\]
+where $\ssv_M$ and $\ssv_X$ are the ML-KEM and X25519 shared secrets. The
+combiner deliberately omits $\ct_M$ and $\pk_M$; the X-Wing paper justifies
+this by proving that ML-KEM-768 is ciphertext second-preimage resistant
+(C2PRI) when its hash functions are random oracles~\cite[Thm.~3]{XWing}. The
+decapsulation key is a 32-byte seed, expanded with SHAKE-256 into the ML-KEM
+seed and the X25519 scalar.
+
+\paragraph{ML-KEM-1024 + X25519.} X-Wing specifies no ML-KEM-1024 variant, so
+for NIST Category~5 the implementation uses a transcript-binding combiner in
+the style of~\cite{BBFGS19}:
+\begin{align*}
+  \ssv = \mathrm{HKDF\text{-}SHA256}\bigl(
+    &\mathit{salt} = \text{SHA-256}(\text{\texttt{"hybrid-kem-v1"}}),\
+     \mathit{ikm} = \ssv_M \,\|\, \ssv_X,\\
+    &\mathit{info} = \LP(\ct_M, \ct_X, \pk_M, \pk_X)\bigr).
+\end{align*}
+It hashes both ciphertexts and both public keys. Its X25519 leg rejects an
+all-zero Diffie--Hellman output, as RFC~9180 requires of DHKEM
+recipients~\cite[\S7.1.4]{RFC9180}.
+
+\subsection{Composite signatures}\label{sec:composite}
+
+The signature is a composite of ML-DSA and EdDSA following the IETF draft
+\ident{draft-ietf-lamps-pq-composite-sigs-19}~\cite{Composite}, in the
+profiles \ident{id-MLDSA65-Ed25519-SHA512} and
+\ident{id-MLDSA87-Ed448-SHAKE256}. To sign a message $M$ with context
+$\mathit{ctx}$, both components sign the same message representative
+\[
+  M' = \mathsf{Prefix} \,\|\, \mathsf{Label} \,\|\, \mathrm{len}(\mathit{ctx}) \,\|\, \mathit{ctx} \,\|\, \PH(M),
+\]
+ML-DSA with its context set to $\mathsf{Label}$. $\PH$ is SHA-512 or
+SHAKE256 with 64-byte output, depending on the profile. A composite
+signature is the pair of component signatures, and it is valid only if both
+verify.
+
+\subsection{CryptoVerif}\label{sec:cv}
+
+CryptoVerif~\cite{Bla08,CryptoVerif} proves security properties of protocols
+and primitives in the computational model, by sequences of games. The
+protocol and its environment are processes in a probabilistic calculus; we
+use the ``oracles'' front-end, in which the adversary calls oracles that the
+model defines. Assumptions on primitives are computational equivalences
+$L \approx_p R$ between two sets of oracles, collected in libraries of macros
+such as \ident{IND_CCA2_KEM}, \ident{UF_CMA_proba_signature},
+\texttt{PRF}, \ident{ROM_hash_large} and \texttt{StDH}. A proof applies
+these equivalences (\texttt{crypto} steps) and syntactic transformations
+(\texttt{insert}, \texttt{replace}, \texttt{SArename}, \texttt{simplify},
+\ldots). Each transformation is checked by the tool; in particular, a
+\texttt{replace} succeeds only if CryptoVerif can prove the two terms equal.
+The proof ends when the property can be read off the final game. CryptoVerif
+then reports the adversary's advantage as a function of the assumptions'
+probabilities, of the running times, and of the number of calls to each
+oracle.
+
+CryptoVerif proves secrecy in the real-or-random sense, with several test
+queries; correspondences, including injective ones; and indistinguishability
+of two processes. We use all three. CryptoVerif's post-quantum
+library~\cite{BJ24} contains only assumptions that have instantiations secure
+against quantum adversaries; it has no random oracles and no
+Diffie--Hellman assumptions. A proof that uses only this library is
+post-quantum sound.

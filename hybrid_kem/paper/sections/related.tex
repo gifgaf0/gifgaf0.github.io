@@ -1,0 +1,50 @@
+\section{Related work}\label{sec:related}
+
+\paragraph{X-Wing and KEM combiners.} The X-Wing paper~\cite{XWing} proves
+X-Wing IND-CCA secure classically, from strong Diffie--Hellman in a nominal
+group with SHA3-256 as a random oracle and C2PRI of
+ML-KEM~\cite[Thm.~1]{XWing}, and post-quantum, from IND-CCA of ML-KEM and
+SHA3-256 as a PRF in the standard model~\cite[Thm.~2]{XWing}. It also
+proves ML-KEM-768 C2PRI with its hash functions as random
+oracles~\cite[Thm.~3]{XWing}. Our KEM models restate these two theorems as
+CryptoVerif equivalences, with X25519 as a prime-order group. Generic KEM
+combiners and their security were studied by Giacon, Heuer and
+Poettering~\cite{GHP18} and by Bindel et al.~\cite{BBFGS19}, whose
+transcript-hashing combiner our ML-KEM-1024 profile follows. Binding
+properties of KEMs, including those ML-KEM lacks, were systematised by
+Cremers, Dax and Medinger~\cite{CDM24} and by Schmieg~\cite{Sch24}. Kang,
+Lee and Son~\cite{KLS26} study which public values a hybrid KEM's combiner
+must hash, taking X-Wing as their case study.
+
+\paragraph{CryptoVerif case studies.} CryptoVerif has been used for TLS~1.3
+drafts~\cite{BBK17}, from which we take the per-role secrecy pattern; for
+HPKE~\cite{ABHKLR21}, which introduced nominal groups and the KEM-equivalence
+proof pattern that our KEM models follow; for WireGuard~\cite{LBB19}, with
+a cofactor-aware X25519 model; and for hybrid TLS and SSH key
+exchanges~\cite{BJ24}, which introduced the post-quantum-sound library that
+our protocol proof uses. CV2EC~\cite{CV2EC} translates CryptoVerif
+assumptions into EasyCrypt games so that they can be proved from standard
+assumptions, and its authors report finding an error in a pen-and-paper
+proof in the process. Our protocol is closer in shape to SIGMA~\cite{Kra03}
+and to TLS~1.3's signature-authenticated handshake~\cite{DFGS21} than to
+KEM-authenticated designs such as KEMTLS~\cite{SSW20}.
+
+\paragraph{Hybrid signatures.} Bindel et al.\ study combiners for hybrid
+signatures, including how strongly the components are bound
+together~\cite{BHMS17}. The composite signatures we analyse follow the IETF
+LAMPS draft~\cite{Composite}.
+
+\paragraph{Low-order points.} Cremers and Jackson analyse small-subgroup and
+invalid-curve attacks on protocols that use Diffie--Hellman, and model such
+groups in Tamarin~\cite{CJ19}. RFC~7748 allows implementations to check for
+the all-zero output~\cite{RFC7748}, and RFC~9180 requires DHKEM recipients
+to do so~\cite{RFC9180}. X-Wing applies no such check~\cite{XWingDraft}, and
+our implementation finding is the friction between these two conventions.
+
+\paragraph{Sanity checks.} Vacuity, a property that holds for a trivial
+reason, is a known hazard in model checking~\cite{Kup06}. Symbolic protocol
+tools address part of it with reachability lemmas. Our symbolic Tamarin model
+of this protocol proves that an honest run exists, and it caught a modelling
+error of its own when an under-specified honest-peer premise made an
+agreement lemma fail. Mutation tests play the same role here for
+computational models.

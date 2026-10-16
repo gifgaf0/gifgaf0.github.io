@@ -1,0 +1,25 @@
+\section{Conclusion}\label{sec:conclusion}
+
+We mechanized the computational security of a hybrid post-quantum
+handshake, including the ``either component'' lemmas for X-Wing, an
+ML-KEM-1024 transcript-hashing combiner and composite ML-DSA/EdDSA
+signatures. The machine-checked results hold. What the exercise produced
+beyond them was a list of things that had been wrong: two lemmas of the
+sketch, five claims of our own write-up, and one divergence between the
+implementation and its specification. Each was caught by a different
+mechanism: modelling the construction exactly, an independent review of the
+claims, and tests aimed at what the models abstract away. Mutation tests made
+it possible to say what each proof depends on.
+
+Several directions remain open: a cofactor-aware model of X25519;
+mechanizing the composition steps that we did by hand; a tight multi-user
+bound for the hybrid KEM; adaptive ephemeral and state reveal; and checking
+whether other X-Wing implementations built on X25519 APIs that reject
+all-zero outputs diverge in the same way.
+
+\paragraph{Acknowledgements and AI disclosure.} The CryptoVerif models,
+proof scripts, mutation tests, implementation tests and a first draft of
+this paper were produced with Claude (Anthropic) at the author's direction,
+and the review of \cref{sec:reviewcaught} was done by a separate Claude
+instance. Every machine-checked result was re-run from a clean checkout. The
+author takes responsibility for the content.

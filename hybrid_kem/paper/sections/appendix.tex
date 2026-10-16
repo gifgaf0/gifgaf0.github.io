@@ -167,7 +167,7 @@ tar xzf cryptoverif2.13.tar.gz && (cd cryptoverif2.13 && ./build)
 CV=$PWD/cryptoverif2.13
 git clone https://github.com/gifgaf0/gifgaf0.github.io && cd gifgaf0.github.io
 git checkout 74affcf
-pip install cryptography gmpy2 requests numpy scipy mpmath pytest
+pip install cryptography==50.0.1 gmpy2 requests numpy scipy mpmath pytest
 cd hybrid_kem/analysis/cryptoverif
 make CVHOME=$CV              # 9 models; writes RESULTS.txt
 make mutations CVHOME=$CV    # 22 mutation tests

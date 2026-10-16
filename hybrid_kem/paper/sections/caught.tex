@@ -117,8 +117,9 @@ be delivered to every responder. Reducing it to single-key, single-challenge
 IND-CCA2 generically loses a factor of about keys times
 challenges~\cite{BBM00}, that is, about $n_S^2$, the same order as the
 sketch. What is better than the sketch is narrower. The signature term is
-$N_K \cdot \Adv^{\text{euf-cma}}$ rather than $n_S^2 \cdot \Adv^{\text{euf-cma}}$,
-and the PRF term is linear in the sessions. A tighter overall bound would
+$N_K \cdot \Adv^{\text{euf-cma}}$, against $n_S^2 \cdot \Adv^{\text{euf-cma}}$
+in the sketch's concrete statement (its Theorem~1 omitted the factor
+altogether), and the PRF term is linear in the sessions. A tighter overall bound would
 need a tight multi-user bound for the KEM, which we do not claim.
 
 \paragraph{Non-standard assumptions not flagged.} The sketch justified ``HKDF
@@ -167,10 +168,14 @@ side conditions to be listed; they are in \cref{sec:status}.
 
 \paragraph{The second review.} A second instance reviewed a draft of this
 paper together with the repository. Besides many corrections to the draft,
-it found two things in the repository. One was the missing factor in the
-sketch's Theorem~1 (\cref{sec:sketchcaught}). The other was that our claim
-that the mutation tests ``remove each [freshness] guard in turn'' overstated
-their coverage. The six freshness mutants then covered seven of the model's
+it found four things in the repository. One was the missing factor in the
+sketch's Theorem~1 (\cref{sec:sketchcaught}). Another was that the nine
+mutants of the implementation fix existed only as a one-off run, and are now
+a script in the artifact. A third was that the artifact commit was not on
+the repository's main branch; the reproduction instructions now name a
+branch that contains it. The fourth was that our claim that the
+freshness mutants ``remove each of these guards in turn'' overstated their
+coverage. The six freshness mutants then covered seven of the model's
 twelve guards, two of them only together. We added mutants until every
 guard had its own, writing the expected outcomes before running them. All
 twenty-two tests behave as expected (\cref{sec:mutations}).

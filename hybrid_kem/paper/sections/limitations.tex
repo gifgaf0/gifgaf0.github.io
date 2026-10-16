@@ -22,11 +22,12 @@ single-Test game of the original sketch. Inside the KEM models, ML-KEM is
 perfectly correct, and its decapsulation failure rate is added by hand.
 
 \paragraph{Remaining assumptions.} The ML-KEM leg of the ML-KEM-1024 profile
-still rests on HKDF being a split-key PRF~\cite{GHP18,MSS26}, and we know of
+still rests on HKDF being a PRF keyed by the $\ssv_M$ half of its input, one
+half of the split-key PRF property~\cite{GHP18,MSS26,ABK25}, and we know of
 no proof of that for HKDF in this configuration. The protocol's KDF rests on
 HMAC's swap-PRF property. Backendal et al.\ prove it in the standard model
-for feasible key sets~\cite{BBGS23}, but, as far as we can tell, only against
-classical adversaries. The post-quantum soundness of our protocol proof is
+for uniform keys from feasible sets~\cite{BBGS23}, but not against quantum
+adversaries. The post-quantum soundness of our protocol proof is
 therefore relative to that property holding against quantum adversaries,
 which we assume. The ML-KEM directions of \cref{lem:kem} likewise assume
 that SHA3-256 and HKDF are PRFs against quantum adversaries, as the X-Wing

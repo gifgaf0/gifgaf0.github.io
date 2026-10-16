@@ -42,5 +42,11 @@ Tested with TeX Live 2023 (Ubuntu 24.04 packages `texlive-latex-extra`,
       `pytest hybrid_kem/tests` and `python3 hybrid_kem/tests/low_order_mutants.py`
       at the commit cited as the artifact. If PR #49 is merged first, cite the
       merge commit instead and update `refs.bib` (`Artifact`) and Appendix C.
+- [ ] Keep the artifact commit reachable. Appendix C tells readers to
+      `git checkout 74affcf` after a fresh clone, which fails once no branch
+      or tag contains that commit. A squash or rebase merge of #49 followed by
+      deleting its branch would do that. Merge #49 with a merge commit, or tag
+      the cited commit (for example `git tag hybrid-ake-paper-v1 74affcf`)
+      and push the tag.
 - [ ] Choose ePrint keywords and a licence (ePrint requires one at submission;
       it cannot be changed afterwards).

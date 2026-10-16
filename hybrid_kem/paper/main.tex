@@ -12,6 +12,7 @@
 \usepackage{listings}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{enumitem}
+\usepackage{etoolbox}
 \PassOptionsToPackage{hyphens}{url}
 \usepackage[hidelinks]{hyperref}
 \usepackage[capitalise,noabbrev]{cleveref}
@@ -129,8 +130,9 @@ collision-resistant pre-hash, and X-Wing relying on X25519 also needs
 ciphertext second-preimage resistance of ML-KEM. Its authentication bound
 also lacked a factor for the number of parties. The ML-KEM-1024 combiner
 needs no security assumption on ML-KEM in that direction, because it hashes
-the ML-KEM ciphertext. Twenty-two mutation tests, one for each freshness
-guard among them, show what each proof depends on. A review of our first
+the ML-KEM ciphertext. Twenty-two mutation tests, including one for each
+freshness guard of the main protocol model, show what each proof depends
+on. A review of our first
 write-up, by a separate instance of the AI assistant used throughout this
 work, found claims the models did not support: a tighter bound than proved,
 non-standard assumptions not flagged as such, and restrictions on the
@@ -151,6 +153,7 @@ which inputs are affected. All models, proof scripts and tests are public.
 \input{sections/related}
 \input{sections/conclusion}
 
+\apptocmd{\thebibliography}{\raggedright}{}{\PackageWarning{main}{bibliography patch failed}}
 \bibliographystyle{alpha}
 \bibliography{refs}
 

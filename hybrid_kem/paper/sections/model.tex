@@ -99,12 +99,15 @@ $\mathit{ikm} = \ssv$ and $\mathit{salt} = \THH$ is a PRF keyed by $\ssv$.
 HKDF-Extract is HMAC keyed by the salt, so the last assumption keys HMAC
 through its message input: this is the swap-PRF, or ``dual-PRF'', property.
 Backendal, Bellare, G\"unther and Scarlata prove it for HMAC in the standard
-model, from assumptions on the compression function, for key sets they call
-feasible and show to hold in applications such as TLS~1.3 and
-KEMTLS~\cite{BBGS23}. $\ssv$ is a fixed-length 32-byte key of that kind. As
-far as we can tell, their analysis is for classical adversaries. For the
-post-quantum claim, the swap-PRF property of HMAC is therefore an assumption
-rather than a theorem.
+model, for keys drawn uniformly from sets they call feasible. They assume
+that the compression function is a PRF and collision resistant, and that a
+related function is a related-key PRF~\cite{BBGS23}. Every set
+$\{0,1\}^\ell$ with $\ell$ at most the 512-bit block length is feasible, so
+the 32-byte $\ssv$ qualifies. It is uniform once the IND-CCA2 step has
+replaced it with a random value, which is where the proof uses the PRF
+assumption. Their analysis does not consider quantum adversaries, so for the
+post-quantum claim the swap-PRF property of HMAC is an assumption rather
+than a theorem.
 
 With static ephemeral-key reveal (\file{hybrid_ake_ephleak.ocv}), all of
 the above is proved again. The bounds gain the revealed sessions'
@@ -149,7 +152,8 @@ Here $\cvp{Pmcca}$ is ML-KEM's multi-key, multi-challenge IND-CCA2
 advantage, $\cvp{pStDH}$ the strong Diffie--Hellman advantage, and
 $\cvp{Pc2pri}$ the C2PRI advantage. $\cvp{pDistRerandom}$ is the probability
 of distinguishing a rerandomised exponent from a fresh one: 0 for a
-prime-order group with uniform exponents, and $2^{-126}$ for Curve25519
+prime-order group with exponents uniform in $(\mathbb{Z}/q\mathbb{Z})^*$,
+and $2^{-126}$ for Curve25519
 according to CryptoVerif's library, the counterpart of the X-Wing paper's
 $\Delta_N$. Perfect correctness of ML-KEM is assumed through the library's
 correctness equation; its decapsulation failure rate $\delta$ adds at most

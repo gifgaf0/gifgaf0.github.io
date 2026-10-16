@@ -10,8 +10,8 @@ in the same spirit. A protocol built from these primitives inherits their
 guarantees only through a composition argument, and that argument is usually
 made on paper.
 
-This paper reports a machine-checked computational analysis, in
-CryptoVerif~\cite{Bla08,CryptoVerif}, of HYBRID-AKE: a small SIGMA-like
+This paper reports a machine-checked computational analysis of HYBRID-AKE
+in CryptoVerif~\cite{Bla08,CryptoVerif}. HYBRID-AKE is a small SIGMA-like
 handshake~\cite{Kra03} that derives its key from an ephemeral hybrid KEM and
 authenticates with composite signatures over the transcript, with no MAC. We
 mechanize both layers. The protocol proof assumes one IND-CCA2 KEM and one
@@ -61,7 +61,7 @@ negative controls and review caught, at three levels:
   signature relying on either component (\cref{sec:model,sec:mech}).
   \item Twenty-two mutation tests, each deleting one design element,
   assumption or model guard, with controls (\cref{sec:mutations}). Twelve of
-  them remove the twelve freshness and RevealKey guards of the protocol
+  them remove the twelve freshness and RevealKey guards of the main protocol
   model one at a time. They show that the proofs depend on the KEM
   ciphertext and the responder's key being in the signed transcript, that
   every freshness guard has an effect, that X-Wing's proof needs C2PRI where
@@ -79,24 +79,26 @@ All models, proof scripts, mutation tests and implementation
 tests are public~\cite{Artifact}, and the sources of this paper are in the
 same repository.
 
-To our knowledge, these are the first machine-checked proofs of X-Wing's
-IND-CCA2 security relying on either leg, stated as multi-user KEM
-equivalences, and of the EUF-CMA security of the draft composite
-ML-DSA/EdDSA signatures. We claim no novelty for the conditions themselves
-(C2PRI and the collision-resistant pre-hash), for the list of low-order
-points, or for the per-role secrecy pattern, which comes from CryptoVerif's
-TLS~1.3 analysis~\cite{BBK17}. The closest mechanized work covers generic KEM
-combiners and KEM-based hybrid key exchanges in Squirrel~\cite{BDDJK26},
-PQXDH~\cite{BJKS24}, and the hybrid TLS~1.3 and SSH key exchanges in
-CryptoVerif~\cite{BJ24} (\cref{sec:related}).
+We know of no earlier machine-checked proof of X-Wing's IND-CCA2 security
+relying on either leg, or of the EUF-CMA security of the draft composite
+ML-DSA/EdDSA signatures, with one caveat. Baelde et al.\ mechanize four KEM
+combiners in Squirrel~\cite{BDDJK26}, and we could not determine whether
+X-Wing's is among them. To our knowledge, ours are the first such proofs in
+CryptoVerif. We claim no novelty for the conditions themselves (C2PRI and
+the collision-resistant pre-hash), for the list of low-order points, or for
+the per-role secrecy pattern, which comes from CryptoVerif's TLS~1.3
+analysis~\cite{BBK17}. Other close mechanized work covers PQXDH~\cite{BJKS24}
+and the hybrid TLS~1.3 and SSH key exchanges in CryptoVerif~\cite{BJ24}
+(\cref{sec:related}).
 
 \paragraph{How this work was done.}
 This work was AI-assisted throughout. As the repository history shows, the
 protocol specification, its implementation, the Tamarin models and the
 pen-and-paper sketch were written with an AI assistant (Claude, by
-Anthropic) at the author's direction, as were the CryptoVerif models, proof
-scripts, tests and a first draft of this paper. Both reviews described here
-were carried out by separate instances of the same assistant. They could
+Anthropic) at the author's direction. So were the CryptoVerif models, proof
+scripts and tests, and this paper, including its revisions and the check of
+its references against primary sources. Both reviews described here were
+carried out by separate instances of the same assistant. They could
 read the repository and its history but not the development conversation.
 We state this because it bears on how the results should be weighed. The
 errors of \cref{sec:sketchcaught} are errors in an AI-written sketch, caught

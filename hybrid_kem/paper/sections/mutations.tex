@@ -67,8 +67,8 @@ removal because the two signed encodings already have different field
 counts, and they fail only when both separations go.
 
 The twelve freshness mutants are vacuity checks on the model itself. The
-protocol model has twelve guards that decide which keys are tested and which
-may be revealed: four for initiators (honest peer, peer uncorrupted at
+main protocol model, \file{hybrid_ake.ocv}, has twelve guards that decide
+which keys are tested and which may be revealed: four for initiators (honest peer, peer uncorrupted at
 acceptance, and no revealed partner of either responder kind), three for
 mutual responders, and five in the three RevealKey oracles. Each mutant
 removes exactly one, and the corresponding secrecy query then fails. A guard
@@ -77,7 +77,8 @@ the secrecy result would hold for a weaker adversary than described. The
 mutants check that each guard is needed, not that it is as weak as it could
 be. The first version of the model refused reveals more often than
 necessary, and mutants like these would not have caught that
-(\cref{sec:reviewcaught}).
+(\cref{sec:reviewcaught}). In the ephemeral-reveal model, which repeats
+these guards, only the guard for revealed ephemeral keys is mutated.
 
 The primitive mutants show that the assumptions are necessary to the
 proofs: collision resistance of the pre-hash for the composite, and C2PRI for

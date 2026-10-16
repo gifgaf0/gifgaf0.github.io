@@ -33,27 +33,30 @@ $\sigma_R$; a mutual-mode responder accepts only after verifying $\sigma_I$.
 \centering
 \small
 \renewcommand{\arraystretch}{1.25}
-\begin{tabular}{@{}l@{\hspace{4pt}}c@{\hspace{4pt}}l@{}}
-\textbf{Initiator} $I$ & & \textbf{Responder} $R$\\[2pt]
+% Message rows span both columns, so their labels can be set at text size.
+\newcommand{\msgto}[1]{\multicolumn{2}{@{}c@{}}{$\xrightarrow{\makebox[0.5\linewidth]{$#1$}}$}}
+\newcommand{\msgfrom}[1]{\multicolumn{2}{@{}c@{}}{$\xleftarrow{\makebox[0.5\linewidth]{$#1$}}$}}
+\begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}l@{}}
+\textbf{Initiator} $I$ & \textbf{Responder} $R$\\[2pt]
 \hline\\[-8pt]
-$(\pke,\ske) \gets \mathsf{KeyGen}()$ & & \\
- & $\xrightarrow{\ m_1 \,=\, \LP(\SUITE,\ \id_I,\ \vk_I,\ \pke)\ }$ & \\
- & & check $\SUITE$\\
- & & $(\ct,\ssv) \gets \mathsf{Encaps}(\pke)$\\
- & & compute $\THH$\\
- & & $\sigma_R \gets \mathsf{Sign}(\sk_R, \THH, \CTXR)$\\
- & & $K \gets \KDF(\ssv; \THH)$\\
- & $\xleftarrow{\ m_2 \,=\, \LP(\id_R,\ \vk_R,\ \ct,\ \sigma_R)\ }$ & \\
-$\ssv \gets \mathsf{Decaps}(\ske, \ct)$ & & \\
-compute $\THH$ & & \\
-require $\mathsf{Verify}(\vk_R, \sigma_R, \THH, \CTXR)$ & & \\
-$K \gets \KDF(\ssv; \THH)$ & & \\
-\multicolumn{3}{@{}l}{\emph{mutual mode only}, with $h = \Hash(\LP(\THH,\sigma_R))$:}\\
-$\sigma_I \gets \mathsf{Sign}(\sk_I, h, \CTXI)$ & & \\
- & $\xrightarrow{\ m_3 \,=\, \LP(\sigma_I)\ }$ & \\
- & & require $\mathsf{Verify}(\vk_I, \sigma_I, h, \CTXI)$\\[2pt]
+$(\pke,\ske) \gets \mathsf{KeyGen}()$ & \\
+\msgto{m_1 = \LP(\SUITE,\ \id_I,\ \vk_I,\ \pke)}\\
+ & check $\SUITE$\\
+ & $(\ct,\ssv) \gets \mathsf{Encaps}(\pke)$\\
+ & compute $\THH$\\
+ & $\sigma_R \gets \mathsf{Sign}(\sk_R, \THH, \CTXR)$\\
+ & $K \gets \KDF(\ssv; \THH)$\\
+\msgfrom{m_2 = \LP(\id_R,\ \vk_R,\ \ct,\ \sigma_R)}\\
+$\ssv \gets \mathsf{Decaps}(\ske, \ct)$ & \\
+compute $\THH$ & \\
+require $\mathsf{Verify}(\vk_R, \sigma_R, \THH, \CTXR)$ & \\
+$K \gets \KDF(\ssv; \THH)$ & \\
+\multicolumn{2}{@{}l}{\emph{mutual mode only}, with $h = \Hash(\LP(\THH,\sigma_R))$:}\\
+$\sigma_I \gets \mathsf{Sign}(\sk_I, h, \CTXI)$ & \\
+\msgto{m_3 = \LP(\sigma_I)}\\
+ & require $\mathsf{Verify}(\vk_I, \sigma_I, h, \CTXI)$\\[2pt]
 \hline
-\end{tabular}
+\end{tabular*}
 \caption{HYBRID-AKE. $\THH$ and $\KDF(\ssv;\THH)$ are as in
 \cref{sec:protocol}; $\mathsf{KeyGen}$, $\mathsf{Encaps}$ and $\mathsf{Decaps}$
 are the hybrid KEM's, and $\mathsf{Sign}$ and $\mathsf{Verify}$ the composite

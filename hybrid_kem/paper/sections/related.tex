@@ -11,10 +11,15 @@ two theorems as CryptoVerif equivalences, with X25519 as a prime-order group
 and ML-KEM perfectly correct. Connolly et al.\ show that X-Wing's combiner applies
 to other KEMs, ML-KEM-1024 among them~\cite{Starfighters}. Generic KEM
 combiners and their security were studied by Giacon, Heuer and
-Poettering~\cite{GHP18}, who introduced split-key PRFs, and by Bindel et
-al.~\cite{BBFGS19}, whose transcript-hashing combiner our ML-KEM-1024
-profile follows. Millerjord, Stebila and Steckel study split-key PRFs
-further and give a standard-model construction~\cite{MSS26}. Binding
+Poettering~\cite{GHP18}, whose combiners rest on split-key PRFs, and by
+Bindel et al.~\cite{BBFGS19}, whose transcript-hashing combiner our
+ML-KEM-1024 profile follows. Millerjord, Stebila and Steckel study split-key
+PRFs further and give a standard-model construction~\cite{MSS26}. Alagic,
+Bajaj and Kocoglu show that a combiner built on a split-key PRF may omit the
+ciphertext of any KEM that is C2PRI, and that KEMs built with certain
+Fujisaki--Okamoto transforms, ML-KEM among them, are C2PRI in the
+random-oracle model~\cite{ABK25}. This generalises the design choice that
+our X-Wing mutant isolates. Binding
 properties of KEMs, including those ML-KEM lacks, were systematised by
 Cremers, Dax and Medinger~\cite{CDM24} and by Schmieg~\cite{Sch24}. Kang,
 Lee and Son~\cite{KLS26} study which public values a hybrid KEM's combiner
@@ -27,7 +32,8 @@ uses their library. Bhargavan et al.\ analysed Signal's PQXDH, which
 combines X25519 with a post-quantum KEM, in ProVerif and CryptoVerif, found
 flaws in its specification, and proved a binding property of the KEM it
 uses~\cite{BJKS24}. Baelde et al.\ mechanize post-quantum proofs in Squirrel
-for four KEM combiners and two KEM-based hybrid key exchanges. They point
+for four KEM combiners and two KEM-based hybrid key exchanges; we could not
+determine whether X-Wing's combiner is among the four. They point
 out that post-quantum CryptoVerif has no quantum values, which makes it hard
 to extend to settings such as the quantum random-oracle
 model~\cite{BDDJK26}. In our development, random oracles appear only in the

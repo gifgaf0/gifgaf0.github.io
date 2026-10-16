@@ -101,15 +101,22 @@ collision s <-R mseed; r <-R mencseed; forall c: mct;
 ($\cvp{Pbind}$ is $\cvp{Pc2pri}$ in \cref{lem:kem}.) For an honestly
 generated key seed $s$ and honest encapsulation coins $r$, the statement
 replaces the test $\mathsf{mdecap}(c, \mathit{sk}) = k_0$ by the test
-$c = c_0$, at cost $\cvp{Pbind}$. It is slightly stronger than Definition~7
-in two ways: the adversary may also depend on $r$, and the statement implies
-that $c_0$ itself decapsulates to $k_0$. For ML-KEM, neither adds more than
-the decapsulation failure probability $\delta$. Given the decapsulation key
-and $c_0$, decryption recovers the encapsulation message, which determines
-the coins, except with probability $\delta$; and $c_0$ fails to decapsulate
-to $k_0$ only with probability $\delta$. So $\cvp{Pbind}$ is at most the
-C2PRI advantage plus $\delta$. The statement concerns honestly generated
-keys and challenges only. It is neither the malicious-key binding that
+$c = c_0$, at cost $\cvp{Pbind}$. It is stronger than Definition~7 in three
+ways. First, the adversary may depend on the key seed, not only on the
+decapsulation key, and in the X25519 model it is handed the seed. FIPS~203's
+decapsulation key does not determine the seed, so this is a genuinely
+stronger, seed-known form of C2PRI, and we assume it. It is the natural form
+for X-Wing, whose decapsulation key is the seed. The X-Wing paper's
+random-oracle proof that ML-KEM-768 is C2PRI~\cite[Thm.~3]{XWing} argues
+only about collisions of the hash functions $G$ and $J$ and does not appear
+to use the seed's secrecy, but we have not checked in detail that it
+carries over. Second, the adversary may depend on the encapsulation coins
+$r$. Third, the statement implies that $c_0$ itself decapsulates to $k_0$.
+For ML-KEM these last two add at most $2\delta$, where $\delta$ is the
+decapsulation failure probability. Given the decapsulation key and $c_0$,
+decryption recovers the encapsulation message, which determines the coins,
+unless decryption fails; and $c_0$ decapsulates to $k_0$ unless decryption
+fails. The statement concerns honestly generated keys and challenges only. It is neither the malicious-key binding that
 ML-KEM lacks~\cite{Sch24} nor needed in that form. The proof applies it three
 times, all after the random-oracle step, which gives the factor $3NQ_e$ in
 \cref{lem:kem}.
@@ -133,11 +140,13 @@ the assumption is a non-standard variant. \file{kem_bbfgs_x25519_rom.ocv}
 proves the same statement from strong Diffie--Hellman with HKDF as a random
 oracle, which are standard assumptions. The ML-KEM direction of this profile
 assumes HKDF is a PRF keyed by the $\ssv_M$ half of $\ssv_M \,\|\, \ssv_X$.
-That makes HKDF a split-key PRF in the sense of Giacon, Heuer and
-Poettering~\cite{GHP18}, a notion that Millerjord, Stebila and Steckel study
-further~\cite{MSS26}. We know of no proof that HKDF is one in this
-configuration. It is also outside what~\cite{BBGS23} prove, because their
-key is the whole message input. CryptoVerif's PQ-TLS model
+That is one half of the split-key PRF property that the combiners of
+Giacon, Heuer and Poettering~\cite{GHP18} rely on, and that Millerjord,
+Stebila and Steckel~\cite{MSS26} and Alagic, Bajaj and Kocoglu~\cite{ABK25}
+study further: a split-key PRF is a PRF when keyed by either part of its
+key, so it implies our assumption, but not conversely. We know of no proof
+of even this half for HKDF in this configuration. It is also outside
+what~\cite{BBGS23} prove, because their key is the whole message input. CryptoVerif's PQ-TLS model
 makes the same kind of assumption for HKDF-Extract over a concatenated hybrid
 secret~\cite{BJ24}.
 

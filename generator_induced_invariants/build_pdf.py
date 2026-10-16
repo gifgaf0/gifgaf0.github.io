@@ -4,7 +4,8 @@
 Plain-language summary: the note generalizes the SLWE rank collapse into a reusable result and ships the diagnostic it
 describes. This build refuses to produce a PDF that disagrees with the tool it cites:
   1. the SHA-256 printed in the note's Section 7 must equal the checksum of diagnostics/design_matrix_rank.py;
-  2. the tool's --self-test, which reproduces Table 1 and rank N = 76, must pass;
+  2. the tool's --self-test, which reproduces Table 1, rank N = 76, the note's other computed facts and the
+     verdicts on the case study, the controls and the designs built to fail, must pass;
   3. the LaTeX log must show no errors, no undefined references or citations, and no overfull or underfull boxes;
   4. the PDF's extracted text must contain the file path, the checksum and the self-test command exactly, so that
      what a reader copies is what the note prints (skipped if pdftotext is not installed).
@@ -51,7 +52,8 @@ print(f"[1] tool SHA-256 matches the note: {tool_sha}")
 r = subprocess.run([sys.executable, "-I", TOOL, "--self-test"], capture_output=True, text=True)
 if r.returncode != 0:
     fail("design_matrix_rank.py --self-test failed:\n" + r.stdout + r.stderr)
-print("[2] tool self-test: PASS (Table 1 columns k <= 8, rank N = 76 over four characteristics)")
+print("[2] tool self-test: PASS (Table 1 columns k <= 8, rank N = 76 over Q and four primes, the note's other "
+      "facts, and the verdicts)")
 
 # 3. Build from scratch, reproducibly, and check the log.
 clean(AUX + (".pdf",))

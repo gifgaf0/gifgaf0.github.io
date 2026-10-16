@@ -165,7 +165,9 @@ and `PsignT(t, NS) + 2·Phash(t)` with ML-DSA broken. Hence
   the RFC 7748 value, 32 zero bytes, as the draft does, in both encapsulation
   and decapsulation. Before, it passed the error on (checked with
   pyca 50.0.1), a conformance difference that the known-answer tests did not
-  cover. `tests/test_xwing_low_order.py` now pins the behaviour. The
+  cover. `tests/test_xwing_low_order.py` now pins the behaviour, and
+  `tests/low_order_mutants.py` checks that those tests catch nine mutants of
+  the fix. The
   `mlkem1024+x25519` profile still rejects all-zero outputs, as RFC 9180
   §7.1.4 requires of DHKEM recipients. Its models don't include that
   rejection, but it depends only on the public point, so the adversary learns
@@ -229,8 +231,8 @@ corrupted at any time (the corruption oracle returns the key seed).
 
 ## Mutation tests
 
-`make mutations` re-runs the proofs on modified models (`mutations.py`; about 45
-seconds). All 16 behave as listed:
+`make mutations` re-runs the proofs on modified models (`mutations.py`; about two
+minutes). All 22 behave as listed:
 
 | Mutation | Change | Outcome |
 |---|---|---|
@@ -238,14 +240,20 @@ seconds). All 16 behave as listed:
 | `ake_no_ct_in_transcript` | `ct` removed from `TH` | both agreement queries **not** proved (a man in the middle swaps `ct`) |
 | `ake_no_ct_in_transcript_full_proof` | the same, full proof | aborts: the KEM-correctness step cannot be justified |
 | `ake_no_vkR_in_transcript` | `vk_R` removed from `TH` | initiator authentication not proved (unknown key share); the rest proved |
-| `ake_no_context_strings` | `CTX_R` = `CTX_I` | still all proved (control): the signed encodings already differ |
+| `ake_no_context_strings` | `CTX_R` = `CTX_I` | all five queries still proved, key uniqueness included (control): the signed encodings already differ |
 | `ake_no_context_strings_no_encoding_separation` | both separations removed | initiator authentication not proved |
-| `fresh_test_I_despite_revealed_partner` | initiator tested although a partner was revealed | `keyI` secrecy not proved |
+| `fresh_test_I_dishonest_peer` | initiator tested although its peer is not an honest party | `keyI` secrecy not proved |
+| `fresh_test_I_corrupted_peer` | initiator tested although its peer was corrupted before it accepted | `keyI` secrecy not proved |
+| `fresh_test_I_despite_revealed_R` | initiator tested although its mutual-responder partner was revealed | `keyI` secrecy not proved |
+| `fresh_test_I_despite_revealed_A` | initiator tested although its responder-only partner was revealed | `keyI` secrecy not proved |
 | `fresh_reveal_I_despite_tested_R` | initiator revealed although its partner is tested | `keyR` secrecy not proved |
+| `fresh_test_R_dishonest_peer` | mutual responder tested although its peer is not an honest party | `keyR` secrecy not proved |
+| `fresh_test_R_corrupted_peer` | mutual responder tested although its peer was corrupted before it accepted | `keyR` secrecy not proved |
 | `fresh_test_R_despite_revealed_I` | responder tested although its partner was revealed | `keyR` secrecy not proved |
 | `fresh_reveal_R_despite_tested_I` | responder revealed although its partner is tested | `keyI` secrecy not proved |
 | `fresh_reveal_A_despite_tested_I` | responder-only key revealed although its partner is tested | `keyI` secrecy not proved |
 | `fresh_reveal_tested_I` | RevealKey answers for a tested initiator | `keyI` secrecy not proved |
+| `fresh_reveal_tested_R` | RevealKey answers for a tested mutual responder | `keyR` secrecy not proved |
 | `ephleak_test_revealed_sessions` | freshness clause (ii) removed | `keyR` secrecy not proved (the adversary decapsulates); the rest proved |
 | `composite_no_prehash_collision_resistance` | no CR for `PH` | composite EUF-CMA not proved |
 | `xwing_x25519_branch_no_c2pri` | no ML-KEM C2PRI | X-Wing IND-CCA2 (X25519 direction) not proved |
@@ -308,6 +316,13 @@ with OCaml 4.14.1 on Ubuntu 24.04.
   value instead of passing on pyca's `ValueError` (implementation note above;
   `tests/test_xwing_low_order.py`). No model changed; one model comment was
   updated.
+- **October 16, 2026 — mutation coverage.** A review of a paper draft found
+  that "the mutation tests `fresh_*` remove each of these guards in turn"
+  overstated the coverage: the protocol model has twelve freshness and
+  RevealKey guards, and the six `fresh_*` mutants covered seven of them, two
+  only together. There are now twelve, one per guard (22 mutation tests in
+  all), and the all-proved control also checks key uniqueness. All behave as
+  expected; the expectations were written before the new mutants were run.
 
 ## References
 

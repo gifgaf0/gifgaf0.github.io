@@ -123,7 +123,7 @@ set: fourteen strings.
 
 \paragraph{Tests.} The 63 tests in \file{tests/test_xwing_low_order.py}
 check the following.
-\begin{itemize}
+\begin{itemize}[itemsep=1pt,topsep=3pt]
   \item An independent RFC~7748 ladder in Python reproduces the first test
   vector of RFC~7748 \S5.2 and the first iteration of its iterated test, and agrees with
   pyca on 64 random inputs. On it, each element of $S$ has the stated order,
@@ -151,17 +151,20 @@ check the following.
 
 The artifact is the \file{hybrid_kem/} directory of
 \url{https://github.com/gifgaf0/gifgaf0.github.io} at commit
-\texttt{74affcf}~\cite{Artifact}. This paper's sources are in
+\texttt{74affcf}~\cite{Artifact}; its \file{RESULTS.txt} lists every proved
+bound with its running-time terms. This paper's sources are in
 \file{hybrid_kem/paper/} on the branch \ident{claude/hybrid-ake-paper}, which
 contains that commit. The CryptoVerif results were produced with
 CryptoVerif~2.13, built from its source tarball with OCaml~4.14.1 on Ubuntu
 24.04. The tarball's SHA-512 is pinned in the opam repository
 (\ident{packages/cryptoverif/cryptoverif.2.13/opam}):
-\begin{center}
-\footnotesize\ttfamily
+\par\smallskip
+{\centering\footnotesize\ttfamily
 f05b70ff9ab72daf6d58fd598b89fcbf8415cf1adfd0c93be8f98c18364d7da1\\
-c968be0a42cba7e0b17081f0bf73dd0b1c291ebc6df4306e93008a4a57e5ac61
-\end{center}
+c968be0a42cba7e0b17081f0bf73dd0b1c291ebc6df4306e93008a4a57e5ac61\par}
+\noindent The following commands reproduce the results.
+
+\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}[language=bash,morekeywords={cd,make,tar,python3,git,pip}]
 tar xzf cryptoverif2.13.tar.gz && (cd cryptoverif2.13 && ./build)
 CV=$PWD/cryptoverif2.13
@@ -175,5 +178,4 @@ cd ../../..
 python3 -m pytest hybrid_kem/tests                # 335 tests
 python3 hybrid_kem/tests/low_order_mutants.py     # 9 mutants of the fix
 \end{lstlisting}
-\file{RESULTS.txt} in the artifact lists every proved bound with its
-running-time terms.
+\end{minipage}

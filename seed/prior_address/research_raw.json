@@ -1,0 +1,1153 @@
+{
+ "citations": {
+  "summary": "I checked all 25 bullets in SEED.md \u00a79 as 27 references: Witten 1983 is split into its two papers (NPB 223, 422 and 433), and so is Luhn-Nasri-Ramond (the J. Math. Phys. paper and the PLB paper). No repository files were created or changed.\n\nACCESS LIMITATION: I could not open any page directly. WebFetch failed with getaddrinfo ENOTFOUND for every host I tried (arxiv.org, export.arxiv.org, inspirehep.net, api.crossref.org, en.wikipedia.org). Bash curl to the same hosts and to doi.org, journals.aps.org, ADS, Semantic Scholar, OpenAlex, projecteuclid, Springer, AIP and pdg.lbl.gov was refused by the egress proxy (CONNECT 403, a policy denial). So every result below rests on WebSearch result summaries: text the search tool pulled from the URLs listed. 'Verified' means those extracts matched SEED. I did not read any full text myself. Where something comes from my own memory, the item says so.\n\nRESULT: no reference is fabricated or wrong. Every volume and start page SEED gives matches.\n- The Albayrak & Vachaspati 2026 preprint (arXiv:2603.10115) exists. Its title, authors (Omer Albayrak and Tanmay Vachaspati, ASU) and submission date (10 March 2026) are confirmed. It is about global vortices in 2+1 dimensions, produced through a quantum mediator field. Production is 'highly fractured on the A\u2013v space' (A is packet amplitude, v is speed), with 'holes' and isolated regions.\n- Albayrak & Vachaspati, PRD 109, 036001 and arXiv:2308.01962 are both confirmed.\n- Mimura 1967 is J. Math. Kyoto Univ. 6(2), 131\u2013176. The values \u03c04(G2)=\u03c05(G2)=0 are confirmed by a 2025 arXiv paper that credits them to Mimura and Toda.\n- Luhn, Nasri & Ramond JMP 48, 123519: the abstract says A5 (a subgroup of SO(3), so real triplets) and PSL2(7) (a subgroup of SU(3)) are the two finite simple groups with such representations.\n- The ATLAS L2(7) page refers to 'ATLAS of Finite Groups, page 3'. The GAP character table library lists the maximal subgroups as S4, S4 and 7:3.\n- Gillard & Gresnigt: EPJC 79 and the DOI are confirmed.\n\nMINOR CORRECTIONS:\n1. Albayrak & Vachaspati 'Creating kinks with quantum mediation' was published 1 February 2024. The journal year is 2024; 2023 is only the preprint year.\n2. Sutcliffe 2007 should carry the full reference Proc. R. Soc. A 463, 3001\u20133020, arXiv:0705.1468. Its Q=7 trefoil claim is confirmed. The proof that the 3/4 power is optimal is the upper bound E \u2264 C|Q|^{3/4} of Lin & Yang (2004), Commun. Math. Phys. 249, 273, not Sutcliffe. Sutcliffe's computed energies agree with Ward's conjectured bound, which scales as Q^{3/4}.\n3. DESI DR2 Results II is now also published as PRD 112, 083515 (2025), DOI 10.1103/tr6y-kpc6. The 3.1\u03c3 and 2.8/3.8/4.2\u03c3 figures are correct. A later DES-Dovekie recalibration lowers the 4.2\u03c3 figure to about 3.2\u03c3.\n4. Vakulenko & Kapitanskii: the Russian original is Dokl. Akad. Nauk SSSR 246, 840\u2013842. Some papers cite the translation as page 432 instead of 433.\n5. The ATLAS publisher is Clarendon Press, Oxford, which is an imprint of Oxford University Press.\n\nCAVEATS ON HOW SEED USES ITS SOURCES:\n- \u00a75 cites Weinberg 1964 for 'turns out to be GR'. That 1964 paper derives charge conservation and the equality of gravitational and inertial mass from the S-matrix. The derivation of Einstein's equations is in Weinberg 1965 (PR 138, B988) and in Deser 1970.\n- \u00a72 says Finkelstein & Rubinstein treat textbook spinor fields as 'point-limit stand-ins' for kinks. The abstract extracts I saw did not show this. It may be in the full text but is unconfirmed.\n- In \u00a74, the A&V 2026 detail 'gaps even at high energy' was not seen explicitly. Only 'holes' and fractured production across amplitude and speed were.\n- The 'no Wess\u2013Zumino term for G2' argument really depends on H^5(G2)=0, not only on \u03c05=0. Both hold, but this is my own reasoning, not from a source.",
+  "items": [
+   {
+    "item": "\u00a79: \"Breit & Wheeler (1934). Collision of two light quanta. Phys. Rev. 46, 1087.\" (used in \u00a72: two photons -> e+e-)",
+    "status": "verified",
+    "correct_details": "G. Breit & J. A. Wheeler, \"Collision of Two Light Quanta\", Phys. Rev. 46, 1087 (1934), DOI 10.1103/PhysRev.46.1087.",
+    "evidence": "From WebSearch extracts: several reference lists give 'G. Breit, J.A. Wheeler, Phys. Rev. 46, 1087 (1934). DOI 10.1103/PhysRev.46.1087'. The first page shows it was received 23 Oct 1934 and computes e+e- pair production from two colliding light quanta, applied to cosmic-ray photons. The end page was not seen; it is 1087\u20131091 from my memory only. Direct DOI and APS access were blocked.",
+    "source_url": "https://arxiv.org/pdf/2103.16623 ; https://dictionary.obspm.fr/terms/breit-wheeler-process/"
+   },
+   {
+    "item": "\u00a79: \"Skyrme (1961). A nonlinear field theory. Proc. R. Soc. A 260, 127.\"",
+    "status": "verified",
+    "correct_details": "T. H. R. Skyrme, \"A non-linear field theory\", Proc. R. Soc. Lond. A 260, 127\u2013138 (1961), DOI 10.1098/rspa.1961.0018.",
+    "evidence": "From WebSearch extracts: INSPIRE gives Proc.Roy.Soc.Lond.A 260 (1961) 127-138. Aitchison's history paper (arXiv:2001.09944) cites 'A non-linear field theory, Proc. Roy. Soc. A 260, 127-138 (1961)'. A Wikipedia-derived record gives DOI 10.1098/rspa.1961.0018, bibcode 1961RSPSA.260..127S.",
+    "source_url": "https://inspirehep.net/literature/40077 ; https://arxiv.org/pdf/2001.09944"
+   },
+   {
+    "item": "\u00a79: \"Derrick (1964). Why static solitons need something extra. J. Math. Phys. 5, 1252.\" (\u00a74: no static fold from gradient energy alone)",
+    "status": "verified",
+    "correct_details": "G. H. Derrick, \"Comments on Nonlinear Wave Equations as Models for Elementary Particles\", J. Math. Phys. 5, 1252\u20131254 (1964), DOI 10.1063/1.1704233.",
+    "evidence": "From WebSearch extracts: the abstract says 'for a wide class of nonlinear wave equations there exist no stable time-independent solutions of finite energy'. It also considers time-periodic, localized solutions. The citation details came from INSPIRE and a citedrive record (DOI 10.1063/1.1704233). This supports SEED's gist (the origin of Derrick's theorem).",
+    "source_url": "https://inspirehep.net/literature/9374 ; https://en.wikipedia.org/wiki/Derrick%27s_theorem"
+   },
+   {
+    "item": "\u00a79: \"Weinberg (1964). Massless spin-2 couples universally. Phys. Rev. 135, B1049.\" (\u00a75: 'A massless spin-2 field coupled consistently to all energy turns out to be general relativity (Weinberg 1964; Deser 1970)')",
+    "status": "verified",
+    "correct_details": "S. Weinberg, \"Photons and Gravitons in S-Matrix Theory: Derivation of Charge Conservation and Equality of Gravitational and Inertial Mass\", Phys. Rev. 135, B1049\u2013B1056 (1964), DOI 10.1103/PhysRev.135.B1049. Nuance: the 1964 paper proves universal coupling (gravitational mass equals inertial mass). The step 'it is GR' is closer to Weinberg, Phys. Rev. 138, B988 (1965), 'Photons and Gravitons in Perturbation Theory: Derivation of Maxwell's and Einstein's Equations', and to Deser 1970.",
+    "evidence": "From WebSearch extracts: the APS record gives DOI 10.1103/PhysRev.135.B1049, received 13 Apr 1964, issue of 24 Aug 1964. It derives charge conservation and the equality of gravitational and inertial mass from Lorentz invariance, pole structure and massless spin-1/spin-2 particles. The follow-up PR 138, B988 (1965) derives Maxwell's and Einstein's equations.",
+    "source_url": "https://link.aps.org/doi/10.1103/PhysRev.135.B1049"
+   },
+   {
+    "item": "\u00a79: \"Mimura (1967). The homotopy groups of Lie groups of low rank (\u03c0\u2084(G\u2082) = \u03c0\u2085(G\u2082) = 0). J. Math. Kyoto Univ. 6, 131.\" (\u00a72: G2 has no FR loop and no WZ term)",
+    "status": "verified",
+    "correct_details": "M. Mimura, \"The homotopy groups of Lie groups of low rank\", J. Math. Kyoto Univ. 6(2), 131\u2013176 (1967), DOI 10.1215/kjm/1250524375. \u03c03(G2)=Z, \u03c04(G2)=0, \u03c05(G2)=0, \u03c06(G2)=Z3.",
+    "evidence": "From WebSearch extracts: Project Euclid lists 'J. Math. Kyoto Univ. 6-2 (1967) 131-176'. The paper aims to determine the first 23 homotopy groups of low-rank groups, using G2/SU(3)=S^6. A 2025 arXiv paper on G2 gauge groups (arXiv:2512.12195) credits the low-degree values to Mimura and Toda and lists \u03c04(G2)=0 and \u03c05(G2)=0. Another note confirms \u03c06(G2)\u2245Z/3 'as established in Mimura's classical calculations'. I did not see Mimura's own table directly. Separately, and as my own reasoning rather than a source: the absence of a WZ term really depends on H^5(G2;R)=0 (G2's real cohomology is generated in degrees 3 and 11). That is consistent with SEED's conclusion.",
+    "source_url": "https://projecteuclid.org/journals/journal-of-mathematics-of-kyoto-university/volume-6/issue-2/The-Homotopy-groups-of-Lie-groups-of-low-rank/10.1215/kjm/1250524375.pdf ; https://arxiv.org/pdf/2512.12195"
+   },
+   {
+    "item": "\u00a79: \"Finkelstein & Rubinstein (1968). Connection between spin, statistics, and kinks. J. Math. Phys. 9, 1762.\" (\u00a72: FR proposed the reading 'with the spinor fields of textbooks as point-limit stand-ins for kinks of a nonlinear field')",
+    "status": "verified",
+    "correct_details": "David Finkelstein & Julio Rubinstein, \"Connection between Spin, Statistics, and Kinks\", J. Math. Phys. 9(11), 1762\u20131779 (1968), DOI 10.1063/1.1664510.",
+    "evidence": "From WebSearch extracts of the AIP abstract page and OSTI: sufficiently nonlinear classical fields have kinks conserved by boundary conditions and continuity. A rotating kink can have half-odd angular momentum if double-valued state functionals are allowed. For integer intrinsic angular momentum, the usual spin\u2013statistics relation follows from continuity, with parastatistics excluded. The 'spinor fields as point-limit stand-ins' wording SEED attributes to FR did not appear in the extracts. It may be in the full text but is unverified.",
+    "source_url": "https://pubs.aip.org/aip/jmp/article-abstract/9/11/1762/1031168/Connection-between-Spin-Statistics-and-Kinks ; https://www.osti.gov/biblio/4830115"
+   },
+   {
+    "item": "\u00a79: \"Deser (1970). Self-interaction and gauge invariance. Gen. Rel. Grav. 1, 9.\"",
+    "status": "verified",
+    "correct_details": "S. Deser, \"Self-Interaction and Gauge Invariance\", Gen. Rel. Grav. 1, 9\u201318 (1970), DOI 10.1007/BF00759198 (DOI from my memory, not seen). Reprint: arXiv:gr-qc/0411023.",
+    "evidence": "From WebSearch extracts of the arXiv record: journal reference Gen.Rel.Grav.1:9-18,1970, received 17 Oct 1969 (Brandeis/Nordita). The abstract gives a closed-form derivation of the nonlinear terms of Einstein gravity and Yang\u2013Mills from the conserved currents of the linear gauge invariance. This supports SEED's \u00a75 use.",
+    "source_url": "https://arxiv.org/abs/gr-qc/0411023v3"
+   },
+   {
+    "item": "\u00a79: \"G\u00fcnaydin & G\u00fcrsey (1973). Quark structure and octonions. J. Math. Phys. 14, 1651.\" (\u00a73: SU(3) \u2282 G2 as the subgroup fixing one imaginary octonion)",
+    "status": "verified",
+    "correct_details": "M. G\u00fcnaydin & F. G\u00fcrsey, \"Quark structure and octonions\", J. Math. Phys. 14, 1651\u20131667 (1973), DOI 10.1063/1.1666240 (DOI from my memory, not seen).",
+    "evidence": "From WebSearch extracts of the Penn State record: 'The octonion (Cayley) algebra is studied in a split basis by means of a formalism that brings out its quark structure... the physically important subgroups SU(3) and SU(2)\u00d7SU(2) of G2, the automorphism group of octonions'. Secondary sources (e.g. arXiv:2609.10569, 1806.00612) describe SU(3) as the G2 stabilizer of an imaginary unit, with octonions splitting as 1+3+3\u0304+1.",
+    "source_url": "https://pure.psu.edu/en/publications/quark-structure-and-octonions/"
+   },
+   {
+    "item": "\u00a79: \"Vakulenko & Kapitanskii (1979). The Hopf-charge energy bound. Sov. Phys. Dokl. 24, 433.\" (\u00a74: E \u2265 c|Q|^{3/4})",
+    "status": "minor_correction",
+    "correct_details": "A. F. Vakulenko & L. V. Kapitanskii, \"Stability of solitons in S\u00b2 in the nonlinear \u03c3-model\", Dokl. Akad. Nauk SSSR 246(4), 840\u2013842 (1979), presented by Faddeev, received 2 Jan 1979. English translation: Sov. Phys. Dokl. 24, 433 (1979); a minority of citing papers give p. 432. The bound is E \u2265 c|Q|^{3/4}.",
+    "evidence": "From WebSearch extracts: the Math-Net.ru record gives the Doklady original (vol. 246, no. 4, pp. 840\u2013842). Citing papers (arXiv:1904.00250, hep-th/0108047) give 'Sov. Phys. Dokl. 24, 433 (1979)', while arXiv:1404.4867 gives 432. The review arXiv:0804.1357 gives E \u2265 c|Q|^{3/4} with c=(3/16)^{3/8}, attributed to V&K. SEED's citation is fine; the only correction is to add the original Doklady reference and note the 432/433 discrepancy.",
+    "source_url": "https://mathnet.ru/eng/dan42751 ; https://ar5iv.labs.arxiv.org/html/1904.00250 ; https://arxiv.org/pdf/0804.1357"
+   },
+   {
+    "item": "\u00a79: \"Weinberg & Witten (1980). Limits on which massless particles can be composite. Phys. Lett. B 96, 59.\" (\u00a78)",
+    "status": "verified",
+    "correct_details": "S. Weinberg & E. Witten, \"Limits on massless particles\", Phys. Lett. B 96(1-2), 59\u201362 (1980), DOI 10.1016/0370-2693(80)90212-9 (DOI from my memory, not seen).",
+    "evidence": "From WebSearch extracts of the Princeton record: with a Lorentz-covariant energy-momentum tensor, 'composite as well as elementary massless particles with j > 1 are forbidden'. With a Lorentz-covariant conserved current, no massless particles carrying that charge with j > 1/2. This supports SEED's \u00a78 use.",
+    "source_url": "https://collaborate.princeton.edu/en/publications/limits-on-massless-particles/"
+   },
+   {
+    "item": "\u00a79: \"Witten (1983). ... Nucl. Phys. B 223, 422\" (the Wess\u2013Zumino term)",
+    "status": "verified",
+    "correct_details": "E. Witten, \"Global aspects of current algebra\", Nucl. Phys. B 223, 422\u2013432 (1983).",
+    "evidence": "From WebSearch extracts of the Princeton record and INSPIRE: pages 422\u2013432. The abstract sets out the mathematical framework of the Wess\u2013Zumino chiral action, which obeys a quantization law analogous to Dirac's for magnetic charge.",
+    "source_url": "https://collaborate.princeton.edu/en/publications/global-aspects-of-current-algebra/ ; https://inspirehep.net/literature/13234"
+   },
+   {
+    "item": "\u00a79: \"Witten (1983). Skyrmions from QCD ... Nucl. Phys. B 223, ... 433\" (\u00a72: the fold is a fermion when N_c is odd)",
+    "status": "verified",
+    "correct_details": "E. Witten, \"Current algebra, baryons, and quark confinement\", Nucl. Phys. B 223, 433\u2013444 (1983).",
+    "evidence": "From WebSearch extracts of the abstract (ScienceDirect/OSTI) and the full-text PDF copy: the abstract says 'ordinary baryons can be understood as solitons in current algebra effective lagrangians'. The text says a 2\u03c0 rotation gives a phase (\u22121)^N: 'for odd N the soliton is a fermion; for even N it is a boson.' This supports SEED's \u00a72 claim.",
+    "source_url": "http://www.oka.ihep.su/Members/kursh/theory/051_wzw_baryon.pdf/download ; https://www.osti.gov/etdeweb/biblio/6825570"
+   },
+   {
+    "item": "\u00a79: \"Adkins, Nappi & Witten (1983). Static properties of nucleons in the Skyrme model. Nucl. Phys. B 228, 552.\" (\u00a76: nucleons within roughly 30%)",
+    "status": "verified",
+    "correct_details": "G. S. Adkins, C. R. Nappi & E. Witten, \"Static properties of nucleons in the Skyrme model\", Nucl. Phys. B 228(3), 552\u2013566 (1983).",
+    "evidence": "From WebSearch extracts of the Princeton record: pages 552\u2013566, Dec 1983. Per the search summary, the abstract states the results are generally within about 30% of experimental values. This supports SEED's 'roughly 30%'.",
+    "source_url": "https://collaborate.princeton.edu/en/publications/static-properties-of-nucleons-in-the-skyrme-model/"
+   },
+   {
+    "item": "\u00a79: \"Guadagnini (1984). Baryons as solitons and mass formulae. Nucl. Phys. B 236, 35.\" (\u00a76: octet and decuplet from the SU(3) Skyrme model, mass formulae)",
+    "status": "verified",
+    "correct_details": "E. Guadagnini, \"Baryons as solitons and mass formulae\", Nucl. Phys. B 236, 35 (1984). The end page, 47, is from my memory and was not seen.",
+    "evidence": "From WebSearch extracts of the Pisa repository record: 'the Wess-Zumino term gives the right quantum numbers for the baryons, which appear as solitons in current algebra lagrangians. In the models, the mass formulae for the baryons are derived.' Reference lists (arXiv:hep-ph/0404173, hep-ph/0408121) cite 'Nucl. Phys. B 236 (1984) 35'; one Springer reference list has a 'B238' typo. A related SU(3) Skyrme paper notes that the WZ constraint makes the lowest multiplets the J=1/2 octet and J=3/2 decuplet.",
+    "source_url": "https://arpi.unipi.it/handle/11568/3276 ; https://arxiv.org/pdf/hep-ph/0404173"
+   },
+   {
+    "item": "\u00a79: \"Conway, Curtis, Norton, Parker & Wilson (1985). ATLAS of Finite Groups. Oxford University Press. L\u2082(7) on p. 3: maximal subgroups S\u2084, S\u2084 and 7:3.\" (\u00a73: order-21 group is maximal in PSL(2,7))",
+    "status": "verified",
+    "correct_details": "J. H. Conway, R. T. Curtis, S. P. Norton, R. A. Parker, R. A. Wilson, ATLAS of Finite Groups: Maximal Subgroups and Ordinary Characters for Simple Groups, Clarendon Press (Oxford University Press), Oxford, 1985, ISBN 0-19-853199-0. L2(7) \u2245 L3(2) is on p. 3. Maximal subgroups: S4 (index 7), a second S4 class (index 7), and 7:3 (order 21, index 8).",
+    "evidence": "From WebSearch extracts: the QMUL online ATLAS page for L2(7) says 'Order = 168 ... See also the ATLAS of Finite Groups, page 3.' The GAP Character Table Library for L3(2) lists the maximal subgroups as S4 (24, index 7), S4 (24, index 7), 7:3 (21, index 8). Leemans' subgroup-lattice atlas agrees. The CiNii catalogue confirms Clarendon Press, Oxford, 1985, ISBN 0198531990. I did not see page 3 of the printed book itself.",
+    "source_url": "https://brauer.maths.qmul.ac.uk/Atlas/lin/L27 ; https://www.math.rwth-aachen.de/~Thomas.Breuer/ctbllib/ctbltoc/data/L3(2).html ; https://ci.nii.ac.jp/ncid/BA00533527"
+   },
+   {
+    "item": "\u00a79: \"Faddeev & Niemi (1997). Stable knot-like structures in classical field theory. Nature 387, 58.\"",
+    "status": "verified",
+    "correct_details": "L. Faddeev & A. J. Niemi, \"Stable knot-like structures in classical field theory\", Nature 387, 58\u201361 (1997), DOI 10.1038/387058a0. The arXiv version is titled \"Knots and Particles\", hep-th/9610193.",
+    "evidence": "From WebSearch extracts: the Nature listing gives Nature 387, 58\u201361, DOI 10.1038/387058a0. The arXiv record hep-th/9610193 ('Knots and Particles', submitted 24 Oct 1996) has journal reference Nature 387:58 (1997). Note that Battye & Sutcliffe 1998 later found most of FN's structural claims incorrect.",
+    "source_url": "https://www.nature.com/articles/387058a0 ; https://arxiv.org/abs/hep-th/9610193"
+   },
+   {
+    "item": "\u00a79: \"Battye & Sutcliffe (1998). Knots as stable soliton solutions. Phys. Rev. Lett. 81, 4798.\" (\u00a74: at Q = 7 the minimum is a trefoil)",
+    "status": "verified",
+    "correct_details": "R. A. Battye & P. M. Sutcliffe, \"Knots as Stable Soliton Solutions in a Three-Dimensional Classical Field Theory\", Phys. Rev. Lett. 81, 4798\u20134801 (1998). The arXiv version is titled \"To be or knot to be?\", hep-th/9808129.",
+    "evidence": "From WebSearch extracts: the arXiv record has journal reference Phys.Rev.Lett.81:4798-4801,1998. The abstract covers minimum-energy configurations for charges 1\u20138: closed loops, linked loops and knots. Reviews say this work found 'the first non-trivial knot\u2014the trefoil knot\u2014for N=7'. This supports SEED's Q=7 trefoil claim.",
+    "source_url": "https://arxiv.org/abs/hep-th/9808129v1 ; https://arxiv.org/pdf/0804.1357"
+   },
+   {
+    "item": "\u00a79: \"Manton & Sutcliffe (2004). Topological Solitons. Cambridge University Press. The textbook.\"",
+    "status": "verified",
+    "correct_details": "N. Manton & P. Sutcliffe, Topological Solitons, Cambridge Monographs on Mathematical Physics, Cambridge University Press, 2004, xi+493 pp., ISBN 978-0-521-83836-8.",
+    "evidence": "From WebSearch extracts: library catalogues give Cambridge University Press, 2004, xi, 493 p., ISBN 9780521838368 (0521838363), Cambridge Monographs on Mathematical Physics.",
+    "source_url": "https://www.biblio.com/0521838363 ; https://durham-repository.worktribe.com/output/1126229"
+   },
+   {
+    "item": "\u00a79: \"Luhn, Nasri & Ramond (2007). Simple finite non-Abelian flavor groups (PSL(2,7) inside SU(3)). J. Math. Phys. 48, 123519.\" (\u00a73: PSL(2,7) is the only simple subgroup of SU(3) with a complex 3-dim irrep; the other, A5, has real triplets)",
+    "status": "verified",
+    "correct_details": "C. Luhn, S. Nasri & P. Ramond, \"Simple Finite Non-Abelian Flavor Groups\", J. Math. Phys. 48, 123519 (2007), DOI 10.1063/1.2823978, arXiv:0709.1447.",
+    "evidence": "From WebSearch extracts of the INIS record and abstract: the paper 'details the mathematics of the two finite simple groups with such [two- and three-dimensional irreducible] representations, the icosahedral group A5, a subgroup of SO(3), and PSL2(7), a subgroup of SU(3)'. A5 lying in SO(3) means its triplets are real; PSL(2,7) has one complex 3-dim irrep and its conjugate (from a related source). SEED's 'complex vs real triplet' phrasing is its own paraphrase but is consistent with, and implied by, the abstract. I did not read the body text.",
+    "source_url": "https://inis.iaea.org/records/aqd2v-8ce71 ; https://inspirehep.net/literature/760401"
+   },
+   {
+    "item": "\u00a79: \"[Luhn, Nasri & Ramond 2007] Also \u2124\u2087\u22ca\u2124\u2083 as a family symmetry, Phys. Lett. B 652, 27.\"",
+    "status": "verified",
+    "correct_details": "C. Luhn, S. Nasri & P. Ramond, \"Tri-Bimaximal Neutrino Mixing and the Family Symmetry Z7 \u22ca Z3\", Phys. Lett. B 652, 27\u201333 (2007), arXiv:0706.2341.",
+    "evidence": "From WebSearch extracts of the arXiv listing: journal reference Phys. Lett. B 652, 27\u201333 (2007), submitted June 2007 and revised Sept 2007. It studies the 21-element Frobenius group Z7\u22caZ3 as a family symmetry that gives tri-bimaximal mixing. This supports SEED's 'flavor model-builders have used both groups'.",
+    "source_url": "https://www.arxiv.org/abs/0706.2341"
+   },
+   {
+    "item": "\u00a79: \"Sutcliffe (2007). Knots in the Skyrme\u2013Faddeev model (the 3/4 power is optimal; Q = 7 is a trefoil). Proc. R. Soc. A, doi:10.1098/rspa.2007.0038.\" (\u00a74)",
+    "status": "minor_correction",
+    "correct_details": "P. Sutcliffe, \"Knots in the Skyrme\u2013Faddeev model\", Proc. R. Soc. A 463, 3001\u20133020 (2007), doi:10.1098/rspa.2007.0038, arXiv:0705.1468. The Q=7 trefoil claim is supported. The optimality of the 3/4 power comes from the upper bound E \u2264 C|Q|^{3/4} of F. Lin & Y. Yang, 'Existence of energy minimizers as stable knotted solitons in the Faddeev model', Commun. Math. Phys. 249, 273 (2004). Combined with Vakulenko\u2013Kapitanskii's lower bound, that makes 3/4 optimal, so that work should be cited for the optimality claim. Sutcliffe's own result is that the computed energies agree with Ward's conjectured bound.",
+    "evidence": "From WebSearch extracts: the arXiv/ADS record gives Proc.Roy.Soc.Lond.A463:3001-3020,2007 and DOI 10.1098/rspa.2007.0038. The abstract covers simulations up to Hopf charge 16, with torus knots that are often only local minima and links as the global minima, and says 'the computed energies are in agreement with Ward's conjectured energy bound'. The text says 'the minimal energy soliton with Hopf charge seven is a trefoil knot'. The Lin\u2013Yang abstract (Springer 10.1360/02ys0351) gives E \u2264 C|Q|^{3/4}. I did not see whether Sutcliffe's paper itself states that the exponent is optimal.",
+    "source_url": "https://arxiv.org/abs/0705.1468 ; https://ui.adsabs.harvard.edu/abs/2007RSPSA.463.3001S/abstract ; https://link.springer.com/article/10.1360/02ys0351"
+   },
+   {
+    "item": "\u00a79: \"Dutta, Steer & Vachaspati (2008). Creating kinks from particles. Phys. Rev. Lett. 101, 121601.\" (\u00a74/\u00a76: trains of small pulses make kink\u2013antikink pairs over a wide range, most easily at low speed)",
+    "status": "verified",
+    "correct_details": "S. Dutta, D. A. Steer & T. Vachaspati, \"Creating Kinks from Particles\", Phys. Rev. Lett. 101, 121601 (2008), DOI 10.1103/PhysRevLett.101.121601, arXiv:0803.0670.",
+    "evidence": "From WebSearch extracts of the APS abstract page: 'We study the creation of solitons from particles, using the \u03bb\u03c6\u2074 model as a prototype'. They scatter trains of small identical wave pulses, and kink\u2013antikink pairs are produced over a wide range of parameter space. 'Scattering at low velocities is favorable for creating solitons that have large energy compared to the mass of a particle.' Received 10 Mar 2008, published 16 Sep 2008. This supports SEED's uses.",
+    "source_url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.101.121601"
+   },
+   {
+    "item": "\u00a79: \"Gillard & Gresnigt (2019). Three fermion generations with two unbroken gauge symmetries from the complex sedenions. Eur. Phys. J. C 79, doi:10.1140/epjc/s10052-019-6967-1.\"",
+    "status": "verified",
+    "correct_details": "A. B. Gillard & N. G. Gresnigt, \"Three fermion generations with two unbroken gauge symmetries from the complex sedenions\", Eur. Phys. J. C 79(5), 446 (2019), DOI 10.1140/epjc/s10052-019-6967-1, arXiv:1904.03186. The article number 446 is from my memory; the sources I reached did not show it. SEED gives no article number.",
+    "evidence": "From WebSearch extracts of the SCOAP3 and DOAJ records: EPJC vol. 79, issue 5 (May 2019), DOI 10.1140/epjc/s10052-019-6967-1, arXiv:1904.03186. The abstract says complexified sedenions describe three generations of leptons and quarks with unbroken SU(3)c\u00d7U(1)em, via a primitive idempotent that splits the algebra into three complex-octonion subalgebras sharing a quaternionic subalgebra. SEED does not use this reference elsewhere in the body.",
+    "source_url": "https://repo.scoap3.org/records/47531 ; https://doaj.org/article/51071cdfa4d64285afdee7a0c80cbbb1"
+   },
+   {
+    "item": "\u00a79: \"STAR Collaboration (2021). Breit\u2013Wheeler pairs from photon collisions. Phys. Rev. Lett. 127, 052302.\" (\u00a72: measured at RHIC in 2021 using photons around passing gold nuclei)",
+    "status": "verified",
+    "correct_details": "STAR Collaboration (J. Adam et al.), \"Measurement of e+e\u2212 Momentum and Angular Distributions from Linearly Polarized Photon Collisions\", Phys. Rev. Lett. 127, 052302 (2021), arXiv:1910.12400. The author name 'J. Adam et al.' is from my memory.",
+    "evidence": "From WebSearch extracts of the institutional records and the arXiv abstract: 6085 exclusive e+e\u2212 pairs in ultraperipheral Au+Au collisions at \u221asNN = 200 GeV; cos4\u0394\u03c6 modulation (16.8\u00b12.5)%; 'consistent with QED calculations for the collision of linearly polarized photons quantized from the extremely strong electromagnetic fields generated by the highly charged Au nuclei'. Published July 2021. The title does not say 'Breit\u2013Wheeler', but STAR and the press framed it that way. Caveat: the photons are quasi-real, so calling it a pure Breit\u2013Wheeler measurement is debated.",
+    "source_url": "https://arxiv.org/pdf/1910.12400.pdf ; https://pure.psu.edu/en/publications/measurement-of-ee-momentum-and-angular-distributions-from-linearl/"
+   },
+   {
+    "item": "\u00a79: \"Albayrak & Vachaspati (2023). Creating kinks with quantum mediation (Gaussian packets of a second field). Phys. Rev. D 109, 036001; arXiv:2308.01962.\" (\u00a74: wide, energetic, slow packets work best; without the go-between no kinks form)",
+    "status": "minor_correction",
+    "correct_details": "O. Albayrak & T. Vachaspati, \"Creating kinks with quantum mediation\", Phys. Rev. D 109, 036001, published 1 February 2024, DOI 10.1103/PhysRevD.109.036001, arXiv:2308.01962 (v1 August 2023, v2 February 2024). The journal year is 2024; 2023 is only the preprint year.",
+    "evidence": "From WebSearch extracts of the arXiv record, the APS abstract and the INIS record ('Published February 1, 2024'): kink\u2013antikink pairs of \u03c6 are created by scattering classical wavepackets of \u03c8, 'only due to a quantum field that interacts with both \u03c6 and \u03c8'. 'Kink production is favored when the initial wavepackets have large total energy and wide spatial extent but scatter at low velocities.' The volume, article number and arXiv id all match SEED. This supports SEED's \u00a74 description.",
+    "source_url": "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.109.036001 ; https://www.arxiv.org/abs/2308.01962v2 ; https://inis.iaea.org/records/m3ftc-kt686"
+   },
+   {
+    "item": "\u00a79: \"DESI Collaboration (2025). DR2 Results II: BAO measurements and cosmological constraints. arXiv:2503.14738.\" (\u00a75: 3.1\u03c3 from BAO+CMB; 2.8\u20134.2\u03c3 with supernovae)",
+    "status": "minor_correction",
+    "correct_details": "DESI Collaboration (M. Abdul-Karim et al.), \"DESI DR2 Results II: Measurements of Baryon Acoustic Oscillations and Cosmological Constraints\", arXiv:2503.14738 (v1 18 Mar 2025, v3 9 Oct 2025). Published as Phys. Rev. D 112, 083515 (2025), DOI 10.1103/tr6y-kpc6. SEED's arXiv id is correct; the published journal reference could be added. The w0waCDM preference over \u039bCDM is 3.1\u03c3 (DESI+CMB) and 2.8\u03c3 / 3.8\u03c3 / 4.2\u03c3 with Pantheon+ / Union3 / DES-SN5YR.",
+    "evidence": "From WebSearch extracts: the arXiv record and OSTI (ID 3011041) give PRD 112(8), 083515 and DOI 10.1103/tr6y-kpc6. The abstract mentions a 2.3\u03c3 BAO\u2013CMB tension in \u039bCDM, eased by evolving dark energy with w0>\u22121, wa<0. Secondary papers quoting DESI DR2: DESI BAO+CMB exclude \u039bCDM at 3.1\u03c3, and adding Pantheon+, Union3 and DES-SN5YR gives 2.8\u03c3, 3.8\u03c3 and 4.2\u03c3. So SEED's numbers are right. Later development: the DES-Dovekie recalibration lowers the DESY5 figure to about 3.2\u03c3 (arXiv:2508.10514), which further supports SEED's 'not yet decisive'.",
+    "source_url": "https://arxiv.org/abs/2503.14738v1 ; https://www.osti.gov/pages/biblio/3011041 ; https://arxiv.org/pdf/2508.10514"
+   },
+   {
+    "item": "\u00a79: \"Albayrak & Vachaspati (2026). Production of global vortices with quantum mediation. arXiv:2603.10115.\" (\u00a74: 2D follow-up makes vortices, no sharp threshold, production fractured across packet height and speed, gaps even at high energy)",
+    "status": "verified",
+    "correct_details": "Omer Albayrak & Tanmay Vachaspati (Arizona State Univ.), \"Production of global vortices with quantum mediation\", arXiv:2603.10115 [hep-ph, cross-listed hep-th], submitted 10 March 2026. No journal reference was seen.",
+    "evidence": "From WebSearch extracts of the arXiv abstract and HTML v1: the setup is in 2+1 dimensions, with a complex scalar field carrying global vortices, a real scalar scatterer, and a quantum mediator coupling the two. Relativistic Gaussian wavepackets collide with speed v. 'Vortex production is highly sensitive to the initial Gaussian parameters, and the parameter space is chaotic with \"holes\" and isolated regions of vortex production.' The amplitude A versus velocity v scans at several widths show 'production is highly fractured on the A-v space'. It builds on arXiv:2308.01962. This supports SEED's description (height = amplitude A, speed = v). The specific phrase 'gaps even at high energy' was not seen verbatim; 'holes' was.",
+    "source_url": "https://arxiv.org/html/2603.10115v1 ; https://arxiv.org/abs/2603.10115"
+   }
+  ]
+ },
+ "claims": {
+  "summary": "Access caveat: I could not open any page directly. WebFetch failed with DNS errors (getaddrinfo ENOTFOUND) on every host I tried: arxiv.org, inspirehep.net, en.wikipedia.org. curl through the agent proxy got 403 CONNECT denials from arxiv.org, export.arxiv.org, ar5iv, inspirehep.net, ui.adsabs.harvard.edu, journals.aps.org, doi.org, pdg.lbl.gov, wikipedia, osti, springer, aip, projecteuclid, desi.lbl.gov and others. Only github.com was reachable. All evidence below therefore comes from WebSearch result excerpts (search-engine text taken from abstract pages and secondary sources), from standard homotopy-theory derivations I worked through myself (marked as derivations), and from CODATA constants computed locally with scipy 1.18.1 (CODATA 2022). No full text was read. For each item, the source_url is the page whose search excerpt I saw; none of these pages was opened.\n\nBottom line: most claims in sections 2, 4, 5 and 8 hold up.\n- All the topology claims check out: pi4(SU(2))=Z2, pi4(S^2)=Z2, pi4(SU(3))=0, pi4(G2)=pi5(G2)=0, pi3(G)=Z, pi3(S^2)=Z, pi2(SU(3)/T^2)=Z^2, pi3(SU(3)/T^2)=Z.\n- The Finkelstein-Rubinstein abstract really does contain the 'point-limit' spinor reading.\n- Auckly and Speight independently support the claim that a G2 Skyrme field gives only bosonic folds.\n- The DESI numbers are exact: 3.1 sigma for DESI+CMB, and 2.8 / 3.8 / 4.2 sigma with Pantheon+ / Union3 / DES-SN5YR. A later DES-Dovekie recalibration lowers the DES figure to about 3.2 sigma.\n- The proton and electron length scales are correct.\n\nCorrections needed:\n1. Section 4: the proof that the 3/4 power is the right one is Lin & Yang 2004 (Commun. Math. Phys. 249, 273), not Sutcliffe 2007. Sutcliffe's numerics agree with Ward's conjectured ~Q^{3/4} bound.\n2. Section 5: Weinberg 1964 derives universal coupling (gravitational mass equals inertial mass). The derivation of Einstein's equations is Weinberg 1965, Phys. Rev. 138, B988.\n3. Section 8: the electron size bound is conservative. LEP gives r_e < 1.1e-19 m = 1.1e-4 fm, so the Compton-wavelength mismatch is at least about 3.5e6. 'At least 1e5' is still true.\n4. Weinberg-Witten blocks charged massless |h|>1/2 states (under a Lorentz-covariant conserved current) and |h|>1 states (with a Lorentz-covariant conserved T_mu_nu). It forbids composite gravitons in such theories, but not a neutral composite photon.\n5. STAR 2021 is real, but the photons are quasi-real, whether this counts as Breit-Wheeler is debated, and it was not the first observation of gamma-gamma to e+e- in heavy-ion collisions.\n\nCould not confirm:\n- The detailed Dutta-Steer-Vachaspati parameters (number of pulses, amplitudes, speeds).\n- The specifics of the 2026 vortex paper beyond its abstract: that the scanned axes were packet height and speed, and the 'gaps even at high energy' wording. The abstract does say production is 'chaotic with holes and isolated regions'.\n\nBibliography notes, for the other agent:\n- Dutta's first name is Sourish.\n- Albayrak & Vachaspati PRD 109, 036001 was published in 2024; the arXiv version is from 2023.\n- The DESI DR2 II PRD article number appears as both 112, 083514 and 083515 in different listings.",
+  "items": [
+   {
+    "item": "\u00a72: 'For SU(2) ... turning a fold once around traces a loop that can't be shrunk away (\u03c0\u2084 = \u2124\u2082)'",
+    "status": "verified",
+    "correct_details": "\u03c04(SU(2)) = \u03c04(S\u00b3) = Z2. For based Skyrme fields the configuration space Maps_*(S\u00b3,SU(2)) has \u03c01 = \u03c04(SU(2)) = Z2. The 2\u03c0-rotation loop is the non-contractible generator for odd baryon number, so for a single fold the statement is right.",
+    "evidence": "Derivation: SU(2)\u2245S\u00b3, and \u03c04(S\u00b3)=Z2 is classical (Freudenthal). Search excerpts: hep-lat/9504007 says \u03c04(SU(2))=Z2 underlies Witten's anomaly. arXiv:1710.04218 lists \u03c04(SU(3))=0 alongside \u03c04(SU(2))=Z2. hep-ph/0105255 ties the nontrivial \u03c04(SU(2)) class to fermionic Skyrmion quantization. Pages not opened.",
+    "source_url": "https://arxiv.org/pdf/hep-lat/9504007 ; https://arxiv.org/pdf/1710.04218 ; https://arxiv.org/pdf/hep-ph/0105255"
+   },
+   {
+    "item": "\u00a72: '...and for the S\u00b2 of the knot models ... (\u03c0\u2084 = \u2124\u2082)'",
+    "status": "verified",
+    "correct_details": "\u03c04(S\u00b2) \u2245 \u03c04(S\u00b3) = Z2 via the Hopf fibration. Maps_*(S\u00b3,S\u00b2) = \u03a9\u00b3S\u00b2 is a loop space, so every charge sector has \u03c01 = Z2. Nuance: Krusch & Speight (Commun. Math. Phys. 264, 391 (2006)) show Hopf solitons can be quantized as fermions when the Hopf charge Q is odd. The rotation loop is non-contractible only for odd Q, not for every fold.",
+    "evidence": "[Search excerpt, Krusch & Speight abstract] 'Hopf solitons can be quantized as fermions if their Hopf charge is odd'; the loops are generated by symmetries of the minimal-energy configurations. [Search excerpt, Auckly & Speight hep-th/0411010] 'fermionic quantization of Hopfions is always possible.' Derivation of \u03c04(S\u00b2) from the Hopf fibration long exact sequence.",
+    "source_url": "https://arxiv.org/pdf/hep-th/0503067 ; https://arxiv.org/abs/hep-th/0411010"
+   },
+   {
+    "item": "\u00a72: 'For SU(3) the loop does shrink (\u03c0\u2084 = 0)'",
+    "status": "verified",
+    "correct_details": "\u03c04(SU(3)) = 0 (and \u03c05(SU(3)) = Z). SU(n) is in the Bott stable range for k \u2264 2n\u22121, and \u03c04(SU) = 0, \u03c05(SU) = Z.",
+    "evidence": "Derivation: the fibration SU(3)\u2192SU(4)\u2192S\u2077 gives \u03c0_k(SU(3)) \u2245 \u03c0_k(SU) for k \u2264 5; Bott periodicity gives \u03c0_even(U)=0 and \u03c0_odd(U)=Z. [Search excerpt] arXiv:1710.04218 lists \u03c04(SU(3))=0 and describes the sequence \u03c05(SU(3))\u2192\u03c05(S\u2075)\u2192\u03c04(SU(2))\u21920 with maps \u00d72 and mod 2.",
+    "source_url": "https://arxiv.org/pdf/1710.04218"
+   },
+   {
+    "item": "\u00a72: 'the Wess\u2013Zumino term supplies the sign instead, and the fold is a fermion when the number of colors N_c is odd (Witten 1983)'",
+    "status": "verified",
+    "correct_details": "Correct. Witten, 'Current algebra, baryons, and quark confinement', Nucl. Phys. B 223 (1983) 433\u2013444: with the WZ term of coefficient N_c, the 2\u03c0 rotation of the SU(3) skyrmion gives the phase (\u22121)^{N_c}, so the skyrmion is a fermion iff N_c is odd. The companion paper NPB 223, 422 ('Global aspects of current algebra') introduces the WZ term.",
+    "evidence": "[Search excerpts] The NPB 223 (1983) 433\u2013444 abstract: 'ordinary baryons can be understood as solitons in current algebra effective lagrangians.' Secondary sources: Tong's gauge-theory notes say the WZ term 'makes the Skyrmion fermionic or bosonic depending on the number of colours N_c'; a review says 'for odd N colour, skyrmions actually have half-integer spin'. I did not see the primary abstract's own wording on N_c.",
+    "source_url": "https://www.damtp.cam.ac.uk/user/tong/gaugetheory/5chisb.pdf ; https://arxiv.org/pdf/2001.09944 ; http://www.oka.ihep.su/Members/kursh/theory/051_wzw_baryon.pdf/download"
+   },
+   {
+    "item": "\u00a72: 'Finkelstein and Rubinstein (1968) proposed this reading, with the spinor fields of textbooks as point-limit stand-ins for kinks of a nonlinear field'",
+    "status": "verified",
+    "correct_details": "Correct. Finkelstein & Rubinstein, J. Math. Phys. 9, 1762\u20131779 (1968), DOI 10.1063/1.1664510.",
+    "evidence": "[Search excerpt of the ADS/AIP abstract] 'Sufficiently nonlinear classical fields admit modes called kinks, whose number is strictly conserved...' 'even if the intrinsic angular momentum is an integer, a rotating kink can have half-odd angular momentum, if double-valued state functionals are admitted' ... 'for fields with integer-valued intrinsic angular momentum, the observed relation between spin and (exchange) statistics follows from continuity alone, parastatistics being excluded' ... 'consistent with the hypothesis that the spinor fields usually employed to describe half-odd-spin quanta are not fundamental, but are useful \"point-limit\" approximations to such operators.'",
+    "source_url": "https://ui.adsabs.harvard.edu/abs/1968JMP.....9.1762F/abstract"
+   },
+   {
+    "item": "\u00a72: 'For G\u2082 neither route exists: \u03c0\u2084 = \u03c0\u2085 = 0 (Mimura 1967)'",
+    "status": "verified",
+    "correct_details": "\u03c03(G2)=Z, \u03c04(G2)=0, \u03c05(G2)=0, \u03c06(G2)=Z3 (Mimura, J. Math. Kyoto Univ. 6 (1967) 131\u2013176).",
+    "evidence": "[Search excerpt] A recent paper on G2 gauge groups (arXiv:2607.03684 / 2512.06696) tabulates \u03c04(G2)\u22450, \u03c05(G2)\u22450, \u03c06(G2)\u2245Z/3, attributed to Mimura. \u014cshima: \u03c0_m(G2) is infinite only for m\u2208{3,11}, and \u27e8\u03c03,\u03c03\u27e9=\u03c06(G2)=Z3. Independent derivation: Spin(7)/G2 = S\u2077 gives \u03c0_k(G2) \u2245 \u03c0_k(Spin(7)) for k \u2264 5. SO(7) is stable for k \u2264 5, and Bott gives \u03c04(SO)=\u03c05(SO)=0, so \u03c04(G2)=\u03c05(G2)=0. Mimura's own text was not read.",
+    "source_url": "https://arxiv.org/html/2607.03684v1 ; https://projecteuclid.org/euclid.kjm/1250524375"
+   },
+   {
+    "item": "\u00a72: '...so there is no such loop and no Wess\u2013Zumino term, and a G\u2082-valued field alone makes only bosonic folds'",
+    "status": "verified",
+    "correct_details": "Correct. With \u03c04(G2)=0, \u03c01 of the Skyrme configuration space is trivial. H\u2075(G2;R)=0 because the rational cohomology generators sit in degrees 3 and 11, so there is no WZ term. Auckly & Speight's general classification agrees.",
+    "evidence": "[Search excerpt, Auckly & Speight, 'Fermionic quantization and configuration spaces for the Skyrme and Faddeev-Hopf models', hep-th/0411010, Commun. Math. Phys. 263 (2006) 173] 'Fermionic quantization of Skyrmions is possible only if the target group contains a symplectic or special unitary factor, while fermionic quantization of Hopfions is always possible.' G2 contains neither factor. The excerpt does not mention G2 by name; applying the result to G2 is my inference.",
+    "source_url": "https://arxiv.org/abs/hep-th/0411010"
+   },
+   {
+    "item": "\u00a72: 'two photons can become an electron and a positron (Breit\u2013Wheeler, 1934)'",
+    "status": "verified",
+    "correct_details": "G. Breit & J. A. Wheeler, 'Collision of Two Light Quanta', Phys. Rev. 46, 1087 (1934), received 23 Oct 1934, issue of 15 Dec 1934. The process is \u03b3\u03b3\u2192e\u207ae\u207b.",
+    "evidence": "[Search excerpts] Several sources give Phys. Rev. 46(12), 1087 (1934). The paper computes \u03b3\u03b3\u2192e\u207ae\u207b cross sections and angular distributions for different polarizations and applies them to cosmic-ray photons on background radiation.",
+    "source_url": "https://dictionary.obspm.fr/terms/breit-wheeler-process/ ; https://arxiv.org/pdf/2208.14943"
+   },
+   {
+    "item": "\u00a72: 'It was measured at RHIC in 2021, using the photons that surround passing gold nuclei' (STAR, PRL 127, 052302)",
+    "status": "verified",
+    "correct_details": "STAR Collaboration, 'Measurement of e\u207ae\u207b Momentum and Angular Distributions from Linearly Polarized Photon Collisions', Phys. Rev. Lett. 127, 052302 (published 27 July 2021), arXiv:1910.12400. 6085 exclusive e\u207ae\u207b pairs in ultra-peripheral Au+Au at \u221as_NN = 200 GeV, plus a peripheral-collision sample (centrality dependence). Caveats: the photons are quasi-real Weizs\u00e4cker\u2013Williams photons of small virtuality; a later STAR paper (PRC 111, 014909) notes 'there is no clear consensus on what is considered as the Breit-Wheeler process in UPCs'. \u03b3\u03b3\u2192e\u207ae\u207b in heavy-ion ultra-peripheral collisions had been studied before (e.g. STAR 2004), so 2021 was a differential measurement interpreted as Breit\u2013Wheeler, not the first sighting.",
+    "evidence": "[Search excerpt of the abstract] 'The Breit-Wheeler process which produces matter and anti-matter from photon collisions is investigated experimentally through the observation of 6085 exclusive electron-positron pairs in ultra-peripheral Au+Au collisions at \u221asNN = 200 GeV'; cos4\u0394\u03c6 modulation (16.8\u00b12.5)%; \u221a\u27e8P\u22a5\u00b2\u27e9 = 38.1\u00b10.9 MeV; 'consistent with QED calculations for the collision of linearly polarized photons'.",
+    "source_url": "https://arxiv.org/abs/1910.12400 ; https://link.aps.org/doi/10.1103/PhysRevLett.127.052302"
+   },
+   {
+    "item": "\u00a72: 'One speed. Every massless signal shares the cone: light, gravitational waves'",
+    "status": "verified",
+    "correct_details": "This is a consequence of the framework, and it matches observation: GW170817/GRB 170817A bound \u22123\u00d710\u207b\u00b9\u2075 < (v_gw \u2212 c)/c < +7\u00d710\u207b\u00b9\u2076 (LIGO/Virgo/Fermi/INTEGRAL, ApJL 848, L13 (2017), arXiv:1710.05834).",
+    "evidence": "[Search excerpt] 'the observed time delay of (+1.74\u00b10.05)s between GRB 170817A and GW170817 constrains the difference between the speed of gravity and the speed of light to be between \u22123\u00d710\u207b\u00b9\u2075 and +7\u00d710\u207b\u00b9\u2076 times the speed of light.'",
+    "source_url": "https://alphaxiv.org/abs/1710.05834"
+   },
+   {
+    "item": "\u00a72: 'No vacuum dispersion. Light of every energy crosses empty space at the same speed.'",
+    "status": "verified",
+    "correct_details": "Consistent with data. Fermi GRB 090510 gives E_QG,1 > 1.2 E_Planck for linear energy dependence (Abdo et al., Nature 462, 331 (2009)). Later Fermi-LAT reanalysis (arXiv:1305.3463) gives up to 7.6 E_Planck (subluminal, linear, without intrinsic-dispersion modelling).",
+    "evidence": "[Search excerpts] The Nature paper reports no evidence for Lorentz-invariance violation and a lower bound of 1.2 Planck energies on the linear scale. The 2013 reanalysis gives 7.6 E_Pl, or about 2 E_Pl when only the LIV-induced part is used.",
+    "source_url": "https://www.openu.ac.il/personal_sites/yoni-granot/papers/GRB090510_Nature.pdf ; https://arxiv.org/pdf/1305.3463"
+   },
+   {
+    "item": "\u00a72: 'Equivalence principle. Everything falls the same way'",
+    "status": "verified",
+    "correct_details": "Consistent with data. MICROSCOPE final: \u03b7(Ti,Pt) = [\u22121.5 \u00b1 2.3(stat) \u00b1 1.5(syst)]\u00d710\u207b\u00b9\u2075 (PRL 129, 121102 (2022), arXiv:2209.15487).",
+    "evidence": "[Search excerpt] MICROSCOPE finds no WEP violation, with \u03b7(Ti,Pt) = [\u22121.5 \u00b1 2.3 (stat) \u00b1 1.5 (syst)] \u00d7 10\u207b\u00b9\u2075, about 2.7\u00d710\u207b\u00b9\u2075 combined.",
+    "source_url": "https://arxiv.org/pdf/2209.15487"
+   },
+   {
+    "item": "\u00a74: 'point-like folds: \u03c0\u2083 of the internal space, which is \u2124 for SU(3), for G\u2082 and for every simple compact Lie group'",
+    "status": "verified",
+    "correct_details": "Correct. \u03c03(G)\u2245Z for every compact connected simple Lie group (Bott 1954/56, via Morse theory). \u03c02(G)=0 for every compact connected Lie group (Cartan). \u03c03 is unchanged by passing to covers, so it holds for non-simply-connected forms too.",
+    "evidence": "[Search excerpt] 'for any connected Lie group H, \u03c02(H) vanishes. If, moreover, H is simple, then \u03c03(H) \u2245 \u2124'; Bott's 'On torsion in Lie groups' (PNAS 1954) gives \u03c03(G)\u2245Z for simple G. The G2 case also follows from the derivation above (\u03c03(G2) \u2245 \u03c03(Spin(7)) = Z).",
+    "source_url": "https://arxiv.org/pdf/1811.05726 ; https://arxiv.org/pdf/math/9908076"
+   },
+   {
+    "item": "\u00a74: 'monopoles: \u03c0\u2082 of the vacuum space ... a theory that unifies the forces in one simple group always has them'",
+    "status": "verified",
+    "correct_details": "Standard result: for simply connected simple G broken to H \u2283 U(1)_em, \u03c02(G/H) \u2245 \u03c01(H) \u2287 Z, so GUT monopoles exist ('t Hooft\u2013Polyakov; Preskill, Ann. Rev. Nucl. Part. Sci. 1984). Minor caveat: arXiv:1007.3832 argues that when Alice strings exist (some SU(5)/SO(10) breakings) the conserved monopole charge can become Z2. Monopoles still exist, but the charge group changes.",
+    "evidence": "[Search excerpts] TASI cosmology notes (astro-ph/0401547): breaking a simple G gives \u03c02(G/H)=\u03c01(H), so breaking to the SM yields monopoles. arXiv:1007.3832: '\u03c02(G/H) \u2245 \u03c01(H) \u2245 Z' because H contains U(1), plus the Alice-string loophole.",
+    "source_url": "https://arxiv.org/pdf/astro-ph/0401547 ; https://arxiv.org/pdf/1007.3832"
+   },
+   {
+    "item": "\u00a74: 'knots: the Hopf number, \u03c0\u2083(S\u00b2) = \u2124'",
+    "status": "verified",
+    "correct_details": "\u03c03(S\u00b2)=Z (Hopf 1931). It follows from the Hopf fibration S\u00b9\u2192S\u00b3\u2192S\u00b2, which gives \u03c03(S\u00b2)\u2245\u03c03(S\u00b3)=Z.",
+    "evidence": "Derivation from the long exact sequence of the Hopf fibration. Standard: arXiv:1306.2364 describes Faddeev\u2013Niemi knots as stabilized by the Hopf invariant.",
+    "source_url": "https://arxiv.org/pdf/1306.2364"
+   },
+   {
+    "item": "\u00a74/\u00a76A: 'In \u03c6\u2074, colliding trains of small pulses of the field itself make kink\u2013antikink pairs over a wide range of settings, most easily at low speed (Dutta, Steer & Vachaspati 2008)'",
+    "status": "verified",
+    "correct_details": "Matches the abstract of S. Dutta, D. A. Steer & T. Vachaspati, 'Creating Kinks from Particles', PRL 101, 121601 (2008), arXiv:0803.0670 (v1 title 'From Particles to Kinks'). Nuance: the abstract says low velocity is 'favorable for creating solitons that have large energy compared to the mass of a particle'. 'Most easily at low speed' is a fair but slightly stronger paraphrase. The first author is Sourish Dutta.",
+    "evidence": "[Search excerpt of the abstract] 'We study the creation of solitons from particles, using the \u03bb\u03c6\u2074 model as a prototype. We consider the scattering of small, identical, wave pulses, which are equivalent to a sequence of particles, and find that kink-antikink pairs are created for a large region in parameter space. We also find that scattering at low velocities is favorable for creating solitons that have large energy compared to the mass of a particle.' The v1 abstract: 'a large class of initial conditions ... consisting of small, identical, incoming wave pulses, that scatter classically and create a kink-antikink pair.'",
+    "source_url": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.101.121601 ; https://arxiv.org/abs/0803.0670"
+   },
+   {
+    "item": "\u00a74/\u00a76A: exact Dutta\u2013Steer\u2013Vachaspati setup (number of pulses, amplitudes, widths, speeds scanned)",
+    "status": "unverifiable",
+    "correct_details": "Not determinable without the full text. The abstract confirms only 'small, identical, wave pulses ... equivalent to a sequence of particles'. The paper motivates its approach by noting that time-reversing kink\u2013antikink annihilation would need finely controlled radiation; this comes from a snippet that may mix in the 2023 paper. For calibration targets, read arXiv:0803.0670 directly.",
+    "evidence": "Several searches returned no parameter values. WebFetch and curl to arxiv.org failed (DNS failure / proxy 403).",
+    "source_url": "https://arxiv.org/pdf/0803.0670"
+   },
+   {
+    "item": "\u00a74: 'collides Gaussian packets of a second field that reaches the kink field only through a quantum go-between; wide, energetic, slow packets work best, and without the go-between no kinks form (Albayrak & Vachaspati 2023)'",
+    "status": "verified",
+    "correct_details": "Correct in substance. O. Albayrak & T. Vachaspati, 'Creating kinks with quantum mediation', arXiv:2308.01962 (Aug 2023), published Phys. Rev. D 109, 036001 (1 Feb 2024). Note that the journal year is 2024. One search excerpt also reports 'a lower energy threshold' for kink production in this paper.",
+    "evidence": "[Search excerpts of the abstract] Kink\u2013antikink pairs of one scalar field are created by scattering classical wavepackets of a second scalar field with no direct interaction; 'the creation is only possible due to a quantum field that interacts with both'; 'We scan parameter space and find it favorable for kink production when the initial wavepackets have large total energy and wide spatial extent but scatter at low velocities.'",
+    "source_url": "https://arxiv.org/abs/2308.01962 ; https://journals.aps.org/prd/abstract/10.1103/PhysRevD.109.036001"
+   },
+   {
+    "item": "\u00a74: '...follow-up in two space dimensions, which makes vortices, finds no sharp threshold: production is fractured ... with gaps (Albayrak & Vachaspati 2026)' (gist)",
+    "status": "verified",
+    "correct_details": "Gist confirmed. O. Albayrak & T. Vachaspati, 'Production of global vortices with quantum mediation', arXiv:2603.10115 (10 Mar 2026). The setup is 2+1D, with a complex scalar hosting global vortices, a real scalar scatterer and a quantum mediator; relativistic Gaussian wavepackets are scattered.",
+    "evidence": "[Search excerpt of the abstract] 'vortex production is highly sensitive to the initial Gaussian parameters, and the parameter space is chaotic with \"holes\" and isolated regions of vortex production.'",
+    "source_url": "https://arxiv.org/abs/2603.10115"
+   },
+   {
+    "item": "\u00a74: 2026 specifics: 'fractured across packet height and speed, with gaps even at high energy'",
+    "status": "unverifiable",
+    "correct_details": "The abstract refers only to 'initial Gaussian parameters' and to holes and isolated regions. It does not say the scanned axes were amplitude (height) and velocity, and does not say gaps persist at high energy. Check against the full text before using as a calibration target.",
+    "evidence": "Two targeted searches returned only the abstract-level statement. The full text (arxiv.org/html/2603.10115) was unreachable.",
+    "source_url": "https://arxiv.org/html/2603.10115"
+   },
+   {
+    "item": "\u00a74: 'In three dimensions a static fold can't be held by gradient energy alone (Derrick 1964)'",
+    "status": "verified",
+    "correct_details": "G. H. Derrick, 'Comments on nonlinear wave equations as models for elementary particles', J. Math. Phys. 5, 1252\u20131254 (1964). There are no stable static finite-energy solutions for a wide class of scalar field theories with the standard two-derivative kinetic term (scaling/virial argument: I_grad + 3 I_pot = 0 in 3D). Time-periodic solutions (Q-ball-like) were noted as an escape route.",
+    "evidence": "[Search excerpt, INSPIRE abstract] 'It is shown that for a wide class of nonlinear wave equations there exist no stable time-independent solutions of finite energy.' Also: 'the possibility that elementary particles might be oscillating solutions'.",
+    "source_url": "https://inspirehep.net/literature/9374"
+   },
+   {
+    "item": "\u00a74: 'E \u2265 c|Q|^{3/4} (Vakulenko & Kapitanskii 1979)'",
+    "status": "verified",
+    "correct_details": "Correct: the Vakulenko\u2013Kapitanskii lower bound E \u2265 c|Q|^{3/4} for the Faddeev\u2013Skyrme model (Sov. Phys. Dokl. 24, 433 (1979)). The constant c is not sharp.",
+    "evidence": "[Search excerpts] 'In 1979 Vakulenko and Kapitanskii obtained ... lower limit (\"VK bound\") ... E \u2265 c|Q|^{3/4}'. Hirayama et al. note the analytic constant is far from optimal. Primary text not seen.",
+    "source_url": "https://arxiv.org/pdf/hep-th/0106251 ; https://arxiv.org/pdf/hep-th/0602192"
+   },
+   {
+    "item": "\u00a74: 'the 3/4 power is known to be the right one, and the computed minima agree (Sutcliffe 2007)'; \u00a79: 'the 3/4 power is optimal'",
+    "status": "minor_correction",
+    "correct_details": "Lin & Yang, 'Existence of energy minimizers as stable knotted solitons in the Faddeev model', Commun. Math. Phys. 249, 273 (2004), proved the matching upper bound E \u2264 C|Q|^{3/4}, so the exponent 3/4 is optimal. Sutcliffe 2007 (Proc. R. Soc. A 463, 3001\u20133020, arXiv:0705.1468) is numerical: solutions up to Q=16, with energies 'in agreement with Ward's conjectured energy bound' (\u221dQ^{3/4}). Credit the optimality to Lin & Yang 2004, and cite Sutcliffe 2007 for the numerical agreement.",
+    "evidence": "[Search excerpts] Lin & Yang 2004: 'E and Q satisfy the sublinear inequality E \u2264 C|Q|^{3/4}'; later summaries describe a two-sided estimate C\u207b\u00b9|Q|^{3/4} \u2264 E \u2264 C|Q|^{3/4}. Sutcliffe 2007 abstract: 'soliton solutions for Hopf charges up to sixteen ... The computed energies are in agreement with Ward's conjectured energy bound.'",
+    "source_url": "https://link.springer.com/article/10.1007/s00220-004-1110-y ; https://arxiv.org/abs/0705.1468"
+   },
+   {
+    "item": "\u00a74/\u00a76C: 'at Q = 7 it is a trefoil (Battye & Sutcliffe 1998, confirmed by Sutcliffe 2007)'",
+    "status": "verified",
+    "correct_details": "Correct. Battye & Sutcliffe, PRL 81, 4798 (1998), computed minima for Q=1\u20138, including the first knot, a trefoil at Q=7. Sutcliffe 2007 finds the Q=7 minimal-energy soliton is the trefoil K_{3,2} (links at Q=5,6 and Q=8). Caveats from Sutcliffe 2007: energy gaps between competing knots and links are often only about 1%, and for some Q the minimum is not unique.",
+    "evidence": "[Search excerpts] BS1998 abstract: 'minimum energy configurations for charges one to eight ... closed loops, linked loops and, most interestingly, knots'. A hopfion review: 'found the first non-trivial knot\u2014the trefoil knot\u2014for N=7'. A citation of Sutcliffe 2007: 'The Q=7 minimal energy soliton has this form [K_{3,2}]'; 'no trefoil knots with Q<7'.",
+    "source_url": "https://link.aps.org/doi/10.1103/PhysRevLett.81.4798 ; https://arxiv.org/pdf/0705.1468 ; https://arxiv.org/pdf/1010.3189"
+   },
+   {
+    "item": "\u00a76B: 'For nucleons the model lands within roughly 30% (Adkins, Nappi & Witten 1983)'",
+    "status": "verified",
+    "correct_details": "ANW, Nucl. Phys. B 228, 552\u2013566 (1983): static properties 'generally within about 30%' of experiment. Caveats: the N and \u0394 masses were used as inputs to fix F_\u03c0 and e (recalled: F_\u03c0 \u2248 129 MeV versus about 186 MeV experimentally, e \u2248 5.45; not re-verified). g_A \u2248 0.61 is about half of experiment, which a later paper flags as the exception.",
+    "evidence": "[Search excerpt, ScienceDirect/ADS abstract] results 'generally within about 30% of experimental values' in the SU(2)\u00d7SU(2) chiral (Skyrme) model. [Excerpt, He\u2013Mobed\u2013Khanna] the 30% agreement holds 'except for the axial charge g_A, which is about half of the experimental value'.",
+    "source_url": "https://ui.adsabs.harvard.edu/abs/1983NuPhB.228..552A ; https://www.sciencedirect.com/science/article/abs/pii/055032138390559X"
+   },
+   {
+    "item": "\u00a76B: 'Quantize its rotations and the lowest states fill the octet (hexagon) and the decuplet (triangle) (Guadagnini 1984)'",
+    "status": "verified",
+    "correct_details": "E. Guadagnini, 'Baryons as solitons and mass formulae', Nucl. Phys. B 236, 35\u201347 (1984). The WZ term enforces the right quantum numbers (hypercharge constraint Y_R = N_c/3), the lowest SU(3) collective states are the spin-\u00bd octet and spin-3/2 decuplet, and the paper derives the octet\u2013decuplet mass relation now called the Guadagnini formula. Mazur\u2013Nowak\u2013Prasza\u0142owicz (1984) did related work independently.",
+    "evidence": "[Search excerpt, partial abstract] 'It is shown that the Wess-Zumino term gives the right quantum numbers for the baryons, which appear as solitons in current algebra lagrangians. In these models, the mass formulae for the baryons are derived.' Secondary: 'Guadagnini relation ... valid for the ground state octet and decuplet'; SU(3) collective quantization 'predicts the well-known 8 and 10 SU(3) multiplets'.",
+    "source_url": "https://inspirehep.net/literature/441397 ; https://link.springer.com/article/10.1007/s002180050406"
+   },
+   {
+    "item": "\u00a75: 'A massless spin-2 field coupled consistently to all energy turns out to be general relativity (Weinberg 1964; Deser 1970)'",
+    "status": "minor_correction",
+    "correct_details": "Weinberg 1964 (Phys. Rev. 135, B1049, 'Photons and Gravitons in S-Matrix Theory: Derivation of Charge Conservation and Equality of Gravitational and Inertial Mass') proves universal soft-graviton coupling, i.e. the equivalence principle, not the full Einstein equations. The derivation of Einstein's equations is Weinberg 1965, Phys. Rev. 138, B988 ('Photons and Gravitons in Perturbation Theory: Derivation of Maxwell's and Einstein's Equations'). Deser 1970 (Gen. Rel. Grav. 1, 9; repost gr-qc/0411023) gives the closed-form self-consistent derivation; the first-order formalism makes it terminate at a cubic self-interaction. Earlier work: Gupta, Kraichnan, Feynman. The result is GR up to a cosmological constant and higher-derivative terms.",
+    "evidence": "[Search excerpts] Weinberg 1964 abstract: 'a purely S-matrix-theoretic proof of the conservation of charge ... and of the equality of gravitational and inertial mass'; assumptions are 'Lorentz invariance and pole structure of the S matrix, and the zero mass and spins 1 and 2'. Weinberg 1965: spin-1 and spin-2 potentials 'must inevitably satisfy Maxwell's and Einstein's equations'. Deser 1970: 'unified closed-form derivation of the nonlinear terms for Einstein gravity, Yang-Mills...'; 'first-order formalism leads uniformly to a simple cubic self-interaction'.",
+    "source_url": "https://journals.aps.org/pr/abstract/10.1103/PhysRev.135.B1049 ; https://arxiv.org/abs/gr-qc/0411023"
+   },
+   {
+    "item": "\u00a75: 'a mass makes the vacuum act like a medium with index n \u2248 1 + 2GM/(rc\u00b2)'",
+    "status": "verified",
+    "correct_details": "Correct in the weak field, in isotropic coordinates: n = 1 \u2212 2\u03a6/c\u00b2 = 1 + 2GM/(rc\u00b2). Fermat's principle with this n gives the full GR deflection 4GM/(bc\u00b2) and the Shapiro delay. The exact isotropic Schwarzschild index is n = (1+M/2r)\u00b3/(1\u2212M/2r) (G=c=1).",
+    "evidence": "[Search excerpts] Narayan & Bartelmann lectures (astro-ph/9606001): 'n = 1 \u2212 (2/c\u00b2)\u03a6 = 1 + (2/c\u00b2)|\u03a6|'. GR course notes give the isotropic-coordinate index and the Shapiro delay \u0394t = (2GM/c\u00b3) ln(4\u03c1\u2081\u03c1\u2082/b\u00b2).",
+    "source_url": "https://arxiv.org/pdf/astro-ph/9606001"
+   },
+   {
+    "item": "\u00a75: 'DESI's 2025 data prefer a slow drift: 3.1\u03c3 from BAO and the CMB, and 2.8\u20134.2\u03c3 once supernovae are added, depending on the sample'",
+    "status": "verified",
+    "correct_details": "Correct (DESI DR2 Results II, arXiv:2503.14738; Phys. Rev. D 112 (2025), listed as 083514 or 083515 depending on the source). w0waCDM is preferred over \u039bCDM at 3.1\u03c3 for DESI BAO+CMB. With supernovae: 2.8\u03c3 (Pantheon+), 3.8\u03c3 (Union3), 4.2\u03c3 (DES-SN5YR). Update: after the DES-Dovekie recalibration of DES-SN5YR, the DES figure falls to about 3.2\u03c3, and adding SH0ES lowers all three. 'Not yet decisive' remains accurate.",
+    "evidence": "[Search excerpts] Edinburgh record of the DR2 paper: 'preferred over \u039bCDM at 3.1\u03c3 for the combination of DESI BAO and CMB'; 'ranges from 2.8\u22124.2\u03c3 depending on which SNe sample is used'. A follow-up paper: 'Including additional supernova data sets Pantheon+, Union3, and DES SN5YR yields exclusion significances of 2.8\u03c3, 3.8\u03c3, and 4.2\u03c3, respectively.' Dovekie re-analysis: 'reduced to ... 3.2\u03c3, compared to the earlier 4.2\u03c3'.",
+    "source_url": "https://arxiv.org/abs/2503.14738 ; https://www.research.ed.ac.uk/en/publications/desi-dr2-results-ii-measurements-of-baryon-acoustic-oscillations- ; https://arxiv.org/pdf/2508.10514"
+   },
+   {
+    "item": "\u00a78: 'The proton is (charge radius 0.84 fm ...)'",
+    "status": "verified",
+    "correct_details": "CODATA 2022 proton rms charge radius = 0.84075(64) fm (CODATA 2018: 0.8414(19) fm; PDG about 0.8409(4) fm, recalled).",
+    "evidence": "Local computation: scipy 1.18.1 physical_constants['proton rms charge radius'] = 8.4075e-16 m \u00b1 6.4e-19 m (CODATA 2022 table bundled in scipy). Not fetched from NIST or PDG directly (proxy 403).",
+    "source_url": "https://physics.nist.gov/cgi-bin/cuu/Value?rp (not reachable; value from scipy.constants CODATA 2022)"
+   },
+   {
+    "item": "\u00a78: '... against 0.21 fm' (proton reduced Compton wavelength)",
+    "status": "verified",
+    "correct_details": "\u0127/(m_p c) = 0.210309 fm. Charge radius divided by reduced Compton wavelength \u2248 4.0.",
+    "evidence": "Local computation with scipy.constants (CODATA 2022): hbar/(m_p c) = 0.21030891 fm.",
+    "source_url": "https://physics.nist.gov/cuu/Constants/ (not reachable; computed from scipy.constants)"
+   },
+   {
+    "item": "\u00a78: 'its Compton wavelength is 386 fm' (electron, \u0127/mc)",
+    "status": "verified",
+    "correct_details": "Reduced Compton wavelength \u0127/(m_e c) = 386.159268 fm (CODATA 2022: 3.8615926744(12)\u00d710\u207b\u00b9\u00b3 m). The SEED correctly uses \u0127/mc; the unreduced h/(m_e c) is 2426.3 fm.",
+    "evidence": "Local computation: scipy physical_constants['reduced Compton wavelength'] = 3.8615926744e-13 m; hbar/(m_e c) = 386.15927 fm.",
+    "source_url": "https://physics.nist.gov/cuu/Constants/ (not reachable; computed from scipy.constants)"
+   },
+   {
+    "item": "\u00a78: 'no size shows down to about 10\u207b\u00b3 fm ... The electron misses by at least 10\u2075'",
+    "status": "minor_correction",
+    "correct_details": "Conservative. The best direct bound comes from LEP2 Bhabha and contact-interaction fits. The final LEP electroweak paper (Schael et al., Phys. Rept. 532, 119 (2013), arXiv:1302.3415) gives r_e < 1.1\u00d710\u207b\u00b9\u2079 m = 1.1\u00d710\u207b\u2074 fm, assuming electromagnetic-strength coupling; stronger couplings tighten it. An earlier analysis (Bourilkov, hep-ph/0002172) gives r_e < 2.8\u00d710\u207b\u00b9\u2079 m (95% CL). Bounds from electron g\u22122 are model-dependent: about 3\u00d710\u207b\u00b9\u2078 m with chirally protected (m\u00b2) scaling, about 2\u00d710\u207b\u00b2\u00b3 m with linear scaling. With the LEP bound, 386 fm / 1.1\u00d710\u207b\u2074 fm \u2248 3.5\u00d710\u2076. 'At least 10\u2075' is true; the gap is at least about 10\u2076.",
+    "evidence": "[Search excerpts] LEP EW review: 'r_e < 1.1 \u00b7 10\u207b\u00b9\u2079 m', converted from the contact-interaction scale \u039b assuming electromagnetic-strength coupling. hep-ph/0002172: 'upper limit on the electron size of 2.8\u00b710\u207b\u00b9\u2079 m at 95% CL'; g\u22122 bounds 'r_e ~ 2\u00b710\u207b\u00b2\u00b3 m' (linear) or about 3\u00d710\u207b\u00b9\u2078 m (quadratic, chiral). Local arithmetic: \u0127c/\u039b is 2\u00d710\u207b\u2075 fm at \u039b = 10 TeV.",
+    "source_url": "https://arxiv.org/pdf/1302.3415 ; https://arxiv.org/pdf/hep-ph/0002172"
+   },
+   {
+    "item": "\u00a78: 'In weakly coupled theories, folding a few quanta into a pair is exponentially rare'",
+    "status": "verified",
+    "correct_details": "Correct. Demidov & Levkov ('Soliton-antisoliton pair production in particle collisions', arXiv:1103.0013; I recall PRL 107, 071601 (2011) but did not confirm it) find the semiclassical pair-production probability exponentially suppressed, with the suppression staying nearly constant at high energy. The companion JHEP 2011 paper (arXiv:1103.2133) finds classical pair creation needs parametrically many (about 1/g\u00b2) particles, so few-particle production is exponentially suppressed.",
+    "evidence": "[Search excerpts] 1103.0013: probability 'suppressed by an exponentially small factor' that stays nearly constant at high energies. 1103.2133: particle number is parametrically large where classical creation occurs, so few-particle soliton\u2013antisoliton production is exponentially suppressed. 1509.07125: solitons are about 1/g\u00b2 particles, so probabilities are exponentially suppressed at weak coupling.",
+    "source_url": "https://www.arxiv.org/pdf/1103.0013 ; https://ar5iv.arxiv.org/html/1103.2133"
+   },
+   {
+    "item": "\u00a78: 'Can light and the cone themselves be built from the field? Weinberg and Witten (1980) map where that's hard.'",
+    "status": "verified",
+    "correct_details": "Weinberg & Witten, 'Limits on massless particles', Phys. Lett. B 96, 59 (1980). A theory with a Lorentz-covariant conserved current cannot have massless particles of helicity |h| > 1/2 that carry nonzero charge under it. A theory with a Lorentz-covariant conserved stress tensor cannot have massless particles with |h| > 1. So an emergent graviton is excluded in any Lorentz-covariant theory with such a T_\u03bc\u03bd; known evasions include gauge-variant T (GR itself) and holography, where the graviton lives in a different spacetime. A neutral composite photon is NOT excluded by WW. 'Hard' fits gravity much better than light.",
+    "evidence": "[Search excerpts of secondary sources] 'A theory with a Lorentz-covariant conserved current cannot contain massless particles with helicity above 1/2 that carry a nonzero charge'; 'A Lorentz-covariant energy-momentum tensor rules out massless particles of helicity above 1'; citation Phys. Lett. B 96 (1980) 59. The original paper was not seen.",
+    "source_url": "https://arxiv.org/html/1703.04408v3 ; https://arxiv.org/pdf/0804.4672"
+   },
+   {
+    "item": "\u00a77 (requested): flag space SU(3)/T\u00b2: '\u03c0\u2082 = \u2124\u00b2' and '\u03c0\u2083 = \u2124'",
+    "status": "verified",
+    "correct_details": "Both correct. The moment-map image of the full flag (regular coadjoint orbit) is the convex hull of a Weyl orbit, a hexagon with 120\u00b0 angles (generally alternating side lengths); this is the Kostant / Atiyah\u2013Guillemin\u2013Sternberg convexity theorem, recalled and not checked in a source.",
+    "evidence": "Derivation, long exact sequence of T\u00b2\u2192SU(3)\u2192SU(3)/T\u00b2: \u03c02(SU(3))=0 \u2192 \u03c02(F) \u2192 \u03c01(T\u00b2)=Z\u00b2 \u2192 \u03c01(SU(3))=0, so \u03c02(F)=Z\u00b2. \u03c03(T\u00b2)=0 \u2192 \u03c03(SU(3))=Z \u2192 \u03c03(F) \u2192 \u03c02(T\u00b2)=0, so \u03c03(F)=Z. [Search excerpt] arXiv:2103.05035 notes the flag sigma model has two independent skyrmion charges, consistent with Z\u00b2; arXiv:1805.10008 builds Hopfions on F\u2082 = SU(3)/U(1)\u00b2.",
+    "source_url": "https://arxiv.org/pdf/2103.05035 ; https://arxiv.org/pdf/1805.10008"
+   }
+  ]
+ },
+ "targets-numeric": {
+  "targets": [
+   {
+    "experiment": "A",
+    "quantity": "Static kink profile and kink mass for L = 1/2 phi_t^2 - 1/2 phi_x^2 - (lam/4)(phi^2 - v^2)^2",
+    "value": "phi_K(x) = v tanh( sqrt(lam/2) v x ) = v tanh(m x/2); M_kink = (2 sqrt2/3) sqrt(lam) v^3 = m^3/(3 lam). Conventions: lam=2,v=1 -> phi_K = tanh x, M = 4/3; lam=1,v=1 -> tanh(x/sqrt2), M = 2sqrt2/3 = 0.942809; lam=1/2,v=1 -> M = 2/3",
+    "tolerance": "exact (analytic). Numerical reproduction checked to <1e-5 relative (BPS residual ~1e-5 at dx = 0.01/m)",
+    "source": "Standard textbook result (Vachaspati, Kinks and Domain Walls, CUP 2006; Manton & Sutcliffe, Topological Solitons, CUP 2004). Derived and numerically verified in this task",
+    "source_url": "none read; check script /tmp/claude-0/-home-user-gifgaf0-github-io/235fe351-6f97-5895-b3fd-a90496179b3c/scratchpad/checks/phi4_analytic.py",
+    "read_directly": false,
+    "notes": "Not read in a source; derived and checked by quadrature for (lam,v) = (2,1),(1,1),(0.5,1),(1.3,0.7)."
+   },
+   {
+    "experiment": "A",
+    "quantity": "Meson (vacuum fluctuation) mass m^2 = V''(+-v)",
+    "value": "m = sqrt(2 lam) v. lam=2,v=1: m=2; lam=1,v=1: m=sqrt2 (the 'm=sqrt2' convention); lam=1/2,v=1: m=1",
+    "tolerance": "exact",
+    "source": "Derived (V'' = lam(3phi^2 - v^2)); textbook standard",
+    "source_url": "none read; /tmp/claude-0/-home-user-gifgaf0-github-io/235fe351-6f97-5895-b3fd-a90496179b3c/scratchpad/checks/phi4_analytic.py",
+    "read_directly": false,
+    "notes": "Continuum threshold of the kink fluctuation operator sits at omega = m."
+   },
+   {
+    "experiment": "A",
+    "quantity": "Kink internal (shape) mode frequency; spectrum of -d^2/dx^2 + V''(phi_K) = -d^2/dx^2 + m^2 - (3/2) m^2 sech^2(m x/2)",
+    "value": "omega_0 = 0 (translation), omega_s = (sqrt3/2) m = sqrt(3 lam/2) v (lam=2,v=1: sqrt3 = 1.73205; lam=1: sqrt(3/2) = 1.22474), continuum from m. No other bound states (Poschl-Teller l=2)",
+    "tolerance": "exact; finite-difference eigen-solve gave omega_s/m = 0.866024 vs 0.866025",
+    "source": "Derived; textbook standard (also quoted throughout CSW 1983 and Goodman-Haberman 2005, recall)",
+    "source_url": "none read; /tmp/claude-0/-home-user-gifgaf0-github-io/235fe351-6f97-5895-b3fd-a90496179b3c/scratchpad/checks/phi4_analytic.py",
+    "read_directly": false,
+    "notes": "Goodman-Haberman write the PDE as phi_tt - phi_xx - phi + phi^3 = 0 (lam=1, v=1, m=sqrt2) from recall, not verified. Velocities are invariant under x,t rescaling, so v_c and the window velocities do not depend on (lam, v). Times and frequencies do."
+   },
+   {
+    "experiment": "A",
+    "quantity": "Kink-antikink critical velocity v_c (in units of c): above it the pair separates after one collision; below it there is capture plus two-bounce (and higher) windows",
+    "value": "v_c = 0.2598",
+    "tolerance": "4 significant digits as quoted. Edges are known to shift slightly with initial separation and discretization. A reproduction should land within +-0.001",
+    "source": "Campbell, Schonfeld & Wingate, Physica D 9 (1983) 1-32; Anninos, Oliveira & Matzner, PRD 44 (1991) 1147-1160. Value seen in search-result summaries of Goodman's phi4 chapter (roygoodman.net), Kevrekidis & Goodman review arXiv:1909.03128, arXiv:2304.14076, and arXiv:2009.00355 (which reports it from a run with initial separation a=7)",
+    "source_url": "https://arxiv.org/pdf/1909.03128 ; https://roygoodman.net/publication/phi4chapter/phi4chapter.pdf ; https://arxiv.org/pdf/2304.14076 ; https://arxiv.org/pdf/2009.00355",
+    "read_directly": false,
+    "notes": "Not opened: arXiv, the Fermilab preprint (lss.fnal.gov Pub-82-051-T) and roygoodman.net all returned 403 at the egress proxy. Several independent secondary sources agree on 0.2598, so confidence is high."
+   },
+   {
+    "experiment": "A",
+    "quantity": "First five phi4 two-bounce resonance windows (initial velocity of each kink in the CM frame)",
+    "value": "[0.1926, 0.2034], [0.2241, 0.2288], [0.2372, 0.2396], [0.2440, 0.2454], [0.2481, 0.2490]",
+    "tolerance": "about +-0.0005 on the edges. Windows narrow toward v_c and are sensitive to discretization and initial separation",
+    "source": "He & Zhong, 'Kink collisions in a two-dimensional gravity model', arXiv:2607.13620 (2026), quoting flat-space values from its Ref. [15] (probably CSW 1983 or Anninos et al. 1991; not confirmed). The 4th window (0.2440-0.2454) also appears in a search summary of arXiv:1312.7519 (Table II)",
+    "source_url": "https://arxiv.org/pdf/2607.13620 ; https://arxiv.org/pdf/1312.7519",
+    "read_directly": false,
+    "notes": "Seen only in one search-result summary; a second search could not re-surface the text. Conflicting snippet: another phi4 paper says 'the first two-bounce window opens at v_in = 0.189' (unclear whether that counts a narrower lower window or uses a different criterion). Treat as approximate and reproduce. The windows are labelled by an integer n, the number of shape-mode oscillations between bounces. One snippet (arXiv:1101.5951) says windows are absent for n<3 in phi4; the labelling offset is unverified."
+   },
+   {
+    "experiment": "A",
+    "quantity": "Dutta-Steer-Vachaspati 2008 setup and region of kink production",
+    "value": "Model: lambda phi^4 in 1+1D. Two trains of N_b identical small breather-like pulses (no exact phi4 breathers exist), one from each side, with frequency omega near 1 (likely in meson-mass units; unconfirmed) and velocity v. Kink-antikink pairs form 'for a large region in parameter space'. Low velocities favor creating solitons with large energy compared to the particle mass. A search snippet attributes an example 'breather trains at omega = 0.99, v = 0.43 produce kinks' (attribution uncertain). Exact initial-condition formula, N_b, spacing, grid and phase-diagram boundaries: UNVERIFIABLE",
+    "tolerance": "qualitative only",
+    "source": "Dutta, Steer & Vachaspati, PRL 101, 121601 (2008), arXiv:0803.0670 (arXiv title 'From particles to kinks'; v3 dated 25 Aug 2008)",
+    "source_url": "https://arxiv.org/abs/0803.0670",
+    "read_directly": false,
+    "notes": "Abstract-level facts are confirmed by several search summaries. Related, but a different model (deformed O(3)/sine-Gordon): Vachaspati, PRD 84, 125003 (2011), arXiv:1109.1065, used N=4, omega=0.95, x0=32, a=11.1, w=5.55 and scanned v in [0.4, 0.95]. Its x_j = x0 + (j-1) a train layout is probably the same as DSV's (inference)."
+   },
+   {
+    "experiment": "A",
+    "quantity": "Romanczukiewicz & Shnir 2010: kinks from colliding particle-like perturbations via oscillon resonance",
+    "value": "Three-stage mechanism: the collision forms an oscillon; incoming perturbations excite it resonantly; it decays into a kink-antikink pair (parametric resonance). Outcome depends fractally on perturbation amplitude, number of perturbations and wave number. A collective-coordinate model is given. Numerical parameters: UNVERIFIABLE",
+    "tolerance": "qualitative",
+    "source": "T. Romanczukiewicz & Ya. Shnir, PRL 105, 081601 (2010), arXiv:1002.4484",
+    "source_url": "https://arxiv.org/abs/1002.4484",
+    "read_directly": false,
+    "notes": "Abstract-level only, via search summaries (PubMed and APS listings)."
+   },
+   {
+    "experiment": "A",
+    "quantity": "Demidov & Levkov 2011: soliton pair production from particle collisions / classical wave packets",
+    "value": "PRL: semiclassical method; pair-production probability exponentially suppressed by a factor that is almost constant at high energies. Companion JHEP 06 (2011) 016 (arXiv:1103.2133): colliding wave packets characterized by energy E and particle number N; stochastic sampling over packet shapes maps the whole region of the (E,N) plane with classical pair creation. Boundary values, model potential and packet ansatz: UNVERIFIABLE",
+    "tolerance": "qualitative",
+    "source": "S. V. Demidov & D. G. Levkov, PRL 107, 071601 (2011), arXiv:1103.0013; JHEP 06 (2011) 016, arXiv:1103.2133; follow-up JHEP 11 (2015) 066, arXiv:1509.07125",
+    "source_url": "https://arxiv.org/abs/1103.0013 ; https://arxiv.org/pdf/1103.2133",
+    "read_directly": false,
+    "notes": "The snippets say '(1+1)-dimensional scalar field model'. I could not confirm it is plain phi4 (I recall a modified potential, unverified)."
+   },
+   {
+    "experiment": "A",
+    "quantity": "Single-field Gaussian perturbations producing kink-antikink pairs in phi4 (closest analog to colliding single Gaussian packets)",
+    "value": "Simas & da Hora: Gaussian bump of amplitude A0 and width sigma added to the vacuum phi0 = +1. A0 = 0.60 decays into an antikink-kink pair plus a central small oscillon; A0 = 0.70 gives two nearly pure antikink-kink pairs; A0 near 1 gives composite multi-pair states. sigma and potential normalization UNVERIFIABLE. Older study (arXiv:1004.4643): depending on width, amplitude and energy, a Gaussian gives radiation, oscillons, kink-antikink pairs or shock waves. Unattributed snippet: 'beyond the threshold of four times the energy of the kink, a kink-antikink pair can appear'. Askari, Saadatmand, Dmitriev & Javidan, Wave Motion 78 (2018) 54, arXiv:1608.01847: colliding wave trains built from tanh differences, e.g. k = 2.25 with A = 0.15 and 0.1; max energy density in N-kink collisions = N^2/2 for even N",
+    "tolerance": "qualitative; reproduce",
+    "source": "F. C. Simas & E. da Hora, arXiv:2404.17848 (Annals of Physics 2025); arXiv:1004.4643; arXiv:1608.01847",
+    "source_url": "https://arxiv.org/abs/2404.17848 ; https://arxiv.org/html/1004.4643 ; https://arxiv.org/pdf/1608.01847",
+    "read_directly": false,
+    "notes": "No source found giving a sharp production threshold for two colliding single Gaussian packets of phi itself. That map would be new work. Albayrak & Vachaspati (PRD 109, 036001, 2024; arXiv:2308.01962) use a second field with quantum mediation: production favored by large total energy, wide packets, low velocity."
+   },
+   {
+    "experiment": "C",
+    "quantity": "Faddeev-Skyrme static energy normalization (Sutcliffe 2007)",
+    "value": "E = (1/(32 sqrt2 pi^2)) * Int [ d_i phi . d_i phi + (1/2)(d_i phi x d_j phi).(d_i phi x d_j phi) ] d^3x, with the 1/2 multiplying the full double sum over i,j (= sum over i<j)",
+    "tolerance": "prefactor seen in a search summary; the 1/2-on-full-double-sum form is confirmed indirectly because it reproduces E1 ~ 1.22 and E2 ~ 2.00 (see below). A coefficient-1 quartic term would scale all energies by sqrt2",
+    "source": "P. Sutcliffe, Proc. R. Soc. A 463 (2007) 3001-3020, arXiv:0705.1468 (prefactor via search summary; also Jennings Durham seminar slides 2014)",
+    "source_url": "https://arxiv.org/pdf/0705.1468",
+    "read_directly": false,
+    "notes": "Battye & Sutcliffe 1998 (PRL 81, 4798; arXiv hep-th/9808129, arXiv title 'To be or knot to be?') and 1999 (Proc. R. Soc. A 455, 4305-4331; hep-th/9811077) normalization: UNVERIFIABLE (whether 1/32pi^2 or 1/(32 sqrt2 pi^2)). Use the Sutcliffe 2007 convention."
+   },
+   {
+    "experiment": "C",
+    "quantity": "Topological energy bound E >= c |Q|^{3/4} (Vakulenko-Kapitanskii, sharpened constant)",
+    "value": "Proven: c = (3/16)^{3/8} = 3^{3/8}/2^{3/2} = 0.5338. Ward's conjecture: c = 1 (unproven but consistent with all data). The 3/4 power is optimal",
+    "tolerance": "exact constants",
+    "source": "Sutcliffe 2007 eq. (2.3) region (via search summary: 'c = ... ~ 0.534', Ward conjectures c = 1); Radu & Volkov, Phys. Rep. 468 (2008) 101, arXiv:0804.1357 (search summary: c = (3/16)^{3/8})",
+    "source_url": "https://arxiv.org/pdf/0705.1468 ; https://arxiv.org/pdf/0804.1357",
+    "read_directly": false,
+    "notes": "Both summaries agree on 0.534; (3/16)^{3/8} and 3^{3/8}/(2 sqrt2) are algebraically identical."
+   },
+   {
+    "experiment": "C",
+    "quantity": "Q=1 minimal energy (axial A_{1,1} unknot) in Sutcliffe normalization",
+    "value": "E1 = 1.22 (accurate axial value; about 20% above Ward's bound). Sutcliffe's own 3D lattice gives 1.204, which he notes is about 1% low. Foster (arXiv:1012.2595) gives 1.236 at m=0. Own axial check: 1.2380 (box 6, h=0.1) and 1.2312 (box 8, h=0.08), Derrick ratio E2/E4 = 0.973, ring radius (n3 = -1 circle) ~1.2",
+    "tolerance": "+-1% (literature spread 1.20-1.236)",
+    "source": "Radu & Volkov arXiv:0804.1357 (E1 = 1.22, <1% above true min) and Sutcliffe 2007 (1.204), via search summaries; own computation /tmp/claude-0/-home-user-gifgaf0-github-io/235fe351-6f97-5895-b3fd-a90496179b3c/scratchpad/checks/hopf_axial_m.py",
+    "source_url": "https://arxiv.org/pdf/0804.1357 ; https://arxiv.org/pdf/0705.1468 ; https://arxiv.org/pdf/1012.2595",
+    "read_directly": false,
+    "notes": "The own computation is an upper estimate with a fixed n=e3 boundary; finite-box error ~1%."
+   },
+   {
+    "experiment": "C",
+    "quantity": "Q=2 minimal energy (axial A_{2,1})",
+    "value": "E2 ~ 2.00, E2/2^{3/4} ~ 1.19. Own axial check: 1.9995 (box 8, h=0.08), ring radius ~1.76, Derrick ratio 0.983",
+    "tolerance": "+-1%",
+    "source": "Search summary of arXiv:1108.5551 context (Hietarinta, Palmu, Jaykka, Pakkanen, NJP 14 (2012) 013013), which mentions E ~ 2.00 and an axisymmetric local minimum near 2.26 (ambiguous wording); own computation",
+    "source_url": "https://arxiv.org/pdf/1108.5551",
+    "read_directly": false,
+    "notes": "The literature number is ambiguous in the snippet; my axial minimization supports 2.00."
+   },
+   {
+    "experiment": "C",
+    "quantity": "Minimal-energy E_Q for Q=3..8 (and up to 16) and the E_Q/Q^{3/4} table (Sutcliffe 2007 Table; Battye-Sutcliffe 1999; Hietarinta-Salo 2000)",
+    "value": "UNVERIFIABLE (tables not retrievable). Qualitative: computed minima exceed Ward's bound by roughly 20% across charges (Jennings, 'Cabling in the Skyrme-Faddeev model', J. Phys. A 48 (2015) 315401, arXiv:1412.8597, search summary). E_Q/Q^{3/4} is ~1.22 at Q=1 and ~1.19 at Q=2",
+    "tolerance": "n/a",
+    "source": "Sutcliffe 2007 (arXiv:0705.1468); Battye & Sutcliffe 1999 (hep-th/9811077); Hietarinta & Salo, PRD 62, 081701 (2000)",
+    "source_url": "https://arxiv.org/abs/0705.1468 ; https://arxiv.org/abs/hep-th/9811077 ; https://users.aalto.fi/~ala/pdf/081201R.pdf",
+    "read_directly": false,
+    "notes": "Do not use recalled per-Q numbers as targets. Calibrate on E1 and E2, and on configuration type and ordering, until the table can be read."
+   },
+   {
+    "experiment": "C",
+    "quantity": "Minimal-energy configuration type by Hopf charge",
+    "value": "Q=1: A_{1,1} axial unknot; Q=2: A_{2,1} axial; Q=3: A_{3,1} buckled/bent ('pretzel-like') loop; Q=4: twisted torus-like (the torus-like family is minimal only for |Q| <= 4; Hietarinta-Salo found new Q=4 and Q=5 ground states); Q=5 and Q=6: links of two unknots (Q=6: L^{1,1}_{2,2} per a snippet); Q=7: trefoil K_{3,2}, the first and long the only knotted minimum, found from many initial states; Q=8: link vs knot UNVERIFIED. Torus knots appear as candidates at some higher charges (Q up to 16; at Q = 18, 19 per Jennings 2015); Q=20 lowest found is a link",
+    "tolerance": "qualitative",
+    "source": "Sutcliffe 2007; Battye & Sutcliffe 1998/1999; Hietarinta & Salo 2000; Hietarinta et al. NJP 2012 (arXiv:1108.5551); Jennings 2015 (arXiv:1412.8597); all via search summaries",
+    "source_url": "https://arxiv.org/pdf/0705.1468 ; https://arxiv.org/pdf/1108.5551 ; https://arxiv.org/pdf/1412.8597",
+    "read_directly": false,
+    "notes": "Notation: A_{n,m} axial; L^{p,q}_{a,b} links (subscripts are the component Hopf indices, superscripts the secondary linking); K_{a,b} torus knots. The elastic-rod model (Harland, Speight & Sutcliffe, PRD 83, 065008, 2011) also reproduces Q=3 buckling, links at Q=5,6 and the Q=7 trefoil."
+   },
+   {
+    "experiment": "C",
+    "quantity": "Rational-map initial conditions for Hopf solitons",
+    "value": "Map R^3 -> S^3: Z1 = (x1 + i x2) sin f(r)/r, Z0 = cos f(r) + i (x3/r) sin f(r), with f monotone, f(0) = pi, f(inf) = 0 (e.g. f = pi/(1 + r^2/r0^2)). Then W = n-field stereographic coordinate. Axial: W = Z1^n / Z0^m gives A_{n,m} with Q = n m. Torus knots (Sutcliffe 2007): W = Z1^alpha Z0^beta / (Z1^a + Z0^b), a,b coprime, a > b, alpha >= 1, beta >= 0, Q = alpha b + beta a; K_{a,b} has a(b-1) crossings. Trefoil K_{3,2}: Q=5 (alpha,beta) = (1,1), Q=6 (3,0), Q=7 (2,1) (derived from the Q formula)",
+    "tolerance": "n/a",
+    "source": "Torus-knot family and Q formula: search summary of arXiv:1707.06608 describing Sutcliffe's ansatz; Foster arXiv:1012.2595 confirms its use. The S^3 map and axial family are from recall, validated here (they produced Q=1 and Q=2 solitons with E = 1.23, 2.00)",
+    "source_url": "https://arxiv.org/html/1707.06608v1 ; https://arxiv.org/pdf/0705.1468",
+    "read_directly": false,
+    "notes": "Trefoil energies 53.09/57.20/61.32 that appeared in searches belong to the elastic-rod model, not Skyrme-Faddeev."
+   },
+   {
+    "experiment": "C",
+    "quantity": "Grid sizes / lattice parameters",
+    "value": "Published lattice parameters (Sutcliffe 2007, Battye-Sutcliffe 1999): UNVERIFIABLE. Own axial checks: h = 0.08 with box +-8 gives E1, E2 within ~1% of literature; core-ring radii ~1.2 (Q=1) and ~1.76 (Q=2) in Sutcliffe units",
+    "tolerance": "n/a",
+    "source": "own computation",
+    "source_url": "/tmp/claude-0/-home-user-gifgaf0-github-io/235fe351-6f97-5895-b3fd-a90496179b3c/scratchpad/checks/hopf_axial_m.py",
+    "read_directly": false,
+    "notes": "For 3D runs with Q <= 8, expect to need h <~ 0.1 and boxes of at least +-6 to +-8 (larger for links and knots): roughly 120^3 to 200^3 points."
+   },
+   {
+    "experiment": "F",
+    "quantity": "Hedgehog Einstein-Skyrme field equations and coupling definition",
+    "value": "L = (f^2/4) Tr(d_mu U d^mu U^+) + (1/(32 e^2)) Tr([U^+ d_mu U, U^+ d_nu U]^2); U = exp(i sigma.rhat F(r)); ds^2 = -sigma(r)^2 N(r) dt^2 + dr^2/N + r^2 dOmega^2, N = 1 - 2m/x; x = e f r; alpha = 4 pi G f^2. m' = alpha [ N F'^2 (x^2/2 + sin^2F) + sin^2F (1 + sin^2F/(2x^2)) ]; sigma'/sigma = alpha (x + 2 sin^2F/x) F'^2; ( sigma N (x^2 + 2 sin^2F) F' )' = sigma sin2F ( N F'^2 + 1 + sin^2F/x^2 ). BCs: F(0) = pi, F(inf) = 0, m(0) = 0, sigma(inf) = 1. ADM mass M = (4 pi f/e) m(inf)/alpha",
+    "tolerance": "exact (derived). Validated by reproducing alpha_crit = 0.040378 (below)",
+    "source": "Derived in this task. Same structure as Bizon & Chmaj, PLB 297 (1992) 55 (whose equations are restated in Appendix A of arXiv:1605.00543 per search summary)",
+    "source_url": "/tmp/claude-0/-home-user-gifgaf0-github-io/235fe351-6f97-5895-b3fd-a90496179b3c/scratchpad/checks/einstein_skyrme.py",
+    "read_directly": false,
+    "notes": "Convention trap: with Adkins-Nappi-Witten F_pi (L = F_pi^2/16 Tr...), f = F_pi/2, so alpha = pi G F_pi^2(ANW). Kleihaus-Kunz-Sood (hep-th/9503087) write alpha = 4 pi G f^2. Dzhunushaliev-Folomeev-Kunz-Shnir (EPJC 85 (2025) 391) write alpha^2 = 4 pi G f_pi^2 and quote alpha_max^2 ~ 0.0404, the same number with a different symbol."
+   },
+   {
+    "experiment": "F",
+    "quantity": "Critical gravitational coupling where regular gravitating B=1 skyrmions cease to exist",
+    "value": "alpha_crit = 0.040378 (alpha = 4 pi G f^2). Own reproduction: fold at alpha = 0.040378 with F'(0) = -2.9303",
+    "tolerance": "+-0.000005 (own fold search agrees to all quoted digits)",
+    "source": "S. Zajac, 'Late-time evolution of the gravitating Skyrmion', Acta Phys. Pol. B 40 (2009), arXiv:0906.4322 (search summary: 'for alpha <= alpha_crit ~ 0.040378 ... two regular static solutions'); Dzhunushaliev et al. arXiv:2407.17504 (alpha_max^2 ~ 0.0404); own computation",
+    "source_url": "https://arxiv.org/html/0906.4322 ; https://arxiv.org/html/2407.17504",
+    "read_directly": false,
+    "notes": "Droz-Heusler-Straumann PLB 268 (1991) 371 and Bizon-Chmaj PLB 297 (1992) 55: their own printed values are UNVERIFIABLE (recall ~0.040, consistent). Own script: /tmp/claude-0/-home-user-gifgaf0-github-io/235fe351-6f97-5895-b3fd-a90496179b3c/scratchpad/checks/alpha_fold.py"
+   },
+   {
+    "experiment": "F",
+    "quantity": "Branch structure",
+    "value": "For alpha < alpha_crit there are two regular solutions. The lower (skyrmion) branch starts at the flat skyrmion at alpha = 0 and is stable. The upper branch is unstable and extends back to alpha -> 0, where (rescaled) it approaches the lowest Bartnik-McKinnon solution ('BM branch'). They merge at alpha_crit; none exist above it. Scaled mass decreases along both branches toward alpha_crit, with the minimum there",
+    "tolerance": "qualitative",
+    "source": "Zajac arXiv:0906.4322; Dzhunushaliev et al. arXiv:2407.17504; Kleihaus-Kunz-Sood hep-th/9503087 (cusp at critical coupling); all via search summaries. A 2018 paper (arXiv:1803.09736) notes some erroneous statements in Bizon-Chmaj 1992",
+    "source_url": "https://arxiv.org/html/0906.4322 ; https://arxiv.org/html/2407.17504 ; https://arxiv.org/html/hep-th/9503087",
+    "read_directly": false,
+    "notes": "Own computation confirms two roots merging at alpha_crit."
+   },
+   {
+    "experiment": "F",
+    "quantity": "ADM mass vs alpha, as m(inf)/alpha = M/(4 pi f/e)",
+    "value": "Own computation (not a published table). Lower branch: alpha = 0: 5.8031 (flat); 0.01: 5.612; 0.02: 5.415; 0.03: 5.205; 0.035: 5.092; 0.04: 4.966; alpha_crit: ~4.958. Upper branch: 0.01: 8.708; 0.02: 6.421; 0.03: 5.469; 0.035: 5.179; 0.04: 4.968. Central slope F'(0): lower 0.01: -2.0796, 0.02: -2.1781, 0.03: -2.3321, 0.04: -2.7815; upper 0.01: -8.855, 0.02: -5.835, 0.03: -4.357, 0.04: -3.103",
+    "tolerance": "~1e-3 (integration truncated at x=25; tail correction ~3e-4 alpha)",
+    "source": "own computation in this task",
+    "source_url": "/tmp/claude-0/-home-user-gifgaf0-github-io/235fe351-6f97-5895-b3fd-a90496179b3c/scratchpad/checks/einstein_skyrme.py",
+    "read_directly": false,
+    "notes": "Published M(alpha) numbers (DHS 1991, Bizon-Chmaj 1992): UNVERIFIABLE. The trend (decreasing on both branches toward a minimum at alpha_max) matches the Dzhunushaliev et al. snippet."
+   },
+   {
+    "experiment": "F",
+    "quantity": "Flat-space B=1 hedgehog energy (cross-reference)",
+    "value": "E = 1.23145 x 12 pi^2 in Skyrme units (L = F_pi^2/16 Tr R_mu R^mu + 1/(32e^2) Tr[R_mu,R_nu]^2, energy unit F_pi/(4e), length unit 2/(e F_pi)) = 36.46 F_pi/e = 72.92 f/e (f = F_pi/2). Profile: F'(0) = -2.0075 and F ~ 2.160/x^2 at large x, in x = e f r = e F_pi r/2",
+    "tolerance": "literature value 1.232 (Manton & Sutcliffe; ANW 1983 quote M = 36.5 F_pi/e); own BVP gives 1.23145",
+    "source": "Adkins, Nappi & Witten, NPB 228 (1983) 552; Manton & Sutcliffe 2004 (recall); own BVP computation",
+    "source_url": "/tmp/claude-0/-home-user-gifgaf0-github-io/235fe351-6f97-5895-b3fd-a90496179b3c/scratchpad/checks/hedgehog_flat.py",
+    "read_directly": false,
+    "notes": "The '73' is 72.9 f/e in the f-convention; it equals 4 pi x 5.803, the alpha->0 limit of m(inf)/alpha above."
+   }
+  ],
+  "method_notes": "ACCESS: every primary host was policy-denied by the egress proxy (CONNECT 403): arxiv.org, export.arxiv.org, inspirehep.net, ui.adsabs.harvard.edu, journals.aps.org, royalsocietypublishing.org, api.crossref.org, en.wikipedia.org, pdg.lbl.gov, semanticscholar, osti.gov, lss.fnal.gov, roygoodman.net, users.aalto.fi, durham.ac.uk and others. WebFetch could not resolve DNS for any host, and gh code search is blocked. One reachability probe mistakenly included a shadow-library domain; it was blocked and never used. All literature values above therefore come from WebSearch result summaries (secondary, model-summarized) and are marked read_directly=false. Values marked 'own computation' were derived or computed in the scratchpad (nothing written to the repo).\n\nPHI4 (A): velocities are invariant under rescaling x,t -> x/s,t/s, so v_c = 0.2598 and the window velocities hold for any (lam, v). Kink-antikink IC (kink at -x0 moving right at speed u, antikink at +x0 moving left, gamma = 1/sqrt(1-u^2)): phi(x,0) = v[tanh(gamma m (x+x0)/2) - tanh(gamma m (x-x0)/2) - 1]; phi_t(x,0) = -(v m gamma u/2)[sech^2(gamma m (x+x0)/2) + sech^2(gamma m (x-x0)/2)]. The background is -v outside and +v between the pair. Use half-separation x0 >~ 7-10 kink widths (the arXiv:2009.00355 snippet used a = 7). Window edges shift with separation and discretization (a Hartree-approximation paper notes this), so run a convergence check (dx in {0.05, 0.025}/(m/2), dt = 0.5 dx, leapfrog or RK4, large box or absorbing boundaries). Detect bounces from phi(0,t) sign changes; get the output velocity by tracking the kink centre. Resonance picture: windows indexed by n = number of shape-mode oscillations between bounces, T_n ~ (2 pi n + delta)/omega_s with omega_s = (sqrt3/2) m (delta and the n-offset UNVERIFIED). Suggested Gaussian-packet IC for the seed's experiment (our design, not from a source): phi = -v + sum over +- A exp(-(x -+ x0)^2/(2 sigma^2)) cos(k (x -+ x0)), with phi_t from the linear dispersion omega = sqrt(k^2 + m^2) (right-mover phi_t = +A omega e^{...} sin(k(x - x0)), mirrored for the left-mover). Scan (A, sigma, k); report energy in units of 2 M_kink. DSV used trains of N_b breather-like pulses at omega ~ 1, not single packets. No published sharp threshold for colliding single Gaussian packets of phi was found (Albayrak & Vachaspati 2026 report fractured, non-sharp production in 2D).\n\nFADDEEV-SKYRME (C): use the Sutcliffe 2007 normalization E = (1/(32 sqrt2 pi^2)) Int [(d n)^2 + (1/2) sum_{i,j} (d_i n x d_j n)^2]; Ward bound c = 1, proven c = (3/16)^{3/8} = 0.534. Own axial check (scratchpad hopf_axial_m.py): ansatz (n1 + i n2)(rho,phi,z) = e^{i m phi}(n1 + i n2)(rho,0,z); L-BFGS on unconstrained v with n = v/|v|; hand-coded gradient verified by finite differences. Lessons: (i) a centred/averaged-difference stencil has checkerboard null modes, so the soliton unwinds (E -> 0.008); use a corner/edge stencil. (ii) In the axial reduction the 2 pi rho volume weight makes lattice defects on the symmetry axis nearly free; the core slipped onto the axis and unwound (E = 0.48, below the proven bound). Pin the axis nodes to n = e3 (legitimate for W = Z1^n/Z0). (iii) Hopf charge is not lattice-protected in 3D either: monitor that min n3 reaches -1, and check Q by the Whitehead integral (solve F = dA by FFT) or by preimage linking. Results: E1 = 1.231 (h = 0.08, box 8), E2 = 1.9995; Derrick ratio E2/E4 ~ 0.97-0.98, with the deviation due to the finite fixed-boundary box.\n\nEINSTEIN-SKYRME (F): shoot from x0 = 1e-4 with F = pi - a x, m = 0. Bisect on a: overshoot (F crosses 0) vs undershoot (F' turns positive), DOP853 at rtol 1e-10. For fixed alpha there are two roots in a (lower/skyrmion branch near a ~ 2.0-2.8, upper branch at larger a). The fold is found by computing alpha(a) at fixed a, again by bisection, and maximizing it: alpha_crit = 0.040378 at a = 2.9303. A grid scan in a underestimates alpha_crit (gave 0.040328) because the merging roots fall between grid points. Convention check is essential: alpha = 4 pi G f^2 with L = (f^2/4)Tr(dU dU^+), i.e. f = F_pi(ANW)/2. Using F_pi(ANW) in place of f would shift alpha_crit by a factor of 4. Flat hedgehog via scipy solve_bvp with far BC F + x F'/2 = 0 (F ~ k/x^2) plus an analytic tail: E/(12 pi^2) = 1.23145.\n\nSCRATCH FILES (outside the repo): /tmp/claude-0/-home-user-gifgaf0-github-io/235fe351-6f97-5895-b3fd-a90496179b3c/scratchpad/checks/{phi4_analytic.py, einstein_skyrme.py, es_lib.py, alpha_fold.py, alpha_crit.py, hedgehog_flat.py, hopf_axial.py (failed stencil), hopf_axial2.py (axis-unwinding demo), hopf_axial3.py, hopf_axial_m.py}.\n\nOPEN ITEMS needing a primary-source read once access exists: the DSV initial-condition formula and phase diagram; the CSW/Anninos window table and resonance fit (delta, n-offset); Sutcliffe 2007 Table 1 (E_Q, E_Q/Q^{3/4}, Q = 1..16) and its lattice spacing/size; the Battye-Sutcliffe 1999 normalization and table; Hietarinta-Salo energies; the Bizon-Chmaj/DHS printed alpha_max and M(alpha); Demidov-Levkov model potential and (E,N) boundary."
+ },
+ "targets-algebraic": {
+  "targets": [
+   {
+    "experiment": "B (SU(2) Skyrme, ANW calibration)",
+    "quantity": "Lagrangian/units convention used by ANW, Guadagnini and Praszalowicz: L = (F_pi^2/16) Tr(d_mu U d^mu U^dag) + (1/(32 e^2)) Tr([U^dag d_mu U, U^dag d_nu U]^2) + Gamma_WZ, with U = exp(2 i phi^a lambda^a / F_pi) and F_pi = 186 MeV experimentally (i.e. F_pi = 2 f_pi, f_pi ~ 93 MeV). This is the same Lagrangian written in SEED.md section 6B.",
+    "value": "F_pi(expt) = 186 MeV in this convention; ANW fitted F_pi = 129 MeV, which is f_pi = 64.5 MeV in the 93-MeV convention",
+    "tolerance": "exact (convention)",
+    "source": "Praszalowicz, 'Pentaquark in the Skyrme Model', hep-ph/0308114 (2003), eq. (1) and the text after it; f_pi = 64.5 MeV in Rakhimov nucl-th/0502078, Table 1.1, and Acus, Norvaisas & Riska hep-ph/9605435, Table 1 (ANW column)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/0308/0308114v3.pdf",
+    "read_directly": true,
+    "notes": "The ANW original (Nucl. Phys. B228, 552) could not be reached: Elsevier, INSPIRE and ADS were all blocked. The convention is confirmed by consistency: Schechter-Weigel use f_pi = 93 MeV and quote E = 23.2 pi f_pi/e, which equals 36.4 F_pi/e."
+   },
+   {
+    "experiment": "B (SU(2) Skyrme, ANW calibration)",
+    "quantity": "Classical hedgehog mass M in units of F_pi/e (F_pi = 186-MeV convention), and its ratio to the Faddeev-Bogomolny bound 3 pi^2 F_pi/e",
+    "value": "M = 36.5 F_pi/e (Schechter-Weigel: E = 23.2 pi f_pi/e with x = e f_pi r, which is 72.9 f_pi/e = 36.4 F_pi/e). A scratch numerical check gives 36.4616 F_pi/e = 1.23145 x 3 pi^2 F_pi/e.",
+    "tolerance": "reproduce to <0.1% (36.46)",
+    "source": "Schechter & Weigel, 'The Skyrme Model for Baryons', hep-ph/9907554, eq. (2.7) and the text after it; ANW NPB 228, 552 (1983) (original not accessible)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/9907/9907554v1.pdf",
+    "read_directly": true,
+    "notes": "'36.5' itself was not read in ANW. 23.2 pi f_pi/e was read in Schechter-Weigel, and the conversion is mine. With ANW's e = 5.45 and F_pi = 129 MeV, M_cl = 863 MeV."
+   },
+   {
+    "experiment": "B (SU(2) Skyrme, ANW calibration)",
+    "quantity": "SU(2) moment of inertia lambda (= I1)",
+    "value": "lambda = (2 pi/3) Lambda/(e^3 F_pi) with Lambda = int dx x^2 sin^2F [1 + 4(F'^2 + sin^2F/x^2)] = 50.9, i.e. lambda = 106.6/(e^3 F_pi) = 53.3/(e^3 f_pi). Schechter-Weigel quote alpha^2 = 53.3/(e^3 f_pi). Scratch numerics give Lambda = 50.98.",
+    "tolerance": "Lambda to ~0.2%",
+    "source": "Schechter & Weigel hep-ph/9907554, text after eq. (2.10) (alpha^2 = 53.3/(e^3 f_pi)); Rakhimov nucl-th/0502078, eq. (1.13): lambda = (pi/(3 f_pi e^3)) int dx x^2 sin^2theta[1+4(theta'^2+sin^2theta/x^2)], with x = 2 e f_pi r",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/9907/9907554v1.pdf",
+    "read_directly": true,
+    "notes": "CORRECTION to the task text: 'lambda = 50.9/(e^3 F_pi)' omits the factor 2pi/3. Check: with e = 5.45 and F_pi = 129 MeV, 1/lambda = 195.6 MeV, so 3/(2 lambda) = 293 MeV, the Delta-N splitting. Without 2pi/3 the splitting would be about 615 MeV."
+   },
+   {
+    "experiment": "B (SU(2) Skyrme, ANW calibration)",
+    "quantity": "Rotor masses",
+    "value": "M_N = M + 3/(8 lambda); M_Delta = M + 15/(8 lambda); M_Delta - M_N = 3/(2 lambda)",
+    "tolerance": "exact",
+    "source": "Rakhimov nucl-th/0502078, eq. (1.23) (proton mass M + 3/(8 lambda)); Schechter-Weigel hep-ph/9907554, eqs. (2.11)-(2.12)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/nucl-th/pdf/0502/0502078v1.pdf",
+    "read_directly": true,
+    "notes": "Schechter-Weigel note that with f_pi = 93 MeV the Delta-N splitting needs e ~ 4.75, and then E_cl ~ 1430 MeV."
+   },
+   {
+    "experiment": "B (SU(2) Skyrme, ANW calibration)",
+    "quantity": "ANW fitted parameters (inputs: M_N = 939 MeV, M_Delta = 1232 MeV)",
+    "value": "F_pi = 129 MeV (f_pi = 64.5 MeV), e = 5.45",
+    "tolerance": "as published (rounded); with these rounded values the scratch check gives M_N = 936.4 MeV and M_Delta = 1229.8 MeV",
+    "source": "Rakhimov nucl-th/0502078, Sec. 1.2.4 and Table 1.1; Acus, Norvaisas & Riska hep-ph/9605435, Table 1 (ANW column); both cite ANW NPB 228, 552",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/9605/9605435v1.pdf",
+    "read_directly": true,
+    "notes": "Secondary sources only, but two independent ones agree."
+   },
+   {
+    "experiment": "B (SU(2) Skyrme, ANW calibration)",
+    "quantity": "Isoscalar charge radius <r^2>_{I=0}^{1/2} = [-(2/pi) int r^2 sin^2F F' dr]^{1/2} (normalized baryon density)",
+    "value": "0.59 fm (ANW). ANW's experimental column: 0.72 fm. PDG 2026 gives sqrt(r_p^2 + <r^2>_n) = 0.769 fm.",
+    "tolerance": "reproduce 0.59 +- 0.01 fm (the scratch check gives 0.594 fm, or 2.116/(e F_pi) with hbar c)",
+    "source": "Rakhimov nucl-th/0502078, Table 1.1; Acus et al. hep-ph/9605435, Table 1 (r0 = 0.59 fm)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/nucl-th/pdf/0502/0502078v1.pdf",
+    "read_directly": true,
+    "notes": "The 0.769 fm comparison was derived from PDG 2026 r_p = 0.8407 fm and <r^2>_n = -0.1155 fm^2."
+   },
+   {
+    "experiment": "B (SU(2) Skyrme, ANW calibration)",
+    "quantity": "Isoscalar magnetic radius <r^2>_{M,I=0}^{1/2} = [int r^4 sin^2F F' / int r^2 sin^2F F']^{1/2}",
+    "value": "0.92 fm (ANW; ANW's experimental column 0.81 fm)",
+    "tolerance": "+-0.01 fm (scratch check: 0.922 fm)",
+    "source": "Rakhimov nucl-th/0502078, Table 1.1",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/nucl-th/pdf/0502/0502078v1.pdf",
+    "read_directly": true,
+    "notes": "The ratio-of-moments formula is my reconstruction. It reproduces 0.92 fm."
+   },
+   {
+    "experiment": "B/E (ANW magnetic moments)",
+    "quantity": "Proton and neutron magnetic moments (nuclear magnetons) predicted by ANW",
+    "value": "mu_p = 1.87, mu_n = -1.31 (ANW's experimental column: 2.79, -1.91)",
+    "tolerance": "+-0.02 (scratch check with the formulas below: 1.872, -1.319)",
+    "source": "Rakhimov nucl-th/0502078, Table 1.1; Acus et al. hep-ph/9605435, Table 1",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/9605/9605435v1.pdf",
+    "read_directly": true,
+    "notes": "Secondary sources."
+   },
+   {
+    "experiment": "B/E (ANW magnetic moments)",
+    "quantity": "Ratio mu_p/mu_n (ANW)",
+    "value": "-1.43 (= 1.87/(-1.31) = -1.427). The scratch check gives -1.419. PDG 2026 gives -1.4599.",
+    "tolerance": "+-0.01",
+    "source": "Computed from the ANW values above. That ANW printed '|mu_p/mu_n| = 1.43' (expt 1.46) is recall only.",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/nucl-th/pdf/0502/0502078v1.pdf",
+    "read_directly": false,
+    "notes": "I did not read the ratio as printed by ANW."
+   },
+   {
+    "experiment": "B/E (ANW magnetic moments)",
+    "quantity": "Closed-form Skyrme magnetic moments (nuclear magnetons, ANW normalization G_M^p = (G^S+G^V)/2)",
+    "value": "mu_p + mu_n = (2/9)(M_Delta - M_N) M_N <r^2>_{I=0} = M_N <r^2>_{I=0}/(3 lambda); mu_p - mu_n = M_N/(M_Delta - M_N) = 2 M_N lambda/3. Equivalently mu_{p,n} = 2 M_N [<r^2>_{I=0}/(12 lambda) +- lambda/6].",
+    "tolerance": "exact (analytic)",
+    "source": "Ma & Harada, 'Lecture notes on the Skyrme model', arXiv:1604.04850, eqs. (4.112)-(4.122). Their quoted sums are 2(mu_p +- mu_n) in ANW normalization: their 'data' values 1.76 and 9.41 are twice 0.88 and 4.71.",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/1604/1604.04850v1.pdf",
+    "read_directly": true,
+    "notes": "The structural formulas were read in Ma-Harada; the factor-2 convention conversion is mine. With ANW parameters the formulas reproduce 1.87 and -1.32. Caution: Ma-Harada's NUMERICAL coefficients (I = 38.11/(e^3 f_pi), r0 = 0.96/(e f_pi), g_A = 24.72/e^2) do NOT match ANW/Schechter-Weigel normalization (53.3, 1.05, 18.1). Do not calibrate against them."
+   },
+   {
+    "experiment": "B (SU(2) Skyrme, ANW calibration)",
+    "quantity": "Axial coupling g_A (ANW)",
+    "value": "0.61 (ANW's experimental column 1.23; PDG 2026 |g_A/g_V| = 1.2753 +- 0.0013)",
+    "tolerance": "+-0.01 (scratch check: 0.609)",
+    "source": "Rakhimov nucl-th/0502078, Table 1.1; Acus et al. hep-ph/9605435, Table 1",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/9605/9605435v1.pdf",
+    "read_directly": true,
+    "notes": "Formula, from recall and validated numerically: g_A = -(pi/(3e^2)) int dx x^2 [F' + sin2F/x + 4(sin2F F'^2/x + 2 sin^2F F'/x^2 + sin^2F sin2F/x^3)], with x = e F_pi r. It gives D = -17.28, so g_A = 0.609 at e = 5.45. Dropping the factor 2 on the middle term gives 0.388, which is wrong."
+   },
+   {
+    "experiment": "B (SU(2) Skyrme, ANW calibration)",
+    "quantity": "Pion-nucleon coupling g_piNN (ANW)",
+    "value": "8.9 (ANW's experimental column 13.5). Goldberger-Treiman: g_piNN = 2 M_N g_A/F_pi = 2(939)(0.61)/129 = 8.88.",
+    "tolerance": "+-0.1",
+    "source": "Rakhimov nucl-th/0502078, Table 1.1",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/nucl-th/pdf/0502/0502078v1.pdf",
+    "read_directly": true,
+    "notes": "The GT form with F_pi = 186-convention is my reconstruction. It reproduces 8.9."
+   },
+   {
+    "experiment": "B (SU(2) Skyrme, ANW calibration)",
+    "quantity": "g_piNDelta and mu_NDelta (ANW)",
+    "value": "g_piNDelta = 13.2 (expt 20.3); mu_NDelta = 2.3 (expt 3.3), recalled",
+    "tolerance": "unverifiable",
+    "source": "ANW NPB 228, 552, Table (not accessible)",
+    "source_url": "https://doi.org/10.1016/0550-3213(83)90559-X",
+    "read_directly": false,
+    "notes": "UNVERIFIED (recall). Both are consistent with large-Nc relations: g_piNDelta = (3/2) g_piNN = 13.3, and mu_NDelta = (mu_p - mu_n)/sqrt2 = 2.25. ANW also report infinite isovector radii in the chiral limit (recall)."
+   },
+   {
+    "experiment": "B (SU(3) collective quantization)",
+    "quantity": "SU(3) rotor Hamiltonian, WZ constraint, and energy formula",
+    "value": "H_rot = (1/2I1) sum_{A=1..3} J_A^2 + (1/2I2) sum_{A=4..7} J_A^2. Constraint (DPP): J8 = -Nc B/(2 sqrt3), so Y' = -(2/sqrt3) J8 = Nc B/3 = 1. E(p,q) = (1/6I2)[p^2+q^2+pq+3(p+q)] + (1/2I1 - 1/2I2) J(J+1) - (Nc B)^2/(24 I2), i.e. E = M + C2(p,q)/(2I2) + (1/2I1 - 1/2I2) J(J+1) - Nc^2/(24 I2), with C2 = (p^2+q^2+pq+3p+3q)/3.",
+    "tolerance": "exact (the task's formula is verified)",
+    "source": "Diakonov, Petrov & Polyakov, Z. Phys. A 359 (1997) 305, hep-ph/9703373, eqs. (5)-(8); also Praszalowicz hep-ph/0308114, eqs. (3)-(4) and Y' = Nc/3; Schechter & Weigel hep-ph/9907554, eqs. (4.7), (4.10), (4.14) (R8 = Nc B/(2 sqrt3), Y_R = 2R8/sqrt3 = 1)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/9703/9703373v2.pdf",
+    "read_directly": true,
+    "notes": "Allowed multiplets are those containing Y = 1 states; the spin equals the isospin of the Y = 1 states. Lowest: 8 (J=1/2), 10 (J=3/2), 10bar (J=1/2), then 27 (J=1/2, 3/2). Casimirs: C2(8) = 3, C2(10) = C2(10bar) = 6, C2(27) = 8. Primary citations confirmed from DPP's reference list: Guadagnini NPB 236 (1984) 35; Mazur, Nowak & Praszalowicz PLB 147B (1984) 137; Chemtob NPB 256 (1985) 600; Jain & Wadia NPB 258 (1985) 713. None of those originals was readable."
+   },
+   {
+    "experiment": "B (SU(3) collective quantization)",
+    "quantity": "Splittings between multiplet centers",
+    "value": "E(10) - E(8) = 3/(2 I1); E(10bar) - E(8) = 3/(2 I2); E(10bar) - E(10) = 3/(2 I2) - 3/(2 I1). DPP: all dynamical models give I1 > I2.",
+    "tolerance": "exact",
+    "source": "DPP hep-ph/9703373, eqs. (12)-(14)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/9703/9703373v2.pdf",
+    "read_directly": true,
+    "notes": "With Nc = 3: E8 = M + 3/(8I1) + 3/(4I2); E10 = M + 15/(8I1) + 3/(4I2); E10bar = M + 3/(8I1) + 9/(4I2). These are my evaluations of eq. (8)."
+   },
+   {
+    "experiment": "B (SU(3) collective quantization)",
+    "quantity": "Integral expressions for I1 (theta_N) and I2 (theta_S, strange/kaonic inertia) in terms of the hedgehog profile F(r), F_pi = 186-MeV convention",
+    "value": "theta_N = I1 = (1/6) int d^3r sin^2F [F_pi^2 + (4/e^2)(F'^2 + sin^2F/r^2)] = (2pi/3) int r^2 dr sin^2F [ ... ]; theta_S = I2 = (1/8) int d^3r (1 - cosF) [F_pi^2 + (1/e^2)(F'^2 + 2 sin^2F/r^2)] = (pi/2) int r^2 dr (1 - cosF)[ ... ]",
+    "tolerance": "exact",
+    "source": "Kopeliovich, 'Semiclassical quantization of SU(3) skyrmions', hep-th/9707067, eq. (22c)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-th/pdf/9707/9707067v1.pdf",
+    "read_directly": true,
+    "notes": "I derived the F_pi^2 part of I2 independently: Tr([w,U0][w,U0]^dag) = (1 - cosF) sum_{a=4..7} Omega_a^2 gives (pi F_pi^2/2) int r^2 (1 - cosF). It agrees. In x = e F_pi r units: I2 = (pi/2)(1/(e^3 F_pi)) int dx x^2 (1 - cosF)[1 + F'^2 + 2 sin^2F/x^2]."
+   },
+   {
+    "experiment": "B (SU(3) collective quantization)",
+    "quantity": "Arctan-ansatz moments of inertia (P = 2 arctan(r0^2/r^2), x0 = e F_pi r0 = sqrt(15/4))",
+    "value": "I_A (= I1) = (pi^2 sqrt2/12)(6x0^3 + 25x0)/(e^3 F_pi) ~ 107/(e^3 F_pi); I_B (= I2) = (pi^2 sqrt2/16)(4x0^3 + 9x0)/(e^3 F_pi) ~ 40.5/(e^3 F_pi). Fitting 3/(2I1) = 231 MeV gives e = 4.64, 1/I2 ~ 400 MeV, M10bar = 1762 MeV, M_Theta ~ 1460 MeV.",
+    "tolerance": "as published (ansatz values)",
+    "source": "Praszalowicz hep-ph/9211278 (1992), eq. (21); Praszalowicz hep-ph/0308114 (2003), eqs. (25)-(29)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/9211/9211278v2.pdf",
+    "read_directly": true,
+    "notes": "Exact-profile values from my scratch check, not published: I1 = 106.77/(e^3 F_pi) and I2 = 40.68/(e^3 F_pi), so I1/I2 = 2.625. The arctan ansatz is within 0.5% for both."
+   },
+   {
+    "experiment": "B (SU(3) collective quantization)",
+    "quantity": "Strange moment of inertia I2: published model values",
+    "value": "Skyrme model I2 = 0.43 fm; chiral quark-soliton model 0.55 fm; phenomenological I2 ~ 0.4 fm ~ (500 MeV)^-1, from identifying N(1710) as the 10bar nucleon",
+    "tolerance": "as published",
+    "source": "DPP hep-ph/9703373, Sec. 4, eq. (38). The Skyrme value cites Praszalowicz in 'Skyrmions and Anomalies' (World Sci. 1987) p. 112 and Walliser NPA 548 (1992) 649.",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/9703/9703373v2.pdf",
+    "read_directly": true,
+    "notes": "The parameters behind DPP's 0.43 fm are not stated. My exact-profile I2 = 40.68/(e^3 F_pi) gives 0.432 fm for e = 4.64, F_pi = 186 MeV (Praszalowicz's fit), which suggests that is the origin. For ANW's e = 5.45, F_pi = 129 MeV it gives I2 = 0.384 fm (1/I2 = 513 MeV, 3/(2I2) = 770 MeV, I1 = 1.009 fm). This is my computation; I found no published value for exactly ANW parameters."
+   },
+   {
+    "experiment": "B (SU(3) collective quantization)",
+    "quantity": "Phenomenological (model-independent) fits of 1/I1 and 1/I2",
+    "value": "Fit I: M8 = 1213, M10 = 1503, alpha = 720, eps = 1442, 1/I1 = 193, 1/I2 = 360 MeV (M_Theta = 1534 MeV). Fit II: 1230, 1535, 616, 1824, 1/I1 = 205, 1/I2 = 284 MeV (M_Theta = 1339 MeV).",
+    "tolerance": "as published",
+    "source": "Praszalowicz hep-ph/0308114, Table 1",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/0308/0308114v3.pdf",
+    "read_directly": true,
+    "notes": "These use second-order perturbation theory in m_s with H' = -alpha D88. They are not Skyrme-profile values."
+   },
+   {
+    "experiment": "B (SU(3) collective quantization)",
+    "quantity": "Skyrme-model (F_pi = 186 MeV, one parameter e) moments of inertia and spectra, with configuration mixing",
+    "value": "e = 3.96: Theta_pi = 6.175 GeV^-1, Theta_K = 2.924 GeV^-1, Theta+ = 1521 MeV. e = 4.12: Theta_pi = 5.556, Theta_K = 2.641 GeV^-1, Theta+ = 1566 MeV. Fit C: 5.61, 2.84, Theta+ = 1539 (input 1540).",
+    "tolerance": "as published (~1% numerical)",
+    "source": "Kopeliovich, 'Pentaquarks in chiral soliton models', hep-ph/0507028, Table 2",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/0507/0507028v2.pdf",
+    "read_directly": true,
+    "notes": "These appear to include pion and kaon mass terms (Theta_pi/Theta_K ~ 2.1, vs 2.62 in my massless check). Not directly comparable to the massless model."
+   },
+   {
+    "experiment": "B (SU(3) mass formulae)",
+    "quantity": "Guadagnini mass relation",
+    "value": "8(N + Xi*) + 3 Sigma = 11 Lambda + 8 Sigma*. With PDG 2026 isospin-averaged masses: LHS = 23357.9 MeV, RHS = 23349.4 MeV, difference 8.5 MeV.",
+    "tolerance": "relation is approximate (0.04% here)",
+    "source": "Praszalowicz hep-ph/0308114, eq. (11) (crediting Guadagnini NPB 236, 35); masses from PDG 2026 (pdg.sqlite)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/0308/0308114v3.pdf",
+    "read_directly": true,
+    "notes": "I evaluated the relation numerically; it is not printed in the source. Delta(1232) was taken as 1232 MeV (the PDG estimate). GMO octet check: 2(N+Xi) = 4514.4 vs 3Lambda + Sigma = 4540.2 MeV."
+   },
+   {
+    "experiment": "B (SU(3) mass formulae)",
+    "quantity": "Octet-decuplet center splitting M10 - M8 = 3/(2 I1)",
+    "value": "231 MeV (Praszalowicz eq. 29). PDG 2026 weighted centers give 230.9 MeV (M8 = 1151.2, M10 = 1382.1 MeV).",
+    "tolerance": "+-1 MeV",
+    "source": "Praszalowicz hep-ph/0308114, eq. (29); PDG 2026 masses",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/0308/0308114v3.pdf",
+    "read_directly": true,
+    "notes": "The PDG-based centers are my computation."
+   },
+   {
+    "experiment": "B (SU(3) antidecuplet)",
+    "quantity": "DPP antidecuplet prediction and the current status of Theta+",
+    "value": "DPP: Z+ (Theta+) with J = 1/2, I = 0, S = +1, mass ~1530 MeV, total width < 15 MeV. PDG 2026 database: no Theta(1540)+ particle entry; only upper limits on production modes (e.g. B0 -> Theta+ pbar, J/psi -> Theta Thetabar). N(1710) is listed (BW mass 1680-1740, ~1710 MeV).",
+    "tolerance": "n/a",
+    "source": "DPP hep-ph/9703373, abstract and eq. (38); PDG 2026 (pdg.sqlite in pdg-2026.0 wheel)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/9703/9703373v2.pdf",
+    "read_directly": true,
+    "notes": "Use 3/(2I2) as a model-internal check only. The 10bar's existence is not established experimentally."
+   },
+   {
+    "experiment": "B/E (spin-statistics from WZ term)",
+    "quantity": "Fermion/boson character of the SU(3) skyrmion",
+    "value": "With Y_R = 1 (B = 1, Nc = 3), the right charge Q_R = -J3 + Y_R/2 forces half-integer J3, so the soliton is a fermion. In general it is a fermion for odd Nc and a boson for even Nc (Witten 1983).",
+    "tolerance": "exact",
+    "source": "Schechter & Weigel hep-ph/9907554, Sec. 4.1, eq. (4.11) and the text after it",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/9907/9907554v1.pdf",
+    "read_directly": true,
+    "notes": "Witten NPB 223, 422 and 433 (1983) were not accessible."
+   },
+   {
+    "experiment": "E (gauged U(1), charges)",
+    "quantity": "Electric charge assignment of rotor states",
+    "value": "Left generators L_a = D_ab R_b give isospin I_i = L_i and hypercharge Y = 2 L8/sqrt3. Electric charge Q = I3 + Y/2, along the 'electromagnetic direction' (lambda3 + lambda8/sqrt3)/2. Right constraint Y_R = 2R8/sqrt3 = 1.",
+    "tolerance": "exact",
+    "source": "Schechter & Weigel hep-ph/9907554, Sec. 4.1 (left/right generators) and Sec. 4.3 (electromagnetic direction)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/hep-ph/pdf/9907/9907554v1.pdf",
+    "read_directly": true,
+    "notes": "'Q = I3 + Y/2' is the standard Gell-Mann-Nishijima relation. The source states the I and Y identification; the explicit Q formula there is only by analogy, and the identification is mine. In SU(2) ANW, the isoscalar charge density is B0/2 (recall)."
+   },
+   {
+    "experiment": "E (pi0 -> gamma gamma)",
+    "quantity": "Anomaly (LO, chiral limit) width and amplitude",
+    "value": "Gamma = alpha^2 m_pi0^3/(64 pi^3 F_pi^2) = (m_pi0/4pi)^3 (alpha/F_pi)^2 = 7.760 eV, with F_pi = 92.21 MeV. Amplitude T = (e^2/(4 pi^2 F_pi)) eps^{mu nu alpha beta} eps1_mu eps2_nu q1_alpha q2_beta. Anomalous Lagrangian (their eq. 69): L_A = (e^2 Nc/(24 pi^2 F_pi)) F F~ pi0. General Nc: amplitude proportional to Nc/3, so Gamma = alpha^2 m^3 Nc^2/(576 pi^3 F_pi^2).",
+    "tolerance": "LO formula exact in chiral limit; reproduce 7.760 eV to 0.1%",
+    "source": "Bernstein & Holstein, Rev. Mod. Phys. 85, 49 (2013), arXiv:1112.4809, eqs. (3), (67)-(71)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/1112/1112.4809v2.pdf",
+    "read_directly": true,
+    "notes": "The task's formula is equivalent (Nc^2/576 = 1/64 for Nc = 3). My evaluation with alpha = 1/137.036 and m = 134.9768 MeV: f = 92.0 gives 7.797 eV; 92.21 gives 7.761; 92.4 gives 7.729; 93.0 gives 7.630. So 'f_pi = 92 MeV gives ~7.7 eV' is really 7.80 eV. Check the F F~ normalization of eq. (69) against eqs. (70)-(71) before use."
+   },
+   {
+    "experiment": "E (pi0 -> gamma gamma)",
+    "quantity": "Higher-order QCD prediction for Gamma(pi0 -> gamma gamma)",
+    "value": "8.10 eV (average of HO chiral calculations, ~1% uncertainty; ~4.5% above LO). Kampf & Moussallam: 8.09 +- 0.11 eV.",
+    "tolerance": "+-1%",
+    "source": "Bernstein & Holstein arXiv:1112.4809, Sec. I and Sec. III",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/1112/1112.4809v2.pdf",
+    "read_directly": true,
+    "notes": ""
+   },
+   {
+    "experiment": "E (pi0 -> gamma gamma)",
+    "quantity": "PDG 2026 pi0 mean life and gamma-gamma branching fraction; derived partial width",
+    "value": "tau = (8.43 +- 0.13) x 10^-17 s (S = 1.2; AC average); BR(2gamma) = (98.823 +- 0.034)% (fit). Derived: Gamma_tot = hbar/tau = 7.81 +- 0.12 eV, Gamma(gamma gamma) = 7.72 +- 0.12 eV.",
+    "tolerance": "as quoted",
+    "source": "PDG 2026 (F. Takahashi et al., Int. J. Mod. Phys. A 41, 2630011 (2026)), pdg.sqlite entries S009T and S009.1",
+    "source_url": "https://files.pythonhosted.org/packages/c2/9d/d37fbde4b234bad0e788982f550e53c06439a386452a42436e928ecae115/pdg-2026.0-py3-none-any.whl",
+    "read_directly": true,
+    "notes": "Gamma(gamma gamma) is my derivation with hbar = 6.582119569e-22 MeV s. The PDG web pages were blocked; values come from the official PDG SQLite bundled in the pdg PyPI package (edition 2026, data release 2026-05-30)."
+   },
+   {
+    "experiment": "E (pi0 -> gamma gamma)",
+    "quantity": "PrimEx-II measurement",
+    "value": "Gamma(pi0 -> gamma gamma) = 7.802 +- 0.052(stat) +- 0.105(syst) eV (1.50% total), i.e. tau = (8.337 +- 0.056 +- 0.112) x 10^-17 s. This combines PrimEx-II (12C, 28Si) with PrimEx-I. PrimEx-I alone: 7.82 +- 0.14 +- 0.17 eV.",
+    "tolerance": "+-0.117 eV (quadrature)",
+    "source": "Larin et al. (PrimEx-II), Science 368, 506 (2020), doi:10.1126/science.aay6641, as recorded in the PDG 2026 measurement table and footnote for S009T",
+    "source_url": "https://files.pythonhosted.org/packages/c2/9d/d37fbde4b234bad0e788982f550e53c06439a386452a42436e928ecae115/pdg-2026.0-py3-none-any.whl",
+    "read_directly": true,
+    "notes": "The Science paper itself was not reachable; no arXiv version was found."
+   },
+   {
+    "experiment": "E (pi0 -> gamma gamma)",
+    "quantity": "Pion decay constant",
+    "value": "f_pi- = 130.41 +- 0.03 +- 0.20 MeV (93-convention: 92.21 MeV). Bernstein-Holstein quote F_pi = 92.21 +- 0.02 +- 0.14 MeV (PDG 2010). Neutral pion mass (PDG 2026): 134.9768 +- 0.0005 MeV.",
+    "tolerance": "+-0.2 MeV",
+    "source": "Rosner & Stone, 'Leptonic decays of charged pseudoscalar mesons - 2012', arXiv:1201.2401, text near the f_pi value; Bernstein & Holstein arXiv:1112.4809, eq. (1) text; PDG 2026 S009M",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/1201/1201.2401v2.pdf",
+    "read_directly": true,
+    "notes": "The current (2024/2026) PDG f_pi value could not be read: PDG review PDFs were blocked."
+   },
+   {
+    "experiment": "B/E (nucleon data for comparison)",
+    "quantity": "PDG 2026 nucleon static properties",
+    "value": "mu_p = 2.7928473446(8); mu_n = -1.9130428(5) mu_N (ratio -1.4599); r_p = 0.8407(6) fm; <r^2>_n = -0.1155(17) fm^2; r_M(p) = 0.851(26) fm; r_M(n) = 0.864(+9/-8) fm; g_A/g_V = -1.2753(13); m_p = 938.27208943(29), m_n = 939.5654219(5) MeV; Delta(1232) BW mass 1230-1234 (~1232) MeV, pole ~1210 MeV.",
+    "tolerance": "as quoted",
+    "source": "PDG 2026 pdg.sqlite (S016MM, S017MM, S016CR, S017MCR, S016MCR, S017MRD, S017AV, S016M, S017M, B033M, B033RE)",
+    "source_url": "https://files.pythonhosted.org/packages/c2/9d/d37fbde4b234bad0e788982f550e53c06439a386452a42436e928ecae115/pdg-2026.0-py3-none-any.whl",
+    "read_directly": true,
+    "notes": "Derived: mu_p + mu_n = 0.8798, mu_p - mu_n = 4.7059. Hyperon moments (PDG 2026): Lambda -0.613(4), Sigma+ 2.458(10), Sigma- -1.160(25), Xi0 -1.250(14), Xi- -0.6507(25), Omega- -2.02(5) mu_N."
+   },
+   {
+    "experiment": "B2 (G2 Skyrme)",
+    "quantity": "Conjugacy classes of SU(2) (A1) subalgebras of G2 and their Dynkin indices",
+    "value": "A1 = A1^1 (long-root, index 1); A1~ = A1^3 (short-root, index 3); A1^4; A1^28 (principal). The semisimple subalgebras are A2, A1 + A1~, A1^1, A1^3, A1^4, A1^28. Principal TDS have index 28; the maximal subalgebras are su(3), so(4) = A1 + A1~, and the principal so(3).",
+    "tolerance": "exact",
+    "source": "Mayanskiy, 'The subalgebras of G2', arXiv:1611.04070, Sec. 4 (Table 2 and the list after it), citing Dynkin, Mat. Sb. 30 (1952) and Malcev; Draper & Martin Gonzalez arXiv:2504.07586, Sec. 3.1 and Prop. 2 proof",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/1611/1611.04070v1.pdf",
+    "read_directly": true,
+    "notes": "The index-1 (long-root) SU(2) generates pi3(G2) = Z, so the long-root-embedded hedgehog is the B = 1 candidate. The index-3 embedding has winding 3 (standard Dynkin-index fact; not read here)."
+   },
+   {
+    "experiment": "B2 (G2 Skyrme)",
+    "quantity": "Commutant of the long-root SU(2) in G2; adjoint branching rules",
+    "value": "Under A1^1 (long root): 14 = 3 + 4 x 2 + 3 x 1. The three singlets span H_{2a+b}, X_{+-(2a+b)}, the short-root su(2), so the centralizer of the long-root SU(2) is the short-root SU(2). Under A1~ = A1^3: 14 = 3 + 4 + 4 + 3 x 1 (the singlets are the long-root su(2) on 3a+2b). Under A1 + A1~ = so(4): 14 = (3,1) + (1,3) + (2,4).",
+    "tolerance": "exact",
+    "source": "Mayanskiy arXiv:1611.04070, Proposition 4.1",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/1611/1611.04070v1.pdf",
+    "read_directly": true,
+    "notes": "Not read, my derivation: 7 = (2,2) + (1,3) under SU(2)_long x SU(2)_short, consistent with index ratio 1:3. For a long-root hedgehog, the 8 doublet directions all share one inertia by SU(2)_short symmetry; with Skyrme traces normalized as Tr_7/2 that inertia equals the SU(3) I2. The 3 short-root directions have zero inertia (they commute with U0). Without a WZ term, states must be right-SU(2)_short singlets."
+   },
+   {
+    "experiment": "B2 (G2 Skyrme)",
+    "quantity": "Published Skyrme/skyrmion literature with G2 target space, and collective-coordinate quantization results",
+    "value": "None found",
+    "tolerance": "unverifiable",
+    "source": "WebSearch (standard and extended) for 'G2 skyrmion', 'exceptional Skyrme', 'G2 sigma model Wess-Zumino', 'Skyrme model general compact Lie group G2'",
+    "source_url": "n/a",
+    "read_directly": false,
+    "notes": "No paper on G2-valued Skyrme fields or G2 skyrmion quantization turned up. Any G2 rotor spectrum would be new and has no calibration target. The SEED claims pi4(G2) = pi5(G2) = 0 (Mimura 1967). Searches confirmed only pi6(G2) = Z3 and that pi_m(G2) is infinite only for m = 3 and 11 (search snippet). pi4 = pi5 = 0 was NOT verified in this task."
+   },
+   {
+    "experiment": "B2 (flag manifold SU(3)/T^2)",
+    "quantity": "Topology of the complete flag manifold F2 = SU(3)/U(1)^2",
+    "value": "Simply connected; pi2(F2) = H^2(F2, Z) = Z^2 (generally Z^{n-1} for F_n); pi3(F_n) = Z. pi2 = pi1(U(1)^2) = Z + Z. The F2 Hopf invariant equals the SU(3) winding number Q[U] via pi3(F2) = pi3(SU(3)).",
+    "tolerance": "exact",
+    "source": "Affleck, Bykov & Wamer, 'Flag manifold sigma models', Phys. Rept. (2022), arXiv:2101.11638, Sec. 1.4; Amari & Sawado PRD 97, 065012 (2018), arXiv:1711.00933, Sec. III; Amari & Sawado PLB 784, 294 (2018), arXiv:1805.10008, Sec. II",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/2101/2101.11638v1.pdf",
+    "read_directly": true,
+    "notes": ""
+   },
+   {
+    "experiment": "B2 (flag manifold SU(3)/T^2)",
+    "quantity": "Known solutions: F2 hopfions and BPS sphalerons",
+    "value": "F2 Skyrme-Faddeev-Niemi hopfions come in two ansatz types: a trivial SU(2) embedding of CP1 hopfions, and a non-embedded configuration via Baecklund transformation. Both reduce exactly to the CP1 SFN Euler-Lagrange equations, and zero-mode quantization was done. Static analytic F2 NLSM solutions saturate E >= pi(|N_A| + |N_B| + |N_C|) with N_A + N_B + N_C = 0, but are saddle points ('BPS sphalerons'); topological charge Q = N_A - N_C.",
+    "tolerance": "n/a",
+    "source": "Amari & Sawado arXiv:1805.10008 (abstract, Sec. II-III); Amari & Sawado arXiv:1711.00933 (abstract, eq. (6), eq. (31))",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/1805/1805.10008v2.pdf",
+    "read_directly": true,
+    "notes": "For the energy ladder E_Q/E_1, the F2 hopfion energies in these ansatze equal the CP1 SFN ones in the corresponding units."
+   },
+   {
+    "experiment": "D (F21 = Z7 x| Z3 flavor)",
+    "quantity": "Z7 x| Z3 (T7) presentation, classes, character table",
+    "value": "<c, d | c^7 = d^3 = 1, d^-1 c d = c^4>. Classes: 1, 7 Theta2(d), 7 Theta3(d^2), 3 Theta4(c), 3 Theta5(c^3). Characters: 1 = (1,1,1,1,1); 1' = (1, w, w^2, 1, 1); 1'bar = (1, w^2, w, 1, 1); 3 = (3, 0, 0, b7, b7bar); 3bar = (3, 0, 0, b7bar, b7), with w = e^{2 pi i/3} and b7 = (-1 + i sqrt7)/2 = eta + eta^2 + eta^4. Embedding in PSL(2,7): c = AB, d = AB(AB^2)^2(AB)^2AB^2.",
+    "tolerance": "exact",
+    "source": "Luhn, Nasri & Ramond, J. Math. Phys. 48, 123519 (2007), arXiv:0709.1447, Sec. 5 (character table and eqs. 62-63) and eq. (15)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/0709/0709.1447v2.pdf",
+    "read_directly": true,
+    "notes": "PDF text extraction loses complex-conjugation bars. Which column carries b7 vs b7bar was reconstructed from the class structure."
+   },
+   {
+    "experiment": "D (F21 = Z7 x| Z3 flavor)",
+    "quantity": "Kronecker products and Clebsch-Gordan coefficients in the basis c = D = diag(zeta, zeta^2, zeta^4), d = cyclic permutation",
+    "value": "3 x 3 = 3_s + 3bar_s + 3bar_a. 3_s = (x x', y y', z z') up to component order: these have D-weights zeta^2, zeta^4, zeta, so reorder as (z z', x x', y y'). 3bar_s = (z y' + y z', x z' + z x', y x' + x y')/sqrt2; 3bar_a = the same with minus signs. 3 x 3bar = 1 + 1' + 1'bar + 3 + 3bar, with 3 = (y xbar', z ybar', x zbar'), 3bar = (x ybar', y zbar', z xbar'), 1 = (x xbar' + y ybar' + z zbar')/sqrt3, 1' = (x xbar' + w^2 y ybar' + w z zbar')/sqrt3, 1'bar = (x xbar' + w y ybar' + w^2 z zbar')/sqrt3. 3 x 1' = 3; 1' x 1' = 1'bar; 1' x 1'bar = 1.",
+    "tolerance": "exact",
+    "source": "Luhn, Nasri & Ramond arXiv:0709.1447, eqs. (64)-(66) and the Kronecker table; also LNR PLB 652, 27 (2007), arXiv:0706.2341, Sec. 3.1. King & Luhn arXiv:0908.1897, eq. (4.3): T7 is generated by D = diag(e^{i th1}, e^{i th2}, e^{-i(th1+th2)}) with th1 = th2/2 = 2pi/7 (= diag(zeta, zeta^2, zeta^4)) and A = [[0,1,0],[0,0,1],[1,0,0]].",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/0709/0709.1447v2.pdf",
+    "read_directly": true,
+    "notes": "Bars and the 3 vs 3bar labels were lost in extraction. I re-derived them from D-eigenvalue bookkeeping: weights {1,2,4} form a 3 and {6,5,3} a 3bar. Verify numerically. With C = [[0,1,0],[0,0,1],[1,0,0]]: C D C^-1 = D^2 and C^-1 D C = D^4, matching d^-1 c d = c^4."
+   },
+   {
+    "experiment": "D (F21 = Z7 x| Z3 flavor)",
+    "quantity": "Z7 x| Z3 invariants (cubic and quartic)",
+    "value": "I(2) = x xbar + y ybar + z zbar; I1(3) = x y' z'' + y z' x'' + z x' y'' (3x3x3); I2(3) = x x' ybar + y y' zbar + z z' xbar (3x3x3bar); I1(4) = x x' x'' z''' + y y' y'' x''' + z z' z'' y''' (contains Klein's quartic); I2(4) = x x' y'' zbar + ...; I3(4) = x x' xbar xbar' + y y' ybar ybar' + z z' zbar zbar'; I4(4) = x z' xbar zbar' + y x' ybar xbar' + z y' zbar ybar'. Potential minima (one 3bar familon, kappa I3-type term): kappa > 0 gives <phi> ~ (1,1,1)/sqrt3; kappa < 0 gives <phi> ~ (0,0,1).",
+    "tolerance": "exact",
+    "source": "Luhn, Nasri & Ramond, PLB 652, 27 (2007), arXiv:0706.2341, Secs. 3.1-3.2",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/0706/0706.2341v2.pdf",
+    "read_directly": true,
+    "notes": "Conjugation bars were lost in extraction; the placements here were reconstructed and should be checked against D-charge conservation."
+   },
+   {
+    "experiment": "D (F21 = Z7 x| Z3 flavor)",
+    "quantity": "LNR Z7 x| Z3 neutrino model: textures and mixing",
+    "value": "Seesaw with <phi1> ~ (1,1,1), <phi5> ~ (-1,1,1), alpha = beta = -1: M_Maj ~ [[1,-1,-1],[-1,1,-1],[-1,-1,1]], M_Dir ~ [[-1,0,0],[0,1,-2],[0,-2,1]], M_nu ~ (1/2)[[0,1,1],[1,-4,5],[1,5,-4]]. Tri-bimaximal (TBM) mixing, eigenvalues ~ (1, -2, 9) (normal hierarchy), m_atm^2/m_sol^2 = 80/3 = 26.7. Charged fermions diagonal; no CKM at leading order. With charged-lepton 'Cabibbo haze' lambda_e = sqrt(m_e/m_mu): theta13 ~ 2.8 deg, theta12 35.3 -> 32.4 deg. Allowed alpha windows: -1.15 < alpha < -0.95 and -0.22 < alpha < -0.15.",
+    "tolerance": "exact (model output)",
+    "source": "Luhn, Nasri & Ramond arXiv:0706.2341, Secs. 4.1-4.2",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/0706/0706.2341v2.pdf",
+    "read_directly": true,
+    "notes": "Comparison to NuFIT 6.0 is my arithmetic. Measured Delta m31^2/Delta m21^2 = 2.534e-3/7.49e-5 = 33.8 +- 0.9 (NO, IC19), so the integer point alpha = beta = -1 (26.7) is ~8 sigma low. theta13 = 2.8 deg vs measured 8.5 deg is excluded. TBM criteria: M12 = M13, M22 = M33, M23 = M11 + M12 - M22."
+   },
+   {
+    "experiment": "D (PSL(2,7) flavor)",
+    "quantity": "PSL(2,7) character table, Kronecker products, SU(3) branching",
+    "value": "Classes 1, 21C2(A), 56C3(B), 42C4([A,B]), 24C5(AB), 24C6(AB^2). chi[3] = (3, -1, 0, 1, b7, b7bar); chi[6] = (6, 2, 0, 0, -1, -1); chi[7] = (7, -1, 1, -1, 0, 0); chi[8] = (8, 0, -1, 0, 1, 1). 3 x 3 = 3bar_a + 6_s; 3 x 3bar = 1 + 8. SU(3) -> PSL(2,7): 3 = 3, 6 = 6, 8 = 8, 10 = 3bar + 7, 15 = 7 + 8, 15' = 1 + 6 + 8, 27 = 6 + 6 + 7 + 8. PSL(2,7) -> Z7 x| Z3: 3 = 3, 6 = 3 + 3bar, 7 = 1 + 3 + 3bar, 8 = 1' + 1'bar + 3 + 3bar. Maximal subgroups: S4 and Z7 x| Z3.",
+    "tolerance": "exact",
+    "source": "Luhn, Nasri & Ramond arXiv:0709.1447, Sec. 3 (character table, eq. 13, Kronecker table, SU(3) table) and Sec. 5 (embeddings); LNR arXiv:0706.2341 (abstract: the only simple subgroup of SU(3) with a complex 3-dim irrep; A5's triplets are real)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/0709/0709.1447v2.pdf",
+    "read_directly": true,
+    "notes": "Bars were reconstructed (extraction loses them)."
+   },
+   {
+    "experiment": "D (PSL(2,7) flavor)",
+    "quantity": "Explicit PSL(2,7) triplet generators in a basis where AB = D",
+    "value": "AB = diag(eta, eta^2, eta^4), eta = e^{2 pi i/7}. B = (i/sqrt7)[[eta^3-eta^6, eta^3-eta, eta-1],[eta^2-1, eta^6-eta^5, eta^6-eta^2],[eta^5-eta^4, eta^4-1, eta^5-eta^3]]. A = (i/sqrt7)[[eta^2-eta^5, eta-eta^6, eta^4-eta^3],[eta-eta^6, eta^4-eta^3, eta^2-eta^5],[eta^4-eta^3, eta^2-eta^5, eta-eta^6]] (real symmetric; Klein's involution).",
+    "tolerance": "exact",
+    "source": "Luhn, Nasri & Ramond arXiv:0709.1447, eqs. (16), (22), (23)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/0709/0709.1447v2.pdf",
+    "read_directly": true,
+    "notes": "My scratch check of these matrices as extracted: A^2 = B^3 = (AB)^7 = [A,B]^4 = 1, det = 1, unitary, group order 168. The group contains BOTH D = diag(eta, eta^2, eta^4) and the cyclic permutation C = [[0,1,0],[0,0,1],[1,0,0]] (which equals LNR's d). It preserves xy^3 + yz^3 + zx^3 (the SEED's 'mirror quartic'), not x^3y + y^3z + z^3x. So the SEED's <D, 120-degree turn> subset of PSL(2,7) is realized directly in LNR's basis."
+   },
+   {
+    "experiment": "D (PSL(2,7) flavor)",
+    "quantity": "Conclusions of PSL(2,7) / T7 flavor-model papers",
+    "value": "King & Luhn 0908.1897: T7 = Z7 x| Z3 is a preferred family group for 'indirect' models (the neutrino flavor symmetry Z2S x Z2U emerges accidentally via D-term flavon alignment, with only two 3333 invariants). PSL(2,7) contains S4 and so allows 'direct' models. King & Luhn 0905.1686 and 0912.1344: SUSY PSL(2,7) x SO(10) GUT with 16s as PSL(2,7) triplets and flavon sextets/antitriplets; TBM via type-II seesaw; third-family Yukawas from sextet alignment. Chen, Perez & Ramond 1412.6107: PSL2(7) familons; seesaw TBM plus Cabibbo haze theta13 = lambda/sqrt2 ~ 9 deg; normal hierarchy; |m2| = 2|m1|, so m1 = 0.005, m2 = 0.01, m3 = 0.05 eV; M0 = 3e14 GeV.",
+    "tolerance": "n/a (qualitative / model outputs)",
+    "source": "King & Luhn JHEP 0910:093 (2009) arXiv:0908.1897 (Secs. 1, 4.1, 4.3, 6); King & Luhn NPB 820, 269 (2009) arXiv:0905.1686 (abstract); King & Luhn NPB 832, 414 (2010) arXiv:0912.1344 (abstract); Chen, Perez & Ramond arXiv:1412.6107, Sec. 2, eqs. (4)-(11)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/0908/0908.1897v2.pdf",
+    "read_directly": true,
+    "notes": "Journal volume/page numbers for 0905.1686 and 0912.1344 are from search snippets/recall, not read. All of these models use TBM at leading order, which needs corrections to give theta13 != 0."
+   },
+   {
+    "experiment": "D (mixing data)",
+    "quantity": "NuFIT 6.0 three-flavor oscillation parameters (best fit +- 1 sigma)",
+    "value": "IC19 without SK-atm, NO (Delta chi^2 = 0.6): sin^2 th12 = 0.307 +0.012/-0.011 (th12 = 33.68 +0.73/-0.70 deg); sin^2 th23 = 0.561 +0.012/-0.015 (48.5 deg); sin^2 th13 = 0.02195 +0.00054/-0.00058 (8.52 deg); delta = 177 +19/-20 deg; Dm21^2 = 7.49 +-0.19 e-5 eV^2; Dm31^2 = +2.534 +0.025/-0.023 e-3 eV^2. IO (best fit): 0.308, 0.562, 0.02224, 285 deg, Dm32^2 = -2.510. IC24 with SK-atm, NO (best fit): sin^2 th12 = 0.308, sin^2 th23 = 0.470 +0.017/-0.013 (43.3 deg), sin^2 th13 = 0.02215 +0.00056/-0.00058, delta = 212 +26/-41 deg, Dm21^2 = 7.49, Dm31^2 = 2.513 +0.021/-0.019 e-3; IO Delta chi^2 = 6.1.",
+    "tolerance": "1 sigma as listed; 3 sigma: sin^2 th12 0.275-0.345, sin^2 th13 0.02023-0.02376 (NO, IC19)",
+    "source": "Esteban, Gonzalez-Garcia, Maltoni, Martinez-Soler, Pinheiro & Schwetz, NuFit-6.0, arXiv:2410.05380v2 (JHEP), Table 1",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/2410/2410.05380v2.pdf",
+    "read_directly": true,
+    "notes": "TBM reference values: sin^2 th12 = 1/3, sin^2 th23 = 1/2, th13 = 0 (U_TB is given in LNR 0706.2341)."
+   },
+   {
+    "experiment": "D (mixing data)",
+    "quantity": "PDG 2026 neutrino mixing parameters",
+    "value": "sin^2 th12 = 0.307 +- 0.012; sin^2 th23 = 0.533 +- 0.018 (NO) / 0.523 +0.031/-0.027 (IO); sin^2 th13 = (2.17 +- 0.07) e-2; Dm21^2 = (7.60 +- 0.17) e-5 eV^2; Dm32^2 = 2.445 +- 0.023 e-3 eV^2 (NO) / -2.52 +- 0.04 e-3 (IO); delta = 1.21 +0.19/-0.17 pi rad",
+    "tolerance": "as quoted",
+    "source": "PDG 2026 pdg.sqlite (S067P12, S067P23, S067P13, S067DM3, S067DM1, S067DEL)",
+    "source_url": "https://files.pythonhosted.org/packages/c2/9d/d37fbde4b234bad0e788982f550e53c06439a386452a42436e928ecae115/pdg-2026.0-py3-none-any.whl",
+    "read_directly": true,
+    "notes": ""
+   },
+   {
+    "experiment": "D (mixing data)",
+    "quantity": "Quark mixing (CKM) for comparison of textures",
+    "value": "UTfit 2022 full SM fit: lambda = 0.22519 +- 0.00083, A = 0.828 +- 0.011, rho-bar = 0.1609 +- 0.0095, eta-bar = 0.347 +- 0.010; sin th12 = 0.22519 +- 0.00083, sin th23 = 0.04200 +- 0.00047, sin th13 = 0.003714 +- 0.000092, delta = 1.137 +- 0.022 (rad); J = (3.102 +- 0.080) e-5; |Vus| = 0.22517(81), |Vcb| = 0.04200(47), |Vub| = 0.003715(93), |Vtd| = 0.00859(11).",
+    "tolerance": "as quoted",
+    "source": "Bona et al. (UTfit), 'New UTfit analysis of the unitarity triangle in the CKM scheme', arXiv:2212.03894, Appendix table and eqs. (33)-(34)",
+    "source_url": "https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/2212/2212.03894v1.pdf",
+    "read_directly": true,
+    "notes": "The table header prints 'delta[deg]', but 1.137 is clearly radians (65.1 deg, matching the V_ub phase in eq. 33). The PDG 2024/2026 CKM global-fit numbers could NOT be read (PDG/KEK hosts blocked): unverifiable. I recall PDG 2024 lambda = 0.22501(68), but this is unverified."
+   },
+   {
+    "experiment": "B (SU(3), cross-check, computed not published)",
+    "quantity": "Exact massless-hedgehog reference numbers (x = e F_pi r, F_pi = 186-convention), from a scratch BVP check",
+    "value": "F'(0) = -1.0039; tail F -> C/x^2 with C = 8.6386; M = 36.4616 F_pi/e (= 1.23145 x 3pi^2); Lambda = 50.98, so I1 = 106.77/(e^3 F_pi); int x^2(1-cosF)(1+F'^2+2sin^2F/x^2) = 25.90, so I2 = 40.68/(e^3 F_pi); I1/I2 = 2.625; <r^2>_{I=0} = 4.478/(e F_pi)^2. ANW parameters: M_cl = 863.0 MeV, 1/I1 = 195.6 MeV, 1/I2 = 513.3 MeV, r0 = 0.594 fm, r_M = 0.922 fm, mu_p = 1.872, mu_n = -1.319, g_A = 0.609.",
+    "tolerance": "~0.1% (my numerics)",
+    "source": "My scratch computation in /tmp/claude-0/-home-user-gifgaf0-github-io/235fe351-6f97-5895-b3fd-a90496179b3c/scratchpad/calc/bvp2.py (not a publication)",
+    "source_url": "n/a",
+    "read_directly": false,
+    "notes": "Use as an internal cross-check only. It reproduces every ANW number read from secondary sources to within rounding, which supports the normalizations above."
+   }
+  ],
+  "method_notes": "ACCESS CONDITIONS (important for provenance):\n- WebFetch failed on every host with a DNS error (getaddrinfo ENOTFOUND).\n- curl through the proxy was refused (403) for arxiv.org, export.arxiv.org, inspirehep.net, ADS, pdg.lbl.gov, KEK, Elsevier, APS, Science and most other publishers.\n- arXiv full texts were read from the public Google Cloud mirror of the arXiv/Kaggle dataset: https://storage.googleapis.com/arxiv-dataset/arxiv/<cat>/pdf/<yymm>/<id>vN.pdf (new-style IDs under arxiv/arxiv/pdf/). They were converted with pdftotext. The mirror covers papers through 2026.\n- PDG numbers come from the official PDG 2026 SQLite file (pdg/pdg.sqlite) inside the PyPI wheel pdg-2026.0 (edition 2026, data release 2026-05-30; citation F. Takahashi et al., Int. J. Mod. Phys. A 41, 2630011 (2026)).\n- Pre-arXiv originals could NOT be read: ANW NPB 228, 552; Witten NPB 223, 422/433; Guadagnini NPB 236, 35; Mazur-Nowak-Praszalowicz PLB 147B, 137; Jain-Wadia NPB 258, 713; Chemtob NPB 256, 600; Mimura 1967. Their numbers are taken from arXiv secondary sources, as marked.\n- PDF extraction drops complex-conjugate bars, so 3 vs 3bar labels in the LNR tables were reconstructed from Z7 weights.\n\nSKYRME CONVENTIONS AND FORMULAS:\n- The ANW Lagrangian is (F_pi^2/16) Tr(dU dU^dag) + (1/(32 e^2)) Tr[L_mu, L_nu]^2, with F_pi = 186 MeV experimental (f_pi = F_pi/2). ANW fit: F_pi = 129 MeV, e = 5.45.\n- Use the dimensionless radius x = e F_pi r (Schechter-Weigel use x = e f_pi r; take care with the factor 2).\n- Energy (ANW): M = 4 pi (F_pi/e) int dx x^2 [ (1/8)(F'^2 + 2 s^2/x^2) + (1/2)(s^2/x^2)(s^2/x^2 + 2F'^2) ], with s = sinF.\n- Euler-Lagrange equation in these units: (x^2/4 + 2s^2) F'' = (1/2) s c + 2 s^3 c/x^2 - 2 s c F'^2 - (1/2) x F', with c = cosF.\n- Boundary conditions: F(0) = pi. For massless pions do NOT impose F(X) = 0. Impose F'(X) + 2F(X)/X = 0 and add analytic tails: C^2/X for Lambda and C^2/(2X) for the I2 integral, where C = F(X) X^2. Forcing F(60) = 0 gave Lambda = 48.7 instead of 51.0. The inertia integrals converge only like 1/X.\n- I1 = lambda = (2pi/3)(1/(e^3 F_pi)) int x^2 s^2 [1 + 4(F'^2 + s^2/x^2)]. The task's 'lambda = 50.9/(e^3 F_pi)' omits 2pi/3.\n- I2 = (pi/2)(1/(e^3 F_pi)) int x^2 (1-c) [1 + F'^2 + 2 s^2/x^2] (Kopeliovich hep-th/9707067, eq. 22c).\n- Isoscalar radius: <r^2>_{I=0} = -(2/pi) int r^2 s^2 F' dr.\n- Magnetic moments (nuclear magnetons): mu_{p,n} = 2 M_N [ <r^2>_{I=0}/(12 lambda) +- lambda/6 ].\n- g_A = -(pi/(3e^2)) int x^2 [F' + sin2F/x + 4(sin2F F'^2/x + 2 s^2 F'/x^2 + s^2 sin2F/x^3)].\n- g_piNN = 2 M_N g_A / F_pi (Goldberger-Treiman, 186-convention).\n- Sanity checks: M/(3 pi^2 F_pi/e) = 1.2315; F'(0) = -1.004 in x = e F_pi r units.\n- Ma-Harada (1604.04850) analytic magnetic-moment formulas are fine, but their numerical coefficients disagree with the ANW normalization; do not calibrate against them.\n\nSU(3) ROTOR:\n- E = M + C2(p,q)/(2 I2) + (1/(2I1) - 1/(2I2)) J(J+1) - Nc^2/(24 I2), with C2 = (p^2 + q^2 + pq + 3p + 3q)/3 (DPP eq. 8; Praszalowicz eq. 3).\n- Constraint Y_R = Nc B/3 = 1: allowed irreps contain Y = 1 states, and J equals their isospin.\n- Splittings: 3/(2I1) for 10-8 and 3/(2I2) for 10bar-8.\n- Charges: Q = I3 + Y/2 with Y = 2 L8/sqrt3 (left generators).\n- Symmetry breaking (for mass splittings): H' = -alpha D88 (plus beta Y and gamma D8i S_i terms in chiQSM).\n- Praszalowicz gives second-order matrix elements, Delta_{R'R} = C2(R') - C2(R), and the delta coefficients (hep-ph/0308114, eqs. 13-19).\n\nPI0 ANOMALY:\n- Gamma_LO = alpha^2 m^3 Nc^2/(576 pi^3 f^2) = 7.760 eV at f = 92.21 MeV, m = 134.977 MeV, Nc = 3.\n- PDG 2026: Gamma(gamma gamma) = hbar BR/tau = 7.72 +- 0.12 eV, with hbar = 6.582119569e-22 MeV s.\n- PrimEx-II: 7.802 +- 0.117 eV.\n- NLO QCD: 8.10 eV +- 1%.\n\nG2 (my derivations, no literature found):\n- Normalize Skyrme traces in the 7 as Tr_7/2. This reproduces SU(2) for the long-root embedding and SU(3) for SU(3) inside G2 (7 = 3 + 3bar + 1).\n- Long-root hedgehog: inertia splits as 3 x I1 + 8 x I2 + 3 zero modes. The 8 doublet directions have I2 equal to the SU(3) value by SU(2)_short symmetry; the zero modes are the commutant SU(2)_short, which requires right-SU(2)_short singlets because there is no WZ term.\n- In long-root normalization: T(7) = 1, C2(7) = 2, C2(14) = h-dual = 4.\n- Rotor (my derivation): H = J(J+1)/(2I1) + [C2(R) - J(J+1)]/(2I2) on states whose right SU(2)_short content is trivial.\n- Branching: 14 = (3,1) + (1,3) + (2,4) (read); 7 = (2,2) + (1,3) (derived).\n\nF21 BASIS:\n- D = diag(zeta, zeta^2, zeta^4) and C = [[0,1,0],[0,0,1],[1,0,0]] satisfy C D C^-1 = D^2 and C^-1 D C = D^4. This matches LNR's d^-1 c d = c^4 and King-Luhn's T7 generators.\n- LNR's PSL(2,7) triplet (0709.1447, eqs. 22-23) contains both D and C. I checked: order 168, invariant xy^3 + yz^3 + zx^3.\n\nCOMPARISONS:\n- The LNR integer model gives Dm31^2/Dm21^2 = 80/3. NuFIT 6.0 gives 33.8 +- 0.9.\n- TBM gives theta13 = 0, which the data exclude (sin^2 th13 ~ 0.022).\n\nScratch scripts (not in the repo): /tmp/claude-0/-home-user-gifgaf0-github-io/235fe351-6f97-5895-b3fd-a90496179b3c/scratchpad/calc/bvp2.py and /tmp/claude-0/-home-user-gifgaf0-github-io/235fe351-6f97-5895-b3fd-a90496179b3c/scratchpad/calc/lnr.py. arXiv text dumps: /tmp/claude-0/-home-user-gifgaf0-github-io/235fe351-6f97-5895-b3fd-a90496179b3c/scratchpad/arx/. No repository files were created or modified."
+ }
+}

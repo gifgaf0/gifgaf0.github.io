@@ -158,7 +158,7 @@ out["issues"] = [
          fix="Add the qualifier."),
 ]
 out["overall"] = "confirmed_with_corrections"
-with open("crosscheck.json", "w") as f:
+with open("cc_crosscheck.json", "w") as f:   # first cross-check pass; crosscheck.json is written by x2_crosscheck_json.py
     json.dump(out, f, indent=1, default=float)
 for r in rows:
     print(f"{'OK ' if r['agree'] else 'XX '} {r['quantity']:42s} orig={r['original']:.6g}  mine={r['recomputed']:.6g}  rel={r['rel_diff']:+.2e}  {r['note']}")

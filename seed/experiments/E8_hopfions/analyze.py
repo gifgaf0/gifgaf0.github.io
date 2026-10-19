@@ -84,6 +84,12 @@ def analyse_field(phi, h, L):
     return res, pos, lnk
 
 
+def twist_from_total_lk(a):
+    lk = np.array(a['lk_position_position'], float)
+    tot = np.array(a['total_lk_per_component'], float)
+    return [float(tot[i] - (lk[i].sum() - lk[i, i])) for i in range(len(tot))]
+
+
 def classify(a):
     """Sutcliffe-type label from the analysis of one field.
     Axial configurations (two equal principal moments of the energy density, every position
@@ -112,7 +118,11 @@ def classify(a):
         return f'A~{T},1', axial
     if npos == 2:
         lk = round(abs(a['lk_position_position'][0][1]))
-        T = sorted(round(t) for t in a['twist_per_component'])
+        # twist (framing) of component a = Lk(C_a, whole linking curve) - sum_b lk(C_a, C_b): a linking-curve
+        # strand that follows C_b (b != a) is homotopic to C_b in the complement of C_a when the components are
+        # separated.  (The nearest-component assignment of 'twist_per_component' fails when the linking curve is a
+        # single component threading both position loops, as at Q = 5; added by the third agent.)
+        T = sorted(round(t) for t in twist_from_total_lk(a))
         return f'L{lk}{lk}_{T[0]}{T[1]}', axial
     return f'{npos}-component', axial
 
@@ -183,13 +193,14 @@ def main():
                     np.savez_compressed(os.path.join(HERE, 'runs', f'{name}_curves.npz'),
                                         **{f'pos{i}': p for i, p in enumerate(pos)}, **{f'lnk{i}': p for i, p in enumerate(lnk)})
             a['type'], a['axial'] = classify(a)
+            a['twist_from_total_lk'] = twist_from_total_lk(a)
             entry['field_analysis'][str(st['N'])] = a
         results['runs'][name] = entry
         print(name, 'E(h):', [(round(s['h'], 4), round(s['E'], 5), round(-s['Q'], 4), s['converged']) for s in stages],
               'extrap', entry['extrapolation'].get('E0_best'))
         for N, a in entry['field_analysis'].items():
             print(f"   N={N}: type {a['type']} | comps {a['n_position']} alex {a['alexander']} lk {a['lk_position_position']} "
-                  f"Q_link {a['Q_from_linking']} twist {a['twist_per_component']} slice m {a['slice_degrees']} "
+                  f"Q_link {a['Q_from_linking']} twist {a['twist_per_component']} twist(totlk) {a['twist_from_total_lk']} slice m {a['slice_degrees']} "
                   f"asym {a['inertia_axial_asym']:.4f} tube {a['tube_components'][0]} Q {a['Q']:.4f}")
     json.dump(results, open(os.path.join(HERE, 'analysis_raw.json'), 'w'), indent=1, default=float)
 

@@ -34,7 +34,9 @@ def dens(x, F, P):
     e2 = x*x*(1/8)*(lr*lr + 2*lt*lt)
     e4 = x*x*0.5*(lt*lt)*(lt*lt + 2*lr*lr)
     lam = x*x*s*s*(1 + 4*(lr*lr + lt*lt))
-    j2 = x*x*(1 - c)*(1 + lr*lr + 2*lt*lt)
+    # 1 - cos F written as 2 sin^2(F/2): the naive form underflows to 0 for F < ~1.5e-8
+    # (x > ~2e4), which silently dropped ~1.2e-3 of the J2 tail in the first attempt.
+    j2 = x*x*2*math.sin(0.5*F)**2*(1 + lr*lr + 2*lt*lt)
     dbr = x*x*(P + s2F/x + 4*(s2F*P*P/x + 2*s*s*P/(x*x) + s*s*s2F/x**3))
     r2 = -(2/PI)*x*x*s*s*P
     bb = -(2/PI)*s*s*P
@@ -170,6 +172,9 @@ def Fof(x):
     return asym(C, x)
 
 
+xs_tab = np.linspace(0.0, 60.0, 12001)
+tab = np.array([Fof(max(xx, 1e-9)) for xx in xs_tab])
+np.savez(OUT + 'xc_profile.npz', x=xs_tab, F=tab[:, 0], dF=tab[:, 1], C=C, a=a)
 prof = json.load(open('/home/user/gifgaf0.github.io/seed/experiments/E2_skyrme_su3/profile.json'))
 xp = np.array(prof['x']); Fp_ = np.array(prof['F']); dFp = np.array(prof['dFdx'])
 mine = np.array([Fof(xx) for xx in xp])

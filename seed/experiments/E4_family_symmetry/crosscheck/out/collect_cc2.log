@@ -1,0 +1,12 @@
+checks passed 92/93; texture classes compared 161, disagreements 0
+cc summary: {'lepton': {'excluded (structural)': 90, 'accommodates (no prediction)': 34, 'excluded': 5}, 'quark': {'excluded (structural)': 29, 'accommodates (no prediction)': 3}}
+orig summary: {'lepton': {'excluded (structural)': 90, 'excluded': 5, 'accommodates (no prediction)': 34}, 'quark': {'excluded (structural)': 29, 'accommodates (no prediction)': 3}}
+relabelled after rank scan: 26
+  real/complex variant A/real dof 1 chi2 0.1395 p 0.7087338018439799
+  real/complex variant A/complex dof 0 chi2 0.0 p None
+  real/complex variant B/real dof 1 chi2 0.0208 p 0.885340642431775
+  real/complex variant B/complex dof 0 chi2 0.0 p None
+  real/complex variant C/real dof 1 chi2 0.1395 p 0.7087338018441109
+  real/complex variant C/complex dof 0 chi2 0.0 p None
+wrote crosscheck.json
+audit: 7 issues, 14 claims

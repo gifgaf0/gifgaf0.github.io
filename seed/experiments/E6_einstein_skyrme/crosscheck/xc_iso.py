@@ -12,8 +12,9 @@ Masses (units 4 pi f/e, same as the original's m(inf)):
    m_ADM  = mu/alpha with psi -> 1 + mu/(2x)   and   m_ADM = int x^2 rho psi^5 dx
    m_Komar = int x^2 psi^6 A (rho+p_r+2p_t) dx  (= lapse fall-off) -- must equal m_ADM.
 The fold (alpha_crit) is located WITHOUT maximising alpha over a shooting parameter:
-pseudo-arclength continuation from the flat skyrmion, then a Moore-Spence extended
-system  G(U,alpha)=0, G_U v = 0, l.v = 1  solved by Newton.
+pseudo-arclength continuation from the flat skyrmion, then the zero of the alpha-component
+of the branch tangent (driver xc_run.py). [moore_spence() below was tried first; its bordered
+matrix came out singular and it is no longer used.]
 Jacobians by complex-step differentiation (exact to round-off).
 """
 import json, sys, time

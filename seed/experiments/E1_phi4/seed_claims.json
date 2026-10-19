@@ -1,0 +1,50 @@
+[
+ {
+  "seed_section": "§2",
+  "claim": "A fold appears only with an antifold, so the threshold is twice the lightest fold's energy.",
+  "verdict": "AMENDED",
+  "evidence": "No producing run below 2M_kink in any of the Gaussian runs (pair and single packet, all variants) or DSV runs. But 2M is a floor, not the classical onset: the lowest producing energies found are 1.79 x 2M (narrow-band packets, not reproduced at dx=0.05), 1.86 x 2M (narrow-band, reproduced), 2.70 x 2M (exact one-way packets, coarse grid) and 6.98 x 2M (DSV trains); production stays rare (0-11% of runs in each band) below 4 x 2M."
+ },
+ {
+  "seed_section": "§4",
+  "claim": "A small, spread-out packet is linear and passes through.",
+  "verdict": "CONFIRMED",
+  "evidence": "No coarse run with A <= 0.3 produces, up to E ~ 15 x 2M, in either initial-velocity form; in the slices production starts at A ~ 0.35 (sigma=16) and A ~ 0.45 (k=1). The one exception (A=0.275, sigma=16, k=0.2) is isolated and not reproduced at dx=0.05."
+ },
+ {
+  "seed_section": "§4",
+  "claim": "Pile in enough energy and the nonlinear terms take over: the packet can fold into a fold-antifold pair.",
+  "verdict": "AMENDED",
+  "evidence": "Packets do fold, and a single packet with A >~ 0.4 folds into pairs without any collision (converged in dx and dt). But energy is not the control parameter: at fixed E/2M the producing fraction spans 0 to ~0.8 depending on amplitude, and no energy guarantees production (fraction 0.74-0.75 above 64 x 2M)."
+ },
+ {
+  "seed_section": "§4",
+  "claim": "Colliding trains of small pulses make kink-antikink pairs over a wide range of settings, most easily at low speed (Dutta, Steer & Vachaspati 2008).",
+  "verdict": "CONFIRMED",
+  "evidence": "E1c reproduces DSV Fig. 2 band by band: the example point (0.99, 0.43), the producing band moving from v ~ 0.73-0.85 at omega=0.90 to v ~ 0.41-0.43 at omega=0.99 (Spearman -0.99), pass-through at v = 0.90, the hole at (0.91, 0.81-0.82), and no production for omega > 0.99."
+ },
+ {
+  "seed_section": "§4, §7.1",
+  "claim": "The pair-production boundary may be ragged rather than one clean threshold.",
+  "verdict": "CONFIRMED",
+  "evidence": "Both 59 x 57 slices are fractured: 24 and 48 producing regions (15 and 26 single points), 267 and 141 enclosed non-producing holes, and 57/57 and 48/53 lines of fixed k or sigma switch more than once as A rises (mean 15 and 13 switches). Collision-needed production alone is fractured too. Rerunning the k = 1 slice at half the grid spacing and time step keeps the fracture (40 regions, 153 holes, 49/53 lines, mean 12.8 switches) while 17% of individual calls change and 4x4-block production fractions agree (correlation 0.95). The outcome also depends on the collision phase (51 of 60 boundary points flip under a shift of x0 within one carrier period). The boundary is fractured at the grid scale; point-by-point maps are not converged, the statistics are."
+ },
+ {
+  "seed_section": "PLAN E1d (from §4 via DSV 2008 and Albayrak-Vachaspati 2024)",
+  "claim": "Production favours low speed and wide packets.",
+  "verdict": "AMENDED",
+  "evidence": "Low speed: CONFIRMED at matched energy in both initial-velocity forms (Spearman rho -0.78 to -0.88 in E/2M bands [2,4), [4,8), [8,16), p <= 0.013). Width: not supported at matched energy (no significant positive rho in any band; one significant negative rho for collision-needed production in the one-way form). Wide packets win in raw counts only because they carry more energy at fixed A."
+ },
+ {
+  "seed_section": "§8 / PLAN E1e",
+  "claim": "A classical pair needs N ~ 1/lambda quanta.",
+  "verdict": "QUANTIFIED",
+  "evidence": "Classical dynamics is independent of phi0 (S = phi0^2 S~), so N = E/(hbar m) = (Ẽ/(2 sqrt2)) m^2/lambda. Energy conservation alone gives N >= (2/3) m^2/lambda. The smallest producing initial states found that survive a resolution check: narrow-band Gaussian packets (A=0.8, sigma=2, k=0.5; E = 1.86 x 2M) N*lambda/m^2 = 1.24 (N = E/m) or 1.69 (free-field occupation N_lin); exact one-way packets (A=0.6, sigma=4, k=0.5; E = 2.70 x 2M) 1.80 or 1.96; DSV trains (0.95, 0.62; E = 7.17 x 2M) 4.78 or 3.93. So classical pair-making needs N ~ (1.2-2) m^2/lambda quanta: about 120-200 at lambda/m^2 = 0.01. These are upper bounds on the true classical minimum (only the scanned families)."
+ },
+ {
+  "seed_section": "§8",
+  "claim": "In weakly coupled theories, folding a few quanta into a pair is exponentially rare.",
+  "verdict": "OPEN",
+  "evidence": "The classical runs show the classical route needs N ~ O(1) m^2/lambda quanta, i.e. many quanta at weak coupling, which is consistent with the claim. The exponential suppression of few-quanta production is a semiclassical/quantum statement (Demidov & Levkov 2011) that E1 does not compute."
+ }
+]

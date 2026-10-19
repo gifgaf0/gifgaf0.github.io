@@ -12,15 +12,16 @@ SKYRME SCALING
   electron SEED: (MR)_max=2.590e-06, lambda_C/R >= 3.862e+05; e_min(B)=5458, F_pi=76.5 MeV, E_rot/M=8.551e+10, e^2/16pi^2=1.887e+05
   pion-mass family c0_B min over beta<=16: 52.14
 HOPFION
-  E_W(ansatz)=1.2314, R_rms=2.1441, c0_hopf=589.7; electron LEP: kappa4 <= 4.831e-10, g^2 >= 2.070e+09
+  E_W(ansatz)=1.2314, R_rms=2.0608, c0_hopf=566.7; electron LEP: kappa4 <= 5.026e-10, g^2 >= 1.990e+09
 PAIRS
   DL model: v=0.74508 (paper ~0.75), phi+=1.5515, 2 g^2 M_S = 6.2358 (axes ~6.2), m+=7.613
-  kappa = F/N_pair = [0.6302365565021365, 0.7136266352250655]; N_min/N_pair = 0.638
-  P=0.1: g^2 = 1.71, M_S/m = 1.83
-  P=0.368: g^2 = 3.93, M_S/m = 0.79
-  P=0.5: g^2 = 5.67, M_S/m = 0.55
-  E1 input: E1_phi4/results.json not present when this script ran; E1e not used, scaling derived analytically
-  Breit-Wheeler: sigma_max = 0.6817 pi r_e^2 = 170.1 mb at sqrt(s) = 1.403 x 2 m_e; fold-like suppression would be 10^-234
+  DL readings (vector paths of arXiv:1103.0013v2 Fig. 3b and arXiv:1103.2133v2 Fig. 7b (dl_digitized.json)): F(threshold, g^2E=6.26) = 4.4801, F(11.5) = 3.8460, F_min = 3.8439; g^2 N_min = 3.9771 (near threshold 4.550); left axis g^2E = 6.2324
+  kappa = F/N_pair = [0.6164346898332062, 0.7184582952305288]; N_min/N_pair = 0.638
+  P=0.1: g^2 = 1.669, M_S/m = 1.868
+  P=0.368: g^2 = 3.844, M_S/m = 0.811
+  P=0.5: g^2 = 5.546, M_S/m = 0.562
+  E1e (phi^4): g^2 N_min <= 2.478 (N = E/m) / 3.376 (N_lin); N_min/N_pair <= 1.86 / 2.53; 2 quanta classically need g^2 >= 1.239 / 1.688
+  Breit-Wheeler: sigma_max = 0.6817 pi r_e^2 = 170.1 mb at sqrt(s) = 1.403 x 2 m_e; fold-like suppression would be 10^-228.8 (g^2 = alpha) or 10^-18.2 (g^2 = 4 pi alpha)
 VACUUM
   Planck2018_TTTEEE_lowE_lensing: rho_L = 2.5152e-47 GeV^4
   PLAN_rounded: rho_L = 2.5193e-47 GeV^4

@@ -144,10 +144,66 @@ for name in ("min_E_any", "min_N_lin_any"):
             "isolated producing point; see e1d_probe_min.json (dx=0.05 rerun, local grid, phase shifts)")
 add("E1e smallest classical N_lin*lambda/m^2 (producers reproduced at dx=0.05)", e["smallest_classical_N_lin_times_lambda_over_m2_found"],
     "N*lambda/m^2", "none", "none", "QUANTIFIED", json.dumps(e["implication"]))
+# ---------------------------------------------------------------- robustness checks (third attempt; not preregistered)
+import os
+details = ["e1a_results.json", "e1b_analysis.json", "e1c_analysis.json", "e1d_analysis.json", "e1e_results.json"]
+if os.path.exists("e1_extra_analysis.json"):
+    x = json.load(open("e1_extra_analysis.json"))
+    details.append("e1_extra_analysis.json")
+    if "census_all_gaussian_runs" in x:
+        cz = x["census_all_gaussian_runs"]
+        add("E1d no production below E = 2 M_kink, every Gaussian run (pair and single packet, all variants)",
+            cz["n_producing_below_2M"], f"producing runs with own E < 2M_kink, out of {cz['n_runs']} runs",
+            0, "exact (energy conservation)", "CALIBRATED" if cz["n_producing_below_2M"] == 0 else "MISS",
+            f"lowest producing E/2M: pair runs {cz['min_E_over_2M_producing_pair_runs']:.3f}, single packets "
+            f"{cz['min_E_over_2M_producing_single_packets']:.3f}")
+    if "verify" in x:
+        add("Check: reproducibility and energy conservation", {k: x["verify"][k] for k in
+            ("reproducibility_gauss_all_agree", "reproducibility_kkbar_all_agree", "n_gauss_rerun", "n_kkbar_rerun",
+             "energy_drift")}, "stored calls rerun; max relative energy drift over t = 300 with no absorbing layer "
+            "(dx = 0.05, dt = 0.02)", "none", "none", "NO_TARGET", "e1_verify.py")
+        add("Check: single-packet self-folding vs resolution", x["verify"]["single_packet_convergence"],
+            "production call and time the pair first appears, dx 0.1 to 0.025 and dt 0.04 to 0.005", "none", "none",
+            "NO_TARGET", "e1_verify.py")
+    if "boxcheck" in x:
+        add("Check: E1b box size (Lphys, W) = (100, 60), (200, 100) vs (40, 30)", x["boxcheck"],
+            "v at the transition, dx = 0.05, dt = 0.01", "none", "none", "NO_TARGET", "e1b_boxcheck.py")
+    if "coarse_oneway" in x:
+        cw = x["coarse_oneway"]
+        add("Check: E1d coarse grid with exact one-way initial velocity",
+            {k: cw[k] for k in ("n_runs", "n_produced", "n_produced_baseline", "point_agreement_with_baseline",
+                                "any_below_2M", "min_producing", "n_single_packet_also", "n_collision_needed",
+                                "frac_vs_E", "regions_6conn")} |
+            {"tests": {k: {"verdict": v["verdict"], "spearman_by_band": [r["spearman"] for r in v["rows"]]}
+                       for k, v in cw["tests"].items()}},
+            "same grid and rules as e1d_coarse.json; phi_t from the free dispersion per Fourier component",
+            "none", "none", "NO_TARGET", "e1d_extra.py coarse_oneway / single_oneway")
+    if "slice_k1_dx0.05" in x:
+        sx = x["slice_k1_dx0.05"]
+        add("Check: E1d k = 1 slice at dx = 0.05 vs dx = 0.1", {k: v for k, v in sx.items()
+                                                               if not k.startswith("dx0") or k in ("dx0.1_collision_needed_n", "dx0.1_n_single_also", "dx0.05_n_single_also")} |
+            {"dx0.1": {k: sx["dx0.1"][k] for k in sx["dx0.1"] if k != "frac_vs_E"},
+             "dx0.05": {k: sx["dx0.05"][k] for k in sx["dx0.05"] if k != "frac_vs_E"}},
+            "regions, holes, switches along A; same definitions as analyze_e1d.py", "ragged test as in analyze_e1d.py",
+            "operational", sx["ragged_verdict_dx0.05"], "e1d_extra.py slice_dx05 / slice_dx05_single")
+    if "dxladder" in x:
+        add("Check: point-level convergence ladder (E1d)", {k: v for k, v in x["dxladder"].items() if k != "rows"},
+            "agreement of production calls between resolutions (dt = 0.4 dx)", "none", "none", "NO_TARGET",
+            "e1d_dxladder.py; 24 points whose call changed between dx 0.1 and 0.05, plus 8 that did not")
+if os.path.exists("e1d_oneway_min.json"):
+    om = json.load(open("e1d_oneway_min.json"))
+    details.append("e1d_oneway_min.json")
+    b_ = om["lowest_reproduced_at_dx0.05_and_0.025"]
+    if b_:
+        add("E1e Gaussian packets, exact one-way family: lowest producer reproduced at dx = 0.05 and 0.025",
+            {"N_E_times_lambda_over_m2": b_["E_over_2M"] * 2.0 / 3.0, "N_lin_times_lambda_over_m2": b_["N_lin"] / 2.0,
+             "E_over_2M": b_["E_over_2M"], "A": b_["A"], "sigma": b_["sigma"], "k": b_["k"]},
+            "N*lambda/m^2 (N = E/m = (2/3) E/2M in these units)", "N ~ 1/lambda (scaling)", "none", "QUANTIFIED",
+            "coarse grid only (no local refinement)")
+SEED_CLAIMS = json.load(open("seed_claims.json")) if os.path.exists("seed_claims.json") else []
 json.dump({"experiment": "E1 phi^4 in 1+1D (PLAN.md section 4, E1a-E1e)", "convention": conv,
-           "headline": H,
-           "details_files": ["e1a_results.json", "e1b_analysis.json", "e1c_analysis.json", "e1d_analysis.json",
-                             "e1e_results.json"]},
+           "headline": H, "seed_claims": SEED_CLAIMS,
+           "details_files": details},
           open("results.json", "w"), indent=1, default=float)
 for h in H:
     v = h["value"]

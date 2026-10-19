@@ -95,6 +95,11 @@
  "newton_vs_full_rel": -0.22388489825071287,
  "GR_vs_full_rel": 1.6527553527867137e-09,
  "lin_vs_full_rel": 9.461855932261186e-09,
- "sigma0_slope_full": -9.747362787904223,
- "sigma0_slope_first_order": -9.747335239277053
+ "sigma0_slope_full": -9.747353362109058,
+ "sigma0_slope_full_by_degree": {
+  "deg2": -9.747362787904223,
+  "deg3": -9.747353225048418,
+  "deg4": -9.747353362109058
+ },
+ "sigma0_slope_first_order": -9.747353359955312
 }

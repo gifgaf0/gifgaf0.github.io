@@ -29,7 +29,8 @@
   [PASS] orientable: with the plane's orientation each directed edge occurs exactly once
   [PASS] Euler characteristic V - E + F = 7 - 21 + 14 = 0 (orientable, chi = 0: a torus)  (7 - 21 + 14 = 0)
   [PASS] the triangulation equals the Moebius/Csaszar torus labelling {i,i+1,i+3} ∪ {i,i+2,i+3}
-  [PASS] exhaustive search: every 7-vertex triangulated closed surface is an orientable torus and they form ONE relabelling orbit (the 7-vertex torus triangulation is unique)  (120 pair-degree-2 complexes, 120 surfaces, 120 orientable, orbit of ours = 120)
+  [PASS] exhaustive search: every 7-vertex triangulated surface with chi = 0 (= every vertex pair in exactly 2 triangles) is an orientable torus -- so no 7-vertex Klein bottle -- and they form ONE relabelling orbit (the 7-vertex torus triangulation is unique)  (120 pair-degree-2 complexes, 120 surfaces, 120 orientable, orbit of ours = 120)
+  [PASS] the search above does not cover all 7-vertex surfaces: a 7-vertex sphere (pentagonal bipyramid, V-E+F = 7-15+10 = 2, orientable) and a 7-vertex projective plane (V-E+F = 7-18+12 = 1, non-orientable) exist  (sphere (V,E,F,chi,surface,orientable) = (7, 15, 10, 2, True, True); RP^2 = (7, 18, 12, 1, True, False))
   [PASS] automorphism group of the triangulation has order 42 and equals {x -> ax+b : a in Z7*} = AGL(1,7)  (|Aut| = 42)
   [PASS] all 42 automorphisms preserve orientation: the 7-vertex torus is chiral (no mirror symmetry)  (42 of 42 orientation-preserving)
   [PASS] x -> ax+b with a in {1,2,4} preserves both families
@@ -69,6 +70,7 @@
   [PASS] flipped copy: <chi,chi> = 1, <chi,chibar> = 0, Frobenius-Schur indicator 0 (a complex triplet)
   [PASS] flipped copy: trivial centre and simple (every non-identity class generates the whole group); a simple group of order 168 is PSL(2,7)
   [PASS] flipped copy: chi(D) = b7 and chi(A B^2) = b7bar (LNR's classes C5(AB), C6(AB^2))
+  [PASS] the list of 2-generated subgroups is closed under adding any element (<H, g> is again in the list), so it contains every subgroup of PSL(2,7)  (179 subgroups)
   [PASS] maximal subgroups of PSL(2,7): two classes of S4 (7 each) and one class of 7:3 (8 conjugates) -- ATLAS  ([(21, 8, '{1: 1, 3: 14, 7: 6}'), (24, 7, '{1: 1, 2: 9, 3: 8, 4: 6}'), (24, 7, '{1: 1, 2: 9, 3: 8, 4: 6}')])
   [PASS] F21 = <D, C> is one of the 8 maximal subgroups of order 21
     subgroups of PSL(2,7): 179 in 15 conjugacy classes; by order {1: 1, 2: 21, 3: 28, 4: 35, 6: 28, 7: 8, 8: 21, 12: 14, 21: 8, 24: 14, 168: 1}
@@ -79,15 +81,21 @@
   [PASS] complex conjugation swaps the two classes of S4 (the outer automorphism of PSL(2,7))
   [PASS] complex conjugation acts on the torus as t -> t^-1, i.e. on the labels as x -> 6x (= -x), which swaps the Fano families
   [PASS] PSL(2,7) acting on each S4 class, labelled through D (x->x+1) and C (x->2x), is exactly the collineation group of one Fano family; the two classes give the two families  (['up', 'down'])
+  [PASS] degree equation: PSL(2,7) has 6 classes (6 irreps) and is perfect (derived subgroup = whole group, so 1 is its only linear character); with 3 and 3bar the other three degrees d >= 2, d | 168, sum d^2 = 149, are forced to be (6,7,8): 3 and 3bar are its only 3-dim irreps  ([(6, 7, 8)])
+  [PASS] explicit isomorphisms: Dk, C, R (Klein's copy) and D, C, Rf (flipped copy) map to Moebius maps of PSL(2,F7) on P^1(F7) so that the generated graph has order 168 and image all of PSL(2,F7)  (D -> x+1, C -> (0, 2, 4, 6, 1, 3, 5, 7), Rf -> (7, 6, 3, 2, 5, 4, 1, 0) (images of 0..6, inf))
+  [PASS] explicit isomorphism <flipped copy, complex conjugation> -> PGL(2,F7): extend the map above by kappa -> an involution of non-square determinant; graph of order 336, image all of PGL(2,F7)  (kappa -> (0, 6, 5, 4, 3, 2, 1, 7))
+  [PASS] inside PGL(2,7) ⊂ G2, kappa, kappa C and kappa C^-1 move the seven points as x -> 6x, 3x, 5x: the 180, 300 and 60 deg G2 turns all lie in <flipped copy, kappa>  (x -> 6x, 3x, 5x)
+  [PASS] |Aut(F21)| = 42 (graph test over all images of D, C), and N_PGL(2,7)(F21) has order 42 with trivial centraliser, so every automorphism of F21 is induced inside PGL(2,7) = <flipped copy, kappa>  (|Aut F21| = 42, |N| = 42)
+  [PASS] uniqueness of the PSL(2,7) in U(3) containing <D, C> now rests only on computed facts: one class of order-21 subgroups, Aut(F21) induced by PGL(2,7), only 3 and 3bar in degree 3, F21's triplet irreducible with chi(D) = b7 != b7bar
 
-=== D. A5's triplets (exact over Q(sqrt5))   [t = 1.5 s]
+=== D. A5's triplets (exact over Q(sqrt5))   [t = 3.4 s]
   [PASS] <3-fold rotation, edge 2-fold rotation> has order 60, is in SO(3) ⊂ SU(3) (exact), and maps the 12 icosahedron vertices (0, ±1, ±phi) to themselves  (60)
   [PASS] A5 classes (size, order, chi_3) = (1,1,3) (15,2,-1) (20,3,0) (12,5,(1-√5)/2) (12,5,(1+√5)/2); simple  ([(1, 1, '3+0√5'), (15, 2, '-1+0√5'), (20, 3, '0+0√5'), (12, 5, '1/2+-1/2√5'), (12, 5, '1/2+1/2√5')])
   [PASS] A5 triplet 3: character values lie in Q(sqrt5) ⊂ R (real), <chi,chi> = 1, Frobenius-Schur indicator +1 (a real representation; indeed the matrices are real orthogonal)  (<chi,chi>=(1 + 0*sqrt5), FS=(1 + 0*sqrt5))
   [PASS] the Galois-conjugate triplet 3' (sqrt5 -> -sqrt5) is inequivalent (<chi,chi'> = 0) and also real (its matrices are the Galois images, also real orthogonal)
   [PASS] the remaining two irreducible degrees of A5 are forced to be (4,5): A5 has exactly two triplets, both real  ([(4, 5)])
 
-=== E. Weyl groups of SU(3) and G2 on the torus (exact rationals)   [t = 1.6 s]
+=== E. Weyl groups of SU(3) and G2 on the torus (exact rationals)   [t = 3.6 s]
   [PASS] G2 root data: long roots e_i - e_j (norm^2 2), short roots e_i - (1,1,1)/3 (norm^2 2/3), ratio 3
     Weyl(SU(3)): order 6; turns: 0°: x -> 1x, keeps both families; 120°: x -> 4x, keeps both families; 240°: x -> 2x, keeps both families
     Weyl(G2): order 12; turns: 0°: x -> 1x, keeps both families; 60°: x -> 5x, swaps the families; 120°: x -> 4x, keeps both families; 180°: x -> 6x, swaps the families; 240°: x -> 2x, keeps both families; 300°: x -> 3x, swaps the families
@@ -96,7 +104,7 @@
   [PASS] Weyl(G2) = Weyl(SU(3)) × {±1} on the plane (so any dihedral group of order 12 containing Weyl(SU(3)) is this one: the choice of short roots does not matter)
   [PASS] (extra) each SU(3) mirror maps the seven points of D onto the seven points of diag(z, z^4, z^2) (the other hexagonal order-7 subgroup)
 
-=== F. affine Weyl group of G2 is the wallpaper group p6m (exact)   [t = 1.6 s]
+=== F. affine Weyl group of G2 is the wallpaper group p6m (exact)   [t = 3.6 s]
   [PASS] G2 base: alpha1 short, alpha2 long at 150 deg; the six positive roots a1, a2, a1+a2, 2a1+a2, 3a1+a2, 3a1+2a2 are roots, with highest root theta = (0,1,-1)
   [PASS] Coxeter orders: (s1 s2)^6 = (s2 s0)^3 = (s1 s0)^2 = 1: the (2,3,6) triangle group (affine G2)  ((6, 3, 2))
   [PASS] W_aff = Lambda ⋊ W(G2): generators have linear part in W(G2) and translation in Lambda; s1, s2 generate the 12-element W(G2); s0∘s_theta is translation by theta^vee and its W-conjugates include b1, b2
@@ -109,7 +117,7 @@
   [PASS] (extra) the elements of W_aff(G2) that keep the seven points are Lambda ⋊ C6 (all turns, no mirror): p6; for SU(3) it is Lambda ⋊ C3: p3
   [PASS] (extra) none of the six non-zero points j p (j = 1..6, any Lambda translate) lies on any mirror of either affine Weyl group; point 0 (the Lambda points) lies on all six mirror directions
 
-=== G. (extra) octonions O = C ⊕ C^3: G2 = Aut(O) contains SU(3), PSL(2,7) and PGL(2,7)   [t = 1.6 s]
+=== G. (extra) octonions O = C ⊕ C^3: G2 = Aut(O) contains SU(3), PSL(2,7) and PGL(2,7)   [t = 3.6 s]
   [PASS] (1,0) is a two-sided identity
   [PASS] alternative: the associator is alternating on all 512 basis triples (hence everywhere, by trilinearity)
   [PASS] composition: N(xy) = N(x)N(y) on all 36x36 polarisation points (a complete check of this biquadratic identity), N = |a|^2 + |u|^2 positive definite: by Hurwitz this is the octonion algebra
@@ -119,7 +127,7 @@
   [PASS] derivations killing the imaginary unit e: dimension 8, compact semisimple, rank <= 2: su(3) (the only compact semisimple Lie algebra of dimension 8)  (dim 8, centraliser 2)
   [PASS] the 8 matrices of su(3) acting on C^3 are derivations killing e and span that 8-dim stabiliser
 
-=== H. line-by-line comparison with hexagon_check.py   [t = 3.7 s]
+=== H. line-by-line comparison with hexagon_check.py   [t = 5.9 s]
     ==  120° turn sends point 1 to point 4
     ==  neighbours of point 0: [1, 2, 3, 4, 5, 6] -> every point touches every other (K7)
     ==  triangles: 14 | family A Fano: True | family B Fano: True
@@ -145,7 +153,7 @@
     ==     turn 180°: x -> 6x, swaps the families
     ==     turn 240°: x -> 2x, keeps both families
     ==     turn 300°: x -> 3x, swaps the families
-  [PASS] hexagon_check.py (float) and the exact recomputation print identical lines (25 of 25)  (original runtime 1.3 s)
+  [PASS] hexagon_check.py (float) and the exact recomputation print identical lines (25 of 25)  (original runtime 1.7 s)
 
-102 of 102 exact checks passed; runtime 5.0 s
+110 of 110 exact checks passed; runtime 7.5 s
 wrote results.json, exact_replica_output.txt, hexagon_check_original_output.txt

@@ -78,7 +78,7 @@
    "tolerance": 0.01,
    "source": "PLAN.md E2 [ANW via secondary sources]",
    "verdict": "CALIBRATED",
-   "note": "= 2 pi C/(3 e^2) = (pi/3e^2)|D|; the identity D = -2C holds to 5.4e-09"
+   "note": "= 2 pi C/(3 e^2) = (pi/3e^2)|D|; the identity D = -2C holds to 5.4e-09 absolute (3.1e-10 relative)"
   },
   {
    "quantity": "Gamma(pi0->gg), N_c = 3, f = 92.21 MeV",
@@ -316,6 +316,19 @@
    "ratio_massive": 2.666329315301654
   }
  ],
+ "comparison_supplementary_f_pi": {
+  "quantity": "f_pi_MeV",
+  "data": 92.21,
+  "data_err": 0.14,
+  "data_source": "f = 92.21 MeV (Bernstein-Holstein 1112.4809, the pi0 calibration input); PDG review f_pi+/sqrt(2) = 92.07 MeV [summary] gives -29.9%",
+  "skyrme_ANW_massless": 64.5,
+  "ratio_massless": 0.6994902938943716,
+  "deviation_massless": -0.30050970610562844,
+  "within_30pct_massless": false,
+  "skyrme_AN84_massive_no_target": 54.0,
+  "ratio_massive": 0.5856197809348227,
+  "supplementary": "not preregistered; fit output (pion property), not a nucleon prediction; excluded from the 7-row tally"
+ },
  "within_30pct": {
   "n_within": 3,
   "n_finite": 7,
@@ -324,7 +337,13 @@
    "r_p",
    "<r^2>_n"
   ],
-  "note": "magnetic radius compared in the Sachs definition; g_piNN data value is [summary]. Strictly within 30%: 3 of 7 (mu_p/mu_n, r_E^{I=0}, r_M^{I=0}); within 33%: 6 of 7 (adds mu_n -31%, g_piNN -32%, mu_p -33%). The exceptions are g_A (-52%) and the individual charge radii r_p, <r^2>_n (infinite with massless pions)"
+  "with_supplementary_f_pi": {
+   "n_within_30pct": 3,
+   "n_within_33pct": 7,
+   "n_finite": 8,
+   "f_pi_deviation": -0.30050970610562844
+  },
+  "note": "magnetic radius compared in the Sachs definition; g_piNN data value is [summary]. Strictly within 30%: 3 of 7 (mu_p/mu_n, r_E^{I=0}, r_M^{I=0}); within 33%: 6 of 7 (adds mu_n -31%, g_piNN -32%, mu_p -33%). The exceptions are g_A (-52%) and the individual charge radii r_p, <r^2>_n (infinite with massless pions). Supplementary f_pi row (fit output, not preregistered): -30.05% vs 92.21 MeV, on the 30% boundary; with it 3 of 8 within 30%, 7 of 8 within 33%"
  },
  "enclosed_charge_massless_ANW": [
   {
@@ -486,12 +505,12 @@
   {
    "claim": "SEED 6B: for nucleons the model lands within roughly 30% (ANW 1983)",
    "verdict": "AMENDED",
-   "evidence": "Against PDG 2026 at the calibrated ANW point: 6 of 7 finite predictions within 33% (strictly within 30%: 3 of 7; mu_p -33%, mu_n -31%, g_piNN -32% sit just outside 30%). The amendment is carried by g_A (-52%, a factor ~2) and by r_p and <r^2>_n, which are infinite with massless pions. At the fold's own f_pi = F_pi/2 = 64.5 MeV (itself 30% below 92.2 MeV) the gauged WZ term gives Gamma(pi0->gg) = 2.03 x PrimEx-II."
+   "evidence": "Against PDG 2026 at the calibrated ANW point: 6 of 7 finite nucleon predictions within 33% (strictly within 30%: 3 of 7; mu_p -33%, mu_n -31%, g_piNN -32% sit just outside 30%). The amendment is carried by g_A (-52%, a factor ~2) and by r_p and <r^2>_n, which are infinite with massless pions. Supplementary row (not preregistered): the fit output f_pi = F_pi/2 = 64.5 MeV is -30.1% from 92.21 MeV (on the 30% boundary); with it, 7 of 8 within 33%. Rakhimov (nucl-th/0502078 sec. 1.2.4, read), summarising ANW: 'within 30% except for g_A'."
   },
   {
    "claim": "PLAN E5 internal-consistency prediction (not a SEED sentence): the fold sector and the anomaly prefer different f_pi",
    "verdict": "CONFIRMED (preregistered prediction; no SEED verdict)",
-   "evidence": "Gamma(pi0->gg) at the fold's f: 15.86 eV (ANW, 2.03 x PrimEx-II), 20.40 eV (SU(3) refit, 2.61 x); PrimEx-II needs f = 91.97 MeV. Bears on SEED 6B (one (F, e) for all predictions)."
+   "evidence": "Gamma(pi0->gg) at the fold's f: 15.86 eV (ANW, 2.03 x PrimEx-II), 20.40 eV (SU(3) refit, 2.61 x); PrimEx-II needs f = 91.97 MeV. Not an independent tension: Gamma is proportional to 1/f^2, so the factor is the square of the f_pi deficit, (91.97/64.5)^2 = 2.03 (ANW). Bears on SEED 6B (one (F, e) for all predictions)."
   },
   {
    "claim": "SEED 2: the WZ term that makes the fold a fermion also fixes pi0 -> gamma gamma",
@@ -973,6 +992,17 @@
    "SEED 6B AMENDED reframed: 6 of 7 finite within 33%, exceptions g_A and the individual charge radii",
    "commitment 4 and the N_c = 1 exclusion carry their qualifiers in the verdict itself",
    "g_piNN: passes only the post hoc +-0.05; fails +-0.02"
-  ]
+  ],
+  "second_pass": {
+   "crosscheck": "crosscheck/crosscheck.json (second pass): 100 of 100 recomputed rows agree (three profile solvers, Noether currents of the matrix Lagrangian, independent pi0 derivation and PDG query); 1 major issue (REPORT.md not regenerated after the first reconciliation) and 10 minor ones, none in the numerics",
+   "changes": [
+    "REPORT.md regenerated from this results.json: 39/39 symbolic checks and the logged runtime, CHECK PASSED for internal checks, no QUANTIFIED, qualified verdicts for commitment 4 and the N_c = 1 exclusion, 6-of-7-within-33% framing for SEED 6B, F_mu nu in the pi0 coupling, separate convergence ranges, neutron peak +0.206 at 0.73 fm, 'fails +-0.02' beside the g_piNN verdict",
+    "supplementary f_pi row added (fit output 64.5 MeV vs 92.21 MeV: -30.05%), kept out of the preregistered 7-row nucleon tally; the Gamma(pi0->gg) factor 2.03 is described as the square of this deficit, not an independent tension",
+    "'ANW excepted g_A': verified only as Rakhimov's summary sentence (nucl-th/0502078 sec. 1.2.4, read in the arXiv mirror this pass: 'qualitative agreement with experiment (within 30%) except for gA'); ANW's own text was not read",
+    "D = -2C now quoted as absolute and relative deviation",
+    "first-pass convergence item made precise: the '5e-8' was the absolute spread of Lambda over X = 100-400 (4.5e-8 absolute = 8.9e-10 relative, hedgehog_log.txt); X = 50 is off by 2.8e-8 relative, X = 25 by 7.2e-7 (C 1.2e-6, B - 1 = -5.6e-7); production runs use X = 200",
+    "run_all.sh runtime comment updated to the logged values (symbolic step 220-300 s on a shared core; full pipeline 3 min 52 s in the reconciliation rerun)"
+   ]
+  }
  }
 }

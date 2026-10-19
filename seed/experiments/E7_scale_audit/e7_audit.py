@@ -14,7 +14,26 @@ from scipy.optimize import brentq, minimize_scalar
 
 warnings.filterwarnings('ignore')
 HERE = os.path.dirname(os.path.abspath(__file__))
-E1_RESULTS = os.path.join(HERE, '..', 'E1_phi4', 'results.json')
+E1_RESULTS = os.path.join(HERE, '..', 'E1_phi4', 'e1e_results.json')   # E1e (read-only, optional)
+DL_DIGITIZED = os.path.join(HERE, 'dl_digitized.json')                   # e7_dl_digitize.py output
+
+
+def dl_readings():
+    """Demidov-Levkov curve values. Reconciliation: read from the PDF vector paths (e7_dl_digitize.py);
+    version 1 used eye readings F = 4.45 (threshold) and 3.93 (g^2E = 11.5), the latter wrong by -0.085."""
+    if os.path.exists(DL_DIGITIZED):
+        d = json.load(open(DL_DIGITIZED))
+        a, b = d['fig3b'], d['fig7b']
+        return dict(F_thr=a['F_threshold_first_vertex']['F'], F_thr_g2E=a['F_threshold_first_vertex']['g2E'],
+                    F_11p5=a['F_at_g2E_11p5'], F_min=a['F_min']['value'], F_min_g2E=a['F_min']['at_g2E'],
+                    F_unc=a['reading_uncertainty'], left_axis_g2E=a['calibration']['left_axis_g2E'],
+                    g2Nmin_hi=b['g2Nmin_high_energy_mean_8p5_to_10p5'], g2Nmin_hi_range=b['g2Nmin_high_energy_range'],
+                    g2Nmin_thr=b['g2Nmin_near_threshold']['value'],
+                    source='vector paths of arXiv:1103.0013v2 Fig. 3b and arXiv:1103.2133v2 Fig. 7b (dl_digitized.json)')
+    # fallback: the same vector readings typed in
+    return dict(F_thr=4.4801, F_thr_g2E=6.26, F_11p5=3.8460, F_min=3.8439, F_min_g2E=11.0, F_unc=0.002,
+                left_axis_g2E=6.2326, g2Nmin_hi=3.977, g2Nmin_hi_range=[3.971, 3.983], g2Nmin_thr=4.55,
+                source='typed-in fallback of the vector readings (dl_digitized.json absent)')
 
 HBARC = K.hbar * K.c / (1e6 * K.e) * 1e15           # MeV fm
 HBAR_GEV_S = K.hbar / (1e9 * K.e)                   # GeV s
@@ -113,7 +132,10 @@ def main():
     # electron
     me = P['m_e_MeV']
     lamC_e = HBARC / me
-    el = dict(lambda_C_fm=lamC_e, bounds_fm=dict(LEP=1.1e-4, SEED=1e-3))
+    el = dict(lambda_C_fm=lamC_e, bounds_fm=dict(LEP=1.1e-4, SEED=1e-3),
+              LEP_bound_note=("Schael et al. 2013 (arXiv:1302.3415) Eq. (3.9): r_e < 1.1e-19 m. Model dependent: it converts "
+                              "the VV contact-interaction scale (positive interference, electromagnetic coupling strength) "
+                              "into a size; it is not a direct form-factor measurement."))
     for bname, Rmax in el['bounds_fm'].items():
         MRreq = me * Rmax / HBARC
         entry = dict(MR_required_max=MRreq, compton_over_R_min=1 / MRreq, log10_compton_over_R=np.log10(1 / MRreq))
@@ -146,10 +168,12 @@ def main():
                c0_hopf_rms_lit_energy=HF['c0_hopf_rms_with_lit_energy'])
     for bname, Rmax in el['bounds_fm'].items():
         MRreq = me * Rmax / HBARC
-        k4 = MRreq / c0h
-        k2_sqrt = me / (16 * np.sqrt(2) * np.pi**2 * np.sqrt(k4) * HF['E_W_ansatz'])   # MeV
-        hop[f'electron_{bname}'] = dict(kappa4_max=k4, g2_min=1 / k4, sqrt_kappa2_MeV=k2_sqrt,
-                                        length_unit_fm=HBARC * np.sqrt(k4) / k2_sqrt)
+        for suffix, cc in [('', c0h), ('_ring', HF['c0_hopf_ring'])]:
+            k4 = MRreq / cc
+            k2_sqrt = me / (16 * np.sqrt(2) * np.pi**2 * np.sqrt(k4) * HF['E_W_ansatz'])   # MeV
+            hop[f'electron_{bname}{suffix}'] = dict(kappa4_max=k4, g2_min=1 / k4, sqrt_kappa2_MeV=k2_sqrt,
+                                                    length_unit_fm=HBARC * np.sqrt(k4) / k2_sqrt,
+                                                    radius='energy rms' if not suffix else 'ring (n = -e3)')
     R['hopfion'] = hop
 
     # ------------------------------------------------------------------ 2. pairs
@@ -164,25 +188,36 @@ def main():
     g2MS = quad(lambda p: np.sqrt(max(2 * V(p), 0.0)), -1, phip, limit=400, points=[1.0])[0]
     mminus = 1.0
     mplus = np.sqrt((V(phip + 1e-4) - 2 * V(phip) + V(phip - 1e-4)) / 1e-8)
+    dl = dl_readings()
     DL = dict(model="Demidov-Levkov 2011 (1+1)D scalar, V = (1/2)(phi+1)^2[1 - v W((phi-1)/a)], a = 0.4 [read]",
               v_degenerate=v, phi_plus=phip, m_minus=mminus, m_plus=mplus,
               g2_M_S_computed=g2MS, two_g2_M_S_computed=2 * g2MS,
-              two_g2_M_S_read_from_axes="about 6.2 (Fig. 3 and Fig. 7b axes of arXiv:1103.0013/1103.2133)",
-              F2_exponent_read=dict(at_threshold=4.45, at_g2E_11p5=3.93, uncertainty="+-0.05 (read off Fig. 3b, two-particle curve g^2N = 0)",
-                                    source="arXiv:1103.0013 Fig. 3b [read]"),
-              g2Nmin_classical_read=dict(high_energy=3.98, near_threshold=4.5, uncertainty="+-0.03",
-                                         source="arXiv:1103.2133 Fig. 7b, delta rho -> 0 [read]"))
-    F2 = 3.93
+              two_g2_M_S_read_from_axes=f"about 6.2 (axes); the left edge of Fig. 3b (tick labelled 2 g^2 M_S) is at g^2E = "
+                                        f"{dl['left_axis_g2E']:.4f} in the vector data",
+              F2_exponent_read=dict(at_threshold=dl['F_thr'], at_threshold_g2E=dl['F_thr_g2E'], at_g2E_11p5=dl['F_11p5'],
+                                    minimum=dl['F_min'], minimum_at_g2E=dl['F_min_g2E'],
+                                    uncertainty=f"+-{max(dl['F_unc'], 0.002):.3f} (vector path, axes calibrated on ticks)",
+                                    source="arXiv:1103.0013v2 Fig. 3b upper panel (g^2 N = 0) [read, " + dl['source'] + "]",
+                                    version1_eye_reading=dict(at_threshold=4.45, at_g2E_11p5=3.93,
+                                                              note="3.93 was wrong by -0.085, outside its stated +-0.05")),
+              g2Nmin_classical_read=dict(high_energy=dl['g2Nmin_hi'], high_energy_range=dl['g2Nmin_hi_range'],
+                                         near_threshold=dl['g2Nmin_thr'],
+                                         source="arXiv:1103.2133v2 Fig. 7b, delta rho -> 0 [read, vector path]"))
+    F2 = dl['F_min']            # high-energy plateau (minimum of the plotted curve)
+    F_thr = dl['F_thr']
+    g2Nmin = dl['g2Nmin_hi']
     DL['kappa_suppression_per_pair_quantum'] = dict(
-        value=[F2 / (2 * g2MS), 4.45 / (2 * g2MS)],
+        value=[F2 / (2 * g2MS), F_thr / (2 * g2MS)],
         formula="P ~ exp(-F/g^2) = exp(-kappa N_pair), N_pair = 2 M_S/m_- = 2 g2MS/g^2; kappa = F/(2 g^2 M_S)")
-    DL['Nmin_over_Npair'] = dict(value=3.98 / (2 * g2MS), formula="g^2 N_min / (2 g^2 M_S/m_-)")
+    DL['Nmin_over_Npair'] = dict(value=g2Nmin / (2 * g2MS), formula="g^2 N_min / (2 g^2 M_S/m_-)")
     unsup = {}
     for Ptarget in [0.1, np.exp(-1), 0.5]:
         g2 = F2 / np.log(1 / Ptarget)
         unsup[f'P={Ptarget:.3g}'] = dict(g2=g2, M_S_over_m=g2MS / g2, N_pair=2 * g2MS / g2)
     DL['coupling_for_unsuppressed_two_particle_production'] = dict(
-        formula="exp(-F_min/g^2) = P  ->  g^2 = F_min/ln(1/P), F_min = 3.93 (high-energy plateau)", rows=unsup)
+        formula=f"exp(-F_min/g^2) = P  ->  g^2 = F_min/ln(1/P), F_min = {F2:.3f} (high-energy plateau)", rows=unsup,
+        caveat="extrapolates the leading semiclassical exponent to g^2 = O(1), where prefactors and higher orders are "
+               "uncontrolled: indicative only")
     pairs['demidov_levkov'] = DL
     # phi^4 (SEED model A) in the same language: S = (1/g^2) int[(1/2)(d phit)^2 - (m^2/8)(phit^2-1)^2], g^2 = 2 lambda/m^2
     pairs['phi4'] = dict(
@@ -193,14 +228,30 @@ def main():
         scaling_argument=("Classical solutions depend on (E, N) only through g^2 E and g^2 N (field rescaling phi = phit/g removes g "
                           "from the field equation); so if classical pair creation exists at all its lower boundary is "
                           "N_min = n0/g^2 with n0 a pure number of the classical theory, N_min ~ 1/lambda."))
-    e1 = None
+    # E1e combination (PLAN E7 "Pairs"). Reconciliation: E1 finished after version 1 of this script ran.
+    # e1e_results.json lists the smallest classical producers re-run at dx = 0.05; N = E/m (preregistered) and
+    # N_lin (linear-quanta count). In E1 units N lambda/m^2 = E~/(2 sqrt2) and phi0^2 = m^2/(2 lambda), g^2 = 2 lambda/m^2.
+    e1e = None
     if os.path.exists(E1_RESULTS):
         try:
-            e1 = json.load(open(E1_RESULTS))
+            import hashlib
+            raw = open(E1_RESULTS, 'rb').read()
+            e1 = json.loads(raw)
+            rep = [r for r in e1['gaussian_packets']['dx0.05_reproduction_of_smallest_producers'] if r.get('reproduced')]
+            NE = min((2.0 / 3.0) * r['E_over_2M'] for r in rep)           # N = E/m in units of m^2/lambda
+            NL = min(r['N_lin'] / 2.0 for r in rep)                        # N_lin/phi0^2 -> N_lin lambda/m^2
+            e1e = dict(file='../E1_phi4/e1e_results.json', sha256_16=hashlib.sha256(raw).hexdigest()[:16],
+                       N_min_lambda_over_m2=dict(N_E=NE, N_lin=NL, E1_implication_c=e1['implication']['c']),
+                       g2_N_min=dict(N_E=2 * NE, N_lin=2 * NL), g2_N_pair=4.0 / 3.0,
+                       Nmin_over_Npair=dict(N_E=2 * NE / (4 / 3), N_lin=2 * NL / (4 / 3)),
+                       g2_for_classical_pair_from_2_quanta=dict(N_E=NE, N_lin=NL),
+                       lambda_over_m2_for_2_quanta=dict(N_E=NE / 2, N_lin=NL / 2),
+                       note=("upper bounds on the true classical minimum (scanned sets only); classical production from "
+                             "N <= 2 quanta needs g^2 >= g^2 N_min/2. E1 is reconciled separately; numbers as read now."))
         except Exception as ex:
-            e1 = dict(error=str(ex))
-    pairs['E1e_input'] = ("E1_phi4/results.json not present when this script ran; E1e not used, scaling derived analytically"
-                          if e1 is None else e1.get('E1e', e1.get('e1e', 'results.json present; see E1e block')))
+            e1e = dict(error=str(ex))
+    pairs['E1e_phi4'] = e1e if e1e is not None else "E1_phi4/e1e_results.json not present; E1e not used, scaling derived analytically"
+    pairs['E1e_input'] = 'used (see E1e_phi4)' if (e1e and 'error' not in e1e) else 'not used'
     # QED Breit-Wheeler
     alpha = K.fine_structure
     re_fm = alpha * HBARC / me
@@ -215,7 +266,9 @@ def main():
         sigma_max_mb=float(sv[ib] * np.pi * re_fm**2 * 10.0),   # 1 fm^2 = 10 mb
         scaling="sigma ~ alpha^2/m_e^2: power-law (perturbative) in alpha, no exp(-c/alpha) factor",
         hypothetical_fold_suppression=dict(
-            note="if the electron were a semiclassical fold with coupling g^2 = alpha (or 4 pi alpha) and DL-like F ~ 4",
+            note=("illustration only: if the electron were a semiclassical fold with DL-like F ~ 3.8; depends on the "
+                  "coupling identification: g^2 = alpha, or g^2 = e^2 = 4 pi alpha (the loop-counting coupling of QED)"),
+            F_used=F2,
             exp_minus_F_over_alpha_log10=float(-F2 / alpha / np.log(10)),
             exp_minus_F_over_4pialpha_log10=float(-F2 / (4 * np.pi * alpha) / np.log(10))))
     R['pairs'] = pairs
@@ -305,12 +358,22 @@ def main():
           f"electron LEP: kappa4 <= {hop['electron_LEP']['kappa4_max']:.3e}, g^2 >= {hop['electron_LEP']['g2_min']:.3e}")
     print("PAIRS")
     print(f"  DL model: v={v:.5f} (paper ~0.75), phi+={phip:.4f}, 2 g^2 M_S = {2*g2MS:.4f} (axes ~6.2), m+={mplus:.3f}")
+    print(f"  DL readings ({dl['source']}): F(threshold, g^2E={dl['F_thr_g2E']:.2f}) = {F_thr:.4f}, F(11.5) = {dl['F_11p5']:.4f}, "
+          f"F_min = {F2:.4f}; g^2 N_min = {g2Nmin:.4f} (near threshold {dl['g2Nmin_thr']:.3f}); left axis g^2E = {dl['left_axis_g2E']:.4f}")
     print(f"  kappa = F/N_pair = {DL['kappa_suppression_per_pair_quantum']['value']}; N_min/N_pair = {DL['Nmin_over_Npair']['value']:.3f}")
     for kk, vv in unsup.items():
-        print(f"  {kk}: g^2 = {vv['g2']:.2f}, M_S/m = {vv['M_S_over_m']:.2f}")
-    print(f"  E1 input: {pairs['E1e_input'] if isinstance(pairs['E1e_input'], str) else 'present'}")
+        print(f"  {kk}: g^2 = {vv['g2']:.3f}, M_S/m = {vv['M_S_over_m']:.3f}")
+    if e1e and 'error' not in e1e:
+        print(f"  E1e (phi^4): g^2 N_min <= {e1e['g2_N_min']['N_E']:.3f} (N = E/m) / {e1e['g2_N_min']['N_lin']:.3f} (N_lin); "
+              f"N_min/N_pair <= {e1e['Nmin_over_Npair']['N_E']:.2f} / {e1e['Nmin_over_Npair']['N_lin']:.2f}; "
+              f"2 quanta classically need g^2 >= {e1e['g2_for_classical_pair_from_2_quanta']['N_E']:.3f} / "
+              f"{e1e['g2_for_classical_pair_from_2_quanta']['N_lin']:.3f}")
+    else:
+        print(f"  E1 input: {pairs['E1e_input']}")
+    hfs = pairs['QED_breit_wheeler']['hypothetical_fold_suppression']
     print(f"  Breit-Wheeler: sigma_max = {sv[ib]:.4f} pi r_e^2 = {pairs['QED_breit_wheeler']['sigma_max_mb']:.1f} mb at sqrt(s) = "
-          f"{1/np.sqrt(1-bb[ib]**2):.3f} x 2 m_e; fold-like suppression would be 10^{-F2/alpha/np.log(10):.0f}")
+          f"{1/np.sqrt(1-bb[ib]**2):.3f} x 2 m_e; fold-like suppression would be 10^{hfs['exp_minus_F_over_alpha_log10']:.1f} "
+          f"(g^2 = alpha) or 10^{hfs['exp_minus_F_over_4pialpha_log10']:.1f} (g^2 = 4 pi alpha)")
     print("VACUUM")
     for kk in ['Planck2018_TTTEEE_lowE_lensing', 'PLAN_rounded', 'Planck_OmegaLh2', 'Planck_Lambda']:
         print(f"  {kk}: rho_L = {vac[kk]['rho_L_GeV4']:.4e} GeV^4")

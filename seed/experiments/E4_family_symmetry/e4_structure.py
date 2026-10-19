@@ -12,6 +12,7 @@ the reason must be stated correctly.  This script decides the structure exactly 
   * structural degeneracy = smallest relative gap between singular values < 1e-9 at every point.
 It also re-derives, symbolically, the rank-2 statement for a (0,0,1) familon in the 5-invariant
 Dirac matrix (sympy, generic symbols).
+Covers the real-coupling variants (min-real, gen-real) added in the reconciliation as well.
 Writes out/structure.json.  Run: python3 e4_structure.py   (about 10 s)
 """
 import json
@@ -54,12 +55,12 @@ def matrices(c, p):
             cD = np.array([1, -1, -1, -1, -1], dtype=complex)
             alpha = p[idx] + 0j
         else:
-            v = 0 if c["variant"] == "min" else 1
+            v, real = F.var_code(c["variant"])
             u5, idx = F.flavon(p, idx, code[c["phi5"]])
             u1, idx = F.flavon(p, idx, code[c["phi1"]])
-            ce, idx = F.coupl(p, idx, v, 0)
-            cD, idx = F.coupl(p, idx, v, 1)
-            alpha = p[idx] + 1j * p[idx + 1]
+            ce, idx = F.coupl(p, idx, v, 0, real)
+            cD, idx = F.coupl(p, idx, v, 1, real)
+            alpha, idx = F.cnum(p, idx, real)
         Me = F.dirac(u5, u10, ce)
         MD = F.dirac(u5, u1, cD)
         MR = F.majorana(u1, alpha)
@@ -67,16 +68,15 @@ def matrices(c, p):
         if abs(np.linalg.det(MR)) > 1e-12 * max(1.0, np.abs(MR).max()) ** 3:
             out["M_nu"] = -(MD @ np.linalg.inv(MR) @ MD.T)
         return out
-    v = 0 if c["variant"] == "min" else 1
+    v, real = F.var_code(c["variant"])
     u10, idx = F.flavon(p, idx, code[c["phi10"]])
     u5, idx = F.flavon(p, idx, code[c["phi5"]])
     if v == 0:
         alu = 0j
         cd = np.zeros(5, complex); cd[0] = 1
     else:
-        alu = p[idx] + 1j * p[idx + 1]
-        idx += 2
-        cd, idx = F.coupl(p, idx, 1, 0)
+        alu, idx = F.cnum(p, idx, real)
+        cd, idx = F.coupl(p, idx, 1, 0, real)
     return {"M_u": F.majorana(u10, alu), "M_d": F.dirac(u10, u5, cd)}
 
 

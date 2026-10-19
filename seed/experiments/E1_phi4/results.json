@@ -1815,6 +1815,580 @@
    "verdict": "QUANTIFIED",
    "source": "",
    "note": "{\"statement\": \"classical production found only for N >= c m^2/lambda (c from producing runs that reproduce at dx = 0.05); c is an upper bound on the true minimum (searched sets only)\", \"c\": 1.687915041158199, \"candidates\": {\"gaussian_reproduced_at_dx0.05\": 1.687915041158199, \"dsv_reproduced_at_dx0.05\": 3.9277750160215046}, \"N_needed_at_lambda_over_m2\": {\"1.0\": 1.687915041158199, \"0.1\": 16.87915041158199, \"0.01\": 168.7915041158199, \"0.001\": 1687.9150411581988}, \"coupling_where_N_equals_2\": 0.8439575205790995, \"coupling_where_N_equals_10\": 0.1687915041158199}"
+  },
+  {
+   "quantity": "E1d no production below E = 2 M_kink, every Gaussian run (pair and single packet, all variants)",
+   "value": 0,
+   "units_convention": "producing runs with own E < 2M_kink, out of 19526 runs",
+   "target": 0,
+   "tolerance": "exact (energy conservation)",
+   "verdict": "CALIBRATED",
+   "source": "",
+   "note": "lowest producing E/2M: pair runs 1.792, single packets 2.214"
+  },
+  {
+   "quantity": "Check: reproducibility and energy conservation",
+   "value": {
+    "reproducibility_gauss_all_agree": true,
+    "reproducibility_kkbar_all_agree": true,
+    "n_gauss_rerun": 12,
+    "n_kkbar_rerun": 6,
+    "energy_drift": {
+     "gauss": 5.623920009106774e-05,
+     "kk": 7.4912169779002686e-06
+    }
+   },
+   "units_convention": "stored calls rerun; max relative energy drift over t = 300 with no absorbing layer (dx = 0.05, dt = 0.02)",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "e1_verify.py"
+  },
+  {
+   "quantity": "Check: single-packet self-folding vs resolution",
+   "value": {
+    "A=0.5,sigma=16.0,k=0.25,single=True": [
+     {
+      "dx": 0.1,
+      "dt": 0.04,
+      "produced": true,
+      "pair_since": 60.000000000000014
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.02,
+      "produced": true,
+      "pair_since": 50.00000000000001
+     },
+     {
+      "dx": 0.025,
+      "dt": 0.01,
+      "produced": true,
+      "pair_since": 50.00000000000001
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.005,
+      "produced": true,
+      "pair_since": 50.00000000000001
+     }
+    ],
+    "A=0.925,sigma=16.0,k=1.0,single=True": [
+     {
+      "dx": 0.1,
+      "dt": 0.04,
+      "produced": true,
+      "pair_since": 10.000000000000002
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.02,
+      "produced": true,
+      "pair_since": 10.000000000000002
+     },
+     {
+      "dx": 0.025,
+      "dt": 0.01,
+      "produced": true,
+      "pair_since": 10.000000000000002
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.005,
+      "produced": true,
+      "pair_since": 10.000000000000002
+     }
+    ],
+    "A=0.3,sigma=16.0,k=0.25,single=True": [
+     {
+      "dx": 0.1,
+      "dt": 0.04,
+      "produced": false,
+      "pair_since": null
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.02,
+      "produced": false,
+      "pair_since": null
+     },
+     {
+      "dx": 0.025,
+      "dt": 0.01,
+      "produced": false,
+      "pair_since": null
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.005,
+      "produced": false,
+      "pair_since": null
+     }
+    ],
+    "A=0.8,sigma=2.0,k=0.5,single=False": [
+     {
+      "dx": 0.1,
+      "dt": 0.04,
+      "produced": true,
+      "pair_since": 40.00000000000001
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.02,
+      "produced": true,
+      "pair_since": 40.00000000000001
+     },
+     {
+      "dx": 0.025,
+      "dt": 0.01,
+      "produced": true,
+      "pair_since": 40.00000000000001
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.005,
+      "produced": true,
+      "pair_since": 40.00000000000001
+     }
+    ]
+   },
+   "units_convention": "production call and time the pair first appears, dx 0.1 to 0.025 and dt 0.04 to 0.005",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "e1_verify.py"
+  },
+  {
+   "quantity": "Check: E1b box size (Lphys, W) = (100, 60), (200, 100) vs (40, 30)",
+   "value": {
+    "reference_box40": {
+     "v_c": 0.26007871093749996,
+     "w1_lo": 0.1925970703125,
+     "w1_hi": 0.20346406250000004
+    },
+    "cases": [
+     {
+      "Lphys": 100.0,
+      "W": 60.0,
+      "transition": "v_c",
+      "v": 0.26007871093749996,
+      "shift_vs_box40": 0.0
+     },
+     {
+      "Lphys": 100.0,
+      "W": 60.0,
+      "transition": "w1_lo",
+      "v": 0.1925970703125,
+      "shift_vs_box40": 0.0
+     },
+     {
+      "Lphys": 100.0,
+      "W": 60.0,
+      "transition": "w1_hi",
+      "v": 0.20346406250000004,
+      "shift_vs_box40": 0.0
+     },
+     {
+      "Lphys": 200.0,
+      "W": 100.0,
+      "transition": "v_c",
+      "v": 0.26007871093749996,
+      "shift_vs_box40": 0.0
+     },
+     {
+      "Lphys": 200.0,
+      "W": 100.0,
+      "transition": "w1_lo",
+      "v": 0.1925970703125,
+      "shift_vs_box40": 0.0
+     },
+     {
+      "Lphys": 200.0,
+      "W": 100.0,
+      "transition": "w1_hi",
+      "v": 0.20346406250000004,
+      "shift_vs_box40": 0.0
+     }
+    ],
+    "max_abs_shift": 0.0
+   },
+   "units_convention": "v at the transition, dx = 0.05, dt = 0.01",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "e1b_boxcheck.py"
+  },
+  {
+   "quantity": "Check: E1d coarse grid with exact one-way initial velocity",
+   "value": {
+    "n_runs": 1485,
+    "n_produced": 572,
+    "n_produced_baseline": 564,
+    "point_agreement_with_baseline": 0.7683501683501683,
+    "any_below_2M": 0,
+    "min_producing": {
+     "A": 0.6,
+     "sigma": 4.0,
+     "k": 0.5,
+     "E_over_2M": 2.7029773646913346,
+     "N_lin": 3.9186432918389564,
+     "single_packet_also": false
+    },
+    "n_single_packet_also": 363,
+    "n_collision_needed": 209,
+    "frac_vs_E": [
+     [
+      0.0,
+      0.5,
+      136,
+      0,
+      0.0
+     ],
+     [
+      0.5,
+      1.0,
+      76,
+      0,
+      0.0
+     ],
+     [
+      1.0,
+      1.5,
+      55,
+      0,
+      0.0
+     ],
+     [
+      1.5,
+      2.0,
+      53,
+      0,
+      0.0
+     ],
+     [
+      2.0,
+      3.0,
+      88,
+      3,
+      0.03409090909090909
+     ],
+     [
+      3.0,
+      4.0,
+      72,
+      5,
+      0.06944444444444445
+     ],
+     [
+      4.0,
+      6.0,
+      129,
+      28,
+      0.21705426356589147
+     ],
+     [
+      6.0,
+      8.0,
+      103,
+      49,
+      0.47572815533980584
+     ],
+     [
+      8.0,
+      12.0,
+      136,
+      73,
+      0.5367647058823529
+     ],
+     [
+      12.0,
+      16.0,
+      95,
+      50,
+      0.5263157894736842
+     ],
+     [
+      16.0,
+      24.0,
+      129,
+      75,
+      0.5813953488372093
+     ],
+     [
+      24.0,
+      32.0,
+      89,
+      59,
+      0.6629213483146067
+     ],
+     [
+      32.0,
+      64.0,
+      178,
+      122,
+      0.6853932584269663
+     ],
+     [
+      64.0,
+      1000000000.0,
+      146,
+      108,
+      0.7397260273972602
+     ]
+    ],
+    "regions_6conn": {
+     "n": 5,
+     "sizes": [
+      565,
+      4,
+      1,
+      1,
+      1
+     ]
+    },
+    "tests": {
+     "speed": {
+      "verdict": "CONFIRMED",
+      "spearman_by_band": [
+       [
+        -0.7822165589515727,
+        0.012732203687083596
+       ],
+       [
+        -0.8645309671165333,
+        0.002632371844833842
+       ],
+       [
+        -0.8833333333333333,
+        0.0015905004234978695
+       ]
+      ]
+     },
+     "speed_collision_needed": {
+      "verdict": "NOT_SUPPORTED",
+      "spearman_by_band": [
+       [
+        -0.7822165589515727,
+        0.012732203687083596
+       ],
+       [
+        -0.6611119160302902,
+        0.052514014075065625
+       ],
+       [
+        -0.03333333333333333,
+        0.9321567355405039
+       ]
+      ]
+     },
+     "width": {
+      "verdict": "NOT_SUPPORTED",
+      "spearman_by_band": [
+       [
+        0.0,
+        1.0
+       ],
+       [
+        -0.41457966329616674,
+        0.20487715111917154
+       ],
+       [
+        0.25512594664379495,
+        0.44896812615545134
+       ]
+      ]
+     },
+     "width_collision_needed": {
+      "verdict": "NOT_SUPPORTED",
+      "spearman_by_band": [
+       [
+        0.0,
+        1.0
+       ],
+       [
+        -0.7699336604071668,
+        0.005574581301564028
+       ],
+       [
+        -0.1735177906913448,
+        0.6098878360084031
+       ]
+      ]
+     }
+    }
+   },
+   "units_convention": "same grid and rules as e1d_coarse.json; phi_t from the free dispersion per Fourier component",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "e1d_extra.py coarse_oneway / single_oneway"
+  },
+  {
+   "quantity": "Check: E1d k = 1 slice at dx = 0.05 vs dx = 0.1",
+   "value": {
+    "point_agreement": 0.8302111210228962,
+    "ragged_verdict_dx0.1": "CONFIRMED",
+    "ragged_verdict_dx0.05": "CONFIRMED",
+    "block4x4_fraction_mean_abs_diff": 0.05931122448979592,
+    "block4x4_fraction_corr": 0.9492260593696216,
+    "ragged_verdict_dx0.05_collision_needed": "CONFIRMED",
+    "dx0.05_n_single_also": 728,
+    "dx0.1_collision_needed_n": 439,
+    "dx0.1_n_single_also": 723,
+    "single_also_point_agreement": 0.8754088611358906,
+    "dx0.1": {
+     "n_produced": 1162,
+     "regions_4conn": 48,
+     "singletons_4conn": 26,
+     "regions_ge3": 13,
+     "region_sizes_top5": [
+      1031,
+      30,
+      11,
+      7,
+      6
+     ],
+     "enclosed_holes": 141,
+     "A_lines_with_production": 53,
+     "A_lines_non_monotonic": 48,
+     "frac_non_monotonic": 0.9056603773584906,
+     "mean_switches_on_producing_lines": 13.30188679245283
+    },
+    "dx0.05": {
+     "n_produced": 1193,
+     "regions_4conn": 40,
+     "singletons_4conn": 26,
+     "regions_ge3": 8,
+     "region_sizes_top5": [
+      1110,
+      12,
+      10,
+      6,
+      6
+     ],
+     "enclosed_holes": 153,
+     "A_lines_with_production": 53,
+     "A_lines_non_monotonic": 49,
+     "frac_non_monotonic": 0.9245283018867925,
+     "mean_switches_on_producing_lines": 12.849056603773585
+    }
+   },
+   "units_convention": "regions, holes, switches along A; same definitions as analyze_e1d.py",
+   "target": "ragged test as in analyze_e1d.py",
+   "tolerance": "operational",
+   "verdict": "CONFIRMED",
+   "source": "",
+   "note": "e1d_extra.py slice_dx05 / slice_dx05_single"
+  },
+  {
+   "quantity": "Check: point-level convergence ladder (E1d)",
+   "value": {
+    "n_points": 32,
+    "n_changed_0.1_vs_0.05": 24,
+    "agree_0.1_0.05": 0.25,
+    "agree_0.05_0.025": 0.71875,
+    "agree_0.025_0.0125": 0.71875,
+    "agree_0.05_0.0125": 0.6875,
+    "changed_0.1_vs_0.05": {
+     "n": 24,
+     "agree_0.05_0.025": 0.625,
+     "agree_0.025_0.0125": 0.625,
+     "producing_fraction_by_dx": {
+      "dx0.1": 0.4166666666666667,
+      "dx0.05": 0.5833333333333334,
+      "dx0.025": 0.5416666666666666,
+      "dx0.0125": 0.5833333333333334
+     }
+    },
+    "unchanged_0.1_vs_0.05": {
+     "n": 8,
+     "agree_0.05_0.025": 1.0,
+     "agree_0.025_0.0125": 1.0,
+     "producing_fraction_by_dx": {
+      "dx0.1": 0.125,
+      "dx0.05": 0.125,
+      "dx0.025": 0.125,
+      "dx0.0125": 0.125
+     }
+    }
+   },
+   "units_convention": "agreement of production calls between resolutions (dt = 0.4 dx)",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "e1d_dxladder.py; 24 points whose call changed between dx 0.1 and 0.05, plus 8 that did not"
+  },
+  {
+   "quantity": "E1e Gaussian packets, exact one-way family: lowest producer reproduced at dx = 0.05 and 0.025",
+   "value": {
+    "N_E_times_lambda_over_m2": 1.801984909794223,
+    "N_lin_times_lambda_over_m2": 1.9593216459194782,
+    "E_over_2M": 2.7029773646913346,
+    "A": 0.6,
+    "sigma": 4.0,
+    "k": 0.5
+   },
+   "units_convention": "N*lambda/m^2 (N = E/m = (2/3) E/2M in these units)",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "coarse grid only (no local refinement)"
+  }
+ ],
+ "seed_claims": [
+  {
+   "seed_section": "\u00a72",
+   "claim": "A fold appears only with an antifold, so the threshold is twice the lightest fold's energy.",
+   "verdict": "AMENDED",
+   "evidence": "No producing run below 2M_kink in any of the Gaussian runs (pair and single packet, all variants) or DSV runs. But 2M is a floor, not the classical onset: the lowest producing energies found are 1.79 x 2M (narrow-band packets, not reproduced at dx=0.05), 1.86 x 2M (narrow-band, reproduced), 2.70 x 2M (exact one-way packets, coarse grid) and 6.98 x 2M (DSV trains); production stays rare (0-11% of runs in each band) below 4 x 2M."
+  },
+  {
+   "seed_section": "\u00a74",
+   "claim": "A small, spread-out packet is linear and passes through.",
+   "verdict": "CONFIRMED",
+   "evidence": "No coarse run with A <= 0.3 produces, up to E ~ 15 x 2M, in either initial-velocity form; in the slices production starts at A ~ 0.35 (sigma=16) and A ~ 0.45 (k=1). The one exception (A=0.275, sigma=16, k=0.2) is isolated and not reproduced at dx=0.05."
+  },
+  {
+   "seed_section": "\u00a74",
+   "claim": "Pile in enough energy and the nonlinear terms take over: the packet can fold into a fold-antifold pair.",
+   "verdict": "AMENDED",
+   "evidence": "Packets do fold, and a single packet with A >~ 0.4 folds into pairs without any collision (converged in dx and dt). But energy is not the control parameter: at fixed E/2M the producing fraction spans 0 to ~0.8 depending on amplitude, and no energy guarantees production (fraction 0.74-0.75 above 64 x 2M)."
+  },
+  {
+   "seed_section": "\u00a74",
+   "claim": "Colliding trains of small pulses make kink-antikink pairs over a wide range of settings, most easily at low speed (Dutta, Steer & Vachaspati 2008).",
+   "verdict": "CONFIRMED",
+   "evidence": "E1c reproduces DSV Fig. 2 band by band: the example point (0.99, 0.43), the producing band moving from v ~ 0.73-0.85 at omega=0.90 to v ~ 0.41-0.43 at omega=0.99 (Spearman -0.99), pass-through at v = 0.90, the hole at (0.91, 0.81-0.82), and no production for omega > 0.99."
+  },
+  {
+   "seed_section": "\u00a74, \u00a77.1",
+   "claim": "The pair-production boundary may be ragged rather than one clean threshold.",
+   "verdict": "CONFIRMED",
+   "evidence": "Both 59 x 57 slices are fractured: 24 and 48 producing regions (15 and 26 single points), 267 and 141 enclosed non-producing holes, and 57/57 and 48/53 lines of fixed k or sigma switch more than once as A rises (mean 15 and 13 switches). Collision-needed production alone is fractured too. Rerunning the k = 1 slice at half the grid spacing and time step keeps the fracture (40 regions, 153 holes, 49/53 lines, mean 12.8 switches) while 17% of individual calls change and 4x4-block production fractions agree (correlation 0.95). The outcome also depends on the collision phase (51 of 60 boundary points flip under a shift of x0 within one carrier period). The boundary is fractured at the grid scale; point-by-point maps are not converged, the statistics are."
+  },
+  {
+   "seed_section": "PLAN E1d (from \u00a74 via DSV 2008 and Albayrak-Vachaspati 2024)",
+   "claim": "Production favours low speed and wide packets.",
+   "verdict": "AMENDED",
+   "evidence": "Low speed: CONFIRMED at matched energy in both initial-velocity forms (Spearman rho -0.78 to -0.88 in E/2M bands [2,4), [4,8), [8,16), p <= 0.013). Width: not supported at matched energy (no significant positive rho in any band; one significant negative rho for collision-needed production in the one-way form). Wide packets win in raw counts only because they carry more energy at fixed A."
+  },
+  {
+   "seed_section": "\u00a78 / PLAN E1e",
+   "claim": "A classical pair needs N ~ 1/lambda quanta.",
+   "verdict": "QUANTIFIED",
+   "evidence": "Classical dynamics is independent of phi0 (S = phi0^2 S~), so N = E/(hbar m) = (\u1ebc/(2 sqrt2)) m^2/lambda. Energy conservation alone gives N >= (2/3) m^2/lambda. The smallest producing initial states found that survive a resolution check: narrow-band Gaussian packets (A=0.8, sigma=2, k=0.5; E = 1.86 x 2M) N*lambda/m^2 = 1.24 (N = E/m) or 1.69 (free-field occupation N_lin); exact one-way packets (A=0.6, sigma=4, k=0.5; E = 2.70 x 2M) 1.80 or 1.96; DSV trains (0.95, 0.62; E = 7.17 x 2M) 4.78 or 3.93. So classical pair-making needs N ~ (1.2-2) m^2/lambda quanta: about 120-200 at lambda/m^2 = 0.01. These are upper bounds on the true classical minimum (only the scanned families)."
+  },
+  {
+   "seed_section": "\u00a78",
+   "claim": "In weakly coupled theories, folding a few quanta into a pair is exponentially rare.",
+   "verdict": "OPEN",
+   "evidence": "The classical runs show the classical route needs N ~ O(1) m^2/lambda quanta, i.e. many quanta at weak coupling, which is consistent with the claim. The exponential suppression of few-quanta production is a semiclassical/quantum statement (Demidov & Levkov 2011) that E1 does not compute."
   }
  ],
  "details_files": [
@@ -1822,6 +2396,8 @@
   "e1b_analysis.json",
   "e1c_analysis.json",
   "e1d_analysis.json",
-  "e1e_results.json"
+  "e1e_results.json",
+  "e1_extra_analysis.json",
+  "e1d_oneway_min.json"
  ]
 }

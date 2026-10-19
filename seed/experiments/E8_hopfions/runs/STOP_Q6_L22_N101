@@ -1,0 +1,1 @@
+{"t": 50.0184, "rel_change_10": 4.4e-07, "E": 4.6958678, "rule": "manual, same rule as stop_watcher.py (t>=20, rel change over 10 units < 1e-6), applied to the N=101 stage for the compute budget"}

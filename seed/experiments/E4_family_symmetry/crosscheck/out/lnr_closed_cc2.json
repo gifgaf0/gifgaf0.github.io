@@ -1,0 +1,79 @@
+{
+ "alpha_windows_exact": [
+  [
+   -1.143509649015901,
+   -0.9462173107327376
+  ],
+  [
+   -0.22023228551628563,
+   -0.15365705425666665
+  ]
+ ],
+ "alpha_refit_exact": [
+  -1.0620942749912483,
+  -0.1787039511728316
+ ],
+ "haze": {
+  "pole/LNR": {
+   "lam": 0.0695437394192857,
+   "th13": 2.818648120253212,
+   "th12": 32.44232462799685,
+   "s13sq": 0.0024181658462087557,
+   "s12sq": 0.2877789857805281,
+   "s23sq": 0.4987879862265836
+  },
+  "pole/opposite": {
+   "lam": 0.0695437394192857,
+   "th13": 2.818648120253212,
+   "th12": 38.08645473751247,
+   "s13sq": 0.0024181658462087557,
+   "s12sq": 0.38050369925069377,
+   "s23sq": 0.4987879862265836
+  },
+  "pole/LNR/angle=lambda": {
+   "th13": 2.8163748514510365,
+   "th12": 32.444606167514195
+  },
+  "MSbar_MZ/LNR": {
+   "lam": 0.06889753457863275,
+   "th13": 2.7924362083504497,
+   "th12": 32.46863109505222,
+   "s13sq": 0.002373435135506948,
+   "s12sq": 0.28819480084568994,
+   "s23sq": 0.49881045913416044
+  },
+  "MSbar_MZ/opposite": {
+   "lam": 0.06889753457863275,
+   "th13": 2.7924362083504497,
+   "th12": 38.06014827045709,
+   "s13sq": 0.002373435135506948,
+   "s12sq": 0.3800579203087628,
+   "s23sq": 0.49881045913416044
+  },
+  "MSbar_MZ/LNR/angle=lambda": {
+   "th13": 2.790225762197065,
+   "th12": 32.47084943415166
+  }
+ },
+ "pulls": {
+  "s12sq": -1.8019700830754941,
+  "s13sq": -34.06715259382195,
+  "s23sq": -1.424702605498086,
+  "r": -7.82146202780792,
+  "s23sq_1sigma(-0.015)": -4.1474675848944305
+ },
+ "LNR_exact_no_haze_chi2": 1472.00580339096,
+ "checks": {
+  "M_nu(alpha=beta=-1) = (1/2)[[0,1,1],[1,-4,5],[1,5,-4]] (LNR display, overall sign included)": true,
+  "beta=-1: TBM vectors are exact eigenvectors for all alpha, eigenvalues 1/(a-1), -1/(2a+1), 9/(a-1)": true,
+  "r(alpha) = 80 (2 alpha+1)^2 / (-3 alpha (alpha+2)) and r(-1) = 80/3": true,
+  "alpha windows (-1.1435, -0.9462), (-0.2202, -0.1537): within 0.01 of LNR's (-1.15,-0.95), (-0.22,-0.15)": true,
+  "alpha refit to r = 33.83: -1.0621 and -0.1787": true,
+  "sign fixed by LNR: U_-1^T U_TB reproduces LNR's displayed U_MNSP to linear order in lambda (all 9 entries)": true,
+  "the opposite rotation sign does NOT reproduce LNR's displayed matrix": true,
+  "theta13 = 2.819 deg, theta12 = 32.44 deg (pole masses, LNR sign); MS-bar theta13 = 2.792 deg; opposite sign theta12 = 38.09": true,
+  "pulls: s13sq -34.1, r -7.8, s12sq -1.8, s23sq -1.4 (3sigma/3) / -4.1 (1sigma)": true,
+  "LNR-exact class (no haze, r fitted) chi2 = 1472.0 with theta13 pull -38.3": true
+ },
+ "all_pass": true
+}

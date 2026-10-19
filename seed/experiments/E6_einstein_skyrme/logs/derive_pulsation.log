@@ -11,6 +11,6 @@ d = x*(x**2 + 2*sin(F)**2)/(sg*(-2*alpha*m + x))
 K = -P*(4*alpha*m*sin(F)**2 - x*(-2*alpha*m*x + x**2 + 2*sin(F)**2))/x
 wrote pulsation_coeffs.json
 
-real	1m5.544s
-user	0m47.615s
-sys	0m0.125s
+real	1m5.002s
+user	0m52.363s
+sys	0m0.133s

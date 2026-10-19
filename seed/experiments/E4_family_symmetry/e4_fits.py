@@ -16,8 +16,12 @@ Texture class = alignment of each familon vev, from the vacua of the F21 familon
     Z7 : (0,0,1)                      kappa < 0 vacuum, ray fixed by Z7 (0)
     G  : generic (x1 e^{i f1}, x2 e^{i f2}, 1)   no alignment ("Cabibbo haze" by hand) (4)
 and a coupling variant:
-    min : LNR leading order (charged sectors: I3 only, c = (1,0,0,0,0); Dirac nu: c1=c2=c3=c4=beta)
+    min : LNR leading order (charged sectors: I3 only, c = (1,0,0,0,0); Dirac nu: c1=c2=c3=c4=beta);
+          beta and the Majorana coefficient alpha are COMPLEX
     gen : all invariants with independent complex couplings (c0 = 1).
+    min-real, gen-real (added in the reconciliation): the same with REAL couplings (alpha, beta, c_k),
+          i.e. CP-conserving couplings with CP violation only from vev phases.  LNR themselves take
+          alpha = beta = -1 real.  Quarks have no 'min-real' (the quark 'min' variant has no couplings).
 Plus the named class "LNR exact": phi10 = G, phi5 = (-1,1,1), phi1 = (1,1,1), beta = -1, alpha real.
 
 Observables: leptons (7) me/mmu, mmu/mtau, r = Dm31^2/Dm21^2 (normal ordering), s12^2, s13^2, s23^2,
@@ -111,20 +115,27 @@ def majorana(u, alpha):
 
 
 @nb.njit(cache=True)
-def coupl(p, idx, variant, kind):
+def cnum(p, idx, real):
+    """one coupling: complex (2 real parameters) or real (1)."""
+    if real:
+        return p[idx] + 0j, idx + 1
+    return p[idx] + 1j * p[idx + 1], idx + 2
+
+
+@nb.njit(cache=True)
+def coupl(p, idx, variant, kind, real=False):
     """kind 0: charged Dirac (min: I3 only); kind 1: neutrino Dirac (min: beta); returns c(5), idx."""
     c = np.zeros(5, dtype=np.complex128)
     c[0] = 1.0
     if variant == 0:
         if kind == 1:
-            b = p[idx] + 1j * p[idx + 1]
-            idx += 2
+            b, idx = cnum(p, idx, real)
             for k in range(1, 5):
                 c[k] = b
     else:
         for k in range(1, 5):
-            c[k] = p[idx] + 1j * p[idx + 1]
-            idx += 2
+            b, idx = cnum(p, idx, real)
+            c[k] = b
     return c, idx
 
 
@@ -151,7 +162,7 @@ def mix_obs(U):
 
 
 @nb.njit(cache=True)
-def lepton_obs(p, a10, a5, a1, variant, lnr_exact):
+def lepton_obs(p, a10, a5, a1, variant, lnr_exact, real=False):
     idx = 0
     u10, idx = flavon(p, idx, a10)
     if lnr_exact:
@@ -166,10 +177,9 @@ def lepton_obs(p, a10, a5, a1, variant, lnr_exact):
     else:
         u5, idx = flavon(p, idx, a5)
         u1, idx = flavon(p, idx, a1)
-        ce, idx = coupl(p, idx, variant, 0)
-        cD, idx = coupl(p, idx, variant, 1)
-        alpha = p[idx] + 1j * p[idx + 1]
-        idx += 2
+        ce, idx = coupl(p, idx, variant, 0, real)
+        cD, idx = coupl(p, idx, variant, 1, real)
+        alpha, idx = cnum(p, idx, real)
     Me = dirac(u5, u10, ce)
     MD = dirac(u5, u1, cD)
     MR = majorana(u1, alpha)
@@ -192,7 +202,7 @@ def lepton_obs(p, a10, a5, a1, variant, lnr_exact):
 
 
 @nb.njit(cache=True)
-def quark_obs(p, a10, a5, variant):
+def quark_obs(p, a10, a5, variant, real=False):
     idx = 0
     u10, idx = flavon(p, idx, a10)
     u5, idx = flavon(p, idx, a5)
@@ -200,9 +210,8 @@ def quark_obs(p, a10, a5, variant):
         alu = 0.0 + 0j
         cd = np.zeros(5, dtype=np.complex128); cd[0] = 1.0
     else:
-        alu = p[idx] + 1j * p[idx + 1]
-        idx += 2
-        cd, idx = coupl(p, idx, 1, 0)
+        alu, idx = cnum(p, idx, real)
+        cd, idx = coupl(p, idx, 1, 0, real)
     Mu = majorana(u10, alu)
     Md = dirac(u10, u5, cd)
     wu, Vu = np.linalg.eigh(Mu @ Mu.conj().T)
@@ -240,8 +249,12 @@ def lepton_pulls(o):
         if k < 2:
             r[k] = math.log(x / LEP_T[k]) / LEP_LO[k]
         elif k == 6:
-            dlt = (x - LEP_T[6] + 180.0) % 360.0 - 180.0
-            r[k] = dlt / (LEP_HI[6] if dlt > 0 else LEP_LO[6])
+            # delta is periodic: representative with the smallest |pull| (reconciliation fix; the
+            # original wrapped into [bf-180, bf+180) = [-3, 357) deg, see data_targets.pull_delta_deg)
+            d0 = (x - LEP_T[6]) % 360.0
+            pu = d0 / LEP_HI[6]
+            pd = (d0 - 360.0) / LEP_LO[6]
+            r[k] = pu if abs(pu) <= abs(pd) else pd
         else:
             dlt = x - LEP_T[k]
             r[k] = dlt / (LEP_HI[k] if dlt > 0 else LEP_LO[k])
@@ -273,7 +286,7 @@ def quark_pulls(o):
     return r
 
 
-def class_list():
+def class_list(real=True):
     classes = []
     names = ["Z3", "P", "Z7", "G"]
     for var in ("min", "gen"):
@@ -282,7 +295,20 @@ def class_list():
         for a10, a5 in itertools.product(names, repeat=2):
             classes.append({"sector": "quark", "variant": var, "phi10": a10, "phi5": a5})
     classes.append({"sector": "lepton", "variant": "LNR exact", "phi10": "G", "phi5": "(-1,1,1)", "phi1": "(1,1,1)"})
+    if real:
+        # reconciliation: real (CP-conserving) couplings; quark 'min' has no couplings, so no quark min-real
+        for a10, a5, a1 in itertools.product(names, repeat=3):
+            classes.append({"sector": "lepton", "variant": "min-real", "phi10": a10, "phi5": a5, "phi1": a1})
+        for a10, a5 in itertools.product(names, repeat=2):
+            classes.append({"sector": "quark", "variant": "gen-real", "phi10": a10, "phi5": a5})
+        for a10, a5, a1 in itertools.product(names, repeat=3):
+            classes.append({"sector": "lepton", "variant": "gen-real", "phi10": a10, "phi5": a5, "phi1": a1})
     return classes
+
+
+def var_code(variant):
+    """'min' -> (0, False), 'gen' -> (1, False), 'min-real' -> (0, True), 'gen-real' -> (1, True)."""
+    return (0 if variant.startswith("min") else 1), variant.endswith("-real")
 
 
 def cname(c):
@@ -295,11 +321,15 @@ def npar(c):
     if c["sector"] == "lepton":
         if c["variant"] == "LNR exact":
             return 4 + 1
+        v, real = var_code(c["variant"])
+        w = 1 if real else 2                      # real parameters per coupling
         n = sum(NPAR_ALIGN[CODES[c[k]]] for k in ("phi10", "phi5", "phi1"))
-        n += (0 + 2) if c["variant"] == "min" else (8 + 8)
-        return n + 2
+        n += w * (1 if v == 0 else 8)             # beta (min) or c1..c4 for M_e and M_D (gen)
+        return n + w                              # alpha
+    v, real = var_code(c["variant"])
+    w = 1 if real else 2
     n = sum(NPAR_ALIGN[CODES[c[k]]] for k in ("phi10", "phi5"))
-    return n + (0 if c["variant"] == "min" else 2 + 8)
+    return n + (0 if v == 0 else w * 5)
 
 
 def make_fun(c):
@@ -307,11 +337,11 @@ def make_fun(c):
         if c["variant"] == "LNR exact":
             return (lambda p: lepton_obs(p, 3, 0, 0, 0, True)), lepton_pulls, 7
         a10, a5, a1 = (CODES[c[k]] for k in ("phi10", "phi5", "phi1"))
-        v = 0 if c["variant"] == "min" else 1
-        return (lambda p: lepton_obs(p, a10, a5, a1, v, False)), lepton_pulls, 7
+        v, real = var_code(c["variant"])
+        return (lambda p: lepton_obs(p, a10, a5, a1, v, False, real)), lepton_pulls, 7
     a10, a5 = CODES[c["phi10"]], CODES[c["phi5"]]
-    v = 0 if c["variant"] == "min" else 1
-    return (lambda p: quark_obs(p, a10, a5, v)), quark_pulls, 8
+    v, real = var_code(c["variant"])
+    return (lambda p: quark_obs(p, a10, a5, v, real)), quark_pulls, 8
 
 
 def random_start(c, rng, n):
@@ -343,13 +373,16 @@ def layout(c):
             return lay
         for k in ("phi10", "phi5", "phi1"):
             al(CODES[c[k]])
-        lay.extend(["coup"] * (2 if c["variant"] == "min" else 16))
-        lay.extend(["coup", "coup"])
+        v, real = var_code(c["variant"])
+        w = 1 if real else 2
+        lay.extend(["coup"] * (w * (1 if v == 0 else 8)))
+        lay.extend(["coup"] * w)
         return lay
     for k in ("phi10", "phi5"):
         al(CODES[c[k]])
-    if c["variant"] == "gen":
-        lay.extend(["coup"] * 10)
+    v, real = var_code(c["variant"])
+    if v == 1:
+        lay.extend(["coup"] * ((1 if real else 2) * 5))
     return lay
 
 
@@ -465,8 +498,10 @@ def main():
     classes = class_list()
     t0 = time.time()
     # warm up numba
-    lepton_obs(np.zeros(30), 0, 0, 0, 1, False)
-    quark_obs(np.zeros(30), 0, 0, 1)
+    lepton_obs(np.zeros(30), 0, 0, 0, 1, False, False)
+    lepton_obs(np.zeros(30), 0, 0, 0, 1, False, True)
+    quark_obs(np.zeros(30), 0, 0, 1, False)
+    quark_obs(np.zeros(30), 0, 0, 1, True)
     with open(LOG, "a") as log, open(JSONL, "a") as out:
         log.write(f"start {time.ctime()} : {len(classes)} classes, {len(done)} already done\n")
         log.flush()

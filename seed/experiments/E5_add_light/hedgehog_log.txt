@@ -46,4 +46,4 @@ isovector <r^2>(R) [x^2 units]: R=2: 0.552, R=5: 5.388, R=10: 12.709, R=20: 27.3
 == massive pions ==
   AN84_parameters beta=0.2640: M_N=937.3 M_D=1229.6 r0=0.683 rI1=1.040 rp=0.880 <r2>n=-0.308 mu_p=1.972 mu_n=-1.241 gA=0.649 gpiNN=11.29
   own massive fit: F=108.260 MeV e=4.8421 (AN84 quoted 108, 4.84)
-done in 8.3 s
+done in 8.0 s

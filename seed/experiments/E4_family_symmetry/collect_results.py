@@ -1,6 +1,7 @@
 """
 collect_results.py -- assemble results.json (headline numbers with units/conventions, target,
-tolerance, source and verdict) from out/groups.json, out/yukawa.json, out/lnr.json, out/fits.jsonl.
+tolerance, source and verdict) from out/groups.json, out/yukawa.json, out/lnr.json, out/fits.jsonl,
+out/realcoupling.json and out/reconcile_checks.json (reconciliation).
 out/structure.json (e4_structure.py: exact generic-rank scan used for the structural diagnosis).
 Run last:  python3 collect_results.py
 """
@@ -17,6 +18,11 @@ F = [json.loads(l) for l in open(os.path.join(OUT, "fits.jsonl"))]
 S = json.load(open(os.path.join(OUT, "structure.json")))      # exact generic-rank scan (e4_structure.py)
 ROB_PATH = os.path.join(OUT, "robustness.json")                # e4_robustness.py (determinism, 300-start check)
 ROB = json.load(open(ROB_PATH)) if os.path.exists(ROB_PATH) else None
+RC = json.load(open(os.path.join(OUT, "realcoupling.json")))          # e4_realcoupling.py (reconciliation)
+RK = json.load(open(os.path.join(OUT, "reconcile_checks.json")))      # e4_reconcile_checks.py (reconciliation)
+F_ALL = F
+F = [r for r in F_ALL if not r["variant"].endswith("-real")]         # original survey: complex couplings (161 classes)
+FR = [r for r in F_ALL if r["variant"].endswith("-real")]            # reconciliation: real couplings (144 classes)
 
 cal = []
 
@@ -73,14 +79,15 @@ h = L["haze"]["pole masses"]
 add("theta13 with charged-lepton haze lambda_e = sqrt(me/mmu) (pole masses)", f"{h['theta13_linear_deg']:.3f} deg", "2.8 deg",
     "0.05 deg", "LNR 0706.2341 Sec. 4.2", abs(h["theta13_linear_deg"] - 2.8) < 0.05)
 add("theta12 with the same haze", f"{h['theta12_linear_deg']:.2f} deg", "32.4 deg", "0.05 deg", "LNR 0706.2341 Sec. 4.2",
-    abs(h["theta12_linear_deg"] - 32.4) < 0.05, "the sign of the haze rotation is an input: the opposite sign gives "
-    f"{h['opposite_sign_theta12_deg']:.2f} deg")
+    abs(h["theta12_linear_deg"] - 32.4) < 0.05, "the sign of the haze rotation is the one in LNR's printed U_-1 "
+    f"(it reproduces all nine entries of their U_MNSP); the opposite sign gives {h['opposite_sign_theta12_deg']:.2f} deg")
 
 cmp = L["comparison_NuFIT6"]
 findings = [
     {"quantity": "Schur: singular values of the general F21- (PSL-) invariant mass matrix for L=R=3 with a trivial scalar",
      "value": "three equal (1 coupling); L=3,R=3bar: 0 couplings; Majorana 3x3x1: 0 couplings", "target": "PLAN E4: degenerate",
-     "tolerance": "exact", "verdict": "NO_TARGET", "note": "commutant of the triplet is 1-dimensional for both groups"},
+     "tolerance": "exact", "verdict": "NO_TARGET", "note": "commutant of the triplet is 1-dimensional for both groups; "
+     "a single 1, 1' or 1'' vev gives equal |masses|, any two of them already give three distinct masses (F21 broken to Z7)"},
     {"quantity": "LNR integer point vs NuFIT 6.0: sin^2 theta13", "value": f"{cmp['sin2_theta13']['LNR']:.5f}",
      "target": "0.02195 (+0.00054 -0.00058)", "tolerance": "pull with sigma from 3sigma range/3",
      "verdict": "NO_TARGET", "outcome": "excluded by data", "note": f"pull {cmp['sin2_theta13']['pull']:.1f} sigma"},
@@ -95,6 +102,11 @@ for gname in ("F21", "PSL"):
     rows = Y["residual_patterns"][gname]
     best_l = min((p for p in rows if p["kind"] != "quark"), key=lambda p: p["chi2"])
     best_q = min((p for p in rows if p["kind"] == "quark"), key=lambda p: p["chi2"])
+    pc = RK["pattern_counts"][gname]
+    findings.append({"quantity": f"{gname}: number of full-residual-symmetry mixing patterns",
+                     "value": f"{pc['tags(kind,G_l,G_nu,|U|^2)']} (sector, G_l, G_nu, |U|^2) combinations; "
+                              f"{pc['distinct_absU2_structures']} distinct |U|^2 structures up to row/column permutations",
+                     "target": "count", "tolerance": "exact", "verdict": "NO_TARGET", "note": json.dumps(pc["by_kind"])})
     findings.append({"quantity": f"{gname}: best full-residual-symmetry lepton pattern (0 mixing parameters, 4 obs.)",
                      "value": f"chi2 = {best_l['chi2']:.1f} ({best_l['G1']} x {best_l['G2']}, {best_l['kind']})",
                      "target": "p > 0.01", "tolerance": "chi2 test, 4 dof", "verdict": "NO_TARGET", "outcome": "excluded by data",
@@ -137,7 +149,7 @@ def diagnose(r):
     return None
 
 
-for r in F:
+for r in F_ALL:
     r["diagnosis"] = diagnose(r)
     # final label: same pass/fail outcome as the fit verdict; a fit 'excluded' whose matrices are exactly
     # rank-deficient/degenerate is relabelled 'excluded (structural)' (its chi2 is then a rounding artefact)
@@ -146,15 +158,40 @@ for r in F:
     r["verdict_final"] = "excluded (structural)" if (dead and r["verdict"].startswith("excluded")) else r["verdict"]
     assert not (dead and not r["verdict"].startswith("excluded")), r["name"]
 
-surv = {"lepton": {}, "quark": {}}
-surv_fit = {"lepton": {}, "quark": {}}
-for r in F:
-    surv[r["sector"]].setdefault(r["verdict_final"], []).append(r["name"])
-    surv_fit[r["sector"]].setdefault(r["verdict_fit"], []).append(r["name"])
-summary_survey = {s: {v: len(n) for v, n in d.items()} for s, d in surv.items()}
-summary_survey_fitlabels = {s: {v: len(n) for v, n in d.items()} for s, d in surv_fit.items()}
+def summarize(FF):
+    surv_ = {"lepton": {}, "quark": {}}
+    surv_fit_ = {"lepton": {}, "quark": {}}
+    for r in FF:
+        surv_[r["sector"]].setdefault(r["verdict_final"], []).append(r["name"])
+        surv_fit_[r["sector"]].setdefault(r["verdict_fit"], []).append(r["name"])
+    return ({s: {v: len(n) for v, n in d.items()} for s, d in surv_.items()},
+            {s: {v: len(n) for v, n in d.items()} for s, d in surv_fit_.items()})
+
+
+summary_survey, summary_survey_fitlabels = summarize(F)
+summary_real, summary_real_fitlabels = summarize(FR)
 survivors = [r for r in F if r["verdict_final"] == "SURVIVES"]
 accom = [r for r in F if r["verdict_final"].startswith("accommodates")]
+survivors_real = [r for r in FR if r["verdict_final"] == "SURVIVES"]
+accom_real = [r for r in FR if r["verdict_final"].startswith("accommodates")]
+
+
+def relabel_stats(FF):
+    rel = [r for r in FF if r["verdict_final"] == "excluded (structural)" and r["verdict_fit"] == "excluded"]
+    causes = {}
+    for r in rel:
+        d = r["diagnosis"] or ""
+        k = ("rank-deficient charged-fermion matrix (Z7 familon)" if "rank" in d else
+             "exactly degenerate light neutrinos (r = 1)" if "neutrinos have an exactly degenerate" in d else
+             "CKM a permutation matrix (M_u, M_d both diagonal)" if "permutation" in d else d)
+        causes[k] = causes.get(k, 0) + 1
+    return {"n_relabelled": len(rel), "by_sector": {s: sum(r["sector"] == s for r in rel) for s in ("lepton", "quark")},
+            "chi2_range": [min(r["chi2"] for r in rel), max(r["chi2"] for r in rel)] if rel else None, "causes": causes,
+            "names": [r["name"] for r in rel]}
+
+
+relabel = relabel_stats(F)
+relabel_real = relabel_stats(FR)
 best_nonaccom = {}
 for s in ("lepton", "quark"):
     cands = [r for r in F if r["sector"] == s and r["verdict_final"] != "excluded (structural)" and (r.get("dof") or 0) >= 1]
@@ -163,9 +200,16 @@ for s in ("lepton", "quark"):
         best_nonaccom[s] = {"name": b["name"], "chi2": b["chi2"], "n_eff": b["n_eff"], "dof": b.get("dof"),
                             "p_value": b.get("p_value"), "pulls": b.get("pulls"), "best_obs": b.get("best_obs"),
                             "diagnosis": b.get("diagnosis")}
-findings.append({"quantity": "F21 texture survey (LNR framework): classes by verdict",
+findings.append({"quantity": "F21 texture survey (LNR framework), complex couplings (161 classes): classes by verdict",
                  "value": summary_survey, "target": "report either way (PLAN E4)", "tolerance": "p > 0.01 rule",
                  "verdict": "NO_TARGET", "note": f"{len(survivors)} predictive survivors; {len(accom)} accommodate with N_eff >= N_obs"})
+rc_best = {k: v["best_branch"] for k, v in RC["survivors"].items()}
+findings.append({"quantity": "F21 texture survey, real (CP-conserving) couplings (144 classes; reconciliation): classes by verdict",
+                 "value": summary_real, "target": "report either way (PLAN E4)", "tolerance": "p > 0.01 rule",
+                 "verdict": "NO_TARGET",
+                 "note": f"{len(survivors_real)} predictive survivors (dof = 1): "
+                         + "; ".join(f"{r['name']} chi2 {r['chi2']:.3f} p {r['p_value']:.2f}" for r in survivors_real)
+                         + f"; {len(accom_real)} accommodate with N_eff >= N_obs"})
 
 res = {
     "experiment": "E4 -- the order-21 group on three generations (SEED.md sections 3, 7.3; PLAN.md section 4 E4)",
@@ -181,8 +225,11 @@ res = {
     "findings": findings,
     "residual_patterns_count": {g: len(Y["residual_patterns"][g]) for g in ("F21", "PSL")},
     "z2_partial_PSL": Y["z2_partial_PSL"],
+    "texture_survey_coupling_convention": "complex couplings (alpha, beta in 'min'; all c_k, alpha in 'gen'); 'LNR exact' has real alpha. "
+                                          "The real-coupling variants (min-real, gen-real) are reported separately (reconciliation).",
     "texture_survey_summary": summary_survey,
     "texture_survey_summary_fit_labels_before_rank_scan": summary_survey_fitlabels,
+    "texture_survey_relabelled_by_rank_scan": relabel,
     "texture_survey_observables": {"lepton": ["me/mmu", "mmu/mtau", "Dm31^2/Dm21^2 (NO)", "s12^2", "s13^2", "s23^2", "delta_deg"],
                                    "quark": ["mu/mc", "mc/mt", "md/ms", "ms/mb", "lambda", "A", "rhobar", "etabar"]},
     "texture_survey_rule": "N_eff = generic rank of d(obs)/d(params); dof = N_obs - N_eff; dof >= 1: SURVIVES if p > 0.01; "
@@ -193,6 +240,17 @@ res = {
     "texture_survey_all": [{k: r.get(k) for k in ("name", "verdict_final", "verdict_fit", "n_par", "n_eff", "dof", "chi2", "p_value", "diagnosis",
                                                   "best_obs", "pulls")} for r in F],
     "texture_survey_best_predictive": best_nonaccom,
+    "texture_survey_real_couplings": {
+        "convention": "all couplings real (alpha, beta in min-real; c_k, alpha in gen-real): CP-conserving Lagrangian, CP violated "
+                      "only by vev phases. LNR take alpha = beta = -1 real and neglect phase-setting invariants (0706.2341 Sec. 3.2, 4.1).",
+        "summary": summary_real, "summary_fit_labels_before_rank_scan": summary_real_fitlabels,
+        "relabelled_by_rank_scan": relabel_real,
+        "survivors": [{k: r[k] for k in ("name", "n_par", "n_eff", "chi2", "dof", "p_value", "best_obs", "pulls")} for r in survivors_real],
+        "survivor_predictions": RC["survivors"],
+        "accommodating": [{k: r.get(k) for k in ("name", "n_par", "n_eff", "chi2")} for r in accom_real],
+        "all": [{k: r.get(k) for k in ("name", "verdict_final", "verdict_fit", "n_par", "n_eff", "dof", "chi2", "p_value", "diagnosis",
+                                       "best_obs", "pulls")} for r in FR]},
+    "reconcile_checks": RK,
     "robustness": ROB,
     "seed_claims": [
         {"claim": "SEED 3: <D, 120-degree turn> = Z7 x| Z3 (order 21) in SU(3), inside the flipped copy of Klein's PSL(2,7) (order 168)",
@@ -202,22 +260,34 @@ res = {
         {"claim": "SEED 3: flavour model-builders used both groups as family symmetries", "verdict": "CONFIRMED",
          "evidence": "LNR 0706.2341 seesaw example reproduced exactly (matrices, eigenvalue ratios 1:-2:9, 80/3, theta13 2.82 deg)"},
         {"claim": "SEED 7.3 / PLAN: with F21 unbroken an irreducible triplet cannot get three different masses", "verdict": "CONFIRMED",
-         "evidence": "commutant of the 3 is 1-dim for F21 and PSL(2,7): L=R=3 with singlet Higgs -> three equal masses; L=3,R=3bar -> none; no Majorana singlet mass"},
+         "evidence": "commutant of the 3 is 1-dim for F21 and PSL(2,7): L=R=3 with singlet Higgs -> three equal masses; L=3,R=3bar -> none; "
+                     "no Majorana singlet mass. Distinct masses need vevs of at least two of 1, 1', 1'' (F21 broken to Z7) or triplet vevs"},
         {"claim": "PLAN: mixing comes from misalignment between residual subgroups of different sectors", "verdict": "AMENDED",
-         "evidence": "true for PSL(2,7) (3 of 12 Z2-partial classes fit); for F21 alone every residual pattern is excluded and no subgroup can be a "
-                     "non-degenerate Majorana residual symmetry (odd order: no Z2), so F21 mixing needs vevs with no residual symmetry"},
+         "evidence": "true for PSL(2,7) (3 of 12 Z2-partial classes fit: G_l = Z7 with <Z7,Z2> = PSL(2,7), TM1 with <Z3,Z2> = S4, TM2 with "
+                     "<Z3,Z2> = A4); every full-residual pattern is excluded (best PSL lepton chi2 = 162, F21 2459); for F21 alone no subgroup can "
+                     "be a non-degenerate Majorana residual symmetry (odd order: no Z2), so F21 mixing needs vevs with no residual symmetry"},
         {"claim": "PLAN: the LNR example (alpha = beta = -1) is excluded by NuFIT 6.0", "verdict": "CONFIRMED",
          "evidence": "sin^2 theta13 0.00242 vs 0.02195 (-34 sigma); r = 80/3 vs 33.83 +- 0.92 (-7.8 sigma); theta13 = 0 for every alpha without the haze"},
         {"claim": "SEED 3/7.3: F21 (inside PSL(2,7)) acting on three generations does a job", "verdict": "AMENDED",
-         "evidence": "F21 restricts couplings but gives no masses or hierarchy without breaking and predicts only after vevs are chosen; "
-                     "0 of 161 LNR-framework alignment classes both fit and predict (37 fit with N_eff = N_obs, 124 excluded)"},
+         "evidence": "F21 restricts couplings but gives no masses or hierarchy without breaking and predicts only after vevs are chosen. "
+                     f"With complex couplings {len(survivors)} of {len(F)} LNR-framework alignment classes both fit and predict "
+                     f"({len(accom)} fit with N_eff = N_obs). With real (CP-conserving) couplings, LNR's own convention, "
+                     f"{len(survivors_real)} of {len(FR)} classes survive with dof = 1 ("
+                     + "; ".join(f"{r['name'].split('|', 1)[1]}: chi2 {r['chi2']:.2f}, p {r['p_value']:.2f}" for r in survivors_real)
+                     + "); each needs a generic (hand-put) phi10 vev for the charged-lepton masses, and its one prediction is delta "
+                     "on a discrete set of branches"},
     ],
     "all_checks_pass": {"groups": G["all_pass"], "yukawa": Y["all_pass"], "lnr": L["all_pass"], "structure": S["all_pass"],
-                        "robustness": ROB["all_pass"] if ROB else None},
+                        "robustness": ROB["all_pass"] if ROB else None, "realcoupling": RC["all_pass"],
+                        "reconcile_checks": RK["all_pass"]},
 }
 with open(os.path.join(HERE, "results.json"), "w") as f:
     json.dump(res, f, indent=1, default=str)
 print("calibration:", sum(c["verdict"] == "CALIBRATED" for c in cal), "/", len(cal))
+print("relabelled by the rank scan (complex couplings):", relabel["n_relabelled"], relabel["by_sector"], relabel["chi2_range"], relabel["causes"])
+print("real-coupling survey (final labels):", json.dumps(summary_real))
+print("real-coupling survivors:", [(r["name"], round(r["chi2"], 3), r["n_eff"], round(r["p_value"], 3)) for r in survivors_real])
+print("real-coupling accommodating:", len(accom_real))
 print("survey (final labels):", json.dumps(summary_survey))
 print("survey (fit labels before exact rank scan):", json.dumps(summary_survey_fitlabels))
 print("predictive survivors:", [r["name"] for r in survivors])

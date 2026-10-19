@@ -1,0 +1,151 @@
+{
+ "F21_kron_monomial": {
+  "1 x 1": {
+   "sym": {
+    "1": 1
+   },
+   "antisym": {}
+  },
+  "1 x 1'": {
+   "1'": 1
+  },
+  "1 x 1''": {
+   "1''": 1
+  },
+  "1 x 3": {
+   "3": 1
+  },
+  "1 x 3b": {
+   "3b": 1
+  },
+  "1' x 1'": {
+   "sym": {
+    "1''": 1
+   },
+   "antisym": {}
+  },
+  "1' x 1''": {
+   "1": 1
+  },
+  "1' x 3": {
+   "3": 1
+  },
+  "1' x 3b": {
+   "3b": 1
+  },
+  "1'' x 1''": {
+   "sym": {
+    "1'": 1
+   },
+   "antisym": {}
+  },
+  "1'' x 3": {
+   "3": 1
+  },
+  "1'' x 3b": {
+   "3b": 1
+  },
+  "3 x 3": {
+   "sym": {
+    "3": 1,
+    "3b": 1
+   },
+   "antisym": {
+    "3b": 1
+   }
+  },
+  "3 x 3b": {
+   "1": 1,
+   "1'": 1,
+   "1''": 1,
+   "3": 1,
+   "3b": 1
+  },
+  "3b x 3b": {
+   "sym": {
+    "3": 1,
+    "3b": 1
+   },
+   "antisym": {
+    "3": 1
+   }
+  }
+ },
+ "F21_dirac_table_monomial": {
+  "3,3": [
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "3,3b": [
+   0,
+   0,
+   0,
+   1,
+   2
+  ],
+  "3,1+1'+1''": [
+   0,
+   0,
+   0,
+   3,
+   0
+  ],
+  "1+1'+1'',1+1'+1''": [
+   3,
+   3,
+   3,
+   0,
+   0
+  ]
+ },
+ "F21_majorana_monomial": {
+  "1": 0,
+  "1'": 0,
+  "1''": 0,
+  "3": 1,
+  "3b": 1
+ },
+ "psi_psi_xi_xi_invariants": {
+  "general": 5,
+  "symmetric": 2
+ },
+ "LNR_Mdir_structure_match": {
+  "c0 (I3)": [
+   0,
+   "1"
+  ],
+  "gamma1": [
+   1,
+   "1"
+  ],
+  "gamma2": [
+   2,
+   "1"
+  ],
+  "beta1": [
+   3,
+   "1"
+  ],
+  "beta2": [
+   4,
+   "1"
+  ]
+ },
+ "checks": {
+  "monomial F21 irreps satisfy D^7 = C^3 = 1, C^-1 D C = D^4": true,
+  "F21 (monomial, exact): 3x3 = (3+3b)_s + 3b_a ; 3x3b = 1+1'+1''+3+3b ; 3b x 3b = (3+3b)_s + 3_a": true,
+  "F21 (monomial): 1'x1' = 1'' (sym), 1'x1'' = 1, 1'x3 = 3, 1'x3b = 3b": true,
+  "Dirac coupling table (exact monomial count) = report's table": true,
+  "Majorana N=3 (exact): only Phi = 3 and 3b (one each), no singlet": true,
+  "closed forms: H=3 -> [[0,0,h3],[h1,0,0],[0,h2,0]]; H=3b -> [[0,h1,0],[0,0,h2],[h3,0,0]]; H=1' -> diag(1,w^a,w^2a)": true,
+  "F21 invariants of 3 x 3 x 3b x 3b = 5 (exact monomial count)": true,
+  "F21 invariants of Sym^2(3) x Sym^2(3b) = 2": true,
+  "the 5 exact F21 invariants are exactly LNR's five M_Dir structures (I3 diagonal; gamma1,2 on {(1,2),(2,3),(3,1)}; beta1,2 on {(1,3),(2,1),(3,2)})": true,
+  "Sym^2 invariants = diag(u_i^2) and (u_i u_j)_{i!=j}: LNR's M_Maj = diag + alpha offdiag": true,
+  "exact: Z7 = <D> admits no nonzero symmetric Majorana matrix on the 3; each of the 7 Z3 leaves 2 parameters and a degenerate pair": true
+ },
+ "all_pass": true
+}

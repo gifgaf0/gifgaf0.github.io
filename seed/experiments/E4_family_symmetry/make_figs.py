@@ -101,32 +101,43 @@ fig.tight_layout()
 fig.savefig(os.path.join(HERE, "fig_lnr_alpha.png"))
 plt.close(fig)
 
-# ---------------- figure 3: texture survey
+# ---------------- figure 3: texture survey (complex couplings, as originally run; real couplings, reconciliation)
 RES = json.load(open(os.path.join(HERE, "results.json")))          # final labels (exact rank scan applied)
-recs = [dict(r, sector=r["name"].split("|")[0]) for r in RES["texture_survey_all"]]
-fig, axes = plt.subplots(1, 2, figsize=(6.4, 3.2), dpi=130, sharey=True)
-for ax, sector in zip(axes, ("lepton", "quark")):
-    rows = [r_ for r_ in recs if r_["sector"] == sector and r_["verdict_final"] != "excluded (structural)"]
-    groups = {"SURVIVES": (S3, "D", "survives (p > 0.01)"), "accommodates (no prediction)": (S1, "o", "accommodates (N_eff ≥ N_obs)"),
-              "excluded": (S2, "s", "excluded")}
-    rng = np.random.default_rng(1)
-    for v, (col, mk, lab) in groups.items():
-        sel = [r_ for r_ in rows if r_["verdict_final"] == v]
-        if not sel:
-            continue
-        xs = np.array([r_["n_eff"] for r_ in sel], dtype=float) + rng.uniform(-0.18, 0.18, len(sel))
-        ys = np.array([max(r_["chi2"], 1e-3) for r_ in sel])
-        ax.scatter(xs, ys, s=30, color=col, marker=mk, edgecolor=SURF, lw=1, label=lab, zorder=3)
-    nobs = 7 if sector == "lepton" else 8
-    ax.axvline(nobs - 0.5, color=INK2, lw=0.8, ls="--")
-    ax.text(nobs - 0.4, 2e5, f"N_obs = {nobs}", fontsize=7, color=INK2)
-    ax.set_yscale("log")
-    ax.set_ylim(5e-4, 1e7)
-    ax.set_xlabel("effective parameters N_eff")
-    ax.set_title(f"{sector}s", fontsize=9, color=INK, loc="left")
-axes[0].set_ylabel("χ²_min  (values < 1e-3 shown at 1e-3)")
-axes[0].legend(fontsize=7, loc="lower left")
-fig.suptitle("F21 (LNR framework) texture classes that are not structurally dead (exact rank scan)", fontsize=9, color=INK, x=0.02, ha="left")
+sets = {"complex couplings": RES["texture_survey_all"], "real couplings": RES["texture_survey_real_couplings"]["all"]}
+fig, axes = plt.subplots(2, 2, figsize=(6.4, 5.0), dpi=110, sharey=True)
+groups = {"SURVIVES": (S3, "D", "survives (p > 0.01)"), "accommodates (no prediction)": (S1, "o", "accommodates (N_eff ≥ N_obs)"),
+          "excluded": (S2, "s", "excluded")}
+for row, (conv, allrecs) in enumerate(sets.items()):
+    recs = [dict(r, sector=r["name"].split("|")[0]) for r in allrecs]
+    for col, sector in enumerate(("lepton", "quark")):
+        ax = axes[row, col]
+        rows = [r_ for r_ in recs if r_["sector"] == sector and r_["verdict_final"] != "excluded (structural)"]
+        rng = np.random.default_rng(1)
+        for v, (colr, mk, lab) in groups.items():
+            sel = [r_ for r_ in rows if r_["verdict_final"] == v]
+            if not sel:
+                continue
+            xs = np.array([r_["n_eff"] for r_ in sel], dtype=float) + rng.uniform(-0.18, 0.18, len(sel))
+            ys = np.array([max(r_["chi2"], 1e-3) for r_ in sel])
+            ax.scatter(xs, ys, s=30, color=colr, marker=mk, edgecolor=SURF, lw=1, label=lab, zorder=3)
+        nobs = 7 if sector == "lepton" else 8
+        ax.axvline(nobs - 0.5, color=INK2, lw=0.8, ls="--")
+        ax.text(nobs - 0.4, 2e5, f"N_obs = {nobs}", fontsize=7, color=INK2)
+        ax.set_yscale("log")
+        ax.set_ylim(5e-4, 1e7)
+        ax.set_xlim(1.5, 9.5)
+        n_dead = sum(1 for r_ in recs if r_["sector"] == sector and r_["verdict_final"] == "excluded (structural)")
+        n_all = sum(1 for r_ in recs if r_["sector"] == sector)
+        ax.set_title(f"{sector}s, {conv} ({n_dead} of {n_all} structurally dead)", fontsize=8, color=INK, loc="left")
+        if row == 1:
+            ax.set_xlabel("effective parameters N_eff")
+    axes[row, 0].set_ylabel("χ²_min  (< 1e-3 shown at 1e-3)")
+handles = {}
+for ax in axes.ravel():
+    for h_, l_ in zip(*ax.get_legend_handles_labels()):
+        handles.setdefault(l_, h_)
+axes[1, 0].legend(handles.values(), handles.keys(), fontsize=7, loc="lower left")
+fig.suptitle("F21 (LNR framework) texture classes that are not structurally dead", fontsize=9, color=INK, x=0.02, ha="left")
 fig.tight_layout()
 fig.savefig(os.path.join(HERE, "fig_texture_survey.png"))
 plt.close(fig)

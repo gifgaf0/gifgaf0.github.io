@@ -127,8 +127,19 @@ def main():
     qq = np.sin(Fq) ** 2 / xx ** 2
     pq = ((0.125 * (Fpq ** 2 - 2 * qq) + 0.5 * qq * (2 * Fpq ** 2 - qq)) + 2 * (-0.125 * Fpq ** 2 + 0.5 * qq * qq)) / 3
     sc = np.where(np.diff(np.sign(pq)) != 0)[0]
-    nodes = [float(0.5 * (xx[i] + xx[i + 1])) for i in sc]
-    print(f"pressure p(x): p(0+) = {pq[0]:+.5f} (F_pi/e)(e F_pi)^3, sign changes at x = {nodes}; p < 0 outside")
+    # reconciliation: root of p(x) by Brent's method (was the midpoint of the grid interval, 2.15221)
+    from scipy.optimize import brentq
+
+    def p_of_x(xv):
+        Fv, Fpv = Fx(xv)
+        qv = np.sin(Fv[0]) ** 2 / xv ** 2
+        Fpv = Fpv[0]
+        return ((0.125 * (Fpv ** 2 - 2 * qv) + 0.5 * qv * (2 * Fpv ** 2 - qv)) + 2 * (-0.125 * Fpv ** 2 + 0.5 * qv * qv)) / 3
+    nodes = [float(brentq(p_of_x, xx[i], xx[i + 1], xtol=1e-13)) for i in sc]
+    a0 = -float(sol["Fp"][-1])                       # F = pi - a0 x near x = 0
+    p0_exact = -a0 ** 2 / 8 + a0 ** 4 / 2           # T_rr = T_thth = -a^2/8 + a^4/2 at x = 0
+    print(f"pressure p(x): p(0) = -a^2/8 + a^4/2 = {p0_exact:+.6f} (F_pi/e)(e F_pi)^3 [a = -F'(0) = {a0:.10f}; "
+          f"grid value at x = 0.01: {pq[0]:+.6f}], sign changes at x = {nodes}; p < 0 outside")
 
     checks = {
         "virial_E2_eq_E4_1e-4": abs(E2 / E4 - 1) < 1e-4,
@@ -148,7 +159,7 @@ def main():
            "mu_star": mu_star, "scaling_curve": {"mu": rows[:, 0].tolist(), "E2": rows[:, 1].tolist(), "E4": rows[:, 2].tolist()},
            "sigma_model_shooting_end_values": ends, "von_Laue_integral": vonlaue, "von_Laue_abs": vonlaue_abs,
            "von_Laue_ratio": vonlaue / vonlaue_abs, "equilibrium_max_residual_over_max_dTrr": eq_rel, "equilibrium_pointwise_rel": eq_pt,
-           "pressure_nodes_x": nodes, "p0": float(pq[0]),
+           "pressure_nodes_x": nodes, "p0": p0_exact, "p_at_x0.01": float(pq[0]),
            "pressure_curve": {"x": xx[::50].tolist(), "x2p": (xx[::50] ** 2 * pq[::50]).tolist()},
            "checks": {k: bool(v) for k, v in checks.items()}, "all_checks_pass": bool(ok), "runtime_s": time.time() - t0}
     os.makedirs(OUT, exist_ok=True)

@@ -38,4 +38,4 @@ PASS 11a. vacuum (U=1, dU=0): T_mu nu = 2 dL/dg^{mu nu} - g_mu nu L = V0 g_mu nu
 PASS 11b. rho = T_00 = V0 and p = T_11 = -V0: p = -rho (taut vacuum)  [rho=V0 p=-V0]
 PASS 11c. boosted vacuum T_mu nu is unchanged (Lambda^T g Lambda = g): same in every frame
 
-39 checks passed, 0 failed, 302.6 s
+39 checks passed, 0 failed, 219.7 s

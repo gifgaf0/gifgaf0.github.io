@@ -1,0 +1,94 @@
+OK  a1 = M_cl/(F_pi/e)                               orig=36.461646        x2=36.461646        rel=-3.09e-12  own shooting+bisection vs original solve_bvp; PLAN target 36.4633 (0.2%) passes: -0.004%
+OK  Lambda                                           orig=50.978739        x2=50.978739        rel=+4.04e-10  PLAN target 50.9 (0.5%) passes: +0.155%
+OK  virial E2/E4                                     orig=1                x2=1                rel=-8.55e-12  
+OK  radius a2 (B)                                    orig=2.1160898        x2=2.1160898        rel=-3.09e-13  
+OK  radius a2 (M)                                    orig=3.2861287        x2=3.2861287        rel=+1.27e-09  
+OK  radius a2 (E)                                    orig=2.914434         x2=2.914434         rel=+2.87e-10  
+OK  radius a2 (half)                                 orig=1.7526287        x2=1.7526287        rel=-7.19e-13  
+OK  c0 (B)                                           orig=77.156116        x2=77.156116        rel=-3.40e-12  
+OK  c0 (half)                                        orig=63.903727        x2=63.903727        rel=-3.81e-12  
+OK  c0 (E)                                           orig=106.26506        x2=106.26506        rel=+2.83e-10  
+OK  c0 (M)                                           orig=119.81766        x2=119.81766        rel=+1.27e-09  
+OK  tail coefficient C (F -> C/x^2)                  orig=8.6385779        x2=8.6385782        rel=+3.37e-08  
+OK  slope -F'(0)                                     orig=1.0037641        x2=1.0037641        rel=-9.45e-13  
+OK  M_cl at ANW (MeV)                                orig=863.03712        x2=863.03712        rel=-3.09e-12  
+OK  M_N model at ANW (MeV)                           orig=936.38081        x2=936.38081        rel=-3.45e-11  
+OK  M_Delta model at ANW (MeV)                       orig=1229.7556        x2=1229.7556        rel=-1.23e-10  
+OK  R_B at ANW (fm) [target 0.59 +- 0.01]            orig=0.59392875       x2=0.59392875       rel=-3.01e-10  
+OK  R_M at ANW (fm) [target 0.92 +- 0.01]            orig=0.9223268        x2=0.9223268        rel=+9.74e-10  
+OK  own fit F_pi (938.9, 1232) MeV                   orig=129.25972        x2=129.25972        rel=+1.03e-10  
+OK  own fit e (938.9, 1232)                          orig=5.4446465        x2=5.4446465        rel=+1.00e-10  
+OK  proton M R/hbar c (939 MeV x R_B)                orig=2.8262688        x2=2.8262688        rel=-3.10e-13  
+OK  proton M R/hbar c classical (c0/e^2)             orig=2.5976304        x2=2.5976304        rel=-3.40e-12  
+OK  r_p/lambda_C (data)                              orig=3.9976908        x2=3.9976908        rel=+3.01e-10  
+OK  E_rot/M at ANW                                   orig=0.084983245      x2=0.084983245      rel=-4.01e-10  
+OK  floor (MR)_min, E_rot <= M                       orig=0.75725823       x2=0.75725823       rel=-2.04e-10  my route: root of E_rot(e) = M(e) in MeV, checked at two F_pi
+OK  floor (MR)_min, E_rot <= 0.1 M                   orig=2.3946608        x2=2.3946608        rel=-2.04e-10  = 2.3947; results.json note rounds it to 2.40, report text to 2.39
+OK  e_max for E_rot <= M                             orig=10.093997        x2=10.093997        rel=+1.00e-10  
+OK  lambda_C/R (LEP)                                 orig=3510538.8        x2=3510538.8        rel=-3.01e-10  
+OK  e needed (LEP, B)                                orig=16457.811        x2=16457.811        rel=-1.52e-10  
+OK  e needed (LEP, half)                             orig=14977.867        x2=14977.867        rel=-1.52e-10  
+OK  e needed (LEP, M)                                orig=20509.133        x2=20509.133        rel=+4.86e-10  
+OK  e needed (LEP, E)                                orig=19314.441        x2=19314.441        rel=-8.53e-12  
+OK  F_pi needed (LEP, B) MeV                         orig=230.65125        x2=230.65125        rel=-1.49e-10  
+OK  E_rot/M at electron fold (LEP, B)                orig=7.0670077e+12    x2=7.0670077e+12    rel=-1.01e-09  mine from I1 and M in MeV at (e, F_pi), not the closed formula
+OK  e^2/16pi^2 at electron fold (LEP, B)             orig=1715238.1        x2=1715238.1        rel=-3.04e-10  
+OK  lambda_C/R (SEED)                                orig=386159.27        x2=386159.27        rel=-3.01e-10  
+OK  e needed (SEED, B)                               orig=5458.4383        x2=5458.4383        rel=-1.52e-10  
+OK  e needed (SEED, half)                            orig=4967.5966        x2=4967.5966        rel=-1.52e-10  
+OK  e needed (SEED, M)                               orig=6802.11          x2=6802.11          rel=+4.86e-10  
+OK  e needed (SEED, E)                               orig=6405.8752        x2=6405.8752        rel=-8.53e-12  
+OK  F_pi needed (SEED, B) MeV                        orig=76.498365        x2=76.498365        rel=-1.49e-10  
+OK  E_rot/M at electron fold (SEED, B)               orig=8.5510793e+10    x2=8.5510793e+10    rel=-1.01e-09  mine from I1 and M in MeV at (e, F_pi), not the closed formula
+OK  e^2/16pi^2 at electron fold (SEED, B)            orig=188676.19        x2=188676.19        rel=-3.04e-10  
+OK  floor / electron MR (LEP)                        orig=2658384.4        x2=2658384.4        rel=-5.05e-10  
+  ? c0_B(beta=0.25)                                  orig=None             x2=70.478964        rel=           
+  ? c0_half(beta=0.25)                               orig=None             x2=60.005004        rel=           
+OK  c0_B(beta=0.5)                                   orig=65.182217        x2=65.182217        rel=+7.13e-13  
+OK  c0_half(beta=0.5)                                orig=56.568619        x2=56.568619        rel=+3.33e-13  
+OK  c0_B(beta=1.0)                                   orig=60.142436        x2=60.142436        rel=+3.17e-13  
+OK  c0_half(beta=1.0)                                orig=53.111498        x2=53.111498        rel=+1.38e-12  
+OK  c0_B(beta=2.0)                                   orig=56.451642        x2=56.451642        rel=+1.76e-15  
+OK  c0_half(beta=2.0)                                orig=50.479267        x2=50.479267        rel=+1.48e-12  
+OK  c0_B(beta=4.0)                                   orig=54.151354        x2=54.151354        rel=+4.46e-12  
+OK  c0_half(beta=4.0)                                orig=48.796206        x2=48.796206        rel=+6.93e-12  
+OK  c0_B(beta=8.0)                                   orig=52.846316        x2=52.846316        rel=+6.02e-12  
+OK  c0_half(beta=8.0)                                orig=47.82447         x2=47.82447         rel=+1.07e-11  
+OK  c0_B(beta=16.0)                                  orig=52.144742        x2=52.144742        rel=+1.87e-11  
+OK  c0_half(beta=16.0)                               orig=47.295092        x2=47.295092        rel=+3.44e-11  
+OK  hopfion E_W (ansatz)                             orig=1.2314457        x2=1.2314457        rel=-2.39e-08  mine: direct 3D finite-difference evaluation; equals a1/(3 pi^2) = 1.2314457 (an identity)
+OK  hopfion R_ring (Ward)                            orig=1.2393005        x2=1.2393           rel=-3.90e-07  mine: argmin n3 on the equator
+XX  hopfion R_rms energy (Ward)                      orig=2.1441352        x2=2.060816         rel=-3.89e-02  DISAGREE: exact value x_E/sqrt2 = 2.0608 (3D quadrature, resolution-independent); original's spline profile carries a spurious f ~ a/r tail (see x2_hopfion tail_sensitivity)
+XX  hopfion c0 (rms)                                 orig=589.66068        x2=566.74698        rel=-3.89e-02  follows from R_rms
+OK  hopfion c0 (ring)                                orig=340.82122        x2=340.82107        rel=-4.14e-07  
+XX  hopfion g^2 min (LEP, rms)                       orig=2.0700267e+09    x2=1.9895873e+09    rel=-3.89e-02  
+XX  hopfion sqrt(kappa2) (LEP, rms) MeV              orig=84.53917         x2=82.880338        rel=-1.96e-02  
+OK  DL 2 g^2 M_S                                     orig=6.2357538        x2=6.2357538        rel=+1.14e-15  also: left edge of Fig. 3b digitised at g^2E = 6.240 (axis labelled 2g^2M_S)
+OK  DL v (degenerate)                                orig=0.74507774       x2=0.74507774       rel=-2.98e-16  
+OK  DL F at threshold (Fig. 3b)                      orig=4.45             x2=4.4765766        rel=+5.97e-03  pixel reading, axes calibrated on tick marks
+XX  DL F high-energy plateau (Fig. 3b, g^2E >= 10.5) orig=3.93             x2=3.8447523        rel=-2.17e-02  DISAGREE beyond the stated +-0.05: the plateau sits 87 px below the 4.0 tick at 555 px/unit
+OK  DL g^2 N_min high energy (Fig. 7b)               orig=3.98             x2=3.977029         rel=-7.46e-04  
+XX  kappa = F/N_pair (high energy)                   orig=0.63023656       x2=0.61656576       rel=-2.17e-02  inherits the F reading
+OK  kappa = F/N_pair (threshold)                     orig=0.71362664       x2=0.7178886        rel=+5.97e-03  
+XX  g^2 for P = 0.1                                  orig=1.7067773        x2=1.6697547        rel=-2.17e-02  inherits F
+XX  g^2 for P = 1/e                                  orig=3.93             x2=3.8447523        rel=-2.17e-02  inherits F
+XX  g^2 for P = 0.5                                  orig=5.6697915        x2=5.546805         rel=-2.17e-02  inherits F
+XX  M_S/m at P = 0.1                                 orig=1.8267626        x2=1.8672664        rel=+2.22e-02  
+OK  N_min/N_pair                                     orig=0.63825483       x2=0.63777839       rel=-7.46e-04  
+OK  BW sigma_max/(pi r_e^2)                          orig=0.68170551       x2=0.68170551       rel=+2.20e-11  
+OK  BW sigma_max (mb)                                orig=170.06           x2=170.06316        rel=+1.86e-05  report quotes 170 mb
+OK  BW sqrt(s)/2m_e at max                           orig=1.4              x2=1.4028198        rel=+2.01e-03  
+XX  log10 exp(-F/alpha)                              orig=-233.89          x2=-228.8165        rel=-2.17e-02  inherits F: -229, not -234; with g^2 = e^2 = 4 pi alpha it is -18.2 (not quoted in the report)
+OK  rho_Lambda (GeV^4)                               orig=2.5151824e-47    x2=2.5151824e-47    rel=-1.84e-09  mine from SI: Omega_L 3H0^2/(8 pi G) c^2 (hbar c)^3
+OK  rho_Lambda^(1/4) (meV)                           orig=2.2394552        x2=2.2394552        rel=-4.60e-10  
+OK  rho with PLAN's rounded H0, Omega_L              orig=2.5192738e-47    x2=2.5192738e-47    rel=-1.84e-09  
+OK  Lambda/m_Pl^2 (from 4.24e-66 eV^2)               orig=2.8445442e-122   x2=2.8445442e-122   rel=+6.13e-10  
+OK  relative uncertainty from Omega_L h^2            orig=0.026392018      x2=0.026392018      rel=+0.00e+00  
+OK  f_pi^4/rho_L                                     orig=2.85637e+42      x2=2.8569529e+42    rel=+2.04e-04  original uses 130.2/sqrt2 = 92.0653 MeV; I typed 92.07
+OK  v_EW^4/rho_L                                     orig=1.4612476e+56    x2=1.4612476e+56    rel=+1.84e-09  
+OK  Higgs depth/rho_L                                orig=4.7175512e+54    x2=4.7175512e+54    rel=+1.84e-09  
+OK  M_Pl reduced^4/rho_L                             orig=1.3984828e+120   x2=1.3984828e+120   rel=+6.13e-10  
+OK  M_Pl unreduced^4/rho_L                           orig=8.8335819e+122   x2=8.8335819e+122   rel=+6.13e-10  
+OK  m_e^4/rho_L                                      orig=2.7108816e+33    x2=2.7108816e+33    rel=+1.84e-09  
+
+90 compared, 11 disagree

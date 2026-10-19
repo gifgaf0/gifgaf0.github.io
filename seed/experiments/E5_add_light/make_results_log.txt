@@ -10,6 +10,7 @@ Comparison with data (ANW massless parameters F=129 MeV, e=5.45; inputs M_N, M_D
   r2_n_fm2        skyrme      -inf  data   -0.1155  ratio     inf  within 30%: False   | AN84 massive  -0.3079 (ratio 2.666)
   within 30%: 3 of 7 finite quantities; r_p and <r^2>_n are infinite with massless pions
   within 33%: 6 of 7 finite quantities (exception: g_A)
+  supplementary f_pi: skyrme 64.50 MeV  data 92.21 MeV  ratio 0.6995 (-30.05%); with it: within 30% 3 of 8, within 33% 7 of 8
 Enclosed charge Q(<R): R[fm]  p(massless) n(massless) | p(m_pi=138) n(m_pi=138)
     0.25   0.0658    0.0522  |   0.0421    0.0328
     0.50   0.3413    0.1719  |   0.2630    0.1178

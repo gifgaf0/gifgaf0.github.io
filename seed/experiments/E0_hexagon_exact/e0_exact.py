@@ -13,7 +13,7 @@ Every decision below is made in exact arithmetic:
 Floats are used only to print a number for a human and to fix one sign
 (G = +i sqrt7 rather than -i sqrt7 under zeta = exp(2 pi i/7)).
 
-Run:   python3 e0_exact.py            (about 4 s on one core)
+Run:   python3 e0_exact.py            (about 8 s on one core)
 Writes (next to this file): results.json, exact_replica_output.txt,
         hexagon_check_original_output.txt (by running ../../hexagon_check.py).
 """
@@ -376,18 +376,46 @@ def preserves_orientation(s):
 
 n_orient_pres = sum(preserves_orientation(s) for s in aut_T14)
 affine42 = {tuple((a * x + b) % 7 for x in range(7)) for a in range(1, 7) for b in range(7)}
-check("B", "exhaustive search: every 7-vertex triangulated closed surface is an orientable torus "
-           "and they form ONE relabelling orbit (the 7-vertex torus triangulation is unique)",
+# Scope of the search (reworded in the reconciliation, Oct 19): on V = 7 vertices a closed triangulated surface has
+# 3F = 2E and E <= C(7,2) = 21, so chi = 7 - E/3 >= 0, with chi = 0 iff E = 21, i.e. iff every vertex pair is an
+# edge lying in exactly 2 triangles.  The pair-degree-2 enumeration is therefore exhaustive for chi = 0 ONLY;
+# 7-vertex spheres (chi 2) and projective planes (chi 1) exist and are not in it (examples built below).
+check("B", "exhaustive search: every 7-vertex triangulated surface with chi = 0 (= every vertex pair in exactly 2 "
+           "triangles) is an orientable torus -- so no 7-vertex Klein bottle -- and they form ONE relabelling orbit "
+           "(the 7-vertex torus triangulation is unique)",
       len(surfaces) == len(tori) == len(orbit_T14) and set(surfaces) == orbit_T14,
       f"{len(cands)} pair-degree-2 complexes, {len(surfaces)} surfaces, {len(tori)} orientable, "
       f"orbit of ours = {len(orbit_T14)}")
+
+
+def surface_data(T):
+    E_set = {pr for tri in T for pr in itertools.combinations(sorted(tri), 2)}
+    deg2 = all(sum(1 for tri in T if set(pr) <= set(tri)) == 2 for pr in E_set)
+    nv = len({x for tri in T for x in tri})
+    return nv, len(E_set), len(T), nv - len(E_set) + len(T), deg2 and links_are_cycles(T), orientable(T)
+
+
+# pentagonal bipyramid: apexes 0 and 6 over the ring 1..5 (a 7-vertex sphere)
+bipyramid = frozenset({tuple(sorted((0, i, i % 5 + 1))) for i in range(1, 6)} |
+                      {tuple(sorted((6, i, i % 5 + 1))) for i in range(1, 6)})
+# 6-vertex projective plane (hemi-icosahedron), with triangle (0,1,2) subdivided by vertex 6 (a 7-vertex RP^2)
+rp2_6 = [(0, 1, 2), (0, 2, 3), (0, 3, 4), (0, 4, 5), (0, 1, 5), (1, 2, 4), (2, 3, 5), (1, 3, 4), (2, 4, 5), (1, 3, 5)]
+rp2_7 = frozenset([t for t in rp2_6 if t != (0, 1, 2)] + [(0, 1, 6), (1, 2, 6), (0, 2, 6)])
+sph, rp2 = surface_data(bipyramid), surface_data(rp2_7)
+check("B", "the search above does not cover all 7-vertex surfaces: a 7-vertex sphere (pentagonal bipyramid, "
+           "V-E+F = 7-15+10 = 2, orientable) and a 7-vertex projective plane (V-E+F = 7-18+12 = 1, non-orientable) exist",
+      sph == (7, 15, 10, 2, True, True) and rp2 == (7, 18, 12, 1, True, False),
+      f"sphere (V,E,F,chi,surface,orientable) = {sph}; RP^2 = {rp2}")
 check("B", "automorphism group of the triangulation has order 42 and equals {x -> ax+b : a in Z7*} = AGL(1,7)",
       len(aut_T14) == 42 and set(aut_T14) == affine42, f"|Aut| = {len(aut_T14)}")
 check("B", "all 42 automorphisms preserve orientation: the 7-vertex torus is chiral (no mirror symmetry)",
       n_orient_pres == 42, f"{n_orient_pres} of {len(aut_T14)} orientation-preserving")
 VALUES["torus7_uniqueness"] = dict(degree2_complexes=len(cands), surfaces=len(surfaces), orientable=len(tori),
                                    orbit=len(orbit_T14), aut_order=len(aut_T14),
-                                   orientation_preserving=n_orient_pres)
+                                   orientation_preserving=n_orient_pres,
+                                   scope="7-vertex surfaces with chi = 0 only (chi = 0 <=> every pair in exactly 2 "
+                                         "triangles); 7-vertex spheres and RP^2s exist and are outside the search",
+                                   sphere_example=list(sph), rp2_example=list(rp2))
 
 
 def image(S, a_, b_):
@@ -749,13 +777,18 @@ VALUES["PSL27_triplet_character"] = dict(classes="1A,2A,3A,4A,7A,7B", sizes=[1, 
 VALUES["F21_triplet_character"] = dict(classes="1A,3A,3B,7A,7B", sizes=[1, 7, 7, 3, 3],
                                        chi=["3", "0", "0", "b7", "b7bar"], frobenius_schur=0)
 
-# ---- the full subgroup lattice of the flipped copy (all subgroups are 2-generated) ----
+# ---- the full subgroup lattice of the flipped copy (all 2-generated subgroups; completeness checked below) ----
 tbl = PSLf.table
-subs = {frozenset([0])}
+subs_gens = {frozenset([0]): (0,)}
 for i in range(168):
     for j in range(i, 168):
-        subs.add(PSLf.closure([i, j]))
-subs = list(subs)
+        subs_gens.setdefault(PSLf.closure([i, j]), (i, j))
+subs = list(subs_gens)
+# completeness (added in the reconciliation, Oct 19): the list is closed under H -> <H, g> for every g.  Every
+# subgroup K = <k1, ..., km> is reached from {1} by adding one element at a time, so the list holds ALL subgroups.
+join_closed = all(PSLf.closure(list(subs_gens[H]) + [g]) in subs_gens for H in subs for g in range(168) if g not in H)
+check("C", "the list of 2-generated subgroups is closed under adding any element (<H, g> is again in the list), so it "
+           "contains every subgroup of PSL(2,7)", join_closed, f"{len(subs)} subgroups")
 by_order = Counter(len(H) for H in subs)
 proper = [H for H in subs if len(H) < 168]
 maximal = [H for H in proper if not any(H < K for K in proper)]
@@ -870,6 +903,162 @@ check("C", "PSL(2,7) acting on each S4 class, labelled through D (x->x+1) and C 
            "group of one Fano family; the two classes give the two families",
       sorted(fam_of) == ["down", "up"] and all(g[0] == shift and g[1] == tuple((2 * x) % 7 for x in range(7))
                                                for g, _ in acts), fam_of)
+
+# ---- computed replacements for facts previously used by citation (added in the reconciliation, Oct 19) ----
+# (1) the only 3-dim irreps of PSL(2,7) are 3 and 3bar (was: LNR's character table)
+inv_f = PSLf.inv
+cls_f = PSLf.conj_classes()
+derived_f = PSLf.closure({tbl[tbl[inv_f[x]][inv_f[y]]][tbl[x][y]] for x in range(168) for y in range(168)})
+divs168 = [d_ for d_ in range(2, 13) if 168 % d_ == 0]                  # d^2 <= 149 forces d <= 12
+rest168 = [(a_, b_, c_) for a_ in divs168 for b_ in divs168 for c_ in divs168
+           if a_ <= b_ <= c_ and a_ * a_ + b_ * b_ + c_ * c_ == 168 - 1 - 9 - 9]
+check("C", "degree equation: PSL(2,7) has 6 classes (6 irreps) and is perfect (derived subgroup = whole group, so 1 is "
+           "its only linear character); with 3 and 3bar the other three degrees d >= 2, d | 168, sum d^2 = 149, are "
+           "forced to be (6,7,8): 3 and 3bar are its only 3-dim irreps",
+      len(cls_f) == 6 and len(derived_f) == 168 and rest168 == [(6, 7, 8)], rest168)
+
+# (2) explicit isomorphisms onto PSL(2,F7) and PGL(2,F7) acting on the projective line P^1(F7) = {0..6, 7 = inf}
+#     (was: "a simple group of order 168 is PSL(2,7)" and "|Aut PSL(2,7)| = 336")
+ID8 = tuple(range(8))
+
+
+def moebius(a_, b_, c_, d_):
+    img = []
+    for x in range(8):
+        num, den = (a_ % 7, c_ % 7) if x == 7 else ((a_ * x + b_) % 7, (c_ * x + d_) % 7)
+        img.append(7 if den == 0 else (num * pow(den, -1, 7)) % 7)
+    return tuple(img)
+
+
+def pcomp(p_, q_):                       # (p∘q)(x) = p(q(x)); moebius(M1 M2) = moebius(M1)∘moebius(M2)
+    return tuple(p_[q_[x]] for x in range(8))
+
+
+def porder(p_):
+    k, q_ = 1, p_
+    while q_ != ID8:
+        q_, k = pcomp(q_, p_), k + 1
+    return k
+
+
+PGL27 = {}
+for a_, b_, c_, d_ in itertools.product(range(7), repeat=4):
+    det_ = (a_ * d_ - b_ * c_) % 7
+    if det_:
+        PGL27[moebius(a_, b_, c_, d_)] = det_ in (1, 2, 4)              # square determinant <=> PSL(2,F7)
+PSL27 = {p_ for p_, sq in PGL27.items() if sq}
+
+
+def graph_closure(Gp, gidx, perms, cap):
+    """the subgroup of Gp x Sym(8) generated by the pairs (gidx[k], perms[k]); returns (size, second projection)."""
+    t = Gp.table
+    S = {(0, ID8)}
+    frontier = list(S)
+    while frontier:
+        new = []
+        for x, p_ in frontier:
+            for gi, q_ in zip(gidx, perms):
+                y = (t[x][gi], pcomp(p_, q_))
+                if y not in S:
+                    S.add(y)
+                    new.append(y)
+                    if len(S) > cap:
+                        return len(S), None
+        frontier = new
+    return len(S), {p_ for _, p_ in S}
+
+
+def iso_to_psl27(Gp, mats):
+    """mats = (g0 of order 7, g1, g2): search images with g0 -> x+1 (finding one isomorphism suffices); a graph
+    of size |Gp| = 168 whose image is all of PSL(2,F7) proves that the generator map extends to an isomorphism."""
+    gidx = [Gp.find(M) for M in mats]
+    t = Gp.table
+    k7 = next(k for k in range(1, 7) if t[t[Gp.inv[gidx[1]]][gidx[0]]][gidx[1]] == Gp.find(mpow(mats[0], k)))
+    d7 = moebius(1, 1, 0, 1)
+    d7k = ID8
+    for _ in range(k7):
+        d7k = pcomp(d7k, d7)
+    inv8 = lambda p_: tuple(sorted(range(8), key=lambda x: p_[x]))
+    c_cands = [p_ for p_ in PSL27 if porder(p_) == Gp.order_of(gidx[1]) and pcomp(pcomp(inv8(p_), d7), p_) == d7k]
+    r_cands = [p_ for p_ in PSL27 if porder(p_) == Gp.order_of(gidx[2])]
+    for cp in sorted(c_cands):
+        for rp in sorted(r_cands):
+            n_, img = graph_closure(Gp, gidx, [d7, cp, rp], Gp.n)
+            if n_ == Gp.n and img == PSL27:
+                return [d7, cp, rp]
+    return None
+
+
+iso_k = iso_to_psl27(PSLk, (Dk, C, R))
+iso_f = iso_to_psl27(PSLf, (D, C, Rf))
+check("C", "explicit isomorphisms: Dk, C, R (Klein's copy) and D, C, Rf (flipped copy) map to Moebius maps of "
+           "PSL(2,F7) on P^1(F7) so that the generated graph has order 168 and image all of PSL(2,F7)",
+      len(PSL27) == 168 and len(PGL27) == 336 and iso_k is not None and iso_f is not None,
+      f"D -> x+1, C -> {iso_f[1] if iso_f else None}, Rf -> {iso_f[2] if iso_f else None} (images of 0..6, inf)")
+kap_idx = PGL.find((ID3, 1))
+pgl_gidx = [PGL.find((M, 0)) for M in (D, C, Rf)] + [kap_idx]
+iso_pgl = None
+for kp in sorted(p_ for p_, sq in PGL27.items() if not sq and porder(p_) == 2):
+    n_, img = graph_closure(PGL, pgl_gidx, iso_f + [kp], 336)
+    if n_ == 336 and img == set(PGL27):
+        iso_pgl = kp
+        break
+check("C", "explicit isomorphism <flipped copy, complex conjugation> -> PGL(2,F7): extend the map above by kappa -> an "
+           "involution of non-square determinant; graph of order 336, image all of PGL(2,F7)", iso_pgl is not None,
+      f"kappa -> {iso_pgl}")
+
+tP, invP = PGL.table, PGL.inv
+iDP = PGL.find((D, 0))
+
+
+def conj_exp(x):                         # x^-1 D x = D^k  (the convention of C^-1 D C = D^4 = the 120 deg turn)
+    y = tP[tP[invP[x]][iDP]][x]
+    return next((k for k in range(1, 7) if y == PGL.find((mpow(D, k), 0))), None)
+
+
+k_kC, k_kCi, k_kap = (conj_exp(PGL.find(smul((ID3, 1), (M, 0)))) for M in (C, Cinv, ID3))
+check("C", "inside PGL(2,7) ⊂ G2, kappa, kappa C and kappa C^-1 move the seven points as x -> 6x, 3x, 5x: the 180, "
+           "300 and 60 deg G2 turns all lie in <flipped copy, kappa>", (k_kap, k_kC, k_kCi) == (6, 3, 5),
+      f"x -> {k_kap}x, {k_kC}x, {k_kCi}x")
+
+# (3) Aut(F21) has order 42 and every automorphism is induced by conjugation inside PGL(2,7) = <flipped copy, kappa>
+#     (closes the uniqueness argument for the PSL(2,7) in U(3) containing <D, C>; see REPORT Finding 8)
+t21 = F21.table
+iD21, iC21 = F21.find(D), F21.find(C)
+n_aut21 = 0
+for dp in range(21):
+    for cp in range(21):
+        S = {(0, 0)}
+        frontier = [(0, 0)]
+        while frontier and len(S) <= 21:
+            new = []
+            for x, y in frontier:
+                for g_, h_ in ((iD21, dp), (iC21, cp)):
+                    w_ = (t21[x][g_], t21[y][h_])
+                    if w_ not in S:
+                        S.add(w_)
+                        new.append(w_)
+            frontier = new
+        if len(S) == 21 and len({y for _, y in S}) == 21:
+            n_aut21 += 1
+f21P = frozenset(PGL.find((M, 0)) for M in F21.elems)
+tP, invP = PGL.table, PGL.inv
+N_pgl = [x for x in range(336) if frozenset(tP[tP[x][h]][invP[x]] for h in f21P) == f21P]
+C_pgl = [x for x in range(336) if all(tP[x][h] == tP[h][x] for h in (PGL.find((D, 0)), PGL.find((C, 0))))]
+check("C", "|Aut(F21)| = 42 (graph test over all images of D, C), and N_PGL(2,7)(F21) has order 42 with trivial "
+           "centraliser, so every automorphism of F21 is induced inside PGL(2,7) = <flipped copy, kappa>",
+      n_aut21 == 42 and len(N_pgl) == 42 and C_pgl == [0], f"|Aut F21| = {n_aut21}, |N| = {len(N_pgl)}")
+check("C", "uniqueness of the PSL(2,7) in U(3) containing <D, C> now rests only on computed facts: one class of "
+           "order-21 subgroups, Aut(F21) induced by PGL(2,7), only 3 and 3bar in degree 3, F21's triplet irreducible "
+           "with chi(D) = b7 != b7bar",
+      n_aut21 == 42 and len(N_pgl) == 42 and C_pgl == [0] and rest168 == [(6, 7, 8)]
+      and ip21 == I_ and trace(D) == b7 and b7 != b7bar
+      and sum(1 for H in subs if len(H) == 21) == 8 and len(normalizer) == 21)
+VALUES["computed_replacements"] = dict(
+    subgroup_list_complete=join_closed, psl27_other_degrees=list(rest168[0]) if rest168 else None,
+    iso_flipped_to_PSL2F7=dict(D="x+1", C=list(iso_f[1]) if iso_f else None, Rf=list(iso_f[2]) if iso_f else None),
+    iso_kappa_to_PGL2F7=list(iso_pgl) if iso_pgl else None, aut_F21=n_aut21, N_PGL_F21=len(N_pgl),
+    note="P^1(F7) points listed as images of 0..6 and 7 = infinity")
 
 
 # =============================================================================
@@ -1444,9 +1633,17 @@ n_pass = sum(c_["ok"] for c_ in CHECKS)
 print(f"\n{n_pass} of {len(CHECKS)} exact checks passed; runtime {runtime:.1f} s")
 
 
-def calib(quantity, ours, target, source, ok, tol="exact", note=""):
-    return dict(quantity=quantity, value=ours, target=target, tolerance=tol, source=source,
-                verdict=("CALIBRATED" if ok else "MISS") if target is not None else "NO_TARGET", note=note)
+def calib(quantity, ours, target, source, ok, tol="exact", note="", kind="seed"):
+    """kind = 'lit': the target is a literature value -> CALIBRATED (PLAN §1); kind = 'seed': the target is a SEED.md
+    claim -> CONFIRMED (verdict vocabulary corrected in the reconciliation, Oct 19)."""
+    if target is None:
+        verdict = "NO_TARGET"
+    elif not ok:
+        verdict = "MISS" if kind == "lit" else "REFUTED"
+    else:
+        verdict = "CALIBRATED" if kind == "lit" else "CONFIRMED"
+    return dict(quantity=quantity, value=ours, target=target, tolerance=tol, source=source, verdict=verdict,
+                note=note)
 
 
 ck = {c_["name"]: c_["ok"] for c_ in CHECKS}
@@ -1473,17 +1670,20 @@ headline = [
           len(PSLk) == len(PSLf) == 168 and psk_su3 and psf_su3),
     calib("quartic invariants (exact polynomial identities)",
           f"Klein copy keeps x^3y+y^3z+z^3x: {kq_all}; flipped keeps xy^3+yz^3+zx^3: {mq_all}",
-          "both True", "SEED §3; LNR eq. 78 [read]", kq_all and mq_all),
+          "both True", "LNR eq. 78 [read] (mirror quartic of LNR's basis = the flipped copy); SEED §3", kq_all and mq_all,
+          kind="lit"),
     calib("maximal subgroups of PSL(2,7) (class size x order)",
           ", ".join(f"{b_}x{a_}" for a_, b_, _ in max_summary), "S4 (7), S4 (7), 7:3 (8)",
-          "ATLAS p.3 (via SEED §9); LNR §5 [read]", sorted((a_, b_) for a_, b_, _ in max_summary) == [(21, 8), (24, 7), (24, 7)]),
+          "ATLAS p.3 (via SEED §9, not read) for the two S4 classes and 7:3; LNR §5 [read] gives only the types "
+          "S4 and Z7⋊Z3", sorted((a_, b_) for a_, b_, _ in max_summary) == [(21, 8), (24, 7), (24, 7)], kind="lit",
+          note="the two conjugacy classes of S4 are established by the computation itself"),
     calib("PSL(2,7) triplet character on 1A,2A,3A,4A,7A,7B", "3, -1, 0, 1, b7, b7bar; FS indicator 0",
           "3, -1, 0, 1, b7, b7bar (b7 = (-1+i sqrt7)/2): complex", "LNR eq. 13 [read]; PLAN E0",
-          ok_prefix("flipped copy: classes", "flipped copy: <chi,chi>")),
+          ok_prefix("flipped copy: classes", "flipped copy: <chi,chi>"), kind="lit"),
     calib("F21 triplet character on 1A,3A,3B,7A,7B", "3, 0, 0, b7, b7bar; FS indicator 0",
-          "3, 0, 0, b7, b7bar: complex", "LNR §5 table [read]; PLAN E0", ok_prefix("F21 classes", "F21 triplet")),
+          "3, 0, 0, b7, b7bar: complex", "LNR §5 table [read]; PLAN E0", ok_prefix("F21 classes", "F21 triplet"), kind="lit"),
     calib("A5 triplet characters on 1A,2A,3A,5A,5B", "3, -1, 0, (1+-sqrt5)/2; FS indicator +1 (both triplets)",
-          "real, with (1 +- sqrt5)/2", "PLAN E0; LNR §2 (eq. 4 and text: five real irreps, two triplets) [read]", ok_prefix("A5 classes", "A5 triplet 3", "the Galois")),
+          "real, with (1 +- sqrt5)/2", "PLAN E0; LNR §2 (eq. 4 and text: five real irreps, two triplets) [read]", ok_prefix("A5 classes", "A5 triplet 3", "the Galois"), kind="lit"),
     calib("Weyl(SU(3)) and Weyl(G2) on the seven points",
           "orders 6, 12; SU(3) turns x->4x,2x keep families; G2 adds 60/180/300 deg = x->5x,6x,3x, swap; "
           "mirrors keeping points 0/3, 0/6", "as SEED §3 / hexagon_check.py", "SEED §3",
@@ -1496,8 +1696,8 @@ headline = [
           True),
     calib("Der(O) / stabiliser of an imaginary unit", f"dim {len(der)} (g2) / dim {len(stab)} (su(3))", None,
           "extra; SEED cites Gunaydin-Gursey 1973", True),
-    calib("<PSL(2,7), complex conjugation> inside G2", f"order {PGL.n} = PGL(2,7); swaps S4 classes and Fano families",
-          None, "extra (new finding)", True),
+    calib("<PSL(2,7), complex conjugation> inside G2", f"order {PGL.n} = PGL(2,7) (explicit isomorphism onto "
+          f"PGL(2,F7): {iso_pgl is not None}); swaps S4 classes and Fano families", None, "extra (new finding)", True),
     calib("order-7 torus points with a hexagonal finer lattice", f"{len(hexpts)} of 48 (2 subgroups)", None,
           "extra", True),
 ]
@@ -1505,8 +1705,8 @@ headline = [
 seed_claims = [
     ("§3 intro: the torus and group computations are checked by hexagon_check.py", "CONFIRMED",
      "hexagon_check.py runs (1 s) and every printed line is reproduced identically by exact arithmetic."),
-    ("SU(3) is the color group and the group of the eightfold way", "CONFIRMED",
-     "textbook background; not a computation (no check needed)."),
+    ("SU(3) is the color group and the group of the eightfold way", "CONFIRMED (cited)",
+     "textbook background, not computed by E0."),
     ("SU(3)'s diagonal elements form a flat torus = plane / hexagonal lattice (a 60 deg wallpaper rolled up)",
      "CONFIRMED", "kernel of theta -> diag(exp 2 pi i theta) is Lambda = Z^3 ∩ plane, Gram [[2,-1],[-1,2]]."),
     ("its weights sit on a hexagonal lattice; octets are hexagons, the decuplet a triangle", "CONFIRMED",
@@ -1515,7 +1715,8 @@ seed_claims = [
      "det D = z^7 = 1, D unitary, D^7 = 1, the 7 points are distinct mod Lambda."),
     ("the finer hexagonal lattice through them cuts the torus into the 7-vertex triangulation", "CONFIRMED",
      "Lambda + Zp is hexagonal (Gram (1/7)[[2,-1],[-1,2]]); 7-21+14 = 0, every edge in 2 triangles, links 6-cycles, "
-     "orientable; equals {i,i+1,i+3} ∪ {i,i+2,i+3}; exhaustive search: the 7-vertex torus triangulation is unique."),
+     "orientable; equals {i,i+1,i+3} ∪ {i,i+2,i+3}; exhaustive search over 7-vertex surfaces with chi = 0: the 7-vertex "
+     "torus triangulation is unique and there is no 7-vertex Klein bottle."),
     ("every point joined to every other (K7)", "CONFIRMED", "six shortest vectors carry labels 1..6; 21 edges."),
     ("14 triangles in two families of 7", "CONFIRMED", "up and down triangles of the finer lattice."),
     ("each family a Fano plane, one exactly the octonion lines {i,i+1,i+3}", "CONFIRMED",
@@ -1527,27 +1728,30 @@ seed_claims = [
     ("together with D it generates Z7 ⋊ Z3 (order 21) inside SU(3)", "CONFIRMED", "exact closure: 21 unitary det-1 matrices."),
     ("the group preserves both Fano families, so it is the collineation F21", "CONFIRMED",
      "x -> ax+b, a in {1,2,4}, keeps both; Aut(A) ∩ Aut(B) is exactly this group of order 21."),
-    ("Klein's group of order 168, symmetry group of the Klein quartic, is PSL(2,7) on C^3", "CONFIRMED",
-     "<Dk, C, R> has order 168, is simple, keeps x^3y+y^3z+z^3x exactly (that the curve has no further "
-     "automorphisms is Hurwitz's bound, cited, not recomputed)."),
+    ("Klein's group of order 168, symmetry group of the Klein quartic, is PSL(2,7) on C^3", "CONFIRMED (partly cited)",
+     "<Dk, C, R> has order 168, is isomorphic to PSL(2,F7) (explicit isomorphism), keeps x^3y+y^3z+z^3x exactly. "
+     "Cited, not recomputed: that the curve has no further automorphisms (Hurwitz's bound)."),
     ("PSL(2,7) is the only simple subgroup of SU(3) with a complex 3-dim irrep; the only other non-abelian simple one "
-     "is A5, whose triplets are real", "CONFIRMED",
-     "characters: PSL(2,7) and F21 triplets have FS indicator 0 (b7 non-real); both A5 triplets FS +1. The 'only' part "
-     "rests on the classification of finite subgroups of SU(3) (cited, not recomputed)."),
+     "is A5, whose triplets are real", "CONFIRMED (partly cited)",
+     "characters: PSL(2,7) and F21 triplets have FS indicator 0 (b7 non-real); both A5 triplets FS +1. Cited, not "
+     "recomputed: the 'only' part, which rests on the classification of finite subgroups of SU(3) (via LNR [read])."),
     ("the order-21 group is one of its maximal subgroups (ATLAS)", "CONFIRMED",
-     "exact: maximal subgroups are 7 S4 + 7 S4 + 8 (7:3); F21 is one of the 8."),
+     "exact: maximal subgroups are 7 S4 + 7 S4 + 8 (7:3), from the complete subgroup list (179 subgroups, closed under "
+     "joins); F21 is one of the 8. LNR §5 [read] lists the types S4 and Z7⋊Z3; the two S4 classes match ATLAS "
+     "(via SEED §9, not read)."),
     ("Klein's own matrices contain diag(z^4, z^2, z), not D", "CONFIRMED",
      "the copy keeping x^3y+y^3z+z^3x contains Dk and not D; the order-7 diagonal symmetries of that quartic are exactly "
      "the powers of Dk (D rescales its monomials by z^5, z^3, z^6). Klein's 1878 paper itself was not read; note LNR call "
      "the mirror form xy^3+yz^3+zx^3 'Klein's quartic', so 'Klein's own copy' is a coordinate-labelling convention."),
     ("the copy holding <D, 120 deg turn> is Klein's conjugated by -(x<->z), and preserves xy^3+yz^3+zx^3",
      "CONFIRMED", "exact set equality; it is also LNR's published basis, and it is the unique PSL(2,7) in U(3) "
-                  "containing <D, C>."),
-    ("flavor model-builders have used both groups as family symmetries", "CONFIRMED",
-     "literature (LNR 2007, King-Luhn 2009; PLAN §3 found no correction); not a computation."),
-    ("G2 contains SU(3) as the subgroup fixing one imaginary octonion (Gunaydin-Gursey)", "CONFIRMED",
-     "extra exact check: Der(O) is g2 (dim 14), derivations killing e form su(3) (dim 8), and the SU(3) matrices act as "
-     "automorphisms."),
+                  "containing <D, C> (argument closed by computed facts: Aut(F21) induced by PGL(2,7), degree equation)."),
+    ("flavor model-builders have used both groups as family symmetries", "CONFIRMED (cited)",
+     "literature (LNR 2007 [read]; PLAN §3 found no correction); not computed by E0."),
+    ("G2 contains SU(3) as the subgroup fixing one imaginary octonion (Gunaydin-Gursey)", "CONFIRMED (partly cited)",
+     "extra exact check at the Lie-algebra level: Der(O) is g2 (dim 14), derivations killing e form su(3) (dim 8), and "
+     "the SU(3) matrices act as automorphisms fixing e. Cited, not recomputed: the group-level statement that the "
+     "stabiliser of e in G2 is exactly SU(3) (Gunaydin-Gursey 1973)."),
     ("G2's affine Weyl group is exactly p6m", "CONFIRMED",
      "Lambda ⋊ D6 with Coxeter (2,3,6); site symmetries 6mm, 3m (x2), 2mm (x3) per cell."),
     ("SU(3)'s Weyl group has only the 120 deg turns and three mirrors; G2's (order 12) adds 60, 180, 300 deg turns",
@@ -1558,11 +1762,13 @@ seed_claims = [
      "0 of 3 and 0 of 6; also no mirror of either affine Weyl group. Reason: the 7-vertex torus is chiral "
      "(all 42 automorphisms preserve orientation); SU(3)'s mirrors swap D's order-7 subgroup with diag(z,z^4,z^2)'s."),
     ("F21, PSL(2,7) and the Fano split belong to the SU(3) rung; the turns completing p6m arrive with G2 and swap the "
-     "families; they don't stack into one clean tower", "AMENDED",
-     "the facts hold, but the tower stacks more cleanly than stated: the family-swapping G2 element (180 deg turn = "
-     "complex conjugation kappa) normalises the flipped PSL(2,7), giving PGL(2,7) = Aut(PSL(2,7)) of order 336 inside G2; "
-     "the two Fano families are the two classes of S4 (points and lines of one Fano plane), which the outer "
-     "automorphism swaps."),
+     "families; they don't stack into one clean tower", "CONFIRMED",
+     "every factual clause holds (verdict changed from AMENDED in the reconciliation, Oct 19: the amendment concerned "
+     "interpretation, not fact). Wording refinement suggested: the groups do form a chain G2 ⊃ SU(3)⋊Z2 ⊃ PGL(2,7) ⊃ "
+     "PSL(2,7) ⊃ F21, because the family-swapping G2 turn (180 deg = complex conjugation kappa) normalises the "
+     "flipped PSL(2,7) and gives PGL(2,7) = Aut(PSL(2,7)) of order 336 inside G2 (kappa C^{±1} realise the 60 and 300 "
+     "deg turns); the two Fano families are the two classes of S4, which this outer automorphism swaps, so the family "
+     "split survives only up to PSL(2,7), as the seed says."),
 ]
 
 results = dict(

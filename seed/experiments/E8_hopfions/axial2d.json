@@ -1,0 +1,267 @@
+{
+ "description": "axially symmetric 2D reduction, A_{n,1}; energies in Sutcliffe normalisation",
+ "grad_check_rel_err": 5.106461766179831e-10,
+ "ansatz_linear_Lf4": {
+  "lattice": [
+   [
+    0.1,
+    1.7238169341427254
+   ],
+   [
+    0.05,
+    1.7312514614879926
+   ],
+   [
+    0.025,
+    1.7341212030642674
+   ]
+  ],
+  "quadrature_3d_check": 1.7368573257590636
+ },
+ "ansatz_gauss_w2": {
+  "lattice": [
+   [
+    0.1,
+    1.5160485435580477
+   ],
+   [
+    0.05,
+    1.5209605090797484
+   ],
+   [
+    0.025,
+    1.5221883421838645
+   ]
+  ],
+  "quadrature_3d_check": 1.5225976006498694,
+  "richardson": 1.5225976198852365
+ },
+ "relaxed": {
+  "n1_R7.5_h0.2": {
+   "n": 1,
+   "R": 7.5,
+   "h": 0.2,
+   "E": 1.1903167705634352,
+   "iters": 3498,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 1.3528369234872572e-08,
+   "wall_s": 14.41586947441101
+  },
+  "n1_R7.5_h0.1": {
+   "n": 1,
+   "R": 7.5,
+   "h": 0.1,
+   "E": 1.2219850242979773,
+   "iters": 1132,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 1.6367682237139438e-09,
+   "wall_s": 16.833951473236084
+  },
+  "n1_R7.5_h0.05": {
+   "n": 1,
+   "R": 7.5,
+   "h": 0.05,
+   "E": 1.2291529285403684,
+   "iters": 1034,
+   "success": true,
+   "msg": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+   "gmax": 9.435899875194766e-10,
+   "wall_s": 91.0407166481018
+  },
+  "n1_R12.0_h0.2": {
+   "n": 1,
+   "R": 12.0,
+   "h": 0.2,
+   "E": 1.1869742696474126,
+   "iters": 447,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 1.233800805526084e-09,
+   "wall_s": 4.929529428482056
+  },
+  "n1_R12.0_h0.1": {
+   "n": 1,
+   "R": 12.0,
+   "h": 0.1,
+   "E": 1.217339888846457,
+   "iters": 1690,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 2.045048116728134e-09,
+   "wall_s": 87.55385780334473
+  },
+  "n1_R18.0_h0.2": {
+   "n": 1,
+   "R": 18.0,
+   "h": 0.2,
+   "E": 1.186163643717071,
+   "iters": 611,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 3.2268585813404107e-09,
+   "wall_s": 14.231315851211548
+  },
+  "n1_R18.0_h0.1": {
+   "n": 1,
+   "R": 18.0,
+   "h": 0.1,
+   "E": 1.2162706245457016,
+   "iters": 2192,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 4.287926111378036e-09,
+   "wall_s": 320.5860929489136
+  },
+  "n1_R25.0_h0.2": {
+   "n": 1,
+   "R": 25.0,
+   "h": 0.2,
+   "E": 1.1859492427653917,
+   "iters": 838,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 1.8206978677968007e-09,
+   "wall_s": 59.403982162475586
+  },
+  "n1_R25.0_h0.1": {
+   "n": 1,
+   "R": 25.0,
+   "h": 0.1,
+   "E": 1.215988156922213,
+   "iters": 2762,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 4.427424279510047e-09,
+   "wall_s": 1045.1050429344177
+  },
+  "n2_R7.5_h0.2": {
+   "n": 2,
+   "R": 7.5,
+   "h": 0.2,
+   "E": 1.9731612379009744,
+   "iters": 1131,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 2.3835411852489633e-08,
+   "wall_s": 5.207668304443359
+  },
+  "n2_R7.5_h0.1": {
+   "n": 2,
+   "R": 7.5,
+   "h": 0.1,
+   "E": 1.9962449463585843,
+   "iters": 454,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 2.216530717205726e-09,
+   "wall_s": 12.635549545288086
+  },
+  "n2_R7.5_h0.05": {
+   "n": 2,
+   "R": 7.5,
+   "h": 0.05,
+   "E": 2.0016685790315494,
+   "iters": 809,
+   "success": true,
+   "msg": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+   "gmax": 9.333161857457533e-10,
+   "wall_s": 81.6629683971405
+  },
+  "n2_R12.0_h0.2": {
+   "n": 2,
+   "R": 12.0,
+   "h": 0.2,
+   "E": 1.971132151878636,
+   "iters": 333,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 9.321790391002666e-09,
+   "wall_s": 4.355324983596802
+  },
+  "n2_R12.0_h0.1": {
+   "n": 2,
+   "R": 12.0,
+   "h": 0.1,
+   "E": 1.9936738003206955,
+   "iters": 629,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 3.848879165003298e-09,
+   "wall_s": 58.70021104812622
+  },
+  "n2_R18.0_h0.2": {
+   "n": 2,
+   "R": 18.0,
+   "h": 0.2,
+   "E": 1.9709338603040494,
+   "iters": 421,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 6.3756636778926384e-09,
+   "wall_s": 25.847663164138794
+  },
+  "n2_R18.0_h0.1": {
+   "n": 2,
+   "R": 18.0,
+   "h": 0.1,
+   "E": 1.9934397610877377,
+   "iters": 888,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 4.9656396329279224e-09,
+   "wall_s": 172.53437495231628
+  },
+  "n2_R25.0_h0.2": {
+   "n": 2,
+   "R": 25.0,
+   "h": 0.2,
+   "E": 1.9709098232911875,
+   "iters": 525,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 1.9100915166845043e-09,
+   "wall_s": 33.171590089797974
+  },
+  "n2_R25.0_h0.1": {
+   "n": 2,
+   "R": 25.0,
+   "h": 0.1,
+   "E": 1.9934113976686314,
+   "iters": 1107,
+   "success": true,
+   "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "gmax": 1.9092081820438e-09,
+   "wall_s": 349.70279335975647
+  }
+ },
+ "extrapolated": {
+  "n1": {
+   "E_R7p5_continuum_h2": 1.231542229954499,
+   "E_R7p5_continuum_aitken": 1.2312499945942443,
+   "order_ratio": 4.418063169322976,
+   "E_h0p1_by_R": {
+    "7.5": 1.2219850242979773,
+    "12.0": 1.217339888846457,
+    "18.0": 1.2162706245457016,
+    "25.0": 1.215988156922213
+   },
+   "box_shift_7p5_to_25": -0.005996867375764214,
+   "E_infinite_volume_continuum_est": 1.2255453625787347
+  },
+  "n2": {
+   "E_R7p5_continuum_h2": 2.0034764565892043,
+   "E_R7p5_continuum_aitken": 2.0033342452342295,
+   "order_ratio": 4.256134190774774,
+   "E_h0p1_by_R": {
+    "7.5": 1.9962449463585843,
+    "12.0": 1.9936738003206955,
+    "18.0": 1.9934397610877377,
+    "25.0": 1.9934113976686314
+   },
+   "box_shift_7p5_to_25": -0.0028335486899528917,
+   "E_infinite_volume_continuum_est": 2.0006429078992514
+  }
+ }
+}

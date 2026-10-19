@@ -79,8 +79,8 @@ def neutron_peak(sol, Lam, L_fm):
             "method": "node of the neutron charge density (brentq), then the enclosed-charge quadrature up to it"}
 
 
-def seed_claims(n30, n33, nfin, pz, peak0, enc0, d0, L_anw, nsym, nfail, n_insp):
-    """Final seed-claim verdicts (after reconciliation with the independent cross-check)."""
+def seed_claims(n30, n33, nfin, pz, peak0, enc0, d0, L_anw, nsym, nfail, n_insp, fpi_row, n33_8):
+    """Final seed-claim verdicts (after reconciliation with the independent cross-check, two passes)."""
     q = {round(r["R_fm"], 2): r for r in enc0}
     slope_fm = d0["C"]**2 / d0["Lambda"] * L_anw
     return [
@@ -106,17 +106,20 @@ def seed_claims(n30, n33, nfin, pz, peak0, enc0, d0, L_anw, nsym, nfail, n_insp)
                      % (slope_fm, q[0.5]["Q_p_inside"], q[1.0]["Q_p_inside"], q[5.0]["Q_p_inside"], peak0["Q_n_peak"], peak0["R_peak_fm"])},
         {"claim": "SEED 6B: for nucleons the model lands within roughly 30% (ANW 1983)",
          "verdict": "AMENDED",
-         "evidence": "Against PDG 2026 at the calibrated ANW point: %d of %d finite predictions within 33%% (strictly within 30%%: %d of %d; "
-                     "mu_p -33%%, mu_n -31%%, g_piNN -32%% sit just outside 30%%). The amendment is carried by g_A (-52%%, a factor ~2) "
-                     "and by r_p and <r^2>_n, which are infinite with massless pions. At the fold's own f_pi = F_pi/2 = 64.5 MeV "
-                     "(itself 30%% below 92.2 MeV) the gauged WZ term gives Gamma(pi0->gg) = %.2f x PrimEx-II."
-                     % (n33, nfin, n30, nfin, pz["ratio_ANW_to_PrimExII"])},
+         "evidence": "Against PDG 2026 at the calibrated ANW point: %d of %d finite nucleon predictions within 33%% (strictly within 30%%: "
+                     "%d of %d; mu_p -33%%, mu_n -31%%, g_piNN -32%% sit just outside 30%%). The amendment is carried by g_A (-52%%, a "
+                     "factor ~2) and by r_p and <r^2>_n, which are infinite with massless pions. Supplementary row (not preregistered): the "
+                     "fit output f_pi = F_pi/2 = 64.5 MeV is %+.1f%% from 92.21 MeV (on the 30%% boundary); with it, %d of %d within 33%%. "
+                     "Rakhimov (nucl-th/0502078 sec. 1.2.4, read), summarising ANW: 'within 30%% except for g_A'."
+                     % (n33, nfin, n30, nfin, 100 * fpi_row["deviation_massless"], n33_8, nfin + 1)},
         {"claim": "PLAN E5 internal-consistency prediction (not a SEED sentence): the fold sector and the anomaly prefer different f_pi",
          "verdict": "CONFIRMED (preregistered prediction; no SEED verdict)",
          "evidence": "Gamma(pi0->gg) at the fold's f: %.2f eV (ANW, %.2f x PrimEx-II), %.2f eV (SU(3) refit, %.2f x); "
-                     "PrimEx-II needs f = %.2f MeV. Bears on SEED 6B (one (F, e) for all predictions)."
+                     "PrimEx-II needs f = %.2f MeV. Not an independent tension: Gamma is proportional to 1/f^2, so the factor is the "
+                     "square of the f_pi deficit, (%.2f/64.5)^2 = %.2f (ANW). Bears on SEED 6B (one (F, e) for all predictions)."
                      % (pz["Gamma_at_ANW_f64.5_eV"], pz["ratio_ANW_to_PrimExII"], pz["Gamma_at_own_SU3_refit_eV"],
-                        pz["ratio_SU3_refit_to_PrimExII"], pz["f_needed_for_PrimExII_central_MeV"])},
+                        pz["ratio_SU3_refit_to_PrimExII"], pz["f_needed_for_PrimExII_central_MeV"],
+                        pz["f_needed_for_PrimExII_central_MeV"], (pz["f_needed_for_PrimExII_central_MeV"] / 64.5)**2)},
         {"claim": "SEED 2: the WZ term that makes the fold a fermion also fixes pi0 -> gamma gamma",
          "verdict": "CONFIRMED (the anomaly normalisation); the N_c = 1 exclusion holds only with fixed quark charges",
          "evidence": "Gamma = %.3f eV at N_c = 3, f = 92.21 MeV (%.2f sigma vs PrimEx-II). N_c = 1 gives %.3f eV, excluded at %.0f sigma "
@@ -192,6 +195,24 @@ def main():
     print("  within 30%%: %d of %d finite quantities; r_p and <r^2>_n are infinite with massless pions" % (n_within, n_finite))
     n_within33 = sum(1 for c in comp if math.isfinite(c["deviation_massless"]) and abs(c["deviation_massless"]) <= 0.33)
     print("  within 33%%: %d of %d finite quantities (exception: g_A)" % (n_within33, n_finite))
+    # (reconciliation, second pass) supplementary row, not preregistered and not counted in the nucleon tally above:
+    # the pion decay constant.  F_pi is an OUTPUT of the fit to M_N and M_Delta (the two inputs), and Rakhimov's Table 1.1
+    # (nucl-th/0502078, reproducing ANW) lists f_pi = 64.5 MeV against 93 MeV.  Data value: f = 92.21 MeV, the value the
+    # preregistered pi0 -> gg calibration uses (Bernstein-Holstein); the PDG review value f_pi+ = 130.2/sqrt(2) = 92.07 MeV
+    # [summary; not in the PDG sqlite] would give -29.9% instead of -30.05%.
+    f_data = pz["inputs"]["f_MeV"]
+    fpi_row = {"quantity": "f_pi_MeV", "data": f_data, "data_err": 0.14,
+               "data_source": "f = 92.21 MeV (Bernstein-Holstein 1112.4809, the pi0 calibration input); PDG review f_pi+/sqrt(2) = 92.07 "
+                              "MeV [summary] gives -29.9%",
+               "skyrme_ANW_massless": anw["f_pi_MeV"], "ratio_massless": anw["f_pi_MeV"] / f_data,
+               "deviation_massless": anw["f_pi_MeV"] / f_data - 1,
+               "within_30pct_massless": abs(anw["f_pi_MeV"] / f_data - 1) <= 0.30,
+               "skyrme_AN84_massive_no_target": an84["f_pi_MeV"], "ratio_massive": an84["f_pi_MeV"] / f_data,
+               "supplementary": "not preregistered; fit output (pion property), not a nucleon prediction; excluded from the 7-row tally"}
+    n30_8 = n_within + int(fpi_row["within_30pct_massless"])
+    n33_8 = n_within33 + int(abs(fpi_row["deviation_massless"]) <= 0.33)
+    print("  supplementary f_pi: skyrme %.2f MeV  data %.2f MeV  ratio %.4f (%+.2f%%); with it: within 30%% %d of %d, within 33%% %d of %d"
+          % (anw["f_pi_MeV"], f_data, fpi_row["ratio_massless"], 100 * fpi_row["deviation_massless"], n30_8, n_finite + 1, n33_8, n_finite + 1))
 
     # ---------------------------------------------------------------- enclosed charge (dressing)
     radii = [0.25, 0.5, 1.0, 2.0, 5.0, 10.0]
@@ -234,7 +255,8 @@ def main():
         "It would fail the moments' +-0.02 (|dev| = %.3f); g_A, tied to it by Goldberger-Treiman, passes its preregistered "
         "+-0.01" % abs(anw["g_piNN_GT"] - 8.9))
     add("g_A at ANW parameters (consistency with E2)", anw["g_A"], "", 0.61, 0.01, "PLAN.md E2 [ANW via secondary sources]",
-        "= 2 pi C/(3 e^2) = (pi/3e^2)|D|; the identity D = -2C holds to %.1e" % abs(d0["D"] + 2 * d0["C"]))
+        "= 2 pi C/(3 e^2) = (pi/3e^2)|D|; the identity D = -2C holds to %.1e absolute (%.1e relative)"
+        % (abs(d0["D"] + 2 * d0["C"]), abs(d0["D"] + 2 * d0["C"]) / (2 * d0["C"])))
     add("Gamma(pi0->gg), N_c = 3, f = 92.21 MeV", pz["Gamma_Nc3_f92.21_eV"], "eV", 7.802, 2 * 0.117,
         "PLAN.md E5 [read: Bernstein-Holstein 1112.4809; PrimEx-II]",
         "pull vs PrimEx-II %.2f sigma, vs PDG 2026 (%.3f +- %.3f eV) %+.2f sigma; preregistered value 7.76 eV"
@@ -286,16 +308,22 @@ def main():
         "calibration": cal,
         "no_target": no_target,
         "comparison_with_PDG2026_ANW_parameters": comp,
+        "comparison_supplementary_f_pi": fpi_row,
         "within_30pct": {"n_within": n_within, "n_finite": n_finite,
                          "n_within_33pct": n_within33,
                          "not_finite_massless": ["r_p", "<r^2>_n"],
+                         "with_supplementary_f_pi": {"n_within_30pct": n30_8, "n_within_33pct": n33_8, "n_finite": n_finite + 1,
+                                                     "f_pi_deviation": fpi_row["deviation_massless"]},
                          "note": "magnetic radius compared in the Sachs definition; g_piNN data value is [summary]. Strictly within 30%%: %d of %d "
                                  "(mu_p/mu_n, r_E^{I=0}, r_M^{I=0}); within 33%%: %d of %d (adds mu_n -31%%, g_piNN -32%%, mu_p -33%%). "
-                                 "The exceptions are g_A (-52%%) and the individual charge radii r_p, <r^2>_n (infinite with massless pions)"
-                                 % (n_within, n_finite, n_within33, n_finite)},
+                                 "The exceptions are g_A (-52%%) and the individual charge radii r_p, <r^2>_n (infinite with massless pions). "
+                                 "Supplementary f_pi row (fit output, not preregistered): %+.2f%% vs 92.21 MeV, on the 30%% boundary; with it "
+                                 "%d of %d within 30%%, %d of %d within 33%%"
+                                 % (n_within, n_finite, n_within33, n_finite, 100 * fpi_row["deviation_massless"],
+                                    n30_8, n_finite + 1, n33_8, n_finite + 1)},
         "enclosed_charge_massless_ANW": enc0, "enclosed_charge_massive_AN84": enc1, "isovector_tail_check": tail_check,
         "neutron_enclosed_charge_peak": {"massless_ANW": peak0, "massive_AN84": peak1},
-        "seed_claims": seed_claims(n_within, n_within33, n_finite, pz, peak0, enc0, d0, L_anw, nsym, nfail, n_insp),
+        "seed_claims": seed_claims(n_within, n_within33, n_finite, pz, peak0, enc0, d0, L_anw, nsym, nfail, n_insp, fpi_row, n33_8),
         "pdg_inputs": pd,
         "pi0": pz, "charges_summary": {nm: {"spins": t["spins_allowed"], "charges": t["charges"], "dim": t["dim"]}
                                        for nm, t in ch["charge_table_Nc3"].items()},
@@ -318,11 +346,30 @@ def main():
                 "no SEED verdict)",
                 "SEED 6B AMENDED reframed: %d of %d finite within 33%%, exceptions g_A and the individual charge radii" % (n_within33, n_finite),
                 "commitment 4 and the N_c = 1 exclusion carry their qualifiers in the verdict itself",
-                "g_piNN: passes only the post hoc +-0.05; fails +-0.02"]},
+                "g_piNN: passes only the post hoc +-0.05; fails +-0.02"],
+            "second_pass": {
+                "crosscheck": "crosscheck/crosscheck.json (second pass): 100 of 100 recomputed rows agree (three profile solvers, Noether "
+                              "currents of the matrix Lagrangian, independent pi0 derivation and PDG query); 1 major issue (REPORT.md "
+                              "not regenerated after the first reconciliation) and 10 minor ones, none in the numerics",
+                "changes": [
+                    "REPORT.md regenerated from this results.json: 39/39 symbolic checks and the logged runtime, CHECK PASSED for internal "
+                    "checks, no QUANTIFIED, qualified verdicts for commitment 4 and the N_c = 1 exclusion, 6-of-7-within-33% framing for "
+                    "SEED 6B, F_mu nu in the pi0 coupling, separate convergence ranges, neutron peak +0.206 at 0.73 fm, 'fails +-0.02' "
+                    "beside the g_piNN verdict",
+                    "supplementary f_pi row added (fit output 64.5 MeV vs 92.21 MeV: %+.2f%%), kept out of the preregistered 7-row "
+                    "nucleon tally; the Gamma(pi0->gg) factor 2.03 is described as the square of this deficit, not an independent tension"
+                    % (100 * fpi_row["deviation_massless"]),
+                    "'ANW excepted g_A': verified only as Rakhimov's summary sentence (nucl-th/0502078 sec. 1.2.4, read in the arXiv "
+                    "mirror this pass: 'qualitative agreement with experiment (within 30%) except for gA'); ANW's own text was not read",
+                    "D = -2C now quoted as absolute and relative deviation",
+                    "first-pass convergence item made precise: the '5e-8' was the absolute spread of Lambda over X = 100-400 "
+                    "(4.5e-8 absolute = 8.9e-10 relative, hedgehog_log.txt); X = 50 is off by 2.8e-8 relative, X = 25 by 7.2e-7 "
+                    "(C 1.2e-6, B - 1 = -5.6e-7); production runs use X = 200",
+                    "run_all.sh runtime comment updated to the logged values (symbolic step 220-300 s on a shared core; full pipeline 3 min 52 s in the reconciliation rerun)"]}},
     }
     with open(os.path.join(HERE, "results.json"), "w") as fh:
         json.dump(res, fh, indent=1, default=lambda o: str(o))
-    make_fig(comp)
+    make_fig(comp + [fpi_row])
     print("wrote results.json, fig_vs_pdg.png")
 
 
@@ -332,7 +379,8 @@ def make_fig(comp):
     import matplotlib.pyplot as plt
     labels = {"mu_p": "$\\mu_p$", "mu_n": "$\\mu_n$", "mu_p_over_mu_n": "$\\mu_p/\\mu_n$", "g_A": "$g_A$",
               "g_piNN": "$g_{\\pi NN}$", "r_E_I0_fm": "$r_{E}^{I=0}$", "r_M_I0_fm": "$r_{M}^{I=0}$ (Sachs)",
-              "r_p_fm": "$r_p$", "r2_n_fm2": "$\\langle r^2\\rangle_n$"}
+              "r_p_fm": "$r_p$", "r2_n_fm2": "$\\langle r^2\\rangle_n$",
+              "f_pi_MeV": "$f_\\pi$ (fit output)"}
     from matplotlib.ticker import NullFormatter
     fig, ax = plt.subplots(figsize=(6.4, 4.4), dpi=110)
     ax.axvspan(0.7, 1.3, color="#d9d8d4", alpha=0.5, lw=0)
@@ -356,7 +404,7 @@ def make_fig(comp):
     ax.set_xticklabels(["0.5", "0.7", "1", "1.3", "2", "3"])
     ax.xaxis.set_minor_formatter(NullFormatter())
     ax.set_ylim(-0.6, len(comp) - 0.4)
-    ax.set_xlabel("Skyrme value / data (PDG 2026); grey band = within 30%", fontsize=9)
+    ax.set_xlabel("Skyrme value / data (PDG 2026; $g_{\\pi NN}$ and $f_\\pi$: see REPORT); grey band = within 30%", fontsize=9)
     ax.plot([], [], "o", color="#2a78d6", ms=7, label="massless pions, ANW F=129 MeV, e=5.45 (calibrated)")
     ax.plot([], [], "D", mfc="white", mec="#eb6834", mew=2, ms=6, label="m$_\\pi$=138 MeV, AN84 F=108 MeV, e=4.84 (no target)")
     ax.legend(fontsize=7, frameon=False, loc="upper center", bbox_to_anchor=(0.45, -0.16), ncol=1)

@@ -132,7 +132,7 @@ ax.set_yticks(range(7))
 ax.set_yticklabels(["capture", "1", "2", "3", "4", "5", "6+"])
 ax.set_ylabel("bounces before escape")
 ax.set_xlim(0.15, 0.30)
-ax.set_title("E1b: outcome vs initial speed (dx=0.05, x0=12). Shaded: target window 1 and windows 2-5 of an unverified literature list; dotted: target v_c=0.2598", fontsize=7)
+ax.set_title("E1b: outcome vs initial speed (dx=0.05, x0=12)\nshaded: target window 1 and windows 2-5 of an unverified literature list; dotted: target v_c=0.2598", fontsize=7)
 ax = axs[1]
 m = (v > 0.240) & (v < 0.2615)
 for L in range(7):

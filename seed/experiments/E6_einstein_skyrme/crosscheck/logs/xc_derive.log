@@ -1,0 +1,10 @@
+I1  G^t_t - 4 psi^-5 Lap psi        = 0
+I2  R^t_t + (x^2psi^2A')'/(x^2psi^6A) = 0
+rho  = X*lt + X/2 + lt**2/2 + lt 
+p_r  = X*lt + X/2 - lt**2/2 - lt 
+p_t  = -X/2 + lt**2/2
+I3  divT - F' EL/(A psi^6 x^2)     = 0
+S2  G_tx - 2 alpha T_tx = -2*alpha*(-2*alpha*x**2*m(t, x)*Derivative(F(t, x), t)*Derivative(F(t, x), x) - 4*alpha*m(t, x)*sin(F(t, x))**2*Derivative(F(t, x), t)*Derivative(F(t, x), x) + x**3*Derivative(F(t, x), t)*Derivative(F(t, x), x) + 2*x*sin(F(t, x))**2*Derivative(F(t, x), t)*Derivative(F(t, x), x) - x*Derivative(m(t, x), t))/(x**2*(-2*alpha*m(t, x) + x))
+S1a G^t_t + 2 alpha m'/x^2          = 0
+S1b G^x_x - G^t_t - 2 N s'/(s x)    = 0
+ALL SYMBOLIC CHECKS PASS  (8.9 s)

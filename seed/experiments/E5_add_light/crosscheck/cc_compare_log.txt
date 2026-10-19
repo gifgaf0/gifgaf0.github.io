@@ -1,0 +1,105 @@
+OK   r_I0 [fm], ANW params                        orig 0.59392875     cc 0.59392875     |d| 5.3e-10  target 0.59+-0.01: pass
+OK   r_I0 [fm], ANW params (FE)                   orig 0.59392875     cc 0.59392875     |d| 2.2e-13  target 0.59+-0.01: pass
+OK   rM_I0 ANW def [fm]                           orig 0.9223268      cc 0.9223268      |d| 8.2e-10  target 0.92+-0.01: pass
+OK   rM_I0 ANW def [fm] (FE)                      orig 0.9223268      cc 0.9223268      |d| 6.8e-13  target 0.92+-0.01: pass
+OK   rM_I0 Sachs [fm]                             orig 0.71443127     cc 0.71443127     |d| 6.4e-10
+OK   mu_p                                         orig 1.8776368      cc 1.8776368      |d| 6.3e-10  target 1.87+-0.02: pass
+OK   mu_p (FE)                                    orig 1.8776368      cc 1.8776368      |d| 1.5e-08  target 1.87+-0.02: pass
+OK   mu_n                                         orig -1.3230473     cc -1.3230473     |d| 3.1e-10  target -1.31+-0.02: pass
+OK   mu_n (FE)                                    orig -1.3230473     cc -1.3230473     |d| 2.2e-08  target -1.31+-0.02: pass
+OK   mu_p/mu_n                                    orig -1.4191758     cc -1.4191758     |d| 8.1e-10  target -1.43+-0.02: pass
+OK   g_A (ANW, pion pole removed)                 orig 0.60912704     cc 0.60912704     |d| 1.5e-10  target 0.61+-0.01: pass
+OK   g_A (surface term 2 pi C/3e^2, FE)           orig 0.60912704     cc 0.60912703     |d| 8.1e-09  target 0.61+-0.01: pass
+OK   g_piNN (GT)                                  orig 8.8677564      cc 8.8677564      |d| 2.1e-09  target 8.9+-0.05: pass
+OK   Gamma(pi0->gg) Nc=3 f=92.21 [eV]             orig 7.7610892      cc 7.7610892      |d| 1.8e-15  target 7.802+-0.234: pass
+OK   Gamma Nc=3 f=92.21 [eV] (textbook A)         orig 7.7610892      cc 7.7610892      |d| 1.8e-15  target 7.802+-0.234: pass
+OK   Gamma Nc=1 [eV]                              orig 0.86234324     cc 0.86234324     |d| 1.1e-16
+OK   Gamma at f=64.5 [eV]                         orig 15.862049      cc 15.862049      |d| 0.0e+00
+OK   Gamma at SU(3)-refit f [eV]                  orig 20.398515      cc 20.398817      |d| 3.0e-04
+OK   Gamma at own SU(2)-fit f [eV]                orig 15.797644      cc 15.797644      |d| 1.0e-09
+OK   SU(3) refit f [MeV]                          orig 56.877446      cc 56.877024      |d| 4.2e-04
+OK   pull vs PrimEx-II [sigma]                    orig -0.34966513    cc -0.34966513    |d| 1.5e-14
+OK   pull vs PDG 2026 [sigma]                     orig 0.3318417      cc 0.3318417      |d| 1.4e-14
+OK   Nc=1 pull [sigma]                            orig -59.313306     cc -59.313306     |d| 0.0e+00
+OK   f needed for PrimEx-II central [MeV]         orig 91.967925      cc 91.967925      |d| 0.0e+00
+OK   PDG 2026 Gamma(gg) [eV]                      orig 7.7201906      cc 7.7201906      |d| 0.0e+00
+OK   own SU(2) refit F [MeV]                      orig 129.263        cc 129.26269      |d| 3.1e-04
+OK   own SU(2) refit e                            orig 5.444          cc 5.4439855      |d| 1.5e-05
+OK   mu_p at own SU(2) refit                      orig 1.8788         cc 1.8788149      |d| 1.5e-05
+OK   mu_n at own SU(2) refit                      orig -1.326         cc -1.3259633     |d| 3.7e-05
+OK   g_A at own SU(2) refit                       orig 0.61047        cc 0.61047371     |d| 3.7e-06
+OK   isovector slope C^2/Lambda                   orig 1.4638462      cc 1.4638462      |d| 3.9e-09
+OK   isovector slope C^2/Lambda (FE)              orig 1.4638462      cc 1.4638462      |d| 2.3e-08
+OK   isovector <r^2>(R=2) [x^-2]                  orig 0.55171598     cc 0.55171598     |d| 5.4e-11
+OK   isovector <r^2>(R=5) [x^-2]                  orig 5.3882049      cc 5.3882049      |d| 5.3e-10
+OK   isovector <r^2>(R=10) [x^-2]                 orig 12.709106      cc 12.709106      |d| 1.3e-09
+OK   isovector <r^2>(R=20) [x^-2]                 orig 27.337584      cc 27.337584      |d| 2.7e-09
+OK   isovector <r^2>(R=50) [x^-2]                 orig 71.251261      cc 71.251261      |d| 4.3e-09
+OK   isovector <r^2>(R=100) [x^-2]                orig 144.44346      cc 144.44346      |d| 1.1e-07
+OK   isovector <r^2>(R=200) [x^-2]                orig 290.82807      cc 290.82807      |d| 4.7e-07
+OK   Q_p(<0.25 fm) massless                       orig 0.065834675    cc 0.065834675    |d| 5.2e-12
+OK   Q_n(<0.25 fm) massless                       orig 0.052241232    cc 0.052241232    |d| 3.9e-12
+OK   Q_p(<0.5 fm) massless                        orig 0.34130749     cc 0.34130749     |d| 1.3e-11
+OK   Q_n(<0.5 fm) massless                        orig 0.1718978      cc 0.1718978      |d| 3.7e-12
+OK   Q_p(<1.0 fm) massless                        orig 0.76354123     cc 0.76354123     |d| 3.3e-11
+OK   Q_n(<1.0 fm) massless                        orig 0.18479654     cc 0.18479654     |d| 2.4e-11
+OK   Q_p(<2.0 fm) massless                        orig 0.89687945     cc 0.89687945     |d| 4.3e-11
+OK   Q_n(<2.0 fm) massless                        orig 0.10208818     cc 0.10208818     |d| 3.4e-11
+OK   Q_p(<5.0 fm) massless                        orig 0.95891406     cc 0.95891406     |d| 5.0e-11
+OK   Q_n(<5.0 fm) massless                        orig 0.041081663    cc 0.041081663    |d| 4.1e-11
+OK   Q_p(<10.0 fm) massless                       orig 0.97945696     cc 0.97945696     |d| 5.0e-11
+OK   Q_n(<10.0 fm) massless                       orig 0.020542974    cc 0.020542974    |d| 4.1e-11
+OK   isovector charge outside 0.25 fm             orig 0.49320328     cc 0.49320328     |d| 6.6e-13
+OK   isovector charge outside 0.5 fm              orig 0.41529516     cc 0.41529516     |d| 8.3e-12
+OK   isovector charge outside 1.0 fm              orig 0.21062766     cc 0.21062766     |d| 2.8e-11
+OK   isovector charge outside 2.0 fm              orig 0.10260437     cc 0.10260437     |d| 3.9e-11
+OK   isovector charge outside 5.0 fm              orig 0.041083803    cc 0.041083803    |d| 4.5e-11
+OK   isovector charge outside 10.0 fm             orig 0.020543008    cc 0.020543008    |d| 4.6e-11
+OK   Q_p(<0.25 fm) m_pi=138                       orig 0.042073456    cc 0.042073456    |d| 8.0e-12
+OK   Q_n(<0.25 fm) m_pi=138                       orig 0.032818059    cc 0.032818059    |d| 8.0e-12
+OK   Q_p(<0.5 fm) m_pi=138                        orig 0.26301882     cc 0.26301882     |d| 8.1e-12
+OK   Q_n(<0.5 fm) m_pi=138                        orig 0.11780917     cc 0.11780917     |d| 8.0e-12
+OK   Q_p(<1.0 fm) m_pi=138                        orig 0.79837019     cc 0.79837019     |d| 8.0e-12
+OK   Q_n(<1.0 fm) m_pi=138                        orig 0.10247311     cc 0.10247311     |d| 8.1e-12
+OK   Q_p(<2.0 fm) m_pi=138                        orig 0.9803441      cc 0.9803441      |d| 7.9e-12
+OK   Q_n(<2.0 fm) m_pi=138                        orig 0.018771843    cc 0.018771843    |d| 8.1e-12
+OK   Q_p(<5.0 fm) m_pi=138                        orig 0.99981404     cc 0.99981404     |d| 8.0e-12
+OK   Q_n(<5.0 fm) m_pi=138                        orig 0.00018591476  cc 0.00018591477  |d| 8.0e-12
+OK   Q_p(<10.0 fm) m_pi=138                       orig 0.99999986     cc 0.99999986     |d| 8.0e-12
+OK   Q_n(<10.0 fm) m_pi=138                       orig 1.396072e-07   cc 1.3961521e-07  |d| 8.0e-12
+OK   neutron Q_n peak, massless ANW               orig 0.20570683     cc 0.20570683     |d| 1.4e-10
+OK   neutron Q_n peak radius [fm], massless ANW   orig 0.72547784     cc 0.72549408     |d| 1.6e-05
+OK   neutron Q_n peak, massive AN84               orig 0.13950023     cc 0.13950023     |d| 5.3e-11
+OK   neutron Q_n peak radius [fm], massive AN84   orig 0.67788571     cc 0.67789577     |d| 1.0e-05
+OK   AN84 refit F [MeV]                           orig 108.2598       cc 108.2598       |d| 1.4e-07
+OK   AN84 refit e                                 orig 4.8420518      cc 4.8420518      |d| 3.0e-09
+OK   massive r_p [fm]                             orig 0.88013157     cc 0.88013157     |d| 4.2e-13
+OK   massive <r^2>_n [fm^2]                       orig -0.30787433    cc -0.30787433    |d| 8.0e-13
+OK   massive r_I1 [fm]                            orig 1.0404354      cc 1.0404354      |d| 7.4e-13
+OK   massive mu_p                                 orig 1.9719946      cc 1.9719946      |d| 1.6e-13
+OK   massive mu_n                                 orig -1.2409724     cc -1.2409724     |d| 3.2e-13
+OK   massive g_A (sphere)                         orig 0.64913916     cc 0.64913916     |d| 1.5e-11
+OK   massive r_I0 [fm]                            orig 0.68319634     cc 0.68319634     |d| 4.4e-14
+OK   M/(3 pi^2) (shooting)                        orig 1.2314457      cc 1.2314457      |d| 1.4e-11
+OK   M/(3 pi^2) (FE minimisation)                 orig 1.2314457      cc 1.2314457      |d| 1.4e-11
+OK   Lambda (shooting)                            orig 50.978739      cc 50.978739      |d| 5.0e-09
+OK   Lambda (FE minimisation)                     orig 50.978739      cc 50.978739      |d| 5.9e-07
+OK   C (shooting)                                 orig 8.6385782      cc 8.6385782      |d| 1.2e-08
+OK   C (FE minimisation)                          orig 8.6385782      cc 8.6385781      |d| 1.2e-07
+OK   F'(0) (shooting)                             orig -1.0037641     cc -1.0037641     |d| 3.5e-10
+OK   F'(0) (FE minimisation)                      orig -1.0037641     cc -1.0037641     |d| 4.9e-08
+OK   <x^2>_B (shooting)                           orig 4.477836       cc 4.4778359      |d| 8.0e-09
+OK   <x^2>_B (FE minimisation)                    orig 4.477836       cc 4.477836       |d| 3.4e-12
+OK   <x^4>_B (shooting)                           orig 48.354547      cc 48.354547      |d| 4.1e-10
+OK   <x^4>_B (FE minimisation)                    orig 48.354547      cc 48.354547      |d| 3.5e-11
+OK   I2 tilde = (pi/2) K2                         orig 40.678582      cc 40.678582      |d| 3.0e-09
+OK   D = -2C check: G33 vs 2 pi C/3               orig 18.092596      cc 18.092596      |d| 1.3e-09
+OK   PDG isoscalar charge radius [fm]             orig 0.76902086     cc 0.76902086     |d| 0.0e+00
+OK   PDG isoscalar magnetic radius [fm]           orig 0.82174318     cc 0.82174318     |d| 0.0e+00
+OK   within 30% count (of 7 finite)               orig 3              cc 3              |d| 0.0e+00
+OK   within 33% count (of 7 finite)               orig 6              cc 6              |d| 0.0e+00
+charges (8, 10, 10bar, 27) agree with original and integral: True ; N_c table (fixed and anomaly-consistent) agrees: True
+WZ A-linear charge per unit N_c: {'isoscalar 1/6': 0.1666666738201905, 'isovector tau3/2': 1.039094862020277e-19, 'Q = diag(2/3,-1/3)': 0.1666666738201905}
+linearisation: pion [-sqrt(k_x**2 + k_y**2 + k_z**2 + m_pi**2), sqrt(k_x**2 + k_y**2 + k_z**2 + m_pi**2)] ; photon [-k_z, k_z] ; ranks {'off_cone': 3, 'on_cone': 1} ; mixing zero True ; vacuum p+rho = 0 ; boost invariant True
+pi0 Gamma/PLAN-formula = 1 ; coefficient of eps dA A dpi: N_c*e**2/(24*pi**2*f)
+100/100 numeric rows agree; calibration rows within target (cross-check value): 14/14

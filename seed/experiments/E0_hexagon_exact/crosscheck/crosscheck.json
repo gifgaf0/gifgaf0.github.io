@@ -1,32 +1,44 @@
 {
  "experiment": "E0_hexagon_exact",
- "role": "independent cross-check (second agent)",
- "method": "Todd-Coxeter + Schreier-Sims over mod-p permutation images; exact Q[Z7]/(1+..+x^6) arithmetic for relations, traces and quartics; integer lattice/Weyl/affine computations; exhaustive combinatorics; Fano-table octonions; sympy for the C + C^3 product",
- "n_checks": 81,
- "n_pass": 81,
- "all_pass": true,
- "runtime_seconds": 11.7,
+ "round": 2,
+ "crosscheck_script": "xc2_e0.py",
+ "n_checks": 88,
+ "n_pass": 88,
+ "runtime_seconds": 37.1,
+ "original_rerun": {
+  "n_checks": 102,
+  "n_pass": 102,
+  "runtime_seconds": 4.1,
+  "results_json_identical_except_runtime": true,
+  "replica_files_identical": true,
+  "figure_byte_identical": true
+ },
+ "round1_crosscheck_rerun": {
+  "script": "xc_e0.py",
+  "n_checks": 81,
+  "n_pass": 81
+ },
  "independent_values": [
   {
-   "quantity": "hexagon_check.py printed lines reproduced exactly",
+   "quantity": "hexagon_check.py printed lines reproduced",
    "original": "25/25 identical",
-   "recomputed": "25/25 identical (lines rebuilt from the cross-check's own exact values; hexagon_check.py rerun)",
+   "recomputed": "25/25 identical",
    "agree": true,
-   "note": "independent rebuild; original scripts also rerun in a scratch copy: 102/102, results.json identical up to runtimes"
+   "note": "lines rebuilt from my own exact values, compared with a fresh run of seed/hexagon_check.py"
   },
   {
    "quantity": "120 deg Weyl turn on the seven points",
-   "original": "x -> 4x",
-   "recomputed": "x -> 4x (integer matrix [[0,-1],[1,-1]] on Lambda; C^-1 D C = D^4 exactly); 240 deg gives x -> 2x",
+   "original": "x -> 4x (C^-1 D C = D^4)",
+   "recomputed": "x -> 4x (C^-1 D C = D^4; the 240 deg turn gives x -> 2x)",
    "agree": true,
    "note": ""
   },
   {
-   "quantity": "finer lattice Lambda + Z p",
+   "quantity": "finer lattice Lambda + Zp",
    "original": "hexagonal, Gram (1/7)[[2,-1],[-1,2]], index 7, 6 shortest vectors",
-   "recomputed": "min norm^2 2/7 on 6 vectors, two at 60 deg span L', index 7: hexagonal",
+   "recomputed": "minimal norm^2 2/7 attained by exactly 6 vectors; covolume 1/7 (index 7); reduced Gram (1/7)[[2,1],[1,2]] = hexagonal",
    "agree": true,
-   "note": "found by lattice enumeration, not from a chosen basis"
+   "note": "Gram computed in integer Lambda coordinates by enumeration, not from the original's basis (p, tp)"
   },
   {
    "quantity": "torus triangulation V - E + F",
@@ -38,224 +50,229 @@
   {
    "quantity": "K7, two Fano families, octonion lines",
    "original": "K7; 2 Fano families; 'down' family = {i,i+1,i+3}",
-   "recomputed": "K7; both families Fano; one = {i,i+1,i+3}, the other {i,i+2,i+3}",
+   "recomputed": "K7; 2 Fano families; 'down' family = {i,i+1,i+3}, other = {i,i+2,i+3}",
    "agree": true,
-   "note": "family names differ by convention only"
+   "note": "'up'/'down' naming is a convention; my reduced basis has labels (4,6) where the original uses (1,5), and both make 'down' the octonion family"
   },
   {
    "quantity": "Fano planes on Z7 fixed by x -> x+1",
    "original": "2 of 30; = the two torus families",
-   "recomputed": "2 of 30 (backtracking; 7!/168 = 30), = the two torus families",
+   "recomputed": "2 of 30 (Steiner-triple-system backtracking); = the two torus families",
+   "agree": true,
+   "note": "collineation groups 168, 168, intersection 21 in both"
+  },
+  {
+   "quantity": "order of <D, 120 deg turn> in SU(3)",
+   "original": "21 (BFS closure; exact unitary, det 1)",
+   "recomputed": "21 (projective orbit-stabiliser chain, orbit sizes [3, 1, 1, 7, 1]); enumeration also 21, all in SU(3)",
    "agree": true,
    "note": ""
   },
   {
-   "quantity": "|<D, 120 deg turn>| in SU(3)",
-   "original": "21 (exact unitary, det 1)",
-   "recomputed": "21: relations exact + Todd-Coxeter on <d,c|d^7,c^3,c^-1dcd^-4> = 21; Schreier-Sims mod 29 and mod 43 = 21",
-   "agree": true,
-   "note": "different method (presentation + Schreier-Sims vs BFS closure)"
-  },
-  {
-   "quantity": "|Klein's copy| and |flipped copy| in SU(3)",
+   "quantity": "orders of Klein's copy and flipped copy of PSL(2,7) in SU(3)",
    "original": "168, 168",
-   "recomputed": "168, 168: LNR relations A^2=B^3=(AB)^7=[A,B]^4=1 exact, Todd-Coxeter = 168, simple quotient; Schreier-Sims mod 29/43 = 168 for <Dk,C,R>, <D,C,Rf>, <A,B>",
+   "recomputed": "168, 168 (orbit sizes [24, 1, 1, 7, 1]); explicit isomorphisms onto PSL(2,F7)",
    "agree": true,
-   "note": "different method"
+   "note": "flipped copy = flip (Klein) flip^-1 = LNR's <A,B> as sets in both"
   },
   {
-   "quantity": "quartic invariants (exact polynomial identities)",
-   "original": "Klein copy keeps x^3y+y^3z+z^3x: True; flipped keeps xy^3+yz^3+zx^3: True",
-   "recomputed": "Klein quartic invariant under Dk, C, R; mirror quartic under D, C, Rf, LNR B (exact expansion; generators suffice)",
+   "quantity": "quartic invariants (exact)",
+   "original": "Klein copy keeps x^3y+y^3z+z^3x; flipped copy keeps xy^3+yz^3+zx^3 (all 168)",
+   "recomputed": "same, exact polynomial identities under the generators and all 168 elements",
    "agree": true,
    "note": ""
   },
   {
-   "quantity": "maximal subgroups of PSL(2,7) (class size x order)",
-   "original": "8x21, 7x24, 7x24",
-   "recomputed": "[[21, 8], [24, 7], [24, 7]] (as (order, conjugates)); 179 subgroups in 15 classes; F21 maximal also by 2-transitivity on its 8 cosets",
+   "quantity": "maximal subgroups of PSL(2,7) (order x conjugates)",
+   "original": "8 x 21, 7 x 24, 7 x 24",
+   "recomputed": "8 x 21, 7 x 24, 7 x 24; 179 subgroups in 15 classes (completeness proven by join closure)",
    "agree": true,
-   "note": "lattice computed in the faithful degree-8 coset action"
+   "note": ""
   },
   {
    "quantity": "PSL(2,7) triplet character on 1A,2A,3A,4A,7A,7B",
-   "original": "3, -1, 0, 1, b7, b7bar; FS indicator 0",
-   "recomputed": "3, -1, 0, 1, b7, b7bar on classes 1, 21, 56, 42, 24, 24; FS 0 (both copies)",
-   "agree": true,
-   "note": "classes from mod-29 permutation image, traces exact"
-  },
-  {
-   "quantity": "F21 triplet character on 1A,3A,3B,7A,7B",
-   "original": "3, 0, 0, b7, b7bar; FS indicator 0",
-   "recomputed": "3, 0, 0, b7, b7bar on classes 1, 7, 7, 3, 3; FS 0",
+   "original": "3, -1, 0, 1, b7, b7bar; FS 0",
+   "recomputed": "3, -1, 0, 1, b7, b7bar; FS 0 (both copies; classes via the PSL(2,F7) image)",
    "agree": true,
    "note": ""
   },
   {
-   "quantity": "A5 triplet characters on 1A,2A,3A,5A,5B",
-   "original": "3, -1, 0, (1+-sqrt5)/2; FS indicator +1 (both triplets)",
-   "recomputed": "3, -1, 0, (1 +- sqrt5)/2; FS +1 for both triplets; other degrees forced (4,5)",
+   "quantity": "F21 triplet character on 1A,3A,3B,7A,7B",
+   "original": "3, 0, 0, b7, b7bar; FS 0",
+   "recomputed": "3, 0, 0, b7, b7bar; FS 0",
    "agree": true,
-   "note": "different generators (72 deg about a vertex + 2-fold about z)"
+   "note": "chi(D) = b7 exactly in both"
+  },
+  {
+   "quantity": "A5 triplet characters on 1A,2A,3A,5A,5B",
+   "original": "3, -1, 0, (1+sqrt5)/2, (1-sqrt5)/2; FS +1",
+   "recomputed": "3, -1, 0, (1+sqrt5)/2, (1-sqrt5)/2; FS +1 for both triplets (icosahedral group found by brute force)",
+   "agree": true,
+   "note": ""
   },
   {
    "quantity": "Weyl(SU(3)) and Weyl(G2) on the seven points",
-   "original": "orders 6, 12; SU(3) turns x->4x,2x keep families; G2 adds 60/180/300 deg = x->5x,6x,3x, swap; mirrors keeping points 0/3, 0/6",
-   "recomputed": "0 deg: x -> 1x, keeps both families; 120 deg: x -> 4x, keeps both families; 240 deg: x -> 2x, keeps both families; 60 deg: x -> 5x, swaps the families; 180 deg: x -> 6x, swaps the families; 300 deg: x -> 3x, swaps the families; mirrors keeping points 0/3, 0/6",
+   "original": "orders 6, 12; mirrors keeping points 0/3, 0/6",
+   "recomputed": "orders 6, 12; mirrors keeping points 0/3, 0/6; W(G2) = Aut(Lambda)",
    "agree": true,
-   "note": "integer 2x2 matrices on Lambda"
+   "note": "turn list identical: 60/180/300 deg = x -> 5x, 6x, 3x, swap the families"
   },
   {
    "quantity": "G2 affine Weyl group",
-   "original": "Coxeter (2,3,6); Lambda ⋊ D6, |point group| = 12, 60 deg turn; sites 1a(6mm) 2b(3m) 3c(2mm)",
-   "recomputed": "Coxeter [6, 3, 2] = (6,3,2); Lambda x| W(G2); sites {'(6, 6)': 1, '(2, 2)': 3, '(3, 3)': 2} ((rot, mirrors): count) = 1x6mm, 2x3m, 3x2mm: p6m; SU(3): 3x3m = p3m1",
+   "original": "Coxeter (6, 3, 2); sites {(6, 6): 1, (2, 2): 3, (3, 3): 2}; p6m (SU(3): p3m1)",
+   "recomputed": "Coxeter (6, 3, 2) with my own base (a1 = e2 - (1,1,1)/3, theta = (1,0,-1)); sites {(2, 2): 3, (3, 3): 2, (6, 6): 1}; p6m (SU(3): {(3, 3): 3}, p3m1)",
    "agree": true,
-   "note": "own base (alpha1 = (-2,1,1)/3, theta = (0,-1,1)); exhaustive 1/12-grid site search"
+   "note": "site pattern from the fixed-point equation (1 - w) x = t mod Lambda (the same idea as the original; the round-1 cross-check used a grid search)"
   },
   {
-   "quantity": "7-vertex torus triangulations (labelled) / automorphisms",
-   "original": "120 labelled, one orbit; |Aut| = 42 = AGL(1,7), all orientation-preserving (chiral)",
-   "recomputed": "120 simple 2-(7,3,2) designs, all surfaces, all orientable, one orbit; |Aut| 42, 42 orientation-preserving",
+   "quantity": "7-vertex torus triangulations / automorphisms",
+   "original": "120 labelled, one orbit; |Aut| = 42, 42 orientation-preserving",
+   "recomputed": "120 labelled, one orbit; |Aut| = 42 = AGL(1,7), 42 orientation-preserving",
    "agree": true,
-   "note": "the check TITLE in results.json over-generalises (see issues)"
+   "note": "the search covers chi = 0 complexes only (see issue 1)"
   },
   {
    "quantity": "Der(O) / stabiliser of an imaginary unit",
-   "original": "dim 14 (g2) / dim 8 (su(3))",
-   "recomputed": "dim 14 / dim 8",
+   "original": "dim 14 / dim 8",
+   "recomputed": "dim 14 / dim 8 (Cayley-Dickson model; compact, rank <= 2)",
    "agree": true,
-   "note": "Fano-table (Cayley-Graves) octonions, a different model from the original's C + C^3"
+   "note": ""
   },
   {
    "quantity": "<PSL(2,7), complex conjugation> inside G2",
    "original": "order 336 = PGL(2,7); swaps S4 classes and Fano families",
-   "recomputed": "kappa in Aut(O) (exact); conj(B) in flipped copy; conj(D) = D^6 not conjugate to D (outer) -> PSL(2,7) x| Z2 = PGL(2,7), order 336; kappa swaps the S4 classes",
+   "recomputed": "order 336; kappa transported to P^1(F7) is a Moebius map of non-square determinant, so the group IS PGL(2,F7); swaps the S4 classes; S4 classes give the families ['down', 'up']",
    "agree": true,
-   "note": "order from the outer-automorphism argument, not by closure"
+   "note": ""
   },
   {
    "quantity": "order-7 torus points with a hexagonal finer lattice",
    "original": "12 of 48 (2 subgroups)",
-   "recomputed": "12 of 48 (2 subgroups: those of D and of diag(z,z^4,z^2))",
+   "recomputed": "12 of 48 (2 subgroups: D's and diag(z,z^4,z^2)'s)",
    "agree": true,
-   "note": "Lagrange-Gauss reduction"
+   "note": ""
   }
  ],
  "all_agree": true,
  "claim_audit": [
   {
-   "claim": "All 102 exact checks pass; hexagon_check.py's 25 lines reproduce identically",
+   "claim": "All 102 exact checks pass; 25/25 hexagon_check.py lines reproduced exactly",
    "verdict": "supported",
-   "note": "Original rerun in a scratch copy: 102/102, results.json identical except runtimes. The cross-check independently rebuilds the 25 lines: 25/25."
+   "note": "Rerun of e0_exact.py in a scratch copy: 102/102, exit 0, 4.1 s. results.json identical apart from runtimes; replica files and the figure byte-identical. My own 25 lines also match."
   },
   {
-   "claim": "|<D,C>| = 21, |Klein's copy| = |flipped copy| = 168, all in SU(3)",
+   "claim": "Group orders 21, 168, 168 (exact)",
    "verdict": "supported",
-   "note": "Todd-Coxeter + exact relations, and Schreier-Sims mod 29 and 43. Generators exactly unitary with det 1."
+   "note": "Recomputed by a projective orbit-stabiliser chain (orbit sizes 3x7 and 24x7), with no full enumeration, and confirmed by enumeration."
   },
   {
-   "claim": "Quartics invariant as exact polynomial identities",
+   "claim": "Characters: PSL(2,7) (3,-1,0,1,b7,b7bar), F21 (3,0,0,b7,b7bar) with FS 0; A5 (3,-1,0,(1±sqrt5)/2) with FS +1",
    "verdict": "supported",
-   "note": "Exact expansion for the generators, which is sufficient."
+   "note": "Recomputed exactly. Classes come from an explicit isomorphism onto PSL(2,F7); A5 comes from a brute-force icosahedral group."
   },
   {
-   "claim": "PSL(2,7)/F21 triplets complex (FS 0, b7 = (-1+i sqrt7)/2); A5 triplets real (FS +1)",
+   "claim": "Maximal subgroups 8 x 21, 7 x 24, 7 x 24; 179 subgroups in 15 classes",
    "verdict": "supported",
-   "note": "Recomputed from mod-p classes and exact traces; A5 rebuilt from different generators."
+   "note": "Recomputed. The original assumes 'all subgroups are 2-generated' (stated only in a code comment); my join-closure check proves that the list of 179 is complete."
   },
   {
-   "claim": "Flipped copy = LNR's published basis (A = Rf, AB = D, same 168 matrices)",
+   "claim": "Weyl groups: orders 6, 12; turns x->4x, 2x keep the families; 60/180/300 deg = 5x, 6x, 3x swap them; no mirror keeps the seven points",
    "verdict": "supported",
-   "note": "The cross-checker read LNR eqs. (16), (22), (23) from arXiv:0709.1447v2: the relations hold exactly, A = Rf, AB = D, and C is a word in A, B."
+   "note": "Recomputed in integer Lambda coordinates; also W(G2) = Aut(Lambda)."
   },
   {
-   "claim": "Klein's own matrices contain diag(z^4,z^2,z), not D (labelling convention)",
+   "claim": "G2 affine Weyl group = p6m (sites 1a 6mm, 2b 3m, 3c 2mm); SU(3)'s = p3m1",
    "verdict": "supported",
-   "note": "Every group keeping x^3y+y^3z+z^3x has only powers of Dk among its diagonal elements, and D does not keep it. The one assumption left is that Klein's quartic is x^3y+y^3z+z^3x in Klein's coordinates; his 1878 paper was not read. LNR also call their A (= Rf) 'Klein's involution', which supports the labelling-convention reading."
+   "note": "Recomputed with an independent G2 base. The Coxeter (2,3,6) relations hold, W_aff = Lambda x| W(G2), and the site pattern matches."
   },
   {
-   "claim": "Maximal subgroups 7 S4 + 7 S4 + 8 (7:3); F21 maximal; N(F21) = F21; 179 subgroups in 15 classes",
+   "claim": "Finding 6: the 7-vertex torus triangulation is unique (120 labelled, one orbit) and chiral (Aut = AGL(1,7), all 42 orientation-preserving)",
    "verdict": "supported",
-   "note": "Subgroup lattice in the degree-8 action; maximality also via 2-transitivity. The citation nuance is listed in the issues."
+   "note": "Recomputed. Wording slip: the check title says 'every 7-vertex triangulated closed surface is an orientable torus', which is false (issue 1)."
   },
   {
-   "claim": "G2 affine Weyl group = p6m (sites 6mm + 2x3m + 3x2mm); SU(3)'s = p3m1",
+   "claim": "Finding 7: only 12 of the 48 order-7 torus points give a hexagonal finer lattice",
    "verdict": "supported",
-   "note": "Own base, Coxeter orders, translation lattice argument, exhaustive site search."
+   "note": "Recomputed with Gauss reduction."
   },
   {
-   "claim": "Weyl orders 6, 12; turns x->4x,2x keep the families; 60/180/300 = x->5x,6x,3x swap them; no mirror keeps the seven points",
+   "claim": "Finding 8: <flipped PSL(2,7), kappa> = PGL(2,7) of order 336 inside G2; kappa swaps the S4 classes and the families; S4 classes = Fano families",
    "verdict": "supported",
-   "note": "Integer matrices on Lambda."
+   "note": "Recomputed. I identified the group explicitly with PGL(2,F7) on P^1(F7), which removes the citation |Aut PSL(2,7)| = 336."
   },
   {
-   "claim": "The 7-vertex torus triangulation is unique (120 labelled) and chiral (|Aut| = 42, all orientation-preserving)",
+   "claim": "Finding 8: the PSL(2,7) in U(3) containing <D,C> is unique",
    "verdict": "supported",
-   "note": "Independent backtracking gives the same numbers."
+   "note": "The report gives only a sketch and uses LNR for 'the only triplets are 3 and 3bar'. I computed the missing pieces (|Aut F21| = 42, all induced by N_PGL(F21); the degree equation forces irrep degrees 1,3,3,6,7,8) and the argument closes; see CROSSCHECK.md."
   },
   {
-   "claim": "Check title: 'every 7-vertex triangulated closed surface is an orientable torus'",
-   "verdict": "wrong",
-   "note": "Wording only: 7-vertex triangulations of S^2 and RP^2 exist. The search was restricted to chi = 0."
-  },
-  {
-   "claim": "12 of 48 order-7 torus points give a hexagonal finer lattice (2 subgroups, swapped by SU(3) mirrors)",
+   "claim": "Finding 9 / extra: Der(O) = g2 (dim 14), stabiliser of e = su(3) (dim 8); D, C, Rf, Dk, R, kappa are octonion automorphisms",
    "verdict": "supported",
-   "note": ""
+   "note": "Recomputed in the Cayley-Dickson model, and the report's C + C^3 model was rechecked over Q(i). The original's real basis uses G = i sqrt7 rather than i; that is legitimate."
   },
   {
-   "claim": "Der(O) dim 14 (g2), stabiliser of e dim 8 (su(3)); D, C, R, Rf, Dk and kappa are octonion automorphisms",
-   "verdict": "supported",
-   "note": "Der recomputed in the Fano-table model. The C + C^3 product was checked symbolically to be a unital composition algebra."
-  },
-  {
-   "claim": "<flipped PSL(2,7), kappa> = PGL(2,7) of order 336 inside G2; kappa swaps the S4 classes and the Fano families",
-   "verdict": "supported",
-   "note": ""
-  },
-  {
-   "claim": "Seed's closing tower sentence: AMENDED",
+   "claim": "Calibration rows marked CALIBRATED for targets sourced to SEED §3",
    "verdict": "overstated",
-   "note": "The facts in the seed sentence hold as written. The amendment concerns the interpretive phrase 'clean tower'."
+   "note": "PLAN §1 reserves CALIBRATED for literature targets; these are seed claims and should read CONFIRMED (issue 2). The numbers are right."
   },
   {
-   "claim": "Calibration-table rows sourced to SEED §3 are CALIBRATED",
+   "claim": "AMENDED: 'they don't stack into one clean tower'",
    "verdict": "overstated",
-   "note": "By PLAN §1's definitions these are CONFIRMED seed claims, not literature calibrations."
+   "note": "The math of the amendment is right, but every factual clause of the seed sentence holds, and kappa, hence PGL(2,7), swaps the families exactly as the seed says G2's turns do. This is an interpretive refinement, not a correction (issue 3)."
   },
   {
-   "claim": "make_figures.py output byte-identical; figure 164 KB",
+   "claim": "Maximal-subgroup target sourced 'ATLAS; LNR §5 [read]'",
+   "verdict": "overstated",
+   "note": "LNR §5 names only the two isomorphism types (S4, Z7 x| Z3). The two S4 classes come from ATLAS, which was not read (issue 4). The computation itself establishes the two classes."
+  },
+  {
+   "claim": "Background claims ('SU(3) is the color group', 'model-builders used both groups') marked CONFIRMED in results.json",
+   "verdict": "overstated",
+   "note": "Not tested by E0. The REPORT body already says 'CONFIRMED with a cited part' (issue 5)."
+  },
+  {
+   "claim": "LNR citations [read]: eq. 13 (b7), eqs. 16/22/23 (A = Rf, AB = D), eq. 78 (mirror quartic), §2 (A5: five real irreps, two triplets), §5 (F21 table)",
    "verdict": "supported",
-   "note": "Reran in a scratch copy: cmp-identical, 163640 bytes. The figure exists and its labels match the computed point positions."
+   "note": "I checked each in the arXiv:0709.1447v2 text and rebuilt A and B from eqs. 22-23 myself."
+  },
+  {
+   "claim": "Figure fig_torus_p6m.png shows the two families and the p6m pattern",
+   "verdict": "supported",
+   "note": "The file exists (163,640 bytes) and reproduces byte for byte. Point labels sit at (j/7, 3j/7) and the blue triangles are {i,i+1,i+3}."
   }
  ],
  "issues": [
   {
    "severity": "minor",
-   "description": "results.json check title (and REPORT Method item 3) says 'every 7-vertex triangulated closed surface is an orientable torus'. That is false as worded: a pentagonal bipyramid (sphere, chi 2) and a 7-vertex RP^2 (chi 1) exist (checked in xc_e0.py). The search only covered complexes with every pair in exactly two triangles, i.e. chi = 0 / K7 1-skeleton. The numbers (120, one orbit, |Aut| 42) are right.",
-   "suggested_fix": "Reword to 'every 7-vertex triangulated surface with chi = 0 (equivalently, every vertex pair in exactly two triangles) is the torus, unique up to relabelling (120 labelled copies)'."
+   "description": "results.json check B ('exhaustive search: every 7-vertex triangulated closed surface is an orientable torus ...') and REPORT Method item 3 overstate the search. It covers only complexes in which each vertex pair lies in exactly 2 triangles, i.e. chi = 0. 7-vertex triangulations of the sphere (pentagonal bipyramid) and of RP^2 exist (xc2_e0.py builds both). The numbers 120, one orbit and |Aut| = 42 are correct. The round-1 cross-check reported the same issue, and the rerun left it unfixed.",
+   "suggested_fix": "Reword as 'every 7-vertex triangulated surface with chi = 0 is an orientable torus (so no 7-vertex Klein bottle exists), and all are relabellings of ours'."
   },
   {
    "severity": "minor",
-   "description": "The AMENDED verdict on the closing tower sentence amends an interpretive judgment ('they don't stack into one clean tower'), not a fact. Every factual clause of that sentence holds as written: the Fano split belongs to the SU(3) rung, and the G2 turns that complete p6m swap the families (kappa, and hence PGL(2,7), swaps them too). The PGL(2,7) chain behind the amendment is verified correct.",
-   "suggested_fix": "Record it as 'facts CONFIRMED; wording AMENDED (interpretive)'. Keep the suggested chain G2 > SU(3):2 > PGL(2,7) > PSL(2,7) > F21 and state that the family split survives only up to PSL(2,7)."
+   "description": "The calibration table and headline list use CALIBRATED for rows whose target source is 'SEED §3' (x -> 4x, |<D,C>| = 21, the Weyl turns, and others). PLAN §1 defines CALIBRATED as reproducing a literature target; these are seed claims, and seed_claims already lists them as CONFIRMED. Unfixed since round 1.",
+   "suggested_fix": "Mark seed-sourced rows CONFIRMED. Keep CALIBRATED for rows with a literature target (LNR characters, ATLAS maxima, A5 reality, p6m)."
   },
   {
    "severity": "minor",
-   "description": "The calibration table and results.json headlines mark seed-sourced items CALIBRATED (target source 'SEED §3', e.g. |<D,C>| = 21, x -> 4x, the Weyl turns). PLAN §1 reserves CALIBRATED for literature targets; reproducing a seed claim is CONFIRMED. The same facts already appear as CONFIRMED in seed_claims, so each is labelled twice.",
-   "suggested_fix": "Keep CALIBRATED only for rows with a literature target (LNR characters and quartic, ATLAS maximal subgroups, the p6m classification). Relabel the SEED §3 rows CONFIRMED."
+   "description": "The AMENDED verdict on 'they don't stack into one clean tower' amends an interpretation, not a fact. Every factual clause of the seed sentence is confirmed. The proposed chain G2 ⊃ SU(3)⋊Z2 ⊃ PGL(2,7) ⊃ PSL(2,7) ⊃ F21 is correct and verified here, but its top steps (kappa, PGL(2,7)) swap the Fano families, which is the seed's point.",
+   "suggested_fix": "Record it as 'facts CONFIRMED; suggested wording refinement'. Keep the chain and state that the family split survives only up to PSL(2,7)."
   },
   {
    "severity": "minor",
-   "description": "The maximal-subgroup target 'S4, S4, 7:3' is attributed to 'ATLAS p.3 (via SEED §9); LNR §5 [read]'. LNR §5 gives only the two isomorphism types ('two maximal subgroups, S4 ... and ... Z7 x| Z3'), not the two conjugacy classes of S4. The two-class statement rests on ATLAS, which was not read. The computation itself establishes the two classes, so no result is affected.",
-   "suggested_fix": "Cite as 'ATLAS (not read; via SEED §9); LNR §5 [read] for the isomorphism types'."
+   "description": "Citation: the maximal-subgroup target 'S4, S4, 7:3' is sourced as 'ATLAS; LNR §5 [read]'. LNR §5 gives only the isomorphism types. The two conjugacy classes of S4 rest on ATLAS, which was not read (results.json says 'via SEED §9').",
+   "suggested_fix": "Source the two-class statement to ATLAS [summary/via SEED] and to the computation itself."
   },
   {
    "severity": "minor",
-   "description": "In results.json seed_claims, background and literature-only statements ('SU(3) is the color group...', 'flavor model-builders have used both groups') are marked CONFIRMED although nothing was tested. The REPORT body separates them correctly as 'CONFIRMED with a cited part'.",
-   "suggested_fix": "Mark them 'CONFIRMED (cited, not computed)' or 'not tested' in results.json to match the report."
+   "description": "results.json gives a plain CONFIRMED to background and literature claims that E0 does not test ('SU(3) is the color group', 'model-builders used both groups'). The REPORT body correctly says 'CONFIRMED with a cited part'.",
+   "suggested_fix": "Use 'not tested (cited)' or 'CONFIRMED (cited)' consistently in results.json."
+  },
+  {
+   "severity": "minor",
+   "description": "Unstated assumptions in the original code, none of which changes a result: the subgroup lattice enumerates only 2-generated subgroups (completeness assumed in a comment); PSL(2,7) is identified by 'simple of order 168'; Aut(PSL(2,7)) = PGL(2,7) by the order 336; and the Finding 8 uniqueness relies on LNR's character table. This cross-check supplies each one by computation (join closure, explicit isomorphisms onto PSL(2,F7) and PGL(2,F7), |Aut F21| = 42 and the degree equation).",
+   "suggested_fix": "Optional: cite the cross-check, or add a short completeness argument to the Limitations section."
   }
  ],
  "overall": "confirmed_with_corrections",
- "summary": "Every headline number of E0 reproduces with independent code and different methods (81/81 cross-check checks). No blocking or major issue. Five minor wording, verdict-label and citation issues; the most concrete is an over-general check title about 7-vertex surfaces."
+ "summary": "All 19 headline quantities agree exactly; no headline number or seed verdict is wrong. The six issues are minor: wording, verdict vocabulary, one citation and undocumented assumptions."
 }

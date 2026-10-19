@@ -1,0 +1,46 @@
+M_cl [F_pi/e]                                 orig 36.4616456252          mine 36.4616456252          dev 3.8e-13  OK
+M_cl / (3 pi^2 F_pi/e)                        orig 1.23144569743          mine 1.23144569743          dev 3.8e-13  OK
+Lambda                                        orig 50.9787391143          mine 50.9787391143          dev 5.4e-15  OK
+I1 coefficient (2pi/3)Lambda                  orig 106.769621527          mine 106.769621527          dev 5.4e-15  OK
+J2                                            orig 25.8967896167          mine 25.8967896167          dev 8.5e-14  OK
+I2 coefficient (pi/2)J2                       orig 40.6785820058          mine 40.6785820058          dev 8.5e-14  OK
+I1/I2                                         orig 2.62471345516          mine 2.62471345516          dev 9.1e-14  OK
+C (F -> C/x^2)                                orig 8.6385782143           mine 8.63857821821          dev 4.5e-10  OK
+F'(0)                                         orig -1.00376411136         mine -1.00376411136         dev 4.3e-12  OK
+D (ANW g_A bracket)                           orig -17.2771564403         mine -17.2771564364         dev 2.3e-10  OK
+<r^2>_B (eF)^2                                orig 4.47783595301          mine 4.47783595301          dev 1.4e-13  OK
+virial E2/E4 - 1                              orig -4.44644321362e-13     mine 3.2507330161e-13       dev 7.7e-13  OK
+E2 = E4 [F_pi/e]                              orig 18.2308228126          mine 18.2308228126          dev 5.2e-13  OK
+von Laue int x^2 p dx (abs)                   orig -2.69925331425e-13     mine -1.57126427754e-13     dev 1.1e-13  OK
+pressure node x                               orig 2.15221381425          mine 2.1523728647           dev 1.6e-04  OK
+p(0) [(F/e)(eF)^3]                            orig 0.381594878154         mine 0.381627704578         dev 8.6e-05  OK
+Derrick: max |E2(mu) mu/E2 - 1|               orig 1.66533453694e-15      mine 1.22124532709e-15      dev 4.4e-16  OK
+arctan-ansatz I2 coefficient                  orig 40.5435                mine 40.5435372242          dev 9.2e-07  OK
+ANW fit F_pi [MeV]                            orig 129.262690733          mine 129.262690733          dev 2.8e-13  OK
+ANW fit e                                     orig 5.44398547165          mine 5.44398547165          dev 9.6e-14  OK
+g_A at ANW fit (-(pi/3e^2) D)                 orig 0.610473713905         mine 0.610473713767         dev 2.3e-10  OK
+g_A ball integral at ANW fit                  orig 0.406982475937         mine 0.406969822848         dev 3.1e-05  OK
+1/I2 at ANW fit [MeV]                         orig 512.694028241          mine 512.694028241          dev 9.1e-14  OK
+E(8) - E_SU2(N) = 3/(4I2) at ANW [MeV]        orig 384.520521181          mine 384.520521181          dev 9.0e-14  OK
+r_B rms at ANW [fm]                           orig 0.59337659232          mine 0.59337659232          dev 1.1e-13  OK
+ANW set E(8) [MeV]                            orig 1323.52052118          mine 1323.52052118          dev 2.6e-14  OK
+ANW set E(10) [MeV]                           orig 1616.52052118          mine 1616.52052118          dev 2.1e-14  OK
+ANW set E(10bar) [MeV]                        orig 2092.56156354          mine 2092.56156354          dev 5.0e-14  OK
+PDG 2026 octet centre [MeV]                   orig 1151.19420249          mine 1151.19420249          dev 0.0e+00  OK
+PDG 2026 decuplet centre [MeV]                orig 1382.10561043          mine 1382.10561043          dev 0.0e+00  OK
+SU(3) refit F_pi [MeV]                        orig 113.754892164          mine 113.754892164          dev 3.1e-13  OK
+SU(3) refit e                                 orig 5.24739692926          mine 5.24739692926          dev 1.0e-13  OK
+SU(3) refit M_cl [MeV]                        orig 790.428210815          mine 790.428210815          dev 3.5e-14  OK
+SU(3) refit E(10bar) [MeV]                    orig 1757.27048185          mine 1757.27048185          dev 3.1e-14  OK
+SU(3) refit E(27, J=3/2) [MeV]                orig 1786                   mine 1786.15646334          dev 1.6e-01  OK
+SU(3) refit g_A (SU(2) form)                  orig 0.657072134921         mine 0.657072134773         dev 2.3e-10  OK
+SU(3) refit g_A x 7/10                        orig 0.459950494445         mine 0.459950494341         dev 2.3e-10  OK
+|<p up|D33|p up>| SU(3) octet                 orig 0.233333333333         mine 0.233333333333         dev 3.3e-16  OK
+optional fit alpha [MeV]                      orig 371.756196532          mine 371.756196532          dev 4.6e-15  OK
+optional fit beta [MeV]                       orig -99.5938839605         mine -99.5938839605         dev 1.3e-15  OK
+optional fit rms [MeV]                        orig 3.98382920887          mine 3.98382920887          dev 6.7e-16  OK
+Guadagnini LHS-RHS (PDG 2026) [MeV]           orig 8.50688244983          mine 8.50688244983          dev 3.2e-13  OK
+Dirichlet box X=10, no tail: Lambda           orig 37.09                  mine 37.0905138186          dev 5.1e-04  OK
+Dirichlet box X=20, no tail: Lambda           orig 44.11                  mine 44.1084486238          dev 1.6e-03  OK
+Dirichlet box X=40, no tail: Lambda           orig 47.59                  mine 47.5943342721          dev 4.3e-03  OK
+all numbers agree: True   all my checks pass: True

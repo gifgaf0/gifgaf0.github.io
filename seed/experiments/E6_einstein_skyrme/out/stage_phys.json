@@ -4,10 +4,14 @@
  "per_alpha": {
   "oneminusN_max": 6.476333013691285,
   "x_at_max": 1.1734963479390628,
-  "oneminus_sigma0": 9.747335239275253,
+  "oneminus_sigma0": 9.747353359953513,
+  "oneminus_sigma0_without_core": 9.747335239275253,
   "m_inf": 5.803051134521389,
-  "deflection_max": 18.832251566760107,
-  "b_at_max": 0.7386888262992555,
+  "deflection_max": 18.85855379050653,
+  "b_at_max": 0.7742999955388792,
+  "deflection_max_finer_quadrature": 18.858553921476428,
+  "deflection_max_grid": 18.832251566760107,
+  "b_at_max_grid": 0.7386888262992555,
   "deflection_grid": [
    [
     0.05,
@@ -260,16 +264,16 @@
   "oneminusN_max": 2.2714608323897744e-39,
   "r_at_oneminusN_max_fm": 0.6587369059078103,
   "oneminusN_1fm": 1.9856207541937907e-39,
-  "oneminus_sigma_core": 3.418707804150875e-39,
+  "oneminus_sigma_core": 3.4187141596626797e-39,
   "oneminus_sigma_1fm": 1.479310624370601e-40,
-  "oneminus_gtt_core": 6.83741560830175e-39,
-  "deflection_max_rad": 6.605083730125437e-39,
-  "b_at_deflection_max_fm": 0.4146596559244782,
+  "oneminus_gtt_core": 6.837428319325359e-39,
+  "deflection_max_rad": 6.614308776292527e-39,
+  "b_at_deflection_max_fm": 0.43464982588271245,
   "deflection_1fm_rad": 4.37674492685575e-39,
   "pointmass_deflection_1fm_rad": 4.570068633669852e-39,
   "GM_over_c3_s": 3.811027022809424e-63,
-  "shapiro_chord_pm1fm_s": 2.01251991419154e-62,
-  "shapiro_chord_pm1fm_over_GM": 5.280781012956305
+  "shapiro_chord_pm1fm_s": 2.013795385570071e-62,
+  "shapiro_chord_pm1fm_over_GM": 5.284127804702721
  },
  "f=92.2MeV": {
   "alpha": 7.166687921753175e-40,
@@ -280,15 +284,15 @@
   "oneminusN_max": 4.6413857586472674e-39,
   "r_at_oneminusN_max_fm": 0.46083004805915145,
   "oneminusN_1fm": 3.110269065239613e-39,
-  "oneminus_sigma_core": 6.985610972859306e-39,
+  "oneminus_sigma_core": 6.985623959383907e-39,
   "oneminus_sigma_1fm": 7.79169114700277e-41,
-  "oneminus_gtt_core": 1.3971221945718612e-38,
-  "deflection_max_rad": 1.3496486984291696e-38,
-  "b_at_deflection_max_fm": 0.29008186341788333,
+  "oneminus_gtt_core": 1.3971247918767813e-38,
+  "deflection_max_rad": 1.351533696721557e-38,
+  "b_at_deflection_max_fm": 0.3040663098637197,
   "deflection_1fm_rad": 6.439320680778891e-39,
   "pointmass_deflection_1fm_rad": 6.532718263943574e-39,
   "GM_over_c3_s": 5.447700643457814e-63,
-  "shapiro_chord_pm1fm_s": 3.6228220696304697e-62,
-  "shapiro_chord_pm1fm_over_GM": 6.650185659487632
+  "shapiro_chord_pm1fm_s": 3.624645301585516e-62,
+  "shapiro_chord_pm1fm_over_GM": 6.653532451234047
  }
 }

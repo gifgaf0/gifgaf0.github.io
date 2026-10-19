@@ -1,7 +1,7 @@
 {
- "grad_check_rel_err": 6.61363005323699e-10,
- "continuum_ratio_E2": 3.951822963321588,
- "continuum_ratio_E4": 3.806768941568868,
+ "grad_check_rel_err": 1.1038373749589089e-10,
+ "continuum_ratio_E2": 3.951822963321675,
+ "continuum_ratio_E4": 3.806768941568891,
  "hopf_rational_maps": {
   "A11_N101": {
    "Q_expected": 1,
@@ -155,7 +155,7 @@
    "open_chains": 0
   }
  },
- "time_energy_grad_N76_s": 0.023793379465738933,
- "time_energy_grad_N101_s": 0.06304160753885905,
- "time_energy_grad_N151_s": 0.23793546358744302
+ "time_energy_grad_N76_s": 0.011301120122273764,
+ "time_energy_grad_N101_s": 0.029312849044799805,
+ "time_energy_grad_N151_s": 0.1021418571472168
 }

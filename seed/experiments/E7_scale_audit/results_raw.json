@@ -119,6 +119,7 @@
     "LEP": 0.00011,
     "SEED": 0.001
    },
+   "LEP_bound_note": "Schael et al. 2013 (arXiv:1302.3415) Eq. (3.9): r_e < 1.1e-19 m. Model dependent: it converts the VV contact-interaction scale (positive interference, electromagnetic coupling strength) into a size; it is not a direct form-factor measurement.",
    "LEP": {
     "MR_required_max": 2.848565586168941e-07,
     "compton_over_R_min": 3510538.7948778397,
@@ -354,23 +355,39 @@
  },
  "hopfion": {
   "formula": "M R = 16 sqrt(2) pi^2 kappa4 E_W Rt = c0_hopf * kappa4 (hbar = c = 1); length unit l = sqrt(kappa4/kappa2)",
-  "E_W_ansatz": 1.2314457268379677,
-  "R_rms_ward": 2.1441351857330666,
-  "R_ring_ward": 1.2393004837217263,
-  "c0_hopf_rms": 589.660675580575,
-  "c0_hopf_ring": 340.8212156309733,
-  "c0_hopf_rms_lit_energy": 576.5186706376276,
+  "E_W_ansatz": 1.2314457282064033,
+  "R_rms_ward": 2.0607955717400652,
+  "R_ring_ward": 1.2393009031045161,
+  "c0_hopf_rms": 566.7413689685776,
+  "c0_hopf_ring": 340.8213313445723,
+  "c0_hopf_rms_lit_energy": 554.1101752263314,
   "electron_LEP": {
-   "kappa4_max": 4.830855616010457e-10,
-   "g2_min": 2070026677.4394844,
-   "sqrt_kappa2_MeV": 84.53916960858707,
-   "length_unit_fm": 5.1302735355463e-05
+   "kappa4_max": 5.026217851986162e-10,
+   "g2_min": 1989567562.4263675,
+   "sqrt_kappa2_MeV": 82.87992544795542,
+   "length_unit_fm": 5.337744389033202e-05,
+   "radius": "energy rms"
+  },
+  "electron_LEP_ring": {
+   "kappa4_max": 8.357943955359487e-10,
+   "g2_min": 1196466505.8070357,
+   "sqrt_kappa2_MeV": 64.27177271669154,
+   "length_unit_fm": 8.875971906777769e-05,
+   "radius": "ring (n = -e3)"
   },
   "electron_SEED": {
-   "kappa4_max": 4.391686923645869e-09,
-   "g2_min": 227702934.51834333,
-   "sqrt_kappa2_MeV": 28.038470567989968,
-   "length_unit_fm": 0.0004663885032314818
+   "kappa4_max": 4.569288956351056e-09,
+   "g2_min": 218852431.8669004,
+   "sqrt_kappa2_MeV": 27.488161536349626,
+   "length_unit_fm": 0.00048524948991210935,
+   "radius": "energy rms"
+  },
+  "electron_SEED_ring": {
+   "kappa4_max": 7.598130868508624e-09,
+   "g2_min": 131611315.63877393,
+   "sqrt_kappa2_MeV": 21.3165354712267,
+   "length_unit_fm": 0.000806906536979797,
+   "radius": "ring (n = -e3)"
   }
  },
  "pairs": {
@@ -382,49 +399,61 @@
    "m_plus": 7.613097755743583,
    "g2_M_S_computed": 3.1178768983283165,
    "two_g2_M_S_computed": 6.235753796656633,
-   "two_g2_M_S_read_from_axes": "about 6.2 (Fig. 3 and Fig. 7b axes of arXiv:1103.0013/1103.2133)",
+   "two_g2_M_S_read_from_axes": "about 6.2 (axes); the left edge of Fig. 3b (tick labelled 2 g^2 M_S) is at g^2E = 6.2324 in the vector data",
    "F2_exponent_read": {
-    "at_threshold": 4.45,
-    "at_g2E_11p5": 3.93,
-    "uncertainty": "+-0.05 (read off Fig. 3b, two-particle curve g^2N = 0)",
-    "source": "arXiv:1103.0013 Fig. 3b [read]"
+    "at_threshold": 4.480129042223222,
+    "at_threshold_g2E": 6.259820945380763,
+    "at_g2E_11p5": 3.845986013023204,
+    "minimum": 3.843934957518269,
+    "minimum_at_g2E": 10.999991235608626,
+    "uncertainty": "+-0.002 (vector path, axes calibrated on ticks)",
+    "source": "arXiv:1103.0013v2 Fig. 3b upper panel (g^2 N = 0) [read, vector paths of arXiv:1103.0013v2 Fig. 3b and arXiv:1103.2133v2 Fig. 7b (dl_digitized.json)]",
+    "version1_eye_reading": {
+     "at_threshold": 4.45,
+     "at_g2E_11p5": 3.93,
+     "note": "3.93 was wrong by -0.085, outside its stated +-0.05"
+    }
    },
    "g2Nmin_classical_read": {
-    "high_energy": 3.98,
-    "near_threshold": 4.5,
-    "uncertainty": "+-0.03",
-    "source": "arXiv:1103.2133 Fig. 7b, delta rho -> 0 [read]"
+    "high_energy": 3.977132579744733,
+    "high_energy_range": [
+     3.9708471659482667,
+     3.983220619923998
+    ],
+    "near_threshold": 4.549946842452273,
+    "source": "arXiv:1103.2133v2 Fig. 7b, delta rho -> 0 [read, vector path]"
    },
    "kappa_suppression_per_pair_quantum": {
     "value": [
-     0.6302365565021365,
-     0.7136266352250655
+     0.6164346898332062,
+     0.7184582952305288
     ],
     "formula": "P ~ exp(-F/g^2) = exp(-kappa N_pair), N_pair = 2 M_S/m_- = 2 g2MS/g^2; kappa = F/(2 g^2 M_S)"
    },
    "Nmin_over_Npair": {
-    "value": 0.6382548333024181,
+    "value": 0.6377949979162288,
     "formula": "g^2 N_min / (2 g^2 M_S/m_-)"
    },
    "coupling_for_unsuppressed_two_particle_production": {
-    "formula": "exp(-F_min/g^2) = P  ->  g^2 = F_min/ln(1/P), F_min = 3.93 (high-energy plateau)",
+    "formula": "exp(-F_min/g^2) = P  ->  g^2 = F_min/ln(1/P), F_min = 3.844 (high-energy plateau)",
     "rows": {
      "P=0.1": {
-      "g2": 1.7067773138797795,
-      "M_S_over_m": 1.826762561801856,
-      "N_pair": 3.653525123603712
+      "g2": 1.6693997408451948,
+      "M_S_over_m": 1.867663461328787,
+      "N_pair": 3.735326922657574
      },
      "P=0.368": {
-      "g2": 3.93,
-      "M_S_over_m": 0.793352900337994,
-      "N_pair": 1.586705800675988
+      "g2": 3.843934957518269,
+      "M_S_over_m": 0.8111159353074194,
+      "N_pair": 1.6222318706148389
      },
      "P=0.5": {
-      "g2": 5.669791510693627,
-      "M_S_over_m": 0.5499103260583358,
-      "N_pair": 1.0998206521166716
+      "g2": 5.545625900711335,
+      "M_S_over_m": 0.5622227236655808,
+      "N_pair": 1.1244454473311616
      }
-    }
+    },
+    "caveat": "extrapolates the leading semiclassical exponent to g^2 = O(1), where prefactors and higher orders are uncontrolled: indicative only"
    }
   },
   "phi4": {
@@ -437,7 +466,34 @@
    "DSV_units_note": "DSV units lambda = v = 1 (m = sqrt 2) have g^2 = 1, so N*lambda in those units equals g^2 N here",
    "scaling_argument": "Classical solutions depend on (E, N) only through g^2 E and g^2 N (field rescaling phi = phit/g removes g from the field equation); so if classical pair creation exists at all its lower boundary is N_min = n0/g^2 with n0 a pure number of the classical theory, N_min ~ 1/lambda."
   },
-  "E1e_input": "E1_phi4/results.json not present when this script ran; E1e not used, scaling derived analytically",
+  "E1e_phi4": {
+   "file": "../E1_phi4/e1e_results.json",
+   "sha256_16": "ecaabd4139a39114",
+   "N_min_lambda_over_m2": {
+    "N_E": 1.2389199410979685,
+    "N_lin": 1.687915041158199,
+    "E1_implication_c": 1.687915041158199
+   },
+   "g2_N_min": {
+    "N_E": 2.477839882195937,
+    "N_lin": 3.375830082316398
+   },
+   "g2_N_pair": 1.3333333333333333,
+   "Nmin_over_Npair": {
+    "N_E": 1.8583799116469528,
+    "N_lin": 2.5318725617372984
+   },
+   "g2_for_classical_pair_from_2_quanta": {
+    "N_E": 1.2389199410979685,
+    "N_lin": 1.687915041158199
+   },
+   "lambda_over_m2_for_2_quanta": {
+    "N_E": 0.6194599705489843,
+    "N_lin": 0.8439575205790995
+   },
+   "note": "upper bounds on the true classical minimum (scanned sets only); classical production from N <= 2 quanta needs g^2 >= g^2 N_min/2. E1 is reconciled separately; numbers as read now."
+  },
+  "E1e_input": "used (see E1e_phi4)",
   "QED_breit_wheeler": {
    "formula": "sigma = (pi r_e^2/2)(1-b^2)[(3-b^4) ln((1+b)/(1-b)) - 2b(2-b^2)], r_e = alpha hbar c/(m_e c^2)",
    "r_e_fm": 2.8179403204564086,
@@ -447,9 +503,10 @@
    "sigma_max_mb": 170.06316465914213,
    "scaling": "sigma ~ alpha^2/m_e^2: power-law (perturbative) in alpha, no exp(-c/alpha) factor",
    "hypothetical_fold_suppression": {
-    "note": "if the electron were a semiclassical fold with coupling g^2 = alpha (or 4 pi alpha) and DL-like F ~ 4",
-    "exp_minus_F_over_alpha_log10": -233.88993458115897,
-    "exp_minus_F_over_4pialpha_log10": -18.61236961401574
+    "note": "illustration only: if the electron were a semiclassical fold with DL-like F ~ 3.8; depends on the coupling identification: g^2 = alpha, or g^2 = e^2 = 4 pi alpha (the loop-counting coupling of QED)",
+    "F_used": 3.843934957518269,
+    "exp_minus_F_over_alpha_log10": -228.7678615135313,
+    "exp_minus_F_over_4pialpha_log10": -18.204767990220336
    }
   }
  },

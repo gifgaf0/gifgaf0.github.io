@@ -217,11 +217,17 @@ def solve_mapped(N, L=2.0, verbose=False):
     Ftt = D2 @ F
     Fp = np.zeros(N + 1)
     Fp[1:] = (1 - t[1:]) ** 2 / (2 * L) * Ft[1:]
-    C = 2.0 * L ** 2 * Ftt[0]                  # F ~ C (1-t)^2/(4 L^2) near t = 1
+    C_endpoint = 2.0 * L ** 2 * Ftt[0]         # F ~ C (1-t)^2/(4 L^2) near t = 1 (2nd spectral derivative
+    #                                            at the end point: round-off ~1e-9, kept only as a diagnostic)
+    # Reconciliation fix: C from the interpolant at x = 100 and the asymptotic series (remainder ~1e-13),
+    # which is ~1e3 times more accurate than the end-point second derivative.
+    Xc = 100.0
+    FXc = bary_eval(t, F, bary_weights(N), np.array([(Xc - L) / (Xc + L)]))[0]
+    C = C_from_FX(FXc, Xc)
     wt = clencurt(N)
     xt = np.full(N + 1, np.inf)
     xt[1:] = 2 * L / (1 - t[1:]) ** 2           # dx/dt
-    return dict(kind="mapped", N=N, L=L, t=t, x=x, F=F, Fp=Fp, Ft=Ft, C=C, wt=wt, xt=xt,
+    return dict(kind="mapped", N=N, L=L, t=t, x=x, F=F, Fp=Fp, Ft=Ft, C=C, C_endpoint=C_endpoint, wt=wt, xt=xt,
                 its=its, res=res, D=D)
 
 
@@ -502,6 +508,10 @@ def main():
     chk("virial E2 = E4 (B)", abs(dB['virial_dev']) < 1e-10, f"E2/E4-1 = {dB['virial_dev']:.1e}")
     chk("virial E2 = E4 (A)", abs(dA['virial_dev']) < 1e-8, f"E2/E4-1 = {dA['virial_dev']:.1e}")
     chk("baryon number", abs(dB['B'] - 1) < 1e-11, f"B = {dB['B']:.14f}")
+    # reconciliation: C from the series at x = 100; D = -2C (current conservation) must hold to round-off
+    chk("identity D = -2C (C from the series at x = 100)", abs(dB['D_gA'] / (-2 * dB['C']) - 1) < 1e-11,
+        f"D/(-2C) - 1 = {dB['D_gA'] / (-2 * dB['C']) - 1:+.1e}; C = {dB['C']:.12f}, "
+        f"end-point 2nd-derivative estimate {sB['C_endpoint']:.12f} (diff {sB['C_endpoint'] / dB['C'] - 1:+.1e})")
     chk("solve_bvp agrees with spectral (M, Lambda)", abs(bvp_M / dB['M_over_Fpi_e'] - 1) < 1e-6 and abs(bvp['Lambda'] / dB['Lambda'] - 1) < 1e-6,
         f"rel {abs(bvp_M / dB['M_over_Fpi_e'] - 1):.1e}, {abs(bvp['Lambda'] / dB['Lambda'] - 1):.1e}")
     chk("arctan closed forms reproduce by quadrature", abs(arc_I2 / pr_I2 - 1) < 1e-8 and abs(arc_M / pr_M - 1) < 1e-8,
@@ -546,6 +556,9 @@ def main():
 
     out = {
         "reference_halfline_N160": dB,
+        "C_method": "C from F(100) and the asymptotic series (reconciliation fix); the end-point second "
+                    "spectral derivative is kept as a diagnostic",
+        "C_endpoint_diagnostic_N160": float(sB["C_endpoint"]),
         "halfline_N_convergence": {str(N): ref[N][1] for N in ref},
         "halfline_L1": dB2, "halfline_L4": dB3,
         "primary_box_X40_N200_tails": dA,

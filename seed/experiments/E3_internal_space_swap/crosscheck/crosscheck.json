@@ -1,0 +1,1548 @@
+{
+ "experiment": "E3_internal_space_swap",
+ "overall": "confirmed",
+ "issues": [
+  {
+   "severity": "minor",
+   "description": "Verdict words: the headline marks seed predictions and PLAN expectations as CALIBRATED (lowest rotor multiplets, all-J-integer, 7 branching, C2 values, G2 inertia blocks, moment map, pi2, pi3). PLAN section 1 reserves CALIBRATED for literature targets; seed-claim items should read CONFIRMED (they do in seed_claims).",
+   "suggested_fix": "Relabel those headline rows CONFIRMED (or 'consistent with PLAN expectation'); keep CALIBRATED for Mayanskiy indices/branching, M_cl, Lambda, I2."
+  },
+  {
+   "severity": "minor",
+   "description": "Stability table, (3,1) block at R=40/nr=40: the original lists 5.4e-5 (x3), 1.9e-4 (x3), 3.7e-4 as 'zero modes, then continuum'. 1.939e-4 (x3) is the first continuum level (mine 1.937e-4); 3.73e-4 (x3) is the unresolved iso-rotation zero-mode triplet, which lies above it. So zero modes are not the lowest eigenvalues at that mesh.",
+   "suggested_fix": "Relabel the R=40 column; quote converged zero-mode values from a higher-order basis (cubic B-splines: 7.5e-8 and 4.1e-6 at R=40, 1.9e-6 and 3.7e-5 at R=20)."
+  },
+  {
+   "severity": "minor",
+   "description": "'The centre element exp(2 pi T3^L)': G2 has trivial centre. The element is the image of -1 in SU(2)_L, central in the SO(4) subgroup only.",
+   "suggested_fix": "Say 'the element exp(2 pi T3^L) (image of -1 in SU(2)_L)'."
+  },
+  {
+   "severity": "minor",
+   "description": "The argument that no velocity-linear term can shift the singlet constraint ('must be a character of the stabiliser's Lie algebra') is incomplete as stated: an SU(2)_short-invariant linear term along the (3,1) directions is not excluded by that argument, only by spatial-rotation (right SU(2)_L) invariance. The conclusion is unchanged. Also, AMENDED is applied to a PLAN section 3 literature note, not to a seed claim.",
+   "suggested_fix": "Add 'and right SU(2)_L (rotation) invariance' to the argument; call the PLAN 3.5 item 'refined', not AMENDED."
+  },
+  {
+   "severity": "minor",
+   "description": "Citation precision: Mayanskiy 1611.04070 Table 2 lists only the non-regular A1^4 and A1^28; indices 1 (A1) and 3 (A1~) are given in the list right after Table 2 (Table 1 has the regular subalgebras). Prop. 4.1 matches as cited.",
+   "suggested_fix": "Cite 'Mayanskiy section 4 (Table 2 and the list following it)'."
+  },
+  {
+   "severity": "minor",
+   "description": "'E2 parameters' were taken as the rounded PLAN ANW point (129 MeV, 5.45). E2's own fit is F_pi = 129.26 MeV, e = 5.444, giving M = 865.75, 1/I1 = 195.33, 1/I2 = 512.69 MeV, so the 14-1 gap is 708.0 instead of 708.9 MeV. Declared deviation; effect <= 0.3%.",
+   "suggested_fix": "Optionally add the ladder at E2's fitted point, or say 'PLAN's rounded ANW point' wherever 'E2 parameters' appears."
+  },
+  {
+   "severity": "minor",
+   "description": "Reproducibility presentation: logs/run_all.log shows a resumed run (SKIP_DONE) in which e3_stability_refine was not executed; refine and make_results ran separately afterwards. run_all.sh in its current form has not been run end to end, and the '27 minutes' total is a sum of step times.",
+   "suggested_fix": "Run run_all.sh once from scratch, or state that the total is summed."
+  },
+  {
+   "severity": "minor",
+   "description": "Seed-claim row 'the B = 1 fold is the long-root (SU(3)) hedgehog' is marked CONFIRMED. What is shown is that this hedgehog carries B = 1 (the generator) and is linearly stable. That it is the minimal B = 1 fold in G2 is OPEN, as the stability row itself says.",
+   "suggested_fix": "Qualify the row: 'B = 1 generator, locally stable; global minimality OPEN'."
+  }
+ ],
+ "rows": [
+  {
+   "quantity": "Dynkin index long",
+   "original": 1.0,
+   "recomputed": 1.0,
+   "rel_diff": 0.0,
+   "tol": 1e-09,
+   "agree": true,
+   "note": "original via -Tr7(T3^2) and embedded-hedgehog B, E; mine via 3-form g2, root vectors"
+  },
+  {
+   "quantity": "Dynkin index short",
+   "original": 3.0,
+   "recomputed": 3.0,
+   "rel_diff": 0.0,
+   "tol": 1e-09,
+   "agree": true,
+   "note": "original via -Tr7(T3^2) and embedded-hedgehog B, E; mine via 3-form g2, root vectors"
+  },
+  {
+   "quantity": "Dynkin index index4_diag",
+   "original": 4.0,
+   "recomputed": 4.0,
+   "rel_diff": 0.0,
+   "tol": 1e-09,
+   "agree": true,
+   "note": "original via -Tr7(T3^2) and embedded-hedgehog B, E; mine via 3-form g2, root vectors"
+  },
+  {
+   "quantity": "Dynkin index index4_SO3",
+   "original": 4.0,
+   "recomputed": 4.0,
+   "rel_diff": 0.0,
+   "tol": 1e-09,
+   "agree": true,
+   "note": "original via -Tr7(T3^2) and embedded-hedgehog B, E; mine via 3-form g2, root vectors"
+  },
+  {
+   "quantity": "Dynkin index principal",
+   "original": 28.0,
+   "recomputed": 28.0,
+   "rel_diff": 0.0,
+   "tol": 1e-09,
+   "agree": true,
+   "note": "original via -Tr7(T3^2) and embedded-hedgehog B, E; mine via 3-form g2, root vectors"
+  },
+  {
+   "quantity": "7 under SU(2)_L x SU(2)_S",
+   "original": "(2,2)+(1,3)",
+   "recomputed": "(2,2)+(1,3)",
+   "tol": 0,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "14 under SU(2)_L x SU(2)_S",
+   "original": "(3,1)+(1,3)+(2,4)",
+   "recomputed": "(3,1)+(1,3)+(2,4)",
+   "tol": 0,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "G2 irreps dim<=500: L x S branching, C2, allowed J (13 irreps)",
+   "original": "13 irreps",
+   "recomputed": "13/13 identical",
+   "tol": 0,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "M_cl (F_pi/e)",
+   "original": 36.46164562293057,
+   "recomputed": 36.46164562523589,
+   "rel_diff": 6.322590052235742e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Lambda",
+   "original": 50.9787391145594,
+   "recomputed": 50.978739119260055,
+   "rel_diff": 9.22080928929313e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "I2 radial integral J2",
+   "original": 25.89678961781966,
+   "recomputed": 25.896789619206977,
+   "rel_diff": 5.357100043970642e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "F'(0)",
+   "original": -1.0037641114242557,
+   "recomputed": -1.0037641113408875,
+   "rel_diff": 8.305557080840946e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "C (tail)",
+   "original": 8.638578218066632,
+   "recomputed": 8.638578280142001,
+   "rel_diff": 7.1858316586573954e-09,
+   "tol": 1e-06,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "I1 (3D, x3)",
+   "original": 106.76962152754304,
+   "recomputed": 106.76962153782718,
+   "rel_diff": 9.632084121749789e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "I2 (3D, x8)",
+   "original": 40.678582007380555,
+   "recomputed": 40.67858200973117,
+   "rel_diff": 5.778513808605907e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "I1/I2",
+   "original": 2.624713455060238,
+   "recomputed": 2.624713455161383,
+   "rel_diff": 3.8535754884496185e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "short block inertia (max |I|)",
+   "original": 6.6e-19,
+   "recomputed": 1.8078582281339776e-14,
+   "rel_diff": 27390.791335363298,
+   "tol": 1,
+   "agree": true,
+   "note": "both zero to rounding"
+  },
+  {
+   "quantity": "ANW: M (MeV)",
+   "original": 863.0371165794575,
+   "recomputed": 863.0371166340238,
+   "rel_diff": 6.322600052747325e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "ANW: 1/I1 (MeV)",
+   "original": 195.58318486324362,
+   "recomputed": 195.58318484440488,
+   "rel_diff": 9.632082253501365e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "ANW: 1/I2 (MeV)",
+   "original": 513.3498168940894,
+   "recomputed": 513.3498168644253,
+   "rel_diff": 5.778531172466729e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "refit F_pi (MeV)",
+   "original": 113.7548921709913,
+   "recomputed": 113.75489216707587,
+   "rel_diff": 3.441989579371948e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "refit e",
+   "original": 5.247396929161652,
+   "recomputed": 5.247396929390333,
+   "rel_diff": 4.3579907745527796e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "refit antidecuplet (MeV)",
+   "original": 1757.2704818321554,
+   "recomputed": 1757.27048185551,
+   "rel_diff": 1.3290320024497111e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "octet centre (MeV, PDG 2026)",
+   "original": 1151.1942024850146,
+   "recomputed": 1151.1942024850146,
+   "rel_diff": 0.0,
+   "tol": 1e-10,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "decuplet centre (MeV, PDG 2026, Delta=1232.0)",
+   "original": 1382.10561042506,
+   "recomputed": 1382.1056104250597,
+   "rel_diff": 1.6451251896250126e-16,
+   "tol": 1e-10,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "state 0: 1[0,0] J=0: (E-M) I1",
+   "original": 0.0,
+   "recomputed": 0.0,
+   "rel_diff": 0.0,
+   "tol": 1e-08,
+   "agree": true,
+   "note": "orig label 1 J=0; E_ANW 863.0 vs 863.0; E_refit 790.4 vs 790.4"
+  },
+  {
+   "quantity": "state 1: 14[0,1] J=1: (E-M) I1",
+   "original": 3.624713455060238,
+   "recomputed": 3.624713455161383,
+   "rel_diff": 2.7904361434429447e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": "orig label 14 J=1; E_ANW 1572.0 vs 1572.0; E_refit 1348.4 vs 1348.4"
+  },
+  {
+   "quantity": "state 2: 27[2,0] J=0: (E-M) I1",
+   "original": 6.124331395140556,
+   "recomputed": 6.124331395376561,
+   "rel_diff": 3.853563403070246e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": "orig label 27 J=0; E_ANW 2060.9 vs 2060.9; E_refit 1733.2 vs 1733.2"
+  },
+  {
+   "quantity": "state 3: 77[0,2] J=2: (E-M) I1",
+   "original": 8.249426910120476,
+   "recomputed": 8.249426910322766,
+   "rel_diff": 2.452167195588946e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": "orig label 77 J=2; E_ANW 2476.5 vs 2476.5; E_refit 2060.4 vs 2060.4"
+  },
+  {
+   "quantity": "state 4: 77[3,0] J=1: (E-M) I1",
+   "original": 8.874140365180713,
+   "recomputed": 8.874140365484148,
+   "rel_diff": 3.419322733952859e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": "orig label 77' J=1; E_ANW 2598.7 vs 2598.7; E_refit 2156.5 vs 2156.5"
+  },
+  {
+   "quantity": "state 5: 189[2,1] J=1: (E-M) I1",
+   "original": 12.37375830526103,
+   "recomputed": 12.373758305699326,
+   "rel_diff": 3.5421453966045636e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": "orig label 189 J=1; E_ANW 3283.1 vs 3283.1; E_refit 2695.3 vs 2695.3"
+  },
+  {
+   "quantity": "state 6: 77[0,2] J=0: (E-M) I1",
+   "original": 13.12356727530119,
+   "recomputed": 13.123567275806916,
+   "rel_diff": 3.853578872355842e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": "orig label 77 J=0; E_ANW 3429.8 vs 3429.8; E_refit 2810.7 vs 2810.7"
+  },
+  {
+   "quantity": "state 7: 273[0,3] J=3: (E-M) I1",
+   "original": 13.874140365180713,
+   "recomputed": 13.874140365484148,
+   "rel_diff": 2.1870580155800457e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": "orig label 273 J=3; E_ANW 3576.6 vs 3576.6; E_refit 2926.2 vs 2926.2"
+  },
+  {
+   "quantity": "state 8: 448[3,1] J=2: (E-M) I1",
+   "original": 14.81121054777107,
+   "recomputed": 14.811210548226224,
+   "rel_diff": 3.073038055428782e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": "orig label 448 J=2; E_ANW 3759.9 vs 3759.9; E_refit 3070.5 vs 3070.5"
+  },
+  {
+   "quantity": "state 9: 182[4,0] J=0: (E-M) I1",
+   "original": 15.748280730361426,
+   "recomputed": 15.748280730968299,
+   "rel_diff": 3.8535811282933253e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": "orig label 182 J=0; E_ANW 3943.1 vs 3943.1; E_refit 3214.7 vs 3214.7"
+  },
+  {
+   "quantity": "E(14,J=1) - E(1,J=0) at ANW (MeV)",
+   "original": 708.9330017573329,
+   "recomputed": 708.9330017088304,
+   "rel_diff": 6.841627702117976e-11,
+   "tol": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "hexagon sides (generic a)",
+   "original": "0.98995 / 2.26274 alternating",
+   "recomputed": "7 sqrt2/10 / 8 sqrt2/5 alternating (exact)",
+   "tol": 0,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "hexagon angles",
+   "original": "120 deg x6",
+   "recomputed": "120 deg x6 (exact)",
+   "tol": 0,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "degenerate a: triangle",
+   "original": "3 vertices, 60 deg",
+   "recomputed": "3 vertices, 60 deg (exact)",
+   "tol": 0,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "pi2 A: p=(1,z,0), r=p x (0,0,1)",
+   "original": [
+    1,
+    0,
+    -1
+   ],
+   "recomputed": [
+    1.0,
+    0.0,
+    -1.0
+   ],
+   "tol": 0,
+   "agree": true,
+   "note": "expected = original's integers"
+  },
+  {
+   "quantity": "pi2 B: p=(0,0,1), r=p x (1,z,0)",
+   "original": [
+    0,
+    1,
+    -1
+   ],
+   "recomputed": [
+    -0.0,
+    1.0,
+    -1.0
+   ],
+   "tol": 0,
+   "agree": true,
+   "note": "expected = original's integers"
+  },
+  {
+   "quantity": "pi2 C: p=(1,z,0), r=p x (0,1,z)",
+   "original": [
+    1,
+    1,
+    -2
+   ],
+   "recomputed": [
+    1.0,
+    1.0,
+    -2.0
+   ],
+   "tol": 0,
+   "agree": true,
+   "note": "expected = original's integers"
+  },
+  {
+   "quantity": "pi2 D: p=(1,z,z^2), r=p x (0,1,z)",
+   "original": [
+    2,
+    -1,
+    -1
+   ],
+   "recomputed": [
+    2.0,
+    -1.0,
+    -1.0
+   ],
+   "tol": 0,
+   "agree": true,
+   "note": "expected = original's integers"
+  },
+  {
+   "quantity": "pi2 E: Veronese Frenet frame",
+   "original": [
+    2,
+    0,
+    -2
+   ],
+   "recomputed": [
+    2.0,
+    -0.0,
+    -2.0
+   ],
+   "tol": 0,
+   "agree": true,
+   "note": "expected = original's integers"
+  },
+  {
+   "quantity": "pi2 F: p=(1,z,z^3), r=p x (0,0,1)",
+   "original": [
+    3,
+    -2,
+    -1
+   ],
+   "recomputed": [
+    3.0,
+    -2.0,
+    -1.0
+   ],
+   "tol": 0,
+   "agree": true,
+   "note": "expected = original's integers"
+  },
+  {
+   "quantity": "pi2 G: complex conjugate of A (anti-holomorphic)",
+   "original": [
+    -1,
+    0,
+    1
+   ],
+   "recomputed": [
+    -1.0,
+    -0.0,
+    1.0
+   ],
+   "tol": 0,
+   "agree": true,
+   "note": "expected = original's integers"
+  },
+  {
+   "quantity": "pi3 lift degree C1 SU(2) hedgehog (block 12)",
+   "original": 1,
+   "recomputed": 1.0,
+   "rel_diff": 0.0,
+   "tol": 0,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "pi3 lift degree C2 W(x) . hedgehog . T(x) (non-embedded)",
+   "original": 1,
+   "recomputed": 0.999999,
+   "rel_diff": 1.0000000000287557e-06,
+   "tol": 0,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "pi3 lift degree C3 hedgehog(12) . hedgehog(23)",
+   "original": 2,
+   "recomputed": 1.999999,
+   "rel_diff": 4.999999999588667e-07,
+   "tol": 0,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "pi3 lift degree C4 SO(3) hedgehog, f(0)=2pi",
+   "original": 4,
+   "recomputed": -3.999997,
+   "rel_diff": 1.9999992500000001,
+   "tol": 0,
+   "agree": true,
+   "note": "SO(3) sign is generator-orientation convention"
+  },
+  {
+   "quantity": "pi3 lift degree C5 inverse hedgehog",
+   "original": -1,
+   "recomputed": -1.0,
+   "rel_diff": 0.0,
+   "tol": 0,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "pi3 lift degree C4' SO(3) hedgehog exp(-f n.L) (opposite orientation = inverse of C4)",
+   "original": 4,
+   "recomputed": 3.999997,
+   "rel_diff": 7.499999999938112e-07,
+   "tol": 0,
+   "agree": true,
+   "note": "SO(3) sign is generator-orientation convention"
+  },
+  {
+   "quantity": "stability: any negative eigenvalue (all blocks)",
+   "original": "none (min 2.1e-5)",
+   "recomputed": "none (min 7.5e-08)",
+   "tol": 0,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "(1,3) lowest, R=20 (exact (1/32)(pi/20)^2 = 7.7106e-4)",
+   "original": 0.000771561456124459,
+   "recomputed": 0.0007710628445027915,
+   "rel_diff": 0.0006462370789904883,
+   "tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "(3,1) first continuum level R=20 (x3)",
+   "original": 0.0007957961088627765,
+   "recomputed": 0.0007952702661410353,
+   "rel_diff": 0.0006607756885023171,
+   "tol": 0.002,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "(3,1) continuum R=20 (x1)",
+   "original": 0.0014359220075190425,
+   "recomputed": 0.0014357843533695867,
+   "rel_diff": 9.58646421846223e-05,
+   "tol": 0.002,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "kaon first continuum level R=20 (x4)",
+   "original": 0.0007826951635616736,
+   "recomputed": 0.000782542315697018,
+   "rel_diff": 0.00019528402853547224,
+   "tol": 0.002,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "kaon continuum R=20 (x2+)",
+   "original": 0.0015995396286134882,
+   "recomputed": 0.0015992685241225464,
+   "rel_diff": 0.00016948907428868205,
+   "tol": 0.002,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "(3,1) continuum level R=40 (x3)",
+   "original": 0.00019388007264622823,
+   "recomputed": 0.00019372853149694745,
+   "rel_diff": 0.0007816231302806639,
+   "tol": 0.002,
+   "agree": true,
+   "note": "original lists this as its 2nd triplet; it is the continuum, the iso-rotation triplet is its 3.73e-4 (unresolved)"
+  },
+  {
+   "quantity": "kaon zero-mode Dirichlet floor R=20 (x4)",
+   "original": 3.374625441040557e-05,
+   "recomputed": 2.9063666655302833e-05,
+   "rel_diff": 0.13875874039694527,
+   "tol": 0.2,
+   "agree": true,
+   "note": "original at nr=90 still 16% above my converged floor (upper bound, consistent)"
+  },
+  {
+   "quantity": "(2,4) = kaon doubled",
+   "original": "1.6e-14",
+   "recomputed": "1.3e-13",
+   "tol": 0,
+   "agree": true,
+   "note": ""
+  }
+ ],
+ "my_checks": {
+  "g2": [
+   {
+    "check": "dim stab(phi) in so(7) = 14",
+    "pass": true,
+    "value": 14
+   },
+   {
+    "check": "g2 closed under commutator",
+    "pass": true,
+    "value": 7.771561172376096e-16
+   },
+   {
+    "check": "f_abc totally antisymmetric",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "Killing form = -4 B (B = -Tr_7)",
+    "pass": true,
+    "value": 7.993605777301127e-15
+   },
+   {
+    "check": "stabiliser of a unit imaginary octonion is 8-dim",
+    "pass": true,
+    "value": 8
+   },
+   {
+    "check": "J^2 = -1 on e1-perp",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "su(3) commutes with J",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "su(3) Casimir on 7: 4/3 (x6), 0 (x1)  => 7 = 3+3bar+1",
+    "pass": true,
+    "value": [
+     0.0,
+     1.3333333333,
+     1.3333333333,
+     1.3333333333,
+     1.3333333333,
+     1.3333333333,
+     1.3333333333
+    ]
+   },
+   {
+    "check": "G2 Casimir on 7 = 2 (long-root normalisation, B-orthonormal basis)",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "G2 Casimir on 14 = 4",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "generic element of su(3) has 2-dim centraliser in g2 (rank 2)",
+    "pass": true,
+    "value": 2
+   },
+   {
+    "check": "12 roots",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "root lengths^2 in B-dual metric: 6 long = 1, 6 short = 1/3",
+    "pass": true,
+    "value": [
+     0.3333333333,
+     1.0
+    ]
+   },
+   {
+    "check": "long su(2) relations",
+    "pass": true,
+    "value": 5.783580299361632e-16
+   },
+   {
+    "check": "short su(2) relations",
+    "pass": true,
+    "value": 2.755559464688281e-15
+   },
+   {
+    "check": "[su(2)_L, su(2)_S] = 0",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "long-root su(2) lies inside su(3) = stab(e1)",
+    "pass": true,
+    "value": 0.0
+   },
+   {
+    "check": "diag(L x S) is an su(2)",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "found Lagrangian 3-plane and 3-dim so(3) in su(3)",
+    "pass": true,
+    "value": [
+     1,
+     3,
+     5
+    ]
+   },
+   {
+    "check": "so(3) in su(3): su(2) relations",
+    "pass": true,
+    "value": 1.2212453270876722e-15
+   },
+   {
+    "check": "2 simple roots",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "principal T3 equals rho^vee direction",
+    "pass": true,
+    "value": [
+     [
+      5.112175650216765,
+      1.3658916945830064
+     ],
+     [
+      5.112175650216762,
+      1.3658916945830057
+     ]
+    ]
+   },
+   {
+    "check": "alpha1 - alpha2 not a root (cross commutator vanishes)",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "principal su(2) solvable with |c_i|^2 > 0",
+    "pass": true,
+    "value": [
+     20.000000000000025,
+     36.00000000000005
+    ]
+   },
+   {
+    "check": "principal su(2) relations",
+    "pass": true,
+    "value": 1.84297022087776e-14
+   },
+   {
+    "check": "7 under principal SU(2) is spin 3 (m = -3..3)",
+    "pass": true,
+    "value": [
+     -3.0,
+     -2.0,
+     -1.0,
+     -0.0,
+     1.0,
+     2.0,
+     3.0
+    ]
+   },
+   {
+    "check": "14 under principal SU(2) = spin 1 + spin 5",
+    "pass": true,
+    "value": {
+     "-5": 1,
+     "-4": 1,
+     "-3": 1,
+     "-2": 1,
+     "-1": 2,
+     "0": 2,
+     "1": 2,
+     "2": 1,
+     "3": 1,
+     "4": 1,
+     "5": 1
+    }
+   },
+   {
+    "check": "Dynkin index long = 1",
+    "pass": true,
+    "value": 0.9999999999999993
+   },
+   {
+    "check": "Dynkin index short = 3",
+    "pass": true,
+    "value": 3.000000000000001
+   },
+   {
+    "check": "Dynkin index index4_diag = 4",
+    "pass": true,
+    "value": 4.000000000000003
+   },
+   {
+    "check": "Dynkin index index4_SO3 = 4",
+    "pass": true,
+    "value": 3.9999999999999964
+   },
+   {
+    "check": "Dynkin index principal = 28",
+    "pass": true,
+    "value": 28.00000000000003
+   },
+   {
+    "check": "exp(2 pi T3^L) = exp(2 pi T3^S) in G2 (7-dim)",
+    "pass": true,
+    "value": 2.5044567442279453e-15
+   },
+   {
+    "check": "exp(2 pi T3^L) != 1 (acts as -1 on (2,2))",
+    "pass": true,
+    "value": [
+     -1.0,
+     -1.0,
+     -1.0,
+     -1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   {
+    "check": "exp(2 pi T3^L) = exp(2 pi T3^S) on 14",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "7 = (2,2) + (1,3) [explicit matrices]",
+    "pass": true,
+    "value": {
+     "(2,2)": 1,
+     "(1,3)": 1
+    }
+   },
+   {
+    "check": "14 = (3,1) + (1,3) + (2,4) [explicit matrices]",
+    "pass": true,
+    "value": {
+     "(1,3)": 1,
+     "(3,1)": 1,
+     "(2,4)": 1
+    }
+   },
+   {
+    "check": "long su(2) generators are B-orthonormal (index 1)",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "short su(2) generators have B-norm 3",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "adapted basis orthonormal",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "rho = half sum of positive roots = (1,1) in omega basis",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "|W(G2)| = 12",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "Weyl-formula characters: dims match, Weyl-invariant, positive",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "7 has weights 0 and the 6 short roots",
+    "pass": true,
+    "value": "{(1, 0): 1, (1, -1): 1, (-2, 1): 1, (0, 0): 1, (2, -1): 1, (-1, 1): 1, (-1, 0): 1}"
+   },
+   {
+    "check": "14 has zero weight with multiplicity 2",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "alpha_L . alpha_S = 0; |alpha_L|^2 = 1, |alpha_S|^2 = 1/3",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "every L x S component of every irrep (dim<=500) has jL + jS integer",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "C2(7) = 2, C2(14) = 4",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "C2(27)=14/3, C2(64)=7, C2(77[0,2])=10, C2(77'[3,0])=8",
+    "pass": true,
+    "value": {
+     "27": "14/3",
+     "64": "7",
+     "77[0,2]": "10",
+     "77'[3,0]": "8"
+    }
+   },
+   {
+    "check": "7 = (2,2)+(1,3) [characters]",
+    "pass": true,
+    "value": "{(1, 1): 1, (0, 2): 1}"
+   },
+   {
+    "check": "14 = (3,1)+(1,3)+(2,4) [characters]",
+    "pass": true,
+    "value": "{(2, 0): 1, (1, 3): 1, (0, 2): 1}"
+   },
+   {
+    "check": "beta1, beta2 long with angle 120 deg",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "7 -> 1 + 3 + 3bar",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "14 -> 8 + 3 + 3bar",
+    "pass": true,
+    "value": null
+   }
+  ],
+  "skyrme": [
+   {
+    "check": "virial E2 = E4 (|E2-E4|/M < 1e-8)",
+    "pass": true,
+    "value": -1.1244230793846004e-13
+   },
+   {
+    "check": "baryon number of profile = 1",
+    "pass": true,
+    "value": 0.9999999999999998
+   },
+   {
+    "check": "radial quadrature converged (n=400 vs 800, rel < 1e-10 on M, Lambda, J2)",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "F'(0) stable under X = 60, 120, 240 (spread < 1e-8)",
+    "pass": true,
+    "value": {
+     "60.0": -1.003764111341417,
+     "120.0": -1.0037641113408728,
+     "240.0": -1.0037641113408875
+    }
+   },
+   {
+    "check": "M_cl within 0.2% of 1.2315 x 3 pi^2",
+    "pass": true,
+    "value": 36.46164562523589
+   },
+   {
+    "check": "Lambda within 0.5% of 50.9",
+    "pass": true,
+    "value": 50.978739119260055
+   },
+   {
+    "check": "I2 within 1.5% of arctan-ansatz 40.5",
+    "pass": true,
+    "value": 40.678582009630524
+   },
+   {
+    "check": "quadrature-rule independence of inertia tensor (two radial maps/Lebedev orders), rel < 1e-9",
+    "pass": true,
+    "value": 2.036273372141295e-10
+   },
+   {
+    "check": "inertia eigenvalue multiplicities 3 x 0, 8 x I2, 3 x I1",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "block diagonal in (3,1)+(1,3)+(2,4) basis (off-block < 1e-10)",
+    "pass": true,
+    "value": 1.380483994790151e-13
+   },
+   {
+    "check": "long block I1(3D) = (2pi/3) Lambda (rel < 1e-8)",
+    "pass": true,
+    "value": [
+     106.76962153782718,
+     106.76962153755865
+    ]
+   },
+   {
+    "check": "(2,4) block I2(3D) = Kopeliovich radial formula (rel < 1e-8)",
+    "pass": true,
+    "value": [
+     40.67858200973117,
+     40.678582009630524
+    ]
+   },
+   {
+    "check": "short block zero (< 1e-12)",
+    "pass": true,
+    "value": 1.8078582281339776e-14
+   },
+   {
+    "check": "static energy from g2 currents (adjoint route) = M",
+    "pass": true,
+    "value": [
+     36.46164562523679,
+     36.46164562523589
+    ]
+   },
+   {
+    "check": "|B| from g2 currents with (1/2)Tr_7 normalisation = 1",
+    "pass": true,
+    "value": -0.9999999999999991
+   },
+   {
+    "check": "7-dim (Tr_7) inertia equals adjoint-rep result (rel < 1e-8)",
+    "pass": true,
+    "value": 4.4302339574642247e-10
+   },
+   {
+    "check": "short-root hedgehog: E = 3 M, |B| = 3",
+    "pass": true,
+    "value": [
+     3.0000000000000524,
+     -2.9999999999999747
+    ]
+   },
+   {
+    "check": "lowest state 1 (J=0), next 14 (J=1)",
+    "pass": true,
+    "value": null
+   }
+  ],
+  "flag": [
+   {
+    "check": "generic a: 6 vertices, all angles exactly 120 deg",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "sides alternate exactly sqrt2*(a1-a2) = 7 sqrt2/10 and sqrt2*(a2-a3) = 8 sqrt2/5",
+    "pass": true,
+    "value": [
+     "7*sqrt(2)/10",
+     "8*sqrt(2)/5"
+    ]
+   },
+   {
+    "check": "a1 = a2: 3 vertices, angles exactly 60 deg (triangle)",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "hexagon regular iff a1 - a2 = a2 - a3 (sides sqrt2(a1-a2), sqrt2(a2-a3))",
+    "pass": true,
+    "value": "edges of the permutohedron join permutations differing by a swap of adjacent sorted values"
+   },
+   {
+    "check": "Schur: all 200000 Haar samples (scipy unitary_group) have diag majorized by a (inside hexagon)",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "|U_ij|^2 doubly stochastic (Birkhoff => convex combination of permutations)",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "Horn (constructive): 64 target points (6 vertices, edge points, 40 interior) all attained by real orthogonal U (max residual < 1e-10)",
+    "pass": true,
+    "value": 1.4379497592642565e-11
+   },
+   {
+    "check": "a point outside the hexagon is not majorized (cannot be attained)",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "pi_2 charges of 7 maps (two discretisations + a non-holomorphic deformation) equal the expected integers to 1e-6",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "(1,0,-1) and (0,1,-1) span Z^2 (det of (Q1,Q2) = 1)",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "pi_3 lift degrees on Cartesian grids, Richardson-extrapolated (N=96,128): C1..C5 = 1, 1, 2, -4, -1 and C4' = +4 (|dev| < 1e-4); |deg| = 4 for SO(3), sign set by generator orientation relative to C1",
+    "pass": true,
+    "value": {
+     "C1 SU(2) hedgehog (block 12)": 0.999999951249903,
+     "C2 W(x) . hedgehog . T(x) (non-embedded)": 0.9999986809859521,
+     "C3 hedgehog(12) . hedgehog(23)": 1.999999262657565,
+     "C4 SO(3) hedgehog, f(0)=2pi": -3.9999967730458073,
+     "C5 inverse hedgehog": -0.999999951249903,
+     "C4' SO(3) hedgehog exp(-f n.L) (opposite orientation = inverse of C4)": 3.9999967730458073
+    }
+   },
+   {
+    "check": "4th-order convergence of the lift degree (error ratio N=64->96 within 20% of (3/2)^4)",
+    "pass": true,
+    "value": null
+   },
+   {
+    "check": "same flag configuration, two lifts g and g T(x): same extrapolated degree (|diff| < 1e-4); deg T = 0; projectors identical",
+    "pass": true,
+    "value": {
+     "deg_g": 1.999999262657565,
+     "deg_gT": 1.9999966108534843,
+     "deg_T": 7.347453835752037e-24
+    }
+   }
+  ],
+  "stability": [
+   {
+    "check": "su(3) cap (2,4) is 4-dimensional (kaon directions)",
+    "pass": true,
+    "value": 4
+   },
+   {
+    "check": "pointwise kernel block-diagonal between (3,1), (1,3), (2,4) (SU(2)_short invariance)",
+    "pass": true,
+    "value": 6.459858239685424e-16
+   },
+   {
+    "check": "quadratic form = (1/2) d^2E/deps^2 by finite differences, block long (3,1) (rel < 1e-6)",
+    "pass": true,
+    "value": [
+     20.57261733206052,
+     20.572617329313776,
+     1.3351461359013718e-10
+    ]
+   },
+   {
+    "check": "quadratic form = (1/2) d^2E/deps^2 by finite differences, block short (1,3) (rel < 1e-6)",
+    "pass": true,
+    "value": [
+     3.816762783996779,
+     3.8167627807172977,
+     8.592310595912764e-10
+    ]
+   },
+   {
+    "check": "quadratic form = (1/2) d^2E/deps^2 by finite differences, block (2,4) (rel < 1e-6)",
+    "pass": true,
+    "value": [
+     21.343608241715074,
+     21.34360823724535,
+     2.094175395321351e-10
+    ]
+   },
+   {
+    "check": "exact rotational zero modes give Q ~ 0 over all space (|Q| < 1e-7); on a ball the defect is a -1/R^3 surface term",
+    "pass": true,
+    "value": {
+     "iso-rotation (long)": 1.8969042731701952e-10,
+     "iso-rotation (long) [ball R=30, R=60]": [
+      -0.005788221701903633,
+      -0.0007235812415600872
+     ],
+     "G2 rotation (2,4)": 8.500284107197085e-11,
+     "G2 rotation (2,4) [ball R=30, R=60]": [
+      -0.0021706831019586144,
+      -0.0002713437308401519
+     ],
+     "kaon rotation": 8.50364644836557e-11,
+     "kaon rotation [ball R=30, R=60]": [
+      -0.0021706831019258363,
+      -0.0002713437308062132
+     ]
+    }
+   },
+   {
+    "check": "no negative Ritz eigenvalue in any block / box / mesh (min > -1e-8)",
+    "pass": true,
+    "value": 7.480464572127518e-08
+   },
+   {
+    "check": "(1,3) lowest = (1/32)(pi/R)^2 at R=20 (free massless field, rel < 1e-3)",
+    "pass": true,
+    "value": [
+     0.0007710628445027915,
+     0.000771062843835106
+    ]
+   },
+   {
+    "check": "(2,4) spectrum = kaon spectrum doubled (first 16, rel < 1e-8)",
+    "pass": true,
+    "value": 1.2858781464817584e-13
+   }
+  ]
+ },
+ "stability": {
+  "checks": [
+   {
+    "check": "su(3) cap (2,4) is 4-dimensional (kaon directions)",
+    "pass": true,
+    "value": 4
+   },
+   {
+    "check": "pointwise kernel block-diagonal between (3,1), (1,3), (2,4) (SU(2)_short invariance)",
+    "pass": true,
+    "value": 6.459858239685424e-16
+   },
+   {
+    "check": "quadratic form = (1/2) d^2E/deps^2 by finite differences, block long (3,1) (rel < 1e-6)",
+    "pass": true,
+    "value": [
+     20.57261733206052,
+     20.572617329313776,
+     1.3351461359013718e-10
+    ]
+   },
+   {
+    "check": "quadratic form = (1/2) d^2E/deps^2 by finite differences, block short (1,3) (rel < 1e-6)",
+    "pass": true,
+    "value": [
+     3.816762783996779,
+     3.8167627807172977,
+     8.592310595912764e-10
+    ]
+   },
+   {
+    "check": "quadratic form = (1/2) d^2E/deps^2 by finite differences, block (2,4) (rel < 1e-6)",
+    "pass": true,
+    "value": [
+     21.343608241715074,
+     21.34360823724535,
+     2.094175395321351e-10
+    ]
+   },
+   {
+    "check": "exact rotational zero modes give Q ~ 0 over all space (|Q| < 1e-7); on a ball the defect is a -1/R^3 surface term",
+    "pass": true,
+    "value": {
+     "iso-rotation (long)": 1.8969042731701952e-10,
+     "iso-rotation (long) [ball R=30, R=60]": [
+      -0.005788221701903633,
+      -0.0007235812415600872
+     ],
+     "G2 rotation (2,4)": 8.500284107197085e-11,
+     "G2 rotation (2,4) [ball R=30, R=60]": [
+      -0.0021706831019586144,
+      -0.0002713437308401519
+     ],
+     "kaon rotation": 8.50364644836557e-11,
+     "kaon rotation [ball R=30, R=60]": [
+      -0.0021706831019258363,
+      -0.0002713437308062132
+     ]
+    }
+   },
+   {
+    "check": "no negative Ritz eigenvalue in any block / box / mesh (min > -1e-8)",
+    "pass": true,
+    "value": 7.480464572127518e-08
+   },
+   {
+    "check": "(1,3) lowest = (1/32)(pi/R)^2 at R=20 (free massless field, rel < 1e-3)",
+    "pass": true,
+    "value": [
+     0.0007710628445027915,
+     0.000771062843835106
+    ]
+   },
+   {
+    "check": "(2,4) spectrum = kaon spectrum doubled (first 16, rel < 1e-8)",
+    "pass": true,
+    "value": 1.2858781464817584e-13
+   }
+  ],
+  "fd": {
+   "long (3,1)": {
+    "Q": 20.57261733206052,
+    "fd_half_richardson": 20.572617329313776,
+    "rel": 1.3351461359013718e-10
+   },
+   "short (1,3)": {
+    "Q": 3.816762783996779,
+    "fd_half_richardson": 3.8167627807172977,
+    "rel": 8.592310595912764e-10
+   },
+   "(2,4)": {
+    "Q": 21.343608241715074,
+    "fd_half_richardson": 21.34360823724535,
+    "rel": 2.094175395321351e-10
+   }
+  },
+  "zero_modes": {
+   "iso-rotation (long)": 1.8969042731701952e-10,
+   "iso-rotation (long) [ball R=30, R=60]": [
+    -0.005788221701903633,
+    -0.0007235812415600872
+   ],
+   "G2 rotation (2,4)": 8.500284107197085e-11,
+   "G2 rotation (2,4) [ball R=30, R=60]": [
+    -0.0021706831019586144,
+    -0.0002713437308401519
+   ],
+   "kaon rotation": 8.50364644836557e-11,
+   "kaon rotation [ball R=30, R=60]": [
+    -0.0021706831019258363,
+    -0.0002713437308062132
+   ]
+  },
+  "ritz": {
+   "long (3,1) R=20 nel=30": [
+    1.8979579506916858e-06,
+    1.8979579506916858e-06,
+    1.8979579506916858e-06,
+    3.7252274040806596e-05,
+    3.7252274040806596e-05,
+    3.7252274040806596e-05,
+    0.0007952704041430849,
+    0.0007952704041430849,
+    0.0007952704041430849,
+    0.0014357843667127921,
+    0.001611666945567423,
+    0.001611666945567423
+   ],
+   "long (3,1) R=20 nel=60": [
+    1.8930036417558747e-06,
+    1.8930036417558747e-06,
+    1.8930036417558747e-06,
+    3.724667876086743e-05,
+    3.724667876086743e-05,
+    3.724667876086743e-05,
+    0.0007952702661410353,
+    0.0007952702661410353,
+    0.0007952702661410353,
+    0.0014357843533695867,
+    0.0016116669324039573,
+    0.0016116669324039573
+   ],
+   "long (3,1) R=40 nel=40": [
+    7.480464572127518e-08,
+    7.480464572127518e-08,
+    7.480464572127518e-08,
+    4.129501892345848e-06,
+    4.129501892345848e-06,
+    4.129501892345848e-06,
+    0.00019372853149694745,
+    0.00019372853149694745,
+    0.00019372853149694745,
+    0.00038882765968833045,
+    0.00039537781018792514,
+    0.00039537781018792514
+   ],
+   "short (1,3) R=20 nel=30": [
+    0.0007710628445027915,
+    0.0007710628445027915,
+    0.0007710628445027915,
+    0.001577400675249633,
+    0.001577400675249633,
+    0.001577400675249633,
+    0.001577400675249633,
+    0.001577400675249633,
+    0.001577400675249633,
+    0.001577400675249633,
+    0.001577400675249633,
+    0.001577400675249633
+   ],
+   "short (1,3) R=40 nel=40": [
+    0.00019276571099026245,
+    0.00019276571099026245,
+    0.00019276571099026245,
+    0.00039435016742246014,
+    0.00039435016742246014,
+    0.00039435016742246014,
+    0.00039435016742246014,
+    0.00039435016742246014,
+    0.00039435016742246014,
+    0.00039435016742246014,
+    0.00039435016742246014,
+    0.00039435016742246014
+   ],
+   "kaon R=20 nel=30": [
+    2.9064144209991176e-05,
+    2.9064144209991176e-05,
+    2.9064144209991176e-05,
+    2.9064144209991176e-05,
+    0.0007825423252554899,
+    0.0007825423252554899,
+    0.0007825423252554899,
+    0.0007825423252554899,
+    0.0015992685321989742,
+    0.0015992685321989742,
+    0.0015992685321989742,
+    0.0015992685321989742
+   ],
+   "kaon R=20 nel=60": [
+    2.9063666655302833e-05,
+    2.9063666655302833e-05,
+    2.9063666655302833e-05,
+    2.9063666655302833e-05,
+    0.000782542315697018,
+    0.000782542315697018,
+    0.000782542315697018,
+    0.000782542315697018,
+    0.0015992685241225464,
+    0.0015992685241225464,
+    0.0015992685241225464,
+    0.0015992685241225464
+   ],
+   "kaon R=40 nel=40": [
+    3.2902912752878894e-06,
+    3.2902912752878894e-06,
+    3.2902912752878894e-06,
+    3.2902912752878894e-06,
+    0.00019320671328992438,
+    0.00019320671328992438,
+    0.00019320671328992438,
+    0.00019320671328992438,
+    0.0003950485242501488,
+    0.0003950485242501488,
+    0.0003950485242501488,
+    0.0003950485242501488
+   ],
+   "(2,4) R=20 nel=30": [
+    2.906414429141611e-05,
+    2.906414429141611e-05,
+    2.906414429141611e-05,
+    2.906414429141611e-05,
+    2.906414429141611e-05,
+    2.906414429141611e-05,
+    2.906414429141611e-05,
+    2.906414429141611e-05,
+    0.0007825423254792076,
+    0.0007825423254792076,
+    0.0007825423254792076,
+    0.0007825423254792076,
+    0.0007825423254792076,
+    0.0007825423254792076,
+    0.0007825423254792076,
+    0.0007825423254792076,
+    0.0015992685320935832,
+    0.0015992685320935832
+   ],
+   "(2,4) R=40 nel=40": [
+    3.2902911467000748e-06,
+    3.290291299839692e-06,
+    3.290291299839692e-06,
+    3.290291299839692e-06,
+    3.290291299839692e-06,
+    3.290291299839692e-06,
+    3.290291299839692e-06,
+    3.290291299839692e-06,
+    0.0001932067132836424,
+    0.0001932067132836424,
+    0.0001932067132836424,
+    0.0001932067132836424,
+    0.0001932067132836424,
+    0.0001932067132836424,
+    0.0001932067132836424,
+    0.0001932067132836424,
+    0.0003950485242741377,
+    0.0003950485242741377
+   ],
+   "long (3,1) lmax=4 R=20 nel=30": [
+    1.8979574343534057e-06,
+    1.8979574343534057e-06,
+    1.8979574343534057e-06,
+    3.7252274270118954e-05,
+    3.7252274270118954e-05,
+    3.7252274270118954e-05,
+    0.0007952704032310428,
+    0.0007952704032310428,
+    0.0007952704032310428,
+    0.0014357843666115463,
+    0.0016116669453585606,
+    0.0016116669453585606
+   ],
+   "(2,4) lmax=4 R=20 nel=24": [
+    2.9065623578331794e-05,
+    2.9065623578331794e-05,
+    2.9065623578331794e-05,
+    2.9065623578331794e-05,
+    2.9065623578331794e-05,
+    2.9065623578331794e-05,
+    2.9065623578331794e-05,
+    2.9065623578331794e-05,
+    0.0007825423538007532,
+    0.0007825423538007532,
+    0.0007825423538007532,
+    0.0007825423538007532,
+    0.0007825423538007532,
+    0.0007825423538007532,
+    0.0007825423538007532,
+    0.0007825423538007532,
+    0.0015992685547901431,
+    0.0015992685547901431
+   ]
+  }
+ }
+}

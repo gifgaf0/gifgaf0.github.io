@@ -74,13 +74,23 @@ def main():
             rec['type_found'] = afin['type']
             rec['type_found_by_N'] = {N: a['type'] for N, a in fa.items()}
             rec['type_details_finest'] = {k: afin[k] for k in ('n_position', 'alexander', 'lk_position_position', 'Q_from_linking',
-                                                               'twist_per_component', 'total_lk_per_component', 'slice_degrees',
+                                                               'twist_per_component', 'twist_from_total_lk', 'total_lk_per_component', 'slice_degrees',
                                                                'inertia_eigs', 'inertia_axial_asym', 'loop_shapes', 'tube_components',
                                                                'linking_consistent_3_projections', 'pos_info', 'link_info')}
             rec['verdict_type'] = 'CALIBRATED' if afin['type'] == TARGET[Q][0] and all(a['type'] == TARGET[Q][0] for a in fa.values()) else 'MISS'
         qvals = list(rec['Q_by_h'].values())
         rec['Q_max_dev_from_integer'] = float(max(abs(v - Q) for v in qvals))
         rec['verdict_Q'] = 'CALIBRATED' if rec['Q_max_dev_from_integer'] <= 0.05 else 'MISS'
+        # diagnostic (not a pass criterion): our dx = 0.2 energy against the dx = 0.1 table value.  A second-order
+        # centred-difference scheme has a leading truncation error 4x that of our link differences, i.e. equal to ours
+        # at twice the spacing; whether Sutcliffe's code is of that kind is not stated in his paper.
+        s02 = stage_at(e, 0.2)
+        if s02 is not None:
+            rec['E_h02'] = s02['E']
+            rec['E_h02_rel_to_target'] = s02['E'] / TARGET[Q][1] - 1
+        fin = min(e['stages'], key=lambda s: s['h'])
+        rec['E_finest'] = fin['E']
+        rec['E_finest_rel_to_target'] = fin['E'] / TARGET[Q][1] - 1
         if s01 is not None:
             rec['E_h01'] = s01['E']
             rec['E_over_Q34_h01'] = s01['E'] / Q ** 0.75
@@ -116,6 +126,30 @@ def main():
                                       E_L7p5_same_h=(b['E'] if b else None),
                                       rel_change_vs_L7p5=(s['E'] / b['E'] - 1 if b else None))
 
+    # axially symmetric 2D reduction (independent code): resolution and box-size sequences for A_{1,1}, A_{2,1}
+    axp = os.path.join(HERE, 'axial2d.json')
+    if os.path.exists(axp):
+        AX = json.load(open(axp))
+        out['axial2d'] = dict(description=AX.get('description'), grad_check_rel_err=AX.get('grad_check_rel_err'),
+                              ansatz_checks=dict(linear_Lf4=AX.get('ansatz_linear_Lf4'), gauss_w2=AX.get('ansatz_gauss_w2')),
+                              relaxed={k: dict(n=v['n'], R=v['R'], h=v['h'], E=v['E'], iters=v['iters'], msg=v['msg'])
+                                       for k, v in AX.get('relaxed', {}).items()},
+                              extrapolated=AX.get('extrapolated'))
+        ext = AX.get('extrapolated') or {}
+        inf = {}
+        for Q, n in ((1, 'n1'), (2, 'n2')):
+            r = out['per_charge'].get(str(Q))
+            if r is None or n not in ext or 'E_continuum_est' not in r:
+                continue
+            shift = ext[n]['box_shift_7p5_to_25']
+            inf[str(Q)] = dict(E_continuum_box7p5_3d=r['E_continuum_est'], E_continuum_cyl7p5_axial=ext[n]['E_R7p5_continuum_h2'],
+                               box_shift_7p5_to_25_axial_h0p1=shift,
+                               E_infinite_volume_continuum_est=r['E_continuum_est'] + shift,
+                               E_infinite_volume_continuum_est_axial_only=ext[n]['E_infinite_volume_continuum_est'])
+        if '1' in inf and '2' in inf:
+            inf['E2_over_E1'] = inf['2']['E_infinite_volume_continuum_est'] / inf['1']['E_infinite_volume_continuum_est']
+        out['continuum_infinite_volume_estimates'] = inf
+
     # headline
     for Q, r in rows:
         if 'E_h01' in r:
@@ -130,15 +164,33 @@ def main():
             out['headline'].append(dict(quantity=f'configuration type at Q={Q}', value=r['type_found'], target=r['type_target'],
                                         tolerance='same type', verdict=r['verdict_type']))
 
+    inf = out.get('continuum_infinite_volume_estimates', {})
+    for Q in ('1', '2'):
+        if Q in inf:
+            out['headline'].append(dict(quantity=f'E_{Q} continuum, infinite volume (3D dx->0 in box 7.5 + axial box shift 7.5->25)',
+                                        value=inf[Q]['E_infinite_volume_continuum_est'],
+                                        target=('1.21-1.22 (PLAN.md: more accurate literature values)' if Q == '1' else None),
+                                        tolerance=None, verdict='NO_TARGET'))
+
     # seed claims
-    have = {Q: r for Q, r in rows if 'E_h01' in r}
+    have ={Q: r for Q, r in rows if 'E_h01' in r}
     if 1 in have and 2 in have:
         out['seed_claims']['E2_lt_2E1'] = dict(E2=have[2]['E_h01'], twoE1=2 * have[1]['E_h01'],
                                                ratio=have[2]['E_h01'] / (2 * have[1]['E_h01']),
                                                holds=bool(have[2]['E_h01'] < 2 * have[1]['E_h01']))
     out['seed_claims']['E_over_Q34'] = {str(Q): r['E_over_Q34_h01'] for Q, r in have.items()}
     out['seed_claims']['E_over_QE1'] = {str(Q): r.get('E_over_QE1_h01') for Q, r in have.items()}
-    out['seed_claims']['above_ward_and_proven_bounds'] = {str(Q): bool(r['E_h01'] > Q ** 0.75 > BOUND_C * Q ** 0.75) for Q, r in have.items()}
+    # stability against fission into any two lower-charge solutions reached (same dx = 0.1, same box)
+    fis = {}
+    for Q in sorted(have):
+        splits = [(a, Q - a) for a in sorted(have) if a <= Q - a and (Q - a) in have]
+        if splits:
+            worst = min(splits, key=lambda s: have[s[0]]['E_h01'] + have[s[1]]['E_h01'])
+            fis[str(Q)] = dict(splits_checked=[list(s) for s in splits], E_Q=have[Q]['E_h01'],
+                               cheapest_split=list(worst), E_split=have[worst[0]]['E_h01'] + have[worst[1]]['E_h01'],
+                               binding_rel=1 - have[Q]['E_h01'] / (have[worst[0]]['E_h01'] + have[worst[1]]['E_h01']))
+    out['seed_claims']['fission_check'] = fis
+    out['seed_claims']['above_ward_and_proven_bounds'] ={str(Q): bool(r['E_h01'] > Q ** 0.75 > BOUND_C * Q ** 0.75) for Q, r in have.items()}
     if 7 in dict(rows):
         out['seed_claims']['Q7_type'] = dict(rows)[7].get('type_found')
     # power-law fit E = c Q^p over the charges reached (ours at dx = 0.1, and Sutcliffe's table)
@@ -185,6 +237,35 @@ def main():
     fig.tight_layout()
     fig.savefig(os.path.join(HERE, 'fig_resolution.png'))
     plt.close(fig)
+
+    if 'axial2d' in out:
+        rel = out['axial2d']['relaxed']
+        fig, axs = plt.subplots(1, 2, figsize=(6.4, 2.8), dpi=110)
+        for n, col in ((1, 'C0'), (2, 'C1')):
+            for h, mk in ((0.2, 's'), (0.1, 'o')):
+                pts = sorted((v['R'], v['E']) for v in rel.values() if v['n'] == n and abs(v['h'] - h) < 1e-9)
+                if pts:
+                    R_, E_ = np.array(pts).T
+                    axs[0].plot(1 / R_ ** 3, 100 * (E_ / E_[np.argmax(R_)] - 1), mk + '-', color=col, ms=3.5, mfc='none' if h == 0.2 else col,
+                                label=f'n={n}, dx={h}')
+            r3 = out['per_charge'].get(str(n))
+            Eref = r3.get('E_continuum_est') if r3 else None
+            if Eref is None:
+                continue
+            pts = sorted((v['h'], v['E']) for v in rel.values() if v['n'] == n and abs(v['R'] - 7.5) < 1e-9)
+            if pts:
+                h_, E_ = np.array(pts).T
+                axs[1].plot(h_ ** 2, 100 * (E_ / Eref - 1), 'o-', color=col, ms=3.5, label=f'axial 2D, n={n} (cylinder R=7.5)')
+            hh = sorted(float(k) for k in r3['E_by_h'])
+            axs[1].plot(np.array(hh) ** 2, [100 * (r3['E_by_h'][f'{h:.4f}'] / Eref - 1) for h in hh], 'x--', color=col, ms=4,
+                        label=f'3D lattice, Q={n} (cube L=7.5)')
+        axs[0].set_xlabel(r'$1/R^3$'); axs[0].set_ylabel(r'$100\,(E(R)/E(R{=}25) - 1)$')
+        axs[0].set_title('box size (axial 2D)', fontsize=8); axs[0].legend(fontsize=6)
+        axs[1].set_xlabel(r'$\Delta x^2$'); axs[1].set_ylabel(r'$100\,(E/E_{3D,\Delta x\to 0} - 1)$'); axs[1].set_title('resolution: 2D vs 3D codes', fontsize=8)
+        axs[1].legend(fontsize=5.5)
+        fig.tight_layout()
+        fig.savefig(os.path.join(HERE, 'fig_box_axial.png'))
+        plt.close(fig)
 
     n = len(rows)
     ncol = min(n, 4)

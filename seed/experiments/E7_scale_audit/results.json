@@ -1,5 +1,7 @@
 {
  "experiment": "E7 scale and coupling audit (SEED.md section 8)",
+ "version": "v2 (after reconciliation with the independent cross-check)",
+ "verdict_words": "CALIBRATED: literature target within tolerance; CONSISTENT: agrees with a PLAN expectation or a non-independent check (not counted as calibration); QUANTIFIED: section-8 gap measured; NO_TARGET; MISS",
  "conventions": {
   "units": "hbar = c = 1 unless stated; hbar c = 197.3269804 MeV fm",
   "skyrme": "ANW: F_pi = 186 MeV convention (fit 129 MeV), x = e F_pi r",
@@ -136,7 +138,17 @@
    "target": null,
    "tolerance": null,
    "verdict": "NO_TARGET",
-   "note": "c0 decreases only from 77 to 52; no route to MR << 1"
+   "note": "baryon-rms radius: c0 falls only from 77 to 52; with the half-baryon radius from 64 to 47.3; no route to MR << 1"
+  },
+  {
+   "quantity": "min c0_half over pion mass beta in [0,16]",
+   "value": 47.2950915810386,
+   "unit": "1",
+   "formula": "a1(beta) x_half(beta)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "smallest c0 found in this run"
   },
   {
    "quantity": "proton M R/hbar c, model M_N(939) x R_B(ANW)",
@@ -144,9 +156,9 @@
    "unit": "1",
    "formula": "939 MeV * R_B/(hbar c)",
    "target": 2.8,
-   "tolerance": "+-0.05 (2 sig. fig. of PLAN \"~2.8\"; fixed before computing)",
-   "verdict": "CALIBRATED",
-   "note": "PLAN expectation from ANW numbers"
+   "tolerance": "+-0.05 (self-set reading of PLAN \"~2.8\"; PLAN gives no tolerance)",
+   "verdict": "CONSISTENT",
+   "note": "reconciled: was CALIBRATED; 2.8 is a PLAN expectation, not a literature target. PLAN's formula c0/e^2 with the classical mass gives 2.598, outside the self-set band; both are > 1 (classical fold)"
   },
   {
    "quantity": "proton M R/hbar c, pure classical c0/e^2 at e = 5.45",
@@ -166,7 +178,7 @@
    "target": 4.0,
    "tolerance": "0.84/0.21 (SEED)",
    "verdict": "CALIBRATED",
-   "note": ""
+   "note": "data use the proton charge radius; the model numbers use the isoscalar radius (the isovector radius diverges for massless pions), so model vs data is indicative only"
   },
   {
    "quantity": "proton rotor E_rot/M_cl at ANW",
@@ -179,14 +191,14 @@
    "note": ""
   },
   {
-   "quantity": "semiclassical floor (M R)_min for E_rot <= M",
+   "quantity": "semiclassical floor (M R)_min for E_rot <= M, baryon rms radius",
    "value": 0.7572582349155861,
    "unit": "1",
    "formula": "c0/e_max^2, e_max = (16 pi Lambda a1/9)^(1/4)",
    "target": null,
    "tolerance": null,
    "verdict": "NO_TARGET",
-   "note": "e_max = 10.094; (MR)_min = 2.40 for E_rot <= 0.1 M"
+   "note": "e_max = 10.094; half-baryon radius 0.627; for E_rot <= 0.1 M: 2.39 (baryon rms), 1.98 (half-baryon)"
   },
   {
    "quantity": "electron lambda_C/R_max (LEP r_e < 1.1e-4 fm)",
@@ -196,7 +208,7 @@
    "target": 3500000.0,
    "tolerance": "factor >= 3.5e6 (PLAN prediction)",
    "verdict": "QUANTIFIED",
-   "note": "the classical-fold condition R > lambda_C fails by >= 3.5e6"
+   "note": "the classical-fold condition R > lambda_C fails by >= 3.5e6; the LEP bound is model dependent (VV contact interaction, positive interference, electromagnetic coupling strength)"
   },
   {
    "quantity": "electron lambda_C/R_max (SEED 1e-3 fm)",
@@ -216,7 +228,7 @@
    "target": null,
    "tolerance": null,
    "verdict": "NO_TARGET",
-   "note": ""
+   "note": "1.498e+04 to 2.051e+04 across radius definitions"
   },
   {
    "quantity": "Skyrme F_pi needed (LEP)",
@@ -270,53 +282,83 @@
   },
   {
    "quantity": "hopfion E_W(Q=1), hedgehog-Hopf ansatz (upper bound)",
-   "value": 1.2314457268379677,
+   "value": 1.2314457282064033,
    "unit": "Ward units",
    "formula": "see e7_hopfion.py",
    "target": 1.204,
-   "tolerance": "upper bound; literature 1.204-1.22",
-   "verdict": "CALIBRATED",
-   "note": "variational: 2.3% above 1.204, ~1% above 1.22"
+   "tolerance": "upper bound expected; literature 1.204 (lattice, ~1% low) to 1.22",
+   "verdict": "CONSISTENT",
+   "note": "reconciled: was CALIBRATED. E_W(ansatz) = a1/(3 pi^2) = 1.2314457 identically (symbolic identity), so it is the Skyrme number again, not an independent calibration; 2.3% above 1.204, ~1% above 1.22; E8's preregistered 2% would not pass"
+  },
+  {
+   "quantity": "hopfion energy-rms radius R_rms (Ward units)",
+   "value": 2.0607955717400652,
+   "unit": "Ward length",
+   "formula": "energy-weighted rms radius at Derrick scale",
+   "target": 2.0608160450694055,
+   "tolerance": "1e-4 (identity x_E/sqrt2)",
+   "verdict": "CONSISTENT",
+   "note": "reconciled: v1 gave 2.1441 from a spurious a/r spline tail; identity value x_E/sqrt2"
+  },
+  {
+   "quantity": "hopfion ring radius R_ring (Ward units)",
+   "value": 1.2393009031045161,
+   "unit": "Ward length",
+   "formula": "radius where n = -e3",
+   "target": 1.2392956380281315,
+   "tolerance": "1e-4 (identity x_half/sqrt2)",
+   "verdict": "CONSISTENT",
+   "note": ""
   },
   {
    "quantity": "hopfion c0 = M R/kappa4 (energy rms radius)",
-   "value": 589.660675580575,
+   "value": 566.7413689685776,
    "unit": "1",
    "formula": "16 sqrt2 pi^2 E_W R_rms",
    "target": null,
    "tolerance": null,
    "verdict": "NO_TARGET",
-   "note": ""
+   "note": "ring radius: 340.8; v1 (wrong tail) gave 589.7"
   },
   {
-   "quantity": "hopfion: g^2 = 1/kappa4 needed for electron (LEP)",
-   "value": 2070026677.4394844,
+   "quantity": "hopfion: g^2 = 1/kappa4 needed for electron (LEP, rms radius)",
+   "value": 1989567562.4263675,
    "unit": "1",
    "formula": "c0_hopf hbar c/(m_e R_max)",
    "target": null,
    "tolerance": null,
    "verdict": "NO_TARGET",
-   "note": ""
+   "note": "ring radius: 1.2e+09; sqrt(kappa2) = 82.9 MeV (rms)"
   },
   {
-   "quantity": "DL two-particle exponent F (S = S0/g^2), read",
-   "value": 3.93,
+   "quantity": "DL two-particle exponent F at high energy (S = S0/g^2), plateau minimum",
+   "value": 3.843934957518269,
    "unit": "1",
    "formula": "P ~ exp(-F/g^2)",
    "target": null,
    "tolerance": null,
    "verdict": "NO_TARGET",
-   "note": "4.45 at threshold to 3.93 at 1.9x threshold; arXiv:1103.0013 Fig.3b [read]"
+   "note": "F = 4.480 at threshold (g^2E = 6.26) to 3.846 at g^2E = 11.5 (min 3.844 at 11.0); +-0.002 (vector path, axes calibrated on ticks); arXiv:1103.0013v2 Fig. 3b vector path [read]. Reconciled: v1 eye reading 3.93 was wrong by -0.085"
   },
   {
-   "quantity": "DL classical minimum particle number g^2 N_min, read",
-   "value": 3.98,
+   "quantity": "DL two-particle exponent F at threshold",
+   "value": 4.480129042223222,
    "unit": "1",
-   "formula": "arXiv:1103.2133 Fig. 7b, delta rho -> 0 [read]",
+   "formula": "P ~ exp(-F/g^2)",
    "target": null,
    "tolerance": null,
    "verdict": "NO_TARGET",
-   "note": ""
+   "note": "v1 eye reading 4.45"
+  },
+  {
+   "quantity": "DL classical minimum particle number g^2 N_min, high energy",
+   "value": 3.977132579744733,
+   "unit": "1",
+   "formula": "arXiv:1103.2133v2 Fig. 7b, delta rho -> 0 [read, vector path]",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "range 3.971-3.983 over g^2E = 8.5-10.5; 4.55 near threshold"
   },
   {
    "quantity": "DL model 2 g^2 M_S (our quadrature)",
@@ -326,27 +368,37 @@
    "target": 6.2,
    "tolerance": "read off axes, +-0.1",
    "verdict": "CALIBRATED",
-   "note": "confirms model/normalisation reading"
+   "note": "confirms model/normalisation reading; about 6.2 (axes); the left edge of Fig. 3b (tick labelled 2 g^2 M_S) is at g^2E = 6.2324 in the vector data"
   },
   {
    "quantity": "suppression per pair quantum kappa = F/N_pair",
-   "value": 0.6302365565021365,
+   "value": 0.6164346898332062,
    "unit": "1",
    "formula": "F/(2 g^2 M_S/m)",
    "target": null,
    "tolerance": null,
    "verdict": "NO_TARGET",
-   "note": "0.63-0.71"
+   "note": "0.616-0.718"
   },
   {
    "quantity": "g^2 at which two-particle pair production reaches P = 1/e",
-   "value": 3.93,
+   "value": 3.843934957518269,
    "unit": "1",
-   "formula": "g^2 = F",
+   "formula": "g^2 = F_min",
    "target": null,
    "tolerance": null,
    "verdict": "NO_TARGET",
-   "note": "there M_S = 0.79 m: the fold is lighter than one elementary quantum"
+   "note": "there M_S = 0.81 m; P = 0.1 at g^2 = 1.67 (M_S = 1.87 m), P = 0.5 at g^2 = 5.55; extrapolated leading exponent, indicative only"
+  },
+  {
+   "quantity": "E1e (phi^4): classical g^2 N_min upper bound (g^2 = 2 lambda/m^2)",
+   "value": 2.477839882195937,
+   "unit": "1",
+   "formula": "2 x (N lambda/m^2) of the smallest producer reproduced at dx = 0.05 (E1)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "N = E/m (preregistered); 3.376 with N_lin; N_min/N_pair <= 1.86-2.53; classical pair from 2 quanta needs g^2 >= 1.24-1.69; read from E1 (reconciled separately)"
   },
   {
    "quantity": "Breit-Wheeler sigma_max",
@@ -356,7 +408,7 @@
    "target": null,
    "tolerance": null,
    "verdict": "NO_TARGET",
-   "note": "= 170 mb at sqrt(s) = 1.40 x 2m_e; fold-like suppression at g^2 = alpha would be 10^-234"
+   "note": "= 170 mb at sqrt(s) = 1.40 x 2m_e; an illustrative fold-like exp(-F/g^2) with F = 3.84 would be 10^-229 (g^2 = alpha) or 10^-18.2 (g^2 = 4 pi alpha)"
   },
   {
    "quantity": "rho_Lambda (Planck 2018 TT,TE,EE+lowE+lensing: H0 = 67.36, Omega_L = 0.6847)",
@@ -447,6 +499,105 @@
    "tolerance": "order of magnitude",
    "verdict": "QUANTIFIED",
    "note": "PLAN: \"about\"; order of magnitude reproduced"
+  }
+ ],
+ "seed_claims": [
+  {
+   "claim": "SEED 8: a fold is a classical shape only if it is larger than its Compton wavelength; the proton is (0.84 fm vs 0.21 fm)",
+   "verdict": "CONFIRMED",
+   "evidence": "PDG 2026: r_p/lambda_C = 3.998. Skyrme fold at ANW parameters: M R/hbar c = 2.60 (classical mass) or 2.83 (939 MeV), rotor E_rot/M = 0.085: semiclassical, but only just."
+  },
+  {
+   "claim": "SEED 8: the electron misses the classical-fold condition by at least 1e5",
+   "verdict": "AMENDED",
+   "evidence": "True but conservative: with LEP's r_e < 1.1e-4 fm (Schael et al. 2013 Eq. 3.9; model dependent, VV contact interaction) lambda_C/R >= 3.51e+06; with SEED's 1e-3 fm 3.86e+05."
+  },
+  {
+   "claim": "SEED 8 / PLAN E7: any soliton whose classical action is S0/g^2 has M R = c0/g^2, so an electron-like fold needs g^2 >> 1",
+   "verdict": "CONFIRMED",
+   "evidence": "Theorem for one-scale theories (scaling, sympy-checked for Skyrme); the general criterion is action per light-crossing ~ M R c >> hbar, i.e. R >> lambda_C. Skyrme c0 = 64-120 (radius definition); two-parameter families tested keep c0 >= 47.3 (pion mass to beta = 16, half-baryon radius; 52.1 baryon rms) and hopfion c0 = 341-567. Electron fold needs Skyrme e >= 1.5e+04-2.05e+04 (E_rot/M ~ 7.1e+12) or hopfion 1/kappa4 >= 1.2e+09-2e+09. Semiclassical Skyrme floor M R >= 0.757 hbar/c (0.627 half-baryon radius), 2.66e+06 times above the electron. Not shown for theories with extra dimensionless parameters beyond those tested."
+  },
+  {
+   "claim": "SEED 8: this points toward a strongly coupled fold sector, 'the way baryons are in QCD'",
+   "verdict": "AMENDED",
+   "evidence": "Strong coupling is necessary, but there the classical fold picture is gone (corrections 1e6-1e13 x the classical mass), so no classical simulation in the seed can model the electron. The QCD baryon is only moderately quantum (M R/hbar c = 2.6-4); the electron needs M R/hbar c <= 2.85e-7."
+  },
+  {
+   "claim": "SEED 8: in weakly coupled theories, folding a few quanta into a pair is exponentially rare",
+   "verdict": "CONFIRMED",
+   "evidence": "Demidov-Levkov (read; curve values from the PDF vector paths): P_2 ~ exp(-F/g^2), F = 4.48 at threshold to 3.84 at high energy, i.e. exp(-(0.62-0.72) N_pair). Classical creation needs g^2 N >= 3.98; N_min = n0/g^2 in any one-coupling model by scaling. E1e (phi^4, classical): g^2 N_min <= 2.48 (N = E/m) to 3.38 (N_lin). Unsuppressed (P >= 0.1-0.5) only for g^2 >~ 1.67-5.55 (indicative), where M_S <= 1.87 m."
+  },
+  {
+   "claim": "SEED 8: in nature electron pairs form readily, so the fold sector is strongly coupled",
+   "verdict": "AMENDED",
+   "evidence": "Electron pairs form readily because QED is weakly coupled and perturbative: Breit-Wheeler peaks at 0.682 pi r_e^2 = 170 mb, power law in alpha. A fold-like exp(-F/g^2) would be 10^-229 (g^2 = alpha) or 10^-18 (g^2 = 4 pi alpha). The inference in SEED does not follow; the seed must produce a pointlike, perturbatively coupled electron out of a strongly coupled fold sector (untested)."
+  },
+  {
+   "claim": "SEED 8: why is the vacuum's tension so small (open)",
+   "verdict": "QUANTIFIED",
+   "evidence": "rho_L = 2.515e-47 GeV^4 = (2.239 meV)^4 (Planck 2018), 1e42 (f_pi^4) to 8.8e122 (M_Pl^4) below natural scales."
+  },
+  {
+   "claim": "SEED 8: can light and the cone be built from the field? (Weinberg-Witten)",
+   "verdict": "AMENDED",
+   "evidence": "With commitment 1's Lorentz-covariant conserved T^mu nu, a composite massless |h| = 2 graviton is excluded; commitment 5's metric must be fundamental or emergent only via an evasion. A neutral composite photon is not excluded."
+  },
+  {
+   "claim": "SEED 2: one cone, no vacuum dispersion",
+   "verdict": "OPEN",
+   "evidence": "Not tested in E7 (E5 checks it by construction)."
+  }
+ ],
+ "reconciliation": [
+  {
+   "issue": "Demidov-Levkov high-energy exponent misread (major)",
+   "resolved": true,
+   "action": "F read from the PDF vector paths (e7_dl_digitize.py): 3.846 at g^2E = 11.5, min 3.844, 4.480 at threshold; v1 3.93/4.45 replaced; downstream kappa, g^2 thresholds, M_S/m, QED illustration and figure updated. Cross-check (3.845, 4.48) was right."
+  },
+  {
+   "issue": "Hopfion energy-rms radius (major)",
+   "resolved": true,
+   "action": "Profile now f = (1-t)^2 h(t) (C/r^2 tail); R_rms = 2.0608 (identity x_E/sqrt2 = 2.0608); c0 = 340.8-566.7; g^2 >= 1.2e+09-1.99e+09. Cross-check (2.0608) was right."
+  },
+  {
+   "issue": "Hopfion CALIBRATED not independent (minor)",
+   "resolved": true,
+   "action": "relabelled CONSISTENT (upper bound); identity E_W = a1/(3 pi^2) stated and verified symbolically"
+  },
+  {
+   "issue": "Proton M R CALIBRATED against a PLAN expectation (minor)",
+   "resolved": true,
+   "action": "relabelled CONSISTENT; classical 2.60 reported alongside"
+  },
+  {
+   "issue": "QED illustration depends on g^2 identification (minor)",
+   "resolved": true,
+   "action": "both g^2 = alpha and g^2 = 4 pi alpha quoted"
+  },
+  {
+   "issue": "E1e combination missing (minor)",
+   "resolved": true,
+   "action": "E1e numbers read from E1_phi4/e1e_results.json and combined"
+  },
+  {
+   "issue": "label/rounding inconsistencies; radius definition of floors and pion-mass minimum (minor)",
+   "resolved": true,
+   "action": "QUANTIFIED for gap numbers throughout; 2.39 for the 0.1 M floor; half-baryon numbers stated"
+  },
+  {
+   "issue": "LEP bound model dependence (minor)",
+   "resolved": true,
+   "action": "qualifier added"
+  },
+  {
+   "issue": "unlisted deviation: own hedgehog instead of E2 profile (minor)",
+   "resolved": true,
+   "action": "listed as a deviation; agrees with E2 to <= 1e-9"
+  },
+  {
+   "issue": "generalisation wording 'any soliton' (minor)",
+   "resolved": true,
+   "action": "seed-claim text restricted to one-scale families plus the tested two-parameter families"
   }
  ],
  "details": {
@@ -570,6 +721,7 @@
      "LEP": 0.00011,
      "SEED": 0.001
     },
+    "LEP_bound_note": "Schael et al. 2013 (arXiv:1302.3415) Eq. (3.9): r_e < 1.1e-19 m. Model dependent: it converts the VV contact-interaction scale (positive interference, electromagnetic coupling strength) into a size; it is not a direct form-factor measurement.",
     "LEP": {
      "MR_required_max": 2.848565586168941e-07,
      "compton_over_R_min": 3510538.7948778397,
@@ -805,23 +957,39 @@
   },
   "hopfion": {
    "formula": "M R = 16 sqrt(2) pi^2 kappa4 E_W Rt = c0_hopf * kappa4 (hbar = c = 1); length unit l = sqrt(kappa4/kappa2)",
-   "E_W_ansatz": 1.2314457268379677,
-   "R_rms_ward": 2.1441351857330666,
-   "R_ring_ward": 1.2393004837217263,
-   "c0_hopf_rms": 589.660675580575,
-   "c0_hopf_ring": 340.8212156309733,
-   "c0_hopf_rms_lit_energy": 576.5186706376276,
+   "E_W_ansatz": 1.2314457282064033,
+   "R_rms_ward": 2.0607955717400652,
+   "R_ring_ward": 1.2393009031045161,
+   "c0_hopf_rms": 566.7413689685776,
+   "c0_hopf_ring": 340.8213313445723,
+   "c0_hopf_rms_lit_energy": 554.1101752263314,
    "electron_LEP": {
-    "kappa4_max": 4.830855616010457e-10,
-    "g2_min": 2070026677.4394844,
-    "sqrt_kappa2_MeV": 84.53916960858707,
-    "length_unit_fm": 5.1302735355463e-05
+    "kappa4_max": 5.026217851986162e-10,
+    "g2_min": 1989567562.4263675,
+    "sqrt_kappa2_MeV": 82.87992544795542,
+    "length_unit_fm": 5.337744389033202e-05,
+    "radius": "energy rms"
+   },
+   "electron_LEP_ring": {
+    "kappa4_max": 8.357943955359487e-10,
+    "g2_min": 1196466505.8070357,
+    "sqrt_kappa2_MeV": 64.27177271669154,
+    "length_unit_fm": 8.875971906777769e-05,
+    "radius": "ring (n = -e3)"
    },
    "electron_SEED": {
-    "kappa4_max": 4.391686923645869e-09,
-    "g2_min": 227702934.51834333,
-    "sqrt_kappa2_MeV": 28.038470567989968,
-    "length_unit_fm": 0.0004663885032314818
+    "kappa4_max": 4.569288956351056e-09,
+    "g2_min": 218852431.8669004,
+    "sqrt_kappa2_MeV": 27.488161536349626,
+    "length_unit_fm": 0.00048524948991210935,
+    "radius": "energy rms"
+   },
+   "electron_SEED_ring": {
+    "kappa4_max": 7.598130868508624e-09,
+    "g2_min": 131611315.63877393,
+    "sqrt_kappa2_MeV": 21.3165354712267,
+    "length_unit_fm": 0.000806906536979797,
+    "radius": "ring (n = -e3)"
    }
   },
   "pairs": {
@@ -833,49 +1001,61 @@
     "m_plus": 7.613097755743583,
     "g2_M_S_computed": 3.1178768983283165,
     "two_g2_M_S_computed": 6.235753796656633,
-    "two_g2_M_S_read_from_axes": "about 6.2 (Fig. 3 and Fig. 7b axes of arXiv:1103.0013/1103.2133)",
+    "two_g2_M_S_read_from_axes": "about 6.2 (axes); the left edge of Fig. 3b (tick labelled 2 g^2 M_S) is at g^2E = 6.2324 in the vector data",
     "F2_exponent_read": {
-     "at_threshold": 4.45,
-     "at_g2E_11p5": 3.93,
-     "uncertainty": "+-0.05 (read off Fig. 3b, two-particle curve g^2N = 0)",
-     "source": "arXiv:1103.0013 Fig. 3b [read]"
+     "at_threshold": 4.480129042223222,
+     "at_threshold_g2E": 6.259820945380763,
+     "at_g2E_11p5": 3.845986013023204,
+     "minimum": 3.843934957518269,
+     "minimum_at_g2E": 10.999991235608626,
+     "uncertainty": "+-0.002 (vector path, axes calibrated on ticks)",
+     "source": "arXiv:1103.0013v2 Fig. 3b upper panel (g^2 N = 0) [read, vector paths of arXiv:1103.0013v2 Fig. 3b and arXiv:1103.2133v2 Fig. 7b (dl_digitized.json)]",
+     "version1_eye_reading": {
+      "at_threshold": 4.45,
+      "at_g2E_11p5": 3.93,
+      "note": "3.93 was wrong by -0.085, outside its stated +-0.05"
+     }
     },
     "g2Nmin_classical_read": {
-     "high_energy": 3.98,
-     "near_threshold": 4.5,
-     "uncertainty": "+-0.03",
-     "source": "arXiv:1103.2133 Fig. 7b, delta rho -> 0 [read]"
+     "high_energy": 3.977132579744733,
+     "high_energy_range": [
+      3.9708471659482667,
+      3.983220619923998
+     ],
+     "near_threshold": 4.549946842452273,
+     "source": "arXiv:1103.2133v2 Fig. 7b, delta rho -> 0 [read, vector path]"
     },
     "kappa_suppression_per_pair_quantum": {
      "value": [
-      0.6302365565021365,
-      0.7136266352250655
+      0.6164346898332062,
+      0.7184582952305288
      ],
      "formula": "P ~ exp(-F/g^2) = exp(-kappa N_pair), N_pair = 2 M_S/m_- = 2 g2MS/g^2; kappa = F/(2 g^2 M_S)"
     },
     "Nmin_over_Npair": {
-     "value": 0.6382548333024181,
+     "value": 0.6377949979162288,
      "formula": "g^2 N_min / (2 g^2 M_S/m_-)"
     },
     "coupling_for_unsuppressed_two_particle_production": {
-     "formula": "exp(-F_min/g^2) = P  ->  g^2 = F_min/ln(1/P), F_min = 3.93 (high-energy plateau)",
+     "formula": "exp(-F_min/g^2) = P  ->  g^2 = F_min/ln(1/P), F_min = 3.844 (high-energy plateau)",
      "rows": {
       "P=0.1": {
-       "g2": 1.7067773138797795,
-       "M_S_over_m": 1.826762561801856,
-       "N_pair": 3.653525123603712
+       "g2": 1.6693997408451948,
+       "M_S_over_m": 1.867663461328787,
+       "N_pair": 3.735326922657574
       },
       "P=0.368": {
-       "g2": 3.93,
-       "M_S_over_m": 0.793352900337994,
-       "N_pair": 1.586705800675988
+       "g2": 3.843934957518269,
+       "M_S_over_m": 0.8111159353074194,
+       "N_pair": 1.6222318706148389
       },
       "P=0.5": {
-       "g2": 5.669791510693627,
-       "M_S_over_m": 0.5499103260583358,
-       "N_pair": 1.0998206521166716
+       "g2": 5.545625900711335,
+       "M_S_over_m": 0.5622227236655808,
+       "N_pair": 1.1244454473311616
       }
-     }
+     },
+     "caveat": "extrapolates the leading semiclassical exponent to g^2 = O(1), where prefactors and higher orders are uncontrolled: indicative only"
     }
    },
    "phi4": {
@@ -888,7 +1068,34 @@
     "DSV_units_note": "DSV units lambda = v = 1 (m = sqrt 2) have g^2 = 1, so N*lambda in those units equals g^2 N here",
     "scaling_argument": "Classical solutions depend on (E, N) only through g^2 E and g^2 N (field rescaling phi = phit/g removes g from the field equation); so if classical pair creation exists at all its lower boundary is N_min = n0/g^2 with n0 a pure number of the classical theory, N_min ~ 1/lambda."
    },
-   "E1e_input": "E1_phi4/results.json not present when this script ran; E1e not used, scaling derived analytically",
+   "E1e_phi4": {
+    "file": "../E1_phi4/e1e_results.json",
+    "sha256_16": "ecaabd4139a39114",
+    "N_min_lambda_over_m2": {
+     "N_E": 1.2389199410979685,
+     "N_lin": 1.687915041158199,
+     "E1_implication_c": 1.687915041158199
+    },
+    "g2_N_min": {
+     "N_E": 2.477839882195937,
+     "N_lin": 3.375830082316398
+    },
+    "g2_N_pair": 1.3333333333333333,
+    "Nmin_over_Npair": {
+     "N_E": 1.8583799116469528,
+     "N_lin": 2.5318725617372984
+    },
+    "g2_for_classical_pair_from_2_quanta": {
+     "N_E": 1.2389199410979685,
+     "N_lin": 1.687915041158199
+    },
+    "lambda_over_m2_for_2_quanta": {
+     "N_E": 0.6194599705489843,
+     "N_lin": 0.8439575205790995
+    },
+    "note": "upper bounds on the true classical minimum (scanned sets only); classical production from N <= 2 quanta needs g^2 >= g^2 N_min/2. E1 is reconciled separately; numbers as read now."
+   },
+   "E1e_input": "used (see E1e_phi4)",
    "QED_breit_wheeler": {
     "formula": "sigma = (pi r_e^2/2)(1-b^2)[(3-b^4) ln((1+b)/(1-b)) - 2b(2-b^2)], r_e = alpha hbar c/(m_e c^2)",
     "r_e_fm": 2.8179403204564086,
@@ -898,9 +1105,10 @@
     "sigma_max_mb": 170.06316465914213,
     "scaling": "sigma ~ alpha^2/m_e^2: power-law (perturbative) in alpha, no exp(-c/alpha) factor",
     "hypothetical_fold_suppression": {
-     "note": "if the electron were a semiclassical fold with coupling g^2 = alpha (or 4 pi alpha) and DL-like F ~ 4",
-     "exp_minus_F_over_alpha_log10": -233.88993458115897,
-     "exp_minus_F_over_4pialpha_log10": -18.61236961401574
+     "note": "illustration only: if the electron were a semiclassical fold with DL-like F ~ 3.8; depends on the coupling identification: g^2 = alpha, or g^2 = e^2 = 4 pi alpha (the loop-counting coupling of QED)",
+     "F_used": 3.843934957518269,
+     "exp_minus_F_over_alpha_log10": -228.7678615135313,
+     "exp_minus_F_over_4pialpha_log10": -18.204767990220336
     }
    }
   },
@@ -1393,33 +1601,53 @@
  },
  "hopfion": {
   "model": "Faddeev-Skyrme E = int[(kappa2/2)(dn)^2 + (kappa4/4) sum_ij (d_i n x d_j n)^2]; Ward units",
-  "ansatz": "n = U e3 U^+, U = exp(i f(r) rhat.tau), free spline profile, Derrick-optimal scale; Q = 1",
-  "E_W_ansatz": 1.2314457268379677,
+  "ansatz": "n = U e3 U^+, U = exp(i f(r) rhat.tau), f = (1-t)^2 h(t) with free spline h (C/r^2 tail built in), Derrick-optimal scale; Q = 1",
+  "E_W_ansatz": 1.2314457282064033,
   "E_W_literature": 1.204,
   "E_W_literature_note": "Sutcliffe 2007 Table 2 (lattice, ~1% low); 1.21-1.22 more accurate",
-  "ansatz_excess_over_1p204": 0.022795454184358688,
+  "ansatz_excess_over_1p204": 0.022795455320933078,
   "virial_E2_eq_E4_after_scaling": true,
-  "E2_unscaled": 0.5319018273765801,
-  "E4_unscaled": 0.7127530401742052,
-  "scale_factor": 1.1575874188209163,
-  "phi_independence_rel": 8.91992674892951e-17,
+  "E2_unscaled": 0.5017725108207838,
+  "E4_unscaled": 0.7555508466561985,
+  "scale_factor": 1.2270956475794608,
+  "tail_amplitude_h1_unscaled": 2.866618805430773,
+  "phi_independence_rel": 8.8300516969079e-17,
   "unit_norm_maxdev": 6.661338147750939e-16,
-  "R_rms_energy_ward": 2.1441351857330666,
-  "R_ring_ward": 1.2393004837217263,
-  "c0_hopf_rms": 589.660675580575,
-  "c0_hopf_ring": 340.8212156309733,
-  "c0_hopf_rms_with_lit_energy": 576.5186706376276,
+  "R_rms_energy_ward": 2.0607955717400652,
+  "R_ring_ward": 1.2393009031045161,
+  "c0_hopf_rms": 566.7413689685776,
+  "c0_hopf_ring": 340.8213313445723,
+  "c0_hopf_rms_with_lit_energy": 554.1101752263314,
   "formula": "M R = 16 sqrt(2) pi^2 kappa4 E_W Rt = c0_hopf * kappa4 (hbar = c = 1); length unit l = sqrt(kappa4/kappa2)",
+  "identity": {
+   "symbolic_check_pass": true,
+   "statement": "E_W[f] = (1/(3 pi^2)) E_ANW[F], F(y) = f(y/sqrt2): E_W(ansatz) = a1/(3 pi^2), R_rms = x_E/sqrt2, R_ring = x_half/sqrt2",
+   "consequence": "E_W(ansatz) is the Skyrme a1 again, so it is not an independent calibration"
+  },
+  "exact_profile_check": {
+   "E_W": 1.231446202810255,
+   "E2_over_E4": 1.000001573845779,
+   "R_rms": 2.0608282437422196,
+   "R_ring": 1.239295286057129,
+   "identity_predictions": {
+    "E_W": 1.2314456974361923,
+    "R_rms": 2.0608160450694055,
+    "R_ring": 1.2392956380281315
+   }
+  },
   "optimizer": {
    "success": true,
-   "nit": 85,
-   "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   "nit": 120,
+   "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "driver": "L-BFGS-B on the angle-integrated energy; final profile evaluated with the 3D-angle quadrature",
+   "rel_diff_3D_vs_radial": 4.41502584845395e-16
   },
   "quadrature": {
    "NT": 600,
    "NTH": 64,
    "spline_nodes": 24
   },
-  "runtime_s": 171.41812205314636
+  "version": "v2 (reconciliation): tail-correct profile; v1 gave R_rms = 2.1441 from a spurious a/r spline tail",
+  "runtime_s": 1.7464816570281982
  }
 }

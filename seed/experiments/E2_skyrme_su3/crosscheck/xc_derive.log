@@ -1,0 +1,22 @@
+EL / report_form = -1/4
+EL matches report form up to a constant factor: True
+origin series: coeff x^1 (identically zero?) -> 0
+c3 = (-4*a**5 - 2*a**3)/(120*a**2 + 15)   c5 = a**5*(448*a**6 + 88*a**4 + 32*a**2 + 5)/(175*(512*a**6 + 192*a**4 + 24*a**2 + 1))
+even coeffs (should vanish): [0, 0, 0]
+large-x series coefficients:
+  1/x^3 : 0
+  1/x^4 : 0
+  1/x^5 : 0
+  1/x^6 : -C**3/21
+  1/x^7 : 0
+  1/x^8 : -4*C**3/3
+  1/x^9 : 0
+  1/x^10 : 2*C**5/385
+  1/x^11 : 0
+  1/x^12 : 136*C**5/273
+  1/x^13 : 0
+  1/x^14 : -8*C**5*(2*C**2 - 21021)/24255
+report asymptotics -C^3/21 x^-6 and -(4/3)C^3 x^-8 reproduced: True
+x^2*ANW bracket - d/dx[x^3 F'(1+8s^2/x^2)] on solutions = 0
+=> D = lim x^3 F'(1+8 s^2/x^2) = -2C: True
+ALL OK: True

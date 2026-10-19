@@ -1,0 +1,29 @@
+[    0.1s] lower alpha=0.000 N=80 L=1.500 b=2.00753  nneg=0 ncomplex=0  lowest w^2: 1.887338e-07 4.585965e-06 3.403654e-05 0.0001496902
+[    0.2s] lower alpha=0.000 N=120 L=1.500 b=2.00753  nneg=0 ncomplex=6  lowest w^2: 3.72718e-08 9.051372e-07 6.712277e-06 2.948808e-05
+[    0.2s] lower alpha=0.020 N=80 L=1.500 b=2.17829  nneg=0 ncomplex=0  lowest w^2: 1.887126e-07 4.58382e-06 3.39989e-05 0.0001493821
+[    0.4s] lower alpha=0.020 N=120 L=1.500 b=2.17829  nneg=0 ncomplex=2  lowest w^2: 3.726994e-08 9.049491e-07 6.70898e-06 2.946114e-05
+[    0.4s] lower alpha=0.035 N=80 L=0.672 b=2.46252  nneg=0 ncomplex=0  lowest w^2: 9.411157e-07 2.283798e-05 0.0001691039 0.0007410962
+[    0.6s] lower alpha=0.035 N=120 L=0.672 b=2.46252  nneg=0 ncomplex=14  lowest w^2: 1.858973e-07 4.51186e-06 3.342405e-05 0.0001466092
+[    0.6s] lower alpha=0.040 N=80 L=0.672 b=2.78191  nneg=0 ncomplex=0  lowest w^2: 9.410711e-07 2.283347e-05 0.0001690245 0.0007404398
+[    1.0s] lower alpha=0.040 N=120 L=0.672 b=2.78191  nneg=0 ncomplex=4  lowest w^2: 1.858934e-07 4.511465e-06 3.341712e-05 0.0001465524
+[    1.0s] upper alpha=0.020 N=80 L=0.293 b=5.83479  nneg=1 ncomplex=0  lowest w^2: -1.621573 4.932382e-06 0.0001195924 0.0008841771
+[    1.3s] upper alpha=0.020 N=120 L=0.293 b=5.83479  nneg=1 ncomplex=0  lowest w^2: -1.621573 9.74432e-07 2.364126e-05 0.0001750171
+[    1.3s] upper alpha=0.035 N=80 L=0.293 b=3.78340  nneg=1 ncomplex=0  lowest w^2: -0.4090659 4.931001e-06 0.0001194532 0.0008817444
+[    1.5s] upper alpha=0.035 N=120 L=0.293 b=3.78340  nneg=1 ncomplex=2  lowest w^2: -0.4090659 9.743106e-07 2.362902e-05 0.000174803
+[    1.5s] upper alpha=0.040 N=80 L=0.672 b=3.10330  nneg=1 ncomplex=0  lowest w^2: -0.07840581 9.410709e-07 2.283346e-05 0.0001690253
+[    2.2s] upper alpha=0.040 N=120 L=0.672 b=3.10330  nneg=1 ncomplex=4  lowest w^2: -0.07840581 1.858934e-07 4.511463e-06 3.341711e-05
+[    2.5s] fold scan b=2.9226404 alpha=0.040377653830 lowest=3.9977e-07 nneg=0
+[    2.9s] fold scan b=2.9239094 alpha=0.040377920170 lowest=3.9977e-07 nneg=0
+[    3.3s] fold scan b=2.9251798 alpha=0.040378138051 lowest=3.9977e-07 nneg=0
+[    3.7s] fold scan b=2.9264516 alpha=0.040378307489 lowest=3.9977e-07 nneg=0
+[    4.0s] fold scan b=2.9277248 alpha=0.040378428498 lowest=3.9977e-07 nneg=0
+[    4.2s] fold scan b=2.9289995 alpha=0.040378501092 lowest=3.9977e-07 nneg=0
+[    4.3s] fold scan b=2.9302756 alpha=0.040378525287 lowest=-3.9912e-13 nneg=0
+[    4.7s] fold scan b=2.9315531 alpha=0.040378501097 lowest=-5.4745e-04 nneg=1
+[    5.0s] fold scan b=2.9328321 alpha=0.040378428537 lowest=-1.0978e-03 nneg=1
+[    5.3s] fold scan b=2.9341125 alpha=0.040378307621 lowest=-1.6503e-03 nneg=1
+[    5.6s] fold scan b=2.9353944 alpha=0.040378138364 lowest=-2.2048e-03 nneg=1
+[    6.1s] fold scan b=2.9366777 alpha=0.040377920781 lowest=-2.7610e-03 nneg=1
+[    6.3s] fold scan b=2.9379625 alpha=0.040377654886 lowest=-3.3188e-03 nneg=1
+[    6.3s] fold b (this grid) = 2.9302756 ; zero crossing of lowest w^2 at b = 2.9302763727960555
+[    6.3s] done

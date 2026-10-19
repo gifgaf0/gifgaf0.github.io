@@ -1,0 +1,36 @@
+PASS su(3) cap (2,4) is 4-dimensional (kaon directions)  [4]
+PASS pointwise kernel block-diagonal between (3,1), (1,3), (2,4) (SU(2)_short invariance)  [6.459858239685424e-16]
+PASS quadratic form = (1/2) d^2E/deps^2 by finite differences, block long (3,1) (rel < 1e-6)  [(np.float64(20.57261733206052), np.float64(20.572617329313776), np.float64(1.3351461359013718e-10))]
+PASS quadratic form = (1/2) d^2E/deps^2 by finite differences, block short (1,3) (rel < 1e-6)  [(np.float64(3.816762783996779), np.float64(3.8167627807172977), np.float64(8.592310595912764e-10))]
+PASS quadratic form = (1/2) d^2E/deps^2 by finite differences, block (2,4) (rel < 1e-6)  [(np.float64(21.343608241715074), np.float64(21.34360823724535), np.float64(2.094175395321351e-10))]
+iso-rotation (long) whole space Q = 1.8969042731701952e-10  ball R=30, 60: -0.005788221701903633 -0.0007235812415600872  ratio 7.999408178995711
+G2 rotation (2,4) whole space Q = 8.500284107197085e-11  ball R=30, 60: -0.0021706831019586144 -0.0002713437308401519  ratio 7.99975402135736
+kaon rotation whole space Q = 8.50364644836557e-11  ball R=30, 60: -0.0021706831019258363 -0.0002713437308062132  ratio 7.999754022237142
+PASS exact rotational zero modes give Q ~ 0 over all space (|Q| < 1e-7); on a ball the defect is a -1/R^3 surface term  [{'iso-rotation (long)': np.float64(1.8969042731701952e-10), 'iso-rotation (long) [ball R=30, R=60]': [np.float64(-0.005788221701903633), np.float64(-0.0007235812415600872)], 'G2 rotation (2,4)': np.float64(8.500284107197085e-11), 'G2 rotation (2,4) [ball R=30, R=60]': [np.float64(-0.0021706831019586144), np.float64(-0.0002713437308401519)], 'kaon rotation': np.float64(8.50364644836557e-11), 'kaon rotation [ball R=30, R=60]': [np.float64(-0.0021706831019258363), np.float64(-0.0002713437308062132)]}]
+long (3,1)   R=  20 nel= 30  lowest: [1.8980e-06 1.8980e-06 1.8980e-06 3.7252e-05 3.7252e-05 3.7252e-05
+ 7.9527e-04 7.9527e-04 7.9527e-04 1.4358e-03]  (11s)
+long (3,1)   R=  20 nel= 60  lowest: [1.8930e-06 1.8930e-06 1.8930e-06 3.7247e-05 3.7247e-05 3.7247e-05
+ 7.9527e-04 7.9527e-04 7.9527e-04 1.4358e-03]  (21s)
+long (3,1)   R=  40 nel= 40  lowest: [7.4805e-08 7.4805e-08 7.4805e-08 4.1295e-06 4.1295e-06 4.1295e-06
+ 1.9373e-04 1.9373e-04 1.9373e-04 3.8883e-04]  (11s)
+short (1,3)  R=  20 nel= 30  lowest: [0.0008 0.0008 0.0008 0.0016 0.0016 0.0016 0.0016 0.0016 0.0016 0.0016]  (8s)
+short (1,3)  R=  40 nel= 40  lowest: [0.0002 0.0002 0.0002 0.0004 0.0004 0.0004 0.0004 0.0004 0.0004 0.0004]  (11s)
+kaon         R=  20 nel= 30  lowest: [2.9064e-05 2.9064e-05 2.9064e-05 2.9064e-05 7.8254e-04 7.8254e-04
+ 7.8254e-04 7.8254e-04 1.5993e-03 1.5993e-03]  (10s)
+kaon         R=  20 nel= 60  lowest: [2.9064e-05 2.9064e-05 2.9064e-05 2.9064e-05 7.8254e-04 7.8254e-04
+ 7.8254e-04 7.8254e-04 1.5993e-03 1.5993e-03]  (26s)
+kaon         R=  40 nel= 40  lowest: [3.2903e-06 3.2903e-06 3.2903e-06 3.2903e-06 1.9321e-04 1.9321e-04
+ 1.9321e-04 1.9321e-04 3.9505e-04 3.9505e-04]  (14s)
+(2,4)        R=  20 nel= 30  lowest: [2.9064e-05 2.9064e-05 2.9064e-05 2.9064e-05 2.9064e-05 2.9064e-05
+ 2.9064e-05 2.9064e-05 7.8254e-04 7.8254e-04]  (27s)
+(2,4)        R=  40 nel= 40  lowest: [3.2903e-06 3.2903e-06 3.2903e-06 3.2903e-06 3.2903e-06 3.2903e-06
+ 3.2903e-06 3.2903e-06 1.9321e-04 1.9321e-04]  (56s)
+long (3,1) lmax=4 R=  20 nel= 30  lowest: [1.8980e-06 1.8980e-06 1.8980e-06 3.7252e-05 3.7252e-05 3.7252e-05
+ 7.9527e-04 7.9527e-04 7.9527e-04 1.4358e-03]  (15s)
+(2,4) lmax=4 R=  20 nel= 24  lowest: [2.9066e-05 2.9066e-05 2.9066e-05 2.9066e-05 2.9066e-05 2.9066e-05
+ 2.9066e-05 2.9066e-05 7.8254e-04 7.8254e-04]  (59s)
+PASS no negative Ritz eigenvalue in any block / box / mesh (min > -1e-8)  [7.480464572127518e-08]
+PASS (1,3) lowest = (1/32)(pi/R)^2 at R=20 (free massless field, rel < 1e-3)  [(0.0007710628445027915, 0.000771062843835106)]
+PASS (2,4) spectrum = kaon spectrum doubled (first 16, rel < 1e-8)  [1.2858781464817584e-13]
+
+9/9 checks passed

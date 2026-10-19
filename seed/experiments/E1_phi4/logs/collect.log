@@ -35,3 +35,11 @@ QUANTIFIED  E1e Gaussian packets, min_N_lin_reproduced at dx=0.05: {"N_E_times_l
 QUANTIFIED  E1e Gaussian packets, raw min_E_any (NOT reproduced at dx=0.05): {"N_E_times_lambda_over_m2": 1.1948809649482306, "N_lin_times_lambda_over_m2": 2.7174535221551688, "E_over_2M": 1.792321447422346, "A": 1.4, "sigma": 
 QUANTIFIED  E1e Gaussian packets, raw min_N_lin_any (NOT reproduced at dx=0.05): {"N_E_times_lambda_over_m2": 1.5088990724364941, "N_lin_times_lambda_over_m2": 1.5316143961189836, "E_over_2M": 2.263348608654741, "A": 0.275, "sigma"
 QUANTIFIED  E1e smallest classical N_lin*lambda/m^2 (producers reproduced at dx=0.05): 1.687915041158199
+CALIBRATED  E1d no production below E = 2 M_kink, every Gaussian run (pair and single packet, all variants): 0
+NO_TARGET   Check: reproducibility and energy conservation: {"reproducibility_gauss_all_agree": true, "reproducibility_kkbar_all_agree": true, "n_gauss_rerun": 12, "n_kkbar_rerun": 6, "energy_drift": {"gauss": 
+NO_TARGET   Check: single-packet self-folding vs resolution: {"A=0.5,sigma=16.0,k=0.25,single=True": [{"dx": 0.1, "dt": 0.04, "produced": true, "pair_since": 60.000000000000014}, {"dx": 0.05, "dt": 0.02, "produc
+NO_TARGET   Check: E1b box size (Lphys, W) = (100, 60), (200, 100) vs (40, 30): {"reference_box40": {"v_c": 0.26007871093749996, "w1_lo": 0.1925970703125, "w1_hi": 0.20346406250000004}, "cases": [{"Lphys": 100.0, "W": 60.0, "trans
+NO_TARGET   Check: E1d coarse grid with exact one-way initial velocity: {"n_runs": 1485, "n_produced": 572, "n_produced_baseline": 564, "point_agreement_with_baseline": 0.7683501683501683, "any_below_2M": 0, "min_producing
+CONFIRMED   Check: E1d k = 1 slice at dx = 0.05 vs dx = 0.1: {"point_agreement": 0.8302111210228962, "ragged_verdict_dx0.1": "CONFIRMED", "ragged_verdict_dx0.05": "CONFIRMED", "block4x4_fraction_mean_abs_diff": 
+NO_TARGET   Check: point-level convergence ladder (E1d): {"n_points": 32, "n_changed_0.1_vs_0.05": 24, "agree_0.1_0.05": 0.25, "agree_0.05_0.025": 0.71875, "agree_0.025_0.0125": 0.71875, "agree_0.05_0.0125":
+QUANTIFIED  E1e Gaussian packets, exact one-way family: lowest producer reproduced at dx = 0.05 and 0.025: {"N_E_times_lambda_over_m2": 1.801984909794223, "N_lin_times_lambda_over_m2": 1.9593216459194782, "E_over_2M": 2.7029773646913346, "A": 0.6, "sigma": 

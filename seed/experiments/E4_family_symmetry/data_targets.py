@@ -14,6 +14,8 @@ data", normal ordering (read from the arXiv mirror PDF):
   (3sigma edge - best fit)/3 on each side.  This reproduces the 1sigma errors for th12 and th13
   and is deliberately looser for th23 (octant degeneracy: the lower 3sigma edge is 0.430) and
   delta.  r uses its Gaussian 1sigma.
+  delta is periodic: its pull uses the representative delta + 360k with the smallest |pull|
+  (reconciliation fix of the original [-3, 357) deg wrap; see pull_delta_deg).
 
 UTfit 2022 (M. Bona et al., arXiv:2212.03894v1, Appendix Table "Full Fit"):
     lambda = 0.22519 +- 0.00083,  A = 0.828 +- 0.011,  rhobar = 0.1609 +- 0.0095,  etabar = 0.347 +- 0.010
@@ -78,12 +80,30 @@ def pull_asym(x, key, table=NUFIT):
     return d / (hi if d > 0 else lo)
 
 
-def pull_delta(delta_rad):
-    if delta_rad is None or not np.isfinite(delta_rad):
-        return 0.0
+def pull_delta_deg(delta_deg):
+    """One-sided pull of delta (deg).  delta is periodic, so the representative delta + 360 k with the
+    smallest |pull| is used.  Reconciliation fix: the original wrapped delta into [bf-180, bf+180) =
+    [-3, 357) deg, which is inconsistent with NuFIT's asymmetric 3sigma range 96..422 deg (delta = 0 =
+    360 deg got pull -6.56 instead of +2.24, and chi2 jumped at delta = 357 deg).  With the one-sided
+    sigmas (81.7 deg above, 27 deg below) the two branches cross at delta = 87.5 deg, inside the
+    excluded window 62..96 deg."""
+    bf, lo, hi = NUFIT["delta_deg"]
+    d0 = (delta_deg - bf) % 360.0                   # in [0, 360)
+    p_up, p_dn = d0 / hi, (d0 - 360.0) / lo
+    return p_up if abs(p_up) <= abs(p_dn) else p_dn
+
+
+def pull_delta_wrap_v1(delta_rad):
+    """The original (pre-reconciliation) convention, kept only to reproduce old numbers."""
     bf, lo, hi = NUFIT["delta_deg"]
     d = (math.degrees(delta_rad) - bf + 180.0) % 360.0 - 180.0
     return d / (hi if d > 0 else lo)
+
+
+def pull_delta(delta_rad):
+    if delta_rad is None or not np.isfinite(delta_rad):
+        return 0.0
+    return pull_delta_deg(math.degrees(delta_rad))
 
 
 def chi2_pmns(U, include_delta=True):

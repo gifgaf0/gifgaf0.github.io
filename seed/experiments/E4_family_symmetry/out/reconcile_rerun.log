@@ -1,0 +1,9 @@
+start Mon Oct 19 05:33:52 UTC 2026
+/home/user/gifgaf0.github.io/seed/experiments/E4_family_symmetry/e4lib.py:357: RuntimeWarning: invalid value encountered in sqrt
+  c13 = np.sqrt(c13sq)
+/home/user/gifgaf0.github.io/seed/experiments/E4_family_symmetry/e4lib.py:357: RuntimeWarning: invalid value encountered in sqrt
+  c13 = np.sqrt(c13sq)
+yukawa done Mon Oct 19 05:35:25 UTC 2026
+start Mon Oct 19 05:48:47 UTC 2026
+fits done Mon Oct 19 06:02:35 UTC 2026
+structure done Mon Oct 19 06:02:38 UTC 2026

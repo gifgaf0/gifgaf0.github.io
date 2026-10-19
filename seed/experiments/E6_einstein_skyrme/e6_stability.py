@@ -39,8 +39,31 @@ syms = sp.symbols('x F P m sg alpha')
 fn = {k: sp.lambdify(syms, sp.sympify(co[k], locals={'alpha': syms[5]}), 'numpy') for k in ['a', 'b', 'c', 'd']}
 
 
-X_START = 2.5e-3   # inner Dirichlet point (xi ~ x near the centre; the cut shifts the fold crossing by ~40*X_START^3 in b)
+X_START = 2.5e-3   # inner Dirichlet point (xi ~ x near the centre). The cut shifts the fold crossing by ~40*X_START^3
+#                    in b (~6e-7 here); at h = 5e-3 the O(h^2) FD error shifts it by ~ -3.4e-6 (see zero_crossing_convergence)
 H_PROFILE = 1e-3   # background profile step in t = ln x
+
+
+def zero_freq_end(b, al, X=400.0, h=1e-3, x_start=X_START):
+    """[reconciliation] Normalised end value xi(X)/max|xi| of the omega^2 = 0 solution of the same FD operator
+    (xi ~ x at the inner end).  It vanishes exactly when the discrete operator has a zero eigenvalue, so its root
+    in b is the zero crossing of omega^2 free of eigen-solver round-off (default tolerance eps*||T||_1)."""
+    x, F, P, m, ls = ec.profile(b, al, H_PROFILE, ec.x0_for(b), max(X, 2e3))
+    sg = np.exp(ls - ls[-1])
+    stride = int(round(h / H_PROFILE))
+    i0 = int(np.searchsorted(x, x_start))
+    x, F, P, m, sg = x[i0::stride], F[i0::stride], P[i0::stride], m[i0::stride], sg[i0::stride]
+    sel = x <= X * (1 + 1e-12)
+    x, F, P, m, sg = x[sel], F[sel], P[sel], m[sel], sg[sel]
+    ph = -fn['a'](x, F, P, m, sg, al) / x
+    qh = x * fn['c'](x, F, P, m, sg, al)
+    hh = np.log(x[1]) - np.log(x[0])
+    pm = 0.5 * (ph[1:] + ph[:-1])
+    xi = np.empty(len(x))
+    xi[0], xi[1] = 0.0, x[1] - x[0]
+    for i in range(1, len(x) - 1):
+        xi[i + 1] = xi[i] + (pm[i - 1] * (xi[i] - xi[i - 1]) + hh**2 * qh[i] * xi[i]) / pm[i]
+    return xi[-1] / np.max(np.abs(xi))
 
 
 def lowest_modes(b, al, X=200.0, h=5e-3, nev=3, check=False, nodes=False):
@@ -147,6 +170,32 @@ def main():
             zc[f"X={X:g}"] = f"no sign change: {err}"
         log(f"  zero crossing of omega^2_min at X={X:g}: b = {zc[f'X={X:g}']}  (b_crit = {bc:.7f})")
     res["zero_crossing_b"] = zc
+    res["zero_crossing_b_note"] = ("FD step h = 5e-3, inner cut 2.5e-3, eigen-solver default tolerance: not converged "
+                                   "in h; see zero_crossing_convergence")
+    # [reconciliation] convergence of the zero crossing in the FD step h and the inner cut, by the zero-frequency
+    # (Jacobi) criterion at X = 400; Richardson in h^2 from h = 2e-3 and 1e-3
+    acache = {}
+
+    def ab_cached(b):
+        if b not in acache:
+            acache[b] = alpha_b(b)
+        return acache[b]
+
+    conv = []
+    for xs in [5e-3, 2.5e-3, 1.25e-3]:
+        row = dict(x_cut=xs, inner_cut_estimate_40xcut3=40 * xs**3, offsets={})
+        for h in [5e-3, 2e-3, 1e-3]:
+            zb = brentq(lambda b: zero_freq_end(b, ab_cached(b), X=400.0, h=h, x_start=xs), bc - 0.01, bc + 0.01,
+                        xtol=1e-10)
+            row["offsets"][f"h={h:g}"] = zb - bc
+        o2, o1 = row["offsets"]["h=0.002"], row["offsets"]["h=0.001"]
+        row["richardson_h0"] = o1 + (o1 - o2) / 3.0
+        row["h2_coefficient"] = (o2 - o1) / (4e-6 - 1e-6)
+        conv.append(row)
+        log(f"  zero crossing - b_crit (Jacobi, X=400) at x_cut={xs:.2e}: "
+            + ", ".join(f"{k}: {v:+.3e}" for k, v in row["offsets"].items())
+            + f"; h->0: {row['richardson_h0']:+.2e} (40 x_cut^3 = {40 * xs**3:.1e}); h^2 coefficient {row['h2_coefficient']:.3f}")
+    res["zero_crossing_convergence"] = conv
     with open(os.path.join(OUT, "stage_stability.json"), "w") as fh:
         json.dump(res, fh, indent=1)
     log("stability done")

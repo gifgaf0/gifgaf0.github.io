@@ -1,0 +1,53 @@
+generic vertices: 6 sides: [7*sqrt(2)/10, 8*sqrt(2)/5, 7*sqrt(2)/10, 8*sqrt(2)/5, 7*sqrt(2)/10, 8*sqrt(2)/5] angles: [120, 120, 120, 120, 120, 120]
+PASS generic a: 6 vertices, all angles exactly 120 deg
+PASS sides alternate exactly sqrt2*(a1-a2) = 7 sqrt2/10 and sqrt2*(a2-a3) = 8 sqrt2/5  [['7*sqrt(2)/10', '8*sqrt(2)/5']]
+degenerate vertices: 3 sides: [3*sqrt(2), 3*sqrt(2), 3*sqrt(2)] angles: [60, 60, 60]
+PASS a1 = a2: 3 vertices, angles exactly 60 deg (triangle)
+PASS hexagon regular iff a1 - a2 = a2 - a3 (sides sqrt2(a1-a2), sqrt2(a2-a3))  [edges of the permutohedron join permutations differing by a swap of adjacent sorted values]
+PASS Schur: all 200000 Haar samples (scipy unitary_group) have diag majorized by a (inside hexagon)
+PASS |U_ij|^2 doubly stochastic (Birkhoff => convex combination of permutations)
+PASS Horn (constructive): 64 target points (6 vertices, edge points, 40 interior) all attained by real orthogonal U (max residual < 1e-10)  [1.4379497592642565e-11]
+PASS a point outside the hexagon is not majorized (cannot be attained)
+orientation signs (plane, delaunay): -1.0 -1.0
+A: p=(1,z,0), r=p x (0,0,1)         plane=[ 1.  0. -1.] delaunay=[ 1.  0. -1.] deformed=[ 1.  0. -1.]
+B: p=(0,0,1), r=p x (1,z,0)         plane=[-0.  1. -1.] delaunay=[-0.  1. -1.] deformed=[ 0.  1. -1.]
+C: p=(1,z,0), r=p x (0,1,z)         plane=[ 1.  1. -2.] delaunay=[ 1.  1. -2.] deformed=[ 1.  1. -2.]
+D: p=(1,z,z^2), r=p x (0,1,z)       plane=[ 2. -1. -1.] delaunay=[ 2. -1. -1.] deformed=[ 2. -1. -1.]
+E: Veronese Frenet frame            plane=[ 2. -0. -2.] delaunay=[ 2. -0. -2.] deformed=[ 2.  0. -2.]
+F: p=(1,z,z^3), r=p x (0,0,1)       plane=[ 3. -2. -1.] delaunay=[ 3. -2. -1.] deformed=[ 3. -2. -1.]
+G anti-holomorphic: [-1. -0.  1.]
+PASS pi_2 charges of 7 maps (two discretisations + a non-holomorphic deformation) equal the expected integers to 1e-6
+PASS (1,0,-1) and (0,1,-1) span Z^2 (det of (Q1,Q2) = 1)
+N=64 C1 SU(2) hedgehog (block 12)                       degree=0.99975897 (unitarity err 4.4e-16)
+N=64 C2 W(x) . hedgehog . T(x) (non-embedded)           degree=0.99808394 (unitarity err 4.9e-15)
+N=64 C3 hedgehog(12) . hedgehog(23)                     degree=1.99846377 (unitarity err 6.7e-16)
+N=64 C4 SO(3) hedgehog, f(0)=2pi                        degree=-3.99408304 (unitarity err 1.3e-15)
+N=64 C5 inverse hedgehog                                degree=-0.99975897 (unitarity err 4.4e-16)
+N=64 C4' SO(3) hedgehog exp(-f n.L) (opposite orientation = inverse of C4) degree=3.99408304 (unitarity err 1.3e-15)
+N=96 C1 SU(2) hedgehog (block 12)                       degree=0.99995209 (unitarity err 4.4e-16)
+N=96 C2 W(x) . hedgehog . T(x) (non-embedded)           degree=0.99961351 (unitarity err 4.9e-15)
+N=96 C3 hedgehog(12) . hedgehog(23)                     degree=1.99969203 (unitarity err 8.9e-16)
+N=96 C4 SO(3) hedgehog, f(0)=2pi                        degree=-3.99881154 (unitarity err 1.7e-15)
+N=96 C5 inverse hedgehog                                degree=-0.99995209 (unitarity err 4.4e-16)
+N=96 C4' SO(3) hedgehog exp(-f n.L) (opposite orientation = inverse of C4) degree=3.99881154 (unitarity err 1.7e-15)
+N=128 C1 SU(2) hedgehog (block 12)                       degree=0.99998481 (unitarity err 4.4e-16)
+N=128 C2 W(x) . hedgehog . T(x) (non-embedded)           degree=0.99987681 (unitarity err 4.9e-15)
+N=128 C3 hedgehog(12) . hedgehog(23)                     degree=1.99990205 (unitarity err 8.9e-16)
+N=128 C4 SO(3) hedgehog, f(0)=2pi                        degree=-3.99962176 (unitarity err 1.6e-15)
+N=128 C5 inverse hedgehog                                degree=-0.99998481 (unitarity err 4.4e-16)
+N=128 C4' SO(3) hedgehog exp(-f n.L) (opposite orientation = inverse of C4) degree=3.99962176 (unitarity err 1.6e-15)
+C1 SU(2) hedgehog (block 12)                       extrapolated degree = 1.0000000
+C2 W(x) . hedgehog . T(x) (non-embedded)           extrapolated degree = 0.9999987
+C3 hedgehog(12) . hedgehog(23)                     extrapolated degree = 1.9999993
+C4 SO(3) hedgehog, f(0)=2pi                        extrapolated degree = -3.9999968
+C5 inverse hedgehog                                extrapolated degree = -1.0000000
+C4' SO(3) hedgehog exp(-f n.L) (opposite orientation = inverse of C4) extrapolated degree = 3.9999968
+64 {'deg_g': np.float64(1.9984637715765345), 'deg_gT': np.float64(1.9955905970951848), 'deg_T': np.float64(-2.1204881317184587e-22), 'projector_diff': 4.440892098500626e-16}
+96 {'deg_g': np.float64(1.9996920320632348), 'deg_gT': np.float64(1.9991083944122077), 'deg_T': np.float64(-2.872345348108119e-23), 'projector_diff': 4.440892098500626e-16}
+128 {'deg_g': np.float64(1.9999020529773275), 'deg_gT': np.float64(1.9997155736201118), 'deg_T': np.float64(-4.065606682464728e-24), 'projector_diff': 5.551115123125783e-16}
+lift independence (extrapolated): {'deg_g': np.float64(1.999999262657565), 'deg_gT': np.float64(1.9999966108534843), 'deg_T': np.float64(7.347453835752037e-24)}
+PASS pi_3 lift degrees on Cartesian grids, Richardson-extrapolated (N=96,128): C1..C5 = 1, 1, 2, -4, -1 and C4' = +4 (|dev| < 1e-4); |deg| = 4 for SO(3), sign set by generator orientation relative to C1  [{'C1 SU(2) hedgehog (block 12)': np.float64(0.999999951249903), 'C2 W(x) . hedgehog . T(x) (non-embedded)': np.float64(0.9999986809859521), 'C3 hedgehog(12) . hedgehog(23)': np.float64(1.999999262657565), 'C4 SO(3) hedgehog, f(0)=2pi': np.float64(-3.9999967730458073), 'C5 inverse hedgehog': np.float64(-0.999999951249903), "C4' SO(3) hedgehog exp(-f n.L) (opposite orientation = inverse of C4)": np.float64(3.9999967730458073)}]
+PASS 4th-order convergence of the lift degree (error ratio N=64->96 within 20% of (3/2)^4)
+PASS same flag configuration, two lifts g and g T(x): same extrapolated degree (|diff| < 1e-4); deg T = 0; projectors identical  [{'deg_g': np.float64(1.999999262657565), 'deg_gT': np.float64(1.9999966108534843), 'deg_T': np.float64(7.347453835752037e-24)}]
+
+13/13 checks passed

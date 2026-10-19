@@ -138,62 +138,107 @@ if not have('cont'):
             break
     save('cont', dict(rows=rows, fold_bracket=fold_bracket))
 
-# ------------------------------------------------------------------ stage: fold (Moore-Spence)
+# ------------------------------------------------------------------ stage: fold
+# (A Moore-Spence extended system was tried first and hit a singular bordered matrix;
+#  replaced by locating tau_alpha = 0 along the pseudo-arclength branch on every grid,
+#  plus a quadratic fit of alpha(arclength) around the maximum as a second estimator.)
+def fold_on_grid(g, U_init, a_init, W=100.0):
+    J = X.jac(U_init, a_init, g); J[:, -1] /= W
+    t = np.linalg.svd(J)[2][-1]
+    Y0 = np.concatenate([U_init, [a_init * W]])
+    Yc, ok = X.corrector(Y0.copy(), t, Y0, g, W)
+    assert ok
+    tb = X.tangent(Yc[:-1], Yc[-1] / W, g, t, W)
+    # orient along increasing central slope b
+    b0 = X.central(Yc[:-1], g)['b_schw']
+    if X.central(Yc[:-1] + 1e-4 * tb[:-1], g)['b_schw'] < b0:
+        tb = -tb
+
+    cache = {}
+
+    def at(h):
+        if h in cache:
+            return cache[h]
+        Yp = Yc + h * tb
+        Yh, ok = X.corrector(Yp.copy(), tb, Yp, g, W)
+        th = X.tangent(Yh[:-1], Yh[-1] / W, g, tb, W)
+        if th @ tb < 0:
+            th = -th
+        cache[h] = (th[-1], Yh, th)
+        return cache[h]
+
+    # bracket
+    hs = [0.0]
+    f0 = at(0.0)[0]
+    step = 0.02 if f0 > 0 else -0.02
+    h1, f1 = 0.0, f0
+    for k in range(40):
+        h2 = h1 + step
+        f2 = at(h2)[0]
+        if f2 * f1 <= 0:
+            break
+        h1, f1 = h2, f2
+    lo, hi = (h1, h2) if f1 > 0 else (h2, h1)
+    flo, fhi = at(lo)[0], at(hi)[0]
+    for k in range(60):
+        hm = lo - flo * (hi - lo) / (fhi - flo) if k % 3 else 0.5 * (lo + hi)
+        fm, Ym, tm = at(hm)
+        if fm > 0:
+            lo, flo = hm, fm
+        else:
+            hi, fhi = hm, fm
+        if abs(fm) < 1e-14 or abs(hi - lo) < 1e-13:
+            break
+    a_tau = Ym[-1] / W
+    # quadratic fit of alpha(h) on 7 points around the fold
+    hh = hm + np.linspace(-0.06, 0.06, 7)
+    aa = np.array([at(h)[1][-1] / W for h in hh])
+    bb = np.array([X.central(at(h)[1][:-1], g)['b_schw'] for h in hh])
+    cf = np.polyfit(hh - hm, aa, 4)
+    pp = np.poly1d(cf)
+    r = [z.real for z in np.roots(np.polyder(pp)) if abs(z.imag) < 1e-12 and abs(z.real) < 0.06]
+    hstar = min(r, key=abs)
+    a_fit = pp(hstar)
+    cfb = np.polyfit(bb, aa, 4); pb = np.poly1d(cfb)
+    rb = [z.real for z in np.roots(np.polyder(pb)) if abs(z.imag) < 1e-12 and bb.min() < z.real < bb.max()]
+    bstar = rb[0]
+    curv = 0.5 * np.polyder(pb, 2)(bstar)
+    return Ym[:-1], a_tau, tm[:-1], dict(alpha_tau=a_tau, alpha_fit_h=a_fit, alpha_fit_b=pb(bstar), b_fit=bstar,
+                                         curvature_alpha_b=curv, tau_resid=fm)
+
+
 if not have('fold'):
     meta = json.load(open(ck('fold_guess_meta')))
     z = np.load(os.path.join(OUT, 'xc_fold_guess.npy'))
     g0 = X.Grid(meta['N'], meta['L'])
-    Wm = meta['W']
     n0 = 3 * (meta['N'] + 1)
-    Yb, tb = z[:n0 + 1], z[n0 + 1:]
-    # locate tau_alpha = 0 along the branch: secant/bisection in the arclength step h
-    def tau_alpha_at(h):
-        Yp = Yb + h * tb
-        Yc, ok = X.corrector(Yp.copy(), tb, Yp, g0, Wm)
-        tc = X.tangent(Yc[:-1], Yc[-1] / Wm, g0, tb, Wm)
-        if tc @ tb < 0: tc = -tc
-        return tc[-1], Yc, tc
-    h1, h2 = 0.0, 0.1
-    f1 = tau_alpha_at(h1)[0]
-    f2 = tau_alpha_at(h2)[0]
-    while f2 > 0:
-        h2 += 0.1; f2 = tau_alpha_at(h2)[0]
-    for k in range(60):
-        hm = h1 - f1 * (h2 - h1) / (f2 - f1) if k % 3 else 0.5 * (h1 + h2)
-        fm, Ym, tm = tau_alpha_at(hm)
-        if fm > 0: h1, f1 = hm, fm
-        else: h2, f2 = hm, fm
-        if abs(fm) < 1e-13 or abs(h2 - h1) < 1e-14: break
-    U0, a0, t0 = Ym[:-1], Ym[-1] / Wm, tm[:-1]
-    log('fold along branch (N=%d L=%.4f): tau_alpha=%.2e alpha=%.15f' % (g0.N, g0.L, fm, a0))
-    rows = [dict(method='tau_alpha=0 along pseudo-arclength branch', N=g0.N, L=g0.L, alpha_crit=a0)]
-    for (N, L) in [(60, g0.L), (80, g0.L), (100, g0.L), (80, 0.6), (80, 1.2), (120, g0.L)]:
+    Yb = z[:n0 + 1]
+    U0, a0 = Yb[:-1], Yb[-1] / meta['W']
+    U0, a0, t0, info = fold_on_grid(g0, U0, a0)
+    log('fold base grid N=%d L=%.4f: alpha=%.15f' % (g0.N, g0.L, a0))
+    rows = []
+    for (N, L) in [(60, g0.L), (80, g0.L), (100, g0.L), (120, g0.L), (80, 0.4), (80, 1.2), (100, 1.0)]:
         g = X.Grid(N, L)
         U = X.regrid(U0, g0, g)
-        v = X.regrid(t0, g0, g) if False else None
-        U, ok = X.newton(U, a0, g)
-        v = X.regrid(t0, g0, g)
-        v = v / np.linalg.norm(v)
-        log('fold N=%d L=%.3f: start alpha=%.12f' % (N, L, a0))
-        U, v, a = X.moore_spence(U, a0, v, g, verbose=False)
+        U, a, v, info = fold_on_grid(g, U, a0)
         s = summary(U, a, g)
-        J = X.jac(U, a, g)
-        ss = np.linalg.svd(J[:, :-1], compute_uv=False)
-        s['smallest_sv'] = ss[-1]; s['second_sv'] = ss[-2]
+        s.update(info)
         gr, grs = X.Grr_residual(U, a, g)
         s['Grr_resid'] = gr; s['Grr_scale'] = grs
         s['res_max'] = float(np.abs(X.residual(U, a, g)).max())
         rows.append(s)
-        log('  alpha_crit=%.15f b_schw=%.9f m_int=%.10f m_adm_tail=%.10f m_komar=%.10f A0=%.10f Nmin=%.8f@R=%.5f  svmin=%.2e Grr=%.1e' % (
-            a, s['b_schw'], s['m_int'], s['m_adm_tail'], s['m_komar_int'], s['A0'], s['Nmin'], s['R_at_Nmin'], s['smallest_sv'], gr))
-        if N == 100:
+        log('  N=%d L=%.3f alpha_crit=%.15f (fit_h %.15f, fit_b %.15f) b_crit=%.8f curv=%.6f b_schw=%.9f m_int=%.10f m_adm_tail=%.10f m_komar=%.10f A0=%.8f Nmin=%.8f@R=%.5f Grr=%.1e' % (
+            N, L, a, info['alpha_fit_h'], info['alpha_fit_b'], info['b_fit'], info['curvature_alpha_b'], s['b_schw'], s['m_int'],
+            s['m_adm_tail'], s['m_komar_int'], s['A0'], s['Nmin'], s['R_at_Nmin'], gr))
+        if N == 100 and abs(L - g0.L) < 1e-12:
             np.save(os.path.join(OUT, 'xc_fold_U.npy'), np.concatenate([U, [a]]))
+            np.save(os.path.join(OUT, 'xc_fold_grid.npy'), np.array([N, L]))
     save('fold', rows)
 
 # ------------------------------------------------------------------ stage: fixed alpha
 if not have('fixed'):
     cont = json.load(open(ck('cont')))['rows']
-    alphas = [0.001, 0.01, 0.02, 0.03, 0.04, 0.04037]
+    alphas = [0.001, 0.01, 0.02, 0.03, 0.035, 0.04, 0.04037]
     rows = []
     # redo a short continuation and snap to the requested alphas (Newton at fixed alpha)
     N, L = 80, 1.5
@@ -209,6 +254,7 @@ if not have('fixed'):
     passed = False
     ds = 0.2
     prevY, prevg = Y.copy(), g
+    sols = {'lower_0_U': U.copy(), 'lower_0_NL': np.array([g.N, g.L])}
     done_l, done_u = set(), set()
     it = 0
     while it < 600:
@@ -235,10 +281,12 @@ if not have('fixed'):
                 s = summary(Us, at, g)
                 s['branch'] = 'upper' if passed else 'lower'
                 rows.append(s)
+                sols['%s_%g_U' % (s['branch'], at)] = Us
+                sols['%s_%g_NL' % (s['branch'], at)] = np.array([g.N, g.L])
                 (done_u if passed else done_l).add(key)
                 log('fixed alpha=%.5f %s b=%.6f m=%.7f (adm tail %.7f)' % (at, s['branch'], s['b_schw'], s['m_int'], s['m_adm_tail']))
         Y, tau = Yn, tn
-        ds = min(ds * 1.3, 0.4 if a_new > 0.039 else 0.6)
+        ds = min(ds * 1.3, 0.05 if a_new > 0.0402 else (0.4 if a_new > 0.039 else 0.6))
         xh = x_half(Yn[:-1], g)
         if xh / g.L < 0.45 or xh / g.L > 1.8:
             gnew = X.Grid(g.N, xh)
@@ -251,6 +299,7 @@ if not have('fixed'):
             if (tau[-1] > 0) == passed: tau = -tau
         if passed and a_new < 0.0009:
             break
+    np.savez(os.path.join(OUT, 'xc_fixed_sols.npz'), **sols)
     save('fixed', rows)
 
 # ------------------------------------------------------------------ stage: slope
@@ -285,7 +334,8 @@ if not have('slope'):
 # ------------------------------------------------------------------ stage: upper branch to small alpha
 if not have('upper'):
     z = np.load(os.path.join(OUT, 'xc_fold_U.npy'))
-    g = X.Grid(100, 1.5)
+    NL = np.load(os.path.join(OUT, 'xc_fold_grid.npy'))
+    g = X.Grid(int(NL[0]), float(NL[1]))
     U, a = z[:-1], z[-1]
     # step down the upper branch at fixed alpha values by natural continuation in b-space:
     # use pseudo-arclength from the fold heading to smaller alpha on the upper side.

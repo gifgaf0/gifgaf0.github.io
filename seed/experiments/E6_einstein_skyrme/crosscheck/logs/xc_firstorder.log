@@ -1,3 +1,5 @@
+/home/user/gifgaf0.github.io/seed/experiments/E6_einstein_skyrme/crosscheck/xc_iso.py:239: RuntimeWarning: divide by zero encountered in divide
+  F = np.where(s < 1, 2 * np.arctan(c / np.where(x > 0, x, 1e-300) ** 2), 0.0)
 N=80 L=1.5 m0=5.803051134518  m1_N=-14.577334800 (id -14.577334800)  m1_GR_iso=-18.782439419  m1_GR_schw=-18.782439419  cross=-4.2051046  dlnA0=-9.7473534 (schw -9.7473534)  vonLaue=-4.8e-13  pr-weight=0.288469
 N=100 L=1.5 m0=5.803051134523  m1_N=-14.577334800 (id -14.577334800)  m1_GR_iso=-18.782439419  m1_GR_schw=-18.782439419  cross=-4.2051046  dlnA0=-9.7473534 (schw -9.7473534)  vonLaue=-1.1e-12  pr-weight=0.288469
 N=120 L=1.0 m0=5.803051134518  m1_N=-14.577334800 (id -14.577334800)  m1_GR_iso=-18.782439419  m1_GR_schw=-18.782439419  cross=-4.2051046  dlnA0=-9.7473534 (schw -9.7473534)  vonLaue=-3.4e-12  pr-weight=0.288469

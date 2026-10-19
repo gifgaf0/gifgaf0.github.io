@@ -1,91 +1,142 @@
 {
- "experiment": "E4 cross-check (independent re-computation)",
- "scripts": [
-  "cc_groups.py",
-  "cc_lnr.py",
-  "cc_yukawa.py",
-  "cc_residual.py",
-  "cc_z2gen.py",
-  "cc_texture.py",
-  "cc_collect.py",
-  "test_texture_forms.py"
- ],
+ "experiment": "E4 cross-check (independent re-computation, two passes)",
+ "overall": "confirmed_with_corrections",
+ "scripts": {
+  "first_pass": [
+   "cc_groups.py",
+   "cc_lnr.py",
+   "cc_yukawa.py",
+   "cc_residual.py",
+   "cc_z2gen.py",
+   "cc_texture.py",
+   "cc_minreal_detail.py",
+   "test_texture_forms.py",
+   "cc_collect.py (superseded by cc2_collect.py)"
+  ],
+  "second_pass": [
+   "cc2_exact_invariants.py",
+   "cc2_lnr_closed.py",
+   "cc2_minreal_verify.py",
+   "cc2_texture_convfix.py",
+   "cc2_collect.py"
+  ]
+ },
  "checks": {
-  "groups": {
-   "Gauss sum (zeta+zeta^2+zeta^4-zeta^3-zeta^5-zeta^6)^2 = -7": true,
-   "flip sends Klein's Dk to D": true,
-   "Rf == LNR A^[3] (exact)": true,
-   "Rf*D == LNR B^[3] (exact)": true,
-   "LNR A*B == D (their eq. 16, exact)": true,
-   "PSL relations a^2=b^3=(ab)^7=[a,b]^4=1 exact (a=Rf, b=Rf D)": true,
-   "F21 relations D^7 = C^3 = 1, C^-1 D C = D^k with k of order 3 mod 7": true,
-   "D unitary with det 1 (exact)": true,
-   "C unitary with det 1 (exact)": true,
-   "Rf unitary with det 1 (exact)": true,
-   "exact closure |<D,C>| = 21": true,
-   "exact closure |<D,C,Rf>| = 168 and <D,Rf> already 168 (float)": true,
-   "F21 subset of PSL (exact)": true,
-   "F21: Burnside table contains every character peeled from tensor powers of the 3 (3 found by peeling)": true,
-   "F21: number of irreducible characters = number of classes (5) and sum d^2 = |G|": true,
-   "F21: row orthogonality of the peeled table": true,
-   "PSL: Burnside table contains every character peeled from tensor powers of the 3 (6 found by peeling)": true,
-   "PSL: number of irreducible characters = number of classes (6) and sum d^2 = |G|": true,
-   "PSL: row orthogonality of the peeled table": true,
-   "F21 character table = LNR (1,1',1'',3,3bar; b7 on order-7 classes)": true,
-   "PSL class sizes (1,21,56,42,24,24) with orders (1,2,3,4,7,7)": true,
-   "PSL character table = LNR (all six rows)": true,
-   "Frobenius-Schur: 3,3bar complex (0) in both groups; 6,7,8 real (+1)": true,
-   "F21: 3x3 = (3+3bar)_s + 3bar_a; 3x3bar = 1+1'+1''+3+3bar": true,
-   "F21: 3x1' = 3, 1'x1' = 1'', 1'x1'' = 1": true,
-   "PSL: all 14 LNR Kronecker products (non-trivial irreps)": true,
-   "PSL->F21: 6 = 3+3bar, 7 = 1+3+3bar, 8 = 1'+1''+3+3bar": true,
-   "SU(3)->PSL dimension content matches LNR table (11 irreps)": true,
-   "F21 invariants in psi psi' xi xi' (3x3x3bx3b) = 5 (Reynolds projector)": true,
-   "F21 invariants with psi=psi', xi=xi' (Sym2(3) x Sym2(3b)) = 2": true,
-   "LNR F21 CGs (64)-(66): five triplet maps + 1 are intertwiners; 1',1'' are the two non-trivial singlets": true,
-   "LNR A^[8] eq. (46) reproduced to 1e-12": true
+  "first_pass": {
+   "groups": {
+    "Gauss sum (zeta+zeta^2+zeta^4-zeta^3-zeta^5-zeta^6)^2 = -7": true,
+    "flip sends Klein's Dk to D": true,
+    "Rf == LNR A^[3] (exact)": true,
+    "Rf*D == LNR B^[3] (exact)": true,
+    "LNR A*B == D (their eq. 16, exact)": true,
+    "PSL relations a^2=b^3=(ab)^7=[a,b]^4=1 exact (a=Rf, b=Rf D)": true,
+    "F21 relations D^7 = C^3 = 1, C^-1 D C = D^k with k of order 3 mod 7": true,
+    "D unitary with det 1 (exact)": true,
+    "C unitary with det 1 (exact)": true,
+    "Rf unitary with det 1 (exact)": true,
+    "exact closure |<D,C>| = 21": true,
+    "exact closure |<D,C,Rf>| = 168 and <D,Rf> already 168 (float)": true,
+    "F21 subset of PSL (exact)": true,
+    "F21: Burnside table contains every character peeled from tensor powers of the 3 (3 found by peeling)": true,
+    "F21: number of irreducible characters = number of classes (5) and sum d^2 = |G|": true,
+    "F21: row orthogonality of the peeled table": true,
+    "PSL: Burnside table contains every character peeled from tensor powers of the 3 (6 found by peeling)": true,
+    "PSL: number of irreducible characters = number of classes (6) and sum d^2 = |G|": true,
+    "PSL: row orthogonality of the peeled table": true,
+    "F21 character table = LNR (1,1',1'',3,3bar; b7 on order-7 classes)": true,
+    "PSL class sizes (1,21,56,42,24,24) with orders (1,2,3,4,7,7)": true,
+    "PSL character table = LNR (all six rows)": true,
+    "Frobenius-Schur: 3,3bar complex (0) in both groups; 6,7,8 real (+1)": true,
+    "F21: 3x3 = (3+3bar)_s + 3bar_a; 3x3bar = 1+1'+1''+3+3bar": true,
+    "F21: 3x1' = 3, 1'x1' = 1'', 1'x1'' = 1": true,
+    "PSL: all 14 LNR Kronecker products (non-trivial irreps)": true,
+    "PSL->F21: 6 = 3+3bar, 7 = 1+3+3bar, 8 = 1'+1''+3+3bar": true,
+    "SU(3)->PSL dimension content matches LNR table (11 irreps)": true,
+    "F21 invariants in psi psi' xi xi' (3x3x3bx3b) = 5 (Reynolds projector)": true,
+    "F21 invariants with psi=psi', xi=xi' (Sym2(3) x Sym2(3b)) = 2": true,
+    "LNR F21 CGs (64)-(66): five triplet maps + 1 are intertwiners; 1',1'' are the two non-trivial singlets": true,
+    "LNR A^[8] eq. (46) reproduced to 1e-12": true
+   },
+   "lnr": {
+    "M_Maj = [[1,-1,-1],[-1,1,-1],[-1,-1,1]] (LNR)": true,
+    "M_Dir = [[-1,0,0],[0,1,-2],[0,-2,1]] (LNR)": true,
+    "M_nu = +-(1/2)[[0,1,1],[1,-4,5],[1,5,-4]] (LNR)": true,
+    "eigenvalue ratios 1 : -2 : 9": true,
+    "Dm31^2/Dm21^2 = 80/3": true,
+    "beta=-1: M_nu exactly tri-bimaximal for every alpha (off-diagonal of U_TB^T M U_TB vanish)": true,
+    "|m3/m1| = 9 for every alpha": true,
+    "masses proportional to (1/(a-1), -1/(2a+1), 9/(a-1)) with one common factor": true,
+    "TBM criteria 1,2 hold identically; criterion 3 fixes beta = -1 (LNR)": true,
+    "alpha windows = (-1.15,-0.95) and (-0.22,-0.15) to 0.01 (LNR)": true,
+    "theta13 = 2.8 deg (+-0.05) with lambda_e = sqrt(me/mmu), pole masses": true,
+    "theta12 = 32.4 deg (+-0.05) with the same haze": true,
+    "LNR's displayed U_MNSP (1,1) entry sqrt(2/3)(1+lam/2) fixes the haze sign (no free choice)": true,
+    "LNR+haze sin^2 th13 = 0.00242 and pull -34.1 (3sigma/3 convention)": true,
+    "r: 26.67 vs 33.83+-0.92, pull -7.8": true,
+    "s12^2 = 0.288 (pull -1.8); s23^2 = 0.499 (pull -1.4, or -4.1 with 1 sigma)": true,
+    "M_nu invariant under TBM Klein pair S and (-)mu-tau": true,
+    "only the identity of the seed's PSL(2,7) leaves LNR's M_nu invariant; S and mu-tau not in PSL": true
+   },
+   "yukawa": {
+    "F21 Dirac coupling table equals the report's table": true,
+    "PSL 6, 7, 8 built as homomorphisms with irreducible characters (norm 1)": true,
+    "PSL: L=R=3 couples to H=1 and H=8 only (1 each); L=3,R=3b to H=3b and H=6 only": true,
+    "Majorana N=3: F21 allows Phi = 3 and 3b only (one each); PSL only Phi = 6; no singlet mass": true,
+    "F21 L=R=3, H=3: M = [[0,0,h3],[h1,0,0],[0,h2,0]]; H=3b: M = [[0,h1,0],[0,0,h2],[h3,0,0]]": true,
+    "F21 L=R=3, H=1': M ~ diag(1, w, w^2) or diag(1, w^2, w): equal |masses|": true,
+    "Schur: L=R=3, H=1 -> one coupling, three equal singular values (F21 and PSL)": true,
+    "commutant of the triplet is 1-dimensional for F21 and PSL": true,
+    "1+1'+1'' vevs together give three distinct masses (generic)": true,
+    "F21: (1,1,1) fixed by Z3; (0,0,1) fixed by no non-trivial element but its ray by Z7; (-1,1,1), (0,1,-1) by nothing even up to phase": true,
+    "F21 Z7 forces M_Maj = 0 on the 3; Z3 leaves a degenerate pair; F21 has no Z2 (odd order)": true
+   },
+   "residual": {
+    "subgroup counts: F21 Z7 x1, Z3 x7; PSL Z7 x8, Z3 x28, Z4 x21, V4 x14, Z2 x21": true,
+    "F21: 3 |U|^2 structures; best lepton chi2 = 2459 (+-1); best CKM chi2 ~ 1.08e5 (+-1%)": true,
+    "F21 has no Klein subgroup -> no Majorana pattern": true,
+    "PSL: best lepton (Dirac) chi2 = 200 (Z3 x Z7), best Klein-Majorana 692, best CKM 7.7e4 (each +-1%)": false,
+    "Z2-partial: exactly three classes with p > 0.01: Z7 (chi2 2.13), Z3 TM1 (2.54), Z3 TM2 (7.63)": true,
+    "next class after survivors has chi2 = 31.5": true
+   }
   },
-  "lnr": {
-   "M_Maj = [[1,-1,-1],[-1,1,-1],[-1,-1,1]] (LNR)": true,
-   "M_Dir = [[-1,0,0],[0,1,-2],[0,-2,1]] (LNR)": true,
-   "M_nu = +-(1/2)[[0,1,1],[1,-4,5],[1,5,-4]] (LNR)": true,
-   "eigenvalue ratios 1 : -2 : 9": true,
-   "Dm31^2/Dm21^2 = 80/3": true,
-   "beta=-1: M_nu exactly tri-bimaximal for every alpha (off-diagonal of U_TB^T M U_TB vanish)": true,
-   "|m3/m1| = 9 for every alpha": true,
-   "masses proportional to (1/(a-1), -1/(2a+1), 9/(a-1)) with one common factor": true,
-   "TBM criteria 1,2 hold identically; criterion 3 fixes beta = -1 (LNR)": true,
-   "alpha windows = (-1.15,-0.95) and (-0.22,-0.15) to 0.01 (LNR)": true,
-   "theta13 = 2.8 deg (+-0.05) with lambda_e = sqrt(me/mmu), pole masses": true,
-   "theta12 = 32.4 deg (+-0.05) with the same haze": true,
-   "LNR's displayed U_MNSP (1,1) entry sqrt(2/3)(1+lam/2) fixes the haze sign (no free choice)": true,
-   "LNR+haze sin^2 th13 = 0.00242 and pull -34.1 (3sigma/3 convention)": true,
-   "r: 26.67 vs 33.83+-0.92, pull -7.8": true,
-   "s12^2 = 0.288 (pull -1.8); s23^2 = 0.499 (pull -1.4, or -4.1 with 1 sigma)": true,
-   "M_nu invariant under TBM Klein pair S and (-)mu-tau": true,
-   "only the identity of the seed's PSL(2,7) leaves LNR's M_nu invariant; S and mu-tau not in PSL": true
-  },
-  "yukawa": {
-   "F21 Dirac coupling table equals the report's table": true,
-   "PSL 6, 7, 8 built as homomorphisms with irreducible characters (norm 1)": true,
-   "PSL: L=R=3 couples to H=1 and H=8 only (1 each); L=3,R=3b to H=3b and H=6 only": true,
-   "Majorana N=3: F21 allows Phi = 3 and 3b only (one each); PSL only Phi = 6; no singlet mass": true,
-   "F21 L=R=3, H=3: M = [[0,0,h3],[h1,0,0],[0,h2,0]]; H=3b: M = [[0,h1,0],[0,0,h2],[h3,0,0]]": true,
-   "F21 L=R=3, H=1': M ~ diag(1, w, w^2) or diag(1, w^2, w): equal |masses|": true,
-   "Schur: L=R=3, H=1 -> one coupling, three equal singular values (F21 and PSL)": true,
-   "commutant of the triplet is 1-dimensional for F21 and PSL": true,
-   "1+1'+1'' vevs together give three distinct masses (generic)": true,
-   "F21: (1,1,1) fixed by Z3; (0,0,1) fixed by no non-trivial element but its ray by Z7; (-1,1,1), (0,1,-1) by nothing even up to phase": true,
-   "F21 Z7 forces M_Maj = 0 on the 3; Z3 leaves a degenerate pair; F21 has no Z2 (odd order)": true
-  },
-  "residual": {
-   "subgroup counts: F21 Z7 x1, Z3 x7; PSL Z7 x8, Z3 x28, Z4 x21, V4 x14, Z2 x21": true,
-   "F21: 3 |U|^2 structures; best lepton chi2 = 2459 (+-1); best CKM chi2 ~ 1.08e5 (+-1%)": true,
-   "F21 has no Klein subgroup -> no Majorana pattern": true,
-   "PSL: best lepton (Dirac) chi2 = 200 (Z3 x Z7), best Klein-Majorana 692, best CKM 7.7e4 (each +-1%)": false,
-   "Z2-partial: exactly three classes with p > 0.01: Z7 (chi2 2.13), Z3 TM1 (2.54), Z3 TM2 (7.63)": true,
-   "next class after survivors has chi2 = 31.5": true
+  "second_pass": {
+   "exact_invariants": {
+    "monomial F21 irreps satisfy D^7 = C^3 = 1, C^-1 D C = D^4": true,
+    "F21 (monomial, exact): 3x3 = (3+3b)_s + 3b_a ; 3x3b = 1+1'+1''+3+3b ; 3b x 3b = (3+3b)_s + 3_a": true,
+    "F21 (monomial): 1'x1' = 1'' (sym), 1'x1'' = 1, 1'x3 = 3, 1'x3b = 3b": true,
+    "Dirac coupling table (exact monomial count) = report's table": true,
+    "Majorana N=3 (exact): only Phi = 3 and 3b (one each), no singlet": true,
+    "closed forms: H=3 -> [[0,0,h3],[h1,0,0],[0,h2,0]]; H=3b -> [[0,h1,0],[0,0,h2],[h3,0,0]]; H=1' -> diag(1,w^a,w^2a)": true,
+    "F21 invariants of 3 x 3 x 3b x 3b = 5 (exact monomial count)": true,
+    "F21 invariants of Sym^2(3) x Sym^2(3b) = 2": true,
+    "the 5 exact F21 invariants are exactly LNR's five M_Dir structures (I3 diagonal; gamma1,2 on {(1,2),(2,3),(3,1)}; beta1,2 on {(1,3),(2,1),(3,2)})": true,
+    "Sym^2 invariants = diag(u_i^2) and (u_i u_j)_{i!=j}: LNR's M_Maj = diag + alpha offdiag": true,
+    "exact: Z7 = <D> admits no nonzero symmetric Majorana matrix on the 3; each of the 7 Z3 leaves 2 parameters and a degenerate pair": true
+   },
+   "lnr_closed": {
+    "M_nu(alpha=beta=-1) = (1/2)[[0,1,1],[1,-4,5],[1,5,-4]] (LNR display, overall sign included)": true,
+    "beta=-1: TBM vectors are exact eigenvectors for all alpha, eigenvalues 1/(a-1), -1/(2a+1), 9/(a-1)": true,
+    "r(alpha) = 80 (2 alpha+1)^2 / (-3 alpha (alpha+2)) and r(-1) = 80/3": true,
+    "alpha windows (-1.1435, -0.9462), (-0.2202, -0.1537): within 0.01 of LNR's (-1.15,-0.95), (-0.22,-0.15)": true,
+    "alpha refit to r = 33.83: -1.0621 and -0.1787": true,
+    "sign fixed by LNR: U_-1^T U_TB reproduces LNR's displayed U_MNSP to linear order in lambda (all 9 entries)": true,
+    "the opposite rotation sign does NOT reproduce LNR's displayed matrix": true,
+    "theta13 = 2.819 deg, theta12 = 32.44 deg (pole masses, LNR sign); MS-bar theta13 = 2.792 deg; opposite sign theta12 = 38.09": true,
+    "pulls: s13sq -34.1, r -7.8, s12sq -1.8, s23sq -1.4 (3sigma/3) / -4.1 (1sigma)": true,
+    "LNR-exact class (no haze, r fitted) chi2 = 1472.0 with theta13 pull -38.3": true
+   },
+   "minreal_verify": {
+    "real (alpha, beta): class A (phi5=Z3, phi1=P) has N_eff = 6 (dof 1) and fits with p > 0.01": true,
+    "real (alpha, beta): class B (phi5=P, phi1=Z3) has N_eff = 6 (dof 1) and fits with p > 0.01": true,
+    "real (alpha, beta): class C (phi5=P, phi1=P) has dof >= 1 and fits with p > 0.01": true,
+    "complex (alpha, beta) (the original's convention): classes A, B, C have dof = 0 (accommodate only)": true,
+    "first-pass minima (A/real 0.395, B/real 0.444, from cc_minreal_detail) reached or improved (chi2 <= first pass + 0.05)": true
+   }
   }
+ },
+ "checks_passed": "92/93",
+ "failed_checks_explained": {
+  "first_pass/residual: PSL best lepton chi2 = 200": "cross-check gets 162.1. Diagnosis (original code, data_targets.pull_delta and e4_fits.lepton_pulls): delta is wrapped into [bf-180, bf+180) = [-3, 357) deg before the one-sided pull, so delta = 0 = 360 deg (inside NuFIT's 3sigma range 96..422) gets pull -6.56 instead of +2.24. Reproducing that wrap gives 200.05. Verdict unchanged (excluded either way)."
  },
  "groups": {
   "orders": {
@@ -289,7 +340,101 @@
    "distinct": 5,
    "symmetric": 2
   },
-  "A8_max_dev": 4.440892098500626e-16
+  "A8_max_dev": 4.440892098500626e-16,
+  "F21_kron_monomial": {
+   "1 x 1": {
+    "sym": {
+     "1": 1
+    },
+    "antisym": {}
+   },
+   "1 x 1'": {
+    "1'": 1
+   },
+   "1 x 1''": {
+    "1''": 1
+   },
+   "1 x 3": {
+    "3": 1
+   },
+   "1 x 3b": {
+    "3b": 1
+   },
+   "1' x 1'": {
+    "sym": {
+     "1''": 1
+    },
+    "antisym": {}
+   },
+   "1' x 1''": {
+    "1": 1
+   },
+   "1' x 3": {
+    "3": 1
+   },
+   "1' x 3b": {
+    "3b": 1
+   },
+   "1'' x 1''": {
+    "sym": {
+     "1'": 1
+    },
+    "antisym": {}
+   },
+   "1'' x 3": {
+    "3": 1
+   },
+   "1'' x 3b": {
+    "3b": 1
+   },
+   "3 x 3": {
+    "sym": {
+     "3": 1,
+     "3b": 1
+    },
+    "antisym": {
+     "3b": 1
+    }
+   },
+   "3 x 3b": {
+    "1": 1,
+    "1'": 1,
+    "1''": 1,
+    "3": 1,
+    "3b": 1
+   },
+   "3b x 3b": {
+    "sym": {
+     "3": 1,
+     "3b": 1
+    },
+    "antisym": {
+     "3": 1
+    }
+   }
+  },
+  "LNR_Mdir_structure_match": {
+   "c0 (I3)": [
+    0,
+    "1"
+   ],
+   "gamma1": [
+    1,
+    "1"
+   ],
+   "gamma2": [
+    2,
+    "1"
+   ],
+   "beta1": [
+    3,
+    "1"
+   ],
+   "beta2": [
+    4,
+    "1"
+   ]
+  }
  },
  "lnr": {
   "eigenvalues": [
@@ -303,7 +448,7 @@
    "-1/(2*alpha + 1)",
    "9/(alpha - 1)"
   ],
-  "alpha_windows": [
+  "alpha_windows_grid": [
    [
     -1.1435,
     -0.9462
@@ -313,57 +458,104 @@
     -0.1537
    ]
   ],
-  "alpha_refit": [
-   -1.0620942749912388,
-   -0.17870395117283167
+  "alpha_windows_exact": [
+   [
+    -1.143509649015901,
+    -0.9462173107327376
+   ],
+   [
+    -0.22023228551628563,
+    -0.15365705425666665
+   ]
+  ],
+  "alpha_refit_exact": [
+   -1.0620942749912483,
+   -0.1787039511728316
   ],
   "haze": {
-   "pole_sign+1": {
+   "pole/LNR": {
     "lam": 0.0695437394192857,
-    "th13": 2.8186481202532123,
-    "th12": 32.44232462799684,
-    "s12sq": 0.287778985780528,
-    "s13sq": 0.002418165846208756,
-    "s23sq": 0.4987879862265838
+    "th13": 2.818648120253212,
+    "th12": 32.44232462799685,
+    "s13sq": 0.0024181658462087557,
+    "s12sq": 0.2877789857805281,
+    "s23sq": 0.4987879862265836
    },
-   "pole_sign-1": {
+   "pole/opposite": {
     "lam": 0.0695437394192857,
-    "th13": 2.8186481202532123,
+    "th13": 2.818648120253212,
     "th12": 38.08645473751247,
-    "s12sq": 0.3805036992506939,
-    "s13sq": 0.002418165846208756,
-    "s23sq": 0.4987879862265838
+    "s13sq": 0.0024181658462087557,
+    "s12sq": 0.38050369925069377,
+    "s23sq": 0.4987879862265836
    },
-   "pole_LNR_sign_is_plus": true,
-   "MSbar_MZ_sign+1": {
+   "pole/LNR/angle=lambda": {
+    "th13": 2.8163748514510365,
+    "th12": 32.444606167514195
+   },
+   "MSbar_MZ/LNR": {
     "lam": 0.06889753457863275,
     "th13": 2.7924362083504497,
-    "th12": 32.468631095052224,
-    "s12sq": 0.28819480084569005,
+    "th12": 32.46863109505222,
     "s13sq": 0.002373435135506948,
+    "s12sq": 0.28819480084568994,
     "s23sq": 0.49881045913416044
    },
-   "MSbar_MZ_sign-1": {
+   "MSbar_MZ/opposite": {
     "lam": 0.06889753457863275,
     "th13": 2.7924362083504497,
     "th12": 38.06014827045709,
-    "s12sq": 0.3800579203087628,
     "s13sq": 0.002373435135506948,
+    "s12sq": 0.3800579203087628,
     "s23sq": 0.49881045913416044
    },
-   "MSbar_MZ_LNR_sign_is_plus": true
+   "MSbar_MZ/LNR/angle=lambda": {
+    "th13": 2.790225762197065,
+    "th12": 32.47084943415166
+   }
   },
   "pulls": {
+   "s12sq": -1.8019700830754941,
    "s13sq": -34.06715259382195,
-   "s12sq": -1.8019700830754994,
-   "s23sq": -1.424702605498081,
-   "s23sq_1sigma": -4.147467584894415,
-   "r": -7.82146202780792
+   "s23sq": -1.424702605498086,
+   "r": -7.82146202780792,
+   "s23sq_1sigma(-0.015)": -4.1474675848944305
   },
+  "LNR_exact_no_haze_chi2": 1472.00580339096,
   "Mnu_stabilizer_in_PSL": 1
  },
  "yukawa": {
-  "F21_dirac_table": {
+  "F21_dirac_table_characters": {
+   "3,3": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "3,3b": [
+    0,
+    0,
+    0,
+    1,
+    2
+   ],
+   "3,1+1'+1''": [
+    0,
+    0,
+    0,
+    3,
+    0
+   ],
+   "1+1'+1'',1+1'+1''": [
+    3,
+    3,
+    3,
+    0,
+    0
+   ]
+  },
+  "F21_dirac_table_monomial": {
    "3,3": [
     1,
     1,
@@ -427,6 +619,72 @@
     "7": 0,
     "8": 0
    }
+  },
+  "stabilisers": {
+   "F21/3/Z3 (1,1,1)": [
+    3,
+    3
+   ],
+   "F21/3/Z7 (0,0,1)": [
+    1,
+    7
+   ],
+   "F21/3/LNR (-1,1,1)": [
+    1,
+    1
+   ],
+   "F21/3/(0,1,-1)": [
+    1,
+    1
+   ],
+   "F21/3b/Z3 (1,1,1)": [
+    3,
+    3
+   ],
+   "F21/3b/Z7 (0,0,1)": [
+    1,
+    7
+   ],
+   "F21/3b/LNR (-1,1,1)": [
+    1,
+    1
+   ],
+   "F21/3b/(0,1,-1)": [
+    1,
+    1
+   ],
+   "PSL/3/Z3 (1,1,1)": [
+    3,
+    6
+   ],
+   "PSL/3/Z7 (0,0,1)": [
+    1,
+    7
+   ],
+   "PSL/3/LNR (-1,1,1)": [
+    1,
+    1
+   ],
+   "PSL/3/(0,1,-1)": [
+    1,
+    1
+   ],
+   "PSL/3b/Z3 (1,1,1)": [
+    3,
+    6
+   ],
+   "PSL/3b/Z7 (0,0,1)": [
+    1,
+    7
+   ],
+   "PSL/3b/LNR (-1,1,1)": [
+    1,
+    1
+   ],
+   "PSL/3b/(0,1,-1)": [
+    1,
+    1
+   ]
   }
  },
  "residual": {
@@ -528,7 +786,7 @@
     "chi2": 993.4141945786425,
     "p": 0.0,
     "n_members": 2,
-    "best": {
+    "info": {
      "s12sq": 1.89060370173187e-31,
      "s13sq": 0.021949999975348886,
      "s23sq": 1.222847617765779e-31,
@@ -552,7 +810,7 @@
     "chi2": 362.79650868399705,
     "p": 0.0,
     "n_members": 2,
-    "best": {
+    "info": {
      "s12sq": 0.4886098108080146,
      "s13sq": 0.02227299121632008,
      "s23sq": 0.022780378383970738,
@@ -576,7 +834,7 @@
     "chi2": 31.53010397794808,
     "p": 1.4233932899010426e-07,
     "n_members": 2,
-    "best": {
+    "info": {
      "s12sq": 0.2556524109654766,
      "s13sq": 0.02210975028215072,
      "s23sq": 0.5831076008271737,
@@ -600,7 +858,7 @@
     "chi2": 362.79650868399636,
     "p": 0.0,
     "n_members": 1,
-    "best": {
+    "info": {
      "s12sq": 0.4886098108810694,
      "s13sq": 0.022272991076646032,
      "s23sq": 0.022780378237860725,
@@ -624,7 +882,7 @@
     "chi2": 133.72747602292566,
     "p": 0.0,
     "n_members": 1,
-    "best": {
+    "info": {
      "s12sq": 0.183782721699984,
      "s13sq": 0.021647794270128144,
      "s23sq": 0.5568284375955038,
@@ -648,7 +906,7 @@
     "chi2": 2.5406868204853508,
     "p": 0.28073519788041845,
     "n_members": 2,
-    "best": {
+    "info": {
      "s12sq": 0.31835757681724197,
      "s13sq": 0.021970106329599573,
      "s23sq": 0.5529782613198442,
@@ -672,7 +930,7 @@
     "chi2": 7.628006936263352,
     "p": 0.02205968668459879,
     "n_members": 2,
-    "best": {
+    "info": {
      "s12sq": 0.34080482589657035,
      "s13sq": 0.021923083229767586,
      "s23sq": 0.561785531225251,
@@ -696,7 +954,7 @@
     "chi2": 993.4141945786425,
     "p": 0.0,
     "n_members": 1,
-    "best": {
+    "info": {
      "s12sq": 8.973852593547287e-33,
      "s13sq": 0.02195000005314508,
      "s23sq": 2.0701873805700728e-32,
@@ -720,7 +978,7 @@
     "chi2": 362.79650868399557,
     "p": 0.0,
     "n_members": 2,
-    "best": {
+    "info": {
      "s12sq": 0.48860981080750976,
      "s13sq": 0.022272991217284103,
      "s23sq": 0.022780378384979212,
@@ -744,7 +1002,7 @@
     "chi2": 35.52288581722726,
     "p": 1.9333182610381527e-08,
     "n_members": 1,
-    "best": {
+    "info": {
      "s12sq": 0.2783359884433517,
      "s13sq": 0.02209490485632034,
      "s23sq": 0.3498858106014109,
@@ -768,7 +1026,7 @@
     "chi2": 31.53010397794792,
     "p": 1.4233932899010426e-07,
     "n_members": 2,
-    "best": {
+    "info": {
      "s12sq": 0.2556524109576314,
      "s13sq": 0.02210975025214146,
      "s23sq": 0.5831076010942694,
@@ -792,7 +1050,7 @@
     "chi2": 2.1327660801335195,
     "p": 0.3442514118776969,
     "n_members": 1,
-    "best": {
+    "info": {
      "s12sq": 0.321091125273802,
      "s13sq": 0.021970895474555004,
      "s23sq": 0.5552668928195374,
@@ -806,7 +1064,42 @@
      ]
     }
    }
-  ]
+  ],
+  "z2_generated_group_orders": {
+   "Z3": {
+    "(np.float64(0.0), np.float64(0.5), np.float64(0.5))": [
+     6
+    ],
+    "(np.float64(0.0348), np.float64(0.1667), np.float64(0.7985))": [
+     168
+    ],
+    "(np.float64(0.3333), np.float64(0.3333), np.float64(0.3333))": [
+     12
+    ],
+    "(np.float64(0.1667), np.float64(0.1667), np.float64(0.6667))": [
+     24
+    ]
+   },
+   "Z4": {
+    "(np.float64(0.25), np.float64(0.25), np.float64(0.5))": [
+     24
+    ],
+    "(np.float64(0.0443), np.float64(0.25), np.float64(0.7057))": [
+     168
+    ],
+    "(np.float64(0.0), np.float64(0.0), np.float64(1.0))": [
+     4
+    ],
+    "(np.float64(0.0), np.float64(0.5), np.float64(0.5))": [
+     8
+    ]
+   },
+   "Z7": {
+    "(np.float64(0.1315), np.float64(0.2045), np.float64(0.664))": [
+     168
+    ]
+   }
+  }
  },
  "texture": {
   "summary_cc": {
@@ -832,1952 +1125,2126 @@
    }
   },
   "n_compared": 161,
-  "n_disagree": 1,
-  "disagreements": [
-   [
-    "('lepton', 'min', 'G', 'P', 'P')",
-    "excluded",
-    "excluded",
-    "7",
-    "7",
-    "72.4895369624926",
-    "76.30985806378914"
-   ]
-  ],
+  "n_disagree": 0,
+  "disagreements": [],
   "per_class": [
    {
     "cls": "lepton|min|Z3|Z3|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 4,
     "cc_neff": 1,
-    "orig_npar": 4,
-    "cc_npar": 4,
     "orig_chi2": 5783.668976849634,
     "cc_chi2": 7223.1696911203,
     "agree": true
    },
    {
     "cls": "lepton|min|Z3|Z3|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 5,
     "cc_neff": 5,
-    "orig_npar": 6,
-    "cc_npar": 6,
     "orig_chi2": 3664.7694577025054,
     "cc_chi2": 3664.7694577025504,
     "agree": true
    },
    {
     "cls": "lepton|min|Z3|Z3|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 4,
-    "cc_npar": 4,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z3|Z3|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 5,
     "cc_neff": 5,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 3664.7694577025054,
     "cc_chi2": 3666.236497798552,
     "agree": true
    },
    {
     "cls": "lepton|min|P|Z3|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 5,
     "cc_neff": 5,
-    "orig_npar": 6,
-    "cc_npar": 6,
     "orig_chi2": 5835.248216998746,
     "cc_chi2": 3668.3527540146933,
     "agree": true
    },
    {
     "cls": "lepton|min|P|Z3|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 5,
     "cc_neff": 5,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 3664.928922746153,
     "cc_chi2": 4142.659073670792,
     "agree": true
    },
    {
     "cls": "lepton|min|P|Z3|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 6,
-    "cc_npar": 6,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|P|Z3|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 5,
     "cc_neff": 5,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 14387.458500062105,
     "cc_chi2": 4834.152959199305,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|Z3|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 4,
-    "cc_npar": 4,
     "orig_chi2": 2000400.7505595165,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|Z3|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 6,
-    "cc_npar": 6,
     "orig_chi2": 2000400.7505595167,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|Z3|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 4,
-    "cc_npar": 4,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|Z3|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 2000180.9184626257,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|G|Z3|Z3",
-    "orig_verdict": "excluded",
-    "cc_verdict": "excluded",
+    "orig": "excluded",
+    "cc": "excluded",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 72.48953709907593,
     "cc_chi2": 72.5698669780704,
     "agree": true
    },
    {
     "cls": "lepton|min|G|Z3|P",
-    "orig_verdict": "excluded",
-    "cc_verdict": "excluded",
+    "orig": "excluded",
+    "cc": "excluded",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 72.48953697451617,
     "cc_chi2": 72.48953806600257,
     "agree": true
    },
    {
     "cls": "lepton|min|G|Z3|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|G|Z3|G",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 12,
-    "cc_npar": 12,
     "orig_chi2": 4.956811217052332e-25,
     "cc_chi2": 4.853607228904194e-25,
     "agree": true
    },
    {
     "cls": "lepton|min|Z3|P|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 4,
     "cc_neff": 0,
-    "orig_npar": 6,
-    "cc_npar": 6,
     "orig_chi2": 5744.77589078388,
     "cc_chi2": 1191519041685.9924,
     "agree": true
    },
    {
     "cls": "lepton|min|Z3|P|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 5,
     "cc_neff": 5,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 3664.7694577025118,
     "cc_chi2": 4269.167187289942,
     "agree": true
    },
    {
     "cls": "lepton|min|Z3|P|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 6,
-    "cc_npar": 6,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z3|P|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 5,
     "cc_neff": 5,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 3664.769457702508,
     "cc_chi2": 4410.813164869002,
     "agree": true
    },
    {
     "cls": "lepton|min|P|P|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 5,
     "cc_neff": 5,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 4441.156986633952,
     "cc_chi2": 22165.164721375957,
     "agree": true
    },
    {
     "cls": "lepton|min|P|P|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 5,
     "cc_neff": 4,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 3667.980127958204,
     "cc_chi2": 4477.849462233322,
     "agree": true
    },
    {
     "cls": "lepton|min|P|P|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|P|P|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 5,
     "cc_neff": 5,
-    "orig_npar": 12,
-    "cc_npar": 12,
     "orig_chi2": 1004062.2808217097,
     "cc_chi2": 5133.997494559723,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|P|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 6,
-    "cc_npar": 6,
     "orig_chi2": 2000400.7505595167,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|P|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 2000400.7505595165,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|P|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 6,
-    "cc_npar": 6,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|P|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 2000180.9184626257,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|G|P|Z3",
-    "orig_verdict": "excluded",
-    "cc_verdict": "excluded",
+    "orig": "excluded",
+    "cc": "excluded",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 72.48956844489157,
     "cc_chi2": 72.50493183845794,
     "agree": true
    },
    {
     "cls": "lepton|min|G|P|P",
-    "orig_verdict": "excluded",
-    "cc_verdict": "excluded",
+    "orig": "excluded",
+    "cc": "excluded",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 12,
-    "cc_npar": 12,
     "orig_chi2": 72.4895369624926,
     "cc_chi2": 76.30985806378914,
-    "agree": false
+    "agree": true
    },
    {
     "cls": "lepton|min|G|P|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|G|P|G",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 14,
-    "cc_npar": 14,
     "orig_chi2": 5.27551558626465e-26,
     "cc_chi2": 7.560092206440415e-08,
     "agree": true
    },
    {
     "cls": "lepton|min|Z3|Z7|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 4,
-    "cc_npar": 4,
     "orig_chi2": 2002092.9172164183,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z3|Z7|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 6,
-    "cc_npar": 6,
     "orig_chi2": 2000000.000000001,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z3|Z7|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 4,
-    "cc_npar": 4,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z3|Z7|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 2000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|P|Z7|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 6,
-    "cc_npar": 6,
     "orig_chi2": 2000000.0000000007,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|P|Z7|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 2000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|P|Z7|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 6,
-    "cc_npar": 6,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|P|Z7|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 2000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|Z7|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 4,
-    "cc_npar": 4,
     "orig_chi2": 2000400.7505595167,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|Z7|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 6,
-    "cc_npar": 6,
     "orig_chi2": 2000400.7505595167,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|Z7|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 4,
-    "cc_npar": 4,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|Z7|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 2000180.9184626255,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|G|Z7|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 2000000.000000001,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|G|Z7|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 2000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|G|Z7|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|G|Z7|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 12,
-    "cc_npar": 12,
     "orig_chi2": 2000000.0000000014,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z3|G|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 5,
     "cc_neff": 2,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 2073.057373996689,
     "cc_chi2": 1191519038021.223,
     "agree": true
    },
    {
     "cls": "lepton|min|Z3|G|P",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 1.0434665339020613e-26,
     "cc_chi2": 3.3801557052656045e-26,
     "agree": true
    },
    {
     "cls": "lepton|min|Z3|G|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z3|G|G",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 12,
-    "cc_npar": 12,
     "orig_chi2": 3.262499953449649e-26,
     "cc_chi2": 3.420271728815508e-23,
     "agree": true
    },
    {
     "cls": "lepton|min|P|G|Z3",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 2.919377683764484e-26,
     "cc_chi2": 7.451656322048868e-15,
     "agree": true
    },
    {
     "cls": "lepton|min|P|G|P",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 12,
-    "cc_npar": 12,
     "orig_chi2": 4.1575603327578775e-26,
     "cc_chi2": 1.861963371490286e-15,
     "agree": true
    },
    {
     "cls": "lepton|min|P|G|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|P|G|G",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 14,
-    "cc_npar": 14,
     "orig_chi2": 5.799990524556267e-26,
     "cc_chi2": 4.272677885358843e-24,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|G|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 2000400.7505595165,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|G|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 2000400.7505595165,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|G|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|Z7|G|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 12,
-    "cc_npar": 12,
     "orig_chi2": 2000180.9184626257,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|G|G|Z3",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 12,
-    "cc_npar": 12,
     "orig_chi2": 1.6793903672643577e-25,
     "cc_chi2": 2.9336505369575546e-24,
     "agree": true
    },
    {
     "cls": "lepton|min|G|G|P",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 14,
-    "cc_npar": 14,
     "orig_chi2": 2.5756502832686613e-26,
     "cc_chi2": 3.4240074621404863e-19,
     "agree": true
    },
    {
     "cls": "lepton|min|G|G|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 12,
-    "cc_npar": 12,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|min|G|G|G",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 16,
-    "cc_npar": 16,
     "orig_chi2": 5.840866445235137e-27,
     "cc_chi2": 1.686213242231151e-23,
     "agree": true
    },
    {
     "cls": "quark|min|Z3|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 0,
     "cc_neff": 0,
-    "orig_npar": 0,
-    "cc_npar": 0,
     "orig_chi2": 3080339.2364430386,
     "cc_chi2": 1.934477796837577e+16,
     "agree": true
    },
    {
     "cls": "quark|min|Z3|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 2,
-    "cc_npar": 2,
     "orig_chi2": 2883827.835678375,
     "cc_chi2": 1.934477796837577e+16,
     "agree": true
    },
    {
     "cls": "quark|min|Z3|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 0,
     "cc_neff": 0,
-    "orig_npar": 0,
-    "cc_npar": 0,
     "orig_chi2": 5078045.857243744,
     "cc_chi2": 8000000.0,
     "agree": true
    },
    {
     "cls": "quark|min|Z3|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 4,
-    "cc_npar": 4,
     "orig_chi2": 2881534.45647908,
     "cc_chi2": 1.1080328845199016e+16,
     "agree": true
    },
    {
     "cls": "quark|min|P|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 2,
-    "cc_npar": 2,
     "orig_chi2": 2878406.348075069,
     "cc_chi2": 1.1080328845201228e+16,
     "agree": true
    },
    {
     "cls": "quark|min|P|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 4,
-    "cc_npar": 4,
     "orig_chi2": 2878406.348075069,
     "cc_chi2": 1.1080328845201228e+16,
     "agree": true
    },
    {
     "cls": "quark|min|P|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 2,
-    "cc_npar": 2,
     "orig_chi2": 4876112.968875774,
     "cc_chi2": 8000000.0,
     "agree": true
    },
    {
     "cls": "quark|min|P|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 6,
-    "cc_npar": 6,
     "orig_chi2": 2876475.75481744,
     "cc_chi2": 1.1080328845198934e+16,
     "agree": true
    },
    {
     "cls": "quark|min|Z7|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 0,
     "cc_neff": 0,
-    "orig_npar": 0,
-    "cc_npar": 0,
     "orig_chi2": 7073610.88125998,
     "cc_chi2": 8000000.0,
     "agree": true
    },
    {
     "cls": "quark|min|Z7|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 2,
-    "cc_npar": 2,
     "orig_chi2": 7073610.88125998,
     "cc_chi2": 8000000.0,
     "agree": true
    },
    {
     "cls": "quark|min|Z7|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 0,
     "cc_neff": 0,
-    "orig_npar": 0,
-    "cc_npar": 0,
     "orig_chi2": 7073610.88125998,
     "cc_chi2": 8000000.0,
     "agree": true
    },
    {
     "cls": "quark|min|Z7|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 4,
-    "cc_npar": 4,
     "orig_chi2": 7073610.88125998,
     "cc_chi2": 8000000.0,
     "agree": true
    },
    {
     "cls": "quark|min|G|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 4,
-    "cc_npar": 4,
     "orig_chi2": 3073722.2627542787,
     "cc_chi2": 1.934477796836915e+16,
     "agree": true
    },
    {
     "cls": "quark|min|G|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 6,
-    "cc_npar": 6,
     "orig_chi2": 3073722.2627542787,
     "cc_chi2": 1.934477796836915e+16,
     "agree": true
    },
    {
     "cls": "quark|min|G|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 4,
-    "cc_npar": 4,
     "orig_chi2": 4871677.99289201,
     "cc_chi2": 8000000.0,
     "agree": true
    },
    {
     "cls": "quark|min|G|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 8,
-    "cc_npar": 8,
     "orig_chi2": 2871677.9928920106,
     "cc_chi2": 1.108032884519993e+16,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|Z3|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 3,
     "cc_neff": 2,
-    "orig_npar": 18,
-    "cc_npar": 18,
     "orig_chi2": 3876.327168654208,
-    "cc_chi2": 3580.499504647859,
+    "cc_chi2": 633509.0646160826,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|Z3|P",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 20,
-    "cc_npar": 20,
     "orig_chi2": 2.3281420065125315e-19,
-    "cc_chi2": 1.0668082308686587e-21,
+    "cc_chi2": 1.7260480145195116e-24,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|Z3|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 18,
-    "cc_npar": 18,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|Z3|G",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 1.7390178953667384e-17,
-    "cc_chi2": 2.1612120303119033e-13,
+    "cc_chi2": 5.30728177340069e-24,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|Z3|Z3",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 20,
-    "cc_npar": 20,
     "orig_chi2": 3.182594527954074e-19,
-    "cc_chi2": 7.648826334459048e-23,
+    "cc_chi2": 7.788255918323166e-24,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|Z3|P",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 1.4755034630822005e-20,
-    "cc_chi2": 3.606184961279922e-23,
+    "cc_chi2": 2.6747623085126247e-21,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|Z3|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 20,
-    "cc_npar": 20,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|Z3|G",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 24,
-    "cc_npar": 24,
     "orig_chi2": 5.219829109701812e-19,
-    "cc_chi2": 8.2390865636772815e-22,
+    "cc_chi2": 1.6281722800302285e-23,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|Z3|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 18,
-    "cc_npar": 18,
     "orig_chi2": 8432.087688825679,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|Z3|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 20,
-    "cc_npar": 20,
     "orig_chi2": 9227.479608387612,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|Z3|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 18,
-    "cc_npar": 18,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|Z3|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 10039.5405688903,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|Z3|Z3",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 2.859011585737175e-20,
-    "cc_chi2": 4.879941805065769e-25,
+    "cc_chi2": 4.761423457245154e-24,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|Z3|P",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 24,
-    "cc_npar": 24,
     "orig_chi2": 2.7704275505217143e-21,
-    "cc_chi2": 1.6161465770007759e-24,
+    "cc_chi2": 3.6654358227775166e-26,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|Z3|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|Z3|G",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 26,
-    "cc_npar": 26,
     "orig_chi2": 4.754781439424068e-19,
-    "cc_chi2": 3.9470838155766456e-20,
+    "cc_chi2": 6.5898535654159445e-24,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|P|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
-    "cc_neff": 1,
-    "orig_npar": 20,
-    "cc_npar": 20,
+    "cc_neff": 2,
     "orig_chi2": 2631.9309745249147,
-    "cc_chi2": 26190.20568409239,
+    "cc_chi2": 4691.854037388625,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|P|P",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 5.500216960725095e-20,
-    "cc_chi2": 9.856492472268575e-19,
+    "cc_chi2": 2.3733221785642094e-17,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|P|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 20,
-    "cc_npar": 20,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|P|G",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 24,
-    "cc_npar": 24,
     "orig_chi2": 5.0094641840314114e-20,
-    "cc_chi2": 6.653833923478904e-24,
+    "cc_chi2": 7.153047578977991e-23,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|P|Z3",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 1.113082175715745e-19,
-    "cc_chi2": 9.923010956953923e-25,
+    "cc_chi2": 2.7955942838976995e-22,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|P|P",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 24,
-    "cc_npar": 24,
     "orig_chi2": 2.4207009540578364e-18,
-    "cc_chi2": 8.591844456940913e-17,
+    "cc_chi2": 1.86964658824871e-13,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|P|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|P|G",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 26,
-    "cc_npar": 26,
     "orig_chi2": 8.436522198687409e-19,
-    "cc_chi2": 1.1445538644814083e-18,
+    "cc_chi2": 8.192814398752407e-14,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|P|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 20,
-    "cc_npar": 20,
     "orig_chi2": 9361.047805510681,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|P|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 9542.509681215299,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|P|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 20,
-    "cc_npar": 20,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|P|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 24,
-    "cc_npar": 24,
     "orig_chi2": 10526.048928420478,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|P|Z3",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 24,
-    "cc_npar": 24,
     "orig_chi2": 3.322652213855464e-20,
-    "cc_chi2": 1.4612494737987022e-24,
+    "cc_chi2": 2.682458892163634e-25,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|P|P",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 26,
-    "cc_npar": 26,
     "orig_chi2": 1.2125477075938364e-20,
-    "cc_chi2": 3.645908538906022e-25,
+    "cc_chi2": 4.932769000925985e-24,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|P|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 24,
-    "cc_npar": 24,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|P|G",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 28,
-    "cc_npar": 28,
     "orig_chi2": 1.982581546640096e-21,
-    "cc_chi2": 8.186661441761438e-17,
+    "cc_chi2": 3.460971388230919e-15,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|Z7|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 5,
     "cc_neff": 0,
-    "orig_npar": 18,
-    "cc_npar": 18,
     "orig_chi2": 14193.169721216042,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|Z7|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 20,
-    "cc_npar": 20,
     "orig_chi2": 9448.765523587299,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|Z7|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 18,
-    "cc_npar": 18,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|Z7|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 7872.4629398206,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|Z7|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 20,
-    "cc_npar": 20,
     "orig_chi2": 9283.646429023018,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|Z7|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 8434.986655562578,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|Z7|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 20,
-    "cc_npar": 20,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|Z7|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 24,
-    "cc_npar": 24,
     "orig_chi2": 9012.841066098375,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|Z7|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 18,
-    "cc_npar": 18,
     "orig_chi2": 2000180.9184626257,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|Z7|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 20,
-    "cc_npar": 20,
     "orig_chi2": 2000180.9184626257,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|Z7|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 18,
-    "cc_npar": 18,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|Z7|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 2000180.9184626255,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|Z7|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 5002.198814611756,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|Z7|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 24,
-    "cc_npar": 24,
     "orig_chi2": 5528.862760246009,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|Z7|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|Z7|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 26,
-    "cc_npar": 26,
     "orig_chi2": 8928.073915616495,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|G|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 6,
     "cc_neff": 1,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 1470.4322773877,
-    "cc_chi2": 4735.694094807095,
+    "cc_chi2": 76588.94569983969,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|G|P",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 24,
-    "cc_npar": 24,
     "orig_chi2": 2.2346991045024904e-20,
-    "cc_chi2": 3.752685222490452e-23,
+    "cc_chi2": 6.692674607824843e-16,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|G|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z3|G|G",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 26,
-    "cc_npar": 26,
     "orig_chi2": 2.7532714424154693e-19,
-    "cc_chi2": 2.5384065151488156e-20,
+    "cc_chi2": 9.671010324484883e-21,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|G|Z3",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 24,
-    "cc_npar": 24,
     "orig_chi2": 1.167119703998963e-20,
-    "cc_chi2": 3.7067883730236306e-14,
+    "cc_chi2": 3.3759070317953156e-25,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|G|P",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 26,
-    "cc_npar": 26,
     "orig_chi2": 7.673075335240692e-24,
-    "cc_chi2": 1.0962926848177922e-22,
+    "cc_chi2": 2.40708197370853e-24,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|G|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 24,
-    "cc_npar": 24,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|P|G|G",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 28,
-    "cc_npar": 28,
     "orig_chi2": 7.053515559167638e-20,
-    "cc_chi2": 2.4180386809322083e-24,
+    "cc_chi2": 2.1009577188594985e-20,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|G|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 5403.107106839192,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|G|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 24,
-    "cc_npar": 24,
     "orig_chi2": 5011.4418608302785,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|G|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 22,
-    "cc_npar": 22,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|Z7|G|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 0,
-    "orig_npar": 26,
-    "cc_npar": 26,
     "orig_chi2": 6132.790179859633,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|G|Z3",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 26,
-    "cc_npar": 26,
     "orig_chi2": 4.640455841242663e-25,
-    "cc_chi2": 8.980858297860338e-19,
+    "cc_chi2": 4.5115898627164104e-26,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|G|P",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 28,
-    "cc_npar": 28,
     "orig_chi2": 8.913846680503718e-24,
-    "cc_chi2": 1.3675492456010153e-25,
+    "cc_chi2": 4.867424365146859e-24,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|G|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 26,
-    "cc_npar": 26,
     "orig_chi2": 7000000.0,
     "cc_chi2": 7000000.0,
     "agree": true
    },
    {
     "cls": "lepton|gen|G|G|G",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 30,
-    "cc_npar": 30,
     "orig_chi2": 6.248533022380593e-22,
-    "cc_chi2": 3.5667513576382013e-25,
+    "cc_chi2": 5.920648718274035e-17,
     "agree": true
    },
    {
     "cls": "quark|gen|Z3|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 3,
     "cc_neff": 0,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 273414.2860672128,
     "cc_chi2": 1.1080328844670354e+16,
     "agree": true
    },
    {
     "cls": "quark|gen|Z3|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 7,
     "cc_neff": 7,
-    "orig_npar": 12,
-    "cc_npar": 12,
     "orig_chi2": 119510.32321720099,
     "cc_chi2": 187688.54335139372,
     "agree": true
    },
    {
     "cls": "quark|gen|Z3|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 5,
     "cc_neff": 0,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 168404.3315367235,
     "cc_chi2": 8000000.0,
     "agree": true
    },
    {
     "cls": "quark|gen|Z3|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 6,
     "cc_neff": 7,
-    "orig_npar": 14,
-    "cc_npar": 14,
     "orig_chi2": 86968.52647996813,
     "cc_chi2": 139918.91483131697,
     "agree": true
    },
    {
     "cls": "quark|gen|P|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 5,
     "cc_neff": 4,
-    "orig_npar": 12,
-    "cc_npar": 12,
     "orig_chi2": 89714.35396465535,
     "cc_chi2": 129325.64863586261,
     "agree": true
    },
    {
     "cls": "quark|gen|P|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 4,
     "cc_neff": 7,
-    "orig_npar": 14,
-    "cc_npar": 14,
     "orig_chi2": 54963.32022732211,
     "cc_chi2": 40841.28042502013,
     "agree": true
    },
    {
     "cls": "quark|gen|P|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 6,
     "cc_neff": 0,
-    "orig_npar": 12,
-    "cc_npar": 12,
     "orig_chi2": 151453.0903844867,
     "cc_chi2": 8000000.0,
     "agree": true
    },
    {
     "cls": "quark|gen|P|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 6,
     "cc_neff": 3,
-    "orig_npar": 16,
-    "cc_npar": 16,
     "orig_chi2": 129121.73687369739,
     "cc_chi2": 142185.8210030344,
     "agree": true
    },
    {
     "cls": "quark|gen|Z7|Z3",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 2105544.8087409525,
     "cc_chi2": 8000000.0,
     "agree": true
    },
    {
     "cls": "quark|gen|Z7|P",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 12,
-    "cc_npar": 12,
     "orig_chi2": 2592843.7982099643,
     "cc_chi2": 8000000.0,
     "agree": true
    },
    {
     "cls": "quark|gen|Z7|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 10,
-    "cc_npar": 10,
     "orig_chi2": 7073610.88125998,
     "cc_chi2": 8000000.0,
     "agree": true
    },
    {
     "cls": "quark|gen|Z7|G",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": null,
     "cc_neff": 0,
-    "orig_npar": 14,
-    "cc_npar": 14,
     "orig_chi2": 2014703.9161215068,
     "cc_chi2": 8000000.0,
     "agree": true
    },
    {
     "cls": "quark|gen|G|Z3",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 8,
     "cc_neff": 8,
-    "orig_npar": 14,
-    "cc_npar": 14,
     "orig_chi2": 1.2536825612948743e-19,
     "cc_chi2": 6.396170374629184e-26,
     "agree": true
    },
    {
     "cls": "quark|gen|G|P",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 8,
     "cc_neff": 8,
-    "orig_npar": 16,
-    "cc_npar": 16,
     "orig_chi2": 5.458877433760021e-19,
     "cc_chi2": 3.508641638044122e-25,
     "agree": true
    },
    {
     "cls": "quark|gen|G|Z7",
-    "orig_verdict": "excluded (structural)",
-    "cc_verdict": "excluded (structural)",
+    "orig": "excluded (structural)",
+    "cc": "excluded (structural)",
     "orig_neff": 8,
     "cc_neff": 0,
-    "orig_npar": 14,
-    "cc_npar": 14,
     "orig_chi2": 6246.920454014323,
     "cc_chi2": 8000000.0,
     "agree": true
    },
    {
     "cls": "quark|gen|G|G",
-    "orig_verdict": "accommodates (no prediction)",
-    "cc_verdict": "accommodates (no prediction)",
+    "orig": "accommodates (no prediction)",
+    "cc": "accommodates (no prediction)",
     "orig_neff": 8,
     "cc_neff": 8,
-    "orig_npar": 18,
-    "cc_npar": 18,
     "orig_chi2": 6.078027606922928e-19,
     "cc_chi2": 9.12530109311528e-25,
     "agree": true
    },
    {
     "cls": "lepton|LNR",
-    "orig_verdict": "excluded",
-    "cc_verdict": "excluded",
+    "orig": "excluded",
+    "cc": "excluded",
     "orig_neff": 3,
     "cc_neff": 3,
-    "orig_npar": 5,
-    "cc_npar": 3,
     "orig_chi2": 1472.0058033909597,
     "cc_chi2": 1472.0058033909595,
     "agree": true
    }
   ],
-  "minreal_sensitivity": []
- }
+  "note_first_pass_disagreement": "first pass: lepton|min|G|P|P chi2 76.31 vs original 72.49 (same verdict; the original's minimum is lower, i.e. the first-pass optimiser stopped higher). The 4 classes at 72.49 agree otherwise.",
+  "convention_fix": "second pass refitted all 64 'gen' lepton classes with a consistent (holomorphic) PMNS convention; the first pass mixed conventions (U_e from M_e M_e^dagger, U_nu conjugated)",
+  "relabelled_after_rank_scan": {
+   "n": 26,
+   "names": [
+    "lepton|min|phi10=G|phi5=Z3|phi1=Z3",
+    "quark|min|phi10=G|phi5=Z3",
+    "quark|min|phi10=G|phi5=P",
+    "quark|min|phi10=G|phi5=G",
+    "lepton|gen|phi10=Z3|phi5=Z3|phi1=Z3",
+    "lepton|gen|phi10=Z3|phi5=Z7|phi1=Z3",
+    "lepton|gen|phi10=Z3|phi5=Z7|phi1=P",
+    "lepton|gen|phi10=Z3|phi5=Z7|phi1=G",
+    "lepton|gen|phi10=P|phi5=Z3|phi1=Z3",
+    "lepton|gen|phi10=P|phi5=Z7|phi1=Z3",
+    "lepton|gen|phi10=P|phi5=Z7|phi1=P",
+    "lepton|gen|phi10=P|phi5=Z7|phi1=G",
+    "lepton|gen|phi10=Z7|phi5=Z3|phi1=Z3",
+    "lepton|gen|phi10=Z7|phi5=Z3|phi1=P",
+    "lepton|gen|phi10=Z7|phi5=Z3|phi1=G",
+    "lepton|gen|phi10=Z7|phi5=P|phi1=Z3",
+    "lepton|gen|phi10=Z7|phi5=P|phi1=P",
+    "lepton|gen|phi10=Z7|phi5=P|phi1=G",
+    "lepton|gen|phi10=Z7|phi5=G|phi1=Z3",
+    "lepton|gen|phi10=Z7|phi5=G|phi1=P",
+    "lepton|gen|phi10=Z7|phi5=G|phi1=G",
+    "lepton|gen|phi10=G|phi5=Z3|phi1=Z3",
+    "lepton|gen|phi10=G|phi5=Z7|phi1=Z3",
+    "lepton|gen|phi10=G|phi5=Z7|phi1=P",
+    "lepton|gen|phi10=G|phi5=Z7|phi1=G",
+    "quark|gen|phi10=G|phi5=Z7"
+   ],
+   "report_says": 23
+  }
+ },
+ "real_coupling_variant": {
+  "first_pass_minreal_nonstructural": [
+   {
+    "name": "lep:minreal:phi5=Z3,phi10=G,phi1=P",
+    "npar": 8,
+    "n_eff": 6,
+    "dof": 1,
+    "chi2": 0.7657393536179927,
+    "verdict": "SURVIVES"
+   },
+   {
+    "name": "lep:minreal:phi5=Z3,phi10=G,phi1=G",
+    "npar": 10,
+    "n_eff": 7,
+    "dof": 0,
+    "chi2": 4.756289847169467e-26,
+    "verdict": "accommodates (no prediction)"
+   },
+   {
+    "name": "lep:minreal:phi5=P,phi10=G,phi1=Z3",
+    "npar": 8,
+    "n_eff": 6,
+    "dof": 1,
+    "chi2": 0.3977942139551532,
+    "verdict": "SURVIVES"
+   },
+   {
+    "name": "lep:minreal:phi5=P,phi10=G,phi1=P",
+    "npar": 10,
+    "n_eff": 6,
+    "dof": 1,
+    "chi2": 1.0847660378921753,
+    "verdict": "SURVIVES"
+   },
+   {
+    "name": "lep:minreal:phi5=P,phi10=G,phi1=G",
+    "npar": 12,
+    "n_eff": 7,
+    "dof": 0,
+    "chi2": 9.484234028361221e-26,
+    "verdict": "accommodates (no prediction)"
+   },
+   {
+    "name": "lep:minreal:phi5=G,phi10=Z3,phi1=Z3",
+    "npar": 6,
+    "n_eff": 6,
+    "dof": 1,
+    "chi2": 331.43853515946375,
+    "verdict": "excluded"
+   },
+   {
+    "name": "lep:minreal:phi5=G,phi10=Z3,phi1=P",
+    "npar": 8,
+    "n_eff": 6,
+    "dof": 1,
+    "chi2": 194.62165384581334,
+    "verdict": "excluded"
+   },
+   {
+    "name": "lep:minreal:phi5=G,phi10=Z3,phi1=G",
+    "npar": 10,
+    "n_eff": 7,
+    "dof": 0,
+    "chi2": 2.182403653089427e-25,
+    "verdict": "accommodates (no prediction)"
+   },
+   {
+    "name": "lep:minreal:phi5=G,phi10=P,phi1=Z3",
+    "npar": 8,
+    "n_eff": 6,
+    "dof": 1,
+    "chi2": 202.48203949897496,
+    "verdict": "excluded"
+   },
+   {
+    "name": "lep:minreal:phi5=G,phi10=P,phi1=P",
+    "npar": 10,
+    "n_eff": 6,
+    "dof": 1,
+    "chi2": 331.4385351585244,
+    "verdict": "excluded"
+   },
+   {
+    "name": "lep:minreal:phi5=G,phi10=P,phi1=G",
+    "npar": 12,
+    "n_eff": 7,
+    "dof": 0,
+    "chi2": 4.550914286814597e-25,
+    "verdict": "accommodates (no prediction)"
+   },
+   {
+    "name": "lep:minreal:phi5=G,phi10=G,phi1=Z3",
+    "npar": 10,
+    "n_eff": 7,
+    "dof": 0,
+    "chi2": 4.040615670612732e-22,
+    "verdict": "accommodates (no prediction)"
+   },
+   {
+    "name": "lep:minreal:phi5=G,phi10=G,phi1=P",
+    "npar": 12,
+    "n_eff": 7,
+    "dof": 0,
+    "chi2": 2.271420331251445e-14,
+    "verdict": "accommodates (no prediction)"
+   },
+   {
+    "name": "lep:minreal:phi5=G,phi10=G,phi1=G",
+    "npar": 14,
+    "n_eff": 7,
+    "dof": 0,
+    "chi2": 1.8225752275524766e-24,
+    "verdict": "accommodates (no prediction)"
+   }
+  ],
+  "second_pass": {
+   "A/real": {
+    "npar_nu": 4,
+    "rank_nu": 4,
+    "N_eff": 6,
+    "dof": 1,
+    "chi2": 0.1395449614199269,
+    "p": 0.7087338018439799,
+    "perm": [
+     1,
+     2,
+     0
+    ],
+    "best_p": [
+     -0.1935993662454666,
+     -11.679226317901458,
+     -2.0397813409907886,
+     -1.012539487837582
+    ],
+    "obs": {
+     "r": 33.831771159312,
+     "s12": 0.3067326670663445,
+     "s13": 0.02194897744174729,
+     "s23": 0.5613564246234606,
+     "d": 207.3356556992629,
+     "J": -0.015225742573224298,
+     "m": [
+      2.3932342517070393,
+      2.41357791184443,
+      3.0059801393084435
+     ]
+    },
+    "pulls": [
+     -4.957653586354834e-06,
+     -0.025062462530202702,
+     -0.0017835318361242695,
+     0.03055068201090241,
+     0.3714570085624028
+    ]
+   },
+   "A/complex": {
+    "npar_nu": 6,
+    "rank_nu": 5,
+    "N_eff": 7,
+    "dof": 0,
+    "chi2": 5.270500957915044e-22,
+    "p": null,
+    "perm": [
+     0,
+     1,
+     2
+    ],
+    "best_p": [
+     -3.459701905786179,
+     -0.4052981950970121,
+     -0.1475019049244251,
+     2.8150891458504996,
+     3.570117001738967,
+     -0.663882031024599
+    ],
+    "obs": {
+     "r": 33.83177570093422,
+     "s12": 0.3070000000001472,
+     "s13": 0.021949999999998505,
+     "s23": 0.5609999999995038,
+     "d": 177.00000000130632,
+     "J": 0.0017359130937225908,
+     "m": [
+      1.6525633297363125,
+      2.7805787024419737,
+      13.11151839481811
+     ]
+    },
+    "pulls": [
+     -3.80059350129709e-13,
+     1.1622282084102303e-11,
+     -2.6081365749279213e-12,
+     -1.1364954778796444e-11,
+     1.5995738067431374e-11
+    ]
+   },
+   "B/real": {
+    "npar_nu": 4,
+    "rank_nu": 4,
+    "N_eff": 6,
+    "dof": 1,
+    "chi2": 0.02079433340655597,
+    "p": 0.885340642431775,
+    "perm": [
+     0,
+     2,
+     1
+    ],
+    "best_p": [
+     4.230538122927979,
+     2.307660539150887,
+     -0.5064072769194108,
+     -0.8512128517735035
+    ],
+    "obs": {
+     "r": 33.832436116481475,
+     "s12": 0.30712464547009394,
+     "s13": 0.021950414522354293,
+     "s23": 0.5585997023353543,
+     "d": 187.85735380995385,
+     "J": -0.004537591054729499,
+     "m": [
+      0.004391757884712818,
+      0.6440543708800539,
+      3.746100017820578
+     ]
+    },
+    "pulls": [
+     0.0007209122845130588,
+     0.009840431849521786,
+     0.0006870536258990543,
+     -0.05496864880868193,
+     0.13294718950963896
+    ]
+   },
+   "B/complex": {
+    "npar_nu": 6,
+    "rank_nu": 5,
+    "N_eff": 7,
+    "dof": 0,
+    "chi2": 9.9486571180899e-23,
+    "p": null,
+    "perm": [
+     2,
+     0,
+     1
+    ],
+    "best_p": [
+     -1.4554145170813044,
+     -2.131554041490389,
+     0.7353778780444404,
+     0.23161417296641126,
+     0.42592717389164564,
+     0.24633054766769993
+    ],
+    "obs": {
+     "r": 33.83177570093437,
+     "s12": 0.3069999999999298,
+     "s13": 0.021949999999995806,
+     "s23": 0.5610000000000187,
+     "d": 176.9999999999963,
+     "J": 0.0017359130944768146,
+     "m": [
+      0.6039844565014225,
+      0.8760889088523314,
+      3.740323819073134
+     ]
+    },
+    "pulls": [
+     -2.1717677150269087e-13,
+     -6.5832755913319886e-12,
+     -7.316095403916141e-12,
+     1.598721155460229e-12,
+     -1.3684526762787115e-13
+    ]
+   },
+   "C/real": {
+    "npar_nu": 6,
+    "rank_nu": 4,
+    "N_eff": 6,
+    "dof": 1,
+    "chi2": 0.13954496141979547,
+    "p": 0.7087338018441109,
+    "perm": [
+     1,
+     2,
+     0
+    ],
+    "best_p": [
+     -3.8411772289047974,
+     -0.15115887319289967,
+     2.2484087126082235,
+     0.7359854201551892,
+     -2.0397813406492973,
+     -1.012539487757999
+    ],
+    "obs": {
+     "r": 33.83177115977165,
+     "s12": 0.306732667055353,
+     "s13": 0.021948977442592832,
+     "s23": 0.5613564248917932,
+     "d": 207.33565553966523,
+     "J": -0.015225742490288838,
+     "m": [
+      2.3932342556550252,
+      2.4135779156460933,
+      3.0059801393883294
+     ]
+    },
+    "pulls": [
+     -4.95715183044953e-06,
+     -0.025062463560654467,
+     -0.001783530361341038,
+     0.0305507050108377,
+     0.3714570066081456
+    ]
+   },
+   "C/complex": {
+    "npar_nu": 8,
+    "rank_nu": 5,
+    "N_eff": 7,
+    "dof": 0,
+    "chi2": 5.875890131102251e-22,
+    "p": null,
+    "perm": [
+     0,
+     1,
+     2
+    ],
+    "best_p": [
+     -1.7055292216606823,
+     -2.502425405612553,
+     2.4057983134284453,
+     3.148839147048075,
+     0.6929904962055908,
+     0.2557869505391521,
+     0.3916997290529763,
+     0.2513843799736461
+    ],
+    "obs": {
+     "r": 33.831775700934635,
+     "s12": 0.307000000000018,
+     "s13": 0.021949999999991053,
+     "s23": 0.5609999999992613,
+     "d": 176.99999999979832,
+     "J": 0.0017359130945907367,
+     "m": [
+      0.6329613091407096,
+      0.8572813016623676,
+      3.422032334553537
+     ]
+    },
+    "pulls": [
+     6.980681941157921e-14,
+     1.4199168157048063e-12,
+     -1.560645992282856e-11,
+     -1.6917764898906384e-11,
+     -7.469646300672106e-12
+    ]
+   }
+  },
+  "note": "NOT part of the original survey: LNR 'min' classes with real alpha, beta (LNR's own convention). Classes phi5=Z3/phi1=P, phi5=P/phi1=Z3, phi5=P/phi1=P (each with phi10=G) have dof = 1 and p > 0.01, i.e. they SURVIVE the preregistered rule. With complex alpha, beta (the original's unstated choice) they have dof = 0."
+ },
+ "issues": [
+  {
+   "severity": "major",
+   "description": "Texture-survey headline '0 predictive survivors / no alignment class both fits and predicts' depends on an unstated choice: in the 'min' (LNR leading-order) variant alpha and beta are COMPLEX in the original code (e4_fits.coupl / lepton_obs), while LNR use real alpha = beta = -1. With real alpha, beta (CP-conserving couplings, CP violation only from vev phases) the classes phi10=G with (phi5,phi1) = (Z3,P), (P,Z3), (P,P) have N_eff = 6, dof = 1 and fit NuFIT 6.0 with chi2 = 0.14 / 0.02 / 0.14 (p = 0.71 / 0.89 / 0.71): they SURVIVE the preregistered rule. Found in the first pass (cc_texture --minreal) and confirmed by independent code (cc2_minreal_verify.py).",
+   "suggested_fix": "State that alpha, beta are complex in 'min'; report the real-coupling variant (3 survivors, dof = 1; their 'prediction' is a discrete set of delta values) and soften 'none fits and predicts' to 'none with complex couplings'."
+  },
+  {
+   "severity": "minor",
+   "description": "delta pull wraps delta into [bf-180, bf+180) = [-3, 357) deg (data_targets.pull_delta, e4_fits.lepton_pulls), inconsistent with NuFIT's asymmetric 3sigma range 96..422 deg: delta = 0 = 360 gets pull -6.56 instead of +2.24. Best PSL full-residual lepton pattern is chi2 = 162.1, not 200; non-surviving Z2-partial classes are inflated (e.g. 400.75 vs 362.80). No pass/fail verdict changes (all texture survivors/accommodations and the three Z2-partial survivors have delta inside 96..357).",
+   "suggested_fix": "Pick the representative delta + 360k closest in pull (or wrap into [96, 456)); correct 200 -> 162 in report and results.json."
+  },
+  {
+   "severity": "minor",
+   "description": "Report/summary say 23 fit-'excluded' classes were relabelled structural after the rank scan, with chi2 'about 5e3 to 1e4' and m_e/m_mu or m_d/m_s 1e-7..1e-4 rounding noise. results.json itself has 26 relabelled (22 lepton + 4 quark), chi2 from 1.5e3 to 3.1e6; the rounding-noise explanation fits the 19 Z7 classes, the other 7 are dead through r = 1 degeneracy or a permutation CKM.",
+   "suggested_fix": "Change 23 -> 26 and the chi2 range; split the causes."
+  },
+  {
+   "severity": "minor",
+   "description": "'Three distinct masses need 1+1'+1'' vevs together' is overstated: any two of the three singlet vevs (1+1', 1+1'', 1'+1'') already give three distinct masses generically (checked numerically).",
+   "suggested_fix": "Say 'at least two of 1, 1', 1'' (F21 broken to Z7) or triplet vevs'."
+  },
+  {
+   "severity": "minor",
+   "description": "'10 distinct mixing patterns' (F21) and '97' (PSL) count (sector kind, G_l type, G_nu type, |U|^2) tags, double counting the same matrix for quark and Dirac-lepton use; the number of distinct |U|^2 structures up to row/column permutations is 3 (F21) and 26 (PSL).",
+   "suggested_fix": "Define the count or quote distinct |U|^2 structures."
+  },
+  {
+   "severity": "minor",
+   "description": "The haze sign is described as 'an input chosen to reproduce LNR's 32.4 deg'; it is fixed by LNR's printed U_-1 (only that sign reproduces all nine entries of their displayed U_MNSP to O(lambda)), so it is not a free choice.",
+   "suggested_fix": "Say the sign is LNR's (their printed U_-1)."
+  },
+  {
+   "severity": "minor",
+   "description": "'Leptonic patterns that fit come from PSL(2,7)'s Z2 elements (shared with S4)': true for TM1 (<Z3,t> = S4) and TM2 (<Z3,t> = A4); the Z7 class generates the whole PSL(2,7) (<Z7,t> = 168), so '(shared with S4)' does not apply to it. The report's table text is correct.",
+   "suggested_fix": "Restrict the parenthesis to TM1/TM2."
+  }
+ ],
+ "claim_audit": [
+  {
+   "claim": "<D,C> has order 21, <D,C,Rf> order 168, F21 subgroup; Rf = LNR A^[3], Rf D = B^[3]",
+   "verdict": "supported",
+   "note": "own exact Q(zeta7) arithmetic; presentation relations of PSL(2,7) verified exactly"
+  },
+  {
+   "claim": "Character tables, FS indicators, Kronecker products, branchings, A^[8], CGs match LNR (17/17 CALIBRATED)",
+   "verdict": "supported",
+   "note": "Burnside + tensor-power peeling; exact monomial counting for F21; LNR targets re-read in 0709.1447"
+  },
+  {
+   "claim": "Coupling tables, closed-form mass matrices, Schur degeneracy",
+   "verdict": "supported",
+   "note": "three methods agree (characters, Reynolds, exact monomial)"
+  },
+  {
+   "claim": "Distinct masses need 1+1'+1'' together",
+   "verdict": "overstated",
+   "note": "two singlet vevs suffice"
+  },
+  {
+   "claim": "LNR seesaw reproduced (M_nu, 1:-2:9, 80/3, alpha windows, theta13 2.82, theta12 32.4)",
+   "verdict": "supported",
+   "note": "closed form; the 5 F21 invariants are exactly LNR's displayed M_Dir structures"
+  },
+  {
+   "claim": "LNR example excluded by NuFIT 6.0 (theta13 -34 sigma, r -7.8 sigma)",
+   "verdict": "supported",
+   "note": "-34.07, -7.82"
+  },
+  {
+   "claim": "No F21 subgroup can be the residual symmetry of a non-degenerate Majorana mass matrix",
+   "verdict": "supported",
+   "note": "exact sympy, all 7 Z3"
+  },
+  {
+   "claim": "F21 residual patterns all excluded (best lepton 2459, CKM 1.08e5)",
+   "verdict": "supported",
+   "note": "2459.1, 1.083e5"
+  },
+  {
+   "claim": "PSL full-residual best lepton chi2 = 200",
+   "verdict": "wrong",
+   "note": "162.1; delta-wrap bug; verdict unchanged"
+  },
+  {
+   "claim": "PSL Z2-partial: 3 of 12 fit (Z7 2.13, TM1 2.54, TM2 7.63)",
+   "verdict": "supported",
+   "note": "2.133, 2.541, 7.628; next 31.53"
+  },
+  {
+   "claim": "Texture survey counts 90/5/34 and 29/0/3; 0 survivors",
+   "verdict": "supported",
+   "note": "161/161 class verdicts and N_eff reproduced (gen classes refitted with a consistent PMNS convention)"
+  },
+  {
+   "claim": "No alignment class in this framework both fits and predicts",
+   "verdict": "overstated",
+   "note": "true only for complex alpha, beta; with LNR's real couplings 3 classes survive with dof = 1"
+  },
+  {
+   "claim": "23 classes relabelled structural, chi2 5e3-1e4",
+   "verdict": "wrong",
+   "note": "26 in results.json, chi2 1.5e3-3.1e6"
+  },
+  {
+   "claim": "Seed verdicts: section 3 CONFIRMED (x3), Schur CONFIRMED, residual misalignment AMENDED, LNR excluded CONFIRMED, 'F21 does a job' AMENDED",
+   "verdict": "supported",
+   "note": "verdict words hold; the 'does a job' evidence needs the real-coupling caveat"
+  }
+ ],
+ "independent_values_summary": "all headline numbers reproduced except PSL best full-residual lepton chi2 (162.1 vs 200, delta-wrap bug, verdict unchanged)"
 }

@@ -158,9 +158,10 @@
  "equilibrium_max_residual_over_max_dTrr": 2.2055103328866723e-07,
  "equilibrium_pointwise_rel": 0.000235996801791833,
  "pressure_nodes_x": [
-  2.1522138142542833
+  2.1523728646959084
  ],
- "p0": 0.3815948781542902,
+ "p0": 0.38162803617609303,
+ "p_at_x0.01": 0.3815948781542902,
  "pressure_curve": {
   "x": [
    0.01,
@@ -778,5 +779,5 @@
   "single_pressure_node_positive_core": true
  },
  "all_checks_pass": true,
- "runtime_s": 0.45225000381469727
+ "runtime_s": 1.0436465740203857
 }

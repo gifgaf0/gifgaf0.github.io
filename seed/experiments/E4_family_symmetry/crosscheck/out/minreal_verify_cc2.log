@@ -1,0 +1,13 @@
+  (checkpoint) class A/real {'N_eff': 6, 'dof': 1, 'chi2': 0.1395449614199269, 'p': 0.7087338018439799}
+  (checkpoint) class A/complex {'N_eff': 7, 'dof': 0, 'chi2': 5.270500957915044e-22, 'p': None}
+  (checkpoint) class B/real {'N_eff': 6, 'dof': 1, 'chi2': 0.02079433340655597, 'p': 0.885340642431775}
+  (checkpoint) class B/complex {'N_eff': 7, 'dof': 0, 'chi2': 9.9486571180899e-23, 'p': None}
+  (checkpoint) class C/real {'N_eff': 6, 'dof': 1, 'chi2': 0.13954496141979547, 'p': 0.7087338018441109}
+  (checkpoint) class C/complex {'N_eff': 7, 'dof': 0, 'chi2': 5.875890131102251e-22, 'p': None}
+PASS real (alpha, beta): class A (phi5=Z3, phi1=P) has N_eff = 6 (dof 1) and fits with p > 0.01
+PASS real (alpha, beta): class B (phi5=P, phi1=Z3) has N_eff = 6 (dof 1) and fits with p > 0.01
+PASS real (alpha, beta): class C (phi5=P, phi1=P) has dof >= 1 and fits with p > 0.01
+PASS complex (alpha, beta) (the original's convention): classes A, B, C have dof = 0 (accommodate only)
+PASS first-pass minima (A/real 0.395, B/real 0.444, from cc_minreal_detail) reached or improved (chi2 <= first pass + 0.05)
+
+5/5 checks pass

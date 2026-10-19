@@ -1,30 +1,33 @@
-[    0.3s]   flat                   b=2.007528: omega^2_min (X=100/200/400/800, h=5e-3) = +2.022941e-03 +5.096681e-04 +1.263015e-04 +3.251123e-05; h=1e-2 at X=800: +3.229039e-05; nodes 0; self-adjoint check 2.8e-07
+[    0.4s]   flat                   b=2.007528: omega^2_min (X=100/200/400/800, h=5e-3) = +2.022941e-03 +5.096681e-04 +1.263015e-04 +3.251123e-05; h=1e-2 at X=800: +3.229039e-05; nodes 0; self-adjoint check 2.8e-07
 [    0.4s]   lower alpha=0.02       b=2.178287: omega^2_min (X=100/200/400/800, h=5e-3) = +2.014885e-03 +5.027428e-04 +1.262209e-04 +3.151795e-05; h=1e-2 at X=800: +3.204269e-05; nodes 0; self-adjoint check 2.7e-07
-[    0.4s]   upper alpha=0.02       b=5.834795: omega^2_min (X=100/200/400/800, h=5e-3) = -1.621583e+00 -1.621583e+00 -1.621583e+00 -1.621583e+00; h=1e-2 at X=800: -1.621622e+00; nodes 1; self-adjoint check 2.1e-07
-[    0.5s]   lower alpha=0.035      b=2.462523: omega^2_min (X=100/200/400/800, h=5e-3) = +2.004459e-03 +5.063064e-04 +1.270217e-04 +3.191407e-05; h=1e-2 at X=800: +3.181195e-05; nodes 0; self-adjoint check 2.5e-07
-[    0.5s]   upper alpha=0.035      b=3.783396: omega^2_min (X=100/200/400/800, h=5e-3) = -4.090687e-01 -4.090686e-01 -4.090686e-01 -4.090685e-01; h=1e-2 at X=800: -4.090791e-01; nodes 1; self-adjoint check 2.1e-07
-[    0.6s]   lower alpha=0.04       b=2.781911: omega^2_min (X=100/200/400/800, h=5e-3) = +2.002117e-03 +5.062995e-04 +1.264318e-04 +3.151055e-05; h=1e-2 at X=800: +3.184118e-05; nodes 0; self-adjoint check 2.3e-07
-[    0.6s]   upper alpha=0.04       b=3.103302: omega^2_min (X=100/200/400/800, h=5e-3) = -7.840753e-02 -7.840689e-02 -7.840707e-02 -7.840761e-02; h=1e-2 at X=800: -7.841271e-02; nodes 1; self-adjoint check 2.2e-07
-[    1.0s]   scan b=2.53028 alpha=0.03675187: omega^2_min(X=800) = +3.152430e-05  negative modes (node count) = 0
-[    1.3s]   scan b=2.73028 alpha=0.03965266: omega^2_min(X=800) = +3.182139e-05  negative modes (node count) = 0
-[    1.7s]   scan b=2.83028 alpha=0.04021481: omega^2_min(X=800) = +3.163741e-05  negative modes (node count) = 0
-[    2.0s]   scan b=2.88028 alpha=0.04033958: omega^2_min(X=800) = +3.134651e-05  negative modes (node count) = 0
-[    2.3s]   scan b=2.91028 alpha=0.04037247: omega^2_min(X=800) = +3.139037e-05  negative modes (node count) = 0
-[    2.6s]   scan b=2.92028 alpha=0.04037703: omega^2_min(X=800) = +3.141506e-05  negative modes (node count) = 0
-[    3.0s]   scan b=2.94028 alpha=0.04037706: omega^2_min(X=800) = -4.327081e-03  negative modes (node count) = 1
-[    3.4s]   scan b=2.95028 alpha=0.04037270: omega^2_min(X=800) = -8.707749e-03  negative modes (node count) = 1
-[    3.7s]   scan b=2.98028 alpha=0.04034315: omega^2_min(X=800) = -2.204496e-02  negative modes (node count) = 1
-[    4.1s]   scan b=3.03028 alpha=0.04024344: omega^2_min(X=800) = -4.470177e-02  negative modes (node count) = 1
-[    4.4s]   scan b=3.13028 alpha=0.03988475: omega^2_min(X=800) = -9.099175e-02  negative modes (node count) = 1
-[    4.8s]   scan b=3.33028 alpha=0.03871205: omega^2_min(X=800) = -1.858773e-01  negative modes (node count) = 1
-[    5.1s]   scan b=3.93028 alpha=0.03369825: omega^2_min(X=800) = -4.840451e-01  negative modes (node count) = 1
-[    5.4s]   scan b=5.93028 alpha=0.01950700: omega^2_min(X=800) = -1.687954e+00  negative modes (node count) = 1
-[    9.3s]   zero crossing of omega^2_min at X=200: b = 2.930273219259524  (b_crit = 2.9302755)
-[   13.6s]   zero crossing of omega^2_min at X=400: b = 2.9302727202537584  (b_crit = 2.9302755)
-[   19.3s]   zero crossing of omega^2_min at X=800: b = 2.9302724076006417  (b_crit = 2.9302755)
-[   26.3s]   zero crossing of omega^2_min at X=1600: b = 2.9302728709656263  (b_crit = 2.9302755)
-[   26.3s] stability done
+[    0.5s]   upper alpha=0.02       b=5.834795: omega^2_min (X=100/200/400/800, h=5e-3) = -1.621583e+00 -1.621583e+00 -1.621583e+00 -1.621583e+00; h=1e-2 at X=800: -1.621622e+00; nodes 1; self-adjoint check 2.1e-07
+[    0.6s]   lower alpha=0.035      b=2.462523: omega^2_min (X=100/200/400/800, h=5e-3) = +2.004459e-03 +5.063064e-04 +1.270217e-04 +3.191407e-05; h=1e-2 at X=800: +3.181195e-05; nodes 0; self-adjoint check 2.5e-07
+[    0.6s]   upper alpha=0.035      b=3.783396: omega^2_min (X=100/200/400/800, h=5e-3) = -4.090687e-01 -4.090686e-01 -4.090686e-01 -4.090685e-01; h=1e-2 at X=800: -4.090791e-01; nodes 1; self-adjoint check 2.1e-07
+[    0.7s]   lower alpha=0.04       b=2.781911: omega^2_min (X=100/200/400/800, h=5e-3) = +2.002117e-03 +5.062995e-04 +1.264318e-04 +3.151055e-05; h=1e-2 at X=800: +3.184118e-05; nodes 0; self-adjoint check 2.3e-07
+[    0.8s]   upper alpha=0.04       b=3.103302: omega^2_min (X=100/200/400/800, h=5e-3) = -7.840753e-02 -7.840689e-02 -7.840707e-02 -7.840761e-02; h=1e-2 at X=800: -7.841271e-02; nodes 1; self-adjoint check 2.2e-07
+[    1.3s]   scan b=2.53028 alpha=0.03675187: omega^2_min(X=800) = +3.152430e-05  negative modes (node count) = 0
+[    1.8s]   scan b=2.73028 alpha=0.03965266: omega^2_min(X=800) = +3.182139e-05  negative modes (node count) = 0
+[    2.2s]   scan b=2.83028 alpha=0.04021481: omega^2_min(X=800) = +3.163741e-05  negative modes (node count) = 0
+[    2.6s]   scan b=2.88028 alpha=0.04033958: omega^2_min(X=800) = +3.134651e-05  negative modes (node count) = 0
+[    2.9s]   scan b=2.91028 alpha=0.04037247: omega^2_min(X=800) = +3.139037e-05  negative modes (node count) = 0
+[    3.4s]   scan b=2.92028 alpha=0.04037703: omega^2_min(X=800) = +3.141506e-05  negative modes (node count) = 0
+[    3.7s]   scan b=2.94028 alpha=0.04037706: omega^2_min(X=800) = -4.327081e-03  negative modes (node count) = 1
+[    4.2s]   scan b=2.95028 alpha=0.04037270: omega^2_min(X=800) = -8.707749e-03  negative modes (node count) = 1
+[    4.7s]   scan b=2.98028 alpha=0.04034315: omega^2_min(X=800) = -2.204496e-02  negative modes (node count) = 1
+[    5.0s]   scan b=3.03028 alpha=0.04024344: omega^2_min(X=800) = -4.470177e-02  negative modes (node count) = 1
+[    5.5s]   scan b=3.13028 alpha=0.03988475: omega^2_min(X=800) = -9.099175e-02  negative modes (node count) = 1
+[    5.8s]   scan b=3.33028 alpha=0.03871205: omega^2_min(X=800) = -1.858773e-01  negative modes (node count) = 1
+[    6.3s]   scan b=3.93028 alpha=0.03369825: omega^2_min(X=800) = -4.840451e-01  negative modes (node count) = 1
+[    6.7s]   scan b=5.93028 alpha=0.01950700: omega^2_min(X=800) = -1.687954e+00  negative modes (node count) = 1
+[   12.1s]   zero crossing of omega^2_min at X=200: b = 2.930273219259524  (b_crit = 2.9302755)
+[   17.9s]   zero crossing of omega^2_min at X=400: b = 2.9302727202537584  (b_crit = 2.9302755)
+[   25.6s]   zero crossing of omega^2_min at X=800: b = 2.9302724076006417  (b_crit = 2.9302755)
+[   35.0s]   zero crossing of omega^2_min at X=1600: b = 2.9302728709656263  (b_crit = 2.9302755)
+[   39.6s]   zero crossing - b_crit (Jacobi, X=400) at x_cut=5.00e-03: h=0.005: +2.303e-06, h=0.002: +5.179e-06, h=0.001: +5.590e-06; h->0: +5.73e-06 (40 x_cut^3 = 5.0e-06); h^2 coefficient -0.137
+[   43.0s]   zero crossing - b_crit (Jacobi, X=400) at x_cut=2.50e-03: h=0.005: -2.638e-06, h=0.002: +2.383e-07, h=0.001: +6.491e-07; h->0: +7.86e-07 (40 x_cut^3 = 6.3e-07); h^2 coefficient -0.137
+[   46.3s]   zero crossing - b_crit (Jacobi, X=400) at x_cut=1.25e-03: h=0.005: -3.256e-06, h=0.002: -3.796e-07, h=0.001: +3.121e-08; h->0: +1.68e-07 (40 x_cut^3 = 7.8e-08); h^2 coefficient -0.137
+[   46.3s] stability done
 
-real	0m27.203s
-user	0m26.596s
-sys	0m0.151s
+real	0m47.312s
+user	0m40.341s
+sys	0m0.162s

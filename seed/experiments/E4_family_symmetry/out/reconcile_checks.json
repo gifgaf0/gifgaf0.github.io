@@ -1,0 +1,115 @@
+{
+ "singlet_vevs_L3_R3": {
+  "1": {
+   "n_points": 200,
+   "min_relative_gap": 0.0,
+   "fraction_three_distinct(gap>1e-6)": 0.0
+  },
+  "1'": {
+   "n_points": 200,
+   "min_relative_gap": 0.0,
+   "fraction_three_distinct(gap>1e-6)": 0.0
+  },
+  "1''": {
+   "n_points": 200,
+   "min_relative_gap": 0.0,
+   "fraction_three_distinct(gap>1e-6)": 0.0
+  },
+  "1+1'": {
+   "n_points": 200,
+   "min_relative_gap": 0.0008239694120820204,
+   "fraction_three_distinct(gap>1e-6)": 1.0
+  },
+  "1+1''": {
+   "n_points": 200,
+   "min_relative_gap": 0.0016615143900851961,
+   "fraction_three_distinct(gap>1e-6)": 1.0
+  },
+  "1'+1''": {
+   "n_points": 200,
+   "min_relative_gap": 0.0007615232480313264,
+   "fraction_three_distinct(gap>1e-6)": 1.0
+  },
+  "1+1'+1''": {
+   "n_points": 200,
+   "min_relative_gap": 0.0009432512428563662,
+   "fraction_three_distinct(gap>1e-6)": 1.0
+  }
+ },
+ "pattern_counts": {
+  "F21": {
+   "tags(kind,G_l,G_nu,|U|^2)": 10,
+   "by_kind": {
+    "lepton-Dirac-nu": 5,
+    "quark": 5
+   },
+   "distinct_absU2_structures": 3
+  },
+  "PSL": {
+   "tags(kind,G_l,G_nu,|U|^2)": 97,
+   "by_kind": {
+    "lepton-Dirac-nu": 43,
+    "lepton-Majorana": 11,
+    "quark": 43
+   },
+   "distinct_absU2_structures": 26
+  }
+ },
+ "z2_partial_generated_groups": [
+  {
+   "G_l": "Z7",
+   "fixed_column_abs2": [
+    0.131512,
+    0.204495,
+    0.663993
+   ],
+   "chi2": 2.1327660801335506,
+   "orders_of_<g_l,t>": [
+    168
+   ]
+  },
+  {
+   "G_l": "Z3",
+   "fixed_column_abs2": [
+    0.166667,
+    0.166667,
+    0.666667
+   ],
+   "chi2": 2.540686820485404,
+   "orders_of_<g_l,t>": [
+    24
+   ]
+  },
+  {
+   "G_l": "Z3",
+   "fixed_column_abs2": [
+    0.333333,
+    0.333333,
+    0.333333
+   ],
+   "chi2": 7.628006936263497,
+   "orders_of_<g_l,t>": [
+    12
+   ]
+  }
+ ],
+ "checks": {
+  "one singlet vev (1, 1' or 1'') gives three equal |masses|": {
+   "pass": true,
+   "detail": ""
+  },
+  "any two singlet vevs already give three distinct masses at generic couplings (cross-check's claim)": {
+   "pass": true,
+   "detail": ""
+  },
+  "pattern counts: F21 10 tags / 3 structures; PSL 97 tags / 26 structures (cross-check's numbers)": {
+   "pass": true,
+   "detail": ""
+  },
+  "Z2-partial survivors: <Z7, t> = PSL(2,7) (168); TM1 <Z3, t> = S4 (24); TM2 <Z3, t> = A4 (12)": {
+   "pass": true,
+   "detail": "[('Z7', [168]), ('Z3', [24]), ('Z3', [12])]"
+  }
+ },
+ "all_pass": true
+}

@@ -1,5 +1,5 @@
 """
-make_crosscheck_json.py -- assemble crosscheck.json from this cross-check's own
+make_crosscheck_json.py -- (round 1, superseded by make_crosscheck2_json.py) assemble crosscheck_round1.json from this cross-check's own
 results (xc_checks.json, written by xc_e0.py) and the original E0 results.json.
 Run after xc_e0.py:  python3 make_crosscheck_json.py
 """
@@ -143,6 +143,6 @@ out = dict(experiment="E0_hexagon_exact", role="independent cross-check (second 
            claim_audit=claim_audit, issues=issues, overall="confirmed_with_corrections",
            summary="Every headline number of E0 reproduces with independent code and different methods (81/81 cross-check checks). No blocking or major issue. "
                    "Five minor wording, verdict-label and citation issues; the most concrete is an over-general check title about 7-vertex surfaces.")
-with open(os.path.join(HERE, "crosscheck.json"), "w") as fh:
+with open(os.path.join(HERE, "crosscheck_round1.json"), "w") as fh:
     json.dump(out, fh, indent=1, ensure_ascii=False)
-print("wrote crosscheck.json;", len(independent_values), "quantities, all agree:", out["all_agree"])
+print("wrote crosscheck_round1.json;", len(independent_values), "quantities, all agree:", out["all_agree"])

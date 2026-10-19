@@ -328,8 +328,15 @@ def stage_ep(flat):
                newton_vs_full_rel=(m1_N - fits["deg3"]["m1"]) / fits["deg3"]["m1"],
                GR_vs_full_rel=(m1_GR - fits["deg3"]["m1"]) / fits["deg3"]["m1"],
                lin_vs_full_rel=(m1_lin - fits["deg3"]["m1"]) / fits["deg3"]["m1"],
-               sigma0_slope_full=float(np.polyfit(A, np.log(np.array([r["sigma0"] for r in full])) / A, 2)[-1]),
-               sigma0_slope_first_order=-simpson_t((x**2 + 2 * np.sin(F)**2) * P**2 / x * x, hh))
+               # [reconciliation] degree 4 (was 2): the degree-2 fit carries a 1e-6 truncation error
+               sigma0_slope_full=float(np.polyfit(A, np.log(np.array([r["sigma0"] for r in full])) / A, 4)[-1]),
+               sigma0_slope_full_by_degree={f"deg{d}": float(np.polyfit(A, np.log(np.array([r["sigma0"] for r in full]))
+                                                                        / A, d)[-1]) for d in (2, 3, 4)},
+               # first order: d ln sigma(0)/d alpha = -int_0^inf (x^2 + 2 sin^2F) F'^2 / x dx.  The grid starts at
+               # x0; the piece int_0^x0 = b^2 (1 + 2 b^2) x0^2 / 2 comes from the series (F = pi - b x).
+               # [reconciliation: the original omitted it, a -1.9e-6 relative error found by the cross-check]
+               sigma0_slope_first_order=-(simpson_t((x**2 + 2 * np.sin(F)**2) * P**2 / x * x, hh)
+                                          + b0**2 * (1 + 2 * b0**2) * x[0]**2 / 2))
     log(f"  m1: full={res['m1_full']:.8f} GR1={m1_GR:.8f} lin={m1_lin:.8f} Newton={m1_N:.8f} ({m1_N_alt:.8f}); "
         f"Newton/full-1={res['newton_vs_full_rel']:+.4%}  GR1/full-1={res['GR_vs_full_rel']:+.2e} "
         f"lin/full-1={res['lin_vs_full_rel']:+.2e}; von Laue {laue:.1e}; Poisson resid {poisson_resid:.1e}")
@@ -398,8 +405,22 @@ def stage_bm(branch):
         f"{c2[-1]:.6f} (quadratic fit in sqrt(alpha), alpha<2e-3); smallest alpha {sa.min():.2e} gives {sm[np.argmin(sa)]:.6f}")
     c1 = np.polyfit(sa[sa < 3e-4], sm[sa < 3e-4], 1)
     log(f"  upper branch linear-in-alpha extrapolation (alpha<3e-4): {c1[-1]:.6f}")
+    # [reconciliation] the alpha -> 0 intercept depends on the fit basis; report several bases side by side,
+    # none preferred (the corrections to the BM limit are not derived here)
+    bases = {"1,alpha": lambda a: [np.ones_like(a), a],
+             "1,alpha,alpha ln alpha": lambda a: [np.ones_like(a), a, a * np.log(a)],
+             "1,sqrt(alpha),alpha": lambda a: [np.ones_like(a), np.sqrt(a), a]}
+    basis_fits = {}
+    for amax in [3e-4, 1e-3]:
+        s_ = sa < amax
+        for name, fb in bases.items():
+            Amat = np.array(fb(sa[s_])).T
+            coef = np.linalg.lstsq(Amat, sm[s_], rcond=None)[0]
+            basis_fits[f"{name}; alpha<{amax:g}"] = float(coef[0])
+    log("  upper-branch intercept by fit basis: " + "; ".join(f"{k}: {v:.6f}" for k, v in basis_fits.items()))
     return dict(b_BM=0.5 * (lo + hi), m_BM=float(m_bm), m_BM_R=[float(q) for q in m_R],
                 upper_sqrt_alpha_m_extrap=float(c2[-1]), upper_sqrt_alpha_m_extrap_linear=float(c1[-1]),
+                upper_sqrt_alpha_m_intercepts_by_basis=basis_fits,
                 upper_smallest_alpha=float(sa.min()), upper_sqrt_alpha_m_at_smallest=float(sm[np.argmin(sa)]))
 
 
@@ -420,6 +441,9 @@ def stage_phys(flat):
     integ = (x**2 + 2 * np.sin(F)**2) * P**2 / x * x      # in t
     cum = np.concatenate([[0.0], np.cumsum(0.5 * (integ[1:] + integ[:-1]) * hh)])
     s_of_x = cum[-1] - cum                                    # int_x^inf ... (tail beyond 2e4 negligible)
+    # [reconciliation] value at the centre: add int_0^x0 = b^2 (1 + 2 b^2) x0^2 / 2 from the series (the grid
+    # starts at x0 ~ 1e-3; omitting it was a -1.9e-6 relative error in 1 - sigma(0))
+    s0 = float(s_of_x[0] + b0**2 * (1 + 2 * b0**2) * x[0]**2 / 2)
     oneminusN = 2 * m / x
     k_of_x = m / x
     t = np.log(x)
@@ -457,11 +481,29 @@ def stage_phys(flat):
     bgrid = np.geomspace(0.05, 50, 60)
     dgrid = np.array([deflection(bb) for bb in bgrid])
     imax = int(np.argmax(dgrid))
+    # [reconciliation] the grid maximum is only a bracket (grid ratio 1.12): refine it by a bounded maximisation
+    opt = minimize_scalar(lambda bb: -deflection(bb), bounds=(bgrid[imax - 1], bgrid[imax + 1]), method="bounded",
+                          options=dict(xatol=1e-7))
+    dmax, bmax = float(-opt.fun), float(opt.x)
+    # quadrature check at the maximum: finer z grid and smaller finite-difference step in b
+    def deflection_fine(bimp):
+        def I(bb):
+            u = np.linspace(0, 12, 96001)
+            z = bb * np.sinh(u)
+            r = np.sqrt(bb * bb + z * z)
+            f = gfun(r) + kfun(r) * z * z / (r * r) - (minf / r + minf * z * z / r**3)
+            return 2 * np.trapezoid(f * bb * np.cosh(u), u)
+        db = 2.5e-5 * bimp
+        return -(I(bimp + db) - I(bimp - db)) / (2 * db) + 4 * minf / bimp
+    dmax_fine = float(deflection_fine(bmax))
+    log(f"  deflection max per alpha: grid {dgrid[imax]:.6f} at b={bgrid[imax]:.4f}; refined {dmax:.6f} at b={bmax:.5f}; "
+        f"finer quadrature at that b {dmax_fine:.6f}")
     out = dict(G_GeVm2=G, e=e_anw, per_alpha={})
     out["per_alpha"] = dict(
         oneminusN_max=float(oneminusN.max()), x_at_max=float(x[np.argmax(oneminusN)]),
-        oneminus_sigma0=float(s_of_x[0]), m_inf=float(minf),
-        deflection_max=float(dgrid[imax]), b_at_max=float(bgrid[imax]),
+        oneminus_sigma0=s0, oneminus_sigma0_without_core=float(s_of_x[0]), m_inf=float(minf),
+        deflection_max=dmax, b_at_max=bmax, deflection_max_finer_quadrature=dmax_fine,
+        deflection_max_grid=float(dgrid[imax]), b_at_max_grid=float(bgrid[imax]),
         deflection_grid=[[float(a), float(d)] for a, d in zip(bgrid, dgrid)])
     for fMeV in [64.5, 92.2]:
         fG = fMeV / 1000
@@ -474,23 +516,26 @@ def stage_phys(flat):
         osig_1fm = float(np.interp(x1, x, s_of_x)) * al
         defl_1fm = deflection(x1) * al
         # Shapiro delay for a diametral chord from -1 fm to +1 fm: dt = int (h00 + hzz)/2 dz = 2 int_0^R [ (1-sigma) + 2 mu/r ] dr
+        # [reconciliation] the chord starts at r = 0, not at the first grid point x0 (omitting [0, x0] was -6e-4 rel.);
+        # at r = 0: 1 - sigma = s0 per alpha, mu/r = 0
         sel = x <= x1
-        xx = np.concatenate([x[sel], [x1]])
-        integrand = np.concatenate([s_of_x[sel] + 2 * k_of_x[sel], [np.interp(x1, x, s_of_x + 2 * k_of_x)]])
+        xx = np.concatenate([[0.0], x[sel], [x1]])
+        integrand = np.concatenate([[s0], s_of_x[sel] + 2 * k_of_x[sel], [np.interp(x1, x, s_of_x + 2 * k_of_x)]])
         chord = 2 * np.trapezoid(integrand, xx) * al        # in units of 1/(e f)
         shapiro_s = chord * (1.0 / (e_anw * fG)) * HBAR_GEV_S
         out[f"f={fMeV}MeV"] = dict(
             alpha=al, alpha_over_alpha_crit=al / 0.040378, M_cl_GeV=M_GeV, length_unit_fm=unit_len_fm,
             x_at_1fm=x1, oneminusN_max=float(oneminusN.max() * al), r_at_oneminusN_max_fm=float(x[np.argmax(oneminusN)] * unit_len_fm),
-            oneminusN_1fm=oneN_1fm, oneminus_sigma_core=float(s_of_x[0] * al), oneminus_sigma_1fm=osig_1fm,
-            oneminus_gtt_core=float(2 * s_of_x[0] * al),
-            deflection_max_rad=float(dgrid[imax] * al), b_at_deflection_max_fm=float(bgrid[imax] * unit_len_fm),
+            oneminusN_1fm=oneN_1fm, oneminus_sigma_core=float(s0 * al), oneminus_sigma_1fm=osig_1fm,
+            oneminus_gtt_core=float(2 * s0 * al),
+            deflection_max_rad=float(dmax * al), b_at_deflection_max_fm=float(bmax * unit_len_fm),
             deflection_1fm_rad=float(defl_1fm), pointmass_deflection_1fm_rad=float(4 * al * minf / x1),
             GM_over_c3_s=G * M_GeV * HBAR_GEV_S, shapiro_chord_pm1fm_s=float(shapiro_s),
             shapiro_chord_pm1fm_over_GM=float(shapiro_s / (G * M_GeV * HBAR_GEV_S)))
         log(f"  f={fMeV} MeV: alpha={al:.4e} M={M_GeV:.4f} GeV 1-N max={oneminusN.max() * al:.3e} "
-            f"1-N(1fm)={oneN_1fm:.3e} 1-sigma(0)={s_of_x[0] * al:.3e} 1-sigma(1fm)={osig_1fm:.3e} "
-            f"defl max={dgrid[imax] * al:.3e} rad defl(1fm)={defl_1fm:.3e} Shapiro(+-1fm)={shapiro_s:.3e} s")
+            f"1-N(1fm)={oneN_1fm:.3e} 1-sigma(0)={s0 * al:.4e} 1-sigma(1fm)={osig_1fm:.3e} "
+            f"defl max={dmax * al:.4e} rad at {bmax * unit_len_fm:.4f} fm, defl(1fm)={defl_1fm:.4e} "
+            f"Shapiro(+-1fm)={shapiro_s:.4e} s")
     return out
 
 

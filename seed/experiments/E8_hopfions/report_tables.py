@@ -43,7 +43,7 @@ print('virial (E2-E4)/E by dx:')
 for q in sorted(pc, key=int):
     print(q, {k: round(v, 4) for k, v in pc[q]['virial_by_h'].items()}, 'converged', pc[q]['converged_by_h'],
           'flow t', {k: round(v, 1) for k, v in pc[q]['flow_time_by_h'].items()},
-          'wall', {k: round(v) for k, v in pc[q]['wall_s_by_h'].items()})
+          'wall', {k: (round(v) if v is not None else None) for k, v in pc[q]['wall_s_by_h'].items()})
 print()
 print('type details (finest):')
 for q in sorted(pc, key=int):

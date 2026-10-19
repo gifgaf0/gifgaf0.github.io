@@ -7,7 +7,7 @@
   inner series b(a) = a*(-8*a**4 - 4*a**2 - 3*beta2)/(30*(8*a**2 + 1));  outer tail d = -C**3/21
   energy density check beta2=0.0: max |(-L) - e/x^2| = 6.66e-16
   energy density check beta2=0.07: max |(-L) - e/x^2| = 7.77e-16
-  observables (X=400, 8x10 angular) in 34.2s
+  observables (X=400, 8x10 angular) in 42.3s
   grid/profile convergence (X=400 8x10 vs X=200 6x8 & other profile), rel. diff: {'M': '3.0e-14', 'B': '2.1e-12', 'R2': '2.7e-08', 'R4': '1.7e-09', 'Lambda_tilde': '6.9e-09', 'J_z': '6.9e-09', 'mu_isoscalar_tilde': '2.7e-08', 'M33': '6.9e-09', 'G33': '3.0e-08'}
   quantum: [J1,J2]-iJ3: 2.0872192862952943e-14
   quantum: [Q1,Q2]+iQ3: 2.0872192862952943e-14
@@ -113,4 +113,4 @@
   massive R=2.00 fm Q_p=0.9803 Q_n=+0.0188
   massive R=5.00 fm Q_p=0.9998 Q_n=+0.0002
   massive R=10.00 fm Q_p=1.0000 Q_n=+0.0000
-done in 132.9 s
+done in 161.6 s

@@ -73,13 +73,16 @@ a.set_title(r'Vacuum tension vs natural scales, $\rho_\Lambda=(2.24\ \mathrm{meV
 a.grid(axis='y', visible=False)
 b = ax[1]
 g2 = np.geomspace(3e-3, 30, 400)
-for F, col, lab in [(3.93, S1, 'F = 3.93 (high-energy plateau)'), (4.45, S2, 'F = 4.45 (at threshold)')]:
+Fr = R['pairs']['demidov_levkov']['F2_exponent_read']
+F_hi, F_th = Fr['minimum'], Fr['at_threshold']
+g2_p01 = R['pairs']['demidov_levkov']['coupling_for_unsuppressed_two_particle_production']['rows']['P=0.1']['g2']
+for F, col, lab in [(F_hi, S1, f'F = {F_hi:.2f} (high-energy plateau)'), (F_th, S2, f'F = {F_th:.2f} (at threshold)')]:
     b.semilogx(g2, -F / g2 / np.log(10), color=col, lw=2, label=lab)
 alpha = 1 / 137.036
 b.axvline(alpha, color=INK2, lw=1, ls='--'); b.text(alpha * 0.85, -150, r'$g^2=\alpha$', color=INK2, fontsize=8, ha='right')
 b.axvline(4 * np.pi * alpha, color=INK2, lw=1, ls=':'); b.text(4 * np.pi * alpha * 1.15, -120, r'$4\pi\alpha$', color=INK2, fontsize=8)
-b.axvspan(1.7, 30, color=GRID, alpha=0.5, lw=0)
-b.text(2.0, -60, 'unsuppressed:\n$M_S \\lesssim 2m$', color=INK, fontsize=7.5)
+b.axvspan(g2_p01, 30, color=GRID, alpha=0.5, lw=0)
+b.text(g2_p01 * 1.12, -60, 'P > 0.1 (indicative):\n$M_S \\lesssim 2m$', color=INK, fontsize=7.5)
 b.set_ylim(-260, 5); b.set_xlabel(r'fold-sector coupling $g^2$ (action $=S_0/g^2$)')
 b.set_ylabel(r'$\log_{10} P_{2\to S\bar S}$ (exponent only)')
 b.set_title('Two-particle fold-pair suppression (Demidov-Levkov)', fontsize=9, color=INK, loc='left')

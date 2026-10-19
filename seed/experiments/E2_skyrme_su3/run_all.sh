@@ -1,5 +1,5 @@
 #!/bin/sh
-# E2: run every script in order (single thread). Total runtime about 26 s on one core.
+# E2: run every script in order (single thread). Total runtime about 45 s on one shared core.
 set -e
 cd "$(dirname "$0")"
 export NUMBA_NUM_THREADS=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1

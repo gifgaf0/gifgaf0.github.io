@@ -1,0 +1,53 @@
+X=60.0: status=1 nodes=76117 F'(0)=-1.0037641113 C~8.63857580 rms_res=5.62e-06  2.4s
+X=120.0: status=1 nodes=77895 F'(0)=-1.0037641113 C~8.63857809 rms_res=5.54e-06  2.1s
+X=240.0: status=1 nodes=77255 F'(0)=-1.0037641113 C~8.63857827 rms_res=5.54e-06  1.7s
+radial integrals n=400: {'E2': 18.23082281261631, 'E4': 18.230822812620453, 'M': 36.46164562523677, 'Lambda': 50.9787391193323, 'J2': 25.896789619243123, 'B': 1.0000000000000253}
+radial integrals n=800: {'E2': 18.23082281261589, 'E4': 18.23082281261999, 'M': 36.46164562523589, 'Lambda': 50.978739119260055, 'J2': 25.896789619206977, 'B': 0.9999999999999998}
+PASS virial E2 = E4 (|E2-E4|/M < 1e-8)  [-1.1244230793846004e-13]
+PASS baryon number of profile = 1  [0.9999999999999998]
+PASS radial quadrature converged (n=400 vs 800, rel < 1e-10 on M, Lambda, J2)
+PASS F'(0) stable under X = 60, 120, 240 (spread < 1e-8)  [{60.0: -1.003764111341417, 120.0: -1.0037641113408728, 240.0: -1.0037641113408875}]
+M = 36.461645625  (target 1.2315*3pi^2 = 36.463253, ratio M/3pi^2 = 1.2314457)
+Lambda = 50.978739119  I1 = 106.769621538   J2 = 25.896789619  I2 = 40.678582010  F'(0) = -1.0037641113  C = 8.638578280
+PASS M_cl within 0.2% of 1.2315 x 3 pi^2  [36.46164562523589]
+PASS Lambda within 0.5% of 50.9  [50.978739119260055]
+PASS I2 within 1.5% of arctan-ansatz 40.5  [40.678582009630524]
+adjoint inertia (160 radial, Lebedev 23): 7.2s
+adjoint inertia (240 radial, Lebedev 31, other map): 20.4s
+eigenvalues: [-1.49050620e-14  1.91346150e-16  1.04729780e-14  4.06785820e+01
+  4.06785820e+01  4.06785820e+01  4.06785820e+01  4.06785820e+01
+  4.06785820e+01  4.06785820e+01  4.06785820e+01  1.06769622e+02
+  1.06769622e+02  1.06769622e+02]
+I1(3D) = 106.7696215378  I2(3D) = 40.6785820097  short block max |I| = 1.81e-14  off-block = 1.38e-13
+PASS quadrature-rule independence of inertia tensor (two radial maps/Lebedev orders), rel < 1e-9  [2.036273372141295e-10]
+PASS inertia eigenvalue multiplicities 3 x 0, 8 x I2, 3 x I1
+PASS block diagonal in (3,1)+(1,3)+(2,4) basis (off-block < 1e-10)  [1.380483994790151e-13]
+PASS long block I1(3D) = (2pi/3) Lambda (rel < 1e-8)  [(np.float64(106.76962153782718), 106.76962153755865)]
+PASS (2,4) block I2(3D) = Kopeliovich radial formula (rel < 1e-8)  [(np.float64(40.67858200973117), 40.678582009630524)]
+PASS short block zero (< 1e-12)  [1.8078582281339776e-14]
+PASS static energy from g2 currents (adjoint route) = M  [(np.float64(36.46164562523679), 36.46164562523589)]
+PASS |B| from g2 currents with (1/2)Tr_7 normalisation = 1  [-0.9999999999999991]
+7-dim inertia: 4.0s
+PASS 7-dim (Tr_7) inertia equals adjoint-rep result (rel < 1e-8)  [4.4302339574642247e-10]
+PASS short-root hedgehog: E = 3 M, |B| = 3  [(np.float64(3.0000000000000524), np.float64(-2.9999999999999747))]
+ANW: {'M': 863.0371166340238, 'invI1': np.float64(195.58318484440488), 'invI2': np.float64(513.3498168644253)}
+octet masses: [938.27208943, 939.56542194, 1115.683138712051, 1189.37004127302, 1192.641932369825, 1197.449381521717, 1314.860776450084, 1321.71083818342]
+decuplet (excluding Delta): [1382.833139288067, 1383.814792449643, 1387.183057952272, 1531.800942635904, 1534.972219066874, 1672.4519528578378]
+Delta 1232.0 {'E8': 1151.1942024850146, 'E10': 1382.1056104250597, 'F_pi': np.float64(113.75489216707587), 'e': np.float64(5.247396929390333), 'antidecuplet': np.float64(1757.27048185551)}
+Delta pole-ish 1210 (sensitivity only) {'E8': 1151.1942024850146, 'E10': 1373.3056104250597, 'F_pi': np.float64(114.12172921076989), 'e': np.float64(5.174316484116898), 'antidecuplet': np.float64(1734.17300345009)}
+refit point: {'M': np.float64(790.4282108147553), 'invI1': np.float64(153.94093862669675), 'invI2': np.float64(404.05085291366356)}
+    1[0,0] J=0 (E-M)I1=0.0000  E_ANW=863.0  E_refit=790.4
+   14[0,1] J=1 (E-M)I1=3.6247  E_ANW=1572.0  E_refit=1348.4
+   27[2,0] J=0 (E-M)I1=6.1243  E_ANW=2060.9  E_refit=1733.2
+   77[0,2] J=2 (E-M)I1=8.2494  E_ANW=2476.5  E_refit=2060.4
+   77[3,0] J=1 (E-M)I1=8.8741  E_ANW=2598.7  E_refit=2156.5
+  189[2,1] J=1 (E-M)I1=12.3738  E_ANW=3283.1  E_refit=2695.3
+   77[0,2] J=0 (E-M)I1=13.1236  E_ANW=3429.8  E_refit=2810.7
+  273[0,3] J=3 (E-M)I1=13.8741  E_ANW=3576.6  E_refit=2926.2
+  448[3,1] J=2 (E-M)I1=14.8112  E_ANW=3759.9  E_refit=3070.5
+  182[4,0] J=0 (E-M)I1=15.7483  E_ANW=3943.1  E_refit=3214.7
+  448[3,1] J=1 (E-M)I1=18.0606  E_ANW=4395.4  E_refit=3570.7
+  378[5,0] J=1 (E-M)I1=20.2479  E_ANW=4823.2  E_refit=3907.4
+PASS lowest state 1 (J=0), next 14 (J=1)
+
+18/18 checks passed

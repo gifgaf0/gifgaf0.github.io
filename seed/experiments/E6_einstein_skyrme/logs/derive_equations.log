@@ -19,6 +19,6 @@ dimensionless matter equation: (sigma N (x^2 + 2 sin^2F) F')' = sigma sin2F (1 +
 [PASS] (F) m3 = b^2 (1 + b^2)/2 
 ALL CHECKS PASS
 
-real	0m12.260s
-user	0m8.591s
-sys	0m0.039s
+real	0m11.808s
+user	0m9.221s
+sys	0m0.057s

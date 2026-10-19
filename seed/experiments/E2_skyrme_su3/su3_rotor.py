@@ -72,7 +72,8 @@ def irrep_name(p, q):
     names = {(0, 0): "1", (1, 0): "3", (0, 1): "3bar", (2, 0): "6", (0, 2): "6bar", (1, 1): "8",
              (3, 0): "10", (0, 3): "10bar", (2, 1): "15", (1, 2): "15bar", (4, 0): "15'", (0, 4): "15'bar",
              (2, 2): "27", (4, 1): "35", (1, 4): "35bar", (5, 0): "21", (0, 5): "21bar", (3, 3): "64",
-             (3, 2): "42", (2, 3): "42bar", (6, 0): "28", (0, 6): "28bar", (5, 1): "48", (1, 5): "48bar"}
+             (3, 2): "42", (2, 3): "42bar", (6, 0): "28", (0, 6): "28bar", (5, 1): "48", (1, 5): "48bar",
+             (3, 1): "24", (1, 3): "24bar"}   # (3,1)/(1,3) added in reconciliation (was printed as "24(1,3)")
     return names.get((p, q), f"{d}({p},{q})")
 
 
@@ -222,13 +223,19 @@ def pdg_masses():
         m["Delta"] = float(dmass.value)
         m["_Delta_note"] = f"PDG B033M Breit-Wigner mass, mixed charges: {dmass.display_value_text}"
         m["_edition"] = str(api.edition)
+        gprop = [pp for pp in api.get_particles_by_name("n")[0].properties() if pp.pdgid.startswith("S017AV")][0]
+        m["_gA_over_gV"] = float(gprop.value)
+        m["_gA_over_gV_err"] = float(gprop.error)
+        m["_gA_note"] = f"PDG {gprop.pdgid} lambda = g_A/g_V: {gprop.display_value_text}"
     except Exception as ex:  # fallback: values read from PDG 2026 on 2026-10-18 with the same package
         src = f"fallback table (pdg package unavailable: {ex})"
         m = {"p": 938.2720894, "n": 939.5654219, "Lambda": 1115.683139, "Sigma+": 1189.370041,
              "Sigma0": 1192.641932, "Sigma-": 1197.449382, "Xi0": 1314.860776, "Xi-": 1321.710838,
              "Sigma*+": 1382.833139, "Sigma*0": 1383.814792, "Sigma*-": 1387.183058, "Xi*0": 1531.800943,
              "Xi*-": 1534.972219, "Omega-": 1672.451953, "Delta": 1232.0,
-             "_Delta_note": "PDG B033M Breit-Wigner mass, mixed charges: 1230 to 1234 (~1232)"}
+             "_Delta_note": "PDG B033M Breit-Wigner mass, mixed charges: 1230 to 1234 (~1232)",
+             "_gA_over_gV": -1.275335139239493, "_gA_over_gV_err": 0.0012632588566490904,
+             "_gA_note": "PDG S017AV/2026 lambda = g_A/g_V: -1.2753+-0.0013"}
     iso = {
         "N": (m["p"] + m["n"]) / 2, "Lambda": m["Lambda"],
         "Sigma": (m["Sigma+"] + m["Sigma0"] + m["Sigma-"]) / 3, "Xi": (m["Xi0"] + m["Xi-"]) / 2,
@@ -418,6 +425,13 @@ def main():
               f"E10bar {E10b:.1f};  E10-E8 = {E10-E8:.1f}, E10bar-E8 = {E10b-E8:.1f}, E8-E_N(SU2) = {E8-ps['E_N_SU2']:.1f}")
         print("   lowest allowed levels: " + "; ".join(f"{n_}(J={J_}) {E:.0f}" for E, n_, J_, pq in lev[:9]))
 
+    # --- reconciliation: assert the ordering of the lowest Y_R = 1 levels (it was printed, not checked).
+    # The order depends only on I1/I2 (same profile at both sets), so the two sets are one test.
+    expected_order = ["8(J=1/2)", "10(J=3/2)", "10bar(J=1/2)", "27(J=3/2)", "35(J=5/2)", "27(J=1/2)"]
+    chk("lowest allowed Y_R=1 levels: 8(1/2), 10(3/2), 10bar(1/2), 27(3/2), 35(5/2), 27(1/2) at both sets",
+        all(ps["lowest_irreps_order"] == expected_order for ps in sets.values()),
+        str({k: ps["lowest_irreps_order"] for k, ps in sets.items()}))
+
     # --- one mass per multiplet with exact SU(3): H acts on the right index only
     deg_ok = True
     for pq in [(1, 1), (3, 0), (0, 3)]:
@@ -535,8 +549,9 @@ def main():
 
     out = {
         "inputs_from_hedgehog": {"M_over_Fpi_e": mhat, "I1_coef": l1, "I2_coef": l2, "gA_times_e2": gA_coef},
-        "pdg": {"source": src, "raw_MeV": {k: v for k, v in m.items()}, "isospin_averaged_MeV": iso,
-                "octet_centre_MeV": c8, "decuplet_centre_MeV": c10},
+        "pdg": {"source": src, "raw_MeV": {k: v for k, v in m.items() if not k.startswith("_gA")},
+                "isospin_averaged_MeV": iso, "octet_centre_MeV": c8, "decuplet_centre_MeV": c10,
+                "gA_over_gV": m["_gA_over_gV"], "gA_over_gV_err": m["_gA_over_gV_err"], "gA_note": m["_gA_note"]},
         "parameter_sets": sets, "spectra": spectra,
         "Nc_table": nc_table,
         "exact_level_differences": {"E8_minus_M": f"{a8}/I1 + {b8}/I2", "E10_minus_E8": f"{a10-a8}/I1 + {b10-b8}/I2",

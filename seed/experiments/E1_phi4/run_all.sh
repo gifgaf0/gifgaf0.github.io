@@ -1,6 +1,6 @@
 #!/bin/bash
 # E1 end to end, resumable: every stage is skipped when its output exists.
-# 2 worker processes x 1 thread. Total about 75 min of wall time on 2 free cores
+# 2 worker processes x 1 thread. Total about 105 min of wall time on 2 free cores
 # (measured stage times are listed in REPORT.md, How to reproduce).
 #   nohup ./run_all.sh > logs/run_all.log 2>&1 &
 export NUMBA_NUM_THREADS=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
@@ -35,6 +35,15 @@ stage e1d_sliceAk_${S}_single.json python e1d_single_slices.py e1d_sliceAk_$S.js
 stage e1d_sliceAs_${K}_single.json python e1d_single_slices.py e1d_sliceAs_$K.json 2
 stage e1d_probe_min.json python e1d_probe_min.py
 stage e1d_example.json   python e1d_example.py
+# robustness checks added by the third attempt (not preregistered); e1d_extra.py resumes from its .jsonl files
+stage e1_verify.json     python e1_verify.py
+stage e1b_boxcheck.json  python e1b_boxcheck.py
+python e1d_extra.py coarse_oneway 2
+python e1d_extra.py single_oneway 2
+python e1d_extra.py slice_dx05 2
+python e1d_extra.py slice_dx05_single 2
+stage e1d_dxladder.json  python e1d_dxladder.py 2
+stage e1d_oneway_min.json python e1d_oneway_min.py
 # analyses, E1e, results.json, figures
-python analyze_e1b.py && python analyze_e1c.py && python analyze_e1d.py && python e1e_quanta.py && python collect_results.py
+python analyze_e1b.py && python analyze_e1c.py && python analyze_e1d.py && python e1e_quanta.py && python analyze_extra.py && python collect_results.py
 echo "[all done] $(date +%T)"

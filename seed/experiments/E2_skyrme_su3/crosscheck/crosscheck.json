@@ -1,0 +1,533 @@
+{
+ "experiment": "E2 cross-check (independent recomputation)",
+ "issues": [
+  {
+   "severity": "minor",
+   "description": "Verdict vocabulary: N_c parity, Derrick, virial and von Laue are labelled CALIBRATED in results.json/REPORT headline tables; PLAN reserves CALIBRATED for literature targets. N_c parity is a preregistered seed prediction (CONFIRMED, conditional on the imported Y_R = N_c B/3 rule); E(10)-E(8), E(10bar)-E(8), the ordering at both parameter sets and \"e is the only pure number\" are identities / dimensional analysis, true by construction.",
+   "fix": "Relabel N_c parity as CONFIRMED (given the imported WZ rule) and the identities as checks; keep the numbers."
+  },
+  {
+   "severity": "minor",
+   "description": "The corrected reading of the 30% claim (\"most static properties land within about 30%\") is not demonstrated in E2: the only non-fit nucleon observable E2 computes is g_A (-52%); the fitted F_pi (-30.5%) is a fit parameter. The AMENDED verdict itself is supported by g_A.",
+   "fix": "Keep AMENDED on the g_A evidence; mark the \"most static properties\" clause provisional until E5."
+  },
+  {
+   "severity": "minor",
+   "description": "Target provenance: \"36.5 F_pi/e = 1.2315 x 3pi^2\" does not appear in the cited [read] texts. Schechter-Weigel hep-ph/9907554 gives E = 23.2 pi f_pi/e (= 36.44 F_pi/e) and alpha^2 = 53.3/(e^3 f_pi) (-> Lambda = 50.90); Praszalowicz hep-ph/0308114 has only the arctan-ansatz formulas (eqs. 26-28, I2 coefficient 40.54 at x0 = sqrt(15/4)). 36.5 is ANW's own number. Calibration passes against SW's 36.44 as well (+0.05%). ANW F_pi = 129 (f_pi = 64.5), e = 5.45, g_A = 0.61 are readable in Acus et al. hep-ph/9605435 Table 1 (ANW column).",
+   "fix": "State the provenance as SW 23.2 pi f_pi/e and 53.3/(e^3 f_pi) [read]; upgrade ANW numbers to [read: Acus Table 1]."
+  },
+  {
+   "severity": "minor",
+   "description": "The I2 calibration compares the exact profile with a variational (arctan-ansatz) value, not a published exact-profile I2; it only bounds formula slips above 1.5%. The I2 density itself is independently verified (original: explicit SU(3) matrices; here: finite differences of the PLAN Lagrangian, 7e-11).",
+   "fix": "Say in the table that the target is an ansatz value; no verdict change."
+  },
+  {
+   "severity": "minor",
+   "description": "collect_results.py hard-codes CALIBRATED for the multiplet ordering, exact level differences, Derrick and N_c parity; the ordering of the lowest multiplets is printed by su3_rotor.py but not asserted by any check. Values are correct (independently reproduced), but a regression would not flip these verdicts.",
+   "fix": "Derive these verdicts from asserted checks."
+  },
+  {
+   "severity": "minor",
+   "description": "PDG 2026 g_A/g_V is -1.2753 +- 0.0013 (pdg 2026.0: -1.275335); the report quotes 1.2754 (the PDG 2024 value). The -52% conclusion is unchanged.",
+   "fix": "Quote 1.2753(13)."
+  },
+  {
+   "severity": "minor",
+   "description": "N_c table naming: (p,q) = (1,3) is written \"24\" at N_c = 4 and N_c = 7, but by the report's own convention (6bar = (0,2), 15bar = (1,2)) it is 24bar; results.json says \"24=(1,3)\".",
+   "fix": "Write 24bar (1,3)."
+  },
+  {
+   "severity": "minor",
+   "description": "Small numeric slips: pressure node 2.1522 in results.json is a grid-interval midpoint (root 2.15237; the report's 2.152 is fine); the asymptotic residuals \"6e-7, 2e-9, 5e-10\" are relative and the x = 40 value is solver noise (series remainder ~5e-12); \"E2 = E4 to 6e-13\" vs \"4e-13\" in different places; the report's \"-2C = -17.2771564357\" is not the results.json C (-2C = -17.2771564286; that C is good to 4.5e-10).",
+   "fix": "Cosmetic."
+  }
+ ],
+ "all_numbers_agree": true,
+ "all_my_checks_pass": true,
+ "comparisons": [
+  {
+   "quantity": "M_cl [F_pi/e]",
+   "original": 36.46164562523657,
+   "recomputed": 36.46164562522278,
+   "deviation": 3.7825298448979083e-13,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": "shooting (DOP853) vs Chebyshev collocation"
+  },
+  {
+   "quantity": "M_cl / (3 pi^2 F_pi/e)",
+   "original": 1.2314456974321455,
+   "recomputed": 1.2314456974316796,
+   "deviation": 3.7825298448979083e-13,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Lambda",
+   "original": 50.97873911433553,
+   "recomputed": 50.978739114335255,
+   "deviation": 5.440092820663267e-15,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": "tail C^2/X from asymptotic series in both"
+  },
+  {
+   "quantity": "I1 coefficient (2pi/3)Lambda",
+   "original": 106.76962152724475,
+   "recomputed": 106.76962152724417,
+   "deviation": 5.440092820663267e-15,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "J2",
+   "original": 25.896789616744435,
+   "recomputed": 25.896789616746645,
+   "deviation": 8.526512829121202e-14,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": "my first attempt had a 1-cos F underflow bug (-4.7e-5); fixed, see CROSSCHECK.md"
+  },
+  {
+   "quantity": "I2 coefficient (pi/2)J2",
+   "original": 40.67858200576237,
+   "recomputed": 40.67858200576585,
+   "deviation": 8.548717289613705e-14,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "I1/I2",
+   "original": 2.6247134551573152,
+   "recomputed": 2.6247134551570768,
+   "deviation": 9.08162434143378e-14,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "C (F -> C/x^2)",
+   "original": 8.63857821430118,
+   "recomputed": 8.638578218213699,
+   "deviation": 4.5291237427136366e-10,
+   "tolerance": 1e-08,
+   "agree": true,
+   "note": "original's C is the less precise one (its own D/(-2C)-1 = 7e-10)"
+  },
+  {
+   "quantity": "F'(0)",
+   "original": -1.0037641113607607,
+   "recomputed": -1.0037641113564781,
+   "deviation": 4.266476061332014e-12,
+   "tolerance": 1e-10,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "D (ANW g_A bracket)",
+   "original": -17.277156440338604,
+   "recomputed": -17.277156436423056,
+   "deviation": 2.266316023735726e-10,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "<r^2>_B (eF)^2",
+   "original": 4.477835953007322,
+   "recomputed": 4.477835953007971,
+   "deviation": 1.4499512701604544e-13,
+   "tolerance": 1e-10,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "virial E2/E4 - 1",
+   "original": -4.446443213623752e-13,
+   "recomputed": 3.2507330161024584e-13,
+   "deviation": 7.69717622972621e-13,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": "both numerical zero"
+  },
+  {
+   "quantity": "E2 = E4 [F_pi/e]",
+   "original": 18.230822812623853,
+   "recomputed": 18.230822812614353,
+   "deviation": 5.211386877590485e-13,
+   "tolerance": 1e-10,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "von Laue int x^2 p dx (abs)",
+   "original": -2.699253314252328e-13,
+   "recomputed": -1.5712642775431163e-13,
+   "deviation": 1.1279890367092119e-13,
+   "tolerance": 1e-10,
+   "agree": true,
+   "note": "both numerical zero"
+  },
+  {
+   "quantity": "pressure node x",
+   "original": 2.1522138142542833,
+   "recomputed": 2.1523728646956286,
+   "deviation": 0.00015905044134534307,
+   "tolerance": 0.0005,
+   "agree": true,
+   "note": "original = midpoint of the grid interval with the sign change (2.15221); root 2.15237"
+  },
+  {
+   "quantity": "p(0) [(F/e)(eF)^3]",
+   "original": 0.3815948781542902,
+   "recomputed": 0.38162770457831385,
+   "deviation": 8.602427837178794e-05,
+   "tolerance": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Derrick: max |E2(mu) mu/E2 - 1|",
+   "original": 1.6653345369377348e-15,
+   "recomputed": 1.2212453270876722e-15,
+   "deviation": 4.440892098500626e-16,
+   "tolerance": 1e-12,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "arctan-ansatz I2 coefficient",
+   "original": 40.5435,
+   "recomputed": 40.543537224162975,
+   "deviation": 9.181289966075923e-07,
+   "tolerance": 1e-05,
+   "agree": true,
+   "note": "Praszalowicz eq. 28, x0 = sqrt(15/4) [read]"
+  },
+  {
+   "quantity": "ANW fit F_pi [MeV]",
+   "original": 129.26269073322817,
+   "recomputed": 129.26269073326466,
+   "deviation": 2.822186928597148e-13,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "ANW fit e",
+   "original": 5.443985471648301,
+   "recomputed": 5.443985471647779,
+   "deviation": 9.592326932761353e-14,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "g_A at ANW fit (-(pi/3e^2) D)",
+   "original": 0.6104737139051309,
+   "recomputed": 0.6104737137670488,
+   "deviation": 2.2618840134214224e-10,
+   "tolerance": 1e-08,
+   "agree": true,
+   "note": "also = far-field (Goldberger-Treiman) 2piC/(3e^2), derived independently"
+  },
+  {
+   "quantity": "g_A ball integral at ANW fit",
+   "original": 0.40698247593675396,
+   "recomputed": 0.40696982284787064,
+   "deviation": 3.109000910717086e-05,
+   "tolerance": 0.0001,
+   "agree": true,
+   "note": "my Noether current from the Lagrangian, ball R = 24"
+  },
+  {
+   "quantity": "1/I2 at ANW fit [MeV]",
+   "original": 512.6940282407289,
+   "recomputed": 512.6940282406823,
+   "deviation": 9.092726571680032e-14,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E(8) - E_SU2(N) = 3/(4I2) at ANW [MeV]",
+   "original": 384.52052118054644,
+   "recomputed": 384.52052118051176,
+   "deviation": 9.015010959956271e-14,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "r_B rms at ANW [fm]",
+   "original": 0.5933765923204758,
+   "recomputed": 0.5933765923204083,
+   "deviation": 1.1379786002407855e-13,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "ANW set E(8) [MeV]",
+   "original": 1323.5205211805464,
+   "recomputed": 1323.5205211805119,
+   "deviation": 2.609024107869118e-14,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "ANW set E(10) [MeV]",
+   "original": 1616.5205211805464,
+   "recomputed": 1616.5205211805119,
+   "deviation": 2.142730437526552e-14,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "ANW set E(10bar) [MeV]",
+   "original": 2092.5615635416398,
+   "recomputed": 2092.561563541535,
+   "deviation": 4.9960036108132044e-14,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "PDG 2026 octet centre [MeV]",
+   "original": 1151.1942024850146,
+   "recomputed": 1151.1942024850146,
+   "deviation": 0.0,
+   "tolerance": 1e-12,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "PDG 2026 decuplet centre [MeV]",
+   "original": 1382.1056104250597,
+   "recomputed": 1382.1056104250597,
+   "deviation": 0.0,
+   "tolerance": 1e-12,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "SU(3) refit F_pi [MeV]",
+   "original": 113.7548921643063,
+   "recomputed": 113.75489216434138,
+   "deviation": 3.084199562408685e-13,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "SU(3) refit e",
+   "original": 5.247396929259555,
+   "recomputed": 5.247396929259006,
+   "deviation": 1.0458300891968975e-13,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "SU(3) refit M_cl [MeV]",
+   "original": 790.4282108152252,
+   "recomputed": 790.4282108152527,
+   "deviation": 3.4861002973229915e-14,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "SU(3) refit E(10bar) [MeV]",
+   "original": 1757.2704818545708,
+   "recomputed": 1757.2704818545158,
+   "deviation": 3.1308289294429414e-14,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "SU(3) refit E(27, J=3/2) [MeV]",
+   "original": 1786.0,
+   "recomputed": 1786.1564633380603,
+   "deviation": 0.15646333806034818,
+   "tolerance": 0.5,
+   "agree": true,
+   "note": "report rounds to 1786"
+  },
+  {
+   "quantity": "SU(3) refit g_A (SU(2) form)",
+   "original": 0.6570721349213386,
+   "recomputed": 0.6570721347727281,
+   "deviation": 2.2617085981835316e-10,
+   "tolerance": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "SU(3) refit g_A x 7/10",
+   "original": 0.459950494444937,
+   "recomputed": 0.4599504943409097,
+   "deviation": 2.261707487960507e-10,
+   "tolerance": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "|<p up|D33|p up>| SU(3) octet",
+   "original": 0.23333333333333334,
+   "recomputed": 0.23333333333333325,
+   "deviation": 3.3306690738754696e-16,
+   "tolerance": 1e-12,
+   "agree": true,
+   "note": "exact Weingarten integral vs CG intertwiners"
+  },
+  {
+   "quantity": "optional fit alpha [MeV]",
+   "original": 371.75619653195287,
+   "recomputed": 371.75619653195116,
+   "deviation": 4.551914400963142e-15,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "optional fit beta [MeV]",
+   "original": -99.59388396046965,
+   "recomputed": -99.5938839604698,
+   "deviation": 1.3322676295501878e-15,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "optional fit rms [MeV]",
+   "original": 3.9838292088745777,
+   "recomputed": 3.9838292088745804,
+   "deviation": 6.661338147750939e-16,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Guadagnini LHS-RHS (PDG 2026) [MeV]",
+   "original": 8.506882449827572,
+   "recomputed": 8.5068824498303,
+   "deviation": 3.206324095117452e-13,
+   "tolerance": 1e-09,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Dirichlet box X=10, no tail: Lambda",
+   "original": 37.09,
+   "recomputed": 37.090513818646215,
+   "deviation": 0.0005138186462119165,
+   "tolerance": 0.006,
+   "agree": true,
+   "note": "report quotes 2 decimals"
+  },
+  {
+   "quantity": "Dirichlet box X=20, no tail: Lambda",
+   "original": 44.11,
+   "recomputed": 44.10844862383822,
+   "deviation": 0.0015513761617782507,
+   "tolerance": 0.006,
+   "agree": true,
+   "note": "report quotes 2 decimals"
+  },
+  {
+   "quantity": "Dirichlet box X=40, no tail: Lambda",
+   "original": 47.59,
+   "recomputed": 47.59433427207001,
+   "deviation": 0.0043342720700039195,
+   "tolerance": 0.006,
+   "agree": true,
+   "note": "report quotes 2 decimals"
+  }
+ ],
+ "exact_results": {
+  "lowest Y_R=1 multiplets 8(1/2),10(3/2),10bar(1/2),27(3/2),35(5/2),27(1/2)": [
+   "8(1,1) J=1/2",
+   "10(3,0) J=3/2",
+   "10bar(0,3) J=1/2",
+   "27(2,2) J=3/2",
+   "35(4,1) J=5/2",
+   "27(2,2) J=1/2"
+  ],
+  "E(10)-E(8)": "3/(2*I1)",
+  "E(10bar)-E(8)": "3/(2*I2)",
+  "E(8)-E_SU2(N)": "3/(4*I2)",
+  "N_c parity 2J = N_c mod 2 (N_c = 1..15)": true,
+  "N_c = 1..7 lowest four": {
+   "1": [
+    "3(1,0) J=1/2",
+    "6bar(0,2) J=1/2",
+    "15(2,1) J=3/2",
+    "15(2,1) J=1/2"
+   ],
+   "2": [
+    "3bar(0,1) J=0",
+    "6(2,0) J=1",
+    "15bar(1,2) J=1",
+    "24(3,1) J=2"
+   ],
+   "3": [
+    "8(1,1) J=1/2",
+    "10(3,0) J=3/2",
+    "10bar(0,3) J=1/2",
+    "27(2,2) J=3/2"
+   ],
+   "4": [
+    "6bar(0,2) J=0",
+    "15(2,1) J=1",
+    "15'(4,0) J=2",
+    "24bar(1,3) J=1"
+   ],
+   "5": [
+    "15bar(1,2) J=1/2",
+    "24(3,1) J=3/2",
+    "21(5,0) J=5/2",
+    "15bar'(0,4) J=1/2"
+   ],
+   "6": [
+    "10bar(0,3) J=0",
+    "27(2,2) J=1",
+    "35(4,1) J=2",
+    "28(6,0) J=3"
+   ],
+   "7": [
+    "24bar(1,3) J=1/2",
+    "42(3,2) J=3/2",
+    "48(5,1) J=5/2",
+    "21bar(0,5) J=1/2"
+   ]
+  },
+  "densities from the Lagrangian (eps, i_11, i_44, i_88, T_ij)": {
+   "eps": 1.7902601623376313e-10,
+   "i11": 1.2073497757114637e-10,
+   "i44": 6.835798593840536e-11,
+   "off": 1.83229533272747e-15,
+   "i88": 0,
+   "Trr": 1.7896487641749017e-10,
+   "Ttt": 1.651899011869172e-10,
+   "Tpoint": 1.1255973930701657e-10
+  },
+  "asymptotic series -C^3/(21x^6) - (4/3)C^3/x^8": true,
+  "D = -2C (total derivative, symbolic)": true
+ },
+ "my_scripts": [
+  "xc_derive.py",
+  "xc_hedgehog.py",
+  "xc_densities.py",
+  "xc_rotor.py",
+  "xc_axial.py",
+  "xc_collect.py"
+ ],
+ "overall": "confirmed_with_corrections"
+}

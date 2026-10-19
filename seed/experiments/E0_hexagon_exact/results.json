@@ -19,7 +19,7 @@
    "target": "all lines identical",
    "tolerance": "exact",
    "source": "seed/hexagon_check.py",
-   "verdict": "CALIBRATED",
+   "verdict": "CONFIRMED",
    "note": ""
   },
   {
@@ -28,7 +28,7 @@
    "target": "x -> 4x",
    "tolerance": "exact",
    "source": "SEED §3",
-   "verdict": "CALIBRATED",
+   "verdict": "CONFIRMED",
    "note": ""
   },
   {
@@ -37,7 +37,7 @@
    "target": "hexagonal",
    "tolerance": "exact",
    "source": "SEED §3",
-   "verdict": "CALIBRATED",
+   "verdict": "CONFIRMED",
    "note": ""
   },
   {
@@ -46,7 +46,7 @@
    "target": "7 - 21 + 14 = 0",
    "tolerance": "exact",
    "source": "SEED §3 / PLAN E0",
-   "verdict": "CALIBRATED",
+   "verdict": "CONFIRMED",
    "note": ""
   },
   {
@@ -55,7 +55,7 @@
    "target": "K7; two Fano families; one = octonion lines",
    "tolerance": "exact",
    "source": "SEED §3",
-   "verdict": "CALIBRATED",
+   "verdict": "CONFIRMED",
    "note": ""
   },
   {
@@ -64,7 +64,7 @@
    "target": "2, = the torus families",
    "tolerance": "exact",
    "source": "SEED §3",
-   "verdict": "CALIBRATED",
+   "verdict": "CONFIRMED",
    "note": ""
   },
   {
@@ -73,7 +73,7 @@
    "target": "21",
    "tolerance": "exact",
    "source": "SEED §3",
-   "verdict": "CALIBRATED",
+   "verdict": "CONFIRMED",
    "note": ""
   },
   {
@@ -82,7 +82,7 @@
    "target": "168, 168",
    "tolerance": "exact",
    "source": "SEED §3",
-   "verdict": "CALIBRATED",
+   "verdict": "CONFIRMED",
    "note": ""
   },
   {
@@ -90,7 +90,7 @@
    "value": "Klein copy keeps x^3y+y^3z+z^3x: True; flipped keeps xy^3+yz^3+zx^3: True",
    "target": "both True",
    "tolerance": "exact",
-   "source": "SEED §3; LNR eq. 78 [read]",
+   "source": "LNR eq. 78 [read] (mirror quartic of LNR's basis = the flipped copy); SEED §3",
    "verdict": "CALIBRATED",
    "note": ""
   },
@@ -99,9 +99,9 @@
    "value": "8x21, 7x24, 7x24",
    "target": "S4 (7), S4 (7), 7:3 (8)",
    "tolerance": "exact",
-   "source": "ATLAS p.3 (via SEED §9); LNR §5 [read]",
+   "source": "ATLAS p.3 (via SEED §9, not read) for the two S4 classes and 7:3; LNR §5 [read] gives only the types S4 and Z7⋊Z3",
    "verdict": "CALIBRATED",
-   "note": ""
+   "note": "the two conjugacy classes of S4 are established by the computation itself"
   },
   {
    "quantity": "PSL(2,7) triplet character on 1A,2A,3A,4A,7A,7B",
@@ -136,7 +136,7 @@
    "target": "as SEED §3 / hexagon_check.py",
    "tolerance": "exact",
    "source": "SEED §3",
-   "verdict": "CALIBRATED",
+   "verdict": "CONFIRMED",
    "note": ""
   },
   {
@@ -145,7 +145,7 @@
    "target": "p6m",
    "tolerance": "exact",
    "source": "SEED §3; PLAN E0",
-   "verdict": "CALIBRATED",
+   "verdict": "CONFIRMED",
    "note": ""
   },
   {
@@ -168,7 +168,7 @@
   },
   {
    "quantity": "<PSL(2,7), complex conjugation> inside G2",
-   "value": "order 336 = PGL(2,7); swaps S4 classes and Fano families",
+   "value": "order 336 = PGL(2,7) (explicit isomorphism onto PGL(2,F7): True); swaps S4 classes and Fano families",
    "target": null,
    "tolerance": "exact",
    "source": "extra (new finding)",
@@ -193,8 +193,8 @@
   },
   {
    "claim": "SU(3) is the color group and the group of the eightfold way",
-   "verdict": "CONFIRMED",
-   "evidence": "textbook background; not a computation (no check needed)."
+   "verdict": "CONFIRMED (cited)",
+   "evidence": "textbook background, not computed by E0."
   },
   {
    "claim": "SU(3)'s diagonal elements form a flat torus = plane / hexagonal lattice (a 60 deg wallpaper rolled up)",
@@ -214,7 +214,7 @@
   {
    "claim": "the finer hexagonal lattice through them cuts the torus into the 7-vertex triangulation",
    "verdict": "CONFIRMED",
-   "evidence": "Lambda + Zp is hexagonal (Gram (1/7)[[2,-1],[-1,2]]); 7-21+14 = 0, every edge in 2 triangles, links 6-cycles, orientable; equals {i,i+1,i+3} ∪ {i,i+2,i+3}; exhaustive search: the 7-vertex torus triangulation is unique."
+   "evidence": "Lambda + Zp is hexagonal (Gram (1/7)[[2,-1],[-1,2]]); 7-21+14 = 0, every edge in 2 triangles, links 6-cycles, orientable; equals {i,i+1,i+3} ∪ {i,i+2,i+3}; exhaustive search over 7-vertex surfaces with chi = 0: the 7-vertex torus triangulation is unique and there is no 7-vertex Klein bottle."
   },
   {
    "claim": "every point joined to every other (K7)",
@@ -253,18 +253,18 @@
   },
   {
    "claim": "Klein's group of order 168, symmetry group of the Klein quartic, is PSL(2,7) on C^3",
-   "verdict": "CONFIRMED",
-   "evidence": "<Dk, C, R> has order 168, is simple, keeps x^3y+y^3z+z^3x exactly (that the curve has no further automorphisms is Hurwitz's bound, cited, not recomputed)."
+   "verdict": "CONFIRMED (partly cited)",
+   "evidence": "<Dk, C, R> has order 168, is isomorphic to PSL(2,F7) (explicit isomorphism), keeps x^3y+y^3z+z^3x exactly. Cited, not recomputed: that the curve has no further automorphisms (Hurwitz's bound)."
   },
   {
    "claim": "PSL(2,7) is the only simple subgroup of SU(3) with a complex 3-dim irrep; the only other non-abelian simple one is A5, whose triplets are real",
-   "verdict": "CONFIRMED",
-   "evidence": "characters: PSL(2,7) and F21 triplets have FS indicator 0 (b7 non-real); both A5 triplets FS +1. The 'only' part rests on the classification of finite subgroups of SU(3) (cited, not recomputed)."
+   "verdict": "CONFIRMED (partly cited)",
+   "evidence": "characters: PSL(2,7) and F21 triplets have FS indicator 0 (b7 non-real); both A5 triplets FS +1. Cited, not recomputed: the 'only' part, which rests on the classification of finite subgroups of SU(3) (via LNR [read])."
   },
   {
    "claim": "the order-21 group is one of its maximal subgroups (ATLAS)",
    "verdict": "CONFIRMED",
-   "evidence": "exact: maximal subgroups are 7 S4 + 7 S4 + 8 (7:3); F21 is one of the 8."
+   "evidence": "exact: maximal subgroups are 7 S4 + 7 S4 + 8 (7:3), from the complete subgroup list (179 subgroups, closed under joins); F21 is one of the 8. LNR §5 [read] lists the types S4 and Z7⋊Z3; the two S4 classes match ATLAS (via SEED §9, not read)."
   },
   {
    "claim": "Klein's own matrices contain diag(z^4, z^2, z), not D",
@@ -274,17 +274,17 @@
   {
    "claim": "the copy holding <D, 120 deg turn> is Klein's conjugated by -(x<->z), and preserves xy^3+yz^3+zx^3",
    "verdict": "CONFIRMED",
-   "evidence": "exact set equality; it is also LNR's published basis, and it is the unique PSL(2,7) in U(3) containing <D, C>."
+   "evidence": "exact set equality; it is also LNR's published basis, and it is the unique PSL(2,7) in U(3) containing <D, C> (argument closed by computed facts: Aut(F21) induced by PGL(2,7), degree equation)."
   },
   {
    "claim": "flavor model-builders have used both groups as family symmetries",
-   "verdict": "CONFIRMED",
-   "evidence": "literature (LNR 2007, King-Luhn 2009; PLAN §3 found no correction); not a computation."
+   "verdict": "CONFIRMED (cited)",
+   "evidence": "literature (LNR 2007 [read]; PLAN §3 found no correction); not computed by E0."
   },
   {
    "claim": "G2 contains SU(3) as the subgroup fixing one imaginary octonion (Gunaydin-Gursey)",
-   "verdict": "CONFIRMED",
-   "evidence": "extra exact check: Der(O) is g2 (dim 14), derivations killing e form su(3) (dim 8), and the SU(3) matrices act as automorphisms."
+   "verdict": "CONFIRMED (partly cited)",
+   "evidence": "extra exact check at the Lie-algebra level: Der(O) is g2 (dim 14), derivations killing e form su(3) (dim 8), and the SU(3) matrices act as automorphisms fixing e. Cited, not recomputed: the group-level statement that the stabiliser of e in G2 is exactly SU(3) (Gunaydin-Gursey 1973)."
   },
   {
    "claim": "G2's affine Weyl group is exactly p6m",
@@ -308,12 +308,12 @@
   },
   {
    "claim": "F21, PSL(2,7) and the Fano split belong to the SU(3) rung; the turns completing p6m arrive with G2 and swap the families; they don't stack into one clean tower",
-   "verdict": "AMENDED",
-   "evidence": "the facts hold, but the tower stacks more cleanly than stated: the family-swapping G2 element (180 deg turn = complex conjugation kappa) normalises the flipped PSL(2,7), giving PGL(2,7) = Aut(PSL(2,7)) of order 336 inside G2; the two Fano families are the two classes of S4 (points and lines of one Fano plane), which the outer automorphism swaps."
+   "verdict": "CONFIRMED",
+   "evidence": "every factual clause holds (verdict changed from AMENDED in the reconciliation, Oct 19: the amendment concerned interpretation, not fact). Wording refinement suggested: the groups do form a chain G2 ⊃ SU(3)⋊Z2 ⊃ PGL(2,7) ⊃ PSL(2,7) ⊃ F21, because the family-swapping G2 turn (180 deg = complex conjugation kappa) normalises the flipped PSL(2,7) and gives PGL(2,7) = Aut(PSL(2,7)) of order 336 inside G2 (kappa C^{±1} realise the 60 and 300 deg turns); the two Fano families are the two classes of S4, which this outer automorphism swaps, so the family split survives only up to PSL(2,7), as the seed says."
   }
  ],
- "n_checks": 102,
- "n_pass": 102,
+ "n_checks": 110,
+ "n_pass": 110,
  "all_pass": true,
  "checks": [
   {
@@ -480,9 +480,15 @@
   },
   {
    "section": "B",
-   "name": "exhaustive search: every 7-vertex triangulated closed surface is an orientable torus and they form ONE relabelling orbit (the 7-vertex torus triangulation is unique)",
+   "name": "exhaustive search: every 7-vertex triangulated surface with chi = 0 (= every vertex pair in exactly 2 triangles) is an orientable torus -- so no 7-vertex Klein bottle -- and they form ONE relabelling orbit (the 7-vertex torus triangulation is unique)",
    "ok": true,
    "detail": "120 pair-degree-2 complexes, 120 surfaces, 120 orientable, orbit of ours = 120"
+  },
+  {
+   "section": "B",
+   "name": "the search above does not cover all 7-vertex surfaces: a 7-vertex sphere (pentagonal bipyramid, V-E+F = 7-15+10 = 2, orientable) and a 7-vertex projective plane (V-E+F = 7-18+12 = 1, non-orientable) exist",
+   "ok": true,
+   "detail": "sphere (V,E,F,chi,surface,orientable) = (7, 15, 10, 2, True, True); RP^2 = (7, 18, 12, 1, True, False)"
   },
   {
    "section": "B",
@@ -708,6 +714,12 @@
   },
   {
    "section": "C",
+   "name": "the list of 2-generated subgroups is closed under adding any element (<H, g> is again in the list), so it contains every subgroup of PSL(2,7)",
+   "ok": true,
+   "detail": "179 subgroups"
+  },
+  {
+   "section": "C",
    "name": "maximal subgroups of PSL(2,7): two classes of S4 (7 each) and one class of 7:3 (8 conjugates) -- ATLAS",
    "ok": true,
    "detail": "[(21, 8, '{1: 1, 3: 14, 7: 6}'), (24, 7, '{1: 1, 2: 9, 3: 8, 4: 6}'), (24, 7, '{1: 1, 2: 9, 3: 8, 4: 6}')]"
@@ -759,6 +771,42 @@
    "name": "PSL(2,7) acting on each S4 class, labelled through D (x->x+1) and C (x->2x), is exactly the collineation group of one Fano family; the two classes give the two families",
    "ok": true,
    "detail": "['up', 'down']"
+  },
+  {
+   "section": "C",
+   "name": "degree equation: PSL(2,7) has 6 classes (6 irreps) and is perfect (derived subgroup = whole group, so 1 is its only linear character); with 3 and 3bar the other three degrees d >= 2, d | 168, sum d^2 = 149, are forced to be (6,7,8): 3 and 3bar are its only 3-dim irreps",
+   "ok": true,
+   "detail": "[(6, 7, 8)]"
+  },
+  {
+   "section": "C",
+   "name": "explicit isomorphisms: Dk, C, R (Klein's copy) and D, C, Rf (flipped copy) map to Moebius maps of PSL(2,F7) on P^1(F7) so that the generated graph has order 168 and image all of PSL(2,F7)",
+   "ok": true,
+   "detail": "D -> x+1, C -> (0, 2, 4, 6, 1, 3, 5, 7), Rf -> (7, 6, 3, 2, 5, 4, 1, 0) (images of 0..6, inf)"
+  },
+  {
+   "section": "C",
+   "name": "explicit isomorphism <flipped copy, complex conjugation> -> PGL(2,F7): extend the map above by kappa -> an involution of non-square determinant; graph of order 336, image all of PGL(2,F7)",
+   "ok": true,
+   "detail": "kappa -> (0, 6, 5, 4, 3, 2, 1, 7)"
+  },
+  {
+   "section": "C",
+   "name": "inside PGL(2,7) ⊂ G2, kappa, kappa C and kappa C^-1 move the seven points as x -> 6x, 3x, 5x: the 180, 300 and 60 deg G2 turns all lie in <flipped copy, kappa>",
+   "ok": true,
+   "detail": "x -> 6x, 3x, 5x"
+  },
+  {
+   "section": "C",
+   "name": "|Aut(F21)| = 42 (graph test over all images of D, C), and N_PGL(2,7)(F21) has order 42 with trivial centraliser, so every automorphism of F21 is induced inside PGL(2,7) = <flipped copy, kappa>",
+   "ok": true,
+   "detail": "|Aut F21| = 42, |N| = 42"
+  },
+  {
+   "section": "C",
+   "name": "uniqueness of the PSL(2,7) in U(3) containing <D, C> now rests only on computed facts: one class of order-21 subgroups, Aut(F21) induced by PGL(2,7), only 3 and 3bar in degree 3, F21's triplet irreducible with chi(D) = b7 != b7bar",
+   "ok": true,
+   "detail": ""
   },
   {
    "section": "D",
@@ -926,7 +974,7 @@
    "section": "H",
    "name": "hexagon_check.py (float) and the exact recomputation print identical lines (25 of 25)",
    "ok": true,
-   "detail": "original runtime 1.3 s"
+   "detail": "original runtime 1.7 s"
   }
  ],
  "values": {
@@ -947,7 +995,24 @@
    "orientable": 120,
    "orbit": 120,
    "aut_order": 42,
-   "orientation_preserving": 42
+   "orientation_preserving": 42,
+   "scope": "7-vertex surfaces with chi = 0 only (chi = 0 <=> every pair in exactly 2 triangles); 7-vertex spheres and RP^2s exist and are outside the search",
+   "sphere_example": [
+    7,
+    15,
+    10,
+    2,
+    true,
+    true
+   ],
+   "rp2_example": [
+    7,
+    18,
+    12,
+    1,
+    true,
+    false
+   ]
   },
   "fano": {
    "total": 30,
@@ -1031,6 +1096,50 @@
      "element_orders": "{1: 1, 2: 9, 3: 8, 4: 6}"
     }
    ]
+  },
+  "computed_replacements": {
+   "subgroup_list_complete": true,
+   "psl27_other_degrees": [
+    6,
+    7,
+    8
+   ],
+   "iso_flipped_to_PSL2F7": {
+    "D": "x+1",
+    "C": [
+     0,
+     2,
+     4,
+     6,
+     1,
+     3,
+     5,
+     7
+    ],
+    "Rf": [
+     7,
+     6,
+     3,
+     2,
+     5,
+     4,
+     1,
+     0
+    ]
+   },
+   "iso_kappa_to_PGL2F7": [
+    0,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1,
+    7
+   ],
+   "aut_F21": 42,
+   "N_PGL_F21": 42,
+   "note": "P^1(F7) points listed as images of 0..6 and 7 = infinity"
   },
   "A5_triplet_character": {
    "classes": "1A,2A,3A,5A,5B",
@@ -1188,7 +1297,7 @@
    "identical": 25
   }
  },
- "runtime_seconds": 5.0,
+ "runtime_seconds": 7.5,
  "software": {
   "python": "3.13.16"
  }

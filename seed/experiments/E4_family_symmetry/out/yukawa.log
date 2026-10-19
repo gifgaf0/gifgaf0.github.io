@@ -77,12 +77,8 @@
 [PASS] F21, Higgs in 1 + 3 + 3bar with D-eigenvector vevs (0,0,1): M = [[y0,0,y3],[0,y0,0],[y3b,0,y0]] mixes generations 1 and 3 -- the vevs of 3 and 3bar carry different Z7 phases (zeta^4 vs zeta^3), so no common residual Z7 survives; only Z7-INVARIANT vevs (1', 1'' of F21) give a diagonal M  (M = [[(0.7+0j), 0j, (0.4+0.3j)], [0j, (0.7+0j), 0j], [(-0.2+0.5j), 0j, (0.7-0j)]])
 
 === F21: cyclic subgroups {'Z7': 1, 'Z3': 7}; Majorana compatibility: Z7: dim 0, degenerate/zero=True; Z3: dim 3, degenerate/zero=True
-/home/user/gifgaf0.github.io/seed/experiments/E4_family_symmetry/e4lib.py:357: RuntimeWarning: invalid value encountered in sqrt
-  c13 = np.sqrt(c13sq)
 
 === PSL: cyclic subgroups {'Z7': 8, 'Z3': 28, 'Z2': 21, 'Z4': 21, 'Z2xZ2': 14}; Majorana compatibility: Z7: dim 0, degenerate/zero=True; Z3: dim 3, degenerate/zero=True; Z2: dim 5, degenerate/zero=False; Z4: dim 3, degenerate/zero=True
-/home/user/gifgaf0.github.io/seed/experiments/E4_family_symmetry/e4lib.py:357: RuntimeWarning: invalid value encountered in sqrt
-  c13 = np.sqrt(c13sq)
 
 === PSL Z2-partial Majorana classes (column fixed by a Z2, 2 free real parameters): 12 distinct
   G_l=Z7     fixed column |U|^2 [0.131512, 0.204495, 0.663993]  chi2_min=2.13  s12^2=0.321 s13^2=0.0220 s23^2=0.555 delta=253
@@ -92,9 +88,9 @@
   G_l=Z4     fixed column |U|^2 [0.25, 0.25, 0.5]  chi2_min=31.53  s12^2=0.256 s13^2=0.0221 s23^2=0.583 delta=354
   G_l=Z4     fixed column |U|^2 [0.044281, 0.25, 0.705719]  chi2_min=35.52  s12^2=0.278 s13^2=0.0221 s23^2=0.350 delta=357
   G_l=Z3     fixed column |U|^2 [0.034785, 0.166667, 0.798548]  chi2_min=133.73  s12^2=0.184 s13^2=0.0216 s23^2=0.557 delta=176
-  G_l=Z3     fixed column |U|^2 [0.0, 0.5, 0.5]  chi2_min=400.75  s12^2=0.489 s13^2=0.0223 s23^2=0.023 delta=0
-  G_l=Z2xZ2  fixed column |U|^2 [0.0, 0.5, 0.5]  chi2_min=400.75  s12^2=0.489 s13^2=0.0223 s23^2=0.023 delta=360
-  G_l=Z4     fixed column |U|^2 [0.0, 0.5, 0.5]  chi2_min=400.75  s12^2=0.489 s13^2=0.0223 s23^2=0.023 delta=0
+  G_l=Z3     fixed column |U|^2 [0.0, 0.5, 0.5]  chi2_min=362.80  s12^2=0.489 s13^2=0.0223 s23^2=0.023 delta=0
+  G_l=Z2xZ2  fixed column |U|^2 [0.0, 0.5, 0.5]  chi2_min=362.80  s12^2=0.489 s13^2=0.0223 s23^2=0.023 delta=360
+  G_l=Z4     fixed column |U|^2 [0.0, 0.5, 0.5]  chi2_min=362.80  s12^2=0.489 s13^2=0.0223 s23^2=0.023 delta=0
   G_l=Z4     fixed column |U|^2 [0.0, 0.0, 1.0]  chi2_min=993.41  s12^2=0.000 s13^2=0.0219 s23^2=0.000 delta=nan
   G_l=Z2xZ2  fixed column |U|^2 [0.0, 0.0, 1.0]  chi2_min=993.41  s12^2=0.000 s13^2=0.0220 s23^2=0.000 delta=nan
 
@@ -111,11 +107,11 @@
   quark            G1=Z3     G2=Z3     chi2=1872882.1 p=0.0e+00 excluded  lambda=1.0000 A=1.000 rhobar=nan etabar=0.000
 
 === PSL: residual-symmetry mixing patterns (masses free; 0 mixing parameters; 4 observables)
-  lepton-Dirac-nu  G1=Z3     G2=Z7     chi2=    200.0 p=3.7e-42 excluded  s12^2=0.293 s13^2=0.0270 s23^2=0.158 delta=0
+  lepton-Dirac-nu  G1=Z3     G2=Z7     chi2=    162.1 p=5.2e-34 excluded  s12^2=0.293 s13^2=0.0270 s23^2=0.158 delta=0
   lepton-Dirac-nu  G1=Z3     G2=Z3     chi2=    245.6 p=5.6e-52 excluded  s12^2=0.455 s13^2=0.0232 s23^2=0.114 delta=180
-  lepton-Dirac-nu  G1=Z7     G2=Z3     chi2=    345.7 p=1.5e-73 excluded  s12^2=0.158 s13^2=0.0270 s23^2=0.293 delta=0
+  lepton-Dirac-nu  G1=Z7     G2=Z3     chi2=    307.8 p=2.3e-65 excluded  s12^2=0.158 s13^2=0.0270 s23^2=0.293 delta=0
+  lepton-Dirac-nu  G1=Z3     G2=Z4     chi2=    507.1 p=1.9e-108 excluded  s12^2=0.485 s13^2=0.0295 s23^2=0.030 delta=0
   lepton-Dirac-nu  G1=Z3     G2=Z4     chi2=    531.8 p=9.0e-114 excluded  s12^2=0.311 s13^2=0.0348 s23^2=0.173 delta=180
-  lepton-Dirac-nu  G1=Z3     G2=Z4     chi2=    545.1 p=1.2e-116 excluded  s12^2=0.485 s13^2=0.0295 s23^2=0.030 delta=0
   lepton-Dirac-nu  G1=Z4     G2=Z7     chi2=    620.4 p=5.9e-133 excluded  s12^2=0.272 s13^2=0.0081 s23^2=0.331 delta=180
   lepton-Dirac-nu  G1=Z7     G2=Z4     chi2=    629.0 p=8.2e-135 excluded  s12^2=0.331 s13^2=0.0081 s23^2=0.272 delta=180
   lepton-Dirac-nu  G1=Z4     G2=Z3     chi2=    643.9 p=4.8e-138 excluded  s12^2=0.173 s13^2=0.0348 s23^2=0.311 delta=180
@@ -124,10 +120,10 @@
   lepton-Dirac-nu  G1=Z4     G2=Z3     chi2=    830.9 p=1.6e-178 excluded  s12^2=0.030 s13^2=0.0295 s23^2=0.515 delta=180
   lepton-Dirac-nu  G1=Z4     G2=Z2xZ2  chi2=   1437.6 p=4.8e-310 excluded  s12^2=0.262 s13^2=0.0443 s23^2=0.262 delta=306
   lepton-Dirac-nu  G1=Z2xZ2  G2=Z4     chi2=   1437.6 p=4.8e-310 excluded  s12^2=0.262 s13^2=0.0443 s23^2=0.262 delta=306
+  lepton-Dirac-nu  G1=Z4     G2=Z3     chi2=   1456.2 p=0.0e+00 excluded  s12^2=0.349 s13^2=0.0447 s23^2=0.349 delta=0
+  lepton-Dirac-nu  G1=Z3     G2=Z4     chi2=   1456.2 p=0.0e+00 excluded  s12^2=0.349 s13^2=0.0447 s23^2=0.349 delta=0
   lepton-Dirac-nu  G1=Z3     G2=Z2xZ2  chi2=   1472.0 p=0.0e+00 excluded  s12^2=0.333 s13^2=0.0000 s23^2=0.500 delta=nan
   lepton-Dirac-nu  G1=Z4     G2=Z4     chi2=   1485.1 p=0.0e+00 excluded  s12^2=0.262 s13^2=0.0443 s23^2=0.131 delta=180
-  lepton-Dirac-nu  G1=Z4     G2=Z3     chi2=   1487.2 p=0.0e+00 excluded  s12^2=0.349 s13^2=0.0447 s23^2=0.651 delta=180
-  lepton-Dirac-nu  G1=Z3     G2=Z4     chi2=   1487.2 p=0.0e+00 excluded  s12^2=0.349 s13^2=0.0447 s23^2=0.651 delta=180
   lepton-Dirac-nu  G1=Z4     G2=Z4     chi2=   1699.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.0000 s23^2=0.500 delta=nan
   lepton-Dirac-nu  G1=Z4     G2=Z2xZ2  chi2=   1699.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.0000 s23^2=0.500 delta=nan
   lepton-Dirac-nu  G1=Z2xZ2  G2=Z2xZ2  chi2=   1699.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.0000 s23^2=0.500 delta=nan
@@ -214,4 +210,4 @@
 === LNR light-neutrino matrix: residual symmetry inside the seed's groups: {'elements_of_PSL_leaving_Mnu_invariant': 1, 'elements_of_F21': 1, 'TBM_S_in_PSL': False, 'minus_mu_tau_swap_in_PSL': False, 'TBM_S_invariance': True, 'mu_tau_invariance': True}
 [PASS] LNR's M_nu is invariant under the TBM Klein group (S, mu-tau) but only the identity of the seed's PSL(2,7) leaves it invariant: its TBM structure is accidental (parameter choice), not residual
 
-15/15 checks pass; runtime 78.2 s
+15/15 checks pass; runtime 92.6 s

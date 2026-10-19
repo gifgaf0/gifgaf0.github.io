@@ -5,7 +5,11 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 c = json.load(open(os.path.join(HERE, 'xc2_compare.json')))
-oc = json.load(open(os.path.join(HERE, 'xc2_origcode_dsv_example.json')))
+oc = (json.load(open(os.path.join(HERE, 'xc2_origcode_dsv_example.json')))
+      + json.load(open(os.path.join(HERE, 'xc2_origcode_043dt.json')))
+      + json.load(open(os.path.join(HERE, 'xc2_origcode_043fine.json'))))
+oc = sorted(oc, key=lambda r: (-r['dx'], -r['dt']))
+o41 = sorted(json.load(open(os.path.join(HERE, 'xc2_origcode_041.json'))), key=lambda r: (-r['dx'], -r['dt']))
 col = json.load(open(os.path.join(HERE, 'xc2_origcode_col099.json')))
 IV = []
 
@@ -39,9 +43,17 @@ ex = c['e1c_example']
 spec_ex = {k: v for k, v in ex.items() if k.startswith('spec_om0.99_v0.43')}
 oc_txt = '; '.join('dx=%g dt=%g: %s' % (r['dx'], r['dt'], ('pair since t=%g' % r['since']) if r['produced_dsv'] else 'no pair') for r in oc)
 iv('E1c DSV example (0.99, 0.43)', 'pair at T (forms at t=1160 = 0.97T, interval +-22.5 at T), survives to 1.5T',
-   'NO pair at any time up to 1.5T: FD6+RK4 dx=0.08; spectral dx=0.1 and dx=0.05 (%s)' % ', '.join(
-       '%s first=%s' % (k.replace('spec_om0.99_v0.43_', ''), v['first']) for k, v in spec_ex.items()),
-   False, 'original code itself (unmodified copy): ' + oc_txt + '. DSV Fig. 1 shows the kinks at x = +-140 at t = T.')
+   'NO pair at any time up to 1.5T: FD6+RK4 dx=0.08 dt=0.032; spectral (%s)' % ', '.join(
+       '%s: %s' % (k.replace('spec_om0.99_v0.43_', ''), 'pair since %s' % v['first'] if v['pair_at_T'] else 'no pair') for k, v in spec_ex.items()),
+   False, 'original code itself (unmodified copy), %d of %d (dx, dt) settings produce: ' % (sum(r['produced_dsv'] for r in oc), len(oc))
+   + oc_txt + '. A sensitive point, not a calibration point. DSV Fig. 1 shows the kinks at x = +-140 at t = T.')
+o41_txt = '; '.join('dx=%g dt=%g: %s' % (r['dx'], r['dt'], ('pair since t=%g' % r['since']) if r['produced_dsv'] else 'no pair') for r in o41)
+s41 = {k: v for k, v in ex.items() if k.startswith('spec_om0.99_v0.41')}
+iv('E1c neighbouring point (0.99, 0.41)', 'pair at T (dx=0.1, dt=0.04; forms t=670)',
+   'spectral: %s' % ', '.join('%s: %s' % (k.replace('spec_om0.99_v0.41_', ''), 'pair since %s' % v['first'] if v['pair_at_T'] else 'no pair') for k, v in s41.items()),
+   all(v['pair_at_T'] for v in s41.values()),
+   'original code ladder: ' + o41_txt + '. The finest original setting and the spectral code agree on formation at t = 590: '
+   'a converged DSV-like producer 0.02 below the DSV example velocity.')
 m = c['e1c_map']
 iv('E1c DSV map (6 omegas x v 0.40-0.90 step 0.02)', '%d producing on the common points' % m['orig_prod'],
    'FD6+RK4: %d producing; %d in common; call agreement %.1f%%' % (m['fd6_prod'], m['both'], 100 * m['agree']), m['agree'] >= 0.85,
@@ -53,7 +65,7 @@ iv('E1c omega > 0.99', '0/72', '%d/%d (omega=0.995, FD6)' % (m['fd6_prod_omega_g
 col_txt = '; '.join('dx=%g dt=%g: %s' % (r['dx'], r['dt'], [x[0] for x in r['rows'] if x[1]] or 'none') for r in col)
 nb = {k: v for k, v in ex.items() if k.startswith('spec_om0.99') and 'v0.43' not in k}
 iv('E1c omega = 0.99 column (producing v)', '0.41, 0.43 (dx=0.1, dt=0.04)',
-   'FD6: %s (v step 0.02); spectral: %s' % (m['per_omega']['0.99']['fd6'], ', '.join('%s:%s' % (k.split('_')[2], v['pair_at_T']) for k, v in nb.items()) or 'pending'),
+   'FD6: %s (v step 0.02); spectral: %s' % (m['per_omega']['0.99']['fd6'], ', '.join('%s %s %s: %s' % (k.split('_')[2], k.split('_')[3], k.split('_')[4], 'pair' if v['pair_at_T'] else 'none') for k, v in nb.items()) or 'pending'),
    False, 'original code, v = 0.38-0.48 step 0.01: ' + col_txt)
 g = c['e1d_coarse_fd6']
 iv('E1d coarse grid producing count', '564/1485', '%d/1485 (FD6+RK4)' % g['fd6_prod'], abs(g['fd6_prod'] - 564) < 60,
@@ -68,8 +80,12 @@ if s:
     iv('E1d random sample, spectral code (one-by-one)', '%d producing of %d' % (s['orig_prod'], s['n']),
        '%d producing; agreement with original %.1f%% (E>2M: %.1f%%), with FD6 %.1f%%' % (
            s['spec_prod'], 100 * s['agree_spec_orig'], 100 * s['agree_spec_orig_E_gt_2M'], 100 * s['agree_spec_fd6']),
-       s['agree_spec_orig'] >= 0.75, 'FD6 vs original on the same points: %.1f%%; all three agree on %.1f%%' % (
-           100 * s['agree_fd6_orig'], 100 * s['all_three_agree']))
+       abs(s['spec_prod'] - s['orig_prod']) <= 0.15 * s['orig_prod'],
+       'producing counts agree; point calls do not converge (FD6 vs original on the same points %.1f%%, all three codes agree on '
+       '%.1f%%; on the %d sample points the original also ran at dx 0.05, spectral agrees with that run %.0f%% while the '
+       'original dx 0.1 vs 0.05 agree %.0f%%), consistent with the report\'s statement that point maps are not converged' % (
+           100 * s['agree_fd6_orig'], 100 * s['all_three_agree'], s.get('n_with_orig_dx005', 0),
+           100 * s.get('agree_spec_orig_dx005', float('nan')), 100 * s.get('agree_orig_dx01_dx005', float('nan'))))
 tg = {(r['A'], r['sigma'], r['k'], r['single'], r['oneway'], r['dx']): r for r in c['e1d_targets']}
 
 

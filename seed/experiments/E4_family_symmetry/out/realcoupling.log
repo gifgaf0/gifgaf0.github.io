@@ -1,0 +1,68 @@
+3 surviving classes in out/fits.jsonl: ['lepton|min-real|phi10=G|phi5=Z3|phi1=P', 'lepton|min-real|phi10=G|phi5=P|phi1=Z3', 'lepton|min-real|phi10=G|phi5=P|phi1=P']
+
+lepton|min-real|phi10=G|phi5=Z3|phi1=P: n_par 8, N_eff 6 (random-point ranks [5, 6]), chi2 0.902, p 0.34; 51 exact six-observable solutions, delta branches:
+   conjugation symmetry verified on all 17 branch solutions: True; 17 branches found, 20 after completing by conjugation: [26.1, 44.2, 61.1, 83.8, 85.3, 99.2, 122.6, 131.3, 138.9, 152.3, 207.7, 221.1, 228.7, 237.4, 260.8, 274.7, 276.2, 298.9, 315.8, 333.9]
+   lowest chi2 after polishing from every branch: 0.1395 (p = 0.7087338018439604); survey multistart: 0.9017
+   [polished chi2 6.3651] delta =   26.07 deg  (+- 15.7 from 1sigma inputs; 5 sols)  pull +2.56 (3sigma/3), -7.55 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 7.7153] delta =   44.22 deg  (+- 5.4 from 1sigma inputs; 5 sols)  pull +2.78 (3sigma/3), -6.64 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 8.8760] delta =   61.08 deg  (+- 7.5 from 1sigma inputs; 1 sols)  pull +2.99 (3sigma/3), -5.80 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 10.3795] delta =   83.76 deg  (+- 14.7 from 1sigma inputs; 2 sols)  pull +3.27 (3sigma/3), -4.66 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 10.7664] delta =   85.27 deg  (+- 3.0 from 1sigma inputs; 2 sols)  pull +3.29 (3sigma/3), -4.59 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 8.2325] delta =   99.23 deg  (+- 2.6 from 1sigma inputs; 1 sols)  pull -2.88 (3sigma/3), -3.89 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 2.5599] delta =  131.35 deg  (+- 10.5 from 1sigma inputs; 6 sols)  pull -1.69 (3sigma/3), -2.28 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 0.7490] delta =  152.32 deg  (+- 9.6 from 1sigma inputs; 3 sols)  pull -0.91 (3sigma/3), -1.23 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 0.1395] delta =  207.68 deg  (+- 9.6 from 1sigma inputs; 6 sols)  pull +0.38 (3sigma/3), +1.61 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 0.2849] delta =  221.11 deg  (+- 14.3 from 1sigma inputs; 1 sols)  pull +0.54 (3sigma/3), +2.32 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 0.3951] delta =  228.65 deg  (+- 10.5 from 1sigma inputs; 2 sols)  pull +0.63 (3sigma/3), +2.72 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 0.5426] delta =  237.45 deg  (+- 9.3 from 1sigma inputs; 1 sols)  pull +0.74 (3sigma/3), +3.18 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 1.0512] delta =  260.77 deg  (+- 2.6 from 1sigma inputs; 3 sols)  pull +1.03 (3sigma/3), +4.41 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 1.4305] delta =  274.73 deg  (+- 3.0 from 1sigma inputs; 3 sols)  pull +1.20 (3sigma/3), +5.14 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 1.2175] delta =  276.24 deg  (+- 14.7 from 1sigma inputs; 4 sols)  pull +1.22 (3sigma/3), +5.22 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 2.7845] delta =  315.78 deg  (+- 5.4 from 1sigma inputs; 2 sols)  pull +1.70 (3sigma/3), +7.30 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 2.8298] delta =  333.93 deg  (+- 15.7 from 1sigma inputs; 4 sols)  pull +1.92 (3sigma/3), +8.26 (1sigma); charged-lepton sensitivity 0.0e+00
+
+lepton|min-real|phi10=G|phi5=P|phi1=Z3: n_par 8, N_eff 6 (random-point ranks [5, 6]), chi2 0.395, p 0.53; 51 exact six-observable solutions, delta branches:
+   conjugation symmetry verified on all 18 branch solutions: True; 18 branches found, 22 after completing by conjugation: [15.5, 26.1, 44.2, 61.1, 83.8, 85.3, 99.2, 122.5, 131.3, 138.9, 152.3, 207.7, 221.1, 228.7, 237.4, 260.8, 274.7, 276.2, 298.9, 315.8, 333.9, 344.5]
+   lowest chi2 after polishing from every branch: 0.1395 (p = 0.7087338018439595); survey multistart: 0.3951
+   [polished chi2 5.0426] delta =   15.49 deg  (+- 16.4 from 1sigma inputs; 1 sols)  pull +2.43 (3sigma/3), -8.08 (1sigma); charged-lepton sensitivity 5.9e-13
+   [polished chi2 6.3651] delta =   26.07 deg  (+- 15.7 from 1sigma inputs; 4 sols)  pull +2.56 (3sigma/3), -7.55 (1sigma); charged-lepton sensitivity 1.3e-23
+   [polished chi2 7.7153] delta =   44.22 deg  (+- 5.4 from 1sigma inputs; 2 sols)  pull +2.78 (3sigma/3), -6.64 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 10.3795] delta =   83.76 deg  (+- 14.7 from 1sigma inputs; 4 sols)  pull +3.27 (3sigma/3), -4.66 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 10.7664] delta =   85.27 deg  (+- 3.0 from 1sigma inputs; 2 sols)  pull +3.29 (3sigma/3), -4.59 (1sigma); charged-lepton sensitivity 5.4e-15
+   [polished chi2 8.2325] delta =   99.23 deg  (+- 2.6 from 1sigma inputs; 4 sols)  pull -2.88 (3sigma/3), -3.89 (1sigma); charged-lepton sensitivity 1.9e-14
+   [polished chi2 3.7163] delta =  122.55 deg  (+- 9.3 from 1sigma inputs; 1 sols)  pull -2.02 (3sigma/3), -2.72 (1sigma); charged-lepton sensitivity 1.5e-14
+   [polished chi2 2.5599] delta =  131.35 deg  (+- 10.5 from 1sigma inputs; 2 sols)  pull -1.69 (3sigma/3), -2.28 (1sigma); charged-lepton sensitivity 3.4e-15
+   [polished chi2 1.5722] delta =  138.89 deg  (+- 14.3 from 1sigma inputs; 1 sols)  pull -1.41 (3sigma/3), -1.91 (1sigma); charged-lepton sensitivity 3.6e-14
+   [polished chi2 0.7490] delta =  152.32 deg  (+- 9.6 from 1sigma inputs; 6 sols)  pull -0.91 (3sigma/3), -1.23 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 0.1395] delta =  207.68 deg  (+- 9.6 from 1sigma inputs; 3 sols)  pull +0.38 (3sigma/3), +1.61 (1sigma); charged-lepton sensitivity 6.0e-13
+   [polished chi2 0.3951] delta =  228.65 deg  (+- 10.5 from 1sigma inputs; 5 sols)  pull +0.63 (3sigma/3), +2.72 (1sigma); charged-lepton sensitivity 5.2e-15
+   [polished chi2 1.0512] delta =  260.77 deg  (+- 2.6 from 1sigma inputs; 1 sols)  pull +1.03 (3sigma/3), +4.41 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 1.4305] delta =  274.73 deg  (+- 3.0 from 1sigma inputs; 2 sols)  pull +1.20 (3sigma/3), +5.14 (1sigma); charged-lepton sensitivity 7.5e-16
+   [polished chi2 1.2175] delta =  276.24 deg  (+- 14.7 from 1sigma inputs; 2 sols)  pull +1.22 (3sigma/3), +5.22 (1sigma); charged-lepton sensitivity 3.7e-17
+   [polished chi2 2.0690] delta =  298.92 deg  (+- 7.5 from 1sigma inputs; 2 sols)  pull +1.49 (3sigma/3), +6.42 (1sigma); charged-lepton sensitivity 2.7e-13
+   [polished chi2 2.7845] delta =  315.78 deg  (+- 5.4 from 1sigma inputs; 4 sols)  pull +1.70 (3sigma/3), +7.30 (1sigma); charged-lepton sensitivity 1.1e-14
+   [polished chi2 2.8298] delta =  333.93 deg  (+- 15.7 from 1sigma inputs; 5 sols)  pull +1.92 (3sigma/3), +8.26 (1sigma); charged-lepton sensitivity 4.3e-18
+
+lepton|min-real|phi10=G|phi5=P|phi1=P: n_par 10, N_eff 6 (random-point ranks [5, 6]), chi2 0.021, p 0.89; 28 exact six-observable solutions, delta branches:
+   conjugation symmetry verified on all 13 branch solutions: True; 13 branches found, 16 after completing by conjugation: [26.1, 44.2, 61.1, 83.8, 99.2, 122.5, 123.9, 152.3, 207.7, 236.1, 237.4, 260.8, 276.2, 298.9, 315.8, 333.9]
+   lowest chi2 after polishing from every branch: 0.0208 (p = 0.885340642431981); survey multistart: 0.0208
+   [polished chi2 6.3651] delta =   26.07 deg  (+- 15.7 from 1sigma inputs; 2 sols)  pull +2.56 (3sigma/3), -7.55 (1sigma); charged-lepton sensitivity 9.6e-18
+   [polished chi2 7.7153] delta =   44.22 deg  (+- 5.4 from 1sigma inputs; 2 sols)  pull +2.78 (3sigma/3), -6.64 (1sigma); charged-lepton sensitivity 8.2e-15
+   [polished chi2 10.3795] delta =   83.76 deg  (+- 14.7 from 1sigma inputs; 4 sols)  pull +3.27 (3sigma/3), -4.66 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 8.2325] delta =   99.23 deg  (+- 2.6 from 1sigma inputs; 2 sols)  pull -2.88 (3sigma/3), -3.89 (1sigma); charged-lepton sensitivity 7.0e-14
+   [polished chi2 3.7163] delta =  122.55 deg  (+- 9.3 from 1sigma inputs; 1 sols)  pull -2.02 (3sigma/3), -2.72 (1sigma); charged-lepton sensitivity 9.5e-15
+   [polished chi2 0.7490] delta =  152.32 deg  (+- 9.6 from 1sigma inputs; 1 sols)  pull -0.91 (3sigma/3), -1.23 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 0.1395] delta =  207.68 deg  (+- 9.6 from 1sigma inputs; 2 sols)  pull +0.38 (3sigma/3), +1.61 (1sigma); charged-lepton sensitivity 1.1e-14
+   [polished chi2 0.5191] delta =  236.09 deg  (+- 8.8 from 1sigma inputs; 1 sols)  pull +0.72 (3sigma/3), +3.11 (1sigma); charged-lepton sensitivity 5.2e-13
+   [polished chi2 0.5426] delta =  237.45 deg  (+- 9.3 from 1sigma inputs; 1 sols)  pull +0.74 (3sigma/3), +3.18 (1sigma); charged-lepton sensitivity 0.0e+00
+   [polished chi2 1.0512] delta =  260.77 deg  (+- 2.6 from 1sigma inputs; 2 sols)  pull +1.03 (3sigma/3), +4.41 (1sigma); charged-lepton sensitivity 1.0e-13
+   [polished chi2 1.2175] delta =  276.24 deg  (+- 14.7 from 1sigma inputs; 2 sols)  pull +1.22 (3sigma/3), +5.22 (1sigma); charged-lepton sensitivity 6.1e-17
+   [polished chi2 2.0690] delta =  298.92 deg  (+- 7.5 from 1sigma inputs; 1 sols)  pull +1.49 (3sigma/3), +6.42 (1sigma); charged-lepton sensitivity 4.1e-13
+   [polished chi2 2.8298] delta =  333.93 deg  (+- 15.7 from 1sigma inputs; 7 sols)  pull +1.92 (3sigma/3), +8.26 (1sigma); charged-lepton sensitivity 0.0e+00
+[PASS] every survivor has N_eff = max random-point rank (rank is generic, not a best-fit accident)  min-real|phi10=G|phi5=Z3|phi1=P: 6 vs [5, 6]; min-real|phi10=G|phi5=P|phi1=Z3: 6 vs [5, 6]; min-real|phi10=G|phi5=P|phi1=P: 6 vs [5, 6]
+[PASS] every dof = 1 survivor has a discrete set of delta branches at the central values of the other six observables  
+[PASS] polishing from the branches never raises chi2 above the survey value, and every survivor stays at p > 0.01  
+[PASS] exact symmetry: conjugating the vev phases keeps the six fitted observables and maps delta -> 360 - delta, on every branch  
+union of delta branches over the survivors (deg): [15.5, 26.1, 44.2, 61.1, 83.8, 85.3, 99.2, 122.5, 122.6, 123.9, 131.3, 138.9, 152.3, 207.7, 221.1, 228.7, 236.1, 237.4, 260.8, 274.7, 276.2, 298.9, 315.8, 333.9, 344.5]
+
+4/4 checks pass; 268 s

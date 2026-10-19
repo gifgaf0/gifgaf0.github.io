@@ -45,9 +45,16 @@
   {
    "quantity": "E1c DSV example (0.99, 0.43)",
    "original": "pair at T (forms at t=1160 = 0.97T, interval +-22.5 at T), survives to 1.5T",
-   "recomputed": "NO pair at any time up to 1.5T: FD6+RK4 dx=0.08; spectral dx=0.1 and dx=0.05 (dx0.1_dt0.02 first=None, dx0.05_dt0.02 first=None)",
+   "recomputed": "NO pair at any time up to 1.5T: FD6+RK4 dx=0.08 dt=0.032; spectral (dx0.1_dt0.02: no pair, dx0.05_dt0.02: no pair, dx0.1_dt0.01: no pair)",
    "agree": false,
-   "note": "original code itself (unmodified copy): dx=0.1 dt=0.04: pair since t=1160; dx=0.05 dt=0.02: no pair; dx=0.1 dt=0.02: pair since t=780; dx=0.05 dt=0.01: no pair; dx=0.025 dt=0.01: no pair; dx=0.1 dt=0.01: no pair. DSV Fig. 1 shows the kinks at x = +-140 at t = T."
+   "note": "original code itself (unmodified copy), 4 of 10 (dx, dt) settings produce: dx=0.1 dt=0.04: pair since t=1160; dx=0.1 dt=0.02: pair since t=780; dx=0.1 dt=0.01: no pair; dx=0.05 dt=0.02: no pair; dx=0.05 dt=0.01: no pair; dx=0.05 dt=0.005: no pair; dx=0.025 dt=0.01: no pair; dx=0.025 dt=0.005: pair since t=840; dx=0.025 dt=0.0025: no pair; dx=0.0125 dt=0.005: pair since t=840. A sensitive point, not a calibration point. DSV Fig. 1 shows the kinks at x = +-140 at t = T."
+  },
+  {
+   "quantity": "E1c neighbouring point (0.99, 0.41)",
+   "original": "pair at T (dx=0.1, dt=0.04; forms t=670)",
+   "recomputed": "spectral: dx0.1_dt0.02: pair since 590.0, dx0.05_dt0.02: pair since 590.0, dx0.1_dt0.01: pair since 590.0",
+   "agree": true,
+   "note": "original code ladder: dx=0.1 dt=0.04: pair since t=670; dx=0.1 dt=0.02: no pair; dx=0.1 dt=0.01: pair since t=610; dx=0.05 dt=0.02: no pair; dx=0.05 dt=0.01: no pair; dx=0.025 dt=0.005: pair since t=590. The finest original setting and the spectral code agree on formation at t = 590: a converged DSV-like producer 0.02 below the DSV example velocity."
   },
   {
    "quantity": "E1c DSV map (6 omegas x v 0.40-0.90 step 0.02)",
@@ -80,7 +87,7 @@
   {
    "quantity": "E1c omega = 0.99 column (producing v)",
    "original": "0.41, 0.43 (dx=0.1, dt=0.04)",
-   "recomputed": "FD6: [0.4] (v step 0.02); spectral: v0.42:False, v0.44:False, v0.41:True",
+   "recomputed": "FD6: [0.4] (v step 0.02); spectral: v0.42 dx0.1 dt0.02: none, v0.44 dx0.1 dt0.02: none, v0.41 dx0.1 dt0.02: pair, v0.41 dx0.05 dt0.02: pair, v0.41 dx0.1 dt0.01: pair",
    "agree": false,
    "note": "original code, v = 0.38-0.48 step 0.01: dx=0.1 dt=0.04: [0.39, 0.41, 0.43]; dx=0.1 dt=0.02: [0.43]; dx=0.05 dt=0.02: none"
   },
@@ -114,15 +121,15 @@
   },
   {
    "quantity": "E1d random sample, spectral code (one-by-one)",
-   "original": "20 producing of 72",
-   "recomputed": "19 producing; agreement with original 76.4% (E>2M: 75.0%), with FD6 87.5%",
+   "original": "28 producing of 90",
+   "recomputed": "28 producing; agreement with original 73.3% (E>2M: 72.1%), with FD6 84.4%",
    "agree": true,
-   "note": "FD6 vs original on the same points: 80.6%; all three agree on 72.2%"
+   "note": "producing counts agree; point calls do not converge (FD6 vs original on the same points 80.0%, all three codes agree on 68.9%; on the 23 sample points the original also ran at dx 0.05, spectral agrees with that run 87% while the original dx 0.1 vs 0.05 agree 78%), consistent with the report's statement that point maps are not converged"
   },
   {
    "quantity": "E1d lowest producer reproduced (0.8, 2, 0.5), baseline phi_t",
    "original": "E/2M = 1.858, produces at dx 0.1/0.05/0.025, collision needed",
-   "recomputed": "FD6: produces, E/2M = 1.858; spectral dx=0.1: True, dx=0.05: True, E/2M = 1.8584; single packet: None",
+   "recomputed": "FD6: produces, E/2M = 1.858; spectral dx=0.1: True, dx=0.05: True, E/2M = 1.8584; single packet: False",
    "agree": true,
    "note": ""
   },
@@ -132,6 +139,20 @@
    "recomputed": "FD6: no; spectral dx=0.1: False, dx=0.05: False",
    "agree": true,
    "note": "both agree it is not a robust producer"
+  },
+  {
+   "quantity": "E1d one-way phi_t lowest producer (0.6, 4, 0.5)",
+   "original": "E/2M = 2.703, produces (dx 0.1/0.05/0.025); (0.8,2,0.5) one-way: E/2M = 2.90, no pair",
+   "recomputed": "spectral (own one-way construction): E/2M = 2.7030, produces dx=0.1: True, dx=0.05: True; (0.8,2,0.5) one-way: E/2M = 2.902, produces: False",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E1d single-packet self-folding threshold (sigma=16)",
+   "original": "minimum self-folding A 0.375 (sigma=16 slice), 0.425 (k=1 slice)",
+   "recomputed": "spectral single packets (+ = pair): k=0.25: 0.3- 0.35- 0.375- 0.4- 0.425+ 0.45+ 0.5+; k=1: 0.3- 0.35- 0.375- 0.4- 0.425+ 0.45- 0.5-",
+   "agree": true,
+   "note": "local over-barrier estimate: V(-1-A) = V(0) gives A* = sqrt2 - 1 = 0.414"
   },
   {
    "quantity": "E1d sigma=16, k=1 line (59 A values)",
@@ -167,6 +188,13 @@
    "recomputed": "1.2389, 1.6879 (own initial data, continuum dispersion)",
    "agree": true,
    "note": "scaling N lambda/m^2 = E~/(2 sqrt2) re-derived; energy floor 2/3 re-derived"
+  },
+  {
+   "quantity": "E1e N lambda/m^2, one-way (0.6, 4, 0.5)",
+   "original": "1.80 (N=E/m), 1.96 (N_lin)",
+   "recomputed": "1.802, 1.959 (spectral, own one-way data)",
+   "agree": true,
+   "note": ""
   },
   {
    "quantity": "E1e N lambda/m^2, DSV (0.95, 0.62)",

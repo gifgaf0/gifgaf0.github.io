@@ -136,7 +136,7 @@ handles = {}
 for ax in axes.ravel():
     for h_, l_ in zip(*ax.get_legend_handles_labels()):
         handles.setdefault(l_, h_)
-axes[1, 0].legend(handles.values(), handles.keys(), fontsize=7, loc="lower left")
+axes[1, 0].legend(handles.values(), handles.keys(), fontsize=7, loc="upper left")
 fig.suptitle("F21 (LNR framework) texture classes that are not structurally dead", fontsize=9, color=INK, x=0.02, ha="left")
 fig.tight_layout()
 fig.savefig(os.path.join(HERE, "fig_texture_survey.png"))

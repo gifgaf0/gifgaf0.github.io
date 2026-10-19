@@ -152,6 +152,7 @@ DSV_CASES = {
     'ex2': [(0.99, 0.43, 0.05, 0.02), (0.99, 0.42, 0.1, 0.02), (0.99, 0.44, 0.1, 0.02), (0.99, 0.41, 0.1, 0.02)],
     'ex3': [(0.99, 0.41, 0.05, 0.02)],   # added after the dx=0.1 run at v=0.41 produced
     'ex4': [(0.99, 0.41, 0.1, 0.01)],    # time-step check of the v=0.41 producer
+    'ex5': [(0.99, 0.43, 0.1, 0.01)],    # time-step check at the DSV example point
     'map': [],   # filled from the command line: dsv map om v ...
 }
 

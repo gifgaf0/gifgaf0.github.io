@@ -1,0 +1,138 @@
+E1a {'M_bvp': 0.9428090415820659, 'M_rel_err': 2.6645352591003757e-15, 'omega_s_cheb': 1.2247448716542342, 'omega_s_rel_err': 2.1444890307975584e-10, 'omega_s_time': 1.2247306205522202, 'omega_s_time_rel_err': -1.163576161999913e-05}
+E1b {'vc': 0.260066, 'windows': [[0.19256600000000001, 0.203433], [0.22403499999999998, 0.228855], [0.237129, 0.23964449999999998]], 'vc_minus_target': 0.000266000000000044, 'vc_minus_orig_dt0': 9.750000000030568e-06, 'w1_minus_orig_dt0': [1.4200000000019752e-06, 5.919999999992598e-06], 'T12': [17.80000000000001, 23.160000000000004, 28.520000000000003]}
+E1c map: n=160 agree=0.912 orig=21 fd6=21 both=14 orig_only=7 fd6_only=7  rho_fd6=-0.943
+   omega 0.9  fd6 [0.76, 0.78, 0.8] | orig [0.76, 0.78, 0.82, 0.84]
+   omega 0.92  fd6 [0.74, 0.78, 0.82, 0.84] | orig [0.72, 0.74, 0.76, 0.82, 0.84]
+   omega 0.94  fd6 [0.7, 0.72, 0.74, 0.76, 0.78] | orig [0.7, 0.72, 0.74, 0.76, 0.78]
+   omega 0.96  fd6 [0.6, 0.62, 0.64, 0.66, 0.7, 0.72] | orig [0.64, 0.66]
+   omega 0.98  fd6 [0.54, 0.56] | orig [0.5, 0.52, 0.54, 0.56, 0.58]
+   omega 0.99  fd6 [0.4] | orig []
+   omega 0.995  fd6 [] | orig []
+   vs DSV reading: {'n_points': 156, 'n_dsv_producing': 22, 'orig_hits': 14, 'orig_false_pos': 7, 'fd6_hits': 16, 'fd6_false_pos': 5}
+E1c example: {
+"orig": {
+"first": 1160.0000000000002,
+"pair_at_T": true,
+"interval_at_T": [
+[
+-22.530844719629595,
+22.52997732018809,
+0.9600886917960089,
+0.9573101768599244
+]
+],
+"survives": true
+},
+"fd6_dx008": {
+"first": null,
+"pair_at_T": false,
+"pair_at_end": false
+},
+"spec_om0.99_v0.43_dx0.1_dt0.02": {
+"first": null,
+"pair_at_T": false,
+"width_at_T": 0.0,
+"pair_at_end": false,
+"persistent_from": null,
+"E_over_2M": 11.198189566824883,
+"orig_call": true
+},
+"spec_om0.99_v0.43_dx0.05_dt0.02": {
+"first": null,
+"pair_at_T": false,
+"width_at_T": 0.0,
+"pair_at_end": false,
+"persistent_from": null,
+"E_over_2M": 11.198189566824883,
+"orig_call": true
+},
+"spec_om0.99_v0.42_dx0.1_dt0.02": {
+"first": null,
+"pair_at_T": false,
+"width_at_T": 0.0,
+"pair_at_end": false,
+"persistent_from": null,
+"E_over_2M": 11.922717258652513,
+"orig_call": false
+},
+"spec_om0.99_v0.44_dx0.1_dt0.02": {
+"first": null,
+"pair_at_T": false,
+"width_at_T": 0.0,
+"pair_at_end": false,
+"persistent_from": null,
+"E_over_2M": 10.194540820503233,
+"orig_call": false
+},
+"spec_om0.99_v0.41_dx0.1_dt0.02": {
+"first": 590.0,
+"pair_at_T": true,
+"width_at_T": 212.5,
+"pair_at_end": true,
+"persistent_from": 700.0,
+"E_over_2M": 12.287344046469853,
+"orig_call": true
+},
+"spec_om0.99_v0.41_dx0.05_dt0.02": {
+"first": 590.0,
+"pair_at_T": true,
+"width_at_T": 211.3,
+"pair_at_end": true,
+"persistent_from": 700.0,
+"E_over_2M": 12.287344046469855,
+"orig_call": true
+},
+"spec_om0.99_v0.41_dx0.1_dt0.01": {
+"first": 590.0,
+"pair_at_T": true,
+"width_at_T": 413.3,
+"pair_at_end": true,
+"persistent_from": 590.0,
+"E_over_2M": 12.287344046469853,
+"orig_call": true
+},
+"spec_om0.99_v0.43_dx0.1_dt0.01": {
+"first": null,
+"pair_at_T": false,
+"width_at_T": 0.0,
+"pair_at_end": false,
+"persistent_from": null,
+"E_over_2M": 11.198189566824883,
+"orig_call": true
+}
+}
+E1d coarse (orig vs FD6): {'n': 1485, 'agree': 0.8323232323232324, 'agree_E_gt_2M': 0.8008, 'orig_prod': 564, 'fd6_prod': 587, 'both': 451, 'orig_only': 113, 'fd6_only': 136, 'fd6_prod_below_2M': 0, 'fd6_prod_A_le_03': 0}
+   frac vs E [lo,hi,n,orig,fd6]: [[0, 1, 235, 0.0, 0.0], [1, 1.5, 72, 0.0, 0.0], [1.5, 2, 64, 0.031, 0.016], [2, 3, 93, 0.075, 0.065], [3, 4, 72, 0.111, 0.111], [4, 6, 114, 0.184, 0.228], [6, 8, 88, 0.455, 0.523], [8, 12, 120, 0.533, 0.558], [12, 16, 88, 0.591, 0.625], [16, 24, 127, 0.598, 0.638], [24, 32, 89, 0.697, 0.697], [32, 64, 177, 0.689, 0.695], [64, 1000000000.0, 146, 0.753, 0.767]]
+   original dx 0.1 vs 0.05 self-agreement: 0.797 (E>2M 0.797, n=300)
+E1d random sample (spectral): {'n': 90, 'n_E_gt_2M': 86, 'orig_prod': 28, 'spec_prod': 28, 'fd6_prod': 36, 'agree_spec_orig': 0.7333333333333333, 'agree_spec_fd6': 0.8444444444444444, 'agree_fd6_orig': 0.8, 'agree_spec_orig_E_gt_2M': 0.7209302325581395, 'agree_fd6_orig_E_gt_2M': 0.7906976744186046, 'agree_spec_fd6_E_gt_2M': 0.8372093023255814, 'all_three_agree': 0.6888888888888889, 'majority_vs_orig': 0.8444444444444444, 'spec_own_test_vs_report_test': 1.0, 'max_rel_E_diff': 0.0004229459987030726, 'spec_prod_below_2M': 0, 'n_with_orig_dx005': 23, 'agree_spec_orig_dx005': 0.8695652173913043, 'agree_orig_dx01_dx005': 0.782608695652174}
+   target {'A': 0.8, 'sigma': 2.0, 'k': 0.5, 'single': False, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 1.858381307609116, 'N_lin': 3.375830126139651, 'prod': True, 'rep': [True, True, True, True, True], 'N_E_lam_over_m2': np.float64(1.238920871739411), 'N_lin_lam_over_m2': 1.6879150630698254}
+   target {'A': 0.8, 'sigma': 2.0, 'k': 0.5, 'single': False, 'oneway': False, 'dx': 0.05, 'dt': 0.01, 'E_over_2M': 1.858381307609116, 'N_lin': 3.375830126139651, 'prod': True, 'rep': [True, True, True, True, True], 'N_E_lam_over_m2': np.float64(1.238920871739411), 'N_lin_lam_over_m2': 1.6879150630698254}
+   target {'A': 1.4, 'sigma': 1.0, 'k': 0.25, 'single': False, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 1.7923481598839903, 'N_lin': 5.434908758067169, 'prod': False, 'rep': [False, False, False, False, False], 'N_E_lam_over_m2': np.float64(1.1948987732559935), 'N_lin_lam_over_m2': 2.7174543790335846}
+   target {'A': 1.4, 'sigma': 1.0, 'k': 0.25, 'single': False, 'oneway': False, 'dx': 0.05, 'dt': 0.01, 'E_over_2M': 1.7923481598839903, 'N_lin': 5.434908758067171, 'prod': False, 'rep': [False, False, False, False, False], 'N_E_lam_over_m2': np.float64(1.1948987732559935), 'N_lin_lam_over_m2': 2.7174543790335854}
+   target {'A': 0.6, 'sigma': 4.0, 'k': 0.5, 'single': False, 'oneway': True, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 2.702977618867364, 'N_lin': 3.91864329183893, 'prod': True, 'rep': [True, True, True, True, True], 'N_E_lam_over_m2': np.float64(1.8019850792449095), 'N_lin_lam_over_m2': 1.959321645919465}
+   target {'A': 0.6, 'sigma': 4.0, 'k': 0.5, 'single': False, 'oneway': True, 'dx': 0.05, 'dt': 0.01, 'E_over_2M': 2.7029776188673647, 'N_lin': 3.91864329183893, 'prod': True, 'rep': [True, True, True, True, True], 'N_E_lam_over_m2': np.float64(1.8019850792449097), 'N_lin_lam_over_m2': 1.959321645919465}
+   target {'A': 0.8, 'sigma': 2.0, 'k': 0.5, 'single': False, 'oneway': True, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 2.901824015188625, 'N_lin': 4.701219494944809, 'prod': False, 'rep': [False, False, False, False, False], 'N_E_lam_over_m2': np.float64(1.9345493434590835), 'N_lin_lam_over_m2': 2.3506097474724044}
+   target {'A': 0.8, 'sigma': 2.0, 'k': 0.5, 'single': True, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 0.929190653804558, 'N_lin': 1.6879150630698254, 'prod': False, 'rep': [False, False, False, False, False], 'N_E_lam_over_m2': np.float64(0.6194604358697055), 'N_lin_lam_over_m2': 0.8439575315349127}
+   target {'A': 0.275, 'sigma': 16.0, 'k': 0.2, 'single': False, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 2.263348609101522, 'N_lin': 3.0632287922385157, 'prod': False, 'rep': [False, False, False, False, False], 'N_E_lam_over_m2': np.float64(1.5088990727343479), 'N_lin_lam_over_m2': 1.5316143961192579}
+   target {'A': 0.3, 'sigma': 16.0, 'k': 0.25, 'single': True, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 1.387340562558783, 'N_lin': 1.832781686158764, 'prod': False, 'rep': [False, False, False, False, False], 'N_E_lam_over_m2': np.float64(0.924893708372522), 'N_lin_lam_over_m2': 0.916390843079382}
+   target {'A': 0.35, 'sigma': 16.0, 'k': 0.25, 'single': True, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 1.8883761343624101, 'N_lin': 2.4946195172716505, 'prod': False, 'rep': [False, False, False, False, False], 'N_E_lam_over_m2': np.float64(1.2589174229082734), 'N_lin_lam_over_m2': 1.2473097586358253}
+   target {'A': 0.375, 'sigma': 16.0, 'k': 0.25, 'single': True, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 2.1680712738450465, 'N_lin': 2.863721384623069, 'prod': False, 'rep': [False, False, False, False, False], 'N_E_lam_over_m2': np.float64(1.445380849230031), 'N_lin_lam_over_m2': 1.4318606923115345}
+   target {'A': 0.4, 'sigma': 16.0, 'k': 0.25, 'single': True, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 2.467315661077491, 'N_lin': 3.2582785531711362, 'prod': False, 'rep': [False, False, False, False, False], 'N_E_lam_over_m2': np.float64(1.6448771073849942), 'N_lin_lam_over_m2': 1.6291392765855681}
+   target {'A': 0.425, 'sigma': 16.0, 'k': 0.25, 'single': True, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 2.78619424396335, 'N_lin': 3.678291022915852, 'prod': True, 'rep': [True, True, True, True, True], 'N_E_lam_over_m2': np.float64(1.8574628293089), 'N_lin_lam_over_m2': 1.839145511457926}
+   target {'A': 0.45, 'sigma': 16.0, 'k': 0.25, 'single': True, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 3.1248013215115593, 'N_lin': 4.12375879385722, 'prod': True, 'rep': [True, True, True, True, True], 'N_E_lam_over_m2': np.float64(2.0832008810077065), 'N_lin_lam_over_m2': 2.06187939692861}
+   target {'A': 0.5, 'sigma': 16.0, 'k': 0.25, 'single': True, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 3.861624912157421, 'N_lin': 5.0910602393299, 'prod': True, 'rep': [True, True, True, True, True], 'N_E_lam_over_m2': np.float64(2.5744166081049475), 'N_lin_lam_over_m2': 2.54553011966495}
+   target {'A': 0.3, 'sigma': 16.0, 'k': 1.0, 'single': True, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 2.0391055726863985, 'N_lin': 2.2106250636854883, 'prod': False, 'rep': [False, False, False, False, False], 'N_E_lam_over_m2': np.float64(1.3594037151242657), 'N_lin_lam_over_m2': 1.1053125318427441}
+   target {'A': 0.35, 'sigma': 16.0, 'k': 1.0, 'single': True, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 2.7794185790273707, 'N_lin': 3.0089063366830247, 'prod': False, 'rep': [False, False, False, False, False], 'N_E_lam_over_m2': np.float64(1.8529457193515806), 'N_lin_lam_over_m2': 1.5044531683415123}
+   target {'A': 0.375, 'sigma': 16.0, 'k': 1.0, 'single': True, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 3.193200278193952, 'N_lin': 3.454101662008575, 'prod': False, 'rep': [True, False, False, False, False], 'N_E_lam_over_m2': np.float64(2.1288001854626346), 'N_lin_lam_over_m2': 1.7270508310042876}
+   target {'A': 0.4, 'sigma': 16.0, 'k': 1.0, 'single': True, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 3.6362430329254125, 'N_lin': 3.9300001132186457, 'prod': False, 'rep': [False, False, False, False, False], 'N_E_lam_over_m2': np.float64(2.4241620219502753), 'N_lin_lam_over_m2': 1.9650000566093229}
+   target {'A': 0.425, 'sigma': 16.0, 'k': 1.0, 'single': True, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 4.108691720553122, 'N_lin': 4.436601690313237, 'prod': True, 'rep': [True, True, True, True, True], 'N_E_lam_over_m2': np.float64(2.7391278137020816), 'N_lin_lam_over_m2': 2.2183008451566186}
+   target {'A': 0.45, 'sigma': 16.0, 'k': 1.0, 'single': True, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 4.610700565333051, 'N_lin': 4.9739063932923475, 'prod': False, 'rep': [False, False, False, False, False], 'N_E_lam_over_m2': np.float64(3.073800376888701), 'N_lin_lam_over_m2': 2.4869531966461738}
+   target {'A': 0.5, 'sigma': 16.0, 'k': 1.0, 'single': True, 'oneway': False, 'dx': 0.1, 'dt': 0.02, 'E_over_2M': 5.704062357996481, 'N_lin': 6.140625176904135, 'prod': False, 'rep': [True, False, False, False, False], 'N_E_lam_over_m2': np.float64(3.8027082386643207), 'N_lin_lam_over_m2': 3.0703125884520674}
+E1e floor N lam/m^2 = 0.6666666666666667
+    gauss_0.8_2.0_0.5 {'E_over_2M': 1.8584, 'N_E_lam_over_m2': 1.2389, 'N_lin_lam_over_m2': 1.6879, 'Equad_over_E': 1.4823}
+    gauss_1.4_1.0_0.25 {'E_over_2M': 1.7923, 'N_E_lam_over_m2': 1.1949, 'N_lin_lam_over_m2': 2.7175, 'Equad_over_E': 2.5883}
+    gauss_0.275_16.0_0.2 {'E_over_2M': 2.2633, 'N_E_lam_over_m2': 1.5089, 'N_lin_lam_over_m2': 1.5316, 'Equad_over_E': 1.0256}
+    dsv_0.95_0.62 {'E_over_2M': 7.1708, 'N_E_lam_over_m2': 4.7805, 'N_lin_lam_over_m2': 3.9278, 'Equad_over_E': 0.9905}
+    dsv_0.9_0.73 {'E_over_2M': 6.9787, 'N_E_lam_over_m2': 4.6524, 'N_lin_lam_over_m2': 3.3854, 'Equad_over_E': 0.9899}
+    dsv_0.99_0.43 {'E_over_2M': 11.1982, 'N_E_lam_over_m2': 7.4655, 'N_lin_lam_over_m2': 7.0735, 'Equad_over_E': 0.9935}
+wrote xc2_compare.json

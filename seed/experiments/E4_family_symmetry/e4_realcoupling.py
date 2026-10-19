@@ -10,8 +10,11 @@ relation among the 7 lepton observables.  This script makes that relation explic
   (a) N_eff robustness: rank of d(obs)/d(params) at 30 random points (e4_fits.jac_rank);
   (b) the prediction: fix the six observables me/mmu, mmu/mtau, r, s12^2, s13^2, s23^2 at their central
       values and solve for the parameters from many random starts; on every solution branch delta is
-      then determined.  Branches come in pairs delta, 360 - delta (each class's parameter space is
-      closed under complex conjugation);
+      then determined.  Branches come in pairs delta, 360 - delta: each class's parameter space is
+      closed under complex conjugation (vev phases -> minus themselves, real couplings unchanged), which
+      keeps the six observables and sends delta -> 360 - delta.  This is verified explicitly on every
+      branch solution and used to complete the list.  The enumeration (300 starts) is not exhaustive:
+      the branch list is a lower bound;
   (c) the spread of delta on each branch from the 1sigma errors of r, s12^2, s13^2, s23^2 (linear
       propagation through the implicit function: d delta = J_delta J_6^+ dO_6);
   (d) the pull of each branch in both delta conventions (3sigma-range/3, and NuFIT's 1sigma);
@@ -111,6 +114,22 @@ for r in surv:
                      "ddelta_dr": float(g[2]), "ddelta_ds12": float(g[3]), "ddelta_ds13": float(g[4]), "ddelta_ds23": float(g[5]),
                      "max_abs_dlog_sensitivity_to_charged_lepton_ratios_deg": g_mass,
                      "pull_3sigma_range_convention": round(pull_delta_deg(d), 3), "pull_1sigma": round(pull_delta_1sigma(d), 3)})
+    # exact conjugation symmetry on every branch representative, and completion of the list
+    lay = F.layout(c)
+    sym_ok = []
+    for b in branches:
+        px = b["p"]
+        pc = np.array([-x if t == "phase" else x for x, t in zip(px, lay)])
+        o, oc = obsf(px), obsf(pc)
+        same6 = bool(np.allclose(o[:6], oc[:6], rtol=1e-9, atol=1e-12))
+        flip = abs(((o[6] + oc[6]) % 360.0 + 180.0) % 360.0 - 180.0) < 1e-6
+        sym_ok.append(same6 and flip)
+    found = sorted(x["delta_deg"] for x in rows)
+    allb = sorted(set(round(d, 1) for d in found) | set(round((360.0 - d) % 360.0, 1) for d in found))
+    merged = []
+    for d in allb:
+        if not merged or abs(d - merged[-1]) > 0.15:
+            merged.append(d)
     best = min(rows, key=lambda x: abs(x["pull_3sigma_range_convention"])) if rows else None
     chi2_glob = min([r["chi2"]] + [x["chi2_polished_from_branch"] for x in rows])
     from scipy.stats import chi2 as chi2dist
@@ -118,10 +137,14 @@ for r in surv:
     out[nm] = {"n_par": n, "n_eff_stored": r["n_eff"], "dof": r.get("dof"), "chi2": r["chi2"], "p_value": r.get("p_value"),
                "best_obs": r["best_obs"], "pulls": r["pulls"], "random_point_ranks": sorted(set(ranks)),
                "rank_max_random": max(ranks) if ranks else None, "n_converged_solutions": len(sols),
-               "delta_branches": rows, "best_branch": best, "chi2_min_including_branch_polish": chi2_glob,
+               "delta_branches": rows, "best_branch": best, "conjugation_symmetry_verified_on_all_branches": all(sym_ok),
+               "n_branches_found": len(rows), "delta_branches_completed_by_conjugation_deg": merged,
+               "n_branches_lower_bound": len(merged), "chi2_min_including_branch_polish": chi2_glob,
                "p_value_at_that_minimum": p_glob}
     print(f"\n{nm}: n_par {n}, N_eff {r['n_eff']} (random-point ranks {sorted(set(ranks))}), chi2 {r['chi2']:.3f}, "
           f"p {r.get('p_value'):.2f}; {len(sols)} exact six-observable solutions, delta branches:")
+    print(f"   conjugation symmetry verified on all {len(sym_ok)} branch solutions: {all(sym_ok)}; "
+          f"{len(rows)} branches found, {len(merged)} after completing by conjugation: {merged}")
     print(f"   lowest chi2 after polishing from every branch: {chi2_glob:.4f} (p = {p_glob}); survey multistart: {r['chi2']:.4f}")
     for x in rows:
         print(f"   [polished chi2 {x['chi2_polished_from_branch']:.4f}] delta = {x['delta_deg']:7.2f} deg  (+- {x['sigma_delta_1sigma_inputs_deg']:.1f} from 1sigma inputs; "
@@ -137,10 +160,11 @@ if surv:
     check("polishing from the branches never raises chi2 above the survey value, and every survivor stays at p > 0.01",
           all(v["chi2_min_including_branch_polish"] <= v["chi2"] + 1e-9 and (v["p_value_at_that_minimum"] or 1) > 0.01
               for v in out.values()))
-    check("branches come in conjugate pairs (delta, 360 - delta) within 0.1 deg",
-          all(all(any(abs((360 - x["delta_deg"]) - y["delta_deg"]) < 0.1 for y in v["delta_branches"]) for x in v["delta_branches"])
-              for v in out.values() if v["dof"] == 1))
-json.dump({"survivors": out, "sigma_1sigma_inputs": SIG1, "checks": CHECKS,
+    check("exact symmetry: conjugating the vev phases keeps the six fitted observables and maps delta -> 360 - delta, on every branch",
+          all(v["conjugation_symmetry_verified_on_all_branches"] for v in out.values()))
+    union = sorted(set(d for v in out.values() for d in v["delta_branches_completed_by_conjugation_deg"]))
+    print("union of delta branches over the survivors (deg):", union)
+json.dump({"survivors": out, "union_of_delta_branches_deg": sorted(set(d for v in out.values() for d in v["delta_branches_completed_by_conjugation_deg"])) if out else [], "sigma_1sigma_inputs": SIG1, "checks": CHECKS,
            "all_pass": all(v["pass"] for v in CHECKS.values()), "runtime_s": round(time.time() - t0, 1)},
           open(os.path.join(OUT, "realcoupling.json"), "w"), indent=1)
 print(f"\n{sum(v['pass'] for v in CHECKS.values())}/{len(CHECKS)} checks pass; {time.time() - t0:.0f} s")

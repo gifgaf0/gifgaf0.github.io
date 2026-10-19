@@ -124,11 +124,18 @@ def dot(a, b):
     return np.einsum('...i,...i->...', a, b)
 
 
+def _apply(A, u, B):
+    # out[i,j,c] = sum_kl A[i,k] u[k,l,c] B[j,l]
+    return np.stack([A @ u[:, :, c] @ B.T for c in range(u.shape[2])], axis=-1)
+
+
+def _applyT(A, g, B):
+    # out[k,l,c] = sum_ij A[i,k] g[i,j,c] B[j,l]
+    return np.stack([A.T @ g[:, :, c] @ B for c in range(g.shape[2])], axis=-1)
+
+
 def fields(G, u):
-    U = np.einsum('ik,klc,jl->ijc', G.Px, u, G.Py)
-    Ux = np.einsum('ik,klc,jl->ijc', G.Dx, u, G.Py)
-    Uy = np.einsum('ik,klc,jl->ijc', G.Px, u, G.Dy)
-    return U, Ux, Uy
+    return _apply(G.Px, u, G.Py), _apply(G.Dx, u, G.Py), _apply(G.Px, u, G.Dy)
 
 
 def energy_grad(G, u, n, want_grad=True, parts=False):
@@ -170,9 +177,7 @@ def energy_grad(G, u, n, want_grad=True, parts=False):
                 - (gpy * sy + Uy * dot(psi, gpy)[..., None]) / nU
     gnU = -(dot(gpx, px) + dot(gpy, py))[..., None] / nU
     gU = (gpsi - psi * dot(psi, gpsi)[..., None]) / nU + gnU * psi
-    g = (np.einsum('ik,ijc,jl->klc', G.Px, gU, G.Py)
-         + np.einsum('ik,ijc,jl->klc', G.Dx, gUx, G.Py)
-         + np.einsum('ik,ijc,jl->klc', G.Px, gUy, G.Dy))
+    g = _applyT(G.Px, gU, G.Py) + _applyT(G.Dx, gUx, G.Py) + _applyT(G.Px, gUy, G.Dy)
     return E, g
 
 
@@ -200,28 +205,62 @@ def set_boundary(u, G):
 
 def interp_nodes(u_old, Nx_old, Ny_old, Nx, Ny):
     Mx = bary_matrix(Nx_old, cheb_nodes(Nx)); My = bary_matrix(Ny_old, cheb_nodes(Ny))
-    return np.einsum('ik,klc,jl->ijc', Mx, u_old, My)
+    return _apply(Mx, u_old, My)
+
+
+def _sym_maps(G):
+    """Reflection symmetry z -> -z combined with psi2 -> -psi2 (both domains are
+    symmetric under y -> -y, node l <-> Ny-l).  It removes the z-translation zero
+    mode, which a non-uniform grid would otherwise turn into a spurious drift."""
+    Nx, Ny = G.Nx, G.Ny
+    ind = [(k, l) for k in range(1, Nx) for l in range(1, Ny) if l < Ny - l]
+    mid = [(k, Ny // 2) for k in range(1, Nx)] if Ny % 2 == 0 else []
+    return ind, mid
+
+
+def _unpack(G, v, u, ind, mid):
+    ni = len(ind)
+    a = v[:3 * ni].reshape(-1, 3)
+    ki = np.array([p[0] for p in ind]); li = np.array([p[1] for p in ind])
+    u[ki, li] = a
+    u[ki, G.Ny - li] = a * np.array([1.0, -1.0, 1.0])
+    if mid:
+        km = np.array([p[0] for p in mid])
+        b = v[3 * ni:].reshape(-1, 2)
+        u[km, G.Ny // 2, 0] = b[:, 0]; u[km, G.Ny // 2, 1] = 0.0; u[km, G.Ny // 2, 2] = b[:, 1]
+    return u
+
+
+def _pack(G, u, ind, mid, grad=False):
+    ki = np.array([p[0] for p in ind]); li = np.array([p[1] for p in ind])
+    if grad:
+        a = u[ki, li] + u[ki, G.Ny - li] * np.array([1.0, -1.0, 1.0])
+    else:
+        a = u[ki, li]
+    parts = [a.ravel()]
+    if mid:
+        km = np.array([p[0] for p in mid])
+        parts.append(u[km, G.Ny // 2][:, [0, 2]].ravel())
+    return np.concatenate(parts)
 
 
 def minimise(G, u0, n, maxiter=20000, tag=''):
-    mask = G.interior
-    shape = u0.shape
+    ind, mid = _sym_maps(G)
     u = u0.copy()
 
     def f(v):
-        u[mask] = v.reshape(-1, 3)
+        _unpack(G, v, u, ind, mid)
         E, g = energy_grad(G, u, n)
-        return E, g[mask].ravel()
+        return E, _pack(G, g, ind, mid, grad=True)
 
     t0 = time.time()
-    res = minimize(f, u[mask].ravel(), jac=True, method='L-BFGS-B',
+    res = minimize(f, _pack(G, u, ind, mid), jac=True, method='L-BFGS-B',
                    options=dict(maxiter=maxiter, maxfun=maxiter * 2, maxcor=40,
                                 ftol=1e-16, gtol=1e-11))
-    u[mask] = res.x.reshape(-1, 3)
-    # normalise nodal values (does not change psi much; keeps |u|~1 for restarts)
+    _unpack(G, res.x, u, ind, mid)
     u = u / np.linalg.norm(u, axis=-1, keepdims=True)
     E, E2, E4, deg = energy_grad(G, u, n, parts=True)
-    gn = np.linalg.norm(f(u[mask].ravel())[1])
+    gn = np.linalg.norm(f(_pack(G, u, ind, mid))[1])
     print(f'  {tag} N=({G.Nx},{G.Ny}) E={E:.9f} E2={E2:.6f} E4={E4:.6f} deg={deg:.8f} '
           f'iters={res.nit} |g|={gn:.2e} {time.time()-t0:.1f}s msg={res.message}', flush=True)
     return u, dict(E=E, E2=E2, E4=E4, deg=deg, Q=n * deg, iters=int(res.nit),
@@ -257,12 +296,20 @@ def quadrature_check():
 
 
 CASES = []
+NS_INF = {(1, 1): [24, 32, 48, 64, 80], (2, 1): [24, 32, 48, 64, 80], (2, 2): [48, 64, 80, 96]}
+NS_CYL = {(1, 1): [32, 48, 64, 80, 96, 112], (2, 1): [32, 48, 64, 80, 96, 112],
+          (2, 2): [48, 64, 80, 96, 112]}
 for (n, m) in [(1, 1), (2, 1), (2, 2)]:
     CASES.append(dict(name=f'n{n}m{m}_inf', n=n, m=m, kind='inf', L=1.6 if n == 1 else 2.0,
-                      Ns=[24, 32, 48, 64, 80, 96]))
+                      Ns=NS_INF[(n, m)]))
+for (n, m) in [(1, 1), (2, 2)]:
+    for L in (1.1, 2.6):     # independence of the radial map scale
+        CASES.append(dict(name=f'n{n}m{m}_infL{L}', n=n, m=m, kind='inf', L=L,
+                          Ns=[32, 48, 64] if m == 1 else [48, 64, 80]))
+for (n, m) in [(1, 1), (2, 1), (2, 2)]:
     for R in (7.5, 12.0, 25.0):
         CASES.append(dict(name=f'n{n}m{m}_cyl{R}', n=n, m=m, kind='cyl', R=R,
-                          alpha={7.5: 2.5, 12.0: 3.2, 25.0: 4.5}[R], Ns=[32, 48, 64, 80, 96]))
+                          alpha={7.5: 2.5, 12.0: 3.2, 25.0: 4.5}[R], Ns=NS_CYL[(n, m)]))
 
 
 def main():
@@ -289,12 +336,12 @@ def main():
             else:
                 u0 = interp_nodes(u, Nprev, Nprev, N, N)
             u0 = set_boundary(u0, G)
-            u, info = minimise(G, u0, cs['n'], tag=cs['name'])
+            u, info = minimise(G, u0, cs['n'], maxiter=8000 if cs['m'] == 1 else 40000, tag=cs['name'])
             entry['runs'][str(N)] = info
             Nprev = N
             res[cs['name']] = entry
             json.dump(res, open(OUT, 'w'), indent=1)
-            np.save(os.path.join(HERE, 'fields_axial', f"{cs['name']}_N{N}.npy"), u)
+            np.save(os.path.join(FDIR, f"{cs['name']}_N{N}.npy"), u)
         entry['done'] = True
         res[cs['name']] = entry
         json.dump(res, open(OUT, 'w'), indent=1)

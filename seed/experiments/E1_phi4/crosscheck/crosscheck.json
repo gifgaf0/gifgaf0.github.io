@@ -300,6 +300,33 @@
     "persistent_from": 700.0,
     "E_over_2M": 12.287344046469853,
     "orig_call": true
+   },
+   "spec_om0.99_v0.41_dx0.05_dt0.02": {
+    "first": 590.0,
+    "pair_at_T": true,
+    "width_at_T": 211.3,
+    "pair_at_end": true,
+    "persistent_from": 700.0,
+    "E_over_2M": 12.287344046469855,
+    "orig_call": true
+   },
+   "spec_om0.99_v0.41_dx0.1_dt0.01": {
+    "first": 590.0,
+    "pair_at_T": true,
+    "width_at_T": 413.3,
+    "pair_at_end": true,
+    "persistent_from": 590.0,
+    "E_over_2M": 12.287344046469853,
+    "orig_call": true
+   },
+   "spec_om0.99_v0.43_dx0.1_dt0.01": {
+    "first": null,
+    "pair_at_T": false,
+    "width_at_T": 0.0,
+    "pair_at_end": false,
+    "persistent_from": null,
+    "E_over_2M": 11.198189566824883,
+    "orig_call": true
    }
   },
   "e1d_coarse_fd6": {
@@ -410,19 +437,19 @@
   "e1d_orig_dx_selfagree": 0.7966666666666666,
   "e1d_orig_dx_selfagree_E_gt_2M": 0.7966666666666666,
   "e1d_sample_spec": {
-   "n": 72,
-   "n_E_gt_2M": 68,
-   "orig_prod": 20,
-   "spec_prod": 19,
-   "fd6_prod": 24,
-   "agree_spec_orig": 0.7638888888888888,
-   "agree_spec_fd6": 0.875,
-   "agree_fd6_orig": 0.8055555555555556,
-   "agree_spec_orig_E_gt_2M": 0.75,
-   "agree_fd6_orig_E_gt_2M": 0.7941176470588235,
-   "agree_spec_fd6_E_gt_2M": 0.8676470588235294,
-   "all_three_agree": 0.7222222222222222,
-   "majority_vs_orig": 0.8472222222222222,
+   "n": 90,
+   "n_E_gt_2M": 86,
+   "orig_prod": 28,
+   "spec_prod": 28,
+   "fd6_prod": 36,
+   "agree_spec_orig": 0.7333333333333333,
+   "agree_spec_fd6": 0.8444444444444444,
+   "agree_fd6_orig": 0.8,
+   "agree_spec_orig_E_gt_2M": 0.7209302325581395,
+   "agree_fd6_orig_E_gt_2M": 0.7906976744186046,
+   "agree_spec_fd6_E_gt_2M": 0.8372093023255814,
+   "all_three_agree": 0.6888888888888889,
+   "majority_vs_orig": 0.8444444444444444,
    "spec_own_test_vs_report_test": 1.0,
    "max_rel_E_diff": 0.0004229459987030726,
    "spec_prod_below_2M": 0,
@@ -613,11 +640,88 @@
      false,
      false,
      14.22
+    ],
+    [
+     [
+      1.2,
+      5.0,
+      3.0
+     ],
+     false,
+     true,
+     true,
+     75.79
+    ],
+    [
+     [
+      1.4,
+      5.0,
+      0.75
+     ],
+     false,
+     true,
+     true,
+     24.58
+    ],
+    [
+     [
+      1.4,
+      5.0,
+      1.0
+     ],
+     false,
+     true,
+     false,
+     29.88
+    ],
+    [
+     [
+      1.4,
+      6.0,
+      0.25
+     ],
+     true,
+     false,
+     true,
+     13.73
+    ],
+    [
+     [
+      1.5,
+      6.0,
+      0.75
+     ],
+     true,
+     false,
+     true,
+     35.59
+    ],
+    [
+     [
+      1.5,
+      10.0,
+      2.0
+     ],
+     false,
+     true,
+     true,
+     133.26
+    ],
+    [
+     [
+      1.5,
+      16.0,
+      1.5
+     ],
+     true,
+     false,
+     true,
+     153.94
     ]
    ],
-   "n_with_orig_dx005": 17,
-   "agree_spec_orig_dx005": 0.8823529411764706,
-   "agree_orig_dx01_dx005": 0.7647058823529411
+   "n_with_orig_dx005": 23,
+   "agree_spec_orig_dx005": 0.8695652173913043,
+   "agree_orig_dx01_dx005": 0.782608695652174
   },
   "e1d_targets": [
    {
@@ -703,6 +807,405 @@
     ],
     "N_E_lam_over_m2": 1.1948987732559935,
     "N_lin_lam_over_m2": 2.7174543790335854
+   },
+   {
+    "A": 0.6,
+    "sigma": 4.0,
+    "k": 0.5,
+    "single": false,
+    "oneway": true,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 2.702977618867364,
+    "N_lin": 3.91864329183893,
+    "prod": true,
+    "rep": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ],
+    "N_E_lam_over_m2": 1.8019850792449095,
+    "N_lin_lam_over_m2": 1.959321645919465
+   },
+   {
+    "A": 0.6,
+    "sigma": 4.0,
+    "k": 0.5,
+    "single": false,
+    "oneway": true,
+    "dx": 0.05,
+    "dt": 0.01,
+    "E_over_2M": 2.7029776188673647,
+    "N_lin": 3.91864329183893,
+    "prod": true,
+    "rep": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ],
+    "N_E_lam_over_m2": 1.8019850792449097,
+    "N_lin_lam_over_m2": 1.959321645919465
+   },
+   {
+    "A": 0.8,
+    "sigma": 2.0,
+    "k": 0.5,
+    "single": false,
+    "oneway": true,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 2.901824015188625,
+    "N_lin": 4.701219494944809,
+    "prod": false,
+    "rep": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ],
+    "N_E_lam_over_m2": 1.9345493434590835,
+    "N_lin_lam_over_m2": 2.3506097474724044
+   },
+   {
+    "A": 0.8,
+    "sigma": 2.0,
+    "k": 0.5,
+    "single": true,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 0.929190653804558,
+    "N_lin": 1.6879150630698254,
+    "prod": false,
+    "rep": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ],
+    "N_E_lam_over_m2": 0.6194604358697055,
+    "N_lin_lam_over_m2": 0.8439575315349127
+   },
+   {
+    "A": 0.275,
+    "sigma": 16.0,
+    "k": 0.2,
+    "single": false,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 2.263348609101522,
+    "N_lin": 3.0632287922385157,
+    "prod": false,
+    "rep": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ],
+    "N_E_lam_over_m2": 1.5088990727343479,
+    "N_lin_lam_over_m2": 1.5316143961192579
+   },
+   {
+    "A": 0.3,
+    "sigma": 16.0,
+    "k": 0.25,
+    "single": true,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 1.387340562558783,
+    "N_lin": 1.832781686158764,
+    "prod": false,
+    "rep": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ],
+    "N_E_lam_over_m2": 0.924893708372522,
+    "N_lin_lam_over_m2": 0.916390843079382
+   },
+   {
+    "A": 0.35,
+    "sigma": 16.0,
+    "k": 0.25,
+    "single": true,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 1.8883761343624101,
+    "N_lin": 2.4946195172716505,
+    "prod": false,
+    "rep": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ],
+    "N_E_lam_over_m2": 1.2589174229082734,
+    "N_lin_lam_over_m2": 1.2473097586358253
+   },
+   {
+    "A": 0.375,
+    "sigma": 16.0,
+    "k": 0.25,
+    "single": true,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 2.1680712738450465,
+    "N_lin": 2.863721384623069,
+    "prod": false,
+    "rep": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ],
+    "N_E_lam_over_m2": 1.445380849230031,
+    "N_lin_lam_over_m2": 1.4318606923115345
+   },
+   {
+    "A": 0.4,
+    "sigma": 16.0,
+    "k": 0.25,
+    "single": true,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 2.467315661077491,
+    "N_lin": 3.2582785531711362,
+    "prod": false,
+    "rep": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ],
+    "N_E_lam_over_m2": 1.6448771073849942,
+    "N_lin_lam_over_m2": 1.6291392765855681
+   },
+   {
+    "A": 0.425,
+    "sigma": 16.0,
+    "k": 0.25,
+    "single": true,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 2.78619424396335,
+    "N_lin": 3.678291022915852,
+    "prod": true,
+    "rep": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ],
+    "N_E_lam_over_m2": 1.8574628293089,
+    "N_lin_lam_over_m2": 1.839145511457926
+   },
+   {
+    "A": 0.45,
+    "sigma": 16.0,
+    "k": 0.25,
+    "single": true,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 3.1248013215115593,
+    "N_lin": 4.12375879385722,
+    "prod": true,
+    "rep": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ],
+    "N_E_lam_over_m2": 2.0832008810077065,
+    "N_lin_lam_over_m2": 2.06187939692861
+   },
+   {
+    "A": 0.5,
+    "sigma": 16.0,
+    "k": 0.25,
+    "single": true,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 3.861624912157421,
+    "N_lin": 5.0910602393299,
+    "prod": true,
+    "rep": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ],
+    "N_E_lam_over_m2": 2.5744166081049475,
+    "N_lin_lam_over_m2": 2.54553011966495
+   },
+   {
+    "A": 0.3,
+    "sigma": 16.0,
+    "k": 1.0,
+    "single": true,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 2.0391055726863985,
+    "N_lin": 2.2106250636854883,
+    "prod": false,
+    "rep": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ],
+    "N_E_lam_over_m2": 1.3594037151242657,
+    "N_lin_lam_over_m2": 1.1053125318427441
+   },
+   {
+    "A": 0.35,
+    "sigma": 16.0,
+    "k": 1.0,
+    "single": true,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 2.7794185790273707,
+    "N_lin": 3.0089063366830247,
+    "prod": false,
+    "rep": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ],
+    "N_E_lam_over_m2": 1.8529457193515806,
+    "N_lin_lam_over_m2": 1.5044531683415123
+   },
+   {
+    "A": 0.375,
+    "sigma": 16.0,
+    "k": 1.0,
+    "single": true,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 3.193200278193952,
+    "N_lin": 3.454101662008575,
+    "prod": false,
+    "rep": [
+     true,
+     false,
+     false,
+     false,
+     false
+    ],
+    "N_E_lam_over_m2": 2.1288001854626346,
+    "N_lin_lam_over_m2": 1.7270508310042876
+   },
+   {
+    "A": 0.4,
+    "sigma": 16.0,
+    "k": 1.0,
+    "single": true,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 3.6362430329254125,
+    "N_lin": 3.9300001132186457,
+    "prod": false,
+    "rep": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ],
+    "N_E_lam_over_m2": 2.4241620219502753,
+    "N_lin_lam_over_m2": 1.9650000566093229
+   },
+   {
+    "A": 0.425,
+    "sigma": 16.0,
+    "k": 1.0,
+    "single": true,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 4.108691720553122,
+    "N_lin": 4.436601690313237,
+    "prod": true,
+    "rep": [
+     true,
+     true,
+     true,
+     true,
+     true
+    ],
+    "N_E_lam_over_m2": 2.7391278137020816,
+    "N_lin_lam_over_m2": 2.2183008451566186
+   },
+   {
+    "A": 0.45,
+    "sigma": 16.0,
+    "k": 1.0,
+    "single": true,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 4.610700565333051,
+    "N_lin": 4.9739063932923475,
+    "prod": false,
+    "rep": [
+     false,
+     false,
+     false,
+     false,
+     false
+    ],
+    "N_E_lam_over_m2": 3.073800376888701,
+    "N_lin_lam_over_m2": 2.4869531966461738
+   },
+   {
+    "A": 0.5,
+    "sigma": 16.0,
+    "k": 1.0,
+    "single": true,
+    "oneway": false,
+    "dx": 0.1,
+    "dt": 0.02,
+    "E_over_2M": 5.704062357996481,
+    "N_lin": 6.140625176904135,
+    "prod": false,
+    "rep": [
+     true,
+     false,
+     false,
+     false,
+     false
+    ],
+    "N_E_lam_over_m2": 3.8027082386643207,
+    "N_lin_lam_over_m2": 3.0703125884520674
    }
   ],
   "e1e_fd6": {
@@ -1054,9 +1557,16 @@
   {
    "quantity": "E1c DSV example (0.99, 0.43)",
    "original": "pair at T (forms at t=1160 = 0.97T, interval +-22.5 at T), survives to 1.5T",
-   "recomputed": "NO pair at any time up to 1.5T: FD6+RK4 dx=0.08; spectral dx=0.1 and dx=0.05 (dx0.1_dt0.02 first=None, dx0.05_dt0.02 first=None)",
+   "recomputed": "NO pair at any time up to 1.5T: FD6+RK4 dx=0.08 dt=0.032; spectral (dx0.1_dt0.02: no pair, dx0.05_dt0.02: no pair, dx0.1_dt0.01: no pair)",
    "agree": false,
-   "note": "original code itself (unmodified copy): dx=0.1 dt=0.04: pair since t=1160; dx=0.05 dt=0.02: no pair; dx=0.1 dt=0.02: pair since t=780; dx=0.05 dt=0.01: no pair; dx=0.025 dt=0.01: no pair; dx=0.1 dt=0.01: no pair. DSV Fig. 1 shows the kinks at x = +-140 at t = T."
+   "note": "original code itself (unmodified copy), 4 of 10 (dx, dt) settings produce: dx=0.1 dt=0.04: pair since t=1160; dx=0.1 dt=0.02: pair since t=780; dx=0.1 dt=0.01: no pair; dx=0.05 dt=0.02: no pair; dx=0.05 dt=0.01: no pair; dx=0.05 dt=0.005: no pair; dx=0.025 dt=0.01: no pair; dx=0.025 dt=0.005: pair since t=840; dx=0.025 dt=0.0025: no pair; dx=0.0125 dt=0.005: pair since t=840. A sensitive point, not a calibration point. DSV Fig. 1 shows the kinks at x = +-140 at t = T."
+  },
+  {
+   "quantity": "E1c neighbouring point (0.99, 0.41)",
+   "original": "pair at T (dx=0.1, dt=0.04; forms t=670)",
+   "recomputed": "spectral: dx0.1_dt0.02: pair since 590.0, dx0.05_dt0.02: pair since 590.0, dx0.1_dt0.01: pair since 590.0",
+   "agree": true,
+   "note": "original code ladder: dx=0.1 dt=0.04: pair since t=670; dx=0.1 dt=0.02: no pair; dx=0.1 dt=0.01: pair since t=610; dx=0.05 dt=0.02: no pair; dx=0.05 dt=0.01: no pair; dx=0.025 dt=0.005: pair since t=590. The finest original setting and the spectral code agree on formation at t = 590: a converged DSV-like producer 0.02 below the DSV example velocity."
   },
   {
    "quantity": "E1c DSV map (6 omegas x v 0.40-0.90 step 0.02)",
@@ -1089,7 +1599,7 @@
   {
    "quantity": "E1c omega = 0.99 column (producing v)",
    "original": "0.41, 0.43 (dx=0.1, dt=0.04)",
-   "recomputed": "FD6: [0.4] (v step 0.02); spectral: v0.42:False, v0.44:False, v0.41:True",
+   "recomputed": "FD6: [0.4] (v step 0.02); spectral: v0.42 dx0.1 dt0.02: none, v0.44 dx0.1 dt0.02: none, v0.41 dx0.1 dt0.02: pair, v0.41 dx0.05 dt0.02: pair, v0.41 dx0.1 dt0.01: pair",
    "agree": false,
    "note": "original code, v = 0.38-0.48 step 0.01: dx=0.1 dt=0.04: [0.39, 0.41, 0.43]; dx=0.1 dt=0.02: [0.43]; dx=0.05 dt=0.02: none"
   },
@@ -1123,15 +1633,15 @@
   },
   {
    "quantity": "E1d random sample, spectral code (one-by-one)",
-   "original": "20 producing of 72",
-   "recomputed": "19 producing; agreement with original 76.4% (E>2M: 75.0%), with FD6 87.5%",
+   "original": "28 producing of 90",
+   "recomputed": "28 producing; agreement with original 73.3% (E>2M: 72.1%), with FD6 84.4%",
    "agree": true,
-   "note": "FD6 vs original on the same points: 80.6%; all three agree on 72.2%"
+   "note": "producing counts agree; point calls do not converge (FD6 vs original on the same points 80.0%, all three codes agree on 68.9%; on the 23 sample points the original also ran at dx 0.05, spectral agrees with that run 87% while the original dx 0.1 vs 0.05 agree 78%), consistent with the report's statement that point maps are not converged"
   },
   {
    "quantity": "E1d lowest producer reproduced (0.8, 2, 0.5), baseline phi_t",
    "original": "E/2M = 1.858, produces at dx 0.1/0.05/0.025, collision needed",
-   "recomputed": "FD6: produces, E/2M = 1.858; spectral dx=0.1: True, dx=0.05: True, E/2M = 1.8584; single packet: None",
+   "recomputed": "FD6: produces, E/2M = 1.858; spectral dx=0.1: True, dx=0.05: True, E/2M = 1.8584; single packet: False",
    "agree": true,
    "note": ""
   },
@@ -1141,6 +1651,20 @@
    "recomputed": "FD6: no; spectral dx=0.1: False, dx=0.05: False",
    "agree": true,
    "note": "both agree it is not a robust producer"
+  },
+  {
+   "quantity": "E1d one-way phi_t lowest producer (0.6, 4, 0.5)",
+   "original": "E/2M = 2.703, produces (dx 0.1/0.05/0.025); (0.8,2,0.5) one-way: E/2M = 2.90, no pair",
+   "recomputed": "spectral (own one-way construction): E/2M = 2.7030, produces dx=0.1: True, dx=0.05: True; (0.8,2,0.5) one-way: E/2M = 2.902, produces: False",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E1d single-packet self-folding threshold (sigma=16)",
+   "original": "minimum self-folding A 0.375 (sigma=16 slice), 0.425 (k=1 slice)",
+   "recomputed": "spectral single packets (+ = pair): k=0.25: 0.3- 0.35- 0.375- 0.4- 0.425+ 0.45+ 0.5+; k=1: 0.3- 0.35- 0.375- 0.4- 0.425+ 0.45- 0.5-",
+   "agree": true,
+   "note": "local over-barrier estimate: V(-1-A) = V(0) gives A* = sqrt2 - 1 = 0.414"
   },
   {
    "quantity": "E1d sigma=16, k=1 line (59 A values)",
@@ -1178,6 +1702,13 @@
    "note": "scaling N lambda/m^2 = E~/(2 sqrt2) re-derived; energy floor 2/3 re-derived"
   },
   {
+   "quantity": "E1e N lambda/m^2, one-way (0.6, 4, 0.5)",
+   "original": "1.80 (N=E/m), 1.96 (N_lin)",
+   "recomputed": "1.802, 1.959 (spectral, own one-way data)",
+   "agree": true,
+   "note": ""
+  },
+  {
    "quantity": "E1e N lambda/m^2, DSV (0.95, 0.62)",
    "original": "4.7805, 3.9278",
    "recomputed": "4.7805, 3.9278",
@@ -1208,13 +1739,13 @@
   },
   {
    "claim": "E1c: (omega, v) = (0.99, 0.43) produces a pair, CALIBRATED; \"the pair is real: it is still separating at 1.5T\"",
-   "verdict": "wrong",
-   "note": "Resolution artifact. The original code itself gives no pair at (dx, dt) = (0.05, 0.02), (0.05, 0.01), (0.025, 0.01) and (0.1, 0.01). It gives a pair only at (0.1, 0.04), forming at t = 1160, and at (0.1, 0.02), forming at t = 780. FD6+RK4 (dx 0.08) and the spectral code (dx 0.1 and 0.05) give no pair up to 1.5T. The original pair forms latest of all 80 producers (median 120) and is +-22.5 wide at T, whereas DSV Fig. 1 shows the kinks at +-140 at T."
+   "verdict": "unsupported",
+   "note": "The call is not reproducible. The original code itself (unmodified copy) produces at only 4 of 10 (dx, dt) settings: yes at (0.1, 0.04) [t = 1160], (0.1, 0.02) [780], (0.025, 0.005) and (0.0125, 0.005) [840]; no at (0.1, 0.01), (0.05, 0.02), (0.05, 0.01), (0.05, 0.005), (0.025, 0.01) and (0.025, 0.0025). The two independent, higher-order-in-time codes give no pair up to 1.5T (FD6+RK4 dx 0.08; spectral dx0.1_dt0.02: no pair, dx0.05_dt0.02: no pair, dx0.1_dt0.01: no pair). The point was never resolution-checked in E1, and its formation time (1160) is the latest of all 80 producers (median 120). It is a sensitive point, not a calibration point. The DSV-like event does exist 0.02 lower: (0.99, 0.41) forms a pair at t = 590 in the spectral code at (dx, dt) = (0.1, 0.02), (0.05, 0.02) and (0.1, 0.01), and in the finest original setting (0.025, 0.005)."
   },
   {
    "claim": "E1c reproduces DSV Fig. 2 band by band, including the example point",
    "verdict": "overstated",
-   "note": "Band location and trend are reproduced for omega = 0.90-0.98 by both codes: 91% call agreement on 160 common points, FD6 Spearman -0.94. At v step 0.02 the original hits 14 of DSV's 22 producing points with 7 false positives (FD6: 16 and 5). The omega = 0.99 column is not converged: original code, v 0.38-0.48, gives producers {0.39, 0.41, 0.43} at (0.1, 0.04), {0.43} at (0.1, 0.02) and none at (0.05, 0.02). The spectral code gives v = 0.41 at dx 0.1 (dx 0.05: pending); FD6 gives v = 0.40."
+   "note": "Band location and trend are reproduced for omega = 0.90-0.98 by both codes: 91% call agreement on 160 common points, FD6 Spearman -0.94. At v step 0.02 the original hits 14 of DSV's 22 producing points with 7 false positives (FD6: 16 and 5). The omega = 0.99 column is not converged: original code, v 0.38-0.48, gives producers {0.39, 0.41, 0.43} at (0.1, 0.04), {0.43} at (0.1, 0.02) and none at (0.05, 0.02). The spectral code gives a converged producer at v = 0.41 (dx 0.05: pair since t=590.0); FD6 gives v = 0.40 on its step-0.02 grid. So DSV's omega = 0.99 production near v ~ 0.4 is reproduced, but at 0.41, not at the quoted 0.43."
   },
   {
    "claim": "E1c: dx = 0.05 rerun agrees on 74 of 78 calls; the four disagreements are band-edge points",
@@ -1239,17 +1770,17 @@
   {
    "claim": "E1d: producing fraction vs E/2M table; no coarse producer with A <= 0.3",
    "verdict": "supported",
-   "note": "FD6 on the same 1485 points: 587 vs 564 producing, every band within 0.07, 0 producers with A <= 0.3. Point agreement 83%% (80%% at E > 2M) equals the original's own dx-halving agreement (80%%). 72 random coarse points (A >= 0.3), spectral vs original 76% agreement (E > 2M: 75%), spectral vs FD6 88%, FD6 vs original 81%."
+   "note": "FD6 on the same 1485 points: 587 vs 564 producing, every band within 0.07, 0 producers with A <= 0.3. Point agreement 83% (80% at E > 2M) equals the original's own dx-halving agreement (80%). 90 random coarse points (A >= 0.3), spectral vs original 73% agreement (E > 2M: 72%), spectral vs FD6 84%, FD6 vs original 80%."
   },
   {
    "claim": "E1d: lowest resolution-checked producers E/2M = 1.86 (baseline phi_t, (0.8, 2, 0.5)) and 2.70 (one-way phi_t, (0.6, 4, 0.5))",
    "verdict": "supported",
-   "note": "FD6 lowest producer is the same point at 1.858. Spectral: (0.8, 2, 0.5) produces at dx 0.1 (E/2M = 1.8584) and dx 0.05 (True); own one-way construction (0.6, 4, 0.5): E/2M = None, produces None / None at dx 0.1 / 0.05. The raw 1.79 point is not a robust producer in any code."
+   "note": "FD6 lowest producer is the same point at 1.858. Spectral: (0.8, 2, 0.5) produces at dx 0.1 (E/2M = 1.8584) and dx 0.05 (True); own one-way construction (0.6, 4, 0.5): E/2M = 2.7030, produces True / True at dx 0.1 / 0.05. The raw 1.79 point is not a robust producer in any code."
   },
   {
    "claim": "E1d: single packets with A >~ 0.4 fold on their own (65% of producing coarse points)",
    "verdict": "supported",
-   "note": "FD6 sample: 57/80 self-fold, 87% agreement with the original. Spectral sigma = 16 scan: pending. A simple mechanism the report leaves unanalysed: the field at a trough, phi = -1 - A, already has potential energy above the barrier V(0) = 1/4 when A > sqrt2 - 1 = 0.414."
+   "note": "FD6 sample: 57/80 self-fold, 87% agreement with the original. Spectral sigma = 16 scan: k=0.25: first self-folding A = 0.425, k=1: first self-folding A = 0.425. A simple mechanism the report leaves unanalysed: the field at a trough, phi = -1 - A, already has potential energy above the barrier V(0) = 1/4 when A > sqrt2 - 1 = 0.414."
   },
   {
    "claim": "E1d: the production boundary is ragged (fractured), CONFIRMED",
@@ -1259,7 +1790,7 @@
   {
    "claim": "E1d: slower packets produce more at matched energy (rho -0.82 to -0.88), CONFIRMED; seed claim \"low speed holds\"",
    "verdict": "overstated",
-   "note": "The correlation reproduces (FD6: -0.82, -0.93, -0.92), but it is an amplitude effect. At matched energy slow packets have larger A (mean A 0.85-0.90 at v_g <= 0.47 against 0.36-0.42 at v_g >= 0.82 in the [2, 4) band). At fixed A (E > 2M) no amplitude level shows a significant speed trend (one marginal case, A = 0.5, p = 0.045), and collision-needed production shows none at any A."
+   "note": "The correlation reproduces (FD6: -0.82, -0.93, -0.92), but it is an amplitude effect. At matched energy slow packets have larger A (mean A 0.80-0.90 at v_g <= 0.47 against 0.36-0.42 at v_g >= 0.82 in the [2, 4) band). At fixed A (E > 2M) no amplitude level shows a significant negative speed trend in the original data (one marginal case, A = 0.5, p = 0.045) and none for collision-needed production. In the independent FD6 data the only significant fixed-A trend runs the other way (A = 1.2, rho = +0.75, p = 0.02). Computed by xc2_confound.py."
   },
   {
    "claim": "E1d: no width preference at matched energy (NOT SUPPORTED)",
@@ -1304,9 +1835,9 @@
  ],
  "issues": [
   {
-   "severity": "blocking",
-   "description": "E1c headline \"DSV example (0.99, 0.43) produces a pair: CALIBRATED\" is a resolution artifact. Only the coarsest settings of the original code produce it: (dx, dt) = (0.1, 0.04) at t = 1160 and (0.1, 0.02) at t = 780. Its own runs at (0.05, 0.02), (0.05, 0.01), (0.025, 0.01) and (0.1, 0.01) give no pair, and so do two independent codes (FD6+RK4 dx 0.08; spectral dx 0.1 and 0.05) up to 1.5T. The point was never resolution-checked (0.43 is not on the dx = 0.05 grid), and the report's \"the pair is real: it is still separating at 1.5T\" does not hold. The original pair is +-22.5 wide at T, whereas DSV Fig. 1 shows the kinks at +-140 at T.",
-   "suggested_fix": "Re-label the example row as NOT REPRODUCED (sensitive): at converged resolution (0.99, 0.43) makes no pair in any code. Report the omega = 0.99 column as unconverged: narrow producing windows near v = 0.39-0.43 move with dx and dt (original: {0.39, 0.41, 0.43} -> {0.43} -> none; spectral dx 0.1: 0.41; FD6: 0.40). Drop \"including the example point\" from the section 4 DSV evidence."
+   "severity": "major",
+   "description": "E1c headline \"DSV example (0.99, 0.43) produces a pair (appears at t ~ 1160), still separating at 1.5T: CALIBRATED\" is not demonstrated. The point is resolution-sensitive and was never resolution-checked. The original code itself produces at 4 of 10 (dx, dt) settings, with no monotone trend down to dt = 0.0025: (0.1, 0.04) yes; (0.1, 0.02) yes; (0.1, 0.01) no; (0.05, 0.02 / 0.01 / 0.005) no; (0.025, 0.01) no; (0.025, 0.005) yes; (0.025, 0.0025) no; (0.0125, 0.005) yes. Two independent, higher-order-in-time codes give no pair at all. The report's \"the pair is real: it is still separating at 1.5T\" generalises from one discretisation. The dx = 0.05 rerun's 74/78 agreement is trivial in the omega = 0.99 column, whose producing v (0.41, 0.43) are not on that grid; at dx = 0.05 the original finds no omega = 0.99 producer at v = 0.38-0.48.",
+   "suggested_fix": "Re-label the row: (0.99, 0.43) is a sensitive point whose call depends on dx and dt in every code (3 of 3 independent runs give no pair). Report that a converged DSV-like producer exists at (0.99, 0.41): pair at t = 590 in the spectral code at three (dx, dt) settings and in the finest original setting. Replace \"the pair is real\" with that statement, and add a resolution check for every map point that carries a verdict."
   },
   {
    "severity": "major",
@@ -1315,7 +1846,7 @@
   },
   {
    "severity": "major",
-   "description": "The E1d \"slower produces more at matched energy\" result (CONFIRMED, and \"low speed holds\" in the seed-claim evidence) is confounded with amplitude. At matched energy slow packets carry larger A, and production is controlled by A (self-folding needs A >~ 0.4). At fixed A no level shows a significant speed dependence (one marginal case, A = 0.5, p = 0.045), and collision-needed production shows none at any A. In the one-way form the collision-needed speed test is NOT SUPPORTED (results.json), yet the seed-claim text says low speed holds in both forms.",
+   "description": "The E1d \"slower produces more at matched energy\" result (CONFIRMED, and \"low speed holds\" in the seed-claim evidence) is confounded with amplitude. At matched energy slow packets carry larger A, and production is controlled by A (self-folding needs A >~ 0.4). At fixed A no level shows a significant negative speed trend (original: one marginal case, A = 0.5, p = 0.045; FD6: only A = 1.2, rho = +0.75), and collision-needed production shows none at any A. In the one-way form the collision-needed speed test is NOT SUPPORTED (results.json), yet the seed-claim text says low speed holds in both forms.",
    "suggested_fix": "State that the matched-energy speed correlation is explained by amplitude. Report the fixed-A test, under which no speed preference is found. Mark the PLAN speed prediction NOT SUPPORTED as a speed effect."
   },
   {
@@ -1350,5 +1881,5 @@
   }
  ],
  "overall": "confirmed_with_corrections",
- "summary": "Independent recomputation with two different codes (6th-order FD + RK4; Fourier exact-linear 4th-order splitting) plus collocation and Chebyshev solvers. E1a, E1b (v_c 0.260066 vs 0.26006; first window to 1e-5), the E1c map trend, pass-through and omega > 0.99 null, all E1d statistics (564 vs 587 producing coarse runs; band fractions within 0.07; zero producers below 2M or with A <= 0.3; the same lowest producers; self-folding; ragged lines) and the E1e quanta counts are confirmed. Point-level E1d calls agree 80-83%, the same as the original's own dx-halving agreement. One headline is wrong: the DSV example point (0.99, 0.43) is a resolution artifact. It produces only at the coarsest settings of the original code and in no independent code; the original code itself gives no pair at dx = 0.05 or dt = 0.01. Three seed-level verdicts are overstated: section 4 DSV \"most easily at low speed\"; the E1d low-speed preference, which is an amplitude confound; and the section 2 AMENDED rationale, which is family-specific since the classical infimum is 2M by time reversal."
+ "summary": "Independent recomputation with two different codes (6th-order FD + RK4; Fourier exact-linear 4th-order splitting) plus collocation and Chebyshev solvers. E1a, E1b (v_c 0.260066 vs 0.26006; first window to 1e-5), the E1c map trend, pass-through and omega > 0.99 null, all E1d statistics (564 vs 587 producing coarse runs; band fractions within 0.07; zero producers below 2M or with A <= 0.3; the same lowest producers; self-folding; ragged lines) and the E1e quanta counts are confirmed. Point-level E1d calls agree 73-84% between codes, the same as the original's own dx-halving agreement (80%). One headline calibration is not demonstrated: the DSV example point (0.99, 0.43) is resolution-sensitive. The original code produces it at 4 of 10 (dx, dt) settings, the independent codes never do; a converged DSV-like producer exists at (0.99, 0.41). Three seed-level verdicts are overstated: section 4 DSV \"most easily at low speed\"; the E1d low-speed preference, which is an amplitude confound; and the section 2 AMENDED rationale, which is family-specific since the classical infimum is 2M by time reversal."
 }

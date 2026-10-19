@@ -181,8 +181,10 @@ def relabel_stats(FF):
     causes = {}
     for r in rel:
         d = r["diagnosis"] or ""
-        k = ("rank-deficient charged-fermion matrix (Z7 familon)" if "rank" in d else
+        # primary cause first: a class that is dead for two reasons is counted under the first that applies
+        k = ("rank-deficient charged-fermion matrix (Z7 familon)" if " has rank " in d else
              "exactly degenerate light neutrinos (r = 1)" if "neutrinos have an exactly degenerate" in d else
+             "exactly degenerate charged-fermion pair" if "has an exactly degenerate pair" in d else
              "CKM a permutation matrix (M_u, M_d both diagonal)" if "permutation" in d else d)
         causes[k] = causes.get(k, 0) + 1
     return {"n_relabelled": len(rel), "by_sector": {s: sum(r["sector"] == s for r in rel) for s in ("lepton", "quark")},
@@ -204,12 +206,17 @@ findings.append({"quantity": "F21 texture survey (LNR framework), complex coupli
                  "value": summary_survey, "target": "report either way (PLAN E4)", "tolerance": "p > 0.01 rule",
                  "verdict": "NO_TARGET", "note": f"{len(survivors)} predictive survivors; {len(accom)} accommodate with N_eff >= N_obs"})
 rc_best = {k: v["best_branch"] for k, v in RC["survivors"].items()}
+rc_min = {k: (v["chi2_min_including_branch_polish"], v["p_value_at_that_minimum"]) for k, v in RC["survivors"].items()}
+rc_nb = [v["n_branches_lower_bound"] for v in RC["survivors"].values()]
 findings.append({"quantity": "F21 texture survey, real (CP-conserving) couplings (144 classes; reconciliation): classes by verdict",
                  "value": summary_real, "target": "report either way (PLAN E4)", "tolerance": "p > 0.01 rule",
                  "verdict": "NO_TARGET",
                  "note": f"{len(survivors_real)} predictive survivors (dof = 1): "
-                         + "; ".join(f"{r['name']} chi2 {r['chi2']:.3f} p {r['p_value']:.2f}" for r in survivors_real)
-                         + f"; {len(accom_real)} accommodate with N_eff >= N_obs"})
+                         + "; ".join(f"{r['name']} chi2 {r['chi2']:.3f} (survey multistart; {rc_min[r['name']][0]:.3f} after "
+                                     f"polishing from the delta branches, p {rc_min[r['name']][1]:.2f})" for r in survivors_real)
+                         + f"; {len(accom_real)} accommodate with N_eff >= N_obs. Each survivor's one prediction: delta on a discrete "
+                           f"set of at least {min(rc_nb) if rc_nb else 0}-{max(rc_nb) if rc_nb else 0} branches spread over the whole circle "
+                           f"(union {RC['union_of_delta_branches_deg']}); nearest to NuFIT's 177 deg: 152.3 and 207.7 deg"})
 
 res = {
     "experiment": "E4 -- the order-21 group on three generations (SEED.md sections 3, 7.3; PLAN.md section 4 E4)",
@@ -273,9 +280,11 @@ res = {
                      f"With complex couplings {len(survivors)} of {len(F)} LNR-framework alignment classes both fit and predict "
                      f"({len(accom)} fit with N_eff = N_obs). With real (CP-conserving) couplings, LNR's own convention, "
                      f"{len(survivors_real)} of {len(FR)} classes survive with dof = 1 ("
-                     + "; ".join(f"{r['name'].split('|', 1)[1]}: chi2 {r['chi2']:.2f}, p {r['p_value']:.2f}" for r in survivors_real)
-                     + "); each needs a generic (hand-put) phi10 vev for the charged-lepton masses, and its one prediction is delta "
-                     "on a discrete set of branches"},
+                     + "; ".join(f"{r['name'].split('|', 1)[1]}: chi2_min {rc_min[r['name']][0]:.2f}, p {rc_min[r['name']][1]:.2f}"
+                                 for r in survivors_real)
+                     + "); each needs a generic (hand-put) phi10 vev for the charged-lepton masses, and its one prediction is weak: "
+                       f"delta restricted to at least {min(rc_nb) if rc_nb else 0} discrete branches spread over the whole circle, "
+                       "the nearest to the best fit at 152.3 and 207.7 deg"},
     ],
     "all_checks_pass": {"groups": G["all_pass"], "yukawa": Y["all_pass"], "lnr": L["all_pass"], "structure": S["all_pass"],
                         "robustness": ROB["all_pass"] if ROB else None, "realcoupling": RC["all_pass"],

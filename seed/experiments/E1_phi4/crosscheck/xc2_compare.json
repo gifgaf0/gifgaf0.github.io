@@ -292,6 +292,33 @@
    "persistent_from": 700.0,
    "E_over_2M": 12.287344046469853,
    "orig_call": true
+  },
+  "spec_om0.99_v0.41_dx0.05_dt0.02": {
+   "first": 590.0,
+   "pair_at_T": true,
+   "width_at_T": 211.3,
+   "pair_at_end": true,
+   "persistent_from": 700.0,
+   "E_over_2M": 12.287344046469855,
+   "orig_call": true
+  },
+  "spec_om0.99_v0.41_dx0.1_dt0.01": {
+   "first": 590.0,
+   "pair_at_T": true,
+   "width_at_T": 413.3,
+   "pair_at_end": true,
+   "persistent_from": 590.0,
+   "E_over_2M": 12.287344046469853,
+   "orig_call": true
+  },
+  "spec_om0.99_v0.43_dx0.1_dt0.01": {
+   "first": null,
+   "pair_at_T": false,
+   "width_at_T": 0.0,
+   "pair_at_end": false,
+   "persistent_from": null,
+   "E_over_2M": 11.198189566824883,
+   "orig_call": true
   }
  },
  "e1d_coarse_fd6": {
@@ -982,6 +1009,195 @@
    ],
    "N_E_lam_over_m2": 1.8574628293089,
    "N_lin_lam_over_m2": 1.839145511457926
+  },
+  {
+   "A": 0.45,
+   "sigma": 16.0,
+   "k": 0.25,
+   "single": true,
+   "oneway": false,
+   "dx": 0.1,
+   "dt": 0.02,
+   "E_over_2M": 3.1248013215115593,
+   "N_lin": 4.12375879385722,
+   "prod": true,
+   "rep": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "N_E_lam_over_m2": 2.0832008810077065,
+   "N_lin_lam_over_m2": 2.06187939692861
+  },
+  {
+   "A": 0.5,
+   "sigma": 16.0,
+   "k": 0.25,
+   "single": true,
+   "oneway": false,
+   "dx": 0.1,
+   "dt": 0.02,
+   "E_over_2M": 3.861624912157421,
+   "N_lin": 5.0910602393299,
+   "prod": true,
+   "rep": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "N_E_lam_over_m2": 2.5744166081049475,
+   "N_lin_lam_over_m2": 2.54553011966495
+  },
+  {
+   "A": 0.3,
+   "sigma": 16.0,
+   "k": 1.0,
+   "single": true,
+   "oneway": false,
+   "dx": 0.1,
+   "dt": 0.02,
+   "E_over_2M": 2.0391055726863985,
+   "N_lin": 2.2106250636854883,
+   "prod": false,
+   "rep": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "N_E_lam_over_m2": 1.3594037151242657,
+   "N_lin_lam_over_m2": 1.1053125318427441
+  },
+  {
+   "A": 0.35,
+   "sigma": 16.0,
+   "k": 1.0,
+   "single": true,
+   "oneway": false,
+   "dx": 0.1,
+   "dt": 0.02,
+   "E_over_2M": 2.7794185790273707,
+   "N_lin": 3.0089063366830247,
+   "prod": false,
+   "rep": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "N_E_lam_over_m2": 1.8529457193515806,
+   "N_lin_lam_over_m2": 1.5044531683415123
+  },
+  {
+   "A": 0.375,
+   "sigma": 16.0,
+   "k": 1.0,
+   "single": true,
+   "oneway": false,
+   "dx": 0.1,
+   "dt": 0.02,
+   "E_over_2M": 3.193200278193952,
+   "N_lin": 3.454101662008575,
+   "prod": false,
+   "rep": [
+    true,
+    false,
+    false,
+    false,
+    false
+   ],
+   "N_E_lam_over_m2": 2.1288001854626346,
+   "N_lin_lam_over_m2": 1.7270508310042876
+  },
+  {
+   "A": 0.4,
+   "sigma": 16.0,
+   "k": 1.0,
+   "single": true,
+   "oneway": false,
+   "dx": 0.1,
+   "dt": 0.02,
+   "E_over_2M": 3.6362430329254125,
+   "N_lin": 3.9300001132186457,
+   "prod": false,
+   "rep": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "N_E_lam_over_m2": 2.4241620219502753,
+   "N_lin_lam_over_m2": 1.9650000566093229
+  },
+  {
+   "A": 0.425,
+   "sigma": 16.0,
+   "k": 1.0,
+   "single": true,
+   "oneway": false,
+   "dx": 0.1,
+   "dt": 0.02,
+   "E_over_2M": 4.108691720553122,
+   "N_lin": 4.436601690313237,
+   "prod": true,
+   "rep": [
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "N_E_lam_over_m2": 2.7391278137020816,
+   "N_lin_lam_over_m2": 2.2183008451566186
+  },
+  {
+   "A": 0.45,
+   "sigma": 16.0,
+   "k": 1.0,
+   "single": true,
+   "oneway": false,
+   "dx": 0.1,
+   "dt": 0.02,
+   "E_over_2M": 4.610700565333051,
+   "N_lin": 4.9739063932923475,
+   "prod": false,
+   "rep": [
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "N_E_lam_over_m2": 3.073800376888701,
+   "N_lin_lam_over_m2": 2.4869531966461738
+  },
+  {
+   "A": 0.5,
+   "sigma": 16.0,
+   "k": 1.0,
+   "single": true,
+   "oneway": false,
+   "dx": 0.1,
+   "dt": 0.02,
+   "E_over_2M": 5.704062357996481,
+   "N_lin": 6.140625176904135,
+   "prod": false,
+   "rep": [
+    true,
+    false,
+    false,
+    false,
+    false
+   ],
+   "N_E_lam_over_m2": 3.8027082386643207,
+   "N_lin_lam_over_m2": 3.0703125884520674
   }
  ],
  "e1e_fd6": {

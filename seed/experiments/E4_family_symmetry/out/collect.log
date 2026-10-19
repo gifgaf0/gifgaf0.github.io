@@ -1,4 +1,8 @@
 calibration: 17 / 17
+relabelled by the rank scan (complex couplings): 26 {'lepton': 22, 'quark': 4} [1892.1791559183425, 3073722.2627542787] {'exactly degenerate light neutrinos (r = 1)': 4, 'CKM a permutation matrix (M_u, M_d both diagonal)': 3, 'rank-deficient charged-fermion matrix (Z7 familon)': 19}
+real-coupling survey (final labels): {"lepton": {"excluded (structural)": 92, "excluded": 4, "accommodates (no prediction)": 29, "SURVIVES": 3}, "quark": {"excluded (structural)": 13, "accommodates (no prediction)": 3}}
+real-coupling survivors: [('lepton|min-real|phi10=G|phi5=Z3|phi1=P', 0.902, 6, 0.342), ('lepton|min-real|phi10=G|phi5=P|phi1=Z3', 0.395, 6, 0.53), ('lepton|min-real|phi10=G|phi5=P|phi1=P', 0.021, 6, 0.885)]
+real-coupling accommodating: 32
 survey (final labels): {"lepton": {"excluded (structural)": 90, "excluded": 5, "accommodates (no prediction)": 34}, "quark": {"excluded (structural)": 29, "accommodates (no prediction)": 3}}
 survey (fit labels before exact rank scan): {"lepton": {"excluded (structural)": 68, "excluded": 27, "accommodates (no prediction)": 34}, "quark": {"excluded (structural)": 25, "excluded": 4, "accommodates (no prediction)": 3}}
 predictive survivors: []
@@ -31,7 +35,3 @@ best predictive: {
   "diagnosis": "exactly tri-bimaximal: theta13 = 0"
  }
 }
-
-real	0m0.116s
-user	0m0.032s
-sys	0m0.005s

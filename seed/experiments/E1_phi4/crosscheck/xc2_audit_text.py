@@ -11,6 +11,8 @@ tg = {(r['A'], r['sigma'], r['k'], r['single'], r['oneway'], r['dx']): r for r i
 g = lambda *k: tg.get(k)
 sp41 = ex.get('spec_om0.99_v0.41_dx0.05_dt0.02')
 sp41_txt = 'pending' if sp41 is None else ('pair since t=%s' % sp41['first'] if sp41['pair_at_T'] else 'no pair')
+sp43 = {k.replace('spec_om0.99_v0.43_', ''): v for k, v in ex.items() if k.startswith('spec_om0.99_v0.43')}
+sp43_txt = ', '.join('%s: %s' % (k, 'pair' if v['pair_at_T'] else 'no pair') for k, v in sp43.items())
 samp_txt = ('%d random coarse points (A >= 0.3), spectral vs original %.0f%% agreement (E > 2M: %.0f%%), spectral vs FD6 %.0f%%, '
             'FD6 vs original %.0f%%' % (s['n'], 100 * s['agree_spec_orig'], 100 * s['agree_spec_orig_E_gt_2M'],
                                        100 * s['agree_spec_fd6'], 100 * s['agree_fd6_orig'])) if s else 'pending'
@@ -35,17 +37,21 @@ claims = [
     dict(claim='E1b: Manton et al. 2021 quote the first window as 0.1920-0.2029', verdict='supported',
          note='Read in arXiv:2106.05153v2 here: "the first 2-bounce window occurs for 0.1920 < vin < 0.2029".'),
     dict(claim='E1c: (omega, v) = (0.99, 0.43) produces a pair, CALIBRATED; "the pair is real: it is still separating at 1.5T"',
-         verdict='wrong',
-         note='Resolution artifact. The original code itself gives no pair at (dx, dt) = (0.05, 0.02), (0.05, 0.01), (0.025, 0.01) '
-              'and (0.1, 0.01). It gives a pair only at (0.1, 0.04), forming at t = 1160, and at (0.1, 0.02), forming at t = 780. '
-              'FD6+RK4 (dx 0.08) and the spectral code (dx 0.1 and 0.05) give no pair up to 1.5T. The original pair forms '
-              'latest of all 80 producers (median 120) and is +-22.5 wide at T, whereas DSV Fig. 1 shows the kinks at +-140 at T.'),
+         verdict='unsupported',
+         note='The call is not reproducible. The original code itself (unmodified copy) produces at only 4 of 10 (dx, dt) settings: '
+              'yes at (0.1, 0.04) [t = 1160], (0.1, 0.02) [780], (0.025, 0.005) and (0.0125, 0.005) [840]; no at (0.1, 0.01), '
+              '(0.05, 0.02), (0.05, 0.01), (0.05, 0.005), (0.025, 0.01) and (0.025, 0.0025). The two independent, higher-order-in-time '
+              'codes give no pair up to 1.5T (FD6+RK4 dx 0.08; spectral %s). The point was never resolution-checked in E1, and its '
+              'formation time (1160) is the latest of all 80 producers (median 120). It is a sensitive point, not a calibration point. '
+              'The DSV-like event does exist 0.02 lower: (0.99, 0.41) forms a pair at t = 590 in the spectral code at '
+              '(dx, dt) = (0.1, 0.02), (0.05, 0.02) and (0.1, 0.01), and in the finest original setting (0.025, 0.005).' % sp43_txt),
     dict(claim='E1c reproduces DSV Fig. 2 band by band, including the example point', verdict='overstated',
          note='Band location and trend are reproduced for omega = 0.90-0.98 by both codes: 91%% call agreement on %d common points, '
               'FD6 Spearman %.2f. At v step 0.02 the original hits %d of DSV\'s 22 producing points with %d false positives (FD6: %d and %d). '
               'The omega = 0.99 column is not converged: original code, v 0.38-0.48, gives producers {0.39, 0.41, 0.43} at '
-              '(0.1, 0.04), {0.43} at (0.1, 0.02) and none at (0.05, 0.02). The spectral code gives v = 0.41 at dx 0.1 (dx 0.05: %s); '
-              'FD6 gives v = 0.40.' % (m['n_common'], m['spearman_fd6'][0], m['vs_dsv_reading']['orig_hits'],
+              '(0.1, 0.04), {0.43} at (0.1, 0.02) and none at (0.05, 0.02). The spectral code gives a converged producer at v = 0.41 '
+              '(dx 0.05: %s); FD6 gives v = 0.40 on its step-0.02 grid. So DSV\'s omega = 0.99 production near v ~ 0.4 is reproduced, '
+              'but at 0.41, not at the quoted 0.43.' % (m['n_common'], m['spearman_fd6'][0], m['vs_dsv_reading']['orig_hits'],
                                          m['vs_dsv_reading']['orig_false_pos'], m['vs_dsv_reading']['fd6_hits'],
                                          m['vs_dsv_reading']['fd6_false_pos'], sp41_txt)),
     dict(claim='E1c: dx = 0.05 rerun agrees on 74 of 78 calls; the four disagreements are band-edge points', verdict='overstated',
@@ -109,18 +115,19 @@ claims = [
 ]
 
 issues = [
-    dict(severity='blocking',
-         description='E1c headline "DSV example (0.99, 0.43) produces a pair: CALIBRATED" is a resolution artifact. Only the coarsest '
-                     'settings of the original code produce it: (dx, dt) = (0.1, 0.04) at t = 1160 and (0.1, 0.02) at t = 780. Its '
-                     'own runs at (0.05, 0.02), (0.05, 0.01), (0.025, 0.01) and (0.1, 0.01) give no pair, and so do two '
-                     'independent codes (FD6+RK4 dx 0.08; spectral dx 0.1 and 0.05) up to 1.5T. The point was never '
-                     'resolution-checked (0.43 is not on the dx = 0.05 grid), and the report\'s "the pair is real: it is still '
-                     'separating at 1.5T" does not hold. The original pair is +-22.5 wide at T, whereas DSV Fig. 1 shows the '
-                     'kinks at +-140 at T.',
-         suggested_fix='Re-label the example row as NOT REPRODUCED (sensitive): at converged resolution (0.99, 0.43) makes no pair in '
-                       'any code. Report the omega = 0.99 column as unconverged: narrow producing windows near v = 0.39-0.43 move '
-                       'with dx and dt (original: {0.39, 0.41, 0.43} -> {0.43} -> none; spectral dx 0.1: 0.41; FD6: 0.40). Drop '
-                       '"including the example point" from the section 4 DSV evidence.'),
+    dict(severity='major',
+         description='E1c headline "DSV example (0.99, 0.43) produces a pair (appears at t ~ 1160), still separating at 1.5T: CALIBRATED" '
+                     'is not demonstrated. The point is resolution-sensitive and was never resolution-checked. The original code itself '
+                     'produces at 4 of 10 (dx, dt) settings, with no monotone trend down to dt = 0.0025: (0.1, 0.04) yes; (0.1, 0.02) '
+                     'yes; (0.1, 0.01) no; (0.05, 0.02 / 0.01 / 0.005) no; (0.025, 0.01) no; (0.025, 0.005) yes; (0.025, 0.0025) no; '
+                     '(0.0125, 0.005) yes. Two independent, higher-order-in-time codes give no pair at all. The report\'s "the pair is '
+                     'real: it is still separating at 1.5T" generalises from one discretisation. The dx = 0.05 rerun\'s 74/78 agreement '
+                     'is trivial in the omega = 0.99 column, whose producing v (0.41, 0.43) are not on that grid; at dx = 0.05 the '
+                     'original finds no omega = 0.99 producer at v = 0.38-0.48.',
+         suggested_fix='Re-label the row: (0.99, 0.43) is a sensitive point whose call depends on dx and dt in every code (3 of 3 '
+                       'independent runs give no pair). Report that a converged DSV-like producer exists at (0.99, 0.41): pair at '
+                       't = 590 in the spectral code at three (dx, dt) settings and in the finest original setting. Replace "the pair '
+                       'is real" with that statement, and add a resolution check for every map point that carries a verdict.'),
     dict(severity='major',
          description='Seed section 4 DSV claim marked CONFIRMED although its "most easily at low speed" part contradicts E1c\'s own map. '
                      'At fixed omega there is no production below the band (omega = 0.90: none for v < 0.73), and the lowest-energy '
@@ -175,12 +182,12 @@ summary = ('Independent recomputation with two different codes (6th-order FD + R
            'plus collocation and Chebyshev solvers. E1a, E1b (v_c 0.260066 vs 0.26006; first window to 1e-5), the E1c map trend, '
            'pass-through and omega > 0.99 null, all E1d statistics (564 vs 587 producing coarse runs; band fractions within 0.07; '
            'zero producers below 2M or with A <= 0.3; the same lowest producers; self-folding; ragged lines) and the E1e quanta '
-           'counts are confirmed. Point-level E1d calls agree 80-83%, the same as the original\'s own dx-halving agreement. One '
-           'headline is wrong: the DSV example point (0.99, 0.43) is a resolution artifact. It produces only at the coarsest '
-           'settings of the original code and in no independent code; the original code itself gives no pair at dx = 0.05 or '
-           'dt = 0.01. Three seed-level verdicts are overstated: section 4 DSV "most easily at low speed"; the E1d low-speed '
-           'preference, which is an amplitude confound; and the section 2 AMENDED rationale, which is family-specific since the '
-           'classical infimum is 2M by time reversal.')
+           'counts are confirmed. Point-level E1d calls agree 73-84% between codes, the same as the original\'s own dx-halving '
+           'agreement (80%). One headline calibration is not demonstrated: the DSV example point (0.99, 0.43) is '
+           'resolution-sensitive. The original code produces it at 4 of 10 (dx, dt) settings, the independent codes never do; '
+           'a converged DSV-like producer exists at (0.99, 0.41). Three seed-level verdicts are overstated: section 4 DSV "most '
+           'easily at low speed"; the E1d low-speed preference, which is an amplitude confound; and the section 2 AMENDED '
+           'rationale, which is family-specific since the ''classical infimum is 2M by time reversal.')
 
 json.dump(dict(claim_audit=claims, issues=issues, overall='confirmed_with_corrections', summary=summary),
           open(os.path.join(HERE, 'xc2_audit_text.json'), 'w'), indent=1)

@@ -108,3 +108,4 @@ start Sun Oct 18 23:54:31 2026 : 161 classes, 0 already done
 [107/161] lepton|gen|phi10=P|phi5=Z7|phi1=Z7: n_par=20 n_eff=None chi2=7e+06 -> excluded (structural) (0.0s, total 407s)
 [108/161] lepton|gen|phi10=P|phi5=Z7|phi1=G: n_par=24 n_eff=7 chi2=1.05e+04 -> excluded (0.3s, total 408s)
 start Mon Oct 19 00:06:48 2026 : 161 classes, 108 already done
+[109/161] lepton|gen|phi10=P|phi5=G|phi1=Z3: n_par=24 n_eff=7 chi2=3.32e-20 -> accommodates (no prediction) (14.2s, total 15s)

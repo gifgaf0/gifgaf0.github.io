@@ -1,0 +1,1195 @@
+{
+ "experiment": "E0_hexagon_exact",
+ "plan_section": "seed/PLAN.md §4 E0",
+ "conventions": {
+  "zeta": "exp(2 pi i/7); Q(zeta) elements stored exactly as rational vectors modulo 1+x+...+x^6",
+  "i_over_sqrt7": "(z+z^2+z^4 - z^3-z^5-z^6)/7 (quadratic Gauss sum G = +i sqrt7)",
+  "b7": "z+z^2+z^4 = (-1+i sqrt7)/2",
+  "torus": "theta in {theta1+theta2+theta3 = 0} -> diag(exp(2 pi i theta)); Lambda = Z^3 ∩ plane",
+  "seven_points": "j*p, p = (1,2,-3)/7 <-> D^j",
+  "families": "'up' = {x, x+a, x+c}, 'down' = {x+a, x+c, x+a+c}, a = p, c = p + roll(p)",
+  "angles": "measured from u = (1,-1,0) toward w = (1,1,-2), as in hexagon_check.py",
+  "A5": "real orthogonal 3x3 over Q(sqrt5): 3-fold rotation about (1,1,1) and 2-fold rotation about (1, phi^2, phi)",
+  "octonions": "O = C ⊕ C^3, (a,u)(b,v) = (ab - sum u_i conj v_i, a v + conj(b) u + conj(u x v))"
+ },
+ "headline": [
+  {
+   "quantity": "hexagon_check.py printed lines reproduced exactly",
+   "value": "25/25 identical",
+   "target": "all lines identical",
+   "tolerance": "exact",
+   "source": "seed/hexagon_check.py",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "120 deg Weyl turn on the seven points",
+   "value": "x -> 4x",
+   "target": "x -> 4x",
+   "tolerance": "exact",
+   "source": "SEED §3",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "finer lattice Lambda + Z p",
+   "value": "hexagonal, Gram (1/7)[[2,-1],[-1,2]], index 7, 6 shortest vectors",
+   "target": "hexagonal",
+   "tolerance": "exact",
+   "source": "SEED §3",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "torus triangulation V - E + F",
+   "value": "7 - 21 + 14 = 0",
+   "target": "7 - 21 + 14 = 0",
+   "tolerance": "exact",
+   "source": "SEED §3 / PLAN E0",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "K7, two Fano families, octonion lines",
+   "value": "K7; 2 Fano families; 'down' family = {i,i+1,i+3}",
+   "target": "K7; two Fano families; one = octonion lines",
+   "tolerance": "exact",
+   "source": "SEED §3",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "Fano planes on Z7 fixed by x -> x+1",
+   "value": "2 of 30; = the two torus families",
+   "target": "2, = the torus families",
+   "tolerance": "exact",
+   "source": "SEED §3",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "|<D, 120 deg turn>| in SU(3)",
+   "value": "21 (exact unitary, det 1)",
+   "target": "21",
+   "tolerance": "exact",
+   "source": "SEED §3",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "|Klein's copy| and |flipped copy| in SU(3)",
+   "value": "168, 168",
+   "target": "168, 168",
+   "tolerance": "exact",
+   "source": "SEED §3",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "quartic invariants (exact polynomial identities)",
+   "value": "Klein copy keeps x^3y+y^3z+z^3x: True; flipped keeps xy^3+yz^3+zx^3: True",
+   "target": "both True",
+   "tolerance": "exact",
+   "source": "SEED §3; LNR eq. 78 [read]",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "maximal subgroups of PSL(2,7) (class size x order)",
+   "value": "8x21, 7x24, 7x24",
+   "target": "S4 (7), S4 (7), 7:3 (8)",
+   "tolerance": "exact",
+   "source": "ATLAS p.3 (via SEED §9); LNR §5 [read]",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "PSL(2,7) triplet character on 1A,2A,3A,4A,7A,7B",
+   "value": "3, -1, 0, 1, b7, b7bar; FS indicator 0",
+   "target": "3, -1, 0, 1, b7, b7bar (b7 = (-1+i sqrt7)/2): complex",
+   "tolerance": "exact",
+   "source": "LNR eq. 13 [read]; PLAN E0",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "F21 triplet character on 1A,3A,3B,7A,7B",
+   "value": "3, 0, 0, b7, b7bar; FS indicator 0",
+   "target": "3, 0, 0, b7, b7bar: complex",
+   "tolerance": "exact",
+   "source": "LNR §5 table [read]; PLAN E0",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "A5 triplet characters on 1A,2A,3A,5A,5B",
+   "value": "3, -1, 0, (1+-sqrt5)/2; FS indicator +1 (both triplets)",
+   "target": "real, with (1 +- sqrt5)/2",
+   "tolerance": "exact",
+   "source": "PLAN E0; LNR abstract",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "Weyl(SU(3)) and Weyl(G2) on the seven points",
+   "value": "orders 6, 12; SU(3) turns x->4x,2x keep families; G2 adds 60/180/300 deg = x->5x,6x,3x, swap; mirrors keeping points 0/3, 0/6",
+   "target": "as SEED §3 / hexagon_check.py",
+   "tolerance": "exact",
+   "source": "SEED §3",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "G2 affine Weyl group",
+   "value": "Coxeter (2,3,6); Lambda ⋊ D6, |point group| = 12, 60 deg turn; sites 1a(6mm) 2b(3m) 3c(2mm)",
+   "target": "p6m",
+   "tolerance": "exact",
+   "source": "SEED §3; PLAN E0",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "7-vertex torus triangulations (labelled) / automorphisms",
+   "value": "120 labelled, one orbit; |Aut| = 42 = AGL(1,7), all orientation-preserving (chiral)",
+   "target": null,
+   "tolerance": "exact",
+   "source": "extra (not preregistered)",
+   "verdict": "NO_TARGET",
+   "note": ""
+  },
+  {
+   "quantity": "Der(O) / stabiliser of an imaginary unit",
+   "value": "dim 14 (g2) / dim 8 (su(3))",
+   "target": null,
+   "tolerance": "exact",
+   "source": "extra; SEED cites Gunaydin-Gursey 1973",
+   "verdict": "NO_TARGET",
+   "note": ""
+  },
+  {
+   "quantity": "<PSL(2,7), complex conjugation> inside G2",
+   "value": "order 336 = PGL(2,7); swaps S4 classes and Fano families",
+   "target": null,
+   "tolerance": "exact",
+   "source": "extra (new finding)",
+   "verdict": "NO_TARGET",
+   "note": ""
+  },
+  {
+   "quantity": "order-7 torus points with a hexagonal finer lattice",
+   "value": "12 of 48 (2 subgroups)",
+   "target": null,
+   "tolerance": "exact",
+   "source": "extra",
+   "verdict": "NO_TARGET",
+   "note": ""
+  }
+ ],
+ "seed_claims": [
+  {
+   "claim": "§3 intro: the torus and group computations are checked by hexagon_check.py",
+   "verdict": "CONFIRMED",
+   "evidence": "hexagon_check.py runs (1 s) and every printed line is reproduced identically by exact arithmetic."
+  },
+  {
+   "claim": "SU(3) is the color group and the group of the eightfold way",
+   "verdict": "CONFIRMED",
+   "evidence": "textbook background; not a computation (no check needed)."
+  },
+  {
+   "claim": "SU(3)'s diagonal elements form a flat torus = plane / hexagonal lattice (a 60 deg wallpaper rolled up)",
+   "verdict": "CONFIRMED",
+   "evidence": "kernel of theta -> diag(exp 2 pi i theta) is Lambda = Z^3 ∩ plane, Gram [[2,-1],[-1,2]]."
+  },
+  {
+   "claim": "its weights sit on a hexagonal lattice; octets are hexagons, the decuplet a triangle",
+   "verdict": "CONFIRMED",
+   "evidence": "weight Gram (1/3)[[2,1],[1,2]]; octet = regular hexagon + doubly occupied centre; decuplet = triangle, 4 per side."
+  },
+  {
+   "claim": "D = diag(z, z^2, z^4) is in SU(3); its seven powers are seven points of the torus",
+   "verdict": "CONFIRMED",
+   "evidence": "det D = z^7 = 1, D unitary, D^7 = 1, the 7 points are distinct mod Lambda."
+  },
+  {
+   "claim": "the finer hexagonal lattice through them cuts the torus into the 7-vertex triangulation",
+   "verdict": "CONFIRMED",
+   "evidence": "Lambda + Zp is hexagonal (Gram (1/7)[[2,-1],[-1,2]]); 7-21+14 = 0, every edge in 2 triangles, links 6-cycles, orientable; equals {i,i+1,i+3} ∪ {i,i+2,i+3}; exhaustive search: the 7-vertex torus triangulation is unique."
+  },
+  {
+   "claim": "every point joined to every other (K7)",
+   "verdict": "CONFIRMED",
+   "evidence": "six shortest vectors carry labels 1..6; 21 edges."
+  },
+  {
+   "claim": "14 triangles in two families of 7",
+   "verdict": "CONFIRMED",
+   "evidence": "up and down triangles of the finer lattice."
+  },
+  {
+   "claim": "each family a Fano plane, one exactly the octonion lines {i,i+1,i+3}",
+   "verdict": "CONFIRMED",
+   "evidence": "the 'down' family is {i,i+1,i+3}; the other is {i,i+2,i+3}."
+  },
+  {
+   "claim": "only two Fano planes on 0-6 survive x -> x+1, and the two families are exactly those",
+   "verdict": "CONFIRMED",
+   "evidence": "30 Fano planes in all, exactly 2 cyclic = the two families; so one family is always the octonion lines."
+  },
+  {
+   "claim": "SU(3)'s 120 deg Weyl rotation moves the seven points as x -> 4x",
+   "verdict": "CONFIRMED",
+   "evidence": "C^-1 D C = D^4 (the opposite 120 deg turn gives x -> 2x; which one is 'the' turn is a direction convention)."
+  },
+  {
+   "claim": "together with D it generates Z7 ⋊ Z3 (order 21) inside SU(3)",
+   "verdict": "CONFIRMED",
+   "evidence": "exact closure: 21 unitary det-1 matrices."
+  },
+  {
+   "claim": "the group preserves both Fano families, so it is the collineation F21",
+   "verdict": "CONFIRMED",
+   "evidence": "x -> ax+b, a in {1,2,4}, keeps both; Aut(A) ∩ Aut(B) is exactly this group of order 21."
+  },
+  {
+   "claim": "Klein's group of order 168, symmetry group of the Klein quartic, is PSL(2,7) on C^3",
+   "verdict": "CONFIRMED",
+   "evidence": "<Dk, C, R> has order 168, is simple, keeps x^3y+y^3z+z^3x exactly (that the curve has no further automorphisms is Hurwitz's bound, cited, not recomputed)."
+  },
+  {
+   "claim": "PSL(2,7) is the only simple subgroup of SU(3) with a complex 3-dim irrep; the only other non-abelian simple one is A5, whose triplets are real",
+   "verdict": "CONFIRMED",
+   "evidence": "characters: PSL(2,7) and F21 triplets have FS indicator 0 (b7 non-real); both A5 triplets FS +1. The 'only' part rests on the classification of finite subgroups of SU(3) (cited, not recomputed)."
+  },
+  {
+   "claim": "the order-21 group is one of its maximal subgroups (ATLAS)",
+   "verdict": "CONFIRMED",
+   "evidence": "exact: maximal subgroups are 7 S4 + 7 S4 + 8 (7:3); F21 is one of the 8."
+  },
+  {
+   "claim": "Klein's own matrices contain diag(z^4, z^2, z), not D",
+   "verdict": "CONFIRMED",
+   "evidence": "the copy keeping x^3y+y^3z+z^3x contains Dk and not D; the order-7 diagonal symmetries of that quartic are exactly the powers of Dk (D rescales its monomials by z^5, z^3, z^6). Klein's 1878 paper itself was not read; note LNR call the mirror form xy^3+yz^3+zx^3 'Klein's quartic', so 'Klein's own copy' is a coordinate-labelling convention."
+  },
+  {
+   "claim": "the copy holding <D, 120 deg turn> is Klein's conjugated by -(x<->z), and preserves xy^3+yz^3+zx^3",
+   "verdict": "CONFIRMED",
+   "evidence": "exact set equality; it is also LNR's published basis, and it is the unique PSL(2,7) in U(3) containing <D, C>."
+  },
+  {
+   "claim": "flavor model-builders have used both groups as family symmetries",
+   "verdict": "CONFIRMED",
+   "evidence": "literature (LNR 2007, King-Luhn 2009; PLAN §3 found no correction); not a computation."
+  },
+  {
+   "claim": "G2 contains SU(3) as the subgroup fixing one imaginary octonion (Gunaydin-Gursey)",
+   "verdict": "CONFIRMED",
+   "evidence": "extra exact check: Der(O) is g2 (dim 14), derivations killing e form su(3) (dim 8), and the SU(3) matrices act as automorphisms."
+  },
+  {
+   "claim": "G2's affine Weyl group is exactly p6m",
+   "verdict": "CONFIRMED",
+   "evidence": "Lambda ⋊ D6 with Coxeter (2,3,6); site symmetries 6mm, 3m (x2), 2mm (x3) per cell."
+  },
+  {
+   "claim": "SU(3)'s Weyl group has only the 120 deg turns and three mirrors; G2's (order 12) adds 60, 180, 300 deg turns",
+   "verdict": "CONFIRMED",
+   "evidence": "exact orders 6 and 12 (G2 also adds three mirrors)."
+  },
+  {
+   "claim": "those turns keep the seven points (x -> 5x, 6x, 3x) but swap the two Fano families",
+   "verdict": "CONFIRMED",
+   "evidence": "exact; the 60/180/300 deg turns are x -> 5x, 6x, 3x."
+  },
+  {
+   "claim": "no mirror in either group keeps the seven points",
+   "verdict": "CONFIRMED",
+   "evidence": "0 of 3 and 0 of 6; also no mirror of either affine Weyl group. Reason: the 7-vertex torus is chiral (all 42 automorphisms preserve orientation); SU(3)'s mirrors swap D's order-7 subgroup with diag(z,z^4,z^2)'s."
+  },
+  {
+   "claim": "F21, PSL(2,7) and the Fano split belong to the SU(3) rung; the turns completing p6m arrive with G2 and swap the families; they don't stack into one clean tower",
+   "verdict": "AMENDED",
+   "evidence": "the facts hold, but the tower stacks more cleanly than stated: the family-swapping G2 element (180 deg turn = complex conjugation kappa) normalises the flipped PSL(2,7), giving PGL(2,7) = Aut(PSL(2,7)) of order 336 inside G2; the two Fano families are the two classes of S4 (points and lines of one Fano plane), which the outer automorphism swaps."
+  }
+ ],
+ "n_checks": 102,
+ "n_pass": 102,
+ "all_pass": true,
+ "checks": [
+  {
+   "section": "A",
+   "name": "Gauss sum G = (z+z^2+z^4)-(z^3+z^5+z^6) satisfies G^2 = -7 exactly",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "A",
+   "name": "under zeta = exp(2 pi i/7), G = +i sqrt7 (sign check)",
+   "ok": true,
+   "detail": "G ~ -0.000000000000+2.645751311065j"
+  },
+  {
+   "section": "A",
+   "name": "i/sqrt7 := G/7 satisfies (i/sqrt7)^2 = -1/7",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "A",
+   "name": "b7 := z+z^2+z^4 = (-1 + i sqrt7)/2 exactly",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "A",
+   "name": "b7 is not real (b7 != conj(b7)); b7 - conj(b7) = i sqrt7",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "B",
+   "name": "Lambda basis Gram matrix = [[2,-1],[-1,2]] (equal lengths, 120 deg): hexagonal lattice",
+   "ok": true,
+   "detail": "[[Fraction(2, 1), Fraction(-1, 1)], [Fraction(-1, 1), Fraction(2, 1)]]"
+  },
+  {
+   "section": "B",
+   "name": "every integer vector in the plane is an integer combination of b1, b2 (Lambda = Z^3 ∩ plane)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "B",
+   "name": "fundamental weights are dual to b1, b2: <w_i, b_j> = delta_ij",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "B",
+   "name": "weight-lattice Gram = (1/3)[[2,1],[1,2]] (equal lengths, 60 deg): hexagonal",
+   "ok": true,
+   "detail": "[[Fraction(2, 3), Fraction(1, 3)], [Fraction(1, 3), Fraction(2, 3)]]"
+  },
+  {
+   "section": "B",
+   "name": "octet weights: six nonzero weights of equal length forming a regular hexagon (each has two neighbours at 60 deg, two at 120 deg, one opposite), zero weight with multiplicity 2",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "B",
+   "name": "decuplet (Sym^3 of the 3) weights: 10 simple weights filling an equilateral triangle, 4 per side",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "B",
+   "name": "the seven powers D^j (j=0..6) are seven distinct points of plane/Lambda, and 7p is in Lambda",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "B",
+   "name": "120 deg turn (theta -> roll(theta)) sends point 1 to point 4",
+   "ok": true,
+   "detail": "label = 4"
+  },
+  {
+   "section": "B",
+   "name": "Lambda ⊂ Z p + Z tp (b1, b2 are integer combinations), tp = 4p - (1,1,-2): so L' = Z p + Z tp",
+   "ok": true,
+   "detail": "b1 = -2p + -3tp, b2 = 3p + 1tp"
+  },
+  {
+   "section": "B",
+   "name": "index [L' : Lambda] = 7 (|det| of (p,tp) in Lambda coordinates = 1/7)",
+   "ok": true,
+   "detail": "1/7"
+  },
+  {
+   "section": "B",
+   "name": "Gram(p, tp) = (1/7)[[2,-1],[-1,2]]: the finer lattice is hexagonal, scaled by 1/sqrt7",
+   "ok": true,
+   "detail": "[[Fraction(2, 7), Fraction(-1, 7)], [Fraction(-1, 7), Fraction(2, 7)]]"
+  },
+  {
+   "section": "B",
+   "name": "the finer lattice has minimal norm^2 2/7, attained by exactly 6 vectors (+-p, +-tp, +-(p+tp))",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "B",
+   "name": "the six neighbours of point 0 carry labels 1..6 (every point touches every other: K7)",
+   "ok": true,
+   "detail": "[1, 2, 3, 4, 5, 6]"
+  },
+  {
+   "section": "B",
+   "name": "a = p and c = p + tp: equal length, 60 deg (|a|^2 = |c|^2 = 2/7, a.c = 1/7)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "B",
+   "name": "14 distinct triangles in two families of 7 (up / down triangles of the finer lattice)",
+   "ok": true,
+   "detail": "up = [(0, 1, 5), (0, 2, 3), (0, 4, 6), (1, 2, 6), (1, 3, 4), (2, 4, 5), (3, 5, 6)]; down = [(0, 1, 3), (0, 2, 6), (0, 4, 5), (1, 2, 4), (1, 5, 6), (2, 3, 5), (3, 4, 6)]"
+  },
+  {
+   "section": "B",
+   "name": "family 'up' is a Fano plane, family 'down' is a Fano plane",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "B",
+   "name": "one family is exactly the octonion lines {i, i+1, i+3}",
+   "ok": true,
+   "detail": "it is the 'down' family"
+  },
+  {
+   "section": "B",
+   "name": "21 edges = all pairs of 7 labels, each edge in exactly 2 triangles",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "B",
+   "name": "every vertex link is a single 6-cycle (a closed surface)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "B",
+   "name": "orientable: with the plane's orientation each directed edge occurs exactly once",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "B",
+   "name": "Euler characteristic V - E + F = 7 - 21 + 14 = 0 (orientable, chi = 0: a torus)",
+   "ok": true,
+   "detail": "7 - 21 + 14 = 0"
+  },
+  {
+   "section": "B",
+   "name": "the triangulation equals the Moebius/Csaszar torus labelling {i,i+1,i+3} ∪ {i,i+2,i+3}",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "B",
+   "name": "exhaustive search: every 7-vertex triangulated closed surface is an orientable torus and they form ONE relabelling orbit (the 7-vertex torus triangulation is unique)",
+   "ok": true,
+   "detail": "120 pair-degree-2 complexes, 120 surfaces, 120 orientable, orbit of ours = 120"
+  },
+  {
+   "section": "B",
+   "name": "automorphism group of the triangulation has order 42 and equals {x -> ax+b : a in Z7*} = AGL(1,7)",
+   "ok": true,
+   "detail": "|Aut| = 42"
+  },
+  {
+   "section": "B",
+   "name": "all 42 automorphisms preserve orientation: the 7-vertex torus is chiral (no mirror symmetry)",
+   "ok": true,
+   "detail": "42 of 42 orientation-preserving"
+  },
+  {
+   "section": "B",
+   "name": "x -> ax+b with a in {1,2,4} preserves both families",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "B",
+   "name": "x -> ax+b with a in {3,5,6} swaps the two families",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "B",
+   "name": "there are exactly 30 Fano planes on 7 labels",
+   "ok": true,
+   "detail": "30"
+  },
+  {
+   "section": "B",
+   "name": "exactly 2 of them are kept by x -> x+1, and they are exactly the two torus families",
+   "ok": true,
+   "detail": "2"
+  },
+  {
+   "section": "B",
+   "name": "each family's collineation group has order 168; their intersection is exactly {x -> ax+b : a in {1,2,4}} (order 21)",
+   "ok": true,
+   "detail": "|Aut A ∩ Aut B| = 21"
+  },
+  {
+   "section": "B",
+   "name": "(extra) of the 48 order-7 points of the torus, exactly 12 (two subgroups of order 7) have a hexagonal finer lattice: those of D=diag(z,z^2,z^4) and of diag(z,z^4,z^2)",
+   "ok": true,
+   "detail": "12 points, 2 subgroups"
+  },
+  {
+   "section": "C",
+   "name": "D in SU(3), D^7 = 1 (order 7)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "C (cyclic permutation) in SU(3), order 3; Klein's R in SU(3), R^2 = 1",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "the Weyl 3-cycle acts on the torus by conjugation: C^-1 D C = D^4 and C D C^-1 = D^2",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "|<D, C>| = 21 and every element is in SU(3) (exact unitarity and det = 1)",
+   "ok": true,
+   "detail": "21"
+  },
+  {
+   "section": "C",
+   "name": "F21 is non-abelian with normal Z7 = <D>: F21 = Z7 ⋊ Z3 (C^-1 D C = D^4, the LNR presentation)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "F21 classes (size, order, chi_3): 1,7,7 (orders 1,3,3; chi 3,0,0) and 3,3 (order 7; chi b7, b7bar) -- the LNR table",
+   "ok": true,
+   "detail": "[(1, 1, '3'), (7, 3, '0'), (7, 3, '0'), (3, 7, 'b7'), (3, 7, 'b7bar')]"
+  },
+  {
+   "section": "C",
+   "name": "F21 triplet: <chi,chi> = 1 (irreducible), <chi,chibar> = 0 (3 not equivalent to 3bar), Frobenius-Schur indicator 0 (complex)",
+   "ok": true,
+   "detail": "<chi,chi>=1, <chi,chibar>=0, FS=0"
+  },
+  {
+   "section": "C",
+   "name": "chi(D) = b7 = (-1 + i sqrt7)/2 exactly",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "|<Dk, C, R>| = 168 (Klein's matrices) and every element is in SU(3)",
+   "ok": true,
+   "detail": "168"
+  },
+  {
+   "section": "C",
+   "name": "Klein quartic x^3y + y^3z + z^3x is invariant (exact polynomial identity) under Dk, C, R and under all 168 elements",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "D does not preserve the Klein quartic, not even up to a scalar (monomials pick up z^5, z^3, z^6)",
+   "ok": true,
+   "detail": "{'x^3y^1z^0': '(1z^5)', 'x^0y^3z^1': '(1z^3)', 'x^1y^0z^3': '(-1 + -1z^1 + -1z^2 + -1z^3 + -1z^4 + -1z^5)'}"
+  },
+  {
+   "section": "C",
+   "name": "the non-trivial diagonal SU(3) elements diag(z^a, z^b, z^c) keeping x^3y+y^3z+z^3x are exactly the powers of Dk = diag(z^4,z^2,z); those keeping xy^3+yz^3+zx^3 are exactly the powers of D",
+   "ok": true,
+   "detail": "6 and 6 elements"
+  },
+  {
+   "section": "C",
+   "name": "<D, C> is NOT inside Klein's copy (D itself is not)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "flip = -(x<->z) is in SU(3) and is an involution",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "flip Dk flip^-1 = D",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "flipped copy <D, C, Rf>: order 168, inside SU(3), contains <D, C>",
+   "ok": true,
+   "detail": "168"
+  },
+  {
+   "section": "C",
+   "name": "the flipped copy equals flip·(Klein's copy)·flip^-1 element by element (as sets)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "mirror quartic xy^3 + yz^3 + zx^3 invariant (exact) under D, C, Rf and all 168 elements",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "order-21 group maximal in the flipped copy: <D, C, g> = whole group for each of the 147 g outside it",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "LNR generators: A^2 = B^3 = (AB)^7 = [A,B]^4 = 1, AB = D, and A = Rf (Klein's involution, flipped)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "LNR's <A, B> is exactly the flipped copy (same 168 matrices)",
+   "ok": true,
+   "detail": "168"
+  },
+  {
+   "section": "C",
+   "name": "LNR's quartic invariant phi1^3 phi3 + phi3^3 phi2 + phi2^3 phi1 (their eq. 78) is the mirror quartic",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "Klein's copy: classes (size, order, chi_3) = (1,1,3) (21,2,-1) (56,3,0) (42,4,1) (24,7,b7) (24,7,b7bar) = LNR/ATLAS table",
+   "ok": true,
+   "detail": "[(1, 1, '3'), (21, 2, '-1'), (24, 7, 'b7'), (24, 7, 'b7bar'), (42, 4, '1'), (56, 3, '0')]"
+  },
+  {
+   "section": "C",
+   "name": "Klein's copy: <chi,chi> = 1, <chi,chibar> = 0, Frobenius-Schur indicator 0 (a complex triplet)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "Klein's copy: trivial centre and simple (every non-identity class generates the whole group); a simple group of order 168 is PSL(2,7)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "flipped copy: classes (size, order, chi_3) = (1,1,3) (21,2,-1) (56,3,0) (42,4,1) (24,7,b7) (24,7,b7bar) = LNR/ATLAS table",
+   "ok": true,
+   "detail": "[(1, 1, '3'), (21, 2, '-1'), (24, 7, 'b7'), (24, 7, 'b7bar'), (42, 4, '1'), (56, 3, '0')]"
+  },
+  {
+   "section": "C",
+   "name": "flipped copy: <chi,chi> = 1, <chi,chibar> = 0, Frobenius-Schur indicator 0 (a complex triplet)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "flipped copy: trivial centre and simple (every non-identity class generates the whole group); a simple group of order 168 is PSL(2,7)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "flipped copy: chi(D) = b7 and chi(A B^2) = b7bar (LNR's classes C5(AB), C6(AB^2))",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "maximal subgroups of PSL(2,7): two classes of S4 (7 each) and one class of 7:3 (8 conjugates) -- ATLAS",
+   "ok": true,
+   "detail": "[(21, 8, '{1: 1, 3: 14, 7: 6}'), (24, 7, '{1: 1, 2: 9, 3: 8, 4: 6}'), (24, 7, '{1: 1, 2: 9, 3: 8, 4: 6}')]"
+  },
+  {
+   "section": "C",
+   "name": "F21 = <D, C> is one of the 8 maximal subgroups of order 21",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "N(F21) = F21 inside PSL(2,7); the order-21 subgroups form a single class",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "D -> D^3, C -> C is an automorphism of F21 (relations hold) that sends chi(D) = b7 to chi(D^3) = b7bar, so it is not induced by any unitary conjugation",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "the flipped copy is closed under complex conjugation (as the uniqueness argument predicts)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "<flipped copy, complex conjugation> has order 336, its linear part is the flipped copy, and it acts faithfully on PSL(2,7) by conjugation: it is Aut(PSL(2,7)) = PGL(2,7)",
+   "ok": true,
+   "detail": "order 336"
+  },
+  {
+   "section": "C",
+   "name": "complex conjugation swaps the two classes of S4 (the outer automorphism of PSL(2,7))",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "complex conjugation acts on the torus as t -> t^-1, i.e. on the labels as x -> 6x (= -x), which swaps the Fano families",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "C",
+   "name": "PSL(2,7) acting on each S4 class, labelled through D (x->x+1) and C (x->2x), is exactly the collineation group of one Fano family; the two classes give the two families",
+   "ok": true,
+   "detail": "['up', 'down']"
+  },
+  {
+   "section": "D",
+   "name": "<3-fold rotation, edge 2-fold rotation> has order 60, is in SO(3) ⊂ SU(3) (exact), and maps the 12 icosahedron vertices (0, ±1, ±phi) to themselves",
+   "ok": true,
+   "detail": "60"
+  },
+  {
+   "section": "D",
+   "name": "A5 classes (size, order, chi_3) = (1,1,3) (15,2,-1) (20,3,0) (12,5,(1-√5)/2) (12,5,(1+√5)/2); simple",
+   "ok": true,
+   "detail": "[(1, 1, '3+0√5'), (15, 2, '-1+0√5'), (20, 3, '0+0√5'), (12, 5, '1/2+-1/2√5'), (12, 5, '1/2+1/2√5')]"
+  },
+  {
+   "section": "D",
+   "name": "A5 triplet 3: character values lie in Q(sqrt5) ⊂ R (real), <chi,chi> = 1, Frobenius-Schur indicator +1 (a real representation; indeed the matrices are real orthogonal)",
+   "ok": true,
+   "detail": "<chi,chi>=(1 + 0*sqrt5), FS=(1 + 0*sqrt5)"
+  },
+  {
+   "section": "D",
+   "name": "the Galois-conjugate triplet 3' (sqrt5 -> -sqrt5) is inequivalent (<chi,chi'> = 0) and also real (its matrices are the Galois images, also real orthogonal)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "D",
+   "name": "the remaining two irreducible degrees of A5 are forced to be (4,5): A5 has exactly two triplets, both real",
+   "ok": true,
+   "detail": "[(4, 5)]"
+  },
+  {
+   "section": "E",
+   "name": "G2 root data: long roots e_i - e_j (norm^2 2), short roots e_i - (1,1,1)/3 (norm^2 2/3), ratio 3",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "E",
+   "name": "Weyl(SU(3)): order 6, keeps Lambda, turns only by 0/120/240 deg (x -> x, 4x, 2x; both families kept), 3 mirrors, none keeps the seven points",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "E",
+   "name": "Weyl(G2): order 12, keeps Lambda, adds turns by 60/180/300 deg acting as x -> 5x, 6x, 3x, which swap the families; 6 mirrors, none keeps the seven points",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "E",
+   "name": "Weyl(G2) = Weyl(SU(3)) × {±1} on the plane (so any dihedral group of order 12 containing Weyl(SU(3)) is this one: the choice of short roots does not matter)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "E",
+   "name": "(extra) each SU(3) mirror maps the seven points of D onto the seven points of diag(z, z^4, z^2) (the other hexagonal order-7 subgroup)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "E",
+   "name": "G2 base: alpha1 short, alpha2 long at 150 deg; the six positive roots a1, a2, a1+a2, 2a1+a2, 3a1+a2, 3a1+2a2 are roots, with highest root theta = (0,1,-1)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "F",
+   "name": "Coxeter orders: (s1 s2)^6 = (s2 s0)^3 = (s1 s0)^2 = 1: the (2,3,6) triangle group (affine G2)",
+   "ok": true,
+   "detail": "(6, 3, 2)"
+  },
+  {
+   "section": "F",
+   "name": "W_aff = Lambda ⋊ W(G2): generators have linear part in W(G2) and translation in Lambda; s1, s2 generate the 12-element W(G2); s0∘s_theta is translation by theta^vee and its W-conjugates include b1, b2",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "F",
+   "name": "BFS over all words of length <= 10 in s0, s1, s2: every element is (W(G2) element, Lambda translation), and the pure translations reached include every Lambda vector with coordinates in {-1,0,1}",
+   "ok": true,
+   "detail": "133 elements, 13 translations"
+  },
+  {
+   "section": "F",
+   "name": "G2: point group = W(G2), dihedral of order 12 (contains the 60 deg turn), translations = Lambda (hexagonal) -> p6m, the only wallpaper group whose point group has order 12",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "F",
+   "name": "G2 site symmetries per cell: one 6-fold centre with 6 mirrors (6mm), two 3-fold centres with 3 mirrors (3m), three 2-fold centres with 2 mirrors (2mm): the p6m Wyckoff pattern 1a, 2b, 3c",
+   "ok": true,
+   "detail": "{(6, 6): 1, (2, 2): 3, (3, 3): 2}"
+  },
+  {
+   "section": "F",
+   "name": "contrast, SU(3): Lambda ⋊ W(SU(3)) has three 3-fold centres per cell, each on 3 mirrors (3m, 3m, 3m): p3m1, no 6-fold or 2-fold centres",
+   "ok": true,
+   "detail": "{(3, 3): 3}"
+  },
+  {
+   "section": "F",
+   "name": "(extra) the elements of W_aff(G2) that keep the seven points are Lambda ⋊ C6 (all turns, no mirror): p6; for SU(3) it is Lambda ⋊ C3: p3",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "F",
+   "name": "(extra) none of the six non-zero points j p (j = 1..6, any Lambda translate) lies on any mirror of either affine Weyl group; point 0 (the Lambda points) lies on all six mirror directions",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "G",
+   "name": "(1,0) is a two-sided identity",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "G",
+   "name": "alternative: the associator is alternating on all 512 basis triples (hence everywhere, by trilinearity)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "G",
+   "name": "composition: N(xy) = N(x)N(y) on all 36x36 polarisation points (a complete check of this biquadratic identity), N = |a|^2 + |u|^2 positive definite: by Hurwitz this is the octonion algebra",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "G",
+   "name": "D, C, Rf, Dk, R (acting on C^3) and complex conjugation kappa are octonion automorphisms (exact on all 64 basis pairs); the matrices fix the imaginary unit e = (i,0), kappa sends it to -e",
+   "ok": true,
+   "detail": "{'D': True, 'C': True, 'Rf': True, 'Dk': True, 'R': True, 'kappa': True}"
+  },
+  {
+   "section": "G",
+   "name": "hence G2 = Aut(O) contains both PSL(2,7) copies and <flipped copy, kappa> = PGL(2,7) (order 336, section C), inside the stabiliser of the line R e",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "G",
+   "name": "Der(O) has dimension 14, negative-definite Killing form (compact semisimple) and a test element with 2-dim centraliser (rank <= 2): the only such algebra is g2",
+   "ok": true,
+   "detail": "dim 14, centraliser 2"
+  },
+  {
+   "section": "G",
+   "name": "derivations killing the imaginary unit e: dimension 8, compact semisimple, rank <= 2: su(3) (the only compact semisimple Lie algebra of dimension 8)",
+   "ok": true,
+   "detail": "dim 8, centraliser 2"
+  },
+  {
+   "section": "G",
+   "name": "the 8 matrices of su(3) acting on C^3 are derivations killing e and span that 8-dim stabiliser",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "section": "H",
+   "name": "hexagon_check.py (float) and the exact recomputation print identical lines (25 of 25)",
+   "ok": true,
+   "detail": "original runtime 1.1 s"
+  }
+ ],
+ "values": {
+  "b7": {
+   "value": "z+z^2+z^4 = (-1+i sqrt7)/2 (exact in Q(zeta7))",
+   "numeric": "(-0.5000000000000002+1.3228756555322954j)"
+  },
+  "triangulation": {
+   "V": 7,
+   "E": 21,
+   "F": 14,
+   "chi": 0,
+   "octonion_family": "down"
+  },
+  "torus7_uniqueness": {
+   "degree2_complexes": 120,
+   "surfaces": 120,
+   "orientable": 120,
+   "orbit": 120,
+   "aut_order": 42,
+   "orientation_preserving": 42
+  },
+  "fano": {
+   "total": 30,
+   "cyclic": 2,
+   "aut_order": 168,
+   "aut_intersection": 21
+  },
+  "order7_points_with_hexagonal_finer_lattice": {
+   "value": 12,
+   "of": 48,
+   "subgroups": 2
+  },
+  "PSL27_triplet_character": {
+   "classes": "1A,2A,3A,4A,7A,7B",
+   "sizes": [
+    1,
+    21,
+    56,
+    42,
+    24,
+    24
+   ],
+   "chi": [
+    "3",
+    "-1",
+    "0",
+    "1",
+    "b7",
+    "b7bar"
+   ],
+   "frobenius_schur": 0
+  },
+  "F21_triplet_character": {
+   "classes": "1A,3A,3B,7A,7B",
+   "sizes": [
+    1,
+    7,
+    7,
+    3,
+    3
+   ],
+   "chi": [
+    "3",
+    "0",
+    "0",
+    "b7",
+    "b7bar"
+   ],
+   "frobenius_schur": 0
+  },
+  "PSL27_subgroups": {
+   "total": 179,
+   "conjugacy_classes": 15,
+   "by_order": {
+    "1": 1,
+    "2": 21,
+    "3": 28,
+    "4": 35,
+    "6": 28,
+    "7": 8,
+    "8": 21,
+    "12": 14,
+    "21": 8,
+    "24": 14,
+    "168": 1
+   },
+   "maximal_classes": [
+    {
+     "order": 21,
+     "conjugates": 8,
+     "element_orders": "{1: 1, 3: 14, 7: 6}"
+    },
+    {
+     "order": 24,
+     "conjugates": 7,
+     "element_orders": "{1: 1, 2: 9, 3: 8, 4: 6}"
+    },
+    {
+     "order": 24,
+     "conjugates": 7,
+     "element_orders": "{1: 1, 2: 9, 3: 8, 4: 6}"
+    }
+   ]
+  },
+  "A5_triplet_character": {
+   "classes": "1A,2A,3A,5A,5B",
+   "sizes": [
+    1,
+    15,
+    20,
+    12,
+    12
+   ],
+   "chi": [
+    "3",
+    "-1",
+    "0",
+    "(1+sqrt5)/2",
+    "(1-sqrt5)/2"
+   ],
+   "frobenius_schur": 1
+  },
+  "weyl": {
+   "SU(3)": {
+    "order": 6,
+    "keeps_Lambda": true,
+    "mirrors": 3,
+    "mirrors_keeping_points": 0,
+    "turns": [
+     "0 deg: x -> 1x, keeps both families",
+     "120 deg: x -> 4x, keeps both families",
+     "240 deg: x -> 2x, keeps both families"
+    ]
+   },
+   "G2": {
+    "order": 12,
+    "keeps_Lambda": true,
+    "mirrors": 6,
+    "mirrors_keeping_points": 0,
+    "turns": [
+     "0 deg: x -> 1x, keeps both families",
+     "60 deg: x -> 5x, swaps the families",
+     "120 deg: x -> 4x, keeps both families",
+     "180 deg: x -> 6x, swaps the families",
+     "240 deg: x -> 2x, keeps both families",
+     "300 deg: x -> 3x, swaps the families"
+    ]
+   }
+  },
+  "affine_weyl": {
+   "G2": {
+    "coxeter": [
+     6,
+     3,
+     2
+    ],
+    "point_group_order": 12,
+    "wallpaper": "p6m",
+    "site_pattern": [
+     {
+      "centre": [
+       "0",
+       "0"
+      ],
+      "rotation_order": 6,
+      "mirrors_through": 6,
+      "site_group_order": 12
+     },
+     {
+      "centre": [
+       "0",
+       "1/2"
+      ],
+      "rotation_order": 2,
+      "mirrors_through": 2,
+      "site_group_order": 4
+     },
+     {
+      "centre": [
+       "1/3",
+       "2/3"
+      ],
+      "rotation_order": 3,
+      "mirrors_through": 3,
+      "site_group_order": 6
+     },
+     {
+      "centre": [
+       "1/2",
+       "0"
+      ],
+      "rotation_order": 2,
+      "mirrors_through": 2,
+      "site_group_order": 4
+     },
+     {
+      "centre": [
+       "1/2",
+       "1/2"
+      ],
+      "rotation_order": 2,
+      "mirrors_through": 2,
+      "site_group_order": 4
+     },
+     {
+      "centre": [
+       "2/3",
+       "1/3"
+      ],
+      "rotation_order": 3,
+      "mirrors_through": 3,
+      "site_group_order": 6
+     }
+    ]
+   },
+   "SU3": {
+    "point_group_order": 6,
+    "wallpaper": "p3m1",
+    "site_pattern": [
+     {
+      "centre": [
+       "0",
+       "0"
+      ],
+      "rotation_order": 3,
+      "mirrors_through": 3,
+      "site_group_order": 6
+     },
+     {
+      "centre": [
+       "1/3",
+       "2/3"
+      ],
+      "rotation_order": 3,
+      "mirrors_through": 3,
+      "site_group_order": 6
+     },
+     {
+      "centre": [
+       "2/3",
+       "1/3"
+      ],
+      "rotation_order": 3,
+      "mirrors_through": 3,
+      "site_group_order": 6
+     }
+    ]
+   }
+  },
+  "octonions": {
+   "der_dim": 14,
+   "stabiliser_dim": 8,
+   "PGL27_in_G2_order": 336
+  },
+  "replica": {
+   "lines_original": 25,
+   "lines_exact": 25,
+   "identical": 25
+  }
+ },
+ "runtime_seconds": 4.1,
+ "software": {
+  "python": "3.13.16"
+ }
+}

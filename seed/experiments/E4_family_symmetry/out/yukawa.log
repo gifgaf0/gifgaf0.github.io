@@ -1,0 +1,218 @@
+
+=== F21: Dirac Yukawa invariants  Lbar x R x H  (number of independent couplings)
+  L      R             1    1'   1''     3    3b
+  3      3             1     1     1     1     1
+  3      3b            0     0     0     1     2
+  3      1+1'+1''      0     0     0     3     0
+  3b     3             0     0     0     2     1
+  3b     3b            1     1     1     1     1
+  3b     1+1'+1''      0     0     0     0     3
+  1+1'+1'' 3             0     0     0     0     3
+  1+1'+1'' 3b            0     0     0     3     0
+  1+1'+1'' 1+1'+1''      3     3     3     0     0
+[PASS] F21: Dirac mass matrices transform covariantly, M(rho_H v) = rho_L M rho_R^+
+
+=== PSL: Dirac Yukawa invariants  Lbar x R x H  (number of independent couplings)
+  L      R             1     3    3b     6     7     8
+  3      3             1     0     0     0     0     1
+  3      3b            0     0     1     1     0     0
+  3      1+1+1         0     3     0     0     0     0
+  3b     3             0     1     0     1     0     0
+  3b     3b            1     0     0     0     0     1
+  3b     1+1+1         0     0     3     0     0     0
+  1+1+1  3             0     0     3     0     0     0
+  1+1+1  3b            0     3     0     0     0     0
+  1+1+1  1+1+1         9     0     0     0     0     0
+[PASS] PSL: Dirac mass matrices transform covariantly, M(rho_H v) = rho_L M rho_R^+
+
+=== F21 closed forms (L = R = 3; D-diagonal basis; h_a are the scalar vev components)
+  H = 1:  M = [y1*h, 0, 0] | [0, y1*h, 0] | [0, 0, y1*h]
+  H = 1':  M = [y1*h, 0, 0] | [0, w*y1*h, 0] | [0, 0, w^2*y1*h]
+  H = 1'':  M = [y1*h, 0, 0] | [0, w^2*y1*h, 0] | [0, 0, w*y1*h]
+  H = 3:  M = [0, 0, y1*h3] | [y1*h1, 0, 0] | [0, y1*h2, 0]
+  H = 3b:  M = [0, y1*h1, 0] | [0, 0, y1*h2] | [y1*h3, 0, 0]
+=== F21 closed forms (L = 3, R = 3bar)
+  H = 3:  M = [y1*h2, 0, 0] | [0, y1*h3, 0] | [0, 0, y1*h1]
+  H = 3b:  M = [0, y1*h3, y2*h2] | [y2*h3, 0, y1*h1] | [y1*h2, y2*h1, 0]
+
+=== F21: Majorana invariants  N x N x Phi (symmetric)
+  N = 3         1:0  1':0  1'':0  3:1  3b:1
+  N = 3b        1:0  1':0  1'':0  3:1  3b:1
+  N = 1+1'+1''  1:2  1':2  1'':2  3:0  3b:0
+
+=== PSL: Majorana invariants  N x N x Phi (symmetric)
+  N = 3         1:0  3:0  3b:0  6:1  7:0  8:0
+  N = 3b        1:0  3:0  3b:0  6:1  7:0  8:0
+  N = 1+1+1     1:6  3:0  3b:0  6:0  7:0  8:0
+  F21 N=3, Phi=3: M_R = [0, y1*f3, y1*f2] | [y1*f3, 0, y1*f1] | [y1*f2, y1*f1, 0]
+  F21 N=3, Phi=3b: M_R = [y1*f2, 0, 0] | [0, y1*f3, 0] | [0, 0, y1*f1]
+[PASS] LNR effective operator psi psi' xi xi' (3 x 3 x 3bar x 3bar): 5 invariants (I3 + four of type I4, LNR Sec. 3.1 and 4.1)  (found 5)
+[PASS] Majorana version (psi = psi', xi = xi'): 2 independent invariants (I3 and one I4: LNR's alpha)  (rank 2)
+[PASS] LNR invariant multiplicities (0706.2341 Sec. 3.1): 3x3x3bar -> 1 (I2^(3)); 3x3x3 -> 2 (I1^(3)); 3x3x3x3 -> 4 (I1^(4)); 3x3x3x3bar -> 3 (I2^(4)); 3x3x3barx3bar -> 5 (I3^(4) + four I4^(4))  (1, 2, 4, 3, 5)
+
+=== Schur (F21): commutant of the 3 has dimension 1; Lbar 3 R 3 H=1 -> {'n_couplings': 1, 'singular_values': [1.010363285619, 1.010363285619, 1.010363285619], 'degenerate': True}; Lbar 3 R 3bar H=1 -> 0 couplings; Majorana 3x3x1 -> 0 couplings
+
+=== Schur (PSL): commutant of the 3 has dimension 1; Lbar 3 R 3 H=1 -> {'n_couplings': 1, 'singular_values': [1.683487887659, 1.683487887659, 1.683487887659], 'degenerate': True}; Lbar 3 R 3bar H=1 -> 0 couplings; Majorana 3x3x1 -> 0 couplings
+[PASS] Schur: commutant of the triplet is 1-dimensional for F21 and PSL(2,7)
+[PASS] Schur: with only a trivial scalar, an irreducible triplet gets three EQUAL masses (L=R) or none (L=3, R=3bar), and no Majorana mass, for both groups
+[PASS] F21: a single 1' (or 1'') vev alone still gives three equal |masses|; 1 + 1' + 1'' vevs together (F21 broken to Z7) give a diagonal matrix with three free entries  ({"1'": [1.360147050874, 1.360147050874, 1.360147050874], "1''": [1.360147050874, 1.360147050874, 1.360147050874]}; three singlets: [1.2894, 1.1885, 0.9759])
+
+=== F21 vacuum alignments of a triplet scalar: stabilizer (exact) and stabilizer up to a phase
+  Z3: (1,1,1)    in 3 : stabilizer Z3    ray stabilizer Z3
+  Z3: (1,1,1)    in 3b: stabilizer Z3    ray stabilizer Z3
+  Z7: (0,0,1)    in 3 : stabilizer 1     ray stabilizer Z7
+  Z7: (0,0,1)    in 3b: stabilizer 1     ray stabilizer Z7
+  LNR: (-1,1,1)  in 3 : stabilizer 1     ray stabilizer 1
+  LNR: (-1,1,1)  in 3b: stabilizer 1     ray stabilizer 1
+  (0,1,-1)       in 3 : stabilizer 1     ray stabilizer 1
+  (0,1,-1)       in 3b: stabilizer 1     ray stabilizer 1
+[PASS] F21: (1,1,1) is fixed by a Z3; D-eigenvectors (0,0,1) are fixed by no element but their ray is fixed by Z7; LNR's (-1,1,1) and (0,1,-1) are fixed by nothing (not even up to a phase)
+
+=== F21, L = R = 3 with triplet Higgs fields: masses (singular values) for aligned vevs
+  vev Z3: (1,1,1): H=3 alone sv [1. 1. 1.], H=3bar alone sv [1. 1. 1.], H=1+3+3bar sv [0.7824 1.0138 1.2042]; |U_L|^2 = [[0.333, 0.333, 0.333], [0.333, 0.333, 0.333], [0.333, 0.333, 0.333]]
+  vev Z7: (0,0,1): H=3 alone sv [0. 0. 1.], H=3bar alone sv [0. 0. 1.], H=1+3+3bar sv [0.7    0.749  0.9793]; |U_L|^2 = [[0.0, 0.55, 0.45], [1.0, 0.0, 0.0], [0.0, 0.45, 0.55]]
+  generic vev (0.02, 0.3, 1), H=3 alone: sv [0.02 0.3  1.  ] (masses = |vev components|), |U_L|^2 is a permutation: [[0.0, 0.0, 1.0], [1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+[PASS] F21, single triplet Higgs (L=R=3): Z3-aligned vev -> three equal masses; Z7-aligned -> rank 1; generic vev -> masses equal to |vev components| with no mixing (generalized permutation)
+[PASS] F21, Higgs in 1 + 3 + 3bar all Z3-aligned: M is circulant, |U_L|^2 = 1/3 everywhere (trimaximal Fourier matrix)
+[PASS] F21, Higgs in 1 + 3 + 3bar with D-eigenvector vevs (0,0,1): M = [[y0,0,y3],[0,y0,0],[y3b,0,y0]] mixes generations 1 and 3 -- the vevs of 3 and 3bar carry different Z7 phases (zeta^4 vs zeta^3), so no common residual Z7 survives; only Z7-INVARIANT vevs (1', 1'' of F21) give a diagonal M  (M = [[(0.7+0j), 0j, (0.4+0.3j)], [0j, (0.7+0j), 0j], [(-0.2+0.5j), 0j, (0.7-0j)]])
+
+=== F21: cyclic subgroups {'Z7': 1, 'Z3': 7}; Majorana compatibility: Z7: dim 0, degenerate/zero=True; Z3: dim 3, degenerate/zero=True
+/home/user/gifgaf0.github.io/seed/experiments/E4_family_symmetry/e4lib.py:357: RuntimeWarning: invalid value encountered in sqrt
+  c13 = np.sqrt(c13sq)
+
+=== PSL: cyclic subgroups {'Z7': 8, 'Z3': 28, 'Z2': 21, 'Z4': 21, 'Z2xZ2': 14}; Majorana compatibility: Z7: dim 0, degenerate/zero=True; Z3: dim 3, degenerate/zero=True; Z2: dim 5, degenerate/zero=False; Z4: dim 3, degenerate/zero=True
+/home/user/gifgaf0.github.io/seed/experiments/E4_family_symmetry/e4lib.py:357: RuntimeWarning: invalid value encountered in sqrt
+  c13 = np.sqrt(c13sq)
+
+=== PSL Z2-partial Majorana classes (column fixed by a Z2, 2 free real parameters): 12 distinct
+  G_l=Z7     fixed column |U|^2 [0.131512, 0.204495, 0.663993]  chi2_min=2.13  s12^2=0.321 s13^2=0.0220 s23^2=0.555 delta=253
+  G_l=Z3     fixed column |U|^2 [0.166667, 0.166667, 0.666667]  chi2_min=2.54  s12^2=0.318 s13^2=0.0220 s23^2=0.553 delta=284
+  G_l=Z3     fixed column |U|^2 [0.333333, 0.333333, 0.333333]  chi2_min=7.63  s12^2=0.341 s13^2=0.0219 s23^2=0.562 delta=235
+  G_l=Z2xZ2  fixed column |U|^2 [0.25, 0.25, 0.5]  chi2_min=31.53  s12^2=0.256 s13^2=0.0221 s23^2=0.583 delta=354
+  G_l=Z4     fixed column |U|^2 [0.25, 0.25, 0.5]  chi2_min=31.53  s12^2=0.256 s13^2=0.0221 s23^2=0.583 delta=354
+  G_l=Z4     fixed column |U|^2 [0.044281, 0.25, 0.705719]  chi2_min=35.52  s12^2=0.278 s13^2=0.0221 s23^2=0.350 delta=357
+  G_l=Z3     fixed column |U|^2 [0.034785, 0.166667, 0.798548]  chi2_min=133.73  s12^2=0.184 s13^2=0.0216 s23^2=0.557 delta=176
+  G_l=Z3     fixed column |U|^2 [0.0, 0.5, 0.5]  chi2_min=400.75  s12^2=0.489 s13^2=0.0223 s23^2=0.023 delta=0
+  G_l=Z2xZ2  fixed column |U|^2 [0.0, 0.5, 0.5]  chi2_min=400.75  s12^2=0.489 s13^2=0.0223 s23^2=0.023 delta=360
+  G_l=Z4     fixed column |U|^2 [0.0, 0.5, 0.5]  chi2_min=400.75  s12^2=0.489 s13^2=0.0223 s23^2=0.023 delta=0
+  G_l=Z4     fixed column |U|^2 [0.0, 0.0, 1.0]  chi2_min=993.41  s12^2=0.000 s13^2=0.0219 s23^2=0.000 delta=nan
+  G_l=Z2xZ2  fixed column |U|^2 [0.0, 0.0, 1.0]  chi2_min=993.41  s12^2=0.000 s13^2=0.0220 s23^2=0.000 delta=nan
+
+=== F21: residual-symmetry mixing patterns (masses free; 0 mixing parameters; 4 observables)
+  lepton-Dirac-nu  G1=Z7     G2=Z7     chi2=   2459.1 p=0.0e+00 excluded  s12^2=0.000 s13^2=0.0000 s23^2=0.000 delta=nan
+  lepton-Dirac-nu  G1=Z3     G2=Z3     chi2=   2459.1 p=0.0e+00 excluded  s12^2=0.000 s13^2=0.0000 s23^2=0.000 delta=nan
+  lepton-Dirac-nu  G1=Z3     G2=Z3     chi2=  34748.3 p=0.0e+00 excluded  s12^2=0.257 s13^2=0.1343 s23^2=0.257 delta=234
+  lepton-Dirac-nu  G1=Z7     G2=Z3     chi2= 266599.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.3333 s23^2=0.500 delta=270
+  lepton-Dirac-nu  G1=Z3     G2=Z7     chi2= 266599.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.3333 s23^2=0.500 delta=270
+  quark            G1=Z3     G2=Z3     chi2= 108300.6 p=0.0e+00 excluded  lambda=0.4155 A=2.407 rhobar=1.448 etabar=1.642
+  quark            G1=Z3     G2=Z7     chi2= 343930.7 p=0.0e+00 excluded  lambda=0.7071 A=1.414 rhobar=0.500 etabar=0.866
+  quark            G1=Z7     G2=Z3     chi2= 343930.7 p=0.0e+00 excluded  lambda=0.7071 A=1.414 rhobar=0.500 etabar=0.866
+  quark            G1=Z7     G2=Z7     chi2=1872882.1 p=0.0e+00 excluded  lambda=1.0000 A=1.000 rhobar=nan etabar=0.000
+  quark            G1=Z3     G2=Z3     chi2=1872882.1 p=0.0e+00 excluded  lambda=1.0000 A=1.000 rhobar=nan etabar=0.000
+
+=== PSL: residual-symmetry mixing patterns (masses free; 0 mixing parameters; 4 observables)
+  lepton-Dirac-nu  G1=Z3     G2=Z7     chi2=    200.0 p=3.7e-42 excluded  s12^2=0.293 s13^2=0.0270 s23^2=0.158 delta=0
+  lepton-Dirac-nu  G1=Z3     G2=Z3     chi2=    245.6 p=5.6e-52 excluded  s12^2=0.455 s13^2=0.0232 s23^2=0.114 delta=180
+  lepton-Dirac-nu  G1=Z7     G2=Z3     chi2=    345.7 p=1.5e-73 excluded  s12^2=0.158 s13^2=0.0270 s23^2=0.293 delta=0
+  lepton-Dirac-nu  G1=Z3     G2=Z4     chi2=    531.8 p=9.0e-114 excluded  s12^2=0.311 s13^2=0.0348 s23^2=0.173 delta=180
+  lepton-Dirac-nu  G1=Z3     G2=Z4     chi2=    545.1 p=1.2e-116 excluded  s12^2=0.485 s13^2=0.0295 s23^2=0.030 delta=0
+  lepton-Dirac-nu  G1=Z4     G2=Z7     chi2=    620.4 p=5.9e-133 excluded  s12^2=0.272 s13^2=0.0081 s23^2=0.331 delta=180
+  lepton-Dirac-nu  G1=Z7     G2=Z4     chi2=    629.0 p=8.2e-135 excluded  s12^2=0.331 s13^2=0.0081 s23^2=0.272 delta=180
+  lepton-Dirac-nu  G1=Z4     G2=Z3     chi2=    643.9 p=4.8e-138 excluded  s12^2=0.173 s13^2=0.0348 s23^2=0.311 delta=180
+  lepton-Dirac-nu  G1=Z2xZ2  G2=Z3     chi2=    692.2 p=1.7e-148 excluded  s12^2=0.173 s13^2=0.0348 s23^2=0.173 delta=291
+  lepton-Dirac-nu  G1=Z3     G2=Z2xZ2  chi2=    692.2 p=1.7e-148 excluded  s12^2=0.173 s13^2=0.0348 s23^2=0.173 delta=291
+  lepton-Dirac-nu  G1=Z4     G2=Z3     chi2=    830.9 p=1.6e-178 excluded  s12^2=0.030 s13^2=0.0295 s23^2=0.515 delta=180
+  lepton-Dirac-nu  G1=Z4     G2=Z2xZ2  chi2=   1437.6 p=4.8e-310 excluded  s12^2=0.262 s13^2=0.0443 s23^2=0.262 delta=306
+  lepton-Dirac-nu  G1=Z2xZ2  G2=Z4     chi2=   1437.6 p=4.8e-310 excluded  s12^2=0.262 s13^2=0.0443 s23^2=0.262 delta=306
+  lepton-Dirac-nu  G1=Z3     G2=Z2xZ2  chi2=   1472.0 p=0.0e+00 excluded  s12^2=0.333 s13^2=0.0000 s23^2=0.500 delta=nan
+  lepton-Dirac-nu  G1=Z4     G2=Z4     chi2=   1485.1 p=0.0e+00 excluded  s12^2=0.262 s13^2=0.0443 s23^2=0.131 delta=180
+  lepton-Dirac-nu  G1=Z4     G2=Z3     chi2=   1487.2 p=0.0e+00 excluded  s12^2=0.349 s13^2=0.0447 s23^2=0.651 delta=180
+  lepton-Dirac-nu  G1=Z3     G2=Z4     chi2=   1487.2 p=0.0e+00 excluded  s12^2=0.349 s13^2=0.0447 s23^2=0.651 delta=180
+  lepton-Dirac-nu  G1=Z4     G2=Z4     chi2=   1699.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.0000 s23^2=0.500 delta=nan
+  lepton-Dirac-nu  G1=Z4     G2=Z2xZ2  chi2=   1699.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.0000 s23^2=0.500 delta=nan
+  lepton-Dirac-nu  G1=Z2xZ2  G2=Z2xZ2  chi2=   1699.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.0000 s23^2=0.500 delta=nan
+  lepton-Dirac-nu  G1=Z2xZ2  G2=Z4     chi2=   1699.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.0000 s23^2=0.500 delta=nan
+  lepton-Dirac-nu  G1=Z2xZ2  G2=Z3     chi2=   1725.1 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.0000 s23^2=0.333 delta=nan
+  lepton-Dirac-nu  G1=Z4     G2=Z2xZ2  chi2=   1862.9 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.0000 s23^2=0.000 delta=nan
+  lepton-Dirac-nu  G1=Z2xZ2  G2=Z2xZ2  chi2=   1862.9 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.0000 s23^2=0.000 delta=nan
+  lepton-Dirac-nu  G1=Z2xZ2  G2=Z4     chi2=   1862.9 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.0000 s23^2=0.000 delta=nan
+  lepton-Dirac-nu  G1=Z7     G2=Z7     chi2=   2459.1 p=0.0e+00 excluded  s12^2=0.000 s13^2=0.0000 s23^2=0.000 delta=nan
+  lepton-Dirac-nu  G1=Z3     G2=Z3     chi2=   2459.1 p=0.0e+00 excluded  s12^2=0.000 s13^2=0.0000 s23^2=0.000 delta=nan
+  lepton-Dirac-nu  G1=Z4     G2=Z4     chi2=   2459.1 p=0.0e+00 excluded  s12^2=0.000 s13^2=0.0000 s23^2=0.000 delta=nan
+  lepton-Dirac-nu  G1=Z2xZ2  G2=Z2xZ2  chi2=   2459.1 p=0.0e+00 excluded  s12^2=0.000 s13^2=0.0000 s23^2=0.000 delta=nan
+  lepton-Dirac-nu  G1=Z7     G2=Z7     chi2=  20200.4 p=0.0e+00 excluded  s12^2=0.391 s13^2=0.1076 s23^2=0.391 delta=180
+  lepton-Dirac-nu  G1=Z3     G2=Z3     chi2=  22073.3 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.1111 s23^2=0.500 delta=180
+  lepton-Dirac-nu  G1=Z3     G2=Z3     chi2=  22133.6 p=0.0e+00 excluded  s12^2=0.125 s13^2=0.1111 s23^2=0.500 delta=270
+  lepton-Dirac-nu  G1=Z7     G2=Z2xZ2  chi2=  33077.6 p=0.0e+00 excluded  s12^2=0.235 s13^2=0.1315 s23^2=0.235 delta=236
+  lepton-Dirac-nu  G1=Z2xZ2  G2=Z7     chi2=  33077.6 p=0.0e+00 excluded  s12^2=0.235 s13^2=0.1315 s23^2=0.235 delta=236
+  lepton-Dirac-nu  G1=Z3     G2=Z3     chi2=  34748.3 p=0.0e+00 excluded  s12^2=0.257 s13^2=0.1343 s23^2=0.257 delta=234
+  lepton-Dirac-nu  G1=Z4     G2=Z3     chi2=  57605.7 p=0.0e+00 excluded  s12^2=0.327 s13^2=0.1667 s23^2=0.200 delta=266
+  lepton-Dirac-nu  G1=Z3     G2=Z4     chi2=  57605.7 p=0.0e+00 excluded  s12^2=0.327 s13^2=0.1667 s23^2=0.200 delta=266
+  lepton-Dirac-nu  G1=Z4     G2=Z4     chi2= 142904.1 p=0.0e+00 excluded  s12^2=0.333 s13^2=0.2500 s23^2=0.333 delta=263
+  lepton-Dirac-nu  G1=Z2xZ2  G2=Z2xZ2  chi2= 142904.1 p=0.0e+00 excluded  s12^2=0.333 s13^2=0.2500 s23^2=0.333 delta=263
+  lepton-Dirac-nu  G1=Z2xZ2  G2=Z3     chi2= 266599.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.3333 s23^2=0.500 delta=270
+  lepton-Dirac-nu  G1=Z7     G2=Z3     chi2= 266599.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.3333 s23^2=0.500 delta=270
+  lepton-Dirac-nu  G1=Z3     G2=Z7     chi2= 266599.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.3333 s23^2=0.500 delta=270
+  lepton-Dirac-nu  G1=Z3     G2=Z2xZ2  chi2= 266599.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.3333 s23^2=0.500 delta=270
+  lepton-Majorana  G1=Z3     G2=Z2xZ2  chi2=    692.2 p=1.7e-148 excluded  s12^2=0.173 s13^2=0.0348 s23^2=0.173 delta=291
+  lepton-Majorana  G1=Z4     G2=Z2xZ2  chi2=   1437.6 p=4.8e-310 excluded  s12^2=0.262 s13^2=0.0443 s23^2=0.262 delta=306
+  lepton-Majorana  G1=Z3     G2=Z2xZ2  chi2=   1472.0 p=0.0e+00 excluded  s12^2=0.333 s13^2=0.0000 s23^2=0.500 delta=nan
+  lepton-Majorana  G1=Z4     G2=Z2xZ2  chi2=   1699.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.0000 s23^2=0.500 delta=nan
+  lepton-Majorana  G1=Z2xZ2  G2=Z2xZ2  chi2=   1699.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.0000 s23^2=0.500 delta=nan
+  lepton-Majorana  G1=Z4     G2=Z2xZ2  chi2=   1862.9 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.0000 s23^2=0.000 delta=nan
+  lepton-Majorana  G1=Z2xZ2  G2=Z2xZ2  chi2=   1862.9 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.0000 s23^2=0.000 delta=nan
+  lepton-Majorana  G1=Z2xZ2  G2=Z2xZ2  chi2=   2459.1 p=0.0e+00 excluded  s12^2=0.000 s13^2=0.0000 s23^2=0.000 delta=nan
+  lepton-Majorana  G1=Z7     G2=Z2xZ2  chi2=  33077.6 p=0.0e+00 excluded  s12^2=0.235 s13^2=0.1315 s23^2=0.235 delta=236
+  lepton-Majorana  G1=Z2xZ2  G2=Z2xZ2  chi2= 142904.1 p=0.0e+00 excluded  s12^2=0.333 s13^2=0.2500 s23^2=0.333 delta=263
+  lepton-Majorana  G1=Z3     G2=Z2xZ2  chi2= 266599.8 p=0.0e+00 excluded  s12^2=0.500 s13^2=0.3333 s23^2=0.500 delta=270
+  quark            G1=Z2xZ2  G2=Z3     chi2=  77155.9 p=0.0e+00 excluded  lambda=0.4155 A=2.407 rhobar=0.500 etabar=0.866
+  quark            G1=Z3     G2=Z2xZ2  chi2=  77155.9 p=0.0e+00 excluded  lambda=0.4155 A=2.407 rhobar=0.500 etabar=0.866
+  quark            G1=Z7     G2=Z4     chi2= 100522.6 p=0.0e+00 excluded  lambda=0.4102 A=2.884 rhobar=1.313 etabar=0.000
+  quark            G1=Z3     G2=Z7     chi2= 100890.6 p=0.0e+00 excluded  lambda=0.4176 A=3.173 rhobar=0.369 etabar=0.000
+  quark            G1=Z7     G2=Z3     chi2= 102812.8 p=0.0e+00 excluded  lambda=0.3976 A=3.421 rhobar=0.670 etabar=0.000
+  quark            G1=Z7     G2=Z2xZ2  chi2= 106678.4 p=0.0e+00 excluded  lambda=0.4066 A=2.459 rhobar=1.401 etabar=1.757
+  quark            G1=Z2xZ2  G2=Z7     chi2= 106678.4 p=0.0e+00 excluded  lambda=0.4066 A=2.459 rhobar=1.401 etabar=1.757
+  quark            G1=Z3     G2=Z3     chi2= 108300.6 p=0.0e+00 excluded  lambda=0.4155 A=2.407 rhobar=1.448 etabar=1.642
+  quark            G1=Z7     G2=Z7     chi2= 119187.9 p=0.0e+00 excluded  lambda=0.4066 A=2.459 rhobar=2.247 etabar=0.000
+  quark            G1=Z3     G2=Z4     chi2= 119907.5 p=0.0e+00 excluded  lambda=0.4472 A=2.858 rhobar=0.694 etabar=1.402
+  quark            G1=Z4     G2=Z3     chi2= 119907.5 p=0.0e+00 excluded  lambda=0.4472 A=2.858 rhobar=0.694 etabar=1.402
+  quark            G1=Z4     G2=Z7     chi2= 121943.9 p=0.0e+00 excluded  lambda=0.4852 A=1.742 rhobar=1.350 etabar=0.000
+  quark            G1=Z4     G2=Z3     chi2= 122455.7 p=0.0e+00 excluded  lambda=0.4155 A=3.230 rhobar=-1.215 etabar=0.000
+  quark            G1=Z2xZ2  G2=Z3     chi2= 125592.8 p=0.0e+00 excluded  lambda=0.4472 A=3.162 rhobar=1.000 etabar=0.000
+  quark            G1=Z3     G2=Z3     chi2= 126621.9 p=0.0e+00 excluded  lambda=0.4472 A=2.236 rhobar=2.000 etabar=0.000
+  quark            G1=Z4     G2=Z2xZ2  chi2= 130961.1 p=0.0e+00 excluded  lambda=0.5115 A=1.955 rhobar=0.500 etabar=0.500
+  quark            G1=Z2xZ2  G2=Z4     chi2= 130961.1 p=0.0e+00 excluded  lambda=0.5115 A=1.955 rhobar=0.500 etabar=0.500
+  quark            G1=Z4     G2=Z4     chi2= 143681.3 p=0.0e+00 excluded  lambda=0.5115 A=1.383 rhobar=-1.215 etabar=0.000
+  quark            G1=Z3     G2=Z3     chi2= 151056.1 p=0.0e+00 excluded  lambda=0.4155 A=2.407 rhobar=2.791 etabar=0.000
+  quark            G1=Z3     G2=Z2xZ2  chi2= 151702.4 p=0.0e+00 excluded  lambda=0.5000 A=2.828 rhobar=1.000 etabar=0.000
+  quark            G1=Z3     G2=Z4     chi2= 173442.6 p=0.0e+00 excluded  lambda=0.3848 A=3.822 rhobar=-2.189 etabar=-0.000
+  quark            G1=Z3     G2=Z3     chi2= 188634.4 p=0.0e+00 excluded  lambda=0.4472 A=4.472 rhobar=0.969 etabar=0.248
+  quark            G1=Z4     G2=Z2xZ2  chi2= 195781.8 p=0.0e+00 excluded  lambda=0.5774 A=1.732 rhobar=1.000 etabar=0.000
+  quark            G1=Z2xZ2  G2=Z4     chi2= 195781.8 p=0.0e+00 excluded  lambda=0.5774 A=1.732 rhobar=1.000 etabar=0.000
+  quark            G1=Z4     G2=Z4     chi2= 195781.8 p=0.0e+00 excluded  lambda=0.5774 A=1.732 rhobar=1.000 etabar=-0.000
+  quark            G1=Z2xZ2  G2=Z2xZ2  chi2= 195781.8 p=0.0e+00 excluded  lambda=0.5774 A=1.732 rhobar=1.000 etabar=0.000
+  quark            G1=Z4     G2=Z4     chi2= 197573.6 p=0.0e+00 excluded  lambda=0.5774 A=1.732 rhobar=0.500 etabar=1.323
+  quark            G1=Z2xZ2  G2=Z2xZ2  chi2= 197573.6 p=0.0e+00 excluded  lambda=0.5774 A=1.732 rhobar=0.500 etabar=1.323
+  quark            G1=Z4     G2=Z3     chi2= 198708.6 p=0.0e+00 excluded  lambda=0.3437 A=2.909 rhobar=3.732 etabar=0.000
+  quark            G1=Z3     G2=Z4     chi2= 198708.6 p=0.0e+00 excluded  lambda=0.3437 A=2.909 rhobar=3.732 etabar=0.000
+  quark            G1=Z3     G2=Z4     chi2= 332947.8 p=0.0e+00 excluded  lambda=0.6963 A=0.360 rhobar=1.000 etabar=0.000
+  quark            G1=Z4     G2=Z3     chi2= 339580.4 p=0.0e+00 excluded  lambda=0.7071 A=0.486 rhobar=0.000 etabar=0.000
+  quark            G1=Z2xZ2  G2=Z3     chi2= 343930.7 p=0.0e+00 excluded  lambda=0.7071 A=1.414 rhobar=0.500 etabar=0.866
+  quark            G1=Z3     G2=Z7     chi2= 343930.7 p=0.0e+00 excluded  lambda=0.7071 A=1.414 rhobar=0.500 etabar=0.866
+  quark            G1=Z3     G2=Z2xZ2  chi2= 343930.7 p=0.0e+00 excluded  lambda=0.7071 A=1.414 rhobar=0.500 etabar=0.866
+  quark            G1=Z7     G2=Z3     chi2= 343930.7 p=0.0e+00 excluded  lambda=0.7071 A=1.414 rhobar=0.500 etabar=0.866
+  quark            G1=Z4     G2=Z2xZ2  chi2= 873045.2 p=0.0e+00 excluded  lambda=1.0000 A=0.707 rhobar=-0.000 etabar=-0.000
+  quark            G1=Z2xZ2  G2=Z4     chi2= 873045.2 p=0.0e+00 excluded  lambda=1.0000 A=0.707 rhobar=0.000 etabar=-0.000
+  quark            G1=Z2xZ2  G2=Z2xZ2  chi2= 873045.2 p=0.0e+00 excluded  lambda=1.0000 A=0.707 rhobar=0.000 etabar=0.000
+  quark            G1=Z7     G2=Z7     chi2=1872882.1 p=0.0e+00 excluded  lambda=1.0000 A=1.000 rhobar=nan etabar=0.000
+  quark            G1=Z3     G2=Z3     chi2=1872882.1 p=0.0e+00 excluded  lambda=1.0000 A=1.000 rhobar=nan etabar=0.000
+  quark            G1=Z4     G2=Z4     chi2=1872882.1 p=0.0e+00 excluded  lambda=1.0000 A=1.000 rhobar=nan etabar=0.000
+  quark            G1=Z2xZ2  G2=Z2xZ2  chi2=1872882.1 p=0.0e+00 excluded  lambda=1.0000 A=1.000 rhobar=nan etabar=0.000
+[PASS] F21 residual patterns: only identity, trimaximal (all |U|^2 = 1/3) and Z3-Z3' patterns arise  (3 distinct |U|^2 patterns)
+[PASS] F21: no subgroup can be the residual symmetry of a non-degenerate Majorana mass matrix (F21 has odd order: no Z2; Z3 -> degenerate pair, Z7 -> M = 0)
+
+=== LNR light-neutrino matrix: residual symmetry inside the seed's groups: {'elements_of_PSL_leaving_Mnu_invariant': 1, 'elements_of_F21': 1, 'TBM_S_in_PSL': False, 'minus_mu_tau_swap_in_PSL': False, 'TBM_S_invariance': True, 'mu_tau_invariance': True}
+[PASS] LNR's M_nu is invariant under the TBM Klein group (S, mu-tau) but only the identity of the seed's PSL(2,7) leaves it invariant: its TBM structure is accidental (parameter choice), not residual
+
+15/15 checks pass; runtime 72.5 s
+exit 0

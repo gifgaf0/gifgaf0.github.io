@@ -1,0 +1,257 @@
+=== skyrme_hedgehog.py
+E2 hedgehog: Chebyshev collocation, massless pions, ANW units x = e F_pi r
+
+(B) half-line map x = L(1+t)/(1-t): N-convergence
+  N=  40  M/(F/e)=36.461645627693  Lambda=50.9786523743  J2=25.8967462487  D=-17.3009396975  E2/E4-1=-1.06e-09  C=8.6147949712  F'(0)=-1.0037642456  newton=7 last|dF|=8.1e-15
+  N=  60  M/(F/e)=36.461645625239  Lambda=50.9787395963  J2=25.8967898577  D=-17.2768589842  E2/E4-1=-5.12e-13  C=8.6388756704  F'(0)=-1.0037641139  newton=7 last|dF|=2.2e-14
+  N=  80  M/(F/e)=36.461645625237  Lambda=50.9787391161  J2=25.8967896176  D=-17.2771545514  E2/E4-1=-1.51e-13  C=8.6385801033  F'(0)=-1.0037641114  newton=7 last|dF|=6.4e-14
+  N= 120  M/(F/e)=36.461645625237  Lambda=50.9787391144  J2=25.8967896168  D=-17.2771564368  E2/E4-1=+2.02e-13  C=8.6385782179  F'(0)=-1.0037641114  newton=8 last|dF|=8.2e-14
+  N= 160  M/(F/e)=36.461645625237  Lambda=50.9787391143  J2=25.8967896167  D=-17.2771564403  E2/E4-1=-4.45e-13  C=8.6385782143  F'(0)=-1.0037641114  newton=9 last|dF|=1.0e-13
+  L=1, N=160 : M/(F/e)=36.461645625237 Lambda=50.9787391144 J2=25.8967896168 D=-17.2771564389
+  L=4, N=160 : M/(F/e)=36.461645625237 Lambda=50.9787391144 J2=25.8967896168 D=-17.2771564312
+
+(A) PRIMARY box [0,X], Robin F'+2F/x=0 at X, analytic tails: convergence in N and X
+  X=   10 N= 100  M/(F/e)=36.461645710418  Lambda=50.9623475655 (no tail 43.513849)  J2=25.8883179381 (no tail 22.163236)  D=-17.2822174104  E2/E4-1=-5.16e-05  C=8.63242888
+  X=   10 N= 200  M/(F/e)=36.461645710418  Lambda=50.9623475657 (no tail 43.513849)  J2=25.8883179382 (no tail 22.163236)  D=-17.2822174104  E2/E4-1=-5.16e-05  C=8.63242888
+  X=   20 N= 100  M/(F/e)=36.461645625207  Lambda=50.9783641643 (no tail 47.247497)  J2=25.8966004304 (no tail 24.031128)  D=-17.2774343628  E2/E4-1=-3.16e-07  C=8.63829323
+  X=   20 N= 200  M/(F/e)=36.461645625207  Lambda=50.9783641645 (no tail 47.247497)  J2=25.8966004306 (no tail 24.031128)  D=-17.2774343626  E2/E4-1=-3.16e-07  C=8.63829323
+  X=   40 N= 100  M/(F/e)=36.461645625236  Lambda=50.9787323169 (no tail 49.113116)  J2=25.8967862101 (no tail 24.963977)  D=-17.2771668430  E2/E4-1=-1.46e-09  C=8.63856778
+  X=   40 N= 200  M/(F/e)=36.461645625237  Lambda=50.9787284200 (no tail 49.113114)  J2=25.8967842571 (no tail 24.963976)  D=-17.2771728092  E2/E4-1=-2.29e-09  C=8.63856179
+  X=   80 N= 100  M/(F/e)=36.461645622380  Lambda=50.9779963502 (no tail 50.045678)  J2=25.8964180232 (no tail 25.430259)  D=-17.2794456193  E2/E4-1=-3.90e-08  C=8.63628810
+  X=   80 N= 200  M/(F/e)=36.461645625236  Lambda=50.9787387774 (no tail 50.045926)  J2=25.8967894482 (no tail 25.430383)  D=-17.2771574746  E2/E4-1=-1.79e-11  C=8.63857718
+  improved Robin condition (next two asymptotic orders), N=200:
+  X=   10 N= 200  M/(F/e)=36.461645542447  Lambda=50.9787705412  J2=25.8968055331  D=-17.2771577514  E2/E4-1=+5.05e-08
+  X=   20 N= 200  M/(F/e)=36.461645625159  Lambda=50.9787391349  J2=25.8967896301  D=-17.2771565050  E2/E4-1=+9.52e-12
+  X=   40 N= 200  M/(F/e)=36.461645625237  Lambda=50.9787391144  J2=25.8967896168  D=-17.2771564368  E2/E4-1=+4.48e-13
+
+(C) box with Dirichlet F(X)=0 and no tails (biased; shown for comparison)
+  X=   10  M/(F/e)=36.79425147 (+0.912%)  Lambda=37.090514 (-27.24%)  J2=18.620715 (-28.10%)
+  X=   20  M/(F/e)=36.50524843 (+0.120%)  Lambda=44.108449 (-13.48%)  J2=22.411417 (-13.46%)
+  X=   40  M/(F/e)=36.46713448 (+0.015%)  Lambda=47.594334 (-6.64%)  J2=24.198067 (-6.56%)
+
+scipy solve_bvp cross-check (X=40, tol 1e-10, status 1, 153128 nodes): M/(F/e)=36.461645607 Lambda=50.97872315 J2=25.89678162 E2/E4-1=-2.6e-09 F'(0)~-1.00376404
+
+arctan ansatz x0=sqrt(15/4): quadrature M/(F/e)=40.543537 I1coef=106.989890 I2coef=40.543537
+   Praszalowicz closed forms:   M/(F/e)=40.543537 I1coef=106.989890 I2coef=40.543537
+
+CHECKS
+  [PASS] spectral convergence (B) N=120 vs 160: dLambda = 2.6e-11
+  [PASS] map-parameter independence (L=1,2,4): max dLambda = 3.7e-11
+  [PASS] (A) box X=40 + tails vs (B) half line: M_over_Fpi_e: rel diff 6.7e-16
+  [PASS] (A) box X=40 + tails vs (B) half line: Lambda: rel diff 2.1e-07
+  [PASS] (A) box X=40 + tails vs (B) half line: J2: rel diff 2.1e-07
+  [PASS] (A) box X=40 + tails vs (B) half line: D_gA: rel diff 9.5e-07
+  [PASS] (A) box X=80 + tails vs (B) half line: M_over_Fpi_e: rel diff 7.0e-15
+  [PASS] (A) box X=80 + tails vs (B) half line: Lambda: rel diff 6.6e-09
+  [PASS] (A) box X=80 + tails vs (B) half line: J2: rel diff 6.5e-09
+  [PASS] (A) box X=80 + tails vs (B) half line: D_gA: rel diff 6.0e-08
+  [PASS] (A) X=10 with tails: error of size C^2/(21 X^4) ~ 4e-4 expected: Lambda rel diff 3.2e-04
+  [PASS] improved Robin condition, X=40: max rel diff 2.1e-10
+  [PASS] virial E2 = E4 (B): E2/E4-1 = -4.4e-13
+  [PASS] virial E2 = E4 (A): E2/E4-1 = -2.3e-09
+  [PASS] baryon number: B = 1.00000000000000
+  [PASS] solve_bvp agrees with spectral (M, Lambda): rel 5.0e-10, 3.1e-07
+  [PASS] arctan closed forms reproduce by quadrature: rel 3.3e-16, 1.1e-16, 2.2e-16
+  asymptotics: |F/(C/x^2) - 1| = 4.5e-04, 2.4e-05, 1.4e-06 ; with -C^3/(21x^6) - (4/3)C^3/x^8: 6.0e-07, 1.9e-09, 4.6e-10  (x = 10, 20, 40)
+  [PASS] asymptotics F = C/x^2 - C^3/(21 x^6) - (4/3) C^3/x^8: rel dev 6.0e-07, 1.9e-09, 4.6e-10 at x = 10, 20, 40
+
+all checks pass: True;  runtime 4.5 s
+wrote profile.json and out/hedgehog.json
+    [skyrme_hedgehog.py: 4.664463554 s wall]
+=== verify_densities.py
+E2 verification from explicit SU(3) matrices (units F_pi = e = 1)
+
+pointwise identities at 12 random (x, F, F'), exact angular quadrature (12 x 16 points)
+  x=4.386 F=1.224 F'=-2.898:  <i_11>/formula=1.00000000000000  <i_44>/formula=1.00000000000000  <i_88>=1.2e-33  <A^3_3>/[gA bracket]=-0.083333333333
+  x=3.697 F=2.663 F'=-0.698:  <i_11>/formula=1.00000000000000  <i_44>/formula=1.00000000000000  <i_88>=4.3e-35  <A^3_3>/[gA bracket]=-0.083333333333
+  x=3.365 F=0.106 F'=-2.993:  <i_11>/formula=1.00000000000000  <i_44>/formula=1.00000000000000  <i_88>=9.6e-34  <A^3_3>/[gA bracket]=-0.083333333333
+  max relative deviation e         : 1.31e-15
+  max relative deviation i1        : 2.44e-15
+  max relative deviation i2        : 4.66e-15
+  max relative deviation i8        : 1.38e-32
+  max relative deviation offdiag   : 2.28e-17
+  max relative deviation gA_ratio  : 3.89e-14
+  max relative deviation A_offdiag : 2.34e-14
+  max relative deviation Trr       : 4.93e-13
+  max relative deviation Ttt       : 5.44e-13
+  max relative deviation Trt       : 5.45e-13
+  max relative deviation Tsym      : 8.32e-13
+  kappa = <A^a_a>/[ANW bracket] = -0.083333333333334   (1/12 -> ball integral = 2/3 of ANW's g_A; 1/8 would match it)
+
+profile integrals over the ball x < 40 (same radial nodes for 3D and formula):
+  diag I_ab (3D)  : 102.862273490 102.862273490 102.862273490 39.213324410 39.213324410 39.213324410 39.213324410 0.000000000
+  formula I1, I2  : 102.862273490 39.213324410   max |offdiag| = 2.3e-16
+  energy 3D 36.4579824928  formula 36.4579824928
+  int A^a_a d^3x (3D) = [18.09252145 18.09252145 18.09252145]  ;  4 pi kappa D_[0,40] = 18.0925214475
+
+(iii) axial form factor of the static hedgehog current, A~_ai(q) for q = q z (per 1/e^2):
+  ball (R = 40) integral c_ball = +18.0925214475;  surface term (4pi/3) R^3 n.A.n at R: +18.0925214475;  R -> inf limit -(2pi/3) C sgn = +18.0925959111
+  q =  0.20:  transverse A~_11 = +26.775463570 (ratio to c_ball 1.4799189)   longitudinal A~_33 = +2.45e-06
+  q =  0.10:  transverse A~_11 = +27.044938893 (ratio to c_ball 1.4948131)   longitudinal A~_33 = -3.09e-06
+  q =  0.05:  transverse A~_11 = +27.115087418 (ratio to c_ball 1.4986904)   longitudinal A~_33 = -4.52e-05
+  q =  0.02:  transverse A~_11 = +27.135007957 (ratio to c_ball 1.4997914)   longitudinal A~_33 = -6.64e-05
+  q =  0.01:  transverse A~_11 = +27.137864796 (ratio to c_ball 1.4999493)   longitudinal A~_33 = -6.99e-05
+  D (whole space) = -17.2771564368;  -2C = -17.2771564357  (identity D = -2C from current conservation)
+
+CHECKS
+  [PASS] energy_density
+  [PASS] I1_density
+  [PASS] I2_density_Kopeliovich_22c
+  [PASS] I88_zero_offdiag_zero
+  [PASS] axial_current_proportional_to_ANW_bracket_kappa_1/12
+  [PASS] stress_tensor_Trr_Ttt
+  [PASS] integrated_I_matches
+  [PASS] integrated_energy_matches
+  [PASS] ball_integral_equals_surface_term
+  [PASS] longitudinal_form_factor_vanishes
+  [PASS] transverse_q0_is_3/2_of_ball
+  [PASS] identity_D_equals_-2C
+
+all checks pass: True;  runtime 9.2 s
+    [verify_densities.py: 9.368885972 s wall]
+=== su3_rotor.py
+E2 SU(3) rotor. Hedgehog inputs: M = 36.461646 F/e, I1 = 106.769622/(e^3F), I2 = 40.678582/(e^3F)
+
+explicit irreps (tensor construction):
+  3      d=  3 C2=4/3   Casimir ok=True [T,T]=ifT ok=True GT content ok=True
+  3bar   d=  3 C2=4/3   Casimir ok=True [T,T]=ifT ok=True GT content ok=True
+  8      d=  8 C2=3     Casimir ok=True [T,T]=ifT ok=True GT content ok=True
+  10     d= 10 C2=6     Casimir ok=True [T,T]=ifT ok=True GT content ok=True
+  10bar  d= 10 C2=6     Casimir ok=True [T,T]=ifT ok=True GT content ok=True
+  27     d= 27 C2=8     Casimir ok=True [T,T]=ifT ok=True GT content ok=True
+  35     d= 35 C2=12    Casimir ok=True [T,T]=ifT ok=True GT content ok=True
+  35bar  d= 35 C2=12    Casimir ok=True [T,T]=ifT ok=True GT content ok=True
+  6      d=  6 C2=10/3  Casimir ok=True [T,T]=ifT ok=True GT content ok=True
+  6bar   d=  6 C2=10/3  Casimir ok=True [T,T]=ifT ok=True GT content ok=True
+  15     d= 15 C2=16/3  Casimir ok=True [T,T]=ifT ok=True GT content ok=True
+  15bar  d= 15 C2=16/3  Casimir ok=True [T,T]=ifT ok=True GT content ok=True
+  64     d= 64 C2=15    Casimir ok=True [T,T]=ifT ok=True GT content ok=True
+
+rotor Hamiltonian from explicit generators on the Y_R = Nc/3 = 1 states (I1, I2 at ANW-like values):
+  8     : H on Y=1 states diagonal and equal to C2/2I2 + (1/2I1-1/2I2)J(J+1) - (3/4)Y^2/2I2 : True
+  10    : H on Y=1 states diagonal and equal to C2/2I2 + (1/2I1-1/2I2)J(J+1) - (3/4)Y^2/2I2 : True
+  10bar : H on Y=1 states diagonal and equal to C2/2I2 + (1/2I1-1/2I2)J(J+1) - (3/4)Y^2/2I2 : True
+  27    : H on Y=1 states diagonal and equal to C2/2I2 + (1/2I1-1/2I2)J(J+1) - (3/4)Y^2/2I2 : True
+  35    : H on Y=1 states diagonal and equal to C2/2I2 + (1/2I1-1/2I2)J(J+1) - (3/4)Y^2/2I2 : True
+  35bar : H on Y=1 states diagonal and equal to C2/2I2 + (1/2I1-1/2I2)J(J+1) - (3/4)Y^2/2I2 : True
+  64    : H on Y=1 states diagonal and equal to C2/2I2 + (1/2I1-1/2I2)J(J+1) - (3/4)Y^2/2I2 : True
+  [PASS] rotor_H_explicit_equals_formula 
+
+Wess-Zumino constraint Y_R = Nc/3: allowed irreps and spins (lowest by rotor energy, I1/I2 = 2.6247)
+  Nc=1: fermions (all J half-integer)  lowest: 3(J=1/2), 6bar(J=1/2), 15(J=3/2), 15(J=1/2), 42(J=5/2), 24(1,3)(J=3/2)
+  Nc=2: bosons (all J integer)         lowest: 3bar(J=0), 6(J=1), 15bar(J=1), 24(3,1)(J=2), 15bar(J=0), 24(3,1)(J=1)
+  Nc=3: fermions (all J half-integer)  lowest: 8(J=1/2), 10(J=3/2), 10bar(J=1/2), 27(J=3/2), 35(J=5/2), 27(J=1/2)
+  Nc=4: bosons (all J integer)         lowest: 6bar(J=0), 15(J=1), 15'(J=2), 24(1,3)(J=1), 42(J=2), 24(1,3)(J=0)
+  Nc=5: fermions (all J half-integer)  lowest: 15bar(J=1/2), 24(3,1)(J=3/2), 21(J=5/2), 15'bar(J=1/2), 42bar(J=3/2), 60(4,2)(J=5/2)
+  Nc=6: bosons (all J integer)         lowest: 10bar(J=0), 27(J=1), 35(J=2), 28(J=3), 35bar(J=1), 64(J=2)
+  Nc=7: fermions (all J half-integer)  lowest: 24(1,3)(J=1/2), 42(J=3/2), 48(J=5/2), 21bar(J=1/2), 60(2,4)(J=3/2), 36(7,0)(J=7/2)
+  [PASS] J half-integer iff Nc odd (Nc=1..7, p+q<=16; sweep Nc<=15, p+q<=30) 
+
+exact: E(8)-M = 3/8/I1 + 3/4/I2;  E(10)-E(8) = 3/2/I1 + 0/I2;  E(10bar)-E(8) = 0/I1 + 3/2/I2
+  [PASS] E(10)-E(8) = 3/(2 I1) exactly 
+  [PASS] E(10bar)-E(8) = 3/(2 I2) exactly 
+  [PASS] E(8) - E_SU2(N) = 3/(4 I2) exactly 
+
+PDG (PDG 2026 via the pdg Python package (pdg 2026.0, sqlite)) isospin-averaged masses [MeV]:
+  N 938.919, Lambda 1115.683, Sigma 1193.154, Xi 1318.286, Delta 1232.000, Sigma* 1384.610, Xi* 1533.387, Omega 1672.452
+  octet centre (2N+L+3S+2X)/8 = 1151.194;  decuplet centre (4D+3S*+2X*+O)/10 = 1382.106  [PDG B033M Breit-Wigner mass, mixed charges: 1230 to 1234 (~1232)]
+
+ANW_SU2_fit: F_pi = 129.263 MeV, e = 5.4440, M_cl = 865.75 MeV, 1/I1 = 195.33 MeV, 1/I2 = 512.69 MeV, g_A(SU2 formula) = 0.6105
+   SU(2): N 939.0, Delta 1232.0;  SU(3): E8 1323.5, E10 1616.5, E10bar 2092.6;  E10-E8 = 293.0, E10bar-E8 = 769.0, E8-E_N(SU2) = 384.5
+   lowest allowed levels: 8(J=1/2) 1324; 10(J=3/2) 1617; 10bar(J=1/2) 2093; 27(J=3/2) 2129; 35(J=5/2) 2361; 27(J=1/2) 2605; 64(J=5/2) 3130; 35(J=3/2) 3155; 35bar(J=3/2) 3155
+
+SU3_refit_PDG_centres: F_pi = 113.755 MeV, e = 5.2474, M_cl = 790.43 MeV, 1/I1 = 153.94 MeV, 1/I2 = 404.05 MeV, g_A(SU2 formula) = 0.6571
+   SU(2): N 848.2, Delta 1079.1;  SU(3): E8 1151.2, E10 1382.1, E10bar 1757.3;  E10-E8 = 230.9, E10bar-E8 = 606.1, E8-E_N(SU2) = 303.0
+   lowest allowed levels: 8(J=1/2) 1151; 10(J=3/2) 1382; 10bar(J=1/2) 1757; 27(J=3/2) 1786; 35(J=5/2) 1969; 27(J=1/2) 2161; 64(J=5/2) 2575; 35(J=3/2) 2594; 35bar(J=3/2) 2594
+  [PASS] exact SU(3): all d_R x (2J+1) states of 8, 10, 10bar degenerate 
+
+D^(8) matrix elements from explicit Clebsch-Gordan intertwiners:
+  <N          |D88|N          > = +0.300000000000  (Praszalowicz eqs.17-19: 3/10 ; multiplicity 2; J3-independent)
+  <Lambda     |D88|Lambda     > = +0.100000000000  (Praszalowicz eqs.17-19: 1/10 ; multiplicity 2; J3-independent)
+  <Sigma      |D88|Sigma      > = -0.100000000000  (Praszalowicz eqs.17-19: -1/10; multiplicity 2; J3-independent)
+  <Xi         |D88|Xi         > = -0.200000000000  (Praszalowicz eqs.17-19: -1/5 ; multiplicity 2; J3-independent)
+  <Delta      |D88|Delta      > = +0.125000000000  (Praszalowicz eqs.17-19: 1/8  ; multiplicity 1; J3-independent)
+  <Sigma*     |D88|Sigma*     > = -0.000000000000  (Praszalowicz eqs.17-19: 0    ; multiplicity 1; J3-independent)
+  <Xi*        |D88|Xi*        > = -0.125000000000  (Praszalowicz eqs.17-19: -1/8 ; multiplicity 1; J3-independent)
+  <Omega      |D88|Omega      > = -0.250000000000  (Praszalowicz eqs.17-19: -1/4 ; multiplicity 1; J3-independent)
+  <Theta+     |D88|Theta+     > = +0.250000000000  (Praszalowicz eqs.17-19: 1/4  ; multiplicity 1; J3-independent)
+  <N*         |D88|N*         > = +0.125000000000  (Praszalowicz eqs.17-19: 1/8  ; multiplicity 1; J3-independent)
+  <Sigma_10bar|D88|Sigma_10bar> = +0.000000000000  (Praszalowicz eqs.17-19: 0    ; multiplicity 1; J3-independent)
+  <Xi_3/2     |D88|Xi_3/2     > = -0.125000000000  (Praszalowicz eqs.17-19: -1/8 ; multiplicity 1; J3-independent)
+  [PASS] diagonal D88 elements reproduce Praszalowicz (17)-(19) 
+  second-order (delta^{R'}_B)^2: N|10bar=0.050000, N|27=0.060000, Sigma|10bar=0.050000, Sigma|27=0.040000, Lambda|10bar=0.000000, Lambda|27=0.090000, Xi|10bar=0.000000, Xi|27=0.060000, ...
+  [PASS] all 28 (delta^R'_B)^2 reproduce Praszalowicz (17)-(19) 
+  <p up|D_33|p up>: SU(2) -0.333333333333 (ANW -1/3),  SU(3) octet -0.233333333333 (-7/30 = -0.233333)
+  [PASS] <p|D33|p> = -1/3 (SU2) and -7/30 (SU3, Schechter-Weigel 7/10 factor) 
+
+OPTIONAL (two extra fitted inputs alpha, beta): first-order H' = -alpha D88 + beta Y
+  [PASS] first-order shifts average to zero over each multiplet (centres = rotor energies) 
+  fitted inputs: alpha = 371.8 MeV, beta = -99.6 MeV (least squares on 8 isospin multiplets, centres fixed)
+   N       PDG   938.92  fit   940.07  diff  +1.15
+   Lambda  PDG  1115.68  fit  1114.02  diff  -1.66
+   Sigma   PDG  1193.15  fit  1188.37  diff  -4.78
+   Xi      PDG  1318.29  fit  1325.14  diff  +6.85
+   Delta   PDG  1232.00  fit  1236.04  diff  +4.04
+   Sigma*  PDG  1384.61  fit  1382.11  diff  -2.50
+   Xi*     PDG  1533.39  fit  1528.17  diff  -5.22
+   Omega   PDG  1672.45  fit  1674.23  diff  +1.78
+  rms deviation 4.0 MeV
+  Guadagnini 8(N+Xi*)+3Sigma-11Lambda-8Sigma*  : model coefficients (D88, Y) = (0, 0);  PDG LHS-RHS = +8.51 MeV (+0.036%)
+  GMO 2(N+Xi)-3Lambda-Sigma                    : model coefficients (D88, Y) = (0, 0);  PDG LHS-RHS = -25.79 MeV (-0.570%)
+  equal spacing 2Sigma*-Delta-Xi*              : model coefficients (D88, Y) = (0, 0);  PDG LHS-RHS = +3.83 MeV (+0.139%)
+  equal spacing 2Xi*-Sigma*-Omega              : model coefficients (D88, Y) = (0, 0);  PDG LHS-RHS = +9.71 MeV (+0.317%)
+  [PASS] Guadagnini, GMO, equal spacing hold identically for -alpha D88 + beta Y 
+
+all checks pass: True;  runtime 10.1 s
+    [su3_rotor.py: 10.292154666 s wall]
+=== derrick_virial.py
+E2 = 18.230822812624, E4 = 18.230822812614 (F_pi/e); E2/E4 - 1 = +5.58e-13; M = 36.4616456252
+scaling law E2(mu) mu = E2, E4(mu)/mu = E4: max rel deviation 1.7e-15 over mu in [0.2, 5]
+E(mu) minimum at mu* = 1.000000000 (expected 1); E(mu*) = 36.4616456252
+sigma-model-only energy E2(mu) strictly decreasing in mu (shrinking): True; E2(5)/E2(1) = 0.2000
+sigma model only, shooting from F = pi - a x: F(x = e^40) = 1.570796 (a=0.1, min F 1.3153), 1.570796 (a=1.0, min F 1.3153), 1.570796 (a=10.0, min F 1.3153)  [pi/2 = 1.570796]
+von Laue: int x^2 p dx = -2.699e-13; int x^2 |p| dx = 0.394572; ratio -6.8e-13
+local equilibrium T_rr' + 2(T_rr - T_thth)/x = 0 on nodes x < 30: max |residual| / max |T_rr'| = 2.2e-07
+   (pointwise relative 2.4e-04 at x = 0.000252, where both terms are ~1e-4 and round-off in the spectral derivative dominates)
+pressure p(x): p(0+) = +0.38159 (F_pi/e)(e F_pi)^3, sign changes at x = [2.1522138142542833]; p < 0 outside
+
+CHECKS
+  [PASS] virial_E2_eq_E4_1e-4
+  [PASS] virial_E2_eq_E4_1e-10
+  [PASS] scaling_law_by_quadrature
+  [PASS] E_mu_minimum_at_1
+  [PASS] no_minimum_without_Skyrme_term
+  [PASS] von_Laue_zero
+  [PASS] local_equilibrium
+  [PASS] single_pressure_node_positive_core
+
+all checks pass: True;  runtime 0.5 s
+    [derrick_virial.py: .821535611 s wall]
+=== make_figures.py
+fig_profile.png 61 KB
+fig_derrick.png 50 KB
+fig_spectrum.png 70 KB
+    [make_figures.py: .943798111 s wall]
+=== collect_results.py
+[CALIBRATED] classical mass M_cl: 36.4616 F_pi/e (F_pi 186-MeV convention)  (target 36.463253459824635, tol 0.2%)
+[CALIBRATED] Lambda in I1 = (2pi/3) Lambda/(e^3 F_pi): 50.9787 dimensionless  (target 50.9, tol 0.5%)
+[CALIBRATED] ANW fit F_pi (M_N = 939, M_Delta = 1232 MeV, SU(2) rotor): 129.263 MeV  (target 129.0, tol 1%)
+[CALIBRATED] ANW fit e: 5.44399 dimensionless  (target 5.45, tol 1%)
+[CALIBRATED] g_A at the ANW fit (SU(2), -(pi/(3e^2)) D): 0.610474 dimensionless  (target 0.61, tol +-0.01)
+[CALIBRATED] I2 coefficient (pi/2) J2, I2 = coef/(e^3 F_pi): 40.6786 dimensionless  (target 40.5, tol 1.5% (exact vs arctan ansatz))
+[CALIBRATED] lowest allowed SU(3) irreps, Y_R = 1: 8 (J=1/2), 10 (J=3/2), 10bar (J=1/2), then 27 (J=3/2), 35 (J=5/2), 27 (J=1/2)   (target 8 (1/2), 10 (3/2), 10bar (1/2), then 27, tol exact)
+[CALIBRATED] E(10) - E(8): 3/(2 I1)   (target 3/(2 I1), tol exact)
+[CALIBRATED] E(10bar) - E(8): 3/(2 I2)   (target 3/(2 I2), tol exact)
+[CALIBRATED] virial E2/E4 - 1 at the solution: -4.44644e-13   (target 0.0, tol 1e-4)
+[CALIBRATED] von Laue: int d^3x p / int d^3x |p|: -6.84097e-13   (target 0.0, tol 1e-6 (numerical zero))
+[CALIBRATED] Derrick: sigma-model energy under shrinking: E2(mu) = E2/mu, strictly decreasing; radial sigma-model ODE ends at F = pi/2   (target no minimum without the Skyrme term, tol qualitative)
+[CALIBRATED] N_c parity: J half-integer iff N_c odd (B = 1, Y_R = N_c/3): holds for N_c = 1..7 (all irreps p+q <= 16) and N_c <= 15 (p+q <= 30)   (target J half-integer exactly when N_c odd, tol exact)
+[NO_TARGET ] E(8) - E_SU2(N) at ANW parameters = 3/(4 I2): 384.521 MeV  (target about 385 (preregistered expectation), tol none)
+[NO_TARGET ] SU(3) refit to PDG octet/decuplet centres: F_pi: 113.755 MeV  (target about 114 (expectation), tol none)
+[NO_TARGET ] SU(3) refit: e: 5.2474 dimensionless  (target about 5.25 (expectation), tol none)
+[NO_TARGET ] SU(3) refit: antidecuplet E(10bar): 1757.27 MeV  (target near 1760 (expectation), tol none)
+[NO_TARGET ] ANW set: E(8), E(10), E(10bar): [1323.5205211805464, 1616.5205211805464, 2092.5615635416398] MeV  (target none, tol )
+[NO_TARGET ] SU(3) refit: g_A (SU(2) formula; SU(3)-symmetric rotor x 7/10): [0.6570721349213386, 0.459950494444937] dimensionless  (target none, tol )
+[NO_TARGET ] OPTIONAL Guadagnini relation 8(N+Xi*)+3Sigma = 11Lambda+8Sigma* with PDG 2026: 8.50688 MeV (LHS-RHS)  (target 0.0, tol none (first-order relation))
+all checks pass: True
+    [collect_results.py: .112013247 s wall]

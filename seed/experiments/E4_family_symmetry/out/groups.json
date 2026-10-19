@@ -1,0 +1,737 @@
+{
+ "conventions": {
+  "zeta": "exp(2 pi i/7)",
+  "omega": "exp(2 pi i/3)",
+  "b7": "(-1+i sqrt7)/2 = zeta+zeta^2+zeta^4",
+  "D": "diag(zeta, zeta^2, zeta^4)",
+  "C": "[[0,1,0],[0,0,1],[1,0,0]]",
+  "Rf": "flip R flip^-1 (hexagon_check.py) = LNR A^[3] exactly",
+  "LNR_d": "D^0 C^1 D^-0",
+  "d_conjugate_to_C": true,
+  "basis": "3: D-weights (1,2,4); 3bar: (6,5,3); 6,7,8: F21-adapted D-diagonal blocks [1,1',1'',3,3bar] with D, C standard on each block",
+  "1prime": "chi_1'(d) = omega (LNR); d is conjugate to C, so chi_1'(C) = omega",
+  "F21_classes": [
+   "1",
+   "7 Theta2(d)",
+   "7 Theta3(d^2)",
+   "3 Theta4(c=D)",
+   "3 Theta5(c^3)"
+  ],
+  "PSL_classes": [
+   "1",
+   "21 C2(A)",
+   "56 C3(B)",
+   "42 C4([A,B])",
+   "24 C5(AB=D)",
+   "24 C6(AB^2)"
+  ]
+ },
+ "orders": {
+  "F21": 21,
+  "PSL": 168
+ },
+ "char_table_F21": {
+  "1": [
+   "1",
+   "1",
+   "1",
+   "1",
+   "1"
+  ],
+  "1'": [
+   "1",
+   "w",
+   "w^2",
+   "1",
+   "1"
+  ],
+  "1''": [
+   "1",
+   "w^2",
+   "w",
+   "1",
+   "1"
+  ],
+  "3": [
+   "3",
+   "0",
+   "0",
+   "b7",
+   "conj(b7)"
+  ],
+  "3b": [
+   "3",
+   "0",
+   "0",
+   "conj(b7)",
+   "b7"
+  ]
+ },
+ "char_table_PSL": {
+  "1": [
+   "1",
+   "1",
+   "1",
+   "1",
+   "1",
+   "1"
+  ],
+  "3": [
+   "3",
+   "-1",
+   "0",
+   "1",
+   "b7",
+   "conj(b7)"
+  ],
+  "3b": [
+   "3",
+   "-1",
+   "0",
+   "1",
+   "conj(b7)",
+   "b7"
+  ],
+  "6": [
+   "6",
+   "2",
+   "0",
+   "0",
+   "-1",
+   "-1"
+  ],
+  "7": [
+   "7",
+   "-1",
+   "1",
+   "-1",
+   "0",
+   "0"
+  ],
+  "8": [
+   "8",
+   "0",
+   "-1",
+   "0",
+   "1",
+   "1"
+  ]
+ },
+ "kronecker_F21": {
+  "1' x 1'": {
+   "sym": {
+    "1''": 1
+   },
+   "antisym": {}
+  },
+  "1' x 1''": {
+   "1": 1
+  },
+  "1' x 3": {
+   "3": 1
+  },
+  "1' x 3b": {
+   "3b": 1
+  },
+  "1'' x 1''": {
+   "sym": {
+    "1'": 1
+   },
+   "antisym": {}
+  },
+  "1'' x 3": {
+   "3": 1
+  },
+  "1'' x 3b": {
+   "3b": 1
+  },
+  "3 x 3": {
+   "sym": {
+    "3": 1,
+    "3b": 1
+   },
+   "antisym": {
+    "3b": 1
+   }
+  },
+  "3 x 3b": {
+   "1": 1,
+   "1'": 1,
+   "1''": 1,
+   "3": 1,
+   "3b": 1
+  },
+  "3b x 3b": {
+   "sym": {
+    "3": 1,
+    "3b": 1
+   },
+   "antisym": {
+    "3": 1
+   }
+  }
+ },
+ "kronecker_PSL": {
+  "3 x 3": {
+   "sym": {
+    "6": 1
+   },
+   "antisym": {
+    "3b": 1
+   }
+  },
+  "3 x 3b": {
+   "1": 1,
+   "8": 1
+  },
+  "3 x 6": {
+   "3b": 1,
+   "7": 1,
+   "8": 1
+  },
+  "3 x 7": {
+   "6": 1,
+   "7": 1,
+   "8": 1
+  },
+  "3 x 8": {
+   "3": 1,
+   "6": 1,
+   "7": 1,
+   "8": 1
+  },
+  "3b x 3b": {
+   "sym": {
+    "6": 1
+   },
+   "antisym": {
+    "3": 1
+   }
+  },
+  "3b x 6": {
+   "3": 1,
+   "7": 1,
+   "8": 1
+  },
+  "3b x 7": {
+   "6": 1,
+   "7": 1,
+   "8": 1
+  },
+  "3b x 8": {
+   "3b": 1,
+   "6": 1,
+   "7": 1,
+   "8": 1
+  },
+  "6 x 6": {
+   "sym": {
+    "1": 1,
+    "6": 2,
+    "8": 1
+   },
+   "antisym": {
+    "7": 1,
+    "8": 1
+   }
+  },
+  "6 x 7": {
+   "3": 1,
+   "3b": 1,
+   "6": 1,
+   "7": 2,
+   "8": 2
+  },
+  "6 x 8": {
+   "3": 1,
+   "3b": 1,
+   "6": 2,
+   "7": 2,
+   "8": 2
+  },
+  "7 x 7": {
+   "sym": {
+    "1": 1,
+    "6": 2,
+    "7": 1,
+    "8": 1
+   },
+   "antisym": {
+    "3": 1,
+    "3b": 1,
+    "7": 1,
+    "8": 1
+   }
+  },
+  "7 x 8": {
+   "3": 1,
+   "3b": 1,
+   "6": 2,
+   "7": 2,
+   "8": 3
+  },
+  "8 x 8": {
+   "sym": {
+    "1": 1,
+    "6": 2,
+    "7": 1,
+    "8": 2
+   },
+   "antisym": {
+    "3": 1,
+    "3b": 1,
+    "7": 2,
+    "8": 1
+   }
+  }
+ },
+ "branching_PSL_to_F21": {
+  "1": {
+   "1": 1
+  },
+  "3": {
+   "3": 1
+  },
+  "3b": {
+   "3b": 1
+  },
+  "6": {
+   "3": 1,
+   "3b": 1
+  },
+  "7": {
+   "1": 1,
+   "3": 1,
+   "3b": 1
+  },
+  "8": {
+   "1'": 1,
+   "1''": 1,
+   "3": 1,
+   "3b": 1
+  }
+ },
+ "branching_SU3_to_PSL": {
+  "(1,0)": {
+   "dim": 3,
+   "decomp": {
+    "3": 1
+   }
+  },
+  "(0,1)": {
+   "dim": 3,
+   "decomp": {
+    "3b": 1
+   }
+  },
+  "(2,0)": {
+   "dim": 6,
+   "decomp": {
+    "6": 1
+   }
+  },
+  "(0,2)": {
+   "dim": 6,
+   "decomp": {
+    "6": 1
+   }
+  },
+  "(1,1)": {
+   "dim": 8,
+   "decomp": {
+    "8": 1
+   }
+  },
+  "(3,0)": {
+   "dim": 10,
+   "decomp": {
+    "3b": 1,
+    "7": 1
+   }
+  },
+  "(2,1)": {
+   "dim": 15,
+   "decomp": {
+    "7": 1,
+    "8": 1
+   }
+  },
+  "(4,0)": {
+   "dim": 15,
+   "decomp": {
+    "1": 1,
+    "6": 1,
+    "8": 1
+   }
+  },
+  "(0,5)": {
+   "dim": 21,
+   "decomp": {
+    "3": 1,
+    "3b": 1,
+    "7": 1,
+    "8": 1
+   }
+  },
+  "(1,3)": {
+   "dim": 24,
+   "decomp": {
+    "3b": 1,
+    "6": 1,
+    "7": 1,
+    "8": 1
+   }
+  },
+  "(2,2)": {
+   "dim": 27,
+   "decomp": {
+    "6": 2,
+    "7": 1,
+    "8": 1
+   }
+  }
+ },
+ "frobenius_schur": {
+  "PSL": {
+   "1": 1,
+   "3": 0,
+   "3b": 0,
+   "6": 1,
+   "7": 1,
+   "8": 1
+  },
+  "F21": {
+   "1": 1,
+   "1'": 0,
+   "1''": 0,
+   "3": 0,
+   "3b": 0
+  }
+ },
+ "cg_F21": {
+  "3x3 -> 3_s": [
+   "1 |3>|3'>",
+   "1 |1>|1'>",
+   "1 |2>|2'>"
+  ],
+  "3x3 -> 3b_s": [
+   "sqrt(1/2) |2>|3'> + sqrt(1/2) |3>|2'>",
+   "sqrt(1/2) |1>|3'> + sqrt(1/2) |3>|1'>",
+   "sqrt(1/2) |1>|2'> + sqrt(1/2) |2>|1'>"
+  ],
+  "3x3 -> 3b_a": [
+   "sqrt(1/2) |2>|3'> + -sqrt(1/2) |3>|2'>",
+   "-sqrt(1/2) |1>|3'> + sqrt(1/2) |3>|1'>",
+   "sqrt(1/2) |1>|2'> + -sqrt(1/2) |2>|1'>"
+  ],
+  "3x3bar -> 1": [
+   "sqrt(1/3) |1>|1'> + sqrt(1/3) |2>|2'> + sqrt(1/3) |3>|3'>"
+  ],
+  "3x3bar -> 1'": [
+   "sqrt(1/3) |1>|1'> + sqrt(1/3)*e^(2pi i 1/3) |2>|2'> + sqrt(1/3)*e^(2pi i 2/3) |3>|3'>"
+  ],
+  "3x3bar -> 1''": [
+   "sqrt(1/3) |1>|1'> + sqrt(1/3)*e^(2pi i 2/3) |2>|2'> + sqrt(1/3)*e^(2pi i 1/3) |3>|3'>"
+  ],
+  "3x3bar -> 3": [
+   "1 |2>|1'>",
+   "1 |3>|2'>",
+   "1 |1>|3'>"
+  ],
+  "3x3bar -> 3b": [
+   "1 |1>|2'>",
+   "1 |2>|3'>",
+   "1 |3>|1'>"
+  ]
+ },
+ "cg_PSL_multiplicities": {
+  "3 x 3 -> 3b": 1,
+  "3 x 3 -> 6": 1,
+  "3 x 3b -> 1": 1,
+  "3 x 3b -> 8": 1,
+  "3 x 6 -> 3b": 1,
+  "3 x 6 -> 7": 1,
+  "3 x 6 -> 8": 1,
+  "3 x 7 -> 6": 1,
+  "3 x 7 -> 7": 1,
+  "3 x 7 -> 8": 1,
+  "3 x 8 -> 3": 1,
+  "3 x 8 -> 6": 1,
+  "3 x 8 -> 7": 1,
+  "3 x 8 -> 8": 1,
+  "3b x 6 -> 3": 1,
+  "3b x 6 -> 7": 1,
+  "3b x 6 -> 8": 1,
+  "6 x 6 -> 1": 1,
+  "6 x 6 -> 6": 2,
+  "6 x 6 -> 7": 1,
+  "6 x 6 -> 8": 2,
+  "6 x 7 -> 3": 1,
+  "6 x 7 -> 3b": 1,
+  "6 x 7 -> 6": 1,
+  "6 x 7 -> 7": 2,
+  "6 x 7 -> 8": 2,
+  "7 x 7 -> 1": 1,
+  "7 x 7 -> 3": 1,
+  "7 x 7 -> 3b": 1,
+  "7 x 7 -> 6": 2,
+  "7 x 7 -> 7": 2,
+  "7 x 7 -> 8": 2,
+  "7 x 8 -> 3": 1,
+  "7 x 8 -> 3b": 1,
+  "7 x 8 -> 6": 2,
+  "7 x 8 -> 7": 2,
+  "7 x 8 -> 8": 3,
+  "8 x 8 -> 1": 1,
+  "8 x 8 -> 3": 1,
+  "8 x 8 -> 3b": 1,
+  "8 x 8 -> 6": 2,
+  "8 x 8 -> 7": 3,
+  "8 x 8 -> 8": 3,
+  "6 x 8 -> 3": 1,
+  "6 x 8 -> 3b": 1,
+  "6 x 8 -> 6": 2,
+  "6 x 8 -> 7": 2,
+  "6 x 8 -> 8": 2
+ },
+ "lnr_cg_intertwiner_checks_column": {
+  "(3x3)_s -> 3": true,
+  "(3x3)_s -> 3bar": true,
+  "(3x3)_a -> 3bar": true,
+  "3x3bar -> 3": true,
+  "3x3bar -> 3bar": true,
+  "3x3bar -> 1": true,
+  "3x3bar -> 1'": false,
+  "3x3bar -> 1''": false
+ },
+ "lnr_cg_intertwiner_checks_row": {
+  "(3x3)_s -> 3": true,
+  "(3x3)_s -> 3bar": true,
+  "(3x3)_a -> 3bar": true,
+  "3x3bar -> 3": true,
+  "3x3bar -> 3bar": true,
+  "3x3bar -> 1": true,
+  "3x3bar -> 1'": true,
+  "3x3bar -> 1''": true
+ },
+ "checks": {
+  "D^7 = 1 (exact)": {
+   "pass": true,
+   "detail": ""
+  },
+  "C^3 = 1 (exact)": {
+   "pass": true,
+   "detail": ""
+  },
+  "C^-1 D C = D^4 (exact; LNR d^-1 c d = c^4 with c=D, d=C)": {
+   "pass": true,
+   "detail": ""
+  },
+  "seed Rf = LNR A^[3] (eq. 23), exactly": {
+   "pass": true,
+   "detail": ""
+  },
+  "LNR B^[3] (eq. 22) = A D exactly, i.e. LNR AB = D": {
+   "pass": true,
+   "detail": ""
+  },
+  "LNR presentation A^2 = B^3 = (AB)^7 = [A,B]^4 = 1 (exact)": {
+   "pass": true,
+   "detail": ""
+  },
+  "LNR d (eq. 63) has order 3 and d^-1 c d = c^4 with c = AB = D": {
+   "pass": true,
+   "detail": ""
+  },
+  "|F21| = |<D,C>| = 21": {
+   "pass": true,
+   "detail": ""
+  },
+  "|PSL(2,7) seed copy| = |<D,C,Rf>| = 168": {
+   "pass": true,
+   "detail": ""
+  },
+  "F21 inside the seed PSL(2,7) copy": {
+   "pass": true,
+   "detail": ""
+  },
+  "LNR's d is in F21": {
+   "pass": true,
+   "detail": ""
+  },
+  "F21 class sizes 1,7,7,3,3 (LNR)": {
+   "pass": true,
+   "detail": "[1, 7, 7, 3, 3]"
+  },
+  "F21 irrep 1 is a homomorphism": {
+   "pass": true,
+   "detail": ""
+  },
+  "F21 irrep 1' is a homomorphism": {
+   "pass": true,
+   "detail": ""
+  },
+  "F21 irrep 1'' is a homomorphism": {
+   "pass": true,
+   "detail": ""
+  },
+  "F21 irrep 3 is a homomorphism": {
+   "pass": true,
+   "detail": ""
+  },
+  "F21 irrep 3b is a homomorphism": {
+   "pass": true,
+   "detail": ""
+  },
+  "F21 character orthogonality (rows), 5 irreps = 5 classes, sum d^2 = 21": {
+   "pass": true,
+   "detail": ""
+  },
+  "F21 character table = LNR Sec. 5 table (classes 1, 7Th2(d), 7Th3(d^2), 3Th4(c), 3Th5(c^3))": {
+   "pass": true,
+   "detail": ""
+  },
+  "Tr D = b7 = zeta+zeta^2+zeta^4 exactly": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL classes: sizes 1,21,56,42,24,24 with orders 1,2,3,4,7,7 (LNR)": {
+   "pass": true,
+   "detail": "[1, 21, 56, 42, 24, 24] [1, 2, 3, 4, 7, 7]"
+  },
+  "PSL 6 (LNR basis) is a homomorphism": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL 8 (LNR basis) is a homomorphism": {
+   "pass": true,
+   "detail": ""
+  },
+  "3 x 6 contains 3bar and 8 once; remainder chi7 = chi(3x6) - chi(3bar) - chi(8) is irreducible": {
+   "pass": true,
+   "detail": ""
+  },
+  "projector onto the 7 has rank 7": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL 7 is a homomorphism": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL irrep 1: homomorphism in the F21-adapted D-diagonal basis": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL irrep 3: homomorphism in the F21-adapted D-diagonal basis": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL irrep 3b: homomorphism in the F21-adapted D-diagonal basis": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL irrep 6: homomorphism in the F21-adapted D-diagonal basis": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL irrep 7: homomorphism in the F21-adapted D-diagonal basis": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL irrep 8: homomorphism in the F21-adapted D-diagonal basis": {
+   "pass": true,
+   "detail": ""
+  },
+  "F21 branching from the explicit bases: 6 = 3+3bar, 7 = 1+3+3bar, 8 = 1'+1''+3+3bar": {
+   "pass": true,
+   "detail": "6:['3', '3b'] 7:['1', '3', '3b'] 8:[\"1'\", \"1''\", '3', '3b']"
+  },
+  "in the 6, 7, 8 bases D and C are block-diagonal standard F21 matrices": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL character orthogonality, 6 irreps = 6 classes, sum d^2 = 168": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL character table = LNR Sec. 3 table": {
+   "pass": true,
+   "detail": ""
+  },
+  "F21 Kronecker products = LNR (3x3 = (3+3bar)_s + 3bar_a; 3x3bar = 1+1'+1''+3+3bar; 1'x1' = 1''; ...)": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL(2,7) Kronecker products = LNR table (all 14 entries)": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL(2,7) -> F21 branching = LNR (6=3+3bar, 7=1+3+3bar, 8=1'+1''+3+3bar)": {
+   "pass": true,
+   "detail": "{'1': {'1': 1}, '3': {'3': 1}, '3b': {'3b': 1}, '6': {'3': 1, '3b': 1}, '7': {'1': 1, '3': 1, '3b': 1}, '8': {\"1'\": 1, \"1''\": 1, '3': 1, '3b': 1}}"
+  },
+  "SU(3) -> PSL(2,7) branching dimensions = LNR table (11 irreps up to (2,2))": {
+   "pass": true,
+   "detail": "(1,0):3; (0,1):3b; (2,0):6; (0,2):6; (1,1):8; (3,0):3b + 7; (2,1):7 + 8; (4,0):1 + 6 + 8; (0,5):3 + 3b + 7 + 8; (1,3):3b + 6 + 7 + 8; (2,2):2x6 + 7 + 8"
+  },
+  "LNR eq. (33): A^[6]B^[6] = diag(eta^2, eta^4, eta, eta^3, eta^5, eta^6) in LNR's sextet basis": {
+   "pass": true,
+   "detail": ""
+  },
+  "LNR: Tr A^[6] = 2": {
+   "pass": true,
+   "detail": ""
+  },
+  "LNR eq. (38): C (15,24,36 entries) is the invariant bilinear of the sextet: g^T C g = C": {
+   "pass": true,
+   "detail": ""
+  },
+  "LNR eq. (45): (AB)^[8] in the Gell-Mann basis is the block rotation (c1,s1 | 1 | c3,s3 | c2,s2 | 1), printed in LNR's row convention (eq. 28: A|i> = sum_m a_im |m>), i.e. the transpose of our column-convention matrix": {
+   "pass": true,
+   "detail": ""
+  },
+  "LNR eq. (54): (AB)^[7] has eigenvalues 1, eta, ..., eta^6 (our 7 basis is D-diagonal)": {
+   "pass": true,
+   "detail": ""
+  },
+  "A^[8] (LNR basis) real symmetric with (A^[8])^2 = 1 (LNR below eq. 46)": {
+   "pass": true,
+   "detail": ""
+  },
+  "LNR eq. (46): all 64 entries of A^[8] (Gell-Mann basis) reproduced": {
+   "pass": true,
+   "detail": "max dev 3.3e-16"
+  },
+  "LNR F21 Clebsch-Gordan coefficients (eqs. 64-66) are intertwiners in LNR's own row convention (eq. 28), with the seed matrices (component order as printed)": {
+   "pass": true,
+   "detail": "{'(3x3)_s -> 3': True, '(3x3)_s -> 3bar': True, '(3x3)_a -> 3bar': True, '3x3bar -> 3': True, '3x3bar -> 3bar': True, '3x3bar -> 1': True, \"3x3bar -> 1'\": True, \"3x3bar -> 1''\": True}"
+  },
+  "in the column convention used here the same holds except that LNR's 1' and 1'' singlet combinations exchange (omega <-> omega^2); all triplet CGs agree in both conventions": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL intertwiner counts (explicit null spaces) equal character multiplicities for 12 products": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL 3x3 -> 3bar is the epsilon tensor (as in SU(3))": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL 3x3bar -> 8 via Gell-Mann matrices (LNR eq. 43/44) is an intertwiner onto LNR's 8": {
+   "pass": true,
+   "detail": ""
+  },
+  "PSL 3x3 -> 6 via LNR eq. (26) is an intertwiner onto LNR's 6": {
+   "pass": true,
+   "detail": ""
+  },
+  "Frobenius-Schur indicators: PSL 3,3bar complex (0); 1,6,7,8 real (+1); F21 3,3bar,1',1'' complex": {
+   "pass": true,
+   "detail": "PSL {'1': 1, '3': 0, '3b': 0, '6': 1, '7': 1, '8': 1} F21 {'1': 1, \"1'\": 0, \"1''\": 0, '3': 0, '3b': 0}"
+  }
+ },
+ "all_pass": true,
+ "runtime_s": 7.3
+}

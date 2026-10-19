@@ -1,0 +1,101 @@
+{
+ "conventions": {
+  "energy": "E = 1/(32 sqrt2 pi^2) Int [ d_i phi.d_i phi + 1/2 (d_i phi x d_j phi)^2 ] d^3x (Sutcliffe 2007), Ward bound E >= Q^{3/4}",
+  "lattice": "forward-difference links (sigma term) + 4-corner plaquette average (Skyrme term), exact discrete gradient, field fixed to e3 on the boundary of [-L,L]^3, L = 7.5",
+  "hopf": "Q_W = (1/16 pi^2) Int A.B, B_i = 1/2 eps_ijk phi.(d_j phi x d_k phi), curl A = B (Coulomb gauge, FFT); with W=(phi1+i phi2)/(1+phi3) and Sutcliffe's (Z1,Z0) the rational map W=Z1^n/Z0^m gives Q_W = -nm in the standard orientation of R^3 (the map R^3 -> S^3 of Sutcliffe eq. 3.1 reverses orientation). Q is reported with Sutcliffe's sign, Q = -Q_W.",
+  "position_curve": "preimage of -e3; linking curve: preimage of (sqrt(2mu-mu^2),0,-1+mu), mu=0.1; tube phi3 < -0.8"
+ },
+ "runs": {
+  "Q1_A11": {
+   "map": "A11",
+   "Q_nominal": 1,
+   "Lf": 7.5,
+   "L": 7.5,
+   "offset": "0.05,0.03,0.02",
+   "initial": {
+    "N": 76,
+    "E": 2.631237109884027,
+    "Q": -0.9991521603873843
+   },
+   "stages": [
+    {
+     "N": 76,
+     "h": 0.20000000000000018,
+     "E": 1.1965307893624129,
+     "E2": 0.5535570406591511,
+     "E4": 0.6429737487032617,
+     "virial": -0.07472996837110851,
+     "Q": 0.9915290534550175,
+     "hedgehogs": 0,
+     "minphi3": -0.9866252516144962,
+     "t": 70.00000000000321,
+     "converged": true,
+     "wall_s": 130.25575852394104
+    }
+   ],
+   "extrapolation": {},
+   "curves_finest": {
+    "pos_info": {
+     "n_pierced": 40,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    },
+    "link_info": {
+     "n_pierced": 46,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    },
+    "n_position": 1,
+    "n_linking": 1,
+    "position_lengths": [
+     6.91808390863283
+    ],
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "linking_matrix_consistent": true,
+    "lk_position_position": [
+     [
+      0.0
+     ]
+    ],
+    "lk_position_linking": [
+     [
+      -1.0
+     ]
+    ],
+    "Q_from_linking": -1.0,
+    "twist_per_component": [
+     -1.0
+    ],
+    "total_lk_per_component": [
+     -1.0
+    ]
+   },
+   "tube_components": [
+    1,
+    [
+     322
+    ]
+   ],
+   "energy_centre": [
+    -0.0010910966631198366,
+    -0.0006952924258783173,
+    0.010012060506489832
+   ],
+   "inertia_eigs": [
+    1.8276311948218997,
+    1.8276313788522704,
+    2.1795618244450847
+   ],
+   "inertia_axial_asym": 1.0069337441322097e-07,
+   "inertia_axial_asym_top": 0.16146843904389616
+  }
+ }
+}

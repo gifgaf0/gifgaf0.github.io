@@ -1,0 +1,86 @@
+{
+ "max_relative_deviations": {
+  "e": 1.3074523123902063e-15,
+  "i1": 2.4424906541753444e-15,
+  "i2": 4.6629367034256575e-15,
+  "i8": 1.3809449747382643e-32,
+  "offdiag": 2.284224351768301e-17,
+  "gA_ratio": 3.885780586188048e-14,
+  "A_offdiag": 2.3439991874118582e-14,
+  "Trr": 4.928205789914441e-13,
+  "Ttt": 5.444872525953859e-13,
+  "Trt": 5.449649530620314e-13,
+  "Tsym": 8.318426877199919e-13
+ },
+ "kappa_axial": -0.08333333333333372,
+ "ball_X40": {
+  "I_diag": [
+   102.86227349004638,
+   102.86227349004635,
+   102.86227349004619,
+   39.21332440957424,
+   39.21332440957424,
+   39.21332440957424,
+   39.21332440957425,
+   8.918698922207602e-29
+  ],
+  "I1_formula": 102.8622734900463,
+  "I2_formula": 39.21332440957407,
+  "I_offdiag_max": 2.283447820748232e-16,
+  "E_3d": 36.45798249276345,
+  "E_formula": 36.457982492763456
+ },
+ "axial": {
+  "c_ball_R40_per_e2": 18.092521447481754,
+  "surface_term_R40": 18.092521447490675,
+  "c_ball_Rinf": 18.092595911108354,
+  "C": 8.638578217851325,
+  "D_whole_space": -17.27715643679687,
+  "transverse_FF": [
+   [
+    0.2,
+    26.77546357007397,
+    2.4541048755655215e-06
+   ],
+   [
+    0.1,
+    27.044938892882687,
+    -3.090885095424767e-06
+   ],
+   [
+    0.05,
+    27.115087418463247,
+    -4.523830863512046e-05
+   ],
+   [
+    0.02,
+    27.13500795654144,
+    -6.641196385359649e-05
+   ],
+   [
+    0.01,
+    27.13786479562561,
+    -6.988535772478599e-05
+   ]
+  ],
+  "gA_ball_times_e2": 12.061730607405568,
+  "gA_ANW_times_e2": 18.092595912254215,
+  "note": "ANW's g_A = -(pi/(3e^2)) D equals 3/2 of the ball-integral value; the 3/2 is the q->0 transverse form factor of a conserved current with a massless pion pole"
+ },
+ "checks": {
+  "energy_density": true,
+  "I1_density": true,
+  "I2_density_Kopeliovich_22c": true,
+  "I88_zero_offdiag_zero": true,
+  "axial_current_proportional_to_ANW_bracket_kappa_1/12": true,
+  "stress_tensor_Trr_Ttt": true,
+  "integrated_I_matches": true,
+  "integrated_energy_matches": true,
+  "ball_integral_equals_surface_term": true,
+  "longitudinal_form_factor_vanishes": true,
+  "transverse_q0_is_3/2_of_ball": true,
+  "identity_D_equals_-2C": true
+ },
+ "all_checks_pass": true,
+ "runtime_s": 9.212777614593506
+}

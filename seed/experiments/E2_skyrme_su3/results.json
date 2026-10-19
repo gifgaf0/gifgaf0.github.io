@@ -1,0 +1,320 @@
+{
+ "experiment": "E2 -- the fold in SU(2) and SU(3) (Skyrme hedgehog, rigid-rotor quantisation)",
+ "conventions": "L = (F_pi^2/16) Tr dU dU^dag + (1/(32 e^2)) Tr[L_mu,L_nu]^2, F_pi in the 186-MeV convention (f_pi = F_pi/2), x = e F_pi r, massless pions, hedgehog F(0) = pi, F ~ C/x^2",
+ "headline": [
+  {
+   "quantity": "classical mass M_cl",
+   "value": 36.46164562523657,
+   "unit": "F_pi/e (F_pi 186-MeV convention)",
+   "target": 36.463253459824635,
+   "tolerance": "0.2%",
+   "source": "PLAN E2 [read: Schechter-Weigel hep-ph/9907554, Praszalowicz hep-ph/0308114]: 36.5 F_pi/e = 1.2315 x 3pi^2",
+   "verdict": "CALIBRATED",
+   "note": "M/(3 pi^2 F_pi/e) = 1.2314457; -0.004% from 1.2315 x 3pi^2 = 36.463 (-0.11% from the rounded 36.5)"
+  },
+  {
+   "quantity": "Lambda in I1 = (2pi/3) Lambda/(e^3 F_pi)",
+   "value": 50.97873911433553,
+   "unit": "dimensionless",
+   "target": 50.9,
+   "tolerance": "0.5%",
+   "source": "PLAN E2 [read]",
+   "verdict": "CALIBRATED",
+   "note": "+0.155%; I1 = 106.7696/(e^3 F_pi). With F(X)=0 at X = 10/20/40 and no tail: 37.09/44.11/47.59"
+  },
+  {
+   "quantity": "ANW fit F_pi (M_N = 939, M_Delta = 1232 MeV, SU(2) rotor)",
+   "value": 129.26269073322817,
+   "unit": "MeV",
+   "target": 129.0,
+   "tolerance": "1%",
+   "source": "PLAN E2 (ANW numbers via secondary sources)",
+   "verdict": "CALIBRATED",
+   "note": "+0.20%"
+  },
+  {
+   "quantity": "ANW fit e",
+   "value": 5.443985471648301,
+   "unit": "dimensionless",
+   "target": 5.45,
+   "tolerance": "1%",
+   "source": "PLAN E2 (ANW via secondary sources)",
+   "verdict": "CALIBRATED",
+   "note": "-0.11%"
+  },
+  {
+   "quantity": "g_A at the ANW fit (SU(2), -(pi/(3e^2)) D)",
+   "value": 0.6104737139051309,
+   "unit": "dimensionless",
+   "target": 0.61,
+   "tolerance": "+-0.01",
+   "source": "PLAN E2; formula read in Acus et al. hep-ph/9605435 eqs. 4.9-4.10 (ANW column 0.61)",
+   "verdict": "CALIBRATED",
+   "note": "D = -17.277156 = -2C exactly. This formula is 3/2 of the ball integral of the Noether axial current (the q->0 transverse form factor with a massless pion pole); the bare ball integral gives 0.407. PDG 2026 g_A = 1.2754: the model is -52%"
+  },
+  {
+   "quantity": "I2 coefficient (pi/2) J2, I2 = coef/(e^3 F_pi)",
+   "value": 40.67858200576237,
+   "unit": "dimensionless",
+   "target": 40.5,
+   "tolerance": "1.5% (exact vs arctan ansatz)",
+   "source": "PLAN E2 [read: Praszalowicz eq. 28, arctan ansatz; formula Kopeliovich hep-th/9707067 eq. 22c]",
+   "verdict": "CALIBRATED",
+   "note": "J2 = 25.896790; arctan ansatz recomputed: 40.5435 (exact is +0.33% above it); I1/I2 = 2.62471. I2 formula derived from U = A U0 A^dag with explicit SU(3) matrices (max rel. dev. 5e-15)"
+  },
+  {
+   "quantity": "lowest allowed SU(3) irreps, Y_R = 1",
+   "value": "8 (J=1/2), 10 (J=3/2), 10bar (J=1/2), then 27 (J=3/2), 35 (J=5/2), 27 (J=1/2)",
+   "unit": "",
+   "target": "8 (1/2), 10 (3/2), 10bar (1/2), then 27",
+   "tolerance": "exact",
+   "source": "PLAN E2 [read: DPP hep-ph/9703373]",
+   "verdict": "CALIBRATED",
+   "note": "order at both parameter sets (I1/I2 = 2.62)"
+  },
+  {
+   "quantity": "E(10) - E(8)",
+   "value": "3/(2 I1)",
+   "unit": "",
+   "target": "3/(2 I1)",
+   "tolerance": "exact",
+   "source": "PLAN E2 [read: DPP eq. 12]",
+   "verdict": "CALIBRATED",
+   "note": "exact rational arithmetic; 293.0 MeV (ANW set), 230.9 MeV (SU(3) refit)"
+  },
+  {
+   "quantity": "E(10bar) - E(8)",
+   "value": "3/(2 I2)",
+   "unit": "",
+   "target": "3/(2 I2)",
+   "tolerance": "exact",
+   "source": "PLAN E2 [read: DPP eq. 13]",
+   "verdict": "CALIBRATED",
+   "note": "exact; 769.0 MeV (ANW set), 606.1 MeV (SU(3) refit)"
+  },
+  {
+   "quantity": "virial E2/E4 - 1 at the solution",
+   "value": -4.446443213623752e-13,
+   "unit": "",
+   "target": 0.0,
+   "tolerance": "1e-4",
+   "source": "PLAN E2",
+   "verdict": "CALIBRATED",
+   "note": "also 5.6e-13 from an independent quadrature; E(mu) minimum at mu* = 1.000000000"
+  },
+  {
+   "quantity": "von Laue: int d^3x p / int d^3x |p|",
+   "value": -6.840973207738213e-13,
+   "unit": "",
+   "target": 0.0,
+   "tolerance": "1e-6 (numerical zero)",
+   "source": "PLAN E2",
+   "verdict": "CALIBRATED",
+   "note": "single pressure node at x = 2.1522, p > 0 inside; stress tensor verified against the Noether T_ij"
+  },
+  {
+   "quantity": "Derrick: sigma-model energy under shrinking",
+   "value": "E2(mu) = E2/mu, strictly decreasing; radial sigma-model ODE ends at F = pi/2",
+   "unit": "",
+   "target": "no minimum without the Skyrme term",
+   "tolerance": "qualitative",
+   "source": "PLAN E2 / Derrick 1964",
+   "verdict": "CALIBRATED",
+   "note": "scaling law verified by quadrature to 2e-15"
+  },
+  {
+   "quantity": "N_c parity: J half-integer iff N_c odd (B = 1, Y_R = N_c/3)",
+   "value": "holds for N_c = 1..7 (all irreps p+q <= 16) and N_c <= 15 (p+q <= 30)",
+   "unit": "",
+   "target": "J half-integer exactly when N_c odd",
+   "tolerance": "exact",
+   "source": "PLAN E2 prediction (Witten 1983)",
+   "verdict": "CALIBRATED",
+   "note": "lowest states: Nc=1 3(1/2); 2 3bar(0); 3 8(1/2); 4 6bar(0); 5 15bar(1/2); 6 10bar(0); 7 24=(1,3)(1/2). Proof: 2J = m12-m22 = (N_c + 2p + 4q)/3 = N_c mod 2"
+  },
+  {
+   "quantity": "E(8) - E_SU2(N) at ANW parameters = 3/(4 I2)",
+   "value": 384.52052118054644,
+   "unit": "MeV",
+   "target": "about 385 (preregistered expectation)",
+   "tolerance": "none",
+   "source": "PLAN E2 prediction",
+   "verdict": "NO_TARGET",
+   "note": "agrees with the preregistered expectation"
+  },
+  {
+   "quantity": "SU(3) refit to PDG octet/decuplet centres: F_pi",
+   "value": 113.7548921643063,
+   "unit": "MeV",
+   "target": "about 114 (expectation)",
+   "tolerance": "none",
+   "source": "PLAN E2 prediction",
+   "verdict": "NO_TARGET",
+   "note": "centres 1151.19 and 1382.11 MeV (PDG 2026, isospin averaged, state-weighted)"
+  },
+  {
+   "quantity": "SU(3) refit: e",
+   "value": 5.247396929259555,
+   "unit": "dimensionless",
+   "target": "about 5.25 (expectation)",
+   "tolerance": "none",
+   "source": "PLAN E2 prediction",
+   "verdict": "NO_TARGET",
+   "note": ""
+  },
+  {
+   "quantity": "SU(3) refit: antidecuplet E(10bar)",
+   "value": 1757.2704818545708,
+   "unit": "MeV",
+   "target": "near 1760 (expectation)",
+   "tolerance": "none",
+   "source": "PLAN E2 prediction",
+   "verdict": "NO_TARGET",
+   "note": "rigid rotor, exact SU(3); no 10bar state at this mass is listed by PDG"
+  },
+  {
+   "quantity": "ANW set: E(8), E(10), E(10bar)",
+   "value": [
+    1323.5205211805464,
+    1616.5205211805464,
+    2092.5615635416398
+   ],
+   "unit": "MeV",
+   "target": "none",
+   "tolerance": "",
+   "source": "",
+   "verdict": "NO_TARGET",
+   "note": "vs PDG centres 1151.2 / 1382.1: octet +15%, decuplet +17%"
+  },
+  {
+   "quantity": "SU(3) refit: g_A (SU(2) formula; SU(3)-symmetric rotor x 7/10)",
+   "value": [
+    0.6570721349213386,
+    0.459950494444937
+   ],
+   "unit": "dimensionless",
+   "target": "none",
+   "tolerance": "",
+   "source": "",
+   "verdict": "NO_TARGET",
+   "note": "<p|D33|p> = -1/3 (SU(2)) vs -7/30 (SU(3) octet), computed from explicit Clebsch-Gordan intertwiners"
+  },
+  {
+   "quantity": "OPTIONAL Guadagnini relation 8(N+Xi*)+3Sigma = 11Lambda+8Sigma* with PDG 2026",
+   "value": 8.506882449827572,
+   "unit": "MeV (LHS-RHS)",
+   "target": 0.0,
+   "tolerance": "none (first-order relation)",
+   "source": "Praszalowicz eq. 11 [read]; Guadagnini 1984",
+   "verdict": "NO_TARGET",
+   "note": "+0.036% of the sides; holds identically for H' = -alpha D88 + beta Y (computed matrix elements). 2 fitted inputs alpha = 372 MeV, beta = -100 MeV reproduce the 8 multiplets with rms 4.0 MeV"
+  }
+ ],
+ "extras": {
+  "C_asymptotic": {
+   "value": 8.63857821430118,
+   "meaning": "F -> C/x^2 - C^3/(21x^6) - (4/3)C^3/x^8"
+  },
+  "Fprime0": {
+   "value": -1.0037641113607607,
+   "meaning": "dF/dx at x = 0"
+  },
+  "r2_baryon_dimless": {
+   "value": 4.477835953007322,
+   "meaning": "<r^2>_B (e F_pi)^2 = -(2/pi) int x^2 s^2 F' dx"
+  },
+  "r_baryon_rms_fm_ANW": {
+   "value": 0.5933765923204758,
+   "meaning": "isoscalar (baryon) rms radius at the ANW fit (E5's target is 0.59 fm)"
+  },
+  "I1_ANW_fm": 1.0102063843003413,
+  "I2_ANW_fm": 0.3848825411076324,
+  "I1_SU3refit_fm": 1.281835632290858,
+  "I2_SU3refit_fm": 0.4883716467304922,
+  "M_cl_ANW_MeV": 865.75,
+  "M_cl_SU3refit_MeV": 790.4282108152252,
+  "invI1_invI2_MeV": {
+   "ANW": [
+    195.33333333333334,
+    512.6940282407289
+   ],
+   "SU3refit": [
+    153.94093862669675,
+    404.05085291303743
+   ]
+  }
+ },
+ "seed_claims": [
+  {
+   "claim": "SEED \u00a72: for SU(3) the Wess-Zumino term makes the fold a fermion when N_c is odd (Witten 1983)",
+   "verdict": "CONFIRMED",
+   "evidence": "With the WZ constraint Y_R = N_c B/3 (taken from the literature, not derived here), every allowed state has 2J = N_c mod 2 for N_c = 1..15; lowest states listed for N_c = 1..7"
+  },
+  {
+   "claim": "SEED \u00a74: in 3D a static fold cannot be held by gradient energy alone (Derrick); something must push back",
+   "verdict": "CONFIRMED",
+   "evidence": "E2[F(mu x)] = E2/mu exactly (quadrature, 2e-15); the sigma-model radial ODE has no solution reaching F = 0 (ends at pi/2); with the Skyrme term E2 = E4 to 6e-13 and int p d^3x = 0"
+  },
+  {
+   "claim": "SEED \u00a76B: quantizing the hedgehog's rotations, the lowest states fill the octet and the decuplet (Guadagnini 1984)",
+   "verdict": "CONFIRMED",
+   "evidence": "Lowest allowed (Y_R = 1) states are 8 (J=1/2) and 10 (J=3/2); the same rotor also predicts exotic 10bar (J=1/2) and 27 at E(8) + 3/(2I2) and above (about 1760 MeV at the SU(3) refit), which the seed does not mention"
+  },
+  {
+   "claim": "SEED \u00a76B: with exact SU(3) every member of a multiplet has one mass; the splittings need a symmetry-breaking term with more parameters",
+   "verdict": "CONFIRMED",
+   "evidence": "All d_R(2J+1) rotor states of 8, 10, 10bar are degenerate (explicit matrices). Optional first-order H' = -alpha D88 + beta Y needs 2 fitted inputs; it reproduces the 8 PDG multiplets with rms 4 MeV and implies GMO, equal spacing and Guadagnini's relation (PDG: +0.04%)"
+  },
+  {
+   "claim": "SEED \u00a76B: F sets the units and e is the only pure number, so every prediction is a ratio",
+   "verdict": "CONFIRMED",
+   "evidence": "M = 36.46 F_pi/e, I = coef/(e^3 F_pi), g_A = 18.09/e^2: every dimensionless observable is a function of e alone (massless pions)"
+  },
+  {
+   "claim": "SEED \u00a76B: for nucleons the model lands within roughly 30% (ANW 1983)",
+   "verdict": "AMENDED",
+   "evidence": "Masses are fit inputs. Of the E2 observables, g_A = 0.61 vs 1.2754 (PDG 2026) is 52% low, outside 30%; in the SU(3)-symmetric rotor it drops further by 7/10. The other static properties are E5's job"
+  }
+ ],
+ "pdg_inputs": {
+  "source": "PDG 2026 via the pdg Python package (pdg 2026.0, sqlite)",
+  "raw_MeV": {
+   "p": 938.27208943,
+   "n": 939.56542194,
+   "Lambda": 1115.683138712051,
+   "Sigma+": 1189.37004127302,
+   "Sigma0": 1192.641932369825,
+   "Sigma-": 1197.449381521717,
+   "Xi0": 1314.860776450084,
+   "Xi-": 1321.71083818342,
+   "Sigma*+": 1382.833139288067,
+   "Sigma*0": 1383.814792449643,
+   "Sigma*-": 1387.183057952272,
+   "Xi*0": 1531.800942635904,
+   "Xi*-": 1534.972219066874,
+   "Omega-": 1672.4519528578378,
+   "Delta": 1232.0,
+   "_Delta_note": "PDG B033M Breit-Wigner mass, mixed charges: 1230 to 1234 (~1232)",
+   "_edition": "2026"
+  },
+  "isospin_averaged_MeV": {
+   "N": 938.918755685,
+   "Lambda": 1115.683138712051,
+   "Sigma": 1193.153785054854,
+   "Xi": 1318.285807316752,
+   "Delta": 1232.0,
+   "Sigma*": 1384.6103298966607,
+   "Xi*": 1533.386580851389,
+   "Omega": 1672.4519528578378
+  },
+  "octet_centre_MeV": 1151.1942024850146,
+  "decuplet_centre_MeV": 1382.1056104250597
+ },
+ "checks": {
+  "skyrme_hedgehog.py": true,
+  "verify_densities.py": true,
+  "su3_rotor.py": true,
+  "derrick_virial.py": true
+ },
+ "all_checks_pass": true
+}

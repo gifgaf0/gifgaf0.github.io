@@ -1,0 +1,873 @@
+{
+ "experiment": "E8 crosscheck",
+ "comparisons": [
+  {
+   "quantity": "E_1 at dx=0.1 (their link/plaquette scheme), my implementation on their field",
+   "original": 1.2226212820250035,
+   "recomputed": 1.2226212820250013,
+   "agree": true,
+   "note": "bookkeeping check: same functional, same field"
+  },
+  {
+   "quantity": "E_1: 2nd-order centred energy of their dx=0.1 field",
+   "original": 1.204360882539023,
+   "recomputed": 1.2044117329332495,
+   "agree": true,
+   "note": "vs Sutcliffe 1.204: +0.03% (mine includes the boundary-adjacent layer)"
+  },
+  {
+   "quantity": "E_1, same-box continuum",
+   "original": 1.230321468363034,
+   "recomputed": {
+    "E_c4_on_their_N151": 1.2301716449946891,
+    "E_R4_on_their_N151": 1.2304835072006002
+   },
+   "agree": true,
+   "note": "their h^2+h^4 extrapolation vs my 4th-order energies of their finest field"
+  },
+  {
+   "quantity": "Hopf charge Q=1 (Whitehead)",
+   "original": {
+    "0.2000": 0.9915290534550175,
+    "0.1500": 0.9957745310383844,
+    "0.1250": 0.997180901473702,
+    "0.1000": 0.9982504069454214
+   },
+   "recomputed": {
+    "76": -0.9827301134086369,
+    "101": -0.9940039804259437,
+    "121": -0.9966194232982778,
+    "151": -0.9982049858267217
+   },
+   "agree": true,
+   "note": "mine: free-space Green function, 4th-order B; theirs: plaquette solid angles, periodic FFT"
+  },
+  {
+   "quantity": "type Q=1",
+   "original": "A1,1",
+   "recomputed": {
+    "n_position": 1,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk": [
+     [
+      0.0
+     ]
+    ],
+    "Q_link": -0.999999999999968,
+    "twists": [
+     -0.9999999999991867
+    ],
+    "planarity": [
+     0.005
+    ],
+    "radius": [
+     1.19
+    ]
+   },
+   "agree": true,
+   "note": "my own curve tracer and invariants"
+  },
+  {
+   "quantity": "E_2 at dx=0.1 (their link/plaquette scheme), my implementation on their field",
+   "original": 1.9925289557232517,
+   "recomputed": 1.9925289557232515,
+   "agree": true,
+   "note": "bookkeeping check: same functional, same field"
+  },
+  {
+   "quantity": "E_2: 2nd-order centred energy of their dx=0.1 field",
+   "original": 1.9666271263636759,
+   "recomputed": 1.9666566052337475,
+   "agree": true,
+   "note": "vs Sutcliffe 1.967: -0.02% (mine includes the boundary-adjacent layer)"
+  },
+  {
+   "quantity": "E_2, same-box continuum",
+   "original": 2.002385454110057,
+   "recomputed": {
+    "E_c4_on_their_N151": 2.002198876804408,
+    "E_R4_on_their_N151": 2.0026962433766187
+   },
+   "agree": true,
+   "note": "their h^2+h^4 extrapolation vs my 4th-order energies of their finest field"
+  },
+  {
+   "quantity": "Hopf charge Q=2 (Whitehead)",
+   "original": {
+    "0.2000": 1.9903885418212215,
+    "0.1500": 1.995035655415885,
+    "0.1250": 1.9966532123558371,
+    "0.1000": 1.9979067307037874
+   },
+   "recomputed": {
+    "76": -1.9790100856924888,
+    "101": -1.9923046839100707,
+    "121": -1.9955994262835597,
+    "151": -1.997642754259437
+   },
+   "agree": true,
+   "note": "mine: free-space Green function, 4th-order B; theirs: plaquette solid angles, periodic FFT"
+  },
+  {
+   "quantity": "type Q=2",
+   "original": "A2,1",
+   "recomputed": {
+    "n_position": 1,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk": [
+     [
+      0.0
+     ]
+    ],
+    "Q_link": -2.000000000000233,
+    "twists": [
+     -1.999999999999574
+    ],
+    "planarity": [
+     0.002
+    ],
+    "radius": [
+     1.737
+    ]
+   },
+   "agree": true,
+   "note": "my own curve tracer and invariants"
+  },
+  {
+   "quantity": "E_3 at dx=0.1 (their link/plaquette scheme), my implementation on their field",
+   "original": 2.7884880142643347,
+   "recomputed": 2.7884880142643267,
+   "agree": true,
+   "note": "bookkeeping check: same functional, same field"
+  },
+  {
+   "quantity": "E_3: 2nd-order centred energy of their dx=0.1 field",
+   "original": 2.753372687924835,
+   "recomputed": 2.753431909924022,
+   "agree": true,
+   "note": "vs Sutcliffe 2.754: -0.02% (mine includes the boundary-adjacent layer)"
+  },
+  {
+   "quantity": "E_3, same-box continuum",
+   "original": 2.801541691732445,
+   "recomputed": {
+    "E_c4_on_their_N151": 2.8013241951079295,
+    "E_R4_on_their_N151": 2.801932452021935
+   },
+   "agree": true,
+   "note": "their h^2+h^4 extrapolation vs my 4th-order energies of their finest field"
+  },
+  {
+   "quantity": "Hopf charge Q=3 (Whitehead)",
+   "original": {
+    "0.2000": 2.9866154947465318,
+    "0.1500": 2.9930594331180553,
+    "0.1000": 2.9970878611722336
+   },
+   "recomputed": {
+    "76": -2.9729174539915744,
+    "101": -2.989916000312761,
+    "151": -2.9968833719241186
+   },
+   "agree": true,
+   "note": "mine: free-space Green function, 4th-order B; theirs: plaquette solid angles, periodic FFT"
+  },
+  {
+   "quantity": "type Q=3",
+   "original": "A~3,1",
+   "recomputed": {
+    "n_position": 1,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk": [
+     [
+      0.0
+     ]
+    ],
+    "Q_link": -2.9999999999994325,
+    "twists": [
+     -2.9999999999999627
+    ],
+    "planarity": [
+     0.223
+    ],
+    "radius": [
+     2.109
+    ]
+   },
+   "agree": true,
+   "note": "my own curve tracer and invariants"
+  },
+  {
+   "quantity": "E_4 at dx=0.1 (their link/plaquette scheme), my implementation on their field",
+   "original": 3.5058004292337555,
+   "recomputed": 3.505800429233755,
+   "agree": true,
+   "note": "bookkeeping check: same functional, same field"
+  },
+  {
+   "quantity": "E_4: 2nd-order centred energy of their dx=0.1 field",
+   "original": 3.438654475970309,
+   "recomputed": 3.4387376273597816,
+   "agree": true,
+   "note": "vs Sutcliffe 3.445: -0.18% (mine includes the boundary-adjacent layer)"
+  },
+  {
+   "quantity": "E_4, same-box continuum",
+   "original": 3.5211608702399397,
+   "recomputed": {
+    "E_c4_on_their_N151": 3.520532511993749,
+    "E_R4_on_their_N151": 3.523604506070664
+   },
+   "agree": true,
+   "note": "their h^2+h^4 extrapolation vs my 4th-order energies of their finest field"
+  },
+  {
+   "quantity": "Hopf charge Q=4 (Whitehead)",
+   "original": {
+    "0.2000": 3.9873597622174533,
+    "0.1500": 3.9939629984024636,
+    "0.1000": 3.997571736322022
+   },
+   "recomputed": {
+    "76": -3.927606194408457,
+    "101": -3.97809155164352,
+    "151": -3.9945626221596897
+   },
+   "agree": true,
+   "note": "mine: free-space Green function, 4th-order B; theirs: plaquette solid angles, periodic FFT"
+  },
+  {
+   "quantity": "type Q=4",
+   "original": "A2,2",
+   "recomputed": {
+    "n_position": 2,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ],
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk": [
+     [
+      0.0,
+      -2.271021508874701e-12
+     ],
+     [
+      -2.271021508874701e-12,
+      0.0
+     ]
+    ],
+    "Q_link": -4.000000000000366,
+    "twists": [
+     -1.9999999999940081,
+     -1.9999999999969
+    ],
+    "planarity": [
+     0.004,
+     0.004
+    ],
+    "radius": [
+     1.81,
+     1.81
+    ]
+   },
+   "agree": true,
+   "note": "my own curve tracer and invariants"
+  },
+  {
+   "quantity": "E_5 at dx=0.1 (their link/plaquette scheme), my implementation on their field",
+   "original": 4.163899332581217,
+   "recomputed": 4.163899332581214,
+   "agree": true,
+   "note": "bookkeeping check: same functional, same field"
+  },
+  {
+   "quantity": "E_5: 2nd-order centred energy of their dx=0.1 field",
+   "original": 4.094749612617652,
+   "recomputed": 4.094889033695046,
+   "agree": true,
+   "note": "vs Sutcliffe 4.095: -0.00% (mine includes the boundary-adjacent layer)"
+  },
+  {
+   "quantity": "E_5, same-box continuum",
+   "original": 4.1821772094558725,
+   "recomputed": {
+    "E_c4_on_their_N151": 4.181541054816179,
+    "E_R4_on_their_N151": 4.184218892745468
+   },
+   "agree": true,
+   "note": "their h^2+h^4 extrapolation vs my 4th-order energies of their finest field"
+  },
+  {
+   "quantity": "Hopf charge Q=5 (Whitehead)",
+   "original": {
+    "0.2000": 4.984805475599352,
+    "0.1500": 4.992393041276761,
+    "0.1000": 4.996851919392883
+   },
+   "recomputed": {
+    "76": -4.932534888344385,
+    "101": -4.978479830168032,
+    "151": -4.994413432032891
+   },
+   "agree": true,
+   "note": "mine: free-space Green function, 4th-order B; theirs: plaquette solid angles, periodic FFT"
+  },
+  {
+   "quantity": "type Q=5",
+   "original": "L11_12",
+   "recomputed": {
+    "n_position": 2,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ],
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk": [
+     [
+      0.0,
+      -0.9999999999999188
+     ],
+     [
+      -0.9999999999999188,
+      0.0
+     ]
+    ],
+    "Q_link": -5.000000000001964,
+    "twists": [
+     -1.000000000003125,
+     -2.0000000000003992
+    ],
+    "planarity": [
+     0.035,
+     0.124
+    ],
+    "radius": [
+     1.811,
+     2.259
+    ]
+   },
+   "agree": true,
+   "note": "my own curve tracer and invariants"
+  },
+  {
+   "quantity": "E_6 at dx=0.1 (their link/plaquette scheme), my implementation on their field",
+   "original": 4.72337854436925,
+   "recomputed": 4.723378544369253,
+   "agree": true,
+   "note": "bookkeeping check: same functional, same field"
+  },
+  {
+   "quantity": "E_6: 2nd-order centred energy of their dx=0.1 field",
+   "original": 4.647170860170201,
+   "recomputed": 4.647273077877355,
+   "agree": true,
+   "note": "vs Sutcliffe 4.65: -0.06% (mine includes the boundary-adjacent layer)"
+  },
+  {
+   "quantity": "E_6, same-box continuum",
+   "original": 4.742653599635106,
+   "recomputed": {
+    "E_c4_on_their_N151": 4.741935131207267,
+    "E_R4_on_their_N151": 4.744770671056427
+   },
+   "agree": true,
+   "note": "their h^2+h^4 extrapolation vs my 4th-order energies of their finest field"
+  },
+  {
+   "quantity": "Hopf charge Q=6 (Whitehead)",
+   "original": {
+    "0.2000": 5.984049782418258,
+    "0.1500": 5.9918959192793775,
+    "0.1000": 5.996624393919602
+   },
+   "recomputed": {
+    "76": -5.930860455393493,
+    "101": -5.977380216777999,
+    "151": -5.994087391360658
+   },
+   "agree": true,
+   "note": "mine: free-space Green function, 4th-order B; theirs: plaquette solid angles, periodic FFT"
+  },
+  {
+   "quantity": "type Q=6",
+   "original": "L11_22",
+   "recomputed": {
+    "n_position": 2,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ],
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk": [
+     [
+      0.0,
+      -0.9999999999999861
+     ],
+     [
+      -0.9999999999999861,
+      0.0
+     ]
+    ],
+    "Q_link": -6.000000000001979,
+    "twists": [
+     -1.9999999999924638,
+     -1.9999999999876592
+    ],
+    "planarity": [
+     0.122,
+     0.121
+    ],
+    "radius": [
+     2.229,
+     2.231
+    ]
+   },
+   "agree": true,
+   "note": "my own curve tracer and invariants"
+  },
+  {
+   "quantity": "E_7 at dx=0.1 (their link/plaquette scheme), my implementation on their field",
+   "original": 5.336168272611412,
+   "recomputed": 5.336168272611414,
+   "agree": true,
+   "note": "bookkeeping check: same functional, same field"
+  },
+  {
+   "quantity": "E_7: 2nd-order centred energy of their dx=0.1 field",
+   "original": 5.244981195460619,
+   "recomputed": 5.245190639063701,
+   "agree": true,
+   "note": "vs Sutcliffe 5.242: +0.06% (mine includes the boundary-adjacent layer)"
+  },
+  {
+   "quantity": "E_7, same-box continuum",
+   "original": 5.356727343342024,
+   "recomputed": {
+    "E_c4_on_their_N151": 5.355904940946044,
+    "E_R4_on_their_N151": 5.359609942967705
+   },
+   "agree": true,
+   "note": "their h^2+h^4 extrapolation vs my 4th-order energies of their finest field"
+  },
+  {
+   "quantity": "Hopf charge Q=7 (Whitehead)",
+   "original": {
+    "0.2000": 6.98275267362675,
+    "0.1500": 6.991181469038197,
+    "0.1000": 6.996266507128862
+   },
+   "recomputed": {
+    "76": -6.914039998863491,
+    "101": -6.972650965038699,
+    "151": -6.993043803473567
+   },
+   "agree": true,
+   "note": "mine: free-space Green function, 4th-order B; theirs: plaquette solid angles, periodic FFT"
+  },
+  {
+   "quantity": "type Q=7",
+   "original": "K32",
+   "recomputed": {
+    "n_position": 1,
+    "alexander": [
+     [
+      "t**2 - t + 1",
+      "t**2 - t + 1",
+      "t**2 - t + 1"
+     ]
+    ],
+    "lk": [
+     [
+      0.0
+     ]
+    ],
+    "Q_link": -6.999999999992439,
+    "twists": [
+     -6.999999999999623
+    ],
+    "planarity": [
+     0.357
+    ],
+    "radius": [
+     2.3
+    ]
+   },
+   "agree": true,
+   "note": "my own curve tracer and invariants"
+  },
+  {
+   "quantity": "E_1, continuum, infinite volume",
+   "original": "1.225 +- 0.001 (1.2243 / 1.2255)",
+   "recomputed": 1.2249321406346907,
+   "agree": true,
+   "note": "Chebyshev spectral axial code on all of R^3; virial E2=E4 to 1e-6"
+  },
+  {
+   "quantity": "E_2, continuum, infinite volume",
+   "original": "2.000-2.001",
+   "recomputed": 2.000470066943061,
+   "agree": true,
+   "note": "spectral axial"
+  },
+  {
+   "quantity": "E_2/E_1, continuum, infinite volume",
+   "original": 1.6331877214651305,
+   "recomputed": 1.6331272570793434,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E_2/(2E_1), infinite volume",
+   "original": 0.817,
+   "recomputed": 0.8165636285396717,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E_1, cylinder R=7.5, continuum",
+   "original": 1.231542229954499,
+   "recomputed": 1.2315641316613537,
+   "agree": true,
+   "note": "their lattice-axial Richardson vs my spectral"
+  },
+  {
+   "quantity": "box shift E_1: cylinder R 7.5 -> 25",
+   "original": "-0.491% (lattice h=0.1)",
+   "recomputed": "-0.524% (continuum); 7.5 -> inf -0.539%",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E_2, cylinder R=7.5, continuum",
+   "original": 2.0034764565892043,
+   "recomputed": 2.003450458120007,
+   "agree": true,
+   "note": "their lattice-axial Richardson vs my spectral"
+  },
+  {
+   "quantity": "box shift E_2: cylinder R 7.5 -> 25",
+   "original": "-0.142% (lattice h=0.1)",
+   "recomputed": "-0.148% (continuum); 7.5 -> inf -0.149%",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E_4 (A_{2,2}), continuum, infinite volume",
+   "original": "not given",
+   "recomputed": "FAILED: deg(psi) not conserved (2 -> 0.0003) within 40000 L-BFGS iterations; the u/|u| spectral representation lets the field unwind through a zero of u between quadrature points. No A_{2,2} value from this code. (An earlier start from the rational map W=Z1^2/Z0^2 failed the same way.)",
+   "agree": true,
+   "note": "my spectral axial code could not hold the A22 (method failure on my side, not a finding)"
+  },
+  {
+   "quantity": "axial A_{3,1} energy, infinite volume (saddle)",
+   "original": "bent A~31 is the minimum, E3 = 2.7885 (dx 0.1), 2.8015 (cont.)",
+   "recomputed": 2.822875569730865,
+   "agree": true,
+   "note": "axial A31 in infinite volume vs bent A~31 in the 7.5 box"
+  },
+  {
+   "quantity": "my 3D relaxation R4_Q1_N81 (h=0.1875)",
+   "original": "n/a (spacing not used originally)",
+   "recomputed": {
+    "E_R4": 1.2288021809306509,
+    "E_c4": 1.2257647722988052,
+    "E_lp": 1.203493845982536,
+    "Q": -0.989541422223116,
+    "Q_link": -0.9999999999999746,
+    "n_position": 1,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "done": true
+   },
+   "agree": true,
+   "note": "4th-order link/plaquette Richardson energy"
+  },
+  {
+   "quantity": "my 3D relaxation R4_Q1_N97 (h=0.1562)",
+   "original": "n/a (spacing not used originally)",
+   "recomputed": {
+    "E_R4": 1.229641262650044,
+    "E_c4": 1.228142732307516,
+    "E_lp": 1.2118666517714818,
+    "Q": -0.9940742889573745,
+    "Q_link": -1.000000000000021,
+    "n_position": 1,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "done": true
+   },
+   "agree": true,
+   "note": "4th-order link/plaquette Richardson energy"
+  },
+  {
+   "quantity": "E_1, same-box continuum, from MY 3D relaxations (R4, h=0.1875, 0.15625, h^4 extrapolation)",
+   "original": 1.230321468363034,
+   "recomputed": 1.2304228216286142,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E_Q/E_1, same-box continuum, Q=2..7",
+   "original": [
+    1.6275,
+    2.2771,
+    2.862,
+    3.3993,
+    3.8548,
+    4.3539
+   ],
+   "recomputed": [
+    1.6276,
+    2.2772,
+    2.8618,
+    3.3992,
+    3.8547,
+    4.3538
+   ],
+   "agree": true,
+   "note": "theirs: extrapolation; mine: 4th-order centred energy of their dx=0.1 fields"
+  },
+  {
+   "quantity": "power-law exponent p (E = c Q^p, Q=1..7)",
+   "original": 0.7644339458852658,
+   "recomputed": 0.7632659653592685,
+   "agree": true,
+   "note": "mine from same-box continuum energies"
+  }
+ ],
+ "R4_Q1_box7p5_continuum_h4_extrapolation": 1.2304228216286142,
+ "derived_from_c4_continuum": {
+  "ratios": {
+   "1": 1.0,
+   "2": 1.6275768385256937,
+   "3": 2.2771815677153113,
+   "4": 2.861822190682137,
+   "5": 3.3991525262592375,
+   "6": 3.8546938961739268,
+   "7": 4.353786695326705
+  },
+  "E_over_Q34": {
+   "1": 1.2301716449946891,
+   "2": 1.1905145749731294,
+   "3": 1.2289166583455347,
+   "4": 1.244696206309245,
+   "5": 1.2505724639891742,
+   "6": 1.236921592260049,
+   "7": 1.2445413490891712
+  },
+  "E_over_Q": {
+   "1": 1.2301716449946891,
+   "2": 1.001099438402204,
+   "3": 0.9337747317026431,
+   "4": 0.8801331279984372,
+   "5": 0.8363082109632358,
+   "6": 0.7903225218678779,
+   "7": 0.7651292772780064
+  },
+  "power_law_p": 0.7632659653592685,
+  "power_law_c": 1.2124433831465302,
+  "sutcliffe_rel_to_c4": {
+   "1": -0.02127479128719645,
+   "2": -0.01758011015398575,
+   "3": -0.016893508859336492,
+   "4": -0.021454854268899703,
+   "5": -0.020695971576436878,
+   "6": -0.019387682172670395,
+   "7": -0.021267170011782355
+  }
+ },
+ "tests": {
+  "reference_energy_gauss_s1.5": {
+   "64": [
+    1.5041348331687847,
+    0.6762796728405559,
+    0.8278551603282287,
+    -0.9999999999999996
+   ],
+   "96": [
+    1.5041348331688014,
+    0.6762796728405642,
+    0.8278551603282371,
+    -1.0000000000000109
+   ],
+   "128": [
+    1.504134833168771,
+    0.6762796728405505,
+    0.8278551603282204,
+    -0.9999999999999913
+   ]
+  },
+  "lattice_vs_reference": [
+   {
+    "N": 61,
+    "h": 0.25,
+    "E_lp": 1.4665541105378854,
+    "E_c2": 1.2305388044735008,
+    "E_c4": 1.4625480286077837,
+    "E_R4": 1.5235835047188715,
+    "rel_lp": -0.024984942707372837,
+    "rel_c2": -0.18189594620243155,
+    "rel_c4": -0.0276483222407502,
+    "rel_R4": 0.012930138390005785
+   },
+   {
+    "N": 76,
+    "h": 0.2,
+    "E_lp": 1.4819917400336697,
+    "E_c2": 1.3202379827793596,
+    "E_c4": 1.4858787049181341,
+    "E_R4": 1.5147665824985053,
+    "rel_lp": -0.014721481510040046,
+    "rel_c2": -0.12226088136127711,
+    "rel_c4": -0.012137295040349882,
+    "rel_R4": 0.007068348591686036
+   },
+   {
+    "N": 101,
+    "h": 0.15,
+    "E_lp": 1.4925988451201708,
+    "E_c2": 1.396555758150736,
+    "E_c4": 1.4980519682872817,
+    "E_R4": 1.5083216134025514,
+    "rel_lp": -0.0076695172495255814,
+    "rel_c2": -0.07152222835727928,
+    "rel_c4": -0.004044095480904786,
+    "rel_R4": 0.00278351391208731
+   },
+   {
+    "N": 121,
+    "h": 0.125,
+    "E_lp": 1.4963908028278945,
+    "E_c2": 1.428247616718214,
+    "E_c4": 1.501143617460818,
+    "E_R4": 1.5063336934574034,
+    "rel_lp": -0.005148494782586832,
+    "rel_c2": -0.05045240278804308,
+    "rel_c4": -0.001988661948378212,
+    "rel_R4": 0.0014618771137691056
+   },
+   {
+    "N": 151,
+    "h": 0.1,
+    "E_lp": 1.499322891606983,
+    "E_c2": 1.454934948818894,
+    "E_c4": 1.502890391299154,
+    "E_R4": 1.5051003501798592,
+    "rel_lp": -0.0031991424277107994,
+    "rel_c2": -0.03270975664211373,
+    "rel_c4": -0.0008273472844154695,
+    "rel_R4": 0.0006419085508804212
+   },
+   {
+    "N": 201,
+    "h": 0.075,
+    "E_lp": 1.5014927930862567,
+    "E_c2": 1.4761781791325856,
+    "E_c4": 1.5037363757945015,
+    "E_R4": 1.504457268851361,
+    "rel_lp": -0.0017565181154326481,
+    "rel_c2": -0.018586534544438926,
+    "rel_c4": -0.000264908015879195,
+    "rel_R4": 0.0002143662093849752
+   }
+  ],
+  "c4_gradient_max_rel_err": 2.738893631341201e-08,
+  "lp_gradient_max_rel_err": 2.3957932994818177e-08,
+  "R4_gradient_max_rel_err": 6.44028948377302e-07,
+  "hopf_rational_maps": {
+   "Q1_N76": -0.9992824555844526,
+   "Q2_N76": -1.9977723212061296,
+   "Q4_N76": -3.99178654830944,
+   "Q7_N76": -6.821649214806686,
+   "Q1_N101": -0.9996174430858314,
+   "Q2_N101": -1.9989007193141546,
+   "Q4_N101": -3.996461804160835,
+   "Q7_N101": -6.932404027872069,
+   "Q1_N151": -0.9998366793245336,
+   "Q2_N151": -1.9995608862473917,
+   "Q4_N151": -3.9987812288278493,
+   "Q7_N151": -6.982365977070722
+  },
+  "trefoil_initial": {
+   "n_position": 1,
+   "n_other": 1,
+   "problems": [
+    0,
+    0
+   ],
+   "alexander": [
+    [
+     "t**2 - t + 1",
+     3,
+     7
+    ],
+    [
+     "t**2 - t + 1",
+     3,
+     6
+    ],
+    [
+     "t**2 - t + 1",
+     3,
+     4
+    ]
+   ],
+   "linking": -6.999999999993366
+  },
+  "parametric": {
+   "trefoil": "(t**2 - t + 1, 3)",
+   "figure8": "(t**2 - 3*t + 1, 5)",
+   "unknot": "(1, 1)",
+   "hopf_link": -1.0000000000001261
+  }
+ }
+}

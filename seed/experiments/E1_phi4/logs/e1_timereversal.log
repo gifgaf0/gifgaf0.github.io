@@ -1,0 +1,182 @@
+/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/phi4core.py:195: RuntimeWarning: overflow encountered in cosh
+  pi = -(g * v / SQ2) * (1.0 / np.cosh(a) ** 2 + 1.0 / np.cosh(b) ** 2)
+/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/phi4core.py:195: RuntimeWarning: overflow encountered in square
+  pi = -(g * v / SQ2) * (1.0 / np.cosh(a) ** 2 + 1.0 / np.cosh(b) ** 2)
+{
+ "v": 0.1,
+ "gamma": 1.005037815259212,
+ "E_initial_over_2M": 1.005035868630112,
+ "last_time_phi_max_ge_0": 2241.0,
+ "Tf": 2341.0,
+ "max_phi_last_100": -0.0166,
+ "reversed_data": {
+  "max_phi": -0.4467565735502497,
+  "n_positive_intervals": 0,
+  "n_pairs": 0,
+  "E_over_2M": 1.0049605683326337,
+  "energy_within_|x|<50_over_2M": 0.7030737933692891
+ },
+ "reverse_evolution": [
+  {
+   "dt": 0.04,
+   "E_over_2M": 1.0049605683326337,
+   "n_pairs_end": 1,
+   "intervals_end": [
+    [
+     -10.0,
+     10.0,
+     0.92,
+     1.0
+    ]
+   ],
+   "max_abs_diff_vs_initial_kk": 1.2282535634122738e-06
+  },
+  {
+   "dt": 0.02,
+   "E_over_2M": 1.0049605683326337,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "max_abs_diff_vs_initial_kk": 1.9176705546813901
+  },
+  {
+   "dt": 0.01,
+   "E_over_2M": 1.0049605683326337,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "max_abs_diff_vs_initial_kk": 1.937945168753345
+  }
+ ],
+ "fine_tuning_probes": [
+  {
+   "dt": 0.04,
+   "E_over_2M": 1.0008069696066302,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "probe": "radiation beyond |x| > 1756 removed"
+  },
+  {
+   "dt": 0.04,
+   "E_over_2M": 0.8962198219399505,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "probe": "radiation beyond |x| > 1170 removed"
+  },
+  {
+   "dt": 0.04,
+   "E_over_2M": 0.7469860601588705,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "probe": "radiation beyond |x| > 585 removed"
+  },
+  {
+   "dt": 0.04,
+   "E_over_2M": 1.0049605675568867,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "probe": "white noise of amplitude 1e-08 added to phi for |x| < 50"
+  },
+  {
+   "dt": 0.04,
+   "E_over_2M": 1.0049625473490689,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "probe": "white noise of amplitude 1e-05 added to phi for |x| < 50"
+  },
+  {
+   "dt": 0.04,
+   "E_over_2M": 1.0077284535985076,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "probe": "white noise of amplitude 0.001 added to phi for |x| < 50"
+  }
+ ]
+}
+{
+ "v": 0.05,
+ "gamma": 1.0012523486435176,
+ "E_initial_over_2M": 1.001250438349872,
+ "last_time_phi_max_ge_0": 2086.0,
+ "Tf": 2186.0,
+ "max_phi_last_100": -0.0085,
+ "reversed_data": {
+  "max_phi": -0.11784812115972661,
+  "n_positive_intervals": 0,
+  "n_pairs": 0,
+  "E_over_2M": 1.0011973815899071,
+  "energy_within_|x|<50_over_2M": 0.7089929990261594
+ },
+ "reverse_evolution": [
+  {
+   "dt": 0.04,
+   "E_over_2M": 1.0011973815899071,
+   "n_pairs_end": 1,
+   "intervals_end": [
+    [
+     -10.0,
+     10.0,
+     0.93,
+     1.0
+    ]
+   ],
+   "max_abs_diff_vs_initial_kk": 2.889868978228627e-05
+  },
+  {
+   "dt": 0.02,
+   "E_over_2M": 1.0011973815899071,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "max_abs_diff_vs_initial_kk": 2.0254334001654573
+  },
+  {
+   "dt": 0.01,
+   "E_over_2M": 1.0011973815899071,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "max_abs_diff_vs_initial_kk": 2.0047039361217656
+  }
+ ],
+ "fine_tuning_probes": [
+  {
+   "dt": 0.04,
+   "E_over_2M": 0.9999982096362959,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "probe": "radiation beyond |x| > 1640 removed"
+  },
+  {
+   "dt": 0.04,
+   "E_over_2M": 0.9267870901251787,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "probe": "radiation beyond |x| > 1093 removed"
+  },
+  {
+   "dt": 0.04,
+   "E_over_2M": 0.7565050504968198,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "probe": "radiation beyond |x| > 546 removed"
+  },
+  {
+   "dt": 0.04,
+   "E_over_2M": 1.0011973773686274,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "probe": "white noise of amplitude 1e-08 added to phi for |x| < 50"
+  },
+  {
+   "dt": 0.04,
+   "E_over_2M": 1.001198236245699,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "probe": "white noise of amplitude 1e-05 added to phi for |x| < 50"
+  },
+  {
+   "dt": 0.04,
+   "E_over_2M": 1.0033567415244835,
+   "n_pairs_end": 0,
+   "intervals_end": [],
+   "probe": "white noise of amplitude 0.001 added to phi for |x| < 50"
+  }
+ ]
+}

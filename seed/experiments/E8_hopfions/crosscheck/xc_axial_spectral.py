@@ -302,6 +302,9 @@ NS_CYL = {(1, 1): [32, 48, 64, 80, 96, 112], (2, 1): [32, 48, 64, 80, 96, 112],
 for (n, m) in [(1, 1), (2, 1), (2, 2)]:
     CASES.append(dict(name=f'n{n}m{m}_inf', n=n, m=m, kind='inf', L=1.6 if n == 1 else 2.0,
                       Ns=NS_INF[(n, m)]))
+# axial A_{3,1} (a saddle in 3D according to Sutcliffe; the Q = 3 minimum is the bent A~_{3,1})
+CASES.append(dict(name='n3m1_inf', n=3, m=1, kind='inf', L=2.2, Ns=[24, 32, 48, 64, 80]))
+CASES.append(dict(name='n3m1_cyl7.5', n=3, m=1, kind='cyl', R=7.5, alpha=2.5, Ns=[32, 48, 64, 80, 96]))
 for (n, m) in [(1, 1), (2, 2)]:
     for L in (1.1, 2.6):     # independence of the radial map scale
         CASES.append(dict(name=f'n{n}m{m}_infL{L}', n=n, m=m, kind='inf', L=L,
@@ -332,7 +335,7 @@ def main():
             G = Geometry(cs['kind'], N, N, **kw)
             if u is None:
                 u0 = rational_map_psi(G.node_rho, G.node_z, cs['n'], cs['m'],
-                                      s=1.0 if cs['n'] == 1 else 1.4)
+                                      s={1: 1.0, 2: 1.4, 3: 1.7}[cs['n']])
             else:
                 u0 = interp_nodes(u, Nprev, Nprev, N, N)
             u0 = set_boundary(u0, G)

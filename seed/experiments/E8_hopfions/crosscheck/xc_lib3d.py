@@ -443,3 +443,126 @@ def rational_map_field(N, L, num, den, offset=(0, 0, 0), prof='sutcliffe'):
     phi = np.stack([w.real, w.imag, (ad - an) / (an + ad)], -1)
     phi[0, :, :] = phi[-1, :, :] = phi[:, 0, :] = phi[:, -1, :] = phi[:, :, 0] = phi[:, :, -1] = [0, 0, 1]
     return phi
+
+
+# ------------------------------------------------------------ link/plaquette energy with stride s
+# (value + exact gradient; stride 1 = the scheme described in REPORT.md, stride 2 =
+#  the same on the 2h sub-lattices averaged over the 8 cosets; R4 = (4 E_1 - E_2)/3
+#  cancels the h^2 error term: a fourth-order scheme without centred-stencil null modes)
+@nb.njit(parallel=True, cache=True, fastmath=False)
+def _lps_pass1(phi, s, w2, w4, Gl, Gc, off, pa_, pb_):
+    N = phi.shape[0]
+    t2 = np.zeros(N); t4 = np.zeros(N)
+    for i in nb.prange(N):
+        e2 = 0.0; e4 = 0.0
+        for j in range(N):
+            for k in range(N):
+                p0x = phi[i, j, k, 0]; p0y = phi[i, j, k, 1]; p0z = phi[i, j, k, 2]
+                for a in range(3):
+                    ia = i + s * off[a, 0]; ja = j + s * off[a, 1]; ka = k + s * off[a, 2]
+                    if ia < N and ja < N and ka < N:
+                        dx = phi[ia, ja, ka, 0] - p0x; dy = phi[ia, ja, ka, 1] - p0y; dz = phi[ia, ja, ka, 2] - p0z
+                        e2 += dx * dx + dy * dy + dz * dz
+                        Gl[a, i, j, k, 0] = 2 * w2 * dx; Gl[a, i, j, k, 1] = 2 * w2 * dy; Gl[a, i, j, k, 2] = 2 * w2 * dz
+                    else:
+                        Gl[a, i, j, k, 0] = 0.0; Gl[a, i, j, k, 1] = 0.0; Gl[a, i, j, k, 2] = 0.0
+                for p in range(3):
+                    a = pa_[p]; b = pb_[p]
+                    ia = i + s * off[a, 0]; ja = j + s * off[a, 1]; ka = k + s * off[a, 2]
+                    ib = i + s * off[b, 0]; jb = j + s * off[b, 1]; kb = k + s * off[b, 2]
+                    iab = ia + s * off[b, 0]; jab = ja + s * off[b, 1]; kab = ka + s * off[b, 2]
+                    if iab < N and jab < N and kab < N:
+                        Ax = phi[ia, ja, ka, 0] - p0x; Ay = phi[ia, ja, ka, 1] - p0y; Az = phi[ia, ja, ka, 2] - p0z
+                        Bx = phi[ib, jb, kb, 0] - p0x; By = phi[ib, jb, kb, 1] - p0y; Bz = phi[ib, jb, kb, 2] - p0z
+                        Cx = phi[iab, jab, kab, 0] - phi[ib, jb, kb, 0]
+                        Cy = phi[iab, jab, kab, 1] - phi[ib, jb, kb, 1]
+                        Cz = phi[iab, jab, kab, 2] - phi[ib, jb, kb, 2]
+                        Dx = phi[iab, jab, kab, 0] - phi[ia, ja, ka, 0]
+                        Dy = phi[iab, jab, kab, 1] - phi[ia, ja, ka, 1]
+                        Dz = phi[iab, jab, kab, 2] - phi[ia, ja, ka, 2]
+                        AA = Ax * Ax + Ay * Ay + Az * Az; BB = Bx * Bx + By * By + Bz * Bz
+                        CC = Cx * Cx + Cy * Cy + Cz * Cz; DD = Dx * Dx + Dy * Dy + Dz * Dz
+                        AB = Ax * Bx + Ay * By + Az * Bz; AD = Ax * Dx + Ay * Dy + Az * Dz
+                        CB = Cx * Bx + Cy * By + Cz * Bz; CD = Cx * Dx + Cy * Dy + Cz * Dz
+                        e4 += (AA * BB - AB * AB) + (AA * DD - AD * AD) + (CC * BB - CB * CB) + (CC * DD - CD * CD)
+                        f = 2 * w4
+                        dAx = f * (Ax * (BB + DD) - Bx * AB - Dx * AD)
+                        dAy = f * (Ay * (BB + DD) - By * AB - Dy * AD)
+                        dAz = f * (Az * (BB + DD) - Bz * AB - Dz * AD)
+                        dBx = f * (Bx * (AA + CC) - Ax * AB - Cx * CB)
+                        dBy = f * (By * (AA + CC) - Ay * AB - Cy * CB)
+                        dBz = f * (Bz * (AA + CC) - Az * AB - Cz * CB)
+                        dCx = f * (Cx * (BB + DD) - Bx * CB - Dx * CD)
+                        dCy = f * (Cy * (BB + DD) - By * CB - Dy * CD)
+                        dCz = f * (Cz * (BB + DD) - Bz * CB - Dz * CD)
+                        dDx = f * (Dx * (AA + CC) - Ax * AD - Cx * CD)
+                        dDy = f * (Dy * (AA + CC) - Ay * AD - Cy * CD)
+                        dDz = f * (Dz * (AA + CC) - Az * AD - Cz * CD)
+                        Gc[p, 0, i, j, k, 0] = -dAx - dBx; Gc[p, 0, i, j, k, 1] = -dAy - dBy; Gc[p, 0, i, j, k, 2] = -dAz - dBz
+                        Gc[p, 1, i, j, k, 0] = dAx - dDx; Gc[p, 1, i, j, k, 1] = dAy - dDy; Gc[p, 1, i, j, k, 2] = dAz - dDz
+                        Gc[p, 2, i, j, k, 0] = dBx - dCx; Gc[p, 2, i, j, k, 1] = dBy - dCy; Gc[p, 2, i, j, k, 2] = dBz - dCz
+                        Gc[p, 3, i, j, k, 0] = dCx + dDx; Gc[p, 3, i, j, k, 1] = dCy + dDy; Gc[p, 3, i, j, k, 2] = dCz + dDz
+                    else:
+                        for q4 in range(4):
+                            Gc[p, q4, i, j, k, 0] = 0.0; Gc[p, q4, i, j, k, 1] = 0.0; Gc[p, q4, i, j, k, 2] = 0.0
+        t2[i] = e2; t4[i] = e4
+    return w2 * t2.sum(), w4 * t4.sum()
+
+
+@nb.njit(parallel=True, cache=True)
+def _lps_pass2(Gl, Gc, s, out, off, pa_, pb_):
+    N = out.shape[0]
+    for i in nb.prange(N):
+        for j in range(N):
+            for k in range(N):
+                for c in range(3):
+                    g = 0.0
+                    for a in range(3):
+                        g -= Gl[a, i, j, k, c]
+                        ii = i - s * off[a, 0]; jj = j - s * off[a, 1]; kk = k - s * off[a, 2]
+                        if ii >= 0 and jj >= 0 and kk >= 0:
+                            g += Gl[a, ii, jj, kk, c]
+                    for p in range(3):
+                        a = pa_[p]; b = pb_[p]
+                        g += Gc[p, 0, i, j, k, c]
+                        ii = i - s * off[a, 0]; jj = j - s * off[a, 1]; kk = k - s * off[a, 2]
+                        if ii >= 0 and jj >= 0 and kk >= 0:
+                            g += Gc[p, 1, ii, jj, kk, c]
+                        ii = i - s * off[b, 0]; jj = j - s * off[b, 1]; kk = k - s * off[b, 2]
+                        if ii >= 0 and jj >= 0 and kk >= 0:
+                            g += Gc[p, 2, ii, jj, kk, c]
+                        ii = i - s * (off[a, 0] + off[b, 0]); jj = j - s * (off[a, 1] + off[b, 1])
+                        kk = k - s * (off[a, 2] + off[b, 2])
+                        if ii >= 0 and jj >= 0 and kk >= 0:
+                            g += Gc[p, 3, ii, jj, kk, c]
+                    out[i, j, k, c] = g
+
+
+_OFF = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]], dtype=np.int64)
+_PA = np.array([0, 0, 1], dtype=np.int64); _PB = np.array([1, 2, 2], dtype=np.int64)   # planes (0,1),(0,2),(1,2)
+
+
+class LPEnergy:
+    """kind='lp' : link/plaquette energy (stride 1); kind='R4': (4 E_s1 - E_s2)/3."""
+
+    def __init__(self, N, kind='lp'):
+        self.kind = kind
+        self.Gl = np.zeros((3, N, N, N, 3)); self.Gc = np.zeros((3, 4, N, N, N, 3))
+        self.g1 = np.zeros((N, N, N, 3)); self.g2 = np.zeros((N, N, N, 3))
+
+    def stride(self, phi, h, s, out):
+        if s == 1:
+            w2, w4 = C0 * h, C0 / (4 * h)
+        else:
+            w2, w4 = C0 * h / 4, C0 / (64 * h)
+        e2, e4 = _lps_pass1(phi, s, w2, w4, self.Gl, self.Gc, _OFF, _PA, _PB)
+        _lps_pass2(self.Gl, self.Gc, s, out, _OFF, _PA, _PB)
+        return e2, e4
+
+    def __call__(self, phi, h):
+        a2, a4 = self.stride(phi, h, 1, self.g1)
+        if self.kind == 'lp':
+            return a2 + a4, a2, a4, self.g1
+        b2, b4 = self.stride(phi, h, 2, self.g2)
+        e2 = (4 * a2 - b2) / 3; e4 = (4 * a4 - b4) / 3
+        return e2 + e4, e2, e4, (4 * self.g1 - self.g2) / 3

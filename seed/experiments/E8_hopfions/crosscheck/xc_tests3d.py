@@ -44,8 +44,9 @@ for N in (61, 76, 101, 121, 151, 201):
     phi = gauss_field(N)
     t = time.time()
     el = X.energy_lp(phi, h)[0]; e2 = X.energy_c2(phi, h)[0]; e4 = X.energy_c4(phi, h)[0]
-    rows.append(dict(N=N, h=h, E_lp=el, E_c2=e2, E_c4=e4,
-                     rel_lp=el / Eref - 1, rel_c2=e2 / Eref - 1, rel_c4=e4 / Eref - 1))
+    eR = X.LPEnergy(N, 'R4')(phi, h)[0]
+    rows.append(dict(N=N, h=h, E_lp=el, E_c2=e2, E_c4=e4, E_R4=eR,
+                     rel_lp=el / Eref - 1, rel_c2=e2 / Eref - 1, rel_c4=e4 / Eref - 1, rel_R4=eR / Eref - 1))
     print(rows[-1], f'{time.time()-t:.1f}s', flush=True)
 out['lattice_vs_reference'] = rows
 
@@ -65,6 +66,15 @@ for _ in range(8):
     errs.append(abs(fd - g[i, j, k, c]) / abs(fd))
 out['c4_gradient_max_rel_err'] = max(errs)
 print('c4 gradient check', max(errs), 'energy consistency', E, X.energy_c4(phi, h)[0], flush=True)
+for kind in ('lp', 'R4'):
+    F = X.LPEnergy(N, kind); E, _, _, g = F(phi, h); g = g.copy(); errs = []
+    for _ in range(8):
+        i, j, k = rng.integers(1, N - 1, 3); c = rng.integers(0, 3)
+        e = 1e-4; pp = phi.copy(); pm = phi.copy(); pp[i, j, k, c] += e; pm[i, j, k, c] -= e
+        fd = (F(pp, h)[0] - F(pm, h)[0]) / (2 * e)
+        errs.append(abs(fd - g[i, j, k, c]) / abs(fd))
+    out[f'{kind}_gradient_max_rel_err'] = max(errs)
+    print(kind, 'gradient check', max(errs), flush=True)
 
 # 3. Hopf charge (free-space Whitehead) of rational-map fields
 maps = {1: (lambda a, b: a, lambda a, b: b), 2: (lambda a, b: a ** 2, lambda a, b: b),

@@ -55,9 +55,9 @@ CHECKS
   asymptotics: |F/(C/x^2) - 1| = 4.5e-04, 2.4e-05, 1.4e-06 ; with -C^3/(21x^6) - (4/3)C^3/x^8: 6.0e-07, 1.9e-09, 4.6e-10  (x = 10, 20, 40)
   [PASS] asymptotics F = C/x^2 - C^3/(21 x^6) - (4/3) C^3/x^8: rel dev 6.0e-07, 1.9e-09, 4.6e-10 at x = 10, 20, 40
 
-all checks pass: True;  runtime 4.5 s
+all checks pass: True;  runtime 9.6 s
 wrote profile.json and out/hedgehog.json
-    [skyrme_hedgehog.py: 4.664463554 s wall]
+    [skyrme_hedgehog.py: 9.824953182 s wall]
 === verify_densities.py
 E2 verification from explicit SU(3) matrices (units F_pi = e = 1)
 
@@ -107,8 +107,8 @@ CHECKS
   [PASS] transverse_q0_is_3/2_of_ball
   [PASS] identity_D_equals_-2C
 
-all checks pass: True;  runtime 9.2 s
-    [verify_densities.py: 9.368885972 s wall]
+all checks pass: True;  runtime 10.7 s
+    [verify_densities.py: 10.875669854 s wall]
 === su3_rotor.py
 E2 SU(3) rotor. Hedgehog inputs: M = 36.461646 F/e, I1 = 106.769622/(e^3F), I2 = 40.678582/(e^3F)
 
@@ -202,8 +202,8 @@ OPTIONAL (two extra fitted inputs alpha, beta): first-order H' = -alpha D88 + be
   equal spacing 2Xi*-Sigma*-Omega              : model coefficients (D88, Y) = (0, 0);  PDG LHS-RHS = +9.71 MeV (+0.317%)
   [PASS] Guadagnini, GMO, equal spacing hold identically for -alpha D88 + beta Y 
 
-all checks pass: True;  runtime 10.1 s
-    [su3_rotor.py: 10.292154666 s wall]
+all checks pass: True;  runtime 13.0 s
+    [su3_rotor.py: 13.195294017 s wall]
 === derrick_virial.py
 E2 = 18.230822812624, E4 = 18.230822812614 (F_pi/e); E2/E4 - 1 = +5.58e-13; M = 36.4616456252
 scaling law E2(mu) mu = E2, E4(mu)/mu = E4: max rel deviation 1.7e-15 over mu in [0.2, 5]
@@ -226,12 +226,12 @@ CHECKS
   [PASS] single_pressure_node_positive_core
 
 all checks pass: True;  runtime 0.5 s
-    [derrick_virial.py: .821535611 s wall]
+    [derrick_virial.py: .933516007 s wall]
 === make_figures.py
 fig_profile.png 61 KB
 fig_derrick.png 50 KB
 fig_spectrum.png 70 KB
-    [make_figures.py: .943798111 s wall]
+    [make_figures.py: 1.690366733 s wall]
 === collect_results.py
 [CALIBRATED] classical mass M_cl: 36.4616 F_pi/e (F_pi 186-MeV convention)  (target 36.463253459824635, tol 0.2%)
 [CALIBRATED] Lambda in I1 = (2pi/3) Lambda/(e^3 F_pi): 50.9787 dimensionless  (target 50.9, tol 0.5%)
@@ -254,4 +254,8 @@ fig_spectrum.png 70 KB
 [NO_TARGET ] SU(3) refit: g_A (SU(2) formula; SU(3)-symmetric rotor x 7/10): [0.6570721349213386, 0.459950494444937] dimensionless  (target none, tol )
 [NO_TARGET ] OPTIONAL Guadagnini relation 8(N+Xi*)+3Sigma = 11Lambda+8Sigma* with PDG 2026: 8.50688 MeV (LHS-RHS)  (target 0.0, tol none (first-order relation))
 all checks pass: True
-    [collect_results.py: .112013247 s wall]
+    [collect_results.py: .101112222 s wall]
+
+real	0m36.694s
+user	0m27.053s
+sys	0m3.711s

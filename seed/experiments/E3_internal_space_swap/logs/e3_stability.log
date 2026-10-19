@@ -1,0 +1,26 @@
+(a) long  : Q formula 10.87176985   FD h=4e-3 10.87709035, h=2e-3 10.87309998, Richardson 10.87176985   rel diff 3.5e-10
+(a) short : Q formula 6.02891633   FD h=4e-3 6.04524896, h=2e-3 6.03299950, Richardson 6.02891634   rel diff 1.8e-09
+(a) (2,4) : Q formula 29.77807993   FD h=4e-3 29.89525055, h=2e-3 29.80737276, Richardson 29.77808016   rel diff 7.8e-09
+(b) zero mode iso-rotation (long)             : Q = 4.67e-11
+(b) zero mode G2 rotation ((2,4) direction)   : Q = -2.50e-10
+(b) zero mode SU(3) kaon rotation             : Q = -2.50e-10
+(b) zero mode translation (long)              : Q = -1.11e-08
+   [92s]
+(c) long (3,1)                   R=20,nr=30,lmax=3: lowest [7.00e-05 7.00e-05 7.00e-05 3.50e-04 3.50e-04 3.50e-04 8.00e-04 8.00e-04
+ 8.00e-04 1.44e-03]   [103s]
+(c) long (3,1)                   R=40,nr=40,lmax=3: lowest [5.0e-05 5.0e-05 5.0e-05 1.9e-04 1.9e-04 1.9e-04 3.7e-04 3.7e-04 3.7e-04
+ 3.9e-04]   [126s]
+(c) short (1,3)                  R=20,nr=30,lmax=3: lowest [0.00077 0.00077 0.00077 0.00158 0.00158 0.00158 0.00158 0.00158 0.00158
+ 0.00158]   [139s]
+(c) short (1,3)                  R=40,nr=40,lmax=3: lowest [0.00019 0.00019 0.00019 0.00039 0.00039 0.00039 0.00039 0.00039 0.00039
+ 0.00039]   [157s]
+(c) kaon (su(3) part of (2,4))   R=20,nr=30,lmax=3: lowest [7.0e-05 7.0e-05 7.0e-05 7.0e-05 7.8e-04 7.8e-04 7.8e-04 7.8e-04 1.6e-03
+ 1.6e-03]   [176s]
+(c) kaon (su(3) part of (2,4))   R=40,nr=40,lmax=3: lowest [5.0e-05 5.0e-05 5.0e-05 5.0e-05 1.9e-04 1.9e-04 1.9e-04 1.9e-04 4.0e-04
+ 4.0e-04]   [199s]
+(c) (2,4)                        R=20,nr=30,lmax=3: lowest [7.0e-05 7.0e-05 7.0e-05 7.0e-05 7.0e-05 7.0e-05 7.0e-05 7.0e-05 7.8e-04
+ 7.8e-04]   [238s]
+(c) (2,4)                        R=40,nr=40,lmax=3: lowest [5.0e-05 5.0e-05 5.0e-05 5.0e-05 5.0e-05 5.0e-05 5.0e-05 5.0e-05 1.9e-04
+ 1.9e-04]   [300s]
+Schur check max |e(2,4) - e(kaon) doubled| (first 12): 1.6264170999563676e-14
+no negative eigenvalue in any block: True {'long (3,1)': 5.423297067856088e-05, 'short (1,3)': 0.00019283686433330246, 'kaon (su(3) part of (2,4))': 4.7221975013385094e-05, '(2,4)': 4.722197499712092e-05}

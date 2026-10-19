@@ -1,0 +1,84 @@
+{
+ "refits": [
+  {
+   "name": "lepton|min|phi10=Z3|phi5=G|phi1=Z3",
+   "chi2_new": 72.48953709907593,
+   "chi2_stored": 72.48953709907593,
+   "n_eff_new": 7,
+   "n_eff_stored": 7,
+   "verdict_new": "excluded",
+   "verdict_stored": "excluded",
+   "identical": true
+  },
+  {
+   "name": "lepton|min|phi10=G|phi5=Z3|phi1=Z3",
+   "chi2_new": 2073.057373996689,
+   "chi2_stored": 2073.057373996689,
+   "n_eff_new": 5,
+   "n_eff_stored": 5,
+   "verdict_new": "excluded",
+   "verdict_stored": "excluded",
+   "identical": true
+  },
+  {
+   "name": "lepton|min|phi10=G|phi5=Z3|phi1=P",
+   "chi2_new": 1.0434665339020613e-26,
+   "chi2_stored": 1.0434665339020613e-26,
+   "n_eff_new": 7,
+   "n_eff_stored": 7,
+   "verdict_new": "accommodates (no prediction)",
+   "verdict_stored": "accommodates (no prediction)",
+   "identical": true
+  },
+  {
+   "name": "quark|min|phi10=G|phi5=G",
+   "chi2_new": 2871677.9928920106,
+   "chi2_stored": 2871677.9928920106,
+   "n_eff_new": null,
+   "n_eff_stored": null,
+   "verdict_new": "excluded",
+   "verdict_stored": "excluded",
+   "identical": true
+  },
+  {
+   "name": "quark|gen|phi10=G|phi5=Z3",
+   "chi2_new": 1.2536825612948743e-19,
+   "chi2_stored": 1.2536825612948743e-19,
+   "n_eff_new": 8,
+   "n_eff_stored": 8,
+   "verdict_new": "accommodates (no prediction)",
+   "verdict_stored": "accommodates (no prediction)",
+   "identical": true
+  },
+  {
+   "name": "lepton|LNR exact|phi10=G|phi5=(-1,1,1)|phi1=(1,1,1)",
+   "chi2_new": 1472.0058033909597,
+   "chi2_stored": 1472.0058033909597,
+   "n_eff_new": 3,
+   "n_eff_stored": 3,
+   "verdict_new": "excluded",
+   "verdict_stored": "excluded",
+   "identical": true
+  }
+ ],
+ "many_starts": {
+  "class": "lepton|min|phi10=Z3|phi5=G|phi1=Z3",
+  "n_starts": 300,
+  "chi2_min": 72.49811404684331,
+  "five_smallest": [
+   72.49811404684331,
+   72.49944993105888,
+   72.50002362325877,
+   72.50260607637804,
+   72.50592557043103
+  ],
+  "fraction_within_0.1_of_min": 0.04666666666666667,
+  "stored_chi2_after_polish": 72.48953709907593
+ },
+ "checks": {
+  "six refits identical to the stored fits": true,
+  "300-start minimum within 0.1 of the stored chi2 (no lower minimum found)": true
+ },
+ "all_pass": true,
+ "runtime_s": 180.7658715248108
+}

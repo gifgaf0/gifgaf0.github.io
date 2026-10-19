@@ -131,6 +131,22 @@
    "C": 3.5422509370164335e-09,
    "Fprime0": 7.260858581048524e-14
   },
+  "relative_deviation_short_boxes": {
+   "X=25": {
+    "Lambda": 7.213945571228967e-07,
+    "C": 1.225965995795315e-06,
+    "Mtilde": 1.0978884875643348e-08,
+    "R2": 5.465343715618566e-10,
+    "B_minus_1": -5.603026060896354e-07
+   },
+   "X=50": {
+    "Lambda": 2.8084445635829264e-08,
+    "C": 1.9285782469787427e-08,
+    "Mtilde": 8.728602105594056e-11,
+    "R2": 1.3590936773148925e-11,
+    "B_minus_1": -8.764263093041791e-09
+   }
+  },
   "gA_tail_coefficient_2piC_over_3": 18.09259591606792,
   "gA_D_formula_pi_over_3_absD": 18.092595910410957
  },
@@ -140,6 +156,17 @@
   "E4": 1.4507627836017927,
   "E2_over_E4": 1.0000000000170042,
   "note": "under x -> x/l: E2 -> l E2, E4 -> E4/l; stationary only if E2 = E4; with E4 = 0, dE/dl = E2 > 0 so shrinking lowers E"
+ },
+ "derived_density_crosscheck": {
+  "M_from_derived_energy_density": 36.46164562482896,
+  "M_closed_form": 36.461645624828975,
+  "int_r_g_d3x": 160.15443229734092,
+  "1.5_lambda_tilde": 160.15443229734075,
+  "lambda_from_isospin_charge": 106.76962153156056,
+  "lambda_closed_form": 106.7696215315605,
+  "G_sphere_axial": 18.092595789860876,
+  "pi_over_3_D": -18.092595910410957,
+  "2piC_over_3": 18.09259591606792
  },
  "ANW_parameters": {
   "F_pi_MeV": 129.0,
@@ -240,7 +267,7 @@
   {
    "R_x": 2,
    "R_fm_ANW": 0.5613455099921769,
-   "r2_I1_x2": 5.388204914418037,
+   "r2_I1_x2": 0.5517159848963173,
    "asymptotic_slope_C2_over_Lambda": 1.463846202560286
   },
   {
@@ -318,5 +345,5 @@
    "M_Delta_rotor_MeV": 1232.0000000000002
   }
  },
- "runtime_s": 5.2
+ "runtime_s": 8.3
 }

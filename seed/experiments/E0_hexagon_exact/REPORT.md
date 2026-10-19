@@ -1,6 +1,6 @@
 # E0: the hexagon facts, recomputed exactly
 
-*Experiment E0 of `seed/PLAN.md` §4, which tests the claims in SEED.md §3. Run on October 18, 2026. All 102 exact checks pass. All 25 lines that `hexagon_check.py` prints come out identical when recomputed without floating point.*
+*Experiment E0 of `seed/PLAN.md` §4, which tests the claims in SEED.md §3. First run on October 18, 2026; rerun on October 19, 2026 to confirm (102 of 102 checks pass, 5.0 s). All 102 exact checks pass. All 25 lines that `hexagon_check.py` prints come out identical when recomputed without floating point.*
 
 ## Question
 Do the §3 claims survive an independent computation in exact arithmetic? The claims cover the SU(3) torus and its seven points, the 7-vertex triangulation, the Fano planes and octonion lines, F21 and the two copies of PSL(2,7) inside SU(3), the quartic invariants, maximality, and the Weyl groups of SU(3) and G2. The plan adds two checks: the character values that make the PSL(2,7) and F21 triplets complex and the A5 triplets real, and the statement that G2's affine Weyl group is the wallpaper group p6m.
@@ -42,24 +42,24 @@ Do the §3 claims survive an independent computation in exact arithmetic? The cl
 
 **Discretisation and convergence:** none apply. Everything is exact; all searches are exhaustive; the run is deterministic.
 
-## Calibration (tolerance exact throughout; all CALIBRATED)
-| quantity | ours | target | source |
-|---|---|---|---|
-| hexagon_check.py lines | 25/25 identical | all identical | seed/hexagon_check.py |
-| 120 deg turn | x->4x | x->4x | SEED §3 |
-| Lambda + Zp | hexagonal; index 7; 6 shortest vectors | hexagonal | SEED §3 |
-| V-E+F | 7-21+14 = 0 | 0 | SEED §3, PLAN |
-| K7, Fano families, octonion lines | yes; 'down' family = {i,i+1,i+3} | as claimed | SEED §3 |
-| cyclic Fano planes | 2 of 30, = the families | 2 | SEED §3 |
-| |<D,C>| | 21 | 21 | SEED §3 |
-| |Klein's|, |flipped| | 168, 168 | 168, 168 | SEED §3 |
-| quartics | invariant (all 168, exact) | invariant | SEED; LNR eq. 78 [read] |
-| maximal subgroups | 7 S4, 7 S4, 8 (7:3) | S4, S4, 7:3 | ATLAS; LNR §5 [read] |
-| PSL(2,7) chi3 | 3,-1,0,1,b7,b7bar; nu = 0 | complex, b7 = (-1+i sqrt7)/2 | LNR eq. 13 [read] |
-| F21 chi3 | 3,0,0,b7,b7bar; nu = 0 | complex | LNR §5 [read] |
-| A5 chi3, chi3' | 3,-1,0,(1±sqrt5)/2; nu = +1 | real | PLAN; LNR §2 [read] |
-| Weyl groups | orders 6, 12; turn actions and family fates as printed; mirrors keeping the points 0/3, 0/6 | as hexagon_check | SEED §3 |
-| G2 affine Weyl group | (2,3,6); Lambda ⋊ D6; sites 6mm + 2×3m + 3×2mm | p6m | SEED §3; PLAN |
+## Calibration
+| quantity | ours | target | tolerance | source | verdict |
+|---|---|---|---|---|---|
+| hexagon_check.py lines | 25/25 identical | all identical | exact | seed/hexagon_check.py | CALIBRATED |
+| 120 deg turn | x->4x | x->4x | exact | SEED §3 | CALIBRATED |
+| Lambda + Zp | hexagonal; index 7; 6 shortest vectors | hexagonal | exact | SEED §3 | CALIBRATED |
+| V-E+F | 7-21+14 = 0 | 0 | exact | SEED §3, PLAN | CALIBRATED |
+| K7, Fano families, octonion lines | yes; 'down' family = {i,i+1,i+3} | as claimed | exact | SEED §3 | CALIBRATED |
+| cyclic Fano planes | 2 of 30, = the families | 2 | exact | SEED §3 | CALIBRATED |
+| order of <D,C> | 21 | 21 | exact | SEED §3 | CALIBRATED |
+| orders of Klein's copy and the flipped copy | 168, 168 | 168, 168 | exact | SEED §3 | CALIBRATED |
+| quartics | invariant (all 168, exact) | invariant | exact | SEED; LNR eq. 78 [read] | CALIBRATED |
+| maximal subgroups | 7 S4, 7 S4, 8 (7:3) | S4, S4, 7:3 | exact | ATLAS; LNR §5 [read] | CALIBRATED |
+| PSL(2,7) chi3 | 3,-1,0,1,b7,b7bar; nu = 0 | complex, b7 = (-1+i sqrt7)/2 | exact | LNR eq. 13 [read] | CALIBRATED |
+| F21 chi3 | 3,0,0,b7,b7bar; nu = 0 | complex | exact | LNR §5 [read] | CALIBRATED |
+| A5 chi3, chi3' | 3,-1,0,(1±sqrt5)/2; nu = +1 | real | exact | PLAN; LNR §2 [read] | CALIBRATED |
+| Weyl groups | orders 6, 12; turn actions and family fates as printed; mirrors keeping the points 0/3, 0/6 | as hexagon_check | exact | SEED §3 | CALIBRATED |
+| G2 affine Weyl group | (2,3,6); Lambda ⋊ D6; sites 6mm + 2×3m + 3×2mm | p6m | exact | SEED §3; PLAN | CALIBRATED |
 
 No calibration failed. The one development FAIL was a wrong test, not a wrong fact: −1 on the plane must fix the normal (1,1,1), so it is −I + (2/3)J, not −I.
 
@@ -111,6 +111,11 @@ No calibration failed. The one development FAIL was a wrong test, not a wrong fa
 - The extras listed above go beyond the preregistration. They are reported as NO_TARGET and change no preregistered verdict.
 - Nothing preregistered was dropped.
 - REPORT.md itself could not be written by this agent (harness rule); this text is returned instead.
+- Confirmation rerun (October 19): no result changed. Four small fixes:
+  - the calibration table gained explicit tolerance and verdict columns, and pipe characters inside cells that broke the table were removed;
+  - results.json's source for the A5 target now reads "LNR §2 [read]" (eq. 4 and text: "five real irreducible representations, two of which are triplets"), matching this report;
+  - a stale runtime in e0_exact.py's docstring was corrected;
+  - run_log.txt was regenerated.
 
 ## Limitations
 - Not recomputed: that the only non-abelian simple subgroups of SU(3) are PSL(2,7) and A5 (1916 classification, quoted by LNR).
@@ -124,8 +129,8 @@ No calibration failed. The one development FAIL was a wrong test, not a wrong fa
 ## How to reproduce
 From seed/experiments/E0_hexagon_exact/ (Python 3.13.16; numpy is needed only by hexagon_check.py; one thread):
 
-    NUMBA_NUM_THREADS=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 python3 e0_exact.py > run_log.txt   # ~4 s; also runs ../../hexagon_check.py (~1 s); exit 0 iff all checks pass
-    NUMBA_NUM_THREADS=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 python3 make_figures.py              # ~1.5 s
+    NUMBA_NUM_THREADS=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 python3 e0_exact.py > run_log.txt   # 4-5 s; also runs ../../hexagon_check.py (~1 s); exit 0 iff all checks pass
+    NUMBA_NUM_THREADS=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 python3 make_figures.py              # ~1.2 s; output is byte-identical on rerun
 
 Files:
 - exact_fields.py: exact fields, matrices and groups.

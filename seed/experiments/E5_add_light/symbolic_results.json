@@ -6,9 +6,9 @@
  "I2_density": "(1/8 - c/8)*(Fp**2 + 1 + 2*s**2/r**2)",
  "vector_g": "s**2*(r**2*(4*Fp**2*c**6 + 12*Fp**2*c**4*s**2 + 4*Fp**2*c**4 + 12*Fp**2*c**2*s**4 + 8*Fp**2*c**2*s**2 + 4*Fp**2*s**6 + 4*Fp**2*s**4 + c**2 + s**2 + 1) + 4*s**2*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2))/(8*r**3)",
  "baryon_density": "-Fp*s**2/(2*pi**2*r**2)",
- "axial_f1": "(-Fp*r**3*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2) - 8*Fp*r*s**2*(c**6 + 3*c**4*s**2 + c**4 + 3*c**2*s**4 + 2*c**2*s**2 + s**6 + s**4) + c*r**2*s*(4*Fp**2*c**6 + 12*Fp**2*c**4*s**2 + 4*Fp**2*c**4 + 12*Fp**2*c**2*s**4 + 8*Fp**2*c**2*s**2 + 4*Fp**2*s**6 + 4*Fp**2*s**4 + c**2 + s**2 + 1) + 4*c*s**3*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2))/(8*r**3)",
- "axial_f2": "-c*s*(r**2*(4*Fp**2*c**6 + 12*Fp**2*c**4*s**2 + 4*Fp**2*c**4 + 12*Fp**2*c**2*s**4 + 8*Fp**2*c**2*s**2 + 4*Fp**2*s**6 + 4*Fp**2*s**4 + c**2 + s**2 + 1) + 4*s**2*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2))/(8*r**3)",
- "axial_sphere_density_f1_plus_f2_over_3": "(-Fp*r**3*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2)/8 - Fp*r*s**2*(c**6 + 3*c**4*s**2 + c**4 + 3*c**2*s**4 + 2*c**2*s**2 + s**6 + s**4) + c*r**2*s*(4*Fp**2*c**6 + 12*Fp**2*c**4*s**2 + 4*Fp**2*c**4 + 12*Fp**2*c**2*s**4 + 8*Fp**2*c**2*s**2 + 4*Fp**2*s**6 + 4*Fp**2*s**4 + c**2 + s**2 + 1)/12 + c*s**3*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2)/3)/r**3",
+ "axial_f1": "-c*s*(r**2*(4*Fp**2*c**6 + 12*Fp**2*c**4*s**2 + 4*Fp**2*c**4 + 12*Fp**2*c**2*s**4 + 8*Fp**2*c**2*s**2 + 4*Fp**2*s**6 + 4*Fp**2*s**4 + c**2 + s**2 + 1) + 4*s**2*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2))/(8*r**3)",
+ "axial_f2": "(-Fp*r**3*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2) - 8*Fp*r*s**2*(c**6 + 3*c**4*s**2 + c**4 + 3*c**2*s**4 + 2*c**2*s**2 + s**6 + s**4) + c*r**2*s*(4*Fp**2*c**6 + 12*Fp**2*c**4*s**2 + 4*Fp**2*c**4 + 12*Fp**2*c**2*s**4 + 8*Fp**2*c**2*s**2 + 4*Fp**2*s**6 + 4*Fp**2*s**4 + c**2 + s**2 + 1) + 4*c*s**3*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2))/(8*r**3)",
+ "axial_sphere_density_f1_plus_f2_over_3": "-(Fp*r**3*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2) + 8*Fp*r*s**2*(c**6 + 3*c**4*s**2 + c**4 + 3*c**2*s**4 + 2*c**2*s**2 + s**6 + s**4) + 2*c*r**2*s*(4*Fp**2*c**6 + 12*Fp**2*c**4*s**2 + 4*Fp**2*c**4 + 12*Fp**2*c**2*s**4 + 8*Fp**2*c**2*s**2 + 4*Fp**2*s**6 + 4*Fp**2*s**4 + c**2 + s**2 + 1) + 8*c*s**3*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2))/(24*r**3)",
  "kappa_baryon": "-1/(24*pi**2)",
  "pi0_amplitude_coefficient": "N_c*e**2/(12*pi**2*f)",
  "pi0_width_formula": "N_c**2*alpha**2*m**3/(576*pi**3*f**2)",
@@ -81,9 +81,9 @@
    "detail": "1.3877787807814457e-17"
   },
   {
-   "check": "5c. kappa = 1/(24 pi^2) up to the sign fixed by eps^{0123}=+1",
+   "check": "5c. kappa = -1/(24 pi^2) exactly (magnitude = standard 1/(24 pi^2); the sign follows from eps^{0123}=+1, L = U^+ dU, B = +1)",
    "passed": true,
-   "detail": "-0.004221715985097407"
+   "detail": "-1/(24*pi**2)"
   },
   {
    "check": "6a. angular average of (1/2) x x (B/2 with B^0=1)(W x x) = r^2 W/6  =>  mu^{I=0} = <r^2> J/(6 lambda)",
@@ -97,18 +97,18 @@
   },
   {
    "check": "7a. static axial current has the form A^j_a = f1(r) delta_aj + f2(r) n_a n_j",
-   "passed": false,
-   "detail": "3.283262921032865"
+   "passed": true,
+   "detail": "1.0547118733938987e-15"
   },
   {
-   "check": "7b. derived axial density matches the D-formula: 4 pi (f1+f2/3) = (pi/3) D  (up to overall sign)",
-   "passed": false,
-   "detail": "sign=+False, rel.dev 5.98e+00 / 4.92e+00"
+   "check": "7b. derived axial density matches the D-formula with the literature sign: 4 pi (f1+f2/3) = -(pi/3) D",
+   "passed": true,
+   "detail": "rel.dev with -: 4.17e-16 ; with +: 2.00e+00"
   },
   {
    "check": "7c. tail: f1 -> -(C/4)/r^3, f2 -> +(3C/4)/r^3 (pion field ~ d_j(n_a/r^2)); g_A(tail) = 2 pi C/(3 e^2)",
-   "passed": false,
-   "detail": "f1=3*C/(4*r**3), f2=-C/(4*r**3)"
+   "passed": true,
+   "detail": "f1=-C/(4*r**3), f2=3*C/(4*r**3)"
   },
   {
    "check": "8a. ANW I_k and J_k obey the standard su(2) algebra [X1,X2] = i X3",
@@ -171,9 +171,14 @@
    "detail": ""
   },
   {
-   "check": "10d. the WZ term is at least cubic in fields (eps A A d pi, eps A Tr(Q L L L)): no quadratic part",
+   "check": "10d. gauged WZ term expanded in all fields: no part of order 0, 1 or 2 (no quadratic part; computed)",
    "passed": true,
-   "detail": "by inspection of eq. 67: every term has >= 3 fields"
+   "detail": "orders 0-2: [0, 0, 0]; order 3 nonzero: True"
+  },
+  {
+   "check": "9g. that cubic part = (N_c e^2/(24 pi^2 f)) eps^{mu nu al be} d_mu A_nu A_al d_be pi0 = (N_c e^2/(48 pi^2 f)) eps F_mu nu A_al d_be pi0 (only pi0 couples)",
+   "passed": true,
+   "detail": ""
   },
   {
    "check": "10e. Maxwell: off the cone (k^2!=0) M(k) has rank 3, null space = pure gauge k^mu; on the cone rank 1 (two transverse photons + gauge)",
@@ -206,7 +211,7 @@
    "detail": ""
   }
  ],
- "n_pass": 35,
- "n_fail": 3,
- "runtime_s": 123.0
+ "n_pass": 39,
+ "n_fail": 0,
+ "runtime_s": 302.6
 }

@@ -1,0 +1,124 @@
+[PASS] D^7 = 1 (exact)
+[PASS] C^3 = 1 (exact)
+[PASS] C^-1 D C = D^4 (exact; LNR d^-1 c d = c^4 with c=D, d=C)
+[PASS] seed Rf = LNR A^[3] (eq. 23), exactly
+[PASS] LNR B^[3] (eq. 22) = A D exactly, i.e. LNR AB = D
+[PASS] LNR presentation A^2 = B^3 = (AB)^7 = [A,B]^4 = 1 (exact)
+[PASS] LNR d (eq. 63) has order 3 and d^-1 c d = c^4 with c = AB = D
+[PASS] |F21| = |<D,C>| = 21
+[PASS] |PSL(2,7) seed copy| = |<D,C,Rf>| = 168
+[PASS] F21 inside the seed PSL(2,7) copy
+[PASS] LNR's d is in F21
+LNR d = D^0 C^1 D^-0
+d conjugate to C in F21: True
+[PASS] F21 class sizes 1,7,7,3,3 (LNR)  ([1, 7, 7, 3, 3])
+[PASS] F21 irrep 1 is a homomorphism
+[PASS] F21 irrep 1' is a homomorphism
+[PASS] F21 irrep 1'' is a homomorphism
+[PASS] F21 irrep 3 is a homomorphism
+[PASS] F21 irrep 3b is a homomorphism
+[PASS] F21 character orthogonality (rows), 5 irreps = 5 classes, sum d^2 = 21
+[PASS] F21 character table = LNR Sec. 5 table (classes 1, 7Th2(d), 7Th3(d^2), 3Th4(c), 3Th5(c^3))
+[PASS] Tr D = b7 = zeta+zeta^2+zeta^4 exactly
+[PASS] PSL classes: sizes 1,21,56,42,24,24 with orders 1,2,3,4,7,7 (LNR)  ([1, 21, 56, 42, 24, 24] [1, 2, 3, 4, 7, 7])
+[PASS] PSL 6 (LNR basis) is a homomorphism
+[PASS] PSL 8 (LNR basis) is a homomorphism
+[PASS] 3 x 6 contains 3bar and 8 once; remainder chi7 = chi(3x6) - chi(3bar) - chi(8) is irreducible
+[PASS] projector onto the 7 has rank 7
+[PASS] PSL 7 is a homomorphism
+[PASS] PSL irrep 1: homomorphism in the F21-adapted D-diagonal basis
+[PASS] PSL irrep 3: homomorphism in the F21-adapted D-diagonal basis
+[PASS] PSL irrep 3b: homomorphism in the F21-adapted D-diagonal basis
+[PASS] PSL irrep 6: homomorphism in the F21-adapted D-diagonal basis
+[PASS] PSL irrep 7: homomorphism in the F21-adapted D-diagonal basis
+[PASS] PSL irrep 8: homomorphism in the F21-adapted D-diagonal basis
+[PASS] F21 branching from the explicit bases: 6 = 3+3bar, 7 = 1+3+3bar, 8 = 1'+1''+3+3bar  (6:['3', '3b'] 7:['1', '3', '3b'] 8:["1'", "1''", '3', '3b'])
+[PASS] in the 6, 7, 8 bases D and C are block-diagonal standard F21 matrices
+[PASS] PSL character orthogonality, 6 irreps = 6 classes, sum d^2 = 168
+[PASS] PSL character table = LNR Sec. 3 table
+--- F21 Kronecker products
+  1' x 1' = (1'')_s + ()_a
+  1' x 1'' = 1
+  1' x 3 = 3
+  1' x 3b = 3b
+  1'' x 1'' = (1')_s + ()_a
+  1'' x 3 = 3
+  1'' x 3b = 3b
+  3 x 3 = (3 + 3b)_s + (3b)_a
+  3 x 3b = 1 + 1' + 1'' + 3 + 3b
+  3b x 3b = (3 + 3b)_s + (3)_a
+--- PSL Kronecker products
+  3 x 3 = (6)_s + (3b)_a
+  3 x 3b = 1 + 8
+  3 x 6 = 3b + 7 + 8
+  3 x 7 = 6 + 7 + 8
+  3 x 8 = 3 + 6 + 7 + 8
+  3b x 3b = (6)_s + (3)_a
+  3b x 6 = 3 + 7 + 8
+  3b x 7 = 6 + 7 + 8
+  3b x 8 = 3b + 6 + 7 + 8
+  6 x 6 = (1 + 2x6 + 8)_s + (7 + 8)_a
+  6 x 7 = 3 + 3b + 6 + 2x7 + 2x8
+  6 x 8 = 3 + 3b + 2x6 + 2x7 + 2x8
+  7 x 7 = (1 + 2x6 + 7 + 8)_s + (3 + 3b + 7 + 8)_a
+  7 x 8 = 3 + 3b + 2x6 + 2x7 + 3x8
+  8 x 8 = (1 + 2x6 + 7 + 2x8)_s + (3 + 3b + 2x7 + 8)_a
+[PASS] F21 Kronecker products = LNR (3x3 = (3+3bar)_s + 3bar_a; 3x3bar = 1+1'+1''+3+3bar; 1'x1' = 1''; ...)
+[PASS] PSL(2,7) Kronecker products = LNR table (all 14 entries)
+[PASS] PSL(2,7) -> F21 branching = LNR (6=3+3bar, 7=1+3+3bar, 8=1'+1''+3+3bar)  ({'1': {'1': 1}, '3': {'3': 1}, '3b': {'3b': 1}, '6': {'3': 1, '3b': 1}, '7': {'1': 1, '3': 1, '3b': 1}, '8': {"1'": 1, "1''": 1, '3': 1, '3b': 1}})
+[PASS] SU(3) -> PSL(2,7) branching dimensions = LNR table (11 irreps up to (2,2))  ((1,0):3; (0,1):3b; (2,0):6; (0,2):6; (1,1):8; (3,0):3b + 7; (2,1):7 + 8; (4,0):1 + 6 + 8; (0,5):3 + 3b + 7 + 8; (1,3):3b + 6 + 7 + 8; (2,2):2x6 + 7 + 8)
+[PASS] LNR eq. (33): A^[6]B^[6] = diag(eta^2, eta^4, eta, eta^3, eta^5, eta^6) in LNR's sextet basis
+[PASS] LNR: Tr A^[6] = 2
+[PASS] LNR eq. (38): C (15,24,36 entries) is the invariant bilinear of the sextet: g^T C g = C
+[PASS] LNR eq. (45): (AB)^[8] in the Gell-Mann basis is the block rotation (c1,s1 | 1 | c3,s3 | c2,s2 | 1), printed in LNR's row convention (eq. 28: A|i> = sum_m a_im |m>), i.e. the transpose of our column-convention matrix
+[PASS] LNR eq. (54): (AB)^[7] has eigenvalues 1, eta, ..., eta^6 (our 7 basis is D-diagonal)
+[PASS] A^[8] (LNR basis) real symmetric with (A^[8])^2 = 1 (LNR below eq. 46)
+[PASS] LNR eq. (46): all 64 entries of A^[8] (Gell-Mann basis) reproduced  (max dev 3.3e-16)
+--- F21 Clebsch-Gordan coefficients (D-diagonal basis; 3: weights (1,2,4), 3bar: (6,5,3))
+  3x3 -> 3_s:
+      component 1: 1 |3>|3'>
+      component 2: 1 |1>|1'>
+      component 3: 1 |2>|2'>
+  3x3 -> 3b_s:
+      component 1: sqrt(1/2) |2>|3'> + sqrt(1/2) |3>|2'>
+      component 2: sqrt(1/2) |1>|3'> + sqrt(1/2) |3>|1'>
+      component 3: sqrt(1/2) |1>|2'> + sqrt(1/2) |2>|1'>
+  3x3 -> 3b_a:
+      component 1: sqrt(1/2) |2>|3'> + -sqrt(1/2) |3>|2'>
+      component 2: -sqrt(1/2) |1>|3'> + sqrt(1/2) |3>|1'>
+      component 3: sqrt(1/2) |1>|2'> + -sqrt(1/2) |2>|1'>
+  3x3bar -> 1:
+      component 1: sqrt(1/3) |1>|1'> + sqrt(1/3) |2>|2'> + sqrt(1/3) |3>|3'>
+  3x3bar -> 1':
+      component 1: sqrt(1/3) |1>|1'> + sqrt(1/3)*e^(2pi i 1/3) |2>|2'> + sqrt(1/3)*e^(2pi i 2/3) |3>|3'>
+  3x3bar -> 1'':
+      component 1: sqrt(1/3) |1>|1'> + sqrt(1/3)*e^(2pi i 2/3) |2>|2'> + sqrt(1/3)*e^(2pi i 1/3) |3>|3'>
+  3x3bar -> 3:
+      component 1: 1 |2>|1'>
+      component 2: 1 |3>|2'>
+      component 3: 1 |1>|3'>
+  3x3bar -> 3b:
+      component 1: 1 |1>|2'>
+      component 2: 1 |2>|3'>
+      component 3: 1 |3>|1'>
+[PASS] LNR F21 Clebsch-Gordan coefficients (eqs. 64-66) are intertwiners in LNR's own row convention (eq. 28), with the seed matrices (component order as printed)  ({'(3x3)_s -> 3': True, '(3x3)_s -> 3bar': True, '(3x3)_a -> 3bar': True, '3x3bar -> 3': True, '3x3bar -> 3bar': True, '3x3bar -> 1': True, "3x3bar -> 1'": True, "3x3bar -> 1''": True})
+[PASS] in the column convention used here the same holds except that LNR's 1' and 1'' singlet combinations exchange (omega <-> omega^2); all triplet CGs agree in both conventions
+--- PSL(2,7) Clebsch-Gordan coefficients, multiplicities from explicit intertwiners
+[PASS] PSL intertwiner counts (explicit null spaces) equal character multiplicities for 12 products
+  3x3 -> 3bar (antisymmetric, epsilon tensor):
+      sqrt(1/2) |2>|3'> + -sqrt(1/2) |3>|2'>
+      -sqrt(1/2) |1>|3'> + sqrt(1/2) |3>|1'>
+      sqrt(1/2) |1>|2'> + -sqrt(1/2) |2>|1'>
+  3x3 -> 6 (first components, F21-adapted basis):
+      1 |3>|3'>
+      1 |1>|1'>
+      1 |2>|2'>
+      sqrt(1/2) |2>|3'> + sqrt(1/2) |3>|2'>
+      sqrt(1/2) |1>|3'> + sqrt(1/2) |3>|1'>
+      sqrt(1/2) |1>|2'> + sqrt(1/2) |2>|1'>
+[PASS] PSL 3x3 -> 3bar is the epsilon tensor (as in SU(3))
+[PASS] PSL 3x3bar -> 8 via Gell-Mann matrices (LNR eq. 43/44) is an intertwiner onto LNR's 8
+[PASS] PSL 3x3 -> 6 via LNR eq. (26) is an intertwiner onto LNR's 6
+[PASS] Frobenius-Schur indicators: PSL 3,3bar complex (0); 1,6,7,8 real (+1); F21 3,3bar,1',1'' complex  (PSL {'1': 1, '3': 0, '3b': 0, '6': 1, '7': 1, '8': 1} F21 {'1': 1, "1'": 0, "1''": 0, '3': 0, '3b': 0})
+
+54/54 checks pass; runtime 8.4 s

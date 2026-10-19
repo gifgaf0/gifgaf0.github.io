@@ -1,0 +1,31 @@
+{
+ "model": "Faddeev-Skyrme E = int[(kappa2/2)(dn)^2 + (kappa4/4) sum_ij (d_i n x d_j n)^2]; Ward units",
+ "ansatz": "n = U e3 U^+, U = exp(i f(r) rhat.tau), free spline profile, Derrick-optimal scale; Q = 1",
+ "E_W_ansatz": 1.2314457268379677,
+ "E_W_literature": 1.204,
+ "E_W_literature_note": "Sutcliffe 2007 Table 2 (lattice, ~1% low); 1.21-1.22 more accurate",
+ "ansatz_excess_over_1p204": 0.022795454184358688,
+ "virial_E2_eq_E4_after_scaling": true,
+ "E2_unscaled": 0.5319018273765801,
+ "E4_unscaled": 0.7127530401742052,
+ "scale_factor": 1.1575874188209163,
+ "phi_independence_rel": 8.91992674892951e-17,
+ "unit_norm_maxdev": 6.661338147750939e-16,
+ "R_rms_energy_ward": 2.1441351857330666,
+ "R_ring_ward": 1.2393004837217263,
+ "c0_hopf_rms": 589.660675580575,
+ "c0_hopf_ring": 340.8212156309733,
+ "c0_hopf_rms_with_lit_energy": 576.5186706376276,
+ "formula": "M R = 16 sqrt(2) pi^2 kappa4 E_W Rt = c0_hopf * kappa4 (hbar = c = 1); length unit l = sqrt(kappa4/kappa2)",
+ "optimizer": {
+  "success": true,
+  "nit": 85,
+  "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+ },
+ "quadrature": {
+  "NT": 600,
+  "NTH": 64,
+  "spline_nodes": 24
+ },
+ "runtime_s": 171.41812205314636
+}

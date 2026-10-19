@@ -1,0 +1,25 @@
+T_beta at first order (standard charges): I*dpi3/f   zeroth order: 0
+T_beta at first order, Q = diag(qu,qd): -3*I*dpi3*(q_d - q_u)*(q_d + q_u)/f
+L = cF eps^{mu nu a b} F_{mu nu} A_a d_b pi0 with cF = N_c*e**2/(48*pi**2*f)
+sum|M|^2 = N_c**2*e**4*m**4/(288*pi**4*f**2)
+Gamma = N_c**2*alpha**2*m**3/(576*pi**3*f**2)    ratio to alpha^2 m^3 N_c^2/(576 pi^3 f^2): 1
+|A| = N_c*e**2/(12*pi**2*f)   (standard e^2 N_c/(12 pi^2 f)): 1
+N_c Tr(Q^2 tau3): fixed charges N_c/3 ;  anomaly-consistent charges 1
+  m_pi0_MeV                    134.9768277676847
+  alpha                        0.0072973525643314245
+  source                       pdg package (PDG 2026)
+  Gamma_PDG2026_eV             7.720190646880828
+  Gamma_PDG2026_err_eV         0.12324711748671187
+  Nc3_f92.21                   7.761089179453989
+  Nc1_f92.21                   0.8623432421615543
+  Nc3_f64.5_ANW                15.8620490510968
+  Nc3_f_ANW                    15.8620490510968
+  f_ANW                        64.5
+  Nc3_f_SU2_refit              15.797644089478487
+  f_SU2_refit                  64.63134536568947
+  Nc3_f_SU3_refit              20.39881739941512
+  f_SU3_refit                  56.87702389107723
+  pull_PrimExII                -0.34966513287188816
+  pull_PDG2026                 0.3318416966430924
+  pull_Nc1_PrimExII            -59.313305622550814
+  f_for_PrimExII_central       91.96792456913803

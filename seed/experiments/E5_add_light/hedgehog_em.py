@@ -14,7 +14,7 @@ Static EM formulas (derived in symbolic_derivations.py):
   mu_{p,n}   = 2 M_N [ <r^2>_{I=0}/(12 lambda) +- lambda/6 ]   (nuclear magnetons, M_N = 939 MeV)
   g_A        = (pi/(3e^2)) |int x^2 D dx| = 2 pi C/(3 e^2)  (massless; pion-pole shape factor 3/2 included)
   g_piNN     = 2 M_N g_A / F   (Goldberger-Treiman, 186-convention)
-Outputs: hedgehog_results.json, fig_charge_densities.png, fig_convergence.png (small).
+Outputs: hedgehog_results.json, fig_charge_densities.png (convergence table in hedgehog_log.txt / JSON).
 """
 import json, math, os, sys, time
 import numpy as np
@@ -277,6 +277,16 @@ def main():
     res["massless_dimensionless"] = {k: d0[k] for k in keys + ["B", "E2", "E4", "lam_tilde", "I2_tilde", "virial_E2_minus_E4_plus_3Em_over_E"]}
     res["massless_dimensionless"]["M_over_3pi2"] = d0["Mtilde"] / (3 * PI**2)
     res["massless_dimensionless"]["numerical_spread_X100_400"] = spread
+    # (reconciliation) the short boxes X = 25, 50 are less accurate; record their relative deviation from the X = 200 reference
+    short = {}
+    for r_ in conv:
+        if r_["X"] < 100:
+            short["X=%d" % r_["X"]] = {k: abs(r_[k] - d0[k]) / abs(d0[k]) for k in ["Lambda", "C", "Mtilde", "R2"]}
+            short["X=%d" % r_["X"]]["B_minus_1"] = r_["B"] - 1.0
+    res["massless_dimensionless"]["relative_deviation_short_boxes"] = short
+    rel100 = max(abs(r_["Lambda"] - d0["Lambda"]) / d0["Lambda"] for r_ in sel)
+    log("relative deviation from X=200 reference: X=100-400 Lambda <= %.1e; " % rel100
+        + "; ".join("%s Lambda %.1e C %.1e B-1 %.1e" % (k, v["Lambda"], v["C"], v["B_minus_1"]) for k, v in short.items()))
     res["massless_dimensionless"]["gA_tail_coefficient_2piC_over_3"] = 2 * PI * d0["C"] / 3
     res["massless_dimensionless"]["gA_D_formula_pi_over_3_absD"] = PI / 3 * abs(d0["D"])
 

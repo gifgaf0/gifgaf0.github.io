@@ -1,0 +1,71 @@
+OK  a1 = M_cl/(F_pi/e)                         orig=36.4616  mine=36.4616  rel=-3.28e-12  Ritz-spectral energy minimisation vs solve_bvp/shooting
+OK  Lambda                                     orig=50.9787  mine=50.9787  rel=+7.84e-10  
+OK  radius a2 (B)                              orig=2.11609  mine=2.11609  rel=-1.35e-12  
+OK  radius a2 (M)                              orig=3.28613  mine=3.28613  rel=+2.56e-11  
+OK  radius a2 (E)                              orig=2.91443  mine=2.91443  rel=+4.79e-10  
+OK  radius a2 (half)                           orig=1.75263  mine=1.75263  rel=+3.49e-13  
+OK  c0 (B)                                     orig=77.1561  mine=77.1561  rel=-4.63e-12  
+OK  c0 (M)                                     orig=119.818  mine=119.818  rel=+2.24e-11  
+OK  c0 (E)                                     orig=106.265  mine=106.265  rel=+4.75e-10  
+OK  c0 (half)                                  orig=63.9037  mine=63.9037  rel=-2.94e-12  
+OK  R_B at ANW (fm)                            orig=0.593929  mine=0.593929  rel=-3.02e-10  
+OK  R_M at ANW (fm)                            orig=0.922327  mine=0.922327  rel=-2.75e-10  
+OK  M_cl at ANW (MeV)                          orig=863.037  mine=863.037  rel=-3.28e-12  
+OK  M_N model (MeV)                            orig=936.381  mine=936.381  rel=-6.44e-11  
+OK  M_Delta model (MeV)                        orig=1229.76  mine=1229.76  rel=-2.36e-10  
+OK  own fit F_pi (938.9, 1232)                 orig=129.26  mine=129.26  rel=+1.98e-10  
+OK  own fit e (938.9, 1232)                    orig=5.44465  mine=5.44465  rel=+1.95e-10  
+OK  proton MR (939 x R_B)                      orig=2.82627  mine=2.82627  rel=-1.35e-12  
+OK  proton MR classical c0/e^2                 orig=2.59763  mine=2.59763  rel=-4.63e-12  
+OK  r_p/lambda_C (data)                        orig=3.99769  mine=3.99769  rel=+3.01e-10  
+OK  E_rot/M at ANW                             orig=0.0849832  mine=0.0849832  rel=-7.80e-10  
+OK  floor (MR)_min, E_rot<=M                   orig=0.757258  mine=0.757258  rel=-3.95e-10  
+OK  floor (MR)_min, E_rot<=0.1M                orig=2.39466  mine=2.39466  rel=-3.95e-10  
+OK  lambda_C/R (LEP)                           orig=3.51054e+06  mine=3.51054e+06  rel=-3.01e-10  
+OK  lambda_C/R (SEED 1e-3 fm)                  orig=386159  mine=386159  rel=-3.01e-10  
+OK  e needed (LEP, B)                          orig=16457.8  mine=16457.8  rel=-1.53e-10  
+OK  e needed (LEP, half)                       orig=14977.9  mine=14977.9  rel=-1.52e-10  
+OK  e needed (LEP, M)                          orig=20509.1  mine=20509.1  rel=-1.39e-10  
+OK  e needed (SEED, B)                         orig=5458.44  mine=5458.44  rel=-1.53e-10  
+OK  F_pi needed (LEP, B) MeV                   orig=230.651  mine=230.651  rel=-1.49e-10  
+OK  E_rot/M at electron fold (LEP, B)          orig=7.06701e+12  mine=7.06701e+12  rel=-1.39e-09  mine computed from I1 and F_pi in MeV, not from the closed formula
+OK  E_rot/M at electron fold (SEED, B)         orig=8.55108e+10  mine=8.55108e+10  rel=-1.39e-09  
+OK  e^2/16pi^2 (LEP, B)                        orig=1.71524e+06  mine=1.71524e+06  rel=-3.05e-10  
+OK  floor / electron MR (LEP)                  orig=2.65838e+06  mine=2.65838e+06  rel=-6.95e-10  
+OK  c0_B(beta=0.0)                             orig=77.1561  mine=77.1561  rel=-4.63e-12  
+OK  c0_B(beta=0.1)                             orig=75.1289  mine=75.1289  rel=-4.27e-12  
+OK  c0_B(beta=0.5)                             orig=65.1822  mine=65.1822  rel=+1.70e-13  
+OK  c0_B(beta=1.0)                             orig=60.1424  mine=60.1424  rel=+5.35e-13  
+OK  c0_B(beta=2.0)                             orig=56.4516  mine=56.4516  rel=-6.57e-10  
+OK  c0_B(beta=4.0)                             orig=54.1514  mine=54.1514  rel=-2.31e-09  
+OK  c0_B(beta=8.0)                             orig=52.8463  mine=52.8463  rel=-5.15e-08  my L-spread is 2e-3 at beta=8, 4e-4 at beta=16
+OK  c0_B(beta=16.0)                            orig=52.1447  mine=52.1517  rel=+1.33e-04  my L-spread is 2e-3 at beta=8, 4e-4 at beta=16
+OK  hopfion E_W (ansatz)                       orig=1.23145  mine=1.23145  rel=-2.39e-08  exact identity E_W = a1/(3 pi^2) (derived here) + 3D finite-difference check
+OK  hopfion R_ring (Ward)                      orig=1.2393  mine=1.2393  rel=-3.91e-06  
+XX  hopfion R_rms energy (Ward)                orig=2.14414  mine=2.06082  rel=-3.89e-02  DISAGREE: original spline has a spurious f ~ a/r tail that inflates the rms; exact = x_E/sqrt2
+XX  hopfion c0 (rms)                           orig=589.661  mine=566.747  rel=-3.89e-02  follows from R_rms
+OK  hopfion c0 (ring)                          orig=340.821  mine=340.82  rel=-3.93e-06  
+XX  hopfion g^2 min (LEP, rms)                 orig=2.07003e+09  mine=1.98959e+09  rel=-3.89e-02  
+OK  DL 2 g^2 M_S                               orig=6.23575  mine=6.23575  rel=+1.42e-15  also: left edge of DL Fig. 3b digitised at g^2E = 6.240
+OK  DL v (degenerate)                          orig=0.745078  mine=0.745078  rel=-2.98e-16  
+OK  DL F at threshold (Fig. 3b)                orig=4.45  mine=4.47838  rel=+6.38e-03  pixel digitisation vs eye reading; stated uncertainty +-0.05
+XX  DL F at g^2E = 11.5 (Fig. 3b)              orig=3.93  mine=3.84595  rel=-2.14e-02  DISAGREE beyond the stated +-0.05: plateau is 3.85, not 3.93
+OK  DL g^2 N_min high energy (Fig. 7b)         orig=3.98  mine=3.97784  rel=-5.43e-04  
+XX  kappa = F/N_pair (high energy)             orig=0.630237  mine=0.616757  rel=-2.14e-02  inherits the F reading
+XX  g^2 for P=0.1                              orig=1.70678  mine=1.67027  rel=-2.14e-02  inherits the F reading (tolerance = 0.05/3.93)
+XX  g^2 for P=0.368                            orig=3.93  mine=3.84595  rel=-2.14e-02  inherits the F reading (tolerance = 0.05/3.93)
+XX  g^2 for P=0.5                              orig=5.66979  mine=5.54853  rel=-2.14e-02  inherits the F reading (tolerance = 0.05/3.93)
+OK  BW sigma_max/(pi r_e^2)                    orig=0.681706  mine=0.681706  rel=+2.20e-11  
+OK  BW sigma_max (mb)                          orig=170.063  mine=170.063  rel=-5.70e-10  
+OK  BW sqrt(s)/2m_e at max                     orig=1.40282  mine=1.40282  rel=+2.56e-06  
+XX  log10 exp(-F/alpha)                        orig=-233.89  mine=-228.888  rel=-2.14e-02  inherits F: -229 not -234
+OK  rho_Lambda (GeV^4)                         orig=2.51518e-47  mine=2.51518e-47  rel=-1.84e-09  mine from SI: 3H0^2/(8 pi G) c^2 (hbar c)^3
+OK  rho_Lambda^(1/4) (meV)                     orig=2.23946  mine=2.23946  rel=-4.60e-10  
+OK  Lambda/m_Pl^2                              orig=2.84454e-122  mine=2.84454e-122  rel=+6.13e-10  
+OK  ratio f_pi (92.07 MeV)/rho_L               orig=2.85637e+42  mine=2.85637e+42  rel=+1.84e-09  
+OK  ratio v_EW 246.22 GeV/rho_L                orig=1.46125e+56  mine=1.46124e+56  rel=-5.68e-06  
+OK  ratio Higgs depth m_H^2 v^2/8/rho_L        orig=4.71755e+54  mine=4.71754e+54  rel=-2.84e-06  
+OK  ratio M_Pl reduced/rho_L                   orig=1.39848e+120  mine=1.39848e+120  rel=+6.13e-10  
+OK  ratio M_Pl unreduced/rho_L                 orig=8.83358e+122  mine=8.83358e+122  rel=+6.13e-10  
+OK  ratio m_e/rho_L                            orig=2.71088e+33  mine=2.71088e+33  rel=+1.84e-09  
+70 quantities, 9 disagree

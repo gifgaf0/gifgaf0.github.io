@@ -1,0 +1,4 @@
+[PASS] symbolic: Dirac matrix with a (0,0,1) familon has det = 0 and rank 2
+[PASS] symbolic: Majorana matrix with (0,0,1) has rank 1
+[PASS] numeric: every lepton class with phi5 or phi10 = Z7 has rank(M_e) <= 2 (1 if M_e is diagonal or both are Z7)
+116 of 161 classes are structurally dead (massless/degenerate charged fermion, degenerate light neutrinos, or singular M_R)

@@ -1,0 +1,36 @@
+  F21: non-degenerate abelian subgroups {'Z7': 1, 'Z3': 7}
+  F21: distinct |U|^2 structures (up to row/col perms): 3
+  F21 best lepton-Dirac: chi2 = 2459 (Z7 x Z7) {'s12sq': np.float64(0.0), 's13sq': np.float64(0.0), 's23sq': np.float64(0.0), 'delta': None, 'J': np.float64(0.0), 'pulls': [np.float64(-28.781250000000025), np.float64(-38.284883720930246), np.float64(-12.847328244274804), 0.0]}
+  F21 best lepton-Majorana: chi2 = 1e+18 (None) None
+  F21 best CKM: chi2 = 1.083e+05 (Z3 x Z3) {'lambda': np.float64(0.41553960659125), 'A': np.float64(2.4065094737976724), 'rhobar': np.float64(1.4478219618694728), 'etabar': np.float64(1.641675794487552)}
+  PSL: non-degenerate abelian subgroups {'Z7': 8, 'Z3': 28, 'Z4': 21, 'Z2xZ2': 14}
+  PSL: distinct |U|^2 structures (up to row/col perms): 26
+  PSL best lepton-Dirac: chi2 = 162.1 (Z3 x Z7) {'s12sq': np.float64(0.2925777593216944), 's13sq': np.float64(0.027001891296071254), 's23sq': np.float64(0.15810400689229748), 'delta': 359.9999999999999, 'J': np.float64(-4.85722573273506e-17), 'pulls': [np.float64(-1.3520850635911519), np.float64(8.373300490725839), np.float64(-9.226625796359597), 2.2408163265306107]}
+  PSL best lepton-Majorana: chi2 = 692.2 (Z3 x Z2xZ2) {'s12sq': np.float64(0.17267316464601165), 's13sq': np.float64(0.03478535875367969), 's23sq': np.float64(0.17267316464601165), 'delta': 290.70481105463443, 'J': np.float64(-0.024056261216234703), 'pulls': [np.float64(-12.593140814436419), np.float64(21.27407528234204), np.float64(-8.892980962305073), 1.3923038088322583]}
+  PSL best CKM: chi2 = 7.716e+04 (Z3 x Z2xZ2) {'lambda': np.float64(0.41553960659124983), 'A': np.float64(2.4065094737976724), 'rhobar': np.float64(0.49999999999999517), 'etabar': np.float64(0.8660254037844375)}
+PASS subgroup counts: F21 Z7 x1, Z3 x7; PSL Z7 x8, Z3 x28, Z4 x21, V4 x14, Z2 x21
+PASS F21: 3 |U|^2 structures; best lepton chi2 = 2459 (+-1); best CKM chi2 ~ 1.08e5 (+-1%)
+PASS F21 has no Klein subgroup -> no Majorana pattern
+FAIL PSL: best lepton (Dirac) chi2 = 200 (Z3 x Z7), best Klein-Majorana 692, best CKM 7.7e4 (each +-1%)
+  PSL best lepton chi2 with delta mapped into [bf-180, bf+180): 200
+  PSL conjugacy classes of non-degenerate abelian subgroups: ['Z7', 'Z3', 'Z4', 'Z2xZ2', 'Z2xZ2']
+  Z2-partial (G_l class, involution orbit under N(G_l)) pairs: 19
+  distinct (G_l type, fixed-column |.|^2) classes: 12
+    G_l=Z2xZ2  col=[np.float64(0.0), np.float64(0.0), np.float64(1.0)] members=2  chi2=  993.414  p=0  s12sq=0.000 s13sq=0.0219 s23sq=0.000 delta=None
+    G_l=Z2xZ2  col=[np.float64(0.0), np.float64(0.5), np.float64(0.5)] members=2  chi2=  362.797  p=0  s12sq=0.489 s13sq=0.0223 s23sq=0.023 delta=359.99999999999966
+    G_l=Z2xZ2  col=[np.float64(0.25), np.float64(0.25), np.float64(0.5)] members=2  chi2=   31.530  p=1.42e-07  s12sq=0.256 s13sq=0.0221 s23sq=0.583 delta=353.97728536133565
+    G_l=Z3     col=[np.float64(0.0), np.float64(0.5), np.float64(0.5)] members=1  chi2=  362.797  p=0  s12sq=0.489 s13sq=0.0223 s23sq=0.023 delta=7.306378205312506e-13
+    G_l=Z3     col=[np.float64(0.034785), np.float64(0.166667), np.float64(0.798548)] members=1  chi2=  133.727  p=0  s12sq=0.184 s13sq=0.0216 s23sq=0.557 delta=176.34354244960258
+    G_l=Z3     col=[np.float64(0.166667), np.float64(0.166667), np.float64(0.666667)] members=2  chi2=    2.541  p=0.281  s12sq=0.318 s13sq=0.0220 s23sq=0.553 delta=283.53811660511735
+    G_l=Z3     col=[np.float64(0.333333), np.float64(0.333333), np.float64(0.333333)] members=2  chi2=    7.628  p=0.0221  s12sq=0.341 s13sq=0.0219 s23sq=0.562 delta=234.67569126450297
+    G_l=Z4     col=[np.float64(0.0), np.float64(0.0), np.float64(1.0)] members=1  chi2=  993.414  p=0  s12sq=0.000 s13sq=0.0220 s23sq=0.000 delta=None
+    G_l=Z4     col=[np.float64(0.0), np.float64(0.5), np.float64(0.5)] members=2  chi2=  362.797  p=0  s12sq=0.489 s13sq=0.0223 s23sq=0.023 delta=359.99999999999903
+    G_l=Z4     col=[np.float64(0.044281), np.float64(0.25), np.float64(0.705719)] members=1  chi2=   35.523  p=1.93e-08  s12sq=0.278 s13sq=0.0221 s23sq=0.350 delta=357.218758447078
+    G_l=Z4     col=[np.float64(0.25), np.float64(0.25), np.float64(0.5)] members=2  chi2=   31.530  p=1.42e-07  s12sq=0.256 s13sq=0.0221 s23sq=0.583 delta=353.97728408933483
+    G_l=Z7     col=[np.float64(0.131512), np.float64(0.204495), np.float64(0.663993)] members=1  chi2=    2.133  p=0.344  s12sq=0.321 s13sq=0.0220 s23sq=0.555 delta=253.46929877332354
+  survivors (p > 0.01): [('Z3', [np.float64(0.166667), np.float64(0.166667), np.float64(0.666667)], np.float64(2.54)), ('Z3', [np.float64(0.333333), np.float64(0.333333), np.float64(0.333333)], np.float64(7.63)), ('Z7', [np.float64(0.131512), np.float64(0.204495), np.float64(0.663993)], np.float64(2.13))]
+PASS Z2-partial: exactly three classes with p > 0.01: Z7 (chi2 2.13), Z3 TM1 (2.54), Z3 TM2 (7.63)
+  next-best chi2 after the survivors: [np.float64(31.53010397794792), np.float64(31.53010397794808), np.float64(35.52288581722726)]
+PASS next class after survivors has chi2 = 31.5
+
+5/6 checks pass

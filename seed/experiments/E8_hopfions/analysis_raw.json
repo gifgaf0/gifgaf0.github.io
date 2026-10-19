@@ -1,9 +1,9 @@
 {
  "conventions": {
-  "energy": "E = 1/(32 sqrt2 pi^2) Int [ d_i phi.d_i phi + 1/2 (d_i phi x d_j phi)^2 ] d^3x (Sutcliffe 2007), Ward bound E >= Q^{3/4}",
-  "lattice": "forward-difference links (sigma term) + 4-corner plaquette average (Skyrme term), exact discrete gradient, field fixed to e3 on the boundary of [-L,L]^3, L = 7.5",
-  "hopf": "Q_W = (1/16 pi^2) Int A.B, B_i = 1/2 eps_ijk phi.(d_j phi x d_k phi), curl A = B (Coulomb gauge, FFT); with W=(phi1+i phi2)/(1+phi3) and Sutcliffe's (Z1,Z0) the rational map W=Z1^n/Z0^m gives Q_W = -nm in the standard orientation of R^3 (the map R^3 -> S^3 of Sutcliffe eq. 3.1 reverses orientation). Q is reported with Sutcliffe's sign, Q = -Q_W.",
-  "position_curve": "preimage of -e3; linking curve: preimage of (sqrt(2mu-mu^2),0,-1+mu), mu=0.1; tube phi3 < -0.8"
+  "energy": "E = 1/(32 sqrt2 pi^2) Int [ d_i phi.d_i phi + 1/2 (d_i phi x d_j phi)^2 ] d^3x (Sutcliffe 2007); Ward conjecture E >= Q^{3/4}; proven E >= (3/16)^{3/8} Q^{3/4}",
+  "lattice": "forward-difference links (sigma term) + 4-corner plaquette average (Skyrme term), exact discrete gradient, field fixed to e3 on the boundary of [-L,L]^3",
+  "hopf": "Q = -(1/16 pi^2) Int A.B, B_i = 1/2 eps_ijk phi.(d_j phi x d_k phi) from plaquette solid angles, curl A = B by FFT (Coulomb gauge); sign chosen so that Sutcliffe's ansatz W = Z1^n/Z0^m has Q = +nm",
+  "curves": "position curve phi = -e3; linking curve phi = (sqrt(2mu-mu^2),0,-1+mu), mu = 0.1; tube phi3 < -0.8"
  },
  "runs": {
   "Q1_A11": {
@@ -21,6 +21,7 @@
     {
      "N": 76,
      "h": 0.20000000000000018,
+     "L": 7.5,
      "E": 1.1965307893624129,
      "E2": 0.5535570406591511,
      "E4": 0.6429737487032617,
@@ -30,72 +31,919 @@
      "minphi3": -0.9866252516144962,
      "t": 70.00000000000321,
      "converged": true,
-     "wall_s": 130.25575852394104
+     "wall_s": 130.25575852394104,
+     "Frms": 0.0003624916428944593,
+     "dt": 0.020000000000000018
+    },
+    {
+     "N": 101,
+     "h": 0.15000000000000036,
+     "L": 7.5,
+     "E": 1.2123477661398068,
+     "E2": 0.57994957189544,
+     "E4": 0.6323981942443667,
+     "virial": -0.0432620274592714,
+     "Q": 0.9957745310383844,
+     "hedgehogs": 0,
+     "minphi3": -0.9998658660672948,
+     "t": 40.020000000001154,
+     "converged": true,
+     "wall_s": 276.6689372062683,
+     "Frms": 0.00032539948936494834,
+     "dt": 0.015000000000000036
+    },
+    {
+     "N": 121,
+     "h": 0.125,
+     "L": 7.5,
+     "E": 1.2180873387840305,
+     "E2": 0.5888814899344814,
+     "E4": 0.6292058488495492,
+     "virial": -0.033104653197792905,
+     "Q": 0.997180901473702,
+     "hedgehogs": 0,
+     "minphi3": -0.9999616209909918,
+     "t": 40.00000000000053,
+     "converged": true,
+     "wall_s": 191.52308344841003,
+     "Frms": 0.00015969090841069713,
+     "dt": 0.0125
+    },
+    {
+     "N": 151,
+     "h": 0.09999999999999964,
+     "L": 7.5,
+     "E": 1.2226212820250035,
+     "E2": 0.5957448121345541,
+     "E4": 0.6268764698904495,
+     "virial": -0.025463042573848124,
+     "Q": 0.9982504069454214,
+     "hedgehogs": 0,
+     "minphi3": -0.9997793374363787,
+     "t": 40.00000000000061,
+     "converged": true,
+     "wall_s": 953.6065926551819,
+     "Frms": 0.00022488542245840634,
+     "dt": 0.009999999999999966
+    }
+   ],
+   "extrapolation": {
+    "E0_h2_two_finest": 1.230681625564511,
+    "E0_h2h4_three_finest": 1.230321468363034,
+    "E0_h2_three_finest_lsq": 1.230877408694383,
+    "E0_h2h4_all_lsq": 1.2302265857283952,
+    "E0_best": 1.230321468363034,
+    "E0_spread": 0.0006508229659878406,
+    "hs": [
+     0.20000000000000018,
+     0.15000000000000036,
+     0.125,
+     0.09999999999999964
+    ]
+   },
+   "field_analysis": {
+    "151": {
+     "Q": 0.9982504069454214,
+     "hedgehogs": 0,
+     "minphi3": -0.9997793374363787,
+     "pos_info": {
+      "n_pierced": 92,
+      "ambiguous_cubes": 0,
+      "unmatched": 0,
+      "open_chains": 0
+     },
+     "link_info": {
+      "n_pierced": 104,
+      "ambiguous_cubes": 0,
+      "unmatched": 0,
+      "open_chains": 0
+     },
+     "n_position": 1,
+     "n_linking": 1,
+     "alexander": [
+      [
+       "1",
+       "1",
+       "1"
+      ]
+     ],
+     "linking_consistent_3_projections": true,
+     "lk_position_position": [
+      [
+       -0.0
+      ]
+     ],
+     "Q_from_linking": 1.0,
+     "twist_per_component": [
+      1.0
+     ],
+     "total_lk_per_component": [
+      1.0
+     ],
+     "loop_shapes": [
+      {
+       "centre": [
+        -9.677584164473039e-06,
+        -6.224104850499382e-06,
+        0.0036772807937477834
+       ],
+       "normal": [
+        1.2510442464023698e-06,
+        -2.0023116833565395e-06,
+        0.9999999999972126
+       ],
+       "mean_radius": 1.1920340462342813,
+       "out_of_plane_rms_over_radius": 0.0007979582281380095,
+       "radius_std_over_mean": 0.0014992626706387734,
+       "length": 7.488389766712187
+      }
+     ],
+     "energy_centre": [
+      -1.9515979556119885e-05,
+      -1.2435536165270572e-05,
+      0.003656718351308033
+     ],
+     "inertia_eigs": [
+      2.0645949180721934,
+      2.0645949180919034,
+      2.484713669980639
+     ],
+     "inertia_axial_asym": 7.932508135204533e-12,
+     "slice_degrees": [
+      0.9999,
+      1.0,
+      0.9999,
+      0.9999,
+      1.0,
+      0.9999
+     ],
+     "slice_min_phi3_on_edges": 0.997682150174785,
+     "tube_components": [
+      1,
+      [
+       2728
+      ]
+     ],
+     "analysis_wall_s": 5.939999341964722,
+     "type": "A1,1",
+     "axial": true
+    },
+    "121": {
+     "Q": 0.997180901473702,
+     "hedgehogs": 0,
+     "minphi3": -0.9999616209909918,
+     "pos_info": {
+      "n_pierced": 76,
+      "ambiguous_cubes": 0,
+      "unmatched": 0,
+      "open_chains": 0
+     },
+     "link_info": {
+      "n_pierced": 86,
+      "ambiguous_cubes": 0,
+      "unmatched": 0,
+      "open_chains": 0
+     },
+     "n_position": 1,
+     "n_linking": 1,
+     "alexander": [
+      [
+       "1",
+       "1",
+       "1"
+      ]
+     ],
+     "linking_consistent_3_projections": true,
+     "lk_position_position": [
+      [
+       -0.0
+      ]
+     ],
+     "Q_from_linking": 1.0,
+     "twist_per_component": [
+      1.0
+     ],
+     "total_lk_per_component": [
+      1.0
+     ],
+     "loop_shapes": [
+      {
+       "centre": [
+        -6.463213666727121e-05,
+        -4.073703849199881e-05,
+        0.005616368478354247
+       ],
+       "normal": [
+        -8.41587928555026e-06,
+        1.3616804941345994e-05,
+        0.9999999998718779
+       ],
+       "mean_radius": 1.178247294956516,
+       "out_of_plane_rms_over_radius": 0.001158643594416782,
+       "radius_std_over_mean": 0.0023928887079757745,
+       "length": 7.401152425468403
+      }
+     ],
+     "energy_centre": [
+      -0.00012872217794267156,
+      -8.203517850148169e-05,
+      0.005567553423266226
+     ],
+     "inertia_eigs": [
+      2.026207199687044,
+      2.0262071997577653,
+      2.435154692672273
+     ],
+     "inertia_axial_asym": 2.9041771712258215e-11,
+     "slice_degrees": [
+      -0.9999,
+      -0.9999,
+      -1.0,
+      -0.9999,
+      -0.9999,
+      -1.0
+     ],
+     "slice_min_phi3_on_edges": 0.9978976272755329,
+     "tube_components": [
+      1,
+      [
+       1383
+      ]
+     ],
+     "analysis_wall_s": 3.436140775680542,
+     "type": "A1,1",
+     "axial": true
+    }
+   }
+  },
+  "Q2_A21": {
+   "map": "A21",
+   "Q_nominal": 2,
+   "Lf": 7.5,
+   "L": 7.5,
+   "offset": "0.05,0.03,0.02",
+   "initial": {
+    "N": 76,
+    "E": 3.070762046468351,
+    "Q": -1.997841767800468
+   },
+   "stages": [
+    {
+     "N": 76,
+     "h": 0.20000000000000018,
+     "L": 7.5,
+     "E": 1.9595243246802052,
+     "E2": 0.9284515401208315,
+     "E4": 1.0310727845593737,
+     "virial": -0.05237048764642917,
+     "Q": 1.9903885418212215,
+     "hedgehogs": 0,
+     "minphi3": -0.9975788014908266,
+     "t": 119.99999999999326,
+     "converged": true,
+     "wall_s": 258.70809602737427,
+     "Frms": 0.0009709742323126278,
+     "dt": 0.020000000000000018
+    },
+    {
+     "N": 101,
+     "h": 0.15000000000000036,
+     "L": 7.5,
+     "E": 1.9794245781581916,
+     "E2": 0.9612880148019428,
+     "E4": 1.018136563356249,
+     "virial": -0.028719734604489122,
+     "Q": 1.995035655415885,
+     "hedgehogs": 0,
+     "minphi3": -0.9999984885902403,
+     "t": 110.05799999999026,
+     "converged": true,
+     "wall_s": 364.5039403438568,
+     "Frms": 8.662037838539346e-05,
+     "dt": 0.010500000000000025
+    },
+    {
+     "N": 121,
+     "h": 0.125,
+     "L": 7.5,
+     "E": 1.9867397520739383,
+     "E2": 0.972790946312735,
+     "E4": 1.0139488057612032,
+     "virial": -0.020716281236887662,
+     "Q": 1.9966532123558371,
+     "hedgehogs": 0,
+     "minphi3": -0.9995288429802496,
+     "t": 40.00000000000053,
+     "converged": true,
+     "wall_s": 399.51756501197815,
+     "Frms": 1.0228245306369973e-05,
+     "dt": 0.0125
+    },
+    {
+     "N": 151,
+     "h": 0.09999999999999964,
+     "L": 7.5,
+     "E": 1.9925289557232517,
+     "E2": 0.9817088339710995,
+     "E4": 1.0108201217521522,
+     "virial": -0.014610220693372953,
+     "Q": 1.9979067307037874,
+     "hedgehogs": 0,
+     "minphi3": -0.9999901479715283,
+     "t": 40.009000000000455,
+     "converged": true,
+     "wall_s": 1594.2369394302368,
+     "Frms": 1.185025874341466e-05,
+     "dt": 0.006999999999999975
+    }
+   ],
+   "extrapolation": {
+    "E0_h2_two_finest": 2.002820873322031,
+    "E0_h2h4_three_finest": 2.002385454110057,
+    "E0_h2_three_finest_lsq": 2.003057569230865,
+    "E0_h2h4_all_lsq": 2.0023468460666827,
+    "E0_best": 2.002385454110057,
+    "E0_spread": 0.0007107231641825251,
+    "hs": [
+     0.20000000000000018,
+     0.15000000000000036,
+     0.125,
+     0.09999999999999964
+    ]
+   },
+   "field_analysis": {
+    "151": {
+     "Q": 1.9979067307037874,
+     "hedgehogs": 0,
+     "minphi3": -0.9999901479715283,
+     "pos_info": {
+      "n_pierced": 174,
+      "ambiguous_cubes": 0,
+      "unmatched": 0,
+      "open_chains": 0
+     },
+     "link_info": {
+      "n_pierced": 172,
+      "ambiguous_cubes": 0,
+      "unmatched": 0,
+      "open_chains": 0
+     },
+     "n_position": 1,
+     "n_linking": 1,
+     "alexander": [
+      [
+       "1",
+       "1",
+       "1"
+      ]
+     ],
+     "linking_consistent_3_projections": true,
+     "lk_position_position": [
+      [
+       -0.0
+      ]
+     ],
+     "Q_from_linking": 2.0,
+     "twist_per_component": [
+      2.0
+     ],
+     "total_lk_per_component": [
+      2.0
+     ],
+     "loop_shapes": [
+      {
+       "centre": [
+        -0.0003610254455460593,
+        0.0002881155079218687,
+        0.00033378686218892885
+       ],
+       "normal": [
+        0.577342595652004,
+        -0.5773488133833303,
+        -0.5773593984085359
+       ],
+       "mean_radius": 1.734835952202053,
+       "out_of_plane_rms_over_radius": 0.0012326591252693406,
+       "radius_std_over_mean": 0.0013908582600675574,
+       "length": 10.903654495183618
+      }
+     ],
+     "energy_centre": [
+      -0.0003916661512054444,
+      0.000246570137781546,
+      0.00033661646067740343
+     ],
+     "inertia_eigs": [
+      2.6255718923140092,
+      2.6255721059848107,
+      3.79034313297584
+     ],
+     "inertia_axial_asym": 5.6372416427859176e-08,
+     "slice_degrees": [
+      0.9999,
+      1.0,
+      0.9999,
+      1.0,
+      0.9999,
+      1.0
+     ],
+     "slice_min_phi3_on_edges": 0.9976989907899737,
+     "tube_components": [
+      1,
+      [
+       3957
+      ]
+     ],
+     "analysis_wall_s": 4.506432771682739,
+     "type": "A2,1",
+     "axial": true
+    },
+    "121": {
+     "Q": 1.9966532123558371,
+     "hedgehogs": 0,
+     "minphi3": -0.9995288429802496,
+     "pos_info": {
+      "n_pierced": 138,
+      "ambiguous_cubes": 0,
+      "unmatched": 0,
+      "open_chains": 0
+     },
+     "link_info": {
+      "n_pierced": 140,
+      "ambiguous_cubes": 0,
+      "unmatched": 0,
+      "open_chains": 0
+     },
+     "n_position": 1,
+     "n_linking": 1,
+     "alexander": [
+      [
+       "1",
+       "1",
+       "1"
+      ]
+     ],
+     "linking_consistent_3_projections": true,
+     "lk_position_position": [
+      [
+       -0.0
+      ]
+     ],
+     "Q_from_linking": 2.0,
+     "twist_per_component": [
+      2.0
+     ],
+     "total_lk_per_component": [
+      2.0
+     ],
+     "loop_shapes": [
+      {
+       "centre": [
+        -0.000366137505652148,
+        0.0002927530452030143,
+        0.0003384319725598947
+       ],
+       "normal": [
+        0.5773417788868421,
+        -0.577348586239667,
+        -0.577360442287861
+       ],
+       "mean_radius": 1.7207543041857392,
+       "out_of_plane_rms_over_radius": 0.0019031633811960268,
+       "radius_std_over_mean": 0.0022007193808816087,
+       "length": 10.818308451006116
+      }
+     ],
+     "energy_centre": [
+      -0.00039801439436153407,
+      0.0002491580367630285,
+      0.00034157568367154065
+     ],
+     "inertia_eigs": [
+      2.5869204729549877,
+      2.586920700590493,
+      3.733742245510073
+     ],
+     "inertia_axial_asym": 6.096711828086875e-08,
+     "slice_degrees": [
+      0.9999,
+      1.0,
+      0.9999,
+      1.0,
+      0.9999,
+      1.0
+     ],
+     "slice_min_phi3_on_edges": 0.997856385580475,
+     "tube_components": [
+      1,
+      [
+       1899
+      ]
+     ],
+     "analysis_wall_s": 1.9998552799224854,
+     "type": "A2,1",
+     "axial": true
+    }
+   }
+  },
+  "Q3_A31": {
+   "map": "A31",
+   "Q_nominal": 3,
+   "Lf": 7.5,
+   "L": 7.5,
+   "offset": "0.05,0.03,0.02",
+   "initial": {
+    "N": 76,
+    "E": 3.889866336071,
+    "Q": -2.9959680400292616
+   },
+   "stages": [
+    {
+     "N": 76,
+     "h": 0.20000000000000018,
+     "L": 7.5,
+     "E": 2.7450326065444512,
+     "E2": 1.3026319073727053,
+     "E4": 1.4424006991717462,
+     "virial": -0.05091698782222737,
+     "Q": 2.9866154947465318,
+     "hedgehogs": 0,
+     "minphi3": -0.9993473888009895,
+     "t": 409.99999999991707,
+     "converged": true,
+     "wall_s": 567.8624873161316,
+     "Frms": 7.596929214213007e-06,
+     "dt": 0.020000000000000018
+    },
+    {
+     "N": 101,
+     "h": 0.15000000000000036,
+     "L": 7.5,
+     "E": 2.7711644232146138,
+     "E2": 1.3450511165386008,
+     "E4": 1.426113306676013,
+     "virial": -0.02925203191060682,
+     "Q": 2.9930594331180553,
+     "hedgehogs": 0,
+     "minphi3": -0.9999997757748728,
+     "t": 50.02500000000153,
+     "converged": true,
+     "wall_s": 283.7107584476471,
+     "Frms": 0.0023484979324415673,
+     "dt": 0.015000000000000036
+    },
+    {
+     "N": 151,
+     "h": 0.09999999999999964,
+     "L": 7.5,
+     "E": 2.7884880142643347,
+     "E2": 1.3719537973939115,
+     "E4": 1.4165342168704231,
+     "virial": -0.015987308981951245,
+     "Q": 2.9970878611722336,
+     "hedgehogs": 0,
+     "minphi3": -0.9999362595621716,
+     "t": 49.99999999999862,
+     "converged": false,
+     "wall_s": 1211.5664012432098,
+     "Frms": 0.006199849926680916,
+     "dt": 0.009999999999999966
+    }
+   ],
+   "extrapolation": {
+    "E0_h2_two_finest": 2.802346887104111,
+    "E0_h2h4_three_finest": 2.801541691732445,
+    "E0_h2_three_finest_lsq": 2.803303518302558,
+    "E0_best": 2.801541691732445,
+    "E0_spread": 0.0017618265701129232,
+    "hs": [
+     0.20000000000000018,
+     0.15000000000000036,
+     0.09999999999999964
+    ]
+   },
+   "field_analysis": {
+    "151": {
+     "Q": 2.9970878611722336,
+     "hedgehogs": 0,
+     "minphi3": -0.9999362595621716,
+     "pos_info": {
+      "n_pierced": 218,
+      "ambiguous_cubes": 0,
+      "unmatched": 0,
+      "open_chains": 0
+     },
+     "link_info": {
+      "n_pierced": 232,
+      "ambiguous_cubes": 0,
+      "unmatched": 0,
+      "open_chains": 0
+     },
+     "n_position": 1,
+     "n_linking": 1,
+     "alexander": [
+      [
+       "1",
+       "1",
+       "1"
+      ]
+     ],
+     "linking_consistent_3_projections": true,
+     "lk_position_position": [
+      [
+       -0.0
+      ]
+     ],
+     "Q_from_linking": 3.0,
+     "twist_per_component": [
+      3.0
+     ],
+     "total_lk_per_component": [
+      3.0
+     ],
+     "loop_shapes": [
+      {
+       "centre": [
+        2.3277993317652328e-05,
+        0.3045991232835735,
+        0.3046609353382753
+       ],
+       "normal": [
+        -0.608812623531782,
+        0.5609627759205679,
+        -0.5609527194513275
+       ],
+       "mean_radius": 2.1080578760999558,
+       "out_of_plane_rms_over_radius": 0.22306526019810305,
+       "radius_std_over_mean": 0.1991367016580705,
+       "length": 14.981346709306399
+      }
+     ],
+     "energy_centre": [
+      -8.192792853240972e-06,
+      0.3882866781093388,
+      0.38838508078611933
+     ],
+     "inertia_eigs": [
+      2.77530877375226,
+      4.355965865512448,
+      5.3839076160103785
+     ],
+     "inertia_axial_asym": 0.37038824660512915,
+     "slice_degrees": [
+      -0.0073,
+      -0.0077,
+      -0.0085,
+      -0.009,
+      -0.0085,
+      -0.0077
+     ],
+     "slice_min_phi3_on_edges": -0.9997327480987684,
+     "tube_components": [
+      1,
+      [
+       5339
+      ]
+     ],
+     "analysis_wall_s": 12.345269441604614,
+     "type": "A~3,1",
+     "axial": false
+    },
+    "101": {
+     "Q": 2.9930594331180553,
+     "hedgehogs": 0,
+     "minphi3": -0.9999997757748728,
+     "pos_info": {
+      "n_pierced": 150,
+      "ambiguous_cubes": 0,
+      "unmatched": 0,
+      "open_chains": 0
+     },
+     "link_info": {
+      "n_pierced": 152,
+      "ambiguous_cubes": 0,
+      "unmatched": 0,
+      "open_chains": 0
+     },
+     "n_position": 1,
+     "n_linking": 1,
+     "alexander": [
+      [
+       "1",
+       "1",
+       "1"
+      ]
+     ],
+     "linking_consistent_3_projections": true,
+     "lk_position_position": [
+      [
+       -0.0
+      ]
+     ],
+     "Q_from_linking": 3.0,
+     "twist_per_component": [
+      3.0
+     ],
+     "total_lk_per_component": [
+      3.0
+     ],
+     "loop_shapes": [
+      {
+       "centre": [
+        -2.841565308268438e-07,
+        0.3667532948698031,
+        0.3668476773064257
+       ],
+       "normal": [
+        0.5290423646599611,
+        -0.6000477714249453,
+        0.6000473717990544
+       ],
+       "mean_radius": 2.0736967666468913,
+       "out_of_plane_rms_over_radius": 0.22344829766474353,
+       "radius_std_over_mean": 0.1907992965527715,
+       "length": 14.715765089970816
+      }
+     ],
+     "energy_centre": [
+      -2.192904943736716e-05,
+      0.39336435986165186,
+      0.39349901634447865
+     ],
+     "inertia_eigs": [
+      2.6909026150927824,
+      4.213566709172943,
+      5.216353260945533
+     ],
+     "inertia_axial_asym": 0.37265806133159324,
+     "slice_degrees": [
+      -0.0172,
+      -0.0175,
+      -0.0181,
+      -0.0186,
+      -0.0181,
+      -0.0175
+     ],
+     "slice_min_phi3_on_edges": -0.9973027951824911,
+     "tube_components": [
+      1,
+      [
+       1502
+      ]
+     ],
+     "analysis_wall_s": 1.0539216995239258,
+     "type": "A~3,1",
+     "axial": false
+    }
+   }
+  },
+  "Q4_A22": {
+   "map": "A22",
+   "Q_nominal": 4,
+   "Lf": 7.5,
+   "L": 7.5,
+   "offset": "0.05,0.03,0.02",
+   "initial": {
+    "N": 76,
+    "E": 5.269939942610207,
+    "Q": -3.995525405193255
+   },
+   "stages": [
+    {
+     "N": 76,
+     "h": 0.20000000000000018,
+     "L": 7.5,
+     "E": 3.442919757053332,
+     "E2": 1.609724619438919,
+     "E4": 1.8331951376144129,
+     "virial": -0.06490726881382623,
+     "Q": 3.9873597622174533,
+     "hedgehogs": 0,
+     "minphi3": -0.9999370710831452,
+     "t": 400.14499999990875,
+     "converged": true,
+     "wall_s": 1039.7823028564453,
+     "Frms": 9.45917110624413e-06,
+     "dt": 0.009800000000000007
     }
    ],
    "extrapolation": {},
-   "curves_finest": {
-    "pos_info": {
-     "n_pierced": 40,
-     "ambiguous_cubes": 0,
-     "unmatched": 0,
-     "open_chains": 0
-    },
-    "link_info": {
-     "n_pierced": 46,
-     "ambiguous_cubes": 0,
-     "unmatched": 0,
-     "open_chains": 0
-    },
-    "n_position": 1,
-    "n_linking": 1,
-    "position_lengths": [
-     6.91808390863283
-    ],
-    "alexander": [
-     [
-      "1",
-      "1",
-      "1"
-     ]
-    ],
-    "linking_matrix_consistent": true,
-    "lk_position_position": [
-     [
+   "field_analysis": {
+    "76": {
+     "Q": 3.9873597622174533,
+     "hedgehogs": 0,
+     "minphi3": -0.9999370710831452,
+     "pos_info": {
+      "n_pierced": 168,
+      "ambiguous_cubes": 0,
+      "unmatched": 0,
+      "open_chains": 0
+     },
+     "link_info": {
+      "n_pierced": 166,
+      "ambiguous_cubes": 0,
+      "unmatched": 0,
+      "open_chains": 0
+     },
+     "n_position": 2,
+     "n_linking": 2,
+     "alexander": [
+      [
+       "1",
+       "1",
+       "1"
+      ],
+      [
+       "1",
+       "1",
+       "1"
+      ]
+     ],
+     "linking_consistent_3_projections": true,
+     "lk_position_position": [
+      [
+       -0.0,
+       -0.0
+      ],
+      [
+       -0.0,
+       -0.0
+      ]
+     ],
+     "Q_from_linking": 4.0,
+     "twist_per_component": [
+      2.0,
       0.0
-     ]
-    ],
-    "lk_position_linking": [
-     [
-      -1.0
-     ]
-    ],
-    "Q_from_linking": -1.0,
-    "twist_per_component": [
-     -1.0
-    ],
-    "total_lk_per_component": [
-     -1.0
-    ]
-   },
-   "tube_components": [
-    1,
-    [
-     322
-    ]
-   ],
-   "energy_centre": [
-    -0.0010910966631198366,
-    -0.0006952924258783173,
-    0.010012060506489832
-   ],
-   "inertia_eigs": [
-    1.8276311948218997,
-    1.8276313788522704,
-    2.1795618244450847
-   ],
-   "inertia_axial_asym": 1.0069337441322097e-07,
-   "inertia_axial_asym_top": 0.16146843904389616
+     ],
+     "total_lk_per_component": [
+      2.0,
+      2.0
+     ],
+     "loop_shapes": [
+      {
+       "centre": [
+        -0.21995486072767334,
+        0.18488524865921055,
+        -0.15448229083505455
+       ],
+       "normal": [
+        0.5768113696740551,
+        -0.5773768446007033,
+        0.5778621142917021
+       ],
+       "mean_radius": 1.6887323269662389,
+       "out_of_plane_rms_over_radius": 0.01707908772915688,
+       "radius_std_over_mean": 0.021718602434837468,
+       "length": 10.663079484417553
+      },
+      {
+       "centre": [
+        0.15445179852170576,
+        -0.18485438169426502,
+        0.21992311290710223
+       ],
+       "normal": [
+        0.5778606049249766,
+        -0.5773780124845456,
+        0.5768117127582758
+       ],
+       "mean_radius": 1.688733637025031,
+       "out_of_plane_rms_over_radius": 0.017078416612742574,
+       "radius_std_over_mean": 0.02171934100278705,
+       "length": 10.66308025437199
+      }
+     ],
+     "energy_centre": [
+      -0.06511394174140078,
+      1.5403440317858273e-05,
+      0.06508243575108957
+     ],
+     "inertia_eigs": [
+      3.0963910157656755,
+      3.0968066128996257,
+      3.7144662271533386
+     ],
+     "inertia_axial_asym": 0.00011188609844182655,
+     "slice_degrees": [
+      -2.0016,
+      -2.0017,
+      -2.0016,
+      -2.0017,
+      -2.0016,
+      -2.0017
+     ],
+     "slice_min_phi3_on_edges": 0.9950874714420408,
+     "tube_components": [
+      1,
+      [
+       1542
+      ]
+     ],
+     "analysis_wall_s": 0.7499339580535889,
+     "type": "A2,2",
+     "axial": true
+    }
+   }
   }
  }
 }

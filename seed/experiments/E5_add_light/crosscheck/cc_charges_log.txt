@@ -1,0 +1,13 @@
+8      (p,q)=(1, 1) dim=  8 C2=3 J=['1/2'] charges=['-1', '0', '1'] integer=True
+10bar  (p,q)=(0, 3) dim= 10 C2=6 J=['1/2'] charges=['-2', '-1', '0', '1'] integer=True
+10     (p,q)=(3, 0) dim= 10 C2=6 J=['3/2'] charges=['-1', '0', '1', '2'] integer=True
+27     (p,q)=(2, 2) dim= 27 C2=8 J=['1/2', '3/2'] charges=['-2', '-1', '0', '1', '2'] integer=True
+(1, 4) (p,q)=(1, 4) dim= 35 C2=12 J=['1/2', '3/2'] charges=['-3', '-2', '-1', '0', '1', '2'] integer=True
+(4, 1) (p,q)=(4, 1) dim= 35 C2=12 J=['3/2', '5/2'] charges=['-2', '-1', '0', '1', '2', '3'] integer=True
+SU(2) I=J: charges {'1/2': ['1', '0'], '3/2': ['2', '1', '0', '-1'], '5/2': ['3', '2', '1', '0', '-1', '-2']}
+Y=1 members obey Q = I3 + B/2: True;  all charges of 8,10,10bar,27 integer: True
+N_c=1: lowest (1, 0) J=['1/2'] Q(Y=N_c/3 states, fixed quark charges)=['-1/3', '2/3']
+N_c=3: lowest (1, 1) J=['1/2'] Q(Y=N_c/3 states, fixed quark charges)=['0', '1']
+N_c=5: lowest (1, 2) J=['1/2'] Q(Y=N_c/3 states, fixed quark charges)=['1/3', '4/3']
+N_c=7: lowest (1, 3) J=['1/2'] Q(Y=N_c/3 states, fixed quark charges)=['2/3', '5/3']
+N_c=9: lowest (1, 4) J=['1/2'] Q(Y=N_c/3 states, fixed quark charges)=['1', '2']

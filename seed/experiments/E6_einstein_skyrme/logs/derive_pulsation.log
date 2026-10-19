@@ -1,0 +1,16 @@
+background G^t_t check: 0   G^x_x check: 0
+O(eps) G_tx - 2 alpha T_tx = 2*alpha*(2*alpha*x**2*m0(x)*Derivative(F0(x), x)*Derivative(u(tau, x), tau) + 4*alpha*m0(x)*sin(F0(x))**2*Derivative(F0(x), x)*Derivative(u(tau, x), tau) - x**3*Derivative(F0(x), x)*Derivative(u(tau, x), tau) - 2*x*sin(F0(x))**2*Derivative(F0(x), x)*Derivative(u(tau, x), tau) + x*Derivative(dm(tau, x), tau))/(x**2*(-2*alpha*m0(x) + x))
+K(x) = dm/u = -(4*alpha*m0(x)*sin(F0(x))**2 - x*(-2*alpha*x*m0(x) + x**2 + 2*sin(F0(x))**2))*Derivative(F0(x), x)/x
+eta' depends on: ['Derivative(F0(x), x)', 'Derivative(u(tau, x), x)', 'F0(x)', 'sin(2*F0(x))', 'sin(F0(x))', 'u(tau, x)']
+matter equation contains eta (undifferentiated) after elimination: False
+remainder (should be 0): 0
+a = sg*(4*alpha*m*sin(F)**2 + x*(2*alpha*m*x - x**2 + cos(2*F) - 1))/x
+b = -sg*(4*alpha*m*x*sin(F)**2 - alpha*x**2*(4*P*m*sin(2*F) + 5*sin(F)**4) - 2*alpha*sin(F)**6 + 2*x**3*(P*sin(2*F) - alpha*m - alpha*x*sin(F)**2 + x))/x**3
+c = sg*(-2*P**2*alpha**2*x**8*cos(2*F) + 2*P**2*alpha**2*x**8 + 26*P**2*alpha**2*x**6*sin(F)**4 + 60*P**2*alpha**2*x**4*sin(F)**6 + 56*P**2*alpha**2*x**2*sin(F)**8 + 16*P**2*alpha**2*sin(F)**10 + 4*P**2*alpha*m*x**5*cos(2*F) + 4*P**2*alpha*m*x**3*cos(2*F) - 4*P**2*alpha*m*x**3 - 2*P**2*alpha*x**8 + 6*P**2*alpha*x**6*cos(2*F) - 6*P**2*alpha*x**6 - 24*P**2*alpha*x**4*sin(F)**4 - 16*P**2*alpha*x**2*sin(F)**6 - 2*P**2*x**6*cos(2*F) - 2*P**2*x**4*cos(2*F) + 2*P**2*x**4 - 8*P*alpha*m*x**4*sin(2*F) + 4*P*alpha*x**7*sin(2*F) + 10*P*alpha*x**5*sin(2*F) - 5*P*alpha*x**5*sin(4*F) + 64*P*alpha*x**3*sin(F)**5*cos(F) + 32*P*alpha*x*sin(F)**7*cos(F) + 4*P*x**5*sin(2*F) + 2*x**6*cos(2*F) - 8*x**4*sin(F)**4 - x**4*cos(2*F) + x**4 - 8*x**2*sin(F)**6 + 4*x**2*sin(F)**4)/(x**4*(x**2 + 2*sin(F)**2))
+d = x*(x**2 + 2*sin(F)**2)/(sg*(-2*alpha*m + x))
+K = -P*(4*alpha*m*sin(F)**2 - x*(-2*alpha*m*x + x**2 + 2*sin(F)**2))/x
+wrote pulsation_coeffs.json
+
+real	1m5.544s
+user	0m47.615s
+sys	0m0.125s

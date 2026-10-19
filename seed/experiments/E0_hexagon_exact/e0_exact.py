@@ -13,7 +13,7 @@ Every decision below is made in exact arithmetic:
 Floats are used only to print a number for a human and to fix one sign
 (G = +i sqrt7 rather than -i sqrt7 under zeta = exp(2 pi i/7)).
 
-Run:   python3 e0_exact.py            (about 1 minute on one core)
+Run:   python3 e0_exact.py            (about 4 s on one core)
 Writes (next to this file): results.json, exact_replica_output.txt,
         hexagon_check_original_output.txt (by running ../../hexagon_check.py).
 """
@@ -1483,7 +1483,7 @@ headline = [
     calib("F21 triplet character on 1A,3A,3B,7A,7B", "3, 0, 0, b7, b7bar; FS indicator 0",
           "3, 0, 0, b7, b7bar: complex", "LNR §5 table [read]; PLAN E0", ok_prefix("F21 classes", "F21 triplet")),
     calib("A5 triplet characters on 1A,2A,3A,5A,5B", "3, -1, 0, (1+-sqrt5)/2; FS indicator +1 (both triplets)",
-          "real, with (1 +- sqrt5)/2", "PLAN E0; LNR abstract", ok_prefix("A5 classes", "A5 triplet 3", "the Galois")),
+          "real, with (1 +- sqrt5)/2", "PLAN E0; LNR §2 (eq. 4 and text: five real irreps, two triplets) [read]", ok_prefix("A5 classes", "A5 triplet 3", "the Galois")),
     calib("Weyl(SU(3)) and Weyl(G2) on the seven points",
           "orders 6, 12; SU(3) turns x->4x,2x keep families; G2 adds 60/180/300 deg = x->5x,6x,3x, swap; "
           "mirrors keeping points 0/3, 0/6", "as SEED §3 / hexagon_check.py", "SEED §3",

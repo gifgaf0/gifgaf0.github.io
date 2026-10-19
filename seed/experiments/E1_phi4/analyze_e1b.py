@@ -72,6 +72,32 @@ out["headline"] = {
                                                      for a, b in zip([[x["lo"], x["hi"]] for x in w[:5]], LIT_WINDOWS))),
 }
 
+# grid-spacing series (dt = 0.4 dx in all three): observed order and Richardson extrapolation
+ser = [t for t in ("dx0.1", "base", "dx0.025") if t in cfg]
+if len(ser) == 3:
+    def q(t, name):
+        s = cfg[t]["summary"]
+        return {"v_c": s["v_c"], "w1_lo": s["two_bounce_windows"][0]["lo"],
+                "w1_hi": s["two_bounce_windows"][0]["hi"]}[name]
+    rich = {}
+    for name in ("v_c", "w1_lo", "w1_hi"):
+        a, b_, c_ = (q(t, name) for t in ser)
+        ratio = (a - b_) / (b_ - c_) if b_ != c_ else float("nan")
+        p = float(np.log2(abs(ratio))) if np.isfinite(ratio) and ratio != 0 else float("nan")
+        p_use = 2.0   # leapfrog time error with dt proportional to dx dominates (4th-order space)
+        ext = c_ + (c_ - b_) / (2 ** p_use - 1)
+        rich[name] = {"dx0.1": a, "dx0.05": b_, "dx0.025": c_, "diff_ratio": float(ratio),
+                      "observed_order": p, "richardson_p2": float(ext),
+                      "uncertainty_est": float(abs(ext - c_) + 1.25e-5)}
+    out["dx_series_richardson"] = rich
+    out["headline"]["v_c_extrapolated"] = rich["v_c"]["richardson_p2"]
+    out["headline"]["first_window_extrapolated"] = [rich["w1_lo"]["richardson_p2"], rich["w1_hi"]["richardson_p2"]]
+    out["headline"]["v_c_extrapolated_verdict"] = ("CALIBRATED" if abs(rich["v_c"]["richardson_p2"] - TARGET_VC) <= TOL_VC
+                                                   else "MISS")
+    print("Richardson:", json.dumps(rich, indent=1))
+if os.path.exists("e1b_dtcheck.json"):
+    out["dt_check"] = json.load(open("e1b_dtcheck.json"))["cases"]
+
 # resonance check: time between first and second bounce at the centre of each main window
 res_rows = []
 for i, ww in enumerate(main_windows(base)[:10]):
@@ -106,7 +132,7 @@ ax.set_yticks(range(7))
 ax.set_yticklabels(["capture", "1", "2", "3", "4", "5", "6+"])
 ax.set_ylabel("bounces before escape")
 ax.set_xlim(0.15, 0.30)
-ax.set_title("E1b: kink-antikink outcome vs initial speed (dx=0.05, x0=12); shaded: literature 2-bounce windows, dotted: v_c=0.2598", fontsize=7.5)
+ax.set_title("E1b: outcome vs initial speed (dx=0.05, x0=12). Shaded: target window 1 and windows 2-5 of an unverified literature list; dotted: target v_c=0.2598", fontsize=7)
 ax = axs[1]
 m = (v > 0.240) & (v < 0.2615)
 for L in range(7):

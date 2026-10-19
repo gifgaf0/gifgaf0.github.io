@@ -1,0 +1,911 @@
+{
+ "experiment": "E8 Faddeev-Skyrme Hopf solitons (Model C), SEED.md sec. 4 and 6C; preregistered in PLAN.md sec. 4 E8",
+ "conventions": {
+  "energy": "E = 1/(32 sqrt2 pi^2) Int [ d_i phi.d_i phi + 1/2 (d_i phi x d_j phi)^2 ] d^3x (Sutcliffe 2007); Ward conjecture E >= Q^{3/4}; proven E >= (3/16)^{3/8} Q^{3/4}",
+  "lattice": "forward-difference links (sigma term) + 4-corner plaquette average (Skyrme term), exact discrete gradient, field fixed to e3 on the boundary of [-L,L]^3",
+  "hopf": "Q = -(1/16 pi^2) Int A.B, B_i = 1/2 eps_ijk phi.(d_j phi x d_k phi) from plaquette solid angles, curl A = B by FFT (Coulomb gauge); sign chosen so that Sutcliffe's ansatz W = Z1^n/Z0^m has Q = +nm",
+  "curves": "position curve phi = -e3; linking curve phi = (sqrt(2mu-mu^2),0,-1+mu), mu = 0.1; tube phi3 < -0.8"
+ },
+ "units": "energies in units of 32 sqrt(2) pi^2 x (sigma-model coupling); dimensionless as in Sutcliffe 2007",
+ "target_source": "Sutcliffe 2007 (arXiv:0705.1468), Table 2: dx = 0.1, 151^3 grid, fixed boundary; absolute energies about 1% low, relative energies about 0.1%",
+ "tolerances": "E_Q within 2% of the table (Q=1-4 required), E_Q/E_1 within 1%, type match, |Q - integer| <= 0.05",
+ "library_tests": {
+  "gradient_rel_err": 6.61363005323699e-10,
+  "continuum_order_ratio_E2": 3.951822963321588,
+  "continuum_order_ratio_E4": 3.806768941568868,
+  "alexander": [
+   "t**2 - t + 1",
+   "1",
+   "t**2 - 3*t + 1"
+  ],
+  "ansatz_energy_quadrature_vs_lattice": {
+   "linear_Lf4": {
+    "E_quadrature": [
+     1.7368573257590636,
+     1.7368573257590616,
+     1.7368573257590785
+    ],
+    "lattice": [
+     [
+      0.20000000000000018,
+      1.71067993842095,
+      -0.015071696995427097
+     ],
+     [
+      0.15000000000000036,
+      1.7182617410576628,
+      -0.010706454943435584
+     ],
+     [
+      0.09999999999999964,
+      1.7256437215570601,
+      -0.006456260992604879
+     ],
+     [
+      0.07500000000000018,
+      1.7288884758001493,
+      -0.00458808552708645
+     ]
+    ]
+   },
+   "gauss_w2": {
+    "E_quadrature": [
+     1.5225976006498694,
+     1.5225976006498663,
+     1.5225976006498918
+    ],
+    "lattice": [
+     [
+      0.20000000000000018,
+      1.5095512994986027,
+      -0.008568449829239544
+     ],
+     [
+      0.15000000000000036,
+      1.515483188135758,
+      -0.004672549405763671
+     ],
+     [
+      0.09999999999999964,
+      1.5195101028504274,
+      -0.0020277831766886134
+     ],
+     [
+      0.07500000000000018,
+      1.5208758989008606,
+      -0.0011307660988670865
+     ]
+    ]
+   }
+  }
+ },
+ "headline": [
+  {
+   "quantity": "E_1 at dx=0.1 (box [-7.5,7.5]^3)",
+   "value": 1.2226212820250035,
+   "target": 1.204,
+   "tolerance": "2%",
+   "verdict": "CALIBRATED",
+   "rel_dev": 0.015466181083890085
+  },
+  {
+   "quantity": "Hopf charge of the Q=1 solution (all grids)",
+   "value": {
+    "0.2000": 0.9915290534550175,
+    "0.1500": 0.9957745310383844,
+    "0.1250": 0.997180901473702,
+    "0.1000": 0.9982504069454214
+   },
+   "target": 1,
+   "tolerance": "0.05",
+   "verdict": "CALIBRATED"
+  },
+  {
+   "quantity": "configuration type at Q=1",
+   "value": "A1,1",
+   "target": "A1,1",
+   "tolerance": "same type",
+   "verdict": "CALIBRATED"
+  },
+  {
+   "quantity": "E_2 at dx=0.1 (box [-7.5,7.5]^3)",
+   "value": 1.9925289557232517,
+   "target": 1.967,
+   "tolerance": "2%",
+   "verdict": "CALIBRATED",
+   "rel_dev": 0.012978625177047176
+  },
+  {
+   "quantity": "E_2/E_1 at dx=0.1",
+   "value": 1.6297188549041657,
+   "target": 1.6337209302325582,
+   "tolerance": "1%",
+   "verdict": "CALIBRATED",
+   "rel_dev": -0.002449668884282885
+  },
+  {
+   "quantity": "Hopf charge of the Q=2 solution (all grids)",
+   "value": {
+    "0.2000": 1.9903885418212215,
+    "0.1500": 1.995035655415885,
+    "0.1250": 1.9966532123558371,
+    "0.1000": 1.9979067307037874
+   },
+   "target": 2,
+   "tolerance": "0.05",
+   "verdict": "CALIBRATED"
+  },
+  {
+   "quantity": "configuration type at Q=2",
+   "value": "A2,1",
+   "target": "A2,1",
+   "tolerance": "same type",
+   "verdict": "CALIBRATED"
+  },
+  {
+   "quantity": "E_3 at dx=0.1 (box [-7.5,7.5]^3)",
+   "value": 2.7884880142643347,
+   "target": 2.754,
+   "tolerance": "2%",
+   "verdict": "CALIBRATED",
+   "rel_dev": 0.012522880996490349
+  },
+  {
+   "quantity": "E_3/E_1 at dx=0.1",
+   "value": 2.2807455221504216,
+   "target": 2.287375415282392,
+   "tolerance": "1%",
+   "verdict": "CALIBRATED",
+   "rel_dev": -0.002898471797709634
+  },
+  {
+   "quantity": "Hopf charge of the Q=3 solution (all grids)",
+   "value": {
+    "0.2000": 2.9866154947465318,
+    "0.1500": 2.9930594331180553,
+    "0.1000": 2.9970878611722336
+   },
+   "target": 3,
+   "tolerance": "0.05",
+   "verdict": "CALIBRATED"
+  },
+  {
+   "quantity": "configuration type at Q=3",
+   "value": "A~3,1",
+   "target": "A~3,1",
+   "tolerance": "same type",
+   "verdict": "CALIBRATED"
+  },
+  {
+   "quantity": "Hopf charge of the Q=4 solution (all grids)",
+   "value": {
+    "0.2000": 3.9873597622174533
+   },
+   "target": 4,
+   "tolerance": "0.05",
+   "verdict": "CALIBRATED"
+  },
+  {
+   "quantity": "configuration type at Q=4",
+   "value": "A2,2",
+   "target": "A2,2",
+   "tolerance": "same type",
+   "verdict": "CALIBRATED"
+  }
+ ],
+ "per_charge": {
+  "1": {
+   "run": "Q1_A11",
+   "initial_map": "A11",
+   "Q_nominal": 1,
+   "L": 7.5,
+   "E_by_h": {
+    "0.2000": 1.1965307893624129,
+    "0.1500": 1.2123477661398068,
+    "0.1250": 1.2180873387840305,
+    "0.1000": 1.2226212820250035
+   },
+   "E2_by_h": {
+    "0.2000": 0.5535570406591511,
+    "0.1500": 0.57994957189544,
+    "0.1250": 0.5888814899344814,
+    "0.1000": 0.5957448121345541
+   },
+   "E4_by_h": {
+    "0.2000": 0.6429737487032617,
+    "0.1500": 0.6323981942443667,
+    "0.1250": 0.6292058488495492,
+    "0.1000": 0.6268764698904495
+   },
+   "virial_by_h": {
+    "0.2000": -0.07472996837110851,
+    "0.1500": -0.0432620274592714,
+    "0.1250": -0.033104653197792905,
+    "0.1000": -0.025463042573848124
+   },
+   "Q_by_h": {
+    "0.2000": 0.9915290534550175,
+    "0.1500": 0.9957745310383844,
+    "0.1250": 0.997180901473702,
+    "0.1000": 0.9982504069454214
+   },
+   "hedgehogs_by_h": {
+    "0.2000": 0,
+    "0.1500": 0,
+    "0.1250": 0,
+    "0.1000": 0
+   },
+   "minphi3_by_h": {
+    "0.2000": -0.9866252516144962,
+    "0.1500": -0.9998658660672948,
+    "0.1250": -0.9999616209909918,
+    "0.1000": -0.9997793374363787
+   },
+   "converged_by_h": {
+    "0.2000": true,
+    "0.1500": true,
+    "0.1250": true,
+    "0.1000": true
+   },
+   "flow_time_by_h": {
+    "0.2000": 70.00000000000321,
+    "0.1500": 40.020000000001154,
+    "0.1250": 40.00000000000053,
+    "0.1000": 40.00000000000061
+   },
+   "wall_s_by_h": {
+    "0.2000": 130.25575852394104,
+    "0.1500": 276.6689372062683,
+    "0.1250": 191.52308344841003,
+    "0.1000": 953.6065926551819
+   },
+   "extrapolation": {
+    "E0_h2_two_finest": 1.230681625564511,
+    "E0_h2h4_three_finest": 1.230321468363034,
+    "E0_h2_three_finest_lsq": 1.230877408694383,
+    "E0_h2h4_all_lsq": 1.2302265857283952,
+    "E0_best": 1.230321468363034,
+    "E0_spread": 0.0006508229659878406,
+    "hs": [
+     0.20000000000000018,
+     0.15000000000000036,
+     0.125,
+     0.09999999999999964
+    ]
+   },
+   "E_target": 1.204,
+   "type_target": "A1,1",
+   "ward_bound": 1.0,
+   "proven_bound": 0.5337961990491757,
+   "h_finest": 0.09999999999999964,
+   "type_found": "A1,1",
+   "type_found_by_N": {
+    "151": "A1,1",
+    "121": "A1,1"
+   },
+   "type_details_finest": {
+    "n_position": 1,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk_position_position": [
+     [
+      -0.0
+     ]
+    ],
+    "Q_from_linking": 1.0,
+    "twist_per_component": [
+     1.0
+    ],
+    "total_lk_per_component": [
+     1.0
+    ],
+    "slice_degrees": [
+     0.9999,
+     1.0,
+     0.9999,
+     0.9999,
+     1.0,
+     0.9999
+    ],
+    "inertia_eigs": [
+     2.0645949180721934,
+     2.0645949180919034,
+     2.484713669980639
+    ],
+    "inertia_axial_asym": 7.932508135204533e-12,
+    "loop_shapes": [
+     {
+      "centre": [
+       -9.677584164473039e-06,
+       -6.224104850499382e-06,
+       0.0036772807937477834
+      ],
+      "normal": [
+       1.2510442464023698e-06,
+       -2.0023116833565395e-06,
+       0.9999999999972126
+      ],
+      "mean_radius": 1.1920340462342813,
+      "out_of_plane_rms_over_radius": 0.0007979582281380095,
+      "radius_std_over_mean": 0.0014992626706387734,
+      "length": 7.488389766712187
+     }
+    ],
+    "tube_components": [
+     1,
+     [
+      2728
+     ]
+    ],
+    "linking_consistent_3_projections": true,
+    "pos_info": {
+     "n_pierced": 92,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    },
+    "link_info": {
+     "n_pierced": 104,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    }
+   },
+   "verdict_type": "CALIBRATED",
+   "Q_max_dev_from_integer": 0.008470946544982483,
+   "verdict_Q": "CALIBRATED",
+   "E_h01": 1.2226212820250035,
+   "E_over_Q34_h01": 1.2226212820250035,
+   "E_rel_dev_h01": 0.015466181083890085,
+   "verdict_E": "CALIBRATED",
+   "E_over_E1_h01": 1.0,
+   "E_over_E1_target": 1.0,
+   "E_over_QE1_h01": 1.0,
+   "ratio_rel_dev": 0.0,
+   "verdict_ratio": "CALIBRATED",
+   "E_continuum_est": 1.230321468363034,
+   "E_continuum_spread": 0.0006508229659878406,
+   "E_over_E1_continuum": 1.0
+  },
+  "2": {
+   "run": "Q2_A21",
+   "initial_map": "A21",
+   "Q_nominal": 2,
+   "L": 7.5,
+   "E_by_h": {
+    "0.2000": 1.9595243246802052,
+    "0.1500": 1.9794245781581916,
+    "0.1250": 1.9867397520739383,
+    "0.1000": 1.9925289557232517
+   },
+   "E2_by_h": {
+    "0.2000": 0.9284515401208315,
+    "0.1500": 0.9612880148019428,
+    "0.1250": 0.972790946312735,
+    "0.1000": 0.9817088339710995
+   },
+   "E4_by_h": {
+    "0.2000": 1.0310727845593737,
+    "0.1500": 1.018136563356249,
+    "0.1250": 1.0139488057612032,
+    "0.1000": 1.0108201217521522
+   },
+   "virial_by_h": {
+    "0.2000": -0.05237048764642917,
+    "0.1500": -0.028719734604489122,
+    "0.1250": -0.020716281236887662,
+    "0.1000": -0.014610220693372953
+   },
+   "Q_by_h": {
+    "0.2000": 1.9903885418212215,
+    "0.1500": 1.995035655415885,
+    "0.1250": 1.9966532123558371,
+    "0.1000": 1.9979067307037874
+   },
+   "hedgehogs_by_h": {
+    "0.2000": 0,
+    "0.1500": 0,
+    "0.1250": 0,
+    "0.1000": 0
+   },
+   "minphi3_by_h": {
+    "0.2000": -0.9975788014908266,
+    "0.1500": -0.9999984885902403,
+    "0.1250": -0.9995288429802496,
+    "0.1000": -0.9999901479715283
+   },
+   "converged_by_h": {
+    "0.2000": true,
+    "0.1500": true,
+    "0.1250": true,
+    "0.1000": true
+   },
+   "flow_time_by_h": {
+    "0.2000": 119.99999999999326,
+    "0.1500": 110.05799999999026,
+    "0.1250": 40.00000000000053,
+    "0.1000": 40.009000000000455
+   },
+   "wall_s_by_h": {
+    "0.2000": 258.70809602737427,
+    "0.1500": 364.5039403438568,
+    "0.1250": 399.51756501197815,
+    "0.1000": 1594.2369394302368
+   },
+   "extrapolation": {
+    "E0_h2_two_finest": 2.002820873322031,
+    "E0_h2h4_three_finest": 2.002385454110057,
+    "E0_h2_three_finest_lsq": 2.003057569230865,
+    "E0_h2h4_all_lsq": 2.0023468460666827,
+    "E0_best": 2.002385454110057,
+    "E0_spread": 0.0007107231641825251,
+    "hs": [
+     0.20000000000000018,
+     0.15000000000000036,
+     0.125,
+     0.09999999999999964
+    ]
+   },
+   "E_target": 1.967,
+   "type_target": "A2,1",
+   "ward_bound": 1.681792830507429,
+   "proven_bound": 0.8977346205130202,
+   "h_finest": 0.09999999999999964,
+   "type_found": "A2,1",
+   "type_found_by_N": {
+    "151": "A2,1",
+    "121": "A2,1"
+   },
+   "type_details_finest": {
+    "n_position": 1,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk_position_position": [
+     [
+      -0.0
+     ]
+    ],
+    "Q_from_linking": 2.0,
+    "twist_per_component": [
+     2.0
+    ],
+    "total_lk_per_component": [
+     2.0
+    ],
+    "slice_degrees": [
+     0.9999,
+     1.0,
+     0.9999,
+     1.0,
+     0.9999,
+     1.0
+    ],
+    "inertia_eigs": [
+     2.6255718923140092,
+     2.6255721059848107,
+     3.79034313297584
+    ],
+    "inertia_axial_asym": 5.6372416427859176e-08,
+    "loop_shapes": [
+     {
+      "centre": [
+       -0.0003610254455460593,
+       0.0002881155079218687,
+       0.00033378686218892885
+      ],
+      "normal": [
+       0.577342595652004,
+       -0.5773488133833303,
+       -0.5773593984085359
+      ],
+      "mean_radius": 1.734835952202053,
+      "out_of_plane_rms_over_radius": 0.0012326591252693406,
+      "radius_std_over_mean": 0.0013908582600675574,
+      "length": 10.903654495183618
+     }
+    ],
+    "tube_components": [
+     1,
+     [
+      3957
+     ]
+    ],
+    "linking_consistent_3_projections": true,
+    "pos_info": {
+     "n_pierced": 174,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    },
+    "link_info": {
+     "n_pierced": 172,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    }
+   },
+   "verdict_type": "CALIBRATED",
+   "Q_max_dev_from_integer": 0.00961145817877851,
+   "verdict_Q": "CALIBRATED",
+   "E_h01": 1.9925289557232517,
+   "E_over_Q34_h01": 1.1847648054975164,
+   "E_rel_dev_h01": 0.012978625177047176,
+   "verdict_E": "CALIBRATED",
+   "E_over_E1_h01": 1.6297188549041657,
+   "E_over_E1_target": 1.6337209302325582,
+   "E_over_QE1_h01": 0.8148594274520828,
+   "ratio_rel_dev": -0.002449668884282885,
+   "verdict_ratio": "CALIBRATED",
+   "E_continuum_est": 2.002385454110057,
+   "E_continuum_spread": 0.0007107231641825251,
+   "E_over_E1_continuum": 1.627530288302836
+  },
+  "3": {
+   "run": "Q3_A31",
+   "initial_map": "A31",
+   "Q_nominal": 3,
+   "L": 7.5,
+   "E_by_h": {
+    "0.2000": 2.7450326065444512,
+    "0.1500": 2.7711644232146138,
+    "0.1000": 2.7884880142643347
+   },
+   "E2_by_h": {
+    "0.2000": 1.3026319073727053,
+    "0.1500": 1.3450511165386008,
+    "0.1000": 1.3719537973939115
+   },
+   "E4_by_h": {
+    "0.2000": 1.4424006991717462,
+    "0.1500": 1.426113306676013,
+    "0.1000": 1.4165342168704231
+   },
+   "virial_by_h": {
+    "0.2000": -0.05091698782222737,
+    "0.1500": -0.02925203191060682,
+    "0.1000": -0.015987308981951245
+   },
+   "Q_by_h": {
+    "0.2000": 2.9866154947465318,
+    "0.1500": 2.9930594331180553,
+    "0.1000": 2.9970878611722336
+   },
+   "hedgehogs_by_h": {
+    "0.2000": 0,
+    "0.1500": 0,
+    "0.1000": 0
+   },
+   "minphi3_by_h": {
+    "0.2000": -0.9993473888009895,
+    "0.1500": -0.9999997757748728,
+    "0.1000": -0.9999362595621716
+   },
+   "converged_by_h": {
+    "0.2000": true,
+    "0.1500": true,
+    "0.1000": false
+   },
+   "flow_time_by_h": {
+    "0.2000": 409.99999999991707,
+    "0.1500": 50.02500000000153,
+    "0.1000": 49.99999999999862
+   },
+   "wall_s_by_h": {
+    "0.2000": 567.8624873161316,
+    "0.1500": 283.7107584476471,
+    "0.1000": 1211.5664012432098
+   },
+   "extrapolation": {
+    "E0_h2_two_finest": 2.802346887104111,
+    "E0_h2h4_three_finest": 2.801541691732445,
+    "E0_h2_three_finest_lsq": 2.803303518302558,
+    "E0_best": 2.801541691732445,
+    "E0_spread": 0.0017618265701129232,
+    "hs": [
+     0.20000000000000018,
+     0.15000000000000036,
+     0.09999999999999964
+    ]
+   },
+   "E_target": 2.754,
+   "type_target": "A~3,1",
+   "ward_bound": 2.2795070569547775,
+   "proven_bound": 1.2167922027082332,
+   "h_finest": 0.09999999999999964,
+   "type_found": "A~3,1",
+   "type_found_by_N": {
+    "151": "A~3,1",
+    "101": "A~3,1"
+   },
+   "type_details_finest": {
+    "n_position": 1,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk_position_position": [
+     [
+      -0.0
+     ]
+    ],
+    "Q_from_linking": 3.0,
+    "twist_per_component": [
+     3.0
+    ],
+    "total_lk_per_component": [
+     3.0
+    ],
+    "slice_degrees": [
+     -0.0073,
+     -0.0077,
+     -0.0085,
+     -0.009,
+     -0.0085,
+     -0.0077
+    ],
+    "inertia_eigs": [
+     2.77530877375226,
+     4.355965865512448,
+     5.3839076160103785
+    ],
+    "inertia_axial_asym": 0.37038824660512915,
+    "loop_shapes": [
+     {
+      "centre": [
+       2.3277993317652328e-05,
+       0.3045991232835735,
+       0.3046609353382753
+      ],
+      "normal": [
+       -0.608812623531782,
+       0.5609627759205679,
+       -0.5609527194513275
+      ],
+      "mean_radius": 2.1080578760999558,
+      "out_of_plane_rms_over_radius": 0.22306526019810305,
+      "radius_std_over_mean": 0.1991367016580705,
+      "length": 14.981346709306399
+     }
+    ],
+    "tube_components": [
+     1,
+     [
+      5339
+     ]
+    ],
+    "linking_consistent_3_projections": true,
+    "pos_info": {
+     "n_pierced": 218,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    },
+    "link_info": {
+     "n_pierced": 232,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    }
+   },
+   "verdict_type": "CALIBRATED",
+   "Q_max_dev_from_integer": 0.013384505253468237,
+   "verdict_Q": "CALIBRATED",
+   "E_h01": 2.7884880142643347,
+   "E_over_Q34_h01": 1.2232855370009301,
+   "E_rel_dev_h01": 0.012522880996490349,
+   "verdict_E": "CALIBRATED",
+   "E_over_E1_h01": 2.2807455221504216,
+   "E_over_E1_target": 2.287375415282392,
+   "E_over_QE1_h01": 0.7602485073834739,
+   "ratio_rel_dev": -0.002898471797709634,
+   "verdict_ratio": "CALIBRATED",
+   "E_continuum_est": 2.801541691732445,
+   "E_continuum_spread": 0.0017618265701129232,
+   "E_over_E1_continuum": 2.2770810424530343
+  },
+  "4": {
+   "run": "Q4_A22",
+   "initial_map": "A22",
+   "Q_nominal": 4,
+   "L": 7.5,
+   "E_by_h": {
+    "0.2000": 3.442919757053332
+   },
+   "E2_by_h": {
+    "0.2000": 1.609724619438919
+   },
+   "E4_by_h": {
+    "0.2000": 1.8331951376144129
+   },
+   "virial_by_h": {
+    "0.2000": -0.06490726881382623
+   },
+   "Q_by_h": {
+    "0.2000": 3.9873597622174533
+   },
+   "hedgehogs_by_h": {
+    "0.2000": 0
+   },
+   "minphi3_by_h": {
+    "0.2000": -0.9999370710831452
+   },
+   "converged_by_h": {
+    "0.2000": true
+   },
+   "flow_time_by_h": {
+    "0.2000": 400.14499999990875
+   },
+   "wall_s_by_h": {
+    "0.2000": 1039.7823028564453
+   },
+   "extrapolation": {},
+   "E_target": 3.445,
+   "type_target": "A2,2",
+   "ward_bound": 2.8284271247461903,
+   "proven_bound": 1.5098036484771051,
+   "h_finest": 0.20000000000000018,
+   "type_found": "A2,2",
+   "type_found_by_N": {
+    "76": "A2,2"
+   },
+   "type_details_finest": {
+    "n_position": 2,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ],
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk_position_position": [
+     [
+      -0.0,
+      -0.0
+     ],
+     [
+      -0.0,
+      -0.0
+     ]
+    ],
+    "Q_from_linking": 4.0,
+    "twist_per_component": [
+     2.0,
+     0.0
+    ],
+    "total_lk_per_component": [
+     2.0,
+     2.0
+    ],
+    "slice_degrees": [
+     -2.0016,
+     -2.0017,
+     -2.0016,
+     -2.0017,
+     -2.0016,
+     -2.0017
+    ],
+    "inertia_eigs": [
+     3.0963910157656755,
+     3.0968066128996257,
+     3.7144662271533386
+    ],
+    "inertia_axial_asym": 0.00011188609844182655,
+    "loop_shapes": [
+     {
+      "centre": [
+       -0.21995486072767334,
+       0.18488524865921055,
+       -0.15448229083505455
+      ],
+      "normal": [
+       0.5768113696740551,
+       -0.5773768446007033,
+       0.5778621142917021
+      ],
+      "mean_radius": 1.6887323269662389,
+      "out_of_plane_rms_over_radius": 0.01707908772915688,
+      "radius_std_over_mean": 0.021718602434837468,
+      "length": 10.663079484417553
+     },
+     {
+      "centre": [
+       0.15445179852170576,
+       -0.18485438169426502,
+       0.21992311290710223
+      ],
+      "normal": [
+       0.5778606049249766,
+       -0.5773780124845456,
+       0.5768117127582758
+      ],
+      "mean_radius": 1.688733637025031,
+      "out_of_plane_rms_over_radius": 0.017078416612742574,
+      "radius_std_over_mean": 0.02171934100278705,
+      "length": 10.66308025437199
+     }
+    ],
+    "tube_components": [
+     1,
+     [
+      1542
+     ]
+    ],
+    "linking_consistent_3_projections": true,
+    "pos_info": {
+     "n_pierced": 168,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    },
+    "link_info": {
+     "n_pierced": 166,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    }
+   },
+   "verdict_type": "CALIBRATED",
+   "Q_max_dev_from_integer": 0.012640237782546748,
+   "verdict_Q": "CALIBRATED"
+  }
+ },
+ "box_study": {},
+ "seed_claims": {
+  "E2_lt_2E1": {
+   "E2": 1.9925289557232517,
+   "twoE1": 2.445242564050007,
+   "ratio": 0.8148594274520828,
+   "holds": true
+  },
+  "E_over_Q34": {
+   "1": 1.2226212820250035,
+   "2": 1.1847648054975164,
+   "3": 1.2232855370009301
+  },
+  "E_over_QE1": {
+   "1": 1.0,
+   "2": 0.8148594274520828,
+   "3": 0.7602485073834739
+  },
+  "above_ward_and_proven_bounds": {
+   "1": true,
+   "2": true,
+   "3": true
+  },
+  "power_law_fit": {
+   "Q": [
+    1,
+    2,
+    3
+   ],
+   "p_ours": 0.74555488754298,
+   "c_ours": 1.2133058798012768,
+   "p_sutcliffe_same_Q": 0.7482935395461902,
+   "c_sutcliffe_same_Q": 1.1950050569342352
+  },
+  "E_over_Q_monotone_decreasing": true,
+  "E_over_Q": {
+   "1": 1.2226212820250035,
+   "2": 0.9962644778616259,
+   "3": 0.9294960047547782
+  }
+ }
+}

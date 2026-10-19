@@ -1,0 +1,42 @@
+M_Maj(alpha=-1) = [[1, -1, -1], [-1, 1, -1], [-1, -1, 1]]
+M_Dir(beta=-1)  = [[-1, 0, 0], [0, 1, -2], [0, -2, 1]]
+M_nu(alpha=beta=-1) = [[0, 1/2, 1/2], [1/2, -2, 5/2], [1/2, 5/2, -2]]
+PASS M_Maj = [[1,-1,-1],[-1,1,-1],[-1,-1,1]] (LNR)
+PASS M_Dir = [[-1,0,0],[0,1,-2],[0,-2,1]] (LNR)
+PASS M_nu = +-(1/2)[[0,1,1],[1,-4,5],[1,5,-4]] (LNR)
+eigenvalues: [-1/2, 1, -9/2]
+PASS eigenvalue ratios 1 : -2 : 9
+Dm31^2/Dm21^2 = 80/3 26.666666666666668
+PASS Dm31^2/Dm21^2 = 80/3
+U_TB^T M_nu(alpha, beta=-1) U_TB diag = [1/(alpha - 1), -1/(2*alpha + 1), 9/(alpha - 1)]
+PASS beta=-1: M_nu exactly tri-bimaximal for every alpha (off-diagonal of U_TB^T M U_TB vanish)
+PASS |m3/m1| = 9 for every alpha
+PASS masses proportional to (1/(a-1), -1/(2a+1), 9/(a-1)) with one common factor
+TBM criteria: M12-M13 = 0  M22-M33 = 0  M23-(M11+M12-M22) = -2*(alpha - 2*beta)*(beta + 1)/((alpha - 1)*(2*alpha + 1))
+third criterion solved for beta: [-1, alpha/2]
+PASS TBM criteria 1,2 hold identically; criterion 3 fixes beta = -1 (LNR)
+<lambdifygenerated-1>:2: RuntimeWarning: divide by zero encountered in scalar divide
+  return 80/((alpha - 1)**2*((2*alpha + 1)**(-2.0) - 1/(alpha - 1)**2))
+alpha windows (beta=-1, NO, r in [21.3,45.1]): [(-1.1435, -0.9462), (-0.2202, -0.1537)]
+PASS alpha windows = (-1.15,-0.95) and (-0.22,-0.15) to 0.01 (LNR)
+alpha giving r = 33.832: [-1.0620942749912388, -0.17870395117283167]
+ haze pole_sign+1 {'lam': 0.0695437394192857, 'th13': 2.8186481202532123, 'th12': 32.44232462799684, 's12sq': np.float64(0.287778985780528), 's13sq': np.float64(0.002418165846208756), 's23sq': np.float64(0.4987879862265838)}
+ haze pole_sign-1 {'lam': 0.0695437394192857, 'th13': 2.8186481202532123, 'th12': 38.08645473751247, 's12sq': np.float64(0.3805036992506939), 's13sq': np.float64(0.002418165846208756), 's23sq': np.float64(0.4987879862265838)}
+ haze pole_LNR_sign_is_plus True
+ haze MSbar_MZ_sign+1 {'lam': 0.06889753457863275, 'th13': 2.7924362083504497, 'th12': 32.468631095052224, 's12sq': np.float64(0.28819480084569005), 's13sq': np.float64(0.002373435135506948), 's23sq': np.float64(0.49881045913416044)}
+ haze MSbar_MZ_sign-1 {'lam': 0.06889753457863275, 'th13': 2.7924362083504497, 'th12': 38.06014827045709, 's12sq': np.float64(0.3800579203087628), 's13sq': np.float64(0.002373435135506948), 's23sq': np.float64(0.49881045913416044)}
+ haze MSbar_MZ_LNR_sign_is_plus True
+PASS theta13 = 2.8 deg (+-0.05) with lambda_e = sqrt(me/mmu), pole masses
+PASS theta12 = 32.4 deg (+-0.05) with the same haze
+PASS LNR's displayed U_MNSP (1,1) entry sqrt(2/3)(1+lam/2) fixes the haze sign (no free choice)
+NuFIT r = 33.832 +- 0.916; LNR+haze: s13sq=0.00242 s12sq=0.2878 s23sq=0.4988
+pulls: {'s13sq': np.float64(-34.07), 's12sq': np.float64(-1.8), 's23sq': np.float64(-1.42), 's23sq_1sigma': np.float64(-4.15), 'r': -7.82}
+PASS LNR+haze sin^2 th13 = 0.00242 and pull -34.1 (3sigma/3 convention)
+PASS r: 26.67 vs 33.83+-0.92, pull -7.8
+PASS s12^2 = 0.288 (pull -1.8); s23^2 = 0.499 (pull -1.4, or -4.1 with 1 sigma)
+PSL elements g with g^T M_nu g = M_nu: 1 ; up to a phase: 1
+PASS M_nu invariant under TBM Klein pair S and (-)mu-tau
+PASS only the identity of the seed's PSL(2,7) leaves LNR's M_nu invariant; S and mu-tau not in PSL
+stabilizer sizes in PSL for alpha in (-1.0621,-0.1787,-0.6,0.3): [1, 1, 1, 1]
+
+18/18 checks pass

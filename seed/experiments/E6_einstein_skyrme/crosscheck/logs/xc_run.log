@@ -1,0 +1,20 @@
+[    2.4s] cont step 5 alpha=0.01907718 b=2.167585 m=5.433559 xhalf=0.7045 L=1.5000 ds=0.6 lower
+[    3.1s]   regrid -> L=0.6595
+[    5.0s] cont step 10 alpha=0.03751064 b=2.566918 m=5.031504 xhalf=0.4754 L=0.6595 ds=0.6 lower
+[    6.9s] cont step 15 alpha=0.04016706 b=2.817360 m=4.961597 xhalf=0.3958 L=0.6595 ds=0.1 lower
+[    8.7s] cont step 20 alpha=0.04034796 b=2.976668 m=4.956344 xhalf=0.3578 L=0.6595 ds=0.1 upper
+[   10.2s] cont step 25 alpha=0.03974538 b=3.159690 m=4.976562 xhalf=0.3225 L=0.6595 ds=0.1 upper
+[   11.5s]   regrid -> L=0.2964
+[   11.9s] cont step 30 alpha=0.03847695 b=3.363343 m=5.023821 xhalf=0.2906 L=0.2964 ds=0.1 upper
+[   13.7s] cont step 35 alpha=0.03512942 b=3.768726 m=5.172100 xhalf=0.2429 L=0.2964 ds=0.286 upper
+[   15.7s] cont step 40 alpha=0.02168893 b=5.529643 m=6.208848 xhalf=0.1418 L=0.2964 ds=0.6 upper
+[   16.3s]   regrid -> L=0.1244
+[   17.7s] cont step 45 alpha=0.00857837 b=9.652212 m=9.343928 xhalf=0.0717 L=0.1244 ds=0.6 upper
+[   18.4s]   regrid -> L=0.0528
+[   19.1s] cont step 50 alpha=0.00232792 b=19.345854 m=17.418402 xhalf=0.0333 L=0.0528 ds=0.6 upper
+[   21.1s] fold along branch (N=60 L=0.6595): tau_alpha=2.59e-14 alpha=0.040378525287145
+Traceback (most recent call last):
+  File "/home/user/gifgaf0.github.io/seed/experiments/E6_einstein_skyrme/crosscheck/xc_run.py", line 177, in <module>
+    log('fold N=%d L=%.1f: start alpha=%.10f, smallest sv=%.3e' % (N, L, a0, ss[-1]))
+                                                                             ^^
+NameError: name 'ss' is not defined. Did you mean: 'os'?

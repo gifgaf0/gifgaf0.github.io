@@ -1,0 +1,18 @@
+CALIBRATED  alpha_crit (fold of the hedgehog Einstein-Skyrme branch), alpha = 4 pi G f^2, f  0.04037852529
+CALIBRATED  branch structure                                                                 two branches (lower from the flat skyrmion, upper towards rescaled Bartnik-McKinnon) merging at alpha_crit; no solution of this family above it
+CALIBRATED  flat B=1 energy E_flat = 4 pi (f/e) m0                                           72.92329125
+CALIBRATED  M_ADM(alpha -> 0) / E_flat (gravitational mass = total energy incl. gradient + S 1
+MISS        O(alpha) coefficient m1 of m(inf) = m0 + m1 alpha (units 4 pi f/e): full solutio -18.78243939
+NO_TARGET   O(alpha) coefficient: full vs GR first order -G int (rho+p_r) m/r dV (derived he -18.78243939
+NO_TARGET   fold solution: m(inf), M_ADM, sigma(0), N_min                                    {'m_inf': 4.955390123774041, 'M_ADM_f_over_e': 62.27126883407978, 'sigma0': 0.4350227505658933, 'Nmin': 0.5826044188269244, 'x_at_Nmin': 0.6601439565979097, 'b_crit': 2.930275544548578}
+NO_TARGET   radial (l=0) stability                                                           lower branch: 0 negative modes; upper branch: exactly 1 negative mode
+CALIBRATED  physical coupling alpha_phys (G = 6.70883e-39 GeV^-2, f = 64.5 MeV)              3.507325562e-40
+NO_TARGET   metric deviation at the fold core, f = 64.5 MeV, e = 5.45                        {'one_minus_sigma_centre': 3.418707804150875e-39, 'one_minus_gtt_centre': 6.83741560830175e-39, 'one_minus_N_max': 2.2714608323897744e-39, 'r_of_max_fm': 0.6587369059078103, 'one_minus_N_1fm': 1.9856207541937907e-39, 'one_minus_sigma_1fm': 1.479310624370601e-40}
+NO_TARGET   metric deviation, f = 92.2 MeV, e = 5.45                                         {'one_minus_sigma_centre': 6.985610972859306e-39, 'one_minus_N_max': 4.6413857586472674e-39, 'one_minus_N_1fm': 3.110269065239613e-39, 'one_minus_sigma_1fm': 7.79169114700277e-41}
+NO_TARGET   light deflection through/near a fold (weak field, linear in alpha)               {'f64_max_rad': 6.605083730125437e-39, 'f64_b_at_max_fm': 0.4146596559244782, 'f64_at_1fm_rad': 4.37674492685575e-39, 'f64_pointmass_at_1fm_rad': 4.570068633669852e-39, 'f92_max_rad': 1.3496486984291696e-38, 'f92_at_1fm_rad': 6.439320680778891e-39}
+NO_TARGET   Shapiro delay along a diameter, -1 fm to +1 fm                                   {'f64_s': 2.01251991419154e-62, 'f92_s': 3.6228220696304697e-62, 'f64_GM_over_c3_s': 3.811027022809424e-63}
+intercept/m0 - 1 = -4.554245869314855e-12
+
+real	0m0.099s
+user	0m0.087s
+sys	0m0.009s

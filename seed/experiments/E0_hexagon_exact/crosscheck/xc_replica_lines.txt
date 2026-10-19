@@ -1,0 +1,25 @@
+120° turn sends point 1 to point 4
+neighbours of point 0: [1, 2, 3, 4, 5, 6] -> every point touches every other (K7)
+triangles: 14 | family A Fano: True | family B Fano: True
+one family is the octonion lines {i, i+1, i+3}: True
+x -> ax+b (a in 1,2,4) preserves both families: True
+|<D, 120° turn>| = 21 | inside SU(3): True
+|<Klein's matrices>| = 168 | inside SU(3): True
+Klein quartic preserved by the generators: True
+<D, 120° turn> inside Klein's own copy: False
+flip in SU(3): True | flip sends Dk to D: True
+flipped copy: order 168 | inside SU(3): True | holds <D, 120° turn>: True
+flipped copy preserves the mirror quartic xy³ + yz³ + zx³: True
+order-21 group maximal in it: True
+Fano planes on Z7 kept by x -> x+1: 2 | the torus families are exactly these: True
+Weyl(SU(3)): order 6 | keeps Λ: True | mirrors that keep the seven points: 0 of 3
+   turn   0°: x -> 1x, keeps both families
+   turn 120°: x -> 4x, keeps both families
+   turn 240°: x -> 2x, keeps both families
+Weyl(G2): order 12 | keeps Λ: True | mirrors that keep the seven points: 0 of 6
+   turn   0°: x -> 1x, keeps both families
+   turn  60°: x -> 5x, swaps the families
+   turn 120°: x -> 4x, keeps both families
+   turn 180°: x -> 6x, swaps the families
+   turn 240°: x -> 2x, keeps both families
+   turn 300°: x -> 3x, swaps the families

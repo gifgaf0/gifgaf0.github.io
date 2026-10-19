@@ -16,6 +16,8 @@ Usage:
   stage spec  N:Tmax:tolE[:Tmin]  (Tmax = max flow time of the stage; stop when the relative
                              energy change over the last 20 time units is below tolE and
                              the stage has run at least Tmin time units, default 40)
+A stage can be ended early (e.g. compute budget) by creating the file runs/STOP_<run>_N<N>;
+the stage is then recorded with converged = false.
 Checkpoints (fields) go to the scratch directory given by --scratch; the log and a
 JSON summary go to runs/NAME.*  inside the experiment directory.  Restart-safe: an
 existing checkpoint for a stage is resumed.
@@ -38,7 +40,7 @@ def log(fh, s):
 
 
 def relax_stage(phi, h, Tmax, tolE, fh, ckpt_path, dt_fac=0.1, log_every=10.0, q_every=100.0,
-                t0=0.0, vel=None, hist=None, tmin=40.0):
+                t0=0.0, vel=None, hist=None, tmin=40.0, stopfile=None):
     """Arrested Newton flow.  Safeguard against the explicit-integration instability:
     at every log time the field is stored if the energy went down over the interval;
     if instead the energy rose, or more than 20% of the steps in the interval were
@@ -60,6 +62,7 @@ def relax_stage(phi, h, Tmax, tolE, fh, ckpt_path, dt_fac=0.1, log_every=10.0, q
     Ehist = [(t, E)]
     wall0 = time.time()
     converged = False
+    stopped = False
     phi_good = phi.copy()
     E_good = E
     t_good = t
@@ -119,6 +122,10 @@ def relax_stage(phi, h, Tmax, tolE, fh, ckpt_path, dt_fac=0.1, log_every=10.0, q
             if Eold is not None and abs(Eold - E) / E < tolE and t > tmin:
                 converged = True
                 break
+            if stopfile is not None and os.path.exists(stopfile):
+                log(fh, f'# stop file {os.path.basename(stopfile)} found at t={t:.3f}: ending stage (not converged to tolE)')
+                stopped = True
+                break
             if len(Ehist) > 20000:
                 Ehist = Ehist[-10000:]
         if time.time() - last_ck > 300:
@@ -128,7 +135,7 @@ def relax_stage(phi, h, Tmax, tolE, fh, ckpt_path, dt_fac=0.1, log_every=10.0, q
             last_ck = time.time()
     np.save(ckpt_path + '.phi.npy', phi)
     np.save(ckpt_path + '.vel.npy', vel)
-    json.dump(dict(t=t, hist=hist, done=True, converged=converged), open(ckpt_path + '.state.json', 'w'))
+    json.dump(dict(t=t, hist=hist, done=True, converged=converged, stopped=stopped), open(ckpt_path + '.state.json', 'w'))
     return phi, t, converged, hist, time.time() - wall0
 
 
@@ -194,7 +201,7 @@ def main():
             log(fh, f'# interpolated to N={N}: E={fs.C0*(e2+e4):.6f}')
         log(fh, f'# stage N={N} h={h:.5f} Tmax={Tmax} tolE={tolE} dt={a.dtfac*h:.5f}')
         phi, t, conv, hist, wall = relax_stage(phi, h, Tmax, tolE, fh, ck, dt_fac=a.dtfac, t0=t0, vel=vel, hist=hist,
-                                               tmin=tmin)
+                                               tmin=tmin, stopfile=os.path.join(HERE, 'runs', f'STOP_{a.run}_N{N}'))
         e2, e4 = fs.energy_grad(phi, h, np.zeros_like(phi), False)
         Q, nhh, _ = fs.hopf_charge(phi, h)
         rec = dict(N=N, h=h, L=a.L, t=t, converged=conv, wall_s=wall, E=fs.C0 * (e2 + e4), E2=fs.C0 * e2,

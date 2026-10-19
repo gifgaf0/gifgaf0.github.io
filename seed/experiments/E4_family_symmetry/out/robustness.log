@@ -1,0 +1,9 @@
+refit lepton|min|phi10=Z3|phi5=G|phi1=Z3: chi2 72.4895 (stored 72.4895), N_eff 7 (7), excluded -> identical
+refit lepton|min|phi10=G|phi5=Z3|phi1=Z3: chi2 2073.06 (stored 2073.06), N_eff 5 (5), excluded -> identical
+refit lepton|min|phi10=G|phi5=Z3|phi1=P: chi2 1.04347e-26 (stored 1.04347e-26), N_eff 7 (7), accommodates (no prediction) -> identical
+refit quark|min|phi10=G|phi5=G: chi2 2.87168e+06 (stored 2.87168e+06), N_eff None (None), excluded -> identical
+refit quark|gen|phi10=G|phi5=Z3: chi2 1.25368e-19 (stored 1.25368e-19), N_eff 8 (8), accommodates (no prediction) -> identical
+refit lepton|LNR exact|phi10=G|phi5=(-1,1,1)|phi1=(1,1,1): chi2 1472.01 (stored 1472.01), N_eff 3 (3), excluded -> identical
+300 starts on lepton|min|phi10=Z3|phi5=G|phi1=Z3: min chi2 72.4981 (stored, polished: 72.4895); fraction of starts within 0.1 of the minimum 0.05
+[PASS] six refits identical to the stored fits
+[PASS] 300-start minimum within 0.1 of the stored chi2 (no lower minimum found)

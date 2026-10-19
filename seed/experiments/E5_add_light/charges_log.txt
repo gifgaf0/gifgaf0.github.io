@@ -1,0 +1,12 @@
+allowed irreps (N_c=3), lowest Casimir first: [('8', ['1/2']), ('10bar', ['1/2']), ('10', ['3/2']), ('27', ['1/2', '3/2']), ('35bar', ['1/2', '3/2']), ('35', ['3/2', '5/2'])]
+8      dim  8  J=['1/2']  charges ['-1', '0', '1']
+10     dim 10  J=['3/2']  charges ['-1', '0', '1', '2']
+10bar  dim 10  J=['1/2']  charges ['-2', '-1', '0', '1']
+27     dim 27  J=['1/2', '3/2']  charges ['-2', '-1', '0', '1', '2']
+SU(2):  [{'I=J': '1/2', 'charges': ['1', '0']}, {'I=J': '3/2', 'charges': ['2', '1', '0', '-1']}, {'I=J': '5/2', 'charges': ['3', '2', '1', '0', '-1', '-2']}]  Y=1 states match Q = I3 + B/2: True
+N_c=1 lowest (1,0) J=['1/2']  fixed-charge Q ['-1/3', '2/3']  consistent Q ['0', '1']
+N_c=3 lowest (1,1) J=['1/2']  fixed-charge Q ['0', '1']  consistent Q ['0', '1']
+N_c=5 lowest (1,2) J=['1/2']  fixed-charge Q ['1/3', '4/3']  consistent Q ['0', '1']
+N_c=7 lowest (1,3) J=['1/2']  fixed-charge Q ['2/3', '5/3']  consistent Q ['0', '1']
+N_c=9 lowest (1,4) J=['1/2']  fixed-charge Q ['1', '2']  consistent Q ['0', '1']
+checks: all integer (N_c=3) = True ; GMN = True ; SU(2) integer = True

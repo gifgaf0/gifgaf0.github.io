@@ -1,0 +1,15 @@
+Gamma_Nc3_f92.21_eV                  7.7611
+Gamma_Nc1_f92.21_eV                  0.8623
+pull_vs_PrimExII_sigma               -0.3497
+pull_vs_PDG2026_sigma                0.3318
+Nc1_pull_vs_PrimExII_sigma           -59.3133
+f_needed_for_PrimExII_central_MeV    91.9679
+Gamma_at_ANW_f64.5_eV                15.8620
+ratio_ANW_to_PrimExII                2.0331
+own_SU2_fit_f_MeV                    64.6313
+Gamma_at_own_SU2_fit_eV              15.7976
+own_SU3_refit_f_MeV                  56.8774
+Gamma_at_own_SU3_refit_eV            20.3985
+ratio_SU3_refit_to_PrimExII          2.6145
+PDG 2026 Gamma(gg) = 7.720 +- 0.123 eV
+preregistered pass (LO within 2 sigma of PrimEx-II, N_c=1 excluded): True

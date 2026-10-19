@@ -214,5 +214,4 @@
 === LNR light-neutrino matrix: residual symmetry inside the seed's groups: {'elements_of_PSL_leaving_Mnu_invariant': 1, 'elements_of_F21': 1, 'TBM_S_in_PSL': False, 'minus_mu_tau_swap_in_PSL': False, 'TBM_S_invariance': True, 'mu_tau_invariance': True}
 [PASS] LNR's M_nu is invariant under the TBM Klein group (S, mu-tau) but only the identity of the seed's PSL(2,7) leaves it invariant: its TBM structure is accidental (parameter choice), not residual
 
-15/15 checks pass; runtime 72.5 s
-exit 0
+15/15 checks pass; runtime 78.2 s

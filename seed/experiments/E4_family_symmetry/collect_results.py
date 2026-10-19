@@ -1,6 +1,7 @@
 """
 collect_results.py -- assemble results.json (headline numbers with units/conventions, target,
 tolerance, source and verdict) from out/groups.json, out/yukawa.json, out/lnr.json, out/fits.jsonl.
+out/structure.json (e4_structure.py: exact generic-rank scan used for the structural diagnosis).
 Run last:  python3 collect_results.py
 """
 import json
@@ -13,6 +14,9 @@ G = json.load(open(os.path.join(OUT, "groups.json")))
 Y = json.load(open(os.path.join(OUT, "yukawa.json")))
 L = json.load(open(os.path.join(OUT, "lnr.json")))
 F = [json.loads(l) for l in open(os.path.join(OUT, "fits.jsonl"))]
+S = json.load(open(os.path.join(OUT, "structure.json")))      # exact generic-rank scan (e4_structure.py)
+ROB_PATH = os.path.join(OUT, "robustness.json")                # e4_robustness.py (determinism, 300-start check)
+ROB = json.load(open(ROB_PATH)) if os.path.exists(ROB_PATH) else None
 
 cal = []
 
@@ -79,9 +83,9 @@ findings = [
      "tolerance": "exact", "verdict": "NO_TARGET", "note": "commutant of the triplet is 1-dimensional for both groups"},
     {"quantity": "LNR integer point vs NuFIT 6.0: sin^2 theta13", "value": f"{cmp['sin2_theta13']['LNR']:.5f}",
      "target": "0.02195 (+0.00054 -0.00058)", "tolerance": "pull with sigma from 3sigma range/3",
-     "verdict": "MISS", "note": f"pull {cmp['sin2_theta13']['pull']:.1f} sigma"},
+     "verdict": "NO_TARGET", "outcome": "excluded by data", "note": f"pull {cmp['sin2_theta13']['pull']:.1f} sigma"},
     {"quantity": "LNR integer point vs NuFIT 6.0: Dm31^2/Dm21^2", "value": "26.667 (80/3)", "target": "33.83 +- 0.92",
-     "tolerance": "1 sigma", "verdict": "MISS", "note": f"pull {cmp['r_atm_sol']['pull']:.1f} sigma"},
+     "tolerance": "1 sigma", "verdict": "NO_TARGET", "outcome": "excluded by data", "note": f"pull {cmp['r_atm_sol']['pull']:.1f} sigma"},
     {"quantity": "LNR alpha refit to NuFIT ratio (beta=-1)", "value": f"alpha = {', '.join(f'{a:.4f}' for a in L['alpha_solving_r_eq_NuFIT6_central'])}",
      "target": "r = 33.83", "tolerance": "fit", "verdict": "NO_TARGET",
      "note": "mixing stays exactly tri-bimaximal (theta13 = 0) for every alpha; m3/m1 = 9 for every alpha"},
@@ -93,26 +97,31 @@ for gname in ("F21", "PSL"):
     best_q = min((p for p in rows if p["kind"] == "quark"), key=lambda p: p["chi2"])
     findings.append({"quantity": f"{gname}: best full-residual-symmetry lepton pattern (0 mixing parameters, 4 obs.)",
                      "value": f"chi2 = {best_l['chi2']:.1f} ({best_l['G1']} x {best_l['G2']}, {best_l['kind']})",
-                     "target": "p > 0.01", "tolerance": "chi2 test, 4 dof", "verdict": "MISS",
+                     "target": "p > 0.01", "tolerance": "chi2 test, 4 dof", "verdict": "NO_TARGET", "outcome": "excluded by data",
                      "note": f"best s12^2={best_l['best']['s12sq']:.3f}, s13^2={best_l['best']['s13sq']:.4f}, s23^2={best_l['best']['s23sq']:.3f}"})
     findings.append({"quantity": f"{gname}: best full-residual-symmetry CKM pattern (0 mixing parameters, 4 obs.)",
                      "value": f"chi2 = {best_q['chi2']:.3g} ({best_q['G1']} x {best_q['G2']})", "target": "p > 0.01",
-                     "tolerance": "chi2 test, 4 dof", "verdict": "MISS",
+                     "tolerance": "chi2 test, 4 dof", "verdict": "NO_TARGET", "outcome": "excluded by data",
                      "note": f"lambda = {best_q['best']['lambda']:.3f}"})
 for o in sorted(Y["z2_partial_PSL"], key=lambda x: x["chi2"])[:3]:
     findings.append({"quantity": f"PSL(2,7) Z2-partial lepton class G_l={o['G_l']}, fixed column |U|^2={o['fixed_column_abs2']}",
                      "value": f"chi2 = {o['chi2']:.2f} (2 params, 4 obs., p = {o['p_value']:.2f})", "target": "p > 0.01",
-                     "tolerance": "chi2 test, 2 dof", "verdict": "CALIBRATED" if o["survives(p>0.01)"] else "MISS",
-                     "note": f"best s12^2={o['best']['s12sq']:.3f} s13^2={o['best']['s13sq']:.4f} s23^2={o['best']['s23sq']:.3f} delta={o['best']['delta_deg']:.0f} deg; "
-                             "'CALIBRATED' here means 'fits the data', not a literature target"})
+                     "tolerance": "chi2 test, 2 dof", "verdict": "NO_TARGET",
+                     "outcome": "fits data (p > 0.01)" if o["survives(p>0.01)"] else "excluded by data",
+                     "note": f"best s12^2={o['best']['s12sq']:.3f} s13^2={o['best']['s13sq']:.4f} s23^2={o['best']['s23sq']:.3f} delta={o['best']['delta_deg']:.0f} deg"})
 
 # texture survey: deterministic structural diagnosis from the stored best-fit observables
 def diagnose(r):
     o = r.get("best_obs")
+    reasons = S["classes"][r["name"]]["structural_reasons"]
+    if reasons:
+        return "structural (exact rank scan): " + "; ".join(reasons)
     if r.get("structural"):
         return r["structural"]
     if not o:
         return None
+    if r["sector"] == "quark" and o[4] == o[4] and (o[4] < 1e-9 or abs(o[4] - 1) < 1e-9):
+        return "CKM is a permutation matrix for all parameters (M_u and M_d both diagonal in this class)"
     if r["sector"] == "lepton":
         if o[0] < 1e-6 or o[1] < 1e-6:
             return "massless charged lepton at the best fit (rank <= 2)"
@@ -130,20 +139,30 @@ def diagnose(r):
 
 for r in F:
     r["diagnosis"] = diagnose(r)
+    # final label: same pass/fail outcome as the fit verdict; a fit 'excluded' whose matrices are exactly
+    # rank-deficient/degenerate is relabelled 'excluded (structural)' (its chi2 is then a rounding artefact)
+    r["verdict_fit"] = r["verdict"]
+    dead = bool(S["classes"][r["name"]]["structural_reasons"]) or (r["diagnosis"] or "").startswith("CKM is a permutation")
+    r["verdict_final"] = "excluded (structural)" if (dead and r["verdict"].startswith("excluded")) else r["verdict"]
+    assert not (dead and not r["verdict"].startswith("excluded")), r["name"]
 
 surv = {"lepton": {}, "quark": {}}
+surv_fit = {"lepton": {}, "quark": {}}
 for r in F:
-    surv[r["sector"]].setdefault(r["verdict"], []).append(r["name"])
+    surv[r["sector"]].setdefault(r["verdict_final"], []).append(r["name"])
+    surv_fit[r["sector"]].setdefault(r["verdict_fit"], []).append(r["name"])
 summary_survey = {s: {v: len(n) for v, n in d.items()} for s, d in surv.items()}
-survivors = [r for r in F if r["verdict"] == "SURVIVES"]
-accom = [r for r in F if r["verdict"].startswith("accommodates")]
+summary_survey_fitlabels = {s: {v: len(n) for v, n in d.items()} for s, d in surv_fit.items()}
+survivors = [r for r in F if r["verdict_final"] == "SURVIVES"]
+accom = [r for r in F if r["verdict_final"].startswith("accommodates")]
 best_nonaccom = {}
 for s in ("lepton", "quark"):
-    cands = [r for r in F if r["sector"] == s and not r.get("structural") and (r.get("dof") or 0) >= 1]
+    cands = [r for r in F if r["sector"] == s and r["verdict_final"] != "excluded (structural)" and (r.get("dof") or 0) >= 1]
     if cands:
         b = min(cands, key=lambda r: r["chi2"])
         best_nonaccom[s] = {"name": b["name"], "chi2": b["chi2"], "n_eff": b["n_eff"], "dof": b.get("dof"),
-                            "p_value": b.get("p_value"), "pulls": b.get("pulls")}
+                            "p_value": b.get("p_value"), "pulls": b.get("pulls"), "best_obs": b.get("best_obs"),
+                            "diagnosis": b.get("diagnosis")}
 findings.append({"quantity": "F21 texture survey (LNR framework): classes by verdict",
                  "value": summary_survey, "target": "report either way (PLAN E4)", "tolerance": "p > 0.01 rule",
                  "verdict": "NO_TARGET", "note": f"{len(survivors)} predictive survivors; {len(accom)} accommodate with N_eff >= N_obs"})
@@ -163,18 +182,44 @@ res = {
     "residual_patterns_count": {g: len(Y["residual_patterns"][g]) for g in ("F21", "PSL")},
     "z2_partial_PSL": Y["z2_partial_PSL"],
     "texture_survey_summary": summary_survey,
+    "texture_survey_summary_fit_labels_before_rank_scan": summary_survey_fitlabels,
+    "texture_survey_observables": {"lepton": ["me/mmu", "mmu/mtau", "Dm31^2/Dm21^2 (NO)", "s12^2", "s13^2", "s23^2", "delta_deg"],
+                                   "quark": ["mu/mc", "mc/mt", "md/ms", "ms/mb", "lambda", "A", "rhobar", "etabar"]},
+    "texture_survey_rule": "N_eff = generic rank of d(obs)/d(params); dof = N_obs - N_eff; dof >= 1: SURVIVES if p > 0.01; "
+                           "dof <= 0: 'accommodates (no prediction)' if chi2 < 1 else excluded (fixed before fitting)",
     "texture_survey_survivors": [{k: r[k] for k in ("name", "n_par", "n_eff", "chi2", "dof", "p_value", "best_obs", "pulls")}
                                  for r in survivors],
     "texture_survey_accommodating": [{k: r.get(k) for k in ("name", "n_par", "n_eff", "chi2")} for r in accom],
-    "texture_survey_all": [{k: r.get(k) for k in ("name", "verdict", "n_par", "n_eff", "dof", "chi2", "p_value", "diagnosis",
+    "texture_survey_all": [{k: r.get(k) for k in ("name", "verdict_final", "verdict_fit", "n_par", "n_eff", "dof", "chi2", "p_value", "diagnosis",
                                                   "best_obs", "pulls")} for r in F],
     "texture_survey_best_predictive": best_nonaccom,
-    "all_checks_pass": {"groups": G["all_pass"], "yukawa": Y["all_pass"], "lnr": L["all_pass"]},
+    "robustness": ROB,
+    "seed_claims": [
+        {"claim": "SEED 3: <D, 120-degree turn> = Z7 x| Z3 (order 21) in SU(3), inside the flipped copy of Klein's PSL(2,7) (order 168)",
+         "verdict": "CONFIRMED", "evidence": "exact closure in Z[zeta7, 1/7]: orders 21 and 168, F21 a subgroup; the seed's Rf equals LNR's A^[3] exactly"},
+        {"claim": "SEED 3: the triplets are complex (PSL(2,7) and F21)", "verdict": "CONFIRMED",
+         "evidence": "Frobenius-Schur indicator 0 for 3, 3bar of both groups; character b7 = (-1 + i sqrt7)/2 on the order-7 classes"},
+        {"claim": "SEED 3: flavour model-builders used both groups as family symmetries", "verdict": "CONFIRMED",
+         "evidence": "LNR 0706.2341 seesaw example reproduced exactly (matrices, eigenvalue ratios 1:-2:9, 80/3, theta13 2.82 deg)"},
+        {"claim": "SEED 7.3 / PLAN: with F21 unbroken an irreducible triplet cannot get three different masses", "verdict": "CONFIRMED",
+         "evidence": "commutant of the 3 is 1-dim for F21 and PSL(2,7): L=R=3 with singlet Higgs -> three equal masses; L=3,R=3bar -> none; no Majorana singlet mass"},
+        {"claim": "PLAN: mixing comes from misalignment between residual subgroups of different sectors", "verdict": "AMENDED",
+         "evidence": "true for PSL(2,7) (3 of 12 Z2-partial classes fit); for F21 alone every residual pattern is excluded and no subgroup can be a "
+                     "non-degenerate Majorana residual symmetry (odd order: no Z2), so F21 mixing needs vevs with no residual symmetry"},
+        {"claim": "PLAN: the LNR example (alpha = beta = -1) is excluded by NuFIT 6.0", "verdict": "CONFIRMED",
+         "evidence": "sin^2 theta13 0.00242 vs 0.02195 (-34 sigma); r = 80/3 vs 33.83 +- 0.92 (-7.8 sigma); theta13 = 0 for every alpha without the haze"},
+        {"claim": "SEED 3/7.3: F21 (inside PSL(2,7)) acting on three generations does a job", "verdict": "AMENDED",
+         "evidence": "F21 restricts couplings but gives no masses or hierarchy without breaking and predicts only after vevs are chosen; "
+                     "0 of 161 LNR-framework alignment classes both fit and predict (37 fit with N_eff = N_obs, 124 excluded)"},
+    ],
+    "all_checks_pass": {"groups": G["all_pass"], "yukawa": Y["all_pass"], "lnr": L["all_pass"], "structure": S["all_pass"],
+                        "robustness": ROB["all_pass"] if ROB else None},
 }
 with open(os.path.join(HERE, "results.json"), "w") as f:
     json.dump(res, f, indent=1, default=str)
 print("calibration:", sum(c["verdict"] == "CALIBRATED" for c in cal), "/", len(cal))
-print("survey:", json.dumps(summary_survey))
+print("survey (final labels):", json.dumps(summary_survey))
+print("survey (fit labels before exact rank scan):", json.dumps(summary_survey_fitlabels))
 print("predictive survivors:", [r["name"] for r in survivors])
 print("accommodating:", [(r["name"], r["n_eff"]) for r in accom])
 print("best predictive:", json.dumps(best_nonaccom, indent=1))

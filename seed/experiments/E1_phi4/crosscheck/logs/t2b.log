@@ -1,0 +1,425 @@
+[w0] coarse done
+[w1] 0/742 A=0.2 s=2.0 k=3.0 E/2M=0.83 prod=False Ef/E0=0.0013 elapsed 1s
+[w1] 25/742 A=1.3 s=4.0 k=1.25 E/2M=24.00 prod=True Ef/E0=0.0686 elapsed 20s
+[w1] 50/742 A=1.1 s=2.0 k=3.0 E/2M=25.52 prod=True Ef/E0=0.0519 elapsed 40s
+[w1] 75/742 A=0.4 s=10.0 k=2.5 E/2M=12.44 prod=False Ef/E0=0.0198 elapsed 60s
+[w1] 100/742 A=1.2 s=12.0 k=1.25 E/2M=60.99 prod=True Ef/E0=0.0653 elapsed 81s
+[w1] 125/742 A=0.8 s=16.0 k=1.0 E/2M=29.70 prod=True Ef/E0=0.2365 elapsed 99s
+[w1] 150/742 A=1.0 s=1.0 k=1.5 E/2M=3.52 prod=False Ef/E0=0.0195 elapsed 114s
+[w1] 175/742 A=0.9 s=1.0 k=3.0 E/2M=8.46 prod=False Ef/E0=0.0056 elapsed 131s
+[w1] 200/742 A=0.3 s=1.5 k=1.25 E/2M=0.44 prod=False Ef/E0=0.0012 elapsed 149s
+[w1] 225/742 A=0.4 s=5.0 k=0.75 E/2M=1.92 prod=False Ef/E0=0.0195 elapsed 167s
+[w1] 250/742 A=0.5 s=8.0 k=0.75 E/2M=4.88 prod=False Ef/E0=0.3531 elapsed 188s
+[w1] 275/742 A=0.7 s=3.0 k=2.0 E/2M=8.42 prod=False Ef/E0=0.0360 elapsed 207s
+[w1] 300/742 A=0.5 s=16.0 k=3.0 E/2M=41.49 prod=False Ef/E0=0.0725 elapsed 222s
+[w1] 325/742 A=0.6 s=10.0 k=0.5 E/2M=7.75 prod=True Ef/E0=0.4496 elapsed 235s
+[w1] 350/742 A=0.7 s=1.0 k=1.0 E/2M=1.15 prod=False Ef/E0=0.0039 elapsed 246s
+[w1] 375/742 A=1.5 s=3.0 k=3.0 E/2M=71.86 prod=False Ef/E0=0.0133 elapsed 258s
+[w1] 400/742 A=1.1 s=8.0 k=0.5 E/2M=21.12 prod=True Ef/E0=0.1541 elapsed 269s
+[w1] 425/742 A=0.3 s=16.0 k=0.5 E/2M=3.06 prod=False Ef/E0=0.9847 elapsed 281s
+[w1] 450/742 A=0.9 s=4.0 k=2.0 E/2M=18.65 prod=False Ef/E0=0.0427 elapsed 292s
+[w1] 475/742 A=0.4 s=3.0 k=0.25 E/2M=0.73 prod=False Ef/E0=0.1769 elapsed 305s
+[w1] 500/742 A=1.4 s=16.0 k=0.5 E/2M=74.01 prod=False Ef/E0=0.0639 elapsed 318s
+[w1] 525/742 A=0.2 s=1.5 k=3.0 E/2M=0.63 prod=False Ef/E0=0.0011 elapsed 329s
+[w1] 550/742 A=0.1 s=2.0 k=0.25 E/2M=0.04 prod=False Ef/E0=0.4420 elapsed 342s
+[w1] 575/742 A=0.9 s=1.5 k=1.25 E/2M=3.62 prod=False Ef/E0=0.0227 elapsed 354s
+[w1] 600/742 A=1.1 s=10.0 k=1.0 E/2M=35.97 prod=True Ef/E0=0.0939 elapsed 367s
+[w1] 625/742 A=0.2 s=6.0 k=3.0 E/2M=2.48 prod=False Ef/E0=0.0030 elapsed 380s
+[w1] 650/742 A=0.8 s=4.0 k=2.5 E/2M=20.09 prod=True Ef/E0=0.1584 elapsed 391s
+[w1] 675/742 A=0.6 s=16.0 k=1.25 E/2M=19.55 prod=True Ef/E0=0.2976 elapsed 403s
+[w1] 700/742 A=0.5 s=5.0 k=1.0 E/2M=3.56 prod=False Ef/E0=0.0244 elapsed 416s
+[w1] 725/742 A=1.5 s=1.0 k=1.0 E/2M=4.27 prod=False Ef/E0=0.0111 elapsed 429s
+[w1] coarse done
+line A=0.05 prod=False E/2M=0.11
+line A=0.075 prod=False E/2M=0.25
+line A=0.1 prod=False E/2M=0.45
+line A=0.125 prod=False E/2M=0.71
+line A=0.15 prod=False E/2M=1.02
+line A=0.175 prod=False E/2M=1.38
+line A=0.2 prod=False E/2M=1.81
+line A=0.225 prod=False E/2M=2.29
+line A=0.25 prod=False E/2M=2.83
+line A=0.275 prod=False E/2M=3.42
+line A=0.3 prod=False E/2M=4.08
+line A=0.325 prod=False E/2M=4.79
+line A=0.35 prod=False E/2M=5.56
+line A=0.375 prod=True E/2M=6.39
+line A=0.4 prod=False E/2M=7.27
+line A=0.425 prod=False E/2M=8.22
+line A=0.45 prod=True E/2M=9.22
+line A=0.475 prod=True E/2M=10.28
+line A=0.5 prod=False E/2M=11.41
+line A=0.525 prod=False E/2M=12.59
+line A=0.55 prod=True E/2M=13.84
+line A=0.575 prod=False E/2M=15.14
+line A=0.6 prod=True E/2M=16.51
+line A=0.625 prod=False E/2M=17.93
+line A=0.65 prod=True E/2M=19.43
+line A=0.675 prod=True E/2M=20.98
+line A=0.7 prod=True E/2M=22.59
+line A=0.725 prod=True E/2M=24.27
+line A=0.75 prod=False E/2M=26.02
+line A=0.775 prod=True E/2M=27.83
+line A=0.8 prod=True E/2M=29.70
+line A=0.825 prod=False E/2M=31.64
+line A=0.85 prod=True E/2M=33.65
+line A=0.875 prod=True E/2M=35.72
+line A=0.9 prod=True E/2M=37.87
+line A=0.925 prod=True E/2M=40.08
+line A=0.95 prod=True E/2M=42.36
+line A=0.975 prod=True E/2M=44.71
+line A=1.0 prod=True E/2M=47.13
+line A=1.025 prod=True E/2M=49.62
+line A=1.05 prod=False E/2M=52.18
+line A=1.075 prod=True E/2M=54.82
+line A=1.1 prod=True E/2M=57.53
+line A=1.125 prod=True E/2M=60.32
+line A=1.15 prod=True E/2M=63.18
+line A=1.175 prod=True E/2M=66.11
+line A=1.2 prod=True E/2M=69.13
+line A=1.225 prod=True E/2M=72.22
+line A=1.25 prod=True E/2M=75.39
+line A=1.275 prod=True E/2M=78.64
+line A=1.3 prod=True E/2M=81.97
+line A=1.325 prod=True E/2M=85.38
+line A=1.35 prod=False E/2M=88.88
+line A=1.375 prod=True E/2M=92.46
+line A=1.4 prod=True E/2M=96.12
+line A=1.425 prod=True E/2M=99.87
+line A=1.45 prod=True E/2M=103.71
+line A=1.475 prod=True E/2M=107.63
+line A=1.5 prod=True E/2M=111.65
+single A=0.7 s=3.0 k=0.75 prod=False
+single A=0.9 s=16.0 k=1.0 prod=True
+single A=0.7 s=16.0 k=1.25 prod=True
+single A=0.8 s=10.0 k=0.25 prod=True
+single A=0.7 s=6.0 k=1.5 prod=True
+single A=0.5 s=16.0 k=0.25 prod=True
+single A=0.9 s=6.0 k=1.0 prod=True
+single A=0.4 s=12.0 k=0.5 prod=False
+single A=0.9 s=16.0 k=2.0 prod=True
+single A=1.5 s=1.0 k=1.5 prod=False
+single A=1.5 s=2.0 k=1.0 prod=True
+single A=1.2 s=3.0 k=3.0 prod=False
+single A=0.6 s=12.0 k=0.75 prod=True
+single A=1.4 s=4.0 k=1.0 prod=True
+single A=1.5 s=1.5 k=0.5 prod=False
+single A=1.3 s=16.0 k=1.25 prod=False
+single A=1.2 s=6.0 k=1.25 prod=True
+single A=1.5 s=16.0 k=1.5 prod=True
+single A=0.7 s=10.0 k=0.75 prod=True
+single A=0.8 s=10.0 k=2.5 prod=False
+single A=1.4 s=3.0 k=2.0 prod=False
+single A=1.0 s=3.0 k=1.5 prod=True
+single A=1.1 s=5.0 k=2.0 prod=True
+single A=1.3 s=12.0 k=0.75 prod=True
+single A=0.8 s=2.0 k=2.5 prod=True
+single A=0.7 s=4.0 k=1.0 prod=False
+single A=1.0 s=8.0 k=1.0 prod=True
+single A=1.5 s=8.0 k=1.0 prod=False
+single A=0.7 s=12.0 k=1.0 prod=True
+single A=1.4 s=10.0 k=1.25 prod=True
+single A=0.9 s=6.0 k=2.5 prod=True
+single A=1.0 s=4.0 k=1.5 prod=False
+single A=1.1 s=10.0 k=1.5 prod=True
+single A=1.0 s=10.0 k=0.5 prod=True
+single A=1.0 s=16.0 k=1.25 prod=True
+single A=1.1 s=3.0 k=0.75 prod=True
+single A=1.1 s=8.0 k=2.0 prod=True
+single A=1.3 s=10.0 k=0.75 prod=True
+single A=1.2 s=10.0 k=0.25 prod=False
+single A=0.8 s=3.0 k=2.5 prod=True
+single A=0.9 s=5.0 k=2.5 prod=True
+single A=0.8 s=10.0 k=0.5 prod=True
+single A=0.7 s=10.0 k=1.5 prod=False
+single A=1.5 s=16.0 k=2.0 prod=False
+single A=1.0 s=10.0 k=2.0 prod=True
+single A=1.2 s=2.0 k=3.0 prod=True
+single A=0.7 s=4.0 k=2.5 prod=True
+single A=1.3 s=16.0 k=0.5 prod=True
+single A=0.8 s=10.0 k=1.0 prod=True
+single A=1.1 s=16.0 k=1.25 prod=True
+single A=0.9 s=4.0 k=1.0 prod=False
+single A=0.4 s=10.0 k=0.5 prod=False
+single A=1.2 s=1.0 k=3.0 prod=True
+single A=1.0 s=3.0 k=1.0 prod=True
+single A=1.5 s=12.0 k=1.25 prod=True
+single A=1.2 s=10.0 k=2.5 prod=True
+single A=1.2 s=5.0 k=0.25 prod=True
+single A=0.6 s=12.0 k=0.5 prod=True
+single A=0.6 s=8.0 k=0.25 prod=False
+single A=0.8 s=4.0 k=3.0 prod=True
+single A=1.4 s=8.0 k=0.75 prod=True
+single A=0.8 s=8.0 k=0.5 prod=True
+single A=0.8 s=12.0 k=0.5 prod=True
+single A=1.3 s=5.0 k=1.25 prod=True
+single A=1.5 s=6.0 k=1.5 prod=True
+single A=1.3 s=10.0 k=0.5 prod=False
+single A=1.2 s=3.0 k=2.5 prod=False
+single A=1.5 s=16.0 k=3.0 prod=False
+single A=0.6 s=6.0 k=0.25 prod=False
+single A=1.3 s=1.0 k=3.0 prod=True
+single A=1.4 s=10.0 k=2.0 prod=True
+single A=1.4 s=8.0 k=0.25 prod=True
+single A=1.3 s=8.0 k=0.25 prod=False
+single A=0.7 s=6.0 k=1.25 prod=True
+single A=1.2 s=10.0 k=0.5 prod=True
+single A=1.3 s=6.0 k=0.75 prod=True
+single A=0.8 s=16.0 k=1.0 prod=True
+single A=1.3 s=4.0 k=0.25 prod=True
+single A=1.4 s=16.0 k=0.75 prod=True
+single A=1.0 s=16.0 k=0.25 prod=False
+line A=0.05 prod=False E/2M=0.23
+line A=0.075 prod=False E/2M=0.51
+line A=0.1 prod=False E/2M=0.90
+line A=0.125 prod=False E/2M=1.41
+line A=0.15 prod=False E/2M=2.03
+line A=0.175 prod=False E/2M=2.77
+line A=0.2 prod=False E/2M=3.61
+line A=0.225 prod=False E/2M=4.57
+line A=0.25 prod=False E/2M=5.65
+line A=0.275 prod=False E/2M=6.84
+line A=0.3 prod=False E/2M=8.14
+line A=0.325 prod=False E/2M=9.56
+line A=0.35 prod=False E/2M=11.09
+line A=0.375 prod=True E/2M=12.73
+line A=0.4 prod=True E/2M=14.49
+line A=0.425 prod=True E/2M=16.37
+line A=0.45 prod=False E/2M=18.36
+line A=0.475 prod=False E/2M=20.46
+line A=0.5 prod=False E/2M=22.69
+line A=0.525 prod=False E/2M=25.03
+line A=0.55 prod=True E/2M=27.48
+line A=0.575 prod=True E/2M=30.06
+line A=0.6 prod=True E/2M=32.75
+line A=0.625 prod=True E/2M=35.56
+line A=0.65 prod=True E/2M=38.49
+line A=0.675 prod=True E/2M=41.54
+line A=0.7 prod=True E/2M=44.70
+line A=0.725 prod=True E/2M=47.99
+line A=0.75 prod=True E/2M=51.40
+line A=0.775 prod=True E/2M=54.93
+line A=0.8 prod=False E/2M=58.58
+line A=0.825 prod=True E/2M=62.35
+line A=0.85 prod=True E/2M=66.25
+line A=0.875 prod=True E/2M=70.27
+line A=0.9 prod=True E/2M=74.41
+line A=0.925 prod=True E/2M=78.68
+line A=0.95 prod=True E/2M=83.08
+line A=0.975 prod=False E/2M=87.60
+line A=1.0 prod=True E/2M=92.25
+line A=1.025 prod=True E/2M=97.02
+line A=1.05 prod=True E/2M=101.93
+line A=1.075 prod=True E/2M=106.96
+line A=1.1 prod=True E/2M=112.13
+line A=1.125 prod=True E/2M=117.42
+line A=1.15 prod=True E/2M=122.85
+line A=1.175 prod=True E/2M=128.41
+line A=1.2 prod=True E/2M=134.10
+line A=1.225 prod=True E/2M=139.93
+line A=1.25 prod=False E/2M=145.89
+line A=1.275 prod=True E/2M=151.99
+line A=1.3 prod=True E/2M=158.22
+line A=1.325 prod=True E/2M=164.60
+line A=1.35 prod=True E/2M=171.11
+line A=1.375 prod=True E/2M=177.76
+line A=1.4 prod=True E/2M=184.56
+line A=1.425 prod=True E/2M=191.49
+line A=1.45 prod=True E/2M=198.57
+line A=1.475 prod=True E/2M=205.80
+line A=1.5 prod=True E/2M=213.16
+dxself A=0.2 s=4.0 k=3.0 prod=False
+dxself A=0.9 s=16.0 k=1.0 prod=False
+dxself A=0.3 s=5.0 k=1.25 prod=False
+dxself A=1.4 s=2.0 k=1.0 prod=True
+dxself A=0.6 s=10.0 k=3.0 prod=False
+dxself A=1.5 s=3.0 k=3.0 prod=False
+dxself A=1.1 s=1.0 k=2.5 prod=False
+dxself A=0.6 s=6.0 k=2.0 prod=True
+dxself A=1.5 s=16.0 k=1.5 prod=True
+dxself A=0.8 s=2.0 k=3.0 prod=True
+dxself A=1.1 s=4.0 k=2.0 prod=True
+dxself A=1.0 s=12.0 k=0.5 prod=True
+dxself A=0.5 s=1.5 k=3.0 prod=False
+dxself A=1.4 s=6.0 k=3.0 prod=True
+dxself A=0.7 s=4.0 k=1.5 prod=True
+dxself A=0.7 s=3.0 k=0.75 prod=True
+dxself A=0.9 s=12.0 k=0.25 prod=True
+dxself A=0.6 s=2.0 k=2.0 prod=False
+dxself A=1.0 s=1.0 k=1.25 prod=False
+dxself A=0.4 s=5.0 k=2.5 prod=False
+dxself A=0.7 s=1.5 k=3.0 prod=False
+dxself A=0.8 s=2.0 k=2.0 prod=False
+dxself A=1.5 s=6.0 k=1.0 prod=True
+dxself A=1.3 s=5.0 k=3.0 prod=True
+dxself A=1.0 s=5.0 k=0.75 prod=False
+dxself A=0.7 s=8.0 k=1.0 prod=True
+dxself A=1.0 s=2.0 k=0.75 prod=False
+dxself A=0.9 s=1.0 k=0.25 prod=False
+dxself A=0.9 s=6.0 k=1.5 prod=True
+dxself A=1.2 s=4.0 k=2.0 prod=False
+dxself A=0.8 s=1.5 k=0.75 prod=False
+dxself A=1.0 s=4.0 k=1.0 prod=True
+dxself A=1.1 s=3.0 k=0.5 prod=True
+dxself A=1.1 s=3.0 k=0.75 prod=True
+dxself A=0.9 s=10.0 k=1.0 prod=True
+dxself A=1.5 s=1.5 k=0.25 prod=False
+dxself A=0.6 s=1.5 k=1.25 prod=False
+dxself A=1.0 s=12.0 k=2.0 prod=False
+dxself A=0.5 s=4.0 k=0.25 prod=False
+dxself A=0.5 s=6.0 k=0.5 prod=False
+dxself A=0.6 s=4.0 k=2.0 prod=False
+dxself A=1.2 s=4.0 k=1.25 prod=False
+dxself A=0.5 s=16.0 k=3.0 prod=False
+dxself A=1.2 s=6.0 k=1.5 prod=False
+dxself A=1.4 s=3.0 k=1.5 prod=True
+dxself A=0.9 s=4.0 k=1.0 prod=True
+dxself A=0.8 s=1.5 k=1.5 prod=False
+dxself A=0.1 s=12.0 k=3.0 prod=False
+dxself A=1.4 s=16.0 k=1.0 prod=True
+dxself A=1.0 s=10.0 k=0.5 prod=True
+dxself A=0.8 s=2.0 k=0.75 prod=False
+dxself A=1.3 s=16.0 k=1.25 prod=False
+dxself A=0.5 s=1.0 k=3.0 prod=False
+dxself A=1.0 s=12.0 k=1.0 prod=True
+dxself A=1.2 s=4.0 k=1.0 prod=False
+dxself A=0.6 s=3.0 k=0.25 prod=False
+dxself A=0.5 s=6.0 k=3.0 prod=False
+dxself A=0.5 s=1.5 k=2.5 prod=False
+dxself A=1.3 s=1.0 k=1.5 prod=False
+dxself A=0.9 s=5.0 k=0.75 prod=True
+dxself A=0.7 s=6.0 k=1.0 prod=False
+dxself A=1.4 s=12.0 k=2.5 prod=False
+dxself A=0.9 s=8.0 k=2.5 prod=True
+dxself A=1.1 s=3.0 k=2.0 prod=True
+dxself A=1.2 s=8.0 k=3.0 prod=False
+dxself A=0.4 s=2.0 k=1.25 prod=False
+dxself A=1.2 s=1.0 k=0.5 prod=False
+dxself A=1.1 s=1.0 k=0.5 prod=False
+dxself A=0.7 s=10.0 k=0.5 prod=True
+dxself A=0.8 s=5.0 k=0.5 prod=True
+dxself A=0.5 s=4.0 k=1.25 prod=False
+dxself A=0.9 s=10.0 k=1.5 prod=True
+dxself A=1.4 s=6.0 k=0.75 prod=True
+dxself A=0.3 s=12.0 k=2.5 prod=False
+dxself A=1.2 s=16.0 k=1.25 prod=True
+dxself A=0.5 s=10.0 k=0.25 prod=False
+dxself A=0.9 s=5.0 k=0.5 prod=False
+dxself A=0.6 s=16.0 k=0.25 prod=True
+dxself A=0.7 s=5.0 k=0.5 prod=True
+dxself A=0.9 s=6.0 k=2.5 prod=True
+dxself A=1.0 s=3.0 k=1.0 prod=True
+dxself A=0.6 s=4.0 k=0.5 prod=True
+dxself A=1.2 s=10.0 k=0.75 prod=True
+dxself A=0.6 s=3.0 k=3.0 prod=False
+dxself A=0.8 s=10.0 k=1.5 prod=True
+dxself A=0.8 s=5.0 k=0.75 prod=True
+dxself A=1.2 s=6.0 k=1.25 prod=True
+dxself A=1.2 s=4.0 k=3.0 prod=True
+dxself A=1.2 s=3.0 k=0.25 prod=False
+dxself A=0.3 s=10.0 k=3.0 prod=False
+dxself A=0.7 s=8.0 k=2.5 prod=True
+dxself A=0.9 s=6.0 k=3.0 prod=True
+dxself A=0.2 s=5.0 k=2.5 prod=False
+dxself A=1.4 s=10.0 k=0.75 prod=True
+dxself A=1.1 s=5.0 k=1.5 prod=True
+dxself A=1.2 s=4.0 k=0.5 prod=True
+dxself A=1.5 s=5.0 k=2.0 prod=False
+dxself A=0.7 s=1.5 k=0.75 prod=False
+dxself A=0.9 s=8.0 k=3.0 prod=True
+dxself A=1.2 s=12.0 k=1.25 prod=True
+example {'omega': 0.99, 'v': 0.43, 'Nb': 15, 'E_over_2M': np.float64(11.198189566799288), 'dx': 0.08, 'first_pair_t': None, 'pair_at_T': False, 'pair_at_end': False} 12s
+0/162 omega=0.995 v=0.6 E/2M=2.53 pair_T=False end=False Ef/E0=0.953 (10s)
+1/162 omega=0.995 v=0.5 E/2M=7.82 pair_T=False end=False Ef/E0=0.980 (19s)
+2/162 omega=0.995 v=0.45 E/2M=1.87 pair_T=False end=False Ef/E0=0.982 (29s)
+3/162 omega=0.995 v=0.4 E/2M=1.78 pair_T=False end=False Ef/E0=0.985 (38s)
+4/162 omega=0.995 v=0.35 E/2M=6.56 pair_T=False end=False Ef/E0=0.988 (47s)
+5/162 omega=0.995 v=0.3 E/2M=12.60 pair_T=False end=False Ef/E0=0.991 (57s)
+6/162 omega=0.99 v=0.9 E/2M=8.15 pair_T=False end=False Ef/E0=0.003 (66s)
+7/162 omega=0.99 v=0.88 E/2M=9.54 pair_T=False end=False Ef/E0=0.005 (75s)
+8/162 omega=0.99 v=0.86 E/2M=8.60 pair_T=False end=False Ef/E0=0.004 (85s)
+9/162 omega=0.99 v=0.84 E/2M=5.18 pair_T=False end=False Ef/E0=0.004 (96s)
+10/162 omega=0.99 v=0.82 E/2M=7.78 pair_T=False end=False Ef/E0=0.006 (106s)
+11/162 omega=0.99 v=0.8 E/2M=10.63 pair_T=False end=False Ef/E0=0.008 (115s)
+12/162 omega=0.99 v=0.78 E/2M=7.92 pair_T=False end=False Ef/E0=0.006 (125s)
+13/162 omega=0.99 v=0.76 E/2M=4.38 pair_T=False end=False Ef/E0=0.055 (135s)
+14/162 omega=0.99 v=0.74 E/2M=3.23 pair_T=False end=False Ef/E0=0.245 (144s)
+15/162 omega=0.99 v=0.72 E/2M=4.34 pair_T=False end=False Ef/E0=0.429 (154s)
+16/162 omega=0.99 v=0.7 E/2M=7.16 pair_T=False end=False Ef/E0=0.490 (163s)
+17/162 omega=0.99 v=0.68 E/2M=10.25 pair_T=False end=False Ef/E0=0.504 (172s)
+18/162 omega=0.99 v=0.66 E/2M=11.18 pair_T=False end=False Ef/E0=0.524 (183s)
+19/162 omega=0.99 v=0.64 E/2M=9.25 pair_T=False end=False Ef/E0=0.521 (191s)
+20/162 omega=0.99 v=0.62 E/2M=6.28 pair_T=False end=False Ef/E0=0.570 (201s)
+21/162 omega=0.99 v=0.6 E/2M=3.88 pair_T=False end=False Ef/E0=0.638 (211s)
+22/162 omega=0.99 v=0.58 E/2M=2.46 pair_T=False end=False Ef/E0=0.705 (222s)
+23/162 omega=0.99 v=0.56 E/2M=1.85 pair_T=False end=False Ef/E0=0.793 (233s)
+24/162 omega=0.99 v=0.54 E/2M=1.87 pair_T=False end=False Ef/E0=0.897 (245s)
+25/162 omega=0.99 v=0.52 E/2M=2.45 pair_T=False end=False Ef/E0=0.960 (257s)
+26/162 omega=0.99 v=0.5 E/2M=3.62 pair_T=False end=False Ef/E0=0.987 (268s)
+27/162 omega=0.99 v=0.48 E/2M=5.43 pair_T=False end=False Ef/E0=0.992 (280s)
+28/162 omega=0.99 v=0.46 E/2M=7.77 pair_T=False end=False Ef/E0=0.996 (290s)
+29/162 omega=0.99 v=0.44 E/2M=10.19 pair_T=False end=False Ef/E0=0.994 (302s)
+30/162 omega=0.99 v=0.42 E/2M=11.92 pair_T=False end=False Ef/E0=0.993 (314s)
+31/162 omega=0.99 v=0.4 E/2M=12.25 pair_T=True end=True Ef/E0=0.933 (327s)
+32/162 omega=0.98 v=0.9 E/2M=9.20 pair_T=False end=False Ef/E0=0.008 (339s)
+33/162 omega=0.98 v=0.88 E/2M=10.83 pair_T=False end=False Ef/E0=0.009 (350s)
+34/162 omega=0.98 v=0.86 E/2M=7.32 pair_T=False end=False Ef/E0=0.008 (361s)
+35/162 omega=0.98 v=0.84 E/2M=5.49 pair_T=False end=False Ef/E0=0.009 (373s)
+36/162 omega=0.98 v=0.82 E/2M=7.05 pair_T=False end=False Ef/E0=0.010 (385s)
+37/162 omega=0.98 v=0.8 E/2M=9.90 pair_T=False end=False Ef/E0=0.016 (396s)
+38/162 omega=0.98 v=0.78 E/2M=11.00 pair_T=False end=False Ef/E0=0.019 (409s)
+39/162 omega=0.98 v=0.76 E/2M=9.34 pair_T=False end=False Ef/E0=0.016 (421s)
+40/162 omega=0.98 v=0.74 E/2M=6.61 pair_T=False end=False Ef/E0=0.011 (435s)
+41/162 omega=0.98 v=0.72 E/2M=4.40 pair_T=False end=False Ef/E0=0.088 (446s)
+42/162 omega=0.98 v=0.7 E/2M=3.16 pair_T=False end=False Ef/E0=0.223 (457s)
+43/162 omega=0.98 v=0.68 E/2M=2.78 pair_T=False end=False Ef/E0=0.429 (468s)
+44/162 omega=0.98 v=0.66 E/2M=3.10 pair_T=False end=False Ef/E0=0.721 (480s)
+45/162 omega=0.98 v=0.64 E/2M=4.04 pair_T=False end=False Ef/E0=0.821 (493s)
+46/162 omega=0.98 v=0.62 E/2M=5.52 pair_T=False end=False Ef/E0=0.901 (506s)
+47/162 omega=0.98 v=0.6 E/2M=7.42 pair_T=False end=False Ef/E0=0.736 (519s)
+48/162 omega=0.98 v=0.58 E/2M=9.46 pair_T=False end=False Ef/E0=0.767 (532s)
+49/162 omega=0.98 v=0.56 E/2M=11.17 pair_T=True end=True Ef/E0=0.632 (544s)
+50/162 omega=0.98 v=0.54 E/2M=12.11 pair_T=True end=True Ef/E0=0.572 (557s)
+51/162 omega=0.98 v=0.52 E/2M=12.03 pair_T=False end=False Ef/E0=0.617 (570s)
+52/162 omega=0.98 v=0.5 E/2M=11.02 pair_T=False end=False Ef/E0=0.719 (581s)
+53/162 omega=0.98 v=0.48 E/2M=9.42 pair_T=False end=False Ef/E0=0.713 (593s)
+54/162 omega=0.98 v=0.46 E/2M=7.63 pair_T=False end=False Ef/E0=0.784 (606s)
+55/162 omega=0.98 v=0.44 E/2M=5.95 pair_T=False end=False Ef/E0=0.967 (619s)
+56/162 omega=0.98 v=0.42 E/2M=4.53 pair_T=False end=False Ef/E0=0.975 (632s)
+57/162 omega=0.98 v=0.4 E/2M=3.41 pair_T=False end=False Ef/E0=0.978 (644s)
+58/162 omega=0.96 v=0.9 E/2M=9.15 pair_T=False end=False Ef/E0=0.010 (656s)
+59/162 omega=0.96 v=0.88 E/2M=11.01 pair_T=False end=False Ef/E0=0.017 (668s)
+60/162 omega=0.96 v=0.86 E/2M=10.52 pair_T=False end=False Ef/E0=0.017 (678s)
+61/162 omega=0.96 v=0.84 E/2M=7.97 pair_T=False end=False Ef/E0=0.015 (690s)
+62/162 omega=0.96 v=0.82 E/2M=5.72 pair_T=False end=False Ef/E0=0.012 (701s)
+63/162 omega=0.96 v=0.8 E/2M=4.66 pair_T=False end=False Ef/E0=0.013 (713s)
+64/162 omega=0.96 v=0.78 E/2M=4.74 pair_T=False end=False Ef/E0=0.017 (723s)
+65/162 omega=0.96 v=0.76 E/2M=5.68 pair_T=False end=False Ef/E0=0.115 (733s)
+66/162 omega=0.96 v=0.74 E/2M=7.20 pair_T=False end=False Ef/E0=0.331 (743s)
+67/162 omega=0.96 v=0.72 E/2M=8.96 pair_T=True end=True Ef/E0=0.351 (754s)
+68/162 omega=0.96 v=0.7 E/2M=10.54 pair_T=True end=True Ef/E0=0.394 (764s)
+69/162 omega=0.96 v=0.68 E/2M=11.57 pair_T=False end=False Ef/E0=0.295 (772s)
+70/162 omega=0.96 v=0.66 E/2M=11.83 pair_T=True end=True Ef/E0=0.271 (780s)
+71/162 omega=0.96 v=0.64 E/2M=11.31 pair_T=True end=True Ef/E0=0.460 (788s)
+72/162 omega=0.96 v=0.62 E/2M=10.21 pair_T=True end=True Ef/E0=0.401 (795s)
+73/162 omega=0.96 v=0.6 E/2M=8.81 pair_T=True end=True Ef/E0=0.504 (803s)
+74/162 omega=0.96 v=0.58 E/2M=7.35 pair_T=False end=False Ef/E0=0.119 (811s)
+75/162 omega=0.96 v=0.56 E/2M=5.99 pair_T=False end=False Ef/E0=0.132 (819s)
+76/162 omega=0.96 v=0.54 E/2M=4.82 pair_T=False end=False Ef/E0=0.227 (827s)
+77/162 omega=0.96 v=0.52 E/2M=3.86 pair_T=False end=False Ef/E0=0.239 (835s)
+78/162 omega=0.96 v=0.5 E/2M=3.10 pair_T=False end=False Ef/E0=0.228 (843s)
+79/162 omega=0.96 v=0.48 E/2M=2.52 pair_T=False end=False Ef/E0=0.336 (851s)
+80/162 omega=0.96 v=0.46 E/2M=2.09 pair_T=False end=False Ef/E0=0.488 (859s)
+81/162 omega=0.96 v=0.44 E/2M=1.78 pair_T=False end=False Ef/E0=0.536 (867s)
+82/162 omega=0.96 v=0.42 E/2M=1.57 pair_T=False end=False Ef/E0=0.577 (875s)
+83/162 omega=0.96 v=0.4 E/2M=1.45 pair_T=False end=False Ef/E0=0.639 (884s)
+84/162 omega=0.94 v=0.9 E/2M=10.07 pair_T=False end=False Ef/E0=0.016 (892s)
+85/162 omega=0.94 v=0.88 E/2M=7.75 pair_T=False end=False Ef/E0=0.015 (900s)
+86/162 omega=0.94 v=0.86 E/2M=5.99 pair_T=False end=False Ef/E0=0.016 (908s)
+87/162 omega=0.94 v=0.84 E/2M=5.57 pair_T=False end=False Ef/E0=0.022 (915s)
+88/162 omega=0.94 v=0.82 E/2M=6.24 pair_T=False end=False Ef/E0=0.038 (923s)
+89/162 omega=0.94 v=0.8 E/2M=7.52 pair_T=False end=False Ef/E0=0.339 (931s)
+90/162 omega=0.94 v=0.78 E/2M=8.90 pair_T=True end=True Ef/E0=0.479 (939s)
+91/162 omega=0.94 v=0.76 E/2M=9.96 pair_T=True end=True Ef/E0=0.319 (947s)
+92/162 omega=0.94 v=0.74 E/2M=10.42 pair_T=True end=True Ef/E0=0.387 (955s)
+93/162 omega=0.94 v=0.72 E/2M=10.21 pair_T=True end=True Ef/E0=0.411 (961s)

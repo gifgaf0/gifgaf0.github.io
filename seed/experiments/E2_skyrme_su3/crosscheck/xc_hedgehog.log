@@ -1,0 +1,48 @@
+=== two-sided shooting ===
+/home/user/gifgaf0.github.io/seed/experiments/E2_skyrme_su3/crosscheck/xc_hedgehog.py:118: IntegrationWarning: The maximum number of subdivisions (200) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+  It[k] = quad(f, 0.0, 1.0/X, epsabs=1e-16, epsrel=1e-13, limit=200)[0]
+x0=0.001 xm=1.5 X=25         a=-1.003764111356 C=8.63857821821 M=36.461645625217 Lam=50.9787391143 J2=25.8955780719 D=-17.2771564364 B-1=-4.9e-13 res=8.7e-14
+x0=0.001 xm=2.5 X=25         a=-1.003764111357 C=8.63857821821 M=36.461645625233 Lam=50.9787391143 J2=25.8955780719 D=-17.2771564364 B-1=-7.5e-14 res=1.5e-14
+x0=0.0005 xm=1 X=40          a=-1.003764111357 C=8.63857821822 M=36.461645625227 Lam=50.9787391143 J2=25.8955767434 D=-17.2771564364 B-1=-2.2e-13 res=8.1e-14
+x0=0.001 xm=1.5 X=15         a=-1.003764111357 C=8.63857821810 M=36.461645625236 Lam=50.9787391141 J2=25.8955781976 D=-17.2771564365 B-1=-2.4e-14 res=9.5e-15
+spread over 4 geometries: {'M': '1.9e-11', 'Lambda': '1.9e-10', 'J2': '1.3e-06', 'D': '1.2e-10', 'C': '1.2e-10', 'a': '3.4e-13'}
+
+M/(F/e) = 36.4616456252  = 1.23144570 x 3pi^2
+Lambda = 50.97873911  I1 coef = 106.769622   J2 = 25.89557807  I2 coef = 40.676679  I1/I2 = 2.624836
+C = 8.638578218   F'(0) = -1.003764111   D = -17.2771564364  -2C = -17.2771564364   diff 6.8e-12
+virial E2/E4-1 = 5.44e-13   int x^2 p dx = -2.63e-13  (expected (E4-E2)/(12 pi) = -2.63e-13)
+tails beyond X: Lambda 2.984955 (C^2/X = 2.985001), J2 1.491279
+Lambda truncated at X=25, no tail: 47.9938 (-5.86%)
+max |F_mine - F_orig| on profile.json grid (0..100): 1.4e-12 ; |F'| diff 5.4e-12
+pressure: p(0) = 0.3816, single node at x = 2.15237
+sign changes of p on (0, 30]: 1
+local equilibrium residual (relative): 9.1e-09
+/home/user/gifgaf0.github.io/seed/experiments/E2_skyrme_su3/crosscheck/xc_hedgehog.py:212: IntegrationWarning: The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+  quad(lambda yy: f(1/yy)/yy**2, 0, 1, limit=400, epsabs=1e-14, epsrel=1e-13)[0]
+arctan ansatz: r0 = 1.936492, M = 40.543537 (exact 36.461646, +11.195%), Lambda = 51.0839, I2 coef = 40.54354; exact I2 coef is +0.328% from it
+sigma-model radial ODE from F=pi: final F/(pi/2) = {'0.001': np.float64(1.0), '1e-06': np.float64(1.0), '1e-09': np.float64(1.0)}
+  mu=0.5  E2(mu)=36.4616456252  E2/mu=36.4616456252
+  mu=1.0  E2(mu)=18.2308228126  E2/mu=18.2308228126
+  mu=2.0  E2(mu)=9.1154114063  E2/mu=9.1154114063
+  mu=4.0  E2(mu)=4.5577057032  E2/mu=4.5577057032
+
+ANW fit: 1/I1 = 195.3333 MeV, M_cl = 865.7500 MeV, F_pi = 129.2627 MeV, e = 5.44399, eF = 703.704 MeV
+g_A = 0.61047 (= 2 pi C/(3e^2) = 0.61047), ball-integral version 0.4070; 1/I2 = 512.7180 MeV, 3/(4I2) = 384.539 MeV, r_B = 0.5934 fm
+CHECK shooting converged (residual < 1e-12)         PASS
+CHECK geometry spread M < 1e-10                     PASS
+CHECK B = 1 to 1e-10                                PASS
+CHECK D = -2C to 1e-8                               PASS
+CHECK virial |E2/E4-1| < 1e-9                       PASS
+CHECK von Laue = (E4-E2)/(12pi)                     PASS
+CHECK Derrick scaling E2(mu)=E2/mu to 1e-9          PASS
+CHECK sigma model ends at pi/2                      PASS
+CHECK single pressure node                          PASS
+all checks pass: True  runtime 4.8 s

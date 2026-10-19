@@ -126,7 +126,7 @@
    "value": "3, -1, 0, (1+-sqrt5)/2; FS indicator +1 (both triplets)",
    "target": "real, with (1 +- sqrt5)/2",
    "tolerance": "exact",
-   "source": "PLAN E0; LNR abstract",
+   "source": "PLAN E0; LNR §2 (eq. 4 and text: five real irreps, two triplets) [read]",
    "verdict": "CALIBRATED",
    "note": ""
   },
@@ -926,7 +926,7 @@
    "section": "H",
    "name": "hexagon_check.py (float) and the exact recomputation print identical lines (25 of 25)",
    "ok": true,
-   "detail": "original runtime 1.1 s"
+   "detail": "original runtime 1.3 s"
   }
  ],
  "values": {
@@ -1188,7 +1188,7 @@
    "identical": 25
   }
  },
- "runtime_seconds": 4.3,
+ "runtime_seconds": 5.0,
  "software": {
   "python": "3.13.16"
  }

@@ -1,0 +1,59 @@
+[    0.0s] stage flat: computing
+[    0.4s]   flat h=0.004 xmax=1e+05: b=2.007528222707712 m=5.803051134611409 C=2.159658221712
+[    0.4s]   flat h=0.004 xmax=1e+06: b=2.007528222707788 m=5.803051134611470 C=2.159490777351
+[    0.5s]   flat h=0.002 xmax=1e+05: b=2.007528222710856 m=5.803051134526964 C=2.159638881070
+[    0.5s]   flat h=0.002 xmax=1e+06: b=2.007528222714008 m=5.803051134526987 C=2.159649403366
+[    0.7s]   flat h=0.001 xmax=1e+05: b=2.007528222712904 m=5.803051134521752 C=2.160053751629
+[    0.9s]   flat h=0.001 xmax=1e+06: b=2.007528222715976 m=5.803051134521745 C=2.159645339195
+[    1.3s]   flat h=0.0005 xmax=1e+05: b=2.007528222711852 m=5.803051134521395 C=2.159640554950
+[    1.6s]   flat h=0.0005 xmax=1e+06: b=2.007528222713018 m=5.803051134521429 C=2.159642735789
+[    1.6s] stage flat: done
+[    1.6s] flat: b=2.007528222713 m0=5.803051134521 E=4pi m0=72.92329125 f/e; virial E2/E4-1=3.67e-12
+[    1.6s] stage crit: computing
+[    8.0s]   h=0.002 xmax=1e+06: alpha_crit=0.040378525287189 b_crit=2.930275603 polyfit=0.040378525287189 m=4.9553901238 sigma0=0.43502274 Nmin=0.58260461
+[   19.6s]   h=0.001 xmax=1e+06: alpha_crit=0.040378525287141 b_crit=2.930275544 polyfit=0.040378525287140 m=4.9553901238 sigma0=0.43502275 Nmin=0.58260446
+[   41.7s]   h=0.0005 xmax=1e+06: alpha_crit=0.040378525287138 b_crit=2.930275545 polyfit=0.040378525287138 m=4.9553901238 sigma0=0.43502275 Nmin=0.58260442
+[   51.9s]   h=0.001 xmax=1e+05: alpha_crit=0.040378525287140 b_crit=2.930275607 polyfit=0.040378525287140 m=4.9553901238 sigma0=0.43502274 Nmin=0.58260448
+[   63.1s]   h=0.001 xmax=1e+07: alpha_crit=0.040378525287140 b_crit=2.930275677 polyfit=0.040378525287140 m=4.9553901238 sigma0=0.43502272 Nmin=0.58260450
+[   63.1s] stage crit: done
+[   63.1s] alpha_crit (h=5e-4) = 0.040378525287138; Richardson 0.040378525287137; observed order 4.03
+[   63.1s] stage branch: computing
+[   91.0s]   108 points; max alpha on grid = 0.040372860
+[   91.0s] stage branch: done
+[   91.0s] stage fixed_alpha: computing
+[   91.6s]   alpha=0.00100 lower: b=2.0139415349 m=5.784245174 upper: b=29.8283217300 m=26.381753031
+[   92.3s]   alpha=0.00500 lower: b=2.0412531708 m=5.708519048 upper: b=12.9516576920 m=12.042774419
+[   92.9s]   alpha=0.01000 lower: b=2.0798019684 m=5.612566736 upper: b=8.8551936712 m=8.707866612
+[   93.6s]   alpha=0.02000 lower: b=2.1782874133 m=5.414919369 upper: b=5.8347948484 m=6.420543088
+[   94.3s]   alpha=0.03000 lower: b=2.3322582160 m=5.205174115 upper: b=4.3571810712 m=5.468599279
+[   95.3s]   alpha=0.03500 lower: b=2.4625233405 m=5.092104556 upper: b=3.7833960002 m=5.178502388
+[   96.1s]   alpha=0.04000 lower: b=2.7819114372 m=4.966346367 upper: b=3.1033016229 m=4.967786153
+[   96.9s]   alpha=0.04030 lower: b=2.8599840492 m=4.957733849 upper: b=3.0056559920 m=4.957869020
+[   97.7s]   alpha=0.04037 lower: b=2.9065794916 m=4.955649225 upper: b=2.9545235115 m=4.955654053
+[   97.7s] stage fixed_alpha: done
+[   97.7s] stage bvp: computing
+[  101.7s]   BVP X=200.0 tol=1e-09: alpha_crit=0.040378525287 at b=2.93027560 (status 0, nodes 2889; shooting alpha at that b 0.040378525287)
+[  101.7s] stage bvp: done
+[  101.7s] stage bvp_X400: computing
+[  105.7s]   BVP X=400.0 tol=1e-09: alpha_crit=0.040378525287 at b=2.93027560 (status 0, nodes 2901; shooting alpha at that b 0.040378525287)
+[  105.7s] stage bvp_X400: done
+[  105.7s] stage ep: computing
+[  108.6s]   m1: full=-18.78243939 GR1=-18.78243942 lin=-18.78243957 Newton=-14.57733486 (-14.57733480); Newton/full-1=-22.3885%  GR1/full-1=+1.65e-09 lin/full-1=+9.46e-09; von Laue -2.5e-09; Poisson resid 4.7e-07
+[  108.6s] stage ep: done
+[  108.6s] stage bm: computing
+[  110.4s]   BM mass with tail at R=50,100,200: [np.float64(0.8286471104706193), np.float64(0.8286469895927884), np.float64(0.8286469825196598)]
+[  110.4s]   BM: b=0.45371628 m_BM=0.828647 (classes -1,1); upper-branch sqrt(alpha) m -> 0.828444 (quadratic fit in sqrt(alpha), alpha<2e-3); smallest alpha 2.27e-05 gives 0.828834
+[  110.4s]   upper branch linear-in-alpha extrapolation (alpha<3e-4): 0.828710
+[  110.4s] stage bm: done
+[  110.4s] stage phys: computing
+[  110.6s]   f=64.5 MeV: alpha=3.5073e-40 M=0.8630 GeV 1-N max=2.271e-39 1-N(1fm)=1.986e-39 1-sigma(0)=3.419e-39 1-sigma(1fm)=1.479e-40 defl max=6.605e-39 rad defl(1fm)=4.377e-39 Shapiro(+-1fm)=2.013e-62 s
+[  110.6s]   f=92.2 MeV: alpha=7.1667e-40 M=1.2337 GeV 1-N max=4.641e-39 1-N(1fm)=3.110e-39 1-sigma(0)=6.986e-39 1-sigma(1fm)=7.792e-41 defl max=1.350e-38 rad defl(1fm)=6.439e-39 Shapiro(+-1fm)=3.623e-62 s
+[  110.6s] stage phys: done
+[  110.6s] stage linear_metric: computing
+[  111.4s]   alpha=1e-06: max|(1-N)-(1-N)_lin|/max = 6.00e-06; alpha=1e-05: max|(1-N)-(1-N)_lin|/max = 6.00e-05; alpha=1e-04: max|(1-N)-(1-N)_lin|/max = 6.00e-04
+[  111.4s] stage linear_metric: done
+[  111.4s] all stages done
+
+real	1m52.155s
+user	1m45.765s
+sys	0m0.412s

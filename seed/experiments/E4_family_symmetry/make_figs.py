@@ -1,6 +1,6 @@
 """
 make_figs.py -- the three E4 figures (small PNGs) from out/*.json and out/fits.jsonl.
-Run after e4_yukawa.py, e4_lnr.py and e4_fits.py:  python3 make_figs.py
+Run after e4_yukawa.py, e4_lnr.py, e4_fits.py, e4_structure.py and collect_results.py:  python3 make_figs.py
 """
 import json
 import os
@@ -102,15 +102,16 @@ fig.savefig(os.path.join(HERE, "fig_lnr_alpha.png"))
 plt.close(fig)
 
 # ---------------- figure 3: texture survey
-recs = [json.loads(l) for l in open(os.path.join(OUT, "fits.jsonl"))]
+RES = json.load(open(os.path.join(HERE, "results.json")))          # final labels (exact rank scan applied)
+recs = [dict(r, sector=r["name"].split("|")[0]) for r in RES["texture_survey_all"]]
 fig, axes = plt.subplots(1, 2, figsize=(6.4, 3.2), dpi=130, sharey=True)
 for ax, sector in zip(axes, ("lepton", "quark")):
-    rows = [r_ for r_ in recs if r_["sector"] == sector and not r_.get("structural")]
+    rows = [r_ for r_ in recs if r_["sector"] == sector and r_["verdict_final"] != "excluded (structural)"]
     groups = {"SURVIVES": (S3, "D", "survives (p > 0.01)"), "accommodates (no prediction)": (S1, "o", "accommodates (N_eff ≥ N_obs)"),
               "excluded": (S2, "s", "excluded")}
     rng = np.random.default_rng(1)
     for v, (col, mk, lab) in groups.items():
-        sel = [r_ for r_ in rows if r_["verdict"] == v]
+        sel = [r_ for r_ in rows if r_["verdict_final"] == v]
         if not sel:
             continue
         xs = np.array([r_["n_eff"] for r_ in sel], dtype=float) + rng.uniform(-0.18, 0.18, len(sel))
@@ -125,7 +126,7 @@ for ax, sector in zip(axes, ("lepton", "quark")):
     ax.set_title(f"{sector}s", fontsize=9, color=INK, loc="left")
 axes[0].set_ylabel("χ²_min  (values < 1e-3 shown at 1e-3)")
 axes[0].legend(fontsize=7, loc="lower left")
-fig.suptitle("F21 (LNR framework) texture classes that are not structurally dead", fontsize=9, color=INK, x=0.02, ha="left")
+fig.suptitle("F21 (LNR framework) texture classes that are not structurally dead (exact rank scan)", fontsize=9, color=INK, x=0.02, ha="left")
 fig.tight_layout()
 fig.savefig(os.path.join(HERE, "fig_texture_survey.png"))
 plt.close(fig)

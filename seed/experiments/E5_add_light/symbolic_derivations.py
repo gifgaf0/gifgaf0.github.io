@@ -23,8 +23,11 @@ What is derived here, from the Lagrangian alone:
  8. ANW rotor operators: su(2) algebra, I_k = -D_kl J_l, <p up|D_33|p up> = -1/3
  9. pi0 -> gamma gamma from the gauged Wess-Zumino term (Bernstein-Holstein eq. 67, Witten 1983)
 10. one light cone: quadratic Lagrangian of the gauged Skyrme + Maxwell + pion-mass model
+    (10d: the gauged WZ term expanded in all fields has no part below cubic order; 9g: its cubic part is the pi0 vertex)
 11. vacuum stress tensor T_mu nu = V0 g_mu nu  (mostly-minus metric), p = -rho, frame-free
 Writes symbolic_results.json (radial integrands as sympy strings for the numerical script).
+Reconciliation (after the independent cross-check): 10d, formerly asserted "by inspection", is computed; 5c and 7b test the
+exact value and sign instead of "up to sign"; 9g added.  39 checks, all computed.
 """
 import json, math, random, sys, time
 import sympy as sp
@@ -242,7 +245,10 @@ for k in range(3):
     okk, ww = numeq(Bk, B0_expected * WxX)
     ok_all &= okk; worst = max(worst, ww)
 check("5b. B^k = B^0 (W x x)_k : the baryon current is rigidly transported by the physical rotation", ok_all, worst)
-check("5c. kappa = 1/(24 pi^2) up to the sign fixed by eps^{0123}=+1", abs(abs(float(kap_val)) - 1 / (24 * math.pi**2)) < 1e-15, float(kap_val))
+# (reconciliation) strict: the value is exactly -1/(24 pi^2) with L = U^+ dU, eps^{0123} = +1 and B = +1 for F(0) = pi.
+# Its magnitude is the standard 1/(24 pi^2); the sign depends only on those conventions (eps_{0123} vs eps^{0123}, L vs R).
+check("5c. kappa = -1/(24 pi^2) exactly (magnitude = standard 1/(24 pi^2); the sign follows from eps^{0123}=+1, L = U^+ dU, B = +1)",
+      sp.simplify(kap_val + 1 / (24 * sp.pi**2)) == 0, kap_val)
 
 # 6. magnetic moments (structure)
 #   isoscalar EM current = B^mu/2 (N_c=3, see section 9 helper); mu = (1/2) int x x J
@@ -262,8 +268,8 @@ check("6b. (1/2) <eps_ijk x_j eps_kbl n_l> = (r/3) delta_ib  =>  mu^{I=1}_i = D_
 Ast = [[Vspace(a, j, XA) for j in range(3)] for a in range(3)]
 S1 = sp.expand(sum(sph_avg(Ast[a][a]) for a in range(3)))          # 3 f1 + f2
 S2 = sp.expand(sum(sph_avg(nv[a] * nv[j] * Ast[a][j]) for a in range(3) for j in range(3)))  # f1 + f2
-f2_r = sp.expand((S1 - S2) / 2)
-f1_r = sp.expand(S2 - f2_r)
+f1_r = sp.expand((S1 - S2) / 2)          # (3 f1 + f2) - (f1 + f2) = 2 f1
+f2_r = sp.expand(S2 - f1_r)
 ok_all = True; worst = 0
 for a in range(3):
     for j in range(3):
@@ -274,11 +280,15 @@ GA_dens = sp.expand(f1_r + f2_r / 3)        # sphere-integral density of int A^a
 # literature D-formula (as quoted for ANW in prior_address): g_A = -(pi/(3e^2)) int x^2 [F' + sin2F/x
 #   + 4( sin2F F'^2/x + 2 s^2 F'/x^2 + s^2 sin2F/x^3 )] dx   (per unit x; sin2F = 2 s c)
 D_dens = Fp + 2 * s * c / r + 4 * (2 * s * c * Fp**2 / r + 2 * s**2 * Fp / r**2 + s**2 * 2 * s * c / r**3)
-# pion-pole-corrected g_A = -(2/3)*(3/2)*G_sphere = -int 4 pi r^2 GA_dens dr ; compare with -(pi/3) int r^2 D
+# int_sphere d^3x A^j_a = delta_aj * G_sphere, G_sphere = int 4 pi r^2 (f1 + f2/3) dr.  Proton matrix element:
+# <p up| int A^3_3 |p up> = <D_33> G_sphere = -G_sphere/3 = g_A/2 (generator tau/2)  ->  g_A(sphere) = (2/3)|G_sphere|.
+# Massless pions: the pion pole q_i q_j/q^2 removes 1/3 of the angular average, so g_A = (3/2) g_A(sphere) = |G_sphere|.
+# Compare G_sphere with the D-formula quoted for ANW, g_A = -(pi/3e^2) int x^2 D dx.
 ok, w = numeq(4 * sp.pi * GA_dens, (sp.pi / 3) * D_dens)
 ok2, w2 = numeq(4 * sp.pi * GA_dens, -(sp.pi / 3) * D_dens)
-check("7b. derived axial density matches the D-formula: 4 pi (f1+f2/3) = (pi/3) D  (up to overall sign)",
-      ok or ok2, "sign=+%s, rel.dev %.2e / %.2e" % (ok, w, w2))
+# (reconciliation) strict sign: G_sphere = -(pi/3) int x^2 D dx, the sign of the literature formula g_A = -(pi/3e^2) int x^2 D dx
+check("7b. derived axial density matches the D-formula with the literature sign: 4 pi (f1+f2/3) = -(pi/3) D",
+      ok2 and not ok, "rel.dev with -: %.2e ; with +: %.2e" % (w2, w))
 # Large-r tail: with F = C/r^2 small, f1 -> k/r^3, f2 -> -3k/r^3 with k = -C/4  =>  g_A = (8pi/3)|k| = 2 pi C/3
 Csym, eps_ = sp.symbols('C epsilon', positive=True)
 Ftail = eps_ * Csym / r**2
@@ -477,7 +487,44 @@ check("10a. quadratic part of (F^2/16)Tr(DU DU^+) = (1/2) d_mu pi^a d^mu pi^a (n
       sp.simplify(L2_quad - kin_expected) == 0, "")
 check("10b. quadratic part of the mass term = -(1/2) m_pi^2 pi^a pi^a", sp.simplify(Lm_quad + mpi**2 * sum(p**2 for p in ph) / 2) == 0, "")
 check("10c. L_mu = U^+ D_mu U vanishes at zeroth order, so the Skyrme term [L,L]^2 starts at 4th order (no quadratic part)", L4_quad == 0, "")
-check("10d. the WZ term is at least cubic in fields (eps A A d pi, eps A Tr(Q L L L)): no quadratic part", True, "by inspection of eq. 67: every term has >= 3 fields")
+# (reconciliation) 10d was hard-coded True "by inspection" in the first run; it is now computed.
+# Gauged WZ term in SU(2) (Bernstein-Holstein eq. 67, as transcribed in section 9), with the photon and the pions each carrying
+# one power of the bookkeeping parameter lam_:  L_WZ = -(N_c/48 pi^2) eps^{mu nu al be} [ q A_mu Tr(Q L_nu L_al L_be - Q R R R)
+#   + i q^2 F_mu nu A_al T_be ],  L = dU U^+, R = dU^+ U, T as in section 9.  Every factor (A, F, L, R, T) starts at order 1, so the
+# product needs only order-1 pieces up to total order 3; dU_ (order 2) and U_ (order 3) are more than enough.
+Ncw = sp.symbols('N_c', positive=True)
+Aw = [lam_ * Asym[mu] for mu in range(4)]
+Fw = [[lam_ * (dA[mu][nu] - dA[nu][mu]) for nu in range(4)] for mu in range(4)]
+dUd_ = [dU_[mu].H for mu in range(4)]
+Lw = [truncM(dU_[mu] * Ud_, 2) for mu in range(4)]
+Rw = [truncM(dUd_[mu] * U_, 2) for mu in range(4)]
+Tw = [trunc((QEM * QEM * Lw[b] - QEM * QEM * Rw[b] + QEM * U_ * QEM * Ud_ * Lw[b] / 2
+             - QEM * Ud_ * QEM * U_ * Rw[b] / 2).trace(), 2) for b in range(4)]
+wz1 = 0
+wz2 = 0
+for mu in range(4):
+    for nu in range(4):
+        for al in range(4):
+            for be in range(4):
+                lc = sp.LeviCivita(mu, nu, al, be)
+                if lc == 0:
+                    continue
+                LLL = truncM(truncM(Lw[nu] * Lw[al], 3) * Lw[be], 3)
+                RRR = truncM(truncM(Rw[nu] * Rw[al], 3) * Rw[be], 3)
+                wz1 += lc * trunc(Aw[mu] * (QEM * LLL - QEM * RRR).trace(), 3)
+                wz2 += lc * trunc(Fw[mu][nu] * Aw[al] * Tw[be], 3)
+LWZ = sp.expand(-(Ncw / (48 * sp.pi**2)) * (qe * wz1 + I * qe**2 * wz2))
+wz_orders = [sp.simplify(sp.expand(LWZ).coeff(lam_, k)) if k else sp.simplify(LWZ.subs(lam_, 0)) for k in range(4)]
+check("10d. gauged WZ term expanded in all fields: no part of order 0, 1 or 2 (no quadratic part; computed)",
+      all(o == 0 for o in wz_orders[:3]) and wz_orders[3] != 0,
+      "orders 0-2: %s; order 3 nonzero: %s" % (wz_orders[:3], wz_orders[3] != 0))
+# the cubic part is the pi0 A dA vertex; written with d_mu A_nu its coefficient is N_c q^2/(24 pi^2 f), f = F_pi/2 (Th = 2 pi.tau/F_pi)
+f_half = F0 / 2
+cubic_expected = (Ncw * qe**2 / (24 * sp.pi**2 * f_half)) * sum(
+    sp.LeviCivita(mu, nu, al, be) * dA[mu][nu] * Asym[al] * dph[2][be]
+    for mu in range(4) for nu in range(4) for al in range(4) for be in range(4) if sp.LeviCivita(mu, nu, al, be) != 0)
+check("9g. that cubic part = (N_c e^2/(24 pi^2 f)) eps^{mu nu al be} d_mu A_nu A_al d_be pi0 = (N_c e^2/(48 pi^2 f)) eps F_mu nu A_al d_be pi0 "
+      "(only pi0 couples)", sp.simplify(wz_orders[3] - cubic_expected) == 0, "")
 # Fourier: pions (k^2 - m^2) = 0 ; photon M^{mu nu} = -k^2 g^{mu nu} + k^mu k^nu
 w_, kx, ky, kz = sp.symbols('omega k_x k_y k_z', real=True)
 kup = sp.Matrix([w_, kx, ky, kz]); ksq = w_**2 - kx**2 - ky**2 - kz**2

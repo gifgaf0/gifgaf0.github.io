@@ -1,0 +1,1827 @@
+{
+ "experiment": "E1 phi^4 in 1+1D (PLAN.md section 4, E1a-E1e)",
+ "convention": "V=(1/4)(phi^2-1)^2, m=sqrt2, M_kink=2sqrt2/3, kink tanh(x/sqrt2) (rescaled units, phi0=1, hbar=1)",
+ "headline": [
+  {
+   "quantity": "E1a M_kink",
+   "value": 0.942809034568576,
+   "units_convention": "V=(1/4)(phi^2-1)^2, m=sqrt2, M_kink=2sqrt2/3, kink tanh(x/sqrt2) (rescaled units, phi0=1, hbar=1)",
+   "target": 0.9428090415820635,
+   "tolerance": "relative 1e-4",
+   "verdict": "CALIBRATED",
+   "source": "exact",
+   "note": "Newton-relaxed lattice kink, dx=0.025; rel. err -7.4e-09 (dx=0.05: -1.2e-07, dx=0.1: -1.9e-06)"
+  },
+  {
+   "quantity": "E1a shape-mode frequency omega_s",
+   "value": 1.2247448676906745,
+   "units_convention": "V=(1/4)(phi^2-1)^2, m=sqrt2, M_kink=2sqrt2/3, kink tanh(x/sqrt2) (rescaled units, phi0=1, hbar=1)",
+   "target": 1.224744871391589,
+   "tolerance": "relative 1e-4",
+   "verdict": "CALIBRATED",
+   "source": "exact",
+   "note": "lowest nonzero eigenvalue of -d2+3phi_k^2-1 on the lattice, dx=0.025; rel. err -3.0e-09; time-domain measurement agrees to 2.2e-05"
+  },
+  {
+   "quantity": "E1b critical velocity v_c (dx->0 extrapolation)",
+   "value": 0.26005625000000004,
+   "units_convention": "speed of each kink in the CM frame, units of c",
+   "target": 0.2598,
+   "tolerance": "+-0.001",
+   "verdict": "CALIBRATED",
+   "source": "[summary] Campbell-Schonfeld-Wingate 1983; Anninos-Oliveira-Matzner 1991",
+   "note": "dx=0.1/0.05/0.025 (dt=0.4dx): [0.260444, 0.260156, 0.260081]; Richardson p=2; x0=20 and t_post=1500 change it by <2e-5; range over all configurations [0.26008125000000004, 0.26044375]"
+  },
+  {
+   "quantity": "E1b critical velocity v_c (baseline dx=0.05, x0=12)",
+   "value": 0.26015625,
+   "units_convention": "same",
+   "target": 0.2598,
+   "tolerance": "+-0.001",
+   "verdict": "CALIBRATED",
+   "source": "[summary]",
+   "note": "bracket from bisection; label = bounce count before escape"
+  },
+  {
+   "quantity": "E1b first two-bounce window (dx->0 extrapolation)",
+   "value": [
+    0.19256458333333334,
+    0.20342708333333334
+   ],
+   "units_convention": "v range",
+   "target": [
+    0.1926,
+    0.2034
+   ],
+   "tolerance": "+-0.003 on each edge",
+   "verdict": "CALIBRATED",
+   "source": "[summary, one source]",
+   "note": "baseline dx=0.05: [0.19268, 0.20354]; edge spread over configs lo [0.19259375, 0.19303125], hi [0.20345625, 0.20388125]"
+  },
+  {
+   "quantity": "E1b two-bounce windows: >= 3, narrowing toward v_c",
+   "value": {
+    "n_windows_base": 20,
+    "first_five": [
+     [
+      0.19268125,
+      0.20354375000000002
+     ],
+     [
+      0.22414375000000003,
+      0.22895624999999997
+     ],
+     [
+      0.23723125,
+      0.23974375000000003
+     ],
+     [
+      0.24406875,
+      0.24555624999999998
+     ],
+     [
+      0.24813124999999997,
+      0.24909375
+     ]
+    ],
+    "first_five_widths": [
+     0.010862500000000025,
+     0.004812499999999942,
+     0.0025125000000000286,
+     0.001487499999999975,
+     0.0009625000000000328
+    ]
+   },
+   "units_convention": "count / v ranges / widths",
+   "target": ">= 3 windows narrowing toward v_c",
+   "tolerance": "qualitative",
+   "verdict": "CALIBRATED",
+   "source": "[summary]",
+   "note": "windows 2-5 vs a literature list of unverified provenance (not preregistered): max edge difference 0.0002"
+  },
+  {
+   "quantity": "E1b resonance check (not preregistered)",
+   "value": 5.304285714285717,
+   "units_convention": "time units per window",
+   "target": 5.130199320647456,
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "time between 1st and 2nd bounce grows by about one shape-mode period 2pi/omega_s per window (CSW mechanism)"
+  },
+  {
+   "quantity": "E1c (omega,v)=(0.99,0.43) produces a pair",
+   "value": true,
+   "units_convention": "DSV criterion: pair present at t=T (one light-crossing time)",
+   "target": true,
+   "tolerance": "qualitative",
+   "verdict": "CALIBRATED",
+   "source": "[read] arXiv:0803.0670",
+   "note": "pair first meets the pair test at t=1160.0000000000002 (T=1200) after a long-lived central oscillation; still present and separating at 1.5T: True; E/2M=11.20"
+  },
+  {
+   "quantity": "E1c producing region trends to lower v as omega rises",
+   "value": [
+    -0.9878787878787878,
+    9.307459988955516e-08
+   ],
+   "units_convention": "Spearman rho, p (omega vs median producing v)",
+   "target": "rho < 0",
+   "tolerance": "qualitative",
+   "verdict": "CALIBRATED",
+   "source": "[read]",
+   "note": "vmax: [-0.996965091635306, 3.698093220209441e-10], vmin: [-0.9878787878787878, 9.307459988955516e-08]"
+  },
+  {
+   "quantity": "E1c trains pass through at high v",
+   "value": {
+    "v>=0.8": {
+     "n": 110,
+     "n_produced_dsv": 14
+    },
+    "v>=0.85": {
+     "n": 60,
+     "n_produced_dsv": 2
+    },
+    "v>=0.9": {
+     "n": 10,
+     "n_produced_dsv": 0
+    }
+   },
+   "units_convention": "producing runs at v >= 0.85 / 0.9",
+   "target": "no production at the highest v",
+   "tolerance": "qualitative",
+   "verdict": "CALIBRATED",
+   "source": "[read]",
+   "note": ""
+  },
+  {
+   "quantity": "E1c holes, e.g. near (0.91,0.82)",
+   "value": {
+    "n_holes": 10,
+    "probe": {
+     "(0.90,0.80)": {
+      "dsv": false,
+      "survive": false
+     },
+     "(0.91,0.80)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.92,0.80)": {
+      "dsv": false,
+      "survive": false
+     },
+     "(0.90,0.81)": {
+      "dsv": false,
+      "survive": false
+     },
+     "(0.91,0.81)": {
+      "dsv": false,
+      "survive": false
+     },
+     "(0.92,0.81)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.90,0.82)": {
+      "dsv": true,
+      "survive": false
+     },
+     "(0.91,0.82)": {
+      "dsv": false,
+      "survive": false
+     },
+     "(0.92,0.82)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.90,0.83)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.91,0.83)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.92,0.83)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.90,0.84)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.91,0.84)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.92,0.84)": {
+      "dsv": true,
+      "survive": true
+     }
+    }
+   },
+   "units_convention": "non-producing points whose two v-neighbours (step 0.01) produce",
+   "target": "holes exist",
+   "tolerance": "qualitative",
+   "verdict": "CALIBRATED",
+   "source": "[read]",
+   "note": "list in e1c_analysis.json"
+  },
+  {
+   "quantity": "E1c no production for omega > 0.99",
+   "value": {
+    "0.992": {
+     "n": 36,
+     "produced_dsv_at_v": [],
+     "survives_at_v": []
+    },
+    "0.995": {
+     "n": 36,
+     "produced_dsv_at_v": [],
+     "survives_at_v": []
+    }
+   },
+   "units_convention": "omega in {0.992, 0.995}, v 0.20-0.90 step 0.02",
+   "target": "none found",
+   "tolerance": "qualitative",
+   "verdict": "CALIBRATED",
+   "source": "[read]",
+   "note": "DSV: 'we have not found ... for omega > 0.99'"
+  },
+  {
+   "quantity": "E1c dx check (dx 0.05 vs 0.1)",
+   "value": {
+    "n": 78,
+    "agree_frac_dsv": 0.9487179487179487,
+    "agree_frac_survive": 0.9487179487179487,
+    "disagreements_omega_v_dx0.05_dx0.1": [
+     [
+      0.91,
+      0.72,
+      true,
+      false
+     ],
+     [
+      0.95,
+      0.68,
+      false,
+      true
+     ],
+     [
+      0.95,
+      0.7,
+      true,
+      false
+     ],
+     [
+      0.95,
+      0.74,
+      true,
+      false
+     ]
+    ]
+   },
+   "units_convention": "agreement of the production call",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": ""
+  },
+  {
+   "quantity": "E1d no production below E = 2 M_kink",
+   "value": 0,
+   "units_convention": "producing runs with E < 2M_kink (coarse grid)",
+   "target": 0,
+   "tolerance": "exact (energy conservation)",
+   "verdict": "CALIBRATED",
+   "source": "",
+   "note": "sanity check"
+  },
+  {
+   "quantity": "E1d lowest producing energy, all Gaussian runs (dx=0.1)",
+   "value": 1.792321447422346,
+   "units_convention": "E / 2M_kink",
+   "target": "prediction: > 1",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "A=1.4, sigma=1.0, k=0.25; single packet alone produces: False; reproduced at dx=0.05: False"
+  },
+  {
+   "quantity": "E1d lowest producing energy reproduced at dx=0.05",
+   "value": 1.8583799116469528,
+   "units_convention": "E / 2M_kink",
+   "target": "prediction: > 1",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "A=0.8, sigma=2.0, k=0.5; collision needed"
+  },
+  {
+   "quantity": "E1d fraction producing vs E/2M (coarse grid)",
+   "value": [
+    [
+     0.0,
+     0.5,
+     148,
+     0,
+     0.0
+    ],
+    [
+     0.5,
+     1.0,
+     87,
+     0,
+     0.0
+    ],
+    [
+     1.0,
+     1.5,
+     72,
+     0,
+     0.0
+    ],
+    [
+     1.5,
+     2.0,
+     64,
+     2,
+     0.03125
+    ],
+    [
+     2.0,
+     3.0,
+     93,
+     7,
+     0.07526881720430108
+    ],
+    [
+     3.0,
+     4.0,
+     72,
+     8,
+     0.1111111111111111
+    ],
+    [
+     4.0,
+     6.0,
+     114,
+     21,
+     0.18421052631578946
+    ],
+    [
+     6.0,
+     8.0,
+     88,
+     40,
+     0.45454545454545453
+    ],
+    [
+     8.0,
+     12.0,
+     120,
+     64,
+     0.5333333333333333
+    ],
+    [
+     12.0,
+     16.0,
+     88,
+     52,
+     0.5909090909090909
+    ],
+    [
+     16.0,
+     24.0,
+     127,
+     76,
+     0.5984251968503937
+    ],
+    [
+     24.0,
+     32.0,
+     89,
+     62,
+     0.6966292134831461
+    ],
+    [
+     32.0,
+     64.0,
+     177,
+     122,
+     0.6892655367231638
+    ],
+    [
+     64.0,
+     1000000000.0,
+     146,
+     110,
+     0.7534246575342466
+    ]
+   ],
+   "units_convention": "[E/2M lo, hi, n, n_prod, frac]",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "564/1485 coarse runs produce"
+  },
+  {
+   "quantity": "E1d producing regions (coarse 3D grid)",
+   "value": {
+    "n_6conn": 8,
+    "sizes_6conn": [
+     551,
+     5,
+     3,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "n_26conn": 2,
+    "sizes_26conn": [
+     563,
+     1
+    ]
+   },
+   "units_convention": "connected components (6- and 26-connectivity)",
+   "target": "prediction: ragged",
+   "tolerance": "qualitative",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": ""
+  },
+  {
+   "quantity": "E1d slice e1d_sliceAk_16.0.json",
+   "value": {
+    "regions_4conn": 24,
+    "regions_8conn": 6,
+    "singletons_4conn": 15,
+    "enclosed_holes": 267,
+    "A_lines_non_monotonic": 57,
+    "A_lines_with_production": 57,
+    "min_producing": {
+     "A": 0.275,
+     "sigma": 16.0,
+     "k": 0.2,
+     "vg": 0.140028008402801,
+     "E_over_2M": 2.263348608654741,
+     "N_lin": 3.0632287922379673
+    }
+   },
+   "units_convention": "connected components / flips along A",
+   "target": "prediction: ragged",
+   "tolerance": "qualitative",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "fixed ['16.0']"
+  },
+  {
+   "quantity": "E1d slice e1d_sliceAs_1.0.json",
+   "value": {
+    "regions_4conn": 48,
+    "regions_8conn": 11,
+    "singletons_4conn": 26,
+    "enclosed_holes": 141,
+    "A_lines_non_monotonic": 48,
+    "A_lines_with_production": 53,
+    "min_producing": {
+     "A": 0.7,
+     "sigma": 2.5618,
+     "k": 1.0,
+     "vg": 0.5773502691896258,
+     "E_over_2M": 3.325665168314367,
+     "N_lin": 3.867836164363505
+    }
+   },
+   "units_convention": "connected components / flips along A",
+   "target": "prediction: ragged",
+   "tolerance": "qualitative",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "fixed ['1.0']"
+  },
+  {
+   "quantity": "E1d prediction test: ragged",
+   "value": {
+    "per_slice": [
+     {
+      "slice": "e1d_sliceAk_16.0.json",
+      "frac_nonmonotonic_A_lines": 1.0,
+      "n_regions_ge3": 6,
+      "n_regions_ignoring_singletons": 9
+     },
+     {
+      "slice": "e1d_sliceAs_1.0.json",
+      "frac_nonmonotonic_A_lines": 0.9056603773584906,
+      "n_regions_ge3": 10,
+      "n_regions_ignoring_singletons": 10
+     }
+    ]
+   },
+   "units_convention": "see analyze_e1d.py for the operational test",
+   "target": "see PLAN.md E1d",
+   "tolerance": "operational",
+   "verdict": "CONFIRMED",
+   "source": "",
+   "note": ""
+  },
+  {
+   "quantity": "E1d prediction test: ragged_collision_needed",
+   "value": {
+    "per_slice": [
+     {
+      "slice": "e1d_sliceAk_16.0.json",
+      "frac_nonmonotonic_A_lines": 1.0,
+      "n_regions_ge3": 10,
+      "n_regions_ignoring_singletons": 10,
+      "n_regions_total": 186
+     },
+     {
+      "slice": "e1d_sliceAs_1.0.json",
+      "frac_nonmonotonic_A_lines": 0.9230769230769231,
+      "n_regions_ge3": 10,
+      "n_regions_ignoring_singletons": 10,
+      "n_regions_total": 121
+     }
+    ]
+   },
+   "units_convention": "see analyze_e1d.py for the operational test",
+   "target": "see PLAN.md E1d",
+   "tolerance": "operational",
+   "verdict": "CONFIRMED",
+   "source": "",
+   "note": ""
+  },
+  {
+   "quantity": "E1d prediction test: speed",
+   "value": {
+    "rows": [
+     {
+      "E_band": [
+       2,
+       4
+      ],
+      "x": [
+       0.17407765595569785,
+       0.3333333333333333,
+       0.4685212856658182,
+       0.5773502691896258,
+       0.6622661785325219,
+       0.7276068751089989,
+       0.8164965809277261,
+       0.8703882797784892,
+       0.9045340337332909
+      ],
+      "frac": [
+       0.2692307692307692,
+       0.2916666666666667,
+       0.041666666666666664,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "n": [
+       26,
+       24,
+       24,
+       21,
+       19,
+       16,
+       13,
+       12,
+       10
+      ],
+      "spearman": [
+       -0.8218224606706397,
+       0.006573427983343723
+      ]
+     },
+     {
+      "E_band": [
+       4,
+       8
+      ],
+      "x": [
+       0.17407765595569785,
+       0.3333333333333333,
+       0.4685212856658182,
+       0.5773502691896258,
+       0.6622661785325219,
+       0.7276068751089989,
+       0.8164965809277261,
+       0.8703882797784892,
+       0.9045340337332909
+      ],
+      "frac": [
+       0.38461538461538464,
+       0.5652173913043478,
+       0.6,
+       0.4230769230769231,
+       0.2916666666666667,
+       0.19230769230769232,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "n": [
+       26,
+       23,
+       25,
+       26,
+       24,
+       26,
+       20,
+       17,
+       15
+      ],
+      "spearman": [
+       -0.8645309671165333,
+       0.002632371844833842
+      ]
+     },
+     {
+      "E_band": [
+       8,
+       16
+      ],
+      "x": [
+       0.17407765595569785,
+       0.3333333333333333,
+       0.4685212856658182,
+       0.5773502691896258,
+       0.6622661785325219,
+       0.7276068751089989,
+       0.8164965809277261,
+       0.8703882797784892,
+       0.9045340337332909
+      ],
+      "frac": [
+       0.7368421052631579,
+       0.7272727272727273,
+       0.5217391304347826,
+       0.6521739130434783,
+       0.6923076923076923,
+       0.5833333333333334,
+       0.5,
+       0.375,
+       0.23809523809523808
+      ],
+      "n": [
+       19,
+       22,
+       23,
+       23,
+       26,
+       24,
+       26,
+       24,
+       21
+      ],
+      "spearman": [
+       -0.8833333333333333,
+       0.0015905004234978695
+      ]
+     }
+    ],
+    "bands_supporting": 3,
+    "bands_contradicting": 0
+   },
+   "units_convention": "see analyze_e1d.py for the operational test",
+   "target": "see PLAN.md E1d",
+   "tolerance": "operational",
+   "verdict": "CONFIRMED",
+   "source": "",
+   "note": ""
+  },
+  {
+   "quantity": "E1d prediction test: width",
+   "value": {
+    "rows": [
+     {
+      "E_band": [
+       2,
+       4
+      ],
+      "x": [
+       1.0,
+       1.5,
+       2.0,
+       3.0,
+       4.0,
+       5.0,
+       6.0,
+       8.0,
+       10.0,
+       12.0,
+       16.0
+      ],
+      "frac": [
+       0.0,
+       0.038461538461538464,
+       0.125,
+       0.21052631578947367,
+       0.1875,
+       0.08333333333333333,
+       0.09090909090909091,
+       0.2,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "n": [
+       24,
+       26,
+       24,
+       19,
+       16,
+       12,
+       11,
+       10,
+       9,
+       8,
+       6
+      ],
+      "spearman": [
+       -0.2837976841715336,
+       0.39770244777084424
+      ]
+     },
+     {
+      "E_band": [
+       4,
+       8
+      ],
+      "x": [
+       1.0,
+       1.5,
+       2.0,
+       3.0,
+       4.0,
+       5.0,
+       6.0,
+       8.0,
+       10.0,
+       12.0,
+       16.0
+      ],
+      "frac": [
+       0.05555555555555555,
+       0.30434782608695654,
+       0.44,
+       0.36,
+       0.2916666666666667,
+       0.4,
+       0.2777777777777778,
+       0.26666666666666666,
+       0.3333333333333333,
+       0.25,
+       0.2
+      ],
+      "n": [
+       18,
+       23,
+       25,
+       25,
+       24,
+       20,
+       18,
+       15,
+       12,
+       12,
+       10
+      ],
+      "spearman": [
+       -0.28181818181818186,
+       0.40114489796047825
+      ]
+     },
+     {
+      "E_band": [
+       8,
+       16
+      ],
+      "x": [
+       1.0,
+       1.5,
+       2.0,
+       3.0,
+       4.0,
+       5.0,
+       6.0,
+       8.0,
+       10.0,
+       12.0,
+       16.0
+      ],
+      "frac": [
+       0.18181818181818182,
+       0.6666666666666666,
+       0.5,
+       0.625,
+       0.7083333333333334,
+       0.64,
+       0.5,
+       0.6,
+       0.5,
+       0.4666666666666667,
+       0.5
+      ],
+      "n": [
+       11,
+       15,
+       18,
+       24,
+       24,
+       25,
+       24,
+       20,
+       18,
+       15,
+       14
+      ],
+      "spearman": [
+       -0.2140113683916483,
+       0.5274614094406629
+      ]
+     }
+    ],
+    "bands_supporting": 0,
+    "bands_contradicting": 0
+   },
+   "units_convention": "see analyze_e1d.py for the operational test",
+   "target": "see PLAN.md E1d",
+   "tolerance": "operational",
+   "verdict": "NOT_SUPPORTED",
+   "source": "",
+   "note": ""
+  },
+  {
+   "quantity": "E1d prediction test: speed_collision_needed",
+   "value": {
+    "rows": [
+     {
+      "E_band": [
+       2,
+       4
+      ],
+      "x": [
+       0.17407765595569785,
+       0.3333333333333333,
+       0.4685212856658182,
+       0.5773502691896258,
+       0.6622661785325219,
+       0.7276068751089989,
+       0.8164965809277261,
+       0.8703882797784892,
+       0.9045340337332909
+      ],
+      "frac": [
+       0.2692307692307692,
+       0.2916666666666667,
+       0.041666666666666664,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "n": [
+       26,
+       24,
+       24,
+       21,
+       19,
+       16,
+       13,
+       12,
+       10
+      ],
+      "spearman": [
+       -0.8218224606706397,
+       0.006573427983343723
+      ]
+     },
+     {
+      "E_band": [
+       4,
+       8
+      ],
+      "x": [
+       0.17407765595569785,
+       0.3333333333333333,
+       0.4685212856658182,
+       0.5773502691896258,
+       0.6622661785325219,
+       0.7276068751089989,
+       0.8164965809277261,
+       0.8703882797784892,
+       0.9045340337332909
+      ],
+      "frac": [
+       0.15384615384615385,
+       0.21739130434782608,
+       0.36,
+       0.19230769230769232,
+       0.16666666666666666,
+       0.19230769230769232,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "n": [
+       26,
+       23,
+       25,
+       26,
+       24,
+       26,
+       20,
+       17,
+       15
+      ],
+      "spearman": [
+       -0.6810052246069989,
+       0.04343355761067167
+      ]
+     },
+     {
+      "E_band": [
+       8,
+       16
+      ],
+      "x": [
+       0.17407765595569785,
+       0.3333333333333333,
+       0.4685212856658182,
+       0.5773502691896258,
+       0.6622661785325219,
+       0.7276068751089989,
+       0.8164965809277261,
+       0.8703882797784892,
+       0.9045340337332909
+      ],
+      "frac": [
+       0.21052631578947367,
+       0.13636363636363635,
+       0.21739130434782608,
+       0.43478260869565216,
+       0.3076923076923077,
+       0.20833333333333334,
+       0.23076923076923078,
+       0.20833333333333334,
+       0.19047619047619047
+      ],
+      "n": [
+       19,
+       22,
+       23,
+       23,
+       26,
+       24,
+       26,
+       24,
+       21
+      ],
+      "spearman": [
+       -0.1338923854009157,
+       0.7312787650945741
+      ]
+     }
+    ],
+    "bands_supporting": 2,
+    "bands_contradicting": 0
+   },
+   "units_convention": "see analyze_e1d.py for the operational test",
+   "target": "see PLAN.md E1d",
+   "tolerance": "operational",
+   "verdict": "CONFIRMED",
+   "source": "",
+   "note": ""
+  },
+  {
+   "quantity": "E1d prediction test: width_collision_needed",
+   "value": {
+    "rows": [
+     {
+      "E_band": [
+       2,
+       4
+      ],
+      "x": [
+       1.0,
+       1.5,
+       2.0,
+       3.0,
+       4.0,
+       5.0,
+       6.0,
+       8.0,
+       10.0,
+       12.0,
+       16.0
+      ],
+      "frac": [
+       0.0,
+       0.038461538461538464,
+       0.125,
+       0.21052631578947367,
+       0.1875,
+       0.08333333333333333,
+       0.09090909090909091,
+       0.2,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "n": [
+       24,
+       26,
+       24,
+       19,
+       16,
+       12,
+       11,
+       10,
+       9,
+       8,
+       6
+      ],
+      "spearman": [
+       -0.2837976841715336,
+       0.39770244777084424
+      ]
+     },
+     {
+      "E_band": [
+       4,
+       8
+      ],
+      "x": [
+       1.0,
+       1.5,
+       2.0,
+       3.0,
+       4.0,
+       5.0,
+       6.0,
+       8.0,
+       10.0,
+       12.0,
+       16.0
+      ],
+      "frac": [
+       0.05555555555555555,
+       0.30434782608695654,
+       0.24,
+       0.04,
+       0.125,
+       0.15,
+       0.16666666666666666,
+       0.26666666666666666,
+       0.08333333333333333,
+       0.16666666666666666,
+       0.1
+      ],
+      "n": [
+       18,
+       23,
+       25,
+       25,
+       24,
+       20,
+       18,
+       15,
+       12,
+       12,
+       10
+      ],
+      "spearman": [
+       -0.013667461427346159,
+       0.9681862209072394
+      ]
+     },
+     {
+      "E_band": [
+       8,
+       16
+      ],
+      "x": [
+       1.0,
+       1.5,
+       2.0,
+       3.0,
+       4.0,
+       5.0,
+       6.0,
+       8.0,
+       10.0,
+       12.0,
+       16.0
+      ],
+      "frac": [
+       0.18181818181818182,
+       0.26666666666666666,
+       0.05555555555555555,
+       0.25,
+       0.4583333333333333,
+       0.28,
+       0.16666666666666666,
+       0.2,
+       0.2222222222222222,
+       0.2,
+       0.2857142857142857
+      ],
+      "n": [
+       11,
+       15,
+       18,
+       24,
+       24,
+       25,
+       24,
+       20,
+       18,
+       15,
+       14
+      ],
+      "spearman": [
+       0.2004561009344103,
+       0.5545252303435374
+      ]
+     }
+    ],
+    "bands_supporting": 0,
+    "bands_contradicting": 0
+   },
+   "units_convention": "see analyze_e1d.py for the operational test",
+   "target": "see PLAN.md E1d",
+   "tolerance": "operational",
+   "verdict": "NOT_SUPPORTED",
+   "source": "",
+   "note": ""
+  },
+  {
+   "quantity": "E1d single_packet_controls",
+   "value": {
+    "n_tested(=producing pair runs)": 564,
+    "n_single_packet_also_produces": 366,
+    "examples": [
+     [
+      1.2,
+      16.0,
+      0.25
+     ],
+     [
+      1.3,
+      16.0,
+      0.25
+     ],
+     [
+      1.4,
+      16.0,
+      0.25
+     ],
+     [
+      0.5,
+      16.0,
+      0.25
+     ],
+     [
+      0.6,
+      16.0,
+      0.25
+     ],
+     [
+      0.9,
+      16.0,
+      0.25
+     ],
+     [
+      0.5,
+      16.0,
+      0.5
+     ],
+     [
+      0.7,
+      16.0,
+      0.5
+     ],
+     [
+      0.8,
+      16.0,
+      0.5
+     ],
+     [
+      0.9,
+      16.0,
+      0.5
+     ]
+    ]
+   },
+   "units_convention": "",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": ""
+  },
+  {
+   "quantity": "E1d dx_check",
+   "value": {
+    "n": 300,
+    "agree_frac": 0.7966666666666666,
+    "n_prod_dx0.05": 144,
+    "n_prod_dx0.1_same_points": 143,
+    "disagreements": [
+     [
+      0.6,
+      16.0,
+      0.25,
+      false,
+      11.15
+     ],
+     [
+      1.4,
+      16.0,
+      0.5,
+      false,
+      74.01
+     ],
+     [
+      0.6,
+      12.0,
+      0.25,
+      true,
+      7.91
+     ],
+     [
+      1.2,
+      16.0,
+      1.25,
+      true,
+      81.31
+     ],
+     [
+      0.8,
+      12.0,
+      0.25,
+      true,
+      13.95
+     ],
+     [
+      1.2,
+      10.0,
+      0.25,
+      true,
+      23.67
+     ],
+     [
+      1.3,
+      10.0,
+      0.25,
+      true,
+      27.65
+     ],
+     [
+      1.4,
+      10.0,
+      0.25,
+      false,
+      31.96
+     ],
+     [
+      1.5,
+      10.0,
+      0.25,
+      true,
+      36.64
+     ],
+     [
+      0.7,
+      16.0,
+      2.0,
+      true,
+      44.7
+     ],
+     [
+      0.6,
+      12.0,
+      0.5,
+      true,
+      9.33
+     ],
+     [
+      0.7,
+      12.0,
+      0.5,
+      true,
+      12.79
+     ],
+     [
+      0.9,
+      12.0,
+      0.5,
+      false,
+      21.53
+     ],
+     [
+      1.4,
+      12.0,
+      0.75,
+      false,
+      62.44
+     ],
+     [
+      0.5,
+      10.0,
+      0.5,
+      true,
+      5.35
+     ],
+     [
+      1.0,
+      10.0,
+      0.5,
+      true,
+      22.24
+     ],
+     [
+      1.2,
+      12.0,
+      1.25,
+      false,
+      60.99
+     ],
+     [
+      0.7,
+      12.0,
+      1.5,
+      false,
+      23.86
+     ],
+     [
+      0.9,
+      12.0,
+      2.0,
+      true,
+      55.82
+     ],
+     [
+      0.5,
+      12.0,
+      2.5,
+      true,
+      23.36
+     ],
+     [
+      0.8,
+      12.0,
+      2.5,
+      false,
+      60.18
+     ],
+     [
+      1.3,
+      12.0,
+      2.5,
+      true,
+      161.57
+     ],
+     [
+      1.5,
+      12.0,
+      2.5,
+      true,
+      217.0
+     ],
+     [
+      1.1,
+      10.0,
+      0.75,
+      false,
+      31.0
+     ],
+     [
+      1.2,
+      10.0,
+      1.25,
+      true,
+      50.84
+     ],
+     [
+      1.5,
+      10.0,
+      1.25,
+      true,
+      81.71
+     ],
+     [
+      1.1,
+      10.0,
+      1.5,
+      false,
+      50.19
+     ],
+     [
+      1.2,
+      8.0,
+      0.5,
+      false,
+      25.37
+     ],
+     [
+      1.3,
+      8.0,
+      0.5,
+      true,
+      30.09
+     ],
+     [
+      0.9,
+      8.0,
+      0.5,
+      false,
+      13.92
+     ],
+     [
+      1.0,
+      10.0,
+      2.0,
+      false,
+      57.67
+     ],
+     [
+      0.7,
+      6.0,
+      0.25,
+      true,
+      4.31
+     ],
+     [
+      1.4,
+      6.0,
+      0.25,
+      false,
+      13.73
+     ],
+     [
+      1.3,
+      8.0,
+      0.75,
+      false,
+      35.41
+     ],
+     [
+      0.6,
+      8.0,
+      1.5,
+      true,
+      11.65
+     ],
+     [
+      0.8,
+      5.0,
+      0.25,
+      false,
+      4.27
+     ],
+     [
+      0.9,
+      5.0,
+      0.25,
+      true,
+      5.17
+     ],
+     [
+      1.0,
+      5.0,
+      0.25,
+      false,
+      6.11
+     ],
+     [
+      1.4,
+      8.0,
+      2.5,
+      false,
+      125.48
+     ],
+     [
+      1.5,
+      8.0,
+      2.5,
+      true,
+      144.7
+     ],
+     [
+      0.9,
+      6.0,
+      0.5,
+      false,
+      9.68
+     ],
+     [
+      0.8,
+      8.0,
+      2.5,
+      false,
+      40.13
+     ],
+     [
+      1.3,
+      6.0,
+      0.75,
+      true,
+      26.11
+     ],
+     [
+      1.3,
+      4.0,
+      0.25,
+      true,
+      6.49
+     ],
+     [
+      1.2,
+      6.0,
+      1.0,
+      true,
+      25.94
+     ],
+     [
+      1.5,
+      6.0,
+      1.0,
+      false,
+      41.89
+     ],
+     [
+      1.5,
+      6.0,
+      1.25,
+      true,
+      49.08
+     ],
+     [
+      0.7,
+      5.0,
+      0.5,
+      false,
+      4.67
+     ],
+     [
+      0.8,
+      6.0,
+      1.5,
+      false,
+      15.67
+     ],
+     [
+      1.1,
+      6.0,
+      1.5,
+      true,
+      30.15
+     ],
+     [
+      0.7,
+      5.0,
+      0.75,
+      false,
+      5.88
+     ],
+     [
+      1.0,
+      5.0,
+      0.75,
+      false,
+      12.16
+     ],
+     [
+      1.1,
+      5.0,
+      1.25,
+      false,
+      21.22
+     ],
+     [
+      1.5,
+      5.0,
+      1.5,
+      true,
+      48.2
+     ],
+     [
+      1.1,
+      4.0,
+      0.5,
+      false,
+      8.01
+     ],
+     [
+      1.0,
+      4.0,
+      1.0,
+      true,
+      11.52
+     ],
+     [
+      0.9,
+      4.0,
+      1.5,
+      false,
+      13.31
+     ],
+     [
+      1.1,
+      4.0,
+      2.5,
+      false,
+      38.33
+     ],
+     [
+      1.1,
+      3.0,
+      0.75,
+      true,
+      7.46
+     ],
+     [
+      1.3,
+      3.0,
+      2.0,
+      false,
+      29.78
+     ],
+     [
+      1.0,
+      2.0,
+      2.5,
+      true,
+      15.84
+     ]
+    ]
+   },
+   "units_convention": "",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": ""
+  },
+  {
+   "quantity": "E1d phase_diagnostic",
+   "value": {
+    "n_points": 60,
+    "shifts_per_point": 8,
+    "n_points_outcome_depends_on_phase": 51,
+    "n_always": 8,
+    "n_never": 1,
+    "mean_production_fraction": 0.7666666666666667
+   },
+   "units_convention": "",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": ""
+  },
+  {
+   "quantity": "E1e threshold 2M_kink in quanta",
+   "value": 0.6666666666666667,
+   "units_convention": "N*lambda/m^2 (N = E/m)",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "energy conservation alone: N >= (2/3) m^2/lambda"
+  },
+  {
+   "quantity": "E1e DSV trains, min_E_reproduced_dx0.05",
+   "value": {
+    "N_E_times_lambda_over_m2": 4.780506410531629,
+    "N_lin_times_lambda_over_m2": 3.9277750160215046,
+    "E_over_2M": 7.170759615797444,
+    "omega": 0.95,
+    "v": 0.62
+   },
+   "units_convention": "N*lambda/m^2; phi0^2 = m^2/(2 lambda)",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "lowest producing train at dx=0.1 that is reproduced at dx=0.05; walk: [{\"omega\": 0.9, \"v\": 0.73, \"E_over_2M\": 6.978616896698666, \"N_lin_over_phi0sq\": 6.770817711901965, \"reproduced_dx0.05\": false}, {\"omega\": 0.95, \"v\": 0.62, \"E_over_2M\": 7.170759615797444, \"N_lin_over_phi0sq\": 7.855550032043009, \"reproduced_dx0.05\": true}]"
+  },
+  {
+   "quantity": "E1e DSV trains, min_N_lin_reproduced_dx0.05",
+   "value": {
+    "N_E_times_lambda_over_m2": 4.780506410531629,
+    "N_lin_times_lambda_over_m2": 3.9277750160215046,
+    "E_over_2M": 7.170759615797444,
+    "omega": 0.95,
+    "v": 0.62
+   },
+   "units_convention": "N*lambda/m^2; phi0^2 = m^2/(2 lambda)",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "lowest producing train at dx=0.1 that is reproduced at dx=0.05; walk: [{\"omega\": 0.9, \"v\": 0.73, \"E_over_2M\": 6.978616896698666, \"N_lin_over_phi0sq\": 6.770817711901965, \"reproduced_dx0.05\": false}, {\"omega\": 0.95, \"v\": 0.62, \"E_over_2M\": 7.170759615797444, \"N_lin_over_phi0sq\": 7.855550032043009, \"reproduced_dx0.05\": true}]"
+  },
+  {
+   "quantity": "E1e Gaussian packets, min_E_reproduced at dx=0.05",
+   "value": {
+    "N_E_times_lambda_over_m2": 1.2389199410979685,
+    "N_lin_times_lambda_over_m2": 1.687915041158199,
+    "E_over_2M": 1.8583799116469528,
+    "A": 0.8,
+    "sigma": 2.0,
+    "k": 0.5
+   },
+   "units_convention": "N*lambda/m^2",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "collision needed (the single packet alone makes no pair)"
+  },
+  {
+   "quantity": "E1e Gaussian packets, min_N_lin_reproduced at dx=0.05",
+   "value": {
+    "N_E_times_lambda_over_m2": 1.2389199410979685,
+    "N_lin_times_lambda_over_m2": 1.687915041158199,
+    "E_over_2M": 1.8583799116469528,
+    "A": 0.8,
+    "sigma": 2.0,
+    "k": 0.5
+   },
+   "units_convention": "N*lambda/m^2",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "collision needed (the single packet alone makes no pair)"
+  },
+  {
+   "quantity": "E1e Gaussian packets, raw min_E_any (NOT reproduced at dx=0.05)",
+   "value": {
+    "N_E_times_lambda_over_m2": 1.1948809649482306,
+    "N_lin_times_lambda_over_m2": 2.7174535221551688,
+    "E_over_2M": 1.792321447422346,
+    "A": 1.4,
+    "sigma": 1.0,
+    "k": 0.25
+   },
+   "units_convention": "N*lambda/m^2",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "isolated producing point; see e1d_probe_min.json (dx=0.05 rerun, local grid, phase shifts)"
+  },
+  {
+   "quantity": "E1e Gaussian packets, raw min_N_lin_any (NOT reproduced at dx=0.05)",
+   "value": {
+    "N_E_times_lambda_over_m2": 1.5088990724364941,
+    "N_lin_times_lambda_over_m2": 1.5316143961189836,
+    "E_over_2M": 2.263348608654741,
+    "A": 0.275,
+    "sigma": 16.0,
+    "k": 0.2
+   },
+   "units_convention": "N*lambda/m^2",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "isolated producing point; see e1d_probe_min.json (dx=0.05 rerun, local grid, phase shifts)"
+  },
+  {
+   "quantity": "E1e smallest classical N_lin*lambda/m^2 (producers reproduced at dx=0.05)",
+   "value": 1.687915041158199,
+   "units_convention": "N*lambda/m^2",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "{\"statement\": \"classical production found only for N >= c m^2/lambda (c from producing runs that reproduce at dx = 0.05); c is an upper bound on the true minimum (searched sets only)\", \"c\": 1.687915041158199, \"candidates\": {\"gaussian_reproduced_at_dx0.05\": 1.687915041158199, \"dsv_reproduced_at_dx0.05\": 3.9277750160215046}, \"N_needed_at_lambda_over_m2\": {\"1.0\": 1.687915041158199, \"0.1\": 16.87915041158199, \"0.01\": 168.7915041158199, \"0.001\": 1687.9150411581988}, \"coupling_where_N_equals_2\": 0.8439575205790995, \"coupling_where_N_equals_10\": 0.1687915041158199}"
+  }
+ ],
+ "details_files": [
+  "e1a_results.json",
+  "e1b_analysis.json",
+  "e1c_analysis.json",
+  "e1d_analysis.json",
+  "e1e_results.json"
+ ]
+}

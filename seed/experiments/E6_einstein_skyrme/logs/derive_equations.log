@@ -1,0 +1,24 @@
+[PASS] (A) reduced rho == matrix rho in curved spatial metric rel.diff = 1.39e-31
+G^t_t   = -2*Derivative(mu(r), r)/r**2
+G^r_r   = 2*(r*Derivative(sigma(r), r) - 2*mu(r)*Derivative(sigma(r), r) - sigma(r)*Derivative(mu(r), r))/(r**2*sigma(r))
+G^th_th = (r**2*Derivative(sigma(r), (r, 2)) - 2*r*mu(r)*Derivative(sigma(r), (r, 2)) - r*sigma(r)*Derivative(mu(r), (r, 2)) - 3*r*Derivative(mu(r), r)*Derivative(sigma(r), r) + r*Derivative(sigma(r), r) + mu(r)*Derivative(sigma(r), r))/(r**2*sigma(r))
+[PASS] rho + p_r = N F'^2 (f^2 + 2 sin^2F/(e^2 r^2)) 
+[PASS] G^t_t eq  ->  mu' = 4 pi G r^2 rho 
+[PASS] G^r_r - G^t_t eq  ->  sigma'/sigma = 4 pi G r (rho+p_r)/N 
+[PASS] (C) Euler-Lagrange equation for F 
+[PASS] (D) G^th_th = 8 pi G T^th_th follows from the other equations residual = 0
+[PASS] (E) rho = e^2 f^4 rho~(x),  x^2 rho~ = (N F'^2/2)(x^2+2 sin^2F) + sin^2F (1 + sin^2F/(2x^2)) 
+[PASS] (E) m'(x) = x^2 rho~ with alpha = 4 pi G f^2 
+[PASS] (E) sigma'/sigma = (alpha/x)(x^2 + 2 sin^2F) F'^2 
+dimensionless matter equation: (sigma N (x^2 + 2 sin^2F) F')' = sigma sin2F (1 + N F'^2 + sin^2F/x^2)
+  m3 = b**2*(b**2 + 1)/2
+  c3 = -b**3*(6*alpha*b**4 + 18*alpha*b**2 + 9*alpha - 2*b**2 - 4)/(30*(2*b**2 + 1))
+  m5 = b**4*(3*alpha*b**2 + 2*alpha - 2*b**2 - 2)/10
+  c5 = -b**5*(584*alpha**2*b**10 + 3004*alpha**2*b**8 + 5588*alpha**2*b**6 + 4776*alpha**2*b**4 + 1934*alpha**2*b**2 + 305*alpha**2 - 576*alpha*b**8 - 1720*alpha*b**6 - 2020*alpha*b**4 - 1108*alpha*b**2 - 240*alpha + 56*b**6 + 44*b**4 + 64*b**2 + 40)/(1400*(2*b**2 + 1)**3)
+[PASS] (F) series consistent at low orders 
+[PASS] (F) m3 = b^2 (1 + b^2)/2 
+ALL CHECKS PASS
+
+real	0m12.260s
+user	0m8.591s
+sys	0m0.039s

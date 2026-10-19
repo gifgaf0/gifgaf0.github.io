@@ -1,0 +1,10 @@
+X=  40.0: F'(0)=-1.00376411  M=36.46164564  E2=18.23082281 E4=18.23082282  Lambda=50.978739  I2=40.678582  B=1.0000000002  C=8.63858  nodes=573
+X=  80.0: F'(0)=-1.00376411  M=36.46164564  E2=18.23082281 E4=18.23082282  Lambda=50.978739  I2=40.678582  B=1.0000000002  C=8.63858  nodes=562
+X= 160.0: F'(0)=-1.00376411  M=36.46164562  E2=18.23082281 E4=18.23082281  Lambda=50.978739  I2=40.678582  B=1.0000000000  C=8.63858  nodes=644
+PASS M_cl [F/e]: ours 36.461646 target 36.463253 dev 4.41e-05 tol 0.002
+PASS Lambda: ours 50.978739 target 50.900000 dev 1.55e-03 tol 0.005
+PASS I2 [1/(e^3 F)] vs arctan-ansatz 40.5: ours 40.678582 target 40.500000 dev 4.41e-03 tol 0.015
+PASS B: ours 1.000000 target 1.000000 dev 4.53e-11 tol 1e-08
+PASS virial E2=E4: ours 0.000000 target 0.000000 dev 4.06e-11 tol 0.0001
+ANW units: {'F_pi_MeV': 129.0, 'e': 5.45, 'M_MeV': 863.037, 'inv_I1_MeV': 195.583, 'inv_I2_MeV': 513.35, 'I1_fm': 1.009, 'I2_fm': 0.384, 'N_mass_MeV': 936.381, 'Delta_mass_MeV': 1229.756}
+table interpolation max error F 6.31e-11, F' 6.73e-11

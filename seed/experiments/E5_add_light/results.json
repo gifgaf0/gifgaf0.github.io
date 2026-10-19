@@ -1,0 +1,978 @@
+{
+ "experiment": "E5 -- add light (charges, EM static properties, pi0 -> gamma gamma, one cone)",
+ "conventions": {
+  "lagrangian": "(F^2/16) Tr dU dU^+ + (1/32e^2) Tr[L_mu,L_nu]^2 (+ (F^2 m^2/16) Tr(U+U^+-2) massive variant)",
+  "F_pi": "186-MeV convention for the Skyrme fits (f_pi = F_pi/2); pi0 width uses f = 92.21 MeV",
+  "x": "e F_pi r",
+  "hbar_c": 197.3269804,
+  "M_N_magneton": 939.0,
+  "radii": "<r^2>_{I=0} normalised to the baryon density; <r^2>_{I=1} normalised to the isovector charge; <r^2>_p = (<r^2>_0 + <r^2>_1)/2, <r^2>_n = (<r^2>_0 - <r^2>_1)/2",
+  "charge": "Q = I3 + Y/2 with left (flavour) generators; WZ constraint Y_R = N_c B/3"
+ },
+ "calibration": [
+  {
+   "quantity": "isoscalar charge radius <r^2>_{I=0}^{1/2} at ANW parameters (F=129 MeV, e=5.45)",
+   "value": 0.5939287481055067,
+   "unit": "fm",
+   "target": 0.59,
+   "tolerance": 0.01,
+   "source": "PLAN.md E5 [ANW via secondary sources; formulas read in Ma-Harada and Rakhimov]",
+   "verdict": "CALIBRATED",
+   "note": "own SU(2) refit (F=129.26, e=5.4440): 0.5934 fm"
+  },
+  {
+   "quantity": "isoscalar magnetic radius, ANW definition (<r^4>_B/<r^2>_B)^{1/2}",
+   "value": 0.9223267999709978,
+   "unit": "fm",
+   "target": 0.92,
+   "tolerance": 0.01,
+   "source": "PLAN.md E5 [ANW via secondary sources; formulas read in Ma-Harada and Rakhimov]",
+   "verdict": "CALIBRATED",
+   "note": "the Sachs radius from dG_M^{I=0}/dq^2 is sqrt(3/5) of this: 0.7144 fm"
+  },
+  {
+   "quantity": "mu_p",
+   "value": 1.8776368015731575,
+   "unit": "nuclear magnetons (M_N = 939 MeV)",
+   "target": 1.87,
+   "tolerance": 0.02,
+   "source": "PLAN.md E5 [ANW via secondary sources; formulas read in Ma-Harada and Rakhimov]",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "mu_n",
+   "value": -1.3230473495785318,
+   "unit": "nuclear magnetons (M_N = 939 MeV)",
+   "target": -1.31,
+   "tolerance": 0.02,
+   "source": "PLAN.md E5 [ANW via secondary sources; formulas read in Ma-Harada and Rakhimov]",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "mu_p/mu_n",
+   "value": -1.4191758157191388,
+   "unit": "",
+   "target": -1.43,
+   "tolerance": 0.02,
+   "source": "PLAN.md E5 [ANW via secondary sources; formulas read in Ma-Harada and Rakhimov]",
+   "verdict": "CALIBRATED",
+   "note": "tolerance of the moments applied to the ratio; ANW's -1.43 is the ratio of rounded 1.87/-1.31 = -1.427"
+  },
+  {
+   "quantity": "g_piNN (Goldberger-Treiman, 2 M_N g_A/F_pi)",
+   "value": 8.8677564451487,
+   "unit": "",
+   "target": 8.9,
+   "tolerance": 0.05,
+   "source": "PLAN.md E5 [ANW via secondary sources; formulas read in Ma-Harada and Rakhimov]",
+   "verdict": "CALIBRATED",
+   "note": "PLAN gives no tolerance for g_piNN; half a unit in the quoted last digit used (post hoc, deviation). It would fail the moments' +-0.02 (|dev| = 0.032); g_A, tied to it by Goldberger-Treiman, passes its preregistered +-0.01"
+  },
+  {
+   "quantity": "g_A at ANW parameters (consistency with E2)",
+   "value": 0.6091270401619714,
+   "unit": "",
+   "target": 0.61,
+   "tolerance": 0.01,
+   "source": "PLAN.md E2 [ANW via secondary sources]",
+   "verdict": "CALIBRATED",
+   "note": "= 2 pi C/(3 e^2) = (pi/3e^2)|D|; the identity D = -2C holds to 5.4e-09"
+  },
+  {
+   "quantity": "Gamma(pi0->gg), N_c = 3, f = 92.21 MeV",
+   "value": 7.7610891794539905,
+   "unit": "eV",
+   "target": 7.802,
+   "tolerance": 0.234,
+   "source": "PLAN.md E5 [read: Bernstein-Holstein 1112.4809; PrimEx-II]",
+   "verdict": "CALIBRATED",
+   "note": "pull vs PrimEx-II -0.35 sigma, vs PDG 2026 (7.720 +- 0.123 eV) +0.33 sigma; preregistered value 7.76 eV"
+  },
+  {
+   "quantity": "Gamma(pi0->gg), N_c = 1 (must be excluded)",
+   "value": 0.8623432421615544,
+   "unit": "eV",
+   "target": 0.86,
+   "tolerance": 0.01,
+   "source": "PLAN.md E5",
+   "verdict": "CALIBRATED",
+   "note": "excluded by PrimEx-II at 59 sigma, but only with N_c-independent quark charges (2/3, -1/3), which at N_c = 1 also make the baryon charges fractional; with anomaly-consistent charges the width does not depend on N_c"
+  },
+  {
+   "quantity": "rotor-state charges Q = I3 + Y/2 (8, 10, 10bar, 27) integral; SU(2) Q = I3 + B/2",
+   "value": true,
+   "unit": "",
+   "target": true,
+   "tolerance": "exact",
+   "source": "PLAN.md E5",
+   "verdict": "CHECK PASSED",
+   "note": "internal check, no literature target. charges: 8 {-1,0,1}; 10 {-1,0,1,2}; 10bar {-2,-1,0,1}; 27 {-2,...,2}. The 8 and 10 charges coincide with the observed octet and decuplet baryons"
+  },
+  {
+   "quantity": "symbolic derivations (sympy): formulas, one cone, taut vacuum",
+   "value": "39/39 pass",
+   "unit": "",
+   "target": "all pass",
+   "tolerance": "exact",
+   "source": "symbolic_derivations.py",
+   "verdict": "CHECK PASSED",
+   "note": "39 computed, 0 by inspection; one-cone and taut-vacuum checks hold by construction"
+  }
+ ],
+ "no_target": [
+  {
+   "quantity": "Gamma(pi0->gg) at the fold's own f (ANW, f = 64.5 MeV)",
+   "value": 15.8620490510968,
+   "unit": "eV",
+   "expected": "about 15.9 eV (PLAN prediction)",
+   "ratio_to_PrimExII": 2.033074730978826
+  },
+  {
+   "quantity": "Gamma(pi0->gg) at the SU(3) refit f = 56.877 MeV (agrees with E2's refit F = 113.755 MeV)",
+   "value": 20.398514566492775,
+   "unit": "eV",
+   "expected": "about 20 eV (PLAN prediction)",
+   "ratio_to_PrimExII": 2.614523784477413
+  },
+  {
+   "quantity": "isovector <r^2> inside R, massless pions: slope",
+   "value": 1.463846202560286,
+   "unit": "x (=1/(eF) per unit x)",
+   "expected": "diverges linearly (PLAN prediction)",
+   "values_x2": [
+    {
+     "R_x": 2,
+     "R_fm_ANW": 0.5613455099921769,
+     "r2_I1_x2": 0.5517159848963173,
+     "asymptotic_slope_C2_over_Lambda": 1.463846202560286
+    },
+    {
+     "R_x": 5,
+     "R_fm_ANW": 1.4033637749804422,
+     "r2_I1_x2": 5.388204914348021,
+     "asymptotic_slope_C2_over_Lambda": 1.463846202560286
+    },
+    {
+     "R_x": 10,
+     "R_fm_ANW": 2.8067275499608844,
+     "r2_I1_x2": 12.709106328321045,
+     "asymptotic_slope_C2_over_Lambda": 1.463846202560286
+    },
+    {
+     "R_x": 20,
+     "R_fm_ANW": 5.613455099921769,
+     "r2_I1_x2": 27.33758355221578,
+     "asymptotic_slope_C2_over_Lambda": 1.463846202560286
+    },
+    {
+     "R_x": 50,
+     "R_fm_ANW": 14.033637749804422,
+     "r2_I1_x2": 71.25126097055589,
+     "asymptotic_slope_C2_over_Lambda": 1.463846202560286
+    },
+    {
+     "R_x": 100,
+     "R_fm_ANW": 28.067275499608844,
+     "r2_I1_x2": 144.44346301668037,
+     "asymptotic_slope_C2_over_Lambda": 1.463846202560286
+    },
+    {
+     "R_x": 200,
+     "R_fm_ANW": 56.13455099921769,
+     "r2_I1_x2": 290.82806964027696,
+     "asymptotic_slope_C2_over_Lambda": 1.463846202560286
+    }
+   ]
+  },
+  {
+   "quantity": "AN84 massive pions (m_pi = 138 MeV, F = 108 MeV, e = 4.84): own refit to M_N, M_Delta",
+   "value": [
+    108.259804612916,
+    4.84205175412573
+   ],
+   "unit": "MeV, -",
+   "expected": "108, 4.84 (verification of the quoted AN84 parameters)"
+  },
+  {
+   "quantity": "AN84 massive: r_p, <r^2>_n, r_{I=1}",
+   "value": [
+    0.880131568802776,
+    -0.30787433431374467,
+    1.040435443800806
+   ],
+   "unit": "fm, fm^2, fm",
+   "expected": "finite (no target)"
+  }
+ ],
+ "comparison_with_PDG2026_ANW_parameters": [
+  {
+   "quantity": "mu_p",
+   "data": 2.79284734463,
+   "data_err": 8.2e-10,
+   "data_source": "PDG 2026",
+   "skyrme_ANW_massless": 1.8776368015731575,
+   "ratio_massless": 0.67230198069487,
+   "deviation_massless": -0.32769801930513,
+   "within_30pct_massless": false,
+   "skyrme_AN84_massive_no_target": 1.9719945566803458,
+   "ratio_massive": 0.7060874846854898
+  },
+  {
+   "quantity": "mu_n",
+   "data": -1.91304276,
+   "data_err": 4.5e-07,
+   "data_source": "PDG 2026",
+   "skyrme_ANW_massless": -1.3230473495785318,
+   "ratio_massless": 0.6915931923960402,
+   "deviation_massless": -0.3084068076039598,
+   "within_30pct_massless": false,
+   "skyrme_AN84_massive_no_target": -1.2409724043042316,
+   "ratio_massive": 0.6486903639855032
+  },
+  {
+   "quantity": "mu_p_over_mu_n",
+   "data": -1.4598980237273944,
+   "data_err": 0.0,
+   "data_source": "PDG 2026",
+   "skyrme_ANW_massless": -1.4191758157191388,
+   "ratio_massless": 0.9721061284100624,
+   "deviation_massless": -0.027893871589937613,
+   "within_30pct_massless": true,
+   "skyrme_AN84_massive_no_target": -1.589072045309478,
+   "ratio_massive": 1.0884815373968917
+  },
+  {
+   "quantity": "g_A",
+   "data": 1.275335139239493,
+   "data_err": 0.001258305002377871,
+   "data_source": "PDG 2026 |g_A/g_V|",
+   "skyrme_ANW_massless": 0.6091270401619714,
+   "ratio_massless": 0.477621153389693,
+   "deviation_massless": -0.522378846610307,
+   "within_30pct_massless": false,
+   "skyrme_AN84_massive_no_target": 0.6491391630604654,
+   "ratio_massive": 0.5089949638238304
+  },
+  {
+   "quantity": "g_piNN",
+   "data": 13.1,
+   "data_err": 0.1,
+   "data_source": "[summary] g^2/4pi ~ 13.6-13.8 from NN and piN analyses (not in PDG); 2 M_N g_A/F_pi(phys) = 13.0",
+   "skyrme_ANW_massless": 8.8677564451487,
+   "ratio_massless": 0.6769279729121145,
+   "deviation_massless": -0.3230720270878855,
+   "within_30pct_massless": false,
+   "skyrme_AN84_massive_no_target": 11.287808779884758,
+   "ratio_massive": 0.8616647923576152
+  },
+  {
+   "quantity": "r_E_I0_fm",
+   "data": 0.7690208577893035,
+   "data_err": 0.0013327418709946149,
+   "data_source": "PDG 2026: sqrt(r_p^2 + <r^2>_n)",
+   "skyrme_ANW_massless": 0.5939287481055067,
+   "ratio_massless": 0.7723181264717158,
+   "deviation_massless": -0.22768187352828417,
+   "within_30pct_massless": true,
+   "skyrme_AN84_massive_no_target": 0.6831963437325252,
+   "ratio_massive": 0.8883976771403872
+  },
+  {
+   "quantity": "r_M_I0_fm",
+   "data": 0.8217431817382652,
+   "data_err": 0.08771610400096742,
+   "data_source": "PDG 2026 magnetic radii: (mu_p r_Mp^2 + mu_n r_Mn^2)/(mu_p+mu_n)",
+   "skyrme_ANW_massless": 0.7144312672096909,
+   "ratio_massless": 0.8694094250936487,
+   "deviation_massless": -0.1305905749063513,
+   "within_30pct_massless": true,
+   "skyrme_AN84_massive_no_target": 0.7401442858116537,
+   "ratio_massive": 0.9007002458432303
+  },
+  {
+   "quantity": "r_p_fm",
+   "data": 0.84075,
+   "data_err": 0.00064,
+   "data_source": "PDG 2026",
+   "skyrme_ANW_massless": Infinity,
+   "ratio_massless": Infinity,
+   "deviation_massless": Infinity,
+   "within_30pct_massless": false,
+   "skyrme_AN84_massive_no_target": 0.880131568802776,
+   "ratio_massive": 1.0468409976839441
+  },
+  {
+   "quantity": "r2_n_fm2",
+   "data": -0.1154674827850038,
+   "data_err": 0.001744594888116415,
+   "data_source": "PDG 2026",
+   "skyrme_ANW_massless": -Infinity,
+   "ratio_massless": Infinity,
+   "deviation_massless": Infinity,
+   "within_30pct_massless": false,
+   "skyrme_AN84_massive_no_target": -0.30787433431374467,
+   "ratio_massive": 2.666329315301654
+  }
+ ],
+ "within_30pct": {
+  "n_within": 3,
+  "n_finite": 7,
+  "n_within_33pct": 6,
+  "not_finite_massless": [
+   "r_p",
+   "<r^2>_n"
+  ],
+  "note": "magnetic radius compared in the Sachs definition; g_piNN data value is [summary]. Strictly within 30%: 3 of 7 (mu_p/mu_n, r_E^{I=0}, r_M^{I=0}); within 33%: 6 of 7 (adds mu_n -31%, g_piNN -32%, mu_p -33%). The exceptions are g_A (-52%) and the individual charge radii r_p, <r^2>_n (infinite with massless pions)"
+ },
+ "enclosed_charge_massless_ANW": [
+  {
+   "R_fm": 0.25,
+   "Q_p_inside": 0.06583467509550132,
+   "Q_n_inside": 0.052241232040444105,
+   "isoscalar_inside": 0.059037953567972715,
+   "isovector_inside": 0.006796721527528613
+  },
+  {
+   "R_fm": 0.5,
+   "Q_p_inside": 0.34130748551039336,
+   "Q_n_inside": 0.17189779604313574,
+   "isoscalar_inside": 0.25660264077676453,
+   "isovector_inside": 0.0847048447336288
+  },
+  {
+   "R_fm": 1.0,
+   "Q_p_inside": 0.7635412271408669,
+   "Q_n_inside": 0.1847965404734111,
+   "isoscalar_inside": 0.474168883807139,
+   "isovector_inside": 0.2893723433337279
+  },
+  {
+   "R_fm": 2.0,
+   "Q_p_inside": 0.8968794499763957,
+   "Q_n_inside": 0.1020881841409002,
+   "isoscalar_inside": 0.49948381705864797,
+   "isovector_inside": 0.39739563291774777
+  },
+  {
+   "R_fm": 5.0,
+   "Q_p_inside": 0.9589140575022972,
+   "Q_n_inside": 0.04108166338483216,
+   "isoscalar_inside": 0.49999786044356465,
+   "isovector_inside": 0.4589161970587325
+  },
+  {
+   "R_fm": 10.0,
+   "Q_p_inside": 0.9794569589075088,
+   "Q_n_inside": 0.020542974205847053,
+   "isoscalar_inside": 0.49999996655667794,
+   "isovector_inside": 0.4794569923508309
+  }
+ ],
+ "enclosed_charge_massive_AN84": [
+  {
+   "R_fm": 0.25,
+   "Q_p_inside": 0.04207345613001365,
+   "Q_n_inside": 0.032818058994627225,
+   "isoscalar_inside": 0.037445757562320436,
+   "isovector_inside": 0.004627698567693209
+  },
+  {
+   "R_fm": 0.5,
+   "Q_p_inside": 0.263018822020907,
+   "Q_n_inside": 0.11780917445988065,
+   "isoscalar_inside": 0.19041399824039382,
+   "isovector_inside": 0.07260482378051317
+  },
+  {
+   "R_fm": 1.0,
+   "Q_p_inside": 0.7983701859296655,
+   "Q_n_inside": 0.10247311124790298,
+   "isoscalar_inside": 0.45042164858878425,
+   "isovector_inside": 0.34794853734088127
+  },
+  {
+   "R_fm": 2.0,
+   "Q_p_inside": 0.9803441021566175,
+   "Q_n_inside": 0.018771842806412697,
+   "isoscalar_inside": 0.49955797248151507,
+   "isovector_inside": 0.48078612967510237
+  },
+  {
+   "R_fm": 5.0,
+   "Q_p_inside": 0.9998140406530837,
+   "Q_n_inside": 0.00018591476125617845,
+   "isoscalar_inside": 0.4999999777071699,
+   "isovector_inside": 0.49981406294591374
+  },
+  {
+   "R_fm": 10.0,
+   "Q_p_inside": 0.9999998603767029,
+   "Q_n_inside": 1.3960720185446363e-07,
+   "isoscalar_inside": 0.4999999999919524,
+   "isovector_inside": 0.4999998603847505
+  }
+ ],
+ "isovector_tail_check": [
+  {
+   "R_fm": 0.25,
+   "isovector_outside": 0.49320327847247136,
+   "asymptotic_C2_over_2Lambda_xR": 0.8217234931263153
+  },
+  {
+   "R_fm": 0.5,
+   "isovector_outside": 0.4152951552663712,
+   "asymptotic_C2_over_2Lambda_xR": 0.41086174656315766
+  },
+  {
+   "R_fm": 1.0,
+   "isovector_outside": 0.2106276566662721,
+   "asymptotic_C2_over_2Lambda_xR": 0.20543087328157883
+  },
+  {
+   "R_fm": 2.0,
+   "isovector_outside": 0.10260436708225223,
+   "asymptotic_C2_over_2Lambda_xR": 0.10271543664078941
+  },
+  {
+   "R_fm": 5.0,
+   "isovector_outside": 0.04108380294126751,
+   "asymptotic_C2_over_2Lambda_xR": 0.04108617465631576
+  },
+  {
+   "R_fm": 10.0,
+   "isovector_outside": 0.02054300764916911,
+   "asymptotic_C2_over_2Lambda_xR": 0.02054308732815788
+  }
+ ],
+ "neutron_enclosed_charge_peak": {
+  "massless_ANW": {
+   "R_peak_fm": 0.7254778392770729,
+   "x_peak": 2.5847818370799236,
+   "Q_n_peak": 0.20570683485110067,
+   "Q_p_at_peak_R": 0.5978150010537653,
+   "method": "node of the neutron charge density (brentq), then the enclosed-charge quadrature up to it"
+  },
+  "massive_AN84": {
+   "R_peak_fm": 0.6778857071867977,
+   "x_peak": 1.7957220859630756,
+   "Q_n_peak": 0.13950023288624563,
+   "Q_p_at_peak_R": 0.48812299173282986,
+   "method": "node of the neutron charge density (brentq), then the enclosed-charge quadrature up to it"
+  }
+ },
+ "seed_claims": [
+  {
+   "claim": "SEED 7.4: gauge a U(1) inside the internal symmetry and read off the folds' electric charges",
+   "verdict": "CONFIRMED",
+   "evidence": "Q = I3 + Y/2 with the WZ constraint Y_R = N_c B/3; every state of 8, 10, 10bar, 27 has an integer charge (Gell-Mann-Nishijima); SU(2): Q = I3 + B/2, the isoscalar half from the gauged WZ term. Needs N_c = 3 with standard quark charges (or anomaly-consistent charges). Predicts exotic charges (Theta+, Xi--, Q = +-2 in the 27)."
+  },
+  {
+   "claim": "SEED 7.4 / 2: one cone, no vacuum dispersion; photon and fold field share it",
+   "verdict": "CONFIRMED (by construction)",
+   "evidence": "pion omega^2 = k^2 + m^2, photon omega = |k| (two transverse modes), no mixing; Skyrme and gauged WZ terms have no quadratic part (both computed). Holds by construction for a Lorentz-invariant tree-level Lagrangian."
+  },
+  {
+   "claim": "Commitment 1: vacuum T_mu nu proportional to g_mu nu, p = -rho in every frame",
+   "verdict": "CONFIRMED (by construction)",
+   "evidence": "T_mu nu = V0 g_mu nu (mostly-minus) at U = 1; V0 is a free constant."
+  },
+  {
+   "claim": "Commitment 4: charge is dressed (effective charge depends on how closely you look), not slowed",
+   "verdict": "CONFIRMED (in the preregistered operational sense only)",
+   "evidence": "Preregistered prediction holds: with massless pions the isovector <r^2> inside R grows as 0.411 fm x R (diverges); finite with m_pi = 138 MeV. Enclosed proton charge 0.34 at 0.5 fm, 0.76 at 1 fm, 0.96 at 5 fm; the neutron's enclosed charge peaks at +0.206 at R = 0.73 fm (positive core, negative cloud). The test cannot tell 'dressing' from any extended charge distribution; the mechanism is the fold's classical pion cloud, not QED vacuum polarization; 'not slowed' holds by construction."
+  },
+  {
+   "claim": "SEED 6B: for nucleons the model lands within roughly 30% (ANW 1983)",
+   "verdict": "AMENDED",
+   "evidence": "Against PDG 2026 at the calibrated ANW point: 6 of 7 finite predictions within 33% (strictly within 30%: 3 of 7; mu_p -33%, mu_n -31%, g_piNN -32% sit just outside 30%). The amendment is carried by g_A (-52%, a factor ~2) and by r_p and <r^2>_n, which are infinite with massless pions. At the fold's own f_pi = F_pi/2 = 64.5 MeV (itself 30% below 92.2 MeV) the gauged WZ term gives Gamma(pi0->gg) = 2.03 x PrimEx-II."
+  },
+  {
+   "claim": "PLAN E5 internal-consistency prediction (not a SEED sentence): the fold sector and the anomaly prefer different f_pi",
+   "verdict": "CONFIRMED (preregistered prediction; no SEED verdict)",
+   "evidence": "Gamma(pi0->gg) at the fold's f: 15.86 eV (ANW, 2.03 x PrimEx-II), 20.40 eV (SU(3) refit, 2.61 x); PrimEx-II needs f = 91.97 MeV. Bears on SEED 6B (one (F, e) for all predictions)."
+  },
+  {
+   "claim": "SEED 2: the WZ term that makes the fold a fermion also fixes pi0 -> gamma gamma",
+   "verdict": "CONFIRMED (the anomaly normalisation); the N_c = 1 exclusion holds only with fixed quark charges",
+   "evidence": "Gamma = 7.761 eV at N_c = 3, f = 92.21 MeV (-0.35 sigma vs PrimEx-II). N_c = 1 gives 0.862 eV, excluded at 59 sigma only if quark charges are held at (2/3, -1/3), which also makes N_c = 1 baryon charges fractional; with anomaly-consistent charges the width does not depend on N_c."
+  }
+ ],
+ "pdg_inputs": {
+  "mu_p": [
+   2.79284734463,
+   8.2e-10
+  ],
+  "mu_n": [
+   -1.91304276,
+   4.5e-07
+  ],
+  "r_p_fm": [
+   0.84075,
+   0.00064
+  ],
+  "r2_n_fm2": [
+   -0.1154674827850038,
+   0.001744594888116415
+  ],
+  "rM_p_fm": [
+   0.851,
+   0.026
+  ],
+  "rM_n_fm": [
+   0.8641226853122503,
+   0.008620436566990361
+  ],
+  "gA_over_gV": [
+   -1.275335139239493,
+   0.001258305002377871
+  ],
+  "source": "PDG 2026 sqlite via the pdg package (S016MM, S017MM, S016CR, S017MCR, S016MCR, S017MRD, S017AV)"
+ },
+ "pi0": {
+  "formula": "Gamma = alpha^2 m^3 N_c^2/(576 pi^3 f^2)",
+  "inputs": {
+   "alpha": 0.0072973525643314245,
+   "m_pi0_MeV": 134.9768277676847,
+   "f_MeV": 92.21,
+   "PrimExII_eV": [
+    7.802,
+    0.117
+   ],
+   "PDG2026": {
+    "tau_s": 8.425512205250367e-17,
+    "tau_err_s": 1.344748885230856e-18,
+    "BR_gg": 0.9882312200541876,
+    "BR_err": 0.000344994511056095,
+    "m_pi0_MeV": 134.9768277676847,
+    "Gamma_gg_eV": 7.720190646880828,
+    "Gamma_gg_err_eV": 0.12324711748671187,
+    "source": "PDG 2026 sqlite (pdg package)"
+   }
+  },
+  "Gamma_Nc3_f92.21_eV": 7.7610891794539905,
+  "Gamma_Nc1_f92.21_eV": 0.8623432421615544,
+  "pull_vs_PrimExII_sigma": -0.349665132871873,
+  "pull_vs_PDG2026_sigma": 0.3318416966431068,
+  "Nc1_pull_vs_PrimExII_sigma": -59.313305622550814,
+  "f_needed_for_PrimExII_central_MeV": 91.96792456913803,
+  "Gamma_at_ANW_f64.5_eV": 15.8620490510968,
+  "ratio_ANW_to_PrimExII": 2.033074730978826,
+  "own_SU2_fit_f_MeV": 64.63134536780908,
+  "Gamma_at_own_SU2_fit_eV": 15.797644088442308,
+  "own_SU3_refit_f_MeV": 56.87744608288381,
+  "Gamma_at_own_SU3_refit_eV": 20.398514566492775,
+  "ratio_SU3_refit_to_PrimExII": 2.614523784477413,
+  "f_source": "hedgehog_results.json",
+  "caveat_Nc": "N_c^2 scaling assumes N_c-independent quark charges (2/3,-1/3). With anomaly-consistent charges Q = diag(1/2+1/2N_c, -1/2+1/2N_c) the amplitude factor N_c Tr(Q^2 tau3) = 1 for every N_c (symbolic check 9f; Baer & Wiese hep-ph/0105258), so pi0 -> gg alone does not count colours.",
+  "pass": true
+ },
+ "charges_summary": {
+  "8": {
+   "spins": [
+    "1/2"
+   ],
+   "charges": [
+    "-1",
+    "0",
+    "1"
+   ],
+   "dim": 8
+  },
+  "10": {
+   "spins": [
+    "3/2"
+   ],
+   "charges": [
+    "-1",
+    "0",
+    "1",
+    "2"
+   ],
+   "dim": 10
+  },
+  "10bar": {
+   "spins": [
+    "1/2"
+   ],
+   "charges": [
+    "-2",
+    "-1",
+    "0",
+    "1"
+   ],
+   "dim": 10
+  },
+  "27": {
+   "spins": [
+    "1/2",
+    "3/2"
+   ],
+   "charges": [
+    "-2",
+    "-1",
+    "0",
+    "1",
+    "2"
+   ],
+   "dim": 27
+  }
+ },
+ "charges_Nc_extra": {
+  "note": "fixed quark charges (2/3,-1/3,-1/3): Q = I3 + Y/2; anomaly-consistent charges (1/2+1/2Nc, -1/2+1/2Nc, -1/2+1/2Nc): Q = I3 + Y/2 + (1/2 - N_c/6) B",
+  "rows": [
+   {
+    "N_c": 1,
+    "lowest_irrep_pq": [
+     1,
+     0
+    ],
+    "dim": 3,
+    "spin": [
+     "1/2"
+    ],
+    "nonstrange_charges_fixed_quark_charges": [
+     "-1/3",
+     "2/3"
+    ],
+    "nonstrange_charges_anomaly_consistent": [
+     "0",
+     "1"
+    ],
+    "integer_fixed": false,
+    "integer_consistent": true
+   },
+   {
+    "N_c": 3,
+    "lowest_irrep_pq": [
+     1,
+     1
+    ],
+    "dim": 8,
+    "spin": [
+     "1/2"
+    ],
+    "nonstrange_charges_fixed_quark_charges": [
+     "0",
+     "1"
+    ],
+    "nonstrange_charges_anomaly_consistent": [
+     "0",
+     "1"
+    ],
+    "integer_fixed": true,
+    "integer_consistent": true
+   },
+   {
+    "N_c": 5,
+    "lowest_irrep_pq": [
+     1,
+     2
+    ],
+    "dim": 15,
+    "spin": [
+     "1/2"
+    ],
+    "nonstrange_charges_fixed_quark_charges": [
+     "1/3",
+     "4/3"
+    ],
+    "nonstrange_charges_anomaly_consistent": [
+     "0",
+     "1"
+    ],
+    "integer_fixed": false,
+    "integer_consistent": true
+   },
+   {
+    "N_c": 7,
+    "lowest_irrep_pq": [
+     1,
+     3
+    ],
+    "dim": 24,
+    "spin": [
+     "1/2"
+    ],
+    "nonstrange_charges_fixed_quark_charges": [
+     "2/3",
+     "5/3"
+    ],
+    "nonstrange_charges_anomaly_consistent": [
+     "0",
+     "1"
+    ],
+    "integer_fixed": false,
+    "integer_consistent": true
+   },
+   {
+    "N_c": 9,
+    "lowest_irrep_pq": [
+     1,
+     4
+    ],
+    "dim": 35,
+    "spin": [
+     "1/2"
+    ],
+    "nonstrange_charges_fixed_quark_charges": [
+     "1",
+     "2"
+    ],
+    "nonstrange_charges_anomaly_consistent": [
+     "0",
+     "1"
+    ],
+    "integer_fixed": true,
+    "integer_consistent": true
+   }
+  ]
+ },
+ "symbolic_checks": [
+  {
+   "check": "U0 unitary on |n|=1, s^2+c^2=1",
+   "passed": true,
+   "detail": "1.5204388142005612e-16"
+  },
+  {
+   "check": "1. static energy density = (1/8)(F'^2+2s^2/r^2) + (1/2)(s^2/r^2)(s^2/r^2+2F'^2)",
+   "passed": true,
+   "detail": "2.284025293278713e-16"
+  },
+  {
+   "check": "1b. energy density is spherically symmetric pointwise",
+   "passed": true,
+   "detail": "1.2154665156040386e-16"
+  },
+  {
+   "check": "2. L_kin = (lambda/2) W^2 with lambda = (2pi/3) int x^2 s^2 [1+4(F'^2+s^2/x^2)] dx",
+   "passed": true,
+   "detail": "5.551115123125783e-17"
+  },
+  {
+   "check": "3. L_kin(W4) = (I2/2) W4^2 with I2 = (pi/2) int x^2 (1-c)(1+F'^2+2s^2/x^2) dx",
+   "passed": true,
+   "detail": "3.469446951953614e-18"
+  },
+  {
+   "check": "3b. 3x3 embedding reproduces I1 = lambda (same generator normalisation lambda_a/2)",
+   "passed": true,
+   "detail": "1.3877787807814457e-17"
+  },
+  {
+   "check": "3c. lambda_8 commutes with the embedded hedgehog (zero inertia, WZ-constrained)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "4a. isospin charge density of the rotating hedgehog averages to lambda(r) W_a (I^N = lambda W)",
+   "passed": true,
+   "detail": "2.220446049250313e-16"
+  },
+  {
+   "check": "4b. static isovector current has the form V^k_b = eps_{kbl} n_l g(r)",
+   "passed": true,
+   "detail": "1.887379141862766e-15"
+  },
+  {
+   "check": "4c. hedgehog identity V^0_a = (W x x)_j V^j_a (rotation in isospace = rotation in space)",
+   "passed": true,
+   "detail": "2.356782285363599e-16"
+  },
+  {
+   "check": "4d. (2/3) r g(r) = lambda density  =>  int r g d^3x = (3/2) lambda  =>  mu^{I=1}_p = lambda/6",
+   "passed": true,
+   "detail": "1.2455166841510677e-16"
+  },
+  {
+   "check": "5a. B^0 = kappa eps^{0ijk}Tr(L_i L_j L_k) = -(1/2pi^2) s^2 F'/r^2 with kappa = -1/(24*pi**2)",
+   "passed": true,
+   "detail": "1.1102230246251565e-16"
+  },
+  {
+   "check": "5b. B^k = B^0 (W x x)_k : the baryon current is rigidly transported by the physical rotation",
+   "passed": true,
+   "detail": "1.3877787807814457e-17"
+  },
+  {
+   "check": "5c. kappa = -1/(24 pi^2) exactly (magnitude = standard 1/(24 pi^2); the sign follows from eps^{0123}=+1, L = U^+ dU, B = +1)",
+   "passed": true,
+   "detail": "-1/(24*pi**2)"
+  },
+  {
+   "check": "6a. angular average of (1/2) x x (B/2 with B^0=1)(W x x) = r^2 W/6  =>  mu^{I=0} = <r^2> J/(6 lambda)",
+   "passed": true,
+   "detail": "[W1*r**2/6, W2*r**2/6, W3*r**2/6]"
+  },
+  {
+   "check": "6b. (1/2) <eps_ijk x_j eps_kbl n_l> = (r/3) delta_ib  =>  mu^{I=1}_i = D_3i (1/3) int r g d^3x",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "7a. static axial current has the form A^j_a = f1(r) delta_aj + f2(r) n_a n_j",
+   "passed": true,
+   "detail": "1.0547118733938987e-15"
+  },
+  {
+   "check": "7b. derived axial density matches the D-formula with the literature sign: 4 pi (f1+f2/3) = -(pi/3) D",
+   "passed": true,
+   "detail": "rel.dev with -: 4.17e-16 ; with +: 2.00e+00"
+  },
+  {
+   "check": "7c. tail: f1 -> -(C/4)/r^3, f2 -> +(3C/4)/r^3 (pion field ~ d_j(n_a/r^2)); g_A(tail) = 2 pi C/(3 e^2)",
+   "passed": true,
+   "detail": "f1=-C/(4*r**3), f2=3*C/(4*r**3)"
+  },
+  {
+   "check": "8a. ANW I_k and J_k obey the standard su(2) algebra [X1,X2] = i X3",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "8b. operator identity I_k = -D_kl(A) J_l holds on S^3 (hedgehog: isospin = -rotated spin)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "8c. |p up> = (a1 + i a2)/pi has I3 = +1/2, J3 = +1/2 and <D_33> = -1/3",
+   "passed": true,
+   "detail": "I3=1/2 J3=1/2 D33=-1/3"
+  },
+  {
+   "check": "9a. linear part of T_beta = i (3 Tr(Q^2 tau_3)) d_beta pi0 / f = i d_beta pi0 / f; pi+- do not couple (Tr Q^2 tau_{1,2} = 0)",
+   "passed": true,
+   "detail": "T_beta(1) = I*dpi3/f"
+  },
+  {
+   "check": "9b. antisymmetrised product of three su(2) elements is proportional to 1 (so Q = I3 + (N_c/6) B: B/2 at N_c=3)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "9c. Gamma(pi0->gg) from the gauged WZ term = alpha^2 m^3 N_c^2/(576 pi^3 f^2)",
+   "passed": true,
+   "detail": "Gamma = N_c**2*alpha**2*m**3/(576*pi**3*f**2)"
+  },
+  {
+   "check": "9d. amplitude coefficient A = N_c e^2/(12 pi^2 f) (= e^2/(4 pi^2 f) at N_c = 3, B-H eq. 70)",
+   "passed": true,
+   "detail": "A = N_c*e**2/(12*pi**2*f)"
+  },
+  {
+   "check": "9e. equivalent effective coupling: L = g pi0 F_mu nu F~^{mu nu} with g = K = N_c e^2/(48 pi^2 f) (B-H eq. 69 2nd line has 24 pi^2: factor-2 F~ normalisation)",
+   "passed": true,
+   "detail": "K = N_c*e**2/(48*pi**2*f)"
+  },
+  {
+   "check": "9f. amplitude factor N_c Tr(Q^2 tau3): fixed charges -> N_c/3 ; anomaly-consistent charges -> 1 (N_c-independent)",
+   "passed": true,
+   "detail": "fixed=N_c/3, consistent=1"
+  },
+  {
+   "check": "10a. quadratic part of (F^2/16)Tr(DU DU^+) = (1/2) d_mu pi^a d^mu pi^a (no photon-pion mixing at this order)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "10b. quadratic part of the mass term = -(1/2) m_pi^2 pi^a pi^a",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "10c. L_mu = U^+ D_mu U vanishes at zeroth order, so the Skyrme term [L,L]^2 starts at 4th order (no quadratic part)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "10d. gauged WZ term expanded in all fields: no part of order 0, 1 or 2 (no quadratic part; computed)",
+   "passed": true,
+   "detail": "orders 0-2: [0, 0, 0]; order 3 nonzero: True"
+  },
+  {
+   "check": "9g. that cubic part = (N_c e^2/(24 pi^2 f)) eps^{mu nu al be} d_mu A_nu A_al d_be pi0 = (N_c e^2/(48 pi^2 f)) eps F_mu nu A_al d_be pi0 (only pi0 couples)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "10e. Maxwell: off the cone (k^2!=0) M(k) has rank 3, null space = pure gauge k^mu; on the cone rank 1 (two transverse photons + gauge)",
+   "passed": true,
+   "detail": "rank(k^2!=0)=3, rank(k^2=0)=1"
+  },
+  {
+   "check": "10f. pion: omega^2 = k^2 + m^2, group velocity k/omega < 1 -> 1 as k -> oo; photon omega = |k| (phase=group=1)",
+   "passed": true,
+   "detail": "v_g = kmag/sqrt(kmag**2 + m_pi**2)"
+  },
+  {
+   "check": "10g. k^2 is boost invariant, so both dispersion relations hold in every frame (one cone, no preferred frame)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "11a. vacuum (U=1, dU=0): T_mu nu = 2 dL/dg^{mu nu} - g_mu nu L = V0 g_mu nu (mostly-minus; = -V0 g in mostly-plus)",
+   "passed": true,
+   "detail": "[[V0, 0, 0, 0], [0, -V0, 0, 0], [0, 0, -V0, 0], [0, 0, 0, -V0]]"
+  },
+  {
+   "check": "11b. rho = T_00 = V0 and p = T_11 = -V0: p = -rho (taut vacuum)",
+   "passed": true,
+   "detail": "rho=V0 p=-V0"
+  },
+  {
+   "check": "11c. boosted vacuum T_mu nu is unchanged (Lambda^T g Lambda = g): same in every frame",
+   "passed": true,
+   "detail": ""
+  }
+ ],
+ "hedgehog_numerics": {
+  "M_over_3pi2": 1.2314456974183794,
+  "Lambda": 50.97873911639615,
+  "K2": 25.89678961728298,
+  "C": 8.638578220219344,
+  "Fprime0": -1.0037641110016335,
+  "R2": 4.4778359530071015,
+  "R4": 48.35454711201567,
+  "D": -17.277156435036687,
+  "spread_X100_400": {
+   "Mtilde": 2.616218353068689e-11,
+   "Lambda": 4.5265387882409414e-08,
+   "K2": 9.19876441685119e-09,
+   "R2": 1.2159162565694714e-12,
+   "R4": 5.688946203008527e-09,
+   "D": 5.618073117830136e-09,
+   "C": 3.5422509370164335e-09,
+   "Fprime0": 7.260858581048524e-14
+  },
+  "relative_deviation_short_boxes": {
+   "X=25": {
+    "Lambda": 7.213945571228967e-07,
+    "C": 1.225965995795315e-06,
+    "Mtilde": 1.0978884875643348e-08,
+    "R2": 5.465343715618566e-10,
+    "B_minus_1": -5.603026060896354e-07
+   },
+   "X=50": {
+    "Lambda": 2.8084445635829264e-08,
+    "C": 1.9285782469787427e-08,
+    "Mtilde": 8.728602105594056e-11,
+    "R2": 1.3590936773148925e-11,
+    "B_minus_1": -8.764263093041791e-09
+   }
+  }
+ },
+ "reconciliation": {
+  "crosscheck": "crosscheck/crosscheck.json: 57 of 57 recomputed numbers agree; 9 minor issues, none in the numerics",
+  "changes": [
+   "pi0 coupling text: with d_mu A_nu the coefficient is N_c e^2/(24 pi^2 f) (48 pi^2 goes with F_mu nu); now a computed check (9g)",
+   "convergence: 5e-8 relative holds for X = 100-400 only; X = 25 is off by ~1e-6 (relative_deviation_short_boxes)",
+   "neutron enclosed charge: maximum +0.2057 at 0.725 fm (massless ANW), not +0.185 at 1 fm (a grid point)",
+   "symbolic checks: 10d was hard-coded True; it is now a computed expansion of the gauged WZ term; 5c and 7b made strict (exact value and sign); 9g added",
+   "verdict vocabulary: internal checks labelled CHECK PASSED; QUANTIFIED dropped for the f_pi tension (PLAN prediction, no SEED verdict)",
+   "SEED 6B AMENDED reframed: 6 of 7 finite within 33%, exceptions g_A and the individual charge radii",
+   "commitment 4 and the N_c = 1 exclusion carry their qualifiers in the verdict itself",
+   "g_piNN: passes only the post hoc +-0.05; fails +-0.02"
+  ]
+ }
+}

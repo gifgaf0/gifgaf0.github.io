@@ -1,0 +1,32 @@
+Comparison with data (ANW massless parameters F=129 MeV, e=5.45; inputs M_N, M_Delta not counted):
+  mu_p            skyrme    1.8776  data    2.7928  ratio   0.672  within 30%: False   | AN84 massive   1.9720 (ratio 0.706)
+  mu_n            skyrme   -1.3230  data   -1.9130  ratio   0.692  within 30%: False   | AN84 massive  -1.2410 (ratio 0.649)
+  mu_p_over_mu_n  skyrme   -1.4192  data   -1.4599  ratio   0.972  within 30%: True   | AN84 massive  -1.5891 (ratio 1.088)
+  g_A             skyrme    0.6091  data    1.2753  ratio   0.478  within 30%: False   | AN84 massive   0.6491 (ratio 0.509)
+  g_piNN          skyrme    8.8678  data   13.1000  ratio   0.677  within 30%: False   | AN84 massive  11.2878 (ratio 0.862)
+  r_E_I0_fm       skyrme    0.5939  data    0.7690  ratio   0.772  within 30%: True   | AN84 massive   0.6832 (ratio 0.888)
+  r_M_I0_fm       skyrme    0.7144  data    0.8217  ratio   0.869  within 30%: True   | AN84 massive   0.7401 (ratio 0.901)
+  r_p_fm          skyrme       inf  data    0.8407  ratio     inf  within 30%: False   | AN84 massive   0.8801 (ratio 1.047)
+  r2_n_fm2        skyrme      -inf  data   -0.1155  ratio     inf  within 30%: False   | AN84 massive  -0.3079 (ratio 2.666)
+  within 30%: 3 of 7 finite quantities; r_p and <r^2>_n are infinite with massless pions
+  within 33%: 6 of 7 finite quantities (exception: g_A)
+Enclosed charge Q(<R): R[fm]  p(massless) n(massless) | p(m_pi=138) n(m_pi=138)
+    0.25   0.0658    0.0522  |   0.0421    0.0328
+    0.50   0.3413    0.1719  |   0.2630    0.1178
+    1.00   0.7635    0.1848  |   0.7984    0.1025
+    2.00   0.8969    0.1021  |   0.9803    0.0188
+    5.00   0.9589    0.0411  |   0.9998    0.0002
+   10.00   0.9795    0.0205  |   1.0000    0.0000
+Neutron enclosed-charge maximum: massless ANW Q_n = +0.2057 at R = 0.7255 fm; m_pi = 138 MeV AN84 Q_n = +0.1395 at R = 0.6779 fm
+CALIBRATED   isoscalar charge radius <r^2>_{I=0}^{1/2} at ANW parameters (F=129 MeV, e=5.45) = 0.5939287481055067 (target 0.59, tol 0.01)
+CALIBRATED   isoscalar magnetic radius, ANW definition (<r^4>_B/<r^2>_B)^{1/2} = 0.9223267999709978 (target 0.92, tol 0.01)
+CALIBRATED   mu_p = 1.8776368015731575 (target 1.87, tol 0.02)
+CALIBRATED   mu_n = -1.3230473495785318 (target -1.31, tol 0.02)
+CALIBRATED   mu_p/mu_n = -1.4191758157191388 (target -1.43, tol 0.02)
+CALIBRATED   g_piNN (Goldberger-Treiman, 2 M_N g_A/F_pi) = 8.8677564451487 (target 8.9, tol 0.05)
+CALIBRATED   g_A at ANW parameters (consistency with E2) = 0.6091270401619714 (target 0.61, tol 0.01)
+CALIBRATED   Gamma(pi0->gg), N_c = 3, f = 92.21 MeV = 7.7610891794539905 (target 7.802, tol 0.234)
+CALIBRATED   Gamma(pi0->gg), N_c = 1 (must be excluded) = 0.8623432421615544 (target 0.86, tol 0.01)
+CHECK PASSED rotor-state charges Q = I3 + Y/2 (8, 10, 10bar, 27) integral; SU(2) Q = I3 + B/2 = True (target True, tol exact)
+CHECK PASSED symbolic derivations (sympy): formulas, one cone, taut vacuum = 39/39 pass (target all pass, tol exact)
+wrote results.json, fig_vs_pdg.png

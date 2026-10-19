@@ -1,0 +1,122 @@
+[start] e1d_coarse.json 00:08:09
+[coarse] 200/1485 20 s
+[coarse] 400/1485 36 s
+[coarse] 600/1485 52 s
+[coarse] 800/1485 62 s
+[coarse] 1000/1485 71 s
+[coarse] 1200/1485 79 s
+[coarse] 1400/1485 85 s
+[coarse] 1485 runs, 564 producing, 88 s
+[done] e1d_coarse.json 88 s
+slice rule -> sigma=16.0 k=1.0
+[start] e1d_sliceAk_16.0.json 00:09:37
+[sliceAk] 200/3363 29 s
+[sliceAk] 400/3363 51 s
+[sliceAk] 600/3363 74 s
+[sliceAk] 800/3363 109 s
+[sliceAk] 1000/3363 143 s
+[sliceAk] 1200/3363 175 s
+[sliceAk] 1400/3363 206 s
+[sliceAk] 1600/3363 230 s
+[sliceAk] 1800/3363 247 s
+[sliceAk] 2000/3363 284 s
+[sliceAk] 2200/3363 318 s
+[sliceAk] 2400/3363 356 s
+[sliceAk] 2600/3363 387 s
+[sliceAk] 2800/3363 417 s
+[sliceAk] 3000/3363 446 s
+[sliceAk] 3200/3363 470 s
+[sliceAk_16.0] 3363 runs, 1996 producing, 483 s
+[done] e1d_sliceAk_16.0.json 483 s
+[start] e1c_fine.json 00:17:40
+[fine] 20/250 done, 36 s
+[fine] 40/250 done, 66 s
+/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/e1c_dsv.py:64: RuntimeWarning: overflow encountered in square
+  du = eta * omega * g * (np.cos(omega * T) * ch + eta * vn * np.sin(omega * T) * sh) / ch ** 2
+[fine] 60/250 done, 94 s
+/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/e1c_dsv.py:64: RuntimeWarning: overflow encountered in square
+  du = eta * omega * g * (np.cos(omega * T) * ch + eta * vn * np.sin(omega * T) * sh) / ch ** 2
+[fine] 80/250 done, 133 s
+[fine] 100/250 done, 176 s
+[fine] 120/250 done, 208 s
+[fine] 140/250 done, 238 s
+[fine] 160/250 done, 266 s
+[fine] 180/250 done, 287 s
+[fine] 200/250 done, 304 s
+[fine] 220/250 done, 320 s
+[fine] 240/250 done, 339 s
+omega=0.900 ................X.XX.XX..
+omega=0.910 ..................X..Xx..
+omega=0.920 ................X.X.XX...
+omega=0.930 ...............XXx.XX....
+omega=0.940 .............XXXXXXX.....
+omega=0.950 ...........xXXXX.XX......
+omega=0.960 .........X..XXX..........
+omega=0.970 ........X.XX.............
+omega=0.980 .....XX.X................
+omega=0.990 XX.......................
+[fine] total 348 s
+[done] e1c_fine.json 348 s
+[start] e1d_single.json 00:23:28
+[single] 200/564 19 s
+[single] 400/564 30 s
+[single] 564 runs, 366 producing, 40 s
+[done] e1d_single.json 41 s
+[start] e1d_sliceAs_1.0.json 00:24:09
+[sliceAs] 200/3363 32 s
+[sliceAs] 400/3363 47 s
+[sliceAs] 600/3363 65 s
+[sliceAs] 800/3363 86 s
+[sliceAs] 1000/3363 102 s
+[sliceAs] 1200/3363 112 s
+[sliceAs] 1400/3363 122 s
+[sliceAs] 1600/3363 131 s
+[sliceAs] 1800/3363 139 s
+[sliceAs] 2000/3363 146 s
+[sliceAs] 2200/3363 156 s
+[sliceAs] 2400/3363 164 s
+[sliceAs] 2600/3363 172 s
+[sliceAs] 2800/3363 184 s
+[sliceAs] 3000/3363 201 s
+[sliceAs] 3200/3363 217 s
+[sliceAs_1.0] 3363 runs, 1162 producing, 227 s
+[done] e1d_sliceAs_1.0.json 227 s
+[start] e1c_high.json 00:27:56
+[high] 20/72 done, 31 s
+[high] 40/72 done, 53 s
+[high] 60/72 done, 82 s
+omega=0.992 ....................................
+omega=0.995 ....................................
+[high] total 93 s
+[done] e1c_high.json 93 s
+[start] e1d_phase.json 00:29:29
+[phase] 480 runs, 368 producing, 72 s
+[done] e1d_phase.json 72 s
+[start] e1c_dxcheck.json 00:30:41
+[dxcheck] 20/78 done, 111 s
+[dxcheck] 40/78 done, 201 s
+/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/e1c_dsv.py:64: RuntimeWarning: overflow encountered in square
+  du = eta * omega * g * (np.cos(omega * T) * ch + eta * vn * np.sin(omega * T) * sh) / ch ** 2
+/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/e1c_dsv.py:64: RuntimeWarning: overflow encountered in square
+  du = eta * omega * g * (np.cos(omega * T) * ch + eta * vn * np.sin(omega * T) * sh) / ch ** 2
+[dxcheck] 60/78 done, 296 s
+omega=0.910 ................x.X.x.X...
+omega=0.950 ...........XX..X.X........
+omega=0.990 ..........................
+[dxcheck] total 437 s
+[done] e1c_dxcheck.json 438 s
+[start] e1d_dxcheck.json 00:37:59
+[dxcheck] 200/300 126 s
+[dxcheck] 300 runs, 144 producing, 160 s
+[done] e1d_dxcheck.json 161 s
+[start] e1b_dtcheck.json 00:40:40
+{'dx': 0.05, 'cfl': 0.4, 'dt': 0.020000000000000004, 'v_c': 0.26015839843749994, 'w1_lo': 0.19268691406250002, 'w1_hi': 0.2035484375}
+{'dx': 0.05, 'cfl': 0.2, 'dt': 0.010000000000000002, 'v_c': 0.26007871093749996, 'w1_lo': 0.1925970703125, 'w1_hi': 0.20346406250000004}
+{'dx': 0.05, 'cfl': 0.1, 'dt': 0.005000000000000001, 'v_c': 0.26006542968749996, 'w1_lo': 0.1925701171875, 'w1_hi': 0.2034359375}
+{'dx': 0.025, 'cfl': 0.4, 'dt': 0.010000000000000002, 'v_c': 0.26008535156249996, 'w1_lo': 0.1925970703125, 'w1_hi': 0.20346406250000004}
+{'dx': 0.025, 'cfl': 0.2, 'dt': 0.005000000000000001, 'v_c': 0.26006542968749996, 'w1_lo': 0.1925701171875, 'w1_hi': 0.2034359375}
+{'dx': 0.1, 'cfl': 0.4, 'dt': 0.04000000000000001, 'v_c': 0.2604505859375, 'w1_lo': 0.1930283203125, 'w1_hi': 0.2038859375}
+{'dx': 0.1, 'cfl': 0.1, 'dt': 0.010000000000000002, 'v_c': 0.26007871093749996, 'w1_lo': 0.19258808593750001, 'w1_hi': 0.2034546875}
+total 109 s
+[done] e1b_dtcheck.json 109 s
+[all done] 00:42:29

@@ -1,0 +1,584 @@
+{
+ "inputs": {
+  "hbarc_MeV_fm": 197.3269804593025,
+  "m_e_MeV": 0.51099895069,
+  "m_p_MeV": 938.27208943,
+  "m_H_GeV": 125.1309438281615,
+  "r_p_fm": 0.84075,
+  "source": "PDG 2026 (pdg python package)",
+  "M_Planck_GeV": 1.2208901285838957e+19,
+  "M_Planck_reduced_GeV": 2.4353234600842885e+18,
+  "G_N_SI": 6.6743e-11,
+  "hedgehog": {
+   "a1": 36.46164562535639,
+   "Lambda": 50.97873907018823,
+   "x_B": 2.1160897790550557,
+   "x_M": 3.286128715839257,
+   "x_E": 2.914434000493237,
+   "x_half": 1.7526286990892017
+  }
+ },
+ "skyrme": {
+  "formula": "M = a1 F_pi/e, R = a2/(e F_pi), M R/(hbar c) = a1 a2/e^2 = c0/e^2 (F_pi in 186-MeV convention)",
+  "a1": 36.46164562535639,
+  "a2": {
+   "B": 2.1160897790550557,
+   "M": 3.286128715839257,
+   "E": 2.914434000493237,
+   "half": 1.7526286990892017
+  },
+  "c0": {
+   "B": 77.15611563534414,
+   "M": 119.81766071623845,
+   "E": 106.26505972447416,
+   "half": 63.90372653901985
+  },
+  "radius_definitions": {
+   "B": "baryon-density rms radius = ANW isoscalar electric rms radius (identical by construction)",
+   "M": "ANW isoscalar magnetic rms radius",
+   "E": "energy-density rms radius",
+   "half": "radius enclosing half the baryon number"
+  },
+  "sympy_energy_prefactor": "F_pi/e",
+  "sympy_check_pass": true,
+  "proton": {
+   "ANW_parameters": {
+    "F_pi_MeV": 129.0,
+    "e": 5.45,
+    "length_unit_fm": 0.28067275508043876
+   },
+   "M_classical_MeV": 863.0371166368759,
+   "I1_inv_MeV": 195.58318503316397,
+   "M_N_model_MeV": 936.3808110243124,
+   "M_Delta_model_MeV": 1229.7555885740583,
+   "R_B_fm": 0.5939287482849395,
+   "R_M_fm": 0.9223268002235485,
+   "R_E_fm": 0.8180022204185416,
+   "R_half_fm": 0.49191512560641154,
+   "MR_classical": {
+    "value": 2.597630355537215,
+    "formula": "c0_B/e^2 = M_cl R_B/(hbar c)"
+   },
+   "MR_nucleon_model": {
+    "value": 2.8262688322775014,
+    "formula": "M_N(939 MeV, fitted) * R_B(model)/(hbar c)",
+    "target": 2.8,
+    "tolerance": "+-0.05 (2 significant figures of PLAN's '~2.8'; fixed before computing)"
+   },
+   "MR_data": {
+    "value": 3.997690824397775,
+    "formula": "m_p r_p(charge, PDG 2026)/(hbar c) = r_p/lambda_C",
+    "lambda_C_fm": 0.2103089100510051
+   },
+   "rotor_over_mass": {
+    "value": 0.08498324460626408,
+    "formula": "(3/(8 I1))/M_cl = 9 e^4/(16 pi Lambda a1)"
+   },
+   "own_fit_to_MN_MDelta": {
+    "M_N": 938.9,
+    "M_Delta": 1232.0,
+    "F_pi_MeV": 129.25971953850984,
+    "e": 5.44464645481138,
+    "target": {
+     "F_pi_MeV": 129.0,
+     "e": 5.45,
+     "rel_tol": 0.01
+    },
+    "pass_": true
+   },
+   "calibration_radii": {
+    "R_B_target_fm": 0.59,
+    "R_M_target_fm": 0.92,
+    "tol_fm": 0.01,
+    "pass_B": true,
+    "pass_M": true,
+    "source": "ANW 1983 via secondary sources (PLAN E5)"
+   }
+  },
+  "semiclassical_floor": {
+   "formula": "E_rot/M = 9 e^4/(16 pi Lambda a1) <= rho gives e <= e_max and M R >= c0/e_max^2",
+   "rot_over_M_le_0.1": {
+    "e_max": 5.67627170061299,
+    "MR_min_B": 2.3946607992520965,
+    "MR_min_half": 1.9833521634546467
+   },
+   "rot_over_M_le_0.3": {
+    "e_max": 7.470393675634407,
+    "MR_min_B": 1.382558057066042,
+    "MR_min_half": 1.1450889054683668
+   },
+   "rot_over_M_le_1.0": {
+    "e_max": 10.0939970909867,
+    "MR_min_B": 0.7572582349155861,
+    "MR_min_half": 0.6271910238739253
+   }
+  },
+  "electron": {
+   "lambda_C_fm": 386.1592674365624,
+   "bounds_fm": {
+    "LEP": 0.00011,
+    "SEED": 0.001
+   },
+   "LEP": {
+    "MR_required_max": 2.848565586168941e-07,
+    "compton_over_R_min": 3510538.7948778397,
+    "log10_compton_over_R": 6.545373776774846,
+    "B": {
+     "e_min": 16457.810826472523,
+     "e2_min": 270859537.1999562,
+     "F_pi_MeV": 230.65124787273723,
+     "eFpi_MeV": 3796014.604379332,
+     "length_unit_fm": 5.198267157129825e-05,
+     "rot_over_M": 7067007678837.692,
+     "log10_rot_over_M": 12.84923556320874,
+     "hbar_over_MR": 3510538.7948778397,
+     "naive_loop_parameter_e2_over_16pi2": 1715238.0568697113
+    },
+    "M": {
+     "e_min": 20509.133239994946,
+     "e2_min": 420624546.2558656,
+     "F_pi_MeV": 287.42930785084064,
+     "eFpi_MeV": 5894925.971792416,
+     "length_unit_fm": 3.3474038758675555e-05,
+     "rot_over_M": 17042626458603.31,
+     "log10_rot_over_M": 13.231536525206497,
+     "hbar_over_MR": 3510538.7948778397,
+     "naive_loop_parameter_e2_over_16pi2": 2663636.0559790973
+    },
+    "E": {
+     "e_min": 19314.44057441937,
+     "e2_min": 373047614.70277715,
+     "F_pi_MeV": 270.68605098364065,
+     "eFpi_MeV": 5228149.646047778,
+     "length_unit_fm": 3.7743177571145445e-05,
+     "rot_over_M": 13405278278894.562,
+     "log10_rot_over_M": 13.127275833890247,
+     "hbar_over_MR": 3510538.7948778397,
+     "naive_loop_parameter_e2_over_16pi2": 2362351.617289759
+    },
+    "half": {
+     "e_min": 14977.867376649245,
+     "e2_min": 224336511.15249372,
+     "F_pi_MeV": 209.9102874204663,
+     "eFpi_MeV": 3144008.4459780683,
+     "length_unit_fm": 6.276286589233896e-05,
+     "rot_over_M": 4847828215659.337,
+     "log10_rot_over_M": 12.685547222067257,
+     "hbar_over_MR": 3510538.7948778397,
+     "naive_loop_parameter_e2_over_16pi2": 1420627.5527601982
+    }
+   },
+   "SEED": {
+    "MR_required_max": 2.5896050783354006e-06,
+    "compton_over_R_min": 386159.26743656234,
+    "log10_compton_over_R": 5.586766461933071,
+    "B": {
+     "e_min": 5458.438338205827,
+     "e2_min": 29794549.091995187,
+     "F_pi_MeV": 76.49836466211285,
+     "eFpi_MeV": 417561.6064817266,
+     "length_unit_fm": 0.0004725697415572568,
+     "rot_over_M": 85510792913.9361,
+     "log10_rot_over_M": 10.932020933525191,
+     "hbar_over_MR": 386159.26743656234,
+     "naive_loop_parameter_e2_over_16pi2": 188676.1862556683
+    },
+    "M": {
+     "e_min": 6802.10997324692,
+     "e2_min": 46268700.08814522,
+     "F_pi_MeV": 95.3295167892792,
+     "eFpi_MeV": 648441.8568971658,
+     "length_unit_fm": 0.00030430944326068684,
+     "rot_over_M": 206215780149.1001,
+     "log10_rot_over_M": 11.314321895522948,
+     "hbar_over_MR": 386159.26743656234,
+     "naive_loop_parameter_e2_over_16pi2": 292999.96615770075
+    },
+    "E": {
+     "e_min": 6405.875242096547,
+     "e2_min": 41035237.61730549,
+     "F_pi_MeV": 89.77640670957483,
+     "eFpi_MeV": 575096.4610652557,
+     "length_unit_fm": 0.00034311979610132215,
+     "rot_over_M": 162203867174.6242,
+     "log10_rot_over_M": 11.210061204206697,
+     "hbar_over_MR": 386159.26743656234,
+     "naive_loop_parameter_e2_over_16pi2": 259858.67790187354
+    },
+    "half": {
+     "e_min": 4967.596624805029,
+     "e2_min": 24677016.226774316,
+     "F_pi_MeV": 69.61936630093457,
+     "eFpi_MeV": 345840.9290575876,
+     "length_unit_fm": 0.0005705715081121722,
+     "rot_over_M": 58658721409.478,
+     "log10_rot_over_M": 10.768332592383707,
+     "hbar_over_MR": 386159.26743656234,
+     "naive_loop_parameter_e2_over_16pi2": 156269.03080362186
+    }
+   },
+   "formula": "e^2 >= c0 hbar c/(m_e R_max); F_pi = m_e e/a1; E_rot/M = 9 e^4/(16 pi Lambda a1); loop expansion parameter ~ e^2 (action = S0/e^2), equivalently hbar/(M R) = e^2/c0",
+   "failure_factor_vs_floor": {
+    "value": 2658384.4114118814,
+    "formula": "(M R)_min of a semiclassical Skyrme fold (E_rot <= M) / (M R) allowed for the electron (LEP)"
+   }
+  },
+  "pion_mass_family": {
+   "note": "beta = m_pi/(e F_pi); c0 = a1(beta) x_rms(beta)",
+   "rows": [
+    {
+     "beta": 0.0,
+     "a1": 36.46164562535639,
+     "xrms_B": 2.1160897790550557,
+     "xrms_E": 2.914434000493237,
+     "x_half": 1.7526286990892017,
+     "c0_B": 77.15611563534414,
+     "c0_E": 106.26505972447416,
+     "c0_half": 63.90372653901985,
+     "virial_E2_minus_E4_plus_3E0": 3.0754609517787134e-12
+    },
+    {
+     "beta": 0.05,
+     "a1": 36.59040510992381,
+     "xrms_B": 2.0911603963543572,
+     "xrms_E": 2.772902227259247,
+     "x_half": 1.737283556831683,
+     "c0_B": 76.51640605243477,
+     "c0_E": 101.46161582562587,
+     "c0_half": 63.567909135280615,
+     "virial_E2_minus_E4_plus_3E0": -7.103209071569527e-09
+    },
+    {
+     "beta": 0.1,
+     "a1": 36.921826168030144,
+     "xrms_B": 2.034808947665154,
+     "xrms_E": 2.618281526946226,
+     "x_half": 1.7008287059099991,
+     "c0_B": 75.12886225084516,
+     "c0_E": 96.67173539687309,
+     "c0_half": 62.797701821204654,
+     "virial_E2_minus_E4_plus_3E0": 3.09421076244652e-12
+    },
+    {
+     "beta": 0.2,
+     "a1": 37.942383079504566,
+     "xrms_B": 1.8960432285753164,
+     "xrms_E": 2.3346062592384276,
+     "x_half": 1.6053248359304757,
+     "c0_B": 71.9403985139053,
+     "c0_E": 88.58052502783356,
+     "c0_half": 60.90984989191693,
+     "virial_E2_minus_E4_plus_3E0": 2.645208355547701e-12
+    },
+    {
+     "beta": 0.3,
+     "a1": 39.19979534185571,
+     "xrms_B": 1.7643609194263445,
+     "xrms_E": 2.1068644162905126,
+     "x_half": 1.5095117790285595,
+     "c0_B": 69.16258695068107,
+     "c0_E": 82.58865393162638,
+     "c0_half": 59.17255280404005,
+     "virial_E2_minus_E4_plus_3E0": 1.7052562839954502e-12
+    },
+    {
+     "beta": 0.5,
+     "a1": 41.93269606186558,
+     "xrms_B": 1.5544485226101756,
+     "xrms_E": 1.7829960645420773,
+     "x_half": 1.3490336746139577,
+     "c0_B": 65.18221744242848,
+     "c0_E": 74.76583205394539,
+     "c0_half": 56.56861905480876,
+     "virial_E2_minus_E4_plus_3E0": 5.371953635965845e-13
+    },
+    {
+     "beta": 1.0,
+     "a1": 48.631763436546784,
+     "xrms_B": 1.2366904279633015,
+     "xrms_E": 1.3486571514921633,
+     "x_half": 1.0921153959324774,
+     "c0_B": 60.14243633695308,
+     "c0_E": 65.58757554837392,
+     "c0_half": 53.11149758039887,
+     "virial_E2_minus_E4_plus_3E0": 6.088738369384668e-13
+    },
+    {
+     "beta": 2.0,
+     "a1": 60.18617883814,
+     "xrms_B": 0.9379502558699819,
+     "xrms_E": 0.9832377028627135,
+     "x_half": 0.8387185930629415,
+     "c0_B": 56.45164184106991,
+     "c0_E": 59.17732022489724,
+     "c0_half": 50.479267236959366,
+     "virial_E2_minus_E4_plus_3E0": 1.4043691037547534e-12
+    },
+    {
+     "beta": 4.0,
+     "a1": 78.451195123995,
+     "xrms_B": 0.6902553148400942,
+     "xrms_E": 0.7043310004539102,
+     "x_half": 0.6219944285331638,
+     "c0_B": 54.151354389894834,
+     "c0_E": 55.25560874848832,
+     "c0_half": 48.796206278892996,
+     "virial_E2_minus_E4_plus_3E0": 1.004846497494346e-12
+    },
+    {
+     "beta": 8.0,
+     "a1": 105.90322344992438,
+     "xrms_B": 0.49900574010051857,
+     "xrms_E": 0.5007586531411196,
+     "x_half": 0.4515865344967851,
+     "c0_B": 52.84631639666011,
+     "c0_E": 53.03195553808716,
+     "c0_half": 47.82446966979002,
+     "virial_E2_minus_E4_plus_3E0": 6.645810919095935e-12
+    },
+    {
+     "beta": 16.0,
+     "a1": 146.0185081495684,
+     "xrms_B": 0.35711049584130206,
+     "xrms_E": 0.3549173896790977,
+     "x_half": 0.32389792349195695,
+     "c0_B": 52.14474184729957,
+     "c0_E": 51.82450775728087,
+     "c0_half": 47.2950915810386,
+     "virial_E2_minus_E4_plus_3E0": 2.2140514129594235e-11
+    }
+   ],
+   "c0_B_min": 52.14474184729957,
+   "c0_half_min": 47.2950915810386
+  }
+ },
+ "hopfion": {
+  "formula": "M R = 16 sqrt(2) pi^2 kappa4 E_W Rt = c0_hopf * kappa4 (hbar = c = 1); length unit l = sqrt(kappa4/kappa2)",
+  "E_W_ansatz": 1.2314457268379677,
+  "R_rms_ward": 2.1441351857330666,
+  "R_ring_ward": 1.2393004837217263,
+  "c0_hopf_rms": 589.660675580575,
+  "c0_hopf_ring": 340.8212156309733,
+  "c0_hopf_rms_lit_energy": 576.5186706376276,
+  "electron_LEP": {
+   "kappa4_max": 4.830855616010457e-10,
+   "g2_min": 2070026677.4394844,
+   "sqrt_kappa2_MeV": 84.53916960858707,
+   "length_unit_fm": 5.1302735355463e-05
+  },
+  "electron_SEED": {
+   "kappa4_max": 4.391686923645869e-09,
+   "g2_min": 227702934.51834333,
+   "sqrt_kappa2_MeV": 28.038470567989968,
+   "length_unit_fm": 0.0004663885032314818
+  }
+ },
+ "pairs": {
+  "demidov_levkov": {
+   "model": "Demidov-Levkov 2011 (1+1)D scalar, V = (1/2)(phi+1)^2[1 - v W((phi-1)/a)], a = 0.4 [read]",
+   "v_degenerate": 0.7450777428719995,
+   "phi_plus": 1.5515497261911892,
+   "m_minus": 1.0,
+   "m_plus": 7.613097755743583,
+   "g2_M_S_computed": 3.1178768983283165,
+   "two_g2_M_S_computed": 6.235753796656633,
+   "two_g2_M_S_read_from_axes": "about 6.2 (Fig. 3 and Fig. 7b axes of arXiv:1103.0013/1103.2133)",
+   "F2_exponent_read": {
+    "at_threshold": 4.45,
+    "at_g2E_11p5": 3.93,
+    "uncertainty": "+-0.05 (read off Fig. 3b, two-particle curve g^2N = 0)",
+    "source": "arXiv:1103.0013 Fig. 3b [read]"
+   },
+   "g2Nmin_classical_read": {
+    "high_energy": 3.98,
+    "near_threshold": 4.5,
+    "uncertainty": "+-0.03",
+    "source": "arXiv:1103.2133 Fig. 7b, delta rho -> 0 [read]"
+   },
+   "kappa_suppression_per_pair_quantum": {
+    "value": [
+     0.6302365565021365,
+     0.7136266352250655
+    ],
+    "formula": "P ~ exp(-F/g^2) = exp(-kappa N_pair), N_pair = 2 M_S/m_- = 2 g2MS/g^2; kappa = F/(2 g^2 M_S)"
+   },
+   "Nmin_over_Npair": {
+    "value": 0.6382548333024181,
+    "formula": "g^2 N_min / (2 g^2 M_S/m_-)"
+   },
+   "coupling_for_unsuppressed_two_particle_production": {
+    "formula": "exp(-F_min/g^2) = P  ->  g^2 = F_min/ln(1/P), F_min = 3.93 (high-energy plateau)",
+    "rows": {
+     "P=0.1": {
+      "g2": 1.7067773138797795,
+      "M_S_over_m": 1.826762561801856,
+      "N_pair": 3.653525123603712
+     },
+     "P=0.368": {
+      "g2": 3.93,
+      "M_S_over_m": 0.793352900337994,
+      "N_pair": 1.586705800675988
+     },
+     "P=0.5": {
+      "g2": 5.669791510693627,
+      "M_S_over_m": 0.5499103260583358,
+      "N_pair": 1.0998206521166716
+     }
+    }
+   }
+  },
+  "phi4": {
+   "convention": "V = (lambda/4)(phi^2 - v^2)^2, m^2 = 2 lambda v^2, phi = v phit; S = (1/g^2) S0 with g^2 = 1/v^2 = 2 lambda/m^2",
+   "M_kink_over_m": {
+    "value_times_g2": 0.6666666666666666,
+    "formula": "M_kink = m^3/(3 lambda) -> M/m = 2/(3 g^2)"
+   },
+   "N_pair_times_g2": 1.3333333333333333,
+   "DSV_units_note": "DSV units lambda = v = 1 (m = sqrt 2) have g^2 = 1, so N*lambda in those units equals g^2 N here",
+   "scaling_argument": "Classical solutions depend on (E, N) only through g^2 E and g^2 N (field rescaling phi = phit/g removes g from the field equation); so if classical pair creation exists at all its lower boundary is N_min = n0/g^2 with n0 a pure number of the classical theory, N_min ~ 1/lambda."
+  },
+  "E1e_input": "E1_phi4/results.json not present when this script ran; E1e not used, scaling derived analytically",
+  "QED_breit_wheeler": {
+   "formula": "sigma = (pi r_e^2/2)(1-b^2)[(3-b^4) ln((1+b)/(1-b)) - 2b(2-b^2)], r_e = alpha hbar c/(m_e c^2)",
+   "r_e_fm": 2.8179403204564086,
+   "sigma_max_over_pi_re2": 0.6817055054867978,
+   "beta_at_max": 0.701314729,
+   "sqrt_s_at_max_over_2me": 1.40281617759477,
+   "sigma_max_mb": 170.06316465914213,
+   "scaling": "sigma ~ alpha^2/m_e^2: power-law (perturbative) in alpha, no exp(-c/alpha) factor",
+   "hypothetical_fold_suppression": {
+    "note": "if the electron were a semiclassical fold with coupling g^2 = alpha (or 4 pi alpha) and DL-like F ~ 4",
+    "exp_minus_F_over_alpha_log10": -233.88993458115897,
+    "exp_minus_F_over_4pialpha_log10": -18.61236961401574
+   }
+  }
+ },
+ "vacuum": {
+  "Planck2018_TTTEEE_lowE_lensing": {
+   "H0": 67.36,
+   "Omega_L": 0.6847,
+   "rho_crit_GeV4": 3.6734079438951e-47,
+   "rho_L_GeV4": 2.515182419184975e-47,
+   "rho_L_quarter_meV": 2.2394551655096677,
+   "rho_L_meV4": 25.151824191849748,
+   "rel_unc_uncorrelated": 0.019254480794057525
+  },
+  "PLAN_rounded": {
+   "H0": 67.4,
+   "Omega_L": 0.685,
+   "rho_crit_GeV4": 3.6777719565117426e-47,
+   "rho_L_GeV4": 2.5192737902105437e-47,
+   "rho_L_quarter_meV": 2.2403653239642676,
+   "rho_L_meV4": 25.19273790210544
+  },
+  "Planck_OmegaLh2": {
+   "Omega_L_h2": 0.3107,
+   "unc": 0.0082,
+   "rho_L_GeV4": 2.515395369529093e-47,
+   "rel_unc": 0.02639201802381719
+  },
+  "Planck_Lambda": {
+   "Lambda_eV2": 4.24e-66,
+   "rho_L_GeV4": 2.51465935062045e-47,
+   "formula": "rho_L = Lambda/(8 pi G) = Lambda Mpl_red^2",
+   "Lambda_over_mPl2_quoted": 2.846e-122,
+   "Lambda_over_mPl2_ours": 2.8445442364021374e-122
+  },
+  "ratios_scale4_over_rhoL": {
+   "f_pi^4 (f_pi = 92.07 MeV = 130.2/sqrt2)": {
+    "scale4_GeV4": 7.184291504039993e-05,
+    "ratio": 2.856369959188887e+42,
+    "log10": 42.455814456895695
+   },
+   "f^4 of the ANW Skyrme fit (f = F_pi/2 = 64.5 MeV)": {
+    "scale4_GeV4": 1.7307680062500002e-05,
+    "ratio": 6.881282220519186e+41,
+    "log10": 41.837669369836036
+   },
+   "m_e^4": {
+    "scale4_GeV4": 6.818361659310949e-14,
+    "ratio": 2.710881567596352e+33,
+    "log10": 33.433110544632164
+   },
+   "v_EW^4 (v = 246.22 GeV)": {
+    "scale4_GeV4": 3675304344.0063744,
+    "ratio": 1.4612476279940475e+56,
+    "log10": 56.16472381919133
+   },
+   "Higgs potential depth m_H^2 v^2/8": {
+    "scale4_GeV4": 118655017.47900766,
+    "ratio": 4.717551163444316e+54,
+    "log10": 54.67371661893364
+   },
+   "M_Pl^4 reduced (2.435e18 GeV)": {
+    "scale4_GeV4": 3.517439285367827e+73,
+    "ratio": 1.3984827734712085e+120,
+    "log10": 120.14565712109548
+   },
+   "M_Pl^4 unreduced (1.221e19 GeV)": {
+    "scale4_GeV4": 2.2218069920915785e+76,
+    "ratio": 8.833581910975419e+122,
+    "log10": 122.94613684046763
+   }
+  },
+  "targets": {
+   "rho_L": {
+    "target": 2.5e-47,
+    "tol_rel": 0.02,
+    "ours": 2.515182419184975e-47,
+    "pass_": true
+   },
+   "rho_L_quarter_meV": {
+    "target": 2.24,
+    "tol": 0.01,
+    "ours": 2.2394551655096677,
+    "pass_": true
+   },
+   "f_pi4": {
+    "target": "about 3e42",
+    "ours": 2.856369959188887e+42
+   },
+   "ew": {
+    "target": "about 1e56",
+    "ours": 1.4612476279940475e+56
+   },
+   "planck": {
+    "target": "about 1e123",
+    "ours": 8.833581910975419e+122,
+    "note": "unreduced; reduced gives ~1.4e120"
+   }
+  }
+ },
+ "weinberg_witten": {
+  "rule": "non-zero forward matrix element needs 2|h| <= j_max; j_max = 1 (J^mu), 2 (T^mu nu)",
+  "table": {
+   "0": {
+    "charge_under_covariant_current_allowed": true,
+    "energy_under_covariant_Tmunu_allowed": true
+   },
+   "0.5": {
+    "charge_under_covariant_current_allowed": true,
+    "energy_under_covariant_Tmunu_allowed": true
+   },
+   "1": {
+    "charge_under_covariant_current_allowed": false,
+    "energy_under_covariant_Tmunu_allowed": true
+   },
+   "1.5": {
+    "charge_under_covariant_current_allowed": false,
+    "energy_under_covariant_Tmunu_allowed": false
+   },
+   "2": {
+    "charge_under_covariant_current_allowed": false,
+    "energy_under_covariant_Tmunu_allowed": false
+   }
+  },
+  "source": "Weinberg & Witten, PLB 96, 59 (1980) (original not read); argument read in Porrati arXiv:0804.4672 Sec. 2",
+  "statements": [
+   "A theory with a Lorentz-covariant conserved current J^mu has no massless particle of |h| > 1/2 carrying non-zero charge Q = int J^0.",
+   "A theory with a Lorentz-covariant conserved T^mu nu has no massless particle of |h| > 1 (its forward matrix element must be p^mu p^nu/E by the equivalence principle).",
+   "Both hold for composite and elementary particles alike; GR and supergravity evade them because the graviton/gravitino T^mu nu is not gauge invariant/Lorentz covariant.",
+   "A neutral composite photon (|h| = 1, Q = 0) is not excluded; a composite graviton from a Lorentz-covariant matter sector with covariant conserved T^mu nu is."
+  ]
+ }
+}

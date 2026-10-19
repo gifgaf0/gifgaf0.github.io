@@ -1,0 +1,10 @@
+skip e3_g2_algebra
+skip e3_hedgehog
+skip e3_inertia
+skip e3_g2_reps
+skip e3_g2_su3_branching
+=== e3_stability 00:51:52
+e3_stability wall 301 s
+=== e3_flag 00:56:53
+e3_flag wall 951 s
+=== all done 01:12:46

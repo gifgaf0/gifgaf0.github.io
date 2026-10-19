@@ -11,12 +11,12 @@ PASS 4c. hedgehog identity V^0_a = (W x x)_j V^j_a (rotation in isospace = rotat
 PASS 4d. (2/3) r g(r) = lambda density  =>  int r g d^3x = (3/2) lambda  =>  mu^{I=1}_p = lambda/6  [1.2455166841510677e-16]
 PASS 5a. B^0 = kappa eps^{0ijk}Tr(L_i L_j L_k) = -(1/2pi^2) s^2 F'/r^2 with kappa = -1/(24*pi**2)  [1.1102230246251565e-16]
 PASS 5b. B^k = B^0 (W x x)_k : the baryon current is rigidly transported by the physical rotation  [1.3877787807814457e-17]
-PASS 5c. kappa = 1/(24 pi^2) up to the sign fixed by eps^{0123}=+1  [-0.004221715985097407]
+PASS 5c. kappa = -1/(24 pi^2) exactly (magnitude = standard 1/(24 pi^2); the sign follows from eps^{0123}=+1, L = U^+ dU, B = +1)  [-1/(24*pi**2)]
 PASS 6a. angular average of (1/2) x x (B/2 with B^0=1)(W x x) = r^2 W/6  =>  mu^{I=0} = <r^2> J/(6 lambda)  [[W1*r**2/6, W2*r**2/6, W3*r**2/6]]
 PASS 6b. (1/2) <eps_ijk x_j eps_kbl n_l> = (r/3) delta_ib  =>  mu^{I=1}_i = D_3i (1/3) int r g d^3x
-FAIL 7a. static axial current has the form A^j_a = f1(r) delta_aj + f2(r) n_a n_j  [3.283262921032865]
-FAIL 7b. derived axial density matches the D-formula: 4 pi (f1+f2/3) = (pi/3) D  (up to overall sign)  [sign=+False, rel.dev 5.98e+00 / 4.92e+00]
-FAIL 7c. tail: f1 -> -(C/4)/r^3, f2 -> +(3C/4)/r^3 (pion field ~ d_j(n_a/r^2)); g_A(tail) = 2 pi C/(3 e^2)  [f1=3*C/(4*r**3), f2=-C/(4*r**3)]
+PASS 7a. static axial current has the form A^j_a = f1(r) delta_aj + f2(r) n_a n_j  [1.0547118733938987e-15]
+PASS 7b. derived axial density matches the D-formula with the literature sign: 4 pi (f1+f2/3) = -(pi/3) D  [rel.dev with -: 4.17e-16 ; with +: 2.00e+00]
+PASS 7c. tail: f1 -> -(C/4)/r^3, f2 -> +(3C/4)/r^3 (pion field ~ d_j(n_a/r^2)); g_A(tail) = 2 pi C/(3 e^2)  [f1=-C/(4*r**3), f2=3*C/(4*r**3)]
 PASS 8a. ANW I_k and J_k obey the standard su(2) algebra [X1,X2] = i X3
 PASS 8b. operator identity I_k = -D_kl(A) J_l holds on S^3 (hedgehog: isospin = -rotated spin)
 PASS 8c. |p up> = (a1 + i a2)/pi has I3 = +1/2, J3 = +1/2 and <D_33> = -1/3  [I3=1/2 J3=1/2 D33=-1/3]
@@ -29,7 +29,8 @@ PASS 9f. amplitude factor N_c Tr(Q^2 tau3): fixed charges -> N_c/3 ; anomaly-con
 PASS 10a. quadratic part of (F^2/16)Tr(DU DU^+) = (1/2) d_mu pi^a d^mu pi^a (no photon-pion mixing at this order)
 PASS 10b. quadratic part of the mass term = -(1/2) m_pi^2 pi^a pi^a
 PASS 10c. L_mu = U^+ D_mu U vanishes at zeroth order, so the Skyrme term [L,L]^2 starts at 4th order (no quadratic part)
-PASS 10d. the WZ term is at least cubic in fields (eps A A d pi, eps A Tr(Q L L L)): no quadratic part  [by inspection of eq. 67: every term has >= 3 fields]
+PASS 10d. gauged WZ term expanded in all fields: no part of order 0, 1 or 2 (no quadratic part; computed)  [orders 0-2: [0, 0, 0]; order 3 nonzero: True]
+PASS 9g. that cubic part = (N_c e^2/(24 pi^2 f)) eps^{mu nu al be} d_mu A_nu A_al d_be pi0 = (N_c e^2/(48 pi^2 f)) eps F_mu nu A_al d_be pi0 (only pi0 couples)
 PASS 10e. Maxwell: off the cone (k^2!=0) M(k) has rank 3, null space = pure gauge k^mu; on the cone rank 1 (two transverse photons + gauge)  [rank(k^2!=0)=3, rank(k^2=0)=1]
 PASS 10f. pion: omega^2 = k^2 + m^2, group velocity k/omega < 1 -> 1 as k -> oo; photon omega = |k| (phase=group=1)  [v_g = kmag/sqrt(kmag**2 + m_pi**2)]
 PASS 10g. k^2 is boost invariant, so both dispersion relations hold in every frame (one cone, no preferred frame)
@@ -37,4 +38,4 @@ PASS 11a. vacuum (U=1, dU=0): T_mu nu = 2 dL/dg^{mu nu} - g_mu nu L = V0 g_mu nu
 PASS 11b. rho = T_00 = V0 and p = T_11 = -V0: p = -rho (taut vacuum)  [rho=V0 p=-V0]
 PASS 11c. boosted vacuum T_mu nu is unchanged (Lambda^T g Lambda = g): same in every frame
 
-35 checks passed, 3 failed, 123.0 s
+39 checks passed, 0 failed, 302.6 s

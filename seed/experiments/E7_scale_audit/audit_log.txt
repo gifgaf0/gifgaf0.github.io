@@ -1,0 +1,42 @@
+SKYRME SCALING
+  a1 = 36.46165; a2 (B, M, E, half) = 2.11609, 3.28613, 2.91443, 1.75263
+  c0 (B, M, E, half) = 77.156, 119.818, 106.265, 63.904
+  sympy energy prefactor = F_pi/e  (pass=True)
+  ANW: M_cl=863.0 MeV, M_N=936.4, M_D=1229.8, R_B=0.5939 fm (0.59), R_M=0.9223 fm (0.92)
+  own fit: F_pi=129.26 MeV, e=5.4446 (ANW 129, 5.45)
+  proton MR: classical 2.598, nucleon-model 2.826 (2.8), data r_p/lambda_C 3.998;  E_rot/M = 0.0850
+  floor rot_over_M_le_0.1: e_max=5.676, (MR)_min(B)=2.395
+  floor rot_over_M_le_0.3: e_max=7.470, (MR)_min(B)=1.383
+  floor rot_over_M_le_1.0: e_max=10.094, (MR)_min(B)=0.757
+  electron LEP: (MR)_max=2.849e-07, lambda_C/R >= 3.511e+06; e_min(B)=1.646e+04, F_pi=230.7 MeV, E_rot/M=7.067e+12, e^2/16pi^2=1.715e+06
+  electron SEED: (MR)_max=2.590e-06, lambda_C/R >= 3.862e+05; e_min(B)=5458, F_pi=76.5 MeV, E_rot/M=8.551e+10, e^2/16pi^2=1.887e+05
+  pion-mass family c0_B min over beta<=16: 52.14
+HOPFION
+  E_W(ansatz)=1.2314, R_rms=2.1441, c0_hopf=589.7; electron LEP: kappa4 <= 4.831e-10, g^2 >= 2.070e+09
+PAIRS
+  DL model: v=0.74508 (paper ~0.75), phi+=1.5515, 2 g^2 M_S = 6.2358 (axes ~6.2), m+=7.613
+  kappa = F/N_pair = [0.6302365565021365, 0.7136266352250655]; N_min/N_pair = 0.638
+  P=0.1: g^2 = 1.71, M_S/m = 1.83
+  P=0.368: g^2 = 3.93, M_S/m = 0.79
+  P=0.5: g^2 = 5.67, M_S/m = 0.55
+  E1 input: E1_phi4/results.json not present when this script ran; E1e not used, scaling derived analytically
+  Breit-Wheeler: sigma_max = 0.6817 pi r_e^2 = 170.1 mb at sqrt(s) = 1.403 x 2 m_e; fold-like suppression would be 10^-234
+VACUUM
+  Planck2018_TTTEEE_lowE_lensing: rho_L = 2.5152e-47 GeV^4
+  PLAN_rounded: rho_L = 2.5193e-47 GeV^4
+  Planck_OmegaLh2: rho_L = 2.5154e-47 GeV^4
+  Planck_Lambda: rho_L = 2.5147e-47 GeV^4
+  (rho_L)^(1/4) = 2.2395 meV; Lambda/mPl^2 ours 2.8445e-122 (quoted 2.846e-122)
+  f_pi^4 (f_pi = 92.07 MeV = 130.2/sqrt2)                 ratio = 2.856e+42
+  f^4 of the ANW Skyrme fit (f = F_pi/2 = 64.5 MeV)       ratio = 6.881e+41
+  m_e^4                                                   ratio = 2.711e+33
+  v_EW^4 (v = 246.22 GeV)                                 ratio = 1.461e+56
+  Higgs potential depth m_H^2 v^2/8                       ratio = 4.718e+54
+  M_Pl^4 reduced (2.435e18 GeV)                           ratio = 1.398e+120
+  M_Pl^4 unreduced (1.221e19 GeV)                         ratio = 8.834e+122
+WEINBERG-WITTEN helicity table (charged under J allowed?, carries covariant T allowed?)
+  |h|=0: True, True
+  |h|=0.5: True, True
+  |h|=1: False, True
+  |h|=1.5: False, False
+  |h|=2: False, False

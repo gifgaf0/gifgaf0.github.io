@@ -1,0 +1,244 @@
+{
+ "description": "linking-number Hopf charge (estimator-free) and solid-angle Whitehead charge of the coarse fields; Sutcliffe sign convention",
+ "fields": {
+  "Q1_A11_N76": {
+   "Q_nominal": 1,
+   "N": 76,
+   "h": 0.20000000000000018,
+   "Q_whitehead_solid_angle": 0.9915290534550175,
+   "dev_whitehead": 0.008470946544982483,
+   "hedgehogs": 0,
+   "n_position": 1,
+   "n_linking": 1,
+   "Q_from_linking_3_projections": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "linking_consistent": true,
+   "Q_link_equals_nominal": true
+  },
+  "Q1_A11_N101": {
+   "Q_nominal": 1,
+   "N": 101,
+   "h": 0.15000000000000036,
+   "Q_whitehead_solid_angle": 0.9957745310383844,
+   "dev_whitehead": 0.004225468961615575,
+   "hedgehogs": 0,
+   "n_position": 1,
+   "n_linking": 1,
+   "Q_from_linking_3_projections": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "linking_consistent": true,
+   "Q_link_equals_nominal": true
+  },
+  "Q2_A21_N76": {
+   "Q_nominal": 2,
+   "N": 76,
+   "h": 0.20000000000000018,
+   "Q_whitehead_solid_angle": 1.9903885418212215,
+   "dev_whitehead": 0.00961145817877851,
+   "hedgehogs": 0,
+   "n_position": 1,
+   "n_linking": 1,
+   "Q_from_linking_3_projections": [
+    2.0,
+    2.0,
+    2.0
+   ],
+   "linking_consistent": true,
+   "Q_link_equals_nominal": true
+  },
+  "Q2_A21_N101": {
+   "Q_nominal": 2,
+   "N": 101,
+   "h": 0.15000000000000036,
+   "Q_whitehead_solid_angle": 1.995035655415885,
+   "dev_whitehead": 0.004964344584114988,
+   "hedgehogs": 0,
+   "n_position": 1,
+   "n_linking": 1,
+   "Q_from_linking_3_projections": [
+    2.0,
+    2.0,
+    2.0
+   ],
+   "linking_consistent": true,
+   "Q_link_equals_nominal": true
+  },
+  "Q3_A31_N76": {
+   "Q_nominal": 3,
+   "N": 76,
+   "h": 0.20000000000000018,
+   "Q_whitehead_solid_angle": 2.9866154947465318,
+   "dev_whitehead": 0.013384505253468237,
+   "hedgehogs": 0,
+   "n_position": 1,
+   "n_linking": 1,
+   "Q_from_linking_3_projections": [
+    3.0,
+    3.0,
+    3.0
+   ],
+   "linking_consistent": true,
+   "Q_link_equals_nominal": true
+  },
+  "Q3_A31_N101": {
+   "Q_nominal": 3,
+   "N": 101,
+   "h": 0.15000000000000036,
+   "Q_whitehead_solid_angle": 2.9930594331180553,
+   "dev_whitehead": 0.006940566881944665,
+   "hedgehogs": 0,
+   "n_position": 1,
+   "n_linking": 1,
+   "Q_from_linking_3_projections": [
+    3.0,
+    3.0,
+    3.0
+   ],
+   "linking_consistent": true,
+   "Q_link_equals_nominal": true
+  },
+  "Q4_A22_N76": {
+   "Q_nominal": 4,
+   "N": 76,
+   "h": 0.20000000000000018,
+   "Q_whitehead_solid_angle": 3.9873597622174533,
+   "dev_whitehead": 0.012640237782546748,
+   "hedgehogs": 0,
+   "n_position": 2,
+   "n_linking": 2,
+   "Q_from_linking_3_projections": [
+    4.0,
+    4.0,
+    4.0
+   ],
+   "linking_consistent": true,
+   "Q_link_equals_nominal": true
+  },
+  "Q4_A22_N101": {
+   "Q_nominal": 4,
+   "N": 101,
+   "h": 0.15000000000000036,
+   "Q_whitehead_solid_angle": 3.9939629984024636,
+   "dev_whitehead": 0.0060370015975363955,
+   "hedgehogs": 0,
+   "n_position": 2,
+   "n_linking": 2,
+   "Q_from_linking_3_projections": [
+    4.0,
+    4.0,
+    4.0
+   ],
+   "linking_consistent": true,
+   "Q_link_equals_nominal": true
+  },
+  "Q5_K32_N76": {
+   "Q_nominal": 5,
+   "N": 76,
+   "h": 0.20000000000000018,
+   "Q_whitehead_solid_angle": 4.984805475599352,
+   "dev_whitehead": 0.01519452440064839,
+   "hedgehogs": 0,
+   "n_position": 2,
+   "n_linking": 1,
+   "Q_from_linking_3_projections": [
+    5.0,
+    5.0,
+    5.0
+   ],
+   "linking_consistent": true,
+   "Q_link_equals_nominal": true
+  },
+  "Q5_K32_N101": {
+   "Q_nominal": 5,
+   "N": 101,
+   "h": 0.15000000000000036,
+   "Q_whitehead_solid_angle": 4.992393041276761,
+   "dev_whitehead": 0.007606958723238577,
+   "hedgehogs": 0,
+   "n_position": 2,
+   "n_linking": 1,
+   "Q_from_linking_3_projections": [
+    5.0,
+    5.0,
+    5.0
+   ],
+   "linking_consistent": true,
+   "Q_link_equals_nominal": true
+  },
+  "Q6_L22_N76": {
+   "Q_nominal": 6,
+   "N": 76,
+   "h": 0.20000000000000018,
+   "Q_whitehead_solid_angle": 5.984049782418258,
+   "dev_whitehead": 0.015950217581742088,
+   "hedgehogs": 0,
+   "n_position": 2,
+   "n_linking": 2,
+   "Q_from_linking_3_projections": [
+    6.0,
+    6.0,
+    6.0
+   ],
+   "linking_consistent": true,
+   "Q_link_equals_nominal": true
+  },
+  "Q6_L22_N101": {
+   "Q_nominal": 6,
+   "N": 101,
+   "h": 0.15000000000000036,
+   "Q_whitehead_solid_angle": 5.9918959192793775,
+   "dev_whitehead": 0.00810408072062252,
+   "hedgehogs": 0,
+   "n_position": 2,
+   "n_linking": 2,
+   "Q_from_linking_3_projections": [
+    6.0,
+    6.0,
+    6.0
+   ],
+   "linking_consistent": true,
+   "Q_link_equals_nominal": true
+  },
+  "Q7_K32_N76": {
+   "Q_nominal": 7,
+   "N": 76,
+   "h": 0.20000000000000018,
+   "Q_whitehead_solid_angle": 6.98275267362675,
+   "dev_whitehead": 0.017247326373250438,
+   "hedgehogs": 0,
+   "n_position": 1,
+   "n_linking": 1,
+   "Q_from_linking_3_projections": [
+    7.0,
+    7.0,
+    7.0
+   ],
+   "linking_consistent": true,
+   "Q_link_equals_nominal": true
+  },
+  "Q7_K32_N101": {
+   "Q_nominal": 7,
+   "N": 101,
+   "h": 0.15000000000000036,
+   "Q_whitehead_solid_angle": 6.991181469038197,
+   "dev_whitehead": 0.008818530961803184,
+   "hedgehogs": 0,
+   "n_position": 1,
+   "n_linking": 1,
+   "Q_from_linking_3_projections": [
+    7.0,
+    7.0,
+    7.0
+   ],
+   "linking_consistent": true,
+   "Q_link_equals_nominal": true
+  }
+ },
+ "all_Q_link_integer_and_nominal": true
+}

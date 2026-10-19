@@ -30,7 +30,7 @@
    "tolerance": "+-0.001",
    "verdict": "CALIBRATED",
    "source": "[summary] Campbell-Schonfeld-Wingate 1983; Anninos-Oliveira-Matzner 1991",
-   "note": "dx=0.1/0.05/0.025 (dt=0.4dx): [0.260444, 0.260156, 0.260081]; Richardson p=2; x0=20 and t_post=1500 change it by <2e-5; range over all configurations [0.26008125000000004, 0.26044375]"
+   "note": "dx=0.1/0.05/0.025 (dt=0.4dx): [0.260444, 0.260156, 0.260081]; Richardson p=2; x0=20 and t_post=1500 change it by <2e-5; range over all configurations [0.26008125000000004, 0.26044375]; offset diagnosis (reconciliation): the independent Fourier + RK4 cross-check (other x0, box and integrator) gives 0.260066, within 1e-5 of ours, so the +2.6e-4 offset from 0.2598 lies in the [summary] target, not in either computation; CALIBRATED stands (inside +-0.001)"
   },
   {
    "quantity": "E1b critical velocity v_c (baseline dx=0.05, x0=12)",
@@ -40,7 +40,7 @@
    "tolerance": "+-0.001",
    "verdict": "CALIBRATED",
    "source": "[summary]",
-   "note": "bracket from bisection; label = bounce count before escape"
+   "note": "bracket from bisection; label = bounce count before escape; offset diagnosis (reconciliation): the independent Fourier + RK4 cross-check (other x0, box and integrator) gives 0.260066, within 1e-5 of ours, so the +2.6e-4 offset from 0.2598 lies in the [summary] target, not in either computation; CALIBRATED stands (inside +-0.001)"
   },
   {
    "quantity": "E1b first two-bounce window (dx->0 extrapolation)",
@@ -111,13 +111,81 @@
   },
   {
    "quantity": "E1c (omega,v)=(0.99,0.43) produces a pair",
-   "value": true,
-   "units_convention": "DSV criterion: pair present at t=T (one light-crossing time)",
+   "value": {
+    "fourth_order_y4_calls_(dx,dt,pair_at_T,since)": [
+     [
+      0.0125,
+      0.005,
+      true,
+      870.0
+     ],
+     [
+      0.025,
+      0.005,
+      false,
+      null
+     ],
+     [
+      0.025,
+      0.01,
+      false,
+      null
+     ],
+     [
+      0.05,
+      0.01,
+      false,
+      null
+     ],
+     [
+      0.05,
+      0.02,
+      false,
+      null
+     ]
+    ],
+    "original_leapfrog_calls_(dx,dt,pair_at_T,since)": [
+     [
+      0.025,
+      0.005,
+      true,
+      840.0
+     ],
+     [
+      0.05,
+      0.0025,
+      false,
+      null
+     ],
+     [
+      0.05,
+      0.02,
+      false,
+      null
+     ],
+     [
+      0.1,
+      0.02,
+      true,
+      780.0
+     ],
+     [
+      0.1,
+      0.04,
+      true,
+      1160.0
+     ]
+    ],
+    "crosscheck_calls": "no pair to 1.5T: FD6+RK4 (dx 0.08, dt 0.032); Fourier + 4th-order splitting at (dx, dt) = (0.1, 0.02), (0.05, 0.02), (0.1, 0.01)",
+    "phi0_divergence_times_between_y4_resolutions": []
+   },
+   "units_convention": "DSV criterion: pair present at t=T (one light-crossing time); evolved to 1.5T",
    "target": true,
    "tolerance": "qualitative",
-   "verdict": "CALIBRATED",
+   "verdict": "OPEN",
    "source": "[read] arXiv:0803.0670",
-   "note": "pair first meets the pair test at t=1160.0000000000002 (T=1200) after a long-lived central oscillation; still present and separating at 1.5T: True; E/2M=11.20"
+   "note": "RECONCILED (cross-check M1 upheld in part): the call is not demonstrated either way; the point is chaotic. Fourth-order time stepping (Yoshida composition of the original step, e1c_reconcile.py) gives no pair at 4 of 5 (dx, dt) settings and a pair from t = 870 at the finest, (0.0125, 0.005), where it sits at +-128 at T (DSV Fig. 1: about +-140); the leapfrog produces at 3 of 5 settings run here (4 of 11 distinct settings counting the cross-check's, pairs forming at t = 780-1160); the cross-check's four higher-order runs give none. phi(0,t) of the two finest y4 runs separate at t = 831.0, before the pair forms, and their difference grows by a factor of ~600 between t = 800 and 850: the trains leave a long-lived central oscillation whose fate is decided at t ~ 830-870, beyond the convergence horizon of any affordable run. Neighbourhood ensemble inside DSV's 0.01 cell (y4, dx 0.05, dt 0.02, v = 0.425-0.435 step 0.001): 0 of 11 produce; in the 0.41 cell 3 of 11 (v = [0.407, 0.41, 0.411]). The original 'pair since t = 1160, still separating at 1.5T, the pair is real' came from one unconverged run (dx = 0.1, dt = 0.04, whose phi(0,t) leaves the converged one at t ~ 258). DSV-like production in this column is converged at v = 0.41 (pair from t = 590 at every setting); OPEN.",
+   "reconciled": true
   },
   {
    "quantity": "E1c producing region trends to lower v as omega rises",
@@ -130,7 +198,8 @@
    "tolerance": "qualitative",
    "verdict": "CALIBRATED",
    "source": "[read]",
-   "note": "vmax: [-0.996965091635306, 3.698093220209441e-10], vmin: [-0.9878787878787878, 9.307459988955516e-08]"
+   "note": "vmax: [-0.996965091635306, 3.698093220209441e-10], vmin: [-0.9878787878787878, 9.307459988955516e-08]; reconciliation: with the omega = 0.99 column replaced by its converged producer(s) [0.41], Spearman rho = -0.988 (p = 9.3e-08); cross-check FD6 code: -0.94",
+   "reconciled": true
   },
   {
    "quantity": "E1c trains pass through at high v",
@@ -153,7 +222,7 @@
    "tolerance": "qualitative",
    "verdict": "CALIBRATED",
    "source": "[read]",
-   "note": ""
+   "note": "reproduced by the cross-check (FD6: 0/18 at v >= 0.86; 0/6 at omega = 0.995)"
   },
   {
    "quantity": "E1c holes, e.g. near (0.91,0.82)",
@@ -220,6 +289,98 @@
       "dsv": true,
       "survive": true
      }
+    },
+    "fourth_order_check_omega_0.91": {
+     "0.800": {
+      "class": "converged producer",
+      "calls_(dx,dt,pair_at_T,since)": [
+       [
+        0.025,
+        0.01,
+        true,
+        60.0
+       ],
+       [
+        0.05,
+        0.02,
+        true,
+        60.0
+       ]
+      ],
+      "original_map_call": true
+     },
+     "0.810": {
+      "class": "resolution-sensitive",
+      "calls_(dx,dt,pair_at_T,since)": [
+       [
+        0.025,
+        0.01,
+        true,
+        140.0
+       ],
+       [
+        0.05,
+        0.02,
+        false,
+        null
+       ]
+      ],
+      "original_map_call": false
+     },
+     "0.820": {
+      "class": "no pair at any resolution",
+      "calls_(dx,dt,pair_at_T,since)": [
+       [
+        0.025,
+        0.01,
+        false,
+        null
+       ],
+       [
+        0.05,
+        0.02,
+        false,
+        null
+       ]
+      ],
+      "original_map_call": false
+     },
+     "0.830": {
+      "class": "resolution-sensitive",
+      "calls_(dx,dt,pair_at_T,since)": [
+       [
+        0.025,
+        0.01,
+        false,
+        null
+       ],
+       [
+        0.05,
+        0.02,
+        true,
+        80.0
+       ]
+      ],
+      "original_map_call": true
+     },
+     "0.850": {
+      "class": "converged producer",
+      "calls_(dx,dt,pair_at_T,since)": [
+       [
+        0.025,
+        0.01,
+        true,
+        70.0
+       ],
+       [
+        0.05,
+        0.02,
+        true,
+        70.0
+       ]
+      ],
+      "original_map_call": true
+     }
     }
    },
    "units_convention": "non-producing points whose two v-neighbours (step 0.01) produce",
@@ -227,7 +388,8 @@
    "tolerance": "qualitative",
    "verdict": "CALIBRATED",
    "source": "[read]",
-   "note": "list in e1c_analysis.json"
+   "note": "list in e1c_analysis.json; RECONCILED: the named hole was resolution-checked with fourth-order time stepping at (dx, dt) = (0.05, 0.02) and (0.025, 0.01): v = 0.800: converged producer, v = 0.810: resolution-sensitive, v = 0.820: no pair at any resolution, v = 0.830: resolution-sensitive, v = 0.850: converged producer; (0.91, 0.82) makes no pair at every resolution (original leapfrog dx 0.1 and 0.05, y4 dx 0.05 and 0.025) while 0.80 produces at all four and 0.85 at the three where it was run, so a hole at (0.91, 0.82) inside the band is robust; its extent is not (0.81-0.82 at dx 0.1 and y4 dx 0.05, 0.82-0.83 at y4 dx 0.025)",
+   "reconciled": true
   },
   {
    "quantity": "E1c no production for omega > 0.99",
@@ -248,7 +410,7 @@
    "tolerance": "qualitative",
    "verdict": "CALIBRATED",
    "source": "[read]",
-   "note": "DSV: 'we have not found ... for omega > 0.99'"
+   "note": "DSV: 'we have not found ... for omega > 0.99'; reproduced by the cross-check (FD6: 0/18 at v >= 0.86; 0/6 at omega = 0.995)"
   },
   {
    "quantity": "E1c dx check (dx 0.05 vs 0.1)",
@@ -288,7 +450,8 @@
    "tolerance": "none",
    "verdict": "NO_TARGET",
    "source": "",
-   "note": ""
+   "note": "agreement is trivial in the omega = 0.99 column: its dx = 0.1 producers (v = 0.41, 0.43) are not on the dx = 0.05 grid (step 0.02), which has no omega = 0.99 producer; the example point was not in this check",
+   "reconciled": true
   },
   {
    "quantity": "E1d no production below E = 2 M_kink",
@@ -296,9 +459,10 @@
    "units_convention": "producing runs with E < 2M_kink (coarse grid)",
    "target": 0,
    "tolerance": "exact (energy conservation)",
-   "verdict": "CALIBRATED",
+   "verdict": "CHECK PASSED",
    "source": "",
-   "note": "sanity check"
+   "note": "sanity check; verdict word CHECK PASSED (energy-conservation sanity check, not a literature calibration); the seed claim it bears on is the section 2 row",
+   "reconciled": true
   },
   {
    "quantity": "E1d lowest producing energy, all Gaussian runs (dx=0.1)",
@@ -308,7 +472,7 @@
    "tolerance": "none",
    "verdict": "NO_TARGET",
    "source": "",
-   "note": "A=1.4, sigma=1.0, k=0.25; single packet alone produces: False; reproduced at dx=0.05: False"
+   "note": "A=1.4, sigma=1.0, k=0.25; single packet alone produces: False; reproduced at dx=0.05: False; an upper bound on the classical onset within this family only; over all initial data the infimum is 2M (time-reversed captures, see the section 2 row)"
   },
   {
    "quantity": "E1d lowest producing energy reproduced at dx=0.05",
@@ -318,7 +482,7 @@
    "tolerance": "none",
    "verdict": "NO_TARGET",
    "source": "",
-   "note": "A=0.8, sigma=2.0, k=0.5; collision needed"
+   "note": "A=0.8, sigma=2.0, k=0.5; collision needed; an upper bound on the classical onset within this family only; over all initial data the infimum is 2M (time-reversed captures, see the section 2 row)"
   },
   {
    "quantity": "E1d fraction producing vs E/2M (coarse grid)",
@@ -454,7 +618,8 @@
    "tolerance": "qualitative",
    "verdict": "NO_TARGET",
    "source": "",
-   "note": ""
+   "note": "region, hole and switch counts are illustrative, not converged (they change with dx and between codes, e.g. sigma = 16, k = 2 line: 17 switches here, 9 in the cross-check); robust: non-monotonic lines with the same onset A in both codes, and the production fractions",
+   "reconciled": true
   },
   {
    "quantity": "E1d slice e1d_sliceAk_16.0.json",
@@ -479,7 +644,8 @@
    "tolerance": "qualitative",
    "verdict": "NO_TARGET",
    "source": "",
-   "note": "fixed ['16.0']"
+   "note": "fixed ['16.0']; region, hole and switch counts are illustrative, not converged (they change with dx and between codes, e.g. sigma = 16, k = 2 line: 17 switches here, 9 in the cross-check); robust: non-monotonic lines with the same onset A in both codes, and the production fractions",
+   "reconciled": true
   },
   {
    "quantity": "E1d slice e1d_sliceAs_1.0.json",
@@ -504,7 +670,8 @@
    "tolerance": "qualitative",
    "verdict": "NO_TARGET",
    "source": "",
-   "note": "fixed ['1.0']"
+   "note": "fixed ['1.0']; region, hole and switch counts are illustrative, not converged (they change with dx and between codes, e.g. sigma = 16, k = 2 line: 17 switches here, 9 in the cross-check); robust: non-monotonic lines with the same onset A in both codes, and the production fractions",
+   "reconciled": true
   },
   {
    "quantity": "E1d prediction test: ragged",
@@ -698,9 +865,10 @@
    "units_convention": "see analyze_e1d.py for the operational test",
    "target": "see PLAN.md E1d",
    "tolerance": "operational",
-   "verdict": "CONFIRMED",
+   "verdict": "REFUTED",
    "source": "",
-   "note": ""
+   "note": "RECONCILED (cross-check M3 upheld): this row's matched-energy test passes as computed, but the verdict is on the PLAN prediction 'production favours low speed', and the correlation is not a speed effect: the matched-energy correlation reproduces (also in the cross-check), but at matched energy a slow packet is taller (band [2,4): mean A 0.85-0.90 at v_g <= 0.33 vs 0.36 at v_g = 0.90) or wider; on the stored coarse grid, P ~ log A + log sigma + v_g gives v_g (coef, z) = (0.56, 1.9) baseline, (0.16, 0.6) one-way; collision-needed (-0.18, -0.6) / (-0.53, -1.7) (e1d_confound.json); fixed-shape test (e1d_speedtest.py): 6 A x 3 sigma x 9 k x 8 collision phases, both phi_t forms: logistic v_g coefficient with one intercept per (A, sigma), 95% CI, positive = faster produces more: all production +1.36 [+0.80, +1.92] baseline, +0.62 [+0.07, +1.16] one-way; packets that do not self-fold +1.32 [+0.53, +2.10] / +0.71 [-0.24, +1.67]; pre-set rule: a speed effect would need CI < 0 in both forms, 'not a speed effect' if both CIs exclude -1.19 (half the matched-energy coefficient -2.38); outcome: all production 'not a speed effect', non-self-folding 'not a speed effect'",
+   "reconciled": true
   },
   {
    "quantity": "E1d prediction test: width",
@@ -860,9 +1028,10 @@
    "units_convention": "see analyze_e1d.py for the operational test",
    "target": "see PLAN.md E1d",
    "tolerance": "operational",
-   "verdict": "NOT_SUPPORTED",
+   "verdict": "AMENDED",
    "source": "",
-   "note": ""
+   "note": "RECONCILED: verdict word on the PLAN prediction 'production favours wide packets' (was NOT_SUPPORTED, not a PLAN word): at matched energy no width preference in any band or form (cross-check FD6 -0.31, +0.12, +0.41, all p > 0.2); at fixed amplitude wider packets produce more (stored grid, P ~ log A + log sigma: log sigma z = 13.4 all production, 2.4 collision-needed), because at fixed A a wider packet carries more energy and more of it exceeds the self-folding threshold",
+   "reconciled": true
   },
   {
    "quantity": "E1d prediction test: speed_collision_needed",
@@ -1004,9 +1173,10 @@
    "units_convention": "see analyze_e1d.py for the operational test",
    "target": "see PLAN.md E1d",
    "tolerance": "operational",
-   "verdict": "CONFIRMED",
+   "verdict": "REFUTED",
    "source": "",
-   "note": ""
+   "note": "RECONCILED (cross-check M3 upheld): this row's matched-energy test passes as computed, but the verdict is on the PLAN prediction 'production favours low speed', and the correlation is not a speed effect: the matched-energy correlation reproduces (also in the cross-check), but at matched energy a slow packet is taller (band [2,4): mean A 0.85-0.90 at v_g <= 0.33 vs 0.36 at v_g = 0.90) or wider; on the stored coarse grid, P ~ log A + log sigma + v_g gives v_g (coef, z) = (0.56, 1.9) baseline, (0.16, 0.6) one-way; collision-needed (-0.18, -0.6) / (-0.53, -1.7) (e1d_confound.json); fixed-shape test (e1d_speedtest.py): 6 A x 3 sigma x 9 k x 8 collision phases, both phi_t forms: logistic v_g coefficient with one intercept per (A, sigma), 95% CI, positive = faster produces more: all production +1.36 [+0.80, +1.92] baseline, +0.62 [+0.07, +1.16] one-way; packets that do not self-fold +1.32 [+0.53, +2.10] / +0.71 [-0.24, +1.67]; pre-set rule: a speed effect would need CI < 0 in both forms, 'not a speed effect' if both CIs exclude -1.19 (half the matched-energy coefficient -2.38); outcome: all production 'not a speed effect', non-self-folding 'not a speed effect'",
+   "reconciled": true
   },
   {
    "quantity": "E1d prediction test: width_collision_needed",
@@ -1166,9 +1336,10 @@
    "units_convention": "see analyze_e1d.py for the operational test",
    "target": "see PLAN.md E1d",
    "tolerance": "operational",
-   "verdict": "NOT_SUPPORTED",
+   "verdict": "AMENDED",
    "source": "",
-   "note": ""
+   "note": "RECONCILED: verdict word on the PLAN prediction 'production favours wide packets' (was NOT_SUPPORTED, not a PLAN word): at matched energy no width preference in any band or form (cross-check FD6 -0.31, +0.12, +0.41, all p > 0.2); at fixed amplitude wider packets produce more (stored grid, P ~ log A + log sigma: log sigma z = 13.4 all production, 2.4 collision-needed), because at fixed A a wider packet carries more energy and more of it exceeds the self-folding threshold",
+   "reconciled": true
   },
   {
    "quantity": "E1d single_packet_controls",
@@ -1233,7 +1404,8 @@
    "tolerance": "none",
    "verdict": "NO_TARGET",
    "source": "",
-   "note": ""
+   "note": "self-folding threshold matches a local over-barrier estimate: the trough phi = -1 - A has V = (A(2+A))^2/4 > V(0) = 1/4 when A > sqrt2 - 1 = 0.414, so the trough can swing over the barrier (observed minimum A 0.375-0.425; the packet's kinetic energy lowers it). Self-folding gives 65% of coarse production and all production above ~4 x 2M that is not collision-needed; below 4 x 2M every producing run is collision-needed",
+   "reconciled": true
   },
   {
    "quantity": "E1d dx_check",
@@ -1704,7 +1876,7 @@
    "tolerance": "none",
    "verdict": "QUANTIFIED",
    "source": "",
-   "note": "energy conservation alone: N >= (2/3) m^2/lambda"
+   "note": "energy conservation alone: N >= (2/3) m^2/lambda; approached (not attained) by finely tuned time-reversed captures (section 2 row); simple families need 1.24 or more"
   },
   {
    "quantity": "E1e DSV trains, min_E_reproduced_dx0.05",
@@ -1718,9 +1890,10 @@
    "units_convention": "N*lambda/m^2; phi0^2 = m^2/(2 lambda)",
    "target": "N ~ 1/lambda (scaling)",
    "tolerance": "none",
-   "verdict": "QUANTIFIED",
+   "verdict": "OPEN",
    "source": "",
-   "note": "lowest producing train at dx=0.1 that is reproduced at dx=0.05; walk: [{\"omega\": 0.9, \"v\": 0.73, \"E_over_2M\": 6.978616896698666, \"N_lin_over_phi0sq\": 6.770817711901965, \"reproduced_dx0.05\": false}, {\"omega\": 0.95, \"v\": 0.62, \"E_over_2M\": 7.170759615797444, \"N_lin_over_phi0sq\": 7.855550032043009, \"reproduced_dx0.05\": true}]"
+   "note": "RECONCILED, superseded: (0.95, 0.62) is not a converged producer. Fourth-order time stepping gives a pair at dx = 0.05 (since t = 230.0) but none at dx = 0.025, dt = 0.01; phi(0,t) of the two separate at t = 168.5, before the pair forms. See 'E1e DSV trains, lowest converged producer'.",
+   "reconciled": true
   },
   {
    "quantity": "E1e DSV trains, min_N_lin_reproduced_dx0.05",
@@ -1734,9 +1907,10 @@
    "units_convention": "N*lambda/m^2; phi0^2 = m^2/(2 lambda)",
    "target": "N ~ 1/lambda (scaling)",
    "tolerance": "none",
-   "verdict": "QUANTIFIED",
+   "verdict": "OPEN",
    "source": "",
-   "note": "lowest producing train at dx=0.1 that is reproduced at dx=0.05; walk: [{\"omega\": 0.9, \"v\": 0.73, \"E_over_2M\": 6.978616896698666, \"N_lin_over_phi0sq\": 6.770817711901965, \"reproduced_dx0.05\": false}, {\"omega\": 0.95, \"v\": 0.62, \"E_over_2M\": 7.170759615797444, \"N_lin_over_phi0sq\": 7.855550032043009, \"reproduced_dx0.05\": true}]"
+   "note": "RECONCILED, superseded: (0.95, 0.62) is not a converged producer. Fourth-order time stepping gives a pair at dx = 0.05 (since t = 230.0) but none at dx = 0.025, dt = 0.01; phi(0,t) of the two separate at t = 168.5, before the pair forms. See 'E1e DSV trains, lowest converged producer'.",
+   "reconciled": true
   },
   {
    "quantity": "E1e Gaussian packets, min_E_reproduced at dx=0.05",
@@ -1814,7 +1988,8 @@
    "tolerance": "none",
    "verdict": "QUANTIFIED",
    "source": "",
-   "note": "{\"statement\": \"classical production found only for N >= c m^2/lambda (c from producing runs that reproduce at dx = 0.05); c is an upper bound on the true minimum (searched sets only)\", \"c\": 1.687915041158199, \"candidates\": {\"gaussian_reproduced_at_dx0.05\": 1.687915041158199, \"dsv_reproduced_at_dx0.05\": 3.9277750160215046}, \"N_needed_at_lambda_over_m2\": {\"1.0\": 1.687915041158199, \"0.1\": 16.87915041158199, \"0.01\": 168.7915041158199, \"0.001\": 1687.9150411581988}, \"coupling_where_N_equals_2\": 0.8439575205790995, \"coupling_where_N_equals_10\": 0.1687915041158199}"
+   "note": "{\"statement\": \"classical production found only for N >= c m^2/lambda (c from producing runs that reproduce at dx = 0.05); c is an upper bound on the true minimum (searched sets only)\", \"c\": 1.687915041158199, \"candidates\": {\"gaussian_reproduced_at_dx0.05\": 1.687915041158199, \"dsv_reproduced_at_dx0.05\": 3.9277750160215046}, \"N_needed_at_lambda_over_m2\": {\"1.0\": 1.687915041158199, \"0.1\": 16.87915041158199, \"0.01\": 168.7915041158199, \"0.001\": 1687.9150411581988}, \"coupling_where_N_equals_2\": 0.8439575205790995, \"coupling_where_N_equals_10\": 0.1687915041158199}; RECONCILED: value unchanged (set by the Gaussian packet A=0.8, sigma=2, k=0.5, reproduced at dx = 0.05 and 0.025 here and in two independent codes); the DSV candidate in this note (3.93) is superseded by the converged DSV producer row (N_lin*lambda/m^2 = 4.14)",
+   "reconciled": true
   },
   {
    "quantity": "E1d no production below E = 2 M_kink, every Gaussian run (pair and single packet, all variants)",
@@ -1822,9 +1997,10 @@
    "units_convention": "producing runs with own E < 2M_kink, out of 19526 runs",
    "target": 0,
    "tolerance": "exact (energy conservation)",
-   "verdict": "CALIBRATED",
+   "verdict": "CHECK PASSED",
    "source": "",
-   "note": "lowest producing E/2M: pair runs 1.792, single packets 2.214"
+   "note": "lowest producing E/2M: pair runs 1.792, single packets 2.214; verdict word CHECK PASSED (energy-conservation sanity check, not a literature calibration); the seed claim it bears on is the section 2 row",
+   "reconciled": true
   },
   {
    "quantity": "Check: reproducibility and energy conservation",
@@ -2280,9 +2456,10 @@
    "units_convention": "regions, holes, switches along A; same definitions as analyze_e1d.py",
    "target": "ragged test as in analyze_e1d.py",
    "tolerance": "operational",
-   "verdict": "CONFIRMED",
+   "verdict": "CHECK PASSED",
    "source": "",
-   "note": "e1d_extra.py slice_dx05 / slice_dx05_single"
+   "note": "e1d_extra.py slice_dx05 / slice_dx05_single",
+   "reconciled": true
   },
   {
    "quantity": "Check: point-level convergence ladder (E1d)",
@@ -2339,14 +2516,954 @@
    "verdict": "QUANTIFIED",
    "source": "",
    "note": "coarse grid only (no local refinement)"
+  },
+  {
+   "quantity": "E1c omega = 0.99 column, fourth-order convergence ladder (reconciliation)",
+   "value": {
+    "0.380": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.390": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.400": {
+     "class": "resolution-sensitive",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.005,
+       true,
+       610.0
+      ],
+      [
+       0.025,
+       0.01,
+       true,
+       630.0
+      ],
+      [
+       0.05,
+       0.01,
+       true,
+       640.0
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.405": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.406": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.407": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       true,
+       640.0
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.408": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.409": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.410": {
+     "class": "converged producer",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.0125,
+       0.005,
+       true,
+       590.0
+      ],
+      [
+       0.025,
+       0.005,
+       true,
+       590.0
+      ],
+      [
+       0.025,
+       0.01,
+       true,
+       590.0
+      ],
+      [
+       0.05,
+       0.01,
+       true,
+       590.0
+      ],
+      [
+       0.05,
+       0.02,
+       true,
+       590.0
+      ]
+     ],
+     "original_map_call": true
+    },
+    "0.411": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       true,
+       500.0
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.412": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.413": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.414": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.415": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.420": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.005,
+       false,
+       null
+      ],
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.425": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.426": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.427": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.428": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.429": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.430": {
+     "class": "resolution-sensitive",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.0125,
+       0.005,
+       true,
+       870.0
+      ],
+      [
+       0.025,
+       0.005,
+       false,
+       null
+      ],
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": true
+    },
+    "0.431": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.432": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.433": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.434": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.435": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.440": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.450": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.460": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.470": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.480": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.490": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.500": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    }
+   },
+   "units_convention": "DSV criterion; y4 = Yoshida 4th-order composition of the original velocity-Verlet step; converged = same call at >= 2 (dx, dt) settings",
+   "target": "DSV Fig. 2: omega = 0.99 produces at v = 0.43 (read)",
+   "tolerance": "qualitative",
+   "verdict": "NO_TARGET",
+   "source": "e1c_reconcile.py, e1c_reconcile_analysis.json",
+   "note": "converged producer(s): [0.41]; resolution-sensitive: [0.4, 0.43]; single-resolution producers (neighbourhood ensemble): [0.407, 0.411]; every other v in 0.38-0.50 makes no pair. Production at omega = 0.99 is a sparse, fractured set near v ~ 0.40-0.41 (3 of 11 initial data in the 0.41 cell, 0 of 11 in the 0.43 cell at y4 dx 0.05); DSV's omega = 0.99 production near v ~ 0.4 is reproduced, 0.02 below their sampled point",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1c map vs DSV Fig. 2, point by point (reconciliation)",
+   "value": {
+    "n_dsv_producing": 81,
+    "n_ours_producing": 80,
+    "hits": 58,
+    "false_positives": 22,
+    "missed": 23,
+    "jaccard": 0.5631067961165048,
+    "ours_within_0.01_of_dsv": 71
+   },
+   "units_convention": "omega 0.90-0.99 x v 0.40-0.90 (step 0.01); original map dx = 0.1, dt = 0.04; DSV Fig. 2 digitised from the arXiv PDF (dsv_fig2_reading.json)",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "e1c_reconcile_analysis.py",
+   "note": "replaces the report's 'band by band' wording: band locations agree, individual points often do not (cross-check, v step 0.02: 14 of 22 hits, 7 false positives); point calls at dx = 0.1 are not converged (5 of the 14 lowest-energy producers of the original map are not reproduced with fourth-order stepping: 4 make no pair at dx = 0.05, and (0.95, 0.62) makes one at dx = 0.05 but not at 0.025)",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1d speed dependence at fixed amplitude, stored coarse grid (reconciliation)",
+   "value": {
+    "stratified_permutation_tests": {
+     "baseline": {
+      "all__fixed_A": {
+       "n_informative_strata": 12,
+       "mean_vg_shift_of_producers": 0.00864665574447933,
+       "p_two_sided": 0.1968401579921004,
+       "p_slower_produces_more": 0.9033548322583871
+      },
+      "all__fixed_A_sigma": {
+       "n_informative_strata": 103,
+       "mean_vg_shift_of_producers": 0.014357561350355234,
+       "p_two_sided": 0.029248537573121344,
+       "p_slower_produces_more": 0.9851507424628768
+      },
+      "collision_needed__fixed_A": {
+       "n_informative_strata": 12,
+       "mean_vg_shift_of_producers": -0.008141732455562609,
+       "p_two_sided": 0.5829708514574271,
+       "p_slower_produces_more": 0.29538523073846307
+      },
+      "collision_needed__fixed_A_sigma": {
+       "n_informative_strata": 89,
+       "mean_vg_shift_of_producers": -0.0002867484725033741,
+       "p_two_sided": 0.9851007449627519,
+       "p_slower_produces_more": 0.5012749362531873
+      }
+     },
+     "oneway": {
+      "all__fixed_A": {
+       "n_informative_strata": 12,
+       "mean_vg_shift_of_producers": 0.0034301261071854033,
+       "p_two_sided": 0.6055197240137993,
+       "p_slower_produces_more": 0.6981650917454127
+      },
+      "all__fixed_A_sigma": {
+       "n_informative_strata": 103,
+       "mean_vg_shift_of_producers": 0.004499950259553433,
+       "p_two_sided": 0.4833758312084396,
+       "p_slower_produces_more": 0.7574121293935303
+      },
+      "collision_needed__fixed_A": {
+       "n_informative_strata": 12,
+       "mean_vg_shift_of_producers": -0.022283295309614776,
+       "p_two_sided": 0.13079346032698366,
+       "p_slower_produces_more": 0.06634668266586671
+      },
+      "collision_needed__fixed_A_sigma": {
+       "n_informative_strata": 91,
+       "mean_vg_shift_of_producers": -0.02068939654818904,
+       "p_two_sided": 0.1399430028498575,
+       "p_slower_produces_more": 0.07139643017849108
+      }
+     }
+    },
+    "logit_vg_(coef,z)_given_logA_logsigma": {
+     "baseline": {
+      "all": [
+       0.56,
+       1.9
+      ],
+      "collision_needed": [
+       -0.18,
+       -0.6
+      ]
+     },
+     "oneway": {
+      "all": [
+       0.16,
+       0.6
+      ],
+      "collision_needed": [
+       -0.53,
+       -1.7
+      ]
+     }
+    },
+    "logit_vg_(coef,z)_given_logA_logE": {
+     "baseline": {
+      "all": [
+       -2.38,
+       -6.7
+      ],
+      "collision_needed": [
+       -0.6,
+       -1.5
+      ]
+     },
+     "oneway": {
+      "all": [
+       -1.99,
+       -5.9
+      ],
+      "collision_needed": [
+       -0.55,
+       -1.5
+      ]
+     }
+    },
+    "deviance_(A,sigma,vg)_vs_(A,E,vg)": {
+     "baseline": [
+      1283.7,
+      1299.2
+     ],
+     "oneway": [
+      1326.2,
+      1351.5
+     ]
+    }
+   },
+   "units_convention": "coarse grid, runs with E > 2M; strata = fixed A or fixed (A, sigma); 20000 within-stratum permutations; mean_vg_shift < 0 means producers are slower than their stratum",
+   "target": "slower produces more (PLAN E1d)",
+   "tolerance": "p < 0.05",
+   "verdict": "REFUTED",
+   "source": "e1d_confound.py",
+   "note": "no slow preference once amplitude (and width) are fixed; the one nominally significant stratified result (baseline, fixed (A, sigma), p2 = 0.03) has faster packets producing more. At fixed (A, E) slower packets do produce more, but there a slower packet is wider, and the (A, sigma, v_g) description fits better than (A, E, v_g) (lower deviance, same parameter count)",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1d speed dependence at fixed packet shape, phase-averaged (decisive test, reconciliation)",
+   "value": {
+    "baseline_dx0.1": {
+     "all": {
+      "n_informative_shapes": 14,
+      "n_runs_informative": 1008,
+      "n_producing": 546,
+      "vg_coef": 1.362667585816981,
+      "vg_se": 0.2852985731320103,
+      "vg_ci95": [
+       0.8034823824782409,
+       1.921852789155721
+      ],
+      "p_wald": 1.785623704453343e-06,
+      "perm_p_two_sided": 4.999750012499375e-05,
+      "perm_p_slower_produces_more": 1.0,
+      "P_vs_vg_pooled": {
+       "0.1741": 0.2986111111111111,
+       "0.3333": 0.375,
+       "0.4685": 0.4375,
+       "0.5774": 0.3055555555555556,
+       "0.6623": 0.4861111111111111,
+       "0.7276": 0.4513888888888889,
+       "0.8165": 0.4583333333333333,
+       "0.8704": 0.5069444444444444,
+       "0.9045": 0.4722222222222222
+      }
+     },
+     "non_self_folding_packets": {
+      "n_informative_shapes": 12,
+      "n_runs_informative": 576,
+      "n_producing": 266,
+      "vg_coef": 1.3161860636433917,
+      "vg_se": 0.40107832946554045,
+      "vg_ci95": [
+       0.5300725378909324,
+       2.102299589395851
+      ],
+      "p_wald": 0.0010321314753345412,
+      "perm_p_two_sided": 0.0010499475026248687,
+      "perm_p_slower_produces_more": 0.9992500374981251,
+      "P_vs_vg_pooled": {
+       "0.1741": 0.275,
+       "0.3333": 0.25,
+       "0.4685": 0.3173076923076923,
+       "0.5774": 0.23333333333333334,
+       "0.6623": 0.3125,
+       "0.7276": 0.38461538461538464,
+       "0.8165": 0.2222222222222222,
+       "0.8704": 0.45,
+       "0.9045": 0.325
+      }
+     }
+    },
+    "oneway_dx0.1": {
+     "all": {
+      "n_informative_shapes": 16,
+      "n_runs_informative": 1152,
+      "n_producing": 547,
+      "vg_coef": 0.6151917017972112,
+      "vg_se": 0.2764585129820948,
+      "vg_ci95": [
+       0.07333301635230538,
+       1.157050387242117
+      ],
+      "p_wald": 0.026063878542018415,
+      "perm_p_two_sided": 0.02919854007299635,
+      "perm_p_slower_produces_more": 0.9858007099645018,
+      "P_vs_vg_pooled": {
+       "0.1741": 0.3541666666666667,
+       "0.3333": 0.4513888888888889,
+       "0.4685": 0.4236111111111111,
+       "0.5774": 0.3958333333333333,
+       "0.6623": 0.3333333333333333,
+       "0.7276": 0.4305555555555556,
+       "0.8165": 0.4305555555555556,
+       "0.8704": 0.5347222222222222,
+       "0.9045": 0.4444444444444444
+      }
+     },
+     "non_self_folding_packets": {
+      "n_informative_shapes": 15,
+      "n_runs_informative": 664,
+      "n_producing": 238,
+      "vg_coef": 0.7122537438458273,
+      "vg_se": 0.48715635954309106,
+      "vg_ci95": [
+       -0.24257272085863113,
+       1.6670802085502858
+      ],
+      "p_wald": 0.1437236905903878,
+      "perm_p_two_sided": 0.14834258287085647,
+      "perm_p_slower_produces_more": 0.9260036998150093,
+      "P_vs_vg_pooled": {
+       "0.1741": 0.225,
+       "0.3333": 0.32954545454545453,
+       "0.4685": 0.3645833333333333,
+       "0.5774": 0.30833333333333335,
+       "0.6623": 0.1875,
+       "0.7276": 0.34615384615384615,
+       "0.8165": 0.2,
+       "0.8704": 0.45,
+       "0.9045": 0.203125
+      }
+     }
+    },
+    "baseline_dx0.05": {
+     "all": {
+      "n_informative_shapes": 6,
+      "n_runs_informative": 432,
+      "n_producing": 203,
+      "vg_coef": 1.3540177915717935,
+      "vg_se": 0.46631212439906616,
+      "vg_ci95": [
+       0.44004602774962376,
+       2.2679895553939633
+      ],
+      "p_wald": 0.0036881348306778694,
+      "perm_p_two_sided": 0.003649817509124544,
+      "perm_p_slower_produces_more": 0.9982500874956253,
+      "P_vs_vg_pooled": {
+       "0.1741": 0.2916666666666667,
+       "0.3333": 0.3958333333333333,
+       "0.4685": 0.5416666666666666,
+       "0.5774": 0.5416666666666666,
+       "0.6623": 0.4583333333333333,
+       "0.7276": 0.3958333333333333,
+       "0.8165": 0.375,
+       "0.8704": 0.7291666666666666,
+       "0.9045": 0.5
+      }
+     },
+     "non_self_folding_packets": {
+      "n_informative_shapes": 6,
+      "n_runs_informative": 312,
+      "n_producing": 115,
+      "vg_coef": 0.8385669064036573,
+      "vg_se": 0.5912186656950489,
+      "vg_ci95": [
+       -0.3202216783586386,
+       1.997355491165953
+      ],
+      "p_wald": 0.15608272630733078,
+      "perm_p_two_sided": 0.15634218289085547,
+      "perm_p_slower_produces_more": 0.9246037698115094,
+      "P_vs_vg_pooled": {
+       "0.1741": 0.2916666666666667,
+       "0.3333": 0.40625,
+       "0.4685": 0.34375,
+       "0.5774": 0.475,
+       "0.6623": 0.375,
+       "0.7276": 0.325,
+       "0.8165": 0.08333333333333333,
+       "0.8704": 0.625,
+       "0.9045": 0.3333333333333333
+      }
+     }
+    }
+   },
+   "units_convention": "production probability over 8 collision phases; logistic slope on v_g with one intercept per (A, sigma); positive = faster produces more",
+   "target": "slower produces more (PLAN E1d)",
+   "tolerance": "pre-set decision rule (e1d_speedtest.py docstring)",
+   "verdict": "REFUTED",
+   "source": "e1d_speedtest.py, e1d_speedtest.json",
+   "note": "fixed-shape test (e1d_speedtest.py): 6 A x 3 sigma x 9 k x 8 collision phases, both phi_t forms: logistic v_g coefficient with one intercept per (A, sigma), 95% CI, positive = faster produces more: all production +1.36 [+0.80, +1.92] baseline, +0.62 [+0.07, +1.16] one-way; packets that do not self-fold +1.32 [+0.53, +2.10] / +0.71 [-0.24, +1.67]; pre-set rule: a speed effect would need CI < 0 in both forms, 'not a speed effect' if both CIs exclude -1.19 (half the matched-energy coefficient -2.38); outcome: all production 'not a speed effect', non-self-folding 'not a speed effect'; resolution check (baseline, sigma = 4, dx 0.1 vs 0.05): {'n_common_runs': 432, 'call_agreement': 0.8009259259259259, 'phase_avg_prob_corr': 0.8911418379738474, 'phase_avg_prob_mean_abs_diff': 0.10185185185185185}",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1e DSV trains, lowest converged producer (reconciliation)",
+   "value": {
+    "omega": 0.94,
+    "v": 0.67,
+    "E_over_2M": 7.805426552185633,
+    "N_E_times_lambda_over_m2": 5.203617701457089,
+    "N_lin_times_lambda_over_m2": 4.137234334766784
+   },
+   "units_convention": "N*lambda/m^2; phi0^2 = m^2/(2 lambda); N_lin from the dx = 0.1 initial data as in e1e_quanta.py",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "e1c_reconcile.py, e1c_reconcile_analysis.py",
+   "note": "pair at T with y4 at (0.05, 0.02) and (0.025, 0.01), and phi(0,t) of the two agree (to 0.1) until the pair has formed; the 14 lowest-energy producers of the original map were checked in order of E, 11 reached the dx = 0.025 check and 8 passed; upper bound within the DSV family",
+   "reconciled": true
+  },
+  {
+   "quantity": "Seed section 2: pair-free data producing a pair at E -> 2M (time reversal; reconciliation)",
+   "value": [
+    {
+     "v": 0.1,
+     "Tf": 2341.0,
+     "E_over_2M": 1.0049605683326337,
+     "max_phi_initial": -0.4467565735502497,
+     "energy_fraction_in_|x|<50": 0.6996033630809856,
+     "pair_after_reversal_dt_dt/2_dt/4": [
+      1,
+      0,
+      0
+     ],
+     "fine_tuning_probes": [
+      [
+       "radiation beyond |x| > 1756 removed",
+       0
+      ],
+      [
+       "radiation beyond |x| > 1170 removed",
+       0
+      ],
+      [
+       "radiation beyond |x| > 585 removed",
+       0
+      ],
+      [
+       "white noise of amplitude 1e-08 added to phi for |x| < 50",
+       0
+      ],
+      [
+       "white noise of amplitude 1e-05 added to phi for |x| < 50",
+       0
+      ],
+      [
+       "white noise of amplitude 0.001 added to phi for |x| < 50",
+       0
+      ]
+     ]
+    },
+    {
+     "v": 0.05,
+     "Tf": 2186.0,
+     "E_over_2M": 1.0011973815899071,
+     "max_phi_initial": -0.11784812115972661,
+     "energy_fraction_in_|x|<50": 0.7081450791454074,
+     "pair_after_reversal_dt_dt/2_dt/4": [
+      1,
+      0,
+      0
+     ],
+     "fine_tuning_probes": [
+      [
+       "radiation beyond |x| > 1640 removed",
+       0
+      ],
+      [
+       "radiation beyond |x| > 1093 removed",
+       0
+      ],
+      [
+       "radiation beyond |x| > 546 removed",
+       0
+      ],
+      [
+       "white noise of amplitude 1e-08 added to phi for |x| < 50",
+       0
+      ],
+      [
+       "white noise of amplitude 1e-05 added to phi for |x| < 50",
+       0
+      ],
+      [
+       "white noise of amplitude 0.001 added to phi for |x| < 50",
+       0
+      ]
+     ]
+    }
+   ],
+   "units_convention": "kk_initial(v, x0=10) evolved to Tf (bound state no longer reaches phi = 0 for 100 time units), velocities reversed, evolved Tf again; no absorbing layer; dx = 0.1, dt = 0.04",
+   "target": "classical infimum of the production energy = 2M (time-reversal argument; DSV 2008 p. 1)",
+   "tolerance": "qualitative",
+   "verdict": "CONFIRMED",
+   "source": "e1_timereversal.py",
+   "note": "initial data with phi < 0 everywhere (no kink: a decayed bion holding ~70% of the energy plus inward radiation) and E = 1.0012-1.005 x 2M make an outgoing pair under the exact inverse of the forward lattice map (same dt); with dt/2 or dt/4, with the far radiation truncated, or with noise of amplitude 1e-8 added in |x| < 50, no pair forms. Existence follows from time-reversal invariance of the field equation (the lattice run demonstrates it for the discrete map); the probes show the data are tuned beyond 1e-8, i.e. production near 2M is non-generic. Simple packet families start producing far above 2M",
+   "reconciled": true
   }
  ],
  "seed_claims": [
   {
    "seed_section": "\u00a72",
    "claim": "A fold appears only with an antifold, so the threshold is twice the lightest fold's energy.",
-   "verdict": "AMENDED",
-   "evidence": "No producing run below 2M_kink in any of the Gaussian runs (pair and single packet, all variants) or DSV runs. But 2M is a floor, not the classical onset: the lowest producing energies found are 1.79 x 2M (narrow-band packets, not reproduced at dx=0.05), 1.86 x 2M (narrow-band, reproduced), 2.70 x 2M (exact one-way packets, coarse grid) and 6.98 x 2M (DSV trains); production stays rare (0-11% of runs in each band) below 4 x 2M."
+   "verdict": "CONFIRMED",
+   "evidence": "Floor: no producing run below 2M_kink in any Gaussian run (19,526: pair and single packet, both phi_t forms, all resolutions) or DSV run, in the original and in both independent codes; every production event is a kink-antikink pair. Infimum: 2M is also the classical infimum over all initial data. Reversing a slow captured kink-antikink pair gives kink-free data (phi < 0 everywhere) with E = 1.0012 x 2M that make an outgoing pair (v = 0.05; e1_timereversal.json; DSV 2008 p. 1 describe the same construction), and E -> 2M as v -> 0. Such data are extremely finely tuned: in the lattice demonstration the pair re-forms only under the exact inverse of the forward map, and noise of amplitude 1e-8, a halved time step or truncating the far radiation each destroy it. Onset in the scanned families: simple packets start producing well above 2M (lowest resolution-checked producers 1.86 x 2M for narrow-band packets, 2.70 x 2M for exact one-way packets, 7.81 x 2M for DSV trains); these are family-specific upper bounds on where production starts, not a property of classical fields in general. (Reconciled: was AMENDED on the rationale that a classical field always needs extra energy; that holds only for the scanned families.)"
   },
   {
    "seed_section": "\u00a74",
@@ -2358,31 +3475,37 @@
    "seed_section": "\u00a74",
    "claim": "Pile in enough energy and the nonlinear terms take over: the packet can fold into a fold-antifold pair.",
    "verdict": "AMENDED",
-   "evidence": "Packets do fold, and a single packet with A >~ 0.4 folds into pairs without any collision (converged in dx and dt). But energy is not the control parameter: at fixed E/2M the producing fraction spans 0 to ~0.8 depending on amplitude, and no energy guarantees production (fraction 0.74-0.75 above 64 x 2M)."
+   "evidence": "Packets do fold, and a single packet with A >~ 0.4 folds into pairs without any collision (converged in dx and dt). But energy is not the control parameter: at fixed E/2M the producing fraction spans 0 to ~0.8 depending on amplitude, and no energy guarantees production (fraction 0.74-0.75 above 64 x 2M). Mechanism of self-folding: the trough phi = -1 - A has potential energy above the barrier V(0) = 1/4 when A > sqrt2 - 1 = 0.414, so it can swing over the barrier on its own (observed minimum A 0.375-0.425; the packet's kinetic energy lowers it)."
   },
   {
    "seed_section": "\u00a74",
    "claim": "Colliding trains of small pulses make kink-antikink pairs over a wide range of settings, most easily at low speed (Dutta, Steer & Vachaspati 2008).",
-   "verdict": "CONFIRMED",
-   "evidence": "E1c reproduces DSV Fig. 2 band by band: the example point (0.99, 0.43), the producing band moving from v ~ 0.73-0.85 at omega=0.90 to v ~ 0.41-0.43 at omega=0.99 (Spearman -0.99), pass-through at v = 0.90, the hole at (0.91, 0.81-0.82), and no production for omega > 0.99."
+   "verdict": "AMENDED",
+   "evidence": "Over a wide range of settings: yes. E1c reproduces DSV Fig. 2's producing band and its trend (producing v falls from ~0.73-0.85 at omega = 0.90 to [0.41] at omega = 0.99; Spearman -0.99, cross-check -0.94), pass-through at high v, the hole at (0.91, 0.82) and no production above omega = 0.99. Point by point the original map hits 58 of DSV's 81 producing points with 22 false positives (71 of our 80 producers lie within 0.01 of a DSV point). 'Most easily at low speed' is not what DSV report or what E1c shows: at each omega production is confined to a velocity band with none below it (omega = 0.90: nothing for v < 0.73), slower bands belong to weaker pulses and do not cost less energy (the lowest-energy converged producers sit at v = 0.59-0.79, E ~ 7.8-8.2 x 2M; the omega = 0.99 producer at v = 0.41 has E = 12.3 x 2M). What holds is DSV's own statement: weaker pulses (higher omega) need lower speed, and too-fast trains pass through. DSV's example point (0.99, 0.43) is OPEN: its call is chaotic (a late pair at the finest of five fourth-order settings and at 4 of 11 leapfrog settings; 0 of 11 neighbouring initial data); production at omega = 0.99 is converged at v = 0.41."
   },
   {
    "seed_section": "\u00a74, \u00a77.1",
    "claim": "The pair-production boundary may be ragged rather than one clean threshold.",
    "verdict": "CONFIRMED",
-   "evidence": "Both 59 x 57 slices are fractured: 24 and 48 producing regions (15 and 26 single points), 267 and 141 enclosed non-producing holes, and 57/57 and 48/53 lines of fixed k or sigma switch more than once as A rises (mean 15 and 13 switches). Collision-needed production alone is fractured too. Rerunning the k = 1 slice at half the grid spacing and time step keeps the fracture (40 regions, 153 holes, 49/53 lines, mean 12.8 switches) while 17% of individual calls change and 4x4-block production fractions agree (correlation 0.95). The outcome also depends on the collision phase (51 of 60 boundary points flip under a shift of x0 within one carrier period). The boundary is fractured at the grid scale; point-by-point maps are not converged, the statistics are."
+   "evidence": "Robust statements: in both 59 x 57 slices most lines of fixed k or sigma switch between producing and not more than once as A rises (57/57 and 48/53), so there is no single threshold; this holds for collision-needed production alone, at half the grid spacing and time step (k = 1 slice: 49/53), and in the independent code (sigma = 16 lines: same onset A = 0.375 and the same gap at A = 0.45-0.5). The call at a point depends on the collision phase (51 of 60 boundary points flip under a shift of x0 within one carrier period) and, for ~20% of points, on the resolution down to dx = 0.0125; production fractions are stable (4x4-block fractions correlate 0.95 between dx = 0.1 and 0.05). Region, hole and switch counts (e.g. 24 and 48 producing regions, 267 and 141 enclosed holes at dx = 0.1) are illustrative and not converged."
   },
   {
    "seed_section": "PLAN E1d (from \u00a74 via DSV 2008 and Albayrak-Vachaspati 2024)",
-   "claim": "Production favours low speed and wide packets.",
+   "claim": "Production favours low speed.",
+   "verdict": "REFUTED",
+   "evidence": "Not as a speed effect. At matched energy slower packets do produce more (Spearman -0.82, -0.87, -0.88 baseline; -0.78 to -0.88 one-way; reproduced by the cross-check), but only because a slow packet of the same energy is taller or wider, and amplitude controls production. Decisive test at fixed packet shape (A, sigma), with production averaged over 8 collision phases (e1d_speedtest.py): 6 A x 3 sigma x 9 k x 8 collision phases, both phi_t forms: logistic v_g coefficient with one intercept per (A, sigma), 95% CI, positive = faster produces more: all production +1.36 [+0.80, +1.92] baseline, +0.62 [+0.07, +1.16] one-way; packets that do not self-fold +1.32 [+0.53, +2.10] / +0.71 [-0.24, +1.67]; pre-set rule: a speed effect would need CI < 0 in both forms, 'not a speed effect' if both CIs exclude -1.19 (half the matched-energy coefficient -2.38); outcome: all production 'not a speed effect', non-self-folding 'not a speed effect'. At fixed shape faster packets produce as much or more (a faster packet of the same shape carries more energy). The stored coarse grid agrees (v_g z = 1.9 baseline, 0.6 one-way given log A and log sigma; collision-needed -0.6 / -1.7). (Reconciled: was 'low speed holds', AMENDED; that did not separate speed from amplitude.)"
+  },
+  {
+   "seed_section": "PLAN E1d (from \u00a74 via DSV 2008 and Albayrak-Vachaspati 2024)",
+   "claim": "Production favours wide packets.",
    "verdict": "AMENDED",
-   "evidence": "Low speed: CONFIRMED at matched energy in both initial-velocity forms (Spearman rho -0.78 to -0.88 in E/2M bands [2,4), [4,8), [8,16), p <= 0.013). Width: not supported at matched energy (no significant positive rho in any band; one significant negative rho for collision-needed production in the one-way form). Wide packets win in raw counts only because they carry more energy at fixed A."
+   "evidence": "Holds only at fixed amplitude: at matched energy no width preference in any band or form (cross-check FD6 -0.31, +0.12, +0.41, all p > 0.2); at fixed amplitude wider packets produce more (stored grid, P ~ log A + log sigma: log sigma z = 13.4 all production, 2.4 collision-needed), because at fixed A a wider packet carries more energy and more of it exceeds the self-folding threshold. Wide packets do not win at matched energy."
   },
   {
    "seed_section": "\u00a78 / PLAN E1e",
    "claim": "A classical pair needs N ~ 1/lambda quanta.",
    "verdict": "QUANTIFIED",
-   "evidence": "Classical dynamics is independent of phi0 (S = phi0^2 S~), so N = E/(hbar m) = (\u1ebc/(2 sqrt2)) m^2/lambda. Energy conservation alone gives N >= (2/3) m^2/lambda. The smallest producing initial states found that survive a resolution check: narrow-band Gaussian packets (A=0.8, sigma=2, k=0.5; E = 1.86 x 2M) N*lambda/m^2 = 1.24 (N = E/m) or 1.69 (free-field occupation N_lin); exact one-way packets (A=0.6, sigma=4, k=0.5; E = 2.70 x 2M) 1.80 or 1.96; DSV trains (0.95, 0.62; E = 7.17 x 2M) 4.78 or 3.93. So classical pair-making needs N ~ (1.2-2) m^2/lambda quanta: about 120-200 at lambda/m^2 = 0.01. These are upper bounds on the true classical minimum (only the scanned families)."
+   "evidence": "Classical dynamics is independent of phi0 (S = phi0^2 S~), so N = E/(hbar m) = (E~/(2 sqrt2)) m^2/lambda. Energy conservation alone gives N >= (2/3) m^2/lambda. The smallest producing initial states that survive resolution checks: narrow-band Gaussian packets (A=0.8, sigma=2, k=0.5; E = 1.86 x 2M) N*lambda/m^2 = 1.24 (N = E/m) or 1.69 (free-field occupation N_lin), reproduced at dx = 0.05 and 0.025 and in two independent codes; exact one-way packets (A=0.6, sigma=4, k=0.5; E = 2.70 x 2M) 1.80 or 1.96. DSV trains: the lowest converged producer is (0.94, 0.67), E = 7.81 x 2M, N*lambda/m^2 = 5.20 (N = E/m) or 4.14 (N_lin); the earlier DSV value 4.78 / 3.93 at (0.95, 0.62) is withdrawn (that train produces at dx = 0.05 but not at dx = 0.025 with fourth-order time stepping). So classical pair-making from these families needs N ~ (1.2-2) m^2/lambda quanta (Gaussian packets): about 120-200 at lambda/m^2 = 0.01. These are upper bounds on the classical minimum over the scanned families; over all initial data the bound is the energy floor 2/3, approached only by finely tuned data (section 2)."
   },
   {
    "seed_section": "\u00a78",
@@ -2398,6 +3521,38 @@
   "e1d_analysis.json",
   "e1e_results.json",
   "e1_extra_analysis.json",
-  "e1d_oneway_min.json"
- ]
+  "e1d_oneway_min.json",
+  "e1c_reconcile_analysis.json",
+  "e1d_confound.json",
+  "e1d_speedtest.json",
+  "e1_timereversal.json"
+ ],
+ "reconciliation": {
+  "date": "2026-10-19",
+  "files": [
+   "e1c_reconcile.py",
+   "e1c_reconcile.jsonl",
+   "e1c_reconcile_analysis.py",
+   "e1c_reconcile_analysis.json",
+   "dsv_fig2_reading.json",
+   "fig_e1c_reconcile.png",
+   "e1c_example_y4.py",
+   "e1c_example_y4.npz",
+   "fig_e1c_example_y4.png",
+   "e1d_confound.py",
+   "e1d_confound.json",
+   "e1d_speedtest.py",
+   "e1d_speedtest.jsonl",
+   "e1d_speedtest.json",
+   "e1_timereversal.py",
+   "e1_timereversal.json",
+   "reconcile_results.py"
+  ],
+  "summary": "E1c example point (0.99, 0.43): CALIBRATED -> OPEN (chaotic: a pair only at the finest of five fourth-order settings and at 4 of 11 leapfrog settings, decided after the runs' trajectories separate; 0 of 11 neighbouring initial data produce; omega = 0.99 production converged at v = [0.41]). Hole (0.91, 0.82): CALIBRATED after a fourth-order check. Seed section 4 DSV claim CONFIRMED -> AMENDED. PLAN E1d speed preference: CONFIRMED -> REFUTED (amplitude/width confound; decisive fixed-shape test). Width: NOT_SUPPORTED -> AMENDED (holds at fixed amplitude, not at matched energy). Seed section 2: AMENDED -> CONFIRMED (infimum 2M by time reversal, demonstrated on the lattice; family onsets are upper bounds). Sanity-check verdict word CALIBRATED -> CHECK PASSED. Slice counts marked illustrative. v_c offset attributed to the target. Found during reconciliation: the E1e DSV producer (0.95, 0.62) is not converged; replaced by the lowest converged DSV producer.",
+  "speed_verdicts": {
+   "all_production": "REFUTED",
+   "non_self_folding_packets": "REFUTED",
+   "final": "REFUTED"
+  }
+ }
 }

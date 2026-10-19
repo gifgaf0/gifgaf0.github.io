@@ -48,8 +48,11 @@ stage e1d_oneway_min.json python e1d_oneway_min.py
 python analyze_e1b.py && python analyze_e1c.py && python analyze_e1d.py && python e1e_quanta.py && python analyze_extra.py && python collect_results.py
 # reconciliation after the independent cross-check (not preregistered; see REPORT.md, Reconciliation).
 # e1c_reconcile.py is resumable and is called twice: its second pass schedules the dx = 0.025 checks of the
-# DSV producers that produced at dx = 0.05 in the first pass. About 50 min on two shared cores in all.
+# DSV producers that produced at dx = 0.05 in the first pass. About 62 min on two shared cores in all
+# (the two runs at dx = 0.0125 take about 7 min each).
 python e1c_reconcile.py 2 && python e1c_reconcile.py 2
 stage e1_timereversal.json python e1_timereversal.py
+stage e1d_speedtest.json bash -c "python e1d_speedtest.py run 2 && python e1d_speedtest.py analyze"
+stage fig_e1c_example_y4.png python e1c_example_y4.py
 python e1d_confound.py && python e1c_reconcile_analysis.py && python reconcile_results.py
 echo "[all done] $(date +%T)"

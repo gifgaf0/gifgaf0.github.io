@@ -172,6 +172,18 @@ def jobs_list():
     J += [(om, v, 0.025, 0.005, "y4") for v in (0.41, 0.43)]
     J += [(om, round(v, 3), 0.025, 0.01, "y4") for v in (0.39, 0.40, 0.42, 0.44, 0.45)]
     J += [(om, v, 0.0125, 0.005, "y4") for v in (0.41, 0.43)]
+    # F. second reconciliation pass (added after the first pass was interrupted): finish the (dx, dt) ladder at
+    #    v = 0.40 and 0.42, scan between the 0.01 grid points at and near 0.41-0.43, and resolution-check the
+    #    hole that DSV name, (0.91, 0.82), with its neighbours (original map: 0.80 and 0.83 produce, 0.81-0.82 not)
+    J += [(om, 0.40, 0.05, 0.01, "y4"), (om, 0.40, 0.025, 0.005, "y4"), (om, 0.42, 0.025, 0.005, "y4")]
+    J += [(om, v, dx, dt, "y4") for v in (0.405, 0.415, 0.425, 0.435) for dx, dt in ((0.05, 0.02), (0.025, 0.01))]
+    J += [(0.91, v, dx, dt, "y4") for v in (0.80, 0.81, 0.82, 0.83) for dx, dt in ((0.05, 0.02), (0.025, 0.01))]
+    # G. added after the finest run of (0.99, 0.43) (y4, dx = 0.0125, dt = 0.005) produced a pair at t = 870 while the
+    #    four coarser y4 settings did not: the late fate of the central oscillation is chaotic, so estimate the local
+    #    production probability instead, from neighbouring initial data inside DSV's 0.01-wide v cell (step 0.001),
+    #    around 0.43 and, as a control, around the converged producer 0.41. y4 at (0.05, 0.02).
+    J += [(om, round(0.43 + d, 3), 0.05, 0.02, "y4") for d in (-0.004, -0.003, -0.002, -0.001, 0.001, 0.002, 0.003, 0.004)]
+    J += [(om, round(0.41 + d, 3), 0.05, 0.02, "y4") for d in (-0.004, -0.003, -0.002, -0.001, 0.001, 0.002, 0.003, 0.004)]
     return J
 
 

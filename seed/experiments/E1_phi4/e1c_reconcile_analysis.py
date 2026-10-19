@@ -72,11 +72,71 @@ def verdict_point(v):
 out["point_0.41"] = verdict_point(0.41)
 out["point_0.43"] = verdict_point(0.43)
 
+
+# 1c. every fourth-order (y4) call per v: the omega = 0.99 column and the hole DSV name at (0.91, 0.82)
+def ladder(om):
+    """Classes: 'converged producer' = the two finest y4 runs (smallest dx, then dt) both have the pair at T and their
+    phi(0,t) agree to 0.1 until the later of their pair-formation times; 'no pair at any resolution' = every y4 run
+    (>= 2) has no pair up to 1.5T (the fate after the divergence time t_div of the two finest is not resolved);
+    otherwise 'resolution-sensitive'."""
+    rows = {}
+    for r in runs:
+        if r["omega"] == om and r["scheme"] == "y4":
+            rows.setdefault(f"{r['v']:.3f}", []).append(r)
+    res = {}
+    for v, rr in sorted(rows.items()):
+        c = sorted([[r["dx"], r["dt"], r["produced_dsv"], r["pair_continuously_present_since"]] for r in rr])
+        calls = {x[2] for x in c}
+        d = {"calls_(dx,dt,pair_at_T,since)": c}
+        if len(rr) < 2:
+            d["class"] = "single resolution only"
+        else:
+            f1, f2 = sorted(rr, key=lambda r: (r["dx"], r["dt"]))[:2]
+            p1, p2 = phi0(f1), phi0(f2)
+            n = min(len(p1), len(p2))
+            bad = np.where(np.abs(p1[:n] - p2[:n]) > 0.1)[0]
+            tdiv = float(bad[0] * 0.5) if len(bad) else None
+            d["t_div_two_finest"] = tdiv
+            if (f1["produced_dsv"] and f2["produced_dsv"] and
+                    (tdiv is None or tdiv >= max(f1["first_pair_any"], f2["first_pair_any"]))):
+                d["class"] = "converged producer"
+            elif calls == {False}:
+                d["class"] = "no pair at any resolution"
+            else:
+                d["class"] = "resolution-sensitive"
+        res[v] = d
+    return res
+
+
+main_map = {(round(r["omega"], 3), round(r["v"], 3)): r["produced_dsv"]
+            for f in ("e1c_grid.json", "e1c_fine.json") for r in json.load(open(f))["runs"]}
+out["omega_0.99_y4_ladder"] = ladder(0.99)
+out["omega_0.91_hole_y4_ladder"] = ladder(0.91)
+# 1d. neighbourhood ensemble: production frequency inside DSV's 0.01-wide v cells at omega = 0.99 (y4, dx 0.05, dt 0.02)
+ens = {}
+for centre in (0.41, 0.43):
+    cell = sorted([r for r in runs99 if r["scheme"] == "y4" and r["dx"] == 0.05 and r["dt"] == 0.02
+                   and abs(r["v"] - centre) <= 0.0051], key=lambda r: r["v"])
+    ens[f"{centre:.2f}"] = {"v": [r["v"] for r in cell], "pair_at_T": [r["produced_dsv"] for r in cell],
+                            "n": len(cell), "n_producing": sum(r["produced_dsv"] for r in cell),
+                            "producing_v": [r["v"] for r in cell if r["produced_dsv"]]}
+out["omega_0.99_neighbourhood_ensemble_y4_dx0.05_dt0.02"] = ens
+# pair half-width at T of the omega = 0.99 producers (DSV Fig. 1 shows about +-140 at T, cross-check reading)
+out["omega_0.99_pair_halfwidth_at_T"] = {r["key"]: max([iv[1] for iv in r["intervals_T"] if iv[1] - iv[0] > 20],
+                                                       default=None)
+                                         for r in runs99 if r["produced_dsv"]}
+for om, lab in ((0.99, "omega_0.99_y4_ladder"), (0.91, "omega_0.91_hole_y4_ladder")):
+    for v, d in out[lab].items():
+        d["original_map_call_dx0.1_dt0.04"] = main_map.get((om, round(float(v), 3)))
+
 # ---------------------------------------------------------------- 1b. DSV producers for E1e
 from phi4core import M_KINK, grid, free_quanta
 from e1c_dsv import dsv_initial
 TWO_M = 2 * M_KINK
-cands = sorted({(r["omega"], r["v"]) for r in runs if r["omega"] != 0.99})
+from e1c_reconcile import E_CANDIDATES
+# the original map's lowest-energy producers: (0.90, 0.73), (0.95, 0.62) and the 12 next (E_CANDIDATES)
+cands = sorted({(r["omega"], r["v"]) for r in runs
+                if (r["omega"], r["v"]) in set(E_CANDIDATES) | {(0.90, 0.73), (0.95, 0.62)}})
 e1e_rows = []
 for om_, v_ in cands:
     a = [r for r in runs if r["omega"] == om_ and r["v"] == v_ and r["scheme"] == "y4" and r["dx"] == 0.05 and r["dt"] == 0.02]
@@ -162,6 +222,11 @@ fig.savefig("fig_e1c_reconcile.png", dpi=95)
 
 print(json.dumps({k: out[k] for k in ("point_0.41", "point_0.43", "omega_0.99_column_y4_dx0.05_dt0.02")}, indent=1,
                  default=str))
+print("neighbourhood ensemble:", json.dumps(ens))
+print("pair half-width at T:", json.dumps(out["omega_0.99_pair_halfwidth_at_T"]))
+for lab in ("omega_0.99_y4_ladder", "omega_0.91_hole_y4_ladder"):
+    for v, d in out[lab].items():
+        print(lab, v, d["class"], "original:", d["original_map_call_dx0.1_dt0.04"], d["calls_(dx,dt,pair_at_T,since)"])
 print(json.dumps(out["phi0_divergence_from_finest_y4"], indent=1))
 for r in out["dsv_producers_resolution_check"]:
     print("DSV E1e check", r)

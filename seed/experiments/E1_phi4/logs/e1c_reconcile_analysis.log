@@ -1,0 +1,447 @@
+{
+ "point_0.41": {
+  "y4_calls": [
+   [
+    0.0125,
+    0.005,
+    true,
+    590.0
+   ],
+   [
+    0.025,
+    0.005,
+    true,
+    590.0
+   ],
+   [
+    0.025,
+    0.01,
+    true,
+    590.0
+   ],
+   [
+    0.05,
+    0.01,
+    true,
+    590.0
+   ],
+   [
+    0.05,
+    0.02,
+    true,
+    590.0
+   ]
+  ],
+  "lf_calls": [
+   [
+    0.025,
+    0.005,
+    true,
+    590.0
+   ],
+   [
+    0.05,
+    0.0025,
+    true,
+    640.0
+   ],
+   [
+    0.05,
+    0.02,
+    false,
+    null
+   ],
+   [
+    0.1,
+    0.02,
+    false,
+    null
+   ],
+   [
+    0.1,
+    0.04,
+    true,
+    670.0
+   ]
+  ],
+  "y4_all_agree": true,
+  "y4_call": true
+ },
+ "point_0.43": {
+  "y4_calls": [
+   [
+    0.0125,
+    0.005,
+    true,
+    870.0
+   ],
+   [
+    0.025,
+    0.005,
+    false,
+    null
+   ],
+   [
+    0.025,
+    0.01,
+    false,
+    null
+   ],
+   [
+    0.05,
+    0.01,
+    false,
+    null
+   ],
+   [
+    0.05,
+    0.02,
+    false,
+    null
+   ]
+  ],
+  "lf_calls": [
+   [
+    0.025,
+    0.005,
+    true,
+    840.0
+   ],
+   [
+    0.05,
+    0.0025,
+    false,
+    null
+   ],
+   [
+    0.05,
+    0.02,
+    false,
+    null
+   ],
+   [
+    0.1,
+    0.02,
+    true,
+    780.0
+   ],
+   [
+    0.1,
+    0.04,
+    true,
+    1160.0
+   ]
+  ],
+  "y4_all_agree": false,
+  "y4_call": null
+ },
+ "omega_0.99_column_y4_dx0.05_dt0.02": {
+  "0.38": {
+   "pair_at_T": false,
+   "pair_since": null,
+   "survives_1.5T": false
+  },
+  "0.39": {
+   "pair_at_T": false,
+   "pair_since": null,
+   "survives_1.5T": false
+  },
+  "0.40": {
+   "pair_at_T": false,
+   "pair_since": null,
+   "survives_1.5T": false
+  },
+  "0.41": {
+   "pair_at_T": false,
+   "pair_since": null,
+   "survives_1.5T": false
+  },
+  "0.42": {
+   "pair_at_T": false,
+   "pair_since": null,
+   "survives_1.5T": false
+  },
+  "0.43": {
+   "pair_at_T": false,
+   "pair_since": null,
+   "survives_1.5T": false
+  },
+  "0.44": {
+   "pair_at_T": false,
+   "pair_since": null,
+   "survives_1.5T": false
+  },
+  "0.45": {
+   "pair_at_T": false,
+   "pair_since": null,
+   "survives_1.5T": false
+  },
+  "0.46": {
+   "pair_at_T": false,
+   "pair_since": null,
+   "survives_1.5T": false
+  },
+  "0.47": {
+   "pair_at_T": false,
+   "pair_since": null,
+   "survives_1.5T": false
+  },
+  "0.48": {
+   "pair_at_T": false,
+   "pair_since": null,
+   "survives_1.5T": false
+  },
+  "0.49": {
+   "pair_at_T": false,
+   "pair_since": null,
+   "survives_1.5T": false
+  },
+  "0.50": {
+   "pair_at_T": false,
+   "pair_since": null,
+   "survives_1.5T": false
+  }
+ }
+}
+neighbourhood ensemble: {"0.41": {"v": [0.405, 0.406, 0.407, 0.408, 0.409, 0.41, 0.411, 0.412, 0.413, 0.414, 0.415], "pair_at_T": [false, false, true, false, false, true, true, false, false, false, false], "n": 11, "n_producing": 3, "producing_v": [0.407, 0.41, 0.411]}, "0.43": {"v": [0.425, 0.426, 0.427, 0.428, 0.429, 0.43, 0.431, 0.432, 0.433, 0.434, 0.435], "pair_at_T": [false, false, false, false, false, false, false, false, false, false, false], "n": 11, "n_producing": 0, "producing_v": []}}
+pair half-width at T: {"y4_om0.990_v0.410_dx0.05_dt0.02": 201.85645274729643, "lf_om0.990_v0.430_dx0.1_dt0.04": 22.50945062863421, "y4_om0.990_v0.410_dx0.05_dt0.01": 199.71909135458384, "y4_om0.990_v0.410_dx0.025_dt0.01": 189.6668853991787, "lf_om0.990_v0.410_dx0.05_dt0.0025": 211.46280905121435, "lf_om0.990_v0.410_dx0.1_dt0.04": 163.54014862789737, "lf_om0.990_v0.410_dx0.025_dt0.005": 264.1479203431812, "lf_om0.990_v0.430_dx0.1_dt0.02": 201.82441395874622, "lf_om0.990_v0.430_dx0.025_dt0.005": 78.29357812765193, "y4_om0.990_v0.410_dx0.025_dt0.005": 207.30548991523273, "y4_om0.990_v0.400_dx0.025_dt0.01": 98.62427312299775, "y4_om0.990_v0.410_dx0.0125_dt0.005": 187.94540007647635, "y4_om0.990_v0.430_dx0.0125_dt0.005": 128.16557828632804, "y4_om0.990_v0.400_dx0.05_dt0.01": 310.6867142409354, "y4_om0.990_v0.400_dx0.025_dt0.005": 255.48546544447703, "y4_om0.990_v0.407_dx0.05_dt0.02": 310.1144823185655, "y4_om0.990_v0.411_dx0.05_dt0.02": 407.14051328337194}
+omega_0.99_y4_ladder 0.380 single resolution only original: None [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.390 no pair at any resolution original: None [[0.025, 0.01, False, None], [0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.400 resolution-sensitive original: False [[0.025, 0.005, True, 610.0], [0.025, 0.01, True, 630.0], [0.05, 0.01, True, 640.0], [0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.405 no pair at any resolution original: None [[0.025, 0.01, False, None], [0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.406 single resolution only original: None [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.407 single resolution only original: None [[0.05, 0.02, True, 640.0]]
+omega_0.99_y4_ladder 0.408 single resolution only original: None [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.409 single resolution only original: None [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.410 converged producer original: True [[0.0125, 0.005, True, 590.0], [0.025, 0.005, True, 590.0], [0.025, 0.01, True, 590.0], [0.05, 0.01, True, 590.0], [0.05, 0.02, True, 590.0]]
+omega_0.99_y4_ladder 0.411 single resolution only original: None [[0.05, 0.02, True, 500.0]]
+omega_0.99_y4_ladder 0.412 single resolution only original: None [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.413 single resolution only original: None [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.414 single resolution only original: None [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.415 no pair at any resolution original: None [[0.025, 0.01, False, None], [0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.420 no pair at any resolution original: False [[0.025, 0.005, False, None], [0.025, 0.01, False, None], [0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.425 no pair at any resolution original: None [[0.025, 0.01, False, None], [0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.426 single resolution only original: None [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.427 single resolution only original: None [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.428 single resolution only original: None [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.429 single resolution only original: None [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.430 resolution-sensitive original: True [[0.0125, 0.005, True, 870.0], [0.025, 0.005, False, None], [0.025, 0.01, False, None], [0.05, 0.01, False, None], [0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.431 single resolution only original: None [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.432 single resolution only original: None [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.433 single resolution only original: None [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.434 single resolution only original: None [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.435 no pair at any resolution original: None [[0.025, 0.01, False, None], [0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.440 no pair at any resolution original: False [[0.025, 0.01, False, None], [0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.450 no pair at any resolution original: False [[0.025, 0.01, False, None], [0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.460 single resolution only original: False [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.470 single resolution only original: False [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.480 single resolution only original: False [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.490 single resolution only original: False [[0.05, 0.02, False, None]]
+omega_0.99_y4_ladder 0.500 single resolution only original: False [[0.05, 0.02, False, None]]
+omega_0.91_hole_y4_ladder 0.800 converged producer original: True [[0.025, 0.01, True, 60.0], [0.05, 0.02, True, 60.0]]
+omega_0.91_hole_y4_ladder 0.810 resolution-sensitive original: False [[0.025, 0.01, True, 140.0], [0.05, 0.02, False, None]]
+omega_0.91_hole_y4_ladder 0.820 no pair at any resolution original: False [[0.025, 0.01, False, None], [0.05, 0.02, False, None]]
+omega_0.91_hole_y4_ladder 0.830 resolution-sensitive original: True [[0.025, 0.01, False, None], [0.05, 0.02, True, 80.0]]
+omega_0.91_hole_y4_ladder 0.850 converged producer original: True [[0.025, 0.01, True, 70.0], [0.05, 0.02, True, 70.0]]
+{
+ "0.38": {
+  "reference": {
+   "scheme": "y4",
+   "dx": 0.05,
+   "dt": 0.02
+  },
+  "vs_reference": []
+ },
+ "0.39": {
+  "reference": {
+   "scheme": "y4",
+   "dx": 0.025,
+   "dt": 0.01
+  },
+  "vs_reference": [
+   {
+    "scheme": "y4",
+    "dx": 0.05,
+    "dt": 0.02,
+    "t_diverge_phi0_gt_0.1": null,
+    "max_abs_diff_phi0_t<500": 3.2961368560791016e-05
+   }
+  ]
+ },
+ "0.40": {
+  "reference": {
+   "scheme": "y4",
+   "dx": 0.025,
+   "dt": 0.005
+  },
+  "vs_reference": [
+   {
+    "scheme": "y4",
+    "dx": 0.05,
+    "dt": 0.02,
+    "t_diverge_phi0_gt_0.1": 553.0,
+    "max_abs_diff_phi0_t<500": 0.006095170974731445
+   },
+   {
+    "scheme": "y4",
+    "dx": 0.025,
+    "dt": 0.01,
+    "t_diverge_phi0_gt_0.1": 576.5,
+    "max_abs_diff_phi0_t<500": 0.0002987384796142578
+   },
+   {
+    "scheme": "y4",
+    "dx": 0.05,
+    "dt": 0.01,
+    "t_diverge_phi0_gt_0.1": 563.0,
+    "max_abs_diff_phi0_t<500": 0.0013451576232910156
+   }
+  ]
+ },
+ "0.41": {
+  "reference": {
+   "scheme": "y4",
+   "dx": 0.025,
+   "dt": 0.01
+  },
+  "vs_reference": [
+   {
+    "scheme": "y4",
+    "dx": 0.05,
+    "dt": 0.02,
+    "t_diverge_phi0_gt_0.1": null,
+    "max_abs_diff_phi0_t<500": 6.186962127685547e-05
+   }
+  ]
+ },
+ "0.42": {
+  "reference": {
+   "scheme": "y4",
+   "dx": 0.025,
+   "dt": 0.01
+  },
+  "vs_reference": [
+   {
+    "scheme": "y4",
+    "dx": 0.05,
+    "dt": 0.02,
+    "t_diverge_phi0_gt_0.1": 1070.5,
+    "max_abs_diff_phi0_t<500": 3.522634506225586e-05
+   }
+  ]
+ },
+ "0.43": {
+  "reference": {
+   "scheme": "y4",
+   "dx": 0.025,
+   "dt": 0.01
+  },
+  "vs_reference": [
+   {
+    "scheme": "y4",
+    "dx": 0.05,
+    "dt": 0.02,
+    "t_diverge_phi0_gt_0.1": null,
+    "max_abs_diff_phi0_t<500": 4.0531158447265625e-05
+   }
+  ]
+ },
+ "0.44": {
+  "reference": {
+   "scheme": "y4",
+   "dx": 0.025,
+   "dt": 0.01
+  },
+  "vs_reference": [
+   {
+    "scheme": "y4",
+    "dx": 0.05,
+    "dt": 0.02,
+    "t_diverge_phi0_gt_0.1": null,
+    "max_abs_diff_phi0_t<500": 2.4110078811645508e-05
+   }
+  ]
+ },
+ "0.45": {
+  "reference": {
+   "scheme": "y4",
+   "dx": 0.025,
+   "dt": 0.01
+  },
+  "vs_reference": [
+   {
+    "scheme": "y4",
+    "dx": 0.05,
+    "dt": 0.02,
+    "t_diverge_phi0_gt_0.1": null,
+    "max_abs_diff_phi0_t<500": 2.1457672119140625e-05
+   }
+  ]
+ },
+ "0.46": {
+  "reference": {
+   "scheme": "y4",
+   "dx": 0.05,
+   "dt": 0.02
+  },
+  "vs_reference": []
+ },
+ "0.47": {
+  "reference": {
+   "scheme": "y4",
+   "dx": 0.05,
+   "dt": 0.02
+  },
+  "vs_reference": []
+ },
+ "0.48": {
+  "reference": {
+   "scheme": "y4",
+   "dx": 0.05,
+   "dt": 0.02
+  },
+  "vs_reference": []
+ },
+ "0.49": {
+  "reference": {
+   "scheme": "y4",
+   "dx": 0.05,
+   "dt": 0.02
+  },
+  "vs_reference": []
+ },
+ "0.50": {
+  "reference": {
+   "scheme": "y4",
+   "dx": 0.05,
+   "dt": 0.02
+  },
+  "vs_reference": []
+ }
+}
+DSV E1e check {'omega': 0.9, 'v': 0.73, 'E_over_2M': np.float64(6.978663275676735), 'y4_dx0.05_dt0.02': [False, None], 'y4_dx0.025_dt0.01': [False, None], 't_diverge_phi0': None, 'converged_producer': False}
+DSV E1e check {'omega': 0.95, 'v': 0.62, 'E_over_2M': np.float64(7.1707677065924305), 'y4_dx0.05_dt0.02': [True, 230.0], 'y4_dx0.025_dt0.01': [False, None], 't_diverge_phi0': 168.5, 'converged_producer': False}
+DSV E1e check {'omega': 0.94, 'v': 0.67, 'E_over_2M': np.float64(7.805426552185633), 'y4_dx0.05_dt0.02': [True, 100.0], 'y4_dx0.025_dt0.01': [True, 100.0], 't_diverge_phi0': None, 'converged_producer': True}
+DSV E1e check {'omega': 0.95, 'v': 0.63, 'E_over_2M': np.float64(7.837901611319374), 'y4_dx0.05_dt0.02': [False, None], 'y4_dx0.025_dt0.01': None}
+DSV E1e check {'omega': 0.95, 'v': 0.77, 'E_over_2M': np.float64(7.90972897850076), 'y4_dx0.05_dt0.02': [True, 120.0], 'y4_dx0.025_dt0.01': [True, 120.0], 't_diverge_phi0': 113.0, 'converged_producer': False}
+DSV E1e check {'omega': 0.96, 'v': 0.59, 'E_over_2M': np.float64(8.076809032467283), 'y4_dx0.05_dt0.02': [True, 150.0], 'y4_dx0.025_dt0.01': [True, 150.0], 't_diverge_phi0': 218.0, 'converged_producer': True}
+DSV E1e check {'omega': 0.94, 'v': 0.79, 'E_over_2M': np.float64(8.227263008520241), 'y4_dx0.05_dt0.02': [True, 100.0], 'y4_dx0.025_dt0.01': [True, 100.0], 't_diverge_phi0': 104.5, 'converged_producer': True}
+DSV E1e check {'omega': 0.95, 'v': 0.64, 'E_over_2M': np.float64(8.512757419754896), 'y4_dx0.05_dt0.02': [True, 140.0], 'y4_dx0.025_dt0.01': [True, 140.0], 't_diverge_phi0': 184.0, 'converged_producer': True}
+DSV E1e check {'omega': 0.91, 'v': 0.85, 'E_over_2M': np.float64(8.618874356222873), 'y4_dx0.05_dt0.02': [True, 70.0], 'y4_dx0.025_dt0.01': [True, 70.0], 't_diverge_phi0': 129.0, 'converged_producer': True}
+DSV E1e check {'omega': 0.93, 'v': 0.7, 'E_over_2M': np.float64(8.654610266342843), 'y4_dx0.05_dt0.02': [True, 100.0], 'y4_dx0.025_dt0.01': [True, 100.0], 't_diverge_phi0': None, 'converged_producer': True}
+DSV E1e check {'omega': 0.9, 'v': 0.76, 'E_over_2M': np.float64(8.776823460700562), 'y4_dx0.05_dt0.02': [True, 70.0], 'y4_dx0.025_dt0.01': [True, 70.0], 't_diverge_phi0': 111.5, 'converged_producer': True}
+DSV E1e check {'omega': 0.94, 'v': 0.78, 'E_over_2M': np.float64(8.903336263643062), 'y4_dx0.05_dt0.02': [True, 140.0], 'y4_dx0.025_dt0.01': [True, 140.0], 't_diverge_phi0': None, 'converged_producer': True}
+DSV E1e check {'omega': 0.94, 'v': 0.69, 'E_over_2M': np.float64(8.959823749399792), 'y4_dx0.05_dt0.02': [False, None], 'y4_dx0.025_dt0.01': None}
+DSV E1e check {'omega': 0.92, 'v': 0.72, 'E_over_2M': np.float64(9.112454839808466), 'y4_dx0.05_dt0.02': [False, None], 'y4_dx0.025_dt0.01': None}
+lowest converged DSV producer: {'omega': 0.94, 'v': 0.67, 'E_over_2M': np.float64(7.805426552185633), 'N_E_times_lambda_over_m2': np.float64(5.203617701457089), 'N_lin_times_lambda_over_m2': 4.137234334766784, 'criterion': 'pair at T with y4 at (0.05, 0.02) and (0.025, 0.01), and phi(0,t) of the two agree (to 0.1) until the pair has formed'}
+{'n_dsv_producing': 81, 'n_ours_producing': 80, 'hits': 58, 'false_positives': 22, 'missed': 23, 'jaccard': 0.5631067961165048, 'ours_within_0.01_of_dsv': 71, 'note': 'original E1c map, dx = 0.1, dt = 0.04 (point calls not converged: dx = 0.05 rerun agrees on 95% of calls); DSV read from their Fig. 2 to the nearest 0.01'}
+0.90 hits 7 FP [0.73, 0.82] missed [0.81, 0.86]
+0.91 hits 6 FP [] missed [0.78, 0.79]
+0.92 hits 7 FP [0.72, 0.73] missed [0.78, 0.79, 0.8]
+0.93 hits 10 FP [0.78] missed [0.69, 0.77, 0.82]
+0.94 hits 10 FP [0.69, 0.7] missed [0.8]
+0.95 hits 7 FP [0.62, 0.63, 0.71] missed [0.7, 0.72, 0.73, 0.76]
+0.96 hits 4 FP [0.64, 0.67] missed [0.62, 0.7, 0.71, 0.72]
+0.97 hits 5 FP [0.57, 0.6] missed [0.65, 0.66]
+0.98 hits 1 FP [0.5, 0.51, 0.52, 0.53, 0.56, 0.57, 0.58] missed [0.49, 0.55]
+0.99 hits 1 FP [0.41] missed []

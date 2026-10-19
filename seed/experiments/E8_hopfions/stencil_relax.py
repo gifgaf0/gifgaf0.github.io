@@ -17,9 +17,15 @@ starting from our relaxed field plus a small random tangent perturbation (amplit
 the grid-scale modes.  Monitored: E_c, our link/plaquette energy E_link of the same field (it penalises grid-scale
 modes, so a growing E_link - E_c gap signals them), min phi_3, Hopf charge.
 
-Usage: NUMBA_NUM_THREADS=2 python3 stencil_relax.py [--scheme c2|c4|both] [--tmax 50]
+Usage: NUMBA_NUM_THREADS=1 python3 stencil_relax.py [--scheme c2|c4|both] [--tmax 50] [--pert 1e-4] [--log-every 2]
+--pert 0 starts from the unperturbed relaxed field (rounding noise only).  Results are stored under the key
+<scheme> (default perturbation) or <scheme>_pert<amplitude>.
 Restart-safe: checkpoints every 10 time units in SCRATCH/e8rec_stencil/.  Writes stencil_relax.json and
-runs/stencil_relax_<scheme>.log.
+runs/stencil_relax_<key>.log.
+
+Outcome (reconciliation run, 2026-10-19): both centred functionals lose the soliton within a few time units
+(see stencil_relax.json).  Near a soliton the k = pi modes have zero gradient cost but a negative constraint
+term (-|grad phi|^2 |dphi|^2) in the second variation, so they grow exponentially under any descent flow.
 """
 import argparse
 import json
@@ -169,17 +175,19 @@ def log(fh, s):
     fh.flush()
 
 
-def run(scheme, tmax, results):
+def run(scheme, tmax, results, pert_amp=1e-4, log_every=2.0):
     order = 2 if scheme == 'c2' else 4
+    key = scheme if pert_amp == 1e-4 else f'{scheme}_pert{pert_amp:g}'
     os.makedirs(CKDIR, exist_ok=True)
     os.makedirs(os.path.join(HERE, 'runs'), exist_ok=True)
-    fh = open(os.path.join(HERE, 'runs', f'stencil_relax_{scheme}.log'), 'a')
+    fh = open(os.path.join(HERE, 'runs', f'stencil_relax_{key}.log'), 'a')
     N = 151
     x, h = fs.grid(N, 7.5)
-    ck_phi = os.path.join(CKDIR, f'{scheme}.phi.npy')
-    ck_vel = os.path.join(CKDIR, f'{scheme}.vel.npy')
-    ck_st = os.path.join(CKDIR, f'{scheme}.state.json')
-    res = results.setdefault(scheme, dict(order=order, history=[]))
+    ck_phi = os.path.join(CKDIR, f'{key}.phi.npy')
+    ck_vel = os.path.join(CKDIR, f'{key}.vel.npy')
+    ck_st = os.path.join(CKDIR, f'{key}.state.json')
+    res = results.setdefault(key, dict(order=order, history=[]))
+    res['log_every'] = log_every
     res['grad_check_rel_err'] = grad_check(order)
     log(fh, f'# scheme {scheme}: gradient check max rel err {res["grad_check_rel_err"]:.2e}')
     if os.path.exists(ck_st):
@@ -196,13 +204,17 @@ def run(scheme, tmax, results):
         res['start_unperturbed'] = dict(E_link=fs.C0 * (e2l + e4l), E_centred=fs.C0 * (c2 + c4))
         del G0
         rng = np.random.default_rng(20261019)
-        pert = 1e-4 * rng.standard_normal(phi.shape)
-        phi = phi + pert
-        phi /= np.linalg.norm(phi, axis=-1, keepdims=True)
-        fs.set_boundary(phi)
+        if pert_amp > 0:
+            pert = pert_amp * rng.standard_normal(phi.shape)
+            phi = phi + pert
+            phi /= np.linalg.norm(phi, axis=-1, keepdims=True)
+            fs.set_boundary(phi)
+            res['perturbation'] = (f'iid normal, amplitude {pert_amp:g} per component, seed 20261019, renormalised; '
+                                   'boundary reset to e3')
+        else:
+            res['perturbation'] = 'none (relaxed link/plaquette field as stored; rounding noise only)'
         vel = np.zeros_like(phi)
         t, dt, nreset = 0.0, 0.1 * h, 0
-        res['perturbation'] = 'iid normal, amplitude 1e-4 per component, seed 20261019, renormalised; boundary reset to e3'
     G = np.zeros((3,) + phi.shape)
     grad = np.zeros_like(phi)
     e2, e4 = centred_energy_grad(phi, h, G, grad, order)
@@ -235,7 +247,7 @@ def run(scheme, tmax, results):
             if En > E * (1 + 1e-11):
                 resets_int += 1
         E, e2, e4 = En, e2n, e4n
-        if t - last_log >= 2.0 - 1e-9:
+        if t - last_log >= log_every - 1e-9:
             last_log = t
             if E > E_good * (1 + 1e-9) or resets_int > 0.2 * steps_int or not np.isfinite(E):
                 log(fh, f'# safeguard at t={t:.2f}: restoring t={t_good:.2f}, dt {dt:.5f} -> {0.7 * dt:.5f}')
@@ -267,15 +279,17 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--scheme', default='both')
     ap.add_argument('--tmax', type=float, default=50.0)
+    ap.add_argument('--pert', type=float, default=1e-4)
+    ap.add_argument('--log-every', type=float, default=2.0)
     a = ap.parse_args()
     results = json.load(open(OUT)) if os.path.exists(OUT) else {}
-    results['description'] = ('Q = 1, dx = 0.1, box [-7.5,7.5]^3, fixed boundary: our relaxed link/plaquette field (+1e-4 '
-                              'random perturbation) relaxed under centred-difference energies by arrested Newton flow; '
-                              'energies in Sutcliffe units')
+    results['description'] = ('Q = 1, dx = 0.1, box [-7.5,7.5]^3, fixed boundary: our relaxed link/plaquette field (plus a '
+                              'small random perturbation unless the key says pert0) relaxed under centred-difference energies '
+                              'by arrested Newton flow; energies in Sutcliffe units')
     for sc in (['c2', 'c4'] if a.scheme == 'both' else [a.scheme]):
-        run(sc, a.tmax, results)
+        run(sc, a.tmax, results, a.pert, a.log_every)
         json.dump(results, open(OUT, 'w'), indent=1)
-        r = results[sc]
+        r = results[sc if a.pert == 1e-4 else f'{sc}_pert{a.pert:g}']
         print(f"[{sc}] final E_centred {r['final']['E_centred']:.5f} (vs Sutcliffe 1.204: {100 * r['final_vs_sutcliffe']:+.2f}%), "
               f"E_link {r['final']['E_link']:.5f}, Q {r['final']['Q']:.4f}, minphi3 {r['final']['minphi3']:.4f}, "
               f"unwound: {r.get('unwound_at_t')}")

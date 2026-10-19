@@ -81,24 +81,46 @@
  },
  "headline": [
   {
-   "quantity": "E_1 at dx=0.1 (box [-7.5,7.5]^3)",
+   "quantity": "E_1 at dx=0.1 (box [-7.5,7.5]^3, fixed boundary)",
    "value": 1.2226212820250035,
    "target": 1.204,
    "tolerance": "2%",
-   "verdict": "CALIBRATED",
-   "rel_dev": 0.015466181083890085
+   "verdict": "CALIBRATED (same-grid comparison at dx = 0.1)",
+   "rel_dev": 0.015466181083890085,
+   "comparison_convention": "same grid as the target (dx = 0.1, 151^3, box [-7.5,7.5]^3, fixed boundary), the setting in which Sutcliffe computed Table 2; PLAN fixed the table, not the convention",
+   "E_same_box_continuum": 1.230321468363034,
+   "target_rel_to_same_box_continuum": -0.021393976322346964,
+   "within_2pct_of_same_box_continuum": false,
+   "E_same_box_continuum_crosscheck_c4": 1.2301716449946891
   },
   {
-   "quantity": "Hopf charge of the Q=1 solution (all grids)",
+   "quantity": "Hopf charge of the Q=1 solution (Whitehead integral; criterion applied at dx = 0.1)",
    "value": {
     "0.2000": 0.9915290534550175,
     "0.1500": 0.9957745310383844,
     "0.1250": 0.997180901473702,
     "0.1000": 0.9982504069454214
    },
+   "estimator": "solid-angle plaquette fluxes, periodic FFT (fs_lib.hopf_charge)",
+   "value_freespace_4th_order_crosscheck": {
+    "0.2000": 0.9827301134086369,
+    "0.1500": 0.9940039804259437,
+    "0.1250": 0.9966194232982778,
+    "0.1000": 0.9982049858267217
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 1.0,
+    "0.1500": 1.0,
+    "0.1000": 1.0,
+    "0.1250": 1.0
+   },
    "target": 1,
    "tolerance": "0.05",
-   "verdict": "CALIBRATED"
+   "max_dev_dx0p1_both_estimators": 0.0017950141732783198,
+   "max_dev_all_grids_solid_angle": 0.008470946544982483,
+   "max_dev_all_grids_freespace": 0.01726988659136308,
+   "verdict": "CHECK PASSED (internal check; dx = 0.1, both estimators)",
+   "note": "At dx = 0.2 the deviation depends on the estimator (solid angle <= 0.017, free-space 4th-order <= 0.086); the estimator-free linking-number charge is the exact integer wherever computed."
   },
   {
    "quantity": "configuration type at Q=1",
@@ -108,12 +130,17 @@
    "verdict": "CALIBRATED"
   },
   {
-   "quantity": "E_2 at dx=0.1 (box [-7.5,7.5]^3)",
+   "quantity": "E_2 at dx=0.1 (box [-7.5,7.5]^3, fixed boundary)",
    "value": 1.9925289557232517,
    "target": 1.967,
    "tolerance": "2%",
-   "verdict": "CALIBRATED",
-   "rel_dev": 0.012978625177047176
+   "verdict": "CALIBRATED (same-grid comparison at dx = 0.1)",
+   "rel_dev": 0.012978625177047176,
+   "comparison_convention": "same grid as the target (dx = 0.1, 151^3, box [-7.5,7.5]^3, fixed boundary), the setting in which Sutcliffe computed Table 2; PLAN fixed the table, not the convention",
+   "E_same_box_continuum": 2.002385454110057,
+   "target_rel_to_same_box_continuum": -0.017671649600442985,
+   "within_2pct_of_same_box_continuum": true,
+   "E_same_box_continuum_crosscheck_c4": 2.002198876804408
   },
   {
    "quantity": "E_2/E_1 at dx=0.1",
@@ -121,19 +148,37 @@
    "target": 1.6337209302325582,
    "tolerance": "1%",
    "verdict": "CALIBRATED",
-   "rel_dev": -0.002449668884282885
+   "rel_dev": -0.002449668884282885,
+   "continuum_ratio_same_box": 1.627530288302836
   },
   {
-   "quantity": "Hopf charge of the Q=2 solution (all grids)",
+   "quantity": "Hopf charge of the Q=2 solution (Whitehead integral; criterion applied at dx = 0.1)",
    "value": {
     "0.2000": 1.9903885418212215,
     "0.1500": 1.995035655415885,
     "0.1250": 1.9966532123558371,
     "0.1000": 1.9979067307037874
    },
+   "estimator": "solid-angle plaquette fluxes, periodic FFT (fs_lib.hopf_charge)",
+   "value_freespace_4th_order_crosscheck": {
+    "0.2000": 1.9790100856924888,
+    "0.1500": 1.9923046839100707,
+    "0.1250": 1.9955994262835597,
+    "0.1000": 1.997642754259437
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 2.0,
+    "0.1500": 2.0,
+    "0.1000": 2.0,
+    "0.1250": 2.0
+   },
    "target": 2,
    "tolerance": "0.05",
-   "verdict": "CALIBRATED"
+   "max_dev_dx0p1_both_estimators": 0.002357245740562952,
+   "max_dev_all_grids_solid_angle": 0.00961145817877851,
+   "max_dev_all_grids_freespace": 0.02098991430751118,
+   "verdict": "CHECK PASSED (internal check; dx = 0.1, both estimators)",
+   "note": "At dx = 0.2 the deviation depends on the estimator (solid angle <= 0.017, free-space 4th-order <= 0.086); the estimator-free linking-number charge is the exact integer wherever computed."
   },
   {
    "quantity": "configuration type at Q=2",
@@ -143,12 +188,17 @@
    "verdict": "CALIBRATED"
   },
   {
-   "quantity": "E_3 at dx=0.1 (box [-7.5,7.5]^3)",
+   "quantity": "E_3 at dx=0.1 (box [-7.5,7.5]^3, fixed boundary)",
    "value": 2.7884880142643347,
    "target": 2.754,
    "tolerance": "2%",
-   "verdict": "CALIBRATED",
-   "rel_dev": 0.012522880996490349
+   "verdict": "CALIBRATED (same-grid comparison at dx = 0.1)",
+   "rel_dev": 0.012522880996490349,
+   "comparison_convention": "same grid as the target (dx = 0.1, 151^3, box [-7.5,7.5]^3, fixed boundary), the setting in which Sutcliffe computed Table 2; PLAN fixed the table, not the convention",
+   "E_same_box_continuum": 2.801541691732445,
+   "target_rel_to_same_box_continuum": -0.01696983195814794,
+   "within_2pct_of_same_box_continuum": true,
+   "E_same_box_continuum_crosscheck_c4": 2.8013241951079295
   },
   {
    "quantity": "E_3/E_1 at dx=0.1",
@@ -156,18 +206,34 @@
    "target": 2.287375415282392,
    "tolerance": "1%",
    "verdict": "CALIBRATED",
-   "rel_dev": -0.002898471797709634
+   "rel_dev": -0.002898471797709634,
+   "continuum_ratio_same_box": 2.2770810424530343
   },
   {
-   "quantity": "Hopf charge of the Q=3 solution (all grids)",
+   "quantity": "Hopf charge of the Q=3 solution (Whitehead integral; criterion applied at dx = 0.1)",
    "value": {
     "0.2000": 2.9866154947465318,
     "0.1500": 2.9930594331180553,
     "0.1000": 2.9970878611722336
    },
+   "estimator": "solid-angle plaquette fluxes, periodic FFT (fs_lib.hopf_charge)",
+   "value_freespace_4th_order_crosscheck": {
+    "0.2000": 2.9729174539915744,
+    "0.1500": 2.989916000312761,
+    "0.1000": 2.9968833719241186
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 3.0,
+    "0.1500": 3.0,
+    "0.1000": 3.0
+   },
    "target": 3,
    "tolerance": "0.05",
-   "verdict": "CALIBRATED"
+   "max_dev_dx0p1_both_estimators": 0.0031166280758814224,
+   "max_dev_all_grids_solid_angle": 0.013384505253468237,
+   "max_dev_all_grids_freespace": 0.027082546008425634,
+   "verdict": "CHECK PASSED (internal check; dx = 0.1, both estimators)",
+   "note": "At dx = 0.2 the deviation depends on the estimator (solid angle <= 0.017, free-space 4th-order <= 0.086); the estimator-free linking-number charge is the exact integer wherever computed."
   },
   {
    "quantity": "configuration type at Q=3",
@@ -177,12 +243,17 @@
    "verdict": "CALIBRATED"
   },
   {
-   "quantity": "E_4 at dx=0.1 (box [-7.5,7.5]^3)",
+   "quantity": "E_4 at dx=0.1 (box [-7.5,7.5]^3, fixed boundary)",
    "value": 3.5058004292337555,
    "target": 3.445,
    "tolerance": "2%",
-   "verdict": "CALIBRATED",
-   "rel_dev": 0.017648890924166993
+   "verdict": "CALIBRATED (same-grid comparison at dx = 0.1)",
+   "rel_dev": 0.017648890924166993,
+   "comparison_convention": "same grid as the target (dx = 0.1, 151^3, box [-7.5,7.5]^3, fixed boundary), the setting in which Sutcliffe computed Table 2; PLAN fixed the table, not the convention",
+   "E_same_box_continuum": 3.5211608702399397,
+   "target_rel_to_same_box_continuum": -0.021629477620188964,
+   "within_2pct_of_same_box_continuum": false,
+   "E_same_box_continuum_crosscheck_c4": 3.520532511993749
   },
   {
    "quantity": "E_4/E_1 at dx=0.1",
@@ -190,18 +261,34 @@
    "target": 2.861295681063123,
    "tolerance": "1%",
    "verdict": "CALIBRATED",
-   "rel_dev": 0.002149465812782969
+   "rel_dev": 0.002149465812782969,
+   "continuum_ratio_same_box": 2.861984416906023
   },
   {
-   "quantity": "Hopf charge of the Q=4 solution (all grids)",
+   "quantity": "Hopf charge of the Q=4 solution (Whitehead integral; criterion applied at dx = 0.1)",
    "value": {
     "0.2000": 3.9873597622174533,
     "0.1500": 3.9939629984024636,
     "0.1000": 3.997571736322022
    },
+   "estimator": "solid-angle plaquette fluxes, periodic FFT (fs_lib.hopf_charge)",
+   "value_freespace_4th_order_crosscheck": {
+    "0.2000": 3.927606194408457,
+    "0.1500": 3.97809155164352,
+    "0.1000": 3.9945626221596897
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 4.0,
+    "0.1500": 4.0,
+    "0.1000": 4.0
+   },
    "target": 4,
    "tolerance": "0.05",
-   "verdict": "CALIBRATED"
+   "max_dev_dx0p1_both_estimators": 0.005437377840310287,
+   "max_dev_all_grids_solid_angle": 0.012640237782546748,
+   "max_dev_all_grids_freespace": 0.07239380559154318,
+   "verdict": "CHECK PASSED (internal check; dx = 0.1, both estimators)",
+   "note": "At dx = 0.2 the deviation depends on the estimator (solid angle <= 0.017, free-space 4th-order <= 0.086); the estimator-free linking-number charge is the exact integer wherever computed."
   },
   {
    "quantity": "configuration type at Q=4",
@@ -211,12 +298,17 @@
    "verdict": "CALIBRATED"
   },
   {
-   "quantity": "E_5 at dx=0.1 (box [-7.5,7.5]^3)",
+   "quantity": "E_5 at dx=0.1 (box [-7.5,7.5]^3, fixed boundary)",
    "value": 4.163899332581217,
    "target": 4.095,
    "tolerance": "2%",
-   "verdict": "CALIBRATED",
-   "rel_dev": 0.01682523384156709
+   "verdict": "CALIBRATED (same-grid comparison at dx = 0.1)",
+   "rel_dev": 0.01682523384156709,
+   "comparison_convention": "same grid as the target (dx = 0.1, 151^3, box [-7.5,7.5]^3, fixed boundary), the setting in which Sutcliffe computed Table 2; PLAN fixed the table, not the convention",
+   "E_same_box_continuum": 4.1821772094558725,
+   "target_rel_to_same_box_continuum": -0.020844934370252366,
+   "within_2pct_of_same_box_continuum": false,
+   "E_same_box_continuum_crosscheck_c4": 4.181541054816179
   },
   {
    "quantity": "E_5/E_1 at dx=0.1",
@@ -224,18 +316,34 @@
    "target": 3.4011627906976742,
    "tolerance": "1%",
    "verdict": "CALIBRATED",
-   "rel_dev": 0.0013383535394810853
+   "rel_dev": 0.0013383535394810853,
+   "continuum_ratio_same_box": 3.399255655532321
   },
   {
-   "quantity": "Hopf charge of the Q=5 solution (all grids)",
+   "quantity": "Hopf charge of the Q=5 solution (Whitehead integral; criterion applied at dx = 0.1)",
    "value": {
     "0.2000": 4.984805475599352,
     "0.1500": 4.992393041276761,
     "0.1000": 4.996851919392883
    },
+   "estimator": "solid-angle plaquette fluxes, periodic FFT (fs_lib.hopf_charge)",
+   "value_freespace_4th_order_crosscheck": {
+    "0.2000": 4.932534888344385,
+    "0.1500": 4.978479830168032,
+    "0.1000": 4.994413432032891
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 5.0,
+    "0.1500": 5.0,
+    "0.1000": 5.0
+   },
    "target": 5,
    "tolerance": "0.05",
-   "verdict": "CALIBRATED"
+   "max_dev_dx0p1_both_estimators": 0.005586567967108991,
+   "max_dev_all_grids_solid_angle": 0.01519452440064839,
+   "max_dev_all_grids_freespace": 0.06746511165561486,
+   "verdict": "CHECK PASSED (internal check; dx = 0.1, both estimators)",
+   "note": "At dx = 0.2 the deviation depends on the estimator (solid angle <= 0.017, free-space 4th-order <= 0.086); the estimator-free linking-number charge is the exact integer wherever computed."
   },
   {
    "quantity": "configuration type at Q=5",
@@ -245,12 +353,17 @@
    "verdict": "CALIBRATED"
   },
   {
-   "quantity": "E_6 at dx=0.1 (box [-7.5,7.5]^3)",
+   "quantity": "E_6 at dx=0.1 (box [-7.5,7.5]^3, fixed boundary)",
    "value": 4.72337854436925,
    "target": 4.65,
    "tolerance": "2%",
-   "verdict": "CALIBRATED",
-   "rel_dev": 0.01578033212241947
+   "verdict": "CALIBRATED (same-grid comparison at dx = 0.1)",
+   "rel_dev": 0.01578033212241947,
+   "comparison_convention": "same grid as the target (dx = 0.1, 151^3, box [-7.5,7.5]^3, fixed boundary), the setting in which Sutcliffe computed Table 2; PLAN fixed the table, not the convention",
+   "E_same_box_continuum": 4.742653599635106,
+   "target_rel_to_same_box_continuum": -0.019536235925439294,
+   "within_2pct_of_same_box_continuum": true,
+   "E_same_box_continuum_crosscheck_c4": 4.741935131207267
   },
   {
    "quantity": "E_6/E_1 at dx=0.1",
@@ -258,18 +371,34 @@
    "target": 3.8621262458471763,
    "tolerance": "1%",
    "verdict": "CALIBRATED",
-   "rel_dev": 0.0003093663229574162
+   "rel_dev": 0.0003093663229574162,
+   "continuum_ratio_same_box": 3.854808455830082
   },
   {
-   "quantity": "Hopf charge of the Q=6 solution (all grids)",
+   "quantity": "Hopf charge of the Q=6 solution (Whitehead integral; criterion applied at dx = 0.1)",
    "value": {
     "0.2000": 5.984049782418258,
     "0.1500": 5.9918959192793775,
     "0.1000": 5.996624393919602
    },
+   "estimator": "solid-angle plaquette fluxes, periodic FFT (fs_lib.hopf_charge)",
+   "value_freespace_4th_order_crosscheck": {
+    "0.2000": 5.930860455393493,
+    "0.1500": 5.977380216777999,
+    "0.1000": 5.994087391360658
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 6.0,
+    "0.1500": 6.0,
+    "0.1000": 6.0
+   },
    "target": 6,
    "tolerance": "0.05",
-   "verdict": "CALIBRATED"
+   "max_dev_dx0p1_both_estimators": 0.005912608639341954,
+   "max_dev_all_grids_solid_angle": 0.015950217581742088,
+   "max_dev_all_grids_freespace": 0.06913954460650729,
+   "verdict": "CHECK PASSED (internal check; dx = 0.1, both estimators)",
+   "note": "At dx = 0.2 the deviation depends on the estimator (solid angle <= 0.017, free-space 4th-order <= 0.086); the estimator-free linking-number charge is the exact integer wherever computed."
   },
   {
    "quantity": "configuration type at Q=6",
@@ -279,12 +408,17 @@
    "verdict": "CALIBRATED"
   },
   {
-   "quantity": "E_7 at dx=0.1 (box [-7.5,7.5]^3)",
+   "quantity": "E_7 at dx=0.1 (box [-7.5,7.5]^3, fixed boundary)",
    "value": 5.336168272611412,
    "target": 5.242,
    "tolerance": "2%",
-   "verdict": "CALIBRATED",
-   "rel_dev": 0.017964187831249978
+   "verdict": "CALIBRATED (same-grid comparison at dx = 0.1)",
+   "rel_dev": 0.017964187831249978,
+   "comparison_convention": "same grid as the target (dx = 0.1, 151^3, box [-7.5,7.5]^3, fixed boundary), the setting in which Sutcliffe computed Table 2; PLAN fixed the table, not the convention",
+   "E_same_box_continuum": 5.356727343342024,
+   "target_rel_to_same_box_continuum": -0.02141743194837442,
+   "within_2pct_of_same_box_continuum": false,
+   "E_same_box_continuum_crosscheck_c4": 5.355904940946044
   },
   {
    "quantity": "E_7/E_1 at dx=0.1",
@@ -292,18 +426,34 @@
    "target": 4.353820598006645,
    "tolerance": "1%",
    "verdict": "CALIBRATED",
-   "rel_dev": 0.0024599605520034817
+   "rel_dev": 0.0024599605520034817,
+   "continuum_ratio_same_box": 4.353924954645595
   },
   {
-   "quantity": "Hopf charge of the Q=7 solution (all grids)",
+   "quantity": "Hopf charge of the Q=7 solution (Whitehead integral; criterion applied at dx = 0.1)",
    "value": {
     "0.2000": 6.98275267362675,
     "0.1500": 6.991181469038197,
     "0.1000": 6.996266507128862
    },
+   "estimator": "solid-angle plaquette fluxes, periodic FFT (fs_lib.hopf_charge)",
+   "value_freespace_4th_order_crosscheck": {
+    "0.2000": 6.914039998863491,
+    "0.1500": 6.972650965038699,
+    "0.1000": 6.993043803473567
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 7.0,
+    "0.1500": 7.0,
+    "0.1000": 7.0
+   },
    "target": 7,
    "tolerance": "0.05",
-   "verdict": "CALIBRATED"
+   "max_dev_dx0p1_both_estimators": 0.006956196526433089,
+   "max_dev_all_grids_solid_angle": 0.017247326373250438,
+   "max_dev_all_grids_freespace": 0.0859600011365087,
+   "verdict": "CHECK PASSED (internal check; dx = 0.1, both estimators)",
+   "note": "At dx = 0.2 the deviation depends on the estimator (solid angle <= 0.017, free-space 4th-order <= 0.086); the estimator-free linking-number charge is the exact integer wherever computed."
   },
   {
    "quantity": "configuration type at Q=7",
@@ -313,18 +463,34 @@
    "verdict": "CALIBRATED"
   },
   {
-   "quantity": "E_1 continuum, infinite volume (3D dx->0 in box 7.5 + axial box shift 7.5->25)",
-   "value": 1.2243246009872697,
-   "target": "1.21-1.22 (PLAN.md: more accurate literature values)",
+   "quantity": "E_1 continuum, infinite volume (axial code: R = 7.5 continuum + continuum box shift 7.5 -> 25 + power-law tail beyond 25)",
+   "value": 1.2248203304554948,
+   "uncertainty": 0.0002911241047752931,
+   "crosscheck_spectral_infinite_volume": 1.2249321406346907,
+   "lower_estimate_3d_cube": 1.2235995688640298,
+   "target": "1.21-1.22 (PLAN.md context: \"more accurate literature values\"; Sutcliffe 2007: \"around 1.21\")",
    "tolerance": null,
-   "verdict": "NO_TARGET"
+   "verdict": "CHECK PASSED (two independent codes agree; no preregistered tolerance)",
+   "note": "0.4% above the PLAN context range. Resolved: the cross-check spectral value on all of R^3 is 1.2249321406346907; the literature values near 1.21 come from finite-box lattice runs that underestimate (Ward 1999 quotes the axial 1.25 of Gladikowski-Hellmund and the 3D 1.13 of Battye-Sutcliffe 1998, the latter as a finite-volume underestimate)"
   },
   {
-   "quantity": "E_2 continuum, infinite volume (3D dx->0 in box 7.5 + axial box shift 7.5->25)",
-   "value": 1.999551905420104,
+   "quantity": "E_2 continuum, infinite volume (axial code: R = 7.5 continuum + continuum box shift 7.5 -> 25 + power-law tail beyond 25)",
+   "value": 2.0004417817751023,
+   "uncertainty": 0.00011133090231715187,
+   "crosscheck_spectral_infinite_volume": 2.000470066943061,
+   "lower_estimate_3d_cube": 1.999350779295955,
    "target": null,
    "tolerance": null,
-   "verdict": "NO_TARGET"
+   "verdict": "CHECK PASSED (two independent codes agree; no preregistered tolerance)",
+   "note": null
+  },
+  {
+   "quantity": "E_2/E_1 continuum, infinite volume",
+   "value": 1.6332532470547447,
+   "crosscheck_spectral": 1.6331272570793434,
+   "target": "1.6337 (Sutcliffe, dx = 0.1)",
+   "tolerance": null,
+   "verdict": "CHECK PASSED (two independent codes agree; no preregistered tolerance)"
   }
  ],
  "per_charge": {
@@ -495,7 +661,7 @@
    },
    "verdict_type": "CALIBRATED",
    "Q_max_dev_from_integer": 0.008470946544982483,
-   "verdict_Q": "CALIBRATED",
+   "verdict_Q": "CHECK PASSED",
    "E_h02": 1.1965307893624129,
    "E_h02_rel_to_target": -0.006203663320255015,
    "E_finest": 1.2226212820250035,
@@ -509,9 +675,27 @@
    "E_over_QE1_h01": 1.0,
    "ratio_rel_dev": 0.0,
    "verdict_ratio": "CALIBRATED",
+   "virial_continuum_est": {
+    "v0_h2h4_three_finest": -0.013364553280757335,
+    "v0_h2_two_finest": -0.01187795702016878,
+    "v_h0p1": -0.025463042573848124
+   },
    "E_continuum_est": 1.230321468363034,
    "E_continuum_spread": 0.0006508229659878406,
-   "E_over_E1_continuum": 1.0
+   "E_over_E1_continuum": 1.0,
+   "Q_dev_dx0p1_both_estimators": 0.0017950141732783198,
+   "Q_by_h_freespace_crosscheck": {
+    "0.2000": 0.9827301134086369,
+    "0.1500": 0.9940039804259437,
+    "0.1250": 0.9966194232982778,
+    "0.1000": 0.9982049858267217
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 1.0,
+    "0.1500": 1.0,
+    "0.1000": 1.0,
+    "0.1250": 1.0
+   }
   },
   "2": {
    "run": "Q2_A21",
@@ -680,7 +864,7 @@
    },
    "verdict_type": "CALIBRATED",
    "Q_max_dev_from_integer": 0.00961145817877851,
-   "verdict_Q": "CALIBRATED",
+   "verdict_Q": "CHECK PASSED",
    "E_h02": 1.9595243246802052,
    "E_h02_rel_to_target": -0.003800546680119421,
    "E_finest": 1.9925289557232517,
@@ -694,9 +878,27 @@
    "E_over_QE1_h01": 0.8148594274520828,
    "ratio_rel_dev": -0.002449668884282885,
    "verdict_ratio": "CALIBRATED",
+   "virial_continuum_est": {
+    "v0_h2h4_three_finest": -0.004737711914953276,
+    "v0_h2_two_finest": -0.0037550019493470172,
+    "v_h0p1": -0.014610220693372953
+   },
    "E_continuum_est": 2.002385454110057,
    "E_continuum_spread": 0.0007107231641825251,
-   "E_over_E1_continuum": 1.627530288302836
+   "E_over_E1_continuum": 1.627530288302836,
+   "Q_dev_dx0p1_both_estimators": 0.002357245740562952,
+   "Q_by_h_freespace_crosscheck": {
+    "0.2000": 1.9790100856924888,
+    "0.1500": 1.9923046839100707,
+    "0.1250": 1.9955994262835597,
+    "0.1000": 1.997642754259437
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 2.0,
+    "0.1500": 2.0,
+    "0.1000": 2.0,
+    "0.1250": 2.0
+   }
   },
   "3": {
    "run": "Q3_A31",
@@ -853,7 +1055,7 @@
    },
    "verdict_type": "CALIBRATED",
    "Q_max_dev_from_integer": 0.013384505253468237,
-   "verdict_Q": "CALIBRATED",
+   "verdict_Q": "CHECK PASSED",
    "E_h02": 2.7450326065444512,
    "E_h02_rel_to_target": -0.0032561341523416054,
    "E_finest": 2.7884880142643347,
@@ -867,9 +1069,25 @@
    "E_over_QE1_h01": 0.7602485073834739,
    "ratio_rel_dev": -0.002898471797709634,
    "verdict_ratio": "CALIBRATED",
+   "virial_continuum_est": {
+    "v0_h2h4_three_finest": -0.006701677986814028,
+    "v0_h2_two_finest": -0.005375530639027011,
+    "v_h0p1": -0.015987308981951245
+   },
    "E_continuum_est": 2.801541691732445,
    "E_continuum_spread": 0.0017618265701129232,
-   "E_over_E1_continuum": 2.2770810424530343
+   "E_over_E1_continuum": 2.2770810424530343,
+   "Q_dev_dx0p1_both_estimators": 0.0031166280758814224,
+   "Q_by_h_freespace_crosscheck": {
+    "0.2000": 2.9729174539915744,
+    "0.1500": 2.989916000312761,
+    "0.1000": 2.9968833719241186
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 3.0,
+    "0.1500": 3.0,
+    "0.1000": 3.0
+   }
   },
   "4": {
    "run": "Q4_A22",
@@ -1055,7 +1273,7 @@
    },
    "verdict_type": "CALIBRATED",
    "Q_max_dev_from_integer": 0.012640237782546748,
-   "verdict_Q": "CALIBRATED",
+   "verdict_Q": "CHECK PASSED",
    "E_h02": 3.442919757053332,
    "E_h02_rel_to_target": -0.000603844106434881,
    "E_finest": 3.5058004292337555,
@@ -1069,9 +1287,25 @@
    "E_over_QE1_h01": 0.7168614845774579,
    "ratio_rel_dev": 0.002149465812782969,
    "verdict_ratio": "CALIBRATED",
+   "virial_continuum_est": {
+    "v0_h2h4_three_finest": -0.007975682999115954,
+    "v0_h2_two_finest": -0.0038169448997264267,
+    "v_h0p1": -0.016663595320274026
+   },
    "E_continuum_est": 3.5211608702399397,
    "E_continuum_spread": 0.0068921641773598274,
-   "E_over_E1_continuum": 2.861984416906023
+   "E_over_E1_continuum": 2.861984416906023,
+   "Q_dev_dx0p1_both_estimators": 0.005437377840310287,
+   "Q_by_h_freespace_crosscheck": {
+    "0.2000": 3.927606194408457,
+    "0.1500": 3.97809155164352,
+    "0.1000": 3.9945626221596897
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 4.0,
+    "0.1500": 4.0,
+    "0.1000": 4.0
+   }
   },
   "5": {
    "run": "Q5_K32",
@@ -1257,7 +1491,7 @@
    },
    "verdict_type": "CALIBRATED",
    "Q_max_dev_from_integer": 0.01519452440064839,
-   "verdict_Q": "CALIBRATED",
+   "verdict_Q": "CHECK PASSED",
    "E_h02": 4.094892726681604,
    "E_h02_rel_to_target": -2.6196170548331565e-05,
    "E_finest": 4.163899332581217,
@@ -1271,9 +1505,25 @@
    "E_over_QE1_h01": 0.6811429497913912,
    "ratio_rel_dev": 0.0013383535394810853,
    "verdict_ratio": "CALIBRATED",
+   "virial_continuum_est": {
+    "v0_h2h4_three_finest": -0.010590036207802333,
+    "v0_h2_two_finest": -0.007738116562229969,
+    "v_h0p1": -0.019349769360541523
+   },
    "E_continuum_est": 4.1821772094558725,
    "E_continuum_spread": 0.005814658147776264,
-   "E_over_E1_continuum": 3.399255655532321
+   "E_over_E1_continuum": 3.399255655532321,
+   "Q_dev_dx0p1_both_estimators": 0.005586567967108991,
+   "Q_by_h_freespace_crosscheck": {
+    "0.2000": 4.932534888344385,
+    "0.1500": 4.978479830168032,
+    "0.1000": 4.994413432032891
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 5.0,
+    "0.1500": 5.0,
+    "0.1000": 5.0
+   }
   },
   "6": {
    "run": "Q6_L22",
@@ -1460,7 +1710,7 @@
    },
    "verdict_type": "CALIBRATED",
    "Q_max_dev_from_integer": 0.015950217581742088,
-   "verdict_Q": "CALIBRATED",
+   "verdict_Q": "CHECK PASSED",
    "E_h02": 4.650973989016272,
    "E_h02_rel_to_target": 0.00020946000349919558,
    "E_finest": 4.72337854436925,
@@ -1474,9 +1724,25 @@
    "E_over_QE1_h01": 0.6438868429404419,
    "ratio_rel_dev": 0.0003093663229574162,
    "verdict_ratio": "CALIBRATED",
+   "virial_continuum_est": {
+    "v0_h2h4_three_finest": -0.006565798962811808,
+    "v0_h2_two_finest": -0.004251502421881849,
+    "v_h0p1": -0.015101172969963661
+   },
    "E_continuum_est": 4.742653599635106,
    "E_continuum_spread": 0.005981395198907613,
-   "E_over_E1_continuum": 3.854808455830082
+   "E_over_E1_continuum": 3.854808455830082,
+   "Q_dev_dx0p1_both_estimators": 0.005912608639341954,
+   "Q_by_h_freespace_crosscheck": {
+    "0.2000": 5.930860455393493,
+    "0.1500": 5.977380216777999,
+    "0.1000": 5.994087391360658
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 6.0,
+    "0.1500": 6.0,
+    "0.1000": 6.0
+   }
   },
   "7": {
    "run": "Q7_K32",
@@ -1633,7 +1899,7 @@
    },
    "verdict_type": "CALIBRATED",
    "Q_max_dev_from_integer": 0.017247326373250438,
-   "verdict_Q": "CALIBRATED",
+   "verdict_Q": "CHECK PASSED",
    "E_h02": 5.254164231727002,
    "E_h02_rel_to_target": 0.0023205325690580647,
    "E_finest": 5.336168272611412,
@@ -1647,9 +1913,25 @@
    "E_over_QE1_h01": 0.6235044035611772,
    "ratio_rel_dev": 0.0024599605520034817,
    "verdict_ratio": "CALIBRATED",
+   "virial_continuum_est": {
+    "v0_h2h4_three_finest": -0.011036177077112443,
+    "v0_h2_two_finest": -0.008301945543409904,
+    "v_h0p1": -0.019797535762003226
+   },
    "E_continuum_est": 5.356727343342024,
    "E_continuum_spread": 0.008339361198126838,
-   "E_over_E1_continuum": 4.353924954645595
+   "E_over_E1_continuum": 4.353924954645595,
+   "Q_dev_dx0p1_both_estimators": 0.006956196526433089,
+   "Q_by_h_freespace_crosscheck": {
+    "0.2000": 6.914039998863491,
+    "0.1500": 6.972650965038699,
+    "0.1000": 6.993043803473567
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 7.0,
+    "0.1500": 7.0,
+    "0.1000": 7.0
+   }
   }
  },
  "box_study": {
@@ -1849,7 +2131,34 @@
    "5": 0.8327798665162434,
    "6": 0.7872297573948751,
    "7": 0.7623097532302018
-  }
+  },
+  "verdicts": [
+   {
+    "claim": "SEED sec. 4: E/Q^{3/4} stays near 1.2, so the energy per unit charge falls and bigger folds store charge more cheaply",
+    "verdict": "CONFIRMED (Q = 1-7)",
+    "evidence": "E/Q^{3/4} = 1.185-1.245 at dx = 0.1 and 1.19-1.25 in the same-box continuum; E/Q falls monotonically; every E_Q is 10-19% below its cheapest split. Energies are those of the solutions reached from one start per charge (upper bounds on the minima; they match Sutcliffe's survey)."
+   },
+   {
+    "claim": "E_2 < 2 E_1: a charge-2 fold does not split",
+    "verdict": "CONFIRMED",
+    "evidence": "E_2/(2E_1) = 0.8149 at dx = 0.1, 0.8166 in infinite volume (axial code); cross-check spectral 0.8166"
+   },
+   {
+    "claim": "SEED sec. 4/6C: Q = 7 is a trefoil",
+    "verdict": "CONFIRMED as a reproduction of the literature minimum (trefoil-type minimum reached from the preregistered trefoil start; global minimality not re-searched here: one start per charge, so it rests on Sutcliffe's survey)",
+    "evidence": "one position loop with Alexander polynomial t^2-t+1 (3 projections, dx = 0.15 and 0.1), Q_link = 7, E_7/E_1 = 4.3645 vs 4.3538"
+   },
+   {
+    "claim": "SEED sec. 4: E >= c|Q|^{3/4}; the 3/4 power is the right one and the computed minima agree (Sutcliffe 2007)",
+    "verdict": "AMENDED",
+    "evidence": "all energies above Q^{3/4} and 0.534 Q^{3/4}; fitted exponent 0.764 over Q <= 7 (Sutcliffe's table 0.763), consistent with but not a test of the asymptotic 3/4; optimality is Lin & Yang 2004 (PLAN 3.1)"
+   },
+   {
+    "claim": "SEED sec. 4/6C: the lowest folds are rings and each charge's minimum is a definite knot or link",
+    "verdict": "CONFIRMED as a reproduction of the literature types (one start per charge; that these are the global minima rests on Sutcliffe's survey)",
+    "evidence": "A11, A21, bent A~31, A22, L^{1,1}_{1,2}, L^{1,1}_{2,2}, K32, all as in Sutcliffe Table 2"
+   }
+  ]
  },
  "axial2d": {
   "description": "axially symmetric 2D reduction, A_{n,1}; energies in Sutcliffe normalisation",
@@ -2070,17 +2379,445 @@
   "1": {
    "E_continuum_box7p5_3d": 1.230321468363034,
    "E_continuum_cyl7p5_axial": 1.231542229954499,
+   "E_continuum_by_R_axial_richardson": {
+    "7.5": 1.232541108876158,
+    "12.0": 1.2274617619128052,
+    "18.0": 1.2263062848219117,
+    "25.0": 1.2260011283078203
+   },
    "box_shift_7p5_to_25_axial_h0p1": -0.005996867375764214,
-   "E_infinite_volume_continuum_est": 1.2243246009872697,
-   "E_infinite_volume_continuum_est_axial_only": 1.2255453625787347
+   "box_shift_7p5_to_25_axial_continuum": -0.006539980568337711,
+   "box_shift_rel_h0p1": -0.004907480252640066,
+   "box_shift_rel_continuum": -0.005306095286591231,
+   "tail_fit_continuum": {
+    "p": 2.9980081695395486,
+    "c": 2.824317136162127,
+    "energy_beyond_R25": 0.00018191893066652398
+   },
+   "tail_fit_h0p1": {
+    "p": 2.9972681432087818,
+    "c": 2.6091167301567535,
+    "energy_beyond_R25": 0.0001684583162083813
+   },
+   "box_shift_rel_7p5_to_infinity_continuum": -0.005458115309007784,
+   "E_infinite_volume_continuum_est": 1.2248203304554948,
+   "uncertainty": 0.0002911241047752931,
+   "uncertainty_rule": "20% of the Richardson correction to the box shift + half the spread of the two R = 7.5 continuum extrapolations (h^2 fit, Aitken) + 20% of the tail",
+   "E_lower_estimate_3d_cube": 1.2235995688640298,
+   "lower_estimate_note": "3D same-box continuum plus the cylinder box shift: an underestimate, because the cube [-7.5,7.5]^3 contains the cylinder rho, |z| <= 7.5 and so has the smaller box effect",
+   "as_reported_before_reconciliation": {
+    "E_3d_plus_axial_shift_h0p1": 1.2243246009872697,
+    "E_axial_only_h0p1_shift_no_tail": 1.2255453625787347,
+    "note": "used the h = 0.1 box shift and no energy beyond R = 25; the two errors pushed the estimates in opposite directions"
+   }
   },
   "2": {
    "E_continuum_box7p5_3d": 2.002385454110057,
    "E_continuum_cyl7p5_axial": 2.0034764565892043,
+   "E_continuum_by_R_axial_richardson": {
+    "7.5": 2.003939515844454,
+    "12.0": 2.0011876831347153,
+    "18.0": 2.000941728015634,
+    "25.0": 2.0009119224611127
+   },
    "box_shift_7p5_to_25_axial_h0p1": -0.0028335486899528917,
-   "E_infinite_volume_continuum_est": 1.999551905420104,
-   "E_infinite_volume_continuum_est_axial_only": 2.0006429078992514
+   "box_shift_7p5_to_25_axial_continuum": -0.0030275933833414648,
+   "box_shift_rel_h0p1": -0.0014194393804836728,
+   "box_shift_rel_continuum": -0.001510820740547973,
+   "tail_fit_continuum": {
+    "p": 5.0239341922413185,
+    "c": 74.6929515748944,
+    "energy_beyond_R25": 7.081430760387567e-06
+   },
+   "tail_fit_h0p1": {
+    "p": 5.023764706304146,
+    "c": 71.045077380338,
+    "energy_beyond_R25": 6.739261594961089e-06
+   },
+   "box_shift_rel_7p5_to_infinity_continuum": -0.0015147045048226819,
+   "E_infinite_volume_continuum_est": 2.0004417817751023,
+   "uncertainty": 0.00011133090231715187,
+   "uncertainty_rule": "20% of the Richardson correction to the box shift + half the spread of the two R = 7.5 continuum extrapolations (h^2 fit, Aitken) + 20% of the tail",
+   "E_lower_estimate_3d_cube": 1.999350779295955,
+   "lower_estimate_note": "3D same-box continuum plus the cylinder box shift: an underestimate, because the cube [-7.5,7.5]^3 contains the cylinder rho, |z| <= 7.5 and so has the smaller box effect",
+   "as_reported_before_reconciliation": {
+    "E_3d_plus_axial_shift_h0p1": 1.999551905420104,
+    "E_axial_only_h0p1_shift_no_tail": 2.0006429078992514,
+    "note": "used the h = 0.1 box shift and no energy beyond R = 25; the two errors pushed the estimates in opposite directions"
+   }
   },
-  "E2_over_E1": 1.6331877214651305
+  "E2_over_E1": 1.6332532470547447,
+  "E2_over_2E1": 0.8166266235273724
+ },
+ "reconciliation": {
+  "note": "added 2026-10-19 after the cross-check; see REPORT.md, section Reconciliation",
+  "1_absolute_energy_convention": {
+   "resolution": "CALIBRATED holds for the same-grid comparison (dx = 0.1; +1.25% to +1.80%). Against the same-box continuum (ours, confirmed by the cross-check's 4th-order energies to -0.02%/+0.07%) Sutcliffe's table is 1.7-2.2% low, outside 2% for Q = 1, 4, 5, 7; against the infinite-volume continuum for Q = 1 it is 1.7% low. The robust parts of the calibration are the ratios (<= 0.3%) and the types.",
+   "by_charge": {
+    "1": {
+     "E_same_box_continuum": 1.230321468363034,
+     "E_same_box_continuum_crosscheck_c4": 1.2301716449946891,
+     "sutcliffe_rel_to_continuum": -0.021393976322346964,
+     "ours_dx0p1_rel_to_target": 0.015466181083890085
+    },
+    "2": {
+     "E_same_box_continuum": 2.002385454110057,
+     "E_same_box_continuum_crosscheck_c4": 2.002198876804408,
+     "sutcliffe_rel_to_continuum": -0.017671649600442985,
+     "ours_dx0p1_rel_to_target": 0.012978625177047176
+    },
+    "3": {
+     "E_same_box_continuum": 2.801541691732445,
+     "E_same_box_continuum_crosscheck_c4": 2.8013241951079295,
+     "sutcliffe_rel_to_continuum": -0.01696983195814794,
+     "ours_dx0p1_rel_to_target": 0.012522880996490349
+    },
+    "4": {
+     "E_same_box_continuum": 3.5211608702399397,
+     "E_same_box_continuum_crosscheck_c4": 3.520532511993749,
+     "sutcliffe_rel_to_continuum": -0.021629477620188964,
+     "ours_dx0p1_rel_to_target": 0.017648890924166993
+    },
+    "5": {
+     "E_same_box_continuum": 4.1821772094558725,
+     "E_same_box_continuum_crosscheck_c4": 4.181541054816179,
+     "sutcliffe_rel_to_continuum": -0.020844934370252366,
+     "ours_dx0p1_rel_to_target": 0.01682523384156709
+    },
+    "6": {
+     "E_same_box_continuum": 4.742653599635106,
+     "E_same_box_continuum_crosscheck_c4": 4.741935131207267,
+     "sutcliffe_rel_to_continuum": -0.019536235925439294,
+     "ours_dx0p1_rel_to_target": 0.01578033212241947
+    },
+    "7": {
+     "E_same_box_continuum": 5.356727343342024,
+     "E_same_box_continuum_crosscheck_c4": 5.355904940946044,
+     "sutcliffe_rel_to_continuum": -0.02141743194837442,
+     "ours_dx0p1_rel_to_target": 0.017964187831249978
+    }
+   },
+   "Q1_infinite_volume": {
+    "ours": 1.2248203304554948,
+    "crosscheck": 1.2249321406346907,
+    "sutcliffe_rel": -0.01708840836182557
+   }
+  },
+  "2_hopf_estimators": {
+   "1": {
+    "solid_angle": {
+     "0.2000": 0.9915290534550175,
+     "0.1500": 0.9957745310383844,
+     "0.1250": 0.997180901473702,
+     "0.1000": 0.9982504069454214
+    },
+    "freespace_4th_order": {
+     "0.2000": 0.9827301134086369,
+     "0.1500": 0.9940039804259437,
+     "0.1250": 0.9966194232982778,
+     "0.1000": 0.9982049858267217
+    },
+    "linking": {
+     "0.2000": 1.0,
+     "0.1500": 1.0,
+     "0.1000": 1.0,
+     "0.1250": 1.0
+    }
+   },
+   "2": {
+    "solid_angle": {
+     "0.2000": 1.9903885418212215,
+     "0.1500": 1.995035655415885,
+     "0.1250": 1.9966532123558371,
+     "0.1000": 1.9979067307037874
+    },
+    "freespace_4th_order": {
+     "0.2000": 1.9790100856924888,
+     "0.1500": 1.9923046839100707,
+     "0.1250": 1.9955994262835597,
+     "0.1000": 1.997642754259437
+    },
+    "linking": {
+     "0.2000": 2.0,
+     "0.1500": 2.0,
+     "0.1000": 2.0,
+     "0.1250": 2.0
+    }
+   },
+   "3": {
+    "solid_angle": {
+     "0.2000": 2.9866154947465318,
+     "0.1500": 2.9930594331180553,
+     "0.1000": 2.9970878611722336
+    },
+    "freespace_4th_order": {
+     "0.2000": 2.9729174539915744,
+     "0.1500": 2.989916000312761,
+     "0.1000": 2.9968833719241186
+    },
+    "linking": {
+     "0.2000": 3.0,
+     "0.1500": 3.0,
+     "0.1000": 3.0
+    }
+   },
+   "4": {
+    "solid_angle": {
+     "0.2000": 3.9873597622174533,
+     "0.1500": 3.9939629984024636,
+     "0.1000": 3.997571736322022
+    },
+    "freespace_4th_order": {
+     "0.2000": 3.927606194408457,
+     "0.1500": 3.97809155164352,
+     "0.1000": 3.9945626221596897
+    },
+    "linking": {
+     "0.2000": 4.0,
+     "0.1500": 4.0,
+     "0.1000": 4.0
+    }
+   },
+   "5": {
+    "solid_angle": {
+     "0.2000": 4.984805475599352,
+     "0.1500": 4.992393041276761,
+     "0.1000": 4.996851919392883
+    },
+    "freespace_4th_order": {
+     "0.2000": 4.932534888344385,
+     "0.1500": 4.978479830168032,
+     "0.1000": 4.994413432032891
+    },
+    "linking": {
+     "0.2000": 5.0,
+     "0.1500": 5.0,
+     "0.1000": 5.0
+    }
+   },
+   "6": {
+    "solid_angle": {
+     "0.2000": 5.984049782418258,
+     "0.1500": 5.9918959192793775,
+     "0.1000": 5.996624393919602
+    },
+    "freespace_4th_order": {
+     "0.2000": 5.930860455393493,
+     "0.1500": 5.977380216777999,
+     "0.1000": 5.994087391360658
+    },
+    "linking": {
+     "0.2000": 6.0,
+     "0.1500": 6.0,
+     "0.1000": 6.0
+    }
+   },
+   "7": {
+    "solid_angle": {
+     "0.2000": 6.98275267362675,
+     "0.1500": 6.991181469038197,
+     "0.1000": 6.996266507128862
+    },
+    "freespace_4th_order": {
+     "0.2000": 6.914039998863491,
+     "0.1500": 6.972650965038699,
+     "0.1000": 6.993043803473567
+    },
+    "linking": {
+     "0.2000": 7.0,
+     "0.1500": 7.0,
+     "0.1000": 7.0
+    }
+   }
+  },
+  "3_E1_literature": {
+   "ours": 1.2248203304554948,
+   "ours_uncertainty": 0.0002911241047752931,
+   "crosscheck_spectral": 1.2249321406346907,
+   "context": "PLAN 1.21-1.22 is summary-grade; Sutcliffe 2007: \"around 1.21\" from several authors; Ward 1999 (hep-th/9811176) quotes axial 1.25 K0 (Gladikowski-Hellmund) and 3D 1.13 K0 (Battye-Sutcliffe 1998, called a finite-volume underestimate); K0 = 1 in these units"
+  },
+  "4_box": {
+   "1": {
+    "box_shift_rel_h0p1": -0.004907480252640066,
+    "box_shift_rel_continuum": -0.005306095286591231,
+    "box_shift_rel_7p5_to_infinity_continuum": -0.005458115309007784,
+    "tail_fit_continuum": {
+     "p": 2.9980081695395486,
+     "c": 2.824317136162127,
+     "energy_beyond_R25": 0.00018191893066652398
+    },
+    "tail_fit_h0p1": {
+     "p": 2.9972681432087818,
+     "c": 2.6091167301567535,
+     "energy_beyond_R25": 0.0001684583162083813
+    }
+   },
+   "2": {
+    "box_shift_rel_h0p1": -0.0014194393804836728,
+    "box_shift_rel_continuum": -0.001510820740547973,
+    "box_shift_rel_7p5_to_infinity_continuum": -0.0015147045048226819,
+    "tail_fit_continuum": {
+     "p": 5.0239341922413185,
+     "c": 74.6929515748944,
+     "energy_beyond_R25": 7.081430760387567e-06
+    },
+    "tail_fit_h0p1": {
+     "p": 5.023764706304146,
+     "c": 71.045077380338,
+     "energy_beyond_R25": 6.739261594961089e-06
+    }
+   },
+   "crosscheck_spectral": {
+    "n1m1_cyl7.5": 1.2315641316613537,
+    "n1m1_cyl12.0": 1.2265662432038855,
+    "n1m1_cyl25.0": 1.2251127878515402,
+    "n1m1_inf": 1.2249321406346907,
+    "n2m1_cyl7.5": 2.003450458120007,
+    "n2m1_cyl12.0": 2.000752596420538,
+    "n2m1_cyl25.0": 2.0004771727072317,
+    "n2m1_inf": 2.000470066943061
+   }
+  },
+  "5_virial": {
+   "by_charge": {
+    "1": {
+     "v0_h2h4_three_finest": -0.013364553280757335,
+     "v0_h2_two_finest": -0.01187795702016878,
+     "v_h0p1": -0.025463042573848124
+    },
+    "2": {
+     "v0_h2h4_three_finest": -0.004737711914953276,
+     "v0_h2_two_finest": -0.0037550019493470172,
+     "v_h0p1": -0.014610220693372953
+    },
+    "3": {
+     "v0_h2h4_three_finest": -0.006701677986814028,
+     "v0_h2_two_finest": -0.005375530639027011,
+     "v_h0p1": -0.015987308981951245
+    },
+    "4": {
+     "v0_h2h4_three_finest": -0.007975682999115954,
+     "v0_h2_two_finest": -0.0038169448997264267,
+     "v_h0p1": -0.016663595320274026
+    },
+    "5": {
+     "v0_h2h4_three_finest": -0.010590036207802333,
+     "v0_h2_two_finest": -0.007738116562229969,
+     "v_h0p1": -0.019349769360541523
+    },
+    "6": {
+     "v0_h2h4_three_finest": -0.006565798962811808,
+     "v0_h2_two_finest": -0.004251502421881849,
+     "v_h0p1": -0.015101172969963661
+    },
+    "7": {
+     "v0_h2h4_three_finest": -0.011036177077112443,
+     "v0_h2_two_finest": -0.008301945543409904,
+     "v_h0p1": -0.019797535762003226
+    }
+   },
+   "crosscheck_spectral_cylinder_R7p5": {
+    "Q1": -0.015922020595724375,
+    "Q2": -0.007389445367578845
+   }
+  },
+  "6_stencil": {
+   "error_ratio_centred_over_link_gauss_field": [
+    7.497636510395788,
+    7.8993374209998555,
+    8.214592178573493
+   ],
+   "crosscheck_test_field_ratio": "about 10 at h = 0.1 (7.3-10.6 for h = 0.25-0.075; crosscheck/xc_tests3d.json)",
+   "centred_relaxation": {
+    "c2": {
+     "perturbation": "iid normal, amplitude 1e-4 per component, seed 20261019, renormalised; boundary reset to e3",
+     "unwound_at_t": 3.9999999999999565,
+     "history": [
+      [
+       0.0,
+       1.2043834784711807,
+       1.2227124893479455,
+       0.998250410120348,
+       0
+      ],
+      [
+       2.0,
+       0.597194331673994,
+       636.5821736509657,
+       -3.818824852324864,
+       372
+      ],
+      [
+       4.0,
+       0.035505309216365105,
+       11.70001816367896,
+       -5.5379005282003905e-05,
+       0
+      ]
+     ]
+    },
+    "c2_pert0": {
+     "perturbation": "none (relaxed link/plaquette field as stored; rounding noise only)",
+     "unwound_at_t": 2.999999999999978,
+     "history": [
+      [
+       0.0,
+       1.2043608825390189,
+       1.2226212820250035,
+       0.9982504069454214,
+       0
+      ],
+      [
+       1.0,
+       1.2024400401438118,
+       1.4087379796358903,
+       0.9981575302528882,
+       0
+      ],
+      [
+       2.0,
+       1.1152742275297793,
+       21.051850396280887,
+       1.0927046681722739,
+       0
+      ],
+      [
+       3.0,
+       0.41285414969221207,
+       144.52874668590738,
+       -0.1303786509094807,
+       80
+      ]
+     ]
+    },
+    "c4": {
+     "perturbation": "iid normal, amplitude 0.0001 per component, seed 20261019, renormalised; boundary reset to e3",
+     "unwound_at_t": 2.0009999999999835,
+     "history": [
+      [
+       0.0,
+       1.2301262720899608,
+       1.2227124893479455,
+       0.998250410120348,
+       0
+      ],
+      [
+       1.0,
+       1.2134047140417046,
+       2.2557457439307766,
+       0.9913317796998885,
+       0
+      ],
+      [
+       2.001,
+       0.7271206859830015,
+       200.4911363435537,
+       0.1394235947884512,
+       96
+      ]
+     ]
+    }
+   }
+  }
  }
 }

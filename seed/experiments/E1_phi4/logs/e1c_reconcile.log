@@ -71,3 +71,48 @@ y4_om0.990_v0.400_dx0.025_dt0.01: pair_at_T=True since=630.0 first=630.0 survive
 y4_om0.990_v0.420_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=22.481691 E_T=22.432669 wall=94s  [774s]
 y4_om0.990_v0.440_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=19.223011 E_T=19.182192 wall=95s  [870s]
 y4_om0.990_v0.450_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=17.002396 E_T=16.968957 wall=95s  [870s]
+59 done, 21 to run
+y4_om0.990_v0.410_dx0.0125_dt0.005: pair_at_T=True since=590.0 first=590.0 survives1.5T=True E0=23.169238 E_T=23.092534 wall=432s  [432s]
+y4_om0.990_v0.430_dx0.0125_dt0.005: pair_at_T=True since=870.0 first=870.0 survives1.5T=True E0=21.115509 E_T=21.065340 wall=433s  [433s]
+y4_om0.990_v0.400_dx0.05_dt0.01: pair_at_T=True since=640.0 first=640.0 survives1.5T=True E0=23.106681 E_T=23.036160 wall=44s  [476s]
+y4_om0.990_v0.400_dx0.025_dt0.005: pair_at_T=True since=610.0 first=610.0 survives1.5T=True E0=23.106681 E_T=23.036169 wall=185s  [618s]
+y4_om0.990_v0.420_dx0.025_dt0.005: pair_at_T=False since=None first=None survives1.5T=False E0=22.481691 E_T=22.432669 wall=186s  [662s]
+y4_om0.990_v0.405_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=23.232427 E_T=23.170088 wall=22s  [662s]
+y4_om0.990_v0.405_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=23.232427 E_T=23.170084 wall=94s  [733s]
+y4_om0.990_v0.415_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=22.916961 E_T=22.857119 wall=22s  [733s]
+y4_om0.990_v0.415_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=22.916961 E_T=22.857113 wall=95s  [778s]
+y4_om0.990_v0.425_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=21.875460 E_T=21.830436 wall=22s  [778s]
+y4_om0.990_v0.425_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=21.875460 E_T=21.830430 wall=98s  [853s]
+y4_om0.990_v0.435_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=20.223251 E_T=20.179942 wall=23s  [853s]
+/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/e1c_dsv.py:64: RuntimeWarning: overflow encountered in square
+  du = eta * omega * g * (np.cos(omega * T) * ch + eta * vn * np.sin(omega * T) * sh) / ch ** 2
+y4_om0.990_v0.435_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=20.223251 E_T=20.179939 wall=98s  [900s]
+y4_om0.910_v0.800_dx0.05_dt0.02: pair_at_T=True since=60.0 first=60.0 survives1.5T=False E0=19.548127 E_T=2.067814 wall=23s  [900s]
+/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/e1c_dsv.py:64: RuntimeWarning: overflow encountered in square
+  du = eta * omega * g * (np.cos(omega * T) * ch + eta * vn * np.sin(omega * T) * sh) / ch ** 2
+y4_om0.910_v0.800_dx0.025_dt0.01: pair_at_T=True since=60.0 first=60.0 survives1.5T=False E0=19.548137 E_T=2.067736 wall=99s  [976s]
+y4_om0.910_v0.810_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=19.441419 E_T=5.368361 wall=23s  [976s]
+y4_om0.910_v0.810_dx0.025_dt0.01: pair_at_T=True since=140.0 first=140.0 survives1.5T=True E0=19.441430 E_T=5.340422 wall=101s  [1024s]
+y4_om0.910_v0.820_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=19.017498 E_T=4.808945 wall=24s  [1024s]
+y4_om0.910_v0.820_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=19.017511 E_T=4.809869 wall=102s  [1102s]
+y4_om0.910_v0.830_dx0.05_dt0.02: pair_at_T=True since=80.0 first=80.0 survives1.5T=True E0=18.297773 E_T=4.406806 wall=26s  [1102s]
+y4_om0.910_v0.830_dx0.025_dt0.01: pair_at_T=False since=None first=80.0 survives1.5T=False E0=18.297787 E_T=4.213447 wall=99s  [1149s]
+all done
+80 done, 16 to run
+y4_om0.990_v0.426_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=21.735134 E_T=21.689902 wall=23s  [23s]
+y4_om0.990_v0.427_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=21.588807 E_T=21.538476 wall=23s  [23s]
+y4_om0.990_v0.428_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=21.436645 E_T=21.391864 wall=23s  [47s]
+y4_om0.990_v0.429_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=21.278819 E_T=21.230021 wall=23s  [47s]
+y4_om0.990_v0.431_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=20.946897 E_T=20.897009 wall=23s  [69s]
+y4_om0.990_v0.432_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=20.773171 E_T=20.727215 wall=24s  [70s]
+y4_om0.990_v0.433_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=20.594524 E_T=20.551016 wall=23s  [92s]
+y4_om0.990_v0.434_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=20.411150 E_T=20.365448 wall=23s  [93s]
+y4_om0.990_v0.406_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=23.234999 E_T=23.172208 wall=23s  [115s]
+y4_om0.990_v0.407_dx0.05_dt0.02: pair_at_T=True since=640.0 first=640.0 survives1.5T=True E0=23.229973 E_T=23.168136 wall=24s  [117s]
+y4_om0.990_v0.408_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=23.217336 E_T=23.155096 wall=24s  [139s]
+y4_om0.990_v0.409_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=23.197089 E_T=23.135274 wall=23s  [140s]
+y4_om0.990_v0.411_dx0.05_dt0.02: pair_at_T=True since=500.0 first=500.0 survives1.5T=True E0=23.133804 E_T=22.884389 wall=23s  [162s]
+y4_om0.990_v0.412_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=23.090815 E_T=23.030832 wall=23s  [163s]
+y4_om0.990_v0.413_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=23.040310 E_T=22.981323 wall=24s  [186s]
+y4_om0.990_v0.414_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=22.982339 E_T=22.922663 wall=24s  [187s]
+all done

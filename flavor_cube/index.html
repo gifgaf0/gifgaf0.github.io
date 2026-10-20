@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flavor Cube</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="The six neighbours of a vertex of the seven-vertex torus as the faces of a cube: Fano symmetries, three fermion-mode pairings, and measured quark and lepton mixing as turns of the cube.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Unbounded:wght@500;700&display=swap">
+<style>
+/* Layout: an instrument bench. A square 3D stage beside a tabbed control column; reading notes below in two columns. */
+:root {
+  color-scheme: dark;
+  --bg: #08080f;
+  --surface: #11121d;
+  --surface-2: #191b2a;
+  --line: #2a2d44;
+  --fg: #e4e5f3;
+  --muted: #9a9dba;
+  --accent: #7fdcff;
+  --accent-ink: #04202b;
+  --stage: #121427;
+  --stage-2: #06070d;
+  --good: #5fd39a;
+  --warn: #f2c75c;
+  --bad: #ff7b7b;
+  /* Sticker colors: Furey's three colors are the three axes; QR faces saturated, QNR faces pale. Same in both themes. */
+  --c1: #e5484d; --c1p: #ffc4c6;
+  --c2: #2f9e64; --c2p: #b7f0cf;
+  --c3: #3e63dd; --c3p: #c2d3ff;
+  --j3: #ffcf5a; --j5: #c58cff; --j6: #2ed3b7;
+  --label-bg: rgba(8, 9, 16, 0.84);
+  --label-fg: #f1f2fa;
+  --f-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --radius: 12px;
+  /* the cube's black plastic, the same in both themes */
+  --plastic: #101114; --plastic-cell: #2a2c33; --plastic-ink: #b9bccd; --plastic-pill: rgba(255, 255, 255, 0.74); --plastic-dark: #0d0e12;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --bg: #f2f3f8; --surface: #ffffff; --surface-2: #e9ebf4; --line: #d3d6e6;
+    --fg: #14162a; --muted: #565a78; --accent: #0a6d94; --accent-ink: #ffffff;
+    --stage: #e9ebf5; --stage-2: #d2d6e6;
+    --good: #17804e; --warn: #8a6000; --bad: #b83232;
+    --j3: #c27c0e; --j5: #7c3aed; --j6: #0e8f7b;
+    --label-bg: rgba(255, 255, 255, 0.92); --label-fg: #14162a;
+  }
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f2f3f8; --surface: #ffffff; --surface-2: #e9ebf4; --line: #d3d6e6;
+  --fg: #14162a; --muted: #565a78; --accent: #0a6d94; --accent-ink: #ffffff;
+  --stage: #e9ebf5; --stage-2: #d2d6e6;
+  --good: #17804e; --warn: #8a6000; --bad: #b83232;
+  --j3: #c27c0e; --j5: #7c3aed; --j6: #0e8f7b;
+  --label-bg: rgba(255, 255, 255, 0.92); --label-fg: #14162a;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--fg); }
+body {
+  margin: 0;
+  font-family: var(--f-body);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+[hidden] { display: none !important; }
+img, svg, canvas { max-width: 100%; }
+a { color: var(--accent); }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+sub, sup { line-height: 0; }
+
+.wrap {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- header ---------- */
+.top { padding-block: 28px 18px; display: grid; gap: 10px; }
+.eyebrow {
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+  display: flex; flex-wrap: wrap; gap: 6px 14px;
+}
+.eyebrow .pill { border: 1px solid var(--line); border-radius: 999px; padding: 1px 10px; }
+h1 {
+  font-family: var(--f-display); font-weight: 700; font-size: clamp(30px, 4.6vw, 52px); line-height: 1.02;
+  letter-spacing: -0.01em; margin: 0; text-wrap: balance;
+}
+h1 .sq { display: inline-grid; grid-template-columns: repeat(3, 0.26em); gap: 0.035em; vertical-align: 0.06em; margin-left: 0.18em; }
+h1 .sq i { width: 0.26em; height: 0.26em; border-radius: 0.05em; display: block; }
+.lede { margin: 0; max-width: 72ch; color: var(--muted); font-size: 16px; }
+.lede strong { color: var(--fg); font-weight: 600; }
+
+/* ---------- bench ---------- */
+.bench { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 20px; align-items: start; padding-bottom: 28px; }
+@media (max-width: 920px) { .bench { grid-template-columns: minmax(0, 1fr); } }
+
+.stage-col { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); display: grid; gap: 10px; }
+@media (max-width: 920px) { .stage-col { position: static; } }
+.stage {
+  position: relative; width: 100%; aspect-ratio: 1 / 1; max-width: 100%;
+  border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 35%, var(--stage) 0%, var(--stage-2) 100%);
+}
+@media (max-width: 920px) { .stage { max-height: 78vh; } }
+.stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+.stage canvas:active { cursor: grabbing; }
+.stage-bar { position: absolute; left: 10px; right: 10px; top: 10px; display: flex; flex-wrap: wrap; gap: 6px; justify-content: space-between; pointer-events: none; }
+.stage-bar > div { display: flex; flex-wrap: wrap; gap: 6px; pointer-events: auto; }
+.chipbtn {
+  border: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 82%, transparent); color: var(--fg);
+  border-radius: 999px; padding: 4px 11px; font-size: 12.5px; cursor: pointer; line-height: 1.3;
+  backdrop-filter: blur(6px);
+}
+.chipbtn:hover { border-color: var(--accent); }
+.chipbtn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.stage-hint { position: absolute; right: 12px; bottom: 9px; font-size: 12px; color: var(--muted); pointer-events: none; }
+.stage-caption { margin: 0; font-size: 13px; color: var(--muted); min-height: 1.5em; }
+.stage-caption b { color: var(--fg); font-weight: 600; }
+.stage-fallback { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 14px; height: 14px; border-radius: 4px; display: inline-block; border: 1px solid rgba(0,0,0,.25); }
+
+/* ---------- panel ---------- */
+.panel { border: 1px solid var(--line); border-radius: 16px; background: var(--surface); min-width: 0; }
+.tabs { display: flex; gap: 4px; padding: 6px; border-bottom: 1px solid var(--line); }
+.tab {
+  flex: 1 1 0; border: 0; background: transparent; border-radius: 10px; padding: 10px 8px; cursor: pointer;
+  font-family: var(--f-display); font-weight: 500; font-size: 14px; letter-spacing: 0.01em; color: var(--muted);
+}
+.tab:hover { color: var(--fg); background: var(--surface-2); }
+.tab[aria-selected="true"] { color: var(--fg); background: var(--surface-2); box-shadow: inset 0 -2px 0 var(--accent); }
+.tabpanel { padding: 16px; display: grid; gap: 16px; min-width: 0; }
+.tabpanel h3 { margin: 0; font-size: 12px; font-family: var(--f-mono); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; padding: 3px; gap: 3px; background: var(--surface-2); flex-wrap: wrap; }
+.seg button {
+  border: 0; background: transparent; border-radius: 7px; padding: 6px 12px; cursor: pointer; font-size: 13.5px; color: var(--muted);
+}
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--fg); box-shadow: 0 0 0 1px var(--line); }
+.btn {
+  border: 1px solid var(--line); background: var(--surface-2); border-radius: 9px; padding: 7px 12px; cursor: pointer; font-size: 13.5px;
+}
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+.btn.warnbtn { border-color: color-mix(in srgb, var(--warn) 55%, var(--line)); }
+.btn:disabled { opacity: .5; cursor: default; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+/* presets */
+.presets { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
+.preset {
+  text-align: left; border: 1px solid var(--line); background: var(--surface-2); border-radius: 10px; padding: 8px 10px; cursor: pointer;
+  display: grid; gap: 2px; min-width: 0;
+}
+.preset:hover { border-color: var(--accent); }
+.preset[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.preset b { font-weight: 600; font-size: 13.5px; line-height: 1.25; }
+.preset span { font-size: 12px; color: var(--muted); font-family: var(--f-mono); }
+.note-card { border-left: 3px solid var(--accent); padding: 2px 0 2px 12px; font-size: 13.5px; color: var(--muted); }
+.note-card b { color: var(--fg); font-weight: 600; }
+
+/* sliders */
+.sliders { display: grid; gap: 10px; }
+.slider { display: grid; grid-template-columns: 54px minmax(0, 1fr) 88px; gap: 10px; align-items: center; }
+.slider label { font-family: var(--f-mono); font-size: 14px; }
+.slider input[type=number] {
+  width: 100%; background: var(--surface-2); border: 1px solid var(--line); border-radius: 7px; padding: 4px 6px;
+  font-family: var(--f-mono); font-size: 13px; text-align: right;
+}
+input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; background: transparent; height: 22px; }
+input[type=range]::-webkit-slider-runnable-track { height: 4px; background: var(--line); border-radius: 2px; }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); margin-top: -6px; border: 2px solid var(--surface); }
+input[type=range]::-moz-range-track { height: 4px; background: var(--line); border-radius: 2px; }
+input[type=range]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 2px solid var(--surface); }
+
+/* matrix face */
+.mixgrid-wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: start; }
+@media (max-width: 520px) { .mixgrid-wrap { grid-template-columns: minmax(0, 1fr); } }
+.face {
+  display: grid; grid-template-columns: 22px repeat(3, minmax(58px, 72px)); grid-template-rows: 20px repeat(3, minmax(58px, 72px));
+  gap: 5px; padding: 8px; background: var(--plastic); border-radius: 12px; width: max-content; max-width: 100%;
+}
+.face .hd { font-family: var(--f-mono); font-size: 12.5px; color: var(--plastic-ink); display: grid; place-items: center; }
+.face .cell {
+  border-radius: 8px; position: relative; display: grid; place-items: center; overflow: hidden;
+  font-family: var(--f-mono); font-size: 12.5px; font-variant-numeric: tabular-nums; color: var(--plastic-dark); font-weight: 500;
+  background: var(--plastic-cell);
+}
+.face .cell .fill { position: absolute; inset: 0; opacity: 0.0; }
+.face .cell .v { position: relative; padding: 0 3px; border-radius: 4px; background: var(--plastic-pill); line-height: 1.35; }
+.face .cell.dep::after { content: ""; position: absolute; right: 5px; top: 5px; width: 6px; height: 6px; border-radius: 50%; background: var(--plastic-pill); opacity: .9; }
+.fitcard { display: grid; gap: 8px; min-width: 0; }
+.chi { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.chi .num { font-family: var(--f-display); font-weight: 700; font-size: 28px; font-variant-numeric: tabular-nums; line-height: 1; }
+.status { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 2px 10px; font-size: 12.5px; font-weight: 600; border: 1px solid currentColor; }
+.status.good { color: var(--good); } .status.bad { color: var(--bad); } .status.warn { color: var(--warn); }
+.pulls { display: grid; gap: 4px; }
+.pull { display: grid; grid-template-columns: 34px minmax(0, 1fr) 62px; gap: 8px; align-items: center; font-size: 12.5px; }
+.pull .nm { font-family: var(--f-mono); }
+.pull .bar { position: relative; height: 10px; background: var(--surface-2); border-radius: 5px; overflow: hidden; }
+.pull .bar::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--muted); opacity: .6; }
+.pull .bar i { position: absolute; top: 1px; bottom: 1px; border-radius: 4px; }
+.pull .pv { font-family: var(--f-mono); text-align: right; font-variant-numeric: tabular-nums; }
+.obs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 14px; font-size: 12.5px; }
+.obs div { display: flex; justify-content: space-between; gap: 6px; border-bottom: 1px dashed var(--line); padding: 2px 0; }
+
+/* vertex tab */
+.facechips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+@media (max-width: 420px) { .facechips { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.facechip { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 2px 8px; align-items: center; padding: 6px 8px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface-2); }
+.facechip b { font-family: var(--f-mono); font-weight: 500; }
+.facechip span { grid-column: 2; font-size: 11.5px; color: var(--muted); line-height: 1.3; }
+.ptable { width: 100%; border-collapse: collapse; font-size: 13px; }
+.ptable th, .ptable td { text-align: left; padding: 5px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.ptable th { font-weight: 500; color: var(--muted); width: 42%; }
+.tablewrap { overflow-x: auto; }
+.inset { display: grid; gap: 8px; }
+.inset svg { width: 100%; max-width: 330px; height: auto; justify-self: center; display: block; }
+.inset .cap { font-size: 12.5px; color: var(--muted); }
+.toggles { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13.5px; }
+.toggles label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.moves { display: grid; gap: 10px; }
+.movegroup { display: grid; gap: 5px; }
+.movegroup .gh { font-size: 12px; color: var(--muted); }
+.movegroup .mg { display: flex; flex-wrap: wrap; gap: 5px; }
+.mbtn { border: 1px solid var(--line); background: var(--surface-2); border-radius: 8px; padding: 4px 8px; cursor: pointer; font-family: var(--f-mono); font-size: 12px; }
+.mbtn:hover { border-color: var(--accent); }
+.mbtn.torus { border-color: color-mix(in srgb, var(--j6) 60%, var(--line)); }
+.readout { background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 9px 11px; font-size: 13px; display: grid; gap: 3px; min-width: 0; overflow-wrap: anywhere; }
+.readout .mono { font-size: 12.5px; }
+
+/* puzzle tab */
+.pad { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+@media (max-width: 460px) { .pad { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.padcol { display: grid; gap: 5px; }
+.padhd { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12.5px; font-family: var(--f-mono); }
+.pbtn { border: 1px solid var(--line); background: var(--surface-2); border-radius: 8px; padding: 6px 4px; cursor: pointer; font-family: var(--f-mono); font-size: 13px; }
+.pbtn:hover { border-color: var(--accent); }
+.twists { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 4px; }
+.twists div { text-align: center; border: 1px solid var(--line); border-radius: 7px; padding: 4px 0; font-family: var(--f-mono); font-size: 12px; background: var(--surface-2); }
+.twists div.on { border-color: var(--warn); color: var(--warn); }
+.twists div small { display: block; font-size: 10px; color: var(--muted); }
+.kbd { font-family: var(--f-mono); font-size: 12px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 5px; padding: 0 5px; }
+.message { font-size: 13.5px; padding: 9px 11px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface-2); }
+.message.warn { border-color: color-mix(in srgb, var(--warn) 60%, var(--line)); }
+.message.good { border-color: color-mix(in srgb, var(--good) 60%, var(--line)); }
+
+/* ---------- notes ---------- */
+.notes { border-top: 1px solid var(--line); padding-block: 26px 40px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 40px; }
+@media (max-width: 860px) { .notes { grid-template-columns: minmax(0, 1fr); } }
+.notes section { min-width: 0; display: grid; gap: 10px; align-content: start; }
+.notes h2 { font-family: var(--f-display); font-weight: 500; font-size: 19px; margin: 0; text-wrap: balance; letter-spacing: 0; }
+.notes p, .notes ul { margin: 0; max-width: 68ch; }
+.notes ul { padding-left: 1.15em; display: grid; gap: 5px; }
+.notes code, .tabpanel code { font-family: var(--f-mono); font-size: 0.9em; background: var(--surface-2); border-radius: 4px; padding: 0 4px; overflow-wrap: anywhere; }
+.verdict { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: 0.04em; border: 1px solid currentColor; border-radius: 5px; padding: 0 5px; white-space: nowrap; }
+.verdict.ok { color: var(--good); } .verdict.no { color: var(--bad); } .verdict.an { color: var(--warn); }
+.full { grid-column: 1 / -1; }
+footer { border-top: 1px solid var(--line); padding-block: 18px 30px; font-size: 13px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow"><span>Exploration</span><span class="pill">mathematics only</span><span>October 2026</span></div>
+    <h1>Flavor Cube<span class="sq" aria-hidden="true"><i style="background:var(--c1)"></i><i style="background:var(--c2)"></i><i style="background:var(--c3)"></i><i style="background:var(--c1p)"></i><i style="background:var(--c2p)"></i><i style="background:var(--c3p)"></i><i style="background:var(--c3)"></i><i style="background:var(--c1)"></i><i style="background:var(--c2)"></i></span></h1>
+    <p class="lede">At a vertex v<sub>0</sub> of the seven-vertex torus, the six neighbours e<sub>1</sub>…e<sub>6</sub> sit on the faces of a cube, and the 24 Fano symmetries that fix v<sub>0</sub> move them the way the cube's tetrahedral group moves its faces. <strong>Turn the cube by the three mixing angles</strong> to see the measured quark and lepton mixing, switch to <strong>Vertex</strong> for the geometry, or scramble it in <strong>Puzzle</strong>.</p>
+  </header>
+
+  <main class="bench">
+    <div class="stage-col">
+      <div class="stage" id="stage">
+        <canvas id="cube" tabindex="0" aria-label="3D cube. Drag to orbit, scroll or pinch to zoom, arrow keys to turn the view."></canvas>
+        <div class="stage-fallback" id="fallback" hidden></div>
+        <div class="stage-bar">
+          <div>
+            <button class="chipbtn" id="vReset" type="button">Reset view</button>
+            <button class="chipbtn" id="vCorner" type="button" title="Look straight down the body diagonal through the QR corner">Corner view</button>
+          </div>
+          <div>
+            <button class="chipbtn" id="vSee" type="button" aria-pressed="false">See-through</button>
+          </div>
+        </div>
+        <div class="stage-hint" id="capR">Drag to orbit · scroll or pinch to zoom</div>
+      </div>
+      <p class="stage-caption" id="capL" aria-live="polite"></p>
+      <div class="legend" id="legend" aria-label="Face colors">
+        <span><i class="sw" style="background:var(--c1)"></i><span>e<sub>1</sub></span></span>
+        <span><i class="sw" style="background:var(--c1p)"></i><span>e<sub>3</sub></span></span>
+        <span><i class="sw" style="background:var(--c2)"></i><span>e<sub>2</sub></span></span>
+        <span><i class="sw" style="background:var(--c2p)"></i><span>e<sub>6</sub></span></span>
+        <span><i class="sw" style="background:var(--c3)"></i><span>e<sub>4</sub></span></span>
+        <span><i class="sw" style="background:var(--c3p)"></i><span>e<sub>5</sub></span></span>
+        <span class="small">Saturated: QR {1,2,4}. Pale: QNR {3,5,6}. One hue per axis.</span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="tabs" role="tablist" aria-label="Cube modes">
+        <button class="tab" role="tab" id="tab-mixing" aria-controls="panel-mixing" aria-selected="true" type="button">Mixing</button>
+        <button class="tab" role="tab" id="tab-vertex" aria-controls="panel-vertex" aria-selected="false" type="button" tabindex="-1">Vertex</button>
+        <button class="tab" role="tab" id="tab-puzzle" aria-controls="panel-puzzle" aria-selected="false" type="button" tabindex="-1">Puzzle</button>
+      </div>
+
+      <!-- ===================== MIXING ===================== -->
+      <div class="tabpanel" role="tabpanel" id="panel-mixing" aria-labelledby="tab-mixing">
+        <div class="row" style="justify-content:space-between">
+          <div class="seg" role="group" aria-label="Sector">
+            <button type="button" id="secL" aria-pressed="true">Leptons · PMNS</button>
+            <button type="button" id="secQ" aria-pressed="false">Quarks · CKM</button>
+          </div>
+          <button class="btn" id="playTurns" type="button" title="Start from the solved cube and apply the three turns in order">▶ Play the three turns</button>
+        </div>
+        <div>
+          <h3 style="margin-bottom:8px">Presets</h3>
+          <div class="presets" id="presets"></div>
+        </div>
+        <div class="note-card" id="presetNote"></div>
+        <div class="sliders">
+          <div class="slider"><label for="r12">θ<sub>12</sub></label><input type="range" id="r12" min="0" max="90" step="0.01"><input type="number" id="n12" min="0" max="90" step="0.001" aria-label="theta 12 in degrees"></div>
+          <div class="slider"><label for="r23">θ<sub>23</sub></label><input type="range" id="r23" min="0" max="90" step="0.01"><input type="number" id="n23" min="0" max="90" step="0.001" aria-label="theta 23 in degrees"></div>
+          <div class="slider"><label for="r13">θ<sub>13</sub></label><input type="range" id="r13" min="0" max="90" step="0.01"><input type="number" id="n13" min="0" max="90" step="0.001" aria-label="theta 13 in degrees"></div>
+          <div class="slider"><label for="rd">δ</label><input type="range" id="rd" min="0" max="360" step="0.1"><input type="number" id="nd" min="0" max="360" step="0.1" aria-label="delta in degrees"></div>
+        </div>
+        <div class="mixgrid-wrap">
+          <div>
+            <div class="face" id="face" aria-label="Squared moduli of the mixing matrix"></div>
+          </div>
+          <div class="fitcard">
+            <div class="chi"><span class="num mono" id="chi">–</span><span class="muted small">χ² against <span id="dataName">NuFIT 6.0</span></span></div>
+            <div><span class="status" id="status">–</span></div>
+            <div class="pulls" id="pulls"></div>
+            <div class="small muted" id="pnote"></div>
+          </div>
+        </div>
+        <div class="obs" id="obs"></div>
+        <p class="small muted" style="margin:0" id="mixNote">Each cell is |U<sub>ij</sub>|². For a real matrix it is the squared cosine between fixed axis i and the cube's axis j. A turn cannot show a complex phase, so the cube takes δ at the nearer of 0° and 180°; the grid uses the full δ. The dotted cells are the four that depend on δ.</p>
+      </div>
+
+      <!-- ===================== VERTEX ===================== -->
+      <div class="tabpanel" role="tabpanel" id="panel-vertex" aria-labelledby="tab-vertex" hidden>
+        <div>
+          <h3 style="margin-bottom:8px">Faces = neighbours of v<sub>0</sub></h3>
+          <div class="facechips" id="facechips"></div>
+        </div>
+        <div>
+          <h3 style="margin-bottom:8px">Fermion-mode pairing</h3>
+          <div class="seg" role="group" aria-label="Pairing">
+            <button type="button" data-pair="J3" aria-pressed="true">J<sub>3</sub> · up-triangles</button>
+            <button type="button" data-pair="J5" aria-pressed="false">J<sub>5</sub> · down</button>
+            <button type="button" data-pair="J6" aria-pressed="false">J<sub>6</sub> · cycles</button>
+            <button type="button" data-pair="none" aria-pressed="false">none</button>
+          </div>
+        </div>
+        <div class="tablewrap"><table class="ptable" id="ptable"></table></div>
+        <div class="toggles">
+          <label><input type="checkbox" id="tFano"> Fano<sup>+</sup> lines on the cube</label>
+          <label><input type="checkbox" id="tLabels" checked> Face labels</label>
+        </div>
+        <div class="inset">
+          <div class="seg" role="group" aria-label="Flat picture">
+            <button type="button" data-inset="torus" aria-pressed="true">Torus link</button>
+            <button type="button" data-inset="szilassi" aria-pressed="false">Szilassi face</button>
+            <button type="button" data-inset="fano" aria-pressed="false">Fano<sup>+</sup> plane</button>
+          </div>
+          <div id="insetSvg"></div>
+          <div class="cap" id="insetCap"></div>
+        </div>
+        <div class="moves">
+          <div class="row" style="justify-content:space-between"><h3>The 24 Fano moves</h3><button class="btn" id="fanoReset" type="button">Undo all</button></div>
+          <div class="readout" id="fanoReadout"></div>
+          <div id="moveGroups" class="moves"></div>
+        </div>
+      </div>
+
+      <!-- ===================== PUZZLE ===================== -->
+      <div class="tabpanel" role="tabpanel" id="panel-puzzle" aria-labelledby="tab-puzzle" hidden>
+        <div class="row">
+          <button class="btn primary" id="pScramble" type="button">Scramble</button>
+          <button class="btn" id="pUndo" type="button">Undo</button>
+          <button class="btn" id="pSolve" type="button">Solve</button>
+          <button class="btn" id="pReset" type="button">Reset</button>
+          <span class="muted small mono" id="pCount">0 moves</span>
+        </div>
+        <div>
+          <h3 style="margin-bottom:8px">Turn a face</h3>
+          <div class="pad" id="pad"></div>
+          <p class="small muted" style="margin:8px 0 0">Keys: <span class="kbd">U</span> <span class="kbd">D</span> <span class="kbd">R</span> <span class="kbd">L</span> <span class="kbd">F</span> <span class="kbd">B</span>, with <span class="kbd">Shift</span> for the reverse turn. Centers never move, so the six labels stay put.</p>
+        </div>
+        <div>
+          <h3 style="margin-bottom:8px">Corner twists</h3>
+          <div class="twists" id="twists"></div>
+          <p class="small" style="margin:8px 0 0">Total twist: <b class="mono" id="twTotal">0</b> (mod 3)</p>
+        </div>
+        <div class="row"><button class="btn warnbtn" id="pTwist" type="button">Twist one corner by hand</button></div>
+        <div class="message" id="pMsg">Any sequence of legal turns keeps the total corner twist at 0 mod 3. Twist one corner by hand and the total becomes 1 or 2: then no legal sequence solves the cube. The note compares this rule with triality, where color-neutral states have triality 0. It is an analogy only.</div>
+      </div>
+    </div>
+  </main>
+
+  <div class="notes">
+    <section>
+      <h2>What the cube is</h2>
+      <p>Label the torus's seven vertices by ℤ<sub>7</sub> and fix v<sub>0</sub> = 0 (Furey's e<sub>7</sub> is e<sub>0</sub> here). Its 14 triangles are the lines of two Fano planes: the up-triangles {i, i+1, i+3}, which are the octonion lines e<sub>i</sub>e<sub>i+1</sub> = e<sub>i+3</sub>, and the down-triangles {i, i+2, i+3}.</p>
+      <ul>
+        <li>The 24 symmetries of the up Fano plane that fix v<sub>0</sub> act on its six neighbours exactly as the cube's tetrahedral group T<sub>d</sub> acts on its faces: 12 turns and 12 mirror moves. No match to the cube's 24 turns alone exists. <span class="verdict ok">CHECKED</span></li>
+        <li>Under the match, each of Furey's three colors z<sub>k</sub> = e<sub>r</sub> + i e<sub>3r</sub> is a pair of opposite faces, and QR = {e<sub>1</sub>, e<sub>2</sub>, e<sub>4</sub>} is a corner.</li>
+        <li>The whole Fano plane fits on the cube. The three lines through v<sub>0</sub> are the axes. The other four lines are the corners of the tetrahedron inscribed in the cube, whose edges are one diagonal on each face. Turn on “Fano<sup>+</sup> lines” in Vertex to see it.</li>
+        <li>The torus itself contributes only the 120° turns about the QR corner (x ↦ 2x and x ↦ 4x). Its 60°, 180° and 300° turns swap the two Fano planes and are not cube symmetries.</li>
+        <li>Looking down the body diagonal (Corner view), the six faces project onto the weights of the SU(3) triplet and antitriplet. The six silhouette edges join exactly the J<sub>5</sub> and J<sub>6</sub> partners, alternating.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Mixing on the cube</h2>
+      <p>A 3×3 mixing matrix with real entries is a rotation, so it is an orientation of the cube. Its columns say where the cube's three axes point, and |U<sub>ij</sub>|² is the squared cosine between fixed axis i and the cube's axis j. The standard parametrization is three turns in a row: θ<sub>12</sub> about the third axis, then θ<sub>13</sub> about the second, then θ<sub>23</sub> about the first.</p>
+      <ul>
+        <li>Quark mixing barely turns the cube: about 13°, 2.4° and 0.2°. Lepton mixing turns it a lot: about 34°, 49° and 8.5°.</li>
+        <li>Tri-bimaximal mixing is the corner view: ν<sub>2</sub> points along a body diagonal, and ν<sub>1</sub> along the e axis's shadow in that view. The measured θ<sub>13</sub> ≈ 8.5° tips the cube off the corner.</li>
+        <li>The flavor group F<sub>21</sub> of the seed allows no residual pattern that fits. Its best lepton pattern is no mixing at all (χ² 2459); its best quark pattern has χ² 1.08 × 10⁵. <span class="verdict no">EXCLUDED (E4)</span></li>
+        <li>In PSL(2,7), 3 of 12 one-column patterns fit, each with two fitted parameters: ℤ<sub>7</sub>, TM1 and TM2 (the last keeps ν<sub>2</sub> on the diagonal). Each needs a ℤ<sub>2</sub> of PSL(2,7), which F<sub>21</sub> lacks, a vacuum alignment set by hand, and a reason for a family index. Their δ comes out of fits that include NuFIT's δ. <span class="verdict ok">FITS (E4)</span></li>
+        <li>The gauge paper's §6 mismatch is visible on the cube. Each axis (a Fano<sup>+</sup> doublet) touches two of the three J<sub>5</sub> pairs (the Fano<sup>−</sup> doublets) and misses the third. Read as |V|² with ½ in each touching cell, the pattern cannot come from any unitary matrix: two rows share only one nonzero column, so they cannot be orthogonal. The mismatch alone gives no mixing matrix. <span class="verdict ok">CHECKED</span></li>
+      </ul>
+      <p class="small muted">The three axes carry generations here, as in the gauge paper's §4. That is a picture, not a derivation: the note shows Furey's colors use the same three Fano lines.</p>
+    </section>
+    <section>
+      <h2>Three pairings, three hexagons</h2>
+      <p>At v<sub>0</sub> the six neighbours can be paired symmetrically in exactly three ways, J<sub>3</sub>, J<sub>5</sub> and J<sub>6</sub>; each gives three fermion modes a(v) = ½(γ(v) + iγ(Jv)). Any two of the pairings join into a hexagon in which the third pairs opposite points:</p>
+      <ul>
+        <li>J<sub>3</sub> and J<sub>5</sub> make the torus link of v<sub>0</sub>; J<sub>6</sub> runs straight through v<sub>0</sub> along the three Hamiltonian cycles.</li>
+        <li>J<sub>5</sub> and J<sub>6</sub> make the cube's corner-view silhouette; J<sub>3</sub>, Furey's pairing, joins opposite faces.</li>
+        <li>J<sub>3</sub> and J<sub>6</sub> make a third hexagon, with J<sub>5</sub> opposite.</li>
+      </ul>
+      <p>This works because the three pairings together use every QR–QNR pair exactly once; three arbitrary pairings would not do it. Only J<sub>3</sub> keeps all of color: in the cyclic labels used here it is L<sub>e0</sub>, the pairing of Furey's ladder operators. J<sub>5</sub> and the cycle pairing J<sub>6</sub>, which the gauge paper's §5 used, keep the same SU(2), the one fixing r+g+b. Each puts a quarter of its vacuum on Furey's neutrino and three quarters on up-quark states along r+g+b.</p>
+    </section>
+    <section>
+      <h2>What the cube does not show</h2>
+      <ul>
+        <li>The research program this geometry came from is closed (ledger V4.97). The mathematics carries forward; no physics claim is made here.</li>
+        <li>The cube does not derive any mixing angle. The presets are measurements and E4's fitted patterns, compared with the data E4 used.</li>
+        <li>The gauge paper's 3/13 as sin θ<sub>C</sub> is excluded at 7.6σ (|V<sub>us</sub>|) and 8.5σ (global fit) against PDG 2024. As tan θ<sub>C</sub> it agrees, but that reading was chosen after the comparison. <span class="verdict no">WITHDRAWN (v6.4)</span></li>
+        <li>“Three Fock modes = three Hamiltonian cycles” (§5) does not hold up: the cycle modes keep only an SU(2) of color. <span class="verdict no">FAILS (note)</span></li>
+        <li>Generations on the three axes, and Fano<sup>+</sup>/Fano<sup>−</sup> as left- and right-handed, are the gauge paper's assignments, not results. The same axes carry Furey's colors, and color mixes them.</li>
+        <li>The corner-twist rule and triality share a mod-3 count; nothing more. <span class="verdict an">ANALOGY</span></li>
+      </ul>
+    </section>
+    <section class="full">
+      <h2>Checks and sources</h2>
+      <ul>
+        <li><code>flavor_cube/check_geometry.py</code> recomputes every geometric statement the page uses, from the Fano lines up, with exact arithmetic; <code>flavor_cube/check_mixing.py</code> recomputes every preset with E4's own conventions. An independent second leg of each is in <code>flavor_cube/crosscheck/</code>. The page recomputes the Fano moves and χ² live in your browser.</li>
+        <li>Exploration note “Geometric fermion operators at a vertex, and the Rubik's cube” (October 19, 2026), copied to <code>flavor_cube/SOURCE_NOTE.md</code>. Its R1–R7 were recomputed independently (55 of 55 checks); its R8 (Szilassi) was computed once.</li>
+        <li>E4: <code>seed/experiments/E4_family_symmetry/REPORT.md</code>. Gauge paper v6.4: <code>audit_followup/closeout/step2/2a_gauge_paper/</code>. Status: <code>STATUS.md</code>.</li>
+        <li>Data: NuFIT 6.0, normal ordering, IC19 without SK atmospheric data (<a href="https://arxiv.org/abs/2410.05380" rel="noopener">arXiv:2410.05380</a>); UTfit 2022 (<a href="https://arxiv.org/abs/2212.03894" rel="noopener">arXiv:2212.03894</a>). Furey, Charge quantization from a number operator (<a href="https://arxiv.org/abs/1603.04078" rel="noopener">arXiv:1603.04078</a>).</li>
+      </ul>
+    </section>
+  </div>
+  <footer>Flavor Cube · gifgaf0.github.io · An exploration page; nothing here is deposited or submitted.</footer>
+</div>
+
+<noscript><p class="wrap">The cube needs JavaScript.</p></noscript>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script id="pure">
+/* Pure logic, no DOM: Fano geometry, the cube puzzle model, and the mixing-matrix math (E4 conventions).
+   The same block is evaluated by flavor_cube/test_page.mjs in Node. */
+var Pure = (function () {
+  'use strict';
+  const mod7 = (x) => ((x % 7) + 7) % 7;
+  const sortNum = (a) => a.slice().sort((p, q) => p - q);
+  const key = (t) => sortNum(t).join(',');
+
+  // ---------- Fano planes on Z7 ----------
+  const FANO_PLUS = [], FANO_MINUS = [];
+  for (let i = 0; i < 7; i++) {
+    FANO_PLUS.push(sortNum([i, mod7(i + 1), mod7(i + 3)]));
+    FANO_MINUS.push(sortNum([i, mod7(i + 2), mod7(i + 3)]));
+  }
+  const PLUS_KEYS = new Set(FANO_PLUS.map(key));
+  const MINUS_KEYS = new Set(FANO_MINUS.map(key));
+  const QR = [1, 2, 4], QNR = [3, 5, 6];
+  const LINK_ORDER = [1, 3, 2, 6, 4, 5];          // link of v0 on the torus, at 0, 60, ..., 300 degrees
+  const CORNER_VIEW_ORDER = [1, 5, 2, 3, 4, 6];   // around the cube's silhouette seen down (1,1,1)
+  const PAIRINGS = {                               // ordered (r, c r) with r in QR
+    J3: [[1, 3], [2, 6], [4, 5]],
+    J5: [[1, 5], [2, 3], [4, 6]],
+    J6: [[1, 6], [2, 5], [4, 3]],
+  };
+  // cube bijection: 1 -> +x, 3 -> -x, 2 -> +y, 6 -> -y, 4 -> +z, 5 -> -z
+  const NORMAL = { 1: [1, 0, 0], 3: [-1, 0, 0], 2: [0, 1, 0], 6: [0, -1, 0], 4: [0, 0, 1], 5: [0, 0, -1] };
+  const FACE_NAME = { 1: '+x', 3: '-x', 2: '+y', 6: '-y', 4: '+z', 5: '-z' };
+  const AXIS_LABEL = [1, 2, 4];                    // labels on +x, +y, +z
+  const labelOfNormal = (n) => {
+    for (const a of [1, 2, 3, 4, 5, 6]) { const m = NORMAL[a]; if (m[0] === n[0] && m[1] === n[1] && m[2] === n[2]) return a; }
+    return null;
+  };
+
+  function permutationsOf(a) {
+    if (a.length <= 1) return [a.slice()];
+    const out = [];
+    a.forEach((x, i) => {
+      const rest = a.slice(0, i).concat(a.slice(i + 1));
+      for (const p of permutationsOf(rest)) out.push([x].concat(p));
+    });
+    return out;
+  }
+  const isPlusCollineation = (g) => FANO_PLUS.every((L) => PLUS_KEYS.has(key(L.map((x) => g[x]))));
+
+  // ---------- 3x3 integer / real matrix helpers ----------
+  const I3 = () => [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+  const mul = (A, B) => A.map((r, i) => [0, 1, 2].map((j) => r[0] * B[0][j] + r[1] * B[1][j] + r[2] * B[2][j]));
+  const mulv = (A, v) => [0, 1, 2].map((i) => A[i][0] * v[0] + A[i][1] * v[1] + A[i][2] * v[2]);
+  const transpose = (A) => [0, 1, 2].map((i) => [0, 1, 2].map((j) => A[j][i]));
+  const det = (A) => A[0][0] * (A[1][1] * A[2][2] - A[1][2] * A[2][1]) - A[0][1] * (A[1][0] * A[2][2] - A[1][2] * A[2][0]) + A[0][2] * (A[1][0] * A[2][1] - A[1][1] * A[2][0]);
+  const trace = (A) => A[0][0] + A[1][1] + A[2][2];
+  const eqM = (A, B, tol = 1e-9) => A.every((r, i) => r.every((x, j) => Math.abs(x - B[i][j]) <= tol));
+  const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) { [a, b] = [b, a % b]; } return a; };
+  function nullVector(M) {           // integer null vector of a singular integer 3x3 matrix of rank 2 (or 1)
+    const rows = M;
+    let best = null;
+    for (let i = 0; i < 3; i++) for (let j = i + 1; j < 3; j++) {
+      const c = cross(rows[i], rows[j]);
+      if (c.some((x) => x !== 0)) { best = c; break; }
+    }
+    if (best === null) {             // rank <= 1: pick any vector orthogonal to the nonzero row
+      const r = rows.find((x) => x.some((y) => y !== 0)) || [1, 0, 0];
+      best = cross(r, Math.abs(r[0]) < 1 ? [1, 0, 0] : [0, 1, 0]);
+    }
+    const g = best.reduce((acc, x) => gcd(acc, x), 0) || 1;
+    return best.map((x) => x / g);
+  }
+
+  // P_g: P n(a) = n(g(a)); columns are the images of +x, +y, +z
+  function faceMatrix(g) {
+    const cols = AXIS_LABEL.map((a) => NORMAL[g[a]]);
+    const P = [0, 1, 2].map((i) => [0, 1, 2].map((j) => cols[j][i]));
+    for (const a of [1, 2, 3, 4, 5, 6]) {
+      const v = mulv(P, NORMAL[a]), w = NORMAL[g[a]];
+      if (v[0] !== w[0] || v[1] !== w[1] || v[2] !== w[2]) return null;
+    }
+    return P;
+  }
+  function cyclesOf(g) {
+    const seen = new Set(); const out = [];
+    for (const a of [1, 2, 3, 4, 5, 6]) {
+      if (seen.has(a) || g[a] === a) { seen.add(a); continue; }
+      const c = []; let x = a;
+      while (!seen.has(x)) { seen.add(x); c.push(x); x = g[x]; }
+      out.push(c);
+    }
+    return out;
+  }
+  function rotationAngleDeg(R, axis) {        // right-hand angle of proper rotation R about the integer axis
+    const n = Math.hypot(axis[0], axis[1], axis[2]);
+    const u = axis.map((x) => x / n);
+    const s = 0.5 * (u[0] * (R[2][1] - R[1][2]) + u[1] * (R[0][2] - R[2][0]) + u[2] * (R[1][0] - R[0][1]));
+    const c = 0.5 * (trace(R) - 1);
+    let a = Math.atan2(s, c) * 180 / Math.PI;
+    if (a < 0) a += 360;
+    return Math.round(a * 1e6) / 1e6;
+  }
+  function classify(P) {
+    const d = det(P), t = trace(P);
+    const sub = (M, s) => M.map((r, i) => r.map((x, j) => x - (i === j ? s : 0)));
+    if (d === 1) {
+      if (t === 3) return { cls: 'E', axis: null, angle: null, normal: null };
+      let axis = nullVector(sub(P, 1));
+      if (t === 0) { if (axis[0] * axis[1] * axis[2] < 0) axis = axis.map((x) => -x); }   // C3: point the axis out of a T1 corner
+      else if (axis.reduce((s, x) => s + x, 0) < 0) axis = axis.map((x) => -x);
+      return { cls: t === 0 ? 'C3' : (t === -1 ? 'C2' : 'C4'), axis, angle: rotationAngleDeg(P, axis), normal: null };
+    }
+    let n = nullVector(sub(P, -1));                                  // P n = -n
+    if (n.reduce((s, x) => s + x, 0) < 0 || (n.reduce((s, x) => s + x, 0) === 0 && n.find((x) => x !== 0) < 0)) n = n.map((x) => -x);
+    if (t === 1) return { cls: 'sigma_d', axis: null, angle: null, normal: n };
+    if (t === -1) {
+      const nn = n.map((x) => x / Math.hypot(n[0], n[1], n[2]));
+      const F = [0, 1, 2].map((i) => [0, 1, 2].map((j) => (i === j ? 1 : 0) - 2 * nn[i] * nn[j]));
+      const R = mul(F, P).map((r) => r.map((x) => Math.round(x)));
+      return { cls: 'S4', axis: n, angle: rotationAngleDeg(R, n), normal: null };
+    }
+    return { cls: t === -3 ? 'i' : 'S6', axis: n, angle: null, normal: null };
+  }
+  const TORUS_NAMES = { 1: 'id', 2: 'x->2x', 4: 'x->4x' };
+  function stabilizer() {
+    const out = [];
+    for (const p of permutationsOf([1, 2, 3, 4, 5, 6])) {
+      const g = [0].concat(p);
+      if (!isPlusCollineation(g)) continue;
+      const P = faceMatrix(g);
+      const c = classify(P);
+      let torus = null;
+      for (const a of [1, 2, 4]) if ([1, 2, 3, 4, 5, 6].every((x) => g[x] === mod7(a * x))) torus = TORUS_NAMES[a];
+      const qrImage = sortNum(QR.map((x) => g[x]));
+      out.push({ g, perm: p, cycles: cyclesOf(g), matrix: P, det: det(P), cls: c.cls, axis: c.axis, angle: c.angle, normal: c.normal,
+        torus, fixesQRCorner: key(qrImage) === key(QR), qrImage });
+    }
+    return out;
+  }
+  function corners() {
+    const out = [];
+    for (const sx of [1, -1]) for (const sy of [1, -1]) for (const sz of [1, -1]) {
+      const faces = sortNum([labelOfNormal([sx, 0, 0]), labelOfNormal([0, sy, 0]), labelOfNormal([0, 0, sz])]);
+      out.push({ signs: [sx, sy, sz], faces, tetra: sx * sy * sz > 0 ? 'T1' : 'T2', plus: PLUS_KEYS.has(key(faces)), minus: MINUS_KEYS.has(key(faces)) });
+    }
+    return out;
+  }
+  function formatCycles(cyc) {
+    if (!cyc.length) return '()';
+    return cyc.map((c) => '(' + c.join(' ') + ')').join('');
+  }
+
+  // ---------- cube puzzle model (integer state) ----------
+  // Each cubie: home position, current position, orientation matrix (columns = images of the home axes).
+  function newCube() {
+    const cubies = [];
+    for (let x = -1; x <= 1; x++) for (let y = -1; y <= 1; y++) for (let z = -1; z <= 1; z++) {
+      if (x === 0 && y === 0 && z === 0) continue;
+      cubies.push({ home: [x, y, z], pos: [x, y, z], rot: I3() });
+    }
+    return { cubies };
+  }
+  // name -> axis, layer, and quarter-turn sense about +axis (right hand). U = clockwise seen from +y, etc.
+  const MOVES = {
+    U: { axis: 1, layer: 1, q: -1 }, D: { axis: 1, layer: -1, q: 1 },
+    R: { axis: 0, layer: 1, q: -1 }, L: { axis: 0, layer: -1, q: 1 },
+    F: { axis: 2, layer: 1, q: -1 }, B: { axis: 2, layer: -1, q: 1 },
+  };
+  const MOVE_FACE = { R: 1, L: 3, U: 2, D: 6, F: 4, B: 5 };   // face label turned by each move
+  function quarter(axis, q) {
+    if (axis === 0) return [[1, 0, 0], [0, 0, -q], [0, q, 0]];
+    if (axis === 1) return [[0, 0, q], [0, 1, 0], [-q, 0, 0]];
+    return [[0, -q, 0], [q, 0, 0], [0, 0, 1]];
+  }
+  function moveSpec(token) {                  // "U", "U'"
+    const m = MOVES[token[0]];
+    const prime = token.length > 1 && token[1] === "'";
+    return { axis: m.axis, layer: m.layer, q: prime ? -m.q : m.q };
+  }
+  function applyMove(cube, token) {
+    const s = moveSpec(token);
+    const R = quarter(s.axis, s.q);
+    for (const c of cube.cubies) {
+      if (c.pos[s.axis] !== s.layer) continue;
+      c.pos = mulv(R, c.pos);
+      c.rot = mul(R, c.rot);
+    }
+    return cube;
+  }
+  const inverseToken = (t) => (t.length > 1 ? t[0] : t + "'");
+  function cornerTwists(cube) {
+    const out = [];
+    for (const c of cube.cubies) {
+      if (c.home.some((v) => v === 0)) continue;
+      const ref = mulv(c.rot, [0, c.home[1], 0]);           // where the home ±y sticker now points
+      const [sx, sy, sz] = c.pos;
+      const Y = [0, sy, 0], X = [sx, 0, 0], Z = [0, 0, sz];
+      const order = sx * sy * sz < 0 ? [Y, X, Z] : [Y, Z, X]; // positively oriented, so every corner uses the same handedness
+      const idx = order.findIndex((v) => v[0] === ref[0] && v[1] === ref[1] && v[2] === ref[2]);
+      out.push({ pos: c.pos.slice(), home: c.home.slice(), twist: idx });
+    }
+    return out;
+  }
+  const twistTotal = (cube) => cornerTwists(cube).reduce((s, c) => s + c.twist, 0) % 3;
+  function twistCorner(cube, pos, sense) {               // rotate the corner cubie at pos in place by +-120 degrees
+    const c = cube.cubies.find((k) => k.pos[0] === pos[0] && k.pos[1] === pos[1] && k.pos[2] === pos[2]);
+    const [sx, sy, sz] = pos;
+    // 120 degree rotation about the diagonal (sx,sy,sz): x -> sy y-direction etc.  For (1,1,1): e_x -> e_y -> e_z.
+    const C = [[0, 0, sx * sz], [sy * sx, 0, 0], [0, sz * sy, 0]];
+    const R = sense > 0 ? C : transpose(C);
+    c.rot = mul(R, c.rot);
+    return cube;
+  }
+  function isSolved(cube) {
+    return cube.cubies.every((c) => {
+      const centre = c.home.filter((v) => v !== 0).length === 1;
+      const atHome = c.pos.every((v, i) => v === c.home[i]);
+      if (centre) return atHome;
+      return atHome && eqM(c.rot, I3(), 0);
+    });
+  }
+
+  // ---------- mixing matrices (PDG parametrization, E4 conventions) ----------
+  const C = {
+    add: (a, b) => [a[0] + b[0], a[1] + b[1]], sub: (a, b) => [a[0] - b[0], a[1] - b[1]],
+    mul: (a, b) => [a[0] * b[0] - a[1] * b[1], a[0] * b[1] + a[1] * b[0]],
+    conj: (a) => [a[0], -a[1]], abs2: (a) => a[0] * a[0] + a[1] * a[1], abs: (a) => Math.hypot(a[0], a[1]),
+    div: (a, b) => { const d = b[0] * b[0] + b[1] * b[1]; return [(a[0] * b[0] + a[1] * b[1]) / d, (a[1] * b[0] - a[0] * b[1]) / d]; },
+    re: (x) => [x, 0], scale: (a, s) => [a[0] * s, a[1] * s],
+  };
+  const RAD = Math.PI / 180;
+  function pdgU(t12, t13, t23, d) {           // radians; returns 3x3 complex
+    const s12 = Math.sin(t12), c12 = Math.cos(t12), s13 = Math.sin(t13), c13 = Math.cos(t13), s23 = Math.sin(t23), c23 = Math.cos(t23);
+    const ep = [Math.cos(d), Math.sin(d)], em = [Math.cos(d), -Math.sin(d)];
+    return [
+      [C.re(c12 * c13), C.re(s12 * c13), C.scale(em, s13)],
+      [C.sub(C.re(-s12 * c23), C.scale(ep, c12 * s23 * s13)), C.sub(C.re(c12 * c23), C.scale(ep, s12 * s23 * s13)), C.re(s23 * c13)],
+      [C.sub(C.re(s12 * s23), C.scale(ep, c12 * c23 * s13)), C.sub(C.re(-c12 * s23), C.scale(ep, s12 * c23 * s13)), C.re(c23 * c13)],
+    ];
+  }
+  const absSq = (U) => U.map((r) => r.map(C.abs2));
+  const jarlskog = (U) => C.mul(C.mul(C.mul(U[1][2], C.conj(U[0][2])), U[0][1]), C.conj(U[1][1]))[1];
+  function cubeRotation(t12, t13, t23, d) {   // real rotation with delta at the nearer of 0 and 180 degrees
+    const sgn = Math.cos(d) < 0 ? -1 : 1;
+    const R12 = [[Math.cos(t12), Math.sin(t12), 0], [-Math.sin(t12), Math.cos(t12), 0], [0, 0, 1]];
+    const a = sgn * t13;
+    const R13 = [[Math.cos(a), 0, Math.sin(a)], [0, 1, 0], [-Math.sin(a), 0, Math.cos(a)]];
+    const R23 = [[1, 0, 0], [0, Math.cos(t23), Math.sin(t23)], [0, -Math.sin(t23), Math.cos(t23)]];
+    return { O: mul(R23, mul(R13, R12)), cubeDeltaDeg: sgn < 0 ? 180 : 0, R12, R13, R23 };
+  }
+  const R12of = (t) => [[Math.cos(t), Math.sin(t), 0], [-Math.sin(t), Math.cos(t), 0], [0, 0, 1]];
+  const R13of = (t) => [[Math.cos(t), 0, Math.sin(t)], [0, 1, 0], [-Math.sin(t), 0, Math.cos(t)]];
+  const R23of = (t) => [[1, 0, 0], [0, Math.cos(t), Math.sin(t)], [0, -Math.sin(t), Math.cos(t)]];
+
+  // Data exactly as seed/experiments/E4_family_symmetry/data_targets.py
+  const NUFIT = {   // best fit, one-sided sigma below, above = (3 sigma edge - best fit)/3
+    s12sq: [0.307, (0.307 - 0.275) / 3, (0.345 - 0.307) / 3],
+    s13sq: [0.02195, (0.02195 - 0.02023) / 3, (0.02376 - 0.02195) / 3],
+    s23sq: [0.561, (0.561 - 0.430) / 3, (0.596 - 0.561) / 3],
+    delta_deg: [177.0, (177.0 - 96.0) / 3, (422.0 - 177.0) / 3],
+  };
+  const UTFIT = { lambda: [0.22519, 0.00083], A: [0.828, 0.011], rhobar: [0.1609, 0.0095], etabar: [0.347, 0.010] };
+  function pullAsym(x, k) { const [bf, lo, hi] = NUFIT[k]; const d = x - bf; return d / (d > 0 ? hi : lo); }
+  function pullDeltaDeg(deg) {
+    const [bf, lo, hi] = NUFIT.delta_deg;
+    const d0 = (((deg - bf) % 360) + 360) % 360;
+    const pUp = d0 / hi, pDn = (d0 - 360) / lo;
+    return Math.abs(pUp) <= Math.abs(pDn) ? pUp : pDn;
+  }
+  // PMNS observables from (s12^2, s13^2, s23^2, delta); delta counts only where E4's angles_from_U defines it
+  function chi2Pmns(s12sq, s13sq, s23sq, deltaDeg) {
+    const s12 = Math.sqrt(s12sq), s13 = Math.sqrt(s13sq), s23 = Math.sqrt(s23sq);
+    const denom = 2 * s12 * Math.sqrt(Math.max(0, 1 - s12sq)) * s23 * Math.sqrt(Math.max(0, 1 - s23sq)) * s13;
+    const deltaDefined = denom > 1e-14 && deltaDeg !== null && deltaDeg !== undefined;
+    const pulls = { s12sq: pullAsym(s12sq, 's12sq'), s13sq: pullAsym(s13sq, 's13sq'), s23sq: pullAsym(s23sq, 's23sq'), delta: deltaDefined ? pullDeltaDeg(deltaDeg) : 0 };
+    const chi2 = Object.values(pulls).reduce((s, p) => s + p * p, 0);
+    return { chi2, pulls, deltaDefined };
+  }
+  function wolfenstein(V) {                   // port of e4lib.wolfenstein_from_V
+    const W = V.map((r) => r.map((z) => (C.abs(z) < 1e-12 ? [0, 0] : z)));
+    const a11 = C.abs(W[0][0]), a12 = C.abs(W[0][1]), a23 = C.abs(W[1][2]);
+    if (a11 * a11 + a12 * a12 < 1e-24) return { lambda: NaN, A: NaN, rhobar: NaN, etabar: NaN };
+    const lam = a12 / Math.sqrt(a11 * a11 + a12 * a12);
+    const A = lam > 0 ? a23 / (lam * lam * Math.sqrt(a11 * a11 + a12 * a12)) : Infinity;
+    const den = C.mul(W[1][0], C.conj(W[1][2]));
+    let z = [NaN, NaN];
+    if (C.abs(den) >= 1e-15) z = C.scale(C.div(C.mul(W[0][0], C.conj(W[0][2])), den), -1);
+    return { lambda: lam, A, rhobar: z[0], etabar: z[1] };
+  }
+  function chi2Ckm(V) {
+    const w = wolfenstein(V);
+    const pulls = {}; let ok = true;
+    for (const k of ['lambda', 'A', 'rhobar', 'etabar']) {
+      if (!Number.isFinite(w[k])) { pulls[k] = NaN; ok = false; continue; }
+      pulls[k] = (w[k] - UTFIT[k][0]) / UTFIT[k][1];
+    }
+    const chi2 = ok ? Object.values(pulls).reduce((s, p) => s + p * p, 0) : NaN;
+    return { chi2, pulls, values: w, defined: ok };
+  }
+  // (lambda, A, rhobar, etabar) -> PDG angles, exact relations (PDG CKM review)
+  function anglesFromWolfenstein(lam, A, rb, eb) {
+    const s12 = lam, s23 = A * lam * lam;
+    const z = [rb, eb];
+    const A2l4 = A * A * Math.pow(lam, 4);
+    const num = C.scale(z, A * Math.pow(lam, 3) * Math.sqrt(1 - A2l4));
+    const den = C.scale(C.sub([1, 0], C.scale(z, A2l4)), Math.sqrt(1 - lam * lam));
+    const s13e = C.div(num, den);            // s13 e^{i delta}
+    const s13 = C.abs(s13e);
+    let d = Math.atan2(s13e[1], s13e[0]); if (d < 0) d += 2 * Math.PI;
+    return { t12: Math.asin(s12), t23: Math.asin(s23), t13: Math.asin(s13), d };
+  }
+  const pValue4 = (x) => Math.exp(-x / 2) * (1 + x / 2);    // chi2 survival, 4 degrees of freedom
+
+  return {
+    mod7, FANO_PLUS, FANO_MINUS, QR, QNR, LINK_ORDER, CORNER_VIEW_ORDER, PAIRINGS, NORMAL, FACE_NAME, labelOfNormal,
+    stabilizer, corners, faceMatrix, classify, cyclesOf, formatCycles, isPlusCollineation,
+    I3, mul, mulv, transpose, det, trace, eqM,
+    newCube, MOVES, MOVE_FACE, applyMove, inverseToken, cornerTwists, twistTotal, twistCorner, isSolved, quarter, moveSpec,
+    RAD, pdgU, absSq, jarlskog, cubeRotation, R12of, R13of, R23of, NUFIT, UTFIT, pullAsym, pullDeltaDeg, chi2Pmns, wolfenstein, chi2Ckm,
+    anglesFromWolfenstein, pValue4,
+  };
+})();
+if (typeof module !== 'undefined') module.exports = Pure;
+</script>
+
+<script id="presets-data">
+/* Mixing presets. Angles from flavor_cube/mixing.json (check_mixing.py); E4 values at full precision from its results.json. */
+var PRESETS = {
+  lepton: [
+    { id: 'pmns_nufit', name: 'Measured', tag: 'NuFIT 6.0', s12sq: 0.307, s13sq: 0.02195, s23sq: 0.561, d: 177,
+      note: '<b>NuFIT 6.0 best fit</b>, normal ordering, IC19 without SK atmospheric data: the target E4 used.' },
+    { id: 'tbm', name: 'Tri-bimaximal', tag: 'corner view', s12sq: 1 / 3, s13sq: 0, s23sq: 0.5, d: null,
+      note: '<b>The corner view.</b> ν₂ points along a body diagonal, so its column is (⅓, ⅓, ⅓); ν₁ points along the e axis\'s shadow. Excluded since θ₁₃ was measured: χ² 1472, almost all from θ₁₃ (−38σ). E4\'s LNR point, which is exactly tri-bimaximal, has the same χ².' },
+    { id: 'e4_z7', name: 'ℤ₇ × ℤ₂', tag: 'E4 · fits', s12sq: 0.3210911252423301, s13sq: 0.02197089551989342, s23sq: 0.5552668957917528, d: 253.46929956682894,
+      note: '<b>E4 survivor</b>, PSL(2,7). A ℤ₂ residual fixes one column, (0.664, 0.132, 0.204) for (e, μ, τ); two parameters are fitted. E4: χ² 2.13, p = 0.34 with 2 dof. Its ℤ₇ and ℤ₂ generate all of PSL(2,7); F₂₁ has no ℤ₂.' },
+    { id: 'e4_tm1', name: 'TM1', tag: 'E4 · fits', s12sq: 0.31835757681454074, s13sq: 0.021970106333475983, s23sq: 0.5529782589218336, d: 283.53811597214053,
+      note: '<b>E4 survivor</b>, PSL(2,7): ℤ₃ with a ℤ₂, first column (⅔, ⅙, ⅙) in the grid, two parameters fitted. E4: χ² 2.54, p = 0.28 with 2 dof. The two generate an S₄. With δ ≈ 284° the cube shows this column only roughly.' },
+    { id: 'e4_tm2', name: 'TM2', tag: 'E4 · fits', s12sq: 0.340804825869328, s13sq: 0.021923083151583794, s23sq: 0.5617855303120105, d: 234.67569179739147,
+      note: '<b>E4 survivor</b>, PSL(2,7): ν₂ stays on the body diagonal, column (⅓, ⅓, ⅓) in the grid, and the rest twists about it. E4: χ² 7.63, p = 0.022 with 2 dof. Its δ ≈ 235° is close to maximal, so the cube, which can show only 0° or 180°, puts ν₂ near the diagonal rather than on it.' },
+    { id: 'e4_psl_full_best', name: 'PSL(2,7) best full', tag: 'E4 · excluded', s12sq: 0.2925777593216945, s13sq: 0.027001891296071612, s23sq: 0.158104006892297, d: 0,
+      note: '<b>Best full residual pattern of PSL(2,7)</b>: ℤ₃ × ℤ₇ with Dirac neutrinos, nothing fitted. E4: χ² 162, excluded.' },
+    { id: 'none', name: 'No mixing', tag: 'solved cube', s12sq: 0, s13sq: 0, s23sq: 0, d: null,
+      note: '<b>The solved cube.</b> It is also the best that F₂₁\'s residual symmetries give for leptons: E4 χ² 2459, excluded.' },
+  ],
+  quark: [
+    { id: 'ckm_utfit', name: 'Measured', tag: 'UTfit 2022', wolf: [0.22519, 0.828, 0.1609, 0.347],
+      note: '<b>UTfit 2022</b> central values (λ, A, ρ̄, η̄), converted exactly to the three angles and δ: the target E4 used.' },
+    { id: 'ckm_sin_3_13', name: 'sin θ_C = 3/13', tag: 'gauge §6.1', wolf: [3 / 13, 0.828, 0.1609, 0.347],
+      note: '<b>The gauge paper\'s 3/13 read as sin θ_C</b>, the rest at UTfit. Against UTfit 2022, the data used here, λ is 6.7σ off; against PDG 2024 the gauge paper finds 7.6σ (|V_us|) and 8.5σ (global fit). Withdrawn in v6.4 (deposited October 13, 2026).' },
+    { id: 'ckm_tan_3_13', name: 'tan θ_C = 3/13', tag: 'post hoc', wolf: [3 / Math.sqrt(178), 0.828, 0.1609, 0.347],
+      note: '<b>3/13 read as tan θ_C = |V_us/V_ud|.</b> It agrees with the data, but this reading was picked after the comparison, so v6.4 records it as Conjecture 3, not a result.' },
+    { id: 'none', name: 'No mixing', tag: 'solved cube', s12sq: 0, s13sq: 0, s23sq: 0, d: null,
+      note: '<b>The solved cube.</b> With λ = 0 the CKM observables A, ρ̄ and η̄ are undefined, so there is no χ².' },
+  ],
+};
+if (typeof module !== 'undefined') module.exports = PRESETS;
+</script>
+
+<script id="app">
+(function () {
+  'use strict';
+  const P = Pure;
+  const $ = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+  const reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cssVar = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const SUBS = { 0: '₀', 1: '₁', 2: '₂', 3: '₃', 4: '₄', 5: '₅', 6: '₆', 7: '₇' };
+  const eLab = (a) => 'e' + SUBS[a];
+  const eHtml = (a) => 'e<sub>' + a + '</sub>';
+  const FACE_VAR = { 1: '--c1', 3: '--c1p', 2: '--c2', 6: '--c2p', 4: '--c3', 5: '--c3p' };
+  const AXIS_OF = { 1: 0, 3: 0, 2: 1, 6: 1, 4: 2, 5: 2 };
+  const STAB = P.stabilizer();
+  const CORNERS = P.corners();
+
+  // ------------------------------------------------------------------ state
+  const state = {
+    mode: 'mixing', sector: 'lepton', presetId: 'pmns_nufit',
+    ang: { t12: 0, t13: 0, t23: 0, d: 0, dDefined: true },
+    pairing: 'J3', fanoLines: false, faceLabels: true, inset: 'torus',
+    fanoM: P.I3(), fanoCount: 0, lastMove: null,
+    cube: P.newCube(), history: [], handTwists: 0,
+    seeThrough: false,
+  };
+
+  // ------------------------------------------------------------------ number formatting
+  function fmt(x, digits) {
+    if (!Number.isFinite(x)) return '–';
+    const a = Math.abs(x);
+    if (a !== 0 && (a < 1e-3 || a >= 1e5)) {
+      const e = Math.floor(Math.log10(a)); const m = x / Math.pow(10, e);
+      return m.toFixed(2) + '×10' + String(e).replace('-', '⁻').replace(/\d/g, (c) => '⁰¹²³⁴⁵⁶⁷⁸⁹'[+c]);
+    }
+    return x.toFixed(digits === undefined ? 4 : digits);
+  }
+  const fmtChi = (x) => (!Number.isFinite(x) ? '–' : x >= 1e4 ? fmt(x) : x >= 100 ? x.toFixed(0) : x >= 10 ? x.toFixed(1) : x.toFixed(2));
+  const fmtP = (p) => (p < 1e-9 ? 'p < 10⁻⁹' : p < 0.001 ? 'p = ' + fmt(p) : 'p = ' + p.toFixed(p < 0.1 ? 3 : 2));
+  const deg = (r) => r / P.RAD;
+
+  // ================================================================== 3D
+  const stage = $('#stage'), canvas = $('#cube');
+  const has3D = !!window.THREE && (function () { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl') || c.getContext('experimental-webgl')); } catch (e) { return false; } })();
+  let three = null;
+  if (!has3D) {
+    const fb = $('#fallback');
+    fb.hidden = false;
+    fb.textContent = window.THREE ? 'This browser has no WebGL, so the 3D cube cannot be drawn. The tables and numbers still work.' : 'The 3D view needs three.js from cdnjs, which did not load. The tables and numbers still work.';
+    canvas.hidden = true;
+  } else {
+    three = build3D();
+  }
+
+  function build3D() {
+    const T = THREE;
+    const renderer = new T.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setClearColor(0x000000, 0);
+    const scene = new T.Scene();
+    const camera = new T.PerspectiveCamera(30, 1, 0.1, 100);
+    scene.add(new T.AmbientLight(0xffffff, 0.62));
+    const key = new T.DirectionalLight(0xffffff, 0.62); key.position.set(5, 9, 7); scene.add(key);
+    const fill = new T.DirectionalLight(0xffffff, 0.28); fill.position.set(-6, -3, -4); scene.add(fill);
+
+    const S = 1.0, BODY = 0.95, STK = 0.8, OUT = S + BODY / 2;   // OUT ≈ outer face of the cube
+    const root = new T.Group(); root.matrixAutoUpdate = false; scene.add(root);
+    const world = new T.Group(); scene.add(world);              // fixed flavor axes live here
+
+    // ---- materials
+    const bodyMat = new T.MeshStandardMaterial({ color: 0x141519, roughness: 0.62, metalness: 0.05 });
+    const stickerMat = {};
+    for (const a of [1, 2, 3, 4, 5, 6]) stickerMat[a] = new T.MeshStandardMaterial({ color: new T.Color(cssVar(FACE_VAR[a])), roughness: 0.38, metalness: 0.0 });
+    function roundedSquare(w, r) {
+      const s = new T.Shape(), h = w / 2;
+      s.moveTo(-h + r, -h); s.lineTo(h - r, -h); s.quadraticCurveTo(h, -h, h, -h + r); s.lineTo(h, h - r); s.quadraticCurveTo(h, h, h - r, h);
+      s.lineTo(-h + r, h); s.quadraticCurveTo(-h, h, -h, h - r); s.lineTo(-h, -h + r); s.quadraticCurveTo(-h, -h, -h + r, -h);
+      return new T.ShapeGeometry(s, 5);
+    }
+    const stickerGeo = roundedSquare(STK, 0.11);
+    const bodyGeo = new T.BoxGeometry(BODY, BODY, BODY);
+    const zAxis = new T.Vector3(0, 0, 1);
+
+    // ---- cubies
+    const cubieMeshes = state.cube.cubies.map((c) => {
+      const g = new T.Group(); g.matrixAutoUpdate = false;
+      g.add(new T.Mesh(bodyGeo, bodyMat));
+      for (let k = 0; k < 3; k++) {
+        if (c.home[k] === 0) continue;
+        const n = [0, 0, 0]; n[k] = c.home[k];
+        const label = P.labelOfNormal(n);
+        const m = new T.Mesh(stickerGeo, stickerMat[label]);
+        const nv = new T.Vector3(n[0], n[1], n[2]);
+        m.quaternion.setFromUnitVectors(zAxis, nv);
+        m.position.copy(nv.clone().multiplyScalar(BODY / 2 + 0.004));
+        g.add(m);
+      }
+      root.add(g);
+      return g;
+    });
+    const tmpM = new T.Matrix4();
+    function setCubieMatrix(i, extra) {          // extra: float 3x3 applied on the left (layer turn in progress)
+      const c = state.cube.cubies[i];
+      let R = c.rot, p = c.pos.map((v) => v * S);
+      if (extra) { R = P.mul(extra, R); p = P.mulv(extra, p); }
+      cubieMeshes[i].matrix.set(R[0][0], R[0][1], R[0][2], p[0], R[1][0], R[1][1], R[1][2], p[1], R[2][0], R[2][1], R[2][2], p[2], 0, 0, 0, 1);
+      cubieMeshes[i].matrixWorldNeedsUpdate = true;
+    }
+    function syncCubies() { for (let i = 0; i < cubieMeshes.length; i++) setCubieMatrix(i, null); }
+    syncCubies();
+
+    // ---- root transform (3x3, may be improper)
+    let rootM = P.I3();
+    function setRoot(M) {
+      rootM = M.map((r) => r.slice());
+      root.matrix.set(M[0][0], M[0][1], M[0][2], 0, M[1][0], M[1][1], M[1][2], 0, M[2][0], M[2][1], M[2][2], 0, 0, 0, 0, 1);
+      root.matrixWorldNeedsUpdate = true;
+    }
+
+    // ---- labels (sprites never mirror, so they stay readable after a reflection)
+    const labels = [];
+    function drawLabel(text, dot) {
+      const c = document.createElement('canvas'), x = c.getContext('2d');
+      const font = '600 46px "IBM Plex Sans", system-ui, sans-serif';
+      x.font = font;
+      const tw = x.measureText(text).width, padX = 20, dotW = dot ? 24 : 0, gap = dot ? 10 : 0, h = 72;
+      c.width = Math.ceil(tw + 2 * padX + dotW + gap); c.height = h;
+      x.font = font;
+      x.fillStyle = cssVar('--label-bg');
+      const r = h / 2, w = c.width;
+      x.beginPath(); x.moveTo(r, 0); x.lineTo(w - r, 0); x.arc(w - r, r, r, -Math.PI / 2, Math.PI / 2); x.lineTo(r, h); x.arc(r, r, r, Math.PI / 2, 1.5 * Math.PI); x.closePath(); x.fill();
+      if (dot) { x.fillStyle = dot; x.beginPath(); x.arc(padX + dotW / 2, h / 2, dotW / 2, 0, 2 * Math.PI); x.fill(); }
+      x.fillStyle = cssVar('--label-fg'); x.textBaseline = 'middle';
+      x.fillText(text, padX + dotW + gap, h / 2 + 2);
+      return c;
+    }
+    function makeLabel(parent, text, pos, opts) {
+      opts = opts || {};
+      const mat = new T.SpriteMaterial({ transparent: true, depthTest: opts.depthTest !== false, depthWrite: false });
+      const sp = new T.Sprite(mat);
+      sp.position.set(pos[0], pos[1], pos[2]);
+      sp.renderOrder = 10;
+      parent.add(sp);
+      const L = { sp, text, dotVar: opts.dotVar || null, h: opts.h || 0.36, normal: opts.normal || null };
+      paintLabel(L);
+      labels.push(L);
+      return L;
+    }
+    function paintLabel(L) {
+      const cv = drawLabel(L.text, L.dotVar ? cssVar(L.dotVar) : null);
+      if (L.sp.material.map) L.sp.material.map.dispose();
+      const tex = new T.CanvasTexture(cv); tex.minFilter = T.LinearFilter; tex.anisotropy = 4;
+      L.sp.material.map = tex; L.sp.material.needsUpdate = true;
+      L.sp.scale.set(L.h * cv.width / cv.height, L.h, 1);
+    }
+    function setLabelText(L, text) { if (L.text !== text) { L.text = text; paintLabel(L); } }
+
+    // face labels (vertex + puzzle modes)
+    const faceLabelGroup = new T.Group(); root.add(faceLabelGroup);
+    const faceLabels = {};
+    for (const a of [1, 2, 3, 4, 5, 6]) {
+      const n = P.NORMAL[a];
+      faceLabels[a] = makeLabel(faceLabelGroup, eLab(a), n.map((v) => v * (OUT + 0.36)), { dotVar: FACE_VAR[a], normal: n });
+    }
+    const v0Group = new T.Group(); root.add(v0Group);
+    const v0Mat = new T.MeshStandardMaterial({ color: 0xffffff, emissive: 0x666666, roughness: 0.3 });
+    v0Group.add(new T.Mesh(new T.SphereGeometry(0.13, 24, 16), v0Mat));
+    makeLabel(v0Group, 'v₀', [0.32, 0.3, 0.32], { h: 0.3, depthTest: false });
+
+    // ---- tubes and arrows
+    function tubeMat(colorVar) { return new T.MeshStandardMaterial({ color: new T.Color(cssVar(colorVar)), emissive: new T.Color(cssVar(colorVar)).multiplyScalar(0.35), roughness: 0.4 }); }
+    const themed = [];                                     // [material, cssVar] pairs to refresh on theme change
+    function tm(colorVar) { const m = tubeMat(colorVar); themed.push([m, colorVar]); return m; }
+    function tubeAlong(curve, radius, mat) { return new T.Mesh(new T.TubeGeometry(curve, 48, radius, 10, false), mat); }
+    function arrowAt(curve, mat, size) {
+      const p = curve.getPoint(1), t = curve.getTangent(1).normalize();
+      const cone = new T.Mesh(new T.ConeGeometry(size * 0.45, size, 16), mat);
+      cone.quaternion.setFromUnitVectors(new T.Vector3(0, 1, 0), t);
+      cone.position.copy(p).addScaledVector(t, -size * 0.5);
+      return cone;
+    }
+    const V = (a) => new T.Vector3(a[0], a[1], a[2]);
+
+    // pairing overlay
+    const pairGroup = new T.Group(); root.add(pairGroup);
+    const pairMats = { J3: tm('--j3'), J5: tm('--j5'), J6: tm('--j6') };
+    function buildPairing(name) {
+      while (pairGroup.children.length) { const o = pairGroup.children.pop(); if (o.geometry) o.geometry.dispose(); }
+      if (name === 'none') return;
+      for (const [a, b] of P.PAIRINGS[name]) {
+        const na = V(P.NORMAL[a]), nb = V(P.NORMAL[b]);
+        let curve;
+        if (na.dot(nb) < -0.5) {                              // opposite faces: straight through v0
+          curve = new T.LineCurve3(na.clone().multiplyScalar(OUT + 0.06), nb.clone().multiplyScalar(OUT + 0.06));
+        } else {                                              // adjacent faces: an arc over the shared edge
+          const A = na.clone().multiplyScalar(OUT + 0.15), B = nb.clone().multiplyScalar(OUT + 0.15);
+          const Cc = na.clone().add(nb).multiplyScalar(OUT + 0.85);
+          curve = new T.QuadraticBezierCurve3(A, Cc, B);
+        }
+        pairGroup.add(tubeAlong(curve, 0.05, pairMats[name]));
+        pairGroup.add(arrowAt(curve, pairMats[name], 0.26));
+        const s = new T.Mesh(new T.SphereGeometry(0.09, 16, 12), pairMats[name]);
+        s.position.copy(curve.getPoint(0)); pairGroup.add(s);
+      }
+    }
+
+    // Fano+ overlay: axes through v0, the inscribed tetrahedron T1 (one diagonal per face), its four corners
+    const fanoGroup = new T.Group(); root.add(fanoGroup);
+    const axisMats = [tm('--c1'), tm('--c2'), tm('--c3')];
+    for (let k = 0; k < 3; k++) {
+      const n = [0, 0, 0]; n[k] = 1;
+      fanoGroup.add(tubeAlong(new T.LineCurve3(V(n).multiplyScalar(-(OUT + 0.45)), V(n).multiplyScalar(OUT + 0.45)), 0.035, axisMats[k]));
+    }
+    const diagMat = tm('--accent');
+    const t1 = CORNERS.filter((c) => c.tetra === 'T1');
+    for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++) {
+      const a = V(t1[i].signs).multiplyScalar(OUT + 0.012), b = V(t1[j].signs).multiplyScalar(OUT + 0.012);
+      fanoGroup.add(tubeAlong(new T.LineCurve3(a, b), 0.03, diagMat));
+    }
+    for (const c of t1) {
+      const s = new T.Mesh(new T.SphereGeometry(c.faces.join(',') === '1,2,4' ? 0.15 : 0.11, 20, 14), diagMat);
+      s.position.copy(V(c.signs).multiplyScalar(OUT + 0.02)); fanoGroup.add(s);
+      makeLabel(fanoGroup, '{' + c.faces.join(',') + '}', c.signs.map((v) => v * (OUT + 0.42)), { h: 0.3 });
+    }
+
+    // Mixing overlay: fixed flavor rods (world) and the cube's own axes (root)
+    const rodGroup = new T.Group(); world.add(rodGroup);
+    const rodMat = tm('--muted');
+    const rodLabels = [];
+    for (let k = 0; k < 3; k++) {
+      const n = [0, 0, 0]; n[k] = 1;
+      rodGroup.add(tubeAlong(new T.LineCurve3(V(n).multiplyScalar(-2.55), V(n).multiplyScalar(2.55)), 0.022, rodMat));
+      const tip = new T.Mesh(new T.ConeGeometry(0.07, 0.2, 14), rodMat);
+      tip.quaternion.setFromUnitVectors(new T.Vector3(0, 1, 0), V(n)); tip.position.copy(V(n).multiplyScalar(2.6)); rodGroup.add(tip);
+      rodLabels.push(makeLabel(rodGroup, '', n.map((v) => v * 2.95), { h: 0.34 }));
+    }
+    const bodyAxisGroup = new T.Group(); root.add(bodyAxisGroup);
+    const massLabels = [];
+    for (let k = 0; k < 3; k++) {
+      const n = [0, 0, 0]; n[k] = 1;
+      const curve = new T.LineCurve3(V(n).multiplyScalar(0), V(n).multiplyScalar(2.25));
+      bodyAxisGroup.add(tubeAlong(curve, 0.045, axisMats[k]));
+      bodyAxisGroup.add(arrowAt(curve, axisMats[k], 0.24));
+      massLabels.push(makeLabel(bodyAxisGroup, '', n.map((v) => v * 2.6), { h: 0.36, dotVar: ['--c1', '--c2', '--c3'][k] }));
+    }
+
+    // ---- see-through
+    function setSeeThrough(on) {
+      const mats = [bodyMat].concat(Object.values(stickerMat));
+      for (const m of mats) { m.transparent = on; m.opacity = on ? (m === bodyMat ? 0.1 : 0.34) : 1; m.depthWrite = !on; m.needsUpdate = true; }
+    }
+
+    // ---- camera orbit
+    const view = { az: 0.72, el: 0.46, dist: 12.5 };
+    const HOME = { az: 0.72, el: 0.46, dist: 12.5 };
+    function placeCamera() {
+      const { az, el, dist } = view;
+      camera.position.set(dist * Math.cos(el) * Math.sin(az), dist * Math.sin(el), dist * Math.cos(el) * Math.cos(az));
+      camera.lookAt(0, 0, 0);
+    }
+    placeCamera();
+    const ptrs = new Map(); let pinch0 = null;
+    canvas.addEventListener('pointerdown', (e) => { canvas.setPointerCapture(e.pointerId); ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY }); camAnim = null; if (ptrs.size === 2) pinch0 = { d: pdist(), dist: view.dist }; });
+    canvas.addEventListener('pointermove', (e) => {
+      if (!ptrs.has(e.pointerId)) return;
+      const p = ptrs.get(e.pointerId), dx = e.clientX - p.x, dy = e.clientY - p.y;
+      ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (ptrs.size === 1) { view.az -= dx * 0.0085; view.el = Math.max(-1.45, Math.min(1.45, view.el + dy * 0.0085)); placeCamera(); }
+      else if (ptrs.size === 2 && pinch0) { view.dist = Math.max(7, Math.min(24, pinch0.dist * pinch0.d / Math.max(1, pdist()))); placeCamera(); }
+    });
+    const up = (e) => { ptrs.delete(e.pointerId); if (ptrs.size < 2) pinch0 = null; };
+    canvas.addEventListener('pointerup', up); canvas.addEventListener('pointercancel', up);
+    function pdist() { const v = Array.from(ptrs.values()); return Math.hypot(v[0].x - v[1].x, v[0].y - v[1].y); }
+    canvas.addEventListener('wheel', (e) => { e.preventDefault(); view.dist = Math.max(7, Math.min(24, view.dist * Math.exp(e.deltaY * 0.0012))); placeCamera(); }, { passive: false });
+    canvas.addEventListener('dblclick', () => flyTo(HOME));
+    canvas.addEventListener('keydown', (e) => {
+      const k = { ArrowLeft: [0.12, 0], ArrowRight: [-0.12, 0], ArrowUp: [0, 0.1], ArrowDown: [0, -0.1] }[e.key];
+      if (!k) return; e.preventDefault(); view.az += k[0]; view.el = Math.max(-1.45, Math.min(1.45, view.el + k[1])); placeCamera();
+    });
+    let camAnim = null;
+    function flyTo(target) {
+      let daz = target.az - view.az; daz = Math.atan2(Math.sin(daz), Math.cos(daz));
+      camAnim = { from: Object.assign({}, view), daz, to: target, t0: performance.now(), dur: reduceMotion ? 0 : 650 };
+    }
+    function viewAlong(v) {                                 // world direction -> camera angles
+      const n = Math.hypot(v[0], v[1], v[2]);
+      return { az: Math.atan2(v[0], v[2]), el: Math.asin(Math.max(-0.999, Math.min(0.999, v[1] / n))), dist: view.dist };
+    }
+
+    // ---- resize
+    function resize() {
+      const w = stage.clientWidth, h = stage.clientHeight;
+      if (!w || !h) return;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.fov = (w / h < 1 ? 30 / Math.max(0.62, w / h) : 30) * (w < 520 ? 1.1 : 1);
+      camera.updateProjectionMatrix();
+    }
+    new ResizeObserver(resize).observe(stage); resize();
+
+    // ---- theme refresh
+    function refreshTheme() {
+      for (const a of [1, 2, 3, 4, 5, 6]) stickerMat[a].color.set(cssVar(FACE_VAR[a]));
+      for (const [m, v] of themed) { const c = new T.Color(cssVar(v)); m.color.copy(c); m.emissive.copy(c).multiplyScalar(0.35); }
+      for (const L of labels) paintLabel(L);
+    }
+
+    // ---- per-frame label fade by facing
+    const camDir = new T.Vector3(), nW = new T.Vector3(), nm3 = new T.Matrix3();
+    function fadeLabels() {
+      nm3.setFromMatrix4(root.matrixWorld);
+      for (const L of labels) {
+        if (!L.normal) continue;
+        nW.set(L.normal[0], L.normal[1], L.normal[2]).applyMatrix3(nm3).normalize();
+        camDir.copy(camera.position).normalize();
+        const f = nW.dot(camDir);
+        L.sp.material.opacity = state.seeThrough ? 0.35 + 0.65 * Math.max(0, f) : Math.max(0, Math.min(1, (f + 0.15) * 2.2));
+      }
+    }
+
+    // ---- animation queue (cube jobs run one after another; camera flights run alongside)
+    const queue = []; let job = null;
+    const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+    function enqueue(j) { queue.push(j); }
+    function busy() { return !!job || queue.length > 0; }
+    function finishAll() { while (job || queue.length) { if (!job) { job = queue.shift(); job.start && job.start(); } job.update(1); job.end && job.end(); job = null; } }
+    function frame(now) {
+      if (!job && queue.length) { job = queue.shift(); job.t0 = now; job.start && job.start(); }
+      if (job) {
+        const dur = reduceMotion ? 0 : job.dur;
+        const t = dur > 0 ? Math.min(1, (now - job.t0) / dur) : 1;
+        job.update(job.linear ? t : ease(t));
+        if (t >= 1) { const j = job; job = null; j.end && j.end(); }
+      }
+      if (camAnim) {
+        const t = camAnim.dur > 0 ? Math.min(1, (now - camAnim.t0) / camAnim.dur) : 1, e = ease(t);
+        view.az = camAnim.from.az + camAnim.daz * e;
+        view.el = camAnim.from.el + (camAnim.to.el - camAnim.from.el) * e;
+        view.dist = camAnim.from.dist + (camAnim.to.dist - camAnim.from.dist) * e;
+        placeCamera();
+        if (t >= 1) camAnim = null;
+      }
+      root.updateMatrixWorld(true);
+      fadeLabels();
+      renderer.render(scene, camera);
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+
+    // ---- root animation from the current matrix to M (handles mirrors)
+    const qa = new T.Quaternion(), qb = new T.Quaternion(), qt = new T.Quaternion(), m4 = new T.Matrix4();
+    function quatOf(M) { m4.set(M[0][0], M[0][1], M[0][2], 0, M[1][0], M[1][1], M[1][2], 0, M[2][0], M[2][1], M[2][2], 0, 0, 0, 0, 1); return new T.Quaternion().setFromRotationMatrix(m4); }
+    function matOfQuat(q) { m4.makeRotationFromQuaternion(q); const e = m4.elements; return [[e[0], e[4], e[8]], [e[1], e[5], e[9]], [e[2], e[6], e[10]]]; }
+    function rootTo(Mtarget, dur) {
+      let A, D, plan;
+      return {
+        dur: dur === undefined ? 700 : dur,
+        start() {
+          A = rootM.map((r) => r.slice());
+          D = P.mul(Mtarget, P.transpose(A));                 // D A = target (orthogonal A)
+          if (P.det(D) > 0) plan = { proper: true, q: quatOf(D) };
+          else {
+            const Mp = D.map((r, i) => r.map((x, j) => x + (i === j ? 1 : 0)));   // null vector of D + I
+            let n = null;
+            for (const [i, j] of [[0, 1], [0, 2], [1, 2]]) {
+              const c = [Mp[i][1] * Mp[j][2] - Mp[i][2] * Mp[j][1], Mp[i][2] * Mp[j][0] - Mp[i][0] * Mp[j][2], Mp[i][0] * Mp[j][1] - Mp[i][1] * Mp[j][0]];
+              const l = Math.hypot(c[0], c[1], c[2]);
+              if (l > 1e-6 && (!n || l > n.l)) n = { v: c.map((x) => x / l), l };
+            }
+            const u = n ? n.v : [1, 0, 0];
+            const F = [0, 1, 2].map((i) => [0, 1, 2].map((j) => (i === j ? 1 : 0) - 2 * u[i] * u[j]));
+            plan = { proper: false, u, q: quatOf(P.mul(F, D)) };
+          }
+        },
+        update(t) {
+          if (plan.proper) {
+            qt.copy(new T.Quaternion()).slerp(plan.q, t);
+            setRoot(P.mul(matOfQuat(qt), A));
+          } else {                                            // turn for the first half, pass through the mirror for the second
+            const tr = Math.min(1, t * 2), tf = Math.max(0, t * 2 - 1);
+            qt.copy(new T.Quaternion()).slerp(plan.q, tr);
+            const R = matOfQuat(qt);
+            let s = Math.cos(Math.PI * tf); const u = plan.u;        // scale along u from 1 to -1
+            if (Math.abs(s) < 0.02) s = s < 0 || tf > 0.5 ? -0.02 : 0.02;  // never exactly flat
+            const F = [0, 1, 2].map((i) => [0, 1, 2].map((j) => (i === j ? 1 : 0) - (1 - s) * u[i] * u[j]));
+            setRoot(P.mul(F, P.mul(R, A)));
+          }
+        },
+        end() { setRoot(Mtarget); },
+      };
+    }
+    function rootFn(fn, dur) { return { dur, linear: false, update: (t) => setRoot(fn(t)), end: () => setRoot(fn(1)) }; }
+
+    // ---- puzzle turn animation
+    function turnJob(token, dur) {
+      const s = P.moveSpec(token);
+      const ids = [];
+      return {
+        dur: dur === undefined ? 260 : dur,
+        start() { state.cube.cubies.forEach((c, i) => { if (c.pos[s.axis] === s.layer) ids.push(i); }); },
+        update(t) {
+          const a = s.q * (Math.PI / 2) * t, c = Math.cos(a), sn = Math.sin(a);
+          const R = s.axis === 0 ? [[1, 0, 0], [0, c, -sn], [0, sn, c]] : s.axis === 1 ? [[c, 0, sn], [0, 1, 0], [-sn, 0, c]] : [[c, -sn, 0], [sn, c, 0], [0, 0, 1]];
+          for (const i of ids) setCubieMatrix(i, R);
+        },
+        end() { P.applyMove(state.cube, token); syncCubies(); onPuzzleChange(); },
+      };
+    }
+    function twistJob(pos, sense) {
+      let idx = -1;
+      return {
+        dur: 420,
+        start() { idx = state.cube.cubies.findIndex((k) => k.pos.every((v, i) => v === pos[i])); },
+        update(t) {
+          const u = pos.map((v) => v / Math.sqrt(3)), a = sense * (2 * Math.PI / 3) * t, c = Math.cos(a), s = Math.sin(a);
+          const K = [[0, -u[2], u[1]], [u[2], 0, -u[0]], [-u[1], u[0], 0]];
+          const K2 = P.mul(K, K);
+          const R = [0, 1, 2].map((i) => [0, 1, 2].map((j) => (i === j ? 1 : 0) + s * K[i][j] + (1 - c) * K2[i][j]));
+          const cub = state.cube.cubies[idx];
+          const M = P.mul(R, cub.rot), p = P.mulv(R, cub.pos);
+          cubieMeshes[idx].matrix.set(M[0][0], M[0][1], M[0][2], p[0], M[1][0], M[1][1], M[1][2], p[1], M[2][0], M[2][1], M[2][2], p[2], 0, 0, 0, 1);
+        },
+        end() { P.twistCorner(state.cube, pos, sense); syncCubies(); onPuzzleChange(); },
+      };
+    }
+
+    return {
+      setRoot, getRoot: () => rootM, enqueue, busy, finishAll, rootTo, rootFn, turnJob, twistJob, buildPairing, setSeeThrough,
+      flyTo, viewAlong, HOME, view, refreshTheme, syncCubies,
+      groups: { faceLabelGroup, v0Group, pairGroup, fanoGroup, rodGroup, bodyAxisGroup },
+      setRodLabels: (t) => t.forEach((s, k) => setLabelText(rodLabels[k], s)),
+      setMassLabels: (t) => t.forEach((s, k) => setLabelText(massLabels[k], s)),
+      clearQueue: () => { queue.length = 0; },
+    };
+  }
+
+  // ================================================================== MIXING
+  const SECTOR = {
+    lepton: { rows: ['e', 'μ', 'τ'], cols: ['ν₁', 'ν₂', 'ν₃'], data: 'NuFIT 6.0' },
+    quark: { rows: ['u', 'c', 't'], cols: ['d', 's', 'b'], data: 'UTfit 2022' },
+  };
+  function presetAngles(p) {
+    if (p.wolf) { const a = P.anglesFromWolfenstein(p.wolf[0], p.wolf[1], p.wolf[2], p.wolf[3]); return { t12: a.t12, t13: a.t13, t23: a.t23, d: a.d, dDefined: true }; }
+    return { t12: Math.asin(Math.sqrt(p.s12sq)), t13: Math.asin(Math.sqrt(p.s13sq)), t23: Math.asin(Math.sqrt(p.s23sq)), d: (p.d === null ? 0 : p.d) * P.RAD, dDefined: p.d !== null };
+  }
+  function cubeO() { const a = state.ang; return P.cubeRotation(a.t12, a.t13, a.t23, a.d).O; }
+
+  function renderPresets() {
+    const box = $('#presets'); box.innerHTML = '';
+    for (const p of PRESETS[state.sector]) {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'preset'; b.setAttribute('aria-pressed', String(p.id === state.presetId));
+      b.innerHTML = '<b></b><span></span>'; b.firstChild.innerHTML = p.name.replace('θ_C', 'θ<sub>C</sub>'); b.lastChild.textContent = p.tag;
+      b.addEventListener('click', () => loadPreset(p.id, true));
+      box.appendChild(b);
+    }
+  }
+  function loadPreset(id, animate) {
+    const p = PRESETS[state.sector].find((x) => x.id === id) || PRESETS[state.sector][0];
+    state.presetId = p.id;
+    state.ang = presetAngles(p);
+    $('#presetNote').innerHTML = p.note.replace(/θ_C/g, 'θ<sub>C</sub>').replace(/V_us/g, 'V<sub>us</sub>').replace(/V_ud/g, 'V<sub>ud</sub>');
+    renderPresets(); syncSliders(); updateMixing();
+    if (three && state.mode === 'mixing') { three.clearQueue(); three.enqueue(three.rootTo(cubeO(), animate ? 750 : 0)); }
+  }
+  const SL = [['t12', 'r12', 'n12'], ['t23', 'r23', 'n23'], ['t13', 'r13', 'n13'], ['d', 'rd', 'nd']];
+  function syncSliders() {
+    for (const [k, r, n] of SL) {
+      const v = deg(state.ang[k]);
+      $('#' + r).value = String(v);
+      $('#' + n).value = k === 'd' ? v.toFixed(1) : v.toFixed(3);
+    }
+  }
+  function onSlider(k, v, fromNumber) {
+    if (!Number.isFinite(v)) return;
+    const max = k === 'd' ? 360 : 90;
+    v = Math.max(0, Math.min(max, v));
+    state.ang[k] = v * P.RAD;
+    if (k === 'd') state.ang.dDefined = true;
+    state.presetId = null; renderPresets();
+    $('#presetNote').innerHTML = '<b>Your own turn.</b> Match the data by hand: the χ² below updates as you move the dials.';
+    if (fromNumber) $('#r' + (k === 'd' ? 'd' : k.slice(1))).value = String(v); else $('#n' + (k === 'd' ? 'd' : k.slice(1))).value = k === 'd' ? v.toFixed(1) : v.toFixed(3);
+    updateMixing();
+    if (three && state.mode === 'mixing') { three.clearQueue(); three.finishAll(); three.setRoot(cubeO()); }
+  }
+  for (const [k, r, n] of SL) {
+    $('#' + r).addEventListener('input', (e) => onSlider(k, parseFloat(e.target.value), false));
+    $('#' + n).addEventListener('change', (e) => onSlider(k, parseFloat(e.target.value), true));
+  }
+
+  function updateMixing() {
+    const a = state.ang, sec = SECTOR[state.sector];
+    const U = P.pdgU(a.t12, a.t13, a.t23, a.d);
+    const A2 = P.absSq(U);
+    // face grid
+    const face = $('#face'); face.innerHTML = '';
+    const colVars = ['--c1', '--c2', '--c3'];
+    const add = (html, cls) => { const d = document.createElement('div'); d.className = cls; d.innerHTML = html; face.appendChild(d); return d; };
+    add('', 'hd');
+    sec.cols.forEach((c) => add(c, 'hd'));
+    for (let i = 0; i < 3; i++) {
+      add(sec.rows[i], 'hd');
+      for (let j = 0; j < 3; j++) {
+        const cell = add('<span class="fill"></span><span class="v"></span>', 'cell' + (i > 0 && j < 2 ? ' dep' : ''));
+        const f = cell.firstChild; f.style.background = 'var(' + colVars[j] + ')'; f.style.opacity = String(0.12 + 0.88 * Math.sqrt(A2[i][j]));
+        cell.lastChild.textContent = A2[i][j] >= 0.001 ? A2[i][j].toFixed(4) : fmt(A2[i][j]);
+        cell.title = sec.rows[i] + ' · ' + sec.cols[j] + ': |U|² = ' + A2[i][j].toPrecision(6);
+      }
+    }
+    // fit
+    const J = P.jarlskog(U);
+    let chi2, pulls, rows;
+    $('#dataName').textContent = sec.data;
+    if (state.sector === 'lepton') {
+      const s12sq = Math.pow(Math.sin(a.t12), 2), s13sq = Math.pow(Math.sin(a.t13), 2), s23sq = Math.pow(Math.sin(a.t23), 2);
+      const r = P.chi2Pmns(s12sq, s13sq, s23sq, a.dDefined ? deg(a.d) : null);
+      chi2 = r.chi2; pulls = r.pulls;
+      rows = [['s²₁₂', s12sq, P.NUFIT.s12sq[0], pulls.s12sq], ['s²₁₃', s13sq, P.NUFIT.s13sq[0], pulls.s13sq], ['s²₂₃', s23sq, P.NUFIT.s23sq[0], pulls.s23sq], ['δ', r.deltaDefined ? deg(a.d) : NaN, 177, r.deltaDefined ? pulls.delta : NaN]];
+    } else {
+      const r = P.chi2Ckm(U);
+      chi2 = r.chi2; pulls = r.pulls;
+      rows = [['λ', r.values.lambda, P.UTFIT.lambda[0], pulls.lambda], ['A', r.values.A, P.UTFIT.A[0], pulls.A], ['ρ̄', r.values.rhobar, P.UTFIT.rhobar[0], pulls.rhobar], ['η̄', r.values.etabar, P.UTFIT.etabar[0], pulls.etabar]];
+    }
+    $('#chi').textContent = fmtChi(chi2);
+    const st = $('#status');
+    if (!Number.isFinite(chi2)) { st.className = 'status warn'; st.textContent = 'No χ²: observables undefined'; }
+    else {
+      const p = P.pValue4(chi2);
+      st.className = 'status ' + (p > 0.01 ? 'good' : 'bad');
+      st.textContent = (p > 0.01 ? 'Within the data · ' : 'Excluded by the data · ') + fmtP(p);
+    }
+    const pl = $('#pulls'); pl.innerHTML = '';
+    for (const [nm, v, tgt, pu] of rows) {
+      const d = document.createElement('div'); d.className = 'pull';
+      const w = Number.isFinite(pu) ? Math.min(5, Math.abs(pu)) / 5 * 50 : 0;
+      const col = !Number.isFinite(pu) ? 'var(--muted)' : Math.abs(pu) < 2 ? 'var(--good)' : Math.abs(pu) < 3 ? 'var(--warn)' : 'var(--bad)';
+      d.innerHTML = '<span class="nm"></span><span class="bar"><i></i></span><span class="pv"></span>';
+      d.children[0].textContent = nm;
+      const bar = d.children[1].firstChild; bar.style.background = col; bar.style.width = w + '%'; bar.style.left = (pu >= 0 ? 50 : 50 - w) + '%';
+      d.children[2].textContent = Number.isFinite(pu) ? (pu >= 0 ? '+' : '−') + Math.abs(pu).toFixed(Math.abs(pu) >= 100 ? 0 : 1) + 'σ' : 'n/a';
+      d.title = nm + ' = ' + (Number.isFinite(v) ? v.toPrecision(5) : 'undefined') + ' (data ' + tgt + ')';
+      pl.appendChild(d);
+    }
+    $('#pnote').innerHTML = 'Pull bars run to ±5σ. p counts all four observables with nothing fitted' + (state.sector === 'lepton' ? '; δ counts only when every angle is nonzero, as in E4.' : '.');
+    const cr = P.cubeRotation(a.t12, a.t13, a.t23, a.d);
+    const obs = $('#obs'); obs.innerHTML = '';
+    const items = [['θ₁₂', deg(a.t12).toFixed(3) + '°'], ['θ₂₃', deg(a.t23).toFixed(3) + '°'], ['θ₁₃', deg(a.t13).toFixed(3) + '°'], ['δ', a.dDefined ? deg(a.d).toFixed(1) + '°' : 'undefined'],
+      ['Jarlskog J', fmt(J)], ['δ on the cube', cr.cubeDeltaDeg + '°'], ['cube vs grid, largest gap', fmt(Math.max(...P.absSq(cr.O.map((r) => r.map((x) => [x, 0]))).map((r, i) => Math.max(...r.map((x, j) => Math.abs(x - A2[i][j])))) ), 3)]];
+    for (const [k, v] of items) { const d = document.createElement('div'); d.innerHTML = '<span class="muted"></span><span class="mono"></span>'; d.firstChild.textContent = k; d.lastChild.textContent = v; obs.appendChild(d); }
+  }
+
+  function setSector(s) {
+    state.sector = s;
+    $('#secL').setAttribute('aria-pressed', String(s === 'lepton')); $('#secQ').setAttribute('aria-pressed', String(s === 'quark'));
+    if (three) { three.setRodLabels(SECTOR[s].rows); three.setMassLabels(SECTOR[s].cols); }
+    loadPreset(PRESETS[s][0].id, true);
+  }
+  $('#secL').addEventListener('click', () => setSector('lepton'));
+  $('#secQ').addEventListener('click', () => setSector('quark'));
+  $('#playTurns').addEventListener('click', () => {
+    if (!three) return;
+    if (state.mode !== 'mixing') setMode('mixing');
+    const a = state.ang, cr = P.cubeRotation(a.t12, a.t13, a.t23, a.d);
+    const t13s = cr.cubeDeltaDeg === 180 ? -a.t13 : a.t13;
+    three.clearQueue(); three.finishAll();
+    const cap = $('#capL');
+    three.enqueue(three.rootTo(P.I3(), 450));
+    three.enqueue(Object.assign(three.rootFn((t) => P.R12of(a.t12 * t), 1100), { start: () => { cap.innerHTML = '<b>1 of 3</b> · θ<sub>12</sub> about the third fixed axis'; } }));
+    three.enqueue(Object.assign(three.rootFn((t) => P.mul(P.R13of(t13s * t), P.R12of(a.t12)), 1100), { start: () => { cap.innerHTML = '<b>2 of 3</b> · θ<sub>13</sub> about the second fixed axis'; } }));
+    three.enqueue(Object.assign(three.rootFn((t) => P.mul(P.R23of(a.t23 * t), P.mul(P.R13of(t13s), P.R12of(a.t12))), 1100), { start: () => { cap.innerHTML = '<b>3 of 3</b> · θ<sub>23</sub> about the first fixed axis'; } }));
+    three.enqueue({ dur: 0, update() {}, end: () => { setCaption(); } });
+  });
+
+  // ================================================================== VERTEX
+  function renderFaceChips() {
+    const box = $('#facechips'); box.innerHTML = '';
+    const desc = { 1: 'QR · color 1 · +x', 3: 'QNR · color 1 · −x', 2: 'QR · color 2 · +y', 6: 'QNR · color 2 · −y', 4: 'QR · color 3 · +z', 5: 'QNR · color 3 · −z' };
+    for (const a of [1, 2, 4, 3, 6, 5]) {
+      const d = document.createElement('div'); d.className = 'facechip';
+      d.innerHTML = '<i class="sw" style="background:var(' + FACE_VAR[a] + ')"></i><b>' + eHtml(a) + '</b><span>' + desc[a] + '</span>';
+      box.appendChild(d);
+    }
+  }
+  const PAIR_INFO = {
+    J3: [['Pairs', '{e₁,e₃} {e₂,e₆} {e₄,e₅}'], ['On the torus', 'up-triangle partners, 60° apart'], ['On the cube', 'opposite faces: the three axes'], ['Same as', 'L<sub>e0</sub> in these labels; Furey\'s ladder operators'],
+      ['Color kept', 'all of su(3) (dim 8); all 96 of Δ(96)'], ['60°/180° torus turns', 'send it to −J<sub>5</sub>'], ['Vacuum vs Furey', 'identical']],
+    J5: [['Pairs', '{e₁,e₅} {e₂,e₃} {e₄,e₆}'], ['On the torus', 'down-triangle partners, −60° apart'], ['On the cube', 'adjacent faces'], ['Same as', 'the Fano<sup>−</sup> lines through v₀, which the gauge paper\'s §6 calls the right-handed doublets'],
+      ['Color kept', 'the same su(2) as J<sub>6</sub>, fixing r+g+b (dim 3); 3 of Δ(96), the torus\'s ℤ<sub>3</sub>'], ['60°/180° torus turns', 'send it to −J<sub>3</sub>'], ['Vacuum vs Furey', '|⟨Ω<sub>F</sub>|Ω⟩|² = 1/4, with the same ¼ neutrino, ¾ up-quark split as J<sub>6</sub>']],
+    J6: [['Pairs', '{e₁,e₆} {e₂,e₅} {e₄,e₃}'], ['On the torus', 'straight through v₀: the Hamiltonian cycles'], ['On the cube', 'adjacent faces'], ['Same as', 'the gauge paper\'s §5 modes'],
+      ['Color kept', 'an su(2) fixing r+g+b (dim 3), the same one J<sub>5</sub> keeps; 3 of Δ(96), the torus\'s ℤ<sub>3</sub>'], ['60°/180° torus turns', 'keep it, up to sign: the torus\'s own choice'], ['Vacuum vs Furey', '|⟨Ω<sub>F</sub>|Ω⟩|² = 1/4: one quarter neutrino, three quarters up quarks along r+g+b']],
+  };
+  function renderPairTable() {
+    const t = $('#ptable');
+    if (state.pairing === 'none') { t.innerHTML = '<tr><td class="muted">No pairing shown. J<sub>3</sub>, J<sub>5</sub> and J<sub>6</sub> are the only three pairings of the six neighbours that the 120° turn keeps.</td></tr>'; return; }
+    t.innerHTML = PAIR_INFO[state.pairing].map(([k, v]) => '<tr><th>' + k + '</th><td>' + v + '</td></tr>').join('');
+  }
+  $$('[data-pair]').forEach((b) => b.addEventListener('click', () => {
+    state.pairing = b.dataset.pair;
+    $$('[data-pair]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    renderPairTable(); renderInset();
+    if (three) { three.buildPairing(state.pairing); autoSeeThrough(); }
+  }));
+  $('#tFano').addEventListener('change', (e) => { state.fanoLines = e.target.checked; applyModeVisibility(); autoSeeThrough(); });
+  $('#tLabels').addEventListener('change', (e) => { state.faceLabels = e.target.checked; applyModeVisibility(); });
+  $$('[data-inset]').forEach((b) => b.addEventListener('click', () => {
+    state.inset = b.dataset.inset;
+    $$('[data-inset]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    renderInset();
+  }));
+
+  // ---- flat pictures (SVG)
+  function svgEl(inner, vb) { return '<svg viewBox="' + (vb || '-150 -150 300 300') + '" role="img" xmlns="http://www.w3.org/2000/svg">' + inner + '</svg>'; }
+  const polar = (r, degA) => [r * Math.cos(degA * P.RAD), -r * Math.sin(degA * P.RAD)];
+  function dot(a, x, y, r) {
+    return '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + (r || 11) + '" fill="var(' + FACE_VAR[a] + ')" stroke="var(--bg)" stroke-width="2"/>' +
+      '<text x="' + x.toFixed(1) + '" y="' + (y + 4.5).toFixed(1) + '" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" font-weight="600" fill="' + (P.QR.includes(a) ? '#ffffff' : '#0d0e12') + '">' + a + '</text>';
+  }
+  const pairColor = () => 'var(--' + (state.pairing === 'none' ? 'muted' : state.pairing.toLowerCase()) + ')';
+  function arrowDefs() {
+    return '<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="' + pairColor() + '"/></marker></defs>';
+  }
+  function renderInset() {
+    const box = $('#insetSvg'), cap = $('#insetCap');
+    const L = P.LINK_ORDER, pos = {};
+    let s = arrowDefs();
+    if (state.inset === 'torus') {
+      L.forEach((a, k) => { pos[a] = polar(112, 90 + 60 * k); });
+      for (let k = 0; k < 6; k++) {
+        const a = L[k], b = L[(k + 1) % 6];
+        const up = P.PAIRINGS.J3.some(([x, y]) => (x === a && y === b) || (x === b && y === a));
+        s += '<polygon points="0,0 ' + pos[a].join(',') + ' ' + pos[b].join(',') + '" fill="' + (up ? 'var(--j3)' : 'var(--j5)') + '" fill-opacity="' + (up ? 0.17 : 0.1) + '" stroke="var(--line)" stroke-width="1.5"/>';
+      }
+      s += pairChords(pos, 13);
+      s += '<circle cx="0" cy="0" r="9" fill="var(--fg)"/><text x="14" y="-10" font-size="13" fill="var(--fg)" font-family="IBM Plex Sans, sans-serif">v₀</text>';
+      L.forEach((a) => { s += dot(a, pos[a][0], pos[a][1]); });
+      s += '<text x="-146" y="142" font-size="11" fill="var(--muted)" font-family="IBM Plex Sans, sans-serif">shaded warm: up-triangles (Fano⁺) · cool: down (Fano⁻)</text>';
+      cap.innerHTML = 'The link of v<sub>0</sub> on the torus, neighbours at 0°, 60°, …, 300° in the order 1, 3, 2, 6, 4, 5. J<sub>3</sub> joins up-triangle partners (+60°), J<sub>5</sub> down-triangle partners (−60°), and J<sub>6</sub> runs straight through v<sub>0</sub>: each chord is a piece of one Hamiltonian cycle.';
+    } else if (state.inset === 'szilassi') {
+      L.forEach((a, k) => { pos[a] = polar(100, 90 + 60 * k); });           // edge midpoints
+      const corner = (k) => polar(100 / Math.cos(30 * P.RAD), 90 + 60 * k + 30);
+      let poly = '';
+      for (let k = 0; k < 6; k++) poly += corner(k).map((v) => v.toFixed(1)).join(',') + ' ';
+      s += '<polygon points="' + poly + '" fill="var(--surface-2)" stroke="var(--fg)" stroke-opacity=".5" stroke-width="2"/>';
+      for (let k = 0; k < 6; k++) {
+        const a = L[k], b = L[(k + 1) % 6], c = corner(k);
+        const up = P.PAIRINGS.J3.some(([x, y]) => (x === a && y === b) || (x === b && y === a));
+        const hot = (state.pairing === 'J3' && up) || (state.pairing === 'J5' && !up);
+        const tri = up ? 'M0,-8 L7,5 L-7,5 z' : 'M0,8 L7,-5 L-7,-5 z';
+        s += '<path transform="translate(' + c[0].toFixed(1) + ',' + c[1].toFixed(1) + ')" d="' + tri + '" fill="' + (hot ? pairColor() : 'var(--muted)') + '"' + (hot ? '' : ' fill-opacity=".55"') + '/>';
+        if (hot) s += '<circle cx="' + c[0].toFixed(1) + '" cy="' + c[1].toFixed(1) + '" r="15" fill="none" stroke="' + pairColor() + '" stroke-width="2.5"/>';
+      }
+      if (state.pairing === 'J6') for (const [a, b] of P.PAIRINGS.J6) s += '<line x1="' + pos[a][0].toFixed(1) + '" y1="' + pos[a][1].toFixed(1) + '" x2="' + pos[b][0].toFixed(1) + '" y2="' + pos[b][1].toFixed(1) + '" stroke="var(--j6)" stroke-width="3" stroke-dasharray="7 5"/>';
+      L.forEach((a) => { s += dot(a, pos[a][0], pos[a][1], 10); });
+      cap.innerHTML = 'The same neighbourhood on the dual Szilassi face: its six edges are the neighbours and its corners alternate up (▲) and down (▼) triangles. Furey\'s three colors are the up-corners, J<sub>5</sub> the down-corners, and J<sub>6</sub> joins opposite edges. (Note R8, computed once.)';
+    } else {
+      const pt = { 3: polar(118, 90), 5: polar(118, 210), 6: polar(118, 330), 0: [0, 0] };
+      const mid = (a, b) => [(pt[a][0] + pt[b][0]) / 2, (pt[a][1] + pt[b][1]) / 2];
+      pt[2] = mid(3, 5); pt[4] = mid(3, 6); pt[1] = mid(5, 6);
+      const ln = (a, b, col, w, dash) => '<line x1="' + pt[a][0].toFixed(1) + '" y1="' + pt[a][1].toFixed(1) + '" x2="' + pt[b][0].toFixed(1) + '" y2="' + pt[b][1].toFixed(1) + '" stroke="' + col + '" stroke-width="' + w + '"' + (dash ? ' stroke-dasharray="' + dash + '"' : '') + ' stroke-linecap="round"/>';
+      s += ln(3, 5, 'var(--accent)', 2.5) + ln(3, 6, 'var(--accent)', 2.5) + ln(5, 6, 'var(--accent)', 2.5);
+      s += '<circle cx="0" cy="0" r="59" fill="none" stroke="var(--accent)" stroke-width="3.5"/>';
+      s += ln(3, 1, 'var(--c1)', 4) + ln(6, 2, 'var(--c2)', 4) + ln(5, 4, 'var(--c3)', 4);
+      if (state.pairing === 'J5' || state.pairing === 'J6') for (const [a, b] of P.PAIRINGS[state.pairing]) s += ln(a, b, pairColor(), 3, '6 5');
+      s += '<circle cx="0" cy="0" r="10" fill="var(--fg)"/><text x="12" y="-12" font-size="13" fill="var(--fg)" font-family="IBM Plex Sans, sans-serif">v₀</text>';
+      for (const a of [1, 2, 3, 4, 5, 6]) s += dot(a, pt[a][0], pt[a][1], 11);
+      cap.innerHTML = 'The up Fano plane with v<sub>0</sub> at the center. Its three medians, the lines through v<sub>0</sub>, are the cube\'s axes (color 1, 2, 3). The circle {1,2,4} and the three sides are the other four lines: the corners of the tetrahedron inside the cube.' + (state.pairing === 'J5' || state.pairing === 'J6' ? ' Dashed: the ' + state.pairing.replace('J', 'J<sub>') + '</sub> pairs.' : '');
+    }
+    box.innerHTML = svgEl(s);
+  }
+  function pairChords(pos, shrink) {
+    if (state.pairing === 'none') return '';
+    let s = '';
+    for (const [a, b] of P.PAIRINGS[state.pairing]) {
+      const [x1, y1] = pos[a], [x2, y2] = pos[b], l = Math.hypot(x2 - x1, y2 - y1), ux = (x2 - x1) / l, uy = (y2 - y1) / l;
+      s += '<line x1="' + (x1 + ux * shrink).toFixed(1) + '" y1="' + (y1 + uy * shrink).toFixed(1) + '" x2="' + (x2 - ux * shrink).toFixed(1) + '" y2="' + (y2 - uy * shrink).toFixed(1) + '" stroke="' + pairColor() + '" stroke-width="4" marker-end="url(#ah)" stroke-linecap="round"/>';
+    }
+    return s;
+  }
+
+  // ---- the 24 Fano moves
+  const CLASS_INFO = {
+    E: ['Identity', 'leaves every face in place'],
+    C3: ['120° turns about a corner', 'turns about a body diagonal; the corner is a Fano⁺ line'],
+    C2: ['Half turns about an axis', 'flips two colors\' faces, keeps one axis'],
+    sigma_d: ['Mirrors', 'reflects through a plane holding one axis'],
+    S4: ['Quarter turn, then mirror', 'not a turn: a quarter turn composed with a mirror'],
+  };
+  const axisColor = (v) => { const k = v.findIndex((x) => x !== 0); return 'color ' + (k + 1); };
+  function describe(el) {
+    const cyc = P.formatCycles(el.cycles.map((c) => c.map((a) => eLab(a))));
+    let what;
+    if (el.cls === 'E') what = 'identity';
+    else if (el.cls === 'C3') { const c = CORNERS.find((k) => k.signs.every((s, i) => s === el.axis[i])); what = el.angle + '° turn about the corner {' + c.faces.join(',') + '}'; }
+    else if (el.cls === 'C2') what = 'half turn about the ' + axisColor(el.axis) + ' axis';
+    else if (el.cls === 'sigma_d') what = 'mirror in the plane ⟂ (' + el.normal.join(', ') + ')';
+    else what = 'quarter turn about the ' + axisColor(el.axis) + ' axis, then a mirror';
+    return { cyc, what };
+  }
+  function renderMoves() {
+    const box = $('#moveGroups'); box.innerHTML = '';
+    for (const cls of ['E', 'C3', 'C2', 'sigma_d', 'S4']) {
+      const els = STAB.filter((e) => e.cls === cls);
+      const g = document.createElement('div'); g.className = 'movegroup';
+      g.innerHTML = '<div class="gh"><b>' + CLASS_INFO[cls][0] + '</b> (' + els.length + ') · ' + CLASS_INFO[cls][1] + '</div><div class="mg"></div>';
+      for (const el of els) {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'mbtn' + (el.torus && el.torus !== 'id' ? ' torus' : '');
+        const d = describe(el);
+        b.textContent = P.formatCycles(el.cycles);
+        b.title = d.what + (el.torus && el.torus !== 'id' ? ' · on the torus: ' + el.torus.replace('->', ' ↦ ') : '');
+        b.setAttribute('aria-label', 'Apply ' + d.what + ', ' + d.cyc);
+        b.addEventListener('click', () => applyFano(el));
+        g.lastChild.appendChild(b);
+      }
+      box.appendChild(g);
+    }
+  }
+  function findElement(M) { return STAB.find((e) => P.eqM(e.matrix, M, 1e-9)); }
+  function applyFano(el) {
+    if (state.mode !== 'vertex') setMode('vertex');
+    state.fanoM = P.mul(el.matrix, state.fanoM).map((r) => r.map((x) => Math.round(x)));
+    state.fanoCount++; state.lastMove = el;
+    if (three) three.enqueue(three.rootTo(state.fanoM, el.cls === 'E' ? 200 : 900));
+    renderFanoReadout();
+  }
+  function renderFanoReadout() {
+    const box = $('#fanoReadout');
+    if (!state.lastMove) {
+      box.innerHTML = '<span>Each button is one of the 24 symmetries of the up Fano plane that fix v<sub>0</sub>, written as a permutation of the labels. Click to move the cube. The two marked in teal, x ↦ 2x and x ↦ 4x, are the only ones besides the identity that the torus has too.</span>';
+      return;
+    }
+    const d = describe(state.lastMove), cur = findElement(state.fanoM), dc = describe(cur);
+    const tor = state.lastMove.torus && state.lastMove.torus !== 'id' ? ' · on the torus: ' + state.lastMove.torus.replace('->', ' ↦ ') : ' · not a symmetry of the torus';
+    const qr = cur.qrImage;
+    box.innerHTML = '<span><b>Last:</b> <span class="mono"></span> · ' + d.what + tor + '</span>' +
+      '<span><b>Total after ' + state.fanoCount + ' move' + (state.fanoCount === 1 ? '' : 's') + ':</b> <span class="mono"></span> · ' + dc.what + '</span>' +
+      '<span class="muted">The QR line {1,2,4} is now at {' + qr.join(',') + '}' + (cur.fixesQRCorner ? ', where it started.' : '. All four lines away from v<sub>0</sub> get permuted; the three axes are kept.') + ' The determinant is ' + (cur.det > 0 ? '+1 (a turn).' : '−1 (a mirror move).') + '</span>';
+    const monos = box.querySelectorAll('.mono');
+    monos[0].textContent = d.cyc; monos[1].textContent = dc.cyc;
+  }
+  $('#fanoReset').addEventListener('click', () => {
+    state.fanoM = P.I3(); state.fanoCount = 0; state.lastMove = null; renderFanoReadout();
+    if (three && state.mode === 'vertex') three.enqueue(three.rootTo(P.I3(), 700));
+  });
+
+  // ================================================================== PUZZLE
+  const PAD = [['U', 2], ['D', 6], ['R', 1], ['L', 3], ['F', 4], ['B', 5]];
+  function renderPad() {
+    const box = $('#pad'); box.innerHTML = '';
+    for (const [m, a] of PAD) {
+      const col = document.createElement('div'); col.className = 'padcol';
+      col.innerHTML = '<div class="padhd"><i class="sw" style="background:var(' + FACE_VAR[a] + ')"></i><span>' + m + ' · ' + eHtml(a) + '</span></div>';
+      for (const tok of [m, m + "'"]) {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'pbtn';
+        b.textContent = (tok.length > 1 ? '↺ ' : '↻ ') + tok;
+        b.setAttribute('aria-label', 'Turn the ' + eLab(a) + ' face ' + (tok.length > 1 ? 'counterclockwise' : 'clockwise') + ' (' + tok + ')');
+        b.addEventListener('click', () => doMove(tok, true));
+        col.appendChild(b);
+      }
+      box.appendChild(col);
+    }
+  }
+  function doMove(tok, record, dur) {
+    if (state.mode !== 'puzzle') setMode('puzzle');
+    if (record) state.history.push(tok);
+    if (three) three.enqueue(three.turnJob(tok, dur));
+    else { P.applyMove(state.cube, tok); onPuzzleChange(); }
+    $('#pCount').textContent = state.history.length + ' move' + (state.history.length === 1 ? '' : 's');
+  }
+  function onPuzzleChange() {
+    if (state.mode === 'puzzle') setCaption();
+    const tw = P.cornerTwists(state.cube);
+    const box = $('#twists'); box.innerHTML = '';
+    const order = [[1, 1, 1], [1, 1, -1], [-1, 1, -1], [-1, 1, 1], [1, -1, 1], [1, -1, -1], [-1, -1, -1], [-1, -1, 1]];
+    const nm = (p) => (p[1] > 0 ? 'U' : 'D') + (p[2] > 0 ? 'F' : 'B') + (p[0] > 0 ? 'R' : 'L');
+    for (const p of order) {
+      const c = tw.find((k) => k.pos.every((v, i) => v === p[i]));
+      const d = document.createElement('div'); if (c.twist) d.className = 'on';
+      d.innerHTML = c.twist + '<small>' + nm(p) + '</small>'; d.title = 'corner ' + nm(p) + ': twist ' + c.twist;
+      box.appendChild(d);
+    }
+    const tot = P.twistTotal(state.cube);
+    $('#twTotal').textContent = String(tot);
+    const msg = $('#pMsg');
+    if (tot !== 0) { msg.className = 'message warn'; msg.innerHTML = '<b>Total twist ' + tot + ' (mod 3).</b> No sequence of legal turns can solve this cube now. Reset fixes it. In the note\'s analogy (R7c) this is a state with nonzero triality, like a lone quark; the analogy goes no further.'; }
+    else if (P.isSolved(state.cube)) { msg.className = 'message good'; msg.innerHTML = 'Solved. Any sequence of legal turns keeps the total corner twist at 0 mod 3. Twist one corner by hand and it becomes 1 or 2, and then no legal sequence solves the cube. The note compares this with triality, where color-neutral states have triality 0; it is an analogy only.'; }
+    else { msg.className = 'message'; msg.innerHTML = 'Scrambled, total twist 0 (mod 3): some sequence of legal turns solves it. <b>Solve</b> plays your moves backwards.'; }
+  }
+  $('#pScramble').addEventListener('click', () => {
+    if (state.mode !== 'puzzle') setMode('puzzle');
+    const faces = ['U', 'D', 'R', 'L', 'F', 'B']; let last = '';
+    let seed = (state.history.length * 7919 + 17) % 2147483647;
+    for (let i = 0; i < 22; i++) {
+      let f; do { seed = (seed * 48271 + Math.floor(Math.random() * 1000)) % 2147483647; f = faces[seed % 6]; } while (f === last);
+      last = f;
+      doMove(f + (seed % 3 === 0 ? "'" : ''), true, 110);
+    }
+  });
+  $('#pUndo').addEventListener('click', () => { const t = state.history.pop(); if (t) doMove(P.inverseToken(t), false); $('#pCount').textContent = state.history.length + ' moves'; });
+  $('#pSolve').addEventListener('click', () => {
+    while (state.history.length) doMove(P.inverseToken(state.history.pop()), false, 130);
+    $('#pCount').textContent = '0 moves';
+  });
+  $('#pReset').addEventListener('click', () => {
+    if (three) { three.clearQueue(); three.finishAll(); }
+    state.cube = P.newCube(); state.history = []; state.handTwists = 0;
+    if (three) three.syncCubies();
+    $('#pCount').textContent = '0 moves'; onPuzzleChange();
+  });
+  $('#pTwist').addEventListener('click', () => {
+    if (state.mode !== 'puzzle') setMode('puzzle');
+    state.handTwists++;
+    if (three) three.enqueue(three.twistJob([1, 1, 1], 1));
+    else { P.twistCorner(state.cube, [1, 1, 1], 1); onPuzzleChange(); }
+  });
+  // Rebind cube model inside the 3D helpers after a reset: turnJob/twistJob read state.cube at run time.
+  document.addEventListener('keydown', (e) => {
+    if (state.mode !== 'puzzle' || e.ctrlKey || e.metaKey || e.altKey) return;
+    const tag = (e.target && e.target.tagName) || '';
+    if (/INPUT|TEXTAREA|SELECT/.test(tag)) return;
+    const k = e.key.toUpperCase();
+    if (!'UDRLFB'.includes(k) || k.length !== 1) return;
+    e.preventDefault(); doMove(e.shiftKey ? k + "'" : k, true);
+  });
+
+  // ================================================================== modes
+  function applyModeVisibility() {
+    if (!three) return;
+    const g = three.groups, m = state.mode;
+    g.rodGroup.visible = m === 'mixing';
+    g.bodyAxisGroup.visible = m === 'mixing';
+    g.faceLabelGroup.visible = m !== 'mixing' && state.faceLabels;
+    g.pairGroup.visible = m === 'vertex';
+    g.fanoGroup.visible = m === 'vertex' && state.fanoLines;
+    g.v0Group.visible = m === 'vertex';
+  }
+  function autoSeeThrough() {
+    const want = state.mode === 'vertex' && (state.pairing === 'J3' || state.fanoLines);
+    setSee(want);
+  }
+  function setSee(on) {
+    state.seeThrough = on;
+    $('#vSee').setAttribute('aria-pressed', String(on));
+    if (three) three.setSeeThrough(on);
+  }
+  $('#vSee').addEventListener('click', () => setSee(!state.seeThrough));
+  function setCaption() {
+    const c = $('#capL');
+    if (state.mode === 'mixing') c.innerHTML = '<b>Mixing</b> · gray rods fixed (' + SECTOR[state.sector].rows.join(', ') + '); colored arrows are the cube\'s axes (' + SECTOR[state.sector].cols.join(', ') + ')';
+    else if (state.mode === 'vertex') c.innerHTML = '<b>Vertex</b> · faces are the neighbours of v<sub>0</sub>' + (state.pairing !== 'none' ? '; arrows show ' + state.pairing.replace('J', 'J<sub>') + '</sub>: e<sub>r</sub> → e<sub>' + state.pairing.slice(1) + 'r</sub>' : '');
+    else c.innerHTML = '<b>Puzzle</b> · ' + (P.isSolved(state.cube) ? 'solved' : 'scrambled');
+  }
+  function setMode(m) {
+    state.mode = m;
+    for (const t of ['mixing', 'vertex', 'puzzle']) {
+      const tab = $('#tab-' + t), panel = $('#panel-' + t);
+      tab.setAttribute('aria-selected', String(t === m)); tab.tabIndex = t === m ? 0 : -1; panel.hidden = t !== m;
+    }
+    applyModeVisibility();
+    if (m === 'vertex') autoSeeThrough(); else setSee(false);
+    if (three) {
+      const target = m === 'mixing' ? cubeO() : m === 'vertex' ? state.fanoM : P.I3();
+      three.enqueue(three.rootTo(target, 750));
+    }
+    setCaption();
+    try { localStorage.setItem('flavorCubeTab', m); } catch (e) { /* storage unavailable */ }
+  }
+  $$('.tab').forEach((t) => {
+    t.addEventListener('click', () => setMode(t.id.slice(4)));
+    t.addEventListener('keydown', (e) => {
+      const order = ['mixing', 'vertex', 'puzzle'], i = order.indexOf(state.mode);
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault(); const n = order[(i + (e.key === 'ArrowRight' ? 1 : 2)) % 3]; setMode(n); $('#tab-' + n).focus();
+      }
+    });
+  });
+  $('#vReset').addEventListener('click', () => { if (three) three.flyTo(three.HOME); });
+  $('#vCorner').addEventListener('click', () => {
+    if (!three) return;
+    const v = P.mulv(three.getRoot(), [1, 1, 1]);
+    three.flyTo(three.viewAlong(v));
+  });
+
+  // theme changes repaint 3D colors and labels
+  const themeRefresh = () => { if (three) three.refreshTheme(); renderInset(); };
+  if (window.matchMedia) { const mq = matchMedia('(prefers-color-scheme: light)'); if (mq.addEventListener) mq.addEventListener('change', themeRefresh); }
+  new MutationObserver(themeRefresh).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'class'] });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (three) three.refreshTheme(); });
+
+  // ================================================================== boot
+  renderFaceChips(); renderPairTable(); renderInset(); renderMoves(); renderFanoReadout(); renderPad(); onPuzzleChange();
+  if (three) { three.buildPairing(state.pairing); three.setRodLabels(SECTOR.lepton.rows); three.setMassLabels(SECTOR.lepton.cols); }
+  let startTab = 'mixing';
+  const hash = (location.hash || '').slice(1);
+  if (['mixing', 'vertex', 'puzzle'].includes(hash)) startTab = hash;
+  else { try { const s = localStorage.getItem('flavorCubeTab'); if (['mixing', 'vertex', 'puzzle'].includes(s)) startTab = s; } catch (e) { /* storage unavailable */ } }
+  loadPreset('pmns_nufit', false);
+  setMode(startTab);
+  if (three) three.finishAll();
+  window.__flavorCube = { state, Pure: P, three };   // for tests
+})();
+</script>
+</body>
+</html>

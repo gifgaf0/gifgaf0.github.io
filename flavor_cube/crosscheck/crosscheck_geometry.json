@@ -1,0 +1,1395 @@
+{
+ "phi": {
+  "1": "+x",
+  "3": "-x",
+  "2": "+y",
+  "6": "-y",
+  "4": "+z",
+  "5": "-z"
+ },
+ "fano_plus": [
+  [
+   0,
+   1,
+   3
+  ],
+  [
+   0,
+   2,
+   6
+  ],
+  [
+   0,
+   4,
+   5
+  ],
+  [
+   1,
+   2,
+   4
+  ],
+  [
+   1,
+   5,
+   6
+  ],
+  [
+   2,
+   3,
+   5
+  ],
+  [
+   3,
+   4,
+   6
+  ]
+ ],
+ "fano_minus": [
+  [
+   0,
+   1,
+   5
+  ],
+  [
+   0,
+   2,
+   3
+  ],
+  [
+   0,
+   4,
+   6
+  ],
+  [
+   1,
+   2,
+   6
+  ],
+  [
+   1,
+   3,
+   4
+  ],
+  [
+   2,
+   4,
+   5
+  ],
+  [
+   3,
+   5,
+   6
+  ]
+ ],
+ "link_order": [
+  1,
+  3,
+  2,
+  6,
+  4,
+  5
+ ],
+ "pairings": {
+  "J3": [
+   [
+    1,
+    3
+   ],
+   [
+    2,
+    6
+   ],
+   [
+    4,
+    5
+   ]
+  ],
+  "J5": [
+   [
+    1,
+    5
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    4,
+    6
+   ]
+  ],
+  "J6": [
+   [
+    1,
+    6
+   ],
+   [
+    2,
+    5
+   ],
+   [
+    4,
+    3
+   ]
+  ]
+ },
+ "stabilizer": [
+  {
+   "perm": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "cycles": "()",
+   "matrix": [
+    [
+     1,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   "det": 1,
+   "class": "E",
+   "axis": null,
+   "angle_deg": null,
+   "normal": null,
+   "torus": "id",
+   "fixes_QR_corner": true
+  },
+  {
+   "perm": [
+    1,
+    4,
+    3,
+    2,
+    6,
+    5
+   ],
+   "cycles": "(2 4)(5 6)",
+   "matrix": [
+    [
+     1,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     1,
+     0
+    ]
+   ],
+   "det": -1,
+   "class": "sigma_d",
+   "axis": null,
+   "angle_deg": null,
+   "normal": [
+    0,
+    1,
+    -1
+   ],
+   "torus": null,
+   "fixes_QR_corner": true
+  },
+  {
+   "perm": [
+    1,
+    5,
+    3,
+    6,
+    2,
+    4
+   ],
+   "cycles": "(2 5)(4 6)",
+   "matrix": [
+    [
+     1,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     -1
+    ],
+    [
+     0,
+     -1,
+     0
+    ]
+   ],
+   "det": -1,
+   "class": "sigma_d",
+   "axis": null,
+   "angle_deg": null,
+   "normal": [
+    0,
+    1,
+    1
+   ],
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    1,
+    6,
+    3,
+    5,
+    4,
+    2
+   ],
+   "cycles": "(2 6)(4 5)",
+   "matrix": [
+    [
+     1,
+     0,
+     0
+    ],
+    [
+     0,
+     -1,
+     0
+    ],
+    [
+     0,
+     0,
+     -1
+    ]
+   ],
+   "det": 1,
+   "class": "C2",
+   "axis": [
+    1,
+    0,
+    0
+   ],
+   "angle_deg": 180,
+   "normal": null,
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    2,
+    1,
+    6,
+    4,
+    5,
+    3
+   ],
+   "cycles": "(1 2)(3 6)",
+   "matrix": [
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   "det": -1,
+   "class": "sigma_d",
+   "axis": null,
+   "angle_deg": null,
+   "normal": [
+    1,
+    -1,
+    0
+   ],
+   "torus": null,
+   "fixes_QR_corner": true
+  },
+  {
+   "perm": [
+    2,
+    3,
+    6,
+    5,
+    4,
+    1
+   ],
+   "cycles": "(1 2 3 6)(4 5)",
+   "matrix": [
+    [
+     0,
+     -1,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     -1
+    ]
+   ],
+   "det": -1,
+   "class": "S4",
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "angle_deg": 90,
+   "normal": null,
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    2,
+    4,
+    6,
+    1,
+    3,
+    5
+   ],
+   "cycles": "(1 2 4)(3 6 5)",
+   "matrix": [
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     1,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ]
+   ],
+   "det": 1,
+   "class": "C3",
+   "axis": [
+    1,
+    1,
+    1
+   ],
+   "angle_deg": 120,
+   "normal": null,
+   "torus": "x->2x",
+   "fixes_QR_corner": true
+  },
+  {
+   "perm": [
+    2,
+    5,
+    6,
+    3,
+    1,
+    4
+   ],
+   "cycles": "(1 2 5)(3 6 4)",
+   "matrix": [
+    [
+     0,
+     0,
+     -1
+    ],
+    [
+     1,
+     0,
+     0
+    ],
+    [
+     0,
+     -1,
+     0
+    ]
+   ],
+   "det": 1,
+   "class": "C3",
+   "axis": [
+    -1,
+    -1,
+    1
+   ],
+   "angle_deg": 120,
+   "normal": null,
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    3,
+    2,
+    1,
+    5,
+    4,
+    6
+   ],
+   "cycles": "(1 3)(4 5)",
+   "matrix": [
+    [
+     -1,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     0,
+     0,
+     -1
+    ]
+   ],
+   "det": 1,
+   "class": "C2",
+   "axis": [
+    0,
+    1,
+    0
+   ],
+   "angle_deg": 180,
+   "normal": null,
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    3,
+    4,
+    1,
+    6,
+    2,
+    5
+   ],
+   "cycles": "(1 3)(2 4 6 5)",
+   "matrix": [
+    [
+     -1,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     -1
+    ],
+    [
+     0,
+     1,
+     0
+    ]
+   ],
+   "det": -1,
+   "class": "S4",
+   "axis": [
+    1,
+    0,
+    0
+   ],
+   "angle_deg": 90,
+   "normal": null,
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    3,
+    5,
+    1,
+    2,
+    6,
+    4
+   ],
+   "cycles": "(1 3)(2 5 6 4)",
+   "matrix": [
+    [
+     -1,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     -1,
+     0
+    ]
+   ],
+   "det": -1,
+   "class": "S4",
+   "axis": [
+    -1,
+    0,
+    0
+   ],
+   "angle_deg": 90,
+   "normal": null,
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    3,
+    6,
+    1,
+    4,
+    5,
+    2
+   ],
+   "cycles": "(1 3)(2 6)",
+   "matrix": [
+    [
+     -1,
+     0,
+     0
+    ],
+    [
+     0,
+     -1,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   "det": 1,
+   "class": "C2",
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "angle_deg": 180,
+   "normal": null,
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    4,
+    1,
+    5,
+    2,
+    6,
+    3
+   ],
+   "cycles": "(1 4 2)(3 5 6)",
+   "matrix": [
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ],
+   "det": 1,
+   "class": "C3",
+   "axis": [
+    -1,
+    -1,
+    -1
+   ],
+   "angle_deg": 120,
+   "normal": null,
+   "torus": "x->4x",
+   "fixes_QR_corner": true
+  },
+  {
+   "perm": [
+    4,
+    2,
+    5,
+    1,
+    3,
+    6
+   ],
+   "cycles": "(1 4)(3 5)",
+   "matrix": [
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ],
+   "det": -1,
+   "class": "sigma_d",
+   "axis": null,
+   "angle_deg": null,
+   "normal": [
+    1,
+    0,
+    -1
+   ],
+   "torus": null,
+   "fixes_QR_corner": true
+  },
+  {
+   "perm": [
+    4,
+    3,
+    5,
+    6,
+    2,
+    1
+   ],
+   "cycles": "(1 4 6)(2 3 5)",
+   "matrix": [
+    [
+     0,
+     -1,
+     0
+    ],
+    [
+     0,
+     0,
+     -1
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ],
+   "det": 1,
+   "class": "C3",
+   "axis": [
+    1,
+    -1,
+    1
+   ],
+   "angle_deg": 120,
+   "normal": null,
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    4,
+    6,
+    5,
+    3,
+    1,
+    2
+   ],
+   "cycles": "(1 4 3 5)(2 6)",
+   "matrix": [
+    [
+     0,
+     0,
+     -1
+    ],
+    [
+     0,
+     -1,
+     0
+    ],
+    [
+     1,
+     0,
+     0
+    ]
+   ],
+   "det": -1,
+   "class": "S4",
+   "axis": [
+    0,
+    -1,
+    0
+   ],
+   "angle_deg": 90,
+   "normal": null,
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    5,
+    1,
+    4,
+    6,
+    2,
+    3
+   ],
+   "cycles": "(1 5 2)(3 4 6)",
+   "matrix": [
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     0,
+     0,
+     -1
+    ],
+    [
+     -1,
+     0,
+     0
+    ]
+   ],
+   "det": 1,
+   "class": "C3",
+   "axis": [
+    1,
+    1,
+    -1
+   ],
+   "angle_deg": 120,
+   "normal": null,
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    5,
+    2,
+    4,
+    3,
+    1,
+    6
+   ],
+   "cycles": "(1 5)(3 4)",
+   "matrix": [
+    [
+     0,
+     0,
+     -1
+    ],
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     -1,
+     0,
+     0
+    ]
+   ],
+   "det": -1,
+   "class": "sigma_d",
+   "axis": null,
+   "angle_deg": null,
+   "normal": [
+    1,
+    0,
+    1
+   ],
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    5,
+    3,
+    4,
+    2,
+    6,
+    1
+   ],
+   "cycles": "(1 5 6)(2 3 4)",
+   "matrix": [
+    [
+     0,
+     -1,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     -1,
+     0,
+     0
+    ]
+   ],
+   "det": 1,
+   "class": "C3",
+   "axis": [
+    -1,
+    1,
+    1
+   ],
+   "angle_deg": 120,
+   "normal": null,
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    5,
+    6,
+    4,
+    1,
+    3,
+    2
+   ],
+   "cycles": "(1 5 3 4)(2 6)",
+   "matrix": [
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     -1,
+     0
+    ],
+    [
+     -1,
+     0,
+     0
+    ]
+   ],
+   "det": -1,
+   "class": "S4",
+   "axis": [
+    0,
+    1,
+    0
+   ],
+   "angle_deg": 90,
+   "normal": null,
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    6,
+    1,
+    2,
+    5,
+    4,
+    3
+   ],
+   "cycles": "(1 6 3 2)(4 5)",
+   "matrix": [
+    [
+     0,
+     1,
+     0
+    ],
+    [
+     -1,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     -1
+    ]
+   ],
+   "det": -1,
+   "class": "S4",
+   "axis": [
+    0,
+    0,
+    -1
+   ],
+   "angle_deg": 90,
+   "normal": null,
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    6,
+    3,
+    2,
+    4,
+    5,
+    1
+   ],
+   "cycles": "(1 6)(2 3)",
+   "matrix": [
+    [
+     0,
+     -1,
+     0
+    ],
+    [
+     -1,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1
+    ]
+   ],
+   "det": -1,
+   "class": "sigma_d",
+   "axis": null,
+   "angle_deg": null,
+   "normal": [
+    1,
+    1,
+    0
+   ],
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    6,
+    4,
+    2,
+    3,
+    1,
+    5
+   ],
+   "cycles": "(1 6 5)(2 4 3)",
+   "matrix": [
+    [
+     0,
+     0,
+     -1
+    ],
+    [
+     -1,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0
+    ]
+   ],
+   "det": 1,
+   "class": "C3",
+   "axis": [
+    1,
+    -1,
+    -1
+   ],
+   "angle_deg": 120,
+   "normal": null,
+   "torus": null,
+   "fixes_QR_corner": false
+  },
+  {
+   "perm": [
+    6,
+    5,
+    2,
+    1,
+    3,
+    4
+   ],
+   "cycles": "(1 6 4)(2 5 3)",
+   "matrix": [
+    [
+     0,
+     0,
+     1
+    ],
+    [
+     -1,
+     0,
+     0
+    ],
+    [
+     0,
+     -1,
+     0
+    ]
+   ],
+   "det": 1,
+   "class": "C3",
+   "axis": [
+    -1,
+    1,
+    -1
+   ],
+   "angle_deg": 120,
+   "normal": null,
+   "torus": null,
+   "fixes_QR_corner": false
+  }
+ ],
+ "corners": [
+  {
+   "signs": [
+    1,
+    1,
+    1
+   ],
+   "faces": [
+    1,
+    2,
+    4
+   ],
+   "tetra": "T1",
+   "fano_plus_line": true,
+   "fano_minus_line": false
+  },
+  {
+   "signs": [
+    1,
+    1,
+    -1
+   ],
+   "faces": [
+    1,
+    2,
+    5
+   ],
+   "tetra": "T2",
+   "fano_plus_line": false,
+   "fano_minus_line": false
+  },
+  {
+   "signs": [
+    1,
+    -1,
+    1
+   ],
+   "faces": [
+    1,
+    4,
+    6
+   ],
+   "tetra": "T2",
+   "fano_plus_line": false,
+   "fano_minus_line": false
+  },
+  {
+   "signs": [
+    1,
+    -1,
+    -1
+   ],
+   "faces": [
+    1,
+    5,
+    6
+   ],
+   "tetra": "T1",
+   "fano_plus_line": true,
+   "fano_minus_line": false
+  },
+  {
+   "signs": [
+    -1,
+    1,
+    1
+   ],
+   "faces": [
+    2,
+    3,
+    4
+   ],
+   "tetra": "T2",
+   "fano_plus_line": false,
+   "fano_minus_line": false
+  },
+  {
+   "signs": [
+    -1,
+    1,
+    -1
+   ],
+   "faces": [
+    2,
+    3,
+    5
+   ],
+   "tetra": "T1",
+   "fano_plus_line": true,
+   "fano_minus_line": false
+  },
+  {
+   "signs": [
+    -1,
+    -1,
+    1
+   ],
+   "faces": [
+    3,
+    4,
+    6
+   ],
+   "tetra": "T1",
+   "fano_plus_line": true,
+   "fano_minus_line": false
+  },
+  {
+   "signs": [
+    -1,
+    -1,
+    -1
+   ],
+   "faces": [
+    3,
+    5,
+    6
+   ],
+   "tetra": "T2",
+   "fano_plus_line": false,
+   "fano_minus_line": true
+  }
+ ],
+ "fano_diagram": {
+  "center": 0,
+  "circle": [
+   1,
+   2,
+   4
+  ],
+  "vertices": [
+   3,
+   5,
+   6
+  ],
+  "midpoint_of": {
+   "1": [
+    5,
+    6
+   ],
+   "2": [
+    3,
+    5
+   ],
+   "4": [
+    3,
+    6
+   ]
+  }
+ },
+ "corner_view_order": [
+  1,
+  5,
+  2,
+  3,
+  4,
+  6
+ ],
+ "hexagons": {
+  "J6_opposite": [
+   1,
+   3,
+   2,
+   6,
+   4,
+   5
+  ],
+  "J3_opposite": [
+   1,
+   5,
+   2,
+   3,
+   4,
+   6
+  ],
+  "J5_opposite": [
+   1,
+   3,
+   4,
+   5,
+   2,
+   6
+  ]
+ },
+ "szilassi": {
+  "edge_order": [
+   1,
+   3,
+   2,
+   6,
+   4,
+   5
+  ],
+  "corners": [
+   {
+    "triangle": [
+     0,
+     1,
+     3
+    ],
+    "type": "up"
+   },
+   {
+    "triangle": [
+     0,
+     3,
+     2
+    ],
+    "type": "down"
+   },
+   {
+    "triangle": [
+     0,
+     2,
+     6
+    ],
+    "type": "up"
+   },
+   {
+    "triangle": [
+     0,
+     6,
+     4
+    ],
+    "type": "down"
+   },
+   {
+    "triangle": [
+     0,
+     4,
+     5
+    ],
+    "type": "up"
+   },
+   {
+    "triangle": [
+     0,
+     5,
+     1
+    ],
+    "type": "down"
+   }
+  ]
+ },
+ "mismatch": {
+  "rows": [
+   [
+    1,
+    3
+   ],
+   [
+    4,
+    5
+   ],
+   [
+    2,
+    6
+   ]
+  ],
+  "cols": [
+   [
+    2,
+    3
+   ],
+   [
+    4,
+    6
+   ],
+   [
+    1,
+    5
+   ]
+  ],
+  "overlap": [
+   [
+    1,
+    0,
+    1
+   ],
+   [
+    0,
+    1,
+    1
+   ],
+   [
+    1,
+    1,
+    0
+   ]
+  ]
+ },
+ "orbits": {
+  "J5_orbit_size": 8,
+  "J6_in_J5_orbit": true,
+  "stab_J5_size": 3,
+  "stab_J6_size": 3
+ },
+ "invariants": {
+  "signed_automorphisms": 1344,
+  "delta96_order_counts": {
+   "1": 1,
+   "2": 15,
+   "3": 32,
+   "4": 24,
+   "8": 24
+  },
+  "su3_commutant_dim": {
+   "J3": 8,
+   "J5": 3,
+   "J6": 3
+  },
+  "delta96_commuting": {
+   "J3": 96,
+   "J5": 3,
+   "J6": 3
+  },
+  "vacuum_overlap": {
+   "J3_J5": "1/4",
+   "J3_J6": "1/4",
+   "J5_J6": "1/4"
+  },
+  "j6_vacuum_weights": {
+   "N0": "1/4",
+   "N2": "3/4"
+  }
+ }
+}

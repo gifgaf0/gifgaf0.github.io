@@ -1,0 +1,143 @@
+{
+ "claims": [
+  {
+   "id": "G1",
+   "holds": true,
+   "value": "Fano+ is Fano plane=True, Fano- is Fano plane=True, shared lines=[], edges in exactly 2 triangles: 21/21, vertex links single 6-cycles: 7/7, chi=7-21+14=0",
+   "notes": "Every pair lies in exactly one Fano+ line and exactly one Fano- line (so each edge in exactly one + and one - triangle)."
+  },
+  {
+   "id": "G2",
+   "holds": true,
+   "value": "link(0) computed = [1, 3, 2, 6, 4, 5]; consecutive types = [([1, 3], '+'), ([3, 2], '-'), ([2, 6], '+'), ([6, 4], '-'), ([4, 5], '+'), ([5, 1], '-')]",
+   "notes": ""
+  },
+  {
+   "id": "G3",
+   "holds": true,
+   "value": "x(xy)=(xx)y on all 64 basis pairs: True; (yx)x=y(xx): True; associator alternating on all 512 basis triples (=> fully alternative): True; non-associative: True; |xy|^2=|x|^2|y|^2 exactly on 400 random integer pairs: True; x(xy)=(xx)y on the random pairs too: True; L_e0|span(e1..e6) == J3: True",
+   "notes": "Checked the linearised (alternating-associator) condition, which is the actual definition of alternativity; x(xy)=(xx)y on basis elements alone would not suffice."
+  },
+  {
+   "id": "G4",
+   "holds": true,
+   "value": "#matchings=15; invariant under x->2x: [[[1, 3], [2, 6], [4, 5]], [[1, 5], [2, 3], [4, 6]], [[1, 6], [2, 5], [3, 4]]] = ['J3', 'J5', 'J6']; partner angle offsets (r in QR): {'J3': [60], 'J5': [-60], 'J6': [180]}",
+   "notes": "J6 offset is 180 for r=1,2 and -180 for r=4 (same thing)."
+  },
+  {
+   "id": "G5",
+   "holds": true,
+   "value": "turn (deg, with link (1,3,2,6,4,5) at 0,60,..,300 counterclockwise) -> multiplier: {60: 3, 120: 2, 180: 6, 240: 4, 300: 5}; family behaviour of x->ax: {1: 'preserves', 2: 'preserves', 3: 'swaps', 4: 'preserves', 5: 'swaps', 6: 'swaps'}",
+   "notes": "Orientation: angle increasing along the listed link order; the reverse orientation swaps 3x<->5x."
+  },
+  {
+   "id": "G6",
+   "holds": true,
+   "value": "|G|=24 (from 720 brute force); x->ax in G: {1: True, 2: True, 3: False, 4: True, 5: False, 6: False}; affine x->ax+b in G: [(1, 0), (2, 0), (4, 0)]",
+   "notes": "Affine maps fixing 0 necessarily have b=0. Also: G maps Fano- to Fano- ? False"
+  },
+  {
+   "id": "G7",
+   "holds": true,
+   "value": "P_g exists for all 24: True; signed permutation: True; #distinct=24; {P_g} == T_d: True; homomorphism (P_gh = P_g P_h): True; P_(x->2x) = [[0, 0, 1], [1, 0, 0], [0, 1, 0]] (columns = images of x,y,z), faces [('+x', '+y'), ('+y', '+z'), ('+z', '+x')]",
+   "notes": "x->2x is the +120 deg rotation about (1,1,1) (right-hand rule): +x->+y->+z."
+  },
+  {
+   "id": "G8",
+   "holds": true,
+   "value": "class counts {'E': 1, 'sigma_d': 6, 'C2': 3, 'S4': 6, 'C3': 8}; T_d conjugacy classes (brute force) [('C2', 3), ('C3', 8), ('E', 1), ('S4', 6), ('sigma_d', 6)]; #90-deg rotations in O: 6, any in {P_g}: False; -I in {P_g}: False. Full table in stabilizer[] of the JSON.",
+   "notes": "Conventions: C3 axis oriented so the rotation is +120 deg (right-hand rule), so x->2x has axis (1,1,1) and x->4x axis (-1,-1,-1); C2 axis and sigma_d normal sign-normalised (first nonzero entry positive); S4 axis oriented so that S = (reflection in plane perp. to axis) o (rotation +90 about axis)."
+  },
+  {
+   "id": "G9",
+   "holds": true,
+   "value": "#psi with psi G psi^-1 = T_d face action: 48; = O face action: 0; statistics over the 48: {'J3_opposite': 48, 'J5_adjacent': 48, 'J6_adjacent': 48, 'QR_corner': 48, 'QR_T1': 24, 'QR_T2': 24}",
+   "notes": "The 48 are phi composed with the O_h face action (normaliser of the T_d face action in S6 is O_h, order 48). O is impossible because a point stabiliser in G is a Klein 4-group while a face stabiliser in O is C4. Is phi among the 48: True; set of 48 == phi o O_h: True"
+  },
+  {
+   "id": "G10",
+   "holds": true,
+   "value": "Fano+ lines through 0 -> opposite pairs (axes): True; T1 corners = Fano+ lines not through 0: True {'(1, 1, 1)': (1, 2, 4), '(1, -1, -1)': (1, 5, 6), '(-1, 1, -1)': (2, 3, 5), '(-1, -1, 1)': (3, 4, 6)}; T2 corners (faces, F+, F-): {'(1, 1, -1)': ([1, 2, 5], False, False), '(1, -1, 1)': ([1, 4, 6], False, False), '(-1, 1, 1)': ([2, 3, 4], False, False), '(-1, -1, -1)': ([3, 5, 6], False, True)}; Fano- through 0 = J5 pairs, adjacent: True; opposite-pair counts in other Fano- lines: {'(1, 2, 6)': 1, '(1, 3, 4)': 1, '(2, 4, 5)': 1, '(3, 5, 6)': 0}; G on the 4 Fano+ lines not through 0: image of order 24 (= S4: True)",
+   "notes": ""
+  },
+  {
+   "id": "G11",
+   "holds": true,
+   "value": "collinear triples in the exact layout: [(0, 1, 3), (0, 2, 6), (0, 4, 5), (1, 5, 6), (2, 3, 5), (3, 4, 6)]; points on the incircle: (1, 2, 4); 7 diagram lines == Fano+ lines: True",
+   "notes": "Geometry done exactly (equilateral triangle with vertices 3,5,6, midpoints 1,2,4, centroid 0); the incircle passes exactly through the three midpoints."
+  },
+  {
+   "id": "G12",
+   "holds": true,
+   "value": "corner-view order (counterclockwise seen from +(1,1,1)) from +x: [1, 5, 2, 3, 4, 6] = ['+x', '-z', '+y', '-x', '+z', '-y']; exact 60-deg spacing: True; +x,+y,+z at mutual 120 deg: True; -x,-y,-z = negatives: True; Petrie edges (touch neither (+++) nor (---)) = [(1, 5), (1, 6), (2, 3), (2, 5), (3, 4), (4, 6)] == J5uJ6: True; == silhouette edges: True; silhouette polygon edge types ['J6', 'J5', 'J6', 'J5', 'J6', 'J5']; consecutive pairs of the label hexagon ['J5', 'J6', 'J5', 'J6', 'J5', 'J6']; opposite pairs ['J3', 'J3', 'J3']; stabiliser of (+++) in G: classes ['C3', 'C3', 'E', 'sigma_d', 'sigma_d', 'sigma_d'], mirror normals [(0, 1, -1), (1, -1, 0), (1, 0, -1)], action on (+x,+y,+z) = full S3: True",
+   "notes": "Orientation: counterclockwise as seen by a viewer on the +(1,1,1) side; the opposite viewing side gives the reverse order (1,6,4,3,2,5). The mirrors are the Weyl reflections (normals e_i - e_j = SU(3) roots)."
+  },
+  {
+   "id": "G13",
+   "holds": true,
+   "value": "J3+J5 -> [1, 3, 2, 6, 4, 5] (J6 opposite); J5+J6 -> [1, 5, 2, 3, 4, 6] (J3 opposite); J3+J6 -> [1, 3, 4, 5, 2, 6] (J5 opposite)",
+   "notes": "Two edge-disjoint perfect matchings of 6 points always form one 6-cycle, but a third disjoint matching need not be the long diagonals: among ordered triples of pairwise-disjoint perfect matchings, 120/480 have the 'third joins opposite points' property. So it is a fact about J3,J5,J6 specifically, not fully general. J3uJ5uJ6 = all 9 QR-QNR pairs (K_3,3): True."
+  },
+  {
+   "id": "G14",
+   "holds": true,
+   "value": "corners [([0, 1, 3], 'up'), ([0, 3, 2], 'down'), ([0, 2, 6], 'up'), ([0, 6, 4], 'down'), ([0, 4, 5], 'up'), ([0, 5, 1], 'down')]; up-corner pairs [(1, 3), (2, 6), (4, 5)] (J3); down-corner pairs [(1, 5), (2, 3), (4, 6)] (J5); opposite edges ['J6', 'J6', 'J6']; every torus edge in one up + one down triangle: True; dual skeleton bipartite: True, cubic: True, 14 vertices, girth 6 (Heawood graph)",
+   "notes": ""
+  },
+  {
+   "id": "G15",
+   "holds": true,
+   "value": "J3 G-invariant: True; |orbit(J5)|=8; J6 in orbit(J5): True; orbit(J5) == the 8 perfect matchings into adjacent-face pairs: True; stab(J5) = ['()', '(1 2 4)(3 6 5)', '(1 4 2)(3 5 6)'] (size 3); stab(J6) = ['()', '(1 2 4)(3 6 5)', '(1 4 2)(3 5 6)'] (size 3); G-orbit sizes on all 15 matchings: [1, 6, 8]",
+   "notes": "J5 and J6 are swapped by the three sigma_d mirrors through (1,1,1); each has stabiliser C3 = {id, 2x, 4x}."
+  },
+  {
+   "id": "G16",
+   "holds": true,
+   "value": "overlap = [[1, 0, 1], [0, 1, 1], [1, 1, 0]]; two 1s per row/col: True; half-matrix doubly stochastic: True; for each pair of rows the number of columns where both are nonzero: [((0, 1), 1), ((0, 2), 1), ((1, 2), 1)]",
+   "notes": "Not unistochastic: if |U_ij|^2 = B then rows i,j of U must be orthogonal, sum_k U_ik conj(U_jk) = 0, but any two rows of B share support in exactly one column, so that sum has exactly one nonzero term (modulus 1/2) and cannot vanish. (Equivalently the triangle/chain-links condition fails: moduli 1/2, 0, 0.)"
+  },
+  {
+   "id": "G17",
+   "holds": true,
+   "value": "#signed automorphisms (5040 perms x 128 signs, full 8x8 table) = 1344; 8 per Fano+ collineation and 0 otherwise: True (#collineations=168); fixing e0 up to sign: 192 = 96 (+e0) + 96 (-e0); +e0 ones commute with J3: True, act on (z1,z2,z3) C-linearly: True, monomial with entries in {+-1,+-i}: True, dets {'1'}, image == all 96 mu4-monomial det-1 matrices (= Delta(96)): True; element orders {'1': 1, '2': 15, '3': 32, '4': 24, '8': 24}; -e0 ones anticommute with J3 (C-antilinear, map span(z) to span(zbar)): True",
+   "notes": "Orders of the 96 e0->-e0 maps (as real 6x6, a coset not a group): {'2': 28, '4': 12, '6': 32, '8': 24}"
+  },
+  {
+   "id": "G18",
+   "holds": true,
+   "value": "dim Der(O) = 14; dim(su3 = Der killing e0) = 8; preserves span(e1..e6): True; commutant dims {'J3': 8, 'J5': 3, 'J6': 3}; subalgebras closed under bracket: {'J3': True, 'J5': True, 'J6': True}; common kernel on R^6: {'J3': [], 'J5': ['e1+e2+e4', 'e3+e5+e6'], 'J6': ['e1+e2+e4', 'e3+e5+e6']}; annihilates e1+e2+e4: {'J3': False, 'J5': True, 'J6': True}; #Delta(96) maps commuting: {'J3': 96, 'J5': 3, 'J6': 3}; those for J5/J6: {'J5': ['()', '(1 2 4)(3 6 5)', '(1 4 2)(3 5 6)'], 'J6': ['()', '(1 2 4)(3 6 5)', '(1 4 2)(3 5 6)']}",
+   "notes": ""
+  },
+  {
+   "id": "G19",
+   "holds": true,
+   "value": "Clifford relations: True; CAR: {'J3': True, 'J5': True, 'J6': True}; vacuum dims: {'J3': 1, 'J5': 1, 'J6': 1}; |<Om|Om'>|^2: {'J3_J5': '1/4', 'J3_J6': '1/4', 'J5_J6': '1/4'} (float formula sqrt|det((J+K)/2)|: {'J3_J5': 0.25, 'J3_J6': 0.25, 'J5_J6': 0.25}); J6 vacuum weights in J3 Fock space: {'N0': '1/4', 'N1': '0', 'N2': '3/4', 'N3': '0'}; N=2 coefficients in basis (a2+a3+, a3+a1+, a1+a2+)Om3 relative to first: [1, 1, 1]; J5 vacuum weights: {'N0': '1/4', 'N1': '0', 'N2': '3/4', 'N3': '0'}, N=2 ratios [1, 1, 1]; [N_J3,N_J6]=0: False; [N_J3,N_J5]=0: False; [N_J5,N_J6]=0: False",
+   "notes": "Fock basis (a_j^+ a_k^+ Om_J3) is orthonormal: True. The cyclic basis (a2+a3+, a3+a1+, a1+a2+) is the epsilon/antitriplet basis; equal coefficients there = r+g+b symmetric (invariant under the colour cycle 1->2->4 i.e. z1->z2->z3)."
+  }
+ ],
+ "key_values": {
+  "G_order": "24",
+  "G_elements_preserving_fano_minus": "3",
+  "torus_automorphisms_fixing_0": "6",
+  "G_preserves_fano_minus_too": "False",
+  "class_counts": "{\"C2\": 3, \"C3\": 8, \"E\": 1, \"S4\": 6, \"sigma_d\": 6}",
+  "psi_Td_count": "48",
+  "psi_O_count": "0",
+  "J5_opposite_hexagon": "[1, 3, 4, 5, 2, 6]",
+  "J5_orbit_size": "8",
+  "stab_J5_size": "3",
+  "stab_J6_size": "3",
+  "signed_automorphisms": "1344",
+  "delta96_order_counts": "{\"1\": 1, \"2\": 15, \"3\": 32, \"4\": 24, \"8\": 24}",
+  "J5_and_J6_su3_commutants_identical": "True",
+  "su3_commutant_dim": "{\"J3\": 8, \"J5\": 3, \"J6\": 3}",
+  "delta96_commuting": "{\"J3\": 96, \"J5\": 3, \"J6\": 3}",
+  "J6_N2_over_N0_coefficient": "1",
+  "J5_N2_over_N0_coefficient": "-1",
+  "vacuum_overlap": "{\"J3_J5\": \"1/4\", \"J3_J6\": \"1/4\", \"J5_J6\": \"1/4\"}",
+  "j6_vacuum_weights": "{\"N0\": \"1/4\", \"N1\": \"0\", \"N2\": \"3/4\", \"N3\": \"0\"}",
+  "j5_vacuum_weights": "{\"N0\": \"1/4\", \"N1\": \"0\", \"N2\": \"3/4\", \"N3\": \"0\"}",
+  "j6_N2_ratios_cyclic_basis": "[1, 1, 1]",
+  "j5_N2_ratios_cyclic_basis": "[1, 1, 1]"
+ }
+}

@@ -1,0 +1,51 @@
+PASS octonion table {i,i+1,i+3} is alternative  [max err 1.4e-14]
+PASS octonion norm is multiplicative  [max err 3.6e-15]
+PASS octonion product is non-associative  [|(xy)z - x(yz)| = 21.091]
+PASS dim Der(O) = 14  [null space dim 14]
+PASS derivations are antisymmetric (so(7))
+PASS derivations preserve the associative 3-form  [2.9e-15]
+PASS g2 closes under commutators  [max residual 7.5e-16]
+PASS Killing form negative definite (compact)  [eigs in [-4.0000, -4.0000]]
+PASS Killing = -4 B, i.e. Tr_14 = 4 Tr_7 on g2 (index of adjoint = 4 x index of 7)  [max |K+4B| = 1.8e-15]
+PASS adjoint representation irreducible (g2 simple)  [commutant dim 1]
+PASS rank g2 = 2
+PASS stabiliser of one imaginary unit has dim 8
+PASS stabiliser closes (subalgebra)
+PASS J = L_{e6} satisfies J^2 = -1 on e6^perp
+PASS su(3) commutes with J
+PASS stabiliser acts on C^3 by traceless anti-Hermitian matrices (su(3))  [antiherm 3.1e-15, trace 1.6e-15, roundtrip 3.3e-15]
+PASS image is all of su(3) (8 real dims)
+PASS (1/2) Tr_7 = Tr_3 on su(3)  [3.0e-16]
+PASS Gell-Mann generators lie in the stabiliser
+PASS 7 = 3 + 3bar + 1 under SU(3): Casimir eigenvalues (4/3 x6, 0 x1)
+PASS T^L satisfy [T_a,T_b] = eps T_c
+PASS centraliser of su(2)_long in g2 has dim 3
+PASS su(3) hypercharge generator lies in su(2)_short
+PASS T^S satisfy [T_a,T_b] = eps T_c  [1.4e-15]
+PASS [su(2)_L, su(2)_S] = 0
+PASS SO(3) in SU(3) generators satisfy su(2) relations  [0.0e+00]
+weights of 7 (m_L, m_S): [(-0.5, -0.5), (-0.5, 0.5), (0.0, -1.0), (0.0, 0.0), (0.0, 1.0), (0.5, -0.5), (0.5, 0.5)]
+weights of 14 (m_L, m_S): [(-1.0, -0.0), (-0.5, -1.5), (-0.5, -0.5), (-0.5, 0.5), (-0.5, 1.5), (0.0, -1.0), (-0.0, -0.0), (0.0, 0.0), (0.0, 1.0), (0.5, -1.5), (0.5, -0.5), (0.5, 0.5), (0.5, 1.5), (1.0, 0.0)]
+PASS B on Cartan = diag(1, 3) in (T3^L, T3^S)
+PASS 12 roots: 6 long (|a|^2=1) and 6 short (|a|^2=1/3)
+PASS isospin root (1,0) is long, hypercharge-direction root (0,1) is short
+7  -> {'(1,3)': 1, '(2,2)': 1}
+14 -> {'(1,3)': 1, '(2,4)': 1, '(3,1)': 1}
+PASS 7 = (2,2) + (1,3) under SU(2)_L x SU(2)_S
+PASS 14 = (3,1) + (1,3) + (2,4) under SU(2)_L x SU(2)_S
+PASS C2(7) = 2 (long-root normalisation)  [2.000000000000..2.000000000000]
+PASS C2(14) = 4 (long-root normalisation)  [4.000000000000..4.000000000000]
+PASS long su(2) Casimir on 7: J(J+1) in {3/4, 0}
+PASS principal su(2) constructed inside g2  [rel err 2.2e-14]
+PASS 7 is irreducible (spin 3) under the principal SU(2)
+PASS 14 = spin 1 + spin 5 under principal SU(2) (Mayanskiy Prop. 4.1)
+PASS index-4 SU(2)s (diag of L x S, and SO(3) in SU(3)) give the same spins on 7 and 14
+Dynkin indices: {'long_root': 1.0, 'short_root': 3.0000000000000013, 'diag_long_x_short': 4.000000000000001, 'SO3_in_SU3': 4.0, 'principal': 28.000000000000014}
+PASS Dynkin indices 1, 3, 4, 28 (long, short, A1^4, principal)
+PASS index = (1/3) sum_states j(j+1) over the 7 agrees
+PASS exp(2 pi T3^L) = exp(2 pi T3^S) in G2 (and != 1): -1_L = -1_S  [|zL - zS| = 2.0e-15, eigenvalues of zL: [np.float64(-1.0), np.float64(-1.0), np.float64(-1.0), np.float64(-1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)]]
+PASS complement of su(2)_L + su(2)_S has dim 8
+PASS adapted basis is B-orthonormal
+PASS su(3) kaon generators T4..T7 lie in the (2,4) block
+
+44/44 checks passed

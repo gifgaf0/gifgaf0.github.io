@@ -1,0 +1,24 @@
+alpha=0.04037 lower: b=2.906579 m=4.9556492 (adm tail 4.9556492) A0=0.440759
+alpha=0.04037 upper: b=2.954524 m=4.9556541 (adm tail 4.9556541) A0=0.429341
+upper alpha=3.0e-02 sqrt(a) m=0.9471892  b^2 a/2=0.284775
+upper alpha=2.0e-02 sqrt(a) m=0.9080019  b^2 a/2=0.340448
+upper alpha=1.0e-02 sqrt(a) m=0.8707867  b^2 a/2=0.392072
+upper alpha=5.0e-03 sqrt(a) m=0.8515527  b^2 a/2=0.419364
+upper alpha=2.0e-03 sqrt(a) m=0.8389525  b^2 a/2=0.437796
+upper alpha=1.0e-03 sqrt(a) m=0.8342643  b^2 a/2=0.444864
+upper alpha=5.0e-04 sqrt(a) m=0.8316941  b^2 a/2=0.448829
+upper alpha=3.0e-04 sqrt(a) m=0.8305817  b^2 a/2=0.450576
+upper alpha=2.0e-04 sqrt(a) m=0.8299933  b^2 a/2=0.451512
+upper alpha=1.0e-04 sqrt(a) m=0.8293684  b^2 a/2=0.452519
+upper alpha=5.0e-05 sqrt(a) m=0.8290317  b^2 a/2=0.453068
+extrapolations: {
+ "linear_alpha<=3e-4": 0.8287383615328563,
+ "1,sqrt(a),a_alpha<=3e-4": 0.8285573364772824,
+ "1,sqrt(a),a_alpha<=1e-3": 0.8284713724062842,
+ "1,a,a*log(a)_alpha<=1e-3": 0.8286481557758741,
+ "bBM_1,sqrt(a),a": 0.45388129280853434,
+ "bBM_linear": 0.4535350642639966
+}
+/home/user/gifgaf0.github.io/seed/experiments/E6_einstein_skyrme/crosscheck/xc_iso.py:239: RuntimeWarning: divide by zero encountered in divide
+  F = np.where(s < 1, 2 * np.arctan(c / np.where(x > 0, x, 1e-300) ** 2), 0.0)
+flat: min p_r/rho = 0.2008, min p_r = 9.249e-23, p_r/rho at centre (series) = 0.20080

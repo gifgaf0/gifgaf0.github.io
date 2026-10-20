@@ -1,0 +1,16 @@
+lowest order of L_mu = U^+ D_mu U in the fields: [1, 1, 1, 1] -> Skyrme term [L,L]^2 starts at order 4
+linear part of the sigma+mass terms: 0
+quadratic Lagrangian minus [1/2 (d pi)^2 - 1/2 m^2 pi^2 - 1/4 F F]: 0
+pion block (should be diag(omega^2 - k^2 - m^2) up to sign): Matrix([[-k_x**2 - k_y**2 - k_z**2 - m_pi**2 + omega**2, 0, 0], [0, -k_x**2 - k_y**2 - k_z**2 - m_pi**2 + omega**2, 0], [0, 0, -k_x**2 - k_y**2 - k_z**2 - m_pi**2 + omega**2]])
+pion-photon mixing block: Matrix([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]) Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]])
+pion dispersion omega = [-sqrt(k_x**2 + k_y**2 + k_z**2 + m_pi**2), sqrt(k_x**2 + k_y**2 + k_z**2 + m_pi**2)]
+photon kinetic matrix (plane wave): Matrix([[k_x**2 + k_y**2 + k_z**2, k_x*omega, k_y*omega, k_z*omega], [k_x*omega, -k_y**2 - k_z**2 + omega**2, k_x*k_y, k_x*k_z], [k_y*omega, k_x*k_y, -k_x**2 - k_z**2 + omega**2, k_y*k_z], [k_z*omega, k_x*k_z, k_y*k_z, -k_x**2 - k_y**2 + omega**2]])
+photon matrix rank off the cone (k^2=16): 3 ; on the cone (k^2=0): 1
+M_A k_mu (gauge mode, any k): Matrix([[0, 0, 0, 0]])
+k along z: transverse 2x2 block determinant: (k_z - omega)**2*(k_z + omega)**2  -> omega = [-k_z, k_z]
+pion group velocity: k/sqrt(k**2 + m_pi**2)  limit k->oo: 1 ; photon v = 1
+k^2 after a boost minus k^2: 0
+B-H eq. 67 photon terms: e A_mu eps Tr(Q L L L) is O(pi^3) (three L ~ O(pi)); e^2 eps F A T is O(A^2 pi) -> no quadratic term (counted, not computed)
+vacuum T_mu nu (lower indices, eta = diag(1,-1,-1,-1)): Matrix([[V0, 0, 0, 0], [0, -V0, 0, 0], [0, 0, -V0, 0], [0, 0, 0, -V0]])
+rho = T_00 = V0 ;  p = T_11 = -V0 ;  p + rho = 0
+boosted T - T: Matrix([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]])

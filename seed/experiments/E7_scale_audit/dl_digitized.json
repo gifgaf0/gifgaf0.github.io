@@ -1,0 +1,225 @@
+{
+ "method": "vector-path extraction (pdftocairo -svg), axes calibrated on tick marks",
+ "fig3b": {
+  "source": "arXiv:1103.0013v2 Fig. 3b upper panel (g^2 N = 0), vector path from the PDF",
+  "tick_label_glyphs": {
+   "y": [
+    [
+     "glyph-8-5",
+     "glyph-8-9",
+     "glyph-8-5"
+    ],
+    [
+     "glyph-8-5",
+     "glyph-8-9",
+     "glyph-8-6"
+    ],
+    [
+     "glyph-8-5",
+     "glyph-8-9",
+     "glyph-8-1"
+    ]
+   ],
+   "x": [
+    [
+     "glyph-8-14"
+    ],
+    [
+     "glyph-8-13"
+    ],
+    [
+     "glyph-8-15"
+    ],
+    [
+     "glyph-8-3",
+     "glyph-8-1"
+    ],
+    [
+     "glyph-8-3",
+     "glyph-8-3"
+    ]
+   ],
+   "consistent_y": true,
+   "consistent_x": true
+  },
+  "calibration": {
+   "y_ticks_pt": [
+    58.633,
+    71.953,
+    85.293
+   ],
+   "y_values": [
+    4.4,
+    4.2,
+    4.0
+   ],
+   "x_ticks_pt": [
+    467.121,
+    487.094,
+    507.066,
+    527.043,
+    547.016
+   ],
+   "x_values": [
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "linear_fit_max_resid": {
+    "F": 0.00010002498748473698,
+    "g2E": 0.00010013067037917267
+   },
+   "F_per_pt": -0.015003748123124473,
+   "left_axis_g2E": 6.232441465199564
+  },
+  "vertices": [
+   [
+    6.2598,
+    4.4801
+   ],
+   [
+    6.2997,
+    4.4505
+   ],
+   [
+    6.3995,
+    4.366
+   ],
+   [
+    6.5995,
+    4.2567
+   ],
+   [
+    6.7998,
+    4.1786
+   ],
+   [
+    7.0,
+    4.126
+   ],
+   [
+    7.4004,
+    4.0456
+   ],
+   [
+    7.7999,
+    3.9872
+   ],
+   [
+    8.2002,
+    3.9422
+   ],
+   [
+    8.5996,
+    3.9116
+   ],
+   [
+    8.9999,
+    3.8879
+   ],
+   [
+    9.5,
+    3.8674
+   ],
+   [
+    10.0001,
+    3.8552
+   ],
+   [
+    10.5001,
+    3.8467
+   ],
+   [
+    11.0,
+    3.8439
+   ],
+   [
+    11.5001,
+    3.846
+   ],
+   [
+    11.6006,
+    3.8463
+   ],
+   [
+    11.7003,
+    3.8473
+   ]
+  ],
+  "F_threshold_first_vertex": {
+   "g2E": 6.259820945380763,
+   "F": 4.480129042223222
+  },
+  "F_at_g2E_11p5": 3.845986013023204,
+  "F_min": {
+   "value": 3.843934957518269,
+   "at_g2E": 10.999991235608626
+  },
+  "F_at_g2E_11p7_last": 3.8472756350611204,
+  "reading_uncertainty": 0.0016003997997971844,
+  "uncertainty_note": "0.1 pt positional uncertainty (gnuplot coordinate grid) times |dF/dpt| plus tick-fit residual"
+ },
+ "fig7b": {
+  "source": "arXiv:1103.2133v2 Fig. 7b, delta rho = 0 solid line, vector path from the PDF",
+  "tick_label_glyphs": {
+   "y": [
+    [
+     "glyph-4-0",
+     "glyph-4-1",
+     "glyph-4-2",
+     "glyph-4-1"
+    ],
+    [
+     "glyph-4-0",
+     "glyph-4-1",
+     "glyph-4-2",
+     "glyph-4-3"
+    ],
+    [
+     "glyph-4-0",
+     "glyph-4-1"
+    ]
+   ],
+   "consistent": true
+  },
+  "calibration": {
+   "y_grid_pt": [
+    202.129,
+    230.492,
+    258.828
+   ],
+   "y_values": [
+    4.4,
+    4.2,
+    4.0
+   ],
+   "x_grid_pt": [
+    356.531,
+    387.488,
+    418.441,
+    449.367,
+    480.32
+   ],
+   "x_values": [
+    6,
+    7,
+    8,
+    9,
+    10
+   ]
+  },
+  "g2Nmin_near_threshold": {
+   "g2E": 6.210458407841387,
+   "value": 4.549946842452273,
+   "at_6p25": 4.428949122312779
+  },
+  "g2Nmin_high_energy_mean_8p5_to_10p5": 3.977132579744733,
+  "g2Nmin_high_energy_range": [
+   3.9708471659482667,
+   3.983220619923998
+  ],
+  "g2Nmin_at_10p5": 3.98131913115258
+ }
+}

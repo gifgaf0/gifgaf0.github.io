@@ -1,0 +1,638 @@
+{
+ "rows": [
+  {
+   "quantity": "r_I0 [fm], ANW params",
+   "original": 0.5939287481055067,
+   "crosscheck": 0.5939287475739841,
+   "abs_diff": 5.315226037083676e-10,
+   "agreement_tol": 0.0001,
+   "agree": true,
+   "note": "",
+   "target": 0.59,
+   "target_tol": 0.01,
+   "crosscheck_within_target": true
+  },
+  {
+   "quantity": "rM_I0 ANW def [fm]",
+   "original": 0.9223267999709978,
+   "crosscheck": 0.9223268007925212,
+   "abs_diff": 8.215234048591924e-10,
+   "agreement_tol": 0.0001,
+   "agree": true,
+   "note": "",
+   "target": 0.92,
+   "target_tol": 0.01,
+   "crosscheck_within_target": true
+  },
+  {
+   "quantity": "rM_I0 Sachs [fm]",
+   "original": 0.7144312672096909,
+   "crosscheck": 0.71443126784604,
+   "abs_diff": 6.363491955596601e-10,
+   "agreement_tol": 0.0001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "mu_p",
+   "original": 1.8776368015731575,
+   "crosscheck": 1.877636800947817,
+   "abs_diff": 6.253404460920819e-10,
+   "agreement_tol": 0.0001,
+   "agree": true,
+   "note": "",
+   "target": 1.87,
+   "target_tol": 0.02,
+   "crosscheck_within_target": true
+  },
+  {
+   "quantity": "mu_n",
+   "original": -1.3230473495785318,
+   "crosscheck": -1.3230473498917432,
+   "abs_diff": 3.1321145677054574e-10,
+   "agreement_tol": 0.0001,
+   "agree": true,
+   "note": "",
+   "target": -1.31,
+   "target_tol": 0.02,
+   "crosscheck_within_target": true
+  },
+  {
+   "quantity": "mu_p/mu_n",
+   "original": -1.4191758157191388,
+   "crosscheck": -1.419175814910519,
+   "abs_diff": 8.086198377554865e-10,
+   "agreement_tol": 0.0001,
+   "agree": true,
+   "note": "",
+   "target": -1.43,
+   "target_tol": 0.02,
+   "crosscheck_within_target": true
+  },
+  {
+   "quantity": "g_A (ANW formula)",
+   "original": 0.6091270401619714,
+   "crosscheck": 0.6091270403090961,
+   "abs_diff": 1.4712475682188142e-10,
+   "agreement_tol": 0.0001,
+   "agree": true,
+   "note": "",
+   "target": 0.61,
+   "target_tol": 0.01,
+   "crosscheck_within_target": true
+  },
+  {
+   "quantity": "g_piNN (GT)",
+   "original": 8.8677564451487,
+   "crosscheck": 8.867756447290564,
+   "abs_diff": 2.141863575388925e-09,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": "tolerance +-0.05 is post hoc",
+   "target": 8.9,
+   "target_tol": 0.05,
+   "crosscheck_within_target": true
+  },
+  {
+   "quantity": "Gamma(pi0->gg) Nc=3 f=92.21 [eV]",
+   "original": 7.7610891794539905,
+   "crosscheck": 7.761089179453989,
+   "abs_diff": 1.7763568394002505e-15,
+   "agreement_tol": 0.002,
+   "agree": true,
+   "note": "",
+   "target": 7.802,
+   "target_tol": 0.234,
+   "crosscheck_within_target": true
+  },
+  {
+   "quantity": "Gamma Nc=1 [eV]",
+   "original": 0.8623432421615544,
+   "crosscheck": 0.8623432421615543,
+   "abs_diff": 1.1102230246251565e-16,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Gamma at f=64.5 [eV]",
+   "original": 15.8620490510968,
+   "crosscheck": 15.8620490510968,
+   "abs_diff": 0.0,
+   "agreement_tol": 0.002,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Gamma at SU(3)-refit f [eV]",
+   "original": 20.398514566492775,
+   "crosscheck": 20.39881739941512,
+   "abs_diff": 0.0003028329223440096,
+   "agreement_tol": 0.005,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "SU(3) refit f [MeV]",
+   "original": 56.87744608288381,
+   "crosscheck": 56.87702389107723,
+   "abs_diff": 0.0004221918065780983,
+   "agreement_tol": 0.005,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "pull vs PrimEx-II [sigma]",
+   "original": -0.349665132871873,
+   "crosscheck": -0.34966513287188816,
+   "abs_diff": 1.5154544286133387e-14,
+   "agreement_tol": 0.01,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "pull vs PDG 2026 [sigma]",
+   "original": 0.3318416966431068,
+   "crosscheck": 0.3318416966430924,
+   "abs_diff": 1.4432899320127035e-14,
+   "agreement_tol": 0.01,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Nc=1 pull [sigma]",
+   "original": -59.313305622550814,
+   "crosscheck": -59.313305622550814,
+   "abs_diff": 0.0,
+   "agreement_tol": 0.05,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "isovector slope C^2/Lambda",
+   "original": 1.463846202560286,
+   "crosscheck": 1.4638461986898215,
+   "abs_diff": 3.870464615474134e-09,
+   "agreement_tol": 0.0001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "isovector <r^2>(R=2) [x^-2]",
+   "original": 0.5517159848963173,
+   "crosscheck": 0.551715984950128,
+   "abs_diff": 5.3810622624439475e-11,
+   "agreement_tol": 0.002,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "isovector <r^2>(R=5) [x^-2]",
+   "original": 5.388204914348021,
+   "crosscheck": 5.388204914874852,
+   "abs_diff": 5.268310232509066e-10,
+   "agreement_tol": 0.010776409828696043,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "isovector <r^2>(R=10) [x^-2]",
+   "original": 12.709106328321045,
+   "crosscheck": 12.709106329588476,
+   "abs_diff": 1.2674306049120787e-09,
+   "agreement_tol": 0.02541821265664209,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "isovector <r^2>(R=20) [x^-2]",
+   "original": 27.33758355221578,
+   "crosscheck": 27.337583554963945,
+   "abs_diff": 2.7481661390993395e-09,
+   "agreement_tol": 0.05467516710443156,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "isovector <r^2>(R=50) [x^-2]",
+   "original": 71.25126097055589,
+   "crosscheck": 71.2512609662705,
+   "abs_diff": 4.285396926206886e-09,
+   "agreement_tol": 0.1425025219411118,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "isovector <r^2>(R=100) [x^-2]",
+   "original": 144.44346301668037,
+   "crosscheck": 144.4434629096162,
+   "abs_diff": 1.0706418152039987e-07,
+   "agreement_tol": 0.28888692603336075,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "isovector <r^2>(R=200) [x^-2]",
+   "original": 290.82806964027696,
+   "crosscheck": 290.8280691659829,
+   "abs_diff": 4.742940404867113e-07,
+   "agreement_tol": 0.5816561392805539,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_p(<0.25 fm) massless",
+   "original": 0.06583467509550132,
+   "crosscheck": 0.06583467510072392,
+   "abs_diff": 5.222600130139199e-12,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_n(<0.25 fm) massless",
+   "original": 0.052241232040444105,
+   "crosscheck": 0.05224123204434082,
+   "abs_diff": 3.896716282980606e-12,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_p(<0.5 fm) massless",
+   "original": 0.34130748551039336,
+   "crosscheck": 0.3413074855232442,
+   "abs_diff": 1.2850831510036187e-11,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_n(<0.5 fm) massless",
+   "original": 0.17189779604313574,
+   "crosscheck": 0.1718977960394472,
+   "abs_diff": 3.688549465863389e-12,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_p(<1.0 fm) massless",
+   "original": 0.7635412271408669,
+   "crosscheck": 0.7635412271736512,
+   "abs_diff": 3.278433080566856e-11,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_n(<1.0 fm) massless",
+   "original": 0.1847965404734111,
+   "crosscheck": 0.18479654044976423,
+   "abs_diff": 2.3646862246096134e-11,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_p(<2.0 fm) massless",
+   "original": 0.8968794499763957,
+   "crosscheck": 0.8968794500197904,
+   "abs_diff": 4.339473225201118e-11,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_n(<2.0 fm) massless",
+   "original": 0.1020881841409002,
+   "crosscheck": 0.10208818410665799,
+   "abs_diff": 3.4242220170455084e-11,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_p(<5.0 fm) massless",
+   "original": 0.9589140575022972,
+   "crosscheck": 0.958914057551995,
+   "abs_diff": 4.969780142971558e-11,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_n(<5.0 fm) massless",
+   "original": 0.04108166338483216,
+   "crosscheck": 0.04108166334428853,
+   "abs_diff": 4.054362401362255e-11,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_p(<10.0 fm) massless",
+   "original": 0.9794569589075088,
+   "crosscheck": 0.9794569589578501,
+   "abs_diff": 5.034128669478832e-11,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_n(<10.0 fm) massless",
+   "original": 0.020542974205847053,
+   "crosscheck": 0.020542974164661443,
+   "abs_diff": 4.1185610477612045e-11,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_p(<0.25 fm) m_pi=138",
+   "original": 0.04207345613001365,
+   "crosscheck": 0.042073456138018085,
+   "abs_diff": 8.004437390685126e-12,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_p(<0.5 fm) m_pi=138",
+   "original": 0.263018822020907,
+   "crosscheck": 0.2630188220289681,
+   "abs_diff": 8.061107337198337e-12,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_p(<1.0 fm) m_pi=138",
+   "original": 0.7983701859296655,
+   "crosscheck": 0.7983701859376398,
+   "abs_diff": 7.97428789667265e-12,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_p(<2.0 fm) m_pi=138",
+   "original": 0.9803441021566175,
+   "crosscheck": 0.9803441021645432,
+   "abs_diff": 7.925660128194068e-12,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_p(<5.0 fm) m_pi=138",
+   "original": 0.9998140406530837,
+   "crosscheck": 0.9998140406610997,
+   "abs_diff": 8.016032282398555e-12,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Q_p(<10.0 fm) m_pi=138",
+   "original": 0.9999998603767029,
+   "crosscheck": 0.9999998603847051,
+   "abs_diff": 8.002265516893203e-12,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "AN84 refit F [MeV]",
+   "original": 108.259804612916,
+   "crosscheck": 108.25980475421188,
+   "abs_diff": 1.412958852142765e-07,
+   "agreement_tol": 0.01,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "AN84 refit e",
+   "original": 4.84205175412573,
+   "crosscheck": 4.842051757159918,
+   "abs_diff": 3.0341880119522102e-09,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "massive r_p [fm]",
+   "original": 0.880131568802776,
+   "crosscheck": 0.880131568803195,
+   "abs_diff": 4.189981694935341e-13,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "massive <r^2>_n [fm^2]",
+   "original": -0.30787433431374467,
+   "crosscheck": -0.3078743343145426,
+   "abs_diff": 7.979172877981e-13,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "massive r_I1 [fm]",
+   "original": 1.040435443800806,
+   "crosscheck": 1.040435443801544,
+   "abs_diff": 7.37854222165879e-13,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "massive mu_p",
+   "original": 1.9719945566803458,
+   "crosscheck": 1.9719945566805022,
+   "abs_diff": 1.5631940186722204e-13,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "massive mu_n",
+   "original": -1.2409724043042316,
+   "crosscheck": -1.240972404304547,
+   "abs_diff": 3.1530333899354446e-13,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "massive g_A (sphere)",
+   "original": 0.6491391630604654,
+   "crosscheck": 0.649139163075954,
+   "abs_diff": 1.5488610394243096e-11,
+   "agreement_tol": 0.001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "M/(3 pi^2)",
+   "original": 1.2314456974183794,
+   "crosscheck": 1.231445697432203,
+   "abs_diff": 1.3823608924212749e-11,
+   "agreement_tol": 1e-07,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Lambda",
+   "original": 50.97873911639615,
+   "crosscheck": 50.978739111425476,
+   "abs_diff": 4.970672762283357e-09,
+   "agreement_tol": 1e-05,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "C",
+   "original": 8.638578220219344,
+   "crosscheck": 8.63857820837783,
+   "abs_diff": 1.1841514435673162e-08,
+   "agreement_tol": 1e-05,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "F'(0)",
+   "original": -1.0037641110016335,
+   "crosscheck": -1.0037641113561775,
+   "abs_diff": 3.545439497543157e-10,
+   "agreement_tol": 1e-08,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "<x^2>_B",
+   "original": 4.4778359530071015,
+   "crosscheck": 4.477835944992433,
+   "abs_diff": 8.014668040345896e-09,
+   "agreement_tol": 1e-06,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "<x^4>_B",
+   "original": 48.35454711201567,
+   "crosscheck": 48.354547111607665,
+   "abs_diff": 4.0800784972816473e-10,
+   "agreement_tol": 0.0001,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "I2 (pi/2) K2",
+   "original": 40.67858200660832,
+   "crosscheck": 40.67858200356221,
+   "abs_diff": 3.0461109190582647e-09,
+   "agreement_tol": 0.0001,
+   "agree": true,
+   "note": ""
+  }
+ ],
+ "charges_agree_and_integral": true,
+ "linearisation": {
+  "skyrme_lowest_order": 4,
+  "quadratic_minus_canonical": "0",
+  "pion_dispersion": "[-sqrt(k_x**2 + k_y**2 + k_z**2 + m_pi**2), sqrt(k_x**2 + k_y**2 + k_z**2 + m_pi**2)]",
+  "gauge_mode_null": true,
+  "photon": {
+   "matrix": "Matrix([[k_x**2 + k_y**2 + k_z**2, k_x*omega, k_y*omega, k_z*omega], [k_x*omega, -k_y**2 - k_z**2 + omega**2, k_x*k_y, k_x*k_z], [k_y*omega, k_x*k_y, -k_x**2 - k_z**2 + omega**2, k_y*k_z], [k_z*omega, k_x*k_z, k_y*k_z, -k_x**2 - k_y**2 + omega**2]])",
+   "ranks": {
+    "off_cone": 3,
+    "on_cone": 1
+   },
+   "transverse_det_kz": "(k_z - omega)**2*(k_z + omega)**2",
+   "omega": "[-k_z, k_z]"
+  },
+  "pion_photon_mixing_zero": true,
+  "vacuum_T": "Matrix([[V0, 0, 0, 0], [0, -V0, 0, 0], [0, 0, -V0, 0], [0, 0, 0, -V0]])",
+  "rho": "V0",
+  "p": "-V0",
+  "p_plus_rho": "0",
+  "boost_invariant": true
+ },
+ "pi0_symbolic": {
+  "T_beta_first_order": "I*dpi3/f",
+  "cF_coefficient_of_epsFAdpi": "N_c*e**2/(48*pi**2*f)",
+  "coefficient_of_eps_dA_A_dpi": "N_c*e**2/(24*pi**2*f)",
+  "sum_M2": "N_c**2*e**4*m**4/(288*pi**4*f**2)",
+  "Gamma_symbolic": "N_c**2*alpha**2*m**3/(576*pi**3*f**2)",
+  "Gamma_over_PLAN_formula": "1",
+  "A": "N_c*e**2/(12*pi**2*f)",
+  "Nc_TrQ2tau3_fixed": "N_c/3",
+  "Nc_TrQ2tau3_consistent": "1"
+ },
+ "n_rows": 57,
+ "n_agree": 57,
+ "issues": [
+  {
+   "severity": "minor",
+   "description": "REPORT Method states the pi0 coupling as (N_c e^2/48 pi^2 f) eps^{mu nu a b} d_mu A_nu A_a d_b pi0; with d_mu A_nu this is a factor 2 too small and inconsistent with the quoted amplitude N_c e^2/(12 pi^2 f). The code (symbolic_derivations.py) correctly uses (d_mu A_nu - d_nu A_mu) = F_mu nu. Cross-check derivation from B-H eq. 67: N_c e^2/(48 pi^2 f) eps F A d pi0 = N_c e^2/(24 pi^2 f) eps dA A d pi0. Numbers unaffected.",
+   "suggested_fix": "Replace d_mu A_nu by F_mu nu in the text (or use 24 pi^2)."
+  },
+  {
+   "severity": "minor",
+   "description": "Convergence claim \"X = 25, 50, 100, 200, 400 ... agree to within 5e-8 relative in Lambda\" is not what hedgehog_log.txt shows: X = 25 differs by 8e-7 in Lambda, 1.2e-6 in C and B = 0.99999944. The 5e-8 spread holds for X = 100-400.",
+   "suggested_fix": "Say \"X = 100-400 agree to 5e-8; X = 25 is off by ~1e-6\"."
+  },
+  {
+   "severity": "minor",
+   "description": "Summary/REPORT: \"the neutron enclosed charge peaks at +0.185 at 1 fm\" is a sampling artifact of the table grid. Its true maximum is +0.206 at R = 0.73 fm (massless ANW); massive AN84: +0.140 at 0.68 fm.",
+   "suggested_fix": "Quote the peak (+0.206 at 0.73 fm) or say \"reaches +0.185 at 1 fm\"."
+  },
+  {
+   "severity": "minor",
+   "description": "\"38/38 symbolic checks pass\" includes check 10d, hard-coded True \"by inspection\" (not computed), and checks 5c/7b that pass only up to an overall sign. The statements are true (the cross-check confirms them), but 38/38 overstates what was computed.",
+   "suggested_fix": "Mark 10d as an inspection, not a computed check (37 computed + 1 by inspection)."
+  },
+  {
+   "severity": "minor",
+   "description": "Verdict vocabulary: CALIBRATED is used for internal checks with no literature target (symbolic derivations, integral charges); QUANTIFIED is used for a SEED 6B claim although PLAN reserves it for \u00a78 gaps. The 6B paraphrase \"one parameter set covers all predictions (anomaly sector included)\" is the agent's, not SEED.md's wording.",
+   "suggested_fix": "Use \"check passed\" for internal checks; label the f_pi tension as a confirmed preregistered prediction (no SEED verdict) or AMENDED."
+  },
+  {
+   "severity": "minor",
+   "description": "SEED 6B AMENDED: the headline \"3 of 7 within 30%\" counts mu_p (-33%), mu_n (-31%), g_piNN (-32%) as failures of \"roughly 30%\". The amendment is really carried by g_A (-52%) and the infinite r_p, <r^2>_n in the massless model. The verdict holds; the framing overstates it.",
+   "suggested_fix": "State that 6 of 7 finite quantities are within ~33%; the exceptions are g_A and the individual charge radii."
+  },
+  {
+   "severity": "minor",
+   "description": "Commitment 4 CONFIRMED: the preregistered test passes (the isovector radius diverges linearly; finite with m_pi). But any extended charge distribution has an R-dependent enclosed charge, so the test does not tell \"dressing\" from ordinary structure, and \"not slowed\" holds by construction. The caveat is in the report; the verdict word is generous.",
+   "suggested_fix": "Write \"CONFIRMED in the preregistered operational sense (classical pion-cloud structure, not vacuum polarization)\"."
+  },
+  {
+   "severity": "minor",
+   "description": "g_piNN is CALIBRATED only under a post hoc tolerance of +-0.05. Under the moments' +-0.02 it would fail (|8.868 - 8.9| = 0.032). This is disclosed. The rounding-based tolerance is reasonable, and g_piNN is tied to g_A by Goldberger-Treiman, and g_A passes its preregistered tolerance.",
+   "suggested_fix": "None needed beyond the existing disclosure; optionally note it fails at +-0.02."
+  },
+  {
+   "severity": "minor",
+   "description": "N_c = 1 exclusion holds only with N_c-independent quark charges, which is disclosed. The report's own extra shows that at N_c = 1 those charges make the baryon charges fractional, so the excluded hypothesis is not a consistent N_c = 1 world. \"CONFIRMED\" for the WZ / pi0 claim should carry that qualifier in the verdict itself.",
+   "suggested_fix": "Verdict: \"CONFIRMED (the anomaly normalisation); the N_c = 1 exclusion holds only with fixed quark charges\"."
+  }
+ ],
+ "overall": "confirmed_with_corrections",
+ "extra": {
+  "massless_ANW": {
+   "R_peak_fm": 0.7254940781677032,
+   "Qn_peak": 0.20570683471166296,
+   "Qn_1fm": 0.18479654044976423,
+   "Qn_0.5fm": 0.1718977960394472
+  },
+  "massive_AN84": {
+   "R_peak_fm": 0.6778957729292858,
+   "Qn_peak": 0.13950023283350185,
+   "Qn_1fm": 0.1024731112559728,
+   "Qn_0.5fm": 0.11780917446790759
+  }
+ }
+}

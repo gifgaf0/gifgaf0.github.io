@@ -1,0 +1,484 @@
+{
+ "orders": {
+  "F21": 21,
+  "PSL": 168
+ },
+ "F21_table": {
+  "1": {
+   "chi": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "1"
+   ],
+   "FS": 1
+  },
+  "3": {
+   "chi": [
+    "3",
+    "0",
+    "0",
+    "b7",
+    "conj(b7)"
+   ],
+   "FS": 0
+  },
+  "1'": {
+   "chi": [
+    "1",
+    "w",
+    "w^2",
+    "1",
+    "1"
+   ],
+   "FS": 0
+  },
+  "3b": {
+   "chi": [
+    "3",
+    "0",
+    "0",
+    "conj(b7)",
+    "b7"
+   ],
+   "FS": 0
+  },
+  "1''": {
+   "chi": [
+    "1",
+    "w^2",
+    "w",
+    "1",
+    "1"
+   ],
+   "FS": 0
+  }
+ },
+ "PSL_table": {
+  "1": {
+   "chi": [
+    "1",
+    "1",
+    "1",
+    "1",
+    "1",
+    "1"
+   ],
+   "FS": 1
+  },
+  "3": {
+   "chi": [
+    "3",
+    "-1",
+    "0",
+    "1",
+    "b7",
+    "conj(b7)"
+   ],
+   "FS": 0
+  },
+  "6": {
+   "chi": [
+    "6",
+    "2",
+    "0",
+    "0",
+    "-1",
+    "-1"
+   ],
+   "FS": 1
+  },
+  "7": {
+   "chi": [
+    "7",
+    "-1",
+    "1",
+    "-1",
+    "0",
+    "0"
+   ],
+   "FS": 1
+  },
+  "8": {
+   "chi": [
+    "8",
+    "0",
+    "-1",
+    "0",
+    "1",
+    "1"
+   ],
+   "FS": 1
+  },
+  "3b": {
+   "chi": [
+    "3",
+    "-1",
+    "0",
+    "1",
+    "conj(b7)",
+    "b7"
+   ],
+   "FS": 0
+  }
+ },
+ "F21_classes": {
+  "sizes": [
+   1,
+   7,
+   7,
+   3,
+   3
+  ],
+  "orders": [
+   1,
+   3,
+   3,
+   7,
+   7
+  ]
+ },
+ "PSL_classes": {
+  "sizes": [
+   1,
+   21,
+   56,
+   42,
+   24,
+   24
+  ],
+  "orders": [
+   1,
+   2,
+   3,
+   4,
+   7,
+   7
+  ]
+ },
+ "F21_kron": {
+  "1 x 1": {
+   "sym": {
+    "1": 1
+   },
+   "antisym": {}
+  },
+  "1 x 1'": {
+   "1'": 1
+  },
+  "1 x 1''": {
+   "1''": 1
+  },
+  "1 x 3": {
+   "3": 1
+  },
+  "1 x 3b": {
+   "3b": 1
+  },
+  "1' x 1'": {
+   "sym": {
+    "1''": 1
+   },
+   "antisym": {}
+  },
+  "1' x 1''": {
+   "1": 1
+  },
+  "1' x 3": {
+   "3": 1
+  },
+  "1' x 3b": {
+   "3b": 1
+  },
+  "1'' x 1''": {
+   "sym": {
+    "1'": 1
+   },
+   "antisym": {}
+  },
+  "1'' x 3": {
+   "3": 1
+  },
+  "1'' x 3b": {
+   "3b": 1
+  },
+  "3 x 3": {
+   "sym": {
+    "3": 1,
+    "3b": 1
+   },
+   "antisym": {
+    "3b": 1
+   }
+  },
+  "3 x 3b": {
+   "1": 1,
+   "3": 1,
+   "3b": 1,
+   "1'": 1,
+   "1''": 1
+  },
+  "3b x 3b": {
+   "sym": {
+    "3": 1,
+    "3b": 1
+   },
+   "antisym": {
+    "3": 1
+   }
+  }
+ },
+ "PSL_kron": {
+  "1 x 1": {
+   "sym": {
+    "1": 1
+   },
+   "antisym": {}
+  },
+  "1 x 3": {
+   "3": 1
+  },
+  "1 x 3b": {
+   "3b": 1
+  },
+  "1 x 6": {
+   "6": 1
+  },
+  "1 x 7": {
+   "7": 1
+  },
+  "1 x 8": {
+   "8": 1
+  },
+  "3 x 3": {
+   "sym": {
+    "6": 1
+   },
+   "antisym": {
+    "3b": 1
+   }
+  },
+  "3 x 3b": {
+   "1": 1,
+   "8": 1
+  },
+  "3 x 6": {
+   "3b": 1,
+   "7": 1,
+   "8": 1
+  },
+  "3 x 7": {
+   "6": 1,
+   "7": 1,
+   "8": 1
+  },
+  "3 x 8": {
+   "3": 1,
+   "6": 1,
+   "7": 1,
+   "8": 1
+  },
+  "3b x 3b": {
+   "sym": {
+    "6": 1
+   },
+   "antisym": {
+    "3": 1
+   }
+  },
+  "3b x 6": {
+   "3": 1,
+   "7": 1,
+   "8": 1
+  },
+  "3b x 7": {
+   "6": 1,
+   "7": 1,
+   "8": 1
+  },
+  "3b x 8": {
+   "3b": 1,
+   "6": 1,
+   "7": 1,
+   "8": 1
+  },
+  "6 x 6": {
+   "sym": {
+    "1": 1,
+    "6": 2,
+    "8": 1
+   },
+   "antisym": {
+    "7": 1,
+    "8": 1
+   }
+  },
+  "6 x 7": {
+   "3": 1,
+   "3b": 1,
+   "6": 1,
+   "7": 2,
+   "8": 2
+  },
+  "6 x 8": {
+   "3": 1,
+   "3b": 1,
+   "6": 2,
+   "7": 2,
+   "8": 2
+  },
+  "7 x 7": {
+   "sym": {
+    "1": 1,
+    "6": 2,
+    "7": 1,
+    "8": 1
+   },
+   "antisym": {
+    "3": 1,
+    "3b": 1,
+    "7": 1,
+    "8": 1
+   }
+  },
+  "7 x 8": {
+   "3": 1,
+   "3b": 1,
+   "6": 2,
+   "7": 2,
+   "8": 3
+  },
+  "8 x 8": {
+   "sym": {
+    "1": 1,
+    "6": 2,
+    "7": 1,
+    "8": 2
+   },
+   "antisym": {
+    "3": 1,
+    "3b": 1,
+    "7": 2,
+    "8": 1
+   }
+  }
+ },
+ "branch_PSL_F21": {
+  "1": {
+   "1": 1
+  },
+  "3": {
+   "3": 1
+  },
+  "3b": {
+   "3b": 1
+  },
+  "6": {
+   "3": 1,
+   "3b": 1
+  },
+  "7": {
+   "1": 1,
+   "3": 1,
+   "3b": 1
+  },
+  "8": {
+   "3": 1,
+   "3b": 1,
+   "1'": 1,
+   "1''": 1
+  }
+ },
+ "branch_SU3_PSL": {
+  "(1,0)": {
+   "3": 1
+  },
+  "(0,1)": {
+   "3b": 1
+  },
+  "(2,0)": {
+   "6": 1
+  },
+  "(0,2)": {
+   "6": 1
+  },
+  "(1,1)": {
+   "8": 1
+  },
+  "(3,0)": {
+   "3b": 1,
+   "7": 1
+  },
+  "(2,1)": {
+   "7": 1,
+   "8": 1
+  },
+  "(4,0)": {
+   "1": 1,
+   "6": 1,
+   "8": 1
+  },
+  "(0,5)": {
+   "3": 1,
+   "3b": 1,
+   "7": 1,
+   "8": 1
+  },
+  "(1,3)": {
+   "3b": 1,
+   "6": 1,
+   "7": 1,
+   "8": 1
+  },
+  "(2,2)": {
+   "6": 2,
+   "7": 1,
+   "8": 1
+  }
+ },
+ "F21_invariants_33bb": {
+  "distinct": 5,
+  "symmetric": 2
+ },
+ "CG_singlet_C_eigenvalues_for_LNR_1prime_1dprime": [
+  "w^2",
+  "w"
+ ],
+ "A8_max_dev": 4.440892098500626e-16,
+ "checks": {
+  "Gauss sum (zeta+zeta^2+zeta^4-zeta^3-zeta^5-zeta^6)^2 = -7": true,
+  "flip sends Klein's Dk to D": true,
+  "Rf == LNR A^[3] (exact)": true,
+  "Rf*D == LNR B^[3] (exact)": true,
+  "LNR A*B == D (their eq. 16, exact)": true,
+  "PSL relations a^2=b^3=(ab)^7=[a,b]^4=1 exact (a=Rf, b=Rf D)": true,
+  "F21 relations D^7 = C^3 = 1, C^-1 D C = D^k with k of order 3 mod 7": true,
+  "D unitary with det 1 (exact)": true,
+  "C unitary with det 1 (exact)": true,
+  "Rf unitary with det 1 (exact)": true,
+  "exact closure |<D,C>| = 21": true,
+  "exact closure |<D,C,Rf>| = 168 and <D,Rf> already 168 (float)": true,
+  "F21 subset of PSL (exact)": true,
+  "F21: Burnside table contains every character peeled from tensor powers of the 3 (3 found by peeling)": true,
+  "F21: number of irreducible characters = number of classes (5) and sum d^2 = |G|": true,
+  "F21: row orthogonality of the peeled table": true,
+  "PSL: Burnside table contains every character peeled from tensor powers of the 3 (6 found by peeling)": true,
+  "PSL: number of irreducible characters = number of classes (6) and sum d^2 = |G|": true,
+  "PSL: row orthogonality of the peeled table": true,
+  "F21 character table = LNR (1,1',1'',3,3bar; b7 on order-7 classes)": true,
+  "PSL class sizes (1,21,56,42,24,24) with orders (1,2,3,4,7,7)": true,
+  "PSL character table = LNR (all six rows)": true,
+  "Frobenius-Schur: 3,3bar complex (0) in both groups; 6,7,8 real (+1)": true,
+  "F21: 3x3 = (3+3bar)_s + 3bar_a; 3x3bar = 1+1'+1''+3+3bar": true,
+  "F21: 3x1' = 3, 1'x1' = 1'', 1'x1'' = 1": true,
+  "PSL: all 14 LNR Kronecker products (non-trivial irreps)": true,
+  "PSL->F21: 6 = 3+3bar, 7 = 1+3+3bar, 8 = 1'+1''+3+3bar": true,
+  "SU(3)->PSL dimension content matches LNR table (11 irreps)": true,
+  "F21 invariants in psi psi' xi xi' (3x3x3bx3b) = 5 (Reynolds projector)": true,
+  "F21 invariants with psi=psi', xi=xi' (Sym2(3) x Sym2(3b)) = 2": true,
+  "LNR F21 CGs (64)-(66): five triplet maps + 1 are intertwiners; 1',1'' are the two non-trivial singlets": true,
+  "LNR A^[8] eq. (46) reproduced to 1e-12": true
+ },
+ "all_pass": true
+}

@@ -1,0 +1,27 @@
+[coarse] nr=48 nmu=8 nphi=16: M=36.46164562 E2=18.23082281 E4=18.23082281 B=1.0000000000
+   eigenvalues of I_ab: [ -0.         0.         0.        40.678582  40.678582  40.678582
+  40.678582  40.678582  40.678582  40.678582  40.678582 106.769622
+ 106.769622 106.769622]
+[fine] nr=96 nmu=12 nphi=24: M=36.46164562 E2=18.23082281 E4=18.23082281 B=1.0000000000
+   eigenvalues of I_ab: [ -0.        -0.         0.        40.678582  40.678582  40.678582
+  40.678582  40.678582  40.678582  40.678582  40.678582 106.769622
+ 106.769622 106.769622]
+I1 (3D) = 106.76962153   radial (2pi/3)Lambda = 106.76962153   rel diff 1.60e-12
+I2 (3D) = 40.67858201   radial Kopeliovich   = 40.67858201   rel diff 1.74e-12
+short block max |I| = 6.60e-19,  max off-block = 5.00e-12
+SU(3) (3x3, Tr_3) inertia eigenvalues: [ -0.        40.678582  40.678582  40.678582  40.678582 106.769622
+ 106.769622 106.769622]  M = 36.46164562  B = 1.0
+su(3) directions inside g2 (Tr_7/2): [106.769622 106.769622 106.769622  40.678582  40.678582  40.678582
+  40.678582   0.      ]  max diff to 3x3: 9.0e-12
+hedgehog in long_root   : B = 1.00000000,  M/M_long = 1.00000000
+hedgehog in short_root  : B = 3.00000000,  M/M_long = 3.00000000
+hedgehog in index4_diag : B = 4.00000000,  M/M_long = 4.00000000
+hedgehog in index4_SO3  : B = 4.00000000,  M/M_long = 4.00000000
+hedgehog in principal   : B = 28.00000000,  M/M_long = 28.00000000
+PASS I1 x3 equals SU(2) I1 (radial formula) to 1e-6
+PASS I2 x8 equals SU(3) strange I2 (radial formula) to 1e-6
+PASS short-root block vanishes (<1e-10)
+PASS tensor block-diagonal (<1e-10)
+PASS su(3) directions in g2 (Tr_7/2) = 3x3 SU(3) (Tr_3) to 1e-10
+PASS static energy (3D) = radial M to 1e-6
+PASS B(long, short, index-4, principal) = 1, 3, 4, 28

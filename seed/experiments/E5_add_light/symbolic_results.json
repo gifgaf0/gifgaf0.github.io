@@ -1,0 +1,217 @@
+{
+ "units": "e = F_pi = 1 (F_pi in the 186-MeV convention); r in 1/(e F_pi); per-unit-volume densities",
+ "energy_density": "Fp**2/8 + Fp**2*s**2/r**2 + s**2/(4*r**2) + s**4/(2*r**4)",
+ "lambda_density": "s**2*(4*Fp**2 + 1 + 4*s**2/r**2)/6",
+ "lambda_density_derived_from_isospin_charge": "s**2*(4*Fp**2*r**2 + r**2 + 4*s**2)/(6*r**2)",
+ "I2_density": "(1/8 - c/8)*(Fp**2 + 1 + 2*s**2/r**2)",
+ "vector_g": "s**2*(r**2*(4*Fp**2*c**6 + 12*Fp**2*c**4*s**2 + 4*Fp**2*c**4 + 12*Fp**2*c**2*s**4 + 8*Fp**2*c**2*s**2 + 4*Fp**2*s**6 + 4*Fp**2*s**4 + c**2 + s**2 + 1) + 4*s**2*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2))/(8*r**3)",
+ "baryon_density": "-Fp*s**2/(2*pi**2*r**2)",
+ "axial_f1": "-c*s*(r**2*(4*Fp**2*c**6 + 12*Fp**2*c**4*s**2 + 4*Fp**2*c**4 + 12*Fp**2*c**2*s**4 + 8*Fp**2*c**2*s**2 + 4*Fp**2*s**6 + 4*Fp**2*s**4 + c**2 + s**2 + 1) + 4*s**2*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2))/(8*r**3)",
+ "axial_f2": "(-Fp*r**3*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2) - 8*Fp*r*s**2*(c**6 + 3*c**4*s**2 + c**4 + 3*c**2*s**4 + 2*c**2*s**2 + s**6 + s**4) + c*r**2*s*(4*Fp**2*c**6 + 12*Fp**2*c**4*s**2 + 4*Fp**2*c**4 + 12*Fp**2*c**2*s**4 + 8*Fp**2*c**2*s**2 + 4*Fp**2*s**6 + 4*Fp**2*s**4 + c**2 + s**2 + 1) + 4*c*s**3*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2))/(8*r**3)",
+ "axial_sphere_density_f1_plus_f2_over_3": "-(Fp*r**3*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2) + 8*Fp*r*s**2*(c**6 + 3*c**4*s**2 + c**4 + 3*c**2*s**4 + 2*c**2*s**2 + s**6 + s**4) + 2*c*r**2*s*(4*Fp**2*c**6 + 12*Fp**2*c**4*s**2 + 4*Fp**2*c**4 + 12*Fp**2*c**2*s**4 + 8*Fp**2*c**2*s**2 + 4*Fp**2*s**6 + 4*Fp**2*s**4 + c**2 + s**2 + 1) + 8*c*s**3*(c**4 + 2*c**2*s**2 + c**2 + s**4 + s**2))/(24*r**3)",
+ "kappa_baryon": "-1/(24*pi**2)",
+ "pi0_amplitude_coefficient": "N_c*e**2/(12*pi**2*f)",
+ "pi0_width_formula": "N_c**2*alpha**2*m**3/(576*pi**3*f**2)",
+ "pi0_effective_coupling_K": "N_c*e**2/(48*pi**2*f)",
+ "vacuum_T": "[[V0, 0, 0, 0], [0, -V0, 0, 0], [0, 0, -V0, 0], [0, 0, 0, -V0]]",
+ "checks": [
+  {
+   "check": "U0 unitary on |n|=1, s^2+c^2=1",
+   "passed": true,
+   "detail": "1.5204388142005612e-16"
+  },
+  {
+   "check": "1. static energy density = (1/8)(F'^2+2s^2/r^2) + (1/2)(s^2/r^2)(s^2/r^2+2F'^2)",
+   "passed": true,
+   "detail": "2.284025293278713e-16"
+  },
+  {
+   "check": "1b. energy density is spherically symmetric pointwise",
+   "passed": true,
+   "detail": "1.2154665156040386e-16"
+  },
+  {
+   "check": "2. L_kin = (lambda/2) W^2 with lambda = (2pi/3) int x^2 s^2 [1+4(F'^2+s^2/x^2)] dx",
+   "passed": true,
+   "detail": "5.551115123125783e-17"
+  },
+  {
+   "check": "3. L_kin(W4) = (I2/2) W4^2 with I2 = (pi/2) int x^2 (1-c)(1+F'^2+2s^2/x^2) dx",
+   "passed": true,
+   "detail": "3.469446951953614e-18"
+  },
+  {
+   "check": "3b. 3x3 embedding reproduces I1 = lambda (same generator normalisation lambda_a/2)",
+   "passed": true,
+   "detail": "1.3877787807814457e-17"
+  },
+  {
+   "check": "3c. lambda_8 commutes with the embedded hedgehog (zero inertia, WZ-constrained)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "4a. isospin charge density of the rotating hedgehog averages to lambda(r) W_a (I^N = lambda W)",
+   "passed": true,
+   "detail": "2.220446049250313e-16"
+  },
+  {
+   "check": "4b. static isovector current has the form V^k_b = eps_{kbl} n_l g(r)",
+   "passed": true,
+   "detail": "1.887379141862766e-15"
+  },
+  {
+   "check": "4c. hedgehog identity V^0_a = (W x x)_j V^j_a (rotation in isospace = rotation in space)",
+   "passed": true,
+   "detail": "2.356782285363599e-16"
+  },
+  {
+   "check": "4d. (2/3) r g(r) = lambda density  =>  int r g d^3x = (3/2) lambda  =>  mu^{I=1}_p = lambda/6",
+   "passed": true,
+   "detail": "1.2455166841510677e-16"
+  },
+  {
+   "check": "5a. B^0 = kappa eps^{0ijk}Tr(L_i L_j L_k) = -(1/2pi^2) s^2 F'/r^2 with kappa = -1/(24*pi**2)",
+   "passed": true,
+   "detail": "1.1102230246251565e-16"
+  },
+  {
+   "check": "5b. B^k = B^0 (W x x)_k : the baryon current is rigidly transported by the physical rotation",
+   "passed": true,
+   "detail": "1.3877787807814457e-17"
+  },
+  {
+   "check": "5c. kappa = -1/(24 pi^2) exactly (magnitude = standard 1/(24 pi^2); the sign follows from eps^{0123}=+1, L = U^+ dU, B = +1)",
+   "passed": true,
+   "detail": "-1/(24*pi**2)"
+  },
+  {
+   "check": "6a. angular average of (1/2) x x (B/2 with B^0=1)(W x x) = r^2 W/6  =>  mu^{I=0} = <r^2> J/(6 lambda)",
+   "passed": true,
+   "detail": "[W1*r**2/6, W2*r**2/6, W3*r**2/6]"
+  },
+  {
+   "check": "6b. (1/2) <eps_ijk x_j eps_kbl n_l> = (r/3) delta_ib  =>  mu^{I=1}_i = D_3i (1/3) int r g d^3x",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "7a. static axial current has the form A^j_a = f1(r) delta_aj + f2(r) n_a n_j",
+   "passed": true,
+   "detail": "1.0547118733938987e-15"
+  },
+  {
+   "check": "7b. derived axial density matches the D-formula with the literature sign: 4 pi (f1+f2/3) = -(pi/3) D",
+   "passed": true,
+   "detail": "rel.dev with -: 4.17e-16 ; with +: 2.00e+00"
+  },
+  {
+   "check": "7c. tail: f1 -> -(C/4)/r^3, f2 -> +(3C/4)/r^3 (pion field ~ d_j(n_a/r^2)); g_A(tail) = 2 pi C/(3 e^2)",
+   "passed": true,
+   "detail": "f1=-C/(4*r**3), f2=3*C/(4*r**3)"
+  },
+  {
+   "check": "8a. ANW I_k and J_k obey the standard su(2) algebra [X1,X2] = i X3",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "8b. operator identity I_k = -D_kl(A) J_l holds on S^3 (hedgehog: isospin = -rotated spin)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "8c. |p up> = (a1 + i a2)/pi has I3 = +1/2, J3 = +1/2 and <D_33> = -1/3",
+   "passed": true,
+   "detail": "I3=1/2 J3=1/2 D33=-1/3"
+  },
+  {
+   "check": "9a. linear part of T_beta = i (3 Tr(Q^2 tau_3)) d_beta pi0 / f = i d_beta pi0 / f; pi+- do not couple (Tr Q^2 tau_{1,2} = 0)",
+   "passed": true,
+   "detail": "T_beta(1) = I*dpi3/f"
+  },
+  {
+   "check": "9b. antisymmetrised product of three su(2) elements is proportional to 1 (so Q = I3 + (N_c/6) B: B/2 at N_c=3)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "9c. Gamma(pi0->gg) from the gauged WZ term = alpha^2 m^3 N_c^2/(576 pi^3 f^2)",
+   "passed": true,
+   "detail": "Gamma = N_c**2*alpha**2*m**3/(576*pi**3*f**2)"
+  },
+  {
+   "check": "9d. amplitude coefficient A = N_c e^2/(12 pi^2 f) (= e^2/(4 pi^2 f) at N_c = 3, B-H eq. 70)",
+   "passed": true,
+   "detail": "A = N_c*e**2/(12*pi**2*f)"
+  },
+  {
+   "check": "9e. equivalent effective coupling: L = g pi0 F_mu nu F~^{mu nu} with g = K = N_c e^2/(48 pi^2 f) (B-H eq. 69 2nd line has 24 pi^2: factor-2 F~ normalisation)",
+   "passed": true,
+   "detail": "K = N_c*e**2/(48*pi**2*f)"
+  },
+  {
+   "check": "9f. amplitude factor N_c Tr(Q^2 tau3): fixed charges -> N_c/3 ; anomaly-consistent charges -> 1 (N_c-independent)",
+   "passed": true,
+   "detail": "fixed=N_c/3, consistent=1"
+  },
+  {
+   "check": "10a. quadratic part of (F^2/16)Tr(DU DU^+) = (1/2) d_mu pi^a d^mu pi^a (no photon-pion mixing at this order)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "10b. quadratic part of the mass term = -(1/2) m_pi^2 pi^a pi^a",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "10c. L_mu = U^+ D_mu U vanishes at zeroth order, so the Skyrme term [L,L]^2 starts at 4th order (no quadratic part)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "10d. gauged WZ term expanded in all fields: no part of order 0, 1 or 2 (no quadratic part; computed)",
+   "passed": true,
+   "detail": "orders 0-2: [0, 0, 0]; order 3 nonzero: True"
+  },
+  {
+   "check": "9g. that cubic part = (N_c e^2/(24 pi^2 f)) eps^{mu nu al be} d_mu A_nu A_al d_be pi0 = (N_c e^2/(48 pi^2 f)) eps F_mu nu A_al d_be pi0 (only pi0 couples)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "10e. Maxwell: off the cone (k^2!=0) M(k) has rank 3, null space = pure gauge k^mu; on the cone rank 1 (two transverse photons + gauge)",
+   "passed": true,
+   "detail": "rank(k^2!=0)=3, rank(k^2=0)=1"
+  },
+  {
+   "check": "10f. pion: omega^2 = k^2 + m^2, group velocity k/omega < 1 -> 1 as k -> oo; photon omega = |k| (phase=group=1)",
+   "passed": true,
+   "detail": "v_g = kmag/sqrt(kmag**2 + m_pi**2)"
+  },
+  {
+   "check": "10g. k^2 is boost invariant, so both dispersion relations hold in every frame (one cone, no preferred frame)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "check": "11a. vacuum (U=1, dU=0): T_mu nu = 2 dL/dg^{mu nu} - g_mu nu L = V0 g_mu nu (mostly-minus; = -V0 g in mostly-plus)",
+   "passed": true,
+   "detail": "[[V0, 0, 0, 0], [0, -V0, 0, 0], [0, 0, -V0, 0], [0, 0, 0, -V0]]"
+  },
+  {
+   "check": "11b. rho = T_00 = V0 and p = T_11 = -V0: p = -rho (taut vacuum)",
+   "passed": true,
+   "detail": "rho=V0 p=-V0"
+  },
+  {
+   "check": "11c. boosted vacuum T_mu nu is unchanged (Lambda^T g Lambda = g): same in every frame",
+   "passed": true,
+   "detail": ""
+  }
+ ],
+ "n_pass": 39,
+ "n_fail": 0,
+ "runtime_s": 219.7
+}

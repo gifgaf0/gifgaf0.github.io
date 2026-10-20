@@ -1,0 +1,3 @@
+input scale 1.0000: E_W = 1.23144579, rms (original formula) = 2.66973, rms with r<50 = 2.02791, spline slope at t=1 -> f ~ 4.61e-03/r tail, r_max = 2.49e+05
+input scale 1.1576: E_W = 1.23144586, rms (original formula) = 2.74209, rms with r<50 = 2.02696, spline slope at t=1 -> f ~ 6.12e-03/r tail, r_max = 2.15e+05
+exact (analytic mapping, cc_hopfion): R_rms = x_E/sqrt2 = 2.06082

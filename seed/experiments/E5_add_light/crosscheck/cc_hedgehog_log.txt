@@ -1,0 +1,116 @@
+== E5 cross-check: hedgehog and EM static properties (independent code) ==
+  shooting {'X': 40.0, 'xm': 1.5}: F'(0)=-1.0037641114  C=8.638577588  match residual=7.2e-14
+  shooting {'X': 80.0, 'xm': 1.0}: F'(0)=-1.0037641114  C=8.638578208  match residual=1.4e-14
+  shooting {'X': 25.0, 'xm': 2.5}: F'(0)=-1.0037641129  C=8.638567632  match residual=2.0e-13
+  shooting {'X': 40.0, 'xm': 1.5, 'x0': 0.003}: F'(0)=-1.0037641114  C=8.638577588  match residual=3.7e-14
+  shooting {'X': 40.0, 'xm': 1.5, 'rtol': 1e-11}: F'(0)=-1.0037641114  C=8.638577588  match residual=7.3e-13
+  inner series b(a) = a*(-8*a**4 - 4*a**2 - 3*beta2)/(30*(8*a**2 + 1));  outer tail d = -C**3/21
+  energy density check beta2=0.0: max |(-L) - e/x^2| = 6.66e-16
+  energy density check beta2=0.07: max |(-L) - e/x^2| = 7.77e-16
+  observables (X=400, 8x10 angular) in 42.3s
+  grid/profile convergence (X=400 8x10 vs X=200 6x8 & other profile), rel. diff: {'M': '3.0e-14', 'B': '2.1e-12', 'R2': '2.7e-08', 'R4': '1.7e-09', 'Lambda_tilde': '6.9e-09', 'J_z': '6.9e-09', 'mu_isoscalar_tilde': '2.7e-08', 'M33': '6.9e-09', 'G33': '3.0e-08'}
+  quantum: [J1,J2]-iJ3: 2.0872192862952943e-14
+  quantum: [Q1,Q2]+iQ3: 2.0872192862952943e-14
+  quantum: J^2: [0.7499999999999374, 0.7499999999999374, 0.7499999999999374, 0.7499999999999374]
+  quantum: Q^2: [0.7499999999999374, 0.7499999999999374, 0.7499999999999374, 0.7499999999999374]
+  quantum: <R33> Q3=+0.5 J3=+0.5: 0.33333333333333337
+  quantum: <R33> Q3=+0.5 J3=-0.5: -0.33333333333333337
+  quantum: <R33> Q3=-0.5 J3=-0.5: 0.3333333333333333
+  quantum: <R33> Q3=-0.5 J3=+0.5: -0.3333333333333333
+  quantum: quantum Q3 = +R3b J_b residual: 1.6883057536160646e-16
+  quantum: quantum Q3 = -R3b J_b residual: 1.3101177077327721
+  quantum: quantum Q3 = +R_b3 J_b residual: 1.0568107473086297
+  quantum: quantum Q3 = -R_b3 J_b residual: 1.276918930608051
+  classical charges at generic A: {'Q': [31.249415, -52.082359, 83.331774], 'J': [-23.349276, -49.734479, -87.261536], 'Q - R J': [0.0, 0.0, 0.0], 'Q + R J': [62.498831, -104.164718, 166.663548], 'Q - R^T J': [51.829191, -152.607312, 73.109772], 'Q + R^T J': [10.66964, 48.442594, 93.553776], 'V(AU0A+) - R V(U0) max': 2.0146644769125643e-15, 'isorotation_equals_active_spatial_rotation_residual': 1.1172326264440298e-16}
+== massless hedgehog numbers (dimensionless) ==
+  M                                        36.461645625238276
+  E2                                       18.230822812616683
+  E4                                       18.230822812621597
+  virial_E2_minus_E4_plus_3Em_over_M       -1.347553829106413e-13
+  B                                        1.0000000000000124
+  B_sign_raw                               -1.0
+  R2                                       4.477835944992433
+  R4                                       48.354547111607665
+  B0_vs_-s2Fp/(2pi^2 r^2)_maxrel           1.3543315551393982e-15
+  Lambda_tilde                             106.76962152114994
+  Lambda_tail_added                        0.39073576100904783
+  J_z                                      106.76962152114994
+  V0_12_charges                            [4.62780394998038e-17, 9.397248233951589e-17]
+  omega_s_from_Bcurrent                    1.0
+  Br0_minus_B0_max                         0.0
+  mu_isoscalar_tilde                       0.7463059908320808
+  V_static_form_residual                   1.7694676048579882e-15
+  M33                                      53.38481076057418
+  M33_tail_added                           0.195367880504525
+  int_r_g_d3x                              160.15443228172256
+  A_static_form_residual                   1.1719399146246814e-15
+  G33                                      18.092595914780926
+  G33_cutoff                               {'5': 18.00005326564184, '10': 18.07700489728276, '20': 18.091464163995084, '50': 18.09256595414655, '100': 18.0925940378016, '200': 18.092595803771903}
+  f1_x3_at_60                              -2.159635755754675
+  f2_x3_at_60                              6.478921338965732
+  C                                        8.63857820837783
+  Fprime0                                  -1.0037641113561775
+  M/(3pi^2) = 1.23144570;  Lambda = Lambda_tilde/(2pi/3) = 50.978739
+  int r g d^3x / Lambda_tilde = 1.500000000  (closed-form claim: 3/2)
+  mu_isoscalar_tilde/J_z = 0.006989872  vs <x^2>/(6 Lambda_tilde) = 0.006989872
+  G33 = 18.09259591;  2 pi C/3 = 18.09259589;  f1 x^3 -> -C/4 = -2.15964, f2 x^3 -> 3C/4 = 6.47893
+== ANW parameters (F=129, e=5.45) ==
+  F_pi                         129.0
+  e                            5.45
+  M_cl                         863.0371166340802
+  M_N                          936.3808109621882
+  M_Delta                      1229.75558827462
+  fm_per_x                     0.28067275499608846
+  r_I0_fm                      0.5939287475739841
+  rM_I0_ANWdef_fm              0.9223268007925212
+  rM_I0_Sachs_fm               0.71443126784604
+  mu_I0                        0.27729472552803686
+  mu_I1                        1.6003420754197801
+  mu_p                         1.877636800947817
+  mu_n                         -1.3230473498917432
+  mu_p_over_mu_n               -1.419175814910519
+  gA_sphere                    0.4060846935393974
+  gA_ANW_pole_removed          0.6091270403090961
+  gA_surface_2piC_over_3e2     0.6091270395174517
+  g_piNN_GT                    8.867756447290564
+  sign-convention independence: mu_I1 (s=+1) = 1.6003420754, (s=-1) = 1.6003420754
+== own SU(2) refit: F=129.2627 e=5.44399 ==
+  M_N                          939.0
+  M_Delta                      1232.0
+  r_I0_fm                      0.5933765918063827
+  rM_I0_ANWdef_fm              0.9214693442966855
+  mu_p                         1.87881488315037
+  mu_n                         -1.3259632738461695
+  mu_p_over_mu_n               -1.4169433801138138
+  gA_ANW_pole_removed          0.6104737138826517
+  g_piNN_GT                    8.869300400485248
+  isovector <r^2>_{I=1}(R) [x^2], normalised to the full isovector charge: {'2': 0.552, '5': 5.388, '10': 12.709, '20': 27.338, '50': 71.251, '100': 144.443, '200': 290.828}  slope(100-200) = 1.46385;  C^2/Lambda = 1.46385; numerical density coefficient k/Lambda_tilde = 1.46385
+  R= 0.25 fm  Q_p(<R)=0.0658  Q_n(<R)=+0.0522   isovector outside 0.49320 (asymptotic 0.82172)
+  R= 0.50 fm  Q_p(<R)=0.3413  Q_n(<R)=+0.1719   isovector outside 0.41530 (asymptotic 0.41086)
+  R= 1.00 fm  Q_p(<R)=0.7635  Q_n(<R)=+0.1848   isovector outside 0.21063 (asymptotic 0.20543)
+  R= 2.00 fm  Q_p(<R)=0.8969  Q_n(<R)=+0.1021   isovector outside 0.10260 (asymptotic 0.10272)
+  R= 5.00 fm  Q_p(<R)=0.9589  Q_n(<R)=+0.0411   isovector outside 0.04108 (asymptotic 0.04109)
+  R=10.00 fm  Q_p(<R)=0.9795  Q_n(<R)=+0.0205   isovector outside 0.02054 (asymptotic 0.02054)
+  SU(3) embedded inertia (dimensionless, x 1/(e^3 F)): {'I_11': 106.76962152115, 'I_44': 40.67858200356221, 'I_88': -2.1912908128611644e-17}  ; Lambda_tilde = 106.76962
+  SU(3) refit to 1151.19/1382.11: F=113.7540 MeV e=5.24747 f=F/2=56.8770 MeV; 10bar at 1757.3 MeV
+  massive refit (m_pi=138, M_N=939, M_Delta=1232): F=108.2598 MeV e=4.84205 (AN84 quoted 108, 4.84)
+== massive pions, F=108, e=4.84, m=138 (no target) ==
+  beta                         0.26400367309458217
+  M_N                          937.3147939230628
+  M_Delta                      1229.5680325658113
+  r_I0_fm                      0.6831963437324812
+  r_I1_fm                      1.040435443801544
+  r_p_fm                       0.880131568803195
+  r2_n_fm2                     -0.3078743343145426
+  mu_p                         1.9719945566805022
+  mu_n                         -1.240972404304547
+  gA_sphere                    0.649139163075954
+  gA_ANW_pole_removed          0.973708744613931
+  virial                       -1.4795608641955482e-13
+  massive R=0.25 fm Q_p=0.0421 Q_n=+0.0328
+  massive R=0.50 fm Q_p=0.2630 Q_n=+0.1178
+  massive R=1.00 fm Q_p=0.7984 Q_n=+0.1025
+  massive R=2.00 fm Q_p=0.9803 Q_n=+0.0188
+  massive R=5.00 fm Q_p=0.9998 Q_n=+0.0002
+  massive R=10.00 fm Q_p=1.0000 Q_n=+0.0000
+done in 161.6 s

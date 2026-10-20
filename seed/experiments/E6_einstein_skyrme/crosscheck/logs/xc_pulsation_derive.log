@@ -1,0 +1,6 @@
+G^x_x - G^t_t - 2N s_x/(s x) (time dependent) = 0
+eta remaining? True
+a = -sv*(-2*alpha*mv*x**2 - 4*alpha*mv*sin(Fv)**2 + x**3 - x*cos(2*Fv) + x)/x
+d = -x*(x**2 + 2*sin(Fv)**2)/(sv*(-2*alpha*mv + x))
+SL check b/a - p'/p = 0
+done 106.3s

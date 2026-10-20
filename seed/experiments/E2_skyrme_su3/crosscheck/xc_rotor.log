@@ -1,0 +1,36 @@
+GT consistency failures: []
+N_c=1: 3(1,0) J=1/2, 6bar(0,2) J=1/2, 15(2,1) J=3/2, 15(2,1) J=1/2
+N_c=2: 3bar(0,1) J=0, 6(2,0) J=1, 15bar(1,2) J=1, 24(3,1) J=2
+N_c=3: 8(1,1) J=1/2, 10(3,0) J=3/2, 10bar(0,3) J=1/2, 27(2,2) J=3/2
+N_c=4: 6bar(0,2) J=0, 15(2,1) J=1, 15'(4,0) J=2, 24bar(1,3) J=1
+N_c=5: 15bar(1,2) J=1/2, 24(3,1) J=3/2, 21(5,0) J=5/2, 15bar'(0,4) J=1/2
+N_c=6: 10bar(0,3) J=0, 27(2,2) J=1, 35(4,1) J=2, 28(6,0) J=3
+N_c=7: 24bar(1,3) J=1/2, 42(3,2) J=3/2, 48(5,1) J=5/2, 21bar(0,5) J=1/2
+  E8-M             = 3/(4*I2) + 3/(8*I1)
+  E10-E8           = 3/(2*I1)
+  E10bar-E8        = 3/(2*I2)
+  E27(3/2)-E10bar  = (-I1 + 3*I2)/(2*I1*I2)
+  E8-ESU2(N)       = 3/(4*I2)
+PDG 2026 isospin averages: {'N': 938.919, 'Lambda': 1115.683, 'Sigma': 1193.154, 'Xi': 1318.286, 'Delta': 1232.0, 'Sigma*': 1384.61, 'Xi*': 1533.387, 'Omega': 1672.452}
+octet centre 1151.1942  decuplet centre 1382.1056
+ANW      F_pi = 129.2627 MeV  e = 5.44399  1/I1 = 195.333  1/I2 = 512.694  M_cl = 865.750  g_A(SU2 form) = 0.6105
+          levels: 8(1,1) J=1/2 1323.5; 10(3,0) J=3/2 1616.5; 10bar(0,3) J=1/2 2092.6; 27(2,2) J=3/2 2129.2; 35(4,1) J=5/2 2361.2; 27(2,2) J=1/2 2605.3; 64(3,3) J=5/2 3130.2; 35bar(1,4) J=3/2 3154.6; 35(4,1) J=3/2 3154.6
+SU3refit F_pi = 113.7549 MeV  e = 5.24740  1/I1 = 153.941  1/I2 = 404.051  M_cl = 790.428  g_A(SU2 form) = 0.6571
+          levels: 8(1,1) J=1/2 1151.2; 10(3,0) J=3/2 1382.1; 10bar(0,3) J=1/2 1757.3; 27(2,2) J=3/2 1786.2; 35(4,1) J=5/2 1969.0; 27(2,2) J=1/2 2161.3; 64(3,3) J=5/2 2575.1; 35bar(1,4) J=3/2 2594.3; 35(4,1) J=3/2 2594.3
+normalisation 8 int |D_ps|^2 = 1.000000000000
+<p|D33|p>: SU(2) {'s=1': np.float64(0.3333333333333332), 's=2': np.float64(-0.33333333333333315)}   SU(3) octet {'s=E13': np.float64(0.23333333333333325), 's=E23': np.float64(-0.23333333333333323)}
+octet <D88>: {'p': np.float64(0.3), 'n': np.float64(0.3), 'Sigma+': np.float64(-0.1), 'Sigma0': np.float64(-0.1), 'Lambda': np.float64(0.1), 'Xi0': np.float64(-0.2), 'Xi-': np.float64(-0.2)}
+decuplet <D88>: {'Delta++': np.float64(0.125), 'Delta0': np.float64(0.125), 'Sigma*+': np.float64(0.0), 'Sigma*0': np.float64(0.0), 'Xi*0': np.float64(-0.125), 'Omega-': np.float64(-0.25)}
+first-order fit (unweighted, 8 multiplets): alpha = 371.76 MeV, beta = -99.59 MeV, rms = 3.98 MeV, max |res| 6.85 (Xi)
+Guadagnini LHS-RHS 8.507 MeV (0.0364%); GMO -25.794 MeV (-0.568%); spacing 3.83, 9.71 MeV
+CHECK GT patterns: dimension, index sum rule, multiplicity-free U(2) branching (p+q<=16)    PASS
+CHECK N_c parity: 2J = N_c mod 2 for every allowed state, N_c = 1..15                       PASS
+CHECK allowed irreps have triality p-q = N_c mod 3                                          PASS
+CHECK E(10)-E(8) = 3/(2I1) exactly                                                          PASS
+CHECK E(10bar)-E(8) = 3/(2I2) exactly                                                       PASS
+CHECK E(8)-E_SU2(N) = 3/(4I2) exactly                                                       PASS
+CHECK lowest Y_R=1 multiplets: 8(1/2), 10(3/2), 10bar(1/2), then 27                         PASS
+CHECK SU(2) |<p|D33|p>| = 1/3                                                               PASS
+CHECK SU(3) octet |<p|D33|p>| = 7/30, ratio 7/10                                            PASS
+CHECK <D88> octet (N,L,S,X) = (3,1,-1,-2)/10, decuplet = Y/8                                PASS
+all checks pass: True  runtime 1.5 s

@@ -1,0 +1,5098 @@
+{
+ "tol": 1e-09,
+ "n_points": 40,
+ "classes": {
+  "lepton|min|phi10=Z3|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 3.3844769393681274e-16,
+    "M_R": 3.958882318760628e-16,
+    "M_nu": 2.5880068066153665e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters",
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|min|phi10=Z3|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.39894221129760576,
+    "M_R": 4.3467381041904264e-16,
+    "M_nu": 0.44002709440383114
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min|phi10=Z3|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4998962997026119,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=Z3|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4029467578610137,
+    "M_R": 0.4596389351181582,
+    "M_nu": 0.42597060807724
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min|phi10=Z3|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 1.1102230246251563e-16,
+    "M_D": 0.39894221129760576,
+    "M_R": 4.3271057355874297e-16,
+    "M_nu": 0.44086543756390234
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min|phi10=Z3|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4595875035543742,
+    "M_R": 4.3220252816435084e-16,
+    "M_nu": 0.47557444661580817
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min|phi10=Z3|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 1.1102230246251563e-16,
+    "M_D": 0.496076750712823,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=Z3|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 1.1102230246251563e-16,
+    "M_D": 0.4575693544470463,
+    "M_R": 0.40713359393670995,
+    "M_nu": 0.46897285365851915
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min|phi10=Z3|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4998962997026119,
+    "M_R": 3.958882318760628e-16,
+    "M_nu": 0.48618659972945594
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=Z3|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.496076750712823,
+    "M_R": 4.3467381041904264e-16,
+    "M_nu": 0.48942793897901077
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=Z3|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=Z3|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.49618030075217134,
+    "M_R": 0.4596389351181582,
+    "M_nu": 0.4942893143229926
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=Z3|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.2830237123198462,
+    "M_D": 0.4029467578610137,
+    "M_R": 4.3271057355874297e-16,
+    "M_nu": 0.47461708638109834
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min|phi10=Z3|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3426333497096365,
+    "M_D": 0.4325519405170712,
+    "M_R": 4.444931993836464e-16,
+    "M_nu": 0.45257510872043044
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min|phi10=Z3|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.2830237123198462,
+    "M_D": 0.49618030075217134,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=Z3|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.37609692701092057,
+    "M_D": 0.4411792128881693,
+    "M_R": 0.35830768833906856,
+    "M_nu": 0.4778247644363888
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min|phi10=P|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 1.1102230246251563e-16,
+    "M_D": 4.775325347649578e-16,
+    "M_R": 4.3271057355874297e-16,
+    "M_nu": 4.991986310304499e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters",
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|min|phi10=P|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4196394010911484,
+    "M_R": 4.3220252816435084e-16,
+    "M_nu": 0.46855395786404713
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min|phi10=P|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 1.1102230246251563e-16,
+    "M_D": 0.4960767507128229,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=P|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 1.1102230246251563e-16,
+    "M_D": 0.4029467578610137,
+    "M_R": 0.40713359393670995,
+    "M_nu": 0.43396538727842326
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min|phi10=P|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 1.1102230246251565e-16,
+    "M_D": 0.4196394010911484,
+    "M_R": 4.3271057355874297e-16,
+    "M_nu": 0.47548066660983035
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min|phi10=P|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 1.1102230246251563e-16,
+    "M_D": 0.3647794663262108,
+    "M_R": 4.444931993836464e-16,
+    "M_nu": 0.40772786837019676
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min|phi10=P|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 1.1102230246251565e-16,
+    "M_D": 0.49989629970261173,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=P|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 1.1102230246251565e-16,
+    "M_D": 0.446942618228401,
+    "M_R": 0.35830768833906856,
+    "M_nu": 0.46897285365851915
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min|phi10=P|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4960767507128229,
+    "M_R": 4.3271057355874297e-16,
+    "M_nu": 0.4894279389790106
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=P|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.49989629970261173,
+    "M_R": 4.3220252816435084e-16,
+    "M_nu": 0.486186599729456
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=P|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=P|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4936187710679588,
+    "M_R": 0.40713359393670995,
+    "M_nu": 0.4721388726700664
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=P|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3760969270109207,
+    "M_D": 0.4029467578610137,
+    "M_R": 4.3271057355874297e-16,
+    "M_nu": 0.453760558030489
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min|phi10=P|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.33971342404236016,
+    "M_D": 0.4051071875270029,
+    "M_R": 4.3467381041904264e-16,
+    "M_nu": 0.46573718575542045
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min|phi10=P|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3760969270109207,
+    "M_D": 0.4936187710679588,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=P|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3530637261703012,
+    "M_D": 0.4223580293466995,
+    "M_R": 0.39822251882070936,
+    "M_nu": 0.4611556947075344
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min|phi10=Z7|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 3.3844769393681274e-16,
+    "M_R": 3.958882318760628e-16,
+    "M_nu": 2.5880068066153665e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|min|phi10=Z7|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.39894221129760576,
+    "M_R": 4.3467381041904264e-16,
+    "M_nu": 0.44002709440383114
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=Z7|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4998962997026119,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=Z7|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4029467578610137,
+    "M_R": 0.4596389351181582,
+    "M_nu": 0.42597060807724
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=Z7|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.39894221129760576,
+    "M_R": 4.3271057355874297e-16,
+    "M_nu": 0.44086543756390234
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=Z7|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4595875035543742,
+    "M_R": 4.3220252816435084e-16,
+    "M_nu": 0.47557444661580817
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=Z7|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.496076750712823,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=Z7|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4575693544470463,
+    "M_R": 0.40713359393670995,
+    "M_nu": 0.46897285365851915
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=Z7|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4998962997026119,
+    "M_R": 3.958882318760628e-16,
+    "M_nu": 0.48618659972945594
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=Z7|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.496076750712823,
+    "M_R": 4.3467381041904264e-16,
+    "M_nu": 0.48942793897901077
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=Z7|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=Z7|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.49618030075217134,
+    "M_R": 0.4596389351181582,
+    "M_nu": 0.4942893143229926
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=Z7|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4029467578610137,
+    "M_R": 4.3271057355874297e-16,
+    "M_nu": 0.47461708638109834
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=Z7|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4325519405170712,
+    "M_R": 4.444931993836464e-16,
+    "M_nu": 0.45257510872043044
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=Z7|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.49618030075217134,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=Z7|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4411792128881693,
+    "M_R": 0.35830768833906856,
+    "M_nu": 0.4778247644363888
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=G|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.2830237123198462,
+    "M_D": 2.726342061663308e-16,
+    "M_R": 4.3271057355874297e-16,
+    "M_nu": 3.949332620924276e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|min|phi10=G|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3426333497096365,
+    "M_D": 0.3811523577231518,
+    "M_R": 4.444931993836464e-16,
+    "M_nu": 0.43802741796509753
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min|phi10=G|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.2830237123198462,
+    "M_D": 0.4998962997026119,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=G|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.37609692701092057,
+    "M_D": 0.410026478461225,
+    "M_R": 0.35830768833906856,
+    "M_nu": 0.4845333877183815
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min|phi10=G|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3426333497096365,
+    "M_D": 0.3811523577231518,
+    "M_R": 4.3271057355874297e-16,
+    "M_nu": 0.42419785202781496
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min|phi10=G|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3760969270109207,
+    "M_D": 0.42212740882349575,
+    "M_R": 4.3467381041904264e-16,
+    "M_nu": 0.40772786837019676
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min|phi10=G|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3426333497096365,
+    "M_D": 0.49989629970261173,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=G|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3156906135426185,
+    "M_D": 0.433192764805281,
+    "M_R": 0.39822251882070936,
+    "M_nu": 0.46223955947199785
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min|phi10=G|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4998962997026119,
+    "M_R": 4.3271057355874297e-16,
+    "M_nu": 0.48618659972945594
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=G|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.49989629970261173,
+    "M_R": 4.444931993836464e-16,
+    "M_nu": 0.47617005462403184
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=G|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=G|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.49618030075217134,
+    "M_R": 0.35830768833906856,
+    "M_nu": 0.49822872714078614
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min|phi10=G|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3609872448625373,
+    "M_D": 0.410026478461225,
+    "M_R": 3.840404287907324e-16,
+    "M_nu": 0.453760558030489
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min|phi10=G|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.34225983780423375,
+    "M_D": 0.4725014036817361,
+    "M_R": 4.3467381041904264e-16,
+    "M_nu": 0.4630907503083359
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min|phi10=G|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3609872448625373,
+    "M_D": 0.49618030075217134,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min|phi10=G|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4061116051627811,
+    "M_D": 0.41908070201397074,
+    "M_R": 0.4596389351181582,
+    "M_nu": 0.48839595453455276
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "quark|min|phi10=Z3|phi5=Z3": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 0.0
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters",
+    "M_d has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|min|phi10=Z3|phi5=P": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 1.1102230246251563e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters",
+    "M_d has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|min|phi10=Z3|phi5=Z7": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 1
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 0.0
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters",
+    "M_d has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|min|phi10=Z3|phi5=G": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 0.3534859363744209
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|min|phi10=P|phi5=Z3": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 1.1102230246251563e-16,
+    "M_d": 1.1102230246251563e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters",
+    "M_d has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|min|phi10=P|phi5=P": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 1.1102230246251565e-16,
+    "M_d": 1.1102230246251565e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters",
+    "M_d has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|min|phi10=P|phi5=Z7": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 1
+   },
+   "max_min_rel_gap": {
+    "M_u": 1.1102230246251563e-16,
+    "M_d": 0.0
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters",
+    "M_d has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|min|phi10=P|phi5=G": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 1.1102230246251565e-16,
+    "M_d": 0.3026477387997112
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|min|phi10=Z7|phi5=Z3": {
+   "rank": {
+    "M_u": 1,
+    "M_d": 1
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 0.0
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has rank 1 for all parameters (massless charged fermion)",
+    "M_d has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|min|phi10=Z7|phi5=P": {
+   "rank": {
+    "M_u": 1,
+    "M_d": 1
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 0.0
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has rank 1 for all parameters (massless charged fermion)",
+    "M_d has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|min|phi10=Z7|phi5=Z7": {
+   "rank": {
+    "M_u": 1,
+    "M_d": 1
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 0.0
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has rank 1 for all parameters (massless charged fermion)",
+    "M_d has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|min|phi10=Z7|phi5=G": {
+   "rank": {
+    "M_u": 1,
+    "M_d": 1
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 0.0
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has rank 1 for all parameters (massless charged fermion)",
+    "M_d has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|min|phi10=G|phi5=Z3": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.4428335373306358,
+    "M_d": 0.3534859363744209
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "quark|min|phi10=G|phi5=P": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.4428335373306358,
+    "M_d": 0.3760969270109207
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "quark|min|phi10=G|phi5=Z7": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 1
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.4428335373306358,
+    "M_d": 0.0
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_d has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|min|phi10=G|phi5=G": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.43087796917666005,
+    "M_d": 0.3618620961671284
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=Z3|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4453152836347227,
+    "M_D": 0.4002270096793765,
+    "M_R": 3.7039429957303634e-16,
+    "M_nu": 5.740112600866068e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|gen|phi10=Z3|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.37065417293937086,
+    "M_D": 0.42125997002034504,
+    "M_R": 5.397075247839463e-16,
+    "M_nu": 0.4931731917341845
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=Z3|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4453152836347227,
+    "M_D": 0.49809230721009706,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=Z3|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.37738911456688895,
+    "M_D": 0.4454255094678251,
+    "M_R": 0.4143834297531472,
+    "M_nu": 0.4893857333974947
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=Z3|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3859645941727307,
+    "M_D": 0.41545975823073694,
+    "M_R": 6.652602775112329e-16,
+    "M_nu": 0.46269352343050135
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=Z3|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.38141541017835967,
+    "M_D": 0.4206957650361327,
+    "M_R": 4.0380600940333404e-16,
+    "M_nu": 0.4316211009409617
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=Z3|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3859645941727307,
+    "M_D": 0.48963851836796823,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=Z3|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.46350722256075194,
+    "M_D": 0.4843387958341671,
+    "M_R": 0.4398420360766173,
+    "M_nu": 0.450297380550909
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=Z3|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4835853341576523,
+    "M_D": 0.49809230721009695,
+    "M_R": 3.7039429957303634e-16,
+    "M_nu": 0.4839275187691059
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=Z3|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4920657220895441,
+    "M_D": 0.48963851836796835,
+    "M_R": 5.397075247839463e-16,
+    "M_nu": 0.476109123265276
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=Z3|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4835853341576523,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=Z3|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4972749568525407,
+    "M_D": 0.4980067662026664,
+    "M_R": 0.4143834297531472,
+    "M_nu": 0.4849990732215141
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=Z3|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.40232201315387023,
+    "M_D": 0.4498375607882449,
+    "M_R": 3.485812905420685e-16,
+    "M_nu": 0.4858144752253591
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=Z3|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.38275220832814616,
+    "M_D": 0.44903017134246953,
+    "M_R": 3.2712874469920056e-16,
+    "M_nu": 0.47932532171000813
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=Z3|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.40232201315387023,
+    "M_D": 0.4956151238522806,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=Z3|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.41432727455927254,
+    "M_D": 0.4651873022900648,
+    "M_R": 0.41243711215311674,
+    "M_nu": 0.4452314102416962
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=P|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.41171482459680736,
+    "M_D": 0.41568891593820334,
+    "M_R": 6.652602775112329e-16,
+    "M_nu": 1.11783583758057e-15
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|gen|phi10=P|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.43209305021356775,
+    "M_D": 0.38742627399662544,
+    "M_R": 4.0380600940333404e-16,
+    "M_nu": 0.4190630218655145
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=P|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.41171482459680736,
+    "M_D": 0.48963851836796846,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=P|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4566697886594577,
+    "M_D": 0.4517781845446249,
+    "M_R": 0.4398420360766173,
+    "M_nu": 0.44728521585917946
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=P|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.39919631180985454,
+    "M_D": 0.409790263956419,
+    "M_R": 3.485812905420685e-16,
+    "M_nu": 0.4519451963053364
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=P|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4689202710865028,
+    "M_D": 0.4417978554635734,
+    "M_R": 3.2712874469920056e-16,
+    "M_nu": 0.4923160100655617
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=P|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.39919631180985454,
+    "M_D": 0.49449843056149967,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=P|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4626449923860109,
+    "M_D": 0.4575114814776834,
+    "M_R": 0.41243711215311674,
+    "M_nu": 0.43810663187398735
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=P|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.49206572208954436,
+    "M_D": 0.48963851836796835,
+    "M_R": 6.652602775112329e-16,
+    "M_nu": 0.476109123265276
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=P|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.49727495685254086,
+    "M_D": 0.4944984305615,
+    "M_R": 4.0380600940333404e-16,
+    "M_nu": 0.4991066119878616
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=P|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.49206572208954436,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=P|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4940709825542854,
+    "M_D": 0.48673699932746706,
+    "M_R": 0.4398420360766173,
+    "M_nu": 0.4980316902203365
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=P|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.42991573975327696,
+    "M_D": 0.4257107316134252,
+    "M_R": 4.1670686197654064e-16,
+    "M_nu": 0.48139511102794524
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=P|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4687718739702531,
+    "M_D": 0.44883871707579004,
+    "M_R": 4.0756597452714624e-16,
+    "M_nu": 0.4735971780698866
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=P|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.42991573975327696,
+    "M_D": 0.49896814472466094,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=P|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4536549686866893,
+    "M_D": 0.45192219239284337,
+    "M_R": 0.42998493052444864,
+    "M_nu": 0.4236653489256072
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=Z7|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4835853341576524,
+    "M_D": 0.4002270096793765,
+    "M_R": 3.7039429957303634e-16,
+    "M_nu": 5.740112600866068e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)",
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|gen|phi10=Z7|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4920657220895442,
+    "M_D": 0.42125997002034504,
+    "M_R": 5.397075247839463e-16,
+    "M_nu": 0.4931731917341845
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=Z7|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4835853341576524,
+    "M_D": 0.49809230721009706,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=Z7|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4972749568525407,
+    "M_D": 0.4454255094678251,
+    "M_R": 0.4143834297531472,
+    "M_nu": 0.4893857333974947
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=Z7|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.49206572208954397,
+    "M_D": 0.41545975823073694,
+    "M_R": 6.652602775112329e-16,
+    "M_nu": 0.46269352343050135
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=Z7|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4972749568525404,
+    "M_D": 0.4206957650361327,
+    "M_R": 4.0380600940333404e-16,
+    "M_nu": 0.4316211009409617
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=Z7|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.49206572208954397,
+    "M_D": 0.48963851836796823,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=Z7|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4940709825542852,
+    "M_D": 0.4843387958341671,
+    "M_R": 0.4398420360766173,
+    "M_nu": 0.450297380550909
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=Z7|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.49809230721009695,
+    "M_R": 3.7039429957303634e-16,
+    "M_nu": 0.4839275187691059
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=Z7|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.48963851836796835,
+    "M_R": 5.397075247839463e-16,
+    "M_nu": 0.476109123265276
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=Z7|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=Z7|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4980067662026664,
+    "M_R": 0.4143834297531472,
+    "M_nu": 0.4849990732215141
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=Z7|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4990361257440874,
+    "M_D": 0.4498375607882449,
+    "M_R": 3.485812905420685e-16,
+    "M_nu": 0.4858144752253591
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=Z7|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4976942649084425,
+    "M_D": 0.44903017134246953,
+    "M_R": 3.2712874469920056e-16,
+    "M_nu": 0.47932532171000813
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=Z7|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4990361257440874,
+    "M_D": 0.4956151238522806,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=Z7|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.49337818606037254,
+    "M_D": 0.4651873022900648,
+    "M_R": 0.41243711215311674,
+    "M_nu": 0.4452314102416962
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=G|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.43885100752725287,
+    "M_D": 0.3572738996043526,
+    "M_R": 3.485812905420685e-16,
+    "M_nu": 3.35687534165296e-15
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|gen|phi10=G|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.42235877591701815,
+    "M_D": 0.4247312447029648,
+    "M_R": 3.2712874469920056e-16,
+    "M_nu": 0.4760710307173992
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=G|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.43885100752725287,
+    "M_D": 0.49449843056149956,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=G|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.43404094348416544,
+    "M_D": 0.445828667946144,
+    "M_R": 0.41243711215311674,
+    "M_nu": 0.445133154448047
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=G|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4312044320583551,
+    "M_D": 0.41868197037835814,
+    "M_R": 4.1670686197654064e-16,
+    "M_nu": 0.46269352343050135
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=G|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4164969314421965,
+    "M_D": 0.46571965865928566,
+    "M_R": 4.0756597452714624e-16,
+    "M_nu": 0.47678907688182776
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=G|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4312044320583551,
+    "M_D": 0.4790581844153233,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=G|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.45162049037703367,
+    "M_D": 0.4536660136060395,
+    "M_R": 0.42998493052444864,
+    "M_nu": 0.4364063790558324
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=G|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4990676981395152,
+    "M_D": 0.49449843056149967,
+    "M_R": 3.485812905420685e-16,
+    "M_nu": 0.49910661198786205
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=G|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.496900833912298,
+    "M_D": 0.47905818441532333,
+    "M_R": 3.2712874469920056e-16,
+    "M_nu": 0.4839275187691057
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=G|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4990676981395152,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=G|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.49881275266081176,
+    "M_D": 0.49937281334546696,
+    "M_R": 0.41243711215311674,
+    "M_nu": 0.476225790634959
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen|phi10=G|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4435060956355434,
+    "M_D": 0.4466090393304652,
+    "M_R": 3.840404287907324e-16,
+    "M_nu": 0.4620173980878815
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=G|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4172186628102402,
+    "M_D": 0.42692246961150665,
+    "M_R": 4.4145283572565376e-16,
+    "M_nu": 0.4631196711052357
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen|phi10=G|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4435060956355434,
+    "M_D": 0.4880916925296046,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen|phi10=G|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.44668522220598006,
+    "M_D": 0.46324576641705084,
+    "M_R": 0.43329454670226153,
+    "M_nu": 0.4724235826809924
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "quark|gen|phi10=Z3|phi5=Z3": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 5.717831541448498e-16,
+    "M_d": 0.38375042139642096
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|gen|phi10=Z3|phi5=P": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 3.958882318760628e-16,
+    "M_d": 0.4271129497676432
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|gen|phi10=Z3|phi5=Z7": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 2
+   },
+   "max_min_rel_gap": {
+    "M_u": 5.717831541448498e-16,
+    "M_d": 0.49809230721009706
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters",
+    "M_d has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|gen|phi10=Z3|phi5=G": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 4.3271057355874297e-16,
+    "M_d": 0.4566168020832374
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|gen|phi10=P|phi5=Z3": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 3.25092649071927e-16,
+    "M_d": 0.41938382098037214
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|gen|phi10=P|phi5=P": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 3.840404287907324e-16,
+    "M_d": 0.3956681714750122
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|gen|phi10=P|phi5=Z7": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 2
+   },
+   "max_min_rel_gap": {
+    "M_u": 3.25092649071927e-16,
+    "M_d": 0.49586957018357813
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters",
+    "M_d has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|gen|phi10=P|phi5=G": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 3.79977652032644e-16,
+    "M_d": 0.41004209483938975
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|gen|phi10=Z7|phi5=Z3": {
+   "rank": {
+    "M_u": 1,
+    "M_d": 2
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 0.49809230721009695
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has rank 1 for all parameters (massless charged fermion)",
+    "M_d has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|gen|phi10=Z7|phi5=P": {
+   "rank": {
+    "M_u": 1,
+    "M_d": 2
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 0.4958695701835781
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has rank 1 for all parameters (massless charged fermion)",
+    "M_d has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|gen|phi10=Z7|phi5=Z7": {
+   "rank": {
+    "M_u": 1,
+    "M_d": 1
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 0.0
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has rank 1 for all parameters (massless charged fermion)",
+    "M_d has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|gen|phi10=Z7|phi5=G": {
+   "rank": {
+    "M_u": 1,
+    "M_d": 2
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 0.4996237878295084
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has rank 1 for all parameters (massless charged fermion)",
+    "M_d has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|gen|phi10=G|phi5=Z3": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.415849207203078,
+    "M_d": 0.45197242889229305
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "quark|gen|phi10=G|phi5=P": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.4795326398181244,
+    "M_d": 0.4021331535063308
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "quark|gen|phi10=G|phi5=Z7": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 2
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.415849207203078,
+    "M_d": 0.4976942649084425
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_d has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|gen|phi10=G|phi5=G": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.40007593622624155,
+    "M_d": 0.4268461936455257
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|LNR exact|phi10=G|phi5=(-1,1,1)|phi1=(1,1,1)": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3138289695146029,
+    "M_D": 3.700743415417189e-17,
+    "M_R": 2.8267339871944263e-16,
+    "M_nu": 0.40157625489178267
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min-real|phi10=Z3|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 1.9434268521896873e-16,
+    "M_R": 2.6772355512209604e-16,
+    "M_nu": 4.4133277862647267e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters",
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|min-real|phi10=Z3|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.45685558339207416,
+    "M_R": 4.18200631229244e-16,
+    "M_nu": 0.46884739735753356
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min-real|phi10=Z3|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.485979327502077,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=Z3|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.44463700324005095,
+    "M_R": 0.40757805849113776,
+    "M_nu": 0.45122410719215933
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min-real|phi10=Z3|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.45685558339207416,
+    "M_R": 2.190273054340723e-16,
+    "M_nu": 0.46884739735753356
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min-real|phi10=Z3|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 1.1102230246251563e-16,
+    "M_D": 0.44914308027331945,
+    "M_R": 5.147926299038673e-16,
+    "M_nu": 0.4845022635081694
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min-real|phi10=Z3|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.48824575805180537,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=Z3|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.47081609053100115,
+    "M_R": 0.48158418833403865,
+    "M_nu": 0.42803166259553677
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min-real|phi10=Z3|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.485979327502077,
+    "M_R": 2.6772355512209604e-16,
+    "M_nu": 0.49654819339450385
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=Z3|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.48824575805180537,
+    "M_R": 4.18200631229244e-16,
+    "M_nu": 0.4965481933945038
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=Z3|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=Z3|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.46991973766162365,
+    "M_R": 0.40757805849113776,
+    "M_nu": 0.47663230092369047
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=Z3|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3138289695146029,
+    "M_D": 0.44463700324005095,
+    "M_R": 3.5369464959211216e-16,
+    "M_nu": 0.4777529185667879
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min-real|phi10=Z3|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.2830237123198462,
+    "M_D": 0.4207901003009652,
+    "M_R": 4.2641993760643774e-16,
+    "M_nu": 0.40361392917171235
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min-real|phi10=Z3|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3138289695146029,
+    "M_D": 0.46991973766162365,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=Z3|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3156906135426186,
+    "M_D": 0.453694077623081,
+    "M_R": 0.46109547213495056,
+    "M_nu": 0.45224281310086745
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min-real|phi10=P|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 2.400092882386831e-16,
+    "M_R": 2.190273054340723e-16,
+    "M_nu": 9.243110653945334e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters",
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|min-real|phi10=P|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 1.1102230246251563e-16,
+    "M_D": 0.45685558339207416,
+    "M_R": 5.147926299038673e-16,
+    "M_nu": 0.4687330881393012
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min-real|phi10=P|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.48824575805180553,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=P|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.40500481406409117,
+    "M_R": 0.48158418833403865,
+    "M_nu": 0.44803336585153075
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min-real|phi10=P|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 2.2204460492503126e-16,
+    "M_D": 0.45685558339207416,
+    "M_R": 3.5369464959211216e-16,
+    "M_nu": 0.4687330881393005
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min-real|phi10=P|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 1.1102230246251565e-16,
+    "M_D": 0.45859443756169005,
+    "M_R": 4.2641993760643774e-16,
+    "M_nu": 0.4503170678328558
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min-real|phi10=P|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 2.2204460492503126e-16,
+    "M_D": 0.48996655929626554,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=P|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 1.1102230246251563e-16,
+    "M_D": 0.47081609053100115,
+    "M_R": 0.46109547213495056,
+    "M_nu": 0.4728582352368784
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|min-real|phi10=P|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.48824575805180553,
+    "M_R": 2.190273054340723e-16,
+    "M_nu": 0.49654819339450385
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=P|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.48996655929626554,
+    "M_R": 5.147926299038673e-16,
+    "M_nu": 0.4916156603664183
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=P|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=P|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4617192014451807,
+    "M_R": 0.48158418833403865,
+    "M_nu": 0.4227028314676277
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=P|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3397036598636715,
+    "M_D": 0.40500481406409117,
+    "M_R": 2.190273054340723e-16,
+    "M_nu": 0.45385057091609127
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min-real|phi10=P|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.34263334970963655,
+    "M_D": 0.45903710926957186,
+    "M_R": 3.044222783951379e-16,
+    "M_nu": 0.38447627211522195
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min-real|phi10=P|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3397036598636715,
+    "M_D": 0.4617192014451807,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=P|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.33971342404236016,
+    "M_D": 0.453694077623081,
+    "M_R": 0.46109547213495056,
+    "M_nu": 0.4796231400110426
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min-real|phi10=Z7|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 1.9434268521896873e-16,
+    "M_R": 2.6772355512209604e-16,
+    "M_nu": 4.4133277862647267e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|min-real|phi10=Z7|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.45685558339207416,
+    "M_R": 4.18200631229244e-16,
+    "M_nu": 0.46884739735753356
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=Z7|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.485979327502077,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=Z7|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.44463700324005095,
+    "M_R": 0.40757805849113776,
+    "M_nu": 0.45122410719215933
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=Z7|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.45685558339207416,
+    "M_R": 2.190273054340723e-16,
+    "M_nu": 0.46884739735753356
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=Z7|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.44914308027331945,
+    "M_R": 5.147926299038673e-16,
+    "M_nu": 0.4845022635081694
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=Z7|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.48824575805180537,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=Z7|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.47081609053100115,
+    "M_R": 0.48158418833403865,
+    "M_nu": 0.42803166259553677
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=Z7|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.485979327502077,
+    "M_R": 2.6772355512209604e-16,
+    "M_nu": 0.49654819339450385
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=Z7|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.48824575805180537,
+    "M_R": 4.18200631229244e-16,
+    "M_nu": 0.4965481933945038
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=Z7|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=Z7|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.46991973766162365,
+    "M_R": 0.40757805849113776,
+    "M_nu": 0.47663230092369047
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=Z7|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.44463700324005095,
+    "M_R": 3.5369464959211216e-16,
+    "M_nu": 0.4777529185667879
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=Z7|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4207901003009652,
+    "M_R": 4.2641993760643774e-16,
+    "M_nu": 0.40361392917171235
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=Z7|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.46991973766162365,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=Z7|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.453694077623081,
+    "M_R": 0.46109547213495056,
+    "M_nu": 0.45224281310086745
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=G|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3138289695146029,
+    "M_D": 3.401108414882465e-16,
+    "M_R": 3.5369464959211216e-16,
+    "M_nu": 5.213795907273189e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|min-real|phi10=G|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.2830237123198462,
+    "M_D": 0.4404362804562619,
+    "M_R": 4.2641993760643774e-16,
+    "M_nu": 0.46884739735753356
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min-real|phi10=G|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3138289695146029,
+    "M_D": 0.4899665592962654,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=G|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3156906135426186,
+    "M_D": 0.44463700324005095,
+    "M_R": 0.46109547213495056,
+    "M_nu": 0.4903755984255425
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min-real|phi10=G|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.2830237123198462,
+    "M_D": 0.4404362804562619,
+    "M_R": 2.190273054340723e-16,
+    "M_nu": 0.46884739735753356
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min-real|phi10=G|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3156906135426185,
+    "M_D": 0.4610552844742635,
+    "M_R": 3.044222783951379e-16,
+    "M_nu": 0.47333352089926184
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min-real|phi10=G|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.2830237123198462,
+    "M_D": 0.4955734752161268,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=G|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3760969270109207,
+    "M_D": 0.47081609053100115,
+    "M_R": 0.46109547213495056,
+    "M_nu": 0.44743660585580125
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min-real|phi10=G|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4899665592962654,
+    "M_R": 3.5369464959211216e-16,
+    "M_nu": 0.49161566036641813
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=G|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4955734752161268,
+    "M_R": 4.2641993760643774e-16,
+    "M_nu": 0.39142626520467744
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=G|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=G|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.47804382969998355,
+    "M_R": 0.46109547213495056,
+    "M_nu": 0.4643390869334898
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|min-real|phi10=G|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.35669737100908594,
+    "M_D": 0.44463700324005095,
+    "M_R": 2.5470540420016056e-16,
+    "M_nu": 0.4778506554417533
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min-real|phi10=G|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3609872448625373,
+    "M_D": 0.41407137796774157,
+    "M_R": 4.18200631229244e-16,
+    "M_nu": 0.46569210384421644
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|min-real|phi10=G|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.35669737100908594,
+    "M_D": 0.47804382969998355,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|min-real|phi10=G|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.34225983780423375,
+    "M_D": 0.45658354112942673,
+    "M_R": 0.3997334406588063,
+    "M_nu": 0.4796231400110426
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "quark|gen-real|phi10=Z3|phi5=Z3": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 2.2169630891116547e-16,
+    "M_d": 3.2802468508501613e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters",
+    "M_d has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|gen-real|phi10=Z3|phi5=P": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 3.5369464959211216e-16,
+    "M_d": 0.4474771788427474
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|gen-real|phi10=Z3|phi5=Z7": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 2
+   },
+   "max_min_rel_gap": {
+    "M_u": 2.2169630891116547e-16,
+    "M_d": 0.49514558020869587
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters",
+    "M_d has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|gen-real|phi10=Z3|phi5=G": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 2.790217620411342e-16,
+    "M_d": 0.4187814524441718
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|gen-real|phi10=P|phi5=Z3": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 4.397172765021626e-16,
+    "M_d": 0.4474771788427472
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|gen-real|phi10=P|phi5=P": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 4.720182347434522e-16,
+    "M_d": 0.4008283592279352
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|gen-real|phi10=P|phi5=Z7": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 2
+   },
+   "max_min_rel_gap": {
+    "M_u": 4.397172765021626e-16,
+    "M_d": 0.48277772517394774
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters",
+    "M_d has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|gen-real|phi10=P|phi5=G": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 5.09537805283152e-16,
+    "M_d": 0.42339831443938314
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "quark|gen-real|phi10=Z7|phi5=Z3": {
+   "rank": {
+    "M_u": 1,
+    "M_d": 2
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 0.49514558020869565
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has rank 1 for all parameters (massless charged fermion)",
+    "M_d has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|gen-real|phi10=Z7|phi5=P": {
+   "rank": {
+    "M_u": 1,
+    "M_d": 2
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 0.48277772517394757
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has rank 1 for all parameters (massless charged fermion)",
+    "M_d has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|gen-real|phi10=Z7|phi5=Z7": {
+   "rank": {
+    "M_u": 1,
+    "M_d": 1
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 0.0
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has rank 1 for all parameters (massless charged fermion)",
+    "M_d has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|gen-real|phi10=Z7|phi5=G": {
+   "rank": {
+    "M_u": 1,
+    "M_d": 2
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.0,
+    "M_d": 0.4852568682674699
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_u has rank 1 for all parameters (massless charged fermion)",
+    "M_d has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|gen-real|phi10=G|phi5=Z3": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.4501694334506138,
+    "M_d": 0.43989330607695026
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "quark|gen-real|phi10=G|phi5=P": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.44352457300376863,
+    "M_d": 0.41348912759191775
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "quark|gen-real|phi10=G|phi5=Z7": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 2
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.4501694334506138,
+    "M_d": 0.4963865668785621
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_d has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "quark|gen-real|phi10=G|phi5=G": {
+   "rank": {
+    "M_u": 3,
+    "M_d": 3
+   },
+   "max_min_rel_gap": {
+    "M_u": 0.45220220857645343,
+    "M_d": 0.4124847212792881
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=Z3|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 3.474001795565449e-16,
+    "M_D": 3.800239001356421e-16,
+    "M_R": 3.5369464959211216e-16,
+    "M_nu": 9.197253403972186e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters",
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z3|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 2.9408321358535674e-16,
+    "M_D": 0.4119815397528369,
+    "M_R": 5.667328473822032e-16,
+    "M_nu": 0.4921260280038457
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|gen-real|phi10=Z3|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 3.474001795565449e-16,
+    "M_D": 0.4976339585736022,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z3|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 2.921191330960364e-16,
+    "M_D": 0.44889126675923496,
+    "M_R": 0.39331467840018924,
+    "M_nu": 0.45259577860263234
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has an exactly degenerate pair for all parameters"
+   ]
+  },
+  "lepton|gen-real|phi10=Z3|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4682926204574477,
+    "M_D": 0.41198153975283724,
+    "M_R": 2.8377363523310367e-16,
+    "M_nu": 0.49212602800384575
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=Z3|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.477494392590051,
+    "M_D": 0.4367553323805735,
+    "M_R": 4.994390099545242e-16,
+    "M_nu": 0.46297978875427637
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=Z3|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4682926204574477,
+    "M_D": 0.49699470430529497,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z3|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.39159353739077074,
+    "M_D": 0.38168957915491997,
+    "M_R": 0.45303440556863833,
+    "M_nu": 0.4876284263738027
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=Z3|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4956988425680757,
+    "M_D": 0.49763395857360243,
+    "M_R": 3.5369464959211216e-16,
+    "M_nu": 0.4761760683563076
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z3|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4827777251739476,
+    "M_D": 0.4969947043052947,
+    "M_R": 5.667328473822032e-16,
+    "M_nu": 0.47214744821009
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z3|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4956988425680757,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z3|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4992707533775146,
+    "M_D": 0.47273485550469013,
+    "M_R": 0.39331467840018924,
+    "M_nu": 0.28708273881968094
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z3|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4450465033900217,
+    "M_D": 0.4580021522191235,
+    "M_R": 2.595364832173989e-16,
+    "M_nu": 0.4779533759813944
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=Z3|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.46073680596065875,
+    "M_D": 0.4644352826365113,
+    "M_R": 5.316848804077123e-16,
+    "M_nu": 0.49081572950017577
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=Z3|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4450465033900217,
+    "M_D": 0.4856708929372124,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z3|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3870990962499456,
+    "M_D": 0.47033917986492957,
+    "M_R": 0.3985725096418177,
+    "M_nu": 0.44236147364886774
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=P|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4682926204574477,
+    "M_D": 3.2802468508501613e-16,
+    "M_R": 2.8377363523310367e-16,
+    "M_nu": 4.3942586531377044e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|gen-real|phi10=P|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4774943925900508,
+    "M_D": 0.4272013349438189,
+    "M_R": 4.994390099545242e-16,
+    "M_nu": 0.45879826626537346
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=P|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4682926204574477,
+    "M_D": 0.49699470430529497,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=P|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3915935373907708,
+    "M_D": 0.3750275048343433,
+    "M_R": 0.45303440556863833,
+    "M_nu": 0.4858811245219553
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=P|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4350027824925792,
+    "M_D": 0.4272013349438189,
+    "M_R": 2.595364832173989e-16,
+    "M_nu": 0.45879826626537357
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=P|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3927568550794434,
+    "M_D": 0.42499759651094443,
+    "M_R": 5.316848804077123e-16,
+    "M_nu": 0.42785188467212504
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=P|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4350027824925792,
+    "M_D": 0.4924428026644172,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=P|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.3964391796485195,
+    "M_D": 0.41043621045685974,
+    "M_R": 0.3985725096418177,
+    "M_nu": 0.45022952412473327
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=P|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.48277772517394757,
+    "M_D": 0.49699470430529485,
+    "M_R": 2.8377363523310367e-16,
+    "M_nu": 0.47214744821009047
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=P|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4992707533775147,
+    "M_D": 0.4924428026644171,
+    "M_R": 4.994390099545242e-16,
+    "M_nu": 0.46320416656133656
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=P|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.48277772517394757,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=P|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.49569884256807595,
+    "M_D": 0.49959489238278537,
+    "M_R": 0.45303440556863833,
+    "M_nu": 0.46321489687225015
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=P|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.42139907454735104,
+    "M_D": 0.4483620394069145,
+    "M_R": 2.565156322067691e-16,
+    "M_nu": 0.4719744925274565
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=P|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.41595318819197197,
+    "M_D": 0.4148720524689336,
+    "M_R": 4.2101180148850015e-16,
+    "M_nu": 0.47523536991490095
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=P|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.42139907454735104,
+    "M_D": 0.4809678911486665,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=P|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4603793648241314,
+    "M_D": 0.4205788441143547,
+    "M_R": 0.4656769190799496,
+    "M_nu": 0.46861636195817497
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=Z7|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.49569884256807595,
+    "M_D": 3.800239001356421e-16,
+    "M_R": 3.5369464959211216e-16,
+    "M_nu": 9.197253403972186e-16
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)",
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z7|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.48277772517394774,
+    "M_D": 0.4119815397528369,
+    "M_R": 5.667328473822032e-16,
+    "M_nu": 0.4921260280038457
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z7|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.49569884256807595,
+    "M_D": 0.4976339585736022,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z7|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4992707533775145,
+    "M_D": 0.44889126675923496,
+    "M_R": 0.39331467840018924,
+    "M_nu": 0.45259577860263234
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z7|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4827777251739476,
+    "M_D": 0.41198153975283724,
+    "M_R": 2.8377363523310367e-16,
+    "M_nu": 0.49212602800384575
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z7|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4992707533775145,
+    "M_D": 0.4367553323805735,
+    "M_R": 4.994390099545242e-16,
+    "M_nu": 0.46297978875427637
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z7|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4827777251739476,
+    "M_D": 0.49699470430529497,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z7|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.49569884256807584,
+    "M_D": 0.38168957915491997,
+    "M_R": 0.45303440556863833,
+    "M_nu": 0.4876284263738027
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z7|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.49763395857360243,
+    "M_R": 3.5369464959211216e-16,
+    "M_nu": 0.4761760683563076
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z7|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.4969947043052947,
+    "M_R": 5.667328473822032e-16,
+    "M_nu": 0.47214744821009
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z7|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z7|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 1,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.0,
+    "M_D": 0.47273485550469013,
+    "M_R": 0.39331467840018924,
+    "M_nu": 0.28708273881968094
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 1 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z7|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.46553967590095136,
+    "M_D": 0.4580021522191235,
+    "M_R": 2.595364832173989e-16,
+    "M_nu": 0.4779533759813944
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z7|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4987012336086464,
+    "M_D": 0.4644352826365113,
+    "M_R": 5.316848804077123e-16,
+    "M_nu": 0.49081572950017577
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z7|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.46553967590095136,
+    "M_D": 0.4856708929372124,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=Z7|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.48542549351253006,
+    "M_D": 0.47033917986492957,
+    "M_R": 0.3985725096418177,
+    "M_nu": 0.44236147364886774
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=G|phi5=Z3|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.43211414856989355,
+    "M_D": 3.887598133829575e-16,
+    "M_R": 2.595364832173989e-16,
+    "M_nu": 2.4115697506103653e-15
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "light neutrinos have an exactly degenerate pair for all parameters (r = 1 or 0)"
+   ]
+  },
+  "lepton|gen-real|phi10=G|phi5=Z3|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4115995241842702,
+    "M_D": 0.40379103806281264,
+    "M_R": 5.316848804077123e-16,
+    "M_nu": 0.45171237970850114
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=G|phi5=Z3|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.43211414856989355,
+    "M_D": 0.4924428026644172,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=G|phi5=Z3|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.39331098466654735,
+    "M_D": 0.4591523588778368,
+    "M_R": 0.3985725096418177,
+    "M_nu": 0.4686716397277123
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=G|phi5=P|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4391007612161254,
+    "M_D": 0.40379103806281264,
+    "M_R": 2.565156322067691e-16,
+    "M_nu": 0.45171237970850125
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=G|phi5=P|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4197871971129926,
+    "M_D": 0.4015249267770292,
+    "M_R": 4.2101180148850015e-16,
+    "M_nu": 0.4980354026107732
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=G|phi5=P|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4391007612161254,
+    "M_D": 0.49027402707552087,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=G|phi5=P|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4147200909288468,
+    "M_D": 0.4550712846359691,
+    "M_R": 0.4656769190799496,
+    "M_nu": 0.48194594343062036
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=G|phi5=Z7|phi1=Z3": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.49126376767020147,
+    "M_D": 0.4924428026644174,
+    "M_R": 2.595364832173989e-16,
+    "M_nu": 0.46320416656133645
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=G|phi5=Z7|phi1=P": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.48457954757754806,
+    "M_D": 0.49027402707552076,
+    "M_R": 5.316848804077123e-16,
+    "M_nu": 0.47617606835630716
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=G|phi5=Z7|phi1=Z7": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 1,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.49126376767020147,
+    "M_D": 0.0,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)",
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=G|phi5=Z7|phi1=G": {
+   "rank": {
+    "M_e": 2,
+    "M_D": 2,
+    "M_R": 3,
+    "M_nu": 2
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4812399175433736,
+    "M_D": 0.49959489238278537,
+    "M_R": 0.3985725096418177,
+    "M_nu": 0.48615076841604316
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": [
+    "M_e has rank 2 for all parameters (massless charged fermion)"
+   ]
+  },
+  "lepton|gen-real|phi10=G|phi5=G|phi1=Z3": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4383783459101659,
+    "M_D": 0.4455109536658236,
+    "M_R": 2.8267339871944263e-16,
+    "M_nu": 0.4780899192973447
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=G|phi5=G|phi1=P": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4084783898197004,
+    "M_D": 0.41885632224250313,
+    "M_R": 4.086583796932729e-16,
+    "M_nu": 0.4877473418633959
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  },
+  "lepton|gen-real|phi10=G|phi5=G|phi1=Z7": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 2,
+    "M_R": 1
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4383783459101659,
+    "M_D": 0.4992697809578513,
+    "M_R": 0.0
+   },
+   "M_R_singular_everywhere": true,
+   "structural_reasons": [
+    "M_R singular for all parameters (seesaw undefined)"
+   ]
+  },
+  "lepton|gen-real|phi10=G|phi5=G|phi1=G": {
+   "rank": {
+    "M_e": 3,
+    "M_D": 3,
+    "M_R": 3,
+    "M_nu": 3
+   },
+   "max_min_rel_gap": {
+    "M_e": 0.4064757004482505,
+    "M_D": 0.413569607539087,
+    "M_R": 0.3829445566166668,
+    "M_nu": 0.46159858866825365
+   },
+   "M_R_singular_everywhere": false,
+   "structural_reasons": []
+  }
+ },
+ "symbolic": {
+  "row familon generic, column familon (0,0,1)": {
+   "matrix": "[[0, 0, c1*u1], [0, 0, c3*u2], [c4*u1, c2*u2, c0*u3]]",
+   "det": "0",
+   "rank": 2
+  },
+  "row familon (0,0,1), column familon generic": {
+   "matrix": "[[0, 0, c2*u1], [0, 0, c4*u2], [c3*u1, c1*u2, c0*u3]]",
+   "det": "0",
+   "rank": 2
+  },
+  "Majorana with (0,0,1)": {
+   "rank": 1
+  }
+ },
+ "checks": {
+  "symbolic: Dirac matrix with a (0,0,1) familon has det = 0 and rank 2": true,
+  "symbolic: Majorana matrix with (0,0,1) has rank 1": true,
+  "numeric: every lepton class with phi5 or phi10 = Z7 has rank(M_e) <= 2 (1 if M_e is diagonal or both are Z7)": true
+ },
+ "all_pass": true
+}

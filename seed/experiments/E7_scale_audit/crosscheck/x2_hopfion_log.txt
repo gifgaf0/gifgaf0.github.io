@@ -1,0 +1,15 @@
+Skyrme a1 = 36.4616456249, a1/(3 pi^2) = 1.2314456974, xE/sqrt2 = 2.06081604, x_half/sqrt2 = 1.23929564
+Nr=240 Nth=32 Nph=4 L=1.2: E_W=1.231445697 E2=0.615722849 E4=0.615722849 R_rms=2.0608160 |n|-1=5.6e-16 phi-spread=8.2e-12
+Nr=360 Nth=48 Nph=4 L=1.2: E_W=1.231445697 E2=0.615722849 E4=0.615722849 R_rms=2.0608161 |n|-1=6.7e-16 phi-spread=1.5e-11
+Nr=480 Nth=64 Nph=6 L=1.2: E_W=1.231445697 E2=0.615722849 E4=0.615722849 R_rms=2.0608160 |n|-1=6.7e-16 phi-spread=2.9e-08
+Nr=480 Nth=64 Nph=4 L=0.8: E_W=1.231445697 E2=0.615722849 E4=0.615722849 R_rms=2.0608160 |n|-1=6.7e-16 phi-spread=1.8e-10
+  perturbation 0: dE/dd = -5.17e-08, d2E/dd2 = +2.558e-02
+  perturbation 1: dE/dd = +1.06e-05, d2E/dd2 = +2.708e-01
+  perturbation 2: dE/dd = -1.42e-06, d2E/dd2 = +3.532e-01
+  perturbation 3: dE/dd = +2.43e-07, d2E/dd2 = +1.439e-01
+ring: n3 = -0.999999999960 at r = 1.239300
+  tail a/r with a = 0e+00: E_W = 1.231446, R_rms = 2.0608 (L=1.2), 2.0608 (L=0.6)
+  tail a/r with a = 2e-03: E_W = 1.231446, R_rms = 2.1279 (L=1.2), 2.0999 (L=0.6)
+  tail a/r with a = 5e-03: E_W = 1.231448, R_rms = 2.4087 (L=1.2), 2.2541 (L=0.6)
+E_W = 1.231445697, R_rms = 2.060816, R_ring = 1.239300, c0h(rms) = 566.747, c0h(ring) = 340.821
+done in 8.8 s

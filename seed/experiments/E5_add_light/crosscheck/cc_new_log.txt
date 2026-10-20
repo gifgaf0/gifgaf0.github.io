@@ -1,0 +1,21 @@
+== 1. third hedgehog solver: finite-element energy minimisation (damped Newton) ==
+   {'N': 4000, 'newton_iters': 14, 'M_over_3pi2': np.float64(1.231445776), 'Lambda': np.float64(50.986422698), 'B': np.float64(1.000000057), 'R2': np.float64(4.477836119), 'R4': np.float64(48.354556014), 'C': 8.638492641, 'Fprime0': np.float64(-1.003520446)}
+   {'N': 8000, 'newton_iters': 15, 'M_over_3pi2': np.float64(1.231445717), 'Lambda': np.float64(50.982579758), 'B': np.float64(1.000000014), 'R2': np.float64(4.477835995), 'R4': np.float64(48.354549354), 'C': 8.638556804, 'Fprime0': np.float64(-1.003642179)}
+   {'N': 16000, 'newton_iters': 16, 'M_over_3pi2': np.float64(1.231445702), 'Lambda': np.float64(50.980659144), 'B': np.float64(1.000000004), 'R2': np.float64(4.477835964), 'R4': np.float64(48.354547673), 'C': 8.638572778, 'Fprime0': np.float64(-1.00370312)}
+  observed convergence orders: {'M_over_3pi2': 2.0, 'Lambda': 1.0, 'R2': 1.96, 'R4': 1.99, 'C': 2.01, 'Fprime0': 1.0}
+  Richardson (8000, 16000): {'N': 16000, 'newton_iters': 16, 'M_over_3pi2': np.float64(1.231445697), 'Lambda': np.float64(50.97873853), 'B': np.float64(1.000000004), 'R2': np.float64(4.477835953), 'R4': np.float64(48.354547112), 'C': 8.638578102, 'Fprime0': np.float64(-1.003764062)}
+  Richardson spread vs (4000, 8000): {'M_over_3pi2': '1.9e-13', 'Lambda': '1.7e-06', 'B': '1.1e-08', 'R2': '1.0e-09', 'R4': '2.2e-08', 'C': '9.0e-08', 'Fprime0': '1.5e-07'}
+  ANW-parameter observables from the FE profile: {'r_I0_fm': 0.593929, 'rM_ANW_fm': 0.922327, 'rM_Sachs_fm': 0.714431, 'mu_p': 1.877637, 'mu_n': -1.323047, 'mu_p_over_mu_n': -1.419176, 'g_A': 0.609127, 'g_piNN': 8.867756, 'M_N': 936.380812, 'M_Delta': 1229.755592, 'isovector_slope_C2_over_Lambda': 1.463846, 'isovector_r2_slope_fm': 0.410862}
+== 2. gauged-WZ A_mu-linear term (B-H eq. 67) on the static hedgehog ==
+  int J^0_WZ d^3x per unit N_c: {'isoscalar 1/6': 0.1666666738201905, 'isovector tau3/2': 1.039094862020277e-19, 'Q = diag(2/3,-1/3)': 0.1666666738201905}  expected magnitude 1/6 = 0.1666667 for the isoscalar part, 0 isovector
+== 3. charges with anomaly-consistent quark charges (Gelfand-Tsetlin) ==
+  N_c=1: irrep (1, 0)  fixed-charge Q ['-1/3', '2/3']  anomaly-consistent Q ['0', '1']  N_c(qu^2-qd^2) = 1
+  N_c=3: irrep (1, 1)  fixed-charge Q ['0', '1']  anomaly-consistent Q ['0', '1']  N_c(qu^2-qd^2) = 1
+  N_c=5: irrep (1, 2)  fixed-charge Q ['1/3', '4/3']  anomaly-consistent Q ['0', '1']  N_c(qu^2-qd^2) = 1
+  N_c=7: irrep (1, 3)  fixed-charge Q ['2/3', '5/3']  anomaly-consistent Q ['0', '1']  N_c(qu^2-qd^2) = 1
+  N_c=9: irrep (1, 4)  fixed-charge Q ['1', '2']  anomaly-consistent Q ['0', '1']  N_c(qu^2-qd^2) = 1
+== 4. PDG 2026 inputs (independent query) and data-side numbers ==
+   pdg package {'mu_p': (2.79284734463, 8.2e-10), 'mu_n': (-1.91304276, 4.5e-07), 'r_p': (0.84075, 0.00064), 'r2_n': (-0.1154674827850038, 0.001744594888116415), 'rM_p': (0.851, 0.026), 'rM_n': (0.8641226853122503, nan), 'gA': (-1.275335139239493, 0.0012632588566490904), 'm_pi0': (134.9768277676847, 0.0004856792822842335), 'tau_pi0': (8.425512205250367e-17, 1.344748885230856e-18), 'BR_gg': (0.9882312200541876, 0.000344994511056095)}
+  data-side: {'rE_I0_fm': 0.76902, 'rM_I0_fm': 0.82174, 'rM_I0_err_from_rMp_only': 0.08547, 'r_V_fm': 0.90682, 'mu_p_over_mu_n': -1.4599, 'Gamma_gg_eV': 7.72019, 'Gamma_gg_err_eV': 0.12325, 'deviation': {'mu_p': -0.3277, 'mu_n': -0.3084, 'mu_p_over_mu_n': -0.0279, 'g_A': -0.5224, 'g_piNN': -0.3231, 'rE_I0': -0.2277, 'rM_I0_Sachs': -0.1306}, 'n_within_30': 3.0, 'n_within_33': 6.0, 'n_within_35': 6.0, 'f_pi_fold_over_phys_ANW': 0.69949}
+== 5. pi0 width from A = N_c alpha/(3 pi f) == {'Nc3_f92.21': 7.76109, 'Nc1_f92.21': 0.86234, 'f64.5': 15.86205, 'f56.877': 20.39883, 'f_for_PrimExII': np.float64(91.96792), 'pull_PrimExII': -0.34967, 'pull_Nc1': -59.31331, 'pull_PDG': np.float64(0.33184)}
+done in 1.3 s

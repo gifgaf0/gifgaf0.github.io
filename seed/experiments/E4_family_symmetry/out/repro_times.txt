@@ -1,0 +1,6 @@
+exit 0 groups 8s
+exit 0 yukawa 79s
+exit 0 lnr 2s
+exit 0 structure 3s
+done
+exit 0 robustness 182s

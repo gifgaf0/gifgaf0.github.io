@@ -1,0 +1,21 @@
+symbolic_log                               {'passed': 39, 'failed': 0, 'runtime_s': 302.6}
+report_says_38                             4
+results_json_symbolic_row                  39/39 pass
+report_runtime_claim_150_170s              True
+report_pi0_dA_with_48pi2                   True
+report_convergence_5e-8_for_X25            True
+results_json_X25_rel_dev_Lambda            7.213945571228967e-07
+report_uses_QUANTIFIED                     True
+results_json_uses_QUANTIFIED               False
+report_3_of_7_framing                      True
+results_json_6B_evidence                   Against PDG 2026 at the calibrated ANW point: 6 of 7 finite predictions within 33% (strictly within 30%: 3 of 7; mu_p -3
+report_internal_checks_CALIBRATED          True
+results_json_internal_checks               ['CHECK PASSED', 'CHECK PASSED']
+report_commitment4_verdict                 CONFIRMED
+results_json_commitment4_verdict           CONFIRMED (in the preregistered operational sense only)
+results_json_reconciliation_changes        ['pi0 coupling text: with d_mu A_nu the coefficient is N_c e^2/(24 pi^2 f) (48 pi^2 goes with F_mu nu); now a computed check (9g)', 'convergence: 5e-8 relative holds for X = 100-400 only; X = 25 is off by ~1e-6 (relative_deviation_short_boxes)', 'neutron enclosed charge: maximum +0.2057 at 0.725 fm (massless ANW), not +0.185 at 1 fm (a grid point)', 'symbolic checks: 10d was hard-coded True; it is now a computed expansion of the gauged WZ term; 5c and 7b made strict (exact value and sign); 9g added', 'verdict vocabulary: internal checks labelled CHECK PASSED; QUANTIFIED dropped for the f_pi tension (PLAN prediction, no SEED verdict)', 'SEED 6B AMENDED reframed: 6 of 7 finite within 33%, exceptions g_A and the individual charge radii', 'commitment 4 and the N_c = 1 exclusion carry their qualifiers in the verdict itself', 'g_piNN: passes only the post hoc +-0.05; fails +-0.02']
+neutron_peak_true                          {'Q_n': 0.20570683471166296, 'R_fm': 0.7254940781677032}
+report_neutron_table_1fm                   True
+tail_check_R10fm_rel                       3.878627759190678e-06
+figures_exist                              {'fig_charge_densities.png': 88468, 'fig_vs_pdg.png': 45852}
+wrote crosscheck.json: 100/100 rows agree; 11 issues (1 major); overall confirmed_with_corrections

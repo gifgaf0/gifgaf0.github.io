@@ -1,0 +1,70 @@
+[    0.0s] lep:minreal:phi5=Z3,phi10=Z3,phi1=Z3                    npar= 2 neff=1 chi2=       7223 excluded (structural) ['M_e degenerate pair', 'light nu degenerate pair']
+[    0.8s] lep:minreal:phi5=Z3,phi10=Z3,phi1=P                     npar= 4 neff=4 chi2=       3666 excluded (structural) ['M_e degenerate pair']
+[    0.8s] lep:minreal:phi5=Z3,phi10=Z3,phi1=Z7                    npar= 2 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+[    2.4s] lep:minreal:phi5=Z3,phi10=Z3,phi1=G                     npar= 6 neff=5 chi2=       3665 excluded (structural) ['M_e degenerate pair']
+[    2.4s] lep:minreal:phi5=Z3,phi10=P,phi1=Z3                     npar= 4 neff=3 chi2=       7223 excluded (structural) ['M_e degenerate pair', 'light nu degenerate pair']
+[    2.6s] lep:minreal:phi5=Z3,phi10=P,phi1=P                      npar= 6 neff=4 chi2=       3670 excluded (structural) ['M_e degenerate pair']
+[    2.6s] lep:minreal:phi5=Z3,phi10=P,phi1=Z7                     npar= 4 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+[    2.6s] lep:minreal:phi5=Z3,phi10=P,phi1=G                      npar= 8 neff=5 chi2=       3743 excluded (structural) ['M_e degenerate pair']
+[    2.6s] lep:minreal:phi5=Z3,phi10=Z7,phi1=Z3                    npar= 2 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[    2.7s] lep:minreal:phi5=Z3,phi10=Z7,phi1=P                     npar= 4 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[    2.7s] lep:minreal:phi5=Z3,phi10=Z7,phi1=Z7                    npar= 2 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+[    2.7s] lep:minreal:phi5=Z3,phi10=Z7,phi1=G                     npar= 6 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[    2.7s] lep:minreal:phi5=Z3,phi10=G,phi1=Z3                     npar= 6 neff=3 chi2=  1.192e+12 excluded (structural) ['light nu degenerate pair']
+[   16.0s] lep:minreal:phi5=Z3,phi10=G,phi1=P                      npar= 8 neff=6 chi2=     0.7657 SURVIVES 
+[   16.0s] lep:minreal:phi5=Z3,phi10=G,phi1=Z7                     npar= 6 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+[   16.2s] lep:minreal:phi5=Z3,phi10=G,phi1=G                      npar=10 neff=7 chi2=  4.756e-26 accommodates (no prediction) 
+[   16.3s] lep:minreal:phi5=P,phi10=Z3,phi1=Z3                     npar= 4 neff=1 chi2=       3692 excluded (structural) ['M_e degenerate pair']
+[   16.4s] lep:minreal:phi5=P,phi10=Z3,phi1=P                      npar= 6 neff=5 chi2=       3671 excluded (structural) ['M_e degenerate pair']
+[   16.4s] lep:minreal:phi5=P,phi10=Z3,phi1=Z7                     npar= 4 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+[   16.6s] lep:minreal:phi5=P,phi10=Z3,phi1=G                      npar= 8 neff=5 chi2=       3666 excluded (structural) ['M_e degenerate pair']
+[   16.7s] lep:minreal:phi5=P,phi10=P,phi1=Z3                      npar= 6 neff=4 chi2=       5738 excluded (structural) ['M_e degenerate pair']
+[   16.8s] lep:minreal:phi5=P,phi10=P,phi1=P                       npar= 8 neff=5 chi2=       3679 excluded (structural) ['M_e degenerate pair']
+[   16.8s] lep:minreal:phi5=P,phi10=P,phi1=Z7                      npar= 6 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+[   16.8s] lep:minreal:phi5=P,phi10=P,phi1=G                       npar=10 neff=4 chi2=       5074 excluded (structural) ['M_e degenerate pair']
+[   16.8s] lep:minreal:phi5=P,phi10=Z7,phi1=Z3                     npar= 4 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[   16.9s] lep:minreal:phi5=P,phi10=Z7,phi1=P                      npar= 6 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[   16.9s] lep:minreal:phi5=P,phi10=Z7,phi1=Z7                     npar= 4 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+[   16.9s] lep:minreal:phi5=P,phi10=Z7,phi1=G                      npar= 8 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[   35.0s] lep:minreal:phi5=P,phi10=G,phi1=Z3                      npar= 8 neff=6 chi2=     0.3978 SURVIVES 
+[   57.3s] lep:minreal:phi5=P,phi10=G,phi1=P                       npar=10 neff=6 chi2=      1.085 SURVIVES 
+[   57.3s] lep:minreal:phi5=P,phi10=G,phi1=Z7                      npar= 8 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+[   67.3s] lep:minreal:phi5=P,phi10=G,phi1=G                       npar=12 neff=7 chi2=  9.484e-26 accommodates (no prediction) 
+[   67.3s] lep:minreal:phi5=Z7,phi10=Z3,phi1=Z3                    npar= 2 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[   67.3s] lep:minreal:phi5=Z7,phi10=Z3,phi1=P                     npar= 4 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[   67.3s] lep:minreal:phi5=Z7,phi10=Z3,phi1=Z7                    npar= 2 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+[   67.3s] lep:minreal:phi5=Z7,phi10=Z3,phi1=G                     npar= 6 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[   67.4s] lep:minreal:phi5=Z7,phi10=P,phi1=Z3                     npar= 4 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[   67.4s] lep:minreal:phi5=Z7,phi10=P,phi1=P                      npar= 6 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[   67.4s] lep:minreal:phi5=Z7,phi10=P,phi1=Z7                     npar= 4 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+[   67.4s] lep:minreal:phi5=Z7,phi10=P,phi1=G                      npar= 8 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[   67.4s] lep:minreal:phi5=Z7,phi10=Z7,phi1=Z3                    npar= 2 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[   67.4s] lep:minreal:phi5=Z7,phi10=Z7,phi1=P                     npar= 4 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[   67.4s] lep:minreal:phi5=Z7,phi10=Z7,phi1=Z7                    npar= 2 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+[   67.4s] lep:minreal:phi5=Z7,phi10=Z7,phi1=G                     npar= 6 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[   67.4s] lep:minreal:phi5=Z7,phi10=G,phi1=Z3                     npar= 6 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[   67.4s] lep:minreal:phi5=Z7,phi10=G,phi1=P                      npar= 8 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[   67.4s] lep:minreal:phi5=Z7,phi10=G,phi1=Z7                     npar= 6 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+[   67.4s] lep:minreal:phi5=Z7,phi10=G,phi1=G                      npar=10 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[   87.5s] lep:minreal:phi5=G,phi10=Z3,phi1=Z3                     npar= 6 neff=6 chi2=      331.4 excluded 
+[  118.0s] lep:minreal:phi5=G,phi10=Z3,phi1=P                      npar= 8 neff=6 chi2=      194.6 excluded 
+[  118.0s] lep:minreal:phi5=G,phi10=Z3,phi1=Z7                     npar= 6 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+[  130.0s] lep:minreal:phi5=G,phi10=Z3,phi1=G                      npar=10 neff=7 chi2=  2.182e-25 accommodates (no prediction) 
+[  155.0s] lep:minreal:phi5=G,phi10=P,phi1=Z3                      npar= 8 neff=6 chi2=      202.5 excluded 
+[  193.4s] lep:minreal:phi5=G,phi10=P,phi1=P                       npar=10 neff=6 chi2=      331.4 excluded 
+[  193.4s] lep:minreal:phi5=G,phi10=P,phi1=Z7                      npar= 8 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+[  225.4s] lep:minreal:phi5=G,phi10=P,phi1=G                       npar=12 neff=7 chi2=  4.551e-25 accommodates (no prediction) 
+[  225.4s] lep:minreal:phi5=G,phi10=Z7,phi1=Z3                     npar= 6 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[  225.4s] lep:minreal:phi5=G,phi10=Z7,phi1=P                      npar= 8 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[  225.4s] lep:minreal:phi5=G,phi10=Z7,phi1=Z7                     npar= 6 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+[  225.4s] lep:minreal:phi5=G,phi10=Z7,phi1=G                      npar=10 neff=0 chi2=      7e+06 excluded (structural) ['M_e rank<3']
+[  227.7s] lep:minreal:phi5=G,phi10=G,phi1=Z3                      npar=10 neff=7 chi2=  4.041e-22 accommodates (no prediction) 
+[  231.6s] lep:minreal:phi5=G,phi10=G,phi1=P                       npar=12 neff=7 chi2=  2.271e-14 accommodates (no prediction) 
+[  231.6s] lep:minreal:phi5=G,phi10=G,phi1=Z7                      npar=10 neff=0 chi2=      7e+06 excluded (structural) ['M_R singular']
+/home/user/gifgaf0.github.io/seed/experiments/E4_family_symmetry/crosscheck/cc_texture.py:96: RuntimeWarning: overflow encountered in scalar power
+  d21, d31 = sn[1] ** 2 - sn[0] ** 2, sn[2] ** 2 - sn[0] ** 2
+/home/user/gifgaf0.github.io/seed/experiments/E4_family_symmetry/crosscheck/cc_texture.py:96: RuntimeWarning: invalid value encountered in scalar subtract
+  d21, d31 = sn[1] ** 2 - sn[0] ** 2, sn[2] ** 2 - sn[0] ** 2
+/home/user/gifgaf0.github.io/seed/experiments/E4_family_symmetry/crosscheck/cc_texture.py:97: RuntimeWarning: overflow encountered in scalar power
+  r = d31 / d21 if d21 > 1e-14 * sn[2] ** 2 else 1e12
+[  232.4s] lep:minreal:phi5=G,phi10=G,phi1=G                       npar=14 neff=7 chi2=  1.823e-24 accommodates (no prediction) 

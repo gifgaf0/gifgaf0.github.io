@@ -1,0 +1,1012 @@
+{
+ "rows": [
+  {
+   "quantity": "a1 = M_cl/(F_pi/e)",
+   "original": 36.46164562535639,
+   "recomputed": 36.46164562524381,
+   "prior_crosscheck": 36.46164562523661,
+   "rel_diff": -3.0875839288926743e-12,
+   "tolerance": "rel 1e-08",
+   "agree": true,
+   "note": "own shooting+bisection vs original solve_bvp; PLAN target 36.4633 (0.2%) passes: -0.004%"
+  },
+  {
+   "quantity": "Lambda",
+   "original": 50.97873907018823,
+   "recomputed": 50.97873909080546,
+   "prior_crosscheck": 50.978739110138456,
+   "rel_diff": 4.044279868259209e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": "PLAN target 50.9 (0.5%) passes: +0.155%"
+  },
+  {
+   "quantity": "virial E2/E4",
+   "original": 1.0000000000061509,
+   "recomputed": 0.9999999999975967,
+   "prior_crosscheck": null,
+   "rel_diff": -8.554157382381754e-12,
+   "tolerance": "rel 1e-08",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "radius a2 (B)",
+   "original": 2.1160897790550557,
+   "recomputed": 2.116089779054401,
+   "prior_crosscheck": 2.1160897790522024,
+   "rel_diff": -3.0933824348950815e-13,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "radius a2 (M)",
+   "original": 3.286128715839257,
+   "recomputed": 3.2861287200287497,
+   "prior_crosscheck": 3.286128715923534,
+   "rel_diff": 1.274902207123474e-09,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "radius a2 (E)",
+   "original": 2.914434000493237,
+   "recomputed": 2.914434001328373,
+   "prior_crosscheck": 2.9144340018880373,
+   "rel_diff": 2.865516804446716e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "radius a2 (half)",
+   "original": 1.7526286990892017,
+   "recomputed": 1.752628699087941,
+   "prior_crosscheck": 1.752628699089813,
+   "rel_diff": -7.193590219191999e-13,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0 (B)",
+   "original": 77.15611563534414,
+   "recomputed": 77.15611563508205,
+   "prior_crosscheck": null,
+   "rel_diff": -3.396889428067714e-12,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0 (half)",
+   "original": 63.90372653901985,
+   "recomputed": 63.903726538776574,
+   "prior_crosscheck": null,
+   "rel_diff": -3.806908220305402e-12,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0 (E)",
+   "original": 106.26505972447416,
+   "recomputed": 106.26505975459648,
+   "prior_crosscheck": null,
+   "rel_diff": 2.8346403316644153e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0 (M)",
+   "original": 119.81766071623845,
+   "recomputed": 119.8176608686243,
+   "prior_crosscheck": null,
+   "rel_diff": 1.2718146104838494e-09,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "tail coefficient C (F -> C/x^2)",
+   "original": 8.638577872036816,
+   "recomputed": 8.63857816293135,
+   "prior_crosscheck": null,
+   "rel_diff": 3.367389142740874e-08,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "slope -F'(0)",
+   "original": 1.0037641106087063,
+   "recomputed": 1.003764110607758,
+   "prior_crosscheck": null,
+   "rel_diff": -9.447961902719408e-13,
+   "tolerance": "rel 1e-08",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "M_cl at ANW (MeV)",
+   "original": 863.0371166368759,
+   "recomputed": 863.0371166342112,
+   "prior_crosscheck": null,
+   "rel_diff": -3.087591180018897e-12,
+   "tolerance": "rel 1e-08",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "M_N model at ANW (MeV)",
+   "original": 936.3808110243124,
+   "recomputed": 936.3808109919854,
+   "prior_crosscheck": null,
+   "rel_diff": -3.4523311042242084e-11,
+   "tolerance": "rel 1e-08",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "M_Delta model at ANW (MeV)",
+   "original": 1229.7555885740583,
+   "recomputed": 1229.7555884230824,
+   "prior_crosscheck": null,
+   "rel_diff": -1.2276902379902345e-10,
+   "tolerance": "rel 1e-08",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "R_B at ANW (fm) [target 0.59 +- 0.01]",
+   "original": 0.5939287482849395,
+   "recomputed": 0.5939287481062628,
+   "prior_crosscheck": null,
+   "rel_diff": -3.008384920983701e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "R_M at ANW (fm) [target 0.92 +- 0.01]",
+   "original": 0.9223268002235485,
+   "recomputed": 0.9223268011222389,
+   "prior_crosscheck": null,
+   "rel_diff": 9.743730141489589e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "own fit F_pi (938.9, 1232) MeV",
+   "original": 129.25971953850984,
+   "recomputed": 129.25971955187822,
+   "prior_crosscheck": null,
+   "rel_diff": 1.0342261651189162e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "own fit e (938.9, 1232)",
+   "original": 5.44464645481138,
+   "recomputed": 5.4446464553576694,
+   "prior_crosscheck": null,
+   "rel_diff": 1.0033511644947057e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "proton M R/hbar c (939 MeV x R_B)",
+   "original": 2.8262688322775014,
+   "recomputed": 2.8262688322766265,
+   "prior_crosscheck": null,
+   "rel_diff": -3.095444189219734e-13,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "proton M R/hbar c classical (c0/e^2)",
+   "original": 2.597630355537215,
+   "recomputed": 2.597630355528391,
+   "prior_crosscheck": null,
+   "rel_diff": -3.3969623818535358e-12,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "r_p/lambda_C (data)",
+   "original": 3.997690824397775,
+   "recomputed": 3.997690825599197,
+   "prior_crosscheck": null,
+   "rel_diff": 3.0052901180004865e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E_rot/M at ANW",
+   "original": 0.08498324460626408,
+   "recomputed": 0.08498324457215686,
+   "prior_crosscheck": null,
+   "rel_diff": -4.0134049021878177e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "floor (MR)_min, E_rot <= M",
+   "original": 0.7572582349155861,
+   "recomputed": 0.7572582347610544,
+   "prior_crosscheck": null,
+   "rel_diff": -2.0406740214610772e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": "my route: root of E_rot(e) = M(e) in MeV, checked at two F_pi"
+  },
+  {
+   "quantity": "floor (MR)_min, E_rot <= 0.1 M",
+   "original": 2.3946607992520965,
+   "recomputed": 2.394660798763425,
+   "prior_crosscheck": null,
+   "rel_diff": -2.0406703353541047e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": "= 2.3947; results.json note rounds it to 2.40, report text to 2.39"
+  },
+  {
+   "quantity": "e_max for E_rot <= M",
+   "original": 10.0939970909867,
+   "recomputed": 10.093997091999483,
+   "prior_crosscheck": null,
+   "rel_diff": 1.0033515340132662e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "lambda_C/R (LEP)",
+   "original": 3510538.7948778397,
+   "recomputed": 3510538.793822821,
+   "prior_crosscheck": null,
+   "rel_diff": -3.0052894222642613e-10,
+   "tolerance": "rel 1e-08",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "e needed (LEP, B)",
+   "original": 16457.810826472523,
+   "recomputed": 16457.810823971548,
+   "prior_crosscheck": null,
+   "rel_diff": -1.5196284919236343e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "e needed (LEP, half)",
+   "original": 14977.867376649245,
+   "recomputed": 14977.867374370095,
+   "prior_crosscheck": null,
+   "rel_diff": -1.5216786272593838e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "e needed (LEP, M)",
+   "original": 20509.133239994946,
+   "recomputed": 20509.13324995506,
+   "prior_crosscheck": null,
+   "rel_diff": 4.856428027057984e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "e needed (LEP, E)",
+   "original": 19314.44057441937,
+   "recomputed": 19314.440574254568,
+   "prior_crosscheck": null,
+   "rel_diff": -8.53249874498158e-12,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "F_pi needed (LEP, B) MeV",
+   "original": 230.65124787273723,
+   "recomputed": 230.65124783839894,
+   "prior_crosscheck": null,
+   "rel_diff": -1.4887534934641642e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E_rot/M at electron fold (LEP, B)",
+   "original": 7067007678837.692,
+   "recomputed": 7067007671705.727,
+   "prior_crosscheck": null,
+   "rel_diff": -1.0091917462703949e-09,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": "mine from I1 and M in MeV at (e, F_pi), not the closed formula"
+  },
+  {
+   "quantity": "e^2/16pi^2 at electron fold (LEP, B)",
+   "original": 1715238.0568697113,
+   "recomputed": 1715238.0563484065,
+   "prior_crosscheck": null,
+   "rel_diff": -3.0392561677066655e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "lambda_C/R (SEED)",
+   "original": 386159.26743656234,
+   "recomputed": 386159.26732051035,
+   "prior_crosscheck": null,
+   "rel_diff": -3.005288216385427e-10,
+   "tolerance": "rel 1e-08",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "e needed (SEED, B)",
+   "original": 5458.438338205827,
+   "recomputed": 5458.438337376347,
+   "prior_crosscheck": null,
+   "rel_diff": -1.5196289396349563e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "e needed (SEED, half)",
+   "original": 4967.596624805029,
+   "recomputed": 4967.59662404912,
+   "prior_crosscheck": null,
+   "rel_diff": -1.5216799955227925e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "e needed (SEED, M)",
+   "original": 6802.10997324692,
+   "recomputed": 6802.109976550316,
+   "prior_crosscheck": null,
+   "rel_diff": 4.856427973357285e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "e needed (SEED, E)",
+   "original": 6405.875242096547,
+   "recomputed": 6405.875242041889,
+   "prior_crosscheck": null,
+   "rel_diff": -8.532464499661245e-12,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "F_pi needed (SEED, B) MeV",
+   "original": 76.49836466211285,
+   "recomputed": 76.49836465072414,
+   "prior_crosscheck": null,
+   "rel_diff": -1.4887516768179722e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E_rot/M at electron fold (SEED, B)",
+   "original": 85510792913.9361,
+   "recomputed": 85510792827.63931,
+   "prior_crosscheck": null,
+   "rel_diff": -1.0091917114383514e-09,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": "mine from I1 and M in MeV at (e, F_pi), not the closed formula"
+  },
+  {
+   "quantity": "e^2/16pi^2 at electron fold (SEED, B)",
+   "original": 188676.1862556683,
+   "recomputed": 188676.18619832472,
+   "prior_crosscheck": null,
+   "rel_diff": -3.0392583889470176e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "floor / electron MR (LEP)",
+   "original": 2658384.4114118814,
+   "recomputed": 2658384.41007047,
+   "prior_crosscheck": null,
+   "rel_diff": -5.04596465611305e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0_B(beta=0.25)",
+   "original": null,
+   "recomputed": 70.47896366264169,
+   "prior_crosscheck": null,
+   "rel_diff": null,
+   "tolerance": "rel 1e-06",
+   "agree": null,
+   "note": ""
+  },
+  {
+   "quantity": "c0_half(beta=0.25)",
+   "original": null,
+   "recomputed": 60.005003619364366,
+   "prior_crosscheck": null,
+   "rel_diff": null,
+   "tolerance": "rel 1e-06",
+   "agree": null,
+   "note": ""
+  },
+  {
+   "quantity": "c0_B(beta=0.5)",
+   "original": 65.18221744242848,
+   "recomputed": 65.18221744247494,
+   "prior_crosscheck": null,
+   "rel_diff": 7.126987372748787e-13,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0_half(beta=0.5)",
+   "original": 56.56861905480876,
+   "recomputed": 56.56861905482762,
+   "prior_crosscheck": null,
+   "rel_diff": 3.334871868827599e-13,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0_B(beta=1.0)",
+   "original": 60.14243633695308,
+   "recomputed": 60.14243633697213,
+   "prior_crosscheck": null,
+   "rel_diff": 3.167422523258121e-13,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0_half(beta=1.0)",
+   "original": 53.11149758039887,
+   "recomputed": 53.1114975804719,
+   "prior_crosscheck": null,
+   "rel_diff": 1.3750239723681813e-12,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0_B(beta=2.0)",
+   "original": 56.45164184106991,
+   "recomputed": 56.45164184107001,
+   "prior_crosscheck": null,
+   "rel_diff": 1.7621450813861518e-15,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0_half(beta=2.0)",
+   "original": 50.479267236959366,
+   "recomputed": 50.47926723703418,
+   "prior_crosscheck": null,
+   "rel_diff": 1.4820548859593021e-12,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0_B(beta=4.0)",
+   "original": 54.151354389894834,
+   "recomputed": 54.15135439013658,
+   "prior_crosscheck": null,
+   "rel_diff": 4.464301174206113e-12,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0_half(beta=4.0)",
+   "original": 48.796206278892996,
+   "recomputed": 48.79620627923126,
+   "prior_crosscheck": null,
+   "rel_diff": 6.932116256182594e-12,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0_B(beta=8.0)",
+   "original": 52.84631639666011,
+   "recomputed": 52.846316396978345,
+   "prior_crosscheck": null,
+   "rel_diff": 6.021950103457851e-12,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0_half(beta=8.0)",
+   "original": 47.82446966979002,
+   "recomputed": 47.824469670301575,
+   "prior_crosscheck": null,
+   "rel_diff": 1.0696516786126029e-11,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0_B(beta=16.0)",
+   "original": 52.14474184729957,
+   "recomputed": 52.14474184827262,
+   "prior_crosscheck": null,
+   "rel_diff": 1.866061111849307e-11,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "c0_half(beta=16.0)",
+   "original": 47.2950915810386,
+   "recomputed": 47.29509158266365,
+   "prior_crosscheck": null,
+   "rel_diff": 3.435988418508542e-11,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "hopfion E_W (ansatz)",
+   "original": 1.2314457268379677,
+   "recomputed": 1.2314456974187316,
+   "prior_crosscheck": null,
+   "rel_diff": -2.3889998168113395e-08,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": "mine: direct 3D finite-difference evaluation; equals a1/(3 pi^2) = 1.2314457 (an identity)"
+  },
+  {
+   "quantity": "hopfion R_ring (Ward)",
+   "original": 1.2393004837217263,
+   "recomputed": 1.2393,
+   "prior_crosscheck": null,
+   "rel_diff": -3.903183550588506e-07,
+   "tolerance": "rel 2e-05",
+   "agree": true,
+   "note": "mine: argmin n3 on the equator"
+  },
+  {
+   "quantity": "hopfion R_rms energy (Ward)",
+   "original": 2.1441351857330666,
+   "recomputed": 2.060816042785773,
+   "prior_crosscheck": null,
+   "rel_diff": -0.038859090369718075,
+   "tolerance": "rel 0.001",
+   "agree": false,
+   "note": "DISAGREE: exact value x_E/sqrt2 = 2.0608 (3D quadrature, resolution-independent); original's spline profile carries a spurious f ~ a/r tail (see x2_hopfion tail_sensitivity)"
+  },
+  {
+   "quantity": "hopfion c0 (rms)",
+   "original": 589.660675580575,
+   "recomputed": 566.7469845611356,
+   "prior_crosscheck": null,
+   "rel_diff": -0.03885911333137277,
+   "tolerance": "rel 0.001",
+   "agree": false,
+   "note": "follows from R_rms"
+  },
+  {
+   "quantity": "hopfion c0 (ring)",
+   "original": 340.8212156309733,
+   "recomputed": 340.821074459982,
+   "prior_crosscheck": null,
+   "rel_diff": -4.142083439179927e-07,
+   "tolerance": "rel 2e-05",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "hopfion g^2 min (LEP, rms)",
+   "original": 2070026677.4394844,
+   "recomputed": 1989587275.5839698,
+   "prior_crosscheck": null,
+   "rel_diff": -0.038859113620223436,
+   "tolerance": "rel 0.001",
+   "agree": false,
+   "note": ""
+  },
+  {
+   "quantity": "hopfion sqrt(kappa2) (LEP, rms) MeV",
+   "original": 84.53916960858707,
+   "recomputed": 82.88033811707693,
+   "prior_crosscheck": null,
+   "rel_diff": -0.01962204619693409,
+   "tolerance": "rel 0.001",
+   "agree": false,
+   "note": ""
+  },
+  {
+   "quantity": "DL 2 g^2 M_S",
+   "original": 6.235753796656633,
+   "recomputed": 6.23575379665664,
+   "prior_crosscheck": null,
+   "rel_diff": 1.139465666750771e-15,
+   "tolerance": "rel 1e-09",
+   "agree": true,
+   "note": "also: left edge of Fig. 3b digitised at g^2E = 6.240 (axis labelled 2g^2M_S)"
+  },
+  {
+   "quantity": "DL v (degenerate)",
+   "original": 0.7450777428719995,
+   "recomputed": 0.7450777428719992,
+   "prior_crosscheck": null,
+   "rel_diff": -2.9801535081309955e-16,
+   "tolerance": "rel 1e-09",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "DL F at threshold (Fig. 3b)",
+   "original": 4.45,
+   "recomputed": 4.476576576576576,
+   "prior_crosscheck": null,
+   "rel_diff": 0.005972264399230605,
+   "tolerance": "abs 0.05",
+   "agree": true,
+   "note": "pixel reading, axes calibrated on tick marks"
+  },
+  {
+   "quantity": "DL F high-energy plateau (Fig. 3b, g^2E >= 10.5)",
+   "original": 3.93,
+   "recomputed": 3.8447522522522517,
+   "prior_crosscheck": null,
+   "rel_diff": -0.021691538867111566,
+   "tolerance": "abs 0.05",
+   "agree": false,
+   "note": "DISAGREE beyond the stated +-0.05: the plateau sits 87 px below the 4.0 tick at 555 px/unit"
+  },
+  {
+   "quantity": "DL g^2 N_min high energy (Fig. 7b)",
+   "original": 3.98,
+   "recomputed": 3.9770289973164714,
+   "prior_crosscheck": null,
+   "rel_diff": -0.0007464830863137105,
+   "tolerance": "abs 0.03",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "kappa = F/N_pair (high energy)",
+   "original": 0.6302365565021365,
+   "recomputed": 0.6165657557412951,
+   "prior_crosscheck": null,
+   "rel_diff": -0.021691538867112715,
+   "tolerance": "abs 0.008018217389909875",
+   "agree": false,
+   "note": "inherits the F reading"
+  },
+  {
+   "quantity": "kappa = F/N_pair (threshold)",
+   "original": 0.7136266352250655,
+   "recomputed": 0.717888602172962,
+   "prior_crosscheck": null,
+   "rel_diff": 0.0059722643992293515,
+   "tolerance": "abs 0.008018217389909875",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "g^2 for P = 0.1",
+   "original": 1.7067773138797795,
+   "recomputed": 1.669754687438252,
+   "prior_crosscheck": null,
+   "rel_diff": -0.021691538867111518,
+   "tolerance": "abs 0.021714583514288198",
+   "agree": false,
+   "note": "inherits F"
+  },
+  {
+   "quantity": "g^2 for P = 1/e",
+   "original": 3.93,
+   "recomputed": 3.8447522522522517,
+   "prior_crosscheck": null,
+   "rel_diff": -0.021691538867111566,
+   "tolerance": "abs 0.05",
+   "agree": false,
+   "note": "inherits F"
+  },
+  {
+   "quantity": "g^2 for P = 0.5",
+   "original": 5.669791510693627,
+   "recomputed": 5.546805007770996,
+   "prior_crosscheck": null,
+   "rel_diff": -0.021691538867111684,
+   "tolerance": "abs 0.07213966238638003",
+   "agree": false,
+   "note": "inherits F"
+  },
+  {
+   "quantity": "M_S/m at P = 0.1",
+   "original": 1.826762561801856,
+   "recomputed": 1.8672664444570513,
+   "prior_crosscheck": null,
+   "rel_diff": 0.02217249439097531,
+   "tolerance": "rel 0.02",
+   "agree": false,
+   "note": ""
+  },
+  {
+   "quantity": "N_min/N_pair",
+   "original": 0.6382548333024181,
+   "recomputed": 0.6377783868645991,
+   "prior_crosscheck": null,
+   "rel_diff": -0.0007464830863148623,
+   "tolerance": "rel 0.01",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "BW sigma_max/(pi r_e^2)",
+   "original": 0.6817055054867978,
+   "recomputed": 0.6817055055017872,
+   "prior_crosscheck": null,
+   "rel_diff": 2.1988166446841052e-11,
+   "tolerance": "rel 1e-08",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "BW sigma_max (mb)",
+   "original": 170.06,
+   "recomputed": 170.0631645621283,
+   "prior_crosscheck": null,
+   "rel_diff": 1.8608503635719902e-05,
+   "tolerance": "rel 0.0001",
+   "agree": true,
+   "note": "report quotes 170 mb"
+  },
+  {
+   "quantity": "BW sqrt(s)/2m_e at max",
+   "original": 1.4,
+   "recomputed": 1.4028197743083346,
+   "prior_crosscheck": null,
+   "rel_diff": 0.002014124505953349,
+   "tolerance": "abs 0.005",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "log10 exp(-F/alpha)",
+   "original": -233.89,
+   "recomputed": -228.8165019735802,
+   "prior_crosscheck": null,
+   "rel_diff": -0.021691812503398175,
+   "tolerance": "abs 2.9746004814093423",
+   "agree": false,
+   "note": "inherits F: -229, not -234; with g^2 = e^2 = 4 pi alpha it is -18.2 (not quoted in the report)"
+  },
+  {
+   "quantity": "rho_Lambda (GeV^4)",
+   "original": 2.515182419184975e-47,
+   "recomputed": 2.515182414561672e-47,
+   "prior_crosscheck": null,
+   "rel_diff": -1.8381579906951133e-09,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": "mine from SI: Omega_L 3H0^2/(8 pi G) c^2 (hbar c)^3"
+  },
+  {
+   "quantity": "rho_Lambda^(1/4) (meV)",
+   "original": 2.2394551655096677,
+   "recomputed": 2.2394551644805496,
+   "prior_crosscheck": null,
+   "rel_diff": -4.5953950760054957e-10,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "rho with PLAN's rounded H0, Omega_L",
+   "original": 2.5192737902105437e-47,
+   "recomputed": 2.519273785579722e-47,
+   "prior_crosscheck": null,
+   "rel_diff": -1.838157421616496e-09,
+   "tolerance": "rel 1e-07",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Lambda/m_Pl^2 (from 4.24e-66 eV^2)",
+   "original": 2.8445442364021374e-122,
+   "recomputed": 2.844544238145044e-122,
+   "prior_crosscheck": null,
+   "rel_diff": 6.127191536754374e-10,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "relative uncertainty from Omega_L h^2",
+   "original": 0.02639201802381719,
+   "recomputed": 0.02639201802381719,
+   "prior_crosscheck": null,
+   "rel_diff": 0.0,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "f_pi^4/rho_L",
+   "original": 2.856369959188887e+42,
+   "recomputed": 2.856952926826615e+42,
+   "prior_crosscheck": null,
+   "rel_diff": 0.00020409388351551558,
+   "tolerance": "rel 0.0005",
+   "agree": true,
+   "note": "original uses 130.2/sqrt2 = 92.0653 MeV; I typed 92.07"
+  },
+  {
+   "quantity": "v_EW^4/rho_L",
+   "original": 1.4612476279940475e+56,
+   "recomputed": 1.4612476306800514e+56,
+   "prior_crosscheck": null,
+   "rel_diff": 1.8381579134219302e-09,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Higgs depth/rho_L",
+   "original": 4.717551163444316e+54,
+   "recomputed": 4.71755117211592e+54,
+   "prior_crosscheck": null,
+   "rel_diff": 1.8381579281794905e-09,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "M_Pl reduced^4/rho_L",
+   "original": 1.3984827734712085e+120,
+   "recomputed": 1.398482774328087e+120,
+   "prior_crosscheck": null,
+   "rel_diff": 6.127201715830959e-10,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "M_Pl unreduced^4/rho_L",
+   "original": 8.833581910975419e+122,
+   "recomputed": 8.833581916387929e+122,
+   "prior_crosscheck": null,
+   "rel_diff": 6.127197329885275e-10,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "m_e^4/rho_L",
+   "original": 2.710881567596352e+33,
+   "recomputed": 2.7108815725793805e+33,
+   "prior_crosscheck": null,
+   "rel_diff": 1.8381580501439005e-09,
+   "tolerance": "rel 1e-06",
+   "agree": true,
+   "note": ""
+  }
+ ],
+ "n_compared": 90,
+ "n_disagree": 11,
+ "extra": {
+  "E1e_combination": {
+   "E1e_NE_lambda_over_m2_minE": 1.2389199410979685,
+   "E1e_Nlin_lambda_over_m2": 1.687915041158199,
+   "E1e_g2Nmin_phi4": 3.375830082316398,
+   "E1e_g2Nmin_over_g2Npair": 2.5318725617372984,
+   "E1e_g2_for_N_eq_2": 1.687915041158199
+  },
+  "phi4_g2_Npair": 1.3333333333333333,
+  "c0_extra_definitions": {
+   "mean_baryon_radius": 68.95780811845756,
+   "radius_enclosing_90pct_energy": 143.3906891225517
+  },
+  "c0_half_min_with_pion_mass_beta16": 47.29509158266365,
+  "floor_with_half_baryon_radius": 0.627191023745679,
+  "hopfion_tail_sensitivity": [
+   {
+    "amp": 0.0,
+    "E": 1.2314456974190793,
+    "Rrms_L1p2": 2.060816052253665,
+    "Rrms_L0p6": 2.060816039924784
+   },
+   {
+    "amp": 0.002,
+    "E": 1.2314460616191711,
+    "Rrms_L1p2": 2.127895609999344,
+    "Rrms_L0p6": 2.099875772988864
+   },
+   {
+    "amp": 0.005,
+    "E": 1.231447973200457,
+    "Rrms_L1p2": 2.4086753822770883,
+    "Rrms_L0p6": 2.254051953099847
+   }
+  ],
+  "hopfion_derrick_E2_over_E4": 0.9999999999800154,
+  "hopfion_perturbations": [
+   {
+    "dE_first": -5.174468076241112e-08,
+    "d2E": 0.025579794665220312,
+    "E_minus": 1.2314508144121035,
+    "E0": 1.2314456974182768,
+    "E_plus": 1.2314508123423162
+   },
+   {
+    "dE_first": 1.0622279394967293e-05,
+    "d2E": 0.2708416039970407,
+    "E_minus": 1.2314996532934883,
+    "E0": 1.2314456974182768,
+    "E_plus": 1.2315000781846641
+   },
+   {
+    "dE_first": -1.4236631928898902e-06,
+    "d2E": 0.3532282978752077,
+    "E_minus": 1.2315163715511157,
+    "E0": 1.2314456974182768,
+    "E_plus": 1.231516314604588
+   },
+   {
+    "dE_first": 2.430882717341376e-07,
+    "d2E": 0.14388447881485966,
+    "E_minus": 1.2314744694522743,
+    "E0": 1.2314456974182768,
+    "E_plus": 1.2314744791758052
+   }
+  ],
+  "DL_fig3b_curve": {
+   "F_at_7.0": 4.126126126126126,
+   "F_at_8.0": 3.9644144144144144,
+   "F_at_9.0": 3.8873873873873874,
+   "F_at_10.0": 3.854054054054054,
+   "F_at_11.0": 3.843243243243243,
+   "F_at_11.5": 3.845045045045045
+  },
+  "DL_fig7b_curve": {
+   "g2Nmin_at_6.4": 4.243972446840371,
+   "g2Nmin_at_6.6": 4.138215167548501,
+   "g2Nmin_at_7.0": 4.05015873015873,
+   "g2Nmin_at_8.0": 3.988853615520282,
+   "g2Nmin_at_9.0": 3.972063492063492,
+   "g2Nmin_at_10.0": 3.982775742775743,
+   "g2Nmin_at_10.4": 3.980952380952381
+  },
+  "log10_suppression_4pi_alpha": -18.20863867504586,
+  "LEP_bound_qualifier": "Schael et al. 2013 Eq. (3.9): VV contact model, positive interference, electromagnetic coupling strength (model dependent)"
+ }
+}

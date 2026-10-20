@@ -1,0 +1,3558 @@
+{
+ "experiment": "E1 phi^4 in 1+1D (PLAN.md section 4, E1a-E1e)",
+ "convention": "V=(1/4)(phi^2-1)^2, m=sqrt2, M_kink=2sqrt2/3, kink tanh(x/sqrt2) (rescaled units, phi0=1, hbar=1)",
+ "headline": [
+  {
+   "quantity": "E1a M_kink",
+   "value": 0.942809034568576,
+   "units_convention": "V=(1/4)(phi^2-1)^2, m=sqrt2, M_kink=2sqrt2/3, kink tanh(x/sqrt2) (rescaled units, phi0=1, hbar=1)",
+   "target": 0.9428090415820635,
+   "tolerance": "relative 1e-4",
+   "verdict": "CALIBRATED",
+   "source": "exact",
+   "note": "Newton-relaxed lattice kink, dx=0.025; rel. err -7.4e-09 (dx=0.05: -1.2e-07, dx=0.1: -1.9e-06)"
+  },
+  {
+   "quantity": "E1a shape-mode frequency omega_s",
+   "value": 1.2247448676906745,
+   "units_convention": "V=(1/4)(phi^2-1)^2, m=sqrt2, M_kink=2sqrt2/3, kink tanh(x/sqrt2) (rescaled units, phi0=1, hbar=1)",
+   "target": 1.224744871391589,
+   "tolerance": "relative 1e-4",
+   "verdict": "CALIBRATED",
+   "source": "exact",
+   "note": "lowest nonzero eigenvalue of -d2+3phi_k^2-1 on the lattice, dx=0.025; rel. err -3.0e-09; time-domain measurement agrees to 2.2e-05"
+  },
+  {
+   "quantity": "E1b critical velocity v_c (dx->0 extrapolation)",
+   "value": 0.26005625000000004,
+   "units_convention": "speed of each kink in the CM frame, units of c",
+   "target": 0.2598,
+   "tolerance": "+-0.001",
+   "verdict": "CALIBRATED",
+   "source": "[summary] Campbell-Schonfeld-Wingate 1983; Anninos-Oliveira-Matzner 1991",
+   "note": "dx=0.1/0.05/0.025 (dt=0.4dx): [0.260444, 0.260156, 0.260081]; Richardson p=2; x0=20 and t_post=1500 change it by <2e-5; range over all configurations [0.26008125000000004, 0.26044375]; offset diagnosis (reconciliation): the independent Fourier + RK4 cross-check (other x0, box and integrator) gives 0.260066, within 1e-5 of ours, so the +2.6e-4 offset from 0.2598 lies in the [summary] target, not in either computation; CALIBRATED stands (inside +-0.001)"
+  },
+  {
+   "quantity": "E1b critical velocity v_c (baseline dx=0.05, x0=12)",
+   "value": 0.26015625,
+   "units_convention": "same",
+   "target": 0.2598,
+   "tolerance": "+-0.001",
+   "verdict": "CALIBRATED",
+   "source": "[summary]",
+   "note": "bracket from bisection; label = bounce count before escape; offset diagnosis (reconciliation): the independent Fourier + RK4 cross-check (other x0, box and integrator) gives 0.260066, within 1e-5 of ours, so the +2.6e-4 offset from 0.2598 lies in the [summary] target, not in either computation; CALIBRATED stands (inside +-0.001)"
+  },
+  {
+   "quantity": "E1b first two-bounce window (dx->0 extrapolation)",
+   "value": [
+    0.19256458333333334,
+    0.20342708333333334
+   ],
+   "units_convention": "v range",
+   "target": [
+    0.1926,
+    0.2034
+   ],
+   "tolerance": "+-0.003 on each edge",
+   "verdict": "CALIBRATED",
+   "source": "[summary, one source]",
+   "note": "baseline dx=0.05: [0.19268, 0.20354]; edge spread over configs lo [0.19259375, 0.19303125], hi [0.20345625, 0.20388125]"
+  },
+  {
+   "quantity": "E1b two-bounce windows: >= 3, narrowing toward v_c",
+   "value": {
+    "n_windows_base": 20,
+    "first_five": [
+     [
+      0.19268125,
+      0.20354375000000002
+     ],
+     [
+      0.22414375000000003,
+      0.22895624999999997
+     ],
+     [
+      0.23723125,
+      0.23974375000000003
+     ],
+     [
+      0.24406875,
+      0.24555624999999998
+     ],
+     [
+      0.24813124999999997,
+      0.24909375
+     ]
+    ],
+    "first_five_widths": [
+     0.010862500000000025,
+     0.004812499999999942,
+     0.0025125000000000286,
+     0.001487499999999975,
+     0.0009625000000000328
+    ]
+   },
+   "units_convention": "count / v ranges / widths",
+   "target": ">= 3 windows narrowing toward v_c",
+   "tolerance": "qualitative",
+   "verdict": "CALIBRATED",
+   "source": "[summary]",
+   "note": "windows 2-5 vs a literature list of unverified provenance (not preregistered): max edge difference 0.0002"
+  },
+  {
+   "quantity": "E1b resonance check (not preregistered)",
+   "value": 5.304285714285717,
+   "units_convention": "time units per window",
+   "target": 5.130199320647456,
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "time between 1st and 2nd bounce grows by about one shape-mode period 2pi/omega_s per window (CSW mechanism)"
+  },
+  {
+   "quantity": "E1c (omega,v)=(0.99,0.43) produces a pair",
+   "value": {
+    "fourth_order_y4_calls_(dx,dt,pair_at_T,since)": [
+     [
+      0.0125,
+      0.005,
+      true,
+      870.0
+     ],
+     [
+      0.025,
+      0.005,
+      false,
+      null
+     ],
+     [
+      0.025,
+      0.01,
+      false,
+      null
+     ],
+     [
+      0.05,
+      0.01,
+      false,
+      null
+     ],
+     [
+      0.05,
+      0.02,
+      false,
+      null
+     ]
+    ],
+    "original_leapfrog_calls_(dx,dt,pair_at_T,since)": [
+     [
+      0.025,
+      0.005,
+      true,
+      840.0
+     ],
+     [
+      0.05,
+      0.0025,
+      false,
+      null
+     ],
+     [
+      0.05,
+      0.02,
+      false,
+      null
+     ],
+     [
+      0.1,
+      0.02,
+      true,
+      780.0
+     ],
+     [
+      0.1,
+      0.04,
+      true,
+      1160.0
+     ]
+    ],
+    "crosscheck_calls": "no pair to 1.5T: FD6+RK4 (dx 0.08, dt 0.032); Fourier + 4th-order splitting at (dx, dt) = (0.1, 0.02), (0.05, 0.02), (0.1, 0.01)",
+    "phi0_divergence_times_between_y4_resolutions": []
+   },
+   "units_convention": "DSV criterion: pair present at t=T (one light-crossing time); evolved to 1.5T",
+   "target": true,
+   "tolerance": "qualitative",
+   "verdict": "OPEN",
+   "source": "[read] arXiv:0803.0670",
+   "note": "RECONCILED (cross-check M1 upheld in part): the call is not demonstrated either way; the point is chaotic. Fourth-order time stepping (Yoshida composition of the original step, e1c_reconcile.py) gives no pair at 4 of 5 (dx, dt) settings and a pair from t = 870 at the finest, (0.0125, 0.005), where it sits at +-128 at T (DSV Fig. 1: about +-140); the leapfrog produces at 3 of 5 settings run here (4 of 11 distinct settings counting the cross-check's, pairs forming at t = 780-1160); the cross-check's four higher-order runs give none. phi(0,t) of the two finest y4 runs separate at t = 831.0, before the pair forms, and their difference grows by a factor of ~600 between t = 800 and 850: the trains leave a long-lived central oscillation whose fate is decided at t ~ 830-870, beyond the convergence horizon of any affordable run. Neighbourhood ensemble inside DSV's 0.01 cell (y4, dx 0.05, dt 0.02, v = 0.425-0.435 step 0.001): 0 of 11 produce; in the 0.41 cell 3 of 11 (v = [0.407, 0.41, 0.411]). The original 'pair since t = 1160, still separating at 1.5T, the pair is real' came from one unconverged run (dx = 0.1, dt = 0.04, whose phi(0,t) leaves the converged one at t ~ 258). DSV-like production in this column is converged at v = 0.41 (pair from t = 590 at every setting); OPEN.",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1c producing region trends to lower v as omega rises",
+   "value": [
+    -0.9878787878787878,
+    9.307459988955516e-08
+   ],
+   "units_convention": "Spearman rho, p (omega vs median producing v)",
+   "target": "rho < 0",
+   "tolerance": "qualitative",
+   "verdict": "CALIBRATED",
+   "source": "[read]",
+   "note": "vmax: [-0.996965091635306, 3.698093220209441e-10], vmin: [-0.9878787878787878, 9.307459988955516e-08]; reconciliation: with the omega = 0.99 column replaced by its converged producer(s) [0.41], Spearman rho = -0.988 (p = 9.3e-08); cross-check FD6 code: -0.94",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1c trains pass through at high v",
+   "value": {
+    "v>=0.8": {
+     "n": 110,
+     "n_produced_dsv": 14
+    },
+    "v>=0.85": {
+     "n": 60,
+     "n_produced_dsv": 2
+    },
+    "v>=0.9": {
+     "n": 10,
+     "n_produced_dsv": 0
+    }
+   },
+   "units_convention": "producing runs at v >= 0.85 / 0.9",
+   "target": "no production at the highest v",
+   "tolerance": "qualitative",
+   "verdict": "CALIBRATED",
+   "source": "[read]",
+   "note": "reproduced by the cross-check (FD6: 0/18 at v >= 0.86; 0/6 at omega = 0.995)"
+  },
+  {
+   "quantity": "E1c holes, e.g. near (0.91,0.82)",
+   "value": {
+    "n_holes": 10,
+    "probe": {
+     "(0.90,0.80)": {
+      "dsv": false,
+      "survive": false
+     },
+     "(0.91,0.80)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.92,0.80)": {
+      "dsv": false,
+      "survive": false
+     },
+     "(0.90,0.81)": {
+      "dsv": false,
+      "survive": false
+     },
+     "(0.91,0.81)": {
+      "dsv": false,
+      "survive": false
+     },
+     "(0.92,0.81)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.90,0.82)": {
+      "dsv": true,
+      "survive": false
+     },
+     "(0.91,0.82)": {
+      "dsv": false,
+      "survive": false
+     },
+     "(0.92,0.82)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.90,0.83)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.91,0.83)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.92,0.83)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.90,0.84)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.91,0.84)": {
+      "dsv": true,
+      "survive": true
+     },
+     "(0.92,0.84)": {
+      "dsv": true,
+      "survive": true
+     }
+    },
+    "fourth_order_check_omega_0.91": {
+     "0.800": {
+      "class": "converged producer",
+      "calls_(dx,dt,pair_at_T,since)": [
+       [
+        0.025,
+        0.01,
+        true,
+        60.0
+       ],
+       [
+        0.05,
+        0.02,
+        true,
+        60.0
+       ]
+      ],
+      "original_map_call": true
+     },
+     "0.810": {
+      "class": "resolution-sensitive",
+      "calls_(dx,dt,pair_at_T,since)": [
+       [
+        0.025,
+        0.01,
+        true,
+        140.0
+       ],
+       [
+        0.05,
+        0.02,
+        false,
+        null
+       ]
+      ],
+      "original_map_call": false
+     },
+     "0.820": {
+      "class": "no pair at any resolution",
+      "calls_(dx,dt,pair_at_T,since)": [
+       [
+        0.025,
+        0.01,
+        false,
+        null
+       ],
+       [
+        0.05,
+        0.02,
+        false,
+        null
+       ]
+      ],
+      "original_map_call": false
+     },
+     "0.830": {
+      "class": "resolution-sensitive",
+      "calls_(dx,dt,pair_at_T,since)": [
+       [
+        0.025,
+        0.01,
+        false,
+        null
+       ],
+       [
+        0.05,
+        0.02,
+        true,
+        80.0
+       ]
+      ],
+      "original_map_call": true
+     },
+     "0.850": {
+      "class": "converged producer",
+      "calls_(dx,dt,pair_at_T,since)": [
+       [
+        0.025,
+        0.01,
+        true,
+        70.0
+       ],
+       [
+        0.05,
+        0.02,
+        true,
+        70.0
+       ]
+      ],
+      "original_map_call": true
+     }
+    }
+   },
+   "units_convention": "non-producing points whose two v-neighbours (step 0.01) produce",
+   "target": "holes exist",
+   "tolerance": "qualitative",
+   "verdict": "CALIBRATED",
+   "source": "[read]",
+   "note": "list in e1c_analysis.json; RECONCILED: the named hole was resolution-checked with fourth-order time stepping at (dx, dt) = (0.05, 0.02) and (0.025, 0.01): v = 0.800: converged producer, v = 0.810: resolution-sensitive, v = 0.820: no pair at any resolution, v = 0.830: resolution-sensitive, v = 0.850: converged producer; (0.91, 0.82) makes no pair at every resolution (original leapfrog dx 0.1 and 0.05, y4 dx 0.05 and 0.025) while 0.80 produces at all four and 0.85 at the three where it was run, so a hole at (0.91, 0.82) inside the band is robust; its extent is not (0.81-0.82 at dx 0.1 and y4 dx 0.05, 0.82-0.83 at y4 dx 0.025)",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1c no production for omega > 0.99",
+   "value": {
+    "0.992": {
+     "n": 36,
+     "produced_dsv_at_v": [],
+     "survives_at_v": []
+    },
+    "0.995": {
+     "n": 36,
+     "produced_dsv_at_v": [],
+     "survives_at_v": []
+    }
+   },
+   "units_convention": "omega in {0.992, 0.995}, v 0.20-0.90 step 0.02",
+   "target": "none found",
+   "tolerance": "qualitative",
+   "verdict": "CALIBRATED",
+   "source": "[read]",
+   "note": "DSV: 'we have not found ... for omega > 0.99'; reproduced by the cross-check (FD6: 0/18 at v >= 0.86; 0/6 at omega = 0.995)"
+  },
+  {
+   "quantity": "E1c dx check (dx 0.05 vs 0.1)",
+   "value": {
+    "n": 78,
+    "agree_frac_dsv": 0.9487179487179487,
+    "agree_frac_survive": 0.9487179487179487,
+    "disagreements_omega_v_dx0.05_dx0.1": [
+     [
+      0.91,
+      0.72,
+      true,
+      false
+     ],
+     [
+      0.95,
+      0.68,
+      false,
+      true
+     ],
+     [
+      0.95,
+      0.7,
+      true,
+      false
+     ],
+     [
+      0.95,
+      0.74,
+      true,
+      false
+     ]
+    ]
+   },
+   "units_convention": "agreement of the production call",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "agreement is trivial in the omega = 0.99 column: its dx = 0.1 producers (v = 0.41, 0.43) are not on the dx = 0.05 grid (step 0.02), which has no omega = 0.99 producer; the example point was not in this check",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1d no production below E = 2 M_kink",
+   "value": 0,
+   "units_convention": "producing runs with E < 2M_kink (coarse grid)",
+   "target": 0,
+   "tolerance": "exact (energy conservation)",
+   "verdict": "CHECK PASSED",
+   "source": "",
+   "note": "sanity check; verdict word CHECK PASSED (energy-conservation sanity check, not a literature calibration); the seed claim it bears on is the section 2 row",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1d lowest producing energy, all Gaussian runs (dx=0.1)",
+   "value": 1.792321447422346,
+   "units_convention": "E / 2M_kink",
+   "target": "prediction: > 1",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "A=1.4, sigma=1.0, k=0.25; single packet alone produces: False; reproduced at dx=0.05: False; an upper bound on the classical onset within this family only; over all initial data the infimum is 2M (time-reversed captures, see the section 2 row)"
+  },
+  {
+   "quantity": "E1d lowest producing energy reproduced at dx=0.05",
+   "value": 1.8583799116469528,
+   "units_convention": "E / 2M_kink",
+   "target": "prediction: > 1",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "A=0.8, sigma=2.0, k=0.5; collision needed; an upper bound on the classical onset within this family only; over all initial data the infimum is 2M (time-reversed captures, see the section 2 row)"
+  },
+  {
+   "quantity": "E1d fraction producing vs E/2M (coarse grid)",
+   "value": [
+    [
+     0.0,
+     0.5,
+     148,
+     0,
+     0.0
+    ],
+    [
+     0.5,
+     1.0,
+     87,
+     0,
+     0.0
+    ],
+    [
+     1.0,
+     1.5,
+     72,
+     0,
+     0.0
+    ],
+    [
+     1.5,
+     2.0,
+     64,
+     2,
+     0.03125
+    ],
+    [
+     2.0,
+     3.0,
+     93,
+     7,
+     0.07526881720430108
+    ],
+    [
+     3.0,
+     4.0,
+     72,
+     8,
+     0.1111111111111111
+    ],
+    [
+     4.0,
+     6.0,
+     114,
+     21,
+     0.18421052631578946
+    ],
+    [
+     6.0,
+     8.0,
+     88,
+     40,
+     0.45454545454545453
+    ],
+    [
+     8.0,
+     12.0,
+     120,
+     64,
+     0.5333333333333333
+    ],
+    [
+     12.0,
+     16.0,
+     88,
+     52,
+     0.5909090909090909
+    ],
+    [
+     16.0,
+     24.0,
+     127,
+     76,
+     0.5984251968503937
+    ],
+    [
+     24.0,
+     32.0,
+     89,
+     62,
+     0.6966292134831461
+    ],
+    [
+     32.0,
+     64.0,
+     177,
+     122,
+     0.6892655367231638
+    ],
+    [
+     64.0,
+     1000000000.0,
+     146,
+     110,
+     0.7534246575342466
+    ]
+   ],
+   "units_convention": "[E/2M lo, hi, n, n_prod, frac]",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "564/1485 coarse runs produce"
+  },
+  {
+   "quantity": "E1d producing regions (coarse 3D grid)",
+   "value": {
+    "n_6conn": 8,
+    "sizes_6conn": [
+     551,
+     5,
+     3,
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "n_26conn": 2,
+    "sizes_26conn": [
+     563,
+     1
+    ]
+   },
+   "units_convention": "connected components (6- and 26-connectivity)",
+   "target": "prediction: ragged",
+   "tolerance": "qualitative",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "region, hole and switch counts are illustrative, not converged (they change with dx and between codes, e.g. sigma = 16, k = 2 line: 17 switches here, 9 in the cross-check); robust: non-monotonic lines with the same onset A in both codes, and the production fractions",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1d slice e1d_sliceAk_16.0.json",
+   "value": {
+    "regions_4conn": 24,
+    "regions_8conn": 6,
+    "singletons_4conn": 15,
+    "enclosed_holes": 267,
+    "A_lines_non_monotonic": 57,
+    "A_lines_with_production": 57,
+    "min_producing": {
+     "A": 0.275,
+     "sigma": 16.0,
+     "k": 0.2,
+     "vg": 0.140028008402801,
+     "E_over_2M": 2.263348608654741,
+     "N_lin": 3.0632287922379673
+    }
+   },
+   "units_convention": "connected components / flips along A",
+   "target": "prediction: ragged",
+   "tolerance": "qualitative",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "fixed ['16.0']; region, hole and switch counts are illustrative, not converged (they change with dx and between codes, e.g. sigma = 16, k = 2 line: 17 switches here, 9 in the cross-check); robust: non-monotonic lines with the same onset A in both codes, and the production fractions",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1d slice e1d_sliceAs_1.0.json",
+   "value": {
+    "regions_4conn": 48,
+    "regions_8conn": 11,
+    "singletons_4conn": 26,
+    "enclosed_holes": 141,
+    "A_lines_non_monotonic": 48,
+    "A_lines_with_production": 53,
+    "min_producing": {
+     "A": 0.7,
+     "sigma": 2.5618,
+     "k": 1.0,
+     "vg": 0.5773502691896258,
+     "E_over_2M": 3.325665168314367,
+     "N_lin": 3.867836164363505
+    }
+   },
+   "units_convention": "connected components / flips along A",
+   "target": "prediction: ragged",
+   "tolerance": "qualitative",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "fixed ['1.0']; region, hole and switch counts are illustrative, not converged (they change with dx and between codes, e.g. sigma = 16, k = 2 line: 17 switches here, 9 in the cross-check); robust: non-monotonic lines with the same onset A in both codes, and the production fractions",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1d prediction test: ragged",
+   "value": {
+    "per_slice": [
+     {
+      "slice": "e1d_sliceAk_16.0.json",
+      "frac_nonmonotonic_A_lines": 1.0,
+      "n_regions_ge3": 6,
+      "n_regions_ignoring_singletons": 9
+     },
+     {
+      "slice": "e1d_sliceAs_1.0.json",
+      "frac_nonmonotonic_A_lines": 0.9056603773584906,
+      "n_regions_ge3": 10,
+      "n_regions_ignoring_singletons": 10
+     }
+    ]
+   },
+   "units_convention": "see analyze_e1d.py for the operational test",
+   "target": "see PLAN.md E1d",
+   "tolerance": "operational",
+   "verdict": "CONFIRMED",
+   "source": "",
+   "note": ""
+  },
+  {
+   "quantity": "E1d prediction test: ragged_collision_needed",
+   "value": {
+    "per_slice": [
+     {
+      "slice": "e1d_sliceAk_16.0.json",
+      "frac_nonmonotonic_A_lines": 1.0,
+      "n_regions_ge3": 10,
+      "n_regions_ignoring_singletons": 10,
+      "n_regions_total": 186
+     },
+     {
+      "slice": "e1d_sliceAs_1.0.json",
+      "frac_nonmonotonic_A_lines": 0.9230769230769231,
+      "n_regions_ge3": 10,
+      "n_regions_ignoring_singletons": 10,
+      "n_regions_total": 121
+     }
+    ]
+   },
+   "units_convention": "see analyze_e1d.py for the operational test",
+   "target": "see PLAN.md E1d",
+   "tolerance": "operational",
+   "verdict": "CONFIRMED",
+   "source": "",
+   "note": ""
+  },
+  {
+   "quantity": "E1d prediction test: speed",
+   "value": {
+    "rows": [
+     {
+      "E_band": [
+       2,
+       4
+      ],
+      "x": [
+       0.17407765595569785,
+       0.3333333333333333,
+       0.4685212856658182,
+       0.5773502691896258,
+       0.6622661785325219,
+       0.7276068751089989,
+       0.8164965809277261,
+       0.8703882797784892,
+       0.9045340337332909
+      ],
+      "frac": [
+       0.2692307692307692,
+       0.2916666666666667,
+       0.041666666666666664,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "n": [
+       26,
+       24,
+       24,
+       21,
+       19,
+       16,
+       13,
+       12,
+       10
+      ],
+      "spearman": [
+       -0.8218224606706397,
+       0.006573427983343723
+      ]
+     },
+     {
+      "E_band": [
+       4,
+       8
+      ],
+      "x": [
+       0.17407765595569785,
+       0.3333333333333333,
+       0.4685212856658182,
+       0.5773502691896258,
+       0.6622661785325219,
+       0.7276068751089989,
+       0.8164965809277261,
+       0.8703882797784892,
+       0.9045340337332909
+      ],
+      "frac": [
+       0.38461538461538464,
+       0.5652173913043478,
+       0.6,
+       0.4230769230769231,
+       0.2916666666666667,
+       0.19230769230769232,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "n": [
+       26,
+       23,
+       25,
+       26,
+       24,
+       26,
+       20,
+       17,
+       15
+      ],
+      "spearman": [
+       -0.8645309671165333,
+       0.002632371844833842
+      ]
+     },
+     {
+      "E_band": [
+       8,
+       16
+      ],
+      "x": [
+       0.17407765595569785,
+       0.3333333333333333,
+       0.4685212856658182,
+       0.5773502691896258,
+       0.6622661785325219,
+       0.7276068751089989,
+       0.8164965809277261,
+       0.8703882797784892,
+       0.9045340337332909
+      ],
+      "frac": [
+       0.7368421052631579,
+       0.7272727272727273,
+       0.5217391304347826,
+       0.6521739130434783,
+       0.6923076923076923,
+       0.5833333333333334,
+       0.5,
+       0.375,
+       0.23809523809523808
+      ],
+      "n": [
+       19,
+       22,
+       23,
+       23,
+       26,
+       24,
+       26,
+       24,
+       21
+      ],
+      "spearman": [
+       -0.8833333333333333,
+       0.0015905004234978695
+      ]
+     }
+    ],
+    "bands_supporting": 3,
+    "bands_contradicting": 0
+   },
+   "units_convention": "see analyze_e1d.py for the operational test",
+   "target": "see PLAN.md E1d",
+   "tolerance": "operational",
+   "verdict": "REFUTED",
+   "source": "",
+   "note": "RECONCILED (cross-check M3 upheld): this row's matched-energy test passes as computed, but the verdict is on the PLAN prediction 'production favours low speed', and the correlation is not a speed effect: the matched-energy correlation reproduces (also in the cross-check), but at matched energy a slow packet is taller (band [2,4): mean A 0.85-0.90 at v_g <= 0.33 vs 0.36 at v_g = 0.90) or wider; on the stored coarse grid, P ~ log A + log sigma + v_g gives v_g (coef, z) = (0.56, 1.9) baseline, (0.16, 0.6) one-way; collision-needed (-0.18, -0.6) / (-0.53, -1.7) (e1d_confound.json); fixed-shape test (e1d_speedtest.py): 6 A x 3 sigma x 9 k x 8 collision phases, both phi_t forms: logistic v_g coefficient with one intercept per (A, sigma), 95% CI, positive = faster produces more: all production +1.36 [+0.80, +1.92] baseline, +0.62 [+0.07, +1.16] one-way; packets that do not self-fold +1.32 [+0.53, +2.10] / +0.71 [-0.24, +1.67]; pre-set rule: a speed effect would need CI < 0 in both forms, 'not a speed effect' if both CIs exclude -1.19 (half the matched-energy coefficient -2.38); outcome: all production 'not a speed effect', non-self-folding 'not a speed effect'",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1d prediction test: width",
+   "value": {
+    "rows": [
+     {
+      "E_band": [
+       2,
+       4
+      ],
+      "x": [
+       1.0,
+       1.5,
+       2.0,
+       3.0,
+       4.0,
+       5.0,
+       6.0,
+       8.0,
+       10.0,
+       12.0,
+       16.0
+      ],
+      "frac": [
+       0.0,
+       0.038461538461538464,
+       0.125,
+       0.21052631578947367,
+       0.1875,
+       0.08333333333333333,
+       0.09090909090909091,
+       0.2,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "n": [
+       24,
+       26,
+       24,
+       19,
+       16,
+       12,
+       11,
+       10,
+       9,
+       8,
+       6
+      ],
+      "spearman": [
+       -0.2837976841715336,
+       0.39770244777084424
+      ]
+     },
+     {
+      "E_band": [
+       4,
+       8
+      ],
+      "x": [
+       1.0,
+       1.5,
+       2.0,
+       3.0,
+       4.0,
+       5.0,
+       6.0,
+       8.0,
+       10.0,
+       12.0,
+       16.0
+      ],
+      "frac": [
+       0.05555555555555555,
+       0.30434782608695654,
+       0.44,
+       0.36,
+       0.2916666666666667,
+       0.4,
+       0.2777777777777778,
+       0.26666666666666666,
+       0.3333333333333333,
+       0.25,
+       0.2
+      ],
+      "n": [
+       18,
+       23,
+       25,
+       25,
+       24,
+       20,
+       18,
+       15,
+       12,
+       12,
+       10
+      ],
+      "spearman": [
+       -0.28181818181818186,
+       0.40114489796047825
+      ]
+     },
+     {
+      "E_band": [
+       8,
+       16
+      ],
+      "x": [
+       1.0,
+       1.5,
+       2.0,
+       3.0,
+       4.0,
+       5.0,
+       6.0,
+       8.0,
+       10.0,
+       12.0,
+       16.0
+      ],
+      "frac": [
+       0.18181818181818182,
+       0.6666666666666666,
+       0.5,
+       0.625,
+       0.7083333333333334,
+       0.64,
+       0.5,
+       0.6,
+       0.5,
+       0.4666666666666667,
+       0.5
+      ],
+      "n": [
+       11,
+       15,
+       18,
+       24,
+       24,
+       25,
+       24,
+       20,
+       18,
+       15,
+       14
+      ],
+      "spearman": [
+       -0.2140113683916483,
+       0.5274614094406629
+      ]
+     }
+    ],
+    "bands_supporting": 0,
+    "bands_contradicting": 0
+   },
+   "units_convention": "see analyze_e1d.py for the operational test",
+   "target": "see PLAN.md E1d",
+   "tolerance": "operational",
+   "verdict": "AMENDED",
+   "source": "",
+   "note": "RECONCILED: verdict word on the PLAN prediction 'production favours wide packets' (was NOT_SUPPORTED, not a PLAN word): at matched energy no width preference in any band or form (cross-check FD6 -0.31, +0.12, +0.41, all p > 0.2); at fixed amplitude wider packets produce more (stored grid, P ~ log A + log sigma: log sigma z = 13.4 all production, 2.4 collision-needed), because at fixed A a wider packet carries more energy and more of it exceeds the self-folding threshold",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1d prediction test: speed_collision_needed",
+   "value": {
+    "rows": [
+     {
+      "E_band": [
+       2,
+       4
+      ],
+      "x": [
+       0.17407765595569785,
+       0.3333333333333333,
+       0.4685212856658182,
+       0.5773502691896258,
+       0.6622661785325219,
+       0.7276068751089989,
+       0.8164965809277261,
+       0.8703882797784892,
+       0.9045340337332909
+      ],
+      "frac": [
+       0.2692307692307692,
+       0.2916666666666667,
+       0.041666666666666664,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "n": [
+       26,
+       24,
+       24,
+       21,
+       19,
+       16,
+       13,
+       12,
+       10
+      ],
+      "spearman": [
+       -0.8218224606706397,
+       0.006573427983343723
+      ]
+     },
+     {
+      "E_band": [
+       4,
+       8
+      ],
+      "x": [
+       0.17407765595569785,
+       0.3333333333333333,
+       0.4685212856658182,
+       0.5773502691896258,
+       0.6622661785325219,
+       0.7276068751089989,
+       0.8164965809277261,
+       0.8703882797784892,
+       0.9045340337332909
+      ],
+      "frac": [
+       0.15384615384615385,
+       0.21739130434782608,
+       0.36,
+       0.19230769230769232,
+       0.16666666666666666,
+       0.19230769230769232,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "n": [
+       26,
+       23,
+       25,
+       26,
+       24,
+       26,
+       20,
+       17,
+       15
+      ],
+      "spearman": [
+       -0.6810052246069989,
+       0.04343355761067167
+      ]
+     },
+     {
+      "E_band": [
+       8,
+       16
+      ],
+      "x": [
+       0.17407765595569785,
+       0.3333333333333333,
+       0.4685212856658182,
+       0.5773502691896258,
+       0.6622661785325219,
+       0.7276068751089989,
+       0.8164965809277261,
+       0.8703882797784892,
+       0.9045340337332909
+      ],
+      "frac": [
+       0.21052631578947367,
+       0.13636363636363635,
+       0.21739130434782608,
+       0.43478260869565216,
+       0.3076923076923077,
+       0.20833333333333334,
+       0.23076923076923078,
+       0.20833333333333334,
+       0.19047619047619047
+      ],
+      "n": [
+       19,
+       22,
+       23,
+       23,
+       26,
+       24,
+       26,
+       24,
+       21
+      ],
+      "spearman": [
+       -0.1338923854009157,
+       0.7312787650945741
+      ]
+     }
+    ],
+    "bands_supporting": 2,
+    "bands_contradicting": 0
+   },
+   "units_convention": "see analyze_e1d.py for the operational test",
+   "target": "see PLAN.md E1d",
+   "tolerance": "operational",
+   "verdict": "REFUTED",
+   "source": "",
+   "note": "RECONCILED (cross-check M3 upheld): this row's matched-energy test passes as computed, but the verdict is on the PLAN prediction 'production favours low speed', and the correlation is not a speed effect: the matched-energy correlation reproduces (also in the cross-check), but at matched energy a slow packet is taller (band [2,4): mean A 0.85-0.90 at v_g <= 0.33 vs 0.36 at v_g = 0.90) or wider; on the stored coarse grid, P ~ log A + log sigma + v_g gives v_g (coef, z) = (0.56, 1.9) baseline, (0.16, 0.6) one-way; collision-needed (-0.18, -0.6) / (-0.53, -1.7) (e1d_confound.json); fixed-shape test (e1d_speedtest.py): 6 A x 3 sigma x 9 k x 8 collision phases, both phi_t forms: logistic v_g coefficient with one intercept per (A, sigma), 95% CI, positive = faster produces more: all production +1.36 [+0.80, +1.92] baseline, +0.62 [+0.07, +1.16] one-way; packets that do not self-fold +1.32 [+0.53, +2.10] / +0.71 [-0.24, +1.67]; pre-set rule: a speed effect would need CI < 0 in both forms, 'not a speed effect' if both CIs exclude -1.19 (half the matched-energy coefficient -2.38); outcome: all production 'not a speed effect', non-self-folding 'not a speed effect'",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1d prediction test: width_collision_needed",
+   "value": {
+    "rows": [
+     {
+      "E_band": [
+       2,
+       4
+      ],
+      "x": [
+       1.0,
+       1.5,
+       2.0,
+       3.0,
+       4.0,
+       5.0,
+       6.0,
+       8.0,
+       10.0,
+       12.0,
+       16.0
+      ],
+      "frac": [
+       0.0,
+       0.038461538461538464,
+       0.125,
+       0.21052631578947367,
+       0.1875,
+       0.08333333333333333,
+       0.09090909090909091,
+       0.2,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "n": [
+       24,
+       26,
+       24,
+       19,
+       16,
+       12,
+       11,
+       10,
+       9,
+       8,
+       6
+      ],
+      "spearman": [
+       -0.2837976841715336,
+       0.39770244777084424
+      ]
+     },
+     {
+      "E_band": [
+       4,
+       8
+      ],
+      "x": [
+       1.0,
+       1.5,
+       2.0,
+       3.0,
+       4.0,
+       5.0,
+       6.0,
+       8.0,
+       10.0,
+       12.0,
+       16.0
+      ],
+      "frac": [
+       0.05555555555555555,
+       0.30434782608695654,
+       0.24,
+       0.04,
+       0.125,
+       0.15,
+       0.16666666666666666,
+       0.26666666666666666,
+       0.08333333333333333,
+       0.16666666666666666,
+       0.1
+      ],
+      "n": [
+       18,
+       23,
+       25,
+       25,
+       24,
+       20,
+       18,
+       15,
+       12,
+       12,
+       10
+      ],
+      "spearman": [
+       -0.013667461427346159,
+       0.9681862209072394
+      ]
+     },
+     {
+      "E_band": [
+       8,
+       16
+      ],
+      "x": [
+       1.0,
+       1.5,
+       2.0,
+       3.0,
+       4.0,
+       5.0,
+       6.0,
+       8.0,
+       10.0,
+       12.0,
+       16.0
+      ],
+      "frac": [
+       0.18181818181818182,
+       0.26666666666666666,
+       0.05555555555555555,
+       0.25,
+       0.4583333333333333,
+       0.28,
+       0.16666666666666666,
+       0.2,
+       0.2222222222222222,
+       0.2,
+       0.2857142857142857
+      ],
+      "n": [
+       11,
+       15,
+       18,
+       24,
+       24,
+       25,
+       24,
+       20,
+       18,
+       15,
+       14
+      ],
+      "spearman": [
+       0.2004561009344103,
+       0.5545252303435374
+      ]
+     }
+    ],
+    "bands_supporting": 0,
+    "bands_contradicting": 0
+   },
+   "units_convention": "see analyze_e1d.py for the operational test",
+   "target": "see PLAN.md E1d",
+   "tolerance": "operational",
+   "verdict": "AMENDED",
+   "source": "",
+   "note": "RECONCILED: verdict word on the PLAN prediction 'production favours wide packets' (was NOT_SUPPORTED, not a PLAN word): at matched energy no width preference in any band or form (cross-check FD6 -0.31, +0.12, +0.41, all p > 0.2); at fixed amplitude wider packets produce more (stored grid, P ~ log A + log sigma: log sigma z = 13.4 all production, 2.4 collision-needed), because at fixed A a wider packet carries more energy and more of it exceeds the self-folding threshold",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1d single_packet_controls",
+   "value": {
+    "n_tested(=producing pair runs)": 564,
+    "n_single_packet_also_produces": 366,
+    "examples": [
+     [
+      1.2,
+      16.0,
+      0.25
+     ],
+     [
+      1.3,
+      16.0,
+      0.25
+     ],
+     [
+      1.4,
+      16.0,
+      0.25
+     ],
+     [
+      0.5,
+      16.0,
+      0.25
+     ],
+     [
+      0.6,
+      16.0,
+      0.25
+     ],
+     [
+      0.9,
+      16.0,
+      0.25
+     ],
+     [
+      0.5,
+      16.0,
+      0.5
+     ],
+     [
+      0.7,
+      16.0,
+      0.5
+     ],
+     [
+      0.8,
+      16.0,
+      0.5
+     ],
+     [
+      0.9,
+      16.0,
+      0.5
+     ]
+    ]
+   },
+   "units_convention": "",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "self-folding threshold matches a local over-barrier estimate: the trough phi = -1 - A has V = (A(2+A))^2/4 > V(0) = 1/4 when A > sqrt2 - 1 = 0.414, so the trough can swing over the barrier (observed minimum A 0.375-0.425; the packet's kinetic energy lowers it). Self-folding gives 65% of coarse production and all production above ~4 x 2M that is not collision-needed; below 4 x 2M every producing run is collision-needed",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1d dx_check",
+   "value": {
+    "n": 300,
+    "agree_frac": 0.7966666666666666,
+    "n_prod_dx0.05": 144,
+    "n_prod_dx0.1_same_points": 143,
+    "disagreements": [
+     [
+      0.6,
+      16.0,
+      0.25,
+      false,
+      11.15
+     ],
+     [
+      1.4,
+      16.0,
+      0.5,
+      false,
+      74.01
+     ],
+     [
+      0.6,
+      12.0,
+      0.25,
+      true,
+      7.91
+     ],
+     [
+      1.2,
+      16.0,
+      1.25,
+      true,
+      81.31
+     ],
+     [
+      0.8,
+      12.0,
+      0.25,
+      true,
+      13.95
+     ],
+     [
+      1.2,
+      10.0,
+      0.25,
+      true,
+      23.67
+     ],
+     [
+      1.3,
+      10.0,
+      0.25,
+      true,
+      27.65
+     ],
+     [
+      1.4,
+      10.0,
+      0.25,
+      false,
+      31.96
+     ],
+     [
+      1.5,
+      10.0,
+      0.25,
+      true,
+      36.64
+     ],
+     [
+      0.7,
+      16.0,
+      2.0,
+      true,
+      44.7
+     ],
+     [
+      0.6,
+      12.0,
+      0.5,
+      true,
+      9.33
+     ],
+     [
+      0.7,
+      12.0,
+      0.5,
+      true,
+      12.79
+     ],
+     [
+      0.9,
+      12.0,
+      0.5,
+      false,
+      21.53
+     ],
+     [
+      1.4,
+      12.0,
+      0.75,
+      false,
+      62.44
+     ],
+     [
+      0.5,
+      10.0,
+      0.5,
+      true,
+      5.35
+     ],
+     [
+      1.0,
+      10.0,
+      0.5,
+      true,
+      22.24
+     ],
+     [
+      1.2,
+      12.0,
+      1.25,
+      false,
+      60.99
+     ],
+     [
+      0.7,
+      12.0,
+      1.5,
+      false,
+      23.86
+     ],
+     [
+      0.9,
+      12.0,
+      2.0,
+      true,
+      55.82
+     ],
+     [
+      0.5,
+      12.0,
+      2.5,
+      true,
+      23.36
+     ],
+     [
+      0.8,
+      12.0,
+      2.5,
+      false,
+      60.18
+     ],
+     [
+      1.3,
+      12.0,
+      2.5,
+      true,
+      161.57
+     ],
+     [
+      1.5,
+      12.0,
+      2.5,
+      true,
+      217.0
+     ],
+     [
+      1.1,
+      10.0,
+      0.75,
+      false,
+      31.0
+     ],
+     [
+      1.2,
+      10.0,
+      1.25,
+      true,
+      50.84
+     ],
+     [
+      1.5,
+      10.0,
+      1.25,
+      true,
+      81.71
+     ],
+     [
+      1.1,
+      10.0,
+      1.5,
+      false,
+      50.19
+     ],
+     [
+      1.2,
+      8.0,
+      0.5,
+      false,
+      25.37
+     ],
+     [
+      1.3,
+      8.0,
+      0.5,
+      true,
+      30.09
+     ],
+     [
+      0.9,
+      8.0,
+      0.5,
+      false,
+      13.92
+     ],
+     [
+      1.0,
+      10.0,
+      2.0,
+      false,
+      57.67
+     ],
+     [
+      0.7,
+      6.0,
+      0.25,
+      true,
+      4.31
+     ],
+     [
+      1.4,
+      6.0,
+      0.25,
+      false,
+      13.73
+     ],
+     [
+      1.3,
+      8.0,
+      0.75,
+      false,
+      35.41
+     ],
+     [
+      0.6,
+      8.0,
+      1.5,
+      true,
+      11.65
+     ],
+     [
+      0.8,
+      5.0,
+      0.25,
+      false,
+      4.27
+     ],
+     [
+      0.9,
+      5.0,
+      0.25,
+      true,
+      5.17
+     ],
+     [
+      1.0,
+      5.0,
+      0.25,
+      false,
+      6.11
+     ],
+     [
+      1.4,
+      8.0,
+      2.5,
+      false,
+      125.48
+     ],
+     [
+      1.5,
+      8.0,
+      2.5,
+      true,
+      144.7
+     ],
+     [
+      0.9,
+      6.0,
+      0.5,
+      false,
+      9.68
+     ],
+     [
+      0.8,
+      8.0,
+      2.5,
+      false,
+      40.13
+     ],
+     [
+      1.3,
+      6.0,
+      0.75,
+      true,
+      26.11
+     ],
+     [
+      1.3,
+      4.0,
+      0.25,
+      true,
+      6.49
+     ],
+     [
+      1.2,
+      6.0,
+      1.0,
+      true,
+      25.94
+     ],
+     [
+      1.5,
+      6.0,
+      1.0,
+      false,
+      41.89
+     ],
+     [
+      1.5,
+      6.0,
+      1.25,
+      true,
+      49.08
+     ],
+     [
+      0.7,
+      5.0,
+      0.5,
+      false,
+      4.67
+     ],
+     [
+      0.8,
+      6.0,
+      1.5,
+      false,
+      15.67
+     ],
+     [
+      1.1,
+      6.0,
+      1.5,
+      true,
+      30.15
+     ],
+     [
+      0.7,
+      5.0,
+      0.75,
+      false,
+      5.88
+     ],
+     [
+      1.0,
+      5.0,
+      0.75,
+      false,
+      12.16
+     ],
+     [
+      1.1,
+      5.0,
+      1.25,
+      false,
+      21.22
+     ],
+     [
+      1.5,
+      5.0,
+      1.5,
+      true,
+      48.2
+     ],
+     [
+      1.1,
+      4.0,
+      0.5,
+      false,
+      8.01
+     ],
+     [
+      1.0,
+      4.0,
+      1.0,
+      true,
+      11.52
+     ],
+     [
+      0.9,
+      4.0,
+      1.5,
+      false,
+      13.31
+     ],
+     [
+      1.1,
+      4.0,
+      2.5,
+      false,
+      38.33
+     ],
+     [
+      1.1,
+      3.0,
+      0.75,
+      true,
+      7.46
+     ],
+     [
+      1.3,
+      3.0,
+      2.0,
+      false,
+      29.78
+     ],
+     [
+      1.0,
+      2.0,
+      2.5,
+      true,
+      15.84
+     ]
+    ]
+   },
+   "units_convention": "",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": ""
+  },
+  {
+   "quantity": "E1d phase_diagnostic",
+   "value": {
+    "n_points": 60,
+    "shifts_per_point": 8,
+    "n_points_outcome_depends_on_phase": 51,
+    "n_always": 8,
+    "n_never": 1,
+    "mean_production_fraction": 0.7666666666666667
+   },
+   "units_convention": "",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": ""
+  },
+  {
+   "quantity": "E1e threshold 2M_kink in quanta",
+   "value": 0.6666666666666667,
+   "units_convention": "N*lambda/m^2 (N = E/m)",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "energy conservation alone: N >= (2/3) m^2/lambda; approached (not attained) by finely tuned time-reversed captures (section 2 row); simple families need 1.24 or more"
+  },
+  {
+   "quantity": "E1e DSV trains, min_E_reproduced_dx0.05",
+   "value": {
+    "N_E_times_lambda_over_m2": 4.780506410531629,
+    "N_lin_times_lambda_over_m2": 3.9277750160215046,
+    "E_over_2M": 7.170759615797444,
+    "omega": 0.95,
+    "v": 0.62
+   },
+   "units_convention": "N*lambda/m^2; phi0^2 = m^2/(2 lambda)",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "OPEN",
+   "source": "",
+   "note": "RECONCILED, superseded: (0.95, 0.62) is not a converged producer. Fourth-order time stepping gives a pair at dx = 0.05 (since t = 230.0) but none at dx = 0.025, dt = 0.01; phi(0,t) of the two separate at t = 168.5, before the pair forms. See 'E1e DSV trains, lowest converged producer'.",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1e DSV trains, min_N_lin_reproduced_dx0.05",
+   "value": {
+    "N_E_times_lambda_over_m2": 4.780506410531629,
+    "N_lin_times_lambda_over_m2": 3.9277750160215046,
+    "E_over_2M": 7.170759615797444,
+    "omega": 0.95,
+    "v": 0.62
+   },
+   "units_convention": "N*lambda/m^2; phi0^2 = m^2/(2 lambda)",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "OPEN",
+   "source": "",
+   "note": "RECONCILED, superseded: (0.95, 0.62) is not a converged producer. Fourth-order time stepping gives a pair at dx = 0.05 (since t = 230.0) but none at dx = 0.025, dt = 0.01; phi(0,t) of the two separate at t = 168.5, before the pair forms. See 'E1e DSV trains, lowest converged producer'.",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1e Gaussian packets, min_E_reproduced at dx=0.05",
+   "value": {
+    "N_E_times_lambda_over_m2": 1.2389199410979685,
+    "N_lin_times_lambda_over_m2": 1.687915041158199,
+    "E_over_2M": 1.8583799116469528,
+    "A": 0.8,
+    "sigma": 2.0,
+    "k": 0.5
+   },
+   "units_convention": "N*lambda/m^2",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "collision needed (the single packet alone makes no pair)"
+  },
+  {
+   "quantity": "E1e Gaussian packets, min_N_lin_reproduced at dx=0.05",
+   "value": {
+    "N_E_times_lambda_over_m2": 1.2389199410979685,
+    "N_lin_times_lambda_over_m2": 1.687915041158199,
+    "E_over_2M": 1.8583799116469528,
+    "A": 0.8,
+    "sigma": 2.0,
+    "k": 0.5
+   },
+   "units_convention": "N*lambda/m^2",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "collision needed (the single packet alone makes no pair)"
+  },
+  {
+   "quantity": "E1e Gaussian packets, raw min_E_any (NOT reproduced at dx=0.05)",
+   "value": {
+    "N_E_times_lambda_over_m2": 1.1948809649482306,
+    "N_lin_times_lambda_over_m2": 2.7174535221551688,
+    "E_over_2M": 1.792321447422346,
+    "A": 1.4,
+    "sigma": 1.0,
+    "k": 0.25
+   },
+   "units_convention": "N*lambda/m^2",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "isolated producing point; see e1d_probe_min.json (dx=0.05 rerun, local grid, phase shifts)"
+  },
+  {
+   "quantity": "E1e Gaussian packets, raw min_N_lin_any (NOT reproduced at dx=0.05)",
+   "value": {
+    "N_E_times_lambda_over_m2": 1.5088990724364941,
+    "N_lin_times_lambda_over_m2": 1.5316143961189836,
+    "E_over_2M": 2.263348608654741,
+    "A": 0.275,
+    "sigma": 16.0,
+    "k": 0.2
+   },
+   "units_convention": "N*lambda/m^2",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "isolated producing point; see e1d_probe_min.json (dx=0.05 rerun, local grid, phase shifts)"
+  },
+  {
+   "quantity": "E1e smallest classical N_lin*lambda/m^2 (producers reproduced at dx=0.05)",
+   "value": 1.687915041158199,
+   "units_convention": "N*lambda/m^2",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "{\"statement\": \"classical production found only for N >= c m^2/lambda (c from producing runs that reproduce at dx = 0.05); c is an upper bound on the true minimum (searched sets only)\", \"c\": 1.687915041158199, \"candidates\": {\"gaussian_reproduced_at_dx0.05\": 1.687915041158199, \"dsv_reproduced_at_dx0.05\": 3.9277750160215046}, \"N_needed_at_lambda_over_m2\": {\"1.0\": 1.687915041158199, \"0.1\": 16.87915041158199, \"0.01\": 168.7915041158199, \"0.001\": 1687.9150411581988}, \"coupling_where_N_equals_2\": 0.8439575205790995, \"coupling_where_N_equals_10\": 0.1687915041158199}; RECONCILED: value unchanged (set by the Gaussian packet A=0.8, sigma=2, k=0.5, reproduced at dx = 0.05 and 0.025 here and in two independent codes); the DSV candidate in this note (3.93) is superseded by the converged DSV producer row (N_lin*lambda/m^2 = 4.14)",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1d no production below E = 2 M_kink, every Gaussian run (pair and single packet, all variants)",
+   "value": 0,
+   "units_convention": "producing runs with own E < 2M_kink, out of 19526 runs",
+   "target": 0,
+   "tolerance": "exact (energy conservation)",
+   "verdict": "CHECK PASSED",
+   "source": "",
+   "note": "lowest producing E/2M: pair runs 1.792, single packets 2.214; verdict word CHECK PASSED (energy-conservation sanity check, not a literature calibration); the seed claim it bears on is the section 2 row",
+   "reconciled": true
+  },
+  {
+   "quantity": "Check: reproducibility and energy conservation",
+   "value": {
+    "reproducibility_gauss_all_agree": true,
+    "reproducibility_kkbar_all_agree": true,
+    "n_gauss_rerun": 12,
+    "n_kkbar_rerun": 6,
+    "energy_drift": {
+     "gauss": 5.623920009106774e-05,
+     "kk": 7.4912169779002686e-06
+    }
+   },
+   "units_convention": "stored calls rerun; max relative energy drift over t = 300 with no absorbing layer (dx = 0.05, dt = 0.02)",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "e1_verify.py"
+  },
+  {
+   "quantity": "Check: single-packet self-folding vs resolution",
+   "value": {
+    "A=0.5,sigma=16.0,k=0.25,single=True": [
+     {
+      "dx": 0.1,
+      "dt": 0.04,
+      "produced": true,
+      "pair_since": 60.000000000000014
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.02,
+      "produced": true,
+      "pair_since": 50.00000000000001
+     },
+     {
+      "dx": 0.025,
+      "dt": 0.01,
+      "produced": true,
+      "pair_since": 50.00000000000001
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.005,
+      "produced": true,
+      "pair_since": 50.00000000000001
+     }
+    ],
+    "A=0.925,sigma=16.0,k=1.0,single=True": [
+     {
+      "dx": 0.1,
+      "dt": 0.04,
+      "produced": true,
+      "pair_since": 10.000000000000002
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.02,
+      "produced": true,
+      "pair_since": 10.000000000000002
+     },
+     {
+      "dx": 0.025,
+      "dt": 0.01,
+      "produced": true,
+      "pair_since": 10.000000000000002
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.005,
+      "produced": true,
+      "pair_since": 10.000000000000002
+     }
+    ],
+    "A=0.3,sigma=16.0,k=0.25,single=True": [
+     {
+      "dx": 0.1,
+      "dt": 0.04,
+      "produced": false,
+      "pair_since": null
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.02,
+      "produced": false,
+      "pair_since": null
+     },
+     {
+      "dx": 0.025,
+      "dt": 0.01,
+      "produced": false,
+      "pair_since": null
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.005,
+      "produced": false,
+      "pair_since": null
+     }
+    ],
+    "A=0.8,sigma=2.0,k=0.5,single=False": [
+     {
+      "dx": 0.1,
+      "dt": 0.04,
+      "produced": true,
+      "pair_since": 40.00000000000001
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.02,
+      "produced": true,
+      "pair_since": 40.00000000000001
+     },
+     {
+      "dx": 0.025,
+      "dt": 0.01,
+      "produced": true,
+      "pair_since": 40.00000000000001
+     },
+     {
+      "dx": 0.05,
+      "dt": 0.005,
+      "produced": true,
+      "pair_since": 40.00000000000001
+     }
+    ]
+   },
+   "units_convention": "production call and time the pair first appears, dx 0.1 to 0.025 and dt 0.04 to 0.005",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "e1_verify.py"
+  },
+  {
+   "quantity": "Check: E1b box size (Lphys, W) = (100, 60), (200, 100) vs (40, 30)",
+   "value": {
+    "reference_box40": {
+     "v_c": 0.26007871093749996,
+     "w1_lo": 0.1925970703125,
+     "w1_hi": 0.20346406250000004
+    },
+    "cases": [
+     {
+      "Lphys": 100.0,
+      "W": 60.0,
+      "transition": "v_c",
+      "v": 0.26007871093749996,
+      "shift_vs_box40": 0.0
+     },
+     {
+      "Lphys": 100.0,
+      "W": 60.0,
+      "transition": "w1_lo",
+      "v": 0.1925970703125,
+      "shift_vs_box40": 0.0
+     },
+     {
+      "Lphys": 100.0,
+      "W": 60.0,
+      "transition": "w1_hi",
+      "v": 0.20346406250000004,
+      "shift_vs_box40": 0.0
+     },
+     {
+      "Lphys": 200.0,
+      "W": 100.0,
+      "transition": "v_c",
+      "v": 0.26007871093749996,
+      "shift_vs_box40": 0.0
+     },
+     {
+      "Lphys": 200.0,
+      "W": 100.0,
+      "transition": "w1_lo",
+      "v": 0.1925970703125,
+      "shift_vs_box40": 0.0
+     },
+     {
+      "Lphys": 200.0,
+      "W": 100.0,
+      "transition": "w1_hi",
+      "v": 0.20346406250000004,
+      "shift_vs_box40": 0.0
+     }
+    ],
+    "max_abs_shift": 0.0
+   },
+   "units_convention": "v at the transition, dx = 0.05, dt = 0.01",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "e1b_boxcheck.py"
+  },
+  {
+   "quantity": "Check: E1d coarse grid with exact one-way initial velocity",
+   "value": {
+    "n_runs": 1485,
+    "n_produced": 572,
+    "n_produced_baseline": 564,
+    "point_agreement_with_baseline": 0.7683501683501683,
+    "any_below_2M": 0,
+    "min_producing": {
+     "A": 0.6,
+     "sigma": 4.0,
+     "k": 0.5,
+     "E_over_2M": 2.7029773646913346,
+     "N_lin": 3.9186432918389564,
+     "single_packet_also": false
+    },
+    "n_single_packet_also": 363,
+    "n_collision_needed": 209,
+    "frac_vs_E": [
+     [
+      0.0,
+      0.5,
+      136,
+      0,
+      0.0
+     ],
+     [
+      0.5,
+      1.0,
+      76,
+      0,
+      0.0
+     ],
+     [
+      1.0,
+      1.5,
+      55,
+      0,
+      0.0
+     ],
+     [
+      1.5,
+      2.0,
+      53,
+      0,
+      0.0
+     ],
+     [
+      2.0,
+      3.0,
+      88,
+      3,
+      0.03409090909090909
+     ],
+     [
+      3.0,
+      4.0,
+      72,
+      5,
+      0.06944444444444445
+     ],
+     [
+      4.0,
+      6.0,
+      129,
+      28,
+      0.21705426356589147
+     ],
+     [
+      6.0,
+      8.0,
+      103,
+      49,
+      0.47572815533980584
+     ],
+     [
+      8.0,
+      12.0,
+      136,
+      73,
+      0.5367647058823529
+     ],
+     [
+      12.0,
+      16.0,
+      95,
+      50,
+      0.5263157894736842
+     ],
+     [
+      16.0,
+      24.0,
+      129,
+      75,
+      0.5813953488372093
+     ],
+     [
+      24.0,
+      32.0,
+      89,
+      59,
+      0.6629213483146067
+     ],
+     [
+      32.0,
+      64.0,
+      178,
+      122,
+      0.6853932584269663
+     ],
+     [
+      64.0,
+      1000000000.0,
+      146,
+      108,
+      0.7397260273972602
+     ]
+    ],
+    "regions_6conn": {
+     "n": 5,
+     "sizes": [
+      565,
+      4,
+      1,
+      1,
+      1
+     ]
+    },
+    "tests": {
+     "speed": {
+      "verdict": "CONFIRMED",
+      "spearman_by_band": [
+       [
+        -0.7822165589515727,
+        0.012732203687083596
+       ],
+       [
+        -0.8645309671165333,
+        0.002632371844833842
+       ],
+       [
+        -0.8833333333333333,
+        0.0015905004234978695
+       ]
+      ]
+     },
+     "speed_collision_needed": {
+      "verdict": "NOT_SUPPORTED",
+      "spearman_by_band": [
+       [
+        -0.7822165589515727,
+        0.012732203687083596
+       ],
+       [
+        -0.6611119160302902,
+        0.052514014075065625
+       ],
+       [
+        -0.03333333333333333,
+        0.9321567355405039
+       ]
+      ]
+     },
+     "width": {
+      "verdict": "NOT_SUPPORTED",
+      "spearman_by_band": [
+       [
+        0.0,
+        1.0
+       ],
+       [
+        -0.41457966329616674,
+        0.20487715111917154
+       ],
+       [
+        0.25512594664379495,
+        0.44896812615545134
+       ]
+      ]
+     },
+     "width_collision_needed": {
+      "verdict": "NOT_SUPPORTED",
+      "spearman_by_band": [
+       [
+        0.0,
+        1.0
+       ],
+       [
+        -0.7699336604071668,
+        0.005574581301564028
+       ],
+       [
+        -0.1735177906913448,
+        0.6098878360084031
+       ]
+      ]
+     }
+    }
+   },
+   "units_convention": "same grid and rules as e1d_coarse.json; phi_t from the free dispersion per Fourier component",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "e1d_extra.py coarse_oneway / single_oneway"
+  },
+  {
+   "quantity": "Check: E1d k = 1 slice at dx = 0.05 vs dx = 0.1",
+   "value": {
+    "point_agreement": 0.8302111210228962,
+    "ragged_verdict_dx0.1": "CONFIRMED",
+    "ragged_verdict_dx0.05": "CONFIRMED",
+    "block4x4_fraction_mean_abs_diff": 0.05931122448979592,
+    "block4x4_fraction_corr": 0.9492260593696216,
+    "ragged_verdict_dx0.05_collision_needed": "CONFIRMED",
+    "dx0.05_n_single_also": 728,
+    "dx0.1_collision_needed_n": 439,
+    "dx0.1_n_single_also": 723,
+    "single_also_point_agreement": 0.8754088611358906,
+    "dx0.1": {
+     "n_produced": 1162,
+     "regions_4conn": 48,
+     "singletons_4conn": 26,
+     "regions_ge3": 13,
+     "region_sizes_top5": [
+      1031,
+      30,
+      11,
+      7,
+      6
+     ],
+     "enclosed_holes": 141,
+     "A_lines_with_production": 53,
+     "A_lines_non_monotonic": 48,
+     "frac_non_monotonic": 0.9056603773584906,
+     "mean_switches_on_producing_lines": 13.30188679245283
+    },
+    "dx0.05": {
+     "n_produced": 1193,
+     "regions_4conn": 40,
+     "singletons_4conn": 26,
+     "regions_ge3": 8,
+     "region_sizes_top5": [
+      1110,
+      12,
+      10,
+      6,
+      6
+     ],
+     "enclosed_holes": 153,
+     "A_lines_with_production": 53,
+     "A_lines_non_monotonic": 49,
+     "frac_non_monotonic": 0.9245283018867925,
+     "mean_switches_on_producing_lines": 12.849056603773585
+    }
+   },
+   "units_convention": "regions, holes, switches along A; same definitions as analyze_e1d.py",
+   "target": "ragged test as in analyze_e1d.py",
+   "tolerance": "operational",
+   "verdict": "CHECK PASSED",
+   "source": "",
+   "note": "e1d_extra.py slice_dx05 / slice_dx05_single",
+   "reconciled": true
+  },
+  {
+   "quantity": "Check: point-level convergence ladder (E1d)",
+   "value": {
+    "n_points": 32,
+    "n_changed_0.1_vs_0.05": 24,
+    "agree_0.1_0.05": 0.25,
+    "agree_0.05_0.025": 0.71875,
+    "agree_0.025_0.0125": 0.71875,
+    "agree_0.05_0.0125": 0.6875,
+    "changed_0.1_vs_0.05": {
+     "n": 24,
+     "agree_0.05_0.025": 0.625,
+     "agree_0.025_0.0125": 0.625,
+     "producing_fraction_by_dx": {
+      "dx0.1": 0.4166666666666667,
+      "dx0.05": 0.5833333333333334,
+      "dx0.025": 0.5416666666666666,
+      "dx0.0125": 0.5833333333333334
+     }
+    },
+    "unchanged_0.1_vs_0.05": {
+     "n": 8,
+     "agree_0.05_0.025": 1.0,
+     "agree_0.025_0.0125": 1.0,
+     "producing_fraction_by_dx": {
+      "dx0.1": 0.125,
+      "dx0.05": 0.125,
+      "dx0.025": 0.125,
+      "dx0.0125": 0.125
+     }
+    }
+   },
+   "units_convention": "agreement of production calls between resolutions (dt = 0.4 dx)",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "",
+   "note": "e1d_dxladder.py; 24 points whose call changed between dx 0.1 and 0.05, plus 8 that did not"
+  },
+  {
+   "quantity": "E1e Gaussian packets, exact one-way family: lowest producer reproduced at dx = 0.05 and 0.025",
+   "value": {
+    "N_E_times_lambda_over_m2": 1.801984909794223,
+    "N_lin_times_lambda_over_m2": 1.9593216459194782,
+    "E_over_2M": 2.7029773646913346,
+    "A": 0.6,
+    "sigma": 4.0,
+    "k": 0.5
+   },
+   "units_convention": "N*lambda/m^2 (N = E/m = (2/3) E/2M in these units)",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "",
+   "note": "coarse grid only (no local refinement)"
+  },
+  {
+   "quantity": "E1c omega = 0.99 column, fourth-order convergence ladder (reconciliation)",
+   "value": {
+    "0.380": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.390": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.400": {
+     "class": "resolution-sensitive",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.005,
+       true,
+       610.0
+      ],
+      [
+       0.025,
+       0.01,
+       true,
+       630.0
+      ],
+      [
+       0.05,
+       0.01,
+       true,
+       640.0
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.405": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.406": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.407": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       true,
+       640.0
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.408": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.409": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.410": {
+     "class": "converged producer",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.0125,
+       0.005,
+       true,
+       590.0
+      ],
+      [
+       0.025,
+       0.005,
+       true,
+       590.0
+      ],
+      [
+       0.025,
+       0.01,
+       true,
+       590.0
+      ],
+      [
+       0.05,
+       0.01,
+       true,
+       590.0
+      ],
+      [
+       0.05,
+       0.02,
+       true,
+       590.0
+      ]
+     ],
+     "original_map_call": true
+    },
+    "0.411": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       true,
+       500.0
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.412": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.413": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.414": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.415": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.420": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.005,
+       false,
+       null
+      ],
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.425": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.426": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.427": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.428": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.429": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.430": {
+     "class": "resolution-sensitive",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.0125,
+       0.005,
+       true,
+       870.0
+      ],
+      [
+       0.025,
+       0.005,
+       false,
+       null
+      ],
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": true
+    },
+    "0.431": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.432": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.433": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.434": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.435": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": null
+    },
+    "0.440": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.450": {
+     "class": "no pair at any resolution",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.025,
+       0.01,
+       false,
+       null
+      ],
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.460": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.470": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.480": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.490": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    },
+    "0.500": {
+     "class": "single resolution only",
+     "calls_(dx,dt,pair_at_T,since)": [
+      [
+       0.05,
+       0.02,
+       false,
+       null
+      ]
+     ],
+     "original_map_call": false
+    }
+   },
+   "units_convention": "DSV criterion; y4 = Yoshida 4th-order composition of the original velocity-Verlet step; converged = same call at >= 2 (dx, dt) settings",
+   "target": "DSV Fig. 2: omega = 0.99 produces at v = 0.43 (read)",
+   "tolerance": "qualitative",
+   "verdict": "NO_TARGET",
+   "source": "e1c_reconcile.py, e1c_reconcile_analysis.json",
+   "note": "converged producer(s): [0.41]; resolution-sensitive: [0.4, 0.43]; single-resolution producers (neighbourhood ensemble): [0.407, 0.411]; every other v in 0.38-0.50 makes no pair. Production at omega = 0.99 is a sparse, fractured set near v ~ 0.40-0.41 (3 of 11 initial data in the 0.41 cell, 0 of 11 in the 0.43 cell at y4 dx 0.05); DSV's omega = 0.99 production near v ~ 0.4 is reproduced, 0.02 below their sampled point",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1c map vs DSV Fig. 2, point by point (reconciliation)",
+   "value": {
+    "n_dsv_producing": 81,
+    "n_ours_producing": 80,
+    "hits": 58,
+    "false_positives": 22,
+    "missed": 23,
+    "jaccard": 0.5631067961165048,
+    "ours_within_0.01_of_dsv": 71
+   },
+   "units_convention": "omega 0.90-0.99 x v 0.40-0.90 (step 0.01); original map dx = 0.1, dt = 0.04; DSV Fig. 2 digitised from the arXiv PDF (dsv_fig2_reading.json)",
+   "target": "none",
+   "tolerance": "none",
+   "verdict": "NO_TARGET",
+   "source": "e1c_reconcile_analysis.py",
+   "note": "replaces the report's 'band by band' wording: band locations agree, individual points often do not (cross-check, v step 0.02: 14 of 22 hits, 7 false positives); point calls at dx = 0.1 are not converged (5 of the 14 lowest-energy producers of the original map are not reproduced with fourth-order stepping: 4 make no pair at dx = 0.05, and (0.95, 0.62) makes one at dx = 0.05 but not at 0.025)",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1d speed dependence at fixed amplitude, stored coarse grid (reconciliation)",
+   "value": {
+    "stratified_permutation_tests": {
+     "baseline": {
+      "all__fixed_A": {
+       "n_informative_strata": 12,
+       "mean_vg_shift_of_producers": 0.00864665574447933,
+       "p_two_sided": 0.1968401579921004,
+       "p_slower_produces_more": 0.9033548322583871
+      },
+      "all__fixed_A_sigma": {
+       "n_informative_strata": 103,
+       "mean_vg_shift_of_producers": 0.014357561350355234,
+       "p_two_sided": 0.029248537573121344,
+       "p_slower_produces_more": 0.9851507424628768
+      },
+      "collision_needed__fixed_A": {
+       "n_informative_strata": 12,
+       "mean_vg_shift_of_producers": -0.008141732455562609,
+       "p_two_sided": 0.5829708514574271,
+       "p_slower_produces_more": 0.29538523073846307
+      },
+      "collision_needed__fixed_A_sigma": {
+       "n_informative_strata": 89,
+       "mean_vg_shift_of_producers": -0.0002867484725033741,
+       "p_two_sided": 0.9851007449627519,
+       "p_slower_produces_more": 0.5012749362531873
+      }
+     },
+     "oneway": {
+      "all__fixed_A": {
+       "n_informative_strata": 12,
+       "mean_vg_shift_of_producers": 0.0034301261071854033,
+       "p_two_sided": 0.6055197240137993,
+       "p_slower_produces_more": 0.6981650917454127
+      },
+      "all__fixed_A_sigma": {
+       "n_informative_strata": 103,
+       "mean_vg_shift_of_producers": 0.004499950259553433,
+       "p_two_sided": 0.4833758312084396,
+       "p_slower_produces_more": 0.7574121293935303
+      },
+      "collision_needed__fixed_A": {
+       "n_informative_strata": 12,
+       "mean_vg_shift_of_producers": -0.022283295309614776,
+       "p_two_sided": 0.13079346032698366,
+       "p_slower_produces_more": 0.06634668266586671
+      },
+      "collision_needed__fixed_A_sigma": {
+       "n_informative_strata": 91,
+       "mean_vg_shift_of_producers": -0.02068939654818904,
+       "p_two_sided": 0.1399430028498575,
+       "p_slower_produces_more": 0.07139643017849108
+      }
+     }
+    },
+    "logit_vg_(coef,z)_given_logA_logsigma": {
+     "baseline": {
+      "all": [
+       0.56,
+       1.9
+      ],
+      "collision_needed": [
+       -0.18,
+       -0.6
+      ]
+     },
+     "oneway": {
+      "all": [
+       0.16,
+       0.6
+      ],
+      "collision_needed": [
+       -0.53,
+       -1.7
+      ]
+     }
+    },
+    "logit_vg_(coef,z)_given_logA_logE": {
+     "baseline": {
+      "all": [
+       -2.38,
+       -6.7
+      ],
+      "collision_needed": [
+       -0.6,
+       -1.5
+      ]
+     },
+     "oneway": {
+      "all": [
+       -1.99,
+       -5.9
+      ],
+      "collision_needed": [
+       -0.55,
+       -1.5
+      ]
+     }
+    },
+    "deviance_(A,sigma,vg)_vs_(A,E,vg)": {
+     "baseline": [
+      1283.7,
+      1299.2
+     ],
+     "oneway": [
+      1326.2,
+      1351.5
+     ]
+    }
+   },
+   "units_convention": "coarse grid, runs with E > 2M; strata = fixed A or fixed (A, sigma); 20000 within-stratum permutations; mean_vg_shift < 0 means producers are slower than their stratum",
+   "target": "slower produces more (PLAN E1d)",
+   "tolerance": "p < 0.05",
+   "verdict": "REFUTED",
+   "source": "e1d_confound.py",
+   "note": "no slow preference once amplitude (and width) are fixed; the one nominally significant stratified result (baseline, fixed (A, sigma), p2 = 0.03) has faster packets producing more. At fixed (A, E) slower packets do produce more, but there a slower packet is wider, and the (A, sigma, v_g) description fits better than (A, E, v_g) (lower deviance, same parameter count)",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1d speed dependence at fixed packet shape, phase-averaged (decisive test, reconciliation)",
+   "value": {
+    "baseline_dx0.1": {
+     "all": {
+      "n_informative_shapes": 14,
+      "n_runs_informative": 1008,
+      "n_producing": 546,
+      "vg_coef": 1.362667585816981,
+      "vg_se": 0.2852985731320103,
+      "vg_ci95": [
+       0.8034823824782409,
+       1.921852789155721
+      ],
+      "p_wald": 1.785623704453343e-06,
+      "perm_p_two_sided": 4.999750012499375e-05,
+      "perm_p_slower_produces_more": 1.0,
+      "P_vs_vg_pooled": {
+       "0.1741": 0.2986111111111111,
+       "0.3333": 0.375,
+       "0.4685": 0.4375,
+       "0.5774": 0.3055555555555556,
+       "0.6623": 0.4861111111111111,
+       "0.7276": 0.4513888888888889,
+       "0.8165": 0.4583333333333333,
+       "0.8704": 0.5069444444444444,
+       "0.9045": 0.4722222222222222
+      }
+     },
+     "non_self_folding_packets": {
+      "n_informative_shapes": 12,
+      "n_runs_informative": 576,
+      "n_producing": 266,
+      "vg_coef": 1.3161860636433917,
+      "vg_se": 0.40107832946554045,
+      "vg_ci95": [
+       0.5300725378909324,
+       2.102299589395851
+      ],
+      "p_wald": 0.0010321314753345412,
+      "perm_p_two_sided": 0.0010499475026248687,
+      "perm_p_slower_produces_more": 0.9992500374981251,
+      "P_vs_vg_pooled": {
+       "0.1741": 0.275,
+       "0.3333": 0.25,
+       "0.4685": 0.3173076923076923,
+       "0.5774": 0.23333333333333334,
+       "0.6623": 0.3125,
+       "0.7276": 0.38461538461538464,
+       "0.8165": 0.2222222222222222,
+       "0.8704": 0.45,
+       "0.9045": 0.325
+      }
+     }
+    },
+    "oneway_dx0.1": {
+     "all": {
+      "n_informative_shapes": 16,
+      "n_runs_informative": 1152,
+      "n_producing": 547,
+      "vg_coef": 0.6151917017972112,
+      "vg_se": 0.2764585129820948,
+      "vg_ci95": [
+       0.07333301635230538,
+       1.157050387242117
+      ],
+      "p_wald": 0.026063878542018415,
+      "perm_p_two_sided": 0.02919854007299635,
+      "perm_p_slower_produces_more": 0.9858007099645018,
+      "P_vs_vg_pooled": {
+       "0.1741": 0.3541666666666667,
+       "0.3333": 0.4513888888888889,
+       "0.4685": 0.4236111111111111,
+       "0.5774": 0.3958333333333333,
+       "0.6623": 0.3333333333333333,
+       "0.7276": 0.4305555555555556,
+       "0.8165": 0.4305555555555556,
+       "0.8704": 0.5347222222222222,
+       "0.9045": 0.4444444444444444
+      }
+     },
+     "non_self_folding_packets": {
+      "n_informative_shapes": 15,
+      "n_runs_informative": 664,
+      "n_producing": 238,
+      "vg_coef": 0.7122537438458273,
+      "vg_se": 0.48715635954309106,
+      "vg_ci95": [
+       -0.24257272085863113,
+       1.6670802085502858
+      ],
+      "p_wald": 0.1437236905903878,
+      "perm_p_two_sided": 0.14834258287085647,
+      "perm_p_slower_produces_more": 0.9260036998150093,
+      "P_vs_vg_pooled": {
+       "0.1741": 0.225,
+       "0.3333": 0.32954545454545453,
+       "0.4685": 0.3645833333333333,
+       "0.5774": 0.30833333333333335,
+       "0.6623": 0.1875,
+       "0.7276": 0.34615384615384615,
+       "0.8165": 0.2,
+       "0.8704": 0.45,
+       "0.9045": 0.203125
+      }
+     }
+    },
+    "baseline_dx0.05": {
+     "all": {
+      "n_informative_shapes": 6,
+      "n_runs_informative": 432,
+      "n_producing": 203,
+      "vg_coef": 1.3540177915717935,
+      "vg_se": 0.46631212439906616,
+      "vg_ci95": [
+       0.44004602774962376,
+       2.2679895553939633
+      ],
+      "p_wald": 0.0036881348306778694,
+      "perm_p_two_sided": 0.003649817509124544,
+      "perm_p_slower_produces_more": 0.9982500874956253,
+      "P_vs_vg_pooled": {
+       "0.1741": 0.2916666666666667,
+       "0.3333": 0.3958333333333333,
+       "0.4685": 0.5416666666666666,
+       "0.5774": 0.5416666666666666,
+       "0.6623": 0.4583333333333333,
+       "0.7276": 0.3958333333333333,
+       "0.8165": 0.375,
+       "0.8704": 0.7291666666666666,
+       "0.9045": 0.5
+      }
+     },
+     "non_self_folding_packets": {
+      "n_informative_shapes": 6,
+      "n_runs_informative": 312,
+      "n_producing": 115,
+      "vg_coef": 0.8385669064036573,
+      "vg_se": 0.5912186656950489,
+      "vg_ci95": [
+       -0.3202216783586386,
+       1.997355491165953
+      ],
+      "p_wald": 0.15608272630733078,
+      "perm_p_two_sided": 0.15634218289085547,
+      "perm_p_slower_produces_more": 0.9246037698115094,
+      "P_vs_vg_pooled": {
+       "0.1741": 0.2916666666666667,
+       "0.3333": 0.40625,
+       "0.4685": 0.34375,
+       "0.5774": 0.475,
+       "0.6623": 0.375,
+       "0.7276": 0.325,
+       "0.8165": 0.08333333333333333,
+       "0.8704": 0.625,
+       "0.9045": 0.3333333333333333
+      }
+     }
+    }
+   },
+   "units_convention": "production probability over 8 collision phases; logistic slope on v_g with one intercept per (A, sigma); positive = faster produces more",
+   "target": "slower produces more (PLAN E1d)",
+   "tolerance": "pre-set decision rule (e1d_speedtest.py docstring)",
+   "verdict": "REFUTED",
+   "source": "e1d_speedtest.py, e1d_speedtest.json",
+   "note": "fixed-shape test (e1d_speedtest.py): 6 A x 3 sigma x 9 k x 8 collision phases, both phi_t forms: logistic v_g coefficient with one intercept per (A, sigma), 95% CI, positive = faster produces more: all production +1.36 [+0.80, +1.92] baseline, +0.62 [+0.07, +1.16] one-way; packets that do not self-fold +1.32 [+0.53, +2.10] / +0.71 [-0.24, +1.67]; pre-set rule: a speed effect would need CI < 0 in both forms, 'not a speed effect' if both CIs exclude -1.19 (half the matched-energy coefficient -2.38); outcome: all production 'not a speed effect', non-self-folding 'not a speed effect'; resolution check (baseline, sigma = 4, dx 0.1 vs 0.05): {'n_common_runs': 432, 'call_agreement': 0.8009259259259259, 'phase_avg_prob_corr': 0.8911418379738474, 'phase_avg_prob_mean_abs_diff': 0.10185185185185185}",
+   "reconciled": true
+  },
+  {
+   "quantity": "E1e DSV trains, lowest converged producer (reconciliation)",
+   "value": {
+    "omega": 0.94,
+    "v": 0.67,
+    "E_over_2M": 7.805426552185633,
+    "N_E_times_lambda_over_m2": 5.203617701457089,
+    "N_lin_times_lambda_over_m2": 4.137234334766784
+   },
+   "units_convention": "N*lambda/m^2; phi0^2 = m^2/(2 lambda); N_lin from the dx = 0.1 initial data as in e1e_quanta.py",
+   "target": "N ~ 1/lambda (scaling)",
+   "tolerance": "none",
+   "verdict": "QUANTIFIED",
+   "source": "e1c_reconcile.py, e1c_reconcile_analysis.py",
+   "note": "pair at T with y4 at (0.05, 0.02) and (0.025, 0.01), and phi(0,t) of the two agree (to 0.1) until the pair has formed; the 14 lowest-energy producers of the original map were checked in order of E, 11 reached the dx = 0.025 check and 8 passed; upper bound within the DSV family",
+   "reconciled": true
+  },
+  {
+   "quantity": "Seed section 2: pair-free data producing a pair at E -> 2M (time reversal; reconciliation)",
+   "value": [
+    {
+     "v": 0.1,
+     "Tf": 2341.0,
+     "E_over_2M": 1.0049605683326337,
+     "max_phi_initial": -0.4467565735502497,
+     "energy_fraction_in_|x|<50": 0.6996033630809856,
+     "pair_after_reversal_dt_dt/2_dt/4": [
+      1,
+      0,
+      0
+     ],
+     "fine_tuning_probes": [
+      [
+       "radiation beyond |x| > 1756 removed",
+       0
+      ],
+      [
+       "radiation beyond |x| > 1170 removed",
+       0
+      ],
+      [
+       "radiation beyond |x| > 585 removed",
+       0
+      ],
+      [
+       "white noise of amplitude 1e-08 added to phi for |x| < 50",
+       0
+      ],
+      [
+       "white noise of amplitude 1e-05 added to phi for |x| < 50",
+       0
+      ],
+      [
+       "white noise of amplitude 0.001 added to phi for |x| < 50",
+       0
+      ]
+     ]
+    },
+    {
+     "v": 0.05,
+     "Tf": 2186.0,
+     "E_over_2M": 1.0011973815899071,
+     "max_phi_initial": -0.11784812115972661,
+     "energy_fraction_in_|x|<50": 0.7081450791454074,
+     "pair_after_reversal_dt_dt/2_dt/4": [
+      1,
+      0,
+      0
+     ],
+     "fine_tuning_probes": [
+      [
+       "radiation beyond |x| > 1640 removed",
+       0
+      ],
+      [
+       "radiation beyond |x| > 1093 removed",
+       0
+      ],
+      [
+       "radiation beyond |x| > 546 removed",
+       0
+      ],
+      [
+       "white noise of amplitude 1e-08 added to phi for |x| < 50",
+       0
+      ],
+      [
+       "white noise of amplitude 1e-05 added to phi for |x| < 50",
+       0
+      ],
+      [
+       "white noise of amplitude 0.001 added to phi for |x| < 50",
+       0
+      ]
+     ]
+    }
+   ],
+   "units_convention": "kk_initial(v, x0=10) evolved to Tf (bound state no longer reaches phi = 0 for 100 time units), velocities reversed, evolved Tf again; no absorbing layer; dx = 0.1, dt = 0.04",
+   "target": "classical infimum of the production energy = 2M (time-reversal argument; DSV 2008 p. 1)",
+   "tolerance": "qualitative",
+   "verdict": "CONFIRMED",
+   "source": "e1_timereversal.py",
+   "note": "initial data with phi < 0 everywhere (no kink: a decayed bion holding ~70% of the energy plus inward radiation) and E = 1.0012-1.005 x 2M make an outgoing pair under the exact inverse of the forward lattice map (same dt); with dt/2 or dt/4, with the far radiation truncated, or with noise of amplitude 1e-8 added in |x| < 50, no pair forms. Existence follows from time-reversal invariance of the field equation (the lattice run demonstrates it for the discrete map); the probes show the data are tuned beyond 1e-8, i.e. production near 2M is non-generic. Simple packet families start producing far above 2M",
+   "reconciled": true
+  }
+ ],
+ "seed_claims": [
+  {
+   "seed_section": "\u00a72",
+   "claim": "A fold appears only with an antifold, so the threshold is twice the lightest fold's energy.",
+   "verdict": "CONFIRMED",
+   "evidence": "Floor: no producing run below 2M_kink in any Gaussian run (19,526: pair and single packet, both phi_t forms, all resolutions) or DSV run, in the original and in both independent codes; every production event is a kink-antikink pair. Infimum: 2M is also the classical infimum over all initial data. Reversing a slow captured kink-antikink pair gives kink-free data (phi < 0 everywhere) with E = 1.0012 x 2M that make an outgoing pair (v = 0.05; e1_timereversal.json; DSV 2008 p. 1 describe the same construction), and E -> 2M as v -> 0. Such data are extremely finely tuned: in the lattice demonstration the pair re-forms only under the exact inverse of the forward map, and noise of amplitude 1e-8, a halved time step or truncating the far radiation each destroy it. Onset in the scanned families: simple packets start producing well above 2M (lowest resolution-checked producers 1.86 x 2M for narrow-band packets, 2.70 x 2M for exact one-way packets, 7.81 x 2M for DSV trains); these are family-specific upper bounds on where production starts, not a property of classical fields in general. (Reconciled: was AMENDED on the rationale that a classical field always needs extra energy; that holds only for the scanned families.)"
+  },
+  {
+   "seed_section": "\u00a74",
+   "claim": "A small, spread-out packet is linear and passes through.",
+   "verdict": "CONFIRMED",
+   "evidence": "No coarse run with A <= 0.3 produces, up to E ~ 15 x 2M, in either initial-velocity form; in the slices production starts at A ~ 0.35 (sigma=16) and A ~ 0.45 (k=1). The one exception (A=0.275, sigma=16, k=0.2) is isolated and not reproduced at dx=0.05."
+  },
+  {
+   "seed_section": "\u00a74",
+   "claim": "Pile in enough energy and the nonlinear terms take over: the packet can fold into a fold-antifold pair.",
+   "verdict": "AMENDED",
+   "evidence": "Packets do fold, and a single packet with A >~ 0.4 folds into pairs without any collision (converged in dx and dt). But energy is not the control parameter: at fixed E/2M the producing fraction spans 0 to ~0.8 depending on amplitude, and no energy guarantees production (fraction 0.74-0.75 above 64 x 2M). Mechanism of self-folding: the trough phi = -1 - A has potential energy above the barrier V(0) = 1/4 when A > sqrt2 - 1 = 0.414, so it can swing over the barrier on its own (observed minimum A 0.375-0.425; the packet's kinetic energy lowers it)."
+  },
+  {
+   "seed_section": "\u00a74",
+   "claim": "Colliding trains of small pulses make kink-antikink pairs over a wide range of settings, most easily at low speed (Dutta, Steer & Vachaspati 2008).",
+   "verdict": "AMENDED",
+   "evidence": "Over a wide range of settings: yes. E1c reproduces DSV Fig. 2's producing band and its trend (producing v falls from ~0.73-0.85 at omega = 0.90 to [0.41] at omega = 0.99; Spearman -0.99, cross-check -0.94), pass-through at high v, the hole at (0.91, 0.82) and no production above omega = 0.99. Point by point the original map hits 58 of DSV's 81 producing points with 22 false positives (71 of our 80 producers lie within 0.01 of a DSV point). 'Most easily at low speed' is not what DSV report or what E1c shows: at each omega production is confined to a velocity band with none below it (omega = 0.90: nothing for v < 0.73), slower bands belong to weaker pulses and do not cost less energy (the lowest-energy converged producers sit at v = 0.59-0.79, E ~ 7.8-8.2 x 2M; the omega = 0.99 producer at v = 0.41 has E = 12.3 x 2M). What holds is DSV's own statement: weaker pulses (higher omega) need lower speed, and too-fast trains pass through. DSV's example point (0.99, 0.43) is OPEN: its call is chaotic (a late pair at the finest of five fourth-order settings and at 4 of 11 leapfrog settings; 0 of 11 neighbouring initial data); production at omega = 0.99 is converged at v = 0.41."
+  },
+  {
+   "seed_section": "\u00a74, \u00a77.1",
+   "claim": "The pair-production boundary may be ragged rather than one clean threshold.",
+   "verdict": "CONFIRMED",
+   "evidence": "Robust statements: in both 59 x 57 slices most lines of fixed k or sigma switch between producing and not more than once as A rises (57/57 and 48/53), so there is no single threshold; this holds for collision-needed production alone, at half the grid spacing and time step (k = 1 slice: 49/53), and in the independent code (sigma = 16 lines: same onset A = 0.375 and the same gap at A = 0.45-0.5). The call at a point depends on the collision phase (51 of 60 boundary points flip under a shift of x0 within one carrier period) and, for ~20% of points, on the resolution down to dx = 0.0125; production fractions are stable (4x4-block fractions correlate 0.95 between dx = 0.1 and 0.05). Region, hole and switch counts (e.g. 24 and 48 producing regions, 267 and 141 enclosed holes at dx = 0.1) are illustrative and not converged."
+  },
+  {
+   "seed_section": "PLAN E1d (from \u00a74 via DSV 2008 and Albayrak-Vachaspati 2024)",
+   "claim": "Production favours low speed.",
+   "verdict": "REFUTED",
+   "evidence": "Not as a speed effect. At matched energy slower packets do produce more (Spearman -0.82, -0.87, -0.88 baseline; -0.78 to -0.88 one-way; reproduced by the cross-check), but only because a slow packet of the same energy is taller or wider, and amplitude controls production. Decisive test at fixed packet shape (A, sigma), with production averaged over 8 collision phases (e1d_speedtest.py): 6 A x 3 sigma x 9 k x 8 collision phases, both phi_t forms: logistic v_g coefficient with one intercept per (A, sigma), 95% CI, positive = faster produces more: all production +1.36 [+0.80, +1.92] baseline, +0.62 [+0.07, +1.16] one-way; packets that do not self-fold +1.32 [+0.53, +2.10] / +0.71 [-0.24, +1.67]; pre-set rule: a speed effect would need CI < 0 in both forms, 'not a speed effect' if both CIs exclude -1.19 (half the matched-energy coefficient -2.38); outcome: all production 'not a speed effect', non-self-folding 'not a speed effect'. At fixed shape faster packets produce as much or more (a faster packet of the same shape carries more energy). The stored coarse grid agrees (v_g z = 1.9 baseline, 0.6 one-way given log A and log sigma; collision-needed -0.6 / -1.7). (Reconciled: was 'low speed holds', AMENDED; that did not separate speed from amplitude.)"
+  },
+  {
+   "seed_section": "PLAN E1d (from \u00a74 via DSV 2008 and Albayrak-Vachaspati 2024)",
+   "claim": "Production favours wide packets.",
+   "verdict": "AMENDED",
+   "evidence": "Holds only at fixed amplitude: at matched energy no width preference in any band or form (cross-check FD6 -0.31, +0.12, +0.41, all p > 0.2); at fixed amplitude wider packets produce more (stored grid, P ~ log A + log sigma: log sigma z = 13.4 all production, 2.4 collision-needed), because at fixed A a wider packet carries more energy and more of it exceeds the self-folding threshold. Wide packets do not win at matched energy."
+  },
+  {
+   "seed_section": "\u00a78 / PLAN E1e",
+   "claim": "A classical pair needs N ~ 1/lambda quanta.",
+   "verdict": "QUANTIFIED",
+   "evidence": "Classical dynamics is independent of phi0 (S = phi0^2 S~), so N = E/(hbar m) = (E~/(2 sqrt2)) m^2/lambda. Energy conservation alone gives N >= (2/3) m^2/lambda. The smallest producing initial states that survive resolution checks: narrow-band Gaussian packets (A=0.8, sigma=2, k=0.5; E = 1.86 x 2M) N*lambda/m^2 = 1.24 (N = E/m) or 1.69 (free-field occupation N_lin), reproduced at dx = 0.05 and 0.025 and in two independent codes; exact one-way packets (A=0.6, sigma=4, k=0.5; E = 2.70 x 2M) 1.80 or 1.96. DSV trains: the lowest converged producer is (0.94, 0.67), E = 7.81 x 2M, N*lambda/m^2 = 5.20 (N = E/m) or 4.14 (N_lin); the earlier DSV value 4.78 / 3.93 at (0.95, 0.62) is withdrawn (that train produces at dx = 0.05 but not at dx = 0.025 with fourth-order time stepping). So classical pair-making from these families needs N ~ (1.2-2) m^2/lambda quanta (Gaussian packets): about 120-200 at lambda/m^2 = 0.01. These are upper bounds on the classical minimum over the scanned families; over all initial data the bound is the energy floor 2/3, approached only by finely tuned data (section 2)."
+  },
+  {
+   "seed_section": "\u00a78",
+   "claim": "In weakly coupled theories, folding a few quanta into a pair is exponentially rare.",
+   "verdict": "OPEN",
+   "evidence": "The classical runs show the classical route needs N ~ O(1) m^2/lambda quanta, i.e. many quanta at weak coupling, which is consistent with the claim. The exponential suppression of few-quanta production is a semiclassical/quantum statement (Demidov & Levkov 2011) that E1 does not compute."
+  }
+ ],
+ "details_files": [
+  "e1a_results.json",
+  "e1b_analysis.json",
+  "e1c_analysis.json",
+  "e1d_analysis.json",
+  "e1e_results.json",
+  "e1_extra_analysis.json",
+  "e1d_oneway_min.json",
+  "e1c_reconcile_analysis.json",
+  "e1d_confound.json",
+  "e1d_speedtest.json",
+  "e1_timereversal.json"
+ ],
+ "reconciliation": {
+  "date": "2026-10-19",
+  "files": [
+   "e1c_reconcile.py",
+   "e1c_reconcile.jsonl",
+   "e1c_reconcile_analysis.py",
+   "e1c_reconcile_analysis.json",
+   "dsv_fig2_reading.json",
+   "fig_e1c_reconcile.png",
+   "e1c_example_y4.py",
+   "e1c_example_y4.npz",
+   "fig_e1c_example_y4.png",
+   "e1d_confound.py",
+   "e1d_confound.json",
+   "e1d_speedtest.py",
+   "e1d_speedtest.jsonl",
+   "e1d_speedtest.json",
+   "e1_timereversal.py",
+   "e1_timereversal.json",
+   "reconcile_results.py"
+  ],
+  "summary": "E1c example point (0.99, 0.43): CALIBRATED -> OPEN (chaotic: a pair only at the finest of five fourth-order settings and at 4 of 11 leapfrog settings, decided after the runs' trajectories separate; 0 of 11 neighbouring initial data produce; omega = 0.99 production converged at v = [0.41]). Hole (0.91, 0.82): CALIBRATED after a fourth-order check. Seed section 4 DSV claim CONFIRMED -> AMENDED. PLAN E1d speed preference: CONFIRMED -> REFUTED (amplitude/width confound; decisive fixed-shape test). Width: NOT_SUPPORTED -> AMENDED (holds at fixed amplitude, not at matched energy). Seed section 2: AMENDED -> CONFIRMED (infimum 2M by time reversal, demonstrated on the lattice; family onsets are upper bounds). Sanity-check verdict word CALIBRATED -> CHECK PASSED. Slice counts marked illustrative. v_c offset attributed to the target. Found during reconciliation: the E1e DSV producer (0.95, 0.62) is not converged; replaced by the lowest converged DSV producer.",
+  "speed_verdicts": {
+   "all_production": "REFUTED",
+   "non_self_folding_packets": "REFUTED",
+   "final": "REFUTED"
+  }
+ }
+}

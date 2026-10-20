@@ -1,0 +1,49 @@
+== convergence study (massless) ==
+X=    25 tol=1e-10 nodes=  8436 F'(0)=-1.0037641 C=8.638568 M/(3pi^2)=1.2314457 Lambda=50.97878 K2=25.89679 R2=4.477836 R4=48.35457 D=-17.27718 B=0.999999440 vir=9.5e-09
+X=    50 tol=1e-10 nodes=  7996 F'(0)=-1.0037641 C=8.638578 M/(3pi^2)=1.2314457 Lambda=50.97874 K2=25.89679 R2=4.477836 R4=48.35455 D=-17.27716 B=0.999999991 vir=9.3e-11
+X=   100 tol=1e-08 nodes=  7208 F'(0)=-1.0037641 C=8.638578 M/(3pi^2)=1.2314457 Lambda=50.97874 K2=25.89679 R2=4.477836 R4=48.35455 D=-17.27716 B=1.000000000 vir=1.2e-11
+X=   100 tol=1e-10 nodes=  7622 F'(0)=-1.0037641 C=8.638578 M/(3pi^2)=1.2314457 Lambda=50.97874 K2=25.89679 R2=4.477836 R4=48.35455 D=-17.27716 B=1.000000000 vir=9.2e-12
+X=   200 tol=1e-10 nodes=  4068 F'(0)=-1.0037641 C=8.638578 M/(3pi^2)=1.2314457 Lambda=50.97874 K2=25.89679 R2=4.477836 R4=48.35455 D=-17.27716 B=1.000000000 vir=8.5e-12
+X=   400 tol=1e-10 nodes=  4156 F'(0)=-1.0037641 C=8.638578 M/(3pi^2)=1.2314457 Lambda=50.97874 K2=25.89679 R2=4.477836 R4=48.35455 D=-17.27716 B=1.000000000 vir=8.4e-12
+x0=3e-3 check: F'(0)=-1.0037641 Lambda=50.97874 R2=4.477836
+relative deviation from X=200 reference: X=100-400 Lambda <= 8.9e-10; X=25 Lambda 7.2e-07 C 1.2e-06 B-1 -5.6e-07; X=50 Lambda 2.8e-08 C 1.9e-08 B-1 -8.8e-09
+shooting F'(0) (X=40) = -1.00376411   vs BVP -1.00376411
+derived-density cross-check: {"M_from_derived_energy_density": 36.46164562482896, "M_closed_form": 36.461645624828975, "int_r_g_d3x": 160.15443229734092, "1.5_lambda_tilde": 160.15443229734075, "lambda_from_isospin_charge": 106.76962153156056, "lambda_closed_form": 106.7696215315605, "G_sphere_axial": 18.092595789860876, "pi_over_3_D": -18.092595910410957, "2piC_over_3": 18.09259591606792}
+== ANW parameters F=129, e=5.45 ==
+  F_pi_MeV                 129
+  e                        5.45
+  f_pi_MeV                 64.5
+  M_cl_MeV                 863.04
+  lambda_inv_MeV           195.58
+  I2_inv_MeV               513.35
+  M_N_rotor_MeV            936.38
+  M_Delta_rotor_MeV        1229.8
+  r_I0_fm                  0.59393
+  r2_I0_fm2                0.35275
+  rM_I0_ANW_def_fm         0.92233
+  rM_I0_Sachs_fm           0.71443
+  mu_p                     1.8776
+  mu_n                     -1.323
+  mu_p_over_mu_n           -1.4192
+  mu_isoscalar_p_plus_n    0.55459
+  mu_isovector_p_minus_n   3.2007
+  g_A                      0.60913
+  g_piNN_GT                8.8678
+== own SU(2) fit: F=129.263 MeV e=5.4440 ==
+  M_cl_MeV                 865.75
+  M_N_rotor_MeV            939
+  M_Delta_rotor_MeV        1232
+  r_I0_fm                  0.59338
+  rM_I0_ANW_def_fm         0.92147
+  rM_I0_Sachs_fm           0.71377
+  mu_p                     1.8788
+  mu_n                     -1.326
+  mu_p_over_mu_n           -1.4169
+  g_A                      0.61047
+  g_piNN_GT                8.8693
+== own SU(3) fit to E8=1151.19 E10=1382.11: F=113.755 e=5.2474 f=F/2=56.877; 10bar at 1757.3 ==
+isovector <r^2>(R) [x^2 units]: R=2: 0.552, R=5: 5.388, R=10: 12.709, R=20: 27.338, R=50: 71.251, R=100: 144.443, R=200: 290.828   slope C^2/Lambda = 1.4638
+== massive pions ==
+  AN84_parameters beta=0.2640: M_N=937.3 M_D=1229.6 r0=0.683 rI1=1.040 rp=0.880 <r2>n=-0.308 mu_p=1.972 mu_n=-1.241 gA=0.649 gpiNN=11.29
+  own massive fit: F=108.260 MeV e=4.8421 (AN84 quoted 108, 4.84)
+done in 8.0 s

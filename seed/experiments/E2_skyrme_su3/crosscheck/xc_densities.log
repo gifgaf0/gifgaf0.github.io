@@ -1,0 +1,13 @@
+r=0.35  eps 1.8642042289/1.8642042286  i11 0.1810703943/0.1810703943  i44 0.9667358881/0.9667358881  i88 0.0e+00  off 2.9e-16  Trr 4.106e-01/4.106e-01  Ttt 3.530e-01/3.530e-01
+r=0.90  eps 1.2552927228/1.2552927227  i11 0.7709246460/0.7709246460  i44 0.6899958173/0.6899958172  i88 0.0e+00  off 4.7e-16  Trr 3.110e-01/3.110e-01  Ttt 1.723e-01/1.723e-01
+r=1.60  eps 0.4823106426/0.4823106426  i11 0.8235586922/0.8235586923  i44 0.3181284941/0.3181284941  i88 0.0e+00  off 1.5e-15  Trr 1.368e-01/1.368e-01  Ttt 2.433e-04/2.433e-04
+r=2.70  eps 0.0800077760/0.0800077760  i11 0.2571779188/0.2571779188  i44 0.0737057544/0.0737057544  i88 0.0e+00  off 3.9e-16  Trr 2.700e-02/2.700e-02  Ttt -2.709e-02/-2.709e-02
+r=4.10  eps 0.0113434748/0.0113434748  i11 0.0379474108/0.0379474108  i44 0.0124666507/0.0124666507  i88 0.0e+00  off 5.7e-17  Trr 6.018e-03/6.018e-03  Ttt -7.957e-03/-7.957e-03
+pointwise T_ij vs hedgehog form: max dev 1.1e-10
+CHECK energy density = radial formula (PLAN Lagrangian normalisation)             PASS
+CHECK i_aa (a=1..3) = (1/6)s^2[1+4(F'^2+s^2/x^2)] -> I1 = (2pi/3)Lambda/(e^3F)    PASS
+CHECK i_aa (a=4..7) = (1/8)(1-cosF)(1+F'^2+2s^2/x^2) -> I2 = (pi/2)J2/(e^3F)      PASS
+CHECK i_88 = 0 and off-diagonal i_ab = 0                                          PASS
+CHECK T_rr, T_thth as used for von Laue                                           PASS
+worst relative deviations: {'eps': '1.8e-10', 'i11': '1.2e-10', 'i44': '6.8e-11', 'off': '1.8e-15', 'i88': '0.0e+00', 'Trr': '1.8e-10', 'Ttt': '1.7e-10', 'Tpoint': '1.1e-10'}
+all checks pass: True  runtime 4.2 s

@@ -1,0 +1,38 @@
+{
+ "formula": "Gamma = alpha^2 m^3 N_c^2/(576 pi^3 f^2)",
+ "inputs": {
+  "alpha": 0.0072973525643314245,
+  "m_pi0_MeV": 134.9768277676847,
+  "f_MeV": 92.21,
+  "PrimExII_eV": [
+   7.802,
+   0.117
+  ],
+  "PDG2026": {
+   "tau_s": 8.425512205250367e-17,
+   "tau_err_s": 1.344748885230856e-18,
+   "BR_gg": 0.9882312200541876,
+   "BR_err": 0.000344994511056095,
+   "m_pi0_MeV": 134.9768277676847,
+   "Gamma_gg_eV": 7.720190646880828,
+   "Gamma_gg_err_eV": 0.12324711748671187,
+   "source": "PDG 2026 sqlite (pdg package)"
+  }
+ },
+ "Gamma_Nc3_f92.21_eV": 7.7610891794539905,
+ "Gamma_Nc1_f92.21_eV": 0.8623432421615544,
+ "pull_vs_PrimExII_sigma": -0.349665132871873,
+ "pull_vs_PDG2026_sigma": 0.3318416966431068,
+ "Nc1_pull_vs_PrimExII_sigma": -59.313305622550814,
+ "f_needed_for_PrimExII_central_MeV": 91.96792456913803,
+ "Gamma_at_ANW_f64.5_eV": 15.8620490510968,
+ "ratio_ANW_to_PrimExII": 2.033074730978826,
+ "own_SU2_fit_f_MeV": 64.63134536780908,
+ "Gamma_at_own_SU2_fit_eV": 15.797644088442308,
+ "own_SU3_refit_f_MeV": 56.87744608288381,
+ "Gamma_at_own_SU3_refit_eV": 20.398514566492775,
+ "ratio_SU3_refit_to_PrimExII": 2.614523784477413,
+ "f_source": "hedgehog_results.json",
+ "caveat_Nc": "N_c^2 scaling assumes N_c-independent quark charges (2/3,-1/3). With anomaly-consistent charges Q = diag(1/2+1/2N_c, -1/2+1/2N_c) the amplitude factor N_c Tr(Q^2 tau3) = 1 for every N_c (symbolic check 9f; Baer & Wiese hep-ph/0105258), so pi0 -> gg alone does not count colours.",
+ "pass": true
+}

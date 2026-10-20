@@ -1,0 +1,35 @@
+{
+ "Z3": {
+  "(np.float64(0.0), np.float64(0.5), np.float64(0.5))": [
+   6
+  ],
+  "(np.float64(0.0348), np.float64(0.1667), np.float64(0.7985))": [
+   168
+  ],
+  "(np.float64(0.3333), np.float64(0.3333), np.float64(0.3333))": [
+   12
+  ],
+  "(np.float64(0.1667), np.float64(0.1667), np.float64(0.6667))": [
+   24
+  ]
+ },
+ "Z4": {
+  "(np.float64(0.25), np.float64(0.25), np.float64(0.5))": [
+   24
+  ],
+  "(np.float64(0.0443), np.float64(0.25), np.float64(0.7057))": [
+   168
+  ],
+  "(np.float64(0.0), np.float64(0.0), np.float64(1.0))": [
+   4
+  ],
+  "(np.float64(0.0), np.float64(0.5), np.float64(0.5))": [
+   8
+  ]
+ },
+ "Z7": {
+  "(np.float64(0.1315), np.float64(0.2045), np.float64(0.664))": [
+   168
+  ]
+ }
+}

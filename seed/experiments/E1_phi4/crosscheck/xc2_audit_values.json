@@ -1,0 +1,207 @@
+{
+ "independent_values": [
+  {
+   "quantity": "E1a M_kink",
+   "original": "0.9428090346 (lattice Newton, dx=0.025; rel. err. -7.4e-9)",
+   "recomputed": "0.9428090416 (solve_bvp collocation; rel. err. 3e-15)",
+   "agree": true,
+   "note": "target 2 sqrt2/3 = 0.9428090416"
+  },
+  {
+   "quantity": "E1a omega_s",
+   "original": "1.2247448677 (lattice eigenvalue); time domain within 2.2e-5",
+   "recomputed": "1.2247448717 (Chebyshev N=240, rel. err. 2e-10); time domain 1.224731 (FD6+RK4, -1.2e-05)",
+   "agree": true,
+   "note": "target sqrt(3/2)"
+  },
+  {
+   "quantity": "E1b v_c",
+   "original": "0.26006 +- 0.00003 (dt->0); baseline 0.26016",
+   "recomputed": "0.260066 (Fourier + RK4, dx=0.2, dt=0.04, x0=15, own box); dt=0.02 bracket [0.260060, 0.260066]",
+   "agree": true,
+   "note": "differs from the original dt->0 value by 1e-05; both sit 2.7e-04 above the [summary] target 0.2598 (inside +-0.001)"
+  },
+  {
+   "quantity": "E1b first two-bounce window",
+   "original": "[0.19256, 0.20343] (dt->0); baseline [0.19268, 0.20354]",
+   "recomputed": "[0.192566, 0.203433]",
+   "agree": true,
+   "note": "agrees to 6e-06; Manton et al. 2021 (arXiv:2106.05153v2, read here) quote 0.1920-0.2029"
+  },
+  {
+   "quantity": "E1b windows 2 and 3",
+   "original": "baseline [0.22414, 0.22896], [0.23723, 0.23974]",
+   "recomputed": "[0.224035, 0.228855], [0.237129, 0.239644]",
+   "agree": true,
+   "note": "differences ~1e-4 = the original baseline (dt=0.02 leapfrog) time-step bias; narrowing confirmed"
+  },
+  {
+   "quantity": "E1b T12 per window (resonance check)",
+   "original": "T12 = 17.80, 23.18, 28.52 (slope 5.30)",
+   "recomputed": "T12 = 17.80, 23.16, 28.52",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E1c DSV example (0.99, 0.43)",
+   "original": "pair at T (forms at t=1160 = 0.97T, interval +-22.5 at T), survives to 1.5T",
+   "recomputed": "NO pair at any time up to 1.5T: FD6+RK4 dx=0.08 dt=0.032; spectral (dx0.1_dt0.02: no pair, dx0.05_dt0.02: no pair, dx0.1_dt0.01: no pair)",
+   "agree": false,
+   "note": "original code itself (unmodified copy), 4 of 10 (dx, dt) settings produce: dx=0.1 dt=0.04: pair since t=1160; dx=0.1 dt=0.02: pair since t=780; dx=0.1 dt=0.01: no pair; dx=0.05 dt=0.02: no pair; dx=0.05 dt=0.01: no pair; dx=0.05 dt=0.005: no pair; dx=0.025 dt=0.01: no pair; dx=0.025 dt=0.005: pair since t=840; dx=0.025 dt=0.0025: no pair; dx=0.0125 dt=0.005: pair since t=840. A sensitive point, not a calibration point. DSV Fig. 1 shows the kinks at x = +-140 at t = T."
+  },
+  {
+   "quantity": "E1c neighbouring point (0.99, 0.41)",
+   "original": "pair at T (dx=0.1, dt=0.04; forms t=670)",
+   "recomputed": "spectral: dx0.1_dt0.02: pair since 590.0, dx0.05_dt0.02: pair since 590.0, dx0.1_dt0.01: pair since 590.0",
+   "agree": true,
+   "note": "original code ladder: dx=0.1 dt=0.04: pair since t=670; dx=0.1 dt=0.02: no pair; dx=0.1 dt=0.01: pair since t=610; dx=0.05 dt=0.02: no pair; dx=0.05 dt=0.01: no pair; dx=0.025 dt=0.005: pair since t=590. The finest original setting and the spectral code agree on formation at t = 590: a converged DSV-like producer 0.02 below the DSV example velocity."
+  },
+  {
+   "quantity": "E1c DSV map (6 omegas x v 0.40-0.90 step 0.02)",
+   "original": "21 producing on the common points",
+   "recomputed": "FD6+RK4: 21 producing; 14 in common; call agreement 91.2%",
+   "agree": true,
+   "note": "vs our reading of DSV Fig. 2 (22 producing points on this grid): original 14 hits / 7 false positives, FD6 16 / 5"
+  },
+  {
+   "quantity": "E1c trend (Spearman omega vs median producing v)",
+   "original": "-0.99 (10 omegas)",
+   "recomputed": "-0.94 (6 omegas, FD6)",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E1c pass-through at high v",
+   "original": "0/10 at v=0.90; 2/60 at v>=0.85",
+   "recomputed": "0/18 at v>=0.86 (FD6)",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E1c omega > 0.99",
+   "original": "0/72",
+   "recomputed": "0/6 (omega=0.995, FD6)",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E1c omega = 0.99 column (producing v)",
+   "original": "0.41, 0.43 (dx=0.1, dt=0.04)",
+   "recomputed": "FD6: [0.4] (v step 0.02); spectral: v0.42 dx0.1 dt0.02: none, v0.44 dx0.1 dt0.02: none, v0.41 dx0.1 dt0.02: pair, v0.41 dx0.05 dt0.02: pair, v0.41 dx0.1 dt0.01: pair",
+   "agree": false,
+   "note": "original code, v = 0.38-0.48 step 0.01: dx=0.1 dt=0.04: [0.39, 0.41, 0.43]; dx=0.1 dt=0.02: [0.43]; dx=0.05 dt=0.02: none"
+  },
+  {
+   "quantity": "E1d coarse grid producing count",
+   "original": "564/1485",
+   "recomputed": "587/1485 (FD6+RK4)",
+   "agree": true,
+   "note": "point agreement 83.2% (80.1% at E>2M); both/orig-only/FD6-only = 451/113/136; the original's own dx 0.1 vs 0.05 agreement is 79.7%"
+  },
+  {
+   "quantity": "E1d producing fraction vs E/2M",
+   "original": "0 (<1.5), .03, .08, .11, .18, .45, .53, .59-.60, .69-.70, .75",
+   "recomputed": "1.5-2: 0.02, 2-3: 0.07, 3-4: 0.11, 4-6: 0.23, 6-8: 0.52, 8-12: 0.56, 12-16: 0.62, 16-24: 0.64, 24-32: 0.70, 32-64: 0.69, 64-1e+09: 0.77",
+   "agree": true,
+   "note": "same points, FD6 code; every band within 0.07"
+  },
+  {
+   "quantity": "E1d production below 2M_kink",
+   "original": "0 of 19,526",
+   "recomputed": "0 of 1485 (FD6); 0 in the spectral sample and targets",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E1d producers with A <= 0.3 (coarse)",
+   "original": "0",
+   "recomputed": "0 (FD6)",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E1d random sample, spectral code (one-by-one)",
+   "original": "28 producing of 90",
+   "recomputed": "28 producing; agreement with original 73.3% (E>2M: 72.1%), with FD6 84.4%",
+   "agree": true,
+   "note": "producing counts agree; point calls do not converge (FD6 vs original on the same points 80.0%, all three codes agree on 68.9%; on the 23 sample points the original also ran at dx 0.05, spectral agrees with that run 87% while the original dx 0.1 vs 0.05 agree 78%), consistent with the report's statement that point maps are not converged"
+  },
+  {
+   "quantity": "E1d lowest producer reproduced (0.8, 2, 0.5), baseline phi_t",
+   "original": "E/2M = 1.858, produces at dx 0.1/0.05/0.025, collision needed",
+   "recomputed": "FD6: produces, E/2M = 1.858; spectral dx=0.1: True, dx=0.05: True, E/2M = 1.8584; single packet: False",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E1d raw lowest producer (1.4, 1, 0.25), E/2M = 1.79",
+   "original": "produces at dx=0.1 only (not reproduced)",
+   "recomputed": "FD6: no; spectral dx=0.1: False, dx=0.05: False",
+   "agree": true,
+   "note": "both agree it is not a robust producer"
+  },
+  {
+   "quantity": "E1d one-way phi_t lowest producer (0.6, 4, 0.5)",
+   "original": "E/2M = 2.703, produces (dx 0.1/0.05/0.025); (0.8,2,0.5) one-way: E/2M = 2.90, no pair",
+   "recomputed": "spectral (own one-way construction): E/2M = 2.7030, produces dx=0.1: True, dx=0.05: True; (0.8,2,0.5) one-way: E/2M = 2.902, produces: False",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E1d single-packet self-folding threshold (sigma=16)",
+   "original": "minimum self-folding A 0.375 (sigma=16 slice), 0.425 (k=1 slice)",
+   "recomputed": "spectral single packets (+ = pair): k=0.25: 0.3- 0.35- 0.375- 0.4- 0.425+ 0.45+ 0.5+; k=1: 0.3- 0.35- 0.375- 0.4- 0.425+ 0.45- 0.5-",
+   "agree": true,
+   "note": "local over-barrier estimate: V(-1-A) = V(0) gives A* = sqrt2 - 1 = 0.414"
+  },
+  {
+   "quantity": "E1d sigma=16, k=1 line (59 A values)",
+   "original": "17 switches, onset A = 0.375",
+   "recomputed": "17 switches, onset A = 0.375 (FD6); 80% point agreement",
+   "agree": true,
+   "note": "k=2 line: 9 switches (FD6) vs 17 (orig), same onset 0.375 and same gap at A=0.45-0.5; 81% agreement"
+  },
+  {
+   "quantity": "E1d single-packet controls",
+   "original": "366/564 producing coarse points also self-fold (65%)",
+   "recomputed": "FD6 sample: 57/80 (71%); 87% agreement on 62 common points",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E1d matched-energy speed test (rho by band)",
+   "original": "-0.82, -0.87, -0.88",
+   "recomputed": "-0.82, -0.93, -0.92 (FD6)",
+   "agree": true,
+   "note": "reproduced, but confounded with amplitude (see issues)"
+  },
+  {
+   "quantity": "E1d matched-energy width test (rho by band)",
+   "original": "-0.28, -0.28, -0.21 (p >= 0.40)",
+   "recomputed": "-0.31, 0.12, 0.41 (p = 0.36, 0.73, 0.21; FD6)",
+   "agree": true,
+   "note": "not supported in either code"
+  },
+  {
+   "quantity": "E1e N lambda/m^2 for (0.8, 2, 0.5)",
+   "original": "1.2389 (N=E/m), 1.6879 (N_lin)",
+   "recomputed": "1.2389, 1.6879 (own initial data, continuum dispersion)",
+   "agree": true,
+   "note": "scaling N lambda/m^2 = E~/(2 sqrt2) re-derived; energy floor 2/3 re-derived"
+  },
+  {
+   "quantity": "E1e N lambda/m^2, one-way (0.6, 4, 0.5)",
+   "original": "1.80 (N=E/m), 1.96 (N_lin)",
+   "recomputed": "1.802, 1.959 (spectral, own one-way data)",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E1e N lambda/m^2, DSV (0.95, 0.62)",
+   "original": "4.7805, 3.9278",
+   "recomputed": "4.7805, 3.9278",
+   "agree": true,
+   "note": ""
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+  class A/real     npar_nu=4 rank=4 N_eff=6 dof=1 chi2=0.1395 p=0.7087338018439799 r=33.832 s12=0.3067 s13=0.02195 s23=0.5614 delta=207.3
+  class A/complex  npar_nu=6 rank=5 N_eff=7 dof=0 chi2=5.271e-22 p=None r=33.832 s12=0.3070 s13=0.02195 s23=0.5610 delta=177.0
+  class B/real     npar_nu=4 rank=4 N_eff=6 dof=1 chi2=0.02079 p=0.885340642431775 r=33.832 s12=0.3071 s13=0.02195 s23=0.5586 delta=187.9
+  class B/complex  npar_nu=6 rank=5 N_eff=7 dof=0 chi2=9.949e-23 p=None r=33.832 s12=0.3070 s13=0.02195 s23=0.5610 delta=177.0
+  class C/real     npar_nu=6 rank=4 N_eff=6 dof=1 chi2=0.1395 p=0.7087338018441109 r=33.832 s12=0.3067 s13=0.02195 s23=0.5614 delta=207.3
+  class C/complex  npar_nu=8 rank=5 N_eff=7 dof=0 chi2=5.876e-22 p=None r=33.832 s12=0.3070 s13=0.02195 s23=0.5610 delta=177.0
+PASS real (alpha, beta): class A (phi5=Z3, phi1=P) has N_eff = 6 (dof 1) and fits with p > 0.01
+PASS real (alpha, beta): class B (phi5=P, phi1=Z3) has N_eff = 6 (dof 1) and fits with p > 0.01
+PASS real (alpha, beta): class C (phi5=P, phi1=P) has dof >= 1 and fits with p > 0.01
+PASS complex (alpha, beta) (the original's convention): classes A, B, C have dof = 0 (accommodate only)
+FAIL first-pass numbers reproduced: A/real chi2 ~ 0.395, B/real chi2 ~ 0.444 (within 0.05)
+
+4/5 checks pass

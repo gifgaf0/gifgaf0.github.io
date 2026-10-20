@@ -1,0 +1,20 @@
+=== e3_g2_algebra 06:35:45
+e3_g2_algebra wall 0 s
+=== e3_hedgehog 06:35:45
+e3_hedgehog wall 60 s
+=== e3_inertia 06:36:45
+e3_inertia wall 43 s
+=== e3_g2_reps 06:37:28
+e3_g2_reps wall 2 s
+=== e3_g2_su3_branching 06:37:30
+e3_g2_su3_branching wall 0 s
+=== e3_stability 06:37:30
+e3_stability wall 333 s
+=== e3_stability_refine 06:43:03
+e3_stability_refine wall 227 s
+=== reconcile_stability_r40 06:46:50
+reconcile_stability_r40 wall 201 s
+=== e3_flag 06:50:11
+e3_flag wall 843 s
+=== all done 07:04:15, total wall 1710 s
+exit 0

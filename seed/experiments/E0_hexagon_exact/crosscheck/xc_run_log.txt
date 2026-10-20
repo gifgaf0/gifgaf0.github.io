@@ -1,0 +1,83 @@
+[PASS] A: G^2 = -7 exactly (G = quadratic Gauss sum)
+[PASS] A: numerically G = +i sqrt7 (fixes the sign convention i/sqrt7 = G/7)  -- G ~ 0.000000000000+2.645751311065j
+[PASS] A: b7 = z+z^2+z^4 satisfies 2 b7 + 1 = G, i.e. b7 = (-1 + i sqrt7)/2
+[PASS] A: b7 is not real: b7 - conj(b7) = G != 0
+[PASS] B: Gram(b1,b2) = [[2,-1],[-1,2]]: equal lengths at 120 deg, hexagonal
+[PASS] B: every integer vector with zero sum is c1 b1 + c2 b2 with c1 = v1, c2 = -v3 integers (Lambda = Z^3 ∩ plane)
+[PASS] B: fundamental weights w1, w2 dual to b1, b2 and Gram (1/3)[[2,1],[1,2]] (60 deg): hexagonal weight lattice
+[PASS] B: octet: 6 nonzero weights (roots) of equal length, each with 2 neighbours at 60 deg, 2 at 120 deg, 1 opposite (regular hexagon) + zero weight twice (rank 2)
+[PASS] B: decuplet Sym^3(3): 10 distinct weights of multiplicity 1, triangle with corners 3 mu_i and 4 weights on each side  -- sides [4, 4, 4]
+[PASS] B: the seven points D^j <-> j p are distinct mod Lambda and 7p in Lambda
+[PASS] B: 120 deg turn theta -> roll(theta) sends point 1 to point 4 (x -> 4x)  -- label 4
+[PASS] B: finer lattice Lambda + Z p: minimal norm^2 2/7 attained by exactly 6 vectors  -- min norm^2 2/7, count 6
+[PASS] B: Gram of two shortest vectors at 60 deg = (1/7)[[2,1],[1,2]] (~ (1/7)[[2,-1],[-1,2]]), they span L', index [L':Lambda] = 7  -- covolume ratio 1/7
+[PASS] B: the six neighbours of point 0 carry labels 1..6 (K7)  -- [1, 2, 3, 4, 5, 6]
+[PASS] B: 14 distinct triangles, two families of 7 (classified by orientation class of the 60-deg step pair)  -- family1 [(0, 1, 3), (0, 2, 6), (0, 4, 5), (1, 2, 4), (1, 5, 6), (2, 3, 5), (3, 4, 6)]; family2 [(0, 1, 5), (0, 2, 3), (0, 4, 6), (1, 2, 6), (1, 3, 4), (2, 4, 5), (3, 5, 6)]
+[PASS] B: both families are Fano planes
+[PASS] B: one family is exactly the octonion lines {i,i+1,i+3}; the other is {i,i+2,i+3} (Moebius/Csaszar labelling)  -- octonion lines = family1
+[PASS] B: 21 edges = all pairs (K7), each in exactly 2 triangles
+[PASS] B: every vertex link is a single 6-cycle; with the plane's orientation each directed edge occurs once (orientable)
+[PASS] B: V - E + F = 7 - 21 + 14 = 0  -- 7 - 21 + 14 = 0
+[PASS] B: exhaustive: simple 2-(7,3,2) designs on 7 labels = 120; all are surfaces (6-cycle links), all orientable, all relabellings of ours (unique 7-vertex torus)  -- designs 120, surfaces 120, orientable 120, orbit 120
+[PASS] B: Aut(triangulation) has order 42 = AGL(1,7) and all 42 preserve orientation (chiral)  -- |Aut| 42, orientation-preserving 42
+[PASS] B: (wording audit) 7-vertex triangulated closed surfaces that are NOT tori exist: pentagonal bipyramid (chi 2) and a 7-vertex RP^2 (chi 1, non-orientable)  -- sphere (True, 2), RP2 (True, 1)
+[PASS] B: exactly 30 Fano planes on 7 labels; exactly 2 kept by x -> x+1; they are the two torus families  -- 30 planes, 2 cyclic
+[PASS] B: |Aut(family)| = 168 each; Aut(up) ∩ Aut(down) = {x -> ax+b, a in 1,2,4} (order 21); a in {3,5,6} swaps the families
+[PASS] B: orbit-stabiliser: 7!/|Aut(Fano)| = 5040/168 = 30 agrees with the backtracking count
+[PASS] C: D, Dk, C, R, flip, Rf, LNR A, LNR B are all in SU(3) (exact M M^dagger = 1, det = 1)
+[PASS] C: D^7 = 1, C^3 = 1, R^2 = 1, flip^2 = 1
+[PASS] C: Weyl 3-cycle by conjugation: C^-1 D C = D^4 (the hexagon_check 'turn') and C D C^-1 = D^2
+[PASS] C: |<D,C>| = 21: relations D^7 = C^3 = 1, C^-1 D C = D^4 hold exactly, the presented group has order 21 (Todd-Coxeter), and 21 divides the order (elements of order 7 and 3)  -- Todd-Coxeter index 21
+[PASS] C: LNR relations hold exactly: A^2 = B^3 = (AB)^7 = [A,B]^4 = 1; the presented group has order 168 (Todd-Coxeter); so <A,B> is a non-trivial quotient of the simple group PSL(2,7): order exactly 168  -- Todd-Coxeter index 168
+[PASS] C: LNR's AB = D and LNR's A = Rf (Klein's involution conjugated by the flip)
+[PASS] C: Schreier-Sims on the mod-29 and mod-43 permutation images: |<D,C>| = 21, |<Dk,C,R>| = 168, |<D,C,Rf>| = 168, |<A,B>_LNR| = 168  -- {'F21@29': 21, 'Klein@29': 168, 'flipped@29': 168, 'LNR@29': 168, 'F21@43': 21, 'Klein@43': 168, 'flipped@43': 168, 'LNR@43': 168}
+[PASS] C: LNR's B lies in <D, C, Rf> (mod-29 membership by sifting), and the word found evaluates to B exactly  -- B = word [2, 0] in (D, C, Rf)
+[PASS] C: C is a word in LNR's A, B (found mod 29, verified exactly), so <A,B> = <D, C, Rf>: the flipped copy has order 168 and is LNR's basis  -- C = word [1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1] in (A, B)
+[PASS] C: LNR: tr(A B^2) = b7bar (their class C6(AB^2)) and tr(AB) = b7 (C5(AB))
+[PASS] C: flip Dk flip^-1 = D, flip C flip^-1 = C^-1, flip R flip^-1 = Rf: Klein's copy <Dk,C,R> = flip^-1 <D,C,Rf> flip (same order 168)
+[PASS] C: Klein quartic invariant (exact polynomial identity) under Dk, C, R -- hence under all of Klein's copy
+[PASS] C: mirror quartic xy^3+yz^3+zx^3 invariant under D, C, Rf (and LNR B) -- hence under all of the flipped copy
+[PASS] C: LNR eq. (78) phi1^3 phi3 + phi3^3 phi2 + phi2^3 phi1 is the mirror quartic
+[PASS] C: (attribution audit) LNR's A, which LNR describe as 'reproducing Klein's involution', is Rf, not hexagon_check's R; Rf does not keep x^3y+y^3z+z^3x and R does not keep the mirror quartic
+[PASS] C: D does not preserve the Klein quartic, not even up to a scalar (so D is not in Klein's copy)
+[PASS] C: non-trivial diagonal diag(z^a,z^b,z^c) in SU(3) keeping x^3y+y^3z+z^3x: exactly the 6 powers of Dk = (4,2,1); keeping the mirror quartic: exactly the 6 powers of D = (1,2,4)
+[PASS] C: mod-29 membership test agrees: D is not in Klein's copy, D is in the flipped copy
+[PASS] C: F21 has index 8 and the coset action is faithful (order 168) and 2-transitive -> primitive -> F21 is maximal
+[PASS] C: brute force too: <D, C, g> is the whole group for each of the 147 g outside F21
+[PASS] D: flipped PSL(2,7): classes (size, order, chi) = (1,1,3)(21,2,-1)(56,3,0)(42,4,1)(24,7,b7)(24,7,b7bar); trace constant on every class (all 168 traces exact)  -- [(1, 1, '3'), (21, 2, '-1'), (24, 7, 'b7'), (24, 7, 'b7bar'), (42, 4, '1'), (56, 3, '0')]
+[PASS] D: flipped PSL(2,7) triplet: <chi,chi> = 1, <chi,chibar> = 0, Frobenius-Schur indicator 0 (complex)
+[PASS] D: chi(D) = b7 = (-1+i sqrt7)/2 exactly
+[PASS] D: flipped copy is simple (normal closure of each non-identity class = whole group); simple of order 168 => PSL(2,7)
+[PASS] D: Klein's copy: same class/character data, <chi,chi> = 1, <chi,chibar> = 0, FS = 0  -- [(1, 1, '3'), (21, 2, '-1'), (24, 7, 'b7'), (24, 7, 'b7bar'), (42, 4, '1'), (56, 3, '0')]
+[PASS] D: F21: classes (1,1,3)(7,3,0)(7,3,0)(3,7,b7)(3,7,b7bar); <chi,chi> = 1, <chi,chibar> = 0, FS = 0 (complex)  -- [(1, 1, '3'), (3, 7, 'b7'), (3, 7, 'b7bar'), (7, 3, '0'), (7, 3, '0')]
+[PASS] E: subgroup lattice (all 2-generated subgroups, closed under joins with elements => all subgroups): 179 subgroups in 15 classes  -- 179 subgroups, 15 classes, by order {1: 1, 2: 21, 3: 28, 4: 35, 6: 28, 7: 8, 8: 21, 12: 14, 21: 8, 24: 14, 168: 1}
+[PASS] E: maximal subgroups: 8 x order 21, 7 x order 24, 7 x order 24 (three classes: 7:3, S4, S4 as in ATLAS); F21 = <D,C> is one of the order-21 ones  -- [(21, 8), (24, 7), (24, 7)]
+[PASS] E: the order-21 subgroups form one class and N(F21) = F21
+[PASS] E: (extra) PSL(2,7) acting on each S4 class, labelled so that D is x->x+1 and C is x->2x, is exactly the collineation group of one Fano family; the two classes give the two families  -- ['up', 'down']
+[PASS] F: A5: 5-fold M5 (72 deg about the vertex (0,1,phi)) and 2-fold diag(-1,-1,1) are real orthogonal over Q(sqrt5), generate 60 matrices mapping the 12 icosahedron vertices to themselves  -- |group| 60, ord(M5) 5
+[PASS] F: A5 classes (size, order, chi) = (1,1,3)(15,2,-1)(20,3,0)(12,5,(1+sqrt5)/2)(12,5,(1-sqrt5)/2); trace constant on classes; simple  -- [(1, 1, Fraction(3, 1), Fraction(0, 1)), (12, 5, Fraction(1, 2), Fraction(-1, 2)), (12, 5, Fraction(1, 2), Fraction(1, 2)), (15, 2, Fraction(-1, 1), Fraction(0, 1)), (20, 3, Fraction(0, 1), Fraction(0, 1))]
+[PASS] F: A5 triplet 3: <chi,chi> = 1, FS = +1 (real); Galois-conjugate triplet 3': FS = +1, <chi,chi'> = 0 (inequivalent)
+[PASS] F: remaining two irrep degrees forced: 60 - 1 - 9 - 9 = 41 = 4^2 + 5^2 only, so exactly two triplets, both real  -- [(4, 5)]
+[PASS] G: W(SU(3)): order 6 (integer matrices: keeps Lambda); turns 0/120/240 = x->1x,4x,2x keep both families; 3 mirrors, none keeps the seven points  -- [(0, 'x -> 1x, keeps both families'), (120, 'x -> 4x, keeps both families'), (240, 'x -> 2x, keeps both families')]
+[PASS] G: W(G2): order 12; adds 60/180/300 = x->5x,6x,3x which swap the families; 6 mirrors, none keeps the seven points  -- [(0, 'x -> 1x, keeps both families'), (60, 'x -> 5x, swaps the families'), (120, 'x -> 4x, keeps both families'), (180, 'x -> 6x, swaps the families'), (240, 'x -> 2x, keeps both families'), (300, 'x -> 3x, swaps the families')]
+[PASS] G: W(G2) = W(SU(3)) x {+-1}
+[PASS] G: (extra) each SU(3) mirror maps the seven points of D onto those of diag(z,z^4,z^2)
+[PASS] H: affine G2 Coxeter orders: (s1 s2)^6 = (s2 s0)^3 = (s1 s0)^2 = 1 (triangle group (2,3,6))  -- (6, 3, 2)
+[PASS] H: s1, s2 generate W(G2) (order 12); s_theta in it; s_theta then s0 = translation by theta^vee = theta in Lambda; W-images of theta are the 6 long roots, which span Lambda => W_aff = Lambda ⋊ W(G2)
+[PASS] H: all generators have integer translation parts (W_aff ⊂ Lambda ⋊ W(G2)), so translations = Lambda (hexagonal), point group = W(G2) dihedral of order 12 with a 60 deg turn: wallpaper group p6m
+[PASS] H: G2 rotation centres per cell (exhaustive on the 1/12 grid, which contains all of them): one 6-fold with 6 mirrors (6mm), two 3-fold with 3 mirrors (3m), three 2-fold with 2 mirrors (2mm) -- the p6m pattern 1a, 2b, 3c  -- {'(6, 6)': 1, '(2, 2)': 3, '(3, 3)': 2}
+[PASS] H: SU(3) contrast: three 3-fold centres per cell, each on 3 mirrors (p3m1, not p31m)  -- {'(3, 3)': 3}
+[PASS] H: (extra) elements keeping the seven points: Lambda ⋊ C6 (p6) for G2, Lambda ⋊ C3 (p3) for SU(3); no mirror
+[PASS] H: (extra) no point j p (j=1..6) lies on any affine mirror (alpha,x) = k of either group
+[PASS] I: Fano-table octonions (e_i e_{i+1} = e_{i+3}): associator alternating on all 512 basis triples (alternative algebra)
+[PASS] I: Der(O) has dimension 14 (= dim g2); derivations killing the imaginary unit e_0 form an 8-dim algebra (= dim su(3))  -- dim Der = 14, dim Stab(e) = 8
+[PASS] I: C + C^3 product of the report: N(xy) = N(x)N(y) and x(xy) = (xx)y, (yx)x = y(xx) as symbolic identities in 16 real variables (unital composition algebra of dim 8 => octonions)
+[PASS] I: D, C, Rf, Dk, R, LNR B (on C^3) and complex conjugation kappa are octonion automorphisms (exact, 64 R-basis pairs); the matrices fix (G,0) ~ the imaginary unit, kappa negates it  -- {'D': True, 'C': True, 'Rf': True, 'Dk': True, 'R': True, 'LNR_B': True, 'kappa': True}
+[PASS] I: the flipped copy is closed under complex conjugation: conj(A) = A, conj(B) in the group (word verified exactly), conj(D) = D^-1, conj(C) = C
+[PASS] I: conj(D) = D^6 is NOT conjugate to D in PSL(2,7) (7A <-> 7B): conjugation by kappa is an outer automorphism; <flipped copy, kappa> = PSL(2,7) ⋊ Z2 of order 336 acting faithfully => Aut(PSL(2,7)) = PGL(2,7)
+[PASS] I: kappa maps the first S4 class onto the second (it swaps the two classes of maximal S4)
+[PASS] I: on the labels <D (x->x+1), C (x->2x), kappa (x->-x)> generate AGL(1,7) of order 42 = Aut(triangulation)
+[PASS] J: (extra) of the 48 order-7 torus points, exactly 12 give a hexagonal finer lattice: the two order-7 subgroups of D and of diag(z,z^4,z^2)  -- 12 points, 2 subgroups
+[PASS] K: the 25 lines printed by hexagon_check.py (run now) equal the lines rebuilt from this cross-check's exact values  -- 25 of 25 identical
+
+81 of 81 checks pass; 11.7 s

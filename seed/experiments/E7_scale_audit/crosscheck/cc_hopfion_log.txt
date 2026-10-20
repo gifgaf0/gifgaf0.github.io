@@ -1,0 +1,7 @@
+analytic mapping: E_W = a1/(3pi^2) = 1.2314456974, R_rms = x_E/sqrt2 = 2.06081604, R_ring = x_half/sqrt2 = 1.23929564
+numeric 3D-FD (Nr=300, Nth=48, phi=0.0): E_W = 1.2314456727  E2/E4 = 1.00000002  R_rms = 2.06081599  max||n|-1| = 1.2e-15
+numeric 3D-FD (Nr=300, Nth=48, phi=0.7): E_W = 1.2314456720  E2/E4 = 1.00000002  R_rms = 2.06081605  max||n|-1| = 1.1e-15
+numeric 3D-FD (Nr=500, Nth=64, phi=0.0): E_W = 1.2314456727  E2/E4 = 1.00000002  R_rms = 2.06081608  max||n|-1| = 1.0e-15
+numeric 3D-FD (Nr=500, Nth=64, phi=0.7): E_W = 1.2314456720  E2/E4 = 1.00000002  R_rms = 2.06081605  max||n|-1| = 1.2e-15
+Derrick scan E(lam): {0.95: np.float64(1.233065992494117), 1.0: np.float64(1.2314456726960217), 1.05: np.float64(1.232911682359272)}
+c0_hopf (energy rms) = 566.747 ; c0_hopf (ring) = 340.820

@@ -1,0 +1,105 @@
+{
+ "Mnu_sign_vs_LNR_display": "+",
+ "eigenvalues": [
+  "-1/2",
+  "1",
+  "-9/2"
+ ],
+ "r": "80/3",
+ "masses_beta_m1": [
+  "1/(alpha - 1)",
+  "-1/(2*alpha + 1)",
+  "9/(alpha - 1)"
+ ],
+ "alpha_windows": [
+  [
+   -1.1435,
+   -0.9462
+  ],
+  [
+   -0.2202,
+   -0.1537
+  ]
+ ],
+ "alpha_refit": [
+  -1.0620942749912388,
+  -0.17870395117283167
+ ],
+ "haze": {
+  "pole_sign+1": {
+   "lam": 0.0695437394192857,
+   "th13": 2.8186481202532123,
+   "th12": 32.44232462799684,
+   "s12sq": 0.287778985780528,
+   "s13sq": 0.002418165846208756,
+   "s23sq": 0.4987879862265838
+  },
+  "pole_sign-1": {
+   "lam": 0.0695437394192857,
+   "th13": 2.8186481202532123,
+   "th12": 38.08645473751247,
+   "s12sq": 0.3805036992506939,
+   "s13sq": 0.002418165846208756,
+   "s23sq": 0.4987879862265838
+  },
+  "pole_LNR_sign_is_plus": true,
+  "MSbar_MZ_sign+1": {
+   "lam": 0.06889753457863275,
+   "th13": 2.7924362083504497,
+   "th12": 32.468631095052224,
+   "s12sq": 0.28819480084569005,
+   "s13sq": 0.002373435135506948,
+   "s23sq": 0.49881045913416044
+  },
+  "MSbar_MZ_sign-1": {
+   "lam": 0.06889753457863275,
+   "th13": 2.7924362083504497,
+   "th12": 38.06014827045709,
+   "s12sq": 0.3800579203087628,
+   "s13sq": 0.002373435135506948,
+   "s23sq": 0.49881045913416044
+  },
+  "MSbar_MZ_LNR_sign_is_plus": true
+ },
+ "nufit_pulls_LNR_haze": {
+  "s13sq": -34.06715259382195,
+  "s12sq": -1.8019700830754994,
+  "s23sq": -1.424702605498081,
+  "s23sq_1sigma": -4.147467584894415,
+  "r": -7.82146202780792
+ },
+ "r_nufit": [
+  33.83177570093457,
+  0.9160830812440869
+ ],
+ "Mnu_stabilizer_in_PSL": 1,
+ "S_in_PSL": false,
+ "mutau_in_PSL": false,
+ "stabilizer_general_alpha": [
+  1,
+  1,
+  1,
+  1
+ ],
+ "checks": {
+  "M_Maj = [[1,-1,-1],[-1,1,-1],[-1,-1,1]] (LNR)": true,
+  "M_Dir = [[-1,0,0],[0,1,-2],[0,-2,1]] (LNR)": true,
+  "M_nu = +-(1/2)[[0,1,1],[1,-4,5],[1,5,-4]] (LNR)": true,
+  "eigenvalue ratios 1 : -2 : 9": true,
+  "Dm31^2/Dm21^2 = 80/3": true,
+  "beta=-1: M_nu exactly tri-bimaximal for every alpha (off-diagonal of U_TB^T M U_TB vanish)": true,
+  "|m3/m1| = 9 for every alpha": true,
+  "masses proportional to (1/(a-1), -1/(2a+1), 9/(a-1)) with one common factor": true,
+  "TBM criteria 1,2 hold identically; criterion 3 fixes beta = -1 (LNR)": true,
+  "alpha windows = (-1.15,-0.95) and (-0.22,-0.15) to 0.01 (LNR)": true,
+  "theta13 = 2.8 deg (+-0.05) with lambda_e = sqrt(me/mmu), pole masses": true,
+  "theta12 = 32.4 deg (+-0.05) with the same haze": true,
+  "LNR's displayed U_MNSP (1,1) entry sqrt(2/3)(1+lam/2) fixes the haze sign (no free choice)": true,
+  "LNR+haze sin^2 th13 = 0.00242 and pull -34.1 (3sigma/3 convention)": true,
+  "r: 26.67 vs 33.83+-0.92, pull -7.8": true,
+  "s12^2 = 0.288 (pull -1.8); s23^2 = 0.499 (pull -1.4, or -4.1 with 1 sigma)": true,
+  "M_nu invariant under TBM Klein pair S and (-)mu-tau": true,
+  "only the identity of the seed's PSL(2,7) leaves LNR's M_nu invariant; S and mu-tau not in PSL": true
+ },
+ "all_pass": true
+}

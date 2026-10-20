@@ -1,0 +1,538 @@
+{
+ "experiment": "E6 - a fold with gravity (hedgehog Einstein-Skyrme): independent cross-check",
+ "method": "isotropic gauge ds^2=-A^2dt^2+psi^4(dx^2+x^2dOmega^2); Chebyshev pseudo-spectral Newton on compactified radius; pseudo-arclength continuation, fold at tau_alpha=0; O(alpha) formulas derived in isotropic gauge; own pulsation operator (Schwarzschild gauge) solved by Chebyshev collocation on iso-gauge backgrounds",
+ "comparisons": [
+  {
+   "quantity": "alpha_crit",
+   "original": 0.0403785252871376,
+   "crosscheck": 0.04037852528714726,
+   "agree": true,
+   "note": "iso-gauge Chebyshev + pseudo-arclength, 7 grids, spread 8.4e-14; target 0.040378 +-0.0002"
+  },
+  {
+   "quantity": "b_crit",
+   "original": 2.930275544548578,
+   "crosscheck": 2.930275603753037,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "curvature of alpha(b) at fold",
+   "original": 0.01484,
+   "crosscheck": 0.014839514373244822,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "m(inf) at fold",
+   "original": 4.955390123774041,
+   "crosscheck": 4.955390123772859,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "sigma(0) at fold",
+   "original": 0.4350227505658933,
+   "crosscheck": 0.4350227364695117,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "min N at fold",
+   "original": 0.5826044188269244,
+   "crosscheck": 0.5826044646709055,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "m0 (flat)",
+   "original": 5.803051134521,
+   "crosscheck": 5.803051134521571,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "b_flat",
+   "original": 2.007528222713,
+   "crosscheck": 2.007528222716209,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "E_flat [f/e]",
+   "original": 72.92329125047374,
+   "crosscheck": 72.92329125047553,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "M_ADM(alpha->0)/E_flat - 1",
+   "original": -4.554e-12,
+   "crosscheck": -4.449107748882852e-12,
+   "agree": true,
+   "note": "by construction (minimal coupling)"
+  },
+  {
+   "quantity": "m1 full (O(alpha) slope)",
+   "original": -18.782439388444864,
+   "crosscheck": -18.782439387456698,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "m1 Newtonian 1/2 int rho Phi",
+   "original": -14.577334857062704,
+   "crosscheck": -14.577334800109806,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "m1 GR first order",
+   "original": -18.78243941948764,
+   "crosscheck": -18.78243941945434,
+   "agree": true,
+   "note": "also isotropic-gauge expansion: -18.7824394194"
+  },
+  {
+   "quantity": "rho x stress-trace cross term",
+   "original": -4.2051046200071305,
+   "crosscheck": -4.205104619333933,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "int p_r m/r / int rho m/r",
+   "original": 0.28846868628660366,
+   "crosscheck": 0.28846868628639494,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "d ln sigma(0)/d alpha first order",
+   "original": -9.747335239277053,
+   "crosscheck": -9.747353359920979,
+   "agree": true,
+   "note": "rel. diff 1.9e-6: the original trapezoid starts at x0=1e-3 and omits int_0^x0 ~ (1+2b^2) b^2 x0^2/2 = 1.8e-5"
+  },
+  {
+   "quantity": "d ln sigma(0)/d alpha full",
+   "original": -9.747362787904223,
+   "crosscheck": -9.74736278700938,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "lowest omega^2, lower branch alpha=0",
+   "original": "no negative mode",
+   "crosscheck": "no negative mode (nneg=0)",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "lowest omega^2, lower branch alpha=0.02",
+   "original": "no negative mode",
+   "crosscheck": "no negative mode (nneg=0)",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "lowest omega^2, lower branch alpha=0.035",
+   "original": "no negative mode",
+   "crosscheck": "no negative mode (nneg=0)",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "lowest omega^2, lower branch alpha=0.04",
+   "original": "no negative mode",
+   "crosscheck": "no negative mode (nneg=0)",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "lowest omega^2, upper branch alpha=0.02",
+   "original": -1.62158,
+   "crosscheck": -1.621572528449893,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "lowest omega^2, upper branch alpha=0.035",
+   "original": -0.40907,
+   "crosscheck": -0.4090658694440594,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "lowest omega^2, upper branch alpha=0.04",
+   "original": -0.07841,
+   "crosscheck": -0.07840580745672782,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "zero crossing of lowest omega^2 vs fold",
+   "original": "b=2.930273 vs fold 2.930276",
+   "crosscheck": "eigenvalue at the fold point -4.0e-13; quadratic-fit crossing b=2.9302764 vs fold 2.9302756",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "upper branch sqrt(alpha) m -> BM",
+   "original": "0.82871 (linear, alpha<3e-4); m_BM 0.828647",
+   "crosscheck": "linear 0.828738; (1,a,a ln a) 0.828648; (1,sqrt a,a) 0.828557",
+   "agree": true,
+   "note": "supported at ~1e-4, extrapolation-limited"
+  },
+  {
+   "quantity": "alpha_phys f=64.5 MeV",
+   "original": 3.507325561529642e-40,
+   "crosscheck": 3.507325561529642e-40,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "alpha_phys f=92.2 MeV",
+   "original": 7.1667e-40,
+   "crosscheck": 7.166687921753175e-40,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "max(1-N) per alpha, location x",
+   "original": "6.476 at 1.17",
+   "crosscheck": "6.476333 at 1.1730",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "1-sigma(0) per alpha",
+   "original": 9.747,
+   "crosscheck": 9.74735335992337,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "1-sigma(0), f=64.5",
+   "original": 3.418707804150875e-39,
+   "crosscheck": 3.4187141596521074e-39,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "max(1-N), f=64.5",
+   "original": 2.2714608323897744e-39,
+   "crosscheck": 2.271460682588702e-39,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "1-N(1 fm), f=64.5",
+   "original": 1.98562e-39,
+   "crosscheck": 1.9856207571167154e-39,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "1-sigma(1 fm), f=64.5",
+   "original": 1.48e-40,
+   "crosscheck": 1.4793099362509277e-40,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "1-sigma(0), f=92.2",
+   "original": 6.985610972859306e-39,
+   "crosscheck": 6.985623959362304e-39,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "max(1-N), f=92.2",
+   "original": 4.6413857586472674e-39,
+   "crosscheck": 4.641385452551491e-39,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "1-N(1 fm), f=92.2",
+   "original": 3.110269065239613e-39,
+   "crosscheck": 3.1102689547062e-39,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "1-sigma(1 fm), f=92.2",
+   "original": 7.79169114700277e-41,
+   "crosscheck": 7.79168417827739e-41,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "deflection max per alpha (and b)",
+   "original": "18.8323 at b=0.739",
+   "crosscheck": "18.858554 at b=0.77430 (iso), 18.858531 at b=0.77430 (Schwarzschild)",
+   "agree": false,
+   "note": "original takes the max over a 60-point geometric b grid; value 0.14% low, location 4.6% low"
+  },
+  {
+   "quantity": "deflection max f=64.5 MeV",
+   "original": "6.605e-39 rad at 0.415 fm",
+   "crosscheck": "6.6143e-39 rad at 0.4346 fm",
+   "agree": false,
+   "note": "value agrees at the quoted 2 digits; location 0.41 -> 0.43 fm"
+  },
+  {
+   "quantity": "deflection max f=92.2 MeV",
+   "original": "1.3496e-38 rad at 0.29 fm",
+   "crosscheck": "1.3515e-38 rad at 0.3041 fm",
+   "agree": false,
+   "note": "value agrees at the quoted 3 digits; location 0.29 -> 0.30 fm"
+  },
+  {
+   "quantity": "deflection at 1 fm, f=64.5 (point mass)",
+   "original": "4.37674e-39 (4.57007e-39)",
+   "crosscheck": "4.37674e-39 (4.57007e-39)",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "deflection at 1 fm, f=92.2 (point mass)",
+   "original": "6.44e-39 (6.53e-39)",
+   "crosscheck": "6.43932e-39 (6.53272e-39)",
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "deflection(b=50)/(4 m0/b)",
+   "original": "1 within 1e-5",
+   "crosscheck": 0.9999981062649727,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "Shapiro chord -1..+1 fm, f=64.5 (Schwarzschild coords)",
+   "original": 2.01251991419154e-62,
+   "crosscheck": 2.0137953742474716e-62,
+   "agree": true,
+   "note": "original omits [0, x0=1e-3] of the chord integral (-6e-4 rel.); isotropic coordinates give 2.749e-62 s"
+  },
+  {
+   "quantity": "Shapiro chord, f=92.2",
+   "original": 3.6228220696304697e-62,
+   "crosscheck": 3.6246452560556955e-62,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "GM/c^3 f=64.5",
+   "original": 3.811027022809424e-63,
+   "crosscheck": 3.8110270219557827e-63,
+   "agree": true,
+   "note": ""
+  },
+  {
+   "quantity": "fixed-alpha table (12 entries, b and m on both branches)",
+   "original": "REPORT table",
+   "crosscheck": "see fixed_alpha_table",
+   "agree": true,
+   "note": ""
+  }
+ ],
+ "fixed_alpha_table": [
+  {
+   "alpha": 0.001,
+   "branch": "lower",
+   "b_orig": 2.013942,
+   "b_xc": 2.0139415349267242,
+   "m_orig": 5.784245,
+   "m_xc": 5.78424517443049,
+   "agree": true
+  },
+  {
+   "alpha": 0.001,
+   "branch": "upper",
+   "b_orig": 29.8283,
+   "b_xc": 29.82833402043152,
+   "m_orig": 26.38175,
+   "m_xc": 26.38175303070332,
+   "agree": true
+  },
+  {
+   "alpha": 0.01,
+   "branch": "lower",
+   "b_orig": 2.079802,
+   "b_xc": 2.0798019683683187,
+   "m_orig": 5.612567,
+   "m_xc": 5.612566735695662,
+   "agree": true
+  },
+  {
+   "alpha": 0.01,
+   "branch": "upper",
+   "b_orig": 8.85519,
+   "b_xc": 8.855193669906575,
+   "m_orig": 8.707867,
+   "m_xc": 8.707866612285043,
+   "agree": true
+  },
+  {
+   "alpha": 0.02,
+   "branch": "lower",
+   "b_orig": 2.178287,
+   "b_xc": 2.1782874132898087,
+   "m_orig": 5.414919,
+   "m_xc": 5.414919369122834,
+   "agree": true
+  },
+  {
+   "alpha": 0.02,
+   "branch": "upper",
+   "b_orig": 5.83479,
+   "b_xc": 5.834794848414021,
+   "m_orig": 6.420543,
+   "m_xc": 6.42054308838669,
+   "agree": true
+  },
+  {
+   "alpha": 0.03,
+   "branch": "lower",
+   "b_orig": 2.332258,
+   "b_xc": 2.3322582159495884,
+   "m_orig": 5.205174,
+   "m_xc": 5.205174115327884,
+   "agree": true
+  },
+  {
+   "alpha": 0.03,
+   "branch": "upper",
+   "b_orig": 4.35718,
+   "b_xc": 4.357181071174884,
+   "m_orig": 5.468599,
+   "m_xc": 5.468599278538092,
+   "agree": true
+  },
+  {
+   "alpha": 0.04,
+   "branch": "lower",
+   "b_orig": 2.781911,
+   "b_xc": 2.781911437247441,
+   "m_orig": 4.966346,
+   "m_xc": 4.966346367224224,
+   "agree": true
+  },
+  {
+   "alpha": 0.04,
+   "branch": "upper",
+   "b_orig": 3.1033,
+   "b_xc": 3.103301622867581,
+   "m_orig": 4.967786,
+   "m_xc": 4.967786152715344,
+   "agree": true
+  },
+  {
+   "alpha": 0.04037,
+   "branch": "lower",
+   "b_orig": 2.906579,
+   "b_xc": 2.9065794916728174,
+   "m_orig": 4.955649,
+   "m_xc": 4.9556492252243,
+   "agree": true
+  },
+  {
+   "alpha": 0.04037,
+   "branch": "upper",
+   "b_orig": 2.954524,
+   "b_xc": 2.9545235114528245,
+   "m_orig": 4.955654,
+   "m_xc": 4.9556540534162865,
+   "agree": true
+  }
+ ],
+ "alpha_crit_grids": [
+  {
+   "N": 60,
+   "L": 0.6594665864440972,
+   "alpha_tau": 0.04037852528714368,
+   "alpha_fit_h": 0.04037852528714606,
+   "alpha_fit_b": 0.04037852528717156
+  },
+  {
+   "N": 80,
+   "L": 0.6594665864440972,
+   "alpha_tau": 0.040378525287145,
+   "alpha_fit_h": 0.040378525287143766,
+   "alpha_fit_b": 0.04037852528715469
+  },
+  {
+   "N": 100,
+   "L": 0.6594665864440972,
+   "alpha_tau": 0.04037852528716032,
+   "alpha_fit_h": 0.040378525287161966,
+   "alpha_fit_b": 0.04037852528716823
+  },
+  {
+   "N": 120,
+   "L": 0.6594665864440972,
+   "alpha_tau": 0.0403785252871907,
+   "alpha_fit_h": 0.04037852528718475,
+   "alpha_fit_b": 0.040378525287188216
+  },
+  {
+   "N": 80,
+   "L": 0.4,
+   "alpha_tau": 0.040378525287142565,
+   "alpha_fit_h": 0.04037852528714659,
+   "alpha_fit_b": 0.04037852528715735
+  },
+  {
+   "N": 80,
+   "L": 1.2,
+   "alpha_tau": 0.04037852528714181,
+   "alpha_fit_h": 0.04037852528714462,
+   "alpha_fit_b": 0.04037852528716113
+  },
+  {
+   "N": 100,
+   "L": 1.0,
+   "alpha_tau": 0.04037852528710681,
+   "alpha_fit_h": 0.04037852528711471,
+   "alpha_fit_b": 0.04037852528712049
+  }
+ ],
+ "n_agree": 45,
+ "n_rows": 48,
+ "issues": [
+  {
+   "severity": "minor",
+   "description": "Deflection maximum is grid-limited: per unit alpha 18.83 at b=0.739/(ef) reported, true maximum 18.8586 at b=0.7743/(ef) (two gauges agree to 4e-5). Physical: 6.6e-39 rad at 0.41 fm -> 6.61e-39 rad at 0.43 fm (f=64.5 MeV); 1.35e-38 rad at 0.29 fm -> 1.35e-38 at 0.30 fm (f=92.2 MeV).",
+   "suggested_fix": "Refine the maximum (bounded scalar maximisation) instead of taking the largest of 60 geometric grid points; quote 18.86 at b=0.77/(ef), 0.43 fm and 0.30 fm."
+  },
+  {
+   "severity": "minor",
+   "description": "'The physical coupling is 39 orders of magnitude below alpha_crit': alpha_crit/alpha_phys = 1.15e38, i.e. 38 orders (alpha_phys/alpha_crit = 8.7e-39 = 10^-38.06).",
+   "suggested_fix": "Say 38 orders of magnitude (or quote the ratio 8.7e-39)."
+  },
+  {
+   "severity": "minor",
+   "description": "Seed verdict 'commitment 5 AMENDED' attributes the failure of the PLAN's Newtonian -1/2 int rho Phi expectation to the seed. SEED section 5 already identifies 'energy bends the cone' with GR (Weinberg/Deser), whose source is the full T_mu_nu; the computation solves GR by construction, so the seed's physics is not corrected, only its plain-language gloss. The MISS belongs to the preregistered prediction.",
+   "suggested_fix": "Keep the MISS on the PLAN prediction; give commitment 5 'CONFIRMED (GR by construction), wording clarified: stress-energy, not energy density alone, sources the metric', or mark the AMENDED as wording-only."
+  },
+  {
+   "severity": "minor",
+   "description": "Verdict words on by-construction identities: M_ADM(alpha->0)/E_flat = 1 is labelled CALIBRATED (there is no literature target) and the 4GM/b deflection is CONFIRMED with no 'by construction' caveat in seed_claims (the EP entry does carry the caveat).",
+   "suggested_fix": "Label these 'consistency check (by construction)'; add the caveat to the SEED 5 light-bending entry."
+  },
+  {
+   "severity": "minor",
+   "description": "Provenance: the report says PLAN.md section 4 E6 'asks four things' including a stability question with a 'literature note: the upper branch is unstable', light deflection, Shapiro delay and an f = 92.2 MeV case. PLAN.md E6 contains only calibration, the EP check and the physical-scale metric deviation; the rest are additions (welcome ones) that should be labelled as such, and 'upper branch unstable' is not a seed claim.",
+   "suggested_fix": "Mark stability, deflection, Shapiro delay and f = 92.2 MeV as extensions beyond PLAN E6, and move the stability verdict out of seed_claims."
+  },
+  {
+   "severity": "minor",
+   "description": "The exchange-energy table presents the cancellation of the p_ij p'_ij and -1/2 p p' terms (to 5e-8) as a numerical finding. For any static, conserved (d_i p_ij = 0), spherically symmetric stress the Fourier-space stress is pure transverse trace, A(k)(delta_ij - k_i k_j), for which p_ij p_ij - p^2/2 = 0 identically; the individual values (+-0.6765) carry no separate meaning.",
+   "suggested_fix": "State the identity; quote only the rho-rho and rho-p terms."
+  }
+ ],
+ "overall": "confirmed_with_corrections"
+}

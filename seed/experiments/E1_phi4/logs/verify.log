@@ -1,0 +1,57 @@
+V1 gauss agree: True  kkbar agree: True
+   {'A': 0.8, 'sigma': 2.0, 'k': 0.5, 'stored': True, 'rerun': True, 'E_stored': 1.8583799116469528, 'E_rerun': np.float64(1.8583799116469528)}
+   {'A': 1.4, 'sigma': 1.0, 'k': 0.25, 'stored': True, 'rerun': True, 'E_stored': 1.792321447422346, 'E_rerun': np.float64(1.792321447422346)}
+   {'A': 0.6, 'sigma': 4.0, 'k': 0.5, 'stored': True, 'rerun': True, 'E_stored': 2.6287580219880238, 'E_rerun': np.float64(2.6287580219880238)}
+   {'A': 0.8, 'sigma': 1.5, 'k': 2.0, 'stored': False, 'rerun': False, 'E_stored': 5.394416978924623, 'E_rerun': np.float64(5.394416978924623)}
+   {'A': 0.6, 'sigma': 4.0, 'k': 0.75, 'stored': False, 'rerun': False, 'E_stored': 3.3332713565259033, 'E_rerun': np.float64(3.3332713565259033)}
+   {'A': 0.5, 'sigma': 10.0, 'k': 1.0, 'stored': True, 'rerun': True, 'E_stored': 7.133649468806404, 'E_rerun': np.float64(7.133649468806404)}
+   {'A': 0.9, 'sigma': 4.0, 'k': 2.0, 'stored': False, 'rerun': False, 'E_stored': 18.64717240851716, 'E_rerun': np.float64(18.64717240851716)}
+   {'A': 0.1, 'sigma': 1.0, 'k': 1.0, 'stored': False, 'rerun': False, 'E_stored': 0.028647306228176798, 'E_rerun': np.float64(0.028647306228176798)}
+   {'A': 1.0, 'sigma': 2.0, 'k': 1.0, 'stored': True, 'rerun': True, 'E_stored': 4.8525430568095285, 'E_rerun': np.float64(4.8525430568095285)}
+   {'A': 0.7, 'sigma': 2.0, 'k': 2.5, 'stored': False, 'rerun': False, 'E_stored': 7.703980155868328, 'E_rerun': np.float64(7.703980155868328)}
+   {'A': 0.8, 'sigma': 16.0, 'k': 1.25, 'stored': True, 'rerun': True, 'E_stored': 35.1166969256107, 'E_rerun': np.float64(35.1166969256107)}
+   {'A': 0.7, 'sigma': 3.0, 'k': 1.0, 'stored': False, 'rerun': False, 'E_stored': 4.010400250482247, 'E_rerun': np.float64(4.010400250482247)}
+   {'v': 0.2, 'stored': 2, 'rerun': 2}
+   {'v': 0.225, 'stored': 2, 'rerun': 2}
+   {'v': 0.25, 'stored': 0, 'rerun': 0}
+   {'v': 0.258, 'stored': 0, 'rerun': 0}
+   {'v': 0.2605, 'stored': 1, 'rerun': 1}
+   {'v': 0.27, 'stored': 1, 'rerun': 1}
+V2: [
+ {
+  "kind": "gauss",
+  "dx": 0.05,
+  "dt": 0.02,
+  "t_end": 300.0,
+  "E0": 3.504197234310911,
+  "max_rel_drift": 5.623920009106774e-05,
+  "final_rel_drift": -1.4096087876817348e-05
+ },
+ {
+  "kind": "kk",
+  "dx": 0.05,
+  "dt": 0.02,
+  "t_end": 300.0,
+  "E0": 1.9245006489174696,
+  "max_rel_drift": 7.4912169779002686e-06,
+  "final_rel_drift": -3.9606833242854775e-07
+ }
+]
+V3 (A, sigma, k, single, dx, cfl -> produced, pair_since):
+   0.500  16.0 0.25 single=True dx=0.100 dt=0.0400 -> True since=60.000000000000014 max_pairs=1
+   0.500  16.0 0.25 single=True dx=0.050 dt=0.0200 -> True since=50.00000000000001 max_pairs=1
+   0.500  16.0 0.25 single=True dx=0.025 dt=0.0100 -> True since=50.00000000000001 max_pairs=1
+   0.500  16.0 0.25 single=True dx=0.050 dt=0.0050 -> True since=50.00000000000001 max_pairs=1
+   0.925  16.0 1.00 single=True dx=0.100 dt=0.0400 -> True since=10.000000000000002 max_pairs=3
+   0.925  16.0 1.00 single=True dx=0.050 dt=0.0200 -> True since=10.000000000000002 max_pairs=4
+   0.925  16.0 1.00 single=True dx=0.025 dt=0.0100 -> True since=10.000000000000002 max_pairs=5
+   0.925  16.0 1.00 single=True dx=0.050 dt=0.0050 -> True since=10.000000000000002 max_pairs=4
+   0.300  16.0 0.25 single=True dx=0.100 dt=0.0400 -> False since=None max_pairs=0
+   0.300  16.0 0.25 single=True dx=0.050 dt=0.0200 -> False since=None max_pairs=0
+   0.300  16.0 0.25 single=True dx=0.025 dt=0.0100 -> False since=None max_pairs=0
+   0.300  16.0 0.25 single=True dx=0.050 dt=0.0050 -> False since=None max_pairs=0
+   0.800   2.0 0.50 single=False dx=0.100 dt=0.0400 -> True since=40.00000000000001 max_pairs=1
+   0.800   2.0 0.50 single=False dx=0.050 dt=0.0200 -> True since=40.00000000000001 max_pairs=1
+   0.800   2.0 0.50 single=False dx=0.025 dt=0.0100 -> True since=40.00000000000001 max_pairs=1
+   0.800   2.0 0.50 single=False dx=0.050 dt=0.0050 -> True since=40.00000000000001 max_pairs=1
+runtime 26 s

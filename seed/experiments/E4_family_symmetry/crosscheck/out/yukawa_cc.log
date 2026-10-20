@@ -1,0 +1,40 @@
+  F21 Dirac couplings L,R = 3,3                  H = ['1', "1'", "1''", '3', '3b']: [1, 1, 1, 1, 1]
+  F21 Dirac couplings L,R = 3,3b                 H = ['1', "1'", "1''", '3', '3b']: [0, 0, 0, 1, 2]
+  F21 Dirac couplings L,R = 3,1+1'+1''           H = ['1', "1'", "1''", '3', '3b']: [0, 0, 0, 3, 0]
+  F21 Dirac couplings L,R = 1+1'+1'',1+1'+1''    H = ['1', "1'", "1''", '3', '3b']: [3, 3, 3, 0, 0]
+PASS F21 Dirac coupling table equals the report's table
+PASS PSL 6, 7, 8 built as homomorphisms with irreducible characters (norm 1)
+  PSL Dirac couplings L,R = 3,3  H = ['1', '3', '3b', '6', '7', '8']: [1, 0, 0, 0, 0, 1]
+  PSL Dirac couplings L,R = 3,3b  H = ['1', '3', '3b', '6', '7', '8']: [0, 0, 1, 1, 0, 0]
+PASS PSL: L=R=3 couples to H=1 and H=8 only (1 each); L=3,R=3b to H=3b and H=6 only
+  Majorana couplings, N in 3: F21 {'1': 0, "1'": 0, "1''": 0, '3': 1, '3b': 1}  PSL {'1': 0, '3': 0, '3b': 0, '6': 1, '7': 0, '8': 0}
+PASS Majorana N=3: F21 allows Phi = 3 and 3b only (one each); PSL only Phi = 6; no singlet mass
+  F21 L=R=3, H=3: nonzero pattern (index of h) [[None, None, 3], [1, None, None], [None, 2, None]]; singular values / |h| sorted: [1. 1. 1.]
+  F21 L=R=3, H=3b: nonzero pattern (index of h) [[None, 1, None], [None, None, 2], [3, None, None]]; singular values / |h| sorted: [1. 1. 1.]
+PASS F21 L=R=3, H=3: M = [[0,0,h3],[h1,0,0],[0,h2,0]]; H=3b: M = [[0,h1,0],[0,0,h2],[h3,0,0]]
+  H=1': diag ratios [ 1. -0.j       -0.5-0.866025j -0.5+0.866025j]  off-diag max 0.0
+PASS F21 L=R=3, H=1': M ~ diag(1, w, w^2) or diag(1, w^2, w): equal |masses|
+PASS Schur: L=R=3, H=1 -> one coupling, three equal singular values (F21 and PSL)
+PASS commutant of the triplet is 1-dimensional for F21 and PSL
+PASS 1+1'+1'' vevs together give three distinct masses (generic)
+  stabiliser F21/3/Z3 (1,1,1): exact 3, up to phase 3
+  stabiliser F21/3/Z7 (0,0,1): exact 1, up to phase 7
+  stabiliser F21/3/LNR (-1,1,1): exact 1, up to phase 1
+  stabiliser F21/3/(0,1,-1): exact 1, up to phase 1
+  stabiliser F21/3b/Z3 (1,1,1): exact 3, up to phase 3
+  stabiliser F21/3b/Z7 (0,0,1): exact 1, up to phase 7
+  stabiliser F21/3b/LNR (-1,1,1): exact 1, up to phase 1
+  stabiliser F21/3b/(0,1,-1): exact 1, up to phase 1
+  stabiliser PSL/3/Z3 (1,1,1): exact 3, up to phase 6
+  stabiliser PSL/3/Z7 (0,0,1): exact 1, up to phase 7
+  stabiliser PSL/3/LNR (-1,1,1): exact 1, up to phase 1
+  stabiliser PSL/3/(0,1,-1): exact 1, up to phase 1
+  stabiliser PSL/3b/Z3 (1,1,1): exact 3, up to phase 6
+  stabiliser PSL/3b/Z7 (0,0,1): exact 1, up to phase 7
+  stabiliser PSL/3b/LNR (-1,1,1): exact 1, up to phase 1
+  stabiliser PSL/3b/(0,1,-1): exact 1, up to phase 1
+PASS F21: (1,1,1) fixed by Z3; (0,0,1) fixed by no non-trivial element but its ray by Z7; (-1,1,1), (0,1,-1) by nothing even up to phase
+  Majorana space invariant under Z7: 0 ; under Z3: 2 ; Z3 Takagi values [0.4746 0.4746 1.3662]
+PASS F21 Z7 forces M_Maj = 0 on the 3; Z3 leaves a degenerate pair; F21 has no Z2 (odd order)
+
+11/11 checks pass

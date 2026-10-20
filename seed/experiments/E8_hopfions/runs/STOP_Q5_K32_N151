@@ -1,0 +1,1 @@
+{"rule": "manual, compute budget: end the Q5 dx=0.1 stage at its t=20 log point regardless of the stop_watcher criterion (machine overloaded, ~1 min per flow-time unit)"}

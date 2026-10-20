@@ -1,0 +1,90 @@
+Traceback (most recent call last):
+  File "/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/e1b_boxcheck.py", line 35, in <module>
+    res = p.map(bisect, jobs, chunksize=1)
+  File "/usr/lib/python3.13/multiprocessing/pool.py", line 367, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/multiprocessing/pool.py", line 774, in get
+    raise self._value
+  File "/usr/lib/python3.13/multiprocessing/pool.py", line 540, in _handle_tasks
+    put(task)
+    ~~~^^^^^^
+  File "/usr/lib/python3.13/multiprocessing/connection.py", line 211, in send
+    self._send_bytes(_ForkingPickler.dumps(obj))
+                     ~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/usr/lib/python3.13/multiprocessing/reduction.py", line 51, in dumps
+    cls(buf, protocol).dump(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+_pickle.PicklingError: Can't pickle <function <lambda> at 0x7f627add14e0>: attribute lookup <lambda> on __main__ failed
+[coarse_oneway] 1485 jobs, 0 already done, 1485 to run
+[coarse_oneway] 100/1485 19 s
+[coarse_oneway] 200/1485 31 s
+[coarse_oneway] 300/1485 41 s
+[coarse_oneway] 400/1485 49 s
+[coarse_oneway] 500/1485 57 s
+[coarse_oneway] 600/1485 65 s
+[coarse_oneway] 700/1485 71 s
+[coarse_oneway] 800/1485 78 s
+[coarse_oneway] 900/1485 84 s
+[coarse_oneway] 1000/1485 88 s
+[coarse_oneway] 1100/1485 91 s
+[coarse_oneway] 1200/1485 95 s
+[coarse_oneway] 1300/1485 98 s
+[coarse_oneway] 1400/1485 102 s
+[coarse_oneway] complete: 1485 runs, 572 producing, 105 s this session
+[single_oneway] 572 jobs, 0 already done, 572 to run
+[single_oneway] 100/572 10 s
+[single_oneway] 200/572 17 s
+[single_oneway] 300/572 23 s
+[single_oneway] 400/572 28 s
+[single_oneway] 500/572 32 s
+[single_oneway] complete: 572 runs, 363 producing, 35 s this session
+[slice_dx05] 3363 jobs, 0 already done, 3363 to run
+[slice_dx05] 100/3363 35 s
+[slice_dx05] 200/3363 74 s
+[slice_dx05] 300/3363 113 s
+[slice_dx05] 400/3363 156 s
+[slice_dx05] 500/3363 190 s
+[slice_dx05] 600/3363 227 s
+[slice_dx05] 700/3363 261 s
+[slice_dx05] 800/3363 305 s
+[slice_dx05] 900/3363 359 s
+[slice_dx05] 1000/3363 420 s
+[slice_dx05] 1100/3363 472 s
+[slice_dx05] 1200/3363 521 s
+[slice_dx05] 1300/3363 551 s
+[slice_dx05] 1400/3363 579 s
+[slice_dx05] 1500/3363 604 s
+[slice_dx05] 1600/3363 627 s
+[slice_dx05] 1700/3363 655 s
+[slice_dx05] 1800/3363 687 s
+[slice_dx05] 1900/3363 708 s
+[slice_dx05] 2000/3363 725 s
+[slice_dx05] 2100/3363 741 s
+[slice_dx05] 2200/3363 758 s
+[slice_dx05] 2300/3363 780 s
+[slice_dx05] 2400/3363 796 s
+[slice_dx05] 2500/3363 811 s
+[slice_dx05] 2600/3363 827 s
+[slice_dx05] 2700/3363 848 s
+[slice_dx05] 2800/3363 864 s
+[slice_dx05] 2900/3363 879 s
+[slice_dx05] 3000/3363 893 s
+[slice_dx05] 3100/3363 906 s
+[slice_dx05] 3200/3363 919 s
+[slice_dx05] 3300/3363 938 s
+[slice_dx05] complete: 3363 runs, 1193 producing, 952 s this session
+[slice_dx05_single] 1193 jobs, 0 already done, 1193 to run
+[slice_dx05_single] 100/1193 39 s
+[slice_dx05_single] 200/1193 72 s
+[slice_dx05_single] 300/1193 109 s
+[slice_dx05_single] 400/1193 142 s
+[slice_dx05_single] 500/1193 173 s
+[slice_dx05_single] 600/1193 201 s
+[slice_dx05_single] 700/1193 228 s
+[slice_dx05_single] 800/1193 251 s
+[slice_dx05_single] 900/1193 274 s
+[slice_dx05_single] 1000/1193 295 s
+[slice_dx05_single] 1100/1193 315 s
+[slice_dx05_single] complete: 1193 runs, 728 producing, 333 s this session
+[extra done] 04:58:22

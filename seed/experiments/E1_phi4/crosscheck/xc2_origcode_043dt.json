@@ -1,0 +1,16 @@
+[
+ {
+  "dx": 0.05,
+  "dt": 0.005000000000000001,
+  "produced_dsv": false,
+  "since": null,
+  "intervals_T": []
+ },
+ {
+  "dx": 0.025,
+  "dt": 0.0025000000000000005,
+  "produced_dsv": false,
+  "since": null,
+  "intervals_T": []
+ }
+]

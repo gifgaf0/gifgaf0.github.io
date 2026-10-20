@@ -1,0 +1,33 @@
+[1] gradient check: analytic -1.0316798141e+02  finite-diff -1.0316798148e+02  rel err 6.61e-10
+[2] smooth field h=0.2000: E2/C0-units = 89.812662  E4 = 48.645227
+[2] smooth field h=0.1000: E2/C0-units = 90.457718  E4 = 51.037773
+[2] smooth field h=0.0500: E2/C0-units = 90.620949  E4 = 51.666270
+[2] successive-difference ratios (4 = second order): E2 3.952, E4 3.807
+[3] A11     N=101: Q = -0.9995 (expected 1), hedgehog cells 0, 0.6s
+[3] A11     N=151: Q = -0.9998 (expected 1), hedgehog cells 0, 0.9s
+[3] A21     N=101: Q = -1.9988 (expected 2), hedgehog cells 0, 0.3s
+[3] A21     N=151: Q = -1.9995 (expected 2), hedgehog cells 0, 0.9s
+[3] A12     N=101: Q = -1.9991 (expected 2), hedgehog cells 0, 0.2s
+[3] A12     N=151: Q = -1.9996 (expected 2), hedgehog cells 0, 1.5s
+[3] A31     N=101: Q = -2.9977 (expected 3), hedgehog cells 0, 0.2s
+[3] A31     N=151: Q = -2.9990 (expected 3), hedgehog cells 0, 0.9s
+[3] A22     N=101: Q = -3.9975 (expected 4), hedgehog cells 0, 0.2s
+[3] A22     N=151: Q = -3.9989 (expected 4), hedgehog cells 0, 1.3s
+[3] K32_Q5  N=101: Q = -4.9946 (expected 5), hedgehog cells 0, 0.3s
+[3] K32_Q5  N=151: Q = -4.9976 (expected 5), hedgehog cells 0, 0.9s
+[3] K32_Q6  N=101: Q = -5.9858 (expected 6), hedgehog cells 0, 0.3s
+[3] K32_Q6  N=151: Q = -5.9937 (expected 6), hedgehog cells 0, 1.3s
+[3] L22_Q6  N=101: Q = -5.9741 (expected 6), hedgehog cells 0, 0.2s
+[3] L22_Q6  N=151: Q = -5.9885 (expected 6), hedgehog cells 0, 0.9s
+[3] K32_Q7  N=101: Q = -6.9811 (expected 7), hedgehog cells 0, 0.2s
+[3] K32_Q7  N=151: Q = -6.9916 (expected 7), hedgehog cells 0, 1.4s
+[4] Alexander: parametric trefoil t**2 - t + 1 (3 crossings), unknot 1 (0), figure-8 t**2 - 3*t + 1 (4)
+[4] Hopf link linking number -1.0
+[4] IC A11: position comps 1 (info {'n_pierced': 200, 'ambiguous_cubes': 0, 'unmatched': 0, 'open_chains': 0}), linking comps 1, lk(position, linking) total = -1.0, pos-pos lk [[0.0]], Alexander ['1']
+[4] IC A21: position comps 1 (info {'n_pierced': 200, 'ambiguous_cubes': 0, 'unmatched': 0, 'open_chains': 0}), linking comps 1, lk(position, linking) total = -2.0, pos-pos lk [[0.0]], Alexander ['1']
+[4] IC K32_Q7: position comps 1 (info {'n_pierced': 618, 'ambiguous_cubes': 0, 'unmatched': 0, 'open_chains': 0}), linking comps 1, lk(position, linking) total = -7.0, pos-pos lk [[0.0]], Alexander ['t**2 - t + 1']
+[4] IC L22_Q6: position comps 2 (info {'n_pierced': 524, 'ambiguous_cubes': 0, 'unmatched': 0, 'open_chains': 0}), linking comps 2, lk(position, linking) total = -6.0, pos-pos lk [[0.0, -1.0], [-1.0, 0.0]], Alexander ['1', '1']
+[5] N=76: energy+grad 0.024 s;  A11 ansatz (Lf=4) E = 1.7107
+[5] N=101: energy+grad 0.063 s;  A11 ansatz (Lf=4) E = 1.7183
+[5] N=151: energy+grad 0.238 s;  A11 ansatz (Lf=4) E = 1.7256
+tests written to tests_output.json

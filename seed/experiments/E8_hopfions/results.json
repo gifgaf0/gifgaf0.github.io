@@ -1,0 +1,2823 @@
+{
+ "experiment": "E8 Faddeev-Skyrme Hopf solitons (Model C), SEED.md sec. 4 and 6C; preregistered in PLAN.md sec. 4 E8",
+ "conventions": {
+  "energy": "E = 1/(32 sqrt2 pi^2) Int [ d_i phi.d_i phi + 1/2 (d_i phi x d_j phi)^2 ] d^3x (Sutcliffe 2007); Ward conjecture E >= Q^{3/4}; proven E >= (3/16)^{3/8} Q^{3/4}",
+  "lattice": "forward-difference links (sigma term) + 4-corner plaquette average (Skyrme term), exact discrete gradient, field fixed to e3 on the boundary of [-L,L]^3",
+  "hopf": "Q = -(1/16 pi^2) Int A.B, B_i = 1/2 eps_ijk phi.(d_j phi x d_k phi) from plaquette solid angles, curl A = B by FFT (Coulomb gauge); sign chosen so that Sutcliffe's ansatz W = Z1^n/Z0^m has Q = +nm",
+  "curves": "position curve phi = -e3; linking curve phi = (sqrt(2mu-mu^2),0,-1+mu), mu = 0.1; tube phi3 < -0.8"
+ },
+ "units": "energies in units of 32 sqrt(2) pi^2 x (sigma-model coupling); dimensionless as in Sutcliffe 2007",
+ "target_source": "Sutcliffe 2007 (arXiv:0705.1468), Table 2: dx = 0.1, 151^3 grid, fixed boundary; absolute energies about 1% low, relative energies about 0.1%",
+ "tolerances": "E_Q within 2% of the table (Q=1-4 required), E_Q/E_1 within 1%, type match, |Q - integer| <= 0.05",
+ "library_tests": {
+  "gradient_rel_err": 1.1038373749589089e-10,
+  "continuum_order_ratio_E2": 3.951822963321675,
+  "continuum_order_ratio_E4": 3.806768941568891,
+  "alexander": [
+   "t**2 - t + 1",
+   "1",
+   "t**2 - 3*t + 1"
+  ],
+  "ansatz_energy_quadrature_vs_lattice": {
+   "linear_Lf4": {
+    "E_quadrature": [
+     1.7368573257590636,
+     1.7368573257590616,
+     1.7368573257590785
+    ],
+    "lattice": [
+     [
+      0.20000000000000018,
+      1.71067993842095,
+      -0.015071696995427097
+     ],
+     [
+      0.15000000000000036,
+      1.7182617410576628,
+      -0.010706454943435584
+     ],
+     [
+      0.09999999999999964,
+      1.7256437215570601,
+      -0.006456260992604879
+     ],
+     [
+      0.07500000000000018,
+      1.7288884758001493,
+      -0.00458808552708645
+     ]
+    ]
+   },
+   "gauss_w2": {
+    "E_quadrature": [
+     1.5225976006498694,
+     1.5225976006498663,
+     1.5225976006498918
+    ],
+    "lattice": [
+     [
+      0.20000000000000018,
+      1.5095512994986027,
+      -0.008568449829239544
+     ],
+     [
+      0.15000000000000036,
+      1.515483188135758,
+      -0.004672549405763671
+     ],
+     [
+      0.09999999999999964,
+      1.5195101028504274,
+      -0.0020277831766886134
+     ],
+     [
+      0.07500000000000018,
+      1.5208758989008606,
+      -0.0011307660988670865
+     ]
+    ]
+   }
+  }
+ },
+ "headline": [
+  {
+   "quantity": "E_1 at dx=0.1 (box [-7.5,7.5]^3, fixed boundary)",
+   "value": 1.2226212820250035,
+   "target": 1.204,
+   "tolerance": "2%",
+   "verdict": "CALIBRATED (same-grid comparison at dx = 0.1)",
+   "rel_dev": 0.015466181083890085,
+   "comparison_convention": "same grid as the target (dx = 0.1, 151^3, box [-7.5,7.5]^3, fixed boundary), the setting in which Sutcliffe computed Table 2; PLAN fixed the table, not the convention",
+   "E_same_box_continuum": 1.230321468363034,
+   "target_rel_to_same_box_continuum": -0.021393976322346964,
+   "within_2pct_of_same_box_continuum": false,
+   "E_same_box_continuum_crosscheck_c4": 1.2301716449946891
+  },
+  {
+   "quantity": "Hopf charge of the Q=1 solution (Whitehead integral; criterion applied at dx = 0.1)",
+   "value": {
+    "0.2000": 0.9915290534550175,
+    "0.1500": 0.9957745310383844,
+    "0.1250": 0.997180901473702,
+    "0.1000": 0.9982504069454214
+   },
+   "estimator": "solid-angle plaquette fluxes, periodic FFT (fs_lib.hopf_charge)",
+   "value_freespace_4th_order_crosscheck": {
+    "0.2000": 0.9827301134086369,
+    "0.1500": 0.9940039804259437,
+    "0.1250": 0.9966194232982778,
+    "0.1000": 0.9982049858267217
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 1.0,
+    "0.1500": 1.0,
+    "0.1000": 1.0,
+    "0.1250": 1.0
+   },
+   "target": 1,
+   "tolerance": "0.05",
+   "max_dev_dx0p1_both_estimators": 0.0017950141732783198,
+   "max_dev_all_grids_solid_angle": 0.008470946544982483,
+   "max_dev_all_grids_freespace": 0.01726988659136308,
+   "verdict": "CHECK PASSED (internal check; dx = 0.1, both estimators)",
+   "note": "At dx = 0.2 the deviation depends on the estimator (solid angle <= 0.017, free-space 4th-order <= 0.086); the estimator-free linking-number charge is the exact integer wherever computed."
+  },
+  {
+   "quantity": "configuration type at Q=1",
+   "value": "A1,1",
+   "target": "A1,1",
+   "tolerance": "same type",
+   "verdict": "CALIBRATED"
+  },
+  {
+   "quantity": "E_2 at dx=0.1 (box [-7.5,7.5]^3, fixed boundary)",
+   "value": 1.9925289557232517,
+   "target": 1.967,
+   "tolerance": "2%",
+   "verdict": "CALIBRATED (same-grid comparison at dx = 0.1)",
+   "rel_dev": 0.012978625177047176,
+   "comparison_convention": "same grid as the target (dx = 0.1, 151^3, box [-7.5,7.5]^3, fixed boundary), the setting in which Sutcliffe computed Table 2; PLAN fixed the table, not the convention",
+   "E_same_box_continuum": 2.002385454110057,
+   "target_rel_to_same_box_continuum": -0.017671649600442985,
+   "within_2pct_of_same_box_continuum": true,
+   "E_same_box_continuum_crosscheck_c4": 2.002198876804408
+  },
+  {
+   "quantity": "E_2/E_1 at dx=0.1",
+   "value": 1.6297188549041657,
+   "target": 1.6337209302325582,
+   "tolerance": "1%",
+   "verdict": "CALIBRATED",
+   "rel_dev": -0.002449668884282885,
+   "continuum_ratio_same_box": 1.627530288302836
+  },
+  {
+   "quantity": "Hopf charge of the Q=2 solution (Whitehead integral; criterion applied at dx = 0.1)",
+   "value": {
+    "0.2000": 1.9903885418212215,
+    "0.1500": 1.995035655415885,
+    "0.1250": 1.9966532123558371,
+    "0.1000": 1.9979067307037874
+   },
+   "estimator": "solid-angle plaquette fluxes, periodic FFT (fs_lib.hopf_charge)",
+   "value_freespace_4th_order_crosscheck": {
+    "0.2000": 1.9790100856924888,
+    "0.1500": 1.9923046839100707,
+    "0.1250": 1.9955994262835597,
+    "0.1000": 1.997642754259437
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 2.0,
+    "0.1500": 2.0,
+    "0.1000": 2.0,
+    "0.1250": 2.0
+   },
+   "target": 2,
+   "tolerance": "0.05",
+   "max_dev_dx0p1_both_estimators": 0.002357245740562952,
+   "max_dev_all_grids_solid_angle": 0.00961145817877851,
+   "max_dev_all_grids_freespace": 0.02098991430751118,
+   "verdict": "CHECK PASSED (internal check; dx = 0.1, both estimators)",
+   "note": "At dx = 0.2 the deviation depends on the estimator (solid angle <= 0.017, free-space 4th-order <= 0.086); the estimator-free linking-number charge is the exact integer wherever computed."
+  },
+  {
+   "quantity": "configuration type at Q=2",
+   "value": "A2,1",
+   "target": "A2,1",
+   "tolerance": "same type",
+   "verdict": "CALIBRATED"
+  },
+  {
+   "quantity": "E_3 at dx=0.1 (box [-7.5,7.5]^3, fixed boundary)",
+   "value": 2.7884880142643347,
+   "target": 2.754,
+   "tolerance": "2%",
+   "verdict": "CALIBRATED (same-grid comparison at dx = 0.1)",
+   "rel_dev": 0.012522880996490349,
+   "comparison_convention": "same grid as the target (dx = 0.1, 151^3, box [-7.5,7.5]^3, fixed boundary), the setting in which Sutcliffe computed Table 2; PLAN fixed the table, not the convention",
+   "E_same_box_continuum": 2.801541691732445,
+   "target_rel_to_same_box_continuum": -0.01696983195814794,
+   "within_2pct_of_same_box_continuum": true,
+   "E_same_box_continuum_crosscheck_c4": 2.8013241951079295
+  },
+  {
+   "quantity": "E_3/E_1 at dx=0.1",
+   "value": 2.2807455221504216,
+   "target": 2.287375415282392,
+   "tolerance": "1%",
+   "verdict": "CALIBRATED",
+   "rel_dev": -0.002898471797709634,
+   "continuum_ratio_same_box": 2.2770810424530343
+  },
+  {
+   "quantity": "Hopf charge of the Q=3 solution (Whitehead integral; criterion applied at dx = 0.1)",
+   "value": {
+    "0.2000": 2.9866154947465318,
+    "0.1500": 2.9930594331180553,
+    "0.1000": 2.9970878611722336
+   },
+   "estimator": "solid-angle plaquette fluxes, periodic FFT (fs_lib.hopf_charge)",
+   "value_freespace_4th_order_crosscheck": {
+    "0.2000": 2.9729174539915744,
+    "0.1500": 2.989916000312761,
+    "0.1000": 2.9968833719241186
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 3.0,
+    "0.1500": 3.0,
+    "0.1000": 3.0
+   },
+   "target": 3,
+   "tolerance": "0.05",
+   "max_dev_dx0p1_both_estimators": 0.0031166280758814224,
+   "max_dev_all_grids_solid_angle": 0.013384505253468237,
+   "max_dev_all_grids_freespace": 0.027082546008425634,
+   "verdict": "CHECK PASSED (internal check; dx = 0.1, both estimators)",
+   "note": "At dx = 0.2 the deviation depends on the estimator (solid angle <= 0.017, free-space 4th-order <= 0.086); the estimator-free linking-number charge is the exact integer wherever computed."
+  },
+  {
+   "quantity": "configuration type at Q=3",
+   "value": "A~3,1",
+   "target": "A~3,1",
+   "tolerance": "same type",
+   "verdict": "CALIBRATED"
+  },
+  {
+   "quantity": "E_4 at dx=0.1 (box [-7.5,7.5]^3, fixed boundary)",
+   "value": 3.5058004292337555,
+   "target": 3.445,
+   "tolerance": "2%",
+   "verdict": "CALIBRATED (same-grid comparison at dx = 0.1)",
+   "rel_dev": 0.017648890924166993,
+   "comparison_convention": "same grid as the target (dx = 0.1, 151^3, box [-7.5,7.5]^3, fixed boundary), the setting in which Sutcliffe computed Table 2; PLAN fixed the table, not the convention",
+   "E_same_box_continuum": 3.5211608702399397,
+   "target_rel_to_same_box_continuum": -0.021629477620188964,
+   "within_2pct_of_same_box_continuum": false,
+   "E_same_box_continuum_crosscheck_c4": 3.520532511993749
+  },
+  {
+   "quantity": "E_4/E_1 at dx=0.1",
+   "value": 2.8674459383098316,
+   "target": 2.861295681063123,
+   "tolerance": "1%",
+   "verdict": "CALIBRATED",
+   "rel_dev": 0.002149465812782969,
+   "continuum_ratio_same_box": 2.861984416906023
+  },
+  {
+   "quantity": "Hopf charge of the Q=4 solution (Whitehead integral; criterion applied at dx = 0.1)",
+   "value": {
+    "0.2000": 3.9873597622174533,
+    "0.1500": 3.9939629984024636,
+    "0.1000": 3.997571736322022
+   },
+   "estimator": "solid-angle plaquette fluxes, periodic FFT (fs_lib.hopf_charge)",
+   "value_freespace_4th_order_crosscheck": {
+    "0.2000": 3.927606194408457,
+    "0.1500": 3.97809155164352,
+    "0.1000": 3.9945626221596897
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 4.0,
+    "0.1500": 4.0,
+    "0.1000": 4.0
+   },
+   "target": 4,
+   "tolerance": "0.05",
+   "max_dev_dx0p1_both_estimators": 0.005437377840310287,
+   "max_dev_all_grids_solid_angle": 0.012640237782546748,
+   "max_dev_all_grids_freespace": 0.07239380559154318,
+   "verdict": "CHECK PASSED (internal check; dx = 0.1, both estimators)",
+   "note": "At dx = 0.2 the deviation depends on the estimator (solid angle <= 0.017, free-space 4th-order <= 0.086); the estimator-free linking-number charge is the exact integer wherever computed."
+  },
+  {
+   "quantity": "configuration type at Q=4",
+   "value": "A2,2",
+   "target": "A2,2",
+   "tolerance": "same type",
+   "verdict": "CALIBRATED"
+  },
+  {
+   "quantity": "E_5 at dx=0.1 (box [-7.5,7.5]^3, fixed boundary)",
+   "value": 4.163899332581217,
+   "target": 4.095,
+   "tolerance": "2%",
+   "verdict": "CALIBRATED (same-grid comparison at dx = 0.1)",
+   "rel_dev": 0.01682523384156709,
+   "comparison_convention": "same grid as the target (dx = 0.1, 151^3, box [-7.5,7.5]^3, fixed boundary), the setting in which Sutcliffe computed Table 2; PLAN fixed the table, not the convention",
+   "E_same_box_continuum": 4.1821772094558725,
+   "target_rel_to_same_box_continuum": -0.020844934370252366,
+   "within_2pct_of_same_box_continuum": false,
+   "E_same_box_continuum_crosscheck_c4": 4.181541054816179
+  },
+  {
+   "quantity": "E_5/E_1 at dx=0.1",
+   "value": 3.405714748956956,
+   "target": 3.4011627906976742,
+   "tolerance": "1%",
+   "verdict": "CALIBRATED",
+   "rel_dev": 0.0013383535394810853,
+   "continuum_ratio_same_box": 3.399255655532321
+  },
+  {
+   "quantity": "Hopf charge of the Q=5 solution (Whitehead integral; criterion applied at dx = 0.1)",
+   "value": {
+    "0.2000": 4.984805475599352,
+    "0.1500": 4.992393041276761,
+    "0.1000": 4.996851919392883
+   },
+   "estimator": "solid-angle plaquette fluxes, periodic FFT (fs_lib.hopf_charge)",
+   "value_freespace_4th_order_crosscheck": {
+    "0.2000": 4.932534888344385,
+    "0.1500": 4.978479830168032,
+    "0.1000": 4.994413432032891
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 5.0,
+    "0.1500": 5.0,
+    "0.1000": 5.0
+   },
+   "target": 5,
+   "tolerance": "0.05",
+   "max_dev_dx0p1_both_estimators": 0.005586567967108991,
+   "max_dev_all_grids_solid_angle": 0.01519452440064839,
+   "max_dev_all_grids_freespace": 0.06746511165561486,
+   "verdict": "CHECK PASSED (internal check; dx = 0.1, both estimators)",
+   "note": "At dx = 0.2 the deviation depends on the estimator (solid angle <= 0.017, free-space 4th-order <= 0.086); the estimator-free linking-number charge is the exact integer wherever computed."
+  },
+  {
+   "quantity": "configuration type at Q=5",
+   "value": "L11_12",
+   "target": "L11_12",
+   "tolerance": "same type",
+   "verdict": "CALIBRATED"
+  },
+  {
+   "quantity": "E_6 at dx=0.1 (box [-7.5,7.5]^3, fixed boundary)",
+   "value": 4.72337854436925,
+   "target": 4.65,
+   "tolerance": "2%",
+   "verdict": "CALIBRATED (same-grid comparison at dx = 0.1)",
+   "rel_dev": 0.01578033212241947,
+   "comparison_convention": "same grid as the target (dx = 0.1, 151^3, box [-7.5,7.5]^3, fixed boundary), the setting in which Sutcliffe computed Table 2; PLAN fixed the table, not the convention",
+   "E_same_box_continuum": 4.742653599635106,
+   "target_rel_to_same_box_continuum": -0.019536235925439294,
+   "within_2pct_of_same_box_continuum": true,
+   "E_same_box_continuum_crosscheck_c4": 4.741935131207267
+  },
+  {
+   "quantity": "E_6/E_1 at dx=0.1",
+   "value": 3.863321057642651,
+   "target": 3.8621262458471763,
+   "tolerance": "1%",
+   "verdict": "CALIBRATED",
+   "rel_dev": 0.0003093663229574162,
+   "continuum_ratio_same_box": 3.854808455830082
+  },
+  {
+   "quantity": "Hopf charge of the Q=6 solution (Whitehead integral; criterion applied at dx = 0.1)",
+   "value": {
+    "0.2000": 5.984049782418258,
+    "0.1500": 5.9918959192793775,
+    "0.1000": 5.996624393919602
+   },
+   "estimator": "solid-angle plaquette fluxes, periodic FFT (fs_lib.hopf_charge)",
+   "value_freespace_4th_order_crosscheck": {
+    "0.2000": 5.930860455393493,
+    "0.1500": 5.977380216777999,
+    "0.1000": 5.994087391360658
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 6.0,
+    "0.1500": 6.0,
+    "0.1000": 6.0
+   },
+   "target": 6,
+   "tolerance": "0.05",
+   "max_dev_dx0p1_both_estimators": 0.005912608639341954,
+   "max_dev_all_grids_solid_angle": 0.015950217581742088,
+   "max_dev_all_grids_freespace": 0.06913954460650729,
+   "verdict": "CHECK PASSED (internal check; dx = 0.1, both estimators)",
+   "note": "At dx = 0.2 the deviation depends on the estimator (solid angle <= 0.017, free-space 4th-order <= 0.086); the estimator-free linking-number charge is the exact integer wherever computed."
+  },
+  {
+   "quantity": "configuration type at Q=6",
+   "value": "L11_22",
+   "target": "L11_22",
+   "tolerance": "same type",
+   "verdict": "CALIBRATED"
+  },
+  {
+   "quantity": "E_7 at dx=0.1 (box [-7.5,7.5]^3, fixed boundary)",
+   "value": 5.336168272611412,
+   "target": 5.242,
+   "tolerance": "2%",
+   "verdict": "CALIBRATED (same-grid comparison at dx = 0.1)",
+   "rel_dev": 0.017964187831249978,
+   "comparison_convention": "same grid as the target (dx = 0.1, 151^3, box [-7.5,7.5]^3, fixed boundary), the setting in which Sutcliffe computed Table 2; PLAN fixed the table, not the convention",
+   "E_same_box_continuum": 5.356727343342024,
+   "target_rel_to_same_box_continuum": -0.02141743194837442,
+   "within_2pct_of_same_box_continuum": false,
+   "E_same_box_continuum_crosscheck_c4": 5.355904940946044
+  },
+  {
+   "quantity": "E_7/E_1 at dx=0.1",
+   "value": 4.3645308249282415,
+   "target": 4.353820598006645,
+   "tolerance": "1%",
+   "verdict": "CALIBRATED",
+   "rel_dev": 0.0024599605520034817,
+   "continuum_ratio_same_box": 4.353924954645595
+  },
+  {
+   "quantity": "Hopf charge of the Q=7 solution (Whitehead integral; criterion applied at dx = 0.1)",
+   "value": {
+    "0.2000": 6.98275267362675,
+    "0.1500": 6.991181469038197,
+    "0.1000": 6.996266507128862
+   },
+   "estimator": "solid-angle plaquette fluxes, periodic FFT (fs_lib.hopf_charge)",
+   "value_freespace_4th_order_crosscheck": {
+    "0.2000": 6.914039998863491,
+    "0.1500": 6.972650965038699,
+    "0.1000": 6.993043803473567
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 7.0,
+    "0.1500": 7.0,
+    "0.1000": 7.0
+   },
+   "target": 7,
+   "tolerance": "0.05",
+   "max_dev_dx0p1_both_estimators": 0.006956196526433089,
+   "max_dev_all_grids_solid_angle": 0.017247326373250438,
+   "max_dev_all_grids_freespace": 0.0859600011365087,
+   "verdict": "CHECK PASSED (internal check; dx = 0.1, both estimators)",
+   "note": "At dx = 0.2 the deviation depends on the estimator (solid angle <= 0.017, free-space 4th-order <= 0.086); the estimator-free linking-number charge is the exact integer wherever computed."
+  },
+  {
+   "quantity": "configuration type at Q=7",
+   "value": "K32",
+   "target": "K32",
+   "tolerance": "same type",
+   "verdict": "CALIBRATED"
+  },
+  {
+   "quantity": "E_1 continuum, infinite volume (axial code: R = 7.5 continuum + continuum box shift 7.5 -> 25 + power-law tail beyond 25)",
+   "value": 1.2248203304554948,
+   "uncertainty": 0.0002911241047752931,
+   "crosscheck_spectral_infinite_volume": 1.2249321406346907,
+   "lower_estimate_3d_cube": 1.2235995688640298,
+   "target": "1.21-1.22 (PLAN.md context: \"more accurate literature values\"; Sutcliffe 2007: \"around 1.21\")",
+   "tolerance": null,
+   "verdict": "CHECK PASSED (two independent codes agree; no preregistered tolerance)",
+   "note": "0.4% above the PLAN context range. Resolved: the cross-check spectral value on all of R^3 is 1.2249321406346907; the literature values near 1.21 come from finite-box lattice runs that underestimate (Ward 1999 quotes the axial 1.25 of Gladikowski-Hellmund and the 3D 1.13 of Battye-Sutcliffe 1998, the latter as a finite-volume underestimate)"
+  },
+  {
+   "quantity": "E_2 continuum, infinite volume (axial code: R = 7.5 continuum + continuum box shift 7.5 -> 25 + power-law tail beyond 25)",
+   "value": 2.0004417817751023,
+   "uncertainty": 0.00011133090231715187,
+   "crosscheck_spectral_infinite_volume": 2.000470066943061,
+   "lower_estimate_3d_cube": 1.999350779295955,
+   "target": null,
+   "tolerance": null,
+   "verdict": "CHECK PASSED (two independent codes agree; no preregistered tolerance)",
+   "note": null
+  },
+  {
+   "quantity": "E_2/E_1 continuum, infinite volume",
+   "value": 1.6332532470547447,
+   "crosscheck_spectral": 1.6331272570793434,
+   "target": "1.6337 (Sutcliffe, dx = 0.1)",
+   "tolerance": null,
+   "verdict": "CHECK PASSED (two independent codes agree; no preregistered tolerance)"
+  }
+ ],
+ "per_charge": {
+  "1": {
+   "run": "Q1_A11",
+   "initial_map": "A11",
+   "Q_nominal": 1,
+   "L": 7.5,
+   "E_by_h": {
+    "0.2000": 1.1965307893624129,
+    "0.1500": 1.2123477661398068,
+    "0.1250": 1.2180873387840305,
+    "0.1000": 1.2226212820250035
+   },
+   "E2_by_h": {
+    "0.2000": 0.5535570406591511,
+    "0.1500": 0.57994957189544,
+    "0.1250": 0.5888814899344814,
+    "0.1000": 0.5957448121345541
+   },
+   "E4_by_h": {
+    "0.2000": 0.6429737487032617,
+    "0.1500": 0.6323981942443667,
+    "0.1250": 0.6292058488495492,
+    "0.1000": 0.6268764698904495
+   },
+   "virial_by_h": {
+    "0.2000": -0.07472996837110851,
+    "0.1500": -0.0432620274592714,
+    "0.1250": -0.033104653197792905,
+    "0.1000": -0.025463042573848124
+   },
+   "Q_by_h": {
+    "0.2000": 0.9915290534550175,
+    "0.1500": 0.9957745310383844,
+    "0.1250": 0.997180901473702,
+    "0.1000": 0.9982504069454214
+   },
+   "hedgehogs_by_h": {
+    "0.2000": 0,
+    "0.1500": 0,
+    "0.1250": 0,
+    "0.1000": 0
+   },
+   "minphi3_by_h": {
+    "0.2000": -0.9866252516144962,
+    "0.1500": -0.9998658660672948,
+    "0.1250": -0.9999616209909918,
+    "0.1000": -0.9997793374363787
+   },
+   "converged_by_h": {
+    "0.2000": true,
+    "0.1500": true,
+    "0.1250": true,
+    "0.1000": true
+   },
+   "flow_time_by_h": {
+    "0.2000": 70.00000000000321,
+    "0.1500": 40.020000000001154,
+    "0.1250": 40.00000000000053,
+    "0.1000": 40.00000000000061
+   },
+   "wall_s_by_h": {
+    "0.2000": 130.25575852394104,
+    "0.1500": 276.6689372062683,
+    "0.1250": 191.52308344841003,
+    "0.1000": 953.6065926551819
+   },
+   "extrapolation": {
+    "E0_h2_two_finest": 1.230681625564511,
+    "E0_h2h4_three_finest": 1.230321468363034,
+    "E0_h2_three_finest_lsq": 1.230877408694383,
+    "E0_h2h4_all_lsq": 1.2302265857283952,
+    "E0_best": 1.230321468363034,
+    "E0_spread": 0.0006508229659878406,
+    "hs": [
+     0.20000000000000018,
+     0.15000000000000036,
+     0.125,
+     0.09999999999999964
+    ]
+   },
+   "E_target": 1.204,
+   "type_target": "A1,1",
+   "ward_bound": 1.0,
+   "proven_bound": 0.5337961990491757,
+   "h_finest": 0.09999999999999964,
+   "type_found": "A1,1",
+   "type_found_by_N": {
+    "151": "A1,1",
+    "121": "A1,1"
+   },
+   "type_details_finest": {
+    "n_position": 1,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk_position_position": [
+     [
+      -0.0
+     ]
+    ],
+    "Q_from_linking": 1.0,
+    "twist_per_component": [
+     1.0
+    ],
+    "twist_from_total_lk": [
+     1.0
+    ],
+    "total_lk_per_component": [
+     1.0
+    ],
+    "slice_degrees": [
+     0.9999,
+     1.0,
+     0.9999,
+     0.9999,
+     1.0,
+     0.9999
+    ],
+    "inertia_eigs": [
+     2.0645949180721934,
+     2.0645949180919034,
+     2.484713669980639
+    ],
+    "inertia_axial_asym": 7.932508135204533e-12,
+    "loop_shapes": [
+     {
+      "centre": [
+       -9.677584164473039e-06,
+       -6.224104850499382e-06,
+       0.0036772807937477834
+      ],
+      "normal": [
+       1.2510442464023698e-06,
+       -2.0023116833565395e-06,
+       0.9999999999972126
+      ],
+      "mean_radius": 1.1920340462342813,
+      "out_of_plane_rms_over_radius": 0.0007979582281380095,
+      "radius_std_over_mean": 0.0014992626706387734,
+      "length": 7.488389766712187
+     }
+    ],
+    "tube_components": [
+     1,
+     [
+      2728
+     ]
+    ],
+    "linking_consistent_3_projections": true,
+    "pos_info": {
+     "n_pierced": 92,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    },
+    "link_info": {
+     "n_pierced": 104,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    }
+   },
+   "verdict_type": "CALIBRATED",
+   "Q_max_dev_from_integer": 0.008470946544982483,
+   "verdict_Q": "CHECK PASSED",
+   "E_h02": 1.1965307893624129,
+   "E_h02_rel_to_target": -0.006203663320255015,
+   "E_finest": 1.2226212820250035,
+   "E_finest_rel_to_target": 0.015466181083890085,
+   "E_h01": 1.2226212820250035,
+   "E_over_Q34_h01": 1.2226212820250035,
+   "E_rel_dev_h01": 0.015466181083890085,
+   "verdict_E": "CALIBRATED",
+   "E_over_E1_h01": 1.0,
+   "E_over_E1_target": 1.0,
+   "E_over_QE1_h01": 1.0,
+   "ratio_rel_dev": 0.0,
+   "verdict_ratio": "CALIBRATED",
+   "virial_continuum_est": {
+    "v0_h2h4_three_finest": -0.013364553280757335,
+    "v0_h2_two_finest": -0.01187795702016878,
+    "v_h0p1": -0.025463042573848124
+   },
+   "E_continuum_est": 1.230321468363034,
+   "E_continuum_spread": 0.0006508229659878406,
+   "E_over_E1_continuum": 1.0,
+   "Q_dev_dx0p1_both_estimators": 0.0017950141732783198,
+   "Q_by_h_freespace_crosscheck": {
+    "0.2000": 0.9827301134086369,
+    "0.1500": 0.9940039804259437,
+    "0.1250": 0.9966194232982778,
+    "0.1000": 0.9982049858267217
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 1.0,
+    "0.1500": 1.0,
+    "0.1000": 1.0,
+    "0.1250": 1.0
+   }
+  },
+  "2": {
+   "run": "Q2_A21",
+   "initial_map": "A21",
+   "Q_nominal": 2,
+   "L": 7.5,
+   "E_by_h": {
+    "0.2000": 1.9595243246802052,
+    "0.1500": 1.9794245781581916,
+    "0.1250": 1.9867397520739383,
+    "0.1000": 1.9925289557232517
+   },
+   "E2_by_h": {
+    "0.2000": 0.9284515401208315,
+    "0.1500": 0.9612880148019428,
+    "0.1250": 0.972790946312735,
+    "0.1000": 0.9817088339710995
+   },
+   "E4_by_h": {
+    "0.2000": 1.0310727845593737,
+    "0.1500": 1.018136563356249,
+    "0.1250": 1.0139488057612032,
+    "0.1000": 1.0108201217521522
+   },
+   "virial_by_h": {
+    "0.2000": -0.05237048764642917,
+    "0.1500": -0.028719734604489122,
+    "0.1250": -0.020716281236887662,
+    "0.1000": -0.014610220693372953
+   },
+   "Q_by_h": {
+    "0.2000": 1.9903885418212215,
+    "0.1500": 1.995035655415885,
+    "0.1250": 1.9966532123558371,
+    "0.1000": 1.9979067307037874
+   },
+   "hedgehogs_by_h": {
+    "0.2000": 0,
+    "0.1500": 0,
+    "0.1250": 0,
+    "0.1000": 0
+   },
+   "minphi3_by_h": {
+    "0.2000": -0.9975788014908266,
+    "0.1500": -0.9999984885902403,
+    "0.1250": -0.9995288429802496,
+    "0.1000": -0.9999901479715283
+   },
+   "converged_by_h": {
+    "0.2000": true,
+    "0.1500": true,
+    "0.1250": true,
+    "0.1000": true
+   },
+   "flow_time_by_h": {
+    "0.2000": 119.99999999999326,
+    "0.1500": 110.05799999999026,
+    "0.1250": 40.00000000000053,
+    "0.1000": 40.009000000000455
+   },
+   "wall_s_by_h": {
+    "0.2000": 258.70809602737427,
+    "0.1500": 364.5039403438568,
+    "0.1250": 399.51756501197815,
+    "0.1000": 1594.2369394302368
+   },
+   "extrapolation": {
+    "E0_h2_two_finest": 2.002820873322031,
+    "E0_h2h4_three_finest": 2.002385454110057,
+    "E0_h2_three_finest_lsq": 2.003057569230865,
+    "E0_h2h4_all_lsq": 2.0023468460666827,
+    "E0_best": 2.002385454110057,
+    "E0_spread": 0.0007107231641825251,
+    "hs": [
+     0.20000000000000018,
+     0.15000000000000036,
+     0.125,
+     0.09999999999999964
+    ]
+   },
+   "E_target": 1.967,
+   "type_target": "A2,1",
+   "ward_bound": 1.681792830507429,
+   "proven_bound": 0.8977346205130202,
+   "h_finest": 0.09999999999999964,
+   "type_found": "A2,1",
+   "type_found_by_N": {
+    "151": "A2,1",
+    "121": "A2,1"
+   },
+   "type_details_finest": {
+    "n_position": 1,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk_position_position": [
+     [
+      -0.0
+     ]
+    ],
+    "Q_from_linking": 2.0,
+    "twist_per_component": [
+     2.0
+    ],
+    "twist_from_total_lk": [
+     2.0
+    ],
+    "total_lk_per_component": [
+     2.0
+    ],
+    "slice_degrees": [
+     0.9999,
+     1.0,
+     0.9999,
+     1.0,
+     0.9999,
+     1.0
+    ],
+    "inertia_eigs": [
+     2.6255718923140092,
+     2.6255721059848107,
+     3.79034313297584
+    ],
+    "inertia_axial_asym": 5.6372416427859176e-08,
+    "loop_shapes": [
+     {
+      "centre": [
+       -0.0003610254455460593,
+       0.0002881155079218687,
+       0.00033378686218892885
+      ],
+      "normal": [
+       0.577342595652004,
+       -0.5773488133833303,
+       -0.5773593984085359
+      ],
+      "mean_radius": 1.734835952202053,
+      "out_of_plane_rms_over_radius": 0.0012326591252693406,
+      "radius_std_over_mean": 0.0013908582600675574,
+      "length": 10.903654495183618
+     }
+    ],
+    "tube_components": [
+     1,
+     [
+      3957
+     ]
+    ],
+    "linking_consistent_3_projections": true,
+    "pos_info": {
+     "n_pierced": 174,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    },
+    "link_info": {
+     "n_pierced": 172,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    }
+   },
+   "verdict_type": "CALIBRATED",
+   "Q_max_dev_from_integer": 0.00961145817877851,
+   "verdict_Q": "CHECK PASSED",
+   "E_h02": 1.9595243246802052,
+   "E_h02_rel_to_target": -0.003800546680119421,
+   "E_finest": 1.9925289557232517,
+   "E_finest_rel_to_target": 0.012978625177047176,
+   "E_h01": 1.9925289557232517,
+   "E_over_Q34_h01": 1.1847648054975164,
+   "E_rel_dev_h01": 0.012978625177047176,
+   "verdict_E": "CALIBRATED",
+   "E_over_E1_h01": 1.6297188549041657,
+   "E_over_E1_target": 1.6337209302325582,
+   "E_over_QE1_h01": 0.8148594274520828,
+   "ratio_rel_dev": -0.002449668884282885,
+   "verdict_ratio": "CALIBRATED",
+   "virial_continuum_est": {
+    "v0_h2h4_three_finest": -0.004737711914953276,
+    "v0_h2_two_finest": -0.0037550019493470172,
+    "v_h0p1": -0.014610220693372953
+   },
+   "E_continuum_est": 2.002385454110057,
+   "E_continuum_spread": 0.0007107231641825251,
+   "E_over_E1_continuum": 1.627530288302836,
+   "Q_dev_dx0p1_both_estimators": 0.002357245740562952,
+   "Q_by_h_freespace_crosscheck": {
+    "0.2000": 1.9790100856924888,
+    "0.1500": 1.9923046839100707,
+    "0.1250": 1.9955994262835597,
+    "0.1000": 1.997642754259437
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 2.0,
+    "0.1500": 2.0,
+    "0.1000": 2.0,
+    "0.1250": 2.0
+   }
+  },
+  "3": {
+   "run": "Q3_A31",
+   "initial_map": "A31",
+   "Q_nominal": 3,
+   "L": 7.5,
+   "E_by_h": {
+    "0.2000": 2.7450326065444512,
+    "0.1500": 2.7711644232146138,
+    "0.1000": 2.7884880142643347
+   },
+   "E2_by_h": {
+    "0.2000": 1.3026319073727053,
+    "0.1500": 1.3450511165386008,
+    "0.1000": 1.3719537973939115
+   },
+   "E4_by_h": {
+    "0.2000": 1.4424006991717462,
+    "0.1500": 1.426113306676013,
+    "0.1000": 1.4165342168704231
+   },
+   "virial_by_h": {
+    "0.2000": -0.05091698782222737,
+    "0.1500": -0.02925203191060682,
+    "0.1000": -0.015987308981951245
+   },
+   "Q_by_h": {
+    "0.2000": 2.9866154947465318,
+    "0.1500": 2.9930594331180553,
+    "0.1000": 2.9970878611722336
+   },
+   "hedgehogs_by_h": {
+    "0.2000": 0,
+    "0.1500": 0,
+    "0.1000": 0
+   },
+   "minphi3_by_h": {
+    "0.2000": -0.9993473888009895,
+    "0.1500": -0.9999997757748728,
+    "0.1000": -0.9999362595621716
+   },
+   "converged_by_h": {
+    "0.2000": true,
+    "0.1500": true,
+    "0.1000": false
+   },
+   "flow_time_by_h": {
+    "0.2000": 409.99999999991707,
+    "0.1500": 50.02500000000153,
+    "0.1000": 49.99999999999862
+   },
+   "wall_s_by_h": {
+    "0.2000": 567.8624873161316,
+    "0.1500": 283.7107584476471,
+    "0.1000": 1211.5664012432098
+   },
+   "extrapolation": {
+    "E0_h2_two_finest": 2.802346887104111,
+    "E0_h2h4_three_finest": 2.801541691732445,
+    "E0_h2_three_finest_lsq": 2.803303518302558,
+    "E0_best": 2.801541691732445,
+    "E0_spread": 0.0017618265701129232,
+    "hs": [
+     0.20000000000000018,
+     0.15000000000000036,
+     0.09999999999999964
+    ]
+   },
+   "E_target": 2.754,
+   "type_target": "A~3,1",
+   "ward_bound": 2.2795070569547775,
+   "proven_bound": 1.2167922027082332,
+   "h_finest": 0.09999999999999964,
+   "type_found": "A~3,1",
+   "type_found_by_N": {
+    "151": "A~3,1",
+    "101": "A~3,1"
+   },
+   "type_details_finest": {
+    "n_position": 1,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk_position_position": [
+     [
+      -0.0
+     ]
+    ],
+    "Q_from_linking": 3.0,
+    "twist_per_component": [
+     3.0
+    ],
+    "twist_from_total_lk": [
+     3.0
+    ],
+    "total_lk_per_component": [
+     3.0
+    ],
+    "slice_degrees": [
+     -0.0073,
+     -0.0077,
+     -0.0085,
+     -0.009,
+     -0.0085,
+     -0.0077
+    ],
+    "inertia_eigs": [
+     2.77530877375226,
+     4.355965865512448,
+     5.3839076160103785
+    ],
+    "inertia_axial_asym": 0.37038824660512915,
+    "loop_shapes": [
+     {
+      "centre": [
+       2.3277993317652328e-05,
+       0.3045991232835735,
+       0.3046609353382753
+      ],
+      "normal": [
+       -0.608812623531782,
+       0.5609627759205679,
+       -0.5609527194513275
+      ],
+      "mean_radius": 2.1080578760999558,
+      "out_of_plane_rms_over_radius": 0.22306526019810305,
+      "radius_std_over_mean": 0.1991367016580705,
+      "length": 14.981346709306399
+     }
+    ],
+    "tube_components": [
+     1,
+     [
+      5339
+     ]
+    ],
+    "linking_consistent_3_projections": true,
+    "pos_info": {
+     "n_pierced": 218,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    },
+    "link_info": {
+     "n_pierced": 232,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    }
+   },
+   "verdict_type": "CALIBRATED",
+   "Q_max_dev_from_integer": 0.013384505253468237,
+   "verdict_Q": "CHECK PASSED",
+   "E_h02": 2.7450326065444512,
+   "E_h02_rel_to_target": -0.0032561341523416054,
+   "E_finest": 2.7884880142643347,
+   "E_finest_rel_to_target": 0.012522880996490349,
+   "E_h01": 2.7884880142643347,
+   "E_over_Q34_h01": 1.2232855370009301,
+   "E_rel_dev_h01": 0.012522880996490349,
+   "verdict_E": "CALIBRATED",
+   "E_over_E1_h01": 2.2807455221504216,
+   "E_over_E1_target": 2.287375415282392,
+   "E_over_QE1_h01": 0.7602485073834739,
+   "ratio_rel_dev": -0.002898471797709634,
+   "verdict_ratio": "CALIBRATED",
+   "virial_continuum_est": {
+    "v0_h2h4_three_finest": -0.006701677986814028,
+    "v0_h2_two_finest": -0.005375530639027011,
+    "v_h0p1": -0.015987308981951245
+   },
+   "E_continuum_est": 2.801541691732445,
+   "E_continuum_spread": 0.0017618265701129232,
+   "E_over_E1_continuum": 2.2770810424530343,
+   "Q_dev_dx0p1_both_estimators": 0.0031166280758814224,
+   "Q_by_h_freespace_crosscheck": {
+    "0.2000": 2.9729174539915744,
+    "0.1500": 2.989916000312761,
+    "0.1000": 2.9968833719241186
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 3.0,
+    "0.1500": 3.0,
+    "0.1000": 3.0
+   }
+  },
+  "4": {
+   "run": "Q4_A22",
+   "initial_map": "A22",
+   "Q_nominal": 4,
+   "L": 7.5,
+   "E_by_h": {
+    "0.2000": 3.442919757053332,
+    "0.1500": 3.4826625305162113,
+    "0.1000": 3.5058004292337555
+   },
+   "E2_by_h": {
+    "0.2000": 1.609724619438919,
+    "0.1500": 1.6843515831963773,
+    "0.1000": 1.7236905948036807
+   },
+   "E4_by_h": {
+    "0.2000": 1.8331951376144129,
+    "0.1500": 1.798310947319834,
+    "0.1000": 1.782109834430075
+   },
+   "virial_by_h": {
+    "0.2000": -0.06490726881382623,
+    "0.1500": -0.03272190834595887,
+    "0.1000": -0.016663595320274026
+   },
+   "Q_by_h": {
+    "0.2000": 3.9873597622174533,
+    "0.1500": 3.9939629984024636,
+    "0.1000": 3.997571736322022
+   },
+   "hedgehogs_by_h": {
+    "0.2000": 0,
+    "0.1500": 0,
+    "0.1000": 0
+   },
+   "minphi3_by_h": {
+    "0.2000": -0.9999370710831452,
+    "0.1500": -0.999957499537448,
+    "0.1000": -0.9999980216841836
+   },
+   "converged_by_h": {
+    "0.2000": true,
+    "0.1500": true,
+    "0.1000": false
+   },
+   "flow_time_by_h": {
+    "0.2000": 400.14499999990875,
+    "0.1500": 40.02600000000135,
+    "0.1000": 30.00900000000236
+   },
+   "wall_s_by_h": {
+    "0.2000": 1039.7823028564453,
+    "0.1500": 445.38228154182434,
+    "0.1000": 1632.703619480133
+   },
+   "extrapolation": {
+    "E0_h2_two_finest": 3.5243107482077902,
+    "E0_h2h4_three_finest": 3.5211608702399397,
+    "E0_h2_three_finest_lsq": 3.5280530344172996,
+    "E0_best": 3.5211608702399397,
+    "E0_spread": 0.0068921641773598274,
+    "hs": [
+     0.20000000000000018,
+     0.15000000000000036,
+     0.09999999999999964
+    ]
+   },
+   "E_target": 3.445,
+   "type_target": "A2,2",
+   "ward_bound": 2.8284271247461903,
+   "proven_bound": 1.5098036484771051,
+   "h_finest": 0.09999999999999964,
+   "type_found": "A2,2",
+   "type_found_by_N": {
+    "151": "A2,2",
+    "101": "A2,2"
+   },
+   "type_details_finest": {
+    "n_position": 2,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ],
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk_position_position": [
+     [
+      -0.0,
+      -0.0
+     ],
+     [
+      -0.0,
+      -0.0
+     ]
+    ],
+    "Q_from_linking": 4.0,
+    "twist_per_component": [
+     0.0,
+     2.0
+    ],
+    "twist_from_total_lk": [
+     2.0,
+     2.0
+    ],
+    "total_lk_per_component": [
+     2.0,
+     2.0
+    ],
+    "slice_degrees": [
+     -1.9999,
+     -2.0,
+     -1.9999,
+     -2.0,
+     -1.9999,
+     -2.0
+    ],
+    "inertia_eigs": [
+     3.445910897762858,
+     3.446051440107888,
+     4.151243086668589
+    ],
+    "inertia_axial_asym": 3.3855484272070036e-05,
+    "loop_shapes": [
+     {
+      "centre": [
+       -0.21031855268216662,
+       0.1999287131636847,
+       -0.19040094355069603
+      ],
+      "normal": [
+       0.5778708652726429,
+       -0.5768000649116937,
+       0.5773793797728775
+      ],
+      "mean_radius": 1.8110870081015815,
+      "out_of_plane_rms_over_radius": 0.0038516094319888503,
+      "radius_std_over_mean": 0.006063490766878013,
+      "length": 11.389798285736013
+     },
+     {
+      "centre": [
+       0.19038675534858895,
+       -0.19991422708101161,
+       0.2103039807122899
+      ],
+      "normal": [
+       0.5773795234983191,
+       -0.5768000700174594,
+       0.5778707165730996
+      ],
+      "mean_radius": 1.811086875050353,
+      "out_of_plane_rms_over_radius": 0.0038516014825976256,
+      "radius_std_over_mean": 0.006063519292017014,
+      "length": 11.38979885641399
+     }
+    ],
+    "tube_components": [
+     1,
+     [
+      14250
+     ]
+    ],
+    "linking_consistent_3_projections": true,
+    "pos_info": {
+     "n_pierced": 348,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    },
+    "link_info": {
+     "n_pierced": 358,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    }
+   },
+   "verdict_type": "CALIBRATED",
+   "Q_max_dev_from_integer": 0.012640237782546748,
+   "verdict_Q": "CHECK PASSED",
+   "E_h02": 3.442919757053332,
+   "E_h02_rel_to_target": -0.000603844106434881,
+   "E_finest": 3.5058004292337555,
+   "E_finest_rel_to_target": 0.017648890924166993,
+   "E_h01": 3.5058004292337555,
+   "E_over_Q34_h01": 1.2394876284989487,
+   "E_rel_dev_h01": 0.017648890924166993,
+   "verdict_E": "CALIBRATED",
+   "E_over_E1_h01": 2.8674459383098316,
+   "E_over_E1_target": 2.861295681063123,
+   "E_over_QE1_h01": 0.7168614845774579,
+   "ratio_rel_dev": 0.002149465812782969,
+   "verdict_ratio": "CALIBRATED",
+   "virial_continuum_est": {
+    "v0_h2h4_three_finest": -0.007975682999115954,
+    "v0_h2_two_finest": -0.0038169448997264267,
+    "v_h0p1": -0.016663595320274026
+   },
+   "E_continuum_est": 3.5211608702399397,
+   "E_continuum_spread": 0.0068921641773598274,
+   "E_over_E1_continuum": 2.861984416906023,
+   "Q_dev_dx0p1_both_estimators": 0.005437377840310287,
+   "Q_by_h_freespace_crosscheck": {
+    "0.2000": 3.927606194408457,
+    "0.1500": 3.97809155164352,
+    "0.1000": 3.9945626221596897
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 4.0,
+    "0.1500": 4.0,
+    "0.1000": 4.0
+   }
+  },
+  "5": {
+   "run": "Q5_K32",
+   "initial_map": "K32_Q5",
+   "Q_nominal": 5,
+   "L": 7.5,
+   "E_by_h": {
+    "0.2000": 4.094892726681604,
+    "0.1500": 4.137730195407667,
+    "0.1000": 4.163899332581217
+   },
+   "E2_by_h": {
+    "0.2000": 1.9228813503665496,
+    "0.1500": 1.9988043562238373,
+    "0.1000": 2.0416644204276286
+   },
+   "E4_by_h": {
+    "0.2000": 2.1720113763150546,
+    "0.1500": 2.13892583918383,
+    "0.1000": 2.122234912153588
+   },
+   "virial_by_h": {
+    "0.2000": -0.060839206928478815,
+    "0.1500": -0.03386433535843127,
+    "0.1000": -0.019349769360541523
+   },
+   "Q_by_h": {
+    "0.2000": 4.984805475599352,
+    "0.1500": 4.992393041276761,
+    "0.1000": 4.996851919392883
+   },
+   "hedgehogs_by_h": {
+    "0.2000": 0,
+    "0.1500": 0,
+    "0.1000": 0
+   },
+   "minphi3_by_h": {
+    "0.2000": -0.9987996838360567,
+    "0.1500": -0.999976574094436,
+    "0.1000": -0.9999931362860761
+   },
+   "converged_by_h": {
+    "0.2000": true,
+    "0.1500": true,
+    "0.1000": false
+   },
+   "flow_time_by_h": {
+    "0.2000": 300.2300000001089,
+    "0.1500": 60.03900000000211,
+    "0.1000": 20.006000000000288
+   },
+   "wall_s_by_h": {
+    "0.2000": 676.4179077148438,
+    "0.1500": 568.5379500389099,
+    "0.1000": 1119.6189677715302
+   },
+   "extrapolation": {
+    "E0_h2_two_finest": 4.184834642320055,
+    "E0_h2h4_three_finest": 4.1821772094558725,
+    "E0_h2_three_finest_lsq": 4.187991867603649,
+    "E0_best": 4.1821772094558725,
+    "E0_spread": 0.005814658147776264,
+    "hs": [
+     0.20000000000000018,
+     0.15000000000000036,
+     0.09999999999999964
+    ]
+   },
+   "E_target": 4.095,
+   "type_target": "L11_12",
+   "ward_bound": 3.34370152488211,
+   "proven_bound": 1.7848551647370032,
+   "h_finest": 0.09999999999999964,
+   "type_found": "L11_12",
+   "type_found_by_N": {
+    "151": "L11_12",
+    "101": "L11_12"
+   },
+   "type_details_finest": {
+    "n_position": 2,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ],
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk_position_position": [
+     [
+      -0.0,
+      1.0
+     ],
+     [
+      1.0,
+      -0.0
+     ]
+    ],
+    "Q_from_linking": 5.0,
+    "twist_per_component": [
+     0.0,
+     3.0
+    ],
+    "twist_from_total_lk": [
+     1.0,
+     2.0
+    ],
+    "total_lk_per_component": [
+     2.0,
+     3.0
+    ],
+    "slice_degrees": [
+     -0.0015,
+     -0.0005,
+     0.0012,
+     0.0015,
+     0.0005,
+     -0.0012
+    ],
+    "inertia_eigs": [
+     3.427644038343692,
+     4.709628142782808,
+     5.333720595846915
+    ],
+    "inertia_axial_asym": 0.18207621505694083,
+    "loop_shapes": [
+     {
+      "centre": [
+       -0.8444268308329147,
+       -0.84434008101695,
+       2.9066483280161426e-05
+      ],
+      "normal": [
+       -0.6981035114046158,
+       0.6981040120906059,
+       0.15906689054465328
+      ],
+      "mean_radius": 1.8105090435932853,
+      "out_of_plane_rms_over_radius": 0.03452350429400899,
+      "radius_std_over_mean": 0.06185011202079333,
+      "length": 11.388129854521974
+     },
+     {
+      "centre": [
+       0.18709747125561618,
+       0.18716038685419153,
+       4.891204335980364e-05
+      ],
+      "normal": [
+       -0.2147184509912967,
+       0.21471797621187316,
+       0.9527812852356914
+      ],
+      "mean_radius": 2.2593798339156357,
+      "out_of_plane_rms_over_radius": 0.12504459017714378,
+      "radius_std_over_mean": 0.10701124473197875,
+      "length": 14.919353028695431
+     }
+    ],
+    "tube_components": [
+     1,
+     [
+      12344
+     ]
+    ],
+    "linking_consistent_3_projections": true,
+    "pos_info": {
+     "n_pierced": 390,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    },
+    "link_info": {
+     "n_pierced": 420,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    }
+   },
+   "verdict_type": "CALIBRATED",
+   "Q_max_dev_from_integer": 0.01519452440064839,
+   "verdict_Q": "CHECK PASSED",
+   "E_h02": 4.094892726681604,
+   "E_h02_rel_to_target": -2.6196170548331565e-05,
+   "E_finest": 4.163899332581217,
+   "E_finest_rel_to_target": 0.01682523384156709,
+   "E_h01": 4.163899332581217,
+   "E_over_Q34_h01": 1.2452963584206351,
+   "E_rel_dev_h01": 0.01682523384156709,
+   "verdict_E": "CALIBRATED",
+   "E_over_E1_h01": 3.405714748956956,
+   "E_over_E1_target": 3.4011627906976742,
+   "E_over_QE1_h01": 0.6811429497913912,
+   "ratio_rel_dev": 0.0013383535394810853,
+   "verdict_ratio": "CALIBRATED",
+   "virial_continuum_est": {
+    "v0_h2h4_three_finest": -0.010590036207802333,
+    "v0_h2_two_finest": -0.007738116562229969,
+    "v_h0p1": -0.019349769360541523
+   },
+   "E_continuum_est": 4.1821772094558725,
+   "E_continuum_spread": 0.005814658147776264,
+   "E_over_E1_continuum": 3.399255655532321,
+   "Q_dev_dx0p1_both_estimators": 0.005586567967108991,
+   "Q_by_h_freespace_crosscheck": {
+    "0.2000": 4.932534888344385,
+    "0.1500": 4.978479830168032,
+    "0.1000": 4.994413432032891
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 5.0,
+    "0.1500": 5.0,
+    "0.1000": 5.0
+   }
+  },
+  "6": {
+   "run": "Q6_L22",
+   "initial_map": "L22_Q6",
+   "Q_nominal": 6,
+   "L": 7.5,
+   "E_by_h": {
+    "0.2000": 4.650973989016272,
+    "0.1500": 4.695867680859881,
+    "0.1000": 4.72337854436925
+   },
+   "E2_by_h": {
+    "0.2000": 2.202119421384688,
+    "0.1500": 2.28063439958688,
+    "0.1000": 2.3260249939840576
+   },
+   "E4_by_h": {
+    "0.2000": 2.448854567631583,
+    "0.1500": 2.415233281273002,
+    "0.1000": 2.397353550385193
+   },
+   "virial_by_h": {
+    "0.2000": -0.0530502098763794,
+    "0.1500": -0.028663261155066212,
+    "0.1000": -0.015101172969963661
+   },
+   "Q_by_h": {
+    "0.2000": 5.984049782418258,
+    "0.1500": 5.9918959192793775,
+    "0.1000": 5.996624393919602
+   },
+   "hedgehogs_by_h": {
+    "0.2000": 0,
+    "0.1500": 0,
+    "0.1000": 0
+   },
+   "minphi3_by_h": {
+    "0.2000": -0.9999941527664888,
+    "0.1500": -0.9999442742524934,
+    "0.1000": -0.9999097278037431
+   },
+   "converged_by_h": {
+    "0.2000": true,
+    "0.1500": false,
+    "0.1000": false
+   },
+   "flow_time_by_h": {
+    "0.2000": 160.0563999999978,
+    "0.1500": 60.02175000000724,
+    "0.1000": 30.00900000000236
+   },
+   "wall_s_by_h": {
+    "0.2000": 79.51446485519409,
+    "0.1500": 900.639053106308,
+    "0.1000": 1615.044362783432
+   },
+   "extrapolation": {
+    "E0_h2_two_finest": 4.745387235176746,
+    "E0_h2h4_three_finest": 4.742653599635106,
+    "E0_h2_three_finest_lsq": 4.748634994834013,
+    "E0_best": 4.742653599635106,
+    "E0_spread": 0.005981395198907613,
+    "hs": [
+     0.20000000000000018,
+     0.15000000000000036,
+     0.09999999999999964
+    ]
+   },
+   "E_target": 4.65,
+   "type_target": "L11_22",
+   "ward_bound": 3.833658625477635,
+   "proven_bound": 2.046392402732049,
+   "h_finest": 0.09999999999999964,
+   "type_found": "L11_22",
+   "type_found_by_N": {
+    "151": "L11_22",
+    "101": "L11_22"
+   },
+   "type_details_finest": {
+    "n_position": 2,
+    "alexander": [
+     [
+      "1",
+      "1",
+      "1"
+     ],
+     [
+      "1",
+      "1",
+      "1"
+     ]
+    ],
+    "lk_position_position": [
+     [
+      -0.0,
+      1.0
+     ],
+     [
+      1.0,
+      -0.0
+     ]
+    ],
+    "Q_from_linking": 6.0,
+    "twist_per_component": [
+     2.0,
+     2.0
+    ],
+    "twist_from_total_lk": [
+     2.0,
+     2.0
+    ],
+    "total_lk_per_component": [
+     3.0,
+     3.0
+    ],
+    "slice_degrees": [
+     2.0,
+     1.9995,
+     1.9995,
+     2.0,
+     1.9995,
+     1.9995
+    ],
+    "inertia_eigs": [
+     4.174895761344127,
+     4.371264349839666,
+     5.750185928071222
+    ],
+    "inertia_axial_asym": 0.034149954619190334,
+    "loop_shapes": [
+     {
+      "centre": [
+       -0.7343730183694898,
+       -0.012344904055169217,
+       0.01684181163168382
+      ],
+      "normal": [
+       -0.0022905997082112166,
+       0.9286239342272524,
+       0.3710152853094821
+      ],
+      "mean_radius": 2.2292814922768858,
+      "out_of_plane_rms_over_radius": 0.12219442003548443,
+      "radius_std_over_mean": 0.10353862881807084,
+      "length": 14.540672192024214
+     },
+     {
+      "centre": [
+       0.7430120301809381,
+       -0.0006792855999345348,
+       -0.0007125470376527729
+      ],
+      "normal": [
+       -0.0008177179606569158,
+       0.3728668816019058,
+       0.9278844863137907
+      ],
+      "mean_radius": 2.23113633050805,
+      "out_of_plane_rms_over_radius": 0.12212610768874237,
+      "radius_std_over_mean": 0.10366744711520859,
+      "length": 14.540697643331978
+     }
+    ],
+    "tube_components": [
+     2,
+     [
+      6332,
+      6321
+     ]
+    ],
+    "linking_consistent_3_projections": true,
+    "pos_info": {
+     "n_pierced": 430,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    },
+    "link_info": {
+     "n_pierced": 432,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    }
+   },
+   "verdict_type": "CALIBRATED",
+   "Q_max_dev_from_integer": 0.015950217581742088,
+   "verdict_Q": "CHECK PASSED",
+   "E_h02": 4.650973989016272,
+   "E_h02_rel_to_target": 0.00020946000349919558,
+   "E_finest": 4.72337854436925,
+   "E_finest_rel_to_target": 0.01578033212241947,
+   "E_h01": 4.72337854436925,
+   "E_over_Q34_h01": 1.232081154273554,
+   "E_rel_dev_h01": 0.01578033212241947,
+   "verdict_E": "CALIBRATED",
+   "E_over_E1_h01": 3.863321057642651,
+   "E_over_E1_target": 3.8621262458471763,
+   "E_over_QE1_h01": 0.6438868429404419,
+   "ratio_rel_dev": 0.0003093663229574162,
+   "verdict_ratio": "CALIBRATED",
+   "virial_continuum_est": {
+    "v0_h2h4_three_finest": -0.006565798962811808,
+    "v0_h2_two_finest": -0.004251502421881849,
+    "v_h0p1": -0.015101172969963661
+   },
+   "E_continuum_est": 4.742653599635106,
+   "E_continuum_spread": 0.005981395198907613,
+   "E_over_E1_continuum": 3.854808455830082,
+   "Q_dev_dx0p1_both_estimators": 0.005912608639341954,
+   "Q_by_h_freespace_crosscheck": {
+    "0.2000": 5.930860455393493,
+    "0.1500": 5.977380216777999,
+    "0.1000": 5.994087391360658
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 6.0,
+    "0.1500": 6.0,
+    "0.1000": 6.0
+   }
+  },
+  "7": {
+   "run": "Q7_K32",
+   "initial_map": "K32_Q7",
+   "Q_nominal": 7,
+   "L": 7.5,
+   "E_by_h": {
+    "0.2000": 5.254164231727002,
+    "0.1500": 5.305705333723325,
+    "0.1000": 5.336168272611412
+   },
+   "E2_by_h": {
+    "0.2000": 2.467712333521374,
+    "0.1500": 2.5622125873574624,
+    "0.1000": 2.615262645201161
+   },
+   "E4_by_h": {
+    "0.2000": 2.786451898205628,
+    "0.1500": 2.743492746365863,
+    "0.1000": 2.7209056274102523
+   },
+   "virial_by_h": {
+    "0.2000": -0.0606641799964229,
+    "0.1500": -0.034167023535245186,
+    "0.1000": -0.019797535762003226
+   },
+   "Q_by_h": {
+    "0.2000": 6.98275267362675,
+    "0.1500": 6.991181469038197,
+    "0.1000": 6.996266507128862
+   },
+   "hedgehogs_by_h": {
+    "0.2000": 0,
+    "0.1500": 0,
+    "0.1000": 0
+   },
+   "minphi3_by_h": {
+    "0.2000": -0.9998628941184567,
+    "0.1500": -0.9998073745393717,
+    "0.1000": -0.9999366381073552
+   },
+   "converged_by_h": {
+    "0.2000": true,
+    "0.1500": true,
+    "0.1000": false
+   },
+   "flow_time_by_h": {
+    "0.2000": 300.28000000010957,
+    "0.1500": 90.05099999998542,
+    "0.1000": 30.00000000000189
+   },
+   "wall_s_by_h": {
+    "0.2000": 875.1239614486694,
+    "0.1500": 550.0607986450195,
+    "0.1000": null
+   },
+   "extrapolation": {
+    "E0_h2_two_finest": 5.360538623721881,
+    "E0_h2h4_three_finest": 5.356727343342024,
+    "E0_h2_three_finest_lsq": 5.365066704540151,
+    "E0_best": 5.356727343342024,
+    "E0_spread": 0.008339361198126838,
+    "hs": [
+     0.20000000000000018,
+     0.15000000000000036,
+     0.09999999999999964
+    ]
+   },
+   "E_target": 5.242,
+   "type_target": "K32",
+   "ward_bound": 4.303517070658851,
+   "proven_bound": 2.2972010548609374,
+   "h_finest": 0.09999999999999964,
+   "type_found": "K32",
+   "type_found_by_N": {
+    "151": "K32",
+    "101": "K32"
+   },
+   "type_details_finest": {
+    "n_position": 1,
+    "alexander": [
+     [
+      "t**2 - t + 1",
+      "t**2 - t + 1",
+      "t**2 - t + 1"
+     ]
+    ],
+    "lk_position_position": [
+     [
+      -0.0
+     ]
+    ],
+    "Q_from_linking": 7.0,
+    "twist_per_component": [
+     7.0
+    ],
+    "twist_from_total_lk": [
+     7.0
+    ],
+    "total_lk_per_component": [
+     7.0
+    ],
+    "slice_degrees": [
+     0.3547,
+     0.3533,
+     0.3504,
+     0.3473,
+     0.3504,
+     0.3533
+    ],
+    "inertia_eigs": [
+     4.049993049840277,
+     5.204377497167028,
+     6.280880315113508
+    ],
+    "inertia_axial_asym": 0.2658036210676795,
+    "loop_shapes": [
+     {
+      "centre": [
+       0.6374995856486975,
+       -1.5620654162949997e-06,
+       -5.6976752452370815e-06
+      ],
+      "normal": [
+       2.71539416895231e-07,
+       -0.5509140114239088,
+       -0.8345620120858267
+      ],
+      "mean_radius": 2.300878675963545,
+      "out_of_plane_rms_over_radius": 0.3569762820946316,
+      "radius_std_over_mean": 0.30257481570371353,
+      "length": 34.13883911530459
+     }
+    ],
+    "tube_components": [
+     1,
+     [
+      15193
+     ]
+    ],
+    "linking_consistent_3_projections": true,
+    "pos_info": {
+     "n_pierced": 514,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    },
+    "link_info": {
+     "n_pierced": 502,
+     "ambiguous_cubes": 0,
+     "unmatched": 0,
+     "open_chains": 0
+    }
+   },
+   "verdict_type": "CALIBRATED",
+   "Q_max_dev_from_integer": 0.017247326373250438,
+   "verdict_Q": "CHECK PASSED",
+   "E_h02": 5.254164231727002,
+   "E_h02_rel_to_target": 0.0023205325690580647,
+   "E_finest": 5.336168272611412,
+   "E_finest_rel_to_target": 0.017964187831249978,
+   "E_h01": 5.336168272611412,
+   "E_over_Q34_h01": 1.2399551773578692,
+   "E_rel_dev_h01": 0.017964187831249978,
+   "verdict_E": "CALIBRATED",
+   "E_over_E1_h01": 4.3645308249282415,
+   "E_over_E1_target": 4.353820598006645,
+   "E_over_QE1_h01": 0.6235044035611772,
+   "ratio_rel_dev": 0.0024599605520034817,
+   "verdict_ratio": "CALIBRATED",
+   "virial_continuum_est": {
+    "v0_h2h4_three_finest": -0.011036177077112443,
+    "v0_h2_two_finest": -0.008301945543409904,
+    "v_h0p1": -0.019797535762003226
+   },
+   "E_continuum_est": 5.356727343342024,
+   "E_continuum_spread": 0.008339361198126838,
+   "E_over_E1_continuum": 4.353924954645595,
+   "Q_dev_dx0p1_both_estimators": 0.006956196526433089,
+   "Q_by_h_freespace_crosscheck": {
+    "0.2000": 6.914039998863491,
+    "0.1500": 6.972650965038699,
+    "0.1000": 6.993043803473567
+   },
+   "Q_from_linking_by_h": {
+    "0.2000": 7.0,
+    "0.1500": 7.0,
+    "0.1000": 7.0
+   }
+  }
+ },
+ "box_study": {
+  "box_Q1_L10": {
+   "L": 10.0,
+   "h": 0.1999999999999993,
+   "E": 1.1941380477984977,
+   "virial": -0.06754008821231108,
+   "Q": 0.9916761843959162,
+   "converged": true,
+   "E_L7p5_same_h": 1.1965307893624129,
+   "rel_change_vs_L7p5": -0.0019997325477851824
+  },
+  "box_Q2_L10": {
+   "L": 10.0,
+   "h": 0.1999999999999993,
+   "E": 1.9584536130962267,
+   "virial": -0.0492742969191583,
+   "Q": 1.990456105393154,
+   "converged": true,
+   "E_L7p5_same_h": 1.9595243246802052,
+   "rel_change_vs_L7p5": -0.0005464140304322074
+  }
+ },
+ "seed_claims": {
+  "E2_lt_2E1": {
+   "E2": 1.9925289557232517,
+   "twoE1": 2.445242564050007,
+   "ratio": 0.8148594274520828,
+   "holds": true
+  },
+  "E_over_Q34": {
+   "1": 1.2226212820250035,
+   "2": 1.1847648054975164,
+   "3": 1.2232855370009301,
+   "4": 1.2394876284989487,
+   "5": 1.2452963584206351,
+   "6": 1.232081154273554,
+   "7": 1.2399551773578692
+  },
+  "E_over_QE1": {
+   "1": 1.0,
+   "2": 0.8148594274520828,
+   "3": 0.7602485073834739,
+   "4": 0.7168614845774579,
+   "5": 0.6811429497913912,
+   "6": 0.6438868429404419,
+   "7": 0.6235044035611772
+  },
+  "fission_check": {
+   "2": {
+    "splits_checked": [
+     [
+      1,
+      1
+     ]
+    ],
+    "E_Q": 1.9925289557232517,
+    "cheapest_split": [
+     1,
+     1
+    ],
+    "E_split": 2.445242564050007,
+    "binding_rel": 0.18514057254791716
+   },
+   "3": {
+    "splits_checked": [
+     [
+      1,
+      2
+     ]
+    ],
+    "E_Q": 2.7884880142643347,
+    "cheapest_split": [
+     1,
+     2
+    ],
+    "E_split": 3.2151502377482553,
+    "binding_rel": 0.13270366606032546
+   },
+   "4": {
+    "splits_checked": [
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      2
+     ]
+    ],
+    "E_Q": 3.5058004292337555,
+    "cheapest_split": [
+     2,
+     2
+    ],
+    "E_split": 3.9850579114465035,
+    "binding_rel": 0.12026361796051954
+   },
+   "5": {
+    "splits_checked": [
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      3
+     ]
+    ],
+    "E_Q": 4.163899332581217,
+    "cheapest_split": [
+     1,
+     4
+    ],
+    "E_split": 4.728421711258759,
+    "binding_rel": 0.11938917743596533
+   },
+   "6": {
+    "splits_checked": [
+     [
+      1,
+      5
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3,
+      3
+     ]
+    ],
+    "E_Q": 4.72337854436925,
+    "cheapest_split": [
+     1,
+     5
+    ],
+    "E_split": 5.38652061460622,
+    "binding_rel": 0.12311139558972028
+   },
+   "7": {
+    "splits_checked": [
+     [
+      1,
+      6
+     ],
+     [
+      2,
+      5
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "E_Q": 5.336168272611412,
+    "cheapest_split": [
+     1,
+     6
+    ],
+    "E_split": 5.945999826394254,
+    "binding_rel": 0.10256165011573048
+   }
+  },
+  "above_ward_and_proven_bounds": {
+   "1": true,
+   "2": true,
+   "3": true,
+   "4": true,
+   "5": true,
+   "6": true,
+   "7": true
+  },
+  "Q7_type": "K32",
+  "power_law_fit": {
+   "Q": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "p_ours": 0.7644339458852658,
+   "c_ours": 1.2052624841859059,
+   "p_sutcliffe_same_Q": 0.762840136266943,
+   "c_sutcliffe_same_Q": 1.1890595626697633
+  },
+  "E_over_Q_monotone_decreasing": true,
+  "E_over_Q": {
+   "1": 1.2226212820250035,
+   "2": 0.9962644778616259,
+   "3": 0.9294960047547782,
+   "4": 0.8764501073084389,
+   "5": 0.8327798665162434,
+   "6": 0.7872297573948751,
+   "7": 0.7623097532302018
+  },
+  "verdicts": [
+   {
+    "claim": "SEED sec. 4: E/Q^{3/4} stays near 1.2, so the energy per unit charge falls and bigger folds store charge more cheaply",
+    "verdict": "CONFIRMED (Q = 1-7)",
+    "evidence": "E/Q^{3/4} = 1.185-1.245 at dx = 0.1 and 1.19-1.25 in the same-box continuum; E/Q falls monotonically; every E_Q is 10-19% below its cheapest split. Energies are those of the solutions reached from one start per charge (upper bounds on the minima; they match Sutcliffe's survey)."
+   },
+   {
+    "claim": "E_2 < 2 E_1: a charge-2 fold does not split",
+    "verdict": "CONFIRMED",
+    "evidence": "E_2/(2E_1) = 0.8149 at dx = 0.1, 0.8166 in infinite volume (axial code); cross-check spectral 0.8166"
+   },
+   {
+    "claim": "SEED sec. 4/6C: Q = 7 is a trefoil",
+    "verdict": "CONFIRMED as a reproduction of the literature minimum (trefoil-type minimum reached from the preregistered trefoil start; global minimality not re-searched here: one start per charge, so it rests on Sutcliffe's survey)",
+    "evidence": "one position loop with Alexander polynomial t^2-t+1 (3 projections, dx = 0.15 and 0.1), Q_link = 7, E_7/E_1 = 4.3645 vs 4.3538"
+   },
+   {
+    "claim": "SEED sec. 4: E >= c|Q|^{3/4}; the 3/4 power is the right one and the computed minima agree (Sutcliffe 2007)",
+    "verdict": "AMENDED",
+    "evidence": "all energies above Q^{3/4} and 0.534 Q^{3/4}; fitted exponent 0.764 over Q <= 7 (Sutcliffe's table 0.763), consistent with but not a test of the asymptotic 3/4; optimality is Lin & Yang 2004 (PLAN 3.1)"
+   },
+   {
+    "claim": "SEED sec. 4/6C: the lowest folds are rings and each charge's minimum is a definite knot or link",
+    "verdict": "CONFIRMED as a reproduction of the literature types (one start per charge; that these are the global minima rests on Sutcliffe's survey)",
+    "evidence": "A11, A21, bent A~31, A22, L^{1,1}_{1,2}, L^{1,1}_{2,2}, K32, all as in Sutcliffe Table 2"
+   }
+  ]
+ },
+ "axial2d": {
+  "description": "axially symmetric 2D reduction, A_{n,1}; energies in Sutcliffe normalisation",
+  "grad_check_rel_err": 5.106461766179831e-10,
+  "ansatz_checks": {
+   "linear_Lf4": {
+    "lattice": [
+     [
+      0.1,
+      1.7238169341427254
+     ],
+     [
+      0.05,
+      1.7312514614879926
+     ],
+     [
+      0.025,
+      1.7341212030642674
+     ]
+    ],
+    "quadrature_3d_check": 1.7368573257590636
+   },
+   "gauss_w2": {
+    "lattice": [
+     [
+      0.1,
+      1.5160485435580477
+     ],
+     [
+      0.05,
+      1.5209605090797484
+     ],
+     [
+      0.025,
+      1.5221883421838645
+     ]
+    ],
+    "quadrature_3d_check": 1.5225976006498694,
+    "richardson": 1.5225976198852365
+   }
+  },
+  "relaxed": {
+   "n1_R7.5_h0.2": {
+    "n": 1,
+    "R": 7.5,
+    "h": 0.2,
+    "E": 1.1903167705634352,
+    "iters": 3498,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "n1_R7.5_h0.1": {
+    "n": 1,
+    "R": 7.5,
+    "h": 0.1,
+    "E": 1.2219850242979773,
+    "iters": 1132,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "n1_R7.5_h0.05": {
+    "n": 1,
+    "R": 7.5,
+    "h": 0.05,
+    "E": 1.2291529285403684,
+    "iters": 1034,
+    "msg": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL"
+   },
+   "n1_R12.0_h0.2": {
+    "n": 1,
+    "R": 12.0,
+    "h": 0.2,
+    "E": 1.1869742696474126,
+    "iters": 447,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "n1_R12.0_h0.1": {
+    "n": 1,
+    "R": 12.0,
+    "h": 0.1,
+    "E": 1.217339888846457,
+    "iters": 1690,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "n1_R18.0_h0.2": {
+    "n": 1,
+    "R": 18.0,
+    "h": 0.2,
+    "E": 1.186163643717071,
+    "iters": 611,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "n1_R18.0_h0.1": {
+    "n": 1,
+    "R": 18.0,
+    "h": 0.1,
+    "E": 1.2162706245457016,
+    "iters": 2192,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "n1_R25.0_h0.2": {
+    "n": 1,
+    "R": 25.0,
+    "h": 0.2,
+    "E": 1.1859492427653917,
+    "iters": 838,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "n1_R25.0_h0.1": {
+    "n": 1,
+    "R": 25.0,
+    "h": 0.1,
+    "E": 1.215988156922213,
+    "iters": 2762,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "n2_R7.5_h0.2": {
+    "n": 2,
+    "R": 7.5,
+    "h": 0.2,
+    "E": 1.9731612379009744,
+    "iters": 1131,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "n2_R7.5_h0.1": {
+    "n": 2,
+    "R": 7.5,
+    "h": 0.1,
+    "E": 1.9962449463585843,
+    "iters": 454,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "n2_R7.5_h0.05": {
+    "n": 2,
+    "R": 7.5,
+    "h": 0.05,
+    "E": 2.0016685790315494,
+    "iters": 809,
+    "msg": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL"
+   },
+   "n2_R12.0_h0.2": {
+    "n": 2,
+    "R": 12.0,
+    "h": 0.2,
+    "E": 1.971132151878636,
+    "iters": 333,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "n2_R12.0_h0.1": {
+    "n": 2,
+    "R": 12.0,
+    "h": 0.1,
+    "E": 1.9936738003206955,
+    "iters": 629,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "n2_R18.0_h0.2": {
+    "n": 2,
+    "R": 18.0,
+    "h": 0.2,
+    "E": 1.9709338603040494,
+    "iters": 421,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "n2_R18.0_h0.1": {
+    "n": 2,
+    "R": 18.0,
+    "h": 0.1,
+    "E": 1.9934397610877377,
+    "iters": 888,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "n2_R25.0_h0.2": {
+    "n": 2,
+    "R": 25.0,
+    "h": 0.2,
+    "E": 1.9709098232911875,
+    "iters": 525,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   },
+   "n2_R25.0_h0.1": {
+    "n": 2,
+    "R": 25.0,
+    "h": 0.1,
+    "E": 1.9934113976686314,
+    "iters": 1107,
+    "msg": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+   }
+  },
+  "extrapolated": {
+   "n1": {
+    "E_R7p5_continuum_h2": 1.231542229954499,
+    "E_R7p5_continuum_aitken": 1.2312499945942443,
+    "order_ratio": 4.418063169322976,
+    "E_h0p1_by_R": {
+     "7.5": 1.2219850242979773,
+     "12.0": 1.217339888846457,
+     "18.0": 1.2162706245457016,
+     "25.0": 1.215988156922213
+    },
+    "box_shift_7p5_to_25": -0.005996867375764214,
+    "E_infinite_volume_continuum_est": 1.2255453625787347
+   },
+   "n2": {
+    "E_R7p5_continuum_h2": 2.0034764565892043,
+    "E_R7p5_continuum_aitken": 2.0033342452342295,
+    "order_ratio": 4.256134190774774,
+    "E_h0p1_by_R": {
+     "7.5": 1.9962449463585843,
+     "12.0": 1.9936738003206955,
+     "18.0": 1.9934397610877377,
+     "25.0": 1.9934113976686314
+    },
+    "box_shift_7p5_to_25": -0.0028335486899528917,
+    "E_infinite_volume_continuum_est": 2.0006429078992514
+   }
+  }
+ },
+ "continuum_infinite_volume_estimates": {
+  "1": {
+   "E_continuum_box7p5_3d": 1.230321468363034,
+   "E_continuum_cyl7p5_axial": 1.231542229954499,
+   "E_continuum_by_R_axial_richardson": {
+    "7.5": 1.232541108876158,
+    "12.0": 1.2274617619128052,
+    "18.0": 1.2263062848219117,
+    "25.0": 1.2260011283078203
+   },
+   "box_shift_7p5_to_25_axial_h0p1": -0.005996867375764214,
+   "box_shift_7p5_to_25_axial_continuum": -0.006539980568337711,
+   "box_shift_rel_h0p1": -0.004907480252640066,
+   "box_shift_rel_continuum": -0.005306095286591231,
+   "tail_fit_continuum": {
+    "p": 2.9980081695395486,
+    "c": 2.824317136162127,
+    "energy_beyond_R25": 0.00018191893066652398
+   },
+   "tail_fit_h0p1": {
+    "p": 2.9972681432087818,
+    "c": 2.6091167301567535,
+    "energy_beyond_R25": 0.0001684583162083813
+   },
+   "box_shift_rel_7p5_to_infinity_continuum": -0.005458115309007784,
+   "E_infinite_volume_continuum_est": 1.2248203304554948,
+   "uncertainty": 0.0002911241047752931,
+   "uncertainty_rule": "20% of the Richardson correction to the box shift + half the spread of the two R = 7.5 continuum extrapolations (h^2 fit, Aitken) + 20% of the tail",
+   "E_lower_estimate_3d_cube": 1.2235995688640298,
+   "lower_estimate_note": "3D same-box continuum plus the cylinder box shift: an underestimate, because the cube [-7.5,7.5]^3 contains the cylinder rho, |z| <= 7.5 and so has the smaller box effect",
+   "as_reported_before_reconciliation": {
+    "E_3d_plus_axial_shift_h0p1": 1.2243246009872697,
+    "E_axial_only_h0p1_shift_no_tail": 1.2255453625787347,
+    "note": "used the h = 0.1 box shift and no energy beyond R = 25; the two errors pushed the estimates in opposite directions"
+   }
+  },
+  "2": {
+   "E_continuum_box7p5_3d": 2.002385454110057,
+   "E_continuum_cyl7p5_axial": 2.0034764565892043,
+   "E_continuum_by_R_axial_richardson": {
+    "7.5": 2.003939515844454,
+    "12.0": 2.0011876831347153,
+    "18.0": 2.000941728015634,
+    "25.0": 2.0009119224611127
+   },
+   "box_shift_7p5_to_25_axial_h0p1": -0.0028335486899528917,
+   "box_shift_7p5_to_25_axial_continuum": -0.0030275933833414648,
+   "box_shift_rel_h0p1": -0.0014194393804836728,
+   "box_shift_rel_continuum": -0.001510820740547973,
+   "tail_fit_continuum": {
+    "p": 5.0239341922413185,
+    "c": 74.6929515748944,
+    "energy_beyond_R25": 7.081430760387567e-06
+   },
+   "tail_fit_h0p1": {
+    "p": 5.023764706304146,
+    "c": 71.045077380338,
+    "energy_beyond_R25": 6.739261594961089e-06
+   },
+   "box_shift_rel_7p5_to_infinity_continuum": -0.0015147045048226819,
+   "E_infinite_volume_continuum_est": 2.0004417817751023,
+   "uncertainty": 0.00011133090231715187,
+   "uncertainty_rule": "20% of the Richardson correction to the box shift + half the spread of the two R = 7.5 continuum extrapolations (h^2 fit, Aitken) + 20% of the tail",
+   "E_lower_estimate_3d_cube": 1.999350779295955,
+   "lower_estimate_note": "3D same-box continuum plus the cylinder box shift: an underestimate, because the cube [-7.5,7.5]^3 contains the cylinder rho, |z| <= 7.5 and so has the smaller box effect",
+   "as_reported_before_reconciliation": {
+    "E_3d_plus_axial_shift_h0p1": 1.999551905420104,
+    "E_axial_only_h0p1_shift_no_tail": 2.0006429078992514,
+    "note": "used the h = 0.1 box shift and no energy beyond R = 25; the two errors pushed the estimates in opposite directions"
+   }
+  },
+  "E2_over_E1": 1.6332532470547447,
+  "E2_over_2E1": 0.8166266235273724
+ },
+ "reconciliation": {
+  "note": "added 2026-10-19 after the cross-check; see REPORT.md, section Reconciliation",
+  "1_absolute_energy_convention": {
+   "resolution": "CALIBRATED holds for the same-grid comparison (dx = 0.1; +1.25% to +1.80%). Against the same-box continuum (ours, confirmed by the cross-check's 4th-order energies to -0.02%/+0.07%) Sutcliffe's table is 1.7-2.2% low, outside 2% for Q = 1, 4, 5, 7; against the infinite-volume continuum for Q = 1 it is 1.7% low. The robust parts of the calibration are the ratios (<= 0.3%) and the types.",
+   "by_charge": {
+    "1": {
+     "E_same_box_continuum": 1.230321468363034,
+     "E_same_box_continuum_crosscheck_c4": 1.2301716449946891,
+     "sutcliffe_rel_to_continuum": -0.021393976322346964,
+     "ours_dx0p1_rel_to_target": 0.015466181083890085
+    },
+    "2": {
+     "E_same_box_continuum": 2.002385454110057,
+     "E_same_box_continuum_crosscheck_c4": 2.002198876804408,
+     "sutcliffe_rel_to_continuum": -0.017671649600442985,
+     "ours_dx0p1_rel_to_target": 0.012978625177047176
+    },
+    "3": {
+     "E_same_box_continuum": 2.801541691732445,
+     "E_same_box_continuum_crosscheck_c4": 2.8013241951079295,
+     "sutcliffe_rel_to_continuum": -0.01696983195814794,
+     "ours_dx0p1_rel_to_target": 0.012522880996490349
+    },
+    "4": {
+     "E_same_box_continuum": 3.5211608702399397,
+     "E_same_box_continuum_crosscheck_c4": 3.520532511993749,
+     "sutcliffe_rel_to_continuum": -0.021629477620188964,
+     "ours_dx0p1_rel_to_target": 0.017648890924166993
+    },
+    "5": {
+     "E_same_box_continuum": 4.1821772094558725,
+     "E_same_box_continuum_crosscheck_c4": 4.181541054816179,
+     "sutcliffe_rel_to_continuum": -0.020844934370252366,
+     "ours_dx0p1_rel_to_target": 0.01682523384156709
+    },
+    "6": {
+     "E_same_box_continuum": 4.742653599635106,
+     "E_same_box_continuum_crosscheck_c4": 4.741935131207267,
+     "sutcliffe_rel_to_continuum": -0.019536235925439294,
+     "ours_dx0p1_rel_to_target": 0.01578033212241947
+    },
+    "7": {
+     "E_same_box_continuum": 5.356727343342024,
+     "E_same_box_continuum_crosscheck_c4": 5.355904940946044,
+     "sutcliffe_rel_to_continuum": -0.02141743194837442,
+     "ours_dx0p1_rel_to_target": 0.017964187831249978
+    }
+   },
+   "Q1_infinite_volume": {
+    "ours": 1.2248203304554948,
+    "crosscheck": 1.2249321406346907,
+    "sutcliffe_rel": -0.01708840836182557
+   }
+  },
+  "2_hopf_estimators": {
+   "1": {
+    "solid_angle": {
+     "0.2000": 0.9915290534550175,
+     "0.1500": 0.9957745310383844,
+     "0.1250": 0.997180901473702,
+     "0.1000": 0.9982504069454214
+    },
+    "freespace_4th_order": {
+     "0.2000": 0.9827301134086369,
+     "0.1500": 0.9940039804259437,
+     "0.1250": 0.9966194232982778,
+     "0.1000": 0.9982049858267217
+    },
+    "linking": {
+     "0.2000": 1.0,
+     "0.1500": 1.0,
+     "0.1000": 1.0,
+     "0.1250": 1.0
+    }
+   },
+   "2": {
+    "solid_angle": {
+     "0.2000": 1.9903885418212215,
+     "0.1500": 1.995035655415885,
+     "0.1250": 1.9966532123558371,
+     "0.1000": 1.9979067307037874
+    },
+    "freespace_4th_order": {
+     "0.2000": 1.9790100856924888,
+     "0.1500": 1.9923046839100707,
+     "0.1250": 1.9955994262835597,
+     "0.1000": 1.997642754259437
+    },
+    "linking": {
+     "0.2000": 2.0,
+     "0.1500": 2.0,
+     "0.1000": 2.0,
+     "0.1250": 2.0
+    }
+   },
+   "3": {
+    "solid_angle": {
+     "0.2000": 2.9866154947465318,
+     "0.1500": 2.9930594331180553,
+     "0.1000": 2.9970878611722336
+    },
+    "freespace_4th_order": {
+     "0.2000": 2.9729174539915744,
+     "0.1500": 2.989916000312761,
+     "0.1000": 2.9968833719241186
+    },
+    "linking": {
+     "0.2000": 3.0,
+     "0.1500": 3.0,
+     "0.1000": 3.0
+    }
+   },
+   "4": {
+    "solid_angle": {
+     "0.2000": 3.9873597622174533,
+     "0.1500": 3.9939629984024636,
+     "0.1000": 3.997571736322022
+    },
+    "freespace_4th_order": {
+     "0.2000": 3.927606194408457,
+     "0.1500": 3.97809155164352,
+     "0.1000": 3.9945626221596897
+    },
+    "linking": {
+     "0.2000": 4.0,
+     "0.1500": 4.0,
+     "0.1000": 4.0
+    }
+   },
+   "5": {
+    "solid_angle": {
+     "0.2000": 4.984805475599352,
+     "0.1500": 4.992393041276761,
+     "0.1000": 4.996851919392883
+    },
+    "freespace_4th_order": {
+     "0.2000": 4.932534888344385,
+     "0.1500": 4.978479830168032,
+     "0.1000": 4.994413432032891
+    },
+    "linking": {
+     "0.2000": 5.0,
+     "0.1500": 5.0,
+     "0.1000": 5.0
+    }
+   },
+   "6": {
+    "solid_angle": {
+     "0.2000": 5.984049782418258,
+     "0.1500": 5.9918959192793775,
+     "0.1000": 5.996624393919602
+    },
+    "freespace_4th_order": {
+     "0.2000": 5.930860455393493,
+     "0.1500": 5.977380216777999,
+     "0.1000": 5.994087391360658
+    },
+    "linking": {
+     "0.2000": 6.0,
+     "0.1500": 6.0,
+     "0.1000": 6.0
+    }
+   },
+   "7": {
+    "solid_angle": {
+     "0.2000": 6.98275267362675,
+     "0.1500": 6.991181469038197,
+     "0.1000": 6.996266507128862
+    },
+    "freespace_4th_order": {
+     "0.2000": 6.914039998863491,
+     "0.1500": 6.972650965038699,
+     "0.1000": 6.993043803473567
+    },
+    "linking": {
+     "0.2000": 7.0,
+     "0.1500": 7.0,
+     "0.1000": 7.0
+    }
+   }
+  },
+  "3_E1_literature": {
+   "ours": 1.2248203304554948,
+   "ours_uncertainty": 0.0002911241047752931,
+   "crosscheck_spectral": 1.2249321406346907,
+   "context": "PLAN 1.21-1.22 is summary-grade; Sutcliffe 2007: \"around 1.21\" from several authors; Ward 1999 (hep-th/9811176) quotes axial 1.25 K0 (Gladikowski-Hellmund) and 3D 1.13 K0 (Battye-Sutcliffe 1998, called a finite-volume underestimate); K0 = 1 in these units"
+  },
+  "4_box": {
+   "1": {
+    "box_shift_rel_h0p1": -0.004907480252640066,
+    "box_shift_rel_continuum": -0.005306095286591231,
+    "box_shift_rel_7p5_to_infinity_continuum": -0.005458115309007784,
+    "tail_fit_continuum": {
+     "p": 2.9980081695395486,
+     "c": 2.824317136162127,
+     "energy_beyond_R25": 0.00018191893066652398
+    },
+    "tail_fit_h0p1": {
+     "p": 2.9972681432087818,
+     "c": 2.6091167301567535,
+     "energy_beyond_R25": 0.0001684583162083813
+    }
+   },
+   "2": {
+    "box_shift_rel_h0p1": -0.0014194393804836728,
+    "box_shift_rel_continuum": -0.001510820740547973,
+    "box_shift_rel_7p5_to_infinity_continuum": -0.0015147045048226819,
+    "tail_fit_continuum": {
+     "p": 5.0239341922413185,
+     "c": 74.6929515748944,
+     "energy_beyond_R25": 7.081430760387567e-06
+    },
+    "tail_fit_h0p1": {
+     "p": 5.023764706304146,
+     "c": 71.045077380338,
+     "energy_beyond_R25": 6.739261594961089e-06
+    }
+   },
+   "crosscheck_spectral": {
+    "n1m1_cyl7.5": 1.2315641316613537,
+    "n1m1_cyl12.0": 1.2265662432038855,
+    "n1m1_cyl25.0": 1.2251127878515402,
+    "n1m1_inf": 1.2249321406346907,
+    "n2m1_cyl7.5": 2.003450458120007,
+    "n2m1_cyl12.0": 2.000752596420538,
+    "n2m1_cyl25.0": 2.0004771727072317,
+    "n2m1_inf": 2.000470066943061
+   }
+  },
+  "5_virial": {
+   "by_charge": {
+    "1": {
+     "v0_h2h4_three_finest": -0.013364553280757335,
+     "v0_h2_two_finest": -0.01187795702016878,
+     "v_h0p1": -0.025463042573848124
+    },
+    "2": {
+     "v0_h2h4_three_finest": -0.004737711914953276,
+     "v0_h2_two_finest": -0.0037550019493470172,
+     "v_h0p1": -0.014610220693372953
+    },
+    "3": {
+     "v0_h2h4_three_finest": -0.006701677986814028,
+     "v0_h2_two_finest": -0.005375530639027011,
+     "v_h0p1": -0.015987308981951245
+    },
+    "4": {
+     "v0_h2h4_three_finest": -0.007975682999115954,
+     "v0_h2_two_finest": -0.0038169448997264267,
+     "v_h0p1": -0.016663595320274026
+    },
+    "5": {
+     "v0_h2h4_three_finest": -0.010590036207802333,
+     "v0_h2_two_finest": -0.007738116562229969,
+     "v_h0p1": -0.019349769360541523
+    },
+    "6": {
+     "v0_h2h4_three_finest": -0.006565798962811808,
+     "v0_h2_two_finest": -0.004251502421881849,
+     "v_h0p1": -0.015101172969963661
+    },
+    "7": {
+     "v0_h2h4_three_finest": -0.011036177077112443,
+     "v0_h2_two_finest": -0.008301945543409904,
+     "v_h0p1": -0.019797535762003226
+    }
+   },
+   "crosscheck_spectral_cylinder_R7p5": {
+    "Q1": -0.015922020595724375,
+    "Q2": -0.007389445367578845
+   }
+  },
+  "6_stencil": {
+   "error_ratio_centred_over_link_gauss_field": [
+    7.497636510395788,
+    7.8993374209998555,
+    8.214592178573493
+   ],
+   "crosscheck_test_field_ratio": "about 10 at h = 0.1 (7.3-10.6 for h = 0.25-0.075; crosscheck/xc_tests3d.json)",
+   "centred_relaxation": {
+    "c2": {
+     "perturbation": "iid normal, amplitude 1e-4 per component, seed 20261019, renormalised; boundary reset to e3",
+     "unwound_at_t": 3.9999999999999565,
+     "history": [
+      [
+       0.0,
+       1.2043834784711807,
+       1.2227124893479455,
+       0.998250410120348,
+       0
+      ],
+      [
+       2.0,
+       0.597194331673994,
+       636.5821736509657,
+       -3.818824852324864,
+       372
+      ],
+      [
+       4.0,
+       0.035505309216365105,
+       11.70001816367896,
+       -5.5379005282003905e-05,
+       0
+      ]
+     ]
+    },
+    "c2_pert0": {
+     "perturbation": "none (relaxed link/plaquette field as stored; rounding noise only)",
+     "unwound_at_t": 2.999999999999978,
+     "history": [
+      [
+       0.0,
+       1.2043608825390189,
+       1.2226212820250035,
+       0.9982504069454214,
+       0
+      ],
+      [
+       1.0,
+       1.2024400401438118,
+       1.4087379796358903,
+       0.9981575302528882,
+       0
+      ],
+      [
+       2.0,
+       1.1152742275297793,
+       21.051850396280887,
+       1.0927046681722739,
+       0
+      ],
+      [
+       3.0,
+       0.41285414969221207,
+       144.52874668590738,
+       -0.1303786509094807,
+       80
+      ]
+     ]
+    },
+    "c4": {
+     "perturbation": "iid normal, amplitude 0.0001 per component, seed 20261019, renormalised; boundary reset to e3",
+     "unwound_at_t": 2.0009999999999835,
+     "history": [
+      [
+       0.0,
+       1.2301262720899608,
+       1.2227124893479455,
+       0.998250410120348,
+       0
+      ],
+      [
+       1.0,
+       1.2134047140417046,
+       2.2557457439307766,
+       0.9913317796998885,
+       0
+      ],
+      [
+       2.001,
+       0.7271206859830015,
+       200.4911363435537,
+       0.1394235947884512,
+       96
+      ]
+     ]
+    }
+   }
+  }
+ }
+}

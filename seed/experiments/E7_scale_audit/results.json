@@ -1,0 +1,1653 @@
+{
+ "experiment": "E7 scale and coupling audit (SEED.md section 8)",
+ "version": "v2 (after reconciliation with the independent cross-check)",
+ "verdict_words": "CALIBRATED: literature target within tolerance; CONSISTENT: agrees with a PLAN expectation or a non-independent check (not counted as calibration); QUANTIFIED: section-8 gap measured; NO_TARGET; MISS",
+ "conventions": {
+  "units": "hbar = c = 1 unless stated; hbar c = 197.3269804 MeV fm",
+  "skyrme": "ANW: F_pi = 186 MeV convention (fit 129 MeV), x = e F_pi r",
+  "hopfion": "E = int[(kappa2/2)(dn)^2 + (kappa4/4) sum(d_i n x d_j n)^2], Ward-normalised E_W",
+  "pairs": "S = (1/g^2) int[(d phi)^2/2 - V(phi)], m_- = 1 (Demidov-Levkov)",
+  "vacuum": "rho_L = Omega_L 3 H0^2/(8 pi G); M_Pl = sqrt(hbar c/G) (unreduced), reduced = M_Pl/sqrt(8 pi)"
+ },
+ "headline": [
+  {
+   "quantity": "a1 = M_cl/(F_pi/e)",
+   "value": 36.46164562535639,
+   "unit": "1",
+   "formula": "4 pi int[x^2F^2/8 + sin^2F/4 + sin^2F F^2 + sin^4F/(2x^2)]dx",
+   "target": 36.4633,
+   "tolerance": "0.2%",
+   "verdict": "CALIBRATED",
+   "note": "PLAN E2 target 1.2315*3pi^2 [read]"
+  },
+  {
+   "quantity": "Lambda (I1 = (2pi/3) Lambda/(e^3 F_pi))",
+   "value": 50.97873907018823,
+   "unit": "1",
+   "formula": "int x^2 sin^2F[1+4(F^2+sin^2F/x^2)]dx",
+   "target": 50.9,
+   "tolerance": "0.5%",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "virial E2/E4",
+   "value": 1.0000000000061509,
+   "unit": "1",
+   "formula": "Derrick",
+   "target": 1.0,
+   "tolerance": "1e-4",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "R_B (= ANW isoscalar charge rms radius) at ANW parameters",
+   "value": 0.5939287482849395,
+   "unit": "fm",
+   "formula": "x_B/(e F_pi), F_pi = 129 MeV, e = 5.45",
+   "target": 0.59,
+   "tolerance": "0.01 fm",
+   "verdict": "CALIBRATED",
+   "note": "ANW via secondary sources"
+  },
+  {
+   "quantity": "R_M (ANW isoscalar magnetic rms radius) at ANW parameters",
+   "value": 0.9223268002235485,
+   "unit": "fm",
+   "formula": "x_M/(e F_pi)",
+   "target": 0.92,
+   "tolerance": "0.01 fm",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "own fit to M_N = 938.9, M_Delta = 1232 MeV: F_pi",
+   "value": 129.25971953850984,
+   "unit": "MeV",
+   "formula": "M_N = M + 3/(8I1), M_D = M + 15/(8I1)",
+   "target": 129.0,
+   "tolerance": "1%",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "own fit: e",
+   "value": 5.44464645481138,
+   "unit": "1",
+   "formula": "same",
+   "target": 5.45,
+   "tolerance": "1%",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "a2 = e F_pi R_B (baryon rms)",
+   "value": 2.1160897790550557,
+   "unit": "1",
+   "formula": "sqrt(-(2/pi) int x^2 sin^2F F dx)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": ""
+  },
+  {
+   "quantity": "c0 = M R e^2/(hbar c), baryon rms radius",
+   "value": 77.15611563534414,
+   "unit": "1",
+   "formula": "a1 a2",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": ""
+  },
+  {
+   "quantity": "c0, half-baryon radius (most compact definition used)",
+   "value": 63.90372653901985,
+   "unit": "1",
+   "formula": "a1 x_1/2",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": ""
+  },
+  {
+   "quantity": "c0, isoscalar magnetic radius",
+   "value": 119.81766071623845,
+   "unit": "1",
+   "formula": "a1 x_M",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": ""
+  },
+  {
+   "quantity": "c0, energy rms radius",
+   "value": 106.26505972447416,
+   "unit": "1",
+   "formula": "a1 x_E",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": ""
+  },
+  {
+   "quantity": "min c0_B over pion mass beta = m_pi/(eF_pi) in [0,16]",
+   "value": 52.14474184729957,
+   "unit": "1",
+   "formula": "a1(beta) x_B(beta)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "baryon-rms radius: c0 falls only from 77 to 52; with the half-baryon radius from 64 to 47.3; no route to MR << 1"
+  },
+  {
+   "quantity": "min c0_half over pion mass beta in [0,16]",
+   "value": 47.2950915810386,
+   "unit": "1",
+   "formula": "a1(beta) x_half(beta)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "smallest c0 found in this run"
+  },
+  {
+   "quantity": "proton M R/hbar c, model M_N(939) x R_B(ANW)",
+   "value": 2.8262688322775014,
+   "unit": "1",
+   "formula": "939 MeV * R_B/(hbar c)",
+   "target": 2.8,
+   "tolerance": "+-0.05 (self-set reading of PLAN \"~2.8\"; PLAN gives no tolerance)",
+   "verdict": "CONSISTENT",
+   "note": "reconciled: was CALIBRATED; 2.8 is a PLAN expectation, not a literature target. PLAN's formula c0/e^2 with the classical mass gives 2.598, outside the self-set band; both are > 1 (classical fold)"
+  },
+  {
+   "quantity": "proton M R/hbar c, pure classical c0/e^2 at e = 5.45",
+   "value": 2.597630355537215,
+   "unit": "1",
+   "formula": "M_cl R_B/(hbar c)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": ""
+  },
+  {
+   "quantity": "proton r_p/lambda_C (data)",
+   "value": 3.997690824397775,
+   "unit": "1",
+   "formula": "m_p r_p/(hbar c), r_p = 0.84075 fm (PDG 2026)",
+   "target": 4.0,
+   "tolerance": "0.84/0.21 (SEED)",
+   "verdict": "CALIBRATED",
+   "note": "data use the proton charge radius; the model numbers use the isoscalar radius (the isovector radius diverges for massless pions), so model vs data is indicative only"
+  },
+  {
+   "quantity": "proton rotor E_rot/M_cl at ANW",
+   "value": 0.08498324460626408,
+   "unit": "1",
+   "formula": "9 e^4/(16 pi Lambda a1)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": ""
+  },
+  {
+   "quantity": "semiclassical floor (M R)_min for E_rot <= M, baryon rms radius",
+   "value": 0.7572582349155861,
+   "unit": "1",
+   "formula": "c0/e_max^2, e_max = (16 pi Lambda a1/9)^(1/4)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "e_max = 10.094; half-baryon radius 0.627; for E_rot <= 0.1 M: 2.39 (baryon rms), 1.98 (half-baryon)"
+  },
+  {
+   "quantity": "electron lambda_C/R_max (LEP r_e < 1.1e-4 fm)",
+   "value": 3510538.7948778397,
+   "unit": "1",
+   "formula": "hbar c/(m_e R_max)",
+   "target": 3500000.0,
+   "tolerance": "factor >= 3.5e6 (PLAN prediction)",
+   "verdict": "QUANTIFIED",
+   "note": "the classical-fold condition R > lambda_C fails by >= 3.5e6; the LEP bound is model dependent (VV contact interaction, positive interference, electromagnetic coupling strength)"
+  },
+  {
+   "quantity": "electron lambda_C/R_max (SEED 1e-3 fm)",
+   "value": 386159.26743656234,
+   "unit": "1",
+   "formula": "hbar c/(m_e R_max)",
+   "target": 100000.0,
+   "tolerance": "SEED says \">= 1e5\"",
+   "verdict": "QUANTIFIED",
+   "note": ""
+  },
+  {
+   "quantity": "Skyrme e needed for electron fold (LEP, baryon radius)",
+   "value": 16457.810826472523,
+   "unit": "1",
+   "formula": "sqrt(c0 hbar c/(m_e R_max))",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "1.498e+04 to 2.051e+04 across radius definitions"
+  },
+  {
+   "quantity": "Skyrme F_pi needed (LEP)",
+   "value": 230.65124787273723,
+   "unit": "MeV",
+   "formula": "m_e e/a1",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": ""
+  },
+  {
+   "quantity": "rotor correction E_rot/M at electron fold (LEP)",
+   "value": 7067007678837.692,
+   "unit": "1",
+   "formula": "9 e^4/(16 pi Lambda a1)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "semiclassics needs << 1"
+  },
+  {
+   "quantity": "hbar/(M R) at electron fold (LEP)",
+   "value": 3510538.7948778397,
+   "unit": "1",
+   "formula": "e^2/c0",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": ""
+  },
+  {
+   "quantity": "naive loop parameter e^2/(16 pi^2) at electron fold (LEP)",
+   "value": 1715238.0568697113,
+   "unit": "1",
+   "formula": "",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": ""
+  },
+  {
+   "quantity": "electron needed (MR) / semiclassical floor",
+   "value": 2658384.4114118814,
+   "unit": "1",
+   "formula": "(M R)_min of a semiclassical Skyrme fold (E_rot <= M) / (M R) allowed for the electron (LEP)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": ""
+  },
+  {
+   "quantity": "hopfion E_W(Q=1), hedgehog-Hopf ansatz (upper bound)",
+   "value": 1.2314457282064033,
+   "unit": "Ward units",
+   "formula": "see e7_hopfion.py",
+   "target": 1.204,
+   "tolerance": "upper bound expected; literature 1.204 (lattice, ~1% low) to 1.22",
+   "verdict": "CONSISTENT",
+   "note": "reconciled: was CALIBRATED. E_W(ansatz) = a1/(3 pi^2) = 1.2314457 identically (symbolic identity), so it is the Skyrme number again, not an independent calibration; 2.3% above 1.204, ~1% above 1.22; E8's preregistered 2% would not pass"
+  },
+  {
+   "quantity": "hopfion energy-rms radius R_rms (Ward units)",
+   "value": 2.0607955717400652,
+   "unit": "Ward length",
+   "formula": "energy-weighted rms radius at Derrick scale",
+   "target": 2.0608160450694055,
+   "tolerance": "1e-4 (identity x_E/sqrt2)",
+   "verdict": "CONSISTENT",
+   "note": "reconciled: v1 gave 2.1441 from a spurious a/r spline tail; identity value x_E/sqrt2"
+  },
+  {
+   "quantity": "hopfion ring radius R_ring (Ward units)",
+   "value": 1.2393009031045161,
+   "unit": "Ward length",
+   "formula": "radius where n = -e3",
+   "target": 1.2392956380281315,
+   "tolerance": "1e-4 (identity x_half/sqrt2)",
+   "verdict": "CONSISTENT",
+   "note": ""
+  },
+  {
+   "quantity": "hopfion c0 = M R/kappa4 (energy rms radius)",
+   "value": 566.7413689685776,
+   "unit": "1",
+   "formula": "16 sqrt2 pi^2 E_W R_rms",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "ring radius: 340.8; v1 (wrong tail) gave 589.7"
+  },
+  {
+   "quantity": "hopfion: g^2 = 1/kappa4 needed for electron (LEP, rms radius)",
+   "value": 1989567562.4263675,
+   "unit": "1",
+   "formula": "c0_hopf hbar c/(m_e R_max)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "ring radius: 1.2e+09; sqrt(kappa2) = 82.9 MeV (rms)"
+  },
+  {
+   "quantity": "DL two-particle exponent F at high energy (S = S0/g^2), plateau minimum",
+   "value": 3.843934957518269,
+   "unit": "1",
+   "formula": "P ~ exp(-F/g^2)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "F = 4.480 at threshold (g^2E = 6.26) to 3.846 at g^2E = 11.5 (min 3.844 at 11.0); +-0.002 (vector path, axes calibrated on ticks); arXiv:1103.0013v2 Fig. 3b vector path [read]. Reconciled: v1 eye reading 3.93 was wrong by -0.085"
+  },
+  {
+   "quantity": "DL two-particle exponent F at threshold",
+   "value": 4.480129042223222,
+   "unit": "1",
+   "formula": "P ~ exp(-F/g^2)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "v1 eye reading 4.45"
+  },
+  {
+   "quantity": "DL classical minimum particle number g^2 N_min, high energy",
+   "value": 3.977132579744733,
+   "unit": "1",
+   "formula": "arXiv:1103.2133v2 Fig. 7b, delta rho -> 0 [read, vector path]",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "range 3.971-3.983 over g^2E = 8.5-10.5; 4.55 near threshold"
+  },
+  {
+   "quantity": "DL model 2 g^2 M_S (our quadrature)",
+   "value": 6.235753796656633,
+   "unit": "units m_- = 1",
+   "formula": "int sqrt(2V) dphi",
+   "target": 6.2,
+   "tolerance": "read off axes, +-0.1",
+   "verdict": "CALIBRATED",
+   "note": "confirms model/normalisation reading; about 6.2 (axes); the left edge of Fig. 3b (tick labelled 2 g^2 M_S) is at g^2E = 6.2324 in the vector data"
+  },
+  {
+   "quantity": "suppression per pair quantum kappa = F/N_pair",
+   "value": 0.6164346898332062,
+   "unit": "1",
+   "formula": "F/(2 g^2 M_S/m)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "0.616-0.718"
+  },
+  {
+   "quantity": "g^2 at which two-particle pair production reaches P = 1/e",
+   "value": 3.843934957518269,
+   "unit": "1",
+   "formula": "g^2 = F_min",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "there M_S = 0.81 m; P = 0.1 at g^2 = 1.67 (M_S = 1.87 m), P = 0.5 at g^2 = 5.55; extrapolated leading exponent, indicative only"
+  },
+  {
+   "quantity": "E1e (phi^4): classical g^2 N_min upper bound (g^2 = 2 lambda/m^2)",
+   "value": 2.477839882195937,
+   "unit": "1",
+   "formula": "2 x (N lambda/m^2) of the smallest producer reproduced at dx = 0.05 (E1)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "N = E/m (preregistered); 3.376 with N_lin; N_min/N_pair <= 1.86-2.53; classical pair from 2 quanta needs g^2 >= 1.24-1.69; read from E1 (reconciled separately)"
+  },
+  {
+   "quantity": "Breit-Wheeler sigma_max",
+   "value": 0.6817055054867978,
+   "unit": "pi r_e^2",
+   "formula": "sigma = (pi r_e^2/2)(1-b^2)[(3-b^4) ln((1+b)/(1-b)) - 2b(2-b^2)], r_e = alpha hbar c/(m_e c^2)",
+   "target": null,
+   "tolerance": null,
+   "verdict": "NO_TARGET",
+   "note": "= 170 mb at sqrt(s) = 1.40 x 2m_e; an illustrative fold-like exp(-F/g^2) with F = 3.84 would be 10^-229 (g^2 = alpha) or 10^-18.2 (g^2 = 4 pi alpha)"
+  },
+  {
+   "quantity": "rho_Lambda (Planck 2018 TT,TE,EE+lowE+lensing: H0 = 67.36, Omega_L = 0.6847)",
+   "value": 2.515182419184975e-47,
+   "unit": "GeV^4",
+   "formula": "3 H0^2 Mpl_red^2 Omega_L",
+   "target": 2.5e-47,
+   "tolerance": "2%",
+   "verdict": "CALIBRATED",
+   "note": "uncertainty 2.6% from Omega_L h^2 = 0.3107 +- 0.0082"
+  },
+  {
+   "quantity": "rho_Lambda^(1/4)",
+   "value": 2.2394551655096677,
+   "unit": "meV",
+   "formula": "",
+   "target": 2.24,
+   "tolerance": "0.01 meV",
+   "verdict": "CALIBRATED",
+   "note": ""
+  },
+  {
+   "quantity": "f_pi^4 (f_pi = 92.07 MeV = 130.2/sqrt2) / rho_Lambda",
+   "value": 2.856369959188887e+42,
+   "unit": "1",
+   "formula": "scale^4/rho_L",
+   "target": 3e+42,
+   "tolerance": "order of magnitude",
+   "verdict": "QUANTIFIED",
+   "note": "PLAN: \"about\"; order of magnitude reproduced"
+  },
+  {
+   "quantity": "f^4 of the ANW Skyrme fit (f = F_pi/2 = 64.5 MeV) / rho_Lambda",
+   "value": 6.881282220519186e+41,
+   "unit": "1",
+   "formula": "scale^4/rho_L",
+   "target": null,
+   "tolerance": null,
+   "verdict": "QUANTIFIED",
+   "note": ""
+  },
+  {
+   "quantity": "m_e^4 / rho_Lambda",
+   "value": 2.710881567596352e+33,
+   "unit": "1",
+   "formula": "scale^4/rho_L",
+   "target": null,
+   "tolerance": null,
+   "verdict": "QUANTIFIED",
+   "note": ""
+  },
+  {
+   "quantity": "v_EW^4 (v = 246.22 GeV) / rho_Lambda",
+   "value": 1.4612476279940475e+56,
+   "unit": "1",
+   "formula": "scale^4/rho_L",
+   "target": 1e+56,
+   "tolerance": "order of magnitude",
+   "verdict": "QUANTIFIED",
+   "note": "PLAN: \"about\"; order of magnitude reproduced"
+  },
+  {
+   "quantity": "Higgs potential depth m_H^2 v^2/8 / rho_Lambda",
+   "value": 4.717551163444316e+54,
+   "unit": "1",
+   "formula": "scale^4/rho_L",
+   "target": null,
+   "tolerance": null,
+   "verdict": "QUANTIFIED",
+   "note": ""
+  },
+  {
+   "quantity": "M_Pl^4 reduced (2.435e18 GeV) / rho_Lambda",
+   "value": 1.3984827734712085e+120,
+   "unit": "1",
+   "formula": "scale^4/rho_L",
+   "target": null,
+   "tolerance": null,
+   "verdict": "QUANTIFIED",
+   "note": ""
+  },
+  {
+   "quantity": "M_Pl^4 unreduced (1.221e19 GeV) / rho_Lambda",
+   "value": 8.833581910975419e+122,
+   "unit": "1",
+   "formula": "scale^4/rho_L",
+   "target": 1e+123,
+   "tolerance": "order of magnitude",
+   "verdict": "QUANTIFIED",
+   "note": "PLAN: \"about\"; order of magnitude reproduced"
+  }
+ ],
+ "seed_claims": [
+  {
+   "claim": "SEED 8: a fold is a classical shape only if it is larger than its Compton wavelength; the proton is (0.84 fm vs 0.21 fm)",
+   "verdict": "CONFIRMED",
+   "evidence": "PDG 2026: r_p/lambda_C = 3.998. Skyrme fold at ANW parameters: M R/hbar c = 2.60 (classical mass) or 2.83 (939 MeV), rotor E_rot/M = 0.085: semiclassical, but only just."
+  },
+  {
+   "claim": "SEED 8: the electron misses the classical-fold condition by at least 1e5",
+   "verdict": "AMENDED",
+   "evidence": "True but conservative: with LEP's r_e < 1.1e-4 fm (Schael et al. 2013 Eq. 3.9; model dependent, VV contact interaction) lambda_C/R >= 3.51e+06; with SEED's 1e-3 fm 3.86e+05."
+  },
+  {
+   "claim": "SEED 8 / PLAN E7: any soliton whose classical action is S0/g^2 has M R = c0/g^2, so an electron-like fold needs g^2 >> 1",
+   "verdict": "CONFIRMED",
+   "evidence": "Theorem for one-scale theories (scaling, sympy-checked for Skyrme); the general criterion is action per light-crossing ~ M R c >> hbar, i.e. R >> lambda_C. Skyrme c0 = 64-120 (radius definition); two-parameter families tested keep c0 >= 47.3 (pion mass to beta = 16, half-baryon radius; 52.1 baryon rms) and hopfion c0 = 341-567. Electron fold needs Skyrme e >= 1.5e+04-2.05e+04 (E_rot/M ~ 7.1e+12) or hopfion 1/kappa4 >= 1.2e+09-2e+09. Semiclassical Skyrme floor M R >= 0.757 hbar/c (0.627 half-baryon radius), 2.66e+06 times above the electron. Not shown for theories with extra dimensionless parameters beyond those tested."
+  },
+  {
+   "claim": "SEED 8: this points toward a strongly coupled fold sector, 'the way baryons are in QCD'",
+   "verdict": "AMENDED",
+   "evidence": "Strong coupling is necessary, but there the classical fold picture is gone (corrections 1e6-1e13 x the classical mass), so no classical simulation in the seed can model the electron. The QCD baryon is only moderately quantum (M R/hbar c = 2.6-4); the electron needs M R/hbar c <= 2.85e-7."
+  },
+  {
+   "claim": "SEED 8: in weakly coupled theories, folding a few quanta into a pair is exponentially rare",
+   "verdict": "CONFIRMED",
+   "evidence": "Demidov-Levkov (read; curve values from the PDF vector paths): P_2 ~ exp(-F/g^2), F = 4.48 at threshold to 3.84 at high energy, i.e. exp(-(0.62-0.72) N_pair). Classical creation needs g^2 N >= 3.98; N_min = n0/g^2 in any one-coupling model by scaling. E1e (phi^4, classical): g^2 N_min <= 2.48 (N = E/m) to 3.38 (N_lin). Unsuppressed (P >= 0.1-0.5) only for g^2 >~ 1.67-5.55 (indicative), where M_S <= 1.87 m."
+  },
+  {
+   "claim": "SEED 8: in nature electron pairs form readily, so the fold sector is strongly coupled",
+   "verdict": "AMENDED",
+   "evidence": "Electron pairs form readily because QED is weakly coupled and perturbative: Breit-Wheeler peaks at 0.682 pi r_e^2 = 170 mb, power law in alpha. A fold-like exp(-F/g^2) would be 10^-229 (g^2 = alpha) or 10^-18 (g^2 = 4 pi alpha). The inference in SEED does not follow; the seed must produce a pointlike, perturbatively coupled electron out of a strongly coupled fold sector (untested)."
+  },
+  {
+   "claim": "SEED 8: why is the vacuum's tension so small (open)",
+   "verdict": "QUANTIFIED",
+   "evidence": "rho_L = 2.515e-47 GeV^4 = (2.239 meV)^4 (Planck 2018), 1e42 (f_pi^4) to 8.8e122 (M_Pl^4) below natural scales."
+  },
+  {
+   "claim": "SEED 8: can light and the cone be built from the field? (Weinberg-Witten)",
+   "verdict": "AMENDED",
+   "evidence": "With commitment 1's Lorentz-covariant conserved T^mu nu, a composite massless |h| = 2 graviton is excluded; commitment 5's metric must be fundamental or emergent only via an evasion. A neutral composite photon is not excluded."
+  },
+  {
+   "claim": "SEED 2: one cone, no vacuum dispersion",
+   "verdict": "OPEN",
+   "evidence": "Not tested in E7 (E5 checks it by construction)."
+  }
+ ],
+ "reconciliation": [
+  {
+   "issue": "Demidov-Levkov high-energy exponent misread (major)",
+   "resolved": true,
+   "action": "F read from the PDF vector paths (e7_dl_digitize.py): 3.846 at g^2E = 11.5, min 3.844, 4.480 at threshold; v1 3.93/4.45 replaced; downstream kappa, g^2 thresholds, M_S/m, QED illustration and figure updated. Cross-check (3.845, 4.48) was right."
+  },
+  {
+   "issue": "Hopfion energy-rms radius (major)",
+   "resolved": true,
+   "action": "Profile now f = (1-t)^2 h(t) (C/r^2 tail); R_rms = 2.0608 (identity x_E/sqrt2 = 2.0608); c0 = 340.8-566.7; g^2 >= 1.2e+09-1.99e+09. Cross-check (2.0608) was right."
+  },
+  {
+   "issue": "Hopfion CALIBRATED not independent (minor)",
+   "resolved": true,
+   "action": "relabelled CONSISTENT (upper bound); identity E_W = a1/(3 pi^2) stated and verified symbolically"
+  },
+  {
+   "issue": "Proton M R CALIBRATED against a PLAN expectation (minor)",
+   "resolved": true,
+   "action": "relabelled CONSISTENT; classical 2.60 reported alongside"
+  },
+  {
+   "issue": "QED illustration depends on g^2 identification (minor)",
+   "resolved": true,
+   "action": "both g^2 = alpha and g^2 = 4 pi alpha quoted"
+  },
+  {
+   "issue": "E1e combination missing (minor)",
+   "resolved": true,
+   "action": "E1e numbers read from E1_phi4/e1e_results.json and combined"
+  },
+  {
+   "issue": "label/rounding inconsistencies; radius definition of floors and pion-mass minimum (minor)",
+   "resolved": true,
+   "action": "QUANTIFIED for gap numbers throughout; 2.39 for the 0.1 M floor; half-baryon numbers stated"
+  },
+  {
+   "issue": "LEP bound model dependence (minor)",
+   "resolved": true,
+   "action": "qualifier added"
+  },
+  {
+   "issue": "unlisted deviation: own hedgehog instead of E2 profile (minor)",
+   "resolved": true,
+   "action": "listed as a deviation; agrees with E2 to <= 1e-9"
+  },
+  {
+   "issue": "generalisation wording 'any soliton' (minor)",
+   "resolved": true,
+   "action": "seed-claim text restricted to one-scale families plus the tested two-parameter families"
+  }
+ ],
+ "details": {
+  "inputs": {
+   "hbarc_MeV_fm": 197.3269804593025,
+   "m_e_MeV": 0.51099895069,
+   "m_p_MeV": 938.27208943,
+   "m_H_GeV": 125.1309438281615,
+   "r_p_fm": 0.84075,
+   "source": "PDG 2026 (pdg python package)",
+   "M_Planck_GeV": 1.2208901285838957e+19,
+   "M_Planck_reduced_GeV": 2.4353234600842885e+18,
+   "G_N_SI": 6.6743e-11,
+   "hedgehog": {
+    "a1": 36.46164562535639,
+    "Lambda": 50.97873907018823,
+    "x_B": 2.1160897790550557,
+    "x_M": 3.286128715839257,
+    "x_E": 2.914434000493237,
+    "x_half": 1.7526286990892017
+   }
+  },
+  "skyrme": {
+   "formula": "M = a1 F_pi/e, R = a2/(e F_pi), M R/(hbar c) = a1 a2/e^2 = c0/e^2 (F_pi in 186-MeV convention)",
+   "a1": 36.46164562535639,
+   "a2": {
+    "B": 2.1160897790550557,
+    "M": 3.286128715839257,
+    "E": 2.914434000493237,
+    "half": 1.7526286990892017
+   },
+   "c0": {
+    "B": 77.15611563534414,
+    "M": 119.81766071623845,
+    "E": 106.26505972447416,
+    "half": 63.90372653901985
+   },
+   "radius_definitions": {
+    "B": "baryon-density rms radius = ANW isoscalar electric rms radius (identical by construction)",
+    "M": "ANW isoscalar magnetic rms radius",
+    "E": "energy-density rms radius",
+    "half": "radius enclosing half the baryon number"
+   },
+   "sympy_energy_prefactor": "F_pi/e",
+   "sympy_check_pass": true,
+   "proton": {
+    "ANW_parameters": {
+     "F_pi_MeV": 129.0,
+     "e": 5.45,
+     "length_unit_fm": 0.28067275508043876
+    },
+    "M_classical_MeV": 863.0371166368759,
+    "I1_inv_MeV": 195.58318503316397,
+    "M_N_model_MeV": 936.3808110243124,
+    "M_Delta_model_MeV": 1229.7555885740583,
+    "R_B_fm": 0.5939287482849395,
+    "R_M_fm": 0.9223268002235485,
+    "R_E_fm": 0.8180022204185416,
+    "R_half_fm": 0.49191512560641154,
+    "MR_classical": {
+     "value": 2.597630355537215,
+     "formula": "c0_B/e^2 = M_cl R_B/(hbar c)"
+    },
+    "MR_nucleon_model": {
+     "value": 2.8262688322775014,
+     "formula": "M_N(939 MeV, fitted) * R_B(model)/(hbar c)",
+     "target": 2.8,
+     "tolerance": "+-0.05 (2 significant figures of PLAN's '~2.8'; fixed before computing)"
+    },
+    "MR_data": {
+     "value": 3.997690824397775,
+     "formula": "m_p r_p(charge, PDG 2026)/(hbar c) = r_p/lambda_C",
+     "lambda_C_fm": 0.2103089100510051
+    },
+    "rotor_over_mass": {
+     "value": 0.08498324460626408,
+     "formula": "(3/(8 I1))/M_cl = 9 e^4/(16 pi Lambda a1)"
+    },
+    "own_fit_to_MN_MDelta": {
+     "M_N": 938.9,
+     "M_Delta": 1232.0,
+     "F_pi_MeV": 129.25971953850984,
+     "e": 5.44464645481138,
+     "target": {
+      "F_pi_MeV": 129.0,
+      "e": 5.45,
+      "rel_tol": 0.01
+     },
+     "pass_": true
+    },
+    "calibration_radii": {
+     "R_B_target_fm": 0.59,
+     "R_M_target_fm": 0.92,
+     "tol_fm": 0.01,
+     "pass_B": true,
+     "pass_M": true,
+     "source": "ANW 1983 via secondary sources (PLAN E5)"
+    }
+   },
+   "semiclassical_floor": {
+    "formula": "E_rot/M = 9 e^4/(16 pi Lambda a1) <= rho gives e <= e_max and M R >= c0/e_max^2",
+    "rot_over_M_le_0.1": {
+     "e_max": 5.67627170061299,
+     "MR_min_B": 2.3946607992520965,
+     "MR_min_half": 1.9833521634546467
+    },
+    "rot_over_M_le_0.3": {
+     "e_max": 7.470393675634407,
+     "MR_min_B": 1.382558057066042,
+     "MR_min_half": 1.1450889054683668
+    },
+    "rot_over_M_le_1.0": {
+     "e_max": 10.0939970909867,
+     "MR_min_B": 0.7572582349155861,
+     "MR_min_half": 0.6271910238739253
+    }
+   },
+   "electron": {
+    "lambda_C_fm": 386.1592674365624,
+    "bounds_fm": {
+     "LEP": 0.00011,
+     "SEED": 0.001
+    },
+    "LEP_bound_note": "Schael et al. 2013 (arXiv:1302.3415) Eq. (3.9): r_e < 1.1e-19 m. Model dependent: it converts the VV contact-interaction scale (positive interference, electromagnetic coupling strength) into a size; it is not a direct form-factor measurement.",
+    "LEP": {
+     "MR_required_max": 2.848565586168941e-07,
+     "compton_over_R_min": 3510538.7948778397,
+     "log10_compton_over_R": 6.545373776774846,
+     "B": {
+      "e_min": 16457.810826472523,
+      "e2_min": 270859537.1999562,
+      "F_pi_MeV": 230.65124787273723,
+      "eFpi_MeV": 3796014.604379332,
+      "length_unit_fm": 5.198267157129825e-05,
+      "rot_over_M": 7067007678837.692,
+      "log10_rot_over_M": 12.84923556320874,
+      "hbar_over_MR": 3510538.7948778397,
+      "naive_loop_parameter_e2_over_16pi2": 1715238.0568697113
+     },
+     "M": {
+      "e_min": 20509.133239994946,
+      "e2_min": 420624546.2558656,
+      "F_pi_MeV": 287.42930785084064,
+      "eFpi_MeV": 5894925.971792416,
+      "length_unit_fm": 3.3474038758675555e-05,
+      "rot_over_M": 17042626458603.31,
+      "log10_rot_over_M": 13.231536525206497,
+      "hbar_over_MR": 3510538.7948778397,
+      "naive_loop_parameter_e2_over_16pi2": 2663636.0559790973
+     },
+     "E": {
+      "e_min": 19314.44057441937,
+      "e2_min": 373047614.70277715,
+      "F_pi_MeV": 270.68605098364065,
+      "eFpi_MeV": 5228149.646047778,
+      "length_unit_fm": 3.7743177571145445e-05,
+      "rot_over_M": 13405278278894.562,
+      "log10_rot_over_M": 13.127275833890247,
+      "hbar_over_MR": 3510538.7948778397,
+      "naive_loop_parameter_e2_over_16pi2": 2362351.617289759
+     },
+     "half": {
+      "e_min": 14977.867376649245,
+      "e2_min": 224336511.15249372,
+      "F_pi_MeV": 209.9102874204663,
+      "eFpi_MeV": 3144008.4459780683,
+      "length_unit_fm": 6.276286589233896e-05,
+      "rot_over_M": 4847828215659.337,
+      "log10_rot_over_M": 12.685547222067257,
+      "hbar_over_MR": 3510538.7948778397,
+      "naive_loop_parameter_e2_over_16pi2": 1420627.5527601982
+     }
+    },
+    "SEED": {
+     "MR_required_max": 2.5896050783354006e-06,
+     "compton_over_R_min": 386159.26743656234,
+     "log10_compton_over_R": 5.586766461933071,
+     "B": {
+      "e_min": 5458.438338205827,
+      "e2_min": 29794549.091995187,
+      "F_pi_MeV": 76.49836466211285,
+      "eFpi_MeV": 417561.6064817266,
+      "length_unit_fm": 0.0004725697415572568,
+      "rot_over_M": 85510792913.9361,
+      "log10_rot_over_M": 10.932020933525191,
+      "hbar_over_MR": 386159.26743656234,
+      "naive_loop_parameter_e2_over_16pi2": 188676.1862556683
+     },
+     "M": {
+      "e_min": 6802.10997324692,
+      "e2_min": 46268700.08814522,
+      "F_pi_MeV": 95.3295167892792,
+      "eFpi_MeV": 648441.8568971658,
+      "length_unit_fm": 0.00030430944326068684,
+      "rot_over_M": 206215780149.1001,
+      "log10_rot_over_M": 11.314321895522948,
+      "hbar_over_MR": 386159.26743656234,
+      "naive_loop_parameter_e2_over_16pi2": 292999.96615770075
+     },
+     "E": {
+      "e_min": 6405.875242096547,
+      "e2_min": 41035237.61730549,
+      "F_pi_MeV": 89.77640670957483,
+      "eFpi_MeV": 575096.4610652557,
+      "length_unit_fm": 0.00034311979610132215,
+      "rot_over_M": 162203867174.6242,
+      "log10_rot_over_M": 11.210061204206697,
+      "hbar_over_MR": 386159.26743656234,
+      "naive_loop_parameter_e2_over_16pi2": 259858.67790187354
+     },
+     "half": {
+      "e_min": 4967.596624805029,
+      "e2_min": 24677016.226774316,
+      "F_pi_MeV": 69.61936630093457,
+      "eFpi_MeV": 345840.9290575876,
+      "length_unit_fm": 0.0005705715081121722,
+      "rot_over_M": 58658721409.478,
+      "log10_rot_over_M": 10.768332592383707,
+      "hbar_over_MR": 386159.26743656234,
+      "naive_loop_parameter_e2_over_16pi2": 156269.03080362186
+     }
+    },
+    "formula": "e^2 >= c0 hbar c/(m_e R_max); F_pi = m_e e/a1; E_rot/M = 9 e^4/(16 pi Lambda a1); loop expansion parameter ~ e^2 (action = S0/e^2), equivalently hbar/(M R) = e^2/c0",
+    "failure_factor_vs_floor": {
+     "value": 2658384.4114118814,
+     "formula": "(M R)_min of a semiclassical Skyrme fold (E_rot <= M) / (M R) allowed for the electron (LEP)"
+    }
+   },
+   "pion_mass_family": {
+    "note": "beta = m_pi/(e F_pi); c0 = a1(beta) x_rms(beta)",
+    "rows": [
+     {
+      "beta": 0.0,
+      "a1": 36.46164562535639,
+      "xrms_B": 2.1160897790550557,
+      "xrms_E": 2.914434000493237,
+      "x_half": 1.7526286990892017,
+      "c0_B": 77.15611563534414,
+      "c0_E": 106.26505972447416,
+      "c0_half": 63.90372653901985,
+      "virial_E2_minus_E4_plus_3E0": 3.0754609517787134e-12
+     },
+     {
+      "beta": 0.05,
+      "a1": 36.59040510992381,
+      "xrms_B": 2.0911603963543572,
+      "xrms_E": 2.772902227259247,
+      "x_half": 1.737283556831683,
+      "c0_B": 76.51640605243477,
+      "c0_E": 101.46161582562587,
+      "c0_half": 63.567909135280615,
+      "virial_E2_minus_E4_plus_3E0": -7.103209071569527e-09
+     },
+     {
+      "beta": 0.1,
+      "a1": 36.921826168030144,
+      "xrms_B": 2.034808947665154,
+      "xrms_E": 2.618281526946226,
+      "x_half": 1.7008287059099991,
+      "c0_B": 75.12886225084516,
+      "c0_E": 96.67173539687309,
+      "c0_half": 62.797701821204654,
+      "virial_E2_minus_E4_plus_3E0": 3.09421076244652e-12
+     },
+     {
+      "beta": 0.2,
+      "a1": 37.942383079504566,
+      "xrms_B": 1.8960432285753164,
+      "xrms_E": 2.3346062592384276,
+      "x_half": 1.6053248359304757,
+      "c0_B": 71.9403985139053,
+      "c0_E": 88.58052502783356,
+      "c0_half": 60.90984989191693,
+      "virial_E2_minus_E4_plus_3E0": 2.645208355547701e-12
+     },
+     {
+      "beta": 0.3,
+      "a1": 39.19979534185571,
+      "xrms_B": 1.7643609194263445,
+      "xrms_E": 2.1068644162905126,
+      "x_half": 1.5095117790285595,
+      "c0_B": 69.16258695068107,
+      "c0_E": 82.58865393162638,
+      "c0_half": 59.17255280404005,
+      "virial_E2_minus_E4_plus_3E0": 1.7052562839954502e-12
+     },
+     {
+      "beta": 0.5,
+      "a1": 41.93269606186558,
+      "xrms_B": 1.5544485226101756,
+      "xrms_E": 1.7829960645420773,
+      "x_half": 1.3490336746139577,
+      "c0_B": 65.18221744242848,
+      "c0_E": 74.76583205394539,
+      "c0_half": 56.56861905480876,
+      "virial_E2_minus_E4_plus_3E0": 5.371953635965845e-13
+     },
+     {
+      "beta": 1.0,
+      "a1": 48.631763436546784,
+      "xrms_B": 1.2366904279633015,
+      "xrms_E": 1.3486571514921633,
+      "x_half": 1.0921153959324774,
+      "c0_B": 60.14243633695308,
+      "c0_E": 65.58757554837392,
+      "c0_half": 53.11149758039887,
+      "virial_E2_minus_E4_plus_3E0": 6.088738369384668e-13
+     },
+     {
+      "beta": 2.0,
+      "a1": 60.18617883814,
+      "xrms_B": 0.9379502558699819,
+      "xrms_E": 0.9832377028627135,
+      "x_half": 0.8387185930629415,
+      "c0_B": 56.45164184106991,
+      "c0_E": 59.17732022489724,
+      "c0_half": 50.479267236959366,
+      "virial_E2_minus_E4_plus_3E0": 1.4043691037547534e-12
+     },
+     {
+      "beta": 4.0,
+      "a1": 78.451195123995,
+      "xrms_B": 0.6902553148400942,
+      "xrms_E": 0.7043310004539102,
+      "x_half": 0.6219944285331638,
+      "c0_B": 54.151354389894834,
+      "c0_E": 55.25560874848832,
+      "c0_half": 48.796206278892996,
+      "virial_E2_minus_E4_plus_3E0": 1.004846497494346e-12
+     },
+     {
+      "beta": 8.0,
+      "a1": 105.90322344992438,
+      "xrms_B": 0.49900574010051857,
+      "xrms_E": 0.5007586531411196,
+      "x_half": 0.4515865344967851,
+      "c0_B": 52.84631639666011,
+      "c0_E": 53.03195553808716,
+      "c0_half": 47.82446966979002,
+      "virial_E2_minus_E4_plus_3E0": 6.645810919095935e-12
+     },
+     {
+      "beta": 16.0,
+      "a1": 146.0185081495684,
+      "xrms_B": 0.35711049584130206,
+      "xrms_E": 0.3549173896790977,
+      "x_half": 0.32389792349195695,
+      "c0_B": 52.14474184729957,
+      "c0_E": 51.82450775728087,
+      "c0_half": 47.2950915810386,
+      "virial_E2_minus_E4_plus_3E0": 2.2140514129594235e-11
+     }
+    ],
+    "c0_B_min": 52.14474184729957,
+    "c0_half_min": 47.2950915810386
+   }
+  },
+  "hopfion": {
+   "formula": "M R = 16 sqrt(2) pi^2 kappa4 E_W Rt = c0_hopf * kappa4 (hbar = c = 1); length unit l = sqrt(kappa4/kappa2)",
+   "E_W_ansatz": 1.2314457282064033,
+   "R_rms_ward": 2.0607955717400652,
+   "R_ring_ward": 1.2393009031045161,
+   "c0_hopf_rms": 566.7413689685776,
+   "c0_hopf_ring": 340.8213313445723,
+   "c0_hopf_rms_lit_energy": 554.1101752263314,
+   "electron_LEP": {
+    "kappa4_max": 5.026217851986162e-10,
+    "g2_min": 1989567562.4263675,
+    "sqrt_kappa2_MeV": 82.87992544795542,
+    "length_unit_fm": 5.337744389033202e-05,
+    "radius": "energy rms"
+   },
+   "electron_LEP_ring": {
+    "kappa4_max": 8.357943955359487e-10,
+    "g2_min": 1196466505.8070357,
+    "sqrt_kappa2_MeV": 64.27177271669154,
+    "length_unit_fm": 8.875971906777769e-05,
+    "radius": "ring (n = -e3)"
+   },
+   "electron_SEED": {
+    "kappa4_max": 4.569288956351056e-09,
+    "g2_min": 218852431.8669004,
+    "sqrt_kappa2_MeV": 27.488161536349626,
+    "length_unit_fm": 0.00048524948991210935,
+    "radius": "energy rms"
+   },
+   "electron_SEED_ring": {
+    "kappa4_max": 7.598130868508624e-09,
+    "g2_min": 131611315.63877393,
+    "sqrt_kappa2_MeV": 21.3165354712267,
+    "length_unit_fm": 0.000806906536979797,
+    "radius": "ring (n = -e3)"
+   }
+  },
+  "pairs": {
+   "demidov_levkov": {
+    "model": "Demidov-Levkov 2011 (1+1)D scalar, V = (1/2)(phi+1)^2[1 - v W((phi-1)/a)], a = 0.4 [read]",
+    "v_degenerate": 0.7450777428719995,
+    "phi_plus": 1.5515497261911892,
+    "m_minus": 1.0,
+    "m_plus": 7.613097755743583,
+    "g2_M_S_computed": 3.1178768983283165,
+    "two_g2_M_S_computed": 6.235753796656633,
+    "two_g2_M_S_read_from_axes": "about 6.2 (axes); the left edge of Fig. 3b (tick labelled 2 g^2 M_S) is at g^2E = 6.2324 in the vector data",
+    "F2_exponent_read": {
+     "at_threshold": 4.480129042223222,
+     "at_threshold_g2E": 6.259820945380763,
+     "at_g2E_11p5": 3.845986013023204,
+     "minimum": 3.843934957518269,
+     "minimum_at_g2E": 10.999991235608626,
+     "uncertainty": "+-0.002 (vector path, axes calibrated on ticks)",
+     "source": "arXiv:1103.0013v2 Fig. 3b upper panel (g^2 N = 0) [read, vector paths of arXiv:1103.0013v2 Fig. 3b and arXiv:1103.2133v2 Fig. 7b (dl_digitized.json)]",
+     "version1_eye_reading": {
+      "at_threshold": 4.45,
+      "at_g2E_11p5": 3.93,
+      "note": "3.93 was wrong by -0.085, outside its stated +-0.05"
+     }
+    },
+    "g2Nmin_classical_read": {
+     "high_energy": 3.977132579744733,
+     "high_energy_range": [
+      3.9708471659482667,
+      3.983220619923998
+     ],
+     "near_threshold": 4.549946842452273,
+     "source": "arXiv:1103.2133v2 Fig. 7b, delta rho -> 0 [read, vector path]"
+    },
+    "kappa_suppression_per_pair_quantum": {
+     "value": [
+      0.6164346898332062,
+      0.7184582952305288
+     ],
+     "formula": "P ~ exp(-F/g^2) = exp(-kappa N_pair), N_pair = 2 M_S/m_- = 2 g2MS/g^2; kappa = F/(2 g^2 M_S)"
+    },
+    "Nmin_over_Npair": {
+     "value": 0.6377949979162288,
+     "formula": "g^2 N_min / (2 g^2 M_S/m_-)"
+    },
+    "coupling_for_unsuppressed_two_particle_production": {
+     "formula": "exp(-F_min/g^2) = P  ->  g^2 = F_min/ln(1/P), F_min = 3.844 (high-energy plateau)",
+     "rows": {
+      "P=0.1": {
+       "g2": 1.6693997408451948,
+       "M_S_over_m": 1.867663461328787,
+       "N_pair": 3.735326922657574
+      },
+      "P=0.368": {
+       "g2": 3.843934957518269,
+       "M_S_over_m": 0.8111159353074194,
+       "N_pair": 1.6222318706148389
+      },
+      "P=0.5": {
+       "g2": 5.545625900711335,
+       "M_S_over_m": 0.5622227236655808,
+       "N_pair": 1.1244454473311616
+      }
+     },
+     "caveat": "extrapolates the leading semiclassical exponent to g^2 = O(1), where prefactors and higher orders are uncontrolled: indicative only"
+    }
+   },
+   "phi4": {
+    "convention": "V = (lambda/4)(phi^2 - v^2)^2, m^2 = 2 lambda v^2, phi = v phit; S = (1/g^2) S0 with g^2 = 1/v^2 = 2 lambda/m^2",
+    "M_kink_over_m": {
+     "value_times_g2": 0.6666666666666666,
+     "formula": "M_kink = m^3/(3 lambda) -> M/m = 2/(3 g^2)"
+    },
+    "N_pair_times_g2": 1.3333333333333333,
+    "DSV_units_note": "DSV units lambda = v = 1 (m = sqrt 2) have g^2 = 1, so N*lambda in those units equals g^2 N here",
+    "scaling_argument": "Classical solutions depend on (E, N) only through g^2 E and g^2 N (field rescaling phi = phit/g removes g from the field equation); so if classical pair creation exists at all its lower boundary is N_min = n0/g^2 with n0 a pure number of the classical theory, N_min ~ 1/lambda."
+   },
+   "E1e_phi4": {
+    "file": "../E1_phi4/e1e_results.json",
+    "sha256_16": "ecaabd4139a39114",
+    "N_min_lambda_over_m2": {
+     "N_E": 1.2389199410979685,
+     "N_lin": 1.687915041158199,
+     "E1_implication_c": 1.687915041158199
+    },
+    "g2_N_min": {
+     "N_E": 2.477839882195937,
+     "N_lin": 3.375830082316398
+    },
+    "g2_N_pair": 1.3333333333333333,
+    "Nmin_over_Npair": {
+     "N_E": 1.8583799116469528,
+     "N_lin": 2.5318725617372984
+    },
+    "g2_for_classical_pair_from_2_quanta": {
+     "N_E": 1.2389199410979685,
+     "N_lin": 1.687915041158199
+    },
+    "lambda_over_m2_for_2_quanta": {
+     "N_E": 0.6194599705489843,
+     "N_lin": 0.8439575205790995
+    },
+    "note": "upper bounds on the true classical minimum (scanned sets only); classical production from N <= 2 quanta needs g^2 >= g^2 N_min/2. E1 is reconciled separately; numbers as read now."
+   },
+   "E1e_input": "used (see E1e_phi4)",
+   "QED_breit_wheeler": {
+    "formula": "sigma = (pi r_e^2/2)(1-b^2)[(3-b^4) ln((1+b)/(1-b)) - 2b(2-b^2)], r_e = alpha hbar c/(m_e c^2)",
+    "r_e_fm": 2.8179403204564086,
+    "sigma_max_over_pi_re2": 0.6817055054867978,
+    "beta_at_max": 0.701314729,
+    "sqrt_s_at_max_over_2me": 1.40281617759477,
+    "sigma_max_mb": 170.06316465914213,
+    "scaling": "sigma ~ alpha^2/m_e^2: power-law (perturbative) in alpha, no exp(-c/alpha) factor",
+    "hypothetical_fold_suppression": {
+     "note": "illustration only: if the electron were a semiclassical fold with DL-like F ~ 3.8; depends on the coupling identification: g^2 = alpha, or g^2 = e^2 = 4 pi alpha (the loop-counting coupling of QED)",
+     "F_used": 3.843934957518269,
+     "exp_minus_F_over_alpha_log10": -228.7678615135313,
+     "exp_minus_F_over_4pialpha_log10": -18.204767990220336
+    }
+   }
+  },
+  "vacuum": {
+   "Planck2018_TTTEEE_lowE_lensing": {
+    "H0": 67.36,
+    "Omega_L": 0.6847,
+    "rho_crit_GeV4": 3.6734079438951e-47,
+    "rho_L_GeV4": 2.515182419184975e-47,
+    "rho_L_quarter_meV": 2.2394551655096677,
+    "rho_L_meV4": 25.151824191849748,
+    "rel_unc_uncorrelated": 0.019254480794057525
+   },
+   "PLAN_rounded": {
+    "H0": 67.4,
+    "Omega_L": 0.685,
+    "rho_crit_GeV4": 3.6777719565117426e-47,
+    "rho_L_GeV4": 2.5192737902105437e-47,
+    "rho_L_quarter_meV": 2.2403653239642676,
+    "rho_L_meV4": 25.19273790210544
+   },
+   "Planck_OmegaLh2": {
+    "Omega_L_h2": 0.3107,
+    "unc": 0.0082,
+    "rho_L_GeV4": 2.515395369529093e-47,
+    "rel_unc": 0.02639201802381719
+   },
+   "Planck_Lambda": {
+    "Lambda_eV2": 4.24e-66,
+    "rho_L_GeV4": 2.51465935062045e-47,
+    "formula": "rho_L = Lambda/(8 pi G) = Lambda Mpl_red^2",
+    "Lambda_over_mPl2_quoted": 2.846e-122,
+    "Lambda_over_mPl2_ours": 2.8445442364021374e-122
+   },
+   "ratios_scale4_over_rhoL": {
+    "f_pi^4 (f_pi = 92.07 MeV = 130.2/sqrt2)": {
+     "scale4_GeV4": 7.184291504039993e-05,
+     "ratio": 2.856369959188887e+42,
+     "log10": 42.455814456895695
+    },
+    "f^4 of the ANW Skyrme fit (f = F_pi/2 = 64.5 MeV)": {
+     "scale4_GeV4": 1.7307680062500002e-05,
+     "ratio": 6.881282220519186e+41,
+     "log10": 41.837669369836036
+    },
+    "m_e^4": {
+     "scale4_GeV4": 6.818361659310949e-14,
+     "ratio": 2.710881567596352e+33,
+     "log10": 33.433110544632164
+    },
+    "v_EW^4 (v = 246.22 GeV)": {
+     "scale4_GeV4": 3675304344.0063744,
+     "ratio": 1.4612476279940475e+56,
+     "log10": 56.16472381919133
+    },
+    "Higgs potential depth m_H^2 v^2/8": {
+     "scale4_GeV4": 118655017.47900766,
+     "ratio": 4.717551163444316e+54,
+     "log10": 54.67371661893364
+    },
+    "M_Pl^4 reduced (2.435e18 GeV)": {
+     "scale4_GeV4": 3.517439285367827e+73,
+     "ratio": 1.3984827734712085e+120,
+     "log10": 120.14565712109548
+    },
+    "M_Pl^4 unreduced (1.221e19 GeV)": {
+     "scale4_GeV4": 2.2218069920915785e+76,
+     "ratio": 8.833581910975419e+122,
+     "log10": 122.94613684046763
+    }
+   },
+   "targets": {
+    "rho_L": {
+     "target": 2.5e-47,
+     "tol_rel": 0.02,
+     "ours": 2.515182419184975e-47,
+     "pass_": true
+    },
+    "rho_L_quarter_meV": {
+     "target": 2.24,
+     "tol": 0.01,
+     "ours": 2.2394551655096677,
+     "pass_": true
+    },
+    "f_pi4": {
+     "target": "about 3e42",
+     "ours": 2.856369959188887e+42
+    },
+    "ew": {
+     "target": "about 1e56",
+     "ours": 1.4612476279940475e+56
+    },
+    "planck": {
+     "target": "about 1e123",
+     "ours": 8.833581910975419e+122,
+     "note": "unreduced; reduced gives ~1.4e120"
+    }
+   }
+  },
+  "weinberg_witten": {
+   "rule": "non-zero forward matrix element needs 2|h| <= j_max; j_max = 1 (J^mu), 2 (T^mu nu)",
+   "table": {
+    "0": {
+     "charge_under_covariant_current_allowed": true,
+     "energy_under_covariant_Tmunu_allowed": true
+    },
+    "0.5": {
+     "charge_under_covariant_current_allowed": true,
+     "energy_under_covariant_Tmunu_allowed": true
+    },
+    "1": {
+     "charge_under_covariant_current_allowed": false,
+     "energy_under_covariant_Tmunu_allowed": true
+    },
+    "1.5": {
+     "charge_under_covariant_current_allowed": false,
+     "energy_under_covariant_Tmunu_allowed": false
+    },
+    "2": {
+     "charge_under_covariant_current_allowed": false,
+     "energy_under_covariant_Tmunu_allowed": false
+    }
+   },
+   "source": "Weinberg & Witten, PLB 96, 59 (1980) (original not read); argument read in Porrati arXiv:0804.4672 Sec. 2",
+   "statements": [
+    "A theory with a Lorentz-covariant conserved current J^mu has no massless particle of |h| > 1/2 carrying non-zero charge Q = int J^0.",
+    "A theory with a Lorentz-covariant conserved T^mu nu has no massless particle of |h| > 1 (its forward matrix element must be p^mu p^nu/E by the equivalence principle).",
+    "Both hold for composite and elementary particles alike; GR and supergravity evade them because the graviton/gravitino T^mu nu is not gauge invariant/Lorentz covariant.",
+    "A neutral composite photon (|h| = 1, Q = 0) is not excluded; a composite graviton from a Lorentz-covariant matter sector with covariant conserved T^mu nu is."
+   ]
+  }
+ },
+ "hedgehog": {
+  "conventions": "ANW: L = (F_pi^2/16) Tr dU dU^+ + 1/(32 e^2) Tr[L_mu,L_nu]^2, F_pi = 186 MeV convention (ANW fit F_pi = 129 MeV), x = e F_pi r",
+  "convergence": [
+   {
+    "Ehat": 2.9015255701515037,
+    "E2": 1.4507627739724274,
+    "E4": 1.4507627961790763,
+    "E0": 0.0,
+    "a1": 36.4616456615636,
+    "Lambda": 50.97868944893482,
+    "B": 1.000000000003285,
+    "x2_B": 4.477835841905564,
+    "xrms_B": 2.1160897528000944,
+    "x2_M": 10.79863888820317,
+    "xrms_M": 3.28612825194075,
+    "x2_E": 8.493915692958032,
+    "xrms_E": 2.9144323105809185,
+    "x_half": 1.7526286865621863,
+    "F_half": 1.5707963267948966,
+    "slope0": 1.003764117179771,
+    "C_tail": 8.63848611951587,
+    "tails": {
+     "E2": 0.0006909578003432255,
+     "Lam": 2.4874480812356117,
+     "B0": 1.8764813793571108e-07,
+     "B2": 0.00025332498621321,
+     "B4": 0.45598497518377795,
+     "Ex2": 1.8655860609267088
+    },
+    "X": 30.0,
+    "tol_requested": 1e-07,
+    "tol_achieved": 1e-07,
+    "nodes": 4751.0
+   },
+   {
+    "Ehat": 2.9015255672885716,
+    "E2": 1.45076278356317,
+    "E4": 1.4507627837254016,
+    "E0": 0.0,
+    "a1": 36.46164562558693,
+    "Lambda": 50.97873765259647,
+    "B": 0.9999999999999657,
+    "x2_B": 4.477835952150948,
+    "xrms_B": 2.116089778849411,
+    "x2_M": 10.798641890196354,
+    "xrms_M": 3.2861287087082203,
+    "x2_E": 8.493925259206165,
+    "xrms_E": 2.9144339517659628,
+    "x_half": 1.7526286989953825,
+    "F_half": 1.5707963267948966,
+    "slope0": 1.0037641106577482,
+    "C_tail": 8.638572635086586,
+    "tails": {
+     "E2": 8.637145505979954e-05,
+     "Lam": 1.2437489528611134,
+     "B0": 2.9320902492853826e-09,
+     "B2": 1.583328734614107e-05,
+     "B4": 0.11399966889221567,
+     "Ex2": 0.932811714645835
+    },
+    "X": 60.0,
+    "tol_requested": 1e-07,
+    "tol_achieved": 1e-07,
+    "nodes": 4751.0
+   },
+   {
+    "Ehat": 2.9015255672702254,
+    "E2": 1.4507627836395744,
+    "E4": 1.450762783630651,
+    "E0": 0.0,
+    "a1": 36.46164562535639,
+    "Lambda": 50.97873907018823,
+    "B": 1.0000000000001497,
+    "x2_B": 4.477835953021275,
+    "xrms_B": 2.1160897790550557,
+    "x2_M": 10.798641937063364,
+    "xrms_M": 3.286128715839257,
+    "x2_E": 8.493925543231013,
+    "xrms_E": 2.914434000493237,
+    "x_half": 1.7526286990892017,
+    "F_half": 1.5707963267948966,
+    "slope0": 1.0037641106087063,
+    "C_tail": 8.638577872036816,
+    "tails": {
+     "E2": 1.0796444972691568e-05,
+     "Lam": 0.6218752304270344,
+     "B0": 4.5813993466249367e-11,
+     "B2": 9.895822588709864e-07,
+     "B4": 0.02849996905548441,
+     "Ex2": 0.4664064228202758
+    },
+    "X": 120.0,
+    "tol_requested": 1e-07,
+    "tol_achieved": 1e-07,
+    "nodes": 4751.0
+   },
+   {
+    "Ehat": 2.9015255672702254,
+    "E2": 1.4507627836395744,
+    "E4": 1.450762783630651,
+    "E0": 0.0,
+    "a1": 36.46164562535639,
+    "Lambda": 50.97873907018823,
+    "B": 1.0000000000001497,
+    "x2_B": 4.477835953021275,
+    "xrms_B": 2.1160897790550557,
+    "x2_M": 10.798641937063364,
+    "xrms_M": 3.286128715839257,
+    "x2_E": 8.493925543231013,
+    "xrms_E": 2.914434000493237,
+    "x_half": 1.7526286990892017,
+    "F_half": 1.5707963267948966,
+    "slope0": 1.0037641106087063,
+    "C_tail": 8.638577872036816,
+    "tails": {
+     "E2": 1.0796444972691568e-05,
+     "Lam": 0.6218752304270344,
+     "B0": 4.5813993466249367e-11,
+     "B2": 9.895822588709864e-07,
+     "B4": 0.02849996905548441,
+     "Ex2": 0.4664064228202758
+    },
+    "X": 120.0,
+    "tol_requested": 1e-10,
+    "tol_achieved": 1e-07,
+    "nodes": 4751.0
+   },
+   {
+    "Ehat": 2.9015255672763036,
+    "E2": 1.4507627836462693,
+    "E4": 1.450762783630034,
+    "E0": 0.0,
+    "a1": 36.46164562543277,
+    "Lambda": 50.978739114377696,
+    "B": 1.000000000000387,
+    "x2_B": 4.477835953038911,
+    "xrms_B": 2.116089779059223,
+    "x2_M": 10.798641937924593,
+    "xrms_M": 3.286128715970297,
+    "x2_E": 8.493925552117249,
+    "xrms_E": 2.914434002017759,
+    "x_half": 1.7526286990898257,
+    "F_half": 1.5707963267948966,
+    "slope0": 1.003764110608205,
+    "C_tail": 8.638578196943264,
+    "tails": {
+     "E2": 1.3495557231030009e-06,
+     "Lam": 0.3109376386029314,
+     "B0": 7.158437286811585e-13,
+     "B2": 6.18488981580521e-08,
+     "B4": 0.007124993067807602,
+     "Ex2": 0.23320322895219855
+    },
+    "X": 240.0,
+    "tol_requested": 1e-10,
+    "tol_achieved": 1e-07,
+    "nodes": 4751.0
+   }
+  ],
+  "numerical_spread_last3": {
+   "a1": 7.638334409421077e-11,
+   "Lambda": 4.41894627556394e-08,
+   "xrms_B": 4.1673331452329876e-12,
+   "xrms_M": 1.3104006768571708e-10,
+   "xrms_E": 1.5245218421000573e-09,
+   "x_half": 6.23945339839338e-13,
+   "slope0": 5.013767179207207e-13,
+   "C_tail": 3.2490644841232097e-07
+  },
+  "shooting_slope": 1.003764117177525,
+  "best": {
+   "Ehat": 2.9015255672702254,
+   "E2": 1.4507627836395744,
+   "E4": 1.450762783630651,
+   "E0": 0.0,
+   "a1": 36.46164562535639,
+   "Lambda": 50.97873907018823,
+   "B": 1.0000000000001497,
+   "x2_B": 4.477835953021275,
+   "xrms_B": 2.1160897790550557,
+   "x2_M": 10.798641937063364,
+   "xrms_M": 3.286128715839257,
+   "x2_E": 8.493925543231013,
+   "xrms_E": 2.914434000493237,
+   "x_half": 1.7526286990892017,
+   "F_half": 1.5707963267948966,
+   "slope0": 1.0037641106087063,
+   "C_tail": 8.638577872036816,
+   "tails": {
+    "E2": 1.0796444972691568e-05,
+    "Lam": 0.6218752304270344,
+    "B0": 4.5813993466249367e-11,
+    "B2": 9.895822588709864e-07,
+    "B4": 0.02849996905548441,
+    "Ex2": 0.4664064228202758
+   },
+   "X": 120.0,
+   "tol_requested": 1e-10,
+   "tol_achieved": 1e-07,
+   "nodes": 4751.0
+  },
+  "virial_E2_over_E4": 1.0000000000061509,
+  "calibration": {
+   "a1": {
+    "ours": 36.46164562535639,
+    "target": 36.463253459824635,
+    "rel_tol": 0.002,
+    "rel_dev": -4.4094651894366343e-05,
+    "pass_": true,
+    "source": "PLAN E2: M_cl = 36.5 F_pi/e = 1.2315*3pi^2 F_pi/e [read: Schechter-Weigel, Praszalowicz]"
+   },
+   "Lambda": {
+    "ours": 50.97873907018823,
+    "target": 50.9,
+    "rel_tol": 0.005,
+    "rel_dev": 0.0015469365459377382,
+    "pass_": true,
+    "source": "PLAN E2: I1 = (2pi/3) Lambda/(e^3 F_pi), Lambda = 50.9"
+   },
+   "virial": {
+    "ours": 1.0000000000061509,
+    "target": 1.0,
+    "abs_tol": 0.0001,
+    "pass_": true,
+    "source": "Derrick: E2 = E4"
+   },
+   "baryon_number": {
+    "ours": 1.0000000000001497,
+    "target": 1.0,
+    "abs_tol": 1e-06,
+    "pass_": true
+   }
+  },
+  "pion_mass_family": [
+   {
+    "beta": 0.0,
+    "a1": 36.46164562535639,
+    "xrms_B": 2.1160897790550557,
+    "xrms_E": 2.914434000493237,
+    "x_half": 1.7526286990892017,
+    "c0_B": 77.15611563534414,
+    "c0_E": 106.26505972447416,
+    "c0_half": 63.90372653901985,
+    "virial_E2_minus_E4_plus_3E0": 3.0754609517787134e-12
+   },
+   {
+    "beta": 0.05,
+    "a1": 36.59040510992381,
+    "xrms_B": 2.0911603963543572,
+    "xrms_E": 2.772902227259247,
+    "x_half": 1.737283556831683,
+    "c0_B": 76.51640605243477,
+    "c0_E": 101.46161582562587,
+    "c0_half": 63.567909135280615,
+    "virial_E2_minus_E4_plus_3E0": -7.103209071569527e-09
+   },
+   {
+    "beta": 0.1,
+    "a1": 36.921826168030144,
+    "xrms_B": 2.034808947665154,
+    "xrms_E": 2.618281526946226,
+    "x_half": 1.7008287059099991,
+    "c0_B": 75.12886225084516,
+    "c0_E": 96.67173539687309,
+    "c0_half": 62.797701821204654,
+    "virial_E2_minus_E4_plus_3E0": 3.09421076244652e-12
+   },
+   {
+    "beta": 0.2,
+    "a1": 37.942383079504566,
+    "xrms_B": 1.8960432285753164,
+    "xrms_E": 2.3346062592384276,
+    "x_half": 1.6053248359304757,
+    "c0_B": 71.9403985139053,
+    "c0_E": 88.58052502783356,
+    "c0_half": 60.90984989191693,
+    "virial_E2_minus_E4_plus_3E0": 2.645208355547701e-12
+   },
+   {
+    "beta": 0.3,
+    "a1": 39.19979534185571,
+    "xrms_B": 1.7643609194263445,
+    "xrms_E": 2.1068644162905126,
+    "x_half": 1.5095117790285595,
+    "c0_B": 69.16258695068107,
+    "c0_E": 82.58865393162638,
+    "c0_half": 59.17255280404005,
+    "virial_E2_minus_E4_plus_3E0": 1.7052562839954502e-12
+   },
+   {
+    "beta": 0.5,
+    "a1": 41.93269606186558,
+    "xrms_B": 1.5544485226101756,
+    "xrms_E": 1.7829960645420773,
+    "x_half": 1.3490336746139577,
+    "c0_B": 65.18221744242848,
+    "c0_E": 74.76583205394539,
+    "c0_half": 56.56861905480876,
+    "virial_E2_minus_E4_plus_3E0": 5.371953635965845e-13
+   },
+   {
+    "beta": 1.0,
+    "a1": 48.631763436546784,
+    "xrms_B": 1.2366904279633015,
+    "xrms_E": 1.3486571514921633,
+    "x_half": 1.0921153959324774,
+    "c0_B": 60.14243633695308,
+    "c0_E": 65.58757554837392,
+    "c0_half": 53.11149758039887,
+    "virial_E2_minus_E4_plus_3E0": 6.088738369384668e-13
+   },
+   {
+    "beta": 2.0,
+    "a1": 60.18617883814,
+    "xrms_B": 0.9379502558699819,
+    "xrms_E": 0.9832377028627135,
+    "x_half": 0.8387185930629415,
+    "c0_B": 56.45164184106991,
+    "c0_E": 59.17732022489724,
+    "c0_half": 50.479267236959366,
+    "virial_E2_minus_E4_plus_3E0": 1.4043691037547534e-12
+   },
+   {
+    "beta": 4.0,
+    "a1": 78.451195123995,
+    "xrms_B": 0.6902553148400942,
+    "xrms_E": 0.7043310004539102,
+    "x_half": 0.6219944285331638,
+    "c0_B": 54.151354389894834,
+    "c0_E": 55.25560874848832,
+    "c0_half": 48.796206278892996,
+    "virial_E2_minus_E4_plus_3E0": 1.004846497494346e-12
+   },
+   {
+    "beta": 8.0,
+    "a1": 105.90322344992438,
+    "xrms_B": 0.49900574010051857,
+    "xrms_E": 0.5007586531411196,
+    "x_half": 0.4515865344967851,
+    "c0_B": 52.84631639666011,
+    "c0_E": 53.03195553808716,
+    "c0_half": 47.82446966979002,
+    "virial_E2_minus_E4_plus_3E0": 6.645810919095935e-12
+   },
+   {
+    "beta": 16.0,
+    "a1": 146.0185081495684,
+    "xrms_B": 0.35711049584130206,
+    "xrms_E": 0.3549173896790977,
+    "x_half": 0.32389792349195695,
+    "c0_B": 52.14474184729957,
+    "c0_E": 51.82450775728087,
+    "c0_half": 47.2950915810386,
+    "virial_E2_minus_E4_plus_3E0": 2.2140514129594235e-11
+   }
+  ],
+  "runtime_s": 37.583632707595825
+ },
+ "hopfion": {
+  "model": "Faddeev-Skyrme E = int[(kappa2/2)(dn)^2 + (kappa4/4) sum_ij (d_i n x d_j n)^2]; Ward units",
+  "ansatz": "n = U e3 U^+, U = exp(i f(r) rhat.tau), f = (1-t)^2 h(t) with free spline h (C/r^2 tail built in), Derrick-optimal scale; Q = 1",
+  "E_W_ansatz": 1.2314457282064033,
+  "E_W_literature": 1.204,
+  "E_W_literature_note": "Sutcliffe 2007 Table 2 (lattice, ~1% low); 1.21-1.22 more accurate",
+  "ansatz_excess_over_1p204": 0.022795455320933078,
+  "virial_E2_eq_E4_after_scaling": true,
+  "E2_unscaled": 0.5017725108207838,
+  "E4_unscaled": 0.7555508466561985,
+  "scale_factor": 1.2270956475794608,
+  "tail_amplitude_h1_unscaled": 2.866618805430773,
+  "phi_independence_rel": 8.8300516969079e-17,
+  "unit_norm_maxdev": 6.661338147750939e-16,
+  "R_rms_energy_ward": 2.0607955717400652,
+  "R_ring_ward": 1.2393009031045161,
+  "c0_hopf_rms": 566.7413689685776,
+  "c0_hopf_ring": 340.8213313445723,
+  "c0_hopf_rms_with_lit_energy": 554.1101752263314,
+  "formula": "M R = 16 sqrt(2) pi^2 kappa4 E_W Rt = c0_hopf * kappa4 (hbar = c = 1); length unit l = sqrt(kappa4/kappa2)",
+  "identity": {
+   "symbolic_check_pass": true,
+   "statement": "E_W[f] = (1/(3 pi^2)) E_ANW[F], F(y) = f(y/sqrt2): E_W(ansatz) = a1/(3 pi^2), R_rms = x_E/sqrt2, R_ring = x_half/sqrt2",
+   "consequence": "E_W(ansatz) is the Skyrme a1 again, so it is not an independent calibration"
+  },
+  "exact_profile_check": {
+   "E_W": 1.231446202810255,
+   "E2_over_E4": 1.000001573845779,
+   "R_rms": 2.0608282437422196,
+   "R_ring": 1.239295286057129,
+   "identity_predictions": {
+    "E_W": 1.2314456974361923,
+    "R_rms": 2.0608160450694055,
+    "R_ring": 1.2392956380281315
+   }
+  },
+  "optimizer": {
+   "success": true,
+   "nit": 120,
+   "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "driver": "L-BFGS-B on the angle-integrated energy; final profile evaluated with the 3D-angle quadrature",
+   "rel_diff_3D_vs_radial": 4.41502584845395e-16
+  },
+  "quadrature": {
+   "NT": 600,
+   "NTH": 64,
+   "spline_nodes": 24
+  },
+  "version": "v2 (reconciliation): tail-correct profile; v1 gave R_rms = 2.1441 from a spurious a/r spline tail",
+  "runtime_s": 1.7464816570281982
+ }
+}

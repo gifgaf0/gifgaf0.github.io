@@ -1,0 +1,51 @@
+[PASS] the five LNR-form tensors are F21 invariants, independent, and fill the computed 5-dim space
+[PASS] M_Maj = [[1,-1,-1],[-1,1,-1],[-1,-1,1]] (LNR)  ([[1, -1, -1], [-1, 1, -1], [-1, -1, 1]])
+[PASS] M_Dir = [[-1,0,0],[0,1,-2],[0,-2,1]] (LNR)  ([[-1, 0, 0], [0, 1, -2], [0, -2, 1]])
+[PASS] M_Maj^-1 = -(1/2)[[0,1,1],[1,0,1],[1,1,0]] (LNR intermediate)
+[PASS] M_nu = -M_Dir M_Maj^-1 M_Dir^T is proportional to (1/2)[[0,1,1],[1,-4,5],[1,5,-4]] (LNR)  (M_nu = [[0, 1/2, 1/2], [1/2, -2, 5/2], [1/2, 5/2, -2]], factor 1)
+[PASS] tri-bimaximal criteria M12 = M13, M22 = M33, M23 = M11 + M12 - M22 hold exactly
+[PASS] U_TB^T M_nu U_TB is diagonal  (diag = [-1/2, 1, -9/2])
+[PASS] mass eigenvalues proportional to (1, -2, 9) (LNR), normal hierarchy  ([1, -2, 9])
+[PASS] Dm^2_atm/Dm^2_sol = (81 - 1)/(4 - 1) = 80/3 exactly (LNR: 26.7)  (80/3)
+[PASS] for beta = -1 the light matrix stays exactly tri-bimaximal for EVERY alpha (alpha only moves masses)
+  masses(alpha) in the TBM basis: [1/(alpha - 1), -1/(2*alpha + 1), 9/(alpha - 1)]
+  alpha windows for r in [21.3, 45.1]: [(-1.143, -0.946), (-0.22, -0.154)]
+[PASS] LNR's alpha windows -1.15 < alpha < -0.95 and -0.22 < alpha < -0.15 reproduced from r in [21.3, 45.1] (normal ordering, TBM labelling), to the two decimals LNR quote  ([(-1.143, -0.946), (-0.22, -0.154)])
+  alpha windows for NuFIT 6.0 r = 33.83 +- 0.92: 1sigma [(-1.069, -1.055), (-0.181, -0.176)], 3sigma [(-1.084, -1.039), (-0.186, -0.172)]
+  haze (pole masses): lambda_e = 0.06954; linear: theta13 = 2.819 deg, theta12 = 32.45 deg; unitary: theta12 = 32.44, theta13 = 2.819, theta23 = 44.93; opposite sign theta12 = 38.09
+  haze (MS-bar at M_Z): lambda_e = 0.06890; linear: theta13 = 2.792 deg, theta12 = 32.48 deg; unitary: theta12 = 32.47, theta13 = 2.792, theta23 = 44.93; opposite sign theta12 = 38.06
+[PASS] theta13 = 2.8 deg (LNR) from lambda_e = sqrt(me/mmu)  (2.819 deg)
+[PASS] theta12 shifts from 35.26 deg (TBM) to 32.4 deg (LNR)  (32.449 deg)
+  comparison with NuFIT 6.0: {
+ "theta13_deg": {
+  "LNR": 2.8186481202532123,
+  "NuFIT6": 8.52,
+  "NuFIT6_1sigma": 0.11
+ },
+ "sin2_theta13": {
+  "LNR": 0.002418165846208756,
+  "NuFIT6": 0.02195,
+  "sigma_used": 0.0005733333333333331,
+  "pull": -34.06715259382195
+ },
+ "sin2_theta12": {
+  "LNR": 0.28777898578052796,
+  "NuFIT6": 0.307,
+  "pull": -1.8019700830755045
+ },
+ "sin2_theta23": {
+  "LNR": 0.5,
+  "NuFIT6": 0.561,
+  "pull_3sigma_range_convention": -1.3969465648854968,
+  "pull_1sigma": -4.066666666666671
+ },
+ "r_atm_sol": {
+  "LNR": 26.666666666666668,
+  "NuFIT6": 33.83177570093457,
+  "sigma": 0.9160830812440869,
+  "pull": -7.82146202780792
+ }
+}
+[PASS] LNR's integer point is excluded by NuFIT 6.0: theta13 pull < -20 sigma and r pull < -5 sigma  (theta13 pull -34.1, r pull -7.8)
+
+14/14 checks pass

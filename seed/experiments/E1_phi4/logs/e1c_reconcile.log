@@ -1,0 +1,118 @@
+0 done, 29 to run
+y4_om0.990_v0.410_dx0.05_dt0.02: pair_at_T=True since=590.0 first=590.0 survives1.5T=True E0=23.169238 E_T=23.092765 wall=27s  [27s]
+y4_om0.990_v0.430_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=21.115509 E_T=21.065346 wall=26s  [27s]
+lf_om0.990_v0.430_dx0.1_dt0.04: pair_at_T=True since=1160.0 first=1160.0 survives1.5T=True E0=21.115508 E_T=21.069861 wall=2s  [28s]
+y4_om0.990_v0.410_dx0.05_dt0.01: pair_at_T=True since=590.0 first=590.0 survives1.5T=True E0=23.169238 E_T=23.092624 wall=62s  [90s]
+y4_om0.990_v0.430_dx0.05_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=21.115509 E_T=21.065349 wall=58s  [90s]
+y4_om0.990_v0.410_dx0.025_dt0.01: pair_at_T=True since=590.0 first=590.0 survives1.5T=True E0=23.169238 E_T=23.092580 wall=167s  [254s]
+y4_om0.990_v0.430_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=21.115509 E_T=21.065343 wall=164s  [254s]
+lf_om0.990_v0.410_dx0.05_dt0.0025: pair_at_T=True since=640.0 first=590.0 survives1.5T=True E0=23.169238 E_T=23.093478 wall=81s  [335s]
+lf_om0.990_v0.430_dx0.05_dt0.0025: pair_at_T=False since=None first=None survives1.5T=False E0=21.115509 E_T=21.065353 wall=82s  [336s]
+y4_om0.990_v0.380_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=20.919050 E_T=20.875055 wall=23s  [358s]
+y4_om0.990_v0.390_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=22.319178 E_T=22.274368 wall=24s  [360s]
+y4_om0.990_v0.400_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=23.106681 E_T=23.036141 wall=50s  [408s]
+y4_om0.990_v0.420_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=22.481691 E_T=22.432672 wall=57s  [416s]
+y4_om0.990_v0.440_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=19.223010 E_T=19.182192 wall=67s  [476s]
+y4_om0.990_v0.450_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=17.002396 E_T=16.968960 wall=63s  [479s]
+15 done, 25 to run
+y4_om0.990_v0.460_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=14.657003 E_T=14.630109 wall=60s  [60s]
+y4_om0.990_v0.470_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=12.362167 E_T=12.337416 wall=49s  [109s]
+y4_om0.990_v0.480_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=10.247013 E_T=10.222041 wall=43s  [152s]
+y4_om0.990_v0.490_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=8.391255 E_T=8.365856 wall=28s  [180s]
+y4_om0.990_v0.500_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=6.832489 E_T=6.807110 wall=22s  [202s]
+y4_om0.950_v0.620_dx0.05_dt0.02: pair_at_T=True since=230.0 first=230.0 survives1.5T=True E0=13.521329 E_T=10.182578 wall=22s  [223s]
+/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/e1c_dsv.py:64: RuntimeWarning: overflow encountered in square
+  du = eta * omega * g * (np.cos(omega * T) * ch + eta * vn * np.sin(omega * T) * sh) / ch ** 2
+y4_om0.900_v0.730_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=13.159094 E_T=4.672756 wall=21s  [244s]
+lf_om0.990_v0.410_dx0.1_dt0.04: pair_at_T=True since=670.0 first=650.0 survives1.5T=True E0=23.169238 E_T=23.086190 wall=2s  [247s]
+lf_om0.990_v0.410_dx0.1_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=23.169238 E_T=23.094886 wall=4s  [250s]
+lf_om0.990_v0.410_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=23.169238 E_T=23.094967 wall=9s  [259s]
+lf_om0.990_v0.410_dx0.025_dt0.005: pair_at_T=True since=590.0 first=590.0 survives1.5T=True E0=23.169238 E_T=23.090807 wall=116s  [375s]
+lf_om0.990_v0.430_dx0.1_dt0.02: pair_at_T=True since=780.0 first=780.0 survives1.5T=True E0=21.115508 E_T=21.066402 wall=7s  [383s]
+lf_om0.990_v0.430_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=21.115509 E_T=21.066482 wall=14s  [397s]
+lf_om0.990_v0.430_dx0.025_dt0.005: pair_at_T=True since=840.0 first=840.0 survives1.5T=True E0=21.115509 E_T=21.065388 wall=121s  [518s]
+y4_om0.950_v0.620_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=13.521330 E_T=10.254411 wall=177s  [695s]
+y4_om0.900_v0.730_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=13.159099 E_T=4.548765 wall=180s  [875s]
+31 done, 21 to run
+/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/e1c_dsv.py:64: RuntimeWarning: overflow encountered in square
+  du = eta * omega * g * (np.cos(omega * T) * ch + eta * vn * np.sin(omega * T) * sh) / ch ** 2
+y4_om0.940_v0.670_dx0.05_dt0.02: pair_at_T=True since=100.0 first=100.0 survives1.5T=True E0=14.718053 E_T=6.074851 wall=27s  [27s]
+y4_om0.950_v0.630_dx0.05_dt0.02: pair_at_T=False since=None first=130.0 survives1.5T=False E0=14.779289 E_T=6.437205 wall=26s  [27s]
+y4_om0.950_v0.770_dx0.05_dt0.02: pair_at_T=True since=120.0 first=120.0 survives1.5T=True E0=14.914728 E_T=5.989604 wall=48s  [74s]
+y4_om0.960_v0.590_dx0.05_dt0.02: pair_at_T=True since=150.0 first=150.0 survives1.5T=True E0=15.229777 E_T=11.818324 wall=48s  [75s]
+/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/e1c_dsv.py:64: RuntimeWarning: overflow encountered in square
+  du = eta * omega * g * (np.cos(omega * T) * ch + eta * vn * np.sin(omega * T) * sh) / ch ** 2
+y4_om0.940_v0.790_dx0.05_dt0.02: pair_at_T=True since=100.0 first=100.0 survives1.5T=True E0=15.513476 E_T=6.746485 wall=31s  [105s]
+y4_om0.950_v0.640_dx0.05_dt0.02: pair_at_T=True since=140.0 first=120.0 survives1.5T=True E0=16.051809 E_T=9.198237 wall=30s  [105s]
+y4_om0.910_v0.850_dx0.05_dt0.02: pair_at_T=True since=70.0 first=70.0 survives1.5T=True E0=16.251905 E_T=6.151928 wall=24s  [129s]
+y4_om0.930_v0.700_dx0.05_dt0.02: pair_at_T=True since=100.0 first=100.0 survives1.5T=True E0=16.319290 E_T=4.843768 wall=25s  [130s]
+y4_om0.900_v0.760_dx0.05_dt0.02: pair_at_T=True since=70.0 first=70.0 survives1.5T=True E0=16.549737 E_T=3.382511 wall=23s  [152s]
+y4_om0.940_v0.780_dx0.05_dt0.02: pair_at_T=True since=140.0 first=140.0 survives1.5T=False E0=16.788292 E_T=5.899849 wall=24s  [154s]
+y4_om0.940_v0.690_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=16.894806 E_T=7.266253 wall=24s  [176s]
+y4_om0.920_v0.720_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=17.182610 E_T=3.610001 wall=25s  [179s]
+43 done, 18 to run
+/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/e1c_dsv.py:64: RuntimeWarning: overflow encountered in square
+  du = eta * omega * g * (np.cos(omega * T) * ch + eta * vn * np.sin(omega * T) * sh) / ch ** 2
+y4_om0.940_v0.670_dx0.025_dt0.01: pair_at_T=True since=100.0 first=100.0 survives1.5T=True E0=14.718055 E_T=6.076252 wall=97s  [97s]
+y4_om0.950_v0.770_dx0.025_dt0.01: pair_at_T=True since=120.0 first=120.0 survives1.5T=False E0=14.914731 E_T=6.232544 wall=100s  [100s]
+y4_om0.960_v0.590_dx0.025_dt0.01: pair_at_T=True since=150.0 first=150.0 survives1.5T=True E0=15.229778 E_T=9.881976 wall=99s  [196s]
+y4_om0.940_v0.790_dx0.025_dt0.01: pair_at_T=True since=100.0 first=100.0 survives1.5T=True E0=15.513481 E_T=5.443705 wall=99s  [199s]
+y4_om0.950_v0.640_dx0.025_dt0.01: pair_at_T=True since=140.0 first=120.0 survives1.5T=True E0=16.051811 E_T=7.131784 wall=102s  [298s]
+/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/e1c_dsv.py:64: RuntimeWarning: overflow encountered in square
+  du = eta * omega * g * (np.cos(omega * T) * ch + eta * vn * np.sin(omega * T) * sh) / ch ** 2
+y4_om0.910_v0.850_dx0.025_dt0.01: pair_at_T=True since=70.0 first=70.0 survives1.5T=True E0=16.251926 E_T=5.932361 wall=102s  [301s]
+y4_om0.930_v0.700_dx0.025_dt0.01: pair_at_T=True since=100.0 first=100.0 survives1.5T=True E0=16.319293 E_T=4.852144 wall=99s  [397s]
+y4_om0.900_v0.760_dx0.025_dt0.01: pair_at_T=True since=70.0 first=70.0 survives1.5T=True E0=16.549745 E_T=3.386583 wall=97s  [398s]
+y4_om0.940_v0.780_dx0.025_dt0.01: pair_at_T=True since=140.0 first=140.0 survives1.5T=False E0=16.788296 E_T=5.959771 wall=95s  [492s]
+y4_om0.990_v0.410_dx0.025_dt0.005: pair_at_T=True since=590.0 first=590.0 survives1.5T=True E0=23.169238 E_T=23.092572 wall=186s  [585s]
+y4_om0.990_v0.430_dx0.025_dt0.005: pair_at_T=False since=None first=None survives1.5T=False E0=21.115509 E_T=21.065343 wall=187s  [680s]
+y4_om0.990_v0.390_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=22.319178 E_T=22.274358 wall=96s  [681s]
+y4_om0.990_v0.400_dx0.025_dt0.01: pair_at_T=True since=630.0 first=630.0 survives1.5T=True E0=23.106681 E_T=23.036168 wall=94s  [774s]
+y4_om0.990_v0.420_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=22.481691 E_T=22.432669 wall=94s  [774s]
+y4_om0.990_v0.440_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=19.223011 E_T=19.182192 wall=95s  [870s]
+y4_om0.990_v0.450_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=17.002396 E_T=16.968957 wall=95s  [870s]
+59 done, 21 to run
+y4_om0.990_v0.410_dx0.0125_dt0.005: pair_at_T=True since=590.0 first=590.0 survives1.5T=True E0=23.169238 E_T=23.092534 wall=432s  [432s]
+y4_om0.990_v0.430_dx0.0125_dt0.005: pair_at_T=True since=870.0 first=870.0 survives1.5T=True E0=21.115509 E_T=21.065340 wall=433s  [433s]
+y4_om0.990_v0.400_dx0.05_dt0.01: pair_at_T=True since=640.0 first=640.0 survives1.5T=True E0=23.106681 E_T=23.036160 wall=44s  [476s]
+y4_om0.990_v0.400_dx0.025_dt0.005: pair_at_T=True since=610.0 first=610.0 survives1.5T=True E0=23.106681 E_T=23.036169 wall=185s  [618s]
+y4_om0.990_v0.420_dx0.025_dt0.005: pair_at_T=False since=None first=None survives1.5T=False E0=22.481691 E_T=22.432669 wall=186s  [662s]
+y4_om0.990_v0.405_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=23.232427 E_T=23.170088 wall=22s  [662s]
+y4_om0.990_v0.405_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=23.232427 E_T=23.170084 wall=94s  [733s]
+y4_om0.990_v0.415_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=22.916961 E_T=22.857119 wall=22s  [733s]
+y4_om0.990_v0.415_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=22.916961 E_T=22.857113 wall=95s  [778s]
+y4_om0.990_v0.425_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=21.875460 E_T=21.830436 wall=22s  [778s]
+y4_om0.990_v0.425_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=21.875460 E_T=21.830430 wall=98s  [853s]
+y4_om0.990_v0.435_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=20.223251 E_T=20.179942 wall=23s  [853s]
+/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/e1c_dsv.py:64: RuntimeWarning: overflow encountered in square
+  du = eta * omega * g * (np.cos(omega * T) * ch + eta * vn * np.sin(omega * T) * sh) / ch ** 2
+y4_om0.990_v0.435_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=20.223251 E_T=20.179939 wall=98s  [900s]
+y4_om0.910_v0.800_dx0.05_dt0.02: pair_at_T=True since=60.0 first=60.0 survives1.5T=False E0=19.548127 E_T=2.067814 wall=23s  [900s]
+/home/user/gifgaf0.github.io/seed/experiments/E1_phi4/e1c_dsv.py:64: RuntimeWarning: overflow encountered in square
+  du = eta * omega * g * (np.cos(omega * T) * ch + eta * vn * np.sin(omega * T) * sh) / ch ** 2
+y4_om0.910_v0.800_dx0.025_dt0.01: pair_at_T=True since=60.0 first=60.0 survives1.5T=False E0=19.548137 E_T=2.067736 wall=99s  [976s]
+y4_om0.910_v0.810_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=19.441419 E_T=5.368361 wall=23s  [976s]
+y4_om0.910_v0.810_dx0.025_dt0.01: pair_at_T=True since=140.0 first=140.0 survives1.5T=True E0=19.441430 E_T=5.340422 wall=101s  [1024s]
+y4_om0.910_v0.820_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=19.017498 E_T=4.808945 wall=24s  [1024s]
+y4_om0.910_v0.820_dx0.025_dt0.01: pair_at_T=False since=None first=None survives1.5T=False E0=19.017511 E_T=4.809869 wall=102s  [1102s]
+y4_om0.910_v0.830_dx0.05_dt0.02: pair_at_T=True since=80.0 first=80.0 survives1.5T=True E0=18.297773 E_T=4.406806 wall=26s  [1102s]
+y4_om0.910_v0.830_dx0.025_dt0.01: pair_at_T=False since=None first=80.0 survives1.5T=False E0=18.297787 E_T=4.213447 wall=99s  [1149s]
+all done
+80 done, 16 to run
+y4_om0.990_v0.426_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=21.735134 E_T=21.689902 wall=23s  [23s]
+y4_om0.990_v0.427_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=21.588807 E_T=21.538476 wall=23s  [23s]
+y4_om0.990_v0.428_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=21.436645 E_T=21.391864 wall=23s  [47s]
+y4_om0.990_v0.429_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=21.278819 E_T=21.230021 wall=23s  [47s]
+y4_om0.990_v0.431_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=20.946897 E_T=20.897009 wall=23s  [69s]
+y4_om0.990_v0.432_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=20.773171 E_T=20.727215 wall=24s  [70s]
+y4_om0.990_v0.433_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=20.594524 E_T=20.551016 wall=23s  [92s]
+y4_om0.990_v0.434_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=20.411150 E_T=20.365448 wall=23s  [93s]
+y4_om0.990_v0.406_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=23.234999 E_T=23.172208 wall=23s  [115s]
+y4_om0.990_v0.407_dx0.05_dt0.02: pair_at_T=True since=640.0 first=640.0 survives1.5T=True E0=23.229973 E_T=23.168136 wall=24s  [117s]
+y4_om0.990_v0.408_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=23.217336 E_T=23.155096 wall=24s  [139s]
+y4_om0.990_v0.409_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=23.197089 E_T=23.135274 wall=23s  [140s]
+y4_om0.990_v0.411_dx0.05_dt0.02: pair_at_T=True since=500.0 first=500.0 survives1.5T=True E0=23.133804 E_T=22.884389 wall=23s  [162s]
+y4_om0.990_v0.412_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=23.090815 E_T=23.030832 wall=23s  [163s]
+y4_om0.990_v0.413_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=23.040310 E_T=22.981323 wall=24s  [186s]
+y4_om0.990_v0.414_dx0.05_dt0.02: pair_at_T=False since=None first=None survives1.5T=False E0=22.982339 E_T=22.922663 wall=24s  [187s]
+all done

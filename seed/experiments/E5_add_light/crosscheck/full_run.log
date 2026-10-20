@@ -1,0 +1,6 @@
+100/100 numeric rows agree; calibration rows within target (cross-check value): 14/14
+wrote crosscheck.json: 100/100 rows agree; 11 issues (1 major); overall confirmed_with_corrections
+
+real	4m19.333s
+user	3m19.722s
+sys	0m8.130s

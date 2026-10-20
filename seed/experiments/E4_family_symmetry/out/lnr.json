@@ -1,0 +1,246 @@
+{
+ "matrices": {
+  "M_Maj": [
+   [
+    1,
+    -1,
+    -1
+   ],
+   [
+    -1,
+    1,
+    -1
+   ],
+   [
+    -1,
+    -1,
+    1
+   ]
+  ],
+  "M_Dir": [
+   [
+    -1,
+    0,
+    0
+   ],
+   [
+    0,
+    1,
+    -2
+   ],
+   [
+    0,
+    -2,
+    1
+   ]
+  ],
+  "M_nu": [
+   [
+    "0",
+    "1/2",
+    "1/2"
+   ],
+   [
+    "1/2",
+    "-2",
+    "5/2"
+   ],
+   [
+    "1/2",
+    "5/2",
+    "-2"
+   ]
+  ],
+  "eigenvalues_TBM_basis": [
+   "-1/2",
+   "1",
+   "-9/2"
+  ],
+  "eigenvalue_ratios": [
+   1,
+   -2,
+   9
+  ]
+ },
+ "r_atm_sol_exact": "80/3",
+ "r_atm_sol": 26.666666666666668,
+ "tbm_for_all_alpha_at_beta_minus1": true,
+ "masses_vs_alpha_TBM_basis": [
+  "1/(alpha - 1)",
+  "-1/(2*alpha + 1)",
+  "9/(alpha - 1)"
+ ],
+ "alpha_windows_LNR_range_21.3_45.1": [
+  [
+   -1.143,
+   -0.946
+  ],
+  [
+   -0.22,
+   -0.154
+  ]
+ ],
+ "alpha_windows_quoted_by_LNR": [
+  [
+   -1.15,
+   -0.95
+  ],
+  [
+   -0.22,
+   -0.15
+  ]
+ ],
+ "alpha_windows_NuFIT6_1sigma": [
+  [
+   -1.069,
+   -1.055
+  ],
+  [
+   -0.181,
+   -0.176
+  ]
+ ],
+ "alpha_windows_NuFIT6_3sigma": [
+  [
+   -1.084,
+   -1.039
+  ],
+  [
+   -0.186,
+   -0.172
+  ]
+ ],
+ "alpha_solving_r_eq_NuFIT6_central": [
+  -1.062094274991248,
+  -0.17870395117283167
+ ],
+ "haze": {
+  "pole masses": {
+   "lambda_e": 0.0695437394192857,
+   "theta13_linear_deg": 2.8186481202532123,
+   "theta12_linear_deg": 32.449146115386235,
+   "unitary": {
+    "s12sq": 0.28777898578052796,
+    "s13sq": 0.002418165846208756,
+    "s23sq": 0.49878798622658377,
+    "theta12_deg": 32.44232462799684,
+    "theta13_deg": 2.8186481202532123,
+    "theta23_deg": 44.930556658064276
+   },
+   "opposite_sign_theta12_deg": 38.086454737512476,
+   "pulls_vs_NuFIT6": {
+    "s12sq": -1.8019700830755045,
+    "s13sq": -34.06715259382195,
+    "s23sq": -1.4247026054980823
+   }
+  },
+  "MS-bar at M_Z": {
+   "lambda_e": 0.06889753457863275,
+   "theta13_linear_deg": 2.7924362083504497,
+   "theta12_linear_deg": 32.47526403724232,
+   "unitary": {
+    "s12sq": 0.28819480084569005,
+    "s13sq": 0.002373435135506948,
+    "s23sq": 0.49881045913416044,
+    "theta12_deg": 32.468631095052224,
+    "theta13_deg": 2.7924362083504497,
+    "theta23_deg": 44.93184426453504
+   },
+   "opposite_sign_theta12_deg": 38.0601482704571,
+   "pulls_vs_NuFIT6": {
+    "s12sq": -1.7629874207165592,
+    "s13sq": -34.14517127527859,
+    "s23sq": -1.424187958759685
+   }
+  }
+ },
+ "comparison_NuFIT6": {
+  "theta13_deg": {
+   "LNR": 2.8186481202532123,
+   "NuFIT6": 8.52,
+   "NuFIT6_1sigma": 0.11
+  },
+  "sin2_theta13": {
+   "LNR": 0.002418165846208756,
+   "NuFIT6": 0.02195,
+   "sigma_used": 0.0005733333333333331,
+   "pull": -34.06715259382195
+  },
+  "sin2_theta12": {
+   "LNR": 0.28777898578052796,
+   "NuFIT6": 0.307,
+   "pull": -1.8019700830755045
+  },
+  "sin2_theta23": {
+   "LNR": 0.5,
+   "NuFIT6": 0.561,
+   "pull_3sigma_range_convention": -1.3969465648854968,
+   "pull_1sigma": -4.066666666666671
+  },
+  "r_atm_sol": {
+   "LNR": 26.666666666666668,
+   "NuFIT6": 33.83177570093457,
+   "sigma": 0.9160830812440869,
+   "pull": -7.82146202780792
+  }
+ },
+ "checks": {
+  "the five LNR-form tensors are F21 invariants, independent, and fill the computed 5-dim space": {
+   "pass": true,
+   "detail": ""
+  },
+  "M_Maj = [[1,-1,-1],[-1,1,-1],[-1,-1,1]] (LNR)": {
+   "pass": true,
+   "detail": "[[1, -1, -1], [-1, 1, -1], [-1, -1, 1]]"
+  },
+  "M_Dir = [[-1,0,0],[0,1,-2],[0,-2,1]] (LNR)": {
+   "pass": true,
+   "detail": "[[-1, 0, 0], [0, 1, -2], [0, -2, 1]]"
+  },
+  "M_Maj^-1 = -(1/2)[[0,1,1],[1,0,1],[1,1,0]] (LNR intermediate)": {
+   "pass": true,
+   "detail": ""
+  },
+  "M_nu = -M_Dir M_Maj^-1 M_Dir^T is proportional to (1/2)[[0,1,1],[1,-4,5],[1,5,-4]] (LNR)": {
+   "pass": true,
+   "detail": "M_nu = [[0, 1/2, 1/2], [1/2, -2, 5/2], [1/2, 5/2, -2]], factor 1"
+  },
+  "tri-bimaximal criteria M12 = M13, M22 = M33, M23 = M11 + M12 - M22 hold exactly": {
+   "pass": true,
+   "detail": ""
+  },
+  "U_TB^T M_nu U_TB is diagonal": {
+   "pass": true,
+   "detail": "diag = [-1/2, 1, -9/2]"
+  },
+  "mass eigenvalues proportional to (1, -2, 9) (LNR), normal hierarchy": {
+   "pass": true,
+   "detail": "[1, -2, 9]"
+  },
+  "Dm^2_atm/Dm^2_sol = (81 - 1)/(4 - 1) = 80/3 exactly (LNR: 26.7)": {
+   "pass": true,
+   "detail": "80/3"
+  },
+  "for beta = -1 the light matrix stays exactly tri-bimaximal for EVERY alpha (alpha only moves masses)": {
+   "pass": true,
+   "detail": ""
+  },
+  "LNR's alpha windows -1.15 < alpha < -0.95 and -0.22 < alpha < -0.15 reproduced from r in [21.3, 45.1] (normal ordering, TBM labelling), to the two decimals LNR quote": {
+   "pass": true,
+   "detail": "[(-1.143, -0.946), (-0.22, -0.154)]"
+  },
+  "theta13 = 2.8 deg (LNR) from lambda_e = sqrt(me/mmu)": {
+   "pass": true,
+   "detail": "2.819 deg"
+  },
+  "theta12 shifts from 35.26 deg (TBM) to 32.4 deg (LNR)": {
+   "pass": true,
+   "detail": "32.449 deg"
+  },
+  "LNR's integer point is excluded by NuFIT 6.0: theta13 pull < -20 sigma and r pull < -5 sigma": {
+   "pass": true,
+   "detail": "theta13 pull -34.1, r pull -7.8"
+  }
+ },
+ "all_pass": true
+}

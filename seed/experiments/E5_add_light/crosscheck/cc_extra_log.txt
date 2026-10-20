@@ -1,0 +1,2 @@
+massless_ANW {'R_peak_fm': np.float64(0.7254940781677032), 'Qn_peak': np.float64(0.20570683471166296), 'Qn_1fm': np.float64(0.18479654044976423), 'Qn_0.5fm': np.float64(0.1718977960394472)}
+massive_AN84 {'R_peak_fm': np.float64(0.6778957729292858), 'Qn_peak': np.float64(0.13950023283350185), 'Qn_1fm': np.float64(0.1024731112559728), 'Qn_0.5fm': np.float64(0.11780917446790759)}

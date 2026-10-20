@@ -1,0 +1,21 @@
+minreal classes with dof >= 1 (not dead): ['lep:minreal:phi5=Z3,phi10=G,phi1=P', 'lep:minreal:phi5=P,phi10=G,phi1=Z3', 'lep:minreal:phi5=P,phi10=G,phi1=P', 'lep:minreal:phi5=G,phi10=Z3,phi1=Z3', 'lep:minreal:phi5=G,phi10=Z3,phi1=P', 'lep:minreal:phi5=G,phi10=P,phi1=Z3', 'lep:minreal:phi5=G,phi10=P,phi1=P']
+lep:minreal:phi5=Z3,phi10=G,phi1=P: npar=8 neff=6 dof=1 chi2=0.3951 p=0.53
+   obs: {'me_mmu': np.float64(0.00475), 'mmu_mtau': np.float64(0.05887), 'r': np.float64(33.83462), 's12sq': np.float64(0.30691), 's13sq': np.float64(0.02195), 's23sq': np.float64(0.5618), 'delta': 228.01614}
+   pulls: [-0.     0.     0.003 -0.009 -0.005  0.069  0.625]
+   delta predicted by exact fits to the other 6 observables (9 solutions): [26.0, 84.0, 131.0, 152.0, 229.0, 299.0, 360.0]
+lep:minreal:phi5=P,phi10=G,phi1=Z3: npar=8 neff=6 dof=1 chi2=0.4439 p=0.505
+   obs: {'me_mmu': np.float64(0.00475), 'mmu_mtau': np.float64(0.05887), 'r': np.float64(33.8458), 's12sq': np.float64(0.30641), 's13sq': np.float64(0.02196), 's23sq': np.float64(0.53447), 'delta': 169.79084}
+   pulls: [-0.    -0.     0.015 -0.056  0.01  -0.608 -0.267]
+   delta predicted by exact fits to the other 6 observables (14 solutions): [15.0, 99.0, 131.0, 208.0, 229.0, 261.0, 276.0, 334.0]
+lep:minreal:phi5=P,phi10=G,phi1=P: npar=10 neff=6 dof=1 chi2=0.3951 p=0.53
+   obs: {'me_mmu': np.float64(0.00475), 'mmu_mtau': np.float64(0.05887), 'r': np.float64(33.83462), 's12sq': np.float64(0.30691), 's13sq': np.float64(0.02195), 's23sq': np.float64(0.5618), 'delta': 228.01614}
+   pulls: [ 0.     0.     0.003 -0.009 -0.005  0.069  0.625]
+   delta predicted by exact fits to the other 6 observables (4 solutions): [84.0, 131.0, 229.0, 334.0]
+lep:minreal:phi5=G,phi10=Z3,phi1=Z3: npar=6 neff=6 dof=1 chi2=117.5 p=0
+   obs: {'me_mmu': np.float64(0.00476), 'mmu_mtau': np.float64(0.04104), 'r': np.float64(32.17126), 's12sq': np.float64(0.34547), 's13sq': np.float64(0.02086), 's23sq': np.float64(0.16227), 'delta': 359.96992}
+   pulls: [ 0.034 -3.607 -1.813  3.037 -1.899 -9.131  2.24 ]
+   delta predicted by exact fits to the other 6 observables (0 solutions): []
+lep:minreal:phi5=G,phi10=Z3,phi1=P: npar=8 neff=6 dof=1 chi2=194.6 p=0
+   obs: {'me_mmu': np.float64(0.00476), 'mmu_mtau': np.float64(0.0862), 'r': np.float64(34.06749), 's12sq': np.float64(0.35091), 's13sq': np.float64(0.02171), 's23sq': np.float64(0.00298), 'delta': 350.64327}
+   pulls: [  0.028   3.813   0.257   3.466  -0.423 -12.779   2.126]
+   delta predicted by exact fits to the other 6 observables (0 solutions): []

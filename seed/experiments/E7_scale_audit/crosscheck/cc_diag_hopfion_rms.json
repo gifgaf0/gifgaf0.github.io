@@ -1,0 +1,16 @@
+{
+ "lam_in=1.0000": {
+  "E": 1.2314457949005475,
+  "rms_original_method": 2.6697265283263683,
+  "rms_r_lt_50": 2.027907725421876,
+  "spline_tail_coefficient_a": 0.00460885274006001,
+  "r_max_quadrature": 249412.98541399598
+ },
+ "lam_in=1.1576": {
+  "E": 1.231445855076377,
+  "rms_original_method": 2.7420909016939943,
+  "rms_r_lt_50": 2.026958468170958,
+  "spline_tail_coefficient_a": 0.00611703752293459,
+  "r_max_quadrature": 215459.57932193368
+ }
+}

@@ -1,0 +1,56 @@
+[
+ {
+  "seed_section": "§2",
+  "claim": "A fold appears only with an antifold, so the threshold is twice the lightest fold's energy.",
+  "verdict": "CONFIRMED",
+  "evidence": "Floor: no producing run below 2M_kink in any Gaussian run (19,526: pair and single packet, both phi_t forms, all resolutions) or DSV run, in the original and in both independent codes; every production event is a kink-antikink pair. Infimum: 2M is also the classical infimum over all initial data. Reversing a slow captured kink-antikink pair gives kink-free data (phi < 0 everywhere) with E = 1.0012 x 2M that make an outgoing pair (v = 0.05; e1_timereversal.json; DSV 2008 p. 1 describe the same construction), and E -> 2M as v -> 0. Such data are extremely finely tuned: in the lattice demonstration the pair re-forms only under the exact inverse of the forward map, and noise of amplitude 1e-8, a halved time step or truncating the far radiation each destroy it. Onset in the scanned families: simple packets start producing well above 2M (lowest resolution-checked producers 1.86 x 2M for narrow-band packets, 2.70 x 2M for exact one-way packets, 7.81 x 2M for DSV trains); these are family-specific upper bounds on where production starts, not a property of classical fields in general. (Reconciled: was AMENDED on the rationale that a classical field always needs extra energy; that holds only for the scanned families.)"
+ },
+ {
+  "seed_section": "§4",
+  "claim": "A small, spread-out packet is linear and passes through.",
+  "verdict": "CONFIRMED",
+  "evidence": "No coarse run with A <= 0.3 produces, up to E ~ 15 x 2M, in either initial-velocity form; in the slices production starts at A ~ 0.35 (sigma=16) and A ~ 0.45 (k=1). The one exception (A=0.275, sigma=16, k=0.2) is isolated and not reproduced at dx=0.05."
+ },
+ {
+  "seed_section": "§4",
+  "claim": "Pile in enough energy and the nonlinear terms take over: the packet can fold into a fold-antifold pair.",
+  "verdict": "AMENDED",
+  "evidence": "Packets do fold, and a single packet with A >~ 0.4 folds into pairs without any collision (converged in dx and dt). But energy is not the control parameter: at fixed E/2M the producing fraction spans 0 to ~0.8 depending on amplitude, and no energy guarantees production (fraction 0.74-0.75 above 64 x 2M). Mechanism of self-folding: the trough phi = -1 - A has potential energy above the barrier V(0) = 1/4 when A > sqrt2 - 1 = 0.414, so it can swing over the barrier on its own (observed minimum A 0.375-0.425; the packet's kinetic energy lowers it)."
+ },
+ {
+  "seed_section": "§4",
+  "claim": "Colliding trains of small pulses make kink-antikink pairs over a wide range of settings, most easily at low speed (Dutta, Steer & Vachaspati 2008).",
+  "verdict": "AMENDED",
+  "evidence": "Over a wide range of settings: yes. E1c reproduces DSV Fig. 2's producing band and its trend (producing v falls from ~0.73-0.85 at omega = 0.90 to [0.41] at omega = 0.99; Spearman -0.99, cross-check -0.94), pass-through at high v, the hole at (0.91, 0.82) and no production above omega = 0.99. Point by point the original map hits 58 of DSV's 81 producing points with 22 false positives (71 of our 80 producers lie within 0.01 of a DSV point). 'Most easily at low speed' is not what DSV report or what E1c shows: at each omega production is confined to a velocity band with none below it (omega = 0.90: nothing for v < 0.73), slower bands belong to weaker pulses and do not cost less energy (the lowest-energy converged producers sit at v = 0.59-0.79, E ~ 7.8-8.2 x 2M; the omega = 0.99 producer at v = 0.41 has E = 12.3 x 2M). What holds is DSV's own statement: weaker pulses (higher omega) need lower speed, and too-fast trains pass through. DSV's example point (0.99, 0.43) is OPEN: its call is chaotic (a late pair at the finest of five fourth-order settings and at 4 of 11 leapfrog settings; 0 of 11 neighbouring initial data); production at omega = 0.99 is converged at v = 0.41."
+ },
+ {
+  "seed_section": "§4, §7.1",
+  "claim": "The pair-production boundary may be ragged rather than one clean threshold.",
+  "verdict": "CONFIRMED",
+  "evidence": "Robust statements: in both 59 x 57 slices most lines of fixed k or sigma switch between producing and not more than once as A rises (57/57 and 48/53), so there is no single threshold; this holds for collision-needed production alone, at half the grid spacing and time step (k = 1 slice: 49/53), and in the independent code (sigma = 16 lines: same onset A = 0.375 and the same gap at A = 0.45-0.5). The call at a point depends on the collision phase (51 of 60 boundary points flip under a shift of x0 within one carrier period) and, for ~20% of points, on the resolution down to dx = 0.0125; production fractions are stable (4x4-block fractions correlate 0.95 between dx = 0.1 and 0.05). Region, hole and switch counts (e.g. 24 and 48 producing regions, 267 and 141 enclosed holes at dx = 0.1) are illustrative and not converged."
+ },
+ {
+  "seed_section": "PLAN E1d (from §4 via DSV 2008 and Albayrak-Vachaspati 2024)",
+  "claim": "Production favours low speed.",
+  "verdict": "REFUTED",
+  "evidence": "Not as a speed effect. At matched energy slower packets do produce more (Spearman -0.82, -0.87, -0.88 baseline; -0.78 to -0.88 one-way; reproduced by the cross-check), but only because a slow packet of the same energy is taller or wider, and amplitude controls production. Decisive test at fixed packet shape (A, sigma), with production averaged over 8 collision phases (e1d_speedtest.py): 6 A x 3 sigma x 9 k x 8 collision phases, both phi_t forms: logistic v_g coefficient with one intercept per (A, sigma), 95% CI, positive = faster produces more: all production +1.36 [+0.80, +1.92] baseline, +0.62 [+0.07, +1.16] one-way; packets that do not self-fold +1.32 [+0.53, +2.10] / +0.71 [-0.24, +1.67]; pre-set rule: a speed effect would need CI < 0 in both forms, 'not a speed effect' if both CIs exclude -1.19 (half the matched-energy coefficient -2.38); outcome: all production 'not a speed effect', non-self-folding 'not a speed effect'. At fixed shape faster packets produce as much or more (a faster packet of the same shape carries more energy). The stored coarse grid agrees (v_g z = 1.9 baseline, 0.6 one-way given log A and log sigma; collision-needed -0.6 / -1.7). (Reconciled: was 'low speed holds', AMENDED; that did not separate speed from amplitude.)"
+ },
+ {
+  "seed_section": "PLAN E1d (from §4 via DSV 2008 and Albayrak-Vachaspati 2024)",
+  "claim": "Production favours wide packets.",
+  "verdict": "AMENDED",
+  "evidence": "Holds only at fixed amplitude: at matched energy no width preference in any band or form (cross-check FD6 -0.31, +0.12, +0.41, all p > 0.2); at fixed amplitude wider packets produce more (stored grid, P ~ log A + log sigma: log sigma z = 13.4 all production, 2.4 collision-needed), because at fixed A a wider packet carries more energy and more of it exceeds the self-folding threshold. Wide packets do not win at matched energy."
+ },
+ {
+  "seed_section": "§8 / PLAN E1e",
+  "claim": "A classical pair needs N ~ 1/lambda quanta.",
+  "verdict": "QUANTIFIED",
+  "evidence": "Classical dynamics is independent of phi0 (S = phi0^2 S~), so N = E/(hbar m) = (E~/(2 sqrt2)) m^2/lambda. Energy conservation alone gives N >= (2/3) m^2/lambda. The smallest producing initial states that survive resolution checks: narrow-band Gaussian packets (A=0.8, sigma=2, k=0.5; E = 1.86 x 2M) N*lambda/m^2 = 1.24 (N = E/m) or 1.69 (free-field occupation N_lin), reproduced at dx = 0.05 and 0.025 and in two independent codes; exact one-way packets (A=0.6, sigma=4, k=0.5; E = 2.70 x 2M) 1.80 or 1.96. DSV trains: the lowest converged producer is (0.94, 0.67), E = 7.81 x 2M, N*lambda/m^2 = 5.20 (N = E/m) or 4.14 (N_lin); the earlier DSV value 4.78 / 3.93 at (0.95, 0.62) is withdrawn (that train produces at dx = 0.05 but not at dx = 0.025 with fourth-order time stepping). So classical pair-making from these families needs N ~ (1.2-2) m^2/lambda quanta (Gaussian packets): about 120-200 at lambda/m^2 = 0.01. These are upper bounds on the classical minimum over the scanned families; over all initial data the bound is the energy floor 2/3, approached only by finely tuned data (section 2)."
+ },
+ {
+  "seed_section": "§8",
+  "claim": "In weakly coupled theories, folding a few quanta into a pair is exponentially rare.",
+  "verdict": "OPEN",
+  "evidence": "The classical runs show the classical route needs N ~ O(1) m^2/lambda quanta, i.e. many quanta at weak coupling, which is consistent with the claim. The exponential suppression of few-quanta production is a semiclassical/quantum statement (Demidov & Levkov 2011) that E1 does not compute."
+ }
+]

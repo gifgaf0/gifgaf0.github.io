@@ -1,0 +1,372 @@
+{
+ "hexagon_generic": {
+  "n": 6,
+  "sides": [
+   "7*sqrt(2)/10",
+   "8*sqrt(2)/5",
+   "7*sqrt(2)/10",
+   "8*sqrt(2)/5",
+   "7*sqrt(2)/10",
+   "8*sqrt(2)/5"
+  ],
+  "angles": [
+   "120",
+   "120",
+   "120",
+   "120",
+   "120",
+   "120"
+  ]
+ },
+ "hexagon_degenerate": {
+  "n": 3,
+  "sides": [
+   "3*sqrt(2)",
+   "3*sqrt(2)",
+   "3*sqrt(2)"
+  ],
+  "angles": [
+   "60",
+   "60",
+   "60"
+  ]
+ },
+ "moment_map": {
+  "n_samples": 200000,
+  "all_inside": true,
+  "n_targets": 64,
+  "max_preimage_residual": 1.4379497592642565e-11
+ },
+ "pi2": {
+  "A: p=(1,z,0), r=p x (0,0,1)": {
+   "expected": [
+    1,
+    0,
+    -1
+   ],
+   "plane": [
+    0.9999999999999802,
+    2.1403764492049005e-36,
+    -0.9999999999999802
+   ],
+   "plane_coarse": [
+    1.0000000000000266,
+    7.248571199442964e-34,
+    -1.0000000000000266
+   ],
+   "delaunay": [
+    1.0,
+    3.667595105823573e-32,
+    -1.0
+   ],
+   "deformed_delaunay": [
+    1.0,
+    3.533949646070574e-17,
+    -1.0
+   ],
+   "max_dev": 1.9761969838327786e-14
+  },
+  "B: p=(0,0,1), r=p x (1,z,0)": {
+   "expected": [
+    0,
+    1,
+    -1
+   ],
+   "plane": [
+    -0.0,
+    0.9999999999999802,
+    -0.9999999999999802
+   ],
+   "plane_coarse": [
+    -0.0,
+    1.0000000000000266,
+    -1.0000000000000266
+   ],
+   "delaunay": [
+    -0.0,
+    1.0,
+    -1.0
+   ],
+   "deformed_delaunay": [
+    7.067899292141149e-17,
+    1.0,
+    -1.0
+   ],
+   "max_dev": 1.9761969838327786e-14
+  },
+  "C: p=(1,z,0), r=p x (0,1,z)": {
+   "expected": [
+    1,
+    1,
+    -2
+   ],
+   "plane": [
+    0.9999999999999802,
+    0.9999999999999798,
+    -1.9999999999999625
+   ],
+   "plane_coarse": [
+    1.0000000000000266,
+    1.000000000000027,
+    -2.0000000000000533
+   ],
+   "delaunay": [
+    1.0,
+    1.0,
+    -2.0
+   ],
+   "deformed_delaunay": [
+    1.0,
+    1.0000000000000002,
+    -2.0000000000000004
+   ],
+   "max_dev": 3.752553823233029e-14
+  },
+  "D: p=(1,z,z^2), r=p x (0,1,z)": {
+   "expected": [
+    2,
+    -1,
+    -1
+   ],
+   "plane": [
+    1.9999999999999631,
+    -0.9999999999999799,
+    -0.9999999999999802
+   ],
+   "plane_coarse": [
+    2.0000000000000533,
+    -1.0000000000000262,
+    -1.0000000000000266
+   ],
+   "delaunay": [
+    2.0,
+    -1.0,
+    -1.0
+   ],
+   "deformed_delaunay": [
+    2.0000000000000004,
+    -1.0,
+    -1.0
+   ],
+   "max_dev": 3.68594044175552e-14
+  },
+  "E: Veronese Frenet frame": {
+   "expected": [
+    2,
+    0,
+    -2
+   ],
+   "plane": [
+    1.9999999999999618,
+    -9.820545995420839e-17,
+    -1.9999999999999614
+   ],
+   "plane_coarse": [
+    2.000000000000055,
+    -7.009653741385664e-17,
+    -2.0000000000000555
+   ],
+   "delaunay": [
+    2.0000000000000004,
+    -2.5110222495574236e-31,
+    -2.0000000000000004
+   ],
+   "deformed_delaunay": [
+    2.0,
+    2.0320210464905801e-16,
+    -2.0
+   ],
+   "max_dev": 3.863576125695545e-14
+  },
+  "F: p=(1,z,z^3), r=p x (0,0,1)": {
+   "expected": [
+    3,
+    -2,
+    -1
+   ],
+   "plane": [
+    2.99999999999994,
+    -1.99999999999996,
+    -0.9999999999999802
+   ],
+   "plane_coarse": [
+    3.0000000000000813,
+    -2.00000000000005,
+    -1.0000000000000266
+   ],
+   "delaunay": [
+    3.0,
+    -2.0,
+    -1.0
+   ],
+   "deformed_delaunay": [
+    3.0,
+    -2.0,
+    -1.0
+   ],
+   "max_dev": 5.995204332975845e-14
+  },
+  "G: complex conjugate of A (anti-holomorphic)": {
+   "expected": [
+    -1,
+    0,
+    1
+   ],
+   "delaunay": [
+    -1.0,
+    -3.667595105823573e-32,
+    1.0
+   ]
+  }
+ },
+ "pi3": {
+  "C1 SU(2) hedgehog (block 12)": {
+   "expected": 1,
+   "N64": 0.9997589739959539,
+   "N96": 0.9999520878293433,
+   "N128": 0.9999848069644915,
+   "richardson": 0.999999951249903
+  },
+  "C2 W(x) . hedgehog . T(x) (non-embedded)": {
+   "expected": 1,
+   "N64": 0.9980839429580538,
+   "N96": 0.9996135071930851,
+   "N128": 0.9998768095905527,
+   "richardson": 0.9999986809859521
+  },
+  "C3 hedgehog(12) . hedgehog(23)": {
+   "expected": 2,
+   "N64": 1.9984637715765345,
+   "N96": 1.9996920320632348,
+   "N128": 1.9999020529773275,
+   "richardson": 1.999999262657565
+  },
+  "C4 SO(3) hedgehog, f(0)=2pi": {
+   "expected": 4,
+   "N64": -3.9940830426957827,
+   "N96": -3.998811536179398,
+   "N128": -3.999621756693545,
+   "richardson": -3.9999967730458073
+  },
+  "C5 inverse hedgehog": {
+   "expected": -1,
+   "N64": -0.9997589739959539,
+   "N96": -0.9999520878293433,
+   "N128": -0.9999848069644915,
+   "richardson": -0.999999951249903
+  },
+  "C4' SO(3) hedgehog exp(-f n.L) (opposite orientation = inverse of C4)": {
+   "expected": 4,
+   "N64": 3.9940830426957827,
+   "N96": 3.998811536179398,
+   "N128": 3.999621756693545,
+   "richardson": 3.9999967730458073
+  },
+  "lift_independence": {
+   "N64": {
+    "deg_g": 1.9984637715765345,
+    "deg_gT": 1.9955905970951848,
+    "deg_T": -2.1204881317184587e-22,
+    "projector_diff": 4.440892098500626e-16
+   },
+   "N96": {
+    "deg_g": 1.9996920320632348,
+    "deg_gT": 1.9991083944122077,
+    "deg_T": -2.872345348108119e-23,
+    "projector_diff": 4.440892098500626e-16
+   },
+   "N128": {
+    "deg_g": 1.9999020529773275,
+    "deg_gT": 1.9997155736201118,
+    "deg_T": -4.065606682464728e-24,
+    "projector_diff": 5.551115123125783e-16
+   },
+   "richardson": {
+    "deg_g": 1.999999262657565,
+    "deg_gT": 1.9999966108534843,
+    "deg_T": 7.347453835752037e-24
+   }
+  }
+ },
+ "checks": [
+  {
+   "check": "generic a: 6 vertices, all angles exactly 120 deg",
+   "pass": true,
+   "value": null
+  },
+  {
+   "check": "sides alternate exactly sqrt2*(a1-a2) = 7 sqrt2/10 and sqrt2*(a2-a3) = 8 sqrt2/5",
+   "pass": true,
+   "value": [
+    "7*sqrt(2)/10",
+    "8*sqrt(2)/5"
+   ]
+  },
+  {
+   "check": "a1 = a2: 3 vertices, angles exactly 60 deg (triangle)",
+   "pass": true,
+   "value": null
+  },
+  {
+   "check": "hexagon regular iff a1 - a2 = a2 - a3 (sides sqrt2(a1-a2), sqrt2(a2-a3))",
+   "pass": true,
+   "value": "edges of the permutohedron join permutations differing by a swap of adjacent sorted values"
+  },
+  {
+   "check": "Schur: all 200000 Haar samples (scipy unitary_group) have diag majorized by a (inside hexagon)",
+   "pass": true,
+   "value": null
+  },
+  {
+   "check": "|U_ij|^2 doubly stochastic (Birkhoff => convex combination of permutations)",
+   "pass": true,
+   "value": null
+  },
+  {
+   "check": "Horn (constructive): 64 target points (6 vertices, edge points, 40 interior) all attained by real orthogonal U (max residual < 1e-10)",
+   "pass": true,
+   "value": 1.4379497592642565e-11
+  },
+  {
+   "check": "a point outside the hexagon is not majorized (cannot be attained)",
+   "pass": true,
+   "value": null
+  },
+  {
+   "check": "pi_2 charges of 7 maps (two discretisations + a non-holomorphic deformation) equal the expected integers to 1e-6",
+   "pass": true,
+   "value": null
+  },
+  {
+   "check": "(1,0,-1) and (0,1,-1) span Z^2 (det of (Q1,Q2) = 1)",
+   "pass": true,
+   "value": null
+  },
+  {
+   "check": "pi_3 lift degrees on Cartesian grids, Richardson-extrapolated (N=96,128): C1..C5 = 1, 1, 2, -4, -1 and C4' = +4 (|dev| < 1e-4); |deg| = 4 for SO(3), sign set by generator orientation relative to C1",
+   "pass": true,
+   "value": {
+    "C1 SU(2) hedgehog (block 12)": 0.999999951249903,
+    "C2 W(x) . hedgehog . T(x) (non-embedded)": 0.9999986809859521,
+    "C3 hedgehog(12) . hedgehog(23)": 1.999999262657565,
+    "C4 SO(3) hedgehog, f(0)=2pi": -3.9999967730458073,
+    "C5 inverse hedgehog": -0.999999951249903,
+    "C4' SO(3) hedgehog exp(-f n.L) (opposite orientation = inverse of C4)": 3.9999967730458073
+   }
+  },
+  {
+   "check": "4th-order convergence of the lift degree (error ratio N=64->96 within 20% of (3/2)^4)",
+   "pass": true,
+   "value": null
+  },
+  {
+   "check": "same flag configuration, two lifts g and g T(x): same extrapolated degree (|diff| < 1e-4); deg T = 0; projectors identical",
+   "pass": true,
+   "value": {
+    "deg_g": 1.999999262657565,
+    "deg_gT": 1.9999966108534843,
+    "deg_T": 7.347453835752037e-24
+   }
+  }
+ ]
+}

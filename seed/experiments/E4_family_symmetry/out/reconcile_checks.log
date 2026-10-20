@@ -1,0 +1,17 @@
+  singlet vevs 1         : smallest relative gap between |masses| over 200 points 0.00e+00; fraction with three distinct masses 0.00
+  singlet vevs 1'        : smallest relative gap between |masses| over 200 points 0.00e+00; fraction with three distinct masses 0.00
+  singlet vevs 1''       : smallest relative gap between |masses| over 200 points 0.00e+00; fraction with three distinct masses 0.00
+  singlet vevs 1+1'      : smallest relative gap between |masses| over 200 points 8.24e-04; fraction with three distinct masses 1.00
+  singlet vevs 1+1''     : smallest relative gap between |masses| over 200 points 1.66e-03; fraction with three distinct masses 1.00
+  singlet vevs 1'+1''    : smallest relative gap between |masses| over 200 points 7.62e-04; fraction with three distinct masses 1.00
+  singlet vevs 1+1'+1''  : smallest relative gap between |masses| over 200 points 9.43e-04; fraction with three distinct masses 1.00
+[PASS] one singlet vev (1, 1' or 1'') gives three equal |masses|  
+[PASS] any two singlet vevs already give three distinct masses at generic couplings (cross-check's claim)  
+  F21: 10 (sector, G_l, G_nu, |U|^2) tags {'lepton-Dirac-nu': 5, 'quark': 5}; 3 distinct |U|^2 structures
+  PSL: 97 (sector, G_l, G_nu, |U|^2) tags {'lepton-Dirac-nu': 43, 'lepton-Majorana': 11, 'quark': 43}; 26 distinct |U|^2 structures
+[PASS] pattern counts: F21 10 tags / 3 structures; PSL 97 tags / 26 structures (cross-check's numbers)  
+  Z2-partial survivor G_l=Z7 column [0.131512, 0.204495, 0.663993] chi2 2.13: |<g_l, t>| = [168]
+  Z2-partial survivor G_l=Z3 column [0.166667, 0.166667, 0.666667] chi2 2.54: |<g_l, t>| = [24]
+  Z2-partial survivor G_l=Z3 column [0.333333, 0.333333, 0.333333] chi2 7.63: |<g_l, t>| = [12]
+[PASS] Z2-partial survivors: <Z7, t> = PSL(2,7) (168); TM1 <Z3, t> = S4 (24); TM2 <Z3, t> = A4 (12)  [('Z7', [168]), ('Z3', [24]), ('Z3', [12])]
+4/4 checks pass

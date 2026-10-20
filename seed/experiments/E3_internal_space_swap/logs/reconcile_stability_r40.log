@@ -1,0 +1,100 @@
+R=20,nr=15,lmax=3  (free continuum (1/32)(pi/R)^2 = 7.7106e-04)   [18s]
+    0  lambda = 2.1068e-04   translation 0.337   iso-rotation 0.651   both 0.988
+    1  lambda = 2.1068e-04   translation 0.337   iso-rotation 0.651   both 0.988
+    2  lambda = 2.1068e-04   translation 0.337   iso-rotation 0.651   both 0.988
+    3  lambda = 7.9277e-04   translation 0.048   iso-rotation 0.008   both 0.056
+    4  lambda = 7.9277e-04   translation 0.048   iso-rotation 0.008   both 0.056
+    5  lambda = 7.9277e-04   translation 0.048   iso-rotation 0.008   both 0.056
+    6  lambda = 1.1088e-03   translation 0.552   iso-rotation 0.308   both 0.860
+    7  lambda = 1.1088e-03   translation 0.552   iso-rotation 0.308   both 0.860
+    8  lambda = 1.1088e-03   translation 0.552   iso-rotation 0.308   both 0.860
+    9  lambda = 1.4400e-03   translation 0.000   iso-rotation 0.000   both 0.000
+   10  lambda = 1.6216e-03   translation 0.000   iso-rotation 0.000   both 0.000
+   11  lambda = 1.6216e-03   translation 0.000   iso-rotation 0.000   both 0.000
+R=20,nr=30,lmax=3  (free continuum (1/32)(pi/R)^2 = 7.7106e-04)   [53s]
+    0  lambda = 7.4007e-05   translation 0.423   iso-rotation 0.566   both 0.988
+    1  lambda = 7.4007e-05   translation 0.423   iso-rotation 0.566   both 0.988
+    2  lambda = 7.4007e-05   translation 0.423   iso-rotation 0.566   both 0.988
+    3  lambda = 3.4650e-04   translation 0.573   iso-rotation 0.417   both 0.990
+    4  lambda = 3.4650e-04   translation 0.573   iso-rotation 0.417   both 0.990
+    5  lambda = 3.4650e-04   translation 0.573   iso-rotation 0.417   both 0.990
+    6  lambda = 8.0114e-04   translation 0.001   iso-rotation 0.002   both 0.003
+    7  lambda = 8.0114e-04   translation 0.001   iso-rotation 0.002   both 0.003
+    8  lambda = 8.0114e-04   translation 0.001   iso-rotation 0.002   both 0.003
+    9  lambda = 1.4370e-03   translation 0.000   iso-rotation 0.000   both 0.000
+   10  lambda = 1.6144e-03   translation 0.000   iso-rotation 0.000   both 0.000
+   11  lambda = 1.6144e-03   translation 0.000   iso-rotation 0.000   both 0.000
+R=40,nr=40,lmax=3  (free continuum (1/32)(pi/R)^2 = 1.9277e-04)   [100s]
+    0  lambda = 5.4233e-05   translation 0.317   iso-rotation 0.678   both 0.994
+    1  lambda = 5.4233e-05   translation 0.317   iso-rotation 0.678   both 0.994
+    2  lambda = 5.4233e-05   translation 0.317   iso-rotation 0.678   both 0.994
+    3  lambda = 1.9388e-04   translation 0.003   iso-rotation 0.000   both 0.003
+    4  lambda = 1.9388e-04   translation 0.003   iso-rotation 0.000   both 0.003
+    5  lambda = 1.9388e-04   translation 0.003   iso-rotation 0.000   both 0.003
+    6  lambda = 3.7309e-04   translation 0.387   iso-rotation 0.194   both 0.581
+    7  lambda = 3.7309e-04   translation 0.387   iso-rotation 0.194   both 0.581
+    8  lambda = 3.7309e-04   translation 0.387   iso-rotation 0.194   both 0.581
+    9  lambda = 3.8909e-04   translation 0.000   iso-rotation 0.000   both 0.000
+   10  lambda = 3.9568e-04   translation 0.000   iso-rotation 0.000   both 0.000
+   11  lambda = 3.9568e-04   translation 0.000   iso-rotation 0.000   both 0.000
+R=40,nr=80,lmax=3  (free continuum (1/32)(pi/R)^2 = 1.9277e-04)   [201s]
+    0  lambda = 1.6150e-05   translation 0.348   iso-rotation 0.645   both 0.993
+    1  lambda = 1.6150e-05   translation 0.348   iso-rotation 0.645   both 0.993
+    2  lambda = 1.6150e-05   translation 0.348   iso-rotation 0.645   both 0.993
+    3  lambda = 1.2324e-04   translation 0.647   iso-rotation 0.346   both 0.993
+    4  lambda = 1.2324e-04   translation 0.647   iso-rotation 0.346   both 0.993
+    5  lambda = 1.2324e-04   translation 0.647   iso-rotation 0.346   both 0.993
+    6  lambda = 1.9409e-04   translation 0.001   iso-rotation 0.001   both 0.002
+    7  lambda = 1.9409e-04   translation 0.001   iso-rotation 0.001   both 0.002
+    8  lambda = 1.9409e-04   translation 0.001   iso-rotation 0.001   both 0.002
+    9  lambda = 3.8890e-04   translation 0.000   iso-rotation 0.000   both 0.000
+   10  lambda = 3.9546e-04   translation 0.000   iso-rotation 0.000   both 0.000
+   11  lambda = 3.9546e-04   translation 0.000   iso-rotation 0.000   both 0.000
+triplets at R=40, nr=40: [
+ {
+  "level": 5.423297067856087e-05,
+  "translation_content": 0.31656304206935615,
+  "isorotation_content": 0.6775433865762537,
+  "zero_mode_content": 0.9941011886839388,
+  "assignment": "zero-mode triplet (translation/iso-rotation mixture)"
+ },
+ {
+  "level": 0.00019388007264622823,
+  "translation_content": 0.003010385478685833,
+  "isorotation_content": 4.68436601424776e-05,
+  "zero_mode_content": 0.003057233387748308,
+  "assignment": "continuum"
+ },
+ {
+  "level": 0.00037308893259389186,
+  "translation_content": 0.3867193954113926,
+  "isorotation_content": 0.19448192100903083,
+  "zero_mode_content": 0.5812044193526139,
+  "assignment": "zero-mode triplet (translation/iso-rotation mixture)"
+ }
+]
+triplets at R=20, nr=15: [
+ {
+  "level": 0.00021068167245070503,
+  "translation_content": 0.3374402520034005,
+  "isorotation_content": 0.6508043046503343,
+  "zero_mode_content": 0.9881864642911692,
+  "assignment": "zero-mode triplet (translation/iso-rotation mixture)"
+ },
+ {
+  "level": 0.0007927736983697472,
+  "translation_content": 0.04806014114179341,
+  "isorotation_content": 0.007842586133615444,
+  "zero_mode_content": 0.05590513432312131,
+  "assignment": "continuum"
+ },
+ {
+  "level": 0.0011087773182510445,
+  "translation_content": 0.5523976281015593,
+  "isorotation_content": 0.30794949123065657,
+  "zero_mode_content": 0.8603982542424417,
+  "assignment": "zero-mode triplet (translation/iso-rotation mixture)"
+ }
+]
+checks: {'continuum_triplet_is_middle_one_at_nr40': True, 'zero_mode_triplets_lowest_at_R20': True, 'zero_mode_triplets_first_and_third_at_R40_nr40': True, 'continuum_level_mesh_converged_R40': True, 'continuum_level_near_free_value_R40': True, 'R20_nr15_middle_triplet_is_continuum': True, 'no_negative_eigenvalue': True}
+all checks pass: True

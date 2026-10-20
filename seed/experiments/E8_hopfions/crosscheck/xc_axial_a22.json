@@ -1,0 +1,20 @@
+{
+ "n2m2_inf": {
+  "runs": {
+   "48": {
+    "E": 1.8448984634082684,
+    "E2": 0.8139800787296456,
+    "E4": 1.0309183846786227,
+    "deg": 0.0003171828285426919,
+    "Q": 0.0006343656570853838,
+    "iters": 40000,
+    "gnorm": 8.620755314488148,
+    "msg": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+    "secs": 262.72639179229736
+   }
+  },
+  "init": "square of n2m1_inf_N64",
+  "status": "FAILED: deg(psi) not conserved (2 -> 0.0003) within 40000 L-BFGS iterations; the u/|u| spectral representation lets the field unwind through a zero of u between quadrature points. No A_{2,2} value from this code. (An earlier start from the rational map W=Z1^2/Z0^2 failed the same way.)",
+  "done": false
+ }
+}

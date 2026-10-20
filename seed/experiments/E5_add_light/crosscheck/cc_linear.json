@@ -1,0 +1,21 @@
+{
+ "skyrme_lowest_order": 4,
+ "quadratic_minus_canonical": "0",
+ "pion_dispersion": "[-sqrt(k_x**2 + k_y**2 + k_z**2 + m_pi**2), sqrt(k_x**2 + k_y**2 + k_z**2 + m_pi**2)]",
+ "gauge_mode_null": true,
+ "photon": {
+  "matrix": "Matrix([[k_x**2 + k_y**2 + k_z**2, k_x*omega, k_y*omega, k_z*omega], [k_x*omega, -k_y**2 - k_z**2 + omega**2, k_x*k_y, k_x*k_z], [k_y*omega, k_x*k_y, -k_x**2 - k_z**2 + omega**2, k_y*k_z], [k_z*omega, k_x*k_z, k_y*k_z, -k_x**2 - k_y**2 + omega**2]])",
+  "ranks": {
+   "off_cone": 3,
+   "on_cone": 1
+  },
+  "transverse_det_kz": "(k_z - omega)**2*(k_z + omega)**2",
+  "omega": "[-k_z, k_z]"
+ },
+ "pion_photon_mixing_zero": true,
+ "vacuum_T": "Matrix([[V0, 0, 0, 0], [0, -V0, 0, 0], [0, 0, -V0, 0], [0, 0, 0, -V0]])",
+ "rho": "V0",
+ "p": "-V0",
+ "p_plus_rho": "0",
+ "boost_invariant": true
+}

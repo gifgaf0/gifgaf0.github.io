@@ -1,0 +1,8 @@
+{'A': 0.6, 'sigma': 4.0, 'k': 0.5, 'E_over_2M': 2.7029773646913346, 'N_lin': 3.9186432918389564, 'dx0.1': True, 'dx0.05': True, 'dx0.025': True, 'single_dx0.05': False}
+{'A': 0.8, 'sigma': 2.0, 'k': 0.75, 'E_over_2M': 2.826018215498936, 'N_lin': 4.049181723948378, 'dx0.1': True, 'dx0.05': True, 'dx0.025': True, 'single_dx0.05': False}
+{'A': 0.4, 'sigma': 10.0, 'k': 0.25, 'E_over_2M': 2.8890559661911555, 'N_lin': 4.085320585703704, 'dx0.1': True, 'dx0.05': False, 'dx0.025': False, 'single_dx0.05': False}
+{'A': 0.6, 'sigma': 4.0, 'k': 0.75, 'E_over_2M': 3.3548047139679986, 'N_lin': 4.105632259991898, 'dx0.1': True, 'dx0.05': True, 'dx0.025': True, 'single_dx0.05': False}
+{'A': 0.6, 'sigma': 5.0, 'k': 0.25, 'E_over_2M': 3.3731266117837997, 'N_lin': 5.553745029621936, 'dx0.1': True, 'dx0.05': False, 'dx0.025': True, 'single_dx0.05': False}
+{'A': 0.6, 'sigma': 5.0, 'k': 0.5, 'E_over_2M': 3.49409898902797, 'N_lin': 4.813228122136241, 'dx0.1': True, 'dx0.05': False, 'dx0.025': True, 'single_dx0.05': False}
+lowest reproduced: {'A': 0.6, 'sigma': 4.0, 'k': 0.5, 'E_over_2M': 2.7029773646913346, 'N_lin': 3.9186432918389564, 'dx0.1': True, 'dx0.05': True, 'dx0.025': True, 'single_dx0.05': False} 16 s
+[extra3 done] 05:04:03

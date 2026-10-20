@@ -1,0 +1,37 @@
+calibration: 17 / 17
+relabelled by the rank scan (complex couplings): 26 {'lepton': 22, 'quark': 4} [1892.1791559183425, 3073722.2627542787] {'exactly degenerate light neutrinos (r = 1)': 4, 'CKM a permutation matrix (M_u, M_d both diagonal)': 3, 'rank-deficient charged-fermion matrix (Z7 familon)': 19}
+real-coupling survey (final labels): {"lepton": {"excluded (structural)": 92, "excluded": 4, "accommodates (no prediction)": 29, "SURVIVES": 3}, "quark": {"excluded (structural)": 13, "accommodates (no prediction)": 3}}
+real-coupling survivors: [('lepton|min-real|phi10=G|phi5=Z3|phi1=P', 0.902, 6, 0.342), ('lepton|min-real|phi10=G|phi5=P|phi1=Z3', 0.395, 6, 0.53), ('lepton|min-real|phi10=G|phi5=P|phi1=P', 0.021, 6, 0.885)]
+real-coupling accommodating: 32
+survey (final labels): {"lepton": {"excluded (structural)": 90, "excluded": 5, "accommodates (no prediction)": 34}, "quark": {"excluded (structural)": 29, "accommodates (no prediction)": 3}}
+survey (fit labels before exact rank scan): {"lepton": {"excluded (structural)": 68, "excluded": 27, "accommodates (no prediction)": 34}, "quark": {"excluded (structural)": 25, "excluded": 4, "accommodates (no prediction)": 3}}
+predictive survivors: []
+accommodating: [('lepton|min|phi10=Z3|phi5=G|phi1=G', 7), ('lepton|min|phi10=P|phi5=G|phi1=G', 7), ('lepton|min|phi10=G|phi5=Z3|phi1=P', 7), ('lepton|min|phi10=G|phi5=Z3|phi1=G', 7), ('lepton|min|phi10=G|phi5=P|phi1=Z3', 7), ('lepton|min|phi10=G|phi5=P|phi1=P', 7), ('lepton|min|phi10=G|phi5=P|phi1=G', 7), ('lepton|min|phi10=G|phi5=G|phi1=Z3', 7), ('lepton|min|phi10=G|phi5=G|phi1=P', 7), ('lepton|min|phi10=G|phi5=G|phi1=G', 7), ('lepton|gen|phi10=Z3|phi5=Z3|phi1=P', 7), ('lepton|gen|phi10=Z3|phi5=Z3|phi1=G', 7), ('lepton|gen|phi10=Z3|phi5=P|phi1=Z3', 7), ('lepton|gen|phi10=Z3|phi5=P|phi1=P', 7), ('lepton|gen|phi10=Z3|phi5=P|phi1=G', 7), ('lepton|gen|phi10=Z3|phi5=G|phi1=Z3', 7), ('lepton|gen|phi10=Z3|phi5=G|phi1=P', 7), ('lepton|gen|phi10=Z3|phi5=G|phi1=G', 7), ('lepton|gen|phi10=P|phi5=Z3|phi1=P', 7), ('lepton|gen|phi10=P|phi5=Z3|phi1=G', 7), ('lepton|gen|phi10=P|phi5=P|phi1=Z3', 7), ('lepton|gen|phi10=P|phi5=P|phi1=P', 7), ('lepton|gen|phi10=P|phi5=P|phi1=G', 7), ('lepton|gen|phi10=P|phi5=G|phi1=Z3', 7), ('lepton|gen|phi10=P|phi5=G|phi1=P', 7), ('lepton|gen|phi10=P|phi5=G|phi1=G', 7), ('lepton|gen|phi10=G|phi5=Z3|phi1=P', 7), ('lepton|gen|phi10=G|phi5=Z3|phi1=G', 7), ('lepton|gen|phi10=G|phi5=P|phi1=Z3', 7), ('lepton|gen|phi10=G|phi5=P|phi1=P', 7), ('lepton|gen|phi10=G|phi5=P|phi1=G', 7), ('lepton|gen|phi10=G|phi5=G|phi1=Z3', 7), ('lepton|gen|phi10=G|phi5=G|phi1=P', 7), ('lepton|gen|phi10=G|phi5=G|phi1=G', 7), ('quark|gen|phi10=G|phi5=Z3', 8), ('quark|gen|phi10=G|phi5=P', 8), ('quark|gen|phi10=G|phi5=G', 8)]
+best predictive: {
+ "lepton": {
+  "name": "lepton|LNR exact|phi10=G|phi5=(-1,1,1)|phi1=(1,1,1)",
+  "chi2": 1472.0058033909597,
+  "n_eff": 3,
+  "dof": 4,
+  "p_value": 0.0,
+  "pulls": [
+   -5.1070259132757333e-14,
+   2.8865798640254026e-14,
+   2.122516677038059e-08,
+   2.0789473684210003,
+   -38.284883720930246,
+   -1.3969465648854942,
+   0.0
+  ],
+  "best_obs": [
+   0.0047468702710138705,
+   0.05887328180682203,
+   33.83177572037859,
+   0.33333333333333265,
+   0.0,
+   0.5000000000000001,
+   NaN
+  ],
+  "diagnosis": "exactly tri-bimaximal: theta13 = 0"
+ }
+}

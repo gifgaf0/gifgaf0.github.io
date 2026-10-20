@@ -1,0 +1,14 @@
+ball integral G(R) of J^3_3: {0.5: np.float64(1.05023), 1: np.float64(5.944678), 1.5: np.float64(12.222737), 2: np.float64(16.423206), 3: np.float64(18.308425), 4: np.float64(18.060023), 6: np.float64(18.019237), 8: np.float64(18.059226), 12: np.float64(18.084503), 16: np.float64(18.089868), 24: np.float64(18.092033)}
+surface form at R=24: 18.092033
+g_A e^2: ball -12.061356   ANW formula 18.092596   far-field (GT) 18.092596   ratio ball/ANW = -0.666646
+at the ANW fit e = 5.44399: |g_A(ball)| = 0.4070, g_A(ANW) = 0.6105
+x=10: |C/x^2 / F - 1| = 4.5e-04   |3-term/F - 1| = 6.0e-07  (abs 5.2e-08)
+x=20: |C/x^2 / F - 1| = 2.4e-05   |3-term/F - 1| = 1.4e-09  (abs 3.0e-11)
+x=40: |C/x^2 / F - 1| = 1.4e-06   |3-term/F - 1| = 4.7e-12  (abs 2.5e-14)
+Dirichlet X=10: M +0.912%  Lambda 37.091 (-27.2%)  J2 18.621 (-28.1%)  D -24.581  (D/C = -2.846)
+Dirichlet X=20: M +0.120%  Lambda 44.108 (-13.5%)  J2 22.411 (-13.5%)  D -25.710  (D/C = -2.976)
+Dirichlet X=40: M +0.015%  Lambda 47.594 (-6.6%)  J2 24.198 (-6.6%)  D -25.888  (D/C = -2.997)
+CHECK |ball-integral g_A| = (2/3) ANW g_A (to 1e-4)                          PASS
+CHECK ball integral equals its surface form at R=24 (1e-4)                   PASS
+CHECK ANW formula = far-field (Goldberger-Treiman) value 2piC/3 (1e-9)       PASS
+all checks pass: True  runtime 11.6 s

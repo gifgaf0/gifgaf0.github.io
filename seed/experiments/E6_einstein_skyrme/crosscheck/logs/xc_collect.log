@@ -1,0 +1,61 @@
+OK    alpha_crit                                              orig=0.0403785252871376  xc=0.04037852528714726
+OK    b_crit                                                  orig=2.930275544548578  xc=2.930275603753037
+OK    curvature of alpha(b) at fold                           orig=0.01484  xc=0.014839514373244822
+OK    m(inf) at fold                                          orig=4.955390123774041  xc=4.955390123772859
+OK    sigma(0) at fold                                        orig=0.4350227505658933  xc=0.4350227364695117
+OK    min N at fold                                           orig=0.5826044188269244  xc=0.5826044646709055
+OK    m0 (flat)                                               orig=5.803051134521  xc=5.803051134521571
+OK    b_flat                                                  orig=2.007528222713  xc=2.007528222716209
+OK    E_flat [f/e]                                            orig=72.92329125047374  xc=72.92329125047553
+OK    M_ADM(alpha->0)/E_flat - 1                              orig=-4.554e-12  xc=-4.449107748882852e-12
+OK    m1 full (O(alpha) slope)                                orig=-18.782439388444864  xc=-18.782439387456698
+OK    m1 Newtonian 1/2 int rho Phi                            orig=-14.577334857062704  xc=-14.577334800109806
+OK    m1 GR first order                                       orig=-18.78243941948764  xc=-18.78243941945434
+OK    rho x stress-trace cross term                           orig=-4.2051046200071305  xc=-4.205104619333933
+OK    int p_r m/r / int rho m/r                               orig=0.28846868628660366  xc=0.28846868628639494
+OK    d ln sigma(0)/d alpha first order                       orig=-9.747335239277053  xc=-9.747353359920979
+OK    d ln sigma(0)/d alpha full                              orig=-9.747362787904223  xc=-9.74736278700938
+OK    lowest omega^2, lower branch alpha=0                    orig=no negative mode  xc=no negative mode (nneg=0)
+OK    lowest omega^2, lower branch alpha=0.02                 orig=no negative mode  xc=no negative mode (nneg=0)
+OK    lowest omega^2, lower branch alpha=0.035                orig=no negative mode  xc=no negative mode (nneg=0)
+OK    lowest omega^2, lower branch alpha=0.04                 orig=no negative mode  xc=no negative mode (nneg=0)
+OK    lowest omega^2, upper branch alpha=0.02                 orig=-1.62158  xc=-1.621572528449893
+OK    lowest omega^2, upper branch alpha=0.035                orig=-0.40907  xc=-0.4090658694440594
+OK    lowest omega^2, upper branch alpha=0.04                 orig=-0.07841  xc=-0.07840580745672782
+OK    zero crossing of lowest omega^2 vs fold                 orig=b=2.930273 vs fold 2.930276  xc=eigenvalue at the fold point -4.0e-13; quadratic-fit crossing b=2.9302
+OK    upper branch sqrt(alpha) m -> BM                        orig=0.82871 (linear, alpha<3e-4); m_BM 0.828  xc=linear 0.828738; (1,a,a ln a) 0.828648; (1,sqrt a,a) 0.828557
+OK    alpha_phys f=64.5 MeV                                   orig=3.507325561529642e-40  xc=3.507325561529642e-40
+OK    alpha_phys f=92.2 MeV                                   orig=7.1667e-40  xc=7.166687921753175e-40
+OK    max(1-N) per alpha, location x                          orig=6.476 at 1.17  xc=6.476333 at 1.1730
+OK    1-sigma(0) per alpha                                    orig=9.747  xc=9.74735335992337
+OK    1-sigma(0), f=64.5                                      orig=3.418707804150875e-39  xc=3.4187141596521074e-39
+OK    max(1-N), f=64.5                                        orig=2.2714608323897744e-39  xc=2.271460682588702e-39
+OK    1-N(1 fm), f=64.5                                       orig=1.98562e-39  xc=1.9856207571167154e-39
+OK    1-sigma(1 fm), f=64.5                                   orig=1.48e-40  xc=1.4793099362509277e-40
+OK    1-sigma(0), f=92.2                                      orig=6.985610972859306e-39  xc=6.985623959362304e-39
+OK    max(1-N), f=92.2                                        orig=4.6413857586472674e-39  xc=4.641385452551491e-39
+OK    1-N(1 fm), f=92.2                                       orig=3.110269065239613e-39  xc=3.1102689547062e-39
+OK    1-sigma(1 fm), f=92.2                                   orig=7.79169114700277e-41  xc=7.79168417827739e-41
+DIFF  deflection max per alpha (and b)                        orig=18.8323 at b=0.739  xc=18.858554 at b=0.77430 (iso), 18.858531 at b=0.77430 (Schwarzschild)
+DIFF  deflection max f=64.5 MeV                               orig=6.605e-39 rad at 0.415 fm  xc=6.6143e-39 rad at 0.4346 fm
+DIFF  deflection max f=92.2 MeV                               orig=1.3496e-38 rad at 0.29 fm  xc=1.3515e-38 rad at 0.3041 fm
+OK    deflection at 1 fm, f=64.5 (point mass)                 orig=4.37674e-39 (4.57007e-39)  xc=4.37674e-39 (4.57007e-39)
+OK    deflection at 1 fm, f=92.2 (point mass)                 orig=6.44e-39 (6.53e-39)  xc=6.43932e-39 (6.53272e-39)
+OK    deflection(b=50)/(4 m0/b)                               orig=1 within 1e-5  xc=0.9999981062649727
+OK    Shapiro chord -1..+1 fm, f=64.5 (Schwarzschild coords)  orig=2.01251991419154e-62  xc=2.0137953742474716e-62
+OK    Shapiro chord, f=92.2                                   orig=3.6228220696304697e-62  xc=3.6246452560556955e-62
+OK    GM/c^3 f=64.5                                           orig=3.811027022809424e-63  xc=3.8110270219557827e-63
+OK    fixed-alpha table (12 entries, b and m on both branches orig=REPORT table  xc=see fixed_alpha_table
+fixed table all agree: True
+  alpha=0.001   lower b 2.013942 / 2.013942   m 5.7842450 / 5.7842452  True
+  alpha=0.001   upper b 29.828300 / 29.828334   m 26.3817500 / 26.3817530  True
+  alpha=0.01    lower b 2.079802 / 2.079802   m 5.6125670 / 5.6125667  True
+  alpha=0.01    upper b 8.855190 / 8.855194   m 8.7078670 / 8.7078666  True
+  alpha=0.02    lower b 2.178287 / 2.178287   m 5.4149190 / 5.4149194  True
+  alpha=0.02    upper b 5.834790 / 5.834795   m 6.4205430 / 6.4205431  True
+  alpha=0.03    lower b 2.332258 / 2.332258   m 5.2051740 / 5.2051741  True
+  alpha=0.03    upper b 4.357180 / 4.357181   m 5.4685990 / 5.4685993  True
+  alpha=0.04    lower b 2.781911 / 2.781911   m 4.9663460 / 4.9663464  True
+  alpha=0.04    upper b 3.103300 / 3.103302   m 4.9677860 / 4.9677862  True
+  alpha=0.04037 lower b 2.906579 / 2.906579   m 4.9556490 / 4.9556492  True
+  alpha=0.04037 upper b 2.954524 / 2.954524   m 4.9556540 / 4.9556541  True

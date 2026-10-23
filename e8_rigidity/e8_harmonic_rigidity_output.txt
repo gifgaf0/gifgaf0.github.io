@@ -1,0 +1,16 @@
+shell sizes ok: {1: 240, 2: 2160, 3: 6720, 5: 30240, 7: 82560}
+
+k=2,4,6: max |shell sum| / (shell size * max|P|)  (7-design => 0)
+  k=2: 8.8e-17
+  k=4: 1.8e-17
+  k=6: 4.2e-17
+
+k=8: shell sum / (tau(n) * root sum)  (rigidity => 1)
+  random v1          n=2: 1.0000000000 n=3: 1.0000000000 n=5: 1.0000000000 n=7: 1.0000000000
+  random v2          n=2: 1.0000000000 n=3: 1.0000000000 n=5: 1.0000000000 n=7: 1.0000000000
+  (1,1,1,0,0,0,0,0)  n=2: 1.0000000000 n=3: 1.0000000000 n=5: 1.0000000000 n=7: 1.0000000000
+
+k=20: shells n=3,5,7 predicted from n=1,2 alone (relative error)
+  random v1          n=3: 4.9e-14 n=5: 7.4e-14 n=7: 3.9e-14   mixing ratio y/x = +5.052904e+03
+  random v2          n=3: 3.1e-14 n=5: 7.0e-14 n=7: 1.9e-13   mixing ratio y/x = -7.022379e+03
+  (1,1,1,0,0,0,0,0)  n=3: 1.6e-15 n=5: 2.2e-16 n=7: 7.3e-15   mixing ratio y/x = -3.545805e+03

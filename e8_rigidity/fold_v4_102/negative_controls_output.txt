@@ -1,0 +1,8 @@
+== negative control 1: V4.101 checked against itself (must FAIL)
+    p101, p102, pJ = b.index("### §2.101 — "), b.index("### §2.102 — "), b.index("## J. Multi-Lens Reference")
+                                               ~~~~~~~^^^^^^^^^^^^^^^^^
+ValueError: substring not found
+exit: 1
+== negative control 2: V4.102 with one silent character edit in §2.97 (must FAIL)
+UNEXPECTED change at V4.101 line 1776 : *(Folded V4.97, October 8, 2026, on the author's decision of October 7, 2026 to 
+FAIL

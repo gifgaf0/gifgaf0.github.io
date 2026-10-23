@@ -1,0 +1,92 @@
+\section{Related work}\label{sec:related}
+
+\paragraph{X-Wing and KEM combiners.} The X-Wing paper~\cite{XWing} proves
+X-Wing IND-CCA secure classically, from strong Diffie--Hellman in a nominal
+group with SHA3-256 as a random oracle and C2PRI of
+ML-KEM~\cite[Thm.~1]{XWing}, and post-quantum, from IND-CCA of ML-KEM and
+SHA3-256 as a PRF in the standard model~\cite[Thm.~2]{XWing}. It also
+proves ML-KEM-768 C2PRI with its hash functions as random
+oracles~\cite[Thm.~3]{XWing}. Our KEM models prove analogues of the first
+two theorems as CryptoVerif equivalences, with X25519 as a prime-order group
+and ML-KEM perfectly correct. Connolly et al.\ show that X-Wing's combiner applies
+to other KEMs, ML-KEM-1024 among them~\cite{Starfighters}. Generic KEM
+combiners and their security were studied by Giacon, Heuer and
+Poettering~\cite{GHP18}, whose combiners rest on split-key PRFs, and by
+Bindel et al.~\cite{BBFGS19}, whose transcript-hashing combiner our
+ML-KEM-1024 profile follows. Millerjord, Stebila and Steckel study split-key
+PRFs further and give a standard-model construction~\cite{MSS26}. Alagic,
+Bajaj and Kocoglu show that a combiner built on a split-key PRF may omit the
+ciphertext of any KEM that is C2PRI, and that KEMs built with certain
+Fujisaki--Okamoto transforms, ML-KEM among them, are C2PRI in the
+random-oracle model~\cite{ABK25}. This generalises the design choice that
+our X-Wing mutant isolates. Binding
+properties of KEMs, including those ML-KEM lacks, were systematised by
+Cremers, Dax and Medinger~\cite{CDM24} and by Schmieg~\cite{Sch24}. Kang,
+Lee and Son~\cite{KLS26} study which public values a hybrid KEM's combiner
+must hash, taking X-Wing as their case study.
+
+\paragraph{Mechanized analyses of hybrid and post-quantum protocols.}
+Blanchet and Jacomme made CryptoVerif post-quantum sound and used it to
+verify hybrid TLS~1.3 and SSH key exchanges~\cite{BJ24}; our protocol proof
+uses their library. Bhargavan et al.\ analysed Signal's PQXDH, which
+combines X25519 with a post-quantum KEM, in ProVerif and CryptoVerif, found
+flaws in its specification, and proved a binding property of the KEM it
+uses~\cite{BJKS24}. Baelde et al.\ mechanize post-quantum proofs in Squirrel
+for four KEM combiners and two KEM-based hybrid key exchanges; we could not
+determine whether X-Wing's combiner is among the four. They point
+out that post-quantum CryptoVerif has no quantum values, which makes it hard
+to extend to settings such as the quantum random-oracle
+model~\cite{BDDJK26}. In our development, random oracles appear only in the
+X25519 directions, whose assumptions are classical anyway. Earlier CryptoVerif case studies
+include TLS~1.3 drafts~\cite{BBK17}, from which we take the per-role secrecy
+pattern; HPKE~\cite{ABHKLR21}, which introduced nominal groups and the
+KEM-equivalence proof pattern that our KEM models follow; and
+WireGuard~\cite{LBB19}, with a cofactor-aware X25519 model. Our protocol is
+closer in shape to SIGMA~\cite{Kra03} and TLS~1.3's signature-authenticated
+handshake~\cite{DFGS21} than to KEM-authenticated designs such as
+KEMTLS~\cite{SSW20}. We are not aware of an earlier machine-checked proof of
+X-Wing itself or of composite ML-DSA/EdDSA signatures.
+
+\paragraph{Errors found by mechanization.} CV2EC~\cite{CV2EC} translates
+CryptoVerif assumptions into EasyCrypt so that they can be proved from
+standard assumptions. Doing so, its authors found two errors in the
+pen-and-paper proof of the HPKE analysis's $n$-user result for authenticated
+KEMs, a counting error and a missing public-key collision term, which the
+HPKE authors then corrected. They also found that an assumption stated in a
+CryptoVerif model leaked the algorithms' randomness to the adversary, so
+that no reasonable KEM could satisfy it. Oechsner, Pereira and Scholl show
+the converse risk, a mechanized proof that was itself flawed and allowed an
+attack on a formally verified implementation~\cite{OPS25}. Our findings are
+milder, but of the same two kinds: conditions that the pen-and-paper sketch
+dropped, and claims about a mechanization that went beyond it.
+
+\paragraph{Hybrid signatures.} Bindel et al.\ study combiners for hybrid
+signatures, including how strongly the components are bound
+together~\cite{BHMS17}. The composite-signature draft states that the
+composite is EUF-CMA if at least one component is and the pre-hash is
+collision resistant~\cite[\S1.3]{Composite}. \Cref{lem:sig} is a
+machine-checked version of that statement.
+
+\paragraph{Low-order points.} Cremers and Jackson analyse small-subgroup and
+invalid-curve attacks on protocols that use Diffie--Hellman, and model such
+groups in Tamarin~\cite{CJ19}. The five low-order u-coordinates of
+Curve25519 and its twist are well known; Mbed~TLS, for example, rejects
+exactly these values~\cite{mbedtls}. The specifications disagree on the
+all-zero
+X25519 output. RFC~7748 lets implementations check for it~\cite{RFC7748};
+RFC~9180 requires DHKEM recipients to abort on it~\cite{RFC9180}; RFC~10024
+requires the check for hybrid key agreement in TLS~1.3~\cite{RFC10024}; and
+X-Wing specifies none~\cite{XWingDraft}. Libraries whose X25519 functions
+reject the all-zero output therefore diverge from X-Wing's algorithm unless
+they compensate, as reported for noble~\cite{Noble26} and found in our own
+implementation (\cref{sec:lowcaught}).
+
+\paragraph{Sanity checks.} Vacuity, a property that holds for a trivial
+reason, is a known hazard in model checking~\cite{Kup06}. Symbolic protocol
+tools address part of it with reachability lemmas. Our symbolic Tamarin model
+of this protocol proves that an honest run exists, and it caught a modelling
+error of its own when an under-specified honest-peer premise made an
+agreement lemma fail. For computational models, the vacuous CryptoVerif
+assumption found by CV2EC~\cite{CV2EC} shows the same hazard, and the
+mutation tests of \cref{sec:mutations} are one way to look for it. We did not
+find earlier systematic mutation testing of CryptoVerif or EasyCrypt models.

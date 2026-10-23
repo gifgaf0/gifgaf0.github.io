@@ -1,0 +1,64 @@
+\section{Limitations}\label{sec:limits}
+
+\paragraph{X25519 is a prime-order group in the models.} Clamping, the
+cofactor, the twist, low-order points and non-canonical encodings are not
+modelled. RFC~7748 decoding is many-to-one: the top bit is ignored and
+values at least $p$ are reduced, so several byte strings name the same
+point. X-Wing hashes the raw bytes of $\ct_X$, so distinct encodings give
+distinct keys, but the models, whose ciphertexts are group elements, cannot
+express a re-encoded ciphertext at all; Kang, Lee and Son study why such
+public values must be hashed, with X-Wing as their case
+study~\cite{KLS26}. \Cref{sec:lowcaught} shows that this gap is where the
+implementation diverged. A cofactor-aware model, as in CryptoVerif's
+WireGuard analysis~\cite{LBB19}, which uses the library's X25519-specific
+Diffie--Hellman macros, would close part of it. We have not attempted one.
+
+\paragraph{Composition is by hand.} CryptoVerif checks each model
+separately. Substituting \cref{lem:kem,lem:sig} into
+\cref{thm:auth,thm:secrecy}, the KEM side conditions, and the argument that
+SHA3-256's several idealisations do not interfere are all done on paper
+(\cref{sec:status}). So is the step from per-role multi-test secrecy to the
+single-Test game of the original sketch. Inside the KEM models, ML-KEM is
+perfectly correct, and its decapsulation failure rate is added by hand.
+
+\paragraph{Remaining assumptions.} The ML-KEM leg of the ML-KEM-1024 profile
+still rests on HKDF being a PRF keyed by the $\ssv_M$ half of its input, one
+half of the split-key PRF property~\cite{GHP18,MSS26,ABK25}, and we know of
+no proof of that for HKDF in this configuration. The protocol's KDF rests on
+HMAC's swap-PRF property. Backendal et al.\ prove it in the standard model
+for uniform keys from feasible sets~\cite{BBGS23}, but not against quantum
+adversaries. The post-quantum soundness of our protocol proof is
+therefore relative to that property holding against quantum adversaries,
+which we assume. The ML-KEM directions of \cref{lem:kem} likewise assume
+that SHA3-256 and HKDF are PRFs against quantum adversaries, as the X-Wing
+paper's post-quantum theorem does for SHA3-256~\cite{XWing}.
+
+\paragraph{The adversary.} Ephemeral-key reveal is static. Session-state
+reveal and reveal of the responder's encapsulation coins are not modelled. A
+fresh session's key can be tested but not revealed in place of a test. There
+is one ciphersuite, so cross-suite downgrade resistance rests on the
+symbolic model alone.
+
+\paragraph{The bounds are not tight.} Reduced to single-instance IND-CCA2,
+the KEM term loses a factor of about $n_S^2$ (\cref{sec:reviewcaught}). We
+have not computed concrete security levels.
+
+\paragraph{Models, specification and code.} The models follow the
+specification, and their correspondence with it and with the Python
+implementation was checked by inspection. The implementation itself is not
+verified. It is research code that trusts pyca/cryptography for every
+primitive, and we make no claim about side channels. The proof scripts name
+variables that CryptoVerif generates and count occurrences, so they are tied
+to CryptoVerif~2.13 and break when a model changes.
+
+\paragraph{Review.} The development was AI-assisted throughout, and both
+reviews were done by separate instances of the same AI system. They found
+real problems, but they may share blind spots with the development that a
+human expert would not. Neither the models nor this paper has had external
+peer review.
+
+\paragraph{Scope.} HYBRID-AKE is an engineering design, not a standard. For
+production systems, TLS~1.3 with a standardised hybrid group from a
+maintained library is the better choice. The results here are about one
+design and one implementation, and the lessons in \cref{sec:lessons} are
+offered as observations from it, not as general findings.

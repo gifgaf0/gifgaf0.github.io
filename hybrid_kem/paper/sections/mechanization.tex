@@ -1,0 +1,176 @@
+\section{Mechanization}\label{sec:mech}
+
+The development has nine CryptoVerif models: two protocol models; five KEM
+models, namely two variants each of \file{kem_xwing.m4.ocv} and
+\file{kem_bbfgs.m4.ocv} and the standalone \file{kem_bbfgs_x25519_rom.ocv};
+and two variants of the composite-signature model. Together they come
+to about 1,400 lines, including comments, and \texttt{make} checks all of them
+in under 20~seconds on two cores. \Cref{tab:models} lists them.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabularx}{\linewidth}{@{}lLll@{}}
+\toprule
+Model & Proves & Library & Queries\\
+\midrule
+\file{hybrid_ake.ocv} & \cref{thm:auth,thm:secrecy}; key uniqueness & pq & 5\\
+\file{hybrid_ake_ephleak.ocv} & the same with static ephemeral reveal & pq & 5\\
+\file{composite_sig.m4.ocv} (2 variants) & \cref{lem:sig}, each component & pq & 1 + 1\\
+\file{kem_xwing.m4.ocv}, ML-KEM variant & \cref{lem:kem}, X-Wing, ML-KEM leg & pq & 1\\
+\file{kem_xwing.m4.ocv}, X25519 variant & \cref{lem:kem}, X-Wing, X25519 leg & default & 1\\
+\file{kem_bbfgs.m4.ocv}, ML-KEM variant & \cref{lem:kem}, ML-KEM-1024, ML-KEM leg & pq & 1\\
+\file{kem_bbfgs.m4.ocv}, X25519 variant & \cref{lem:kem}, ML-KEM-1024, X25519 leg (PRF-ODH) & default & 1\\
+\file{kem_bbfgs_x25519_rom.ocv} & \cref{lem:kem}, ML-KEM-1024, X25519 leg (ROM) & default & 1\\
+\bottomrule
+\end{tabularx}
+\caption{The nine models. ``pq'' is CryptoVerif's post-quantum-sound library.
+The X25519 directions use the default library and are classical by nature.
+The composite's EdDSA direction runs with the post-quantum library, but its
+assumption, unforgeability of EdDSA, holds only classically.}
+\label{tab:models}
+\end{table}
+
+\subsection{The protocol model}\label{sec:mech:protocol}
+
+The protocol model abstracts each hybrid primitive as a single primitive: one
+KEM satisfying the library's \ident{IND_CCA2_KEM} macro, and one signature
+satisfying \ident{UF_CMA_proba_signature}. The transcript hash is a
+collision-resistant hash, and the KDF a PRF keyed by the shared secret. The
+length-prefixed encodings are injective constructors. The two signed hash
+inputs, $\LP$ of seven fields and $\LP(\THH, \sigma_R)$, are declared
+disjoint, since a byte string parses as at most one of them. Freshness and
+RevealKey are written directly in the initiator's and responders' oracles,
+as \texttt{find} conditions over the other sessions' transcripts;
+\cref{app:excerpts} shows the initiator. This is the whole proof script:
+
+\begin{lstlisting}
+crypto uf_cma_corrupt(sign) rK;      (* composite signature, all honest keys *)
+success; simplify;                   (* this proves both agreement queries *)
+replace at_nth 6 1 "kdf({_}ssI" "ssA[u_9, u_10]";    (* KEM correctness, *)
+replace at_nth 5 1 "kdf({_}ssI" "ssR[u_11, u_12]";   (* in the three branches *)
+replace at_nth 2 1 "kdf({_}ssI" "ssA[u_17, u_18]";   (* where a key is tested *)
+crypto ind_cca2(encap) seedE;        (* hybrid KEM, all ephemeral keys *)
+crypto prf(kdf) *;                   (* KDF keyed by the shared secret *)
+success
+\end{lstlisting}
+
+After the signature step, every branch in which an initiator's key is tested
+knows that its ciphertext came from an honest responder that encapsulated to
+this initiator's ephemeral key. The three \texttt{replace} steps use KEM
+correctness to replace the initiator's decapsulated secret with the
+responder's encapsulated one. Without them, the IND-CCA2 step cannot
+recognise the decapsulation as one of a challenge ciphertext. CryptoVerif
+proves each equality, so a \texttt{replace} that targets the wrong
+occurrence fails rather than proving something false. The cost is
+brittleness: the script names variables that CryptoVerif generates
+(\ident{u_9}, \ldots) and counts occurrences, so it is tied to
+CryptoVerif~2.13 and to the model text.
+
+\subsection{The KEM models}\label{sec:mech:kem}
+
+Each KEM model proves an equivalence between the real hybrid KEM and the
+ideal KEM of CryptoVerif's \ident{IND_CCA2_KEM} macro. In the ideal
+process, encapsulation to an honest public key returns a fresh random key
+and records the pair in a table, and decapsulation of a recorded ciphertext
+returns the recorded key. A setup oracle creates each user from a pair of
+seeds, one for ML-KEM and one for X25519, and an \texttt{Oleak} oracle hands
+the adversary the broken leg's secret: this is what ``the other leg is fully
+broken'' means. Every proof starts by inserting into the real process the
+two case distinctions that the ideal one makes: is the encapsulation for an
+honest key, and is the decapsulated ciphertext one of that user's challenge
+ciphertexts. It then uses ML-KEM's correctness on the second, through the
+library's perfect-correctness equation. After that, the ML-KEM direction
+applies IND-CCA2 of ML-KEM and then the PRF assumption on the combiner, keyed
+by the now uniformly random $\ssv_M$. The X25519 direction applies the random
+oracle and then strong Diffie--Hellman, except in the PRF-ODH model, which
+applies the PRF-ODH assumption directly. In all cases
+\ident{start_from_other_end} transforms the ideal process to the same
+final game.
+
+\paragraph{C2PRI.} In X-Wing's X25519 direction, ML-KEM has no security
+assumption except C2PRI (Definition~7 of~\cite{XWing}): for an honestly
+generated key pair and an honest encapsulation $(k_0, c_0)$, an adversary
+given the decapsulation key, $k_0$ and $c_0$ finds no $c \ne c_0$ that
+decapsulates to $k_0$. We state it as a CryptoVerif collision statement:
+\begin{lstlisting}
+collision s <-R mseed; r <-R mencseed; forall c: mct;
+   return(mdecap(c, mskgen(s)) = minjbot(1-proj-mpair(mencap_r(mpkgen(s), r))))
+   <=(Pbind(time))=> return(c = 2-proj-mpair(mencap_r(mpkgen(s), r))).
+\end{lstlisting}
+($\cvp{Pbind}$ is $\cvp{Pc2pri}$ in \cref{lem:kem}.) For an honestly
+generated key seed $s$ and honest encapsulation coins $r$, the statement
+replaces the test $\mathsf{mdecap}(c, \mathit{sk}) = k_0$ by the test
+$c = c_0$, at cost $\cvp{Pbind}$. It is stronger than Definition~7 in three
+ways. First, the adversary may depend on the key seed, not only on the
+decapsulation key, and in the X25519 model it is handed the seed. FIPS~203's
+decapsulation key does not determine the seed, so this is a genuinely
+stronger, seed-known form of C2PRI, and we assume it. It is the natural form
+for X-Wing, whose decapsulation key is the seed. The X-Wing paper's
+random-oracle proof that ML-KEM-768 is C2PRI~\cite[Thm.~3]{XWing} argues
+only about collisions of the hash functions $G$ and $J$ and does not appear
+to use the seed's secrecy, but we have not checked in detail that it
+carries over. Second, the adversary may depend on the encapsulation coins
+$r$. Third, the statement implies that $c_0$ itself decapsulates to $k_0$.
+For ML-KEM these last two add at most $2\delta$, where $\delta$ is the
+decapsulation failure probability. Given the decapsulation key and $c_0$,
+decryption recovers the encapsulation message, which determines the coins,
+unless decryption fails; and $c_0$ decapsulates to $k_0$ unless decryption
+fails. The statement concerns honestly generated keys and challenges only. It is neither the malicious-key binding that
+ML-KEM lacks~\cite{Sch24} nor needed in that form. The proof applies it three
+times, all after the random-oracle step, which gives the factor $3NQ_e$ in
+\cref{lem:kem}.
+
+The assumption is needed because of X-Wing's design. X-Wing does not hash
+$\ct_M$. If an adversary that knows ML-KEM's secret key could
+find a second ciphertext $\ct_M' \ne \ct_M^*$ with the same $\ssv_M$, then
+$\ct_M' \,\|\, \ct_X^*$ would decapsulate to the challenge key, which the
+decapsulation oracle would then reveal. The ML-KEM-1024 combiner hashes
+$\ct_M$, so a second ciphertext changes the hash input. That is why its
+X25519-direction proofs need no security assumption on ML-KEM. They use only
+its correctness, its implicit rejection, and the negligible chance that
+honestly generated keys or ciphertexts collide. \Cref{sec:mutations} checks
+both facts.
+
+\paragraph{Two routes for the ML-KEM-1024 profile.} The first X25519-direction
+proof for this profile, in \file{kem_bbfgs.m4.ocv}, uses the library's
+PRF-ODH macro with HKDF keyed by the Diffie--Hellman value. Here that value
+is the second half of the ikm, after the adversary-controlled $\ssv_M$, so
+the assumption is a non-standard variant. \file{kem_bbfgs_x25519_rom.ocv}
+proves the same statement from strong Diffie--Hellman with HKDF as a random
+oracle, which are standard assumptions. The ML-KEM direction of this profile
+assumes HKDF is a PRF keyed by the $\ssv_M$ half of $\ssv_M \,\|\, \ssv_X$.
+That is one half of the split-key PRF property that the combiners of
+Giacon, Heuer and Poettering~\cite{GHP18} rely on, and that Millerjord,
+Stebila and Steckel~\cite{MSS26} and Alagic, Bajaj and Kocoglu~\cite{ABK25}
+study further: a split-key PRF is a PRF when keyed by either part of its
+key, so it implies our assumption, but not conversely. We know of no proof
+of even this half for HKDF in this configuration. It is also outside
+what~\cite{BBGS23} prove, because their key is the whole message input. CryptoVerif's PQ-TLS model
+makes the same kind of assumption for HKDF-Extract over a concatenated hybrid
+secret~\cite{BJ24}.
+
+\paragraph{X25519 as a group.} All models treat X25519 as a prime-order group
+(the library's \ident{DH_basic} and \texttt{StDH} macros). Clamping, the
+cofactor, the twist, low-order points and non-canonical encodings are not
+modelled; \cref{sec:limits} discusses what this leaves out. The X-Wing
+paper instead uses a ``nominal group''~\cite{ABHKLR21,XWing}, and its
+classical bound has a statistical term $2\Delta_N$, with
+$\Delta_N < 2^{-126}$ for X25519~\cite{XWing}. So the X25519-direction models make the X-Wing
+paper's assumptions up to this difference in how X25519 is modelled. The
+32-byte X-Wing seed is modelled as two independent seeds, treating SHAKE-256
+as a PRG.
+
+\subsection{The composite-signature model}\label{sec:mech:sig}
+
+The composite model has one honest key pair, a signing oracle, a
+verification oracle that records an \texttt{accepted} event for every
+verifying pair $(\mathit{ctx}, M)$, and an oracle that hands out the broken
+component's secret key. The query states that every accepted
+$(\mathit{ctx}, M)$ was signed. The message representative is an injective
+function \texttt{mp}$(\mathit{ctx}, \PH(M))$; $\mathsf{Prefix}$ and
+$\mathsf{Label}$ are constants of the profile, and $\mathrm{len}(\mathit{ctx})$
+is one byte. Unlike the protocol and KEM proofs, this one runs without a
+proof script: CryptoVerif finds the two steps, unforgeability of the
+unbroken component and collision resistance of $\PH$, by itself.
+\Cref{app:excerpts} shows the process.

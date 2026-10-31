@@ -207,3 +207,96 @@ Unlike Amendment A's twisted ring, this configuration is axisymmetric:
 5. Phase 2 only if the Phase 1 verdict is STABLE.
 
 Each report applies §5 as written and records deviations, as in `REPORT_N1_rerun.md`.
+
+## 9. Amendment A (October 31, 2026, after Phase 0, before any Phase 1 run)
+
+**Label: post-hoc.** This amendment is written after reading `REPORT_phase0.md` (commit 025f69c). The selection rule below was chosen knowing the Phase 0 results. It is recorded as such, and a Phase 1 result obtained under it carries that label. §1–§8 are unchanged. Where they conflict with this section, this section governs Phase 1 and Phase 2.
+
+### 9.1 What Phase 0 showed that the pre-registration did not anticipate
+
+- **C3 gap (author's).** C3 tested only the global minimum. At 11 of 12 points the σ phase (ψ = 0, |σ|² = S = μ²/λ) is also a *local* minimum, because βS > 1 + η. Large charge can then be stored in a widening σ-phase tube. The only non-metastable point, b1_d1, is the only point with no equilibrium. **Recorded finding: on this grid, thin-ring equilibria occur only where the σ phase is metastable.** This is descriptive and is not a new verdict.
+- **What the equilibria are.** Every equilibrium sits at q* ≳ 35, where σ fills a tube of radius about 3–5 and pushes the ψ core out to a similar radius. What holds the ring open looks like the pressure of a charged σ domain, not a current in a thin core. The ψ string may therefore be a passenger. §3 had no control for that. C-d below adds one.
+- **The §2.3 selection rule is ill-posed in this regime.** Along every 𝒯 = 0 contour ω*/m_vac falls monotonically as q* rises, so "smallest ω*/m_vac" always picks the q cap. Raising the cap would only move the selection to the new cap. The rule is replaced, not re-run.
+
+### 9.2 Replacement selection rule
+
+Among the Phase 0 sign changes with d²E/dR² > 0 (interpolant and direct solve agreeing in sign) and R_eq/r_σ ≥ 3 under the §3.2 n rule, take the smallest ω*/m_vac. The threshold 3 is the author's item 3. It was set during the Phase 0 run, before any result was seen.
+
+Applied to `phase0_results.json`, this selects **b3_d1**:
+
+| | value |
+|---|---|
+| β, δ, μ², λ, m_vac | 3, 1, 5.0250, 8.6951, 2.2079 |
+| k*, q* | 0.8144, 53.50 (between grid points (0.80, 53.5) and (0.85, 53.5); no one-sided flags) |
+| ω*/m_vac | 0.646 |
+| r_σ*, r_ψ* | 2.80, 3.39 |
+| d²E/dR² | +47.3 (interpolant), +47.4 (direct) |
+
+The runner-up is b2_d1 at ω*/m_vac = 0.765.
+
+**Caveat, stated now.** The selected point sits at R_eq/r_σ = 3.07, just above the threshold. Along the contour, ω*/m_vac falls while R_eq/r_σ falls, so the threshold, like the cap before it, sets the location. To make the result independent of that, Phase 1 runs the selected (k*, q*) at two values of n. Because 𝒯 = 0 depends only on (k, q), a larger n at the same (k*, q*) gives the same thin-ring equilibrium at a larger radius.
+
+| run | n | R_eq = n/k* | Q = 2πR_eq q* | R_eq/r_σ | R_eq/r_ψ |
+|---|---|---|---|---|---|
+| **primary** | 7 | 8.595 | 2889.3 | 3.07 | 2.54 |
+| **thin check** | 10 | 12.279 | 4127.6 | 4.39 | 3.62 |
+
+### 9.3 Phase 1 changes
+
+**Grid.** ρ ∈ [0, 32], z ∈ [−32, 32], h = 0.25. The 1.5 R_eq start at n = 10 reaches ρ ≈ 22 with the ψ core included, too close to the §3.2 box.
+
+**Starts.** Profiles come from the straight-string solution, not the §3.2 Gaussian. Regenerate the straight-string solution at the selected point and (k*, q*) with `option4_phase0.py`'s functional; it is deterministic. With d the distance from the circle ρ = R₀, z = 0:
+- ψ_k = f(d) e^{iχ}, where χ is the angle around the ring core.
+- A is the matching a(d) profile, oriented around the core.
+- σ = s(d) e^{inφ}.
+
+Two starts for each n: R₀ = R_eq and R₀ = 1.5 R_eq.
+
+**Controls.** All at the b3_d1 potential, all at n = 7 unless stated.
+- **C-a.** n = 0, Q = 0, σ start as above. Must collapse (P1).
+- **C-b.** n = 7, Q = 0. Descriptive.
+- **C-c.** n = 0, Q = 2889.3. Descriptive.
+- **C-d, passenger control (new).** n = 7, Q = 2889.3, the same σ start at R₀ = R_eq, and ψ_k = f(d) with **no winding** (χ = 0, A = 0). The σ tube is unchanged, but no vortex threads it. Also run at n = 10, Q = 4127.6.
+- **C-e, lump comparison (new).** n = 0, Q = 2889.3, no ψ winding, σ started as a ball of radius 4 at the origin. It relaxes to the lowest-energy charged σ lump the 2D code can reach. The energy E_lump is recorded. Repeat at Q = 4127.6.
+
+**Recorded quantities** (in addition to §3.3):
+- E − E_lump at the same Q.
+- For C-d, E_C-d − E_main at the same (n, Q).
+- r_σ and r_ψ of the final state.
+
+### 9.4 Verdicts, revised
+
+P2's STABLE/COLLAPSE/LEAK/EXPANDS/MARGINAL arms stand as written, applied to each main run (n = 7, n = 10). The main verdict is then qualified by C-d:
+
+| main run | C-d at the same n | verdict |
+|---|---|---|
+| STABLE | COLLAPSE, LEAK, or relaxes to something with no σ ring | **STABLE, string-supported** |
+| STABLE | STABLE | **STABLE, string not required.** The E9 string is a passenger. E_C-d − E_main is reported. |
+| not STABLE | any | the main verdict as is |
+
+**C-e qualifier.** If E_lump < E at a STABLE main run, the ring is recorded as **metastable**: it is held only by its winding n against decay into a charged lump. Phase 2's phase-slip monitor tests that channel.
+
+**Thin-ring check (P3, revised).** P3 is applied to both n. If n = 7 and n = 10 disagree (one STABLE, one not), the result is recorded as **n-dependent**, and the n = 10 verdict is the one carried forward.
+
+Phase 2 runs only on a **STABLE, string-supported** result. A "string not required" result closes option 4 as far as the E9 string is concerned. Any study of σ alone would be a new pre-registration.
+
+### 9.5 Ambiguities from `REPORT_phase0.md` §7, settled
+
+- **(a)** The k stop rule stands as run, and is recorded as a limit of Phase 0. No re-run.
+- **(b)** The localization test stays ω < m_vac (the stricter, pre-registered form). Report ω² < m²_vac + k² alongside as descriptive.
+- **(c)** b1_d0.25 stays NONE (truncated), per the literal rule.
+- **(d)** Superseded by the two-n design in §9.2.
+- **(e)** Recorded in §9.1.
+- **(f)** Superseded by §9.2.
+
+### 9.6 Prior, revised
+
+- STABLE (axisymmetric) at n = 10: about 35 %.
+- C-d STABLE, given a STABLE main run: about 50 %. In a metastable σ phase a charged, wound σ ring may not need a vortex at all.
+- **STABLE, string-supported: about 15 %.** Then STABLE (3D) given that: about 50 %. **Overall about 7 %.**
+
+### 9.7 Eddington guard, restated
+
+Unchanged from §6. In addition:
+- No point other than b3_d1 is run in Phase 1. Running b2_d1 or b5_d1 would be a new amendment.
+- No n other than 7 and 10 is run.

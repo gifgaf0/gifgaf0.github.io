@@ -15,3 +15,5 @@ python3 trace_N1.py B 65 6 4000 2              # helix start
 Before running, confirm the starts: `python3 -c "from gl3 import GL3; from starts import start_fields; from linking import analyse; g=GL3(N=65); print([analyse(start_fields(g,s,6.0)) for s in 'AB'])"` should give |Lk12| = |Lk13| = 1 for both.
 
 Apply PREREG §9–§10 to the output and write `REPORT_N1_rerun.md`. Do not re-tune κ or η. Model units only; no physical identification of the loop.
+
+**Option 4 (vorton).** Pre-registration `PREREG_option4.md`. Read §9 (Amendment A, post-hoc, written after Phase 0) before Phase 1. Phase 0 is done: `REPORT_phase0.md` (P0 holds, 6 of 12 WINDOW). Phase 1 (axisymmetric loop at b3_d1, n = 7 and n = 10, with passenger control C-d and lump comparison C-e) is next. The static N = 1 runs at κ = 1 and η = 0 (PREREG §6 trigger) are still owed or to be waived by the author.

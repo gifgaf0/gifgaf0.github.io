@@ -1,6 +1,7 @@
 """Diagnostic re-run of run_N1.py with fine-grained history. Same model, same start, same minimizer call
 (L-BFGS-B is deterministic, so the trajectory is the one run_N1.py follows); only the callback differs.
-usage: python3 trace_N1.py START N R0 MAXITER EVERY
+usage: python3 trace_N1.py START N R0 MAXITER EVERY [SAVEDIR] [--e E] [--eta ETA]
+(--e and --eta default to gl3.py's e = 1/sqrt(12), i.e. kappa = 2, and eta = 0.1; non-default values are tagged in the output name)
 Records every EVERY iterations: energy above vacuum, composite ring radius, strand 1 loop geometry,
 linking number of strand 1's vortex lines with strand 2's and strand 3's (linking.py), and the closest
 approach of any vortex line to the box faces. Prints no verdict.
@@ -8,12 +9,20 @@ approach of any vortex line to the box faces. Prints no verdict.
 import numpy as np, json, sys, time
 from gl3 import GL3
 from linking import vortex_segments, linking
-start, N, R0, maxiter, every = sys.argv[1], int(sys.argv[2]), float(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5])
-g = GL3(N=N, h=0.5, eta=0.1)
+opts = {'--e': 1 / np.sqrt(12.0), '--eta': 0.1}; args = []
+i = 1
+while i < len(sys.argv):
+    if sys.argv[i] in opts: opts[sys.argv[i]] = float(sys.argv[i + 1]); i += 2
+    else: args.append(sys.argv[i]); i += 1
+start, N, R0, maxiter, every = args[0], int(args[1]), float(args[2]), int(args[3]), int(args[4])
+e_c, eta_c = opts['--e'], opts['--eta']
+g = GL3(N=N, h=0.5, e=e_c, eta=eta_c)
+kappa = 1 / (e_c * np.sqrt(3.0))   # PREREG §9: xi = 1/sqrt 2, lambda = 1/(e sqrt 6), kappa = lambda/xi
 from starts import start_fields   # Amendment B: corrected starts
 psi = start_fields(g, start, R0); A = np.zeros((3, N, N, N))
 half = (N // 2) * g.h; ax0 = -half
 tag = f'trace_N1_{start}_N{N}_R{R0:g}'
+if abs(e_c - 1 / np.sqrt(12.0)) > 1e-12 or eta_c != 0.1: tag += f'_k{kappa:.3g}_eta{eta_c:g}'
 hist = []; t0 = time.time(); it = [0]
 
 def diag(v):
@@ -48,7 +57,7 @@ def diag(v):
     d['R23_gl3'] = g.core_radius(p[1]); d['t'] = time.time() - t0
     return d
 
-save = sys.argv[6] if len(sys.argv) > 6 else None
+save = args[5] if len(args) > 5 else None
 def cb(v):
     it[0] += 1
     if save and it[0] % every == 0 and it[0] <= 60:
@@ -59,5 +68,5 @@ def cb(v):
 d0 = diag(g.pack(psi, A)); hist.append(d0); print(json.dumps(d0), flush=True)
 psi, A, r = g.minimize(psi, A, maxiter=maxiter, gtol=1e-5, callback=cb)
 final = diag(g.pack(psi, A)); final.update(converged=bool(r.success), msg=str(r.message), iters=int(r.nit))
-json.dump(dict(start=start, N=N, R0=R0, every=every, history=hist, final=final), open(f'{tag}.json', 'w'), indent=1)
+json.dump(dict(start=start, N=N, R0=R0, every=every, e=e_c, eta=eta_c, kappa=kappa, history=hist, final=final), open(f'{tag}.json', 'w'), indent=1)
 print('FINAL', json.dumps(final))

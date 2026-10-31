@@ -2,7 +2,7 @@
 
 Read `PREREG.md` first, including Amendments A (§9) and B (§10). Steps 1–2 (classification and the 2D fractional-vortex calibration) are in `prior/`.
 
-**Done so far:** `REPORT_control.md` (N = 0 control: P1 holds). `REPORT_N1.md` (first N = 1 session: start A at 49³ inconclusive because the start touched the box; start B not run because the script's start was wrong). Both errors are corrected under Amendment B.
+**Done so far:** `REPORT_control.md` (N = 0 control: P1 holds). `REPORT_N1.md` (first N = 1 session: start A at 49³ inconclusive because the start touched the box; start B not run because the script's start was wrong). Both errors are corrected under Amendment B. `REPORT_N1_rerun.md` (κ = 2, η = 0.1 at 65³: both starts COLLAPSE). `REPORT_N1_kappa_eta.md` (the other three pre-registered (κ, η) combinations at 65³: all COLLAPSE, so the §6 fallback condition is met; `trace_N1.py` takes `--e` and `--eta`).
 
 **To run (rerun under Amendment B):**
 ```

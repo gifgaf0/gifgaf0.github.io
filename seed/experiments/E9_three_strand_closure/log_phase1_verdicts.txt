@@ -1,0 +1,11 @@
+P1 (C-a collapses): True E = 4.26e-09, I = 2.02e-11
+n = 7: starts candidate (finite R_f, omega < m_vac, leak < 1 %, E < m_vac Q) (R_f=8.25) / candidate (finite R_f, omega < m_vac, leak < 1 %, E < m_vac Q) (R_f=8.25); same R_f within 10 %: True; main: STABLE (axisymmetric)
+   C-d: candidate (finite R_f, omega < m_vac, leak < 1 %, E < m_vac Q), R_sigma = 10.742, E_Cd - E_main = -297.99  ->  STABLE, string not required
+   C-e: E_lump = 3794.31, E - E_lump = +1667.71 -> metastable (E_lump < E)
+   P3: R_f = 8.25, R_eq = 8.595, R_f/R_eq - 1 = -0.040, holds (25 %): True
+n = 10: starts candidate (finite R_f, omega < m_vac, leak < 1 %, E < m_vac Q) (R_f=12.0) / candidate (finite R_f, omega < m_vac, leak < 1 %, E < m_vac Q) (R_f=12.0); same R_f within 10 %: True; main: STABLE (axisymmetric)
+   C-d: candidate (finite R_f, omega < m_vac, leak < 1 %, E < m_vac Q), R_sigma = 15.066, E_Cd - E_main = -432.54  ->  STABLE, string not required
+   C-e: E_lump = 5198.53, E - E_lump = +2605.98 -> metastable (E_lump < E)
+   P3: R_f = 12.0, R_eq = 12.278, R_f/R_eq - 1 = -0.023, holds (25 %): True
+n-dependence: same at n = 7 and n = 10 | carried forward: STABLE, string not required | Phase 2: does not run (§9.4: Phase 2 runs only on STABLE, string-supported)
+P5: {"C_b": {"E": 4.270987119525671e-09, "I": 9.329703830903357e-12, "zeros": [0, 0, 0]}, "C_c": {"E": 3794.3112527567428, "I": 1249.9018615774291, "zeros": [0, 0, 0], "R_sigma": 4.465351738173306, "E_minus_E_lump_Q7": 3.183231456205249e-08}}

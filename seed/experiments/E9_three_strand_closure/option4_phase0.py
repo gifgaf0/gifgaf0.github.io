@@ -73,8 +73,22 @@ def make_fg(beta, mu2, lam, k, q):
         E, _ = fg(x)
         I = float(np.sum(W * sm ** 2))
         tail = float(np.sum((W * sm ** 2)[rm > R_TAIL]) / I) if I > 0 else float('nan')
+        # descriptive diagnostics (author's note, added after the run started; they do not enter any verdict)
+        s2 = s ** 2; half = 0.5 * s2[0]
+        idx = np.nonzero(s2 < half)[0]
+        if s2[0] > 0 and len(idx):
+            i1 = idx[0]; r_sig = float(r[i1 - 1] + (half - s2[i1 - 1]) / (s2[i1] - s2[i1 - 1]) * dr)
+        else:
+            r_sig = float('nan')
+        f2 = f ** 2; hp = 0.5 * (1 + eta); jdx = np.nonzero(f2 >= hp)[0]
+        r_psi = float(r[jdx[0] - 1] + (hp - f2[jdx[0] - 1]) / (f2[jdx[0]] - f2[jdx[0] - 1]) * dr) if len(jdx) else float('nan')
+        # scaling pieces: G (scale-invariant: gradients and winding), B (magnetic). Continuum virial: Tcal = G + 2B - 2 k^2 I
+        G = float(np.sum(W * (3 * (fp ** 2 + fm ** 2 * (1 - am) ** 2 / rm ** 2) + sp ** 2)))
+        B = float(np.sum(W * ap ** 2 / (2 * e ** 2 * rm ** 2)))
         return dict(E=float(E), T_static=float(E - (q * q / (4 * I) if q != 0 else 0.0)), I=I,
-                    sigma0=float(abs(s[0])), omega=float(q / (2 * I)) if I > 0 else float('inf'), tail_frac=tail)
+                    sigma0=float(abs(s[0])), omega=float(q / (2 * I)) if I > 0 else float('inf'), tail_frac=tail,
+                    r_sigma=r_sig, r_smax=float(r[np.argmax(s2)]), r_psi=r_psi, box_affected=bool(r_sig > 12.0),
+                    G=G, B=B, Tcal_virial=G + 2 * B - 2 * k * k * I)
     return fg, observables
 
 
@@ -138,7 +152,9 @@ def c3_check(beta, mu2, lam):
                    options=dict(gtol=1e-14, ftol=1e-16))
     Vpsi = analytic['psi_vacuum']['V']
     passed = (amin == 'psi_vacuum') and abs(pol.x[0] - (1 + eta)) < 1e-5 and pol.x[1] < 1e-5
-    return dict(passed=bool(passed), analytic_min=amin, candidates=analytic, Hessian_det=Hdet,
+    # descriptive (author's note): sigma phase psi = 0, S = mu2/lam is a local minimum iff beta S > 1 + eta
+    meta = beta * mu2 / lam - (1 + eta)
+    return dict(passed=bool(passed), analytic_min=amin, betaS_minus_1_plus_eta=float(meta), sigma_phase_metastable=bool(meta > 0), candidates=analytic, Hessian_det=Hdet,
                 grid_polish=dict(rho=float(pol.x[0]), S=float(pol.x[1]), V=float(pol.fun)),
                 V_psi_vac=Vpsi, D_check=float(1.5 - Vpsi),
                 sigma_vac_above_psi_vac=float(analytic['sigma_vacuum']['V'] - Vpsi))
@@ -162,6 +178,7 @@ def scan_point(args):
         best = min(sol, key=lambda ij: ((ij[0] - i) * DK) ** 2 + ((ij[1] - j) * DQ) ** 2 + 1e-12 * ij[1])
         return sol[best][1], f'({best[0] * DK:.2f},{best[1] * DQ:.2f})'
 
+    capped = []
     i = 0
     while i <= K_CAP:
         k = i * DK; any_in = False; j = 0
@@ -179,18 +196,23 @@ def scan_point(args):
                 break
             any_in = True; j += 1
         if j > Q_CAP:
-            log.append(f'[{tag}] Q_CAP reached at k={k:.2f}')
+            log.append(f'[{tag}] Q_CAP reached at k={k:.2f}'); capped.append(round(k, 10))
         print(f'[{tag}] k={k:.2f}: last q={q:.2f}, in-window q up to {(j - 1) * DQ if any_in else None}, '
               f'{time.time() - t0:.0f} s', flush=True)
         if not any_in:
             break
         i += 1
     summ = analyse(tag, P, mvac, sol, log)
+    summ['q_capped_at_k'] = capped
+    if capped and summ['verdict'] == 'NONE':
+        summ['verdict_label'] = f'NONE up to q = {Q_CAP * DQ:g} (truncated)'
+    else:
+        summ['verdict_label'] = summ['verdict'] + (f' (q capped at {Q_CAP * DQ:g} in {len(capped)} k rows)' if capped else '')
     summ['scan_seconds'] = time.time() - t0
     msg = (f'[{tag}] beta={beta} delta={delta} mu2={mu2:.4f} lam={lam:.4f} m_vac={mvac:.4f}: '
            f'{len(recs)} solves, {summ["n_in_window"]} in window, k_max_in={summ["k_max_in_window"]}, '
            f'sign changes={len(summ["sign_changes"])}, min(T/E)={summ["min_Tcal_over_E"]:.4f}, '
-           f'verdict={summ["verdict"]}, {summ["scan_seconds"]:.0f} s')
+           f'verdict={summ["verdict_label"]}, {summ["scan_seconds"]:.0f} s')
     log.append(msg)
     for l in log:
         print(l, flush=True)
@@ -244,8 +266,10 @@ def analyse(tag, P, mvac, sol, log):
                 ks = (i + t * di) * DK; qs = (j + t * dj) * DQ
                 oa, ob = win[(i, j)], win[nb]
                 om = oa['omega'] + t * (ob['omega'] - oa['omega'])
+                rs = oa['r_sigma'] + t * (ob['r_sigma'] - oa['r_sigma'])
                 sc.append(dict(between=[[i * DK, j * DQ], [nb[0] * DK, nb[1] * DQ]], k_star=ks, q_star=qs,
-                               omega_star=om, omega_star_over_mvac=om / mvac,
+                               omega_star=om, omega_star_over_mvac=om / mvac, r_sigma_star=rs,
+                               box_affected_endpoint=bool(oa['box_affected'] or ob['box_affected']),
                                flags=sorted(set(oa['Tcal_flags'] + ob['Tcal_flags']))))
     # d2E/dR2 along fixed-(n, Q) ray through each equilibrium, from an interpolant of the E grid
     pts = np.array([[i, j] for (i, j) in win], float)       # index coordinates (k/DK, q/DQ)
@@ -256,7 +280,8 @@ def analyse(tag, P, mvac, sol, log):
         n = max(1, int(round(8 * ks))) if ks > 0 else 1
         Req = n / ks if ks > 0 else float('inf')
         Q = 2 * np.pi * Req * qs
-        c.update(n=n, R_eq=Req, Q=Q)
+        c.update(n=n, R_eq=Req, Q=Q, R_eq_over_r_sigma=Req / c['r_sigma_star'],
+                 thin_ring_unreliable=bool(Req / c['r_sigma_star'] < 3))
         def Efun(R, ip=interp):
             kk = n / R; qq = Q / (2 * np.pi * R)
             return 2 * np.pi * R * float(ip(kk / DK, qq / DQ)) if ip is not None else float('nan')
@@ -288,7 +313,9 @@ def analyse(tag, P, mvac, sol, log):
     kmax = max((ij[0] for ij in win), default=None)
     qmax_by_k = {f'{i * DK:.2f}': max(j for (ii, j) in win if ii == i) * DQ for i in sorted({ij[0] for ij in win})}
     o00 = sol[(0, 0)][0]
-    return dict(n_solves=len(sol), n_in_window=len(win), n_not_converged=sum(not v[0]['success'] for v in sol.values()),
+    nbox = sum(o['box_affected'] for o in win.values())
+    return dict(n_box_affected_in_window=nbox, r_sigma_max_in_window=max((o['r_sigma'] for o in win.values()), default=None),
+                n_solves=len(sol), n_in_window=len(win), n_not_converged=sum(not v[0]['success'] for v in sol.values()),
                 k_max_in_window=None if kmax is None else kmax * DK, q_max_in_window_by_k=qmax_by_k,
                 sign_changes=sc, verdict=verdict,
                 best_omega_star_over_mvac=min((c['omega_star_over_mvac'] for c in good), default=None),
@@ -330,7 +357,7 @@ if __name__ == '__main__':
             c = c3_check(b, mu2, lam); c3[tag] = c
             print(f'[{tag}] mu2={mu2:.4f} lam={lam:.4f} m2_vac={m2:.4f} C3 {"PASS" if c["passed"] else "FAIL"} '
                   f'(min: {c["analytic_min"]}, polish rho={c["grid_polish"]["rho"]:.6f} S={c["grid_polish"]["S"]:.2e}, '
-                  f'sigma-vac above psi-vac by {c["sigma_vac_above_psi_vac"]:.4f})', flush=True)
+                  f'sigma-vac above psi-vac by {c["sigma_vac_above_psi_vac"]:.4f}; beta*S-(1+eta)={c["betaS_minus_1_plus_eta"]:+.4f})', flush=True)
             points.append(dict(tag=tag, beta=b, delta=d, mu2=mu2, lam=lam, m2_vac=m2,
                                m_vac=float(np.sqrt(m2)) if m2 > 0 else float('nan'), eps0=e0s[b], C3=c['passed']))
     jobs = [(p['tag'], p['beta'], p['delta'], p['mu2'], p['lam'], p['m_vac'], rb.x) for p in points if p['C3'] and p['m2_vac'] > 0]
@@ -361,7 +388,7 @@ if __name__ == '__main__':
                     o['Tcal_crude'] = tcr
                     tot += 1; agree += int(np.sign(tcr) == np.sign(o['Tcal']))
             entry['crude']['sign_agreement'] = dict(agree=agree, total=tot)
-            print(f"{p['tag']}: verdict {summ['verdict']}, n_in={summ['n_in_window']}, k_max={summ['k_max_in_window']}, "
+            print(f"{p['tag']}: verdict {summ['verdict_label']}, n_in={summ['n_in_window']}, k_max={summ['k_max_in_window']}, "
                   f"min(T/E)={summ['min_Tcal_over_E']:.4f} at {summ['argmin_Tcal_over_E']}, "
                   f"crude T/I_c={entry['crude']['T_over_Ic']:.3f} vs limit {entry['crude']['limit']:.3f}, "
                   f"crude sign agreement {agree}/{tot}", flush=True)

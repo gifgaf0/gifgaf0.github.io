@@ -17,3 +17,5 @@ Before running, confirm the starts: `python3 -c "from gl3 import GL3; from start
 Apply PREREG §9–§10 to the output and write `REPORT_N1_rerun.md`. Do not re-tune κ or η. Model units only; no physical identification of the loop.
 
 **Option 4 (vorton).** Pre-registration `PREREG_option4.md`. Read §9 (Amendment A, post-hoc, written after Phase 0) before Phase 1. Phase 0 is done: `REPORT_phase0.md` (P0 holds, 6 of 12 WINDOW). Phase 1 (axisymmetric loop at b3_d1, n = 7 and n = 10, with passenger control C-d and lump comparison C-e) is next. The static N = 1 runs at κ = 1 and η = 0 (PREREG §6 trigger) are still owed or to be waived by the author.
+
+**Status (October 31, 2026).** See `STATUS_step3.md`. Option 4 is closed for the E9 string: Phase 1 gave STABLE, string not required (`REPORT_phase1.md`). The owed §6 runs (κ = 1 and η = 0, static N = 1) are next.

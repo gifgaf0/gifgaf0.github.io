@@ -8,7 +8,6 @@ Read `PREREG.md` first, including Amendments A (§9) and B (§10). Steps 1–2 (
 ```
 cd seed/experiments/E9_three_strand_closure
 python3 gl3.py                                 # gradient check; expect ~2e-7
-python3 linking.py --selftest 2>/dev/null || true
 python3 trace_N1.py A 65 6 4000 2              # Hopf-linked start
 python3 trace_N1.py B 65 6 4000 2              # helix start
 # only if a start does not collapse:  python3 trace_N1.py <start> 81 6 6000 2

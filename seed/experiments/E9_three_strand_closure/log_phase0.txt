@@ -1,0 +1,19 @@
+Python 3.13.18, NumPy 2.5.3, SciPy 1.18.1, 4 cores
+gradient check (full functional, k=0.3, q=1.7, beta=2, mu2=3.6, lam=4), worst relative error: 2.547650593607215e-06
+gradient check (k=0, q=0.5, beta=1, mu2=2.5, lam=2), worst relative error: 3.2266701057349363e-07
+consistency with option4_design functional at q=0 (rel. energy diff, max grad diff): (0.0, 0.0)
+bare string: T0 = 27.7981, converged=True (CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH), r(f^2=(1+eta)/2) = 1.168
+eps0(beta): {1.0: 2.047, 2.0: 3.163, 3.0: 4.025, 5.0: 5.397} (PREREG §1.3: 2.047, 3.163, 4.025, 5.397)
+[b1_d0.25] mu2=2.2967 lam=1.8165 m2_vac=1.0033 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630)
+[b1_d0.5] mu2=2.5467 lam=2.2334 m2_vac=0.7533 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630)
+[b1_d1] mu2=3.0467 lam=3.1965 m2_vac=0.2533 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630)
+[b2_d0.25] mu2=3.4126 lam=4.0102 m2_vac=3.1874 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630)
+[b2_d0.5] mu2=3.6626 lam=4.6193 m2_vac=2.9374 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630)
+[b2_d1] mu2=4.1626 lam=5.9666 m2_vac=2.4374 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630)
+[b3_d0.25] mu2=4.2750 lam=6.2932 m2_vac=5.6250 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630)
+[b3_d0.5] mu2=4.5250 lam=7.0508 m2_vac=5.3750 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630)
+[b3_d1] mu2=5.0250 lam=8.6951 m2_vac=4.8750 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630)
+[b5_d0.25] mu2=5.6473 lam=10.9822 m2_vac=10.8527 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630)
+[b5_d0.5] mu2=5.8973 lam=11.9761 m2_vac=10.6027 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630)
+[b5_d1] mu2=6.3973 lam=14.0929 m2_vac=10.1027 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630)
+[b1_d1] k=0.00: last q=52.50, in-window q up to 52.25, 268 s

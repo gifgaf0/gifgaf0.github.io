@@ -2,8 +2,8 @@
 usage: python3 run_N1.py START N R0 MAXITER     e.g.  python3 run_N1.py A 49 6 4000
 START A: strands 2,3 on a ring of radius R0 in the z=0 plane; strand 1 on a ring of radius R0 in the x-z plane
          centred at (R0,0,0): a Hopf link.
-START B: strands 2,3 as above; strand 1 on a small ring of radius 2 in the y-z plane centred at (R0,0,0),
-         a meridian loop linking the composite core once (short string).
+START B: strands 2,3 as above; strand 1 on a (1,1) helix of minor radius 2 around the ring core (PREREG §9).
+Both starts are built in starts.py (Amendment B); each links the composite ring once (|Lk| = 1).
 Checkpoints every 100 iterations: energy, strand core radii, fields saved to .npz for later analysis.
 Verdict rules are in PREREG.md (Amendment A). This script prints no verdict.
 """
@@ -11,11 +11,8 @@ import numpy as np, json, sys, time
 from gl3 import GL3
 start, N, R0, maxiter = sys.argv[1], int(sys.argv[2]), float(sys.argv[3]), int(sys.argv[4])
 g = GL3(N=N, h=0.5, eta=0.1)
-f23 = g.ring_field((0, 0, 0), (0, 0, 1), R0)
-if start == 'A':   f1 = g.ring_field((R0, 0, 0), (0, 1, 0), R0)
-elif start == 'B': f1 = g.ring_field((R0, 0, 0), (1, 0, 0), 2.0)
-else: raise SystemExit('START must be A or B')
-psi = np.stack([f1, f23, f23]); A = np.zeros((3, N, N, N))
+from starts import start_fields   # Amendment B: corrected starts
+psi = start_fields(g, start, R0); A = np.zeros((3, N, N, N))
 tag = f'N1_{start}_N{N}_R{R0:g}'
 hist = []; t0 = time.time(); it = [0]
 def diag(v):

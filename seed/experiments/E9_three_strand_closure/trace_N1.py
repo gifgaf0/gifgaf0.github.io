@@ -10,11 +10,8 @@ from gl3 import GL3
 from linking import vortex_segments, linking
 start, N, R0, maxiter, every = sys.argv[1], int(sys.argv[2]), float(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5])
 g = GL3(N=N, h=0.5, eta=0.1)
-f23 = g.ring_field((0, 0, 0), (0, 0, 1), R0)
-if start == 'A':   f1 = g.ring_field((R0, 0, 0), (0, 1, 0), R0)
-elif start == 'B': f1 = g.ring_field((R0, 0, 0), (1, 0, 0), 2.0)
-else: raise SystemExit('START must be A or B')
-psi = np.stack([f1, f23, f23]); A = np.zeros((3, N, N, N))
+from starts import start_fields   # Amendment B: corrected starts
+psi = start_fields(g, start, R0); A = np.zeros((3, N, N, N))
 half = (N // 2) * g.h; ax0 = -half
 tag = f'trace_N1_{start}_N{N}_R{R0:g}'
 hist = []; t0 = time.time(); it = [0]

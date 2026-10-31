@@ -86,3 +86,20 @@ Phase A: roughly 10–20 minimizations of ~10⁵ unknowns each; a few hours. Pha
 **Predictions, re-stated for the 3D run.** P1 (N = 0): the free ring shrinks monotonically; the pinned E(R) decreases monotonically as R falls. P2 (N = 1): STABLE if the free relaxation from R = 6 stops at a finite radius R* > 2ξ, with strand 1's loop still linked, and the result survives a box of 64³; COLLAPSE if the ring shrinks to core scale or strand 1's loop unlinks by reconnection; MARGINAL otherwise. The pre-run prior (about 60 % COLLAPSE) stands.
 
 **Run plan.** The N = 0 control runs now, in this session, as a calibration. The N = 1 runs are long and go to a Claude Code session against this branch.
+
+## 10. Amendment B (October 30, 2026, after the first N = 1 run, before any rerun)
+
+**Why.** The first N = 1 session (`REPORT_N1.md`, commit 470e78d) found two errors in the authoring session's scripts. Neither is a change of model, parameters or verdict rules.
+
+1. **Start A touched the box.** Strand 1's loop (radius 6, centred at x = 6) reached x = 12, the face of the 49³ box, and stuck to it for iterations 2–16. The start A collapse at 49³ is therefore recorded as *inconclusive*, not as a verdict.
+2. **Start B did not match §9.** The script placed a radius-2 circle in the y–z plane, which touches the composite ring instead of linking it (Lk = 0). §9 specifies a (1,1) helix of minor radius 2.
+
+**Corrections, fixed now.**
+- **Grid.** 65³ points (box half-width 16) for both starts. This was §9's box check size; it becomes the primary size. The 81³ box is the check, if a start does not collapse.
+- **Starts** are built in `starts.py` from closed curves by the solid-angle phase (Ω/2), so each strand's vortex line is exactly the stated curve. Start A: the §9 Hopf-linked circle. Start B: the §9 helix. Verified before any run: both give |Lk(strand 1, composite)| = 1, and strand 1's line clears every box face by 3.75 (A) and 7.75 (B).
+- **Diagnostics.** `trace_N1.py` (added in the first N = 1 session) is the run instrument, recording every 2 iterations, so the trajectory and the moment of unlinking are visible.
+- **Recorded deviations from the first session:** 49³ rather than 48³ (now superseded by 65³); `linking.py` and `trace_N1.py` added; scipy installed by pip.
+
+**Unchanged:** the model, κ = 2, η = 0.1, h = 0.5, R0 = 6, the verdict rules of §9, and the prior.
+
+**Added interpretation rule, stated before the rerun.** If strand 1's line merges onto the composite core (closest approach below one grid spacing) and the configuration then shrinks, the run is COLLAPSE by the mechanism "the twist has no protected place to live where all three amplitudes vanish". The report must say whether that mechanism, or a different one, is what happened.

@@ -417,4 +417,4 @@ if __name__ == '__main__':
     print('P0 (at least one WINDOW):', bool(win_pts), flush=True)
     print(f'total {results["total_seconds"]:.0f} s', flush=True)
     with open('phase0_results.json', 'w') as fh:
-        json.dump(results, fh, indent=1, default=float)
+        json.dump(results, fh, separators=(',', ':'), default=float)

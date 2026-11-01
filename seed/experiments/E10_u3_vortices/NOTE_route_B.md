@@ -106,3 +106,12 @@ This is lower priority than B-i, because it needs off-BPS forces before any clos
 | **B4** | Axisymmetric loop, only if B3 finds a window, with controls fixed in advance. The passenger control becomes: the same SU(3)_{C+F} charge carried by a bulk configuration with no string (moduli do not exist without the string, so the comparison is against the cheapest charged bulk lump). | PREREG + results | after B3 |
 
 **Cost.** B2 and B3 are 1D radial problems with a few profile functions, so minutes. B4 is an axisymmetric 2D problem with the U(3) fields, so hours. Full 3D is deferred.
+
+## Addendum (November 1, 2026): B1 done
+
+See `prior_address_routeB.md`. In short:
+- **The model is fixed** as the single-coupling U(3) model of Auzzi, Eto and Vinci, with λ as the only parameter (BPS at λ = 1).
+- **The [memory] items above are now checked or derived.**
+- **The crude estimate for B-i, with the correct normalizations:** a charge-only thin vorton leaks at every λ. With current, the vorton needs k > M_V, outside the moduli approximation. No metastable phase exists to rescue it as in option 4.
+- **B2 has published calibration targets** (Eto, arXiv:0810.4895, Table 1).
+- **B3's predicted outcome is NONE,** with a prior of about 10 % for a window.

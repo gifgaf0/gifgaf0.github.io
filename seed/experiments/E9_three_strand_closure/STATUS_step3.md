@@ -33,6 +33,6 @@ Can a closed loop of the three-strand composite vortex (three U(1) phases, one g
   - **Route B:** non-abelian U(3) vortices, where the thirds are exact by group structure. This was step 1's recommended target.
   - **A four-derivative stabilizer** (Skyrme/Faddeev type). This is excluded by A2 and would need a new pre-registration with an Eddington argument.
 - **Chiral route, not tested.** The helical regime (|γ| > 0.3535, where the vacuum itself is twisted) and closures as defects in it. Any future chiral run needs periodic boundaries, or a subtracted surface layer, because of the open-boundary surface twist. A unit model that would fix γ does not exist.
-- **Next: Route B** (non-abelian U(3) vortices), opened November 1, 2026.
+- **Next: Route B** (non-abelian U(3) vortices), opened November 1, 2026, as `E10_u3_vortices` (`NOTE_route_B.md`). Also recorded there: Route A with an SU(3)-invariant potential (the semilocal model) has twisted current-carrying strings without an added field (Forgács, Reuillon and Volkov 2006). E9 never tested that, because its per-component potential breaks SU(3).
 
 No particle identification is made or implied anywhere in E9.

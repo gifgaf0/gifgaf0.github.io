@@ -138,3 +138,32 @@ The original A1 is reinterpreted, and A2 (no extra stabilizer) is superseded if 
 4. **In parallel, the unit model:** whether torus-dual units can supply A5, a net handedness and a definite γ. This is the step that would turn the term from a choice into a consequence.
 
 No particle identification is made or implied.
+
+## Addendum A (October 31, 2026, after `REPORT_chiral1d.md`)
+
+Append-only. §1–§8 stand as written. These corrections record where the 1D calculations overturned the note's expectations (pre-registration `PREREG_chiral1d.md`, commit dbaa172; results commit 9678e34).
+
+1. **The soft mode is the relative phases, not the director (§3, §4 were wrong to prefer the director).**
+   - At η = 0.1 with A free, the uniform locked vacuum goes unstable at γ_c = 0.3535 (diagonal), 0.3746 (z) and 0.3875 (perpendicular). The transition is continuous: each γ_c equals the linear threshold.
+   - The unstable texture has S ≠ 0 (⟨|S|/|ψ|²⟩ ≈ 0.54). The director stays on (1,1,1).
+   - The director sector on its own is about 8× stiffer (linear threshold γ ≈ 3.0).
+   - Reason: the director is pinned by the potential (order 1), while the relative phases are pinned only by the Josephson term. The threshold scales roughly like √η.
+
+2. **No screening; the gauge field enhances the gain (§4 was wrong in direction).**
+   - The A·S coupling, carried by a uniform A_⊥, supplies 60–100 % of the chiral energy and lowers γ_c.
+   - A uniform A_⊥ is gauge-equivalent to a phase gradient perpendicular to n̂, which a 1D ansatz along n̂ cannot otherwise represent. That is why the A-free γ_c is nearly the same in every direction.
+   - The A ≡ 0 values therefore block that route rather than giving a no-screening baseline.
+
+3. **What the chiral vacuum wants.** At η = 0 the uniform vacuum is unstable for any γ ≠ 0. The minimizing uniform state is ψ ∝ (1, ω, ω²), ω = e^{2πi/3}:
+   - The three strands are 120° apart, ψ·ψ = 0, and |S| = |ψ|² (maximal).
+   - A uniform A, i.e. a supercurrent, is aligned with S.
+   - Energy: minimizing 3e²A² − eγA·S over A gives −γ²|S|²/12. With |S| = |ψ|² = 3 that is −0.75γ². This was checked by hand and agrees with the numerics.
+   - The same 120° state is what a negative Josephson coupling favours (Garaud, Carlström and Babaev, 2011 [memory]).
+   - **Consequence: a chiral medium has a stable uniform vacuum only if phase-locking is strong enough,** roughly η ≳ 0.8γ² on the weakest (diagonal) direction (1D estimate). This gives η > 0 a role it lacked in step 2.
+
+4. **Winding gets no chiral gain.** A relative-phase winding along the line has zero chiral energy at fixed amplitudes. After relaxation the ratio is 2 × 10⁻⁵ at η = 0. At η = 0.1 it unwinds through a near-zero of |ψ₁|. **The chiral term rewards a static 120° offset carrying a current aligned with S, not a winding.**
+
+5. **Revised order of work (§8).**
+   - Items 1–2 are done.
+   - Item 3, the loop, goes to the relative-phase sector at η = 0.1 with A free and |γ| ≤ 0.3: `PREREG_chiral_loop.md`.
+   - The key caveat for that test: a twisted loop benefits only if its texture produces S aligned with circulating current. Nothing in 1D shows that survives in a closed loop.

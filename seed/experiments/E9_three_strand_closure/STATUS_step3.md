@@ -16,6 +16,8 @@ Can a closed loop of the three-strand composite vortex (three U(1) phases, one g
 | Current + charge (vorton, option 4) | Straight-string feasibility scan, 12 σ-sector points | κ = 2, η = 0.1 + σ (A3) | Thin-ring equilibria at 6 of 12 points, all in the regime where the σ phase is metastable | `REPORT_phase0.md` |
 | Current + charge (vorton, option 4) | Axisymmetric ring at b3_d1, n = 7 and n = 10 | as above | **STABLE (axisymmetric), string not required, metastable.** The same σ ring with no ψ vortex is cheaper by about 5 % (−298 at n = 7, −433 at n = 10). A charged σ lump of the same Q is cheaper still (by 1668 at n = 7). | `REPORT_phase1.md` |
 
+| Chiral stiffness term (option 2, medium-stiffness version) | Derivation note; 1D vacuum and texture calculations | locked model (A5, A6), κ = 2, η ∈ {0, 0.1}, three directions | Term γψ*·(D×ψ) requires strands locked to space; locked symmetry D₃ × U(1); thirds survive. Uniform vacuum stable for |γ| < 0.3535 at η = 0.1 (A free); unstable for any γ ≠ 0 at η = 0. Soft mode is the relative phases (120° offset + current), not the director; no screening. | `NOTE_chiral_term.md` (+ Addendum A), `REPORT_chiral1d.md` |
+
 ## What this establishes
 
 - **Twist route.** In all four (κ, η) cells of `PREREG.md` (κ ∈ {1, 2}, η ∈ {0, 0.1}), and from both starts, the twisted three-strand ring has no finite-size minimum. No run pauses at any radius while linked. **The §6 condition is met.** Option 4 was opened early; this makes its opening valid after the fact.
@@ -29,5 +31,6 @@ Can a closed loop of the three-strand composite vortex (three U(1) phases, one g
 - **Untested alternatives.**
   - **Route B:** non-abelian U(3) vortices, where the thirds are exact by group structure. This was step 1's recommended target.
   - **A four-derivative stabilizer** (Skyrme/Faddeev type). This is excluded by A2 and would need a new pre-registration with an Eddington argument.
+- **Chiral loop.** The chiral route's loop test is pre-registered in `PREREG_chiral_loop.md`: relative-phase sector, η = 0.1, |γ| ≤ 0.3, with a ±γ parity control. It has not been run. A unit model that would fix γ (the torus-dual picture) does not exist yet. Until it does, γ is a scanned parameter.
 
 No particle identification is made or implied anywhere in E9.

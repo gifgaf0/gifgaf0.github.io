@@ -1,0 +1,41 @@
+python 3.13.18, numpy 2.5.3, scipy 1.18.1
+
+== 1. gradient check of the full functional
+gl3.check_grad (gamma absent, reference):            2.0925355138465372e-07
+gl3-style check, GL3Chiral gamma = 0.3:               2.294629692229299e-07
+gl3-style check, GL3Chiral gamma = -0.3:              2.838242027881621e-07
+5-point stencil (step 1e-3), gamma = +0.3, 400 random components: worst |fd-g|/|g| over the 381 with g != 0 = 5.417e-07; 19 have g == 0 exactly (unused link slices / no dependence), max |fd| there = 3.8e-11
+5-point stencil (step 1e-3), gamma = -0.3, 400 random components: worst |fd-g|/|g| over the 381 with g != 0 = 8.110e-09; 19 have g == 0 exactly (unused link slices / no dependence), max |fd| there = 3.8e-11
+chiral term alone, 5-point, N = 7, 400 components: worst relative error 1.364e-09
+
+== 2. reality and gauge invariance (random states)
+seed 100: |Im|/|Re| = 6.75e-17; |Re C - E_chi(code)|/|E_chi| = 1.35e-16; |sum density - E_chi|/|E_chi| = 1.35e-16; gauge: chiral rel change 0.00e+00, total (gamma 0.3) rel change 1.30e-16
+seed 101: |Im|/|Re| = 1.15e-16; |Re C - E_chi(code)|/|E_chi| = 2.30e-16; |sum density - E_chi|/|E_chi| = 3.44e-16; gauge: chiral rel change 0.00e+00, total (gamma 0.3) rel change 1.27e-16
+seed 102: |Im|/|Re| = 2.76e-16; |Re C - E_chi(code)|/|E_chi| = 4.00e-15; |sum density - E_chi|/|E_chi| = 3.17e-15; gauge: chiral rel change 3.03e-15, total (gamma 0.3) rel change 0.00e+00
+seed 103: |Im|/|Re| = 1.74e-16; |Re C - E_chi(code)|/|E_chi| = 6.96e-16; |sum density - E_chi|/|E_chi| = 1.04e-15; gauge: chiral rel change 6.96e-16, total (gamma 0.3) rel change 1.36e-16
+seed 104: |Im|/|Re| = 6.31e-16; |Re C - E_chi(code)|/|E_chi| = 6.31e-16; |sum density - E_chi|/|E_chi| = 3.15e-16; gauge: chiral rel change 1.26e-15, total (gamma 0.3) rel change 0.00e+00
+
+== 3. parity (inversion x -> -x, psi -> -psi(-x), A -> -A(-x) as vectors; N odd, grid symmetric about 0)
+seed 200: E_chi(P state)/E_chi(state) = np.float64(-0.9999999999999996); |E_+g(P state) - E_-g(state)|/|E| = 0.00e+00
+seed 201: E_chi(P state)/E_chi(state) = np.float64(-1.0); |E_+g(P state) - E_-g(state)|/|E| = 0.00e+00
+seed 202: E_chi(P state)/E_chi(state) = np.float64(-0.9999999999999997); |E_+g(P state) - E_-g(state)|/|E| = 1.29e-16
+
+== gamma = 0: GL3Chiral.energy_grad vs GL3.energy_grad (bitwise)
+random state N = 9: E equal True ; gradient array_equal True
+start B, 65^3: E equal True ; gradient array_equal True
+
+== starts at 65^3, R0 = 6
+[{'nseg': [96, 96, 96], 'Lk12': -1.0, 'Lk13': -1.0, 'Lk23': 0.0}, {'nseg': [114, 96, 96], 'Lk12': -1.0000000000000004, 'Lk13': -1.0000000000000004, 'Lk23': 0.0}]
+start A: E_chi at iteration 0, gamma = +0.1: -1.106687e-04  (gamma = -0.1: +1.106687e-04)
+start A: E_chi at iteration 0, gamma = +0.2: -2.213374e-04  (gamma = -0.2: +2.213374e-04)
+start A: E_chi at iteration 0, gamma = +0.3: -3.320061e-04  (gamma = -0.3: +3.320061e-04)
+start B: E_chi at iteration 0, gamma = +0.1: -2.287891e-04  (gamma = -0.1: +2.287891e-04)
+start B: E_chi at iteration 0, gamma = +0.2: -4.575783e-04  (gamma = -0.2: +4.575783e-04)
+start B: E_chi at iteration 0, gamma = +0.3: -6.863674e-04  (gamma = -0.3: +6.863674e-04)
+
+== 1D sign convention: chiral1d.Chain (n = z, P = 10, M = 20, h = 0.5) vs GL3Chiral on a 41^3 slab
+director helix           gamma = +0.3: chiral1d chiral/length = -2.03951216e-01 (link -2.0395e-01, A_perp.S +0.0000e+00); gl3_chiral density (interior, one period) = -2.03951216e-01; rel. diff 0.00e+00
+director helix           gamma = -0.3: chiral1d chiral/length = +2.03951216e-01 (link +2.0395e-01, A_perp.S -0.0000e+00); gl3_chiral density (interior, one period) = +2.03951216e-01; rel. diff 0.00e+00
+   continuum value for the helix: -gamma f^2 q = -2.073451e-01 (gamma = 0.3); lattice -gamma f^2 sin(qh)/h = -2.039512e-01
+complex texture with A   gamma = +0.3: chiral1d chiral/length = +4.97581999e-02 (link +1.7843e-02, A_perp.S +3.1915e-02); gl3_chiral density (interior, one period) = +4.97522480e-02; rel. diff 1.20e-04
+complex texture with A   gamma = -0.3: chiral1d chiral/length = -4.97581999e-02 (link -1.7843e-02, A_perp.S -3.1915e-02); gl3_chiral density (interior, one period) = -4.97522480e-02; rel. diff 1.20e-04

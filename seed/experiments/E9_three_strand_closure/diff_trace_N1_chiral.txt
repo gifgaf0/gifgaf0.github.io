@@ -1,0 +1,65 @@
+--- trace_N1.py	2026-11-01 03:49:31.612523654 +0000
++++ trace_N1_chiral.py	2026-11-01 03:52:54.359600272 +0000
+@@ -1,19 +1,24 @@
+ """Diagnostic re-run of run_N1.py with fine-grained history. Same model, same start, same minimizer call
+ (L-BFGS-B is deterministic, so the trajectory is the one run_N1.py follows); only the callback differs.
+-usage: python3 trace_N1.py START N R0 MAXITER EVERY
++usage: python3 trace_N1_chiral.py START N R0 MAXITER EVERY GAMMA [SAVEDIR]
++(trace_N1_chiral.py: copy of trace_N1.py using gl3_chiral.GL3Chiral with gamma as an argument, plus the
++PREREG_chiral_loop.md §4 diagnostics: energy split, <|S|/|psi|^2> weighted by |D psi|^2, chiral energy within
++distance 3 of strand 1's line, virial residual.)
+ Records every EVERY iterations: energy above vacuum, composite ring radius, strand 1 loop geometry,
+ linking number of strand 1's vortex lines with strand 2's and strand 3's (linking.py), and the closest
+ approach of any vortex line to the box faces. Prints no verdict.
+ """
+ import numpy as np, json, sys, time
+-from gl3 import GL3
++from gl3_chiral import GL3Chiral, S_field
++from scipy.spatial import cKDTree
+ from linking import vortex_segments, linking
+ start, N, R0, maxiter, every = sys.argv[1], int(sys.argv[2]), float(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5])
+-g = GL3(N=N, h=0.5, eta=0.1)
++gamma = float(sys.argv[6])
++g = GL3Chiral(N=N, h=0.5, eta=0.1, gamma=gamma)
+ from starts import start_fields   # Amendment B: corrected starts
+ psi = start_fields(g, start, R0); A = np.zeros((3, N, N, N))
+ half = (N // 2) * g.h; ax0 = -half
+-tag = f'trace_N1_{start}_N{N}_R{R0:g}'
++tag = f'trace_N1_chiral_{start}_N{N}_R{R0:g}_g{gamma:+g}'
+ hist = []; t0 = time.time(); it = [0]
+ 
+ def diag(v):
+@@ -45,10 +50,24 @@
+         d['gap12_min'] = float(dd.min()); d['gap12_mean'] = float(dd.mean())
+     d['Lk12'] = float(linking(*s[0], *s[1])) if len(mid[0]) and len(mid[1]) else 0.0
+     d['Lk13'] = float(linking(*s[0], *s[2])) if len(mid[0]) and len(mid[2]) else 0.0
+-    d['R23_gl3'] = g.core_radius(p[1]); d['t'] = time.time() - t0
++    d['R23_gl3'] = g.core_radius(p[1])
++    # PREREG_chiral_loop.md §4 diagnostics
++    sp, w = g.split(p, a); d.update(sp)
++    rho = np.sum(np.abs(p) ** 2, axis=0); Sn = np.linalg.norm(S_field(p), axis=0)
++    ok = rho > 1e-12
++    d['S_rho_wgrad'] = float(np.sum(w[ok] * Sn[ok] / rho[ok]) / np.sum(w[ok])) if np.sum(w[ok]) > 0 else None
++    if len(mid[0]):
++        dist, _ = cKDTree(mid[0]).query(np.stack([g.x.ravel(), g.y.ravel(), g.z.ravel()], -1))
++        d['E_chi_near1'] = float(np.sum(g.chiral_density(p, a).ravel()[dist <= 3.0]))
++    else:
++        d['E_chi_near1'] = None
++    num = sp['E_grad'] - sp['E_mag'] + 2 * sp['E_chi'] + 3 * sp['E_V']
++    den = sp['E_grad'] + sp['E_mag'] + 2 * abs(sp['E_chi']) + 3 * sp['E_V']
++    d['virial'] = float(num / den) if den != 0 else None
++    d['t'] = time.time() - t0
+     return d
+ 
+-save = sys.argv[6] if len(sys.argv) > 6 else None
++save = sys.argv[7] if len(sys.argv) > 7 else None
+ def cb(v):
+     it[0] += 1
+     if save and it[0] % every == 0 and it[0] <= 60:
+@@ -59,5 +78,5 @@
+ d0 = diag(g.pack(psi, A)); hist.append(d0); print(json.dumps(d0), flush=True)
+ psi, A, r = g.minimize(psi, A, maxiter=maxiter, gtol=1e-5, callback=cb)
+ final = diag(g.pack(psi, A)); final.update(converged=bool(r.success), msg=str(r.message), iters=int(r.nit))
+-json.dump(dict(start=start, N=N, R0=R0, every=every, history=hist, final=final), open(f'{tag}.json', 'w'), indent=1)
++json.dump(dict(start=start, N=N, R0=R0, gamma=gamma, every=every, history=hist, final=final), open(f'{tag}.json', 'w'), indent=1)
+ print('FINAL', json.dumps(final))

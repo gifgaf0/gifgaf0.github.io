@@ -7,3 +7,4 @@ orig lam0.8 (0.25, 30): E=26.351340631385 rel dE vs b3_results 0.0e+00
 [V3a_lam0.9] k=0.20: cap reached (in window) at q=40.00 (omega/m=0.9740, leak=3.60e-09), 11141 s
 [V3a_lam0.9] k=0.30: closed at q=29.40 (omega/m=1.0000, leak=8.99e-10), 11185 s
 [V3a_lam0.9] k=0.25: cap reached (in window) at q=40.00 (omega/m=0.9881, leak=3.69e-09), 14899 s
+[V3a_lam0.9] k=0.40: closed at q=14.90 (omega/m=1.0004, leak=7.25e-14), 5528 s

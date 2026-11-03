@@ -4,3 +4,5 @@ orig lam0.8 (0.10, 30): E=25.339068303444 rel dE vs b3_results 0.0e+00
 orig lam0.8 (0.15, 30): E=25.584011234577 rel dE vs b3_results 0.0e+00
 orig lam0.8 (0.20, 30): E=25.922734393082 rel dE vs b3_results 0.0e+00
 orig lam0.8 (0.25, 30): E=26.351340631385 rel dE vs b3_results 0.0e+00
+[V3a_lam0.9] k=0.20: cap reached (in window) at q=40.00 (omega/m=0.9740, leak=3.60e-09), 11141 s
+[V3a_lam0.9] k=0.30: closed at q=29.40 (omega/m=1.0000, leak=8.99e-10), 11185 s

@@ -7,3 +7,4 @@ row0 j=80 E=10.220865648211 rel dE vs orig 0.0e+00
 row0 j=100 E=11.861936938933 rel dE vs orig 0.0e+00
 row0 j=120 E=13.586667843300 rel dE vs orig 0.0e+00
 row0 j=140 E=15.363638312400 rel dE vs orig 0.0e+00
+row0 j=160 E=17.174880476576 rel dE vs orig 0.0e+00

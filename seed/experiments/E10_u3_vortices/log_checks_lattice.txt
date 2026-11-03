@@ -1,0 +1,6 @@
+gradient check (static T), L=12, h=0.5, 40 random coordinates, 5-point FD step 1e-4: worst rel err 9.81e-09
+gradient check (B3 functional k=0.3 q=1.7), L=12, h=0.5, 40 random coordinates, 5-point FD step 1e-4: worst rel err 1.80e-07
+(control: transforming H only changes T to 1988.019407)
+gauge invariance (smooth local U(3), |theta| <= 0.7): T 1982.257189740777 -> 1982.257189740777 (rel 0.0e+00); I 27.535329079701 -> 27.535329079701 (rel 1.3e-16); link round trip max|U - exp(ihW)| 1.8e-15
+global SU(3)_C+F (generic V): T 1982.257189740777 -> 1982.257189740777 (rel 0.0e+00); I with G rotated too: 27.535329079701 (rel 1.2e-15); I with G fixed (not a symmetry): 26.255136
+global (V commuting with G): I 27.535329079701 -> 27.535329079701 (rel 2.6e-16); T 1982.257189740777

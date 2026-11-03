@@ -1,0 +1,35 @@
+Python 3.13.18, NumPy 2.5.3, SciPy 1.18.1, 4 cores
+outer gradient check (radial, lam=1, k=0.3, q=1.7, 40 coords incl. alpha, 5-point FD step 1e-4): worst rel err 5.76e-08
+outer gradient check (radial, lam=0.8, k=0, q=2.5): worst rel err 8.46e-08
+[lam1.2] k=0.00: in-window q up to 12.8, closed at q=12.90 (omega/m=0.9961, leak=1.01e-02), 2382 s
+[lam0.8] k=0.00: in-window q up to 30.0, closed at q=30.00 (omega/m=0.9438, leak=4.27e-04), 2524 s
+[lam1] k=0.00: in-window q up to 30.0, closed at q=30.00 (omega/m=0.9448, leak=9.10e-05), 3430 s
+[lam1.2] k=0.05: in-window q up to 12.9, closed at q=13.00 (omega/m=0.9977, leak=1.09e-02), 3451 s
+[lam0.8] k=0.05: in-window q up to 30.0, closed at q=30.00 (omega/m=0.9459, leak=4.25e-04), 3918 s
+[lam1.2] k=0.10: in-window q up to 12.700000000000001, closed at q=12.80 (omega/m=1.0003, leak=8.50e-03), 4918 s
+[lam1] k=0.05: in-window q up to 30.0, closed at q=30.00 (omega/m=0.9461, leak=9.08e-05), 5009 s
+[lam0.8] k=0.10: in-window q up to 30.0, closed at q=30.00 (omega/m=0.9519, leak=4.19e-04), 5818 s
+[lam0.8] k=0.15: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5819 s
+[lam0.8] k=0.20: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5819 s
+[lam0.8] k=0.25: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5819 s
+[lam0.8] k=0.30: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5819 s
+[lam0.8] k=0.35: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5819 s
+[lam0.8] k=0.40: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5819 s
+[lam0.8] k=0.45: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5819 s
+[lam0.8] k=0.50: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5819 s
+[lam0.8] k=0.55: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5819 s
+[lam0.8] k=0.60: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5819 s
+[lam0.8] k=0.65: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5819 s
+[lam0.8] k=0.70: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5819 s
+[lam0.8] k=0.75: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5819 s
+[lam0.8] k=0.80: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5820 s
+[lam0.8] k=0.85: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5820 s
+[lam0.8] k=0.90: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5820 s
+[lam0.8] k=0.95: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5820 s
+[lam0.8] k=1.00: in-window q up to None, closed at q=0.00 (omega/m=0.0000, leak=1.46e-01), 5820 s
+[lam0.8] Q_CAP reached at k=0.00
+[lam0.8] Q_CAP reached at k=0.05
+[lam0.8] Q_CAP reached at k=0.10
+[lam0.8] NOT CONVERGED k=0.95 q=0.00: ABNORMAL:  nit=0 grad_max=5.21e-05
+[lam0.8] NOT CONVERGED k=1.00 q=0.00: ABNORMAL:  nit=0 grad_max=5.77e-05
+[lam0.8] 921 solves, 903 in window, sign changes 0, verdict NONE, 5821 s

@@ -11,3 +11,6 @@ orig lam0.8 (0.25, 30): E=26.351340631385 rel dE vs b3_results 0.0e+00
 [V3a_lam0.9] k=0.35: closed at q=19.00 (omega/m=1.0001, leak=1.87e-11), 7238 s
 [V3a_lam0.9] k=0.45: closed at q=12.50 (omega/m=1.0009, leak=1.11e-13), 4424 s
 [V3a_lam0.9] k=0.50: closed at q=10.90 (omega/m=1.0016, leak=6.09e-14), 3662 s
+[V3a_lam1.1] k=0.20: closed at q=15.20 (omega/m=1.0001, leak=1.21e-07), 7475 s
+[V3a_lam1.1] k=0.25: closed at q=14.10 (omega/m=1.0008, leak=7.47e-09), 6571 s
+[V3a_lam1.1] k=0.30: closed at q=13.00 (omega/m=1.0006, leak=3.42e-10), 5841 s

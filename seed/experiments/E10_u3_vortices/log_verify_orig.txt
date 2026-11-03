@@ -8,3 +8,9 @@ row0 j=100 E=11.861936938933 rel dE vs orig 0.0e+00
 row0 j=120 E=13.586667843300 rel dE vs orig 0.0e+00
 row0 j=140 E=15.363638312400 rel dE vs orig 0.0e+00
 row0 j=160 E=17.174880476576 rel dE vs orig 0.0e+00
+row0 j=180 E=19.009580675288 rel dE vs orig 0.0e+00
+row0 j=200 E=20.860892852161 rel dE vs orig 0.0e+00
+row0 j=220 E=22.724281963901 rel dE vs orig 0.0e+00
+row0 j=240 E=24.596623973249 rel dE vs orig 0.0e+00
+row0 j=260 E=26.475693786578 rel dE vs orig 0.0e+00
+row0 j=280 E=28.359860902040 rel dE vs orig 0.0e+00

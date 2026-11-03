@@ -32,15 +32,32 @@ def radial(lam, N):
     return R, res, o, h, a
 
 
-def lattice_solve(lam, N, hprof, aprof, rgrid, L, h):
+CKPT = '/tmp/claude-0/ckpt'
+
+
+def lattice_solve(lam, N, hprof, aprof, rgrid, L, h, ckpt=None):
+    """ckpt: checkpoint name (used only by the resumed convergence runs after container restarts): x is saved
+    every 5 iterations and a restarted solve continues from it (L-BFGS memory is lost; same minimum)."""
     Lt = Lattice2D(lam, L=L, h=h)
     v0 = Lt.from_radial(hprof, aprof, rgrid, N)
     t = time.time()
-    res = minimize(Lt.T_fg, v0, jac=True, method='L-BFGS-B', options=OPTS2D)
+    cb = None; restarts = 0
+    if ckpt:
+        os.makedirs(CKPT, exist_ok=True); f = os.path.join(CKPT, ckpt + '.npy'); fm = os.path.join(CKPT, ckpt + '.meta')
+        if os.path.exists(f):
+            v0 = np.load(f); restarts = int(open(fm).read()) + 1 if os.path.exists(fm) else 1
+            open(fm, 'w').write(str(restarts))
+        it = [0]
+
+        def cb(x):
+            it[0] += 1
+            if it[0] % 5 == 0:
+                np.save(f + '.tmp.npy', x); os.replace(f + '.tmp.npy', f)
+    res = minimize(Lt.T_fg, v0, jac=True, method='L-BFGS-B', options=OPTS2D, callback=cb)
     o = Lt.observables(res.x)
     o.update(success=bool(res.success), message=str(res.message), nit=int(res.nit),
              grad_max=float(np.max(np.abs(res.jac))), seconds=time.time() - t, L=L, h=h, half_width=L * h / 2,
-             T_over_2pi=o['T'] / (2 * np.pi))
+             T_over_2pi=o['T'] / (2 * np.pi), checkpoint_restarts=restarts)
     return Lt, res.x, o
 
 
@@ -99,13 +116,15 @@ def convergence_resume():
     REPORT §7).  Starting profile: the same radial lam = 1 elementary solve as the main run (deterministic)."""
     out = json.load(open('b2_results.json'))
     R, _, _, hp, ap = radial(1.0, (1, 0, 0))
-    for (L, h) in ((160, 0.25), (640, 0.0625), (480, 0.125)):
+    # h = 0.0625 (L = 640) was started twice and dropped (about 5 L-BFGS iterations per 30 min under the B3 load,
+    # killed by container restarts; REPORT §7).  Halving h once is covered by h = 0.25 -> 0.125.
+    for (L, h) in ((160, 0.25), (480, 0.125)):
         key = f'L{L}_h{h}'
         if key in out['convergence']:
             continue
-        Lt, v, ol = lattice_solve(1.0, (1, 0, 0), hp, ap, R.r, L, h)
+        Lt, v, ol = lattice_solve(1.0, (1, 0, 0), hp, ap, R.r, L, h, ckpt=key)
         ol['inertia_2d'] = inertia_2d(Lt, v)
-        ol['note'] = 'computed in the resumed run after the container restart'
+        ol['note'] = 'computed in the resumed run after container restarts (checkpointed)'
         out['convergence'][key] = ol
         print(f'convergence lam=1: L={L} h={h} half-width={L * h / 2}: T/2pi={ol["T_over_2pi"]:.7f} ({ol["message"]}, nit={ol["nit"]}, '
               f'{ol["seconds"]:.0f} s); I={ol["inertia_2d"]["I_extrapolated"]:.6f}', flush=True)

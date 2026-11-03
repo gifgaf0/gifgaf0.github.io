@@ -1,0 +1,14 @@
+{
+ "E_reference": 7.096108400820862,
+ "asym_reference": 4.5821935135137437e-10,
+ "E_perturbed_start": 8441.598444131181,
+ "asym_start": 0.5001565225517542,
+ "E_final": 7.0961084009291495,
+ "asym_final": 0.00239133300331551,
+ "rel_dE": 1.5260237518077702e-11,
+ "I_final": 3.3708677225831645,
+ "success": false,
+ "message": "ABNORMAL: ",
+ "nit": 158,
+ "seconds": 2884.757658481598
+}

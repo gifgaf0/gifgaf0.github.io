@@ -535,6 +535,56 @@
     "T_rotated": 6.27402859786735,
     "r_charge_rms": 1.4156769261514637
    }
+  },
+  "L480_h0.125": {
+   "T": 6.280909948727684,
+   "T_kin": 3.6720149789339596,
+   "T_mag": 1.3055870572380286,
+   "T_pot": 1.3033079125556957,
+   "flux_TrB": -6.283185279089429,
+   "success": true,
+   "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "nit": 89,
+   "grad_max": 1.6176199293895684e-07,
+   "seconds": 1050.651296377182,
+   "L": 480,
+   "h": 0.125,
+   "half_width": 30.0,
+   "T_over_2pi": 0.9996378654550738,
+   "checkpoint_restarts": 0,
+   "inertia_2d": {
+    "rows": [
+     {
+      "omega": 0.01,
+      "E_rot": 0.0003139315402016686,
+      "E_rot_over_omega2": 3.1393154020166856,
+      "I": 0.9992751283109524,
+      "cg_iters": 279,
+      "rel_res": 9.281130137755419e-13
+     },
+     {
+      "omega": 0.02,
+      "E_rot": 0.0012557261608066744,
+      "E_rot_over_omega2": 3.1393154020166856,
+      "I": 0.9992751283109524,
+      "cg_iters": 279,
+      "rel_res": 9.281130137755419e-13
+     },
+     {
+      "omega": 0.05,
+      "E_rot": 0.007848288505041715,
+      "E_rot_over_omega2": 3.1393154020166856,
+      "I": 0.9992751283109523,
+      "cg_iters": 279,
+      "rel_res": 9.281130143848357e-13
+     }
+    ],
+    "I_extrapolated": 0.9992751283109526,
+    "slope_in_omega2": 8.348779545849584e-15,
+    "T_rotated": 6.280909955160199,
+    "r_charge_rms": 1.4145833173993918
+   },
+   "note": "computed in the resumed run after container restarts (checkpointed)"
   }
  }
 }

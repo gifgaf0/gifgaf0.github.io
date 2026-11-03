@@ -34,12 +34,26 @@ for dr in (0.1, 0.05):
     if dr == 0.05:
         h, a, _ = R.profiles(r1.x); prof = (h, a, R.r)
 
+prev = json.load(open('b3_compare2d.json')) if os.path.exists('b3_compare2d.json') else {}
 for (L, hh) in ((160, 0.25), (320, 0.125)):
+    if f'h={hh}' in prev.get('lattice', {}):
+        out['lattice'][f'h={hh}'] = prev['lattice'][f'h={hh}']; print('reusing', L, hh, flush=True); continue
     t = time.time()
     Lt = Lattice2D(LAM, L=L, h=hh)
     v0 = Lt.from_radial(prof[0], prof[1], prof[2], (1, 0, 0), V=rot12(ALPHA))
     fg, st = Lt.make_fg(K, Q)
-    res = minimize(fg, v0, jac=True, method='L-BFGS-B', options=OPTS2D)
+    # checkpointing against container restarts (x every 5 iterations; a restart continues from it)
+    os.makedirs('/tmp/claude-0/ckpt', exist_ok=True); ck = f'/tmp/claude-0/ckpt/cmp_L{L}.npy'
+    restarts = 0
+    if os.path.exists(ck):
+        v0 = np.load(ck); restarts = 1
+    it = [0]
+
+    def cb(x):
+        it[0] += 1
+        if it[0] % 5 == 0:
+            np.save(ck + '.tmp.npy', x); os.replace(ck + '.tmp.npy', ck)
+    res = minimize(fg, v0, jac=True, method='L-BFGS-B', options=OPTS2D, callback=cb)
     H, Wp = Lt.unpack(res.x)
     U, *_ = Lt.links(Wp)
     Ek, Eb, Ev, *_ = Lt.T_parts(H, U)
@@ -50,7 +64,7 @@ for (L, hh) in ((160, 0.25), (320, 0.125)):
     dh = np.abs(np.linalg.det(H)); asym = float(np.max(np.abs(dh - np.rot90(dh))))
     o = dict(E=float(E), T=float(T), I=float(I), omega=float(Q / (2 * I)), success=bool(res.success), message=str(res.message),
              nit=int(res.nit), grad_max=float(np.max(np.abs(res.jac))), cg=info, seconds=time.time() - t,
-             max_abs_detH_minus_rot90=asym, L=L, h=hh)
+             max_abs_detH_minus_rot90=asym, L=L, h=hh, resumed_from_checkpoint=restarts)
     out['lattice'][f'h={hh}'] = o
     print(f'2D L={L} h={hh}: E={E:.7f} T={T:.7f} I={I:.7f} omega={o["omega"]:.6f} ({o["message"]}, nit={o["nit"]}, grad_max={o["grad_max"]:.1e}, '
           f'{o["seconds"]:.0f} s); max|det H - rot90| = {asym:.1e}', flush=True)

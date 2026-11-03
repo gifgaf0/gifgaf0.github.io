@@ -8,3 +8,5 @@
 [V1c] (0.35,24.8) E=26.914160516 I=12.40112 w/m=0.99991 leak=1.7e-13 rq=3.3766 nit=3564 CONVERGENCE: RELATIVE REDUCTIO 598s
 [V1c] (0.30,24.9) E=26.606359596 I=12.64789 w/m=0.98435 leak=1.5e-13 rq=3.4101 nit=4037 CONVERGENCE: RELATIVE REDUCTIO 642s
 [V1c] solve done
+[V1c] 8 points, 8 in window; sign changes persisting: 1/1; A.4(1)-type pass: 1
+   66 central [[0.25, 24.8], [0.30000000000000004, 24.8]] Tcal [0.49098152849935417, -0.16535313052473555] persists True central True f2 6.915607192097026 n 3 

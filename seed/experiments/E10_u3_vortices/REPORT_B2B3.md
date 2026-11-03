@@ -392,6 +392,6 @@ No parameter outside the PREREG was used. `PREREG_B2B3.md`, `prior_address_route
 ## 8. Files
 
 - **Code:** `u3common.py`, `u3lattice.py` (2D instrument), `u3radial.py` (radial reduction), `checks_lattice.py`, `b2_run.py`, `b3_scan.py` (run 1, and the shared solve/analysis functions), `b3_pipeline.py` (run 2), `b3_analyse_par.py`, `b3_compare2d.py`, `b3_perturb2d.py`, `b2b3_tables.py`, `resume_all.sh`.
-- **Results:** `b2_results.json`, `b3_results.json` (every B3 solve; per-λ summaries with all sign changes), `b3_compare2d.json`, `b3_perturb2d.json`, `checks_lattice.json`, `b3_gradcheck.json`, `b3_raw_run1_lam0.8.json`.
+- **Results:** `b2_results.json`, `b3_results.json` (every B3 solve; per-λ summaries with all sign changes), `b3_compare2d.json`, `b3_perturb2d.json`, `checks_lattice.json`, `b3_gradcheck.json`, `b3_raw_run1_lam0.8.json` and `.npz` (run-1 observables and fields for the imported λ = 0.8 rows, 11 MB).
 - **Logs:** `log_checks_lattice.txt`, `log_b2.txt`, `log_b3_run1.txt`, `log_b3_run2.txt`, `log_b3_analysis.txt`, `log_b3_analysis_serial_aborted.txt`, `log_b3_compare2d.txt`, `log_b3_perturb2d.txt`, `log_tables.txt`.
 - No field profiles are committed. They are reproducible by re-running the scripts, which are deterministic.

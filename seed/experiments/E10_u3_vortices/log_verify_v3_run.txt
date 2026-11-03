@@ -1,0 +1,6 @@
+orig lam0.8 (0.00, 30): E=25.141254369187 rel dE vs b3_results 0.0e+00
+orig lam0.8 (0.05, 30): E=25.190865456786 rel dE vs b3_results 0.0e+00
+orig lam0.8 (0.10, 30): E=25.339068303444 rel dE vs b3_results 0.0e+00
+orig lam0.8 (0.15, 30): E=25.584011234577 rel dE vs b3_results 0.0e+00
+orig lam0.8 (0.20, 30): E=25.922734393082 rel dE vs b3_results 0.0e+00
+orig lam0.8 (0.25, 30): E=26.351340631385 rel dE vs b3_results 0.0e+00

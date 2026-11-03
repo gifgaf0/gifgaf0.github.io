@@ -1,0 +1,5 @@
+465 original points to regenerate (row 0 up to j=292; 24 columns)
+row0 j=0 E=6.284638692057 rel dE vs orig 0.0e+00
+row0 j=20 E=6.596292546799 rel dE vs orig 0.0e+00
+row0 j=40 E=7.461258652145 rel dE vs orig 0.0e+00
+row0 j=60 E=8.720370054271 rel dE vs orig 0.0e+00

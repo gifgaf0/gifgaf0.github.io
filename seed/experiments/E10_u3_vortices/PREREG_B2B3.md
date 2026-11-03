@@ -95,3 +95,80 @@ with W_x, W_y similarly rotated, plus the dressings W_z and W_t, which are solve
 - **Fixed:** λ values, G, the grids, the window tests and the thin-ring rule. No λ outside {0.8, 1.0, 1.2}. No other rotation generator. G = diag(0, 1, 0) is one representative U(1) inside U(3)_{C+F}, chosen now; other U(1)s (e.g. diag(1, −1, 0)) would be a new pre-registration.
 - **Model units only.** No particle identification. The SU(3)_{C+F} charge is not electric charge.
 - **Classical only.** The CP² worldsheet gap is a quantum effect and is outside this test (B1 §2).
+
+## 6. Amendment A (November 3, 2026, after `REPORT_B2B3.md`, before any verification run or B4)
+
+**Label: post-hoc.** Written after reading `REPORT_B2B3.md` (head 4edfd90). It adds verification and robustness checks only. It changes no B2/B3 verdict: λ = 1 stays WINDOW under the literal §3 rule. What it decides is whether that WINDOW is **confirmed**, which is the condition for writing a B4 pre-registration.
+
+### A.1 Clarifications flagged by the report
+
+- **Two I's.** §3's I (the inertia in q²/(4I)) equals π × the C5 I. No verdict depends on this, because 𝒯 was computed from ℰ directly. From here on: **I_C5** is the dimensionless worldsheet factor (1 at BPS), and **I_q** = π·I_C5·(4 sin²α cos²α) is the inertia in ℰ.
+- **n and Q along the R ray.** The sign of d²E/dR² does not depend on n (report, ambiguity (b)). For anything that uses R_eq, fix n = the smallest integer with R_eq/r_q ≥ 3, where R_eq = n/k* and r_q is the charge rms radius at the sign change. Then Q = 2πR_eq q*.
+
+### A.2 Why the WINDOW needs verifying (from the report)
+
+- ω*/m_bulk = 0.977–0.999: the window sits at the leak threshold.
+- 102 of 116 sign changes use one-sided k differences. Only 14 are central (k* = 0.287–0.300, q* = 23.5–24.8, ω*/m ≈ 0.981).
+- The margin is small. At the representative point (k, q) = (0.30, 24.0), 𝒯_fd/ℰ = −0.0024.
+- The radial scan used r_max = 20 with a Dirichlet edge (h(r_max) = 1). That could hold charge in near threshold.
+- The radial reduction was checked against 2D at ω ≈ 0.44 only.
+- It appears only at λ = 1, the fine-tuned BPS point.
+
+### A.3 Verification runs (fixed now)
+
+**Point set S.** The 14 central sign changes, plus four edge sign changes:
+- the lowest-ω* stable one (k* = 0.258, q* = 29.1),
+- the three with the largest k*.
+
+For each, recompute its two bracketing grid points and all the neighbours its 𝒯 stencil uses. Warm-start from the original solutions, padded with vacuum.
+
+| run | radial grid | purpose |
+|---|---|---|
+| V1a | r_max = 40, dr = 0.1 | box |
+| V1b | r_max = 40, dr = 0.05 | box + resolution; **this is the decisive run** |
+| V1c | r_max = 60, dr = 0.05, the single central sign change with the most negative 𝒯 bracket, only | box convergence |
+| V2 | 2D lattice, half-width 30, h = 0.125, α fixed at the radial solution's value, at the two bracketing grid points of the V1c sign change | radial reduction at the window |
+
+**Recorded for every recomputed point:** ℰ, T, I_q, ω/m, the leak fraction (band = within 4 of r_max), the charge rms radius, α, and 𝒯. For each sign change in S: whether the 𝒯 sign change persists, and d²E/dR² by direct solve.
+
+### A.4 Confirmation rule (fixed now)
+
+The λ = 1 WINDOW is **CONFIRMED** only if all of these hold:
+
+1. **In V1b**, at least one **central** sign change in S persists: opposite 𝒯 signs at its bracketing points, computed with central differences. It also has d²E/dR² > 0 by direct solve, a leak fraction < 1 %, and ω < m_bulk at both bracketing points.
+2. **In V1c**, the selected sign change persists, and its 𝒯 values change by less than |𝒯| itself (no sign flip).
+3. **In V2**, ℰ at both bracketing points agrees with V1b to within 1e-3 relative, and 𝒯 has the same sign at both.
+
+Otherwise the result is **NOT CONFIRMED**, and the reason is named: box, resolution, or reduction.
+
+**Descriptive trend to report.** Whether the charge rms radius and I_q grow with r_max at fixed (k, q). If they do, the charge is delocalizing into the bulk.
+
+### A.5 Robustness, post-hoc and descriptive only (cannot select a point)
+
+All on the V1a grid (r_max = 40, dr = 0.1):
+- **V3a.** λ ∈ {0.9, 1.1}, k ∈ {0.20, 0.25, …, 0.50}, q from 0 in steps of 0.1 until the window closes or q = 40.
+- **V3b.** λ = 0.8, k ∈ {0, 0.05, …, 0.25}, q extended from 30 to 60.
+- **Reported for each:** stable sign changes (count, k*, q*, ω*/m), or none.
+- **Classification:**
+  - **BPS-only** if no stable sign change at λ = 0.9 or 1.1.
+  - **Range** if there is one at both.
+  - **One-sided** otherwise.
+
+**Neither V3 run feeds into the A.4 confirmation rule or into any later selection.**
+
+### A.6 Predictions and consequences (written now)
+
+| | Prediction | Prior |
+|---|---|---|
+| A-P1 | CONFIRMED | about 40 % |
+| A-P2 | Charge rms radius and I_q change by < 5 % from r_max 20 to 40 at the 14 central points (the leak at (0.30, 24) is already 4 × 10⁻⁵) | about 70 % |
+| A-P3 | V3a: BPS-only | about 50 % |
+
+**What follows.**
+- **CONFIRMED.** A B4 pre-registration is written before any loop code. It fixes in advance: a selection rule among confirmed sign changes, n from A.1, and the passenger control (the cheapest charged bulk lump at the same Q, no string). The V3 classification is carried into B4's caveats.
+- **NOT CONFIRMED.** Route B's intrinsic vorton (B-i) closes at thin-ring level in this model, and the record says why (threshold, box, resolution or reduction). B4 is not run.
+
+### A.7 Eddington guard
+
+- No new λ is used for selection. λ = 0.9 and 1.1 are descriptive robustness only.
+- G, the window tests, the 𝒯 and d²E/dR² machinery, and the B2 calibration are unchanged. No retuning.

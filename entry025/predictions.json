@@ -1,0 +1,61 @@
+{
+ "C_generic": "0.505166168239435774",
+ "C_37a1": "0.505176718690935104335080720954",
+ "C_CM_t8": "1.0673509289505117596527363713",
+ "arms": {
+  "A37_64": {
+   "curve": "37a1",
+   "bits": 64,
+   "t": 1,
+   "rate": 0.011467299381379487,
+   "R3": 1.25,
+   "lag1_corr": 0.0,
+   "mean_primes_scanned_to_prime_order": 87.20449050312511
+  },
+  "B37_128": {
+   "curve": "37a1",
+   "bits": 128,
+   "t": 1,
+   "rate": 0.005713664096186497,
+   "R3": 1.25,
+   "lag1_corr": 0.0,
+   "mean_primes_scanned_to_prime_order": 175.01903912542488
+  },
+  "CCM_128": {
+   "curve": "cm",
+   "bits": 128,
+   "t": 8,
+   "rate": 0.012362743182443247,
+   "R3": 0.75,
+   "lag1_corr": 0.0,
+   "mean_primes_scanned_to_prime_order": 161.7763930290381
+  },
+  "DCM_256": {
+   "curve": "cm",
+   "bits": 256,
+   "t": 8,
+   "rate": 0.0060970869847909665,
+   "R3": 0.75,
+   "lag1_corr": 0.0,
+   "mean_primes_scanned_to_prime_order": 328.0254988962682
+  },
+  "DRY37_40": {
+   "curve": "37a1",
+   "bits": 40,
+   "t": 1,
+   "rate": 0.018425267226852737,
+   "R3": 1.25,
+   "lag1_corr": 0.0,
+   "mean_primes_scanned_to_prime_order": 54.27329697246472
+  },
+  "DRYCM_48": {
+   "curve": "cm",
+   "bits": 48,
+   "t": 8,
+   "rate": 0.03456055310929404,
+   "R3": 0.75,
+   "lag1_corr": 0.0,
+   "mean_primes_scanned_to_prime_order": 57.86944420927566
+  }
+ }
+}

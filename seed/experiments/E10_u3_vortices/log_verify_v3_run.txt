@@ -24,3 +24,5 @@ orig lam0.8 (0.25, 30): E=26.351340631385 rel dE vs b3_results 0.0e+00
 [V3b_lam0.8] k=0.10: cap reached (in window) at q=60.00 (omega/m=0.9569, leak=5.12e-08), 5255 s
 [V3b_lam0.8] k=0.15: cap reached (in window) at q=60.00 (omega/m=0.9671, leak=4.98e-08), 6148 s
 [V3b_lam0.8] k=0.20: cap reached (in window) at q=60.00 (omega/m=0.9812, leak=4.80e-08), 6554 s
+[V3b_lam0.8] k=0.25: cap reached (in window) at q=60.00 (omega/m=0.9991, leak=4.71e-08), 6927 s
+V3 run done

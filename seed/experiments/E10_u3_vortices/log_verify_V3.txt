@@ -1,0 +1,1 @@
+1062 direct solves on R rays

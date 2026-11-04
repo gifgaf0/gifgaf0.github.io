@@ -13,7 +13,7 @@ while true; do
     done
     git add -A b4_fields/ckpt32 2>/dev/null
   fi
-  git add b4_hist log_b4_*.txt b4_fields/*.npz b4_fields/straight 2>/dev/null
+  git add b4_hist log_b4_*.txt b4_fields/*.npz 2>/dev/null
   git reset -q b4_fields/*_ckpt.npz 2>/dev/null
   git commit -qm "E10 B4: WIP run state (auto)
 

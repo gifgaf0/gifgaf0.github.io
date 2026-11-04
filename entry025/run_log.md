@@ -15,3 +15,5 @@
   - checked: sha256(signature) == randomness.
 - Generation order: CCM_128, then DCM_256 (4 workers), then A37_64 and B37_128.
 - 2026-11-04T18:29Z: CCM_128 generated (40,000 runs × 10,001 primes, seed above, 4 workers, 16:22–18:29Z). analyze.py (manifest check passed): integrity failures 0; RATE z = +0.19, R3 z = −0.17, LAG1|C z = +0.45, all as predicted. Output: results/CCM_128.json. Raw runs: data/archive/CCM_128_runs.tar.part00–04 (cat parts | tar -x), per-file hashes in CCM_128_runs.sha256.
+- 2026-11-04T20:47Z: DCM_256 generated (10,000 runs × 10,001 primes, 18:29–20:47Z). analyze.py (manifest check passed): integrity failures 0; RATE z = −0.96, R3 z = +0.22, LAG1|C z = +0.63, all as predicted. Output: results/DCM_256.json. Raw runs: data/archive/DCM_256_runs.tar.part* (45 MB parts), per-file hashes in DCM_256_runs.sha256.
+- 2026-11-04T20:47Z: started A37_64 (4,000 × 1,001), then B37_128 (5,000 × 1,001), same seed, 4 workers.

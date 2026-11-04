@@ -9,3 +9,8 @@
   - analyze.py acfe74e6910541ae749cef3f5fde902fe9580f282318a1dfc21b9cca5b9ee098
 - 2026-11-04: freeze commit 83080267043625571c4890a7d5f3d06a9a683815 pushed to gifgaf0/gifgaf0.github.io (branch ccr-8b0a23fb-g0djgx) at 2026-11-04T05:34:50Z (pusher's clock, UTC). All five manifest hashes verified before commit.
 - Beacon named before publication: drand mainnet default chain (League of Entropy, 30 s period, genesis 1595431050). Push + 10 min = 05:44:50Z, so R = 6611336, published 2026-11-04T05:45:00Z. R and its time are to be confirmed against the chain's /info, and the randomness recorded, when fetched.
+- 2026-11-04T16:21:35Z: fetched from api.drand.sh. /info confirms the default chain: hash 8990e7a9aaed2ffed73dbd7092123d6f289930540d7651336225dc172e51b2ce, genesis 1595431050, period 30 s. Round R = 6611336, published 2026-11-04T05:45:00Z.
+  - randomness (SEED) 3ffa707eb1d3c2a115be7fa81c3af89618a7097e35632d140d8801224bda98da
+  - signature b69813ad83d458d1085a44b05777a1c58f5163b5383963e4cf0aa8246e5cc9415a0c3af039bcece9ccc1c437b3565bd0082fcf7fef1109523f0bf5fc859662df4e33f3cc9e00a38c875b1e686cba2215b70945c6ed9b47b2d1122613957dde41
+  - checked: sha256(signature) == randomness.
+- Generation order: CCM_128, then DCM_256 (4 workers), then A37_64 and B37_128.

@@ -1,3 +1,7 @@
 1062 direct solves on R rays
 === restarted with 4 workers after V2 finished Wed Nov  4 06:02:55 UTC 2026 (cached ray solves reused) ===
 1062 direct solves on R rays
+[V3a_lam0.9] 1674 solves, 1669 in window, sign changes 95, stable 76, min Tcal/E -0.0144 at {'k': 0.3, 'q': 29.3}
+[V3a_lam1.1] 864 solves, 857 in window, sign changes 0, stable 0, min Tcal/E 0.1095 at {'k': 0.5, 'q': 9.7}
+[V3b_lam0.8] 1806 solves, 1806 in window, sign changes 259, stable 227, min Tcal/E -0.0380 at {'k': 0.25, 'q': 60.0}
+classification (A.5): one-sided

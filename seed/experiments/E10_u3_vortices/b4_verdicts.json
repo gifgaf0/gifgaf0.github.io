@@ -1,0 +1,296 @@
+{
+ "label": "Exploration",
+ "prereg": "PREREG_B4.md",
+ "verdicts": {
+  "3": {
+   "n": 3,
+   "Q": 1626.532903959992,
+   "m_bulk_Q": 1626.532903959992,
+   "E_disp": 1589.911048583391,
+   "runs": {
+    "M3a": {
+     "cls": "ring",
+     "E": 1734.5049187263885,
+     "E_over_mQ": 1.0663816972306712,
+     "E_over_Edisp": 1.0909446288028695,
+     "R_f": 10.25,
+     "r_q": 3.5051108546797045,
+     "R_q": 11.291187085122756,
+     "tau": 0.9999999999999534,
+     "omega_over_mbulk": 0.9815656751840294,
+     "leak": 3.299422579330242e-05,
+     "iters": 2099,
+     "message": "ftol: relative decrease <= 1e-14 on 5 consecutive iterations",
+     "fine": {
+      "passes": true,
+      "dR_rel": 0.012195121951219523,
+      "dE_rel": 1.3069710237623156e-05,
+      "R_f": [
+       10.25,
+       10.375
+      ],
+      "E": [
+       1734.5049187263885,
+       1734.527588203082
+      ]
+     }
+    },
+    "M3b": {
+     "cls": "ring",
+     "E": 1734.5049179434839,
+     "E_over_mQ": 1.0663816967493378,
+     "E_over_Edisp": 1.0909446283104491,
+     "R_f": 10.25,
+     "r_q": 3.5051394222472383,
+     "R_q": 11.291182482809607,
+     "tau": 0.9999999999999809,
+     "omega_over_mbulk": 0.9815656579685134,
+     "leak": 3.304385000547828e-05,
+     "iters": 3210,
+     "message": "ftol: relative decrease <= 1e-14 on 5 consecutive iterations",
+     "fine": {
+      "passes": true,
+      "dR_rel": 0.012195121951219523,
+      "dE_rel": 1.3069245096586357e-05,
+      "R_f": [
+       10.25,
+       10.375
+      ],
+      "E": [
+       1734.5049179434839,
+       1734.5275866133777
+      ]
+     }
+    }
+   },
+   "conditions": {
+    "same_R_f_10pc": true,
+    "R_f_over_r_q_ge_2": true,
+    "tau_ge_0p5": true,
+    "omega_lt_m": true,
+    "leak_lt_1pc": true,
+    "fine_check": true,
+    "E_lt_min_mQ_Edisp": false
+   },
+   "verdict": "METASTABLE",
+   "string_not_required": true
+  },
+  "5": {
+   "n": 5,
+   "Q": 2710.8881732666537,
+   "m_bulk_Q": 2710.8881732666537,
+   "E_disp": 2621.4591069552475,
+   "runs": {
+    "M5a": {
+     "cls": "ring",
+     "E": 2888.6388079108283,
+     "E_over_mQ": 1.0655691505083307,
+     "E_over_Edisp": 1.1019202245980875,
+     "R_f": 17.25,
+     "r_q": 3.447005558693001,
+     "R_q": 17.923668828863047,
+     "tau": 0.9999999999999878,
+     "omega_over_mbulk": 0.9810357325017144,
+     "leak": 3.195684336099044e-05,
+     "iters": 2274,
+     "message": "ftol: relative decrease <= 1e-14 on 5 consecutive iterations",
+     "fine": {
+      "passes": true,
+      "dR_rel": 0.007246376811594235,
+      "dE_rel": 1.2469604642184606e-05,
+      "R_f": [
+       17.25,
+       17.375
+      ],
+      "E": [
+       2888.6388079108283,
+       2888.6748280947168
+      ]
+     }
+    },
+    "M5b": {
+     "cls": "ring",
+     "E": 2888.638807818271,
+     "E_over_mQ": 1.0655691504741878,
+     "E_over_Edisp": 1.10192022456278,
+     "R_f": 17.25,
+     "r_q": 3.446915149273842,
+     "R_q": 17.924343804999065,
+     "tau": 0.9999999999999999,
+     "omega_over_mbulk": 0.9810304129732724,
+     "leak": 3.194256115326634e-05,
+     "iters": 5452,
+     "message": "line search failed (after memory reset)",
+     "fine": {
+      "passes": true,
+      "dR_rel": 0.007246376811594235,
+      "dE_rel": 1.2469446912577453e-05,
+      "R_f": [
+       17.25,
+       17.375
+      ],
+      "E": [
+       2888.638807818271,
+       2888.6748275465343
+      ]
+     }
+    }
+   },
+   "conditions": {
+    "same_R_f_10pc": true,
+    "R_f_over_r_q_ge_2": true,
+    "tau_ge_0p5": true,
+    "omega_lt_m": true,
+    "leak_lt_1pc": true,
+    "fine_check": true,
+    "E_lt_min_mQ_Edisp": false
+   },
+   "verdict": "METASTABLE",
+   "string_not_required": true
+  },
+  "n_dependence": "same verdict at n = 3 and 5",
+  "carried_forward": "METASTABLE"
+ },
+ "controls": {
+  "C-a": {
+   "E": 2.703434603583778e-08,
+   "R_f": null,
+   "n_vortex_plaquettes": 0,
+   "tau": 0.9999999832789271,
+   "r_q": 9.736537686447255,
+   "R_q": 4.955778481547569,
+   "leak": 0.0,
+   "omega_over_mbulk": 0.0,
+   "I": 3.956626132446451e-09,
+   "iters": 1023,
+   "message": "ftol: relative decrease <= 1e-14 on 5 consecutive iterations",
+   "class": {
+    "cls": "collapse",
+    "mechanism": "plain shrinkage",
+    "collapse_iter": 350,
+    "tau_lt_0p1_iter": null,
+    "charge_loss_iter": null
+   }
+  },
+  "C-b": {
+   "E": 3.117999333013474e-07,
+   "R_f": null,
+   "n_vortex_plaquettes": 0,
+   "tau": -4.6863849401038635,
+   "r_q": 12.879997686068801,
+   "R_q": 12.370380521767647,
+   "leak": 0.0,
+   "omega_over_mbulk": 0.0,
+   "I": 1.7290067757242696e-09,
+   "iters": 2411,
+   "message": "ftol: relative decrease <= 1e-14 on 5 consecutive iterations",
+   "class": {
+    "cls": "collapse",
+    "mechanism": "plain shrinkage",
+    "collapse_iter": 750,
+    "tau_lt_0p1_iter": 1200,
+    "charge_loss_iter": null
+   }
+  },
+  "C-c": {
+   "E": 1589.9110489699515,
+   "R_f": 3.5,
+   "n_vortex_plaquettes": 1,
+   "tau": 0.9999999999999735,
+   "r_q": 4.973959954071069,
+   "R_q": 5.412963395449454,
+   "leak": 0.0001583123931215645,
+   "omega_over_mbulk": 0.9553145522806429,
+   "I": 851.3075091743003,
+   "iters": 2574,
+   "message": "ftol: relative decrease <= 1e-14 on 5 consecutive iterations",
+   "class": {
+    "cls": "collapse",
+    "mechanism": "plain shrinkage",
+    "collapse_iter": 250,
+    "tau_lt_0p1_iter": null,
+    "charge_loss_iter": null
+   }
+  },
+  "C-d": {
+   "E": 1589.911048583391,
+   "R_f": null,
+   "n_vortex_plaquettes": 0,
+   "tau": 0.9999999999999953,
+   "r_q": 4.973895859598307,
+   "R_q": 5.413011895416081,
+   "leak": 0.00015824945538035285,
+   "omega_over_mbulk": 0.9553146626852067,
+   "I": 851.3074107897178,
+   "iters": 1607,
+   "message": "line search failed (after memory reset)",
+   "m_bulk_Q": 1626.532903959992,
+   "E_over_mQ": 0.9774847128592108,
+   "localized_lump": true
+  },
+  "C-d5": {
+   "E": 2621.4591069552475,
+   "R_f": null,
+   "n_vortex_plaquettes": 0,
+   "tau": 0.999999997315273,
+   "r_q": 5.571363482828529,
+   "R_q": 6.214893235478639,
+   "leak": 0.00025124544871183606,
+   "omega_over_mbulk": 0.9481476841312023,
+   "I": 1429.5706347427663,
+   "iters": 1843,
+   "message": "ftol: relative decrease <= 1e-14 on 5 consecutive iterations",
+   "m_bulk_Q": 2710.8881732666537,
+   "E_over_mQ": 0.9670111562722106,
+   "localized_lump": true
+  }
+ },
+ "regression": {
+  "E_static": 866.3851169084344,
+  "E_twist": 68.50323233766024,
+  "E_kin": 246.45284956695144,
+  "E_mag": 20.188926769252948,
+  "E_pot": 599.7433405722301,
+  "E_twist_links": 14.040666679959793,
+  "E_twist_sites": 54.462565657700445,
+  "windings": [
+   {
+    "rho": 20.0,
+    "z": -0.125,
+    "w": 1
+   }
+  ],
+  "n_vortex_plaquettes": 1,
+  "R_f": 20.0,
+  "z_f": -0.125,
+  "I": 829.3372307728588,
+  "omega": 0.9806221423607301,
+  "omega_over_mbulk": 0.9806221423607301,
+  "R_q": 19.999784580981785,
+  "z_q": 3.156811375256316e-16,
+  "r_q": 3.4103742137694217,
+  "leak": 1.3938553522344953e-05,
+  "leak_unit_density": 1.3938553522344953e-05,
+  "tau": 1.0,
+  "K_check": 0.0,
+  "cg_iters": 8,
+  "cg_relres": 2.649336720537439e-13,
+  "weights": "charge density",
+  "E": 1732.3954396968281,
+  "detH_min": 0.03709025451494418,
+  "detH_low_rho_range": [
+   17.375,
+   22.625
+  ],
+  "iter": 191,
+  "nfev": 431,
+  "cg_total": 529,
+  "seconds": 145.19570779800415,
+  "final": true,
+  "message": "ftol: relative decrease <= 1e-14 on 5 consecutive iterations",
+  "memory_resets": 2,
+  "success": true,
+  "nit_this_leg": 191,
+  "grad_max": 3.5081055516306137e-05
+ }
+}

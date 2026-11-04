@@ -4,6 +4,7 @@ E10 Route B, B4: instrument checks before any loop run (PREREG_B4 §3, task chec
      stencil at random coordinates of every block (H re/im, W_rho, W_z, Wt_phi), on random fields, ring mode.
   2. Gauge invariance under a smooth axisymmetric U(3) gauge transformation Omega(rho, z) (random fields):
      E_static, E_twist and I unchanged; control: transforming H alone.
+  3'. numba kernels against the numpy reference (same functional).
   4. Vacuum: n = Q = 0, H = 1, W = 0 -> E = 0 (also n = 3, Q = 0, Wt_phi = 0: E = 0).
 Run: python3 b4_checks.py > log_b4_checks.txt   (-> b4_checks.json)
 """
@@ -88,9 +89,21 @@ def vacuum_check():
     return out
 
 
+def fast_vs_ref(seed=5):
+    """numba kernels (b4_fast) against the numpy reference implementation of the same functional."""
+    out = {}
+    for fast in (False, True):
+        A = Axi(h=0.25, rho_max=10.0, zhalf=5.0, n=3, Q=40.0, cg_tol=1e-13, fast=fast)
+        rng = np.random.default_rng(seed)
+        v = A.pack(*rand_fields(A, rng, amp=0.2))
+        out[fast] = A.fg(v)
+    return dict(E_ref=out[False][0], E_fast=out[True][0], rel_dE=abs(out[True][0] / out[False][0] - 1),
+                rel_dgrad_max=float(np.abs(out[True][1] - out[False][1]).max() / np.abs(out[False][1]).max()))
+
+
 if __name__ == '__main__':
     res = dict(gradient_ring=gradcheck('ring'), gradient_flat=gradcheck('flat', seed=3), gauge=gauge_check(),
-               vacuum=vacuum_check())
+               vacuum=vacuum_check(), fast_vs_reference=fast_vs_ref())
     print(json.dumps({k: (v if k != 'gradient_ring' and k != 'gradient_flat' else {kk: vv for kk, vv in v.items() if kk != 'rows'}) for k, v in res.items()}, indent=1, default=float))
     for r in res['gradient_ring']['rows']:
         print('ring', r)

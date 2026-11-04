@@ -39,3 +39,9 @@ V2 points: [(5, 248), (6, 248)] {'index': 66, 'between': [[0.25, 24.8], [0.30000
 [V2 0.25,24.8] iter 95 E=26.15896166377289 18629s
 [V2 0.25,24.8] iter 100 E=26.158961387589674 19388s
 [V2 0.30,24.8] iter 100 E=26.507826291640768 19407s
+[V2 0.25,24.8] iter 105 E=26.15896116407134 20164s
+[V2 0.30,24.8] iter 105 E=26.50782609327091 20170s
+[V2 0.25,24.8] iter 110 E=26.15896098653785 20892s
+[V2 0.30,24.8] iter 110 E=26.50782590121893 21062s
+=== container restart; resumed from checkpoints Wed Nov  4 01:39:00 UTC 2026 ===
+V2 points: [(5, 248), (6, 248)] {'index': 66, 'between': [[0.25, 24.8], [0.30000000000000004, 24.8]], 'Tcal_V1b': [0.4909873180746658, -0.16537582831441355], 'rule': 'among the 14 central sign changes of S that persist in V1b with central differences: the most negative T-cal at a bracketing point'}

@@ -169,7 +169,7 @@ def main(name, fine=False):
     opts = dict(OPTS); opts['maxiter'] = max(1, OPTS['maxiter'] - it0)
     res = lbfgs(A.fg, v, callback=cb, **opts)
     o = obs(A, res['x'], cnt[0], t0)
-    o.update(final=True, message=res['message'], success=bool(res['success']), nit_this_leg=int(res['nit']),
+    o.update(final=True, message=res['message'], memory_resets=res['memory_resets'], success=bool(res['success']), nit_this_leg=int(res['nit']),
              grad_max=float(np.abs(res['jac']).max()))
     res = type('R', (), dict(x=res['x'], message=res['message']))
     rec['history'].append(o); rec['end'] = o

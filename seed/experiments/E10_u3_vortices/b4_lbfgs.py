@@ -6,7 +6,8 @@ energy evaluation itself); there are no bounds here, so the standard two-loop re
 Line search: backtracking from step 1 (first iteration: step 1/|g|_inf) with the Armijo condition (c1 = 1e-4) and
 quadratic/cubic interpolation; the (s, y) pair is stored only if s.y > 1e-12 |s||y| (curvature).
 Stop (first that holds): max|g| <= gtol; relative decrease (f_k - f_k+1)/max(|f_k|, |f_k+1|, 1) <= ftol on
-`patience` consecutive iterations; maxiter; line-search failure (30 reductions); callback returns True.
+`patience` consecutive iterations; maxiter; line-search failure (30 reductions) twice in a row, the second
+after clearing the memory (steepest-descent step); callback returns True.
 """
 import numpy as np
 
@@ -14,7 +15,7 @@ import numpy as np
 def lbfgs(fg, x0, m=20, maxiter=20000, gtol=1e-6, ftol=1e-14, patience=5, callback=None):
     x = x0.copy(); f, g = fg(x)
     S, Y, RHO = [], [], []
-    nfev = 1; it = 0; small = 0; msg = 'maxiter reached'
+    nfev = 1; it = 0; small = 0; nreset = 0; msg = 'maxiter reached'
     while it < maxiter:
         if np.max(np.abs(g)) <= gtol:
             msg = 'gtol: max|g| <= %g' % gtol; break
@@ -43,7 +44,9 @@ def lbfgs(fg, x0, m=20, maxiter=20000, gtol=1e-6, ftol=1e-14, patience=5, callba
             else:
                 t *= 0.1
         if not ok:
-            msg = 'line search failed'; break
+            if S:                         # retry once from a steepest-descent step with the memory cleared
+                S, Y, RHO = [], [], []; nreset += 1; continue
+            msg = 'line search failed (after memory reset)'; break
         s = xn - x; y = gn - g; sy = np.dot(s, y)
         if sy > 1e-12 * np.linalg.norm(s) * np.linalg.norm(y):
             S.append(s); Y.append(y); RHO.append(1.0 / sy)
@@ -56,5 +59,5 @@ def lbfgs(fg, x0, m=20, maxiter=20000, gtol=1e-6, ftol=1e-14, patience=5, callba
             msg = 'stopped by callback'; break
         if small >= patience:
             msg = 'ftol: relative decrease <= %g on %d consecutive iterations' % (ftol, patience); break
-    return dict(x=x, fun=f, jac=g, nit=it, nfev=nfev, message=msg,
+    return dict(x=x, fun=f, jac=g, nit=it, nfev=nfev, message=msg, memory_resets=nreset,
                 success=msg.startswith('gtol') or msg.startswith('ftol'))

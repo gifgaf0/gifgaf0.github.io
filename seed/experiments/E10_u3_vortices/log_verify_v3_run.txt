@@ -19,3 +19,5 @@ orig lam0.8 (0.25, 30): E=26.351340631385 rel dE vs b3_results 0.0e+00
 [V3a_lam1.1] k=0.35: closed at q=12.00 (omega/m=1.0001, leak=1.50e-11), 4974 s
 [V3a_lam1.1] k=0.50: closed at q=9.80 (omega/m=1.0021, leak=3.27e-14), 3377 s
 === container restart; resumed from checkpoints Wed Nov  4 01:39:00 UTC 2026 ===
+[V3b_lam0.8] k=0.00: cap reached (in window) at q=60.00 (omega/m=0.9487, leak=5.07e-08), 1607 s
+[V3b_lam0.8] k=0.05: cap reached (in window) at q=60.00 (omega/m=0.9508, leak=4.93e-08), 1667 s

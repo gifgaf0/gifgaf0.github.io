@@ -15,6 +15,7 @@ of the V1c sign change.  Half-width 30, h = 0.125 (L = 480), lam = 1.  Label: Ex
 Run:  python3 verify_v2.py solve            (the two bracketing points, 2 workers)
       python3 verify_v2.py stencil          (their T-cal stencil neighbours, optional)
       python3 verify_v2.py analyse          (-> verify_V2.json)
+      V2_FINALIZE=1 python3 verify_v2.py solve   (stop an unfinished solve: evaluate at the last checkpoint, 1 L-BFGS step)
 """
 import os
 os.environ.setdefault('OMP_NUM_THREADS', '1')
@@ -72,7 +73,8 @@ def solve2d(ij):
 
     def fgl(v):
         E, g = fg0(v); st['E_last'] = E; return E, g
-    res = minimize(fgl, v0, jac=True, method='L-BFGS-B', options=OPTS2D, callback=cb)
+    opts = OPTS2D if not os.environ.get('V2_FINALIZE') else dict(OPTS2D, maxiter=1)
+    res = minimize(fgl, v0, jac=True, method='L-BFGS-B', options=opts, callback=cb)
     np.save(ck, res.x)
     H, Wp = Lt.unpack(res.x)
     U, *_ = Lt.links(Wp)
@@ -86,7 +88,7 @@ def solve2d(ij):
              leak=float(dens[Lt.edge_dist < 4.0].sum() / tot), r_charge_rms=float(np.sqrt(np.sum(dens * Lt.r ** 2) / tot)),
              Tcal_envelope=float(T - (k * k + omega * omega) * I), success=bool(res.success), message=str(res.message),
              nit=int(res.nit), grad_max=float(np.max(np.abs(res.jac))), cg=info, seconds=time.time() - t,
-             resumed_from_checkpoint=resumed, L=L2D, h=H2D, half_width=L2D * H2D / 2,
+             resumed_from_checkpoint=resumed, finalized_from_checkpoint=bool(os.environ.get('V2_FINALIZE')), L=L2D, h=H2D, half_width=L2D * H2D / 2,
              max_abs_detH_minus_rot90=float(np.max(np.abs(np.abs(np.linalg.det(H)) - np.rot90(np.abs(np.linalg.det(H)))))))
     json.dump(o, open(out_f, 'w'), indent=1, default=float)
     print(f'[V2] ({k:.2f},{q:.1f}) E={E:.8f} T={T:.8f} I={I:.6f} w/m={omega:.6f} leak={o["leak"]:.1e} '

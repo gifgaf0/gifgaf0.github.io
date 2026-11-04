@@ -1,1 +1,3 @@
 1062 direct solves on R rays
+=== restarted with 4 workers after V2 finished Wed Nov  4 06:02:55 UTC 2026 (cached ray solves reused) ===
+1062 direct solves on R rays

@@ -129,8 +129,12 @@ def main(name, fine=False):
     if os.path.exists(final):
         print(f'[{tag}] already done'); return
     t0 = time.time()
+    ck32 = os.path.join(FD, 'ckpt32', f'{tag}_ckpt32.npz')
+    if not os.path.exists(ck) and os.path.exists(ck32) and os.path.exists(hf):
+        ck = ck32                      # committed float32 copy (container restart); the relaxation continues from it
     if os.path.exists(ck):
-        z = np.load(ck); v = z['x']; rec = json.load(open(hf))
+        z = np.load(ck); v = z['x'].astype(float); rec = json.load(open(hf))
+        ck = os.path.join(FD, f'{tag}_ckpt.npz')
         rec['restarts'] = rec.get('restarts', 0) + 1
         it0 = rec['history'][-1]['iter']
         print(f'[{tag}] restart {rec["restarts"]} from checkpoint at iter {it0}', flush=True)
@@ -171,8 +175,9 @@ def main(name, fine=False):
     rec['history'].append(o); rec['end'] = o
     np.savez_compressed(final, x=res.x)
     json.dump(rec, open(hf + '.tmp', 'w'), default=float); os.replace(hf + '.tmp', hf)
-    if os.path.exists(ck):
-        os.remove(ck)
+    for f in (ck, ck32):
+        if os.path.exists(f):
+            os.remove(f)
     print(f'[{tag}] END {res.message} it={cnt[0]} E={o["E"]:.8f} R_f={o["R_f"]} tau={o["tau"]} '
           f'w/m={o["omega_over_mbulk"]} leak={o["leak"]} {time.time() - t0:.0f}s', flush=True)
 

@@ -57,3 +57,21 @@ D1 and D2 are a symbolic gradient expansion plus a small numerical check: a day,
 ## 6. Prior
 
 Given the author's units, the chance that D1–D4 all hold is **about 25 %**. The main risk is D3: frustration has to come from the picture, not from the need for stability.
+
+## 7. Inputs fixed (November 4, 2026, author's answers, before any derivation)
+
+**Unit.** The author asked whether a dual torus could overlap charges to make a third. Answer recorded:
+- Charges add as integers, so overlap cannot make a third.
+- A dual-torus pair glued with a **threefold twist** (meridian to a (3, 1) curve) gives the lens space L(3, 1) = S³/ℤ₃, with π₁ = ℤ₃. There the shortest closed loop is one third of a Hopf fibre.
+- Adopted: **a unit is an orientation U ∈ S³ ≅ SU(2), identified under ℤ₃ along its Hopf fibre.** Its director is n = Uσ₃U† ∈ S², which is invariant under the fibre phase and hence under ℤ₃.
+
+**Coupling.** "Link or share cycles."
+- Fibre linking between neighbouring units, around a plaquette, is measured by the holonomy of the Hopf connection: e^{iΩ_p/2}, where Ω_p is the signed solid angle that the four directors of the plaquette enclose on S².
+- **Sign (author):** linking **costs** the medium energy, and that cost is what stores energy in, and stabilizes, a linked object. So E_link = K Σ_plaquettes (1 − cos(Ω_p/2)), with K > 0.
+- **"Taut"** is read as a tension, i.e. a cost for neighbouring directors to misalign: E_align = J Σ_links (1 − n·n′), with J > 0.
+
+**Handedness.** "Not sure": no chiral term in this attempt; recorded as open.
+
+**Lattice.** No preference stated: simple cubic (default, per §3.4).
+
+**What ℤ₃ does and does not do here.** The energy depends only on n, so ℤ₃ does not enter the stiffness. It enters the defects. With the fibre phase as a field, the medium supports ℤ₃ strings (π₁(L(3, 1)) = ℤ₃); this is step 1's Route C, recorded as a separate open direction.

@@ -9,3 +9,5 @@
  "message": "ftol: relative decrease <= 1e-14 on 5 consecutive iterations"
 }
 GRID DONE
+CHECKS DONE
+CHAIN DONE

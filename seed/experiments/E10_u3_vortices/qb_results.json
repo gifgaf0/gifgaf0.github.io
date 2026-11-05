@@ -1493,6 +1493,424 @@
    "restarts": 0,
    "seconds": 987.8991432189941,
    "verdict": "DISPERSED"
+  },
+  "L1.1_Q2710.9_S2": {
+   "tag": "L1.1_Q2710.9_S2",
+   "lam": 1.1,
+   "Q": 2710.9,
+   "start": "S2",
+   "variant": null,
+   "h": 0.25,
+   "box": {
+    "rho_max": 40.0,
+    "zhalf": 20.0
+   },
+   "E": 2737.490514384821,
+   "E_over_mQ": 1.0098087404127118,
+   "omega_over_mbulk": 1.0158501206434045,
+   "leak": 0.2589692768704377,
+   "r_rms_3D": 29.274365136659053,
+   "r_q": 13.5032919658511,
+   "R_q": 25.974006561469125,
+   "z_q": 0.023310602291061695,
+   "I": 1334.3011655513756,
+   "detH07_radius": 0.0,
+   "detH07_rho_max": 0.0,
+   "detH07_absz_max": 0.0,
+   "detH_origin": 0.9932678432996427,
+   "detH_min": 0.9924260950102979,
+   "charge_within_r5_r10_r15": [
+    0.003218638763765019,
+    0.025241461264353022,
+    0.08230008764151446
+   ],
+   "tau": 0.9999999995773408,
+   "iters": 2136,
+   "message": "line search failed (after memory reset)",
+   "grad_max": 1.8818943047449466e-05,
+   "restarts": 0,
+   "seconds": 944.2413563728333,
+   "verdict": "DISPERSED"
+  },
+  "L1.2_Q200.0_S1": {
+   "tag": "L1.2_Q200.0_S1",
+   "lam": 1.2,
+   "Q": 200.0,
+   "start": "S1",
+   "variant": null,
+   "h": 0.25,
+   "box": {
+    "rho_max": 40.0,
+    "zhalf": 20.0
+   },
+   "E": 200.72888310390817,
+   "E_over_mQ": 1.003644415519541,
+   "omega_over_mbulk": 1.004241786342194,
+   "leak": 0.20208064989545454,
+   "r_rms_3D": 29.224686184229267,
+   "r_q": 12.03592565036881,
+   "R_q": 26.631161752794796,
+   "z_q": 4.421136476711774e-05,
+   "I": 99.57761304101435,
+   "detH07_radius": 0.0,
+   "detH07_rho_max": 0.0,
+   "detH07_absz_max": 0.0,
+   "detH_origin": 0.999334355609804,
+   "detH_min": 0.9993333035688432,
+   "charge_within_r5_r10_r15": [
+    0.004894839359374787,
+    0.03612586885050734,
+    0.10744454804225688
+   ],
+   "tau": 0.99999986889735,
+   "iters": 2156,
+   "message": "line search failed (after memory reset)",
+   "grad_max": 4.801564814727044e-05,
+   "restarts": 0,
+   "seconds": 864.0166614055634,
+   "verdict": "DISPERSED"
+  },
+  "L1.2_Q200.0_S2": {
+   "tag": "L1.2_Q200.0_S2",
+   "lam": 1.2,
+   "Q": 200.0,
+   "start": "S2",
+   "variant": null,
+   "h": 0.25,
+   "box": {
+    "rho_max": 40.0,
+    "zhalf": 20.0
+   },
+   "E": 200.72888307434118,
+   "E_over_mQ": 1.003644415371706,
+   "omega_over_mbulk": 1.004241881308212,
+   "leak": 0.20207295789896204,
+   "r_rms_3D": 29.224452947312955,
+   "r_q": 12.035857332130517,
+   "R_q": 26.630936677762552,
+   "z_q": 0.00012373498064592063,
+   "I": 99.57760362446884,
+   "detH07_radius": 0.0,
+   "detH07_rho_max": 0.0,
+   "detH07_absz_max": 0.0,
+   "detH_origin": 0.9993302649966282,
+   "detH_min": 0.9993294724299039,
+   "charge_within_r5_r10_r15": [
+    0.004893919790734482,
+    0.036123439388425285,
+    0.10744499343568313
+   ],
+   "tau": 0.9999999977756009,
+   "iters": 1939,
+   "message": "ftol: relative decrease <= 1e-14 on 5 consecutive iterations",
+   "grad_max": 5.866066393112045e-05,
+   "restarts": 0,
+   "seconds": 762.5387582778931,
+   "verdict": "DISPERSED"
+  },
+  "L1.2_Q400.0_S1": {
+   "tag": "L1.2_Q400.0_S1",
+   "lam": 1.2,
+   "Q": 400.0,
+   "start": "S1",
+   "variant": null,
+   "h": 0.25,
+   "box": {
+    "rho_max": 40.0,
+    "zhalf": 20.0
+   },
+   "E": 401.6947893969926,
+   "E_over_mQ": 1.0042369734924814,
+   "omega_over_mbulk": 1.005412346249871,
+   "leak": 0.20251758948190665,
+   "r_rms_3D": 29.242242484650276,
+   "r_q": 12.11100317942167,
+   "R_q": 26.61639245815722,
+   "z_q": -0.00018020862874166814,
+   "I": 198.9233579098051,
+   "detH07_radius": 0.0,
+   "detH07_rho_max": 0.0,
+   "detH07_absz_max": 0.0,
+   "detH_origin": 0.9987061013288698,
+   "detH_min": 0.9987057982867591,
+   "charge_within_r5_r10_r15": [
+    0.004779353236753053,
+    0.03553892045094406,
+    0.10653969481592758
+   ],
+   "tau": 0.9999999954263381,
+   "iters": 2097,
+   "message": "line search failed (after memory reset)",
+   "grad_max": 2.2807472940242213e-05,
+   "restarts": 0,
+   "seconds": 801.4325361251831,
+   "verdict": "DISPERSED"
+  },
+  "L1.2_Q400.0_S2": {
+   "tag": "L1.2_Q400.0_S2",
+   "lam": 1.2,
+   "Q": 400.0,
+   "start": "S2",
+   "variant": null,
+   "h": 0.25,
+   "box": {
+    "rho_max": 40.0,
+    "zhalf": 20.0
+   },
+   "E": 401.6947893680177,
+   "E_over_mQ": 1.0042369734200443,
+   "omega_over_mbulk": 1.0054124722863371,
+   "leak": 0.20252180219415833,
+   "r_rms_3D": 29.24245288806644,
+   "r_q": 12.110921173145469,
+   "R_q": 26.616660931380622,
+   "z_q": 0.0003354976432321435,
+   "I": 198.92333297317688,
+   "detH07_radius": 0.0,
+   "detH07_rho_max": 0.0,
+   "detH07_absz_max": 0.0,
+   "detH_origin": 0.9987038436650822,
+   "detH_min": 0.9987038436650822,
+   "charge_within_r5_r10_r15": [
+    0.004777368092166393,
+    0.03553209342343866,
+    0.10652950277150569
+   ],
+   "tau": 0.9999999993886522,
+   "iters": 1892,
+   "message": "ftol: relative decrease <= 1e-14 on 5 consecutive iterations",
+   "grad_max": 3.8307154248795605e-05,
+   "restarts": 0,
+   "seconds": 734.9943749904633,
+   "verdict": "DISPERSED"
+  },
+  "L1.2_Q800.0_S1": {
+   "tag": "L1.2_Q800.0_S1",
+   "lam": 1.2,
+   "Q": 800.0,
+   "start": "S1",
+   "variant": null,
+   "h": 0.25,
+   "box": {
+    "rho_max": 40.0,
+    "zhalf": 20.0
+   },
+   "E": 804.313764542967,
+   "E_over_mQ": 1.0053922056787088,
+   "omega_over_mbulk": 1.0076130284639835,
+   "leak": 0.20905963528393573,
+   "r_rms_3D": 29.238536244251595,
+   "r_q": 12.370020031455105,
+   "R_q": 26.49291613099264,
+   "z_q": -0.0010019998550951322,
+   "I": 396.97779673389545,
+   "detH07_radius": 0.0,
+   "detH07_rho_max": 0.0,
+   "detH07_absz_max": 0.0,
+   "detH_origin": 0.9976255082214271,
+   "detH_min": 0.997583488112259,
+   "charge_within_r5_r10_r15": [
+    0.004423458087640547,
+    0.03340185170788268,
+    0.10218933762778883
+   ],
+   "tau": 0.9999998550988863,
+   "iters": 3186,
+   "message": "line search failed (after memory reset)",
+   "grad_max": 1.4694333048570485e-05,
+   "restarts": 0,
+   "seconds": 1199.2192215919495,
+   "verdict": "DISPERSED"
+  },
+  "L1.2_Q800.0_S2": {
+   "tag": "L1.2_Q800.0_S2",
+   "lam": 1.2,
+   "Q": 800.0,
+   "start": "S2",
+   "variant": null,
+   "h": 0.25,
+   "box": {
+    "rho_max": 40.0,
+    "zhalf": 20.0
+   },
+   "E": 804.3137645580214,
+   "E_over_mQ": 1.0053922056975266,
+   "omega_over_mbulk": 1.0076129059155245,
+   "leak": 0.20906557670266737,
+   "r_rms_3D": 29.238368199722306,
+   "r_q": 12.370304842309649,
+   "R_q": 26.492597674803108,
+   "z_q": -0.0012376914213626453,
+   "I": 396.97784501535045,
+   "detH07_radius": 0.0,
+   "detH07_rho_max": 0.0,
+   "detH07_absz_max": 0.0,
+   "detH_origin": 0.9976266949664412,
+   "detH_min": 0.9975835944253706,
+   "charge_within_r5_r10_r15": [
+    0.004424433677906419,
+    0.03340548885907052,
+    0.10219427676700238
+   ],
+   "tau": 0.9999999565649631,
+   "iters": 2976,
+   "message": "line search failed (after memory reset)",
+   "grad_max": 6.708697917212625e-05,
+   "restarts": 0,
+   "seconds": 1159.8689482212067,
+   "verdict": "DISPERSED"
+  },
+  "L1.2_Q1626.5329_S1": {
+   "tag": "L1.2_Q1626.5329_S1",
+   "lam": 1.2,
+   "Q": 1626.5329,
+   "start": "S1",
+   "variant": null,
+   "h": 0.25,
+   "box": {
+    "rho_max": 40.0,
+    "zhalf": 20.0
+   },
+   "E": 1638.7125962596047,
+   "E_over_mQ": 1.0074881339686426,
+   "omega_over_mbulk": 1.0114028000786999,
+   "leak": 0.24244357717266993,
+   "r_rms_3D": 29.18281966676605,
+   "r_q": 13.150818324461328,
+   "R_q": 26.051730732489673,
+   "z_q": -0.0163383552611011,
+   "I": 804.0974871106919,
+   "detH07_radius": 0.0,
+   "detH07_rho_max": 0.0,
+   "detH07_absz_max": 0.0,
+   "detH_origin": 0.996244301887427,
+   "detH_min": 0.9958096272858643,
+   "charge_within_r5_r10_r15": [
+    0.0035201469303088226,
+    0.027304140805494977,
+    0.0875249986691659
+   ],
+   "tau": 0.9999999996047687,
+   "iters": 2008,
+   "message": "ftol: relative decrease <= 1e-14 on 5 consecutive iterations",
+   "grad_max": 2.5525400296433354e-05,
+   "restarts": 0,
+   "seconds": 854.681524515152,
+   "verdict": "DISPERSED"
+  },
+  "L1.2_Q1626.5329_S2": {
+   "tag": "L1.2_Q1626.5329_S2",
+   "lam": 1.2,
+   "Q": 1626.5329,
+   "start": "S2",
+   "variant": null,
+   "h": 0.25,
+   "box": {
+    "rho_max": 40.0,
+    "zhalf": 20.0
+   },
+   "E": 1638.7125962508485,
+   "E_over_mQ": 1.0074881339632593,
+   "omega_over_mbulk": 1.0114028585478878,
+   "leak": 0.24243916764886383,
+   "r_rms_3D": 29.18281358088035,
+   "r_q": 13.150750043884551,
+   "R_q": 26.051758496282982,
+   "z_q": -0.016156454830521822,
+   "I": 804.097440625825,
+   "detH07_radius": 0.0,
+   "detH07_rho_max": 0.0,
+   "detH07_absz_max": 0.0,
+   "detH_origin": 0.9962498758236478,
+   "detH_min": 0.9958096082143273,
+   "charge_within_r5_r10_r15": [
+    0.0035201454545741038,
+    0.027304533864018644,
+    0.08752678166902564
+   ],
+   "tau": 0.9999999998781496,
+   "iters": 1811,
+   "message": "ftol: relative decrease <= 1e-14 on 5 consecutive iterations",
+   "grad_max": 1.8743189548420247e-05,
+   "restarts": 0,
+   "seconds": 758.4321706295013,
+   "verdict": "DISPERSED"
+  },
+  "L1.2_Q2710.9_S1": {
+   "tag": "L1.2_Q2710.9_S1",
+   "lam": 1.2,
+   "Q": 2710.9,
+   "start": "S1",
+   "variant": null,
+   "h": 0.25,
+   "box": {
+    "rho_max": 40.0,
+    "zhalf": 20.0
+   },
+   "E": 2738.0884414245575,
+   "E_over_mQ": 1.0100293044466995,
+   "omega_over_mbulk": 1.0162652271690853,
+   "leak": 0.2615071068627954,
+   "r_rms_3D": 29.304307466296734,
+   "r_q": 13.534323948569245,
+   "R_q": 25.99161388480149,
+   "z_q": 0.02278152395911996,
+   "I": 1333.7561531803563,
+   "detH07_radius": 0.0,
+   "detH07_rho_max": 0.0,
+   "detH07_absz_max": 0.0,
+   "detH_origin": 0.9944162876519396,
+   "detH_min": 0.9936961447576373,
+   "charge_within_r5_r10_r15": [
+    0.0031887951365623724,
+    0.025025091412608776,
+    0.0816898569834103
+   ],
+   "tau": 0.9999999822325041,
+   "iters": 2146,
+   "message": "line search failed (after memory reset)",
+   "grad_max": 3.709154598485753e-05,
+   "restarts": 0,
+   "seconds": 909.7333762645721,
+   "verdict": "DISPERSED"
+  },
+  "L1.2_Q2710.9_S2": {
+   "tag": "L1.2_Q2710.9_S2",
+   "lam": 1.2,
+   "Q": 2710.9,
+   "start": "S2",
+   "variant": null,
+   "h": 0.25,
+   "box": {
+    "rho_max": 40.0,
+    "zhalf": 20.0
+   },
+   "E": 2738.0884414092848,
+   "E_over_mQ": 1.0100293044410655,
+   "omega_over_mbulk": 1.0162652330629145,
+   "leak": 0.2615026823551225,
+   "r_rms_3D": 29.30429897330359,
+   "r_q": 13.534297490602867,
+   "R_q": 25.991618079228218,
+   "z_q": 0.022789825790226603,
+   "I": 1333.7561454452389,
+   "detH07_radius": 0.0,
+   "detH07_rho_max": 0.0,
+   "detH07_absz_max": 0.0,
+   "detH_origin": 0.9944109576520382,
+   "detH_min": 0.9936960103097756,
+   "charge_within_r5_r10_r15": [
+    0.0031893632884782827,
+    0.025027680323804896,
+    0.0816946353470329
+   ],
+   "tau": 0.9999999785510694,
+   "iters": 1824,
+   "message": "line search failed (after memory reset)",
+   "grad_max": 4.306641723325795e-05,
+   "restarts": 0,
+   "seconds": 797.6211495399475,
+   "verdict": "DISPERSED"
   }
  },
  "points": [
@@ -1841,48 +2259,110 @@
   {
    "lam": 1.1,
    "Q": 2710.9,
-   "verdict": "INCOMPLETE",
+   "lower": "S2",
+   "verdict": "DISPERSED",
+   "dE_S2_minus_S1": -4.57976057077758e-09,
+   "same_verdict": true,
    "S1": {
     "E": 2737.4905143894007,
     "E_over_mQ": 1.0098087404144014,
     "verdict": "DISPERSED"
    },
-   "S2": null
+   "S2": {
+    "E": 2737.490514384821,
+    "E_over_mQ": 1.0098087404127118,
+    "verdict": "DISPERSED"
+   }
   },
   {
    "lam": 1.2,
    "Q": 200.0,
-   "verdict": "INCOMPLETE",
-   "S1": null,
-   "S2": null
+   "lower": "S2",
+   "verdict": "DISPERSED",
+   "dE_S2_minus_S1": -2.9566990633611567e-08,
+   "same_verdict": true,
+   "S1": {
+    "E": 200.72888310390817,
+    "E_over_mQ": 1.003644415519541,
+    "verdict": "DISPERSED"
+   },
+   "S2": {
+    "E": 200.72888307434118,
+    "E_over_mQ": 1.003644415371706,
+    "verdict": "DISPERSED"
+   }
   },
   {
    "lam": 1.2,
    "Q": 400.0,
-   "verdict": "INCOMPLETE",
-   "S1": null,
-   "S2": null
+   "lower": "S2",
+   "verdict": "DISPERSED",
+   "dE_S2_minus_S1": -2.897485273933853e-08,
+   "same_verdict": true,
+   "S1": {
+    "E": 401.6947893969926,
+    "E_over_mQ": 1.0042369734924814,
+    "verdict": "DISPERSED"
+   },
+   "S2": {
+    "E": 401.6947893680177,
+    "E_over_mQ": 1.0042369734200443,
+    "verdict": "DISPERSED"
+   }
   },
   {
    "lam": 1.2,
    "Q": 800.0,
-   "verdict": "INCOMPLETE",
-   "S1": null,
-   "S2": null
+   "lower": "S1",
+   "verdict": "DISPERSED",
+   "dE_S2_minus_S1": 1.5054411051096395e-08,
+   "same_verdict": true,
+   "S1": {
+    "E": 804.313764542967,
+    "E_over_mQ": 1.0053922056787088,
+    "verdict": "DISPERSED"
+   },
+   "S2": {
+    "E": 804.3137645580214,
+    "E_over_mQ": 1.0053922056975266,
+    "verdict": "DISPERSED"
+   }
   },
   {
    "lam": 1.2,
    "Q": 1626.5329,
-   "verdict": "INCOMPLETE",
-   "S1": null,
-   "S2": null
+   "lower": "S2",
+   "verdict": "DISPERSED",
+   "dE_S2_minus_S1": -8.756160241318867e-09,
+   "same_verdict": true,
+   "S1": {
+    "E": 1638.7125962596047,
+    "E_over_mQ": 1.0074881339686426,
+    "verdict": "DISPERSED"
+   },
+   "S2": {
+    "E": 1638.7125962508485,
+    "E_over_mQ": 1.0074881339632593,
+    "verdict": "DISPERSED"
+   }
   },
   {
    "lam": 1.2,
    "Q": 2710.9,
-   "verdict": "INCOMPLETE",
-   "S1": null,
-   "S2": null
+   "lower": "S2",
+   "verdict": "DISPERSED",
+   "dE_S2_minus_S1": -1.5272689779521897e-08,
+   "same_verdict": true,
+   "S1": {
+    "E": 2738.0884414245575,
+    "E_over_mQ": 1.0100293044466995,
+    "verdict": "DISPERSED"
+   },
+   "S2": {
+    "E": 2738.0884414092848,
+    "E_over_mQ": 1.0100293044410655,
+    "verdict": "DISPERSED"
+   }
   }
  ],
  "box_check": {
@@ -1982,13 +2462,13 @@
    "text": "(400, 800]"
   },
   "1.1": {
-   "largest_dispersed_Q": 1626.5329,
+   "largest_dispersed_Q": 2710.9,
    "smallest_bound_Q": null,
    "note": null,
    "text": "> 2710.9 (no BOUND point)"
   },
   "1.2": {
-   "largest_dispersed_Q": null,
+   "largest_dispersed_Q": 2710.9,
    "smallest_bound_Q": null,
    "note": null,
    "text": "> 2710.9 (no BOUND point)"
@@ -2067,8 +2547,8 @@
   },
   "QB-P4": {
    "holds": false,
-   "verdict": "INCOMPLETE",
-   "E_over_mQ": null
+   "verdict": "DISPERSED",
+   "E_over_mQ": 1.0100293044410655
   }
  }
 }

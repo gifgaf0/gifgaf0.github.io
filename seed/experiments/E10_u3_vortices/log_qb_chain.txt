@@ -8,3 +8,4 @@
  "iters": 1720,
  "message": "ftol: relative decrease <= 1e-14 on 5 consecutive iterations"
 }
+GRID DONE

@@ -118,3 +118,7 @@ No particle identification is made or implied anywhere in E9 or E10.
   - `PREREG_B4.md`, `REPORT_B4.md`
   - `PREREG_QB.md`, `REPORT_QB.md`
 - **Steps 1–2:** `E9_three_strand_closure/prior/`
+
+## Addendum (November 4, 2026): E11 and closure
+
+The first open direction of §6, a stiffness derived from a model of the medium, was tried once as `E11_medium_stiffness/` under a fixed stopping rule. It failed criterion D2 as pre-registered. The derived stiffness is a Faddeev term (the Seed's Model C, `E8_hopfions`) and does not see the thirds. **The step-3 closure line has ended:** see `CLOSURE_step3.md`. The second direction of §6 (protected braids or links) and the items of §4 remain untested and would be new programmes.

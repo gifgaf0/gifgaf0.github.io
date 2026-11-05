@@ -36,3 +36,7 @@ Can a closed loop of the three-strand composite vortex (three U(1) phases, one g
 - **Next: Route B** (non-abelian U(3) vortices), opened November 1, 2026, as `E10_u3_vortices` (`NOTE_route_B.md`). Also recorded there: Route A with an SU(3)-invariant potential (the semilocal model) has twisted current-carrying strings without an added field (Forgács, Reuillon and Volkov 2006). E9 never tested that, because its per-component potential breaks SU(3). Route B status as of November 4, 2026: `../E10_u3_vortices/STATUS_routeB.md` (a metastable twisted, charged ring of the elementary string exists; a vortex-free charged lump is cheaper, so the string is a passenger).
 
 No particle identification is made or implied anywhere in E9.
+
+## Closure (November 4, 2026)
+
+The one bounded medium-stiffness attempt (`../E11_medium_stiffness/`) failed its stopping rule at D2. **Step 3 is closed**: `../CLOSURE_step3.md`. Route C (ℤ₃ strings) and the other untested items are recorded there as possible new programmes, not continuations.

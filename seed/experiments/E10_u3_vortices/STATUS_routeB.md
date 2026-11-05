@@ -15,6 +15,7 @@ Route A (E9) gave no stable closure in any of three stabilizer families. Route B
 | B3 | Fixed-charge straight-string scan | **WINDOW at λ = 1**, against a prior of about 10 %: 116 sign changes at ω/m ≈ 0.98. NONE at λ = 1.2. At λ = 0.8, NONE only up to the q cap. Charge alone never holds a ring at any λ. | `REPORT_B2B3.md` |
 | Amendment A | Verification of the λ = 1 window | **CONFIRMED.** It survives box doubling and tripling, dr halving and the full 2D lattice (agreement 4 × 10⁻⁶). The charge is genuinely bound to the string. Robustness is **one-sided**: the window also exists at λ = 0.8 and 0.9, and not at λ = 1.1. | `REPORT_verify.md` |
 | B4 | Axisymmetric loop at #66, n = 3 and 5 | **METASTABLE at both n, "string not required".** The ring stops within 2 % of R_eq, from both starts. Twist retained (τ = 1), leak 3 × 10⁻⁵, half-spacing check passed. E = 1.066 m_bulk·Q. **A bound, vortex-free charged lump at the same Q is cheaper:** E = 0.977 m_bulk·Q at n = 3's Q and 0.967 at n = 5's. A charge-only ring collapses into the same lump. | `PREREG_B4.md`, `REPORT_B4.md` |
+| QB | Where vortex-free charged lumps bind: λ ∈ {0.8, …, 1.2} × five Q | **TRACKS.** Lumps bind exactly at λ ∈ {0.8, 0.9, 1.0}, the λ values with a straight-string window, and nowhere else on the grid. λ = 1.1 and 1.2 disperse at every Q ≤ 2710.9. Q_min brackets: (800, 1626.5] at λ = 0.8 and 0.9; (400, 800] at λ = 1. Regression, box and resolution checks all pass. My crude thin-wall estimate (lumps for all λ < √2) failed. | `PREREG_QB.md`, `REPORT_QB.md` |
 
 ## What this establishes
 
@@ -23,10 +24,14 @@ Route A (E9) gave no stable closure in any of three stabilizer families. Route B
 - **That lump is a genuine bound state.** A box configuration with a vacuum edge extends to infinite space at the same energy and charge. So E < m_bulk·Q in the box implies a bound state below dispersal in infinite space. Its interior is the same partly unhiggsed orientation structure as the string core, without winding.
 - **The string is a passenger: the charge binds on its own.** This is the same outcome as E9 option 4, now found in an independent model.
 - Under PREREG_B4 §5, Phase 3 (3D stability of the ring) is **not triggered**.
+- **The lump and the window go together (QB, TRACKS).** On the grid, a charged string can hold its charge, and charge can bind without any string, at the same λ (≤ 1) and nowhere else. Both switch off between λ = 1.0 and 1.1. That is where the lightest bulk mode changes from the scalar (mass λ) to the vector (mass 1), and where the type-I attraction between same-orientation strings ends (Auzzi, Eto and Vinci). So a common cause is plausible, but it is not proven: the λ grid is coarse, and the thresholds could merely coincide.
+- **A thin-ring identity (derived; checked on V1b data).** With ℰ = T + k²J + ω²I, the thin-ring function is 𝒯 = T − k²J − ω²I, so **ℰ = 2T − 𝒯**. At equilibrium (𝒯 = 0), ℰ = 2T and the energy per charge is **ℰ/q = T/(ωI)**.
+  - Check at #66's bracket: E − 2T = −0.489 and +0.168, against 𝒯 = +0.491 and −0.165. The difference is the finite-difference error.
+  - **Consequence:** with ω < m_bulk, a thin charged ring can lie below dispersal only if T/I < m_bulk². At #66, T/I ≈ 1.04, so it cannot. To beat the lump as well, it would need T/(ωI) < E_lump/Q (about 0.97–0.98 m_bulk at these Q). Any future charge-supported closure in this model class can be screened with this inequality before a loop is run.
 
 ## What is still open
 
-- **Does the bulk Q-ball track the straight-string window?** The window exists at λ ≤ 1 and not at λ ≥ 1.1. If lumps bind exactly where the window exists, the two failures share a mechanism. If they bind more widely, Q-balls are generic in the model. Pre-registered in `PREREG_QB.md`.
+- **QB's limits.** Lumps at λ > 1 with Q > 2710.9 are not excluded, nor are lumps reachable only from other starts or orientations. The λ grid has a 0.1 spacing, so the shared threshold is located only to (1.0, 1.1). At λ = 0.9 and Q = 800 there is a compact lump at E/(m_bulk Q) = 1.0006, counted as DISPERSED by the energy clause.
 - **The ring's barrier to decay into the lump** was not measured. The ring is tested only against axisymmetric deformations. Only one lump start was tried per Q, and whether the lump is the global minimum at fixed Q is not established.
 - **B-ii (braids and links)** is untested and unprotected: non-abelian strings always reconnect at BPS (Eto et al., PRL 98, 091602, 2007).
 - **Quantum effects:** the CP² moduli acquire a gap. Every result here is classical.

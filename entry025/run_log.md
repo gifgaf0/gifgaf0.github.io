@@ -18,3 +18,4 @@
 - 2026-11-04T20:47Z: DCM_256 generated (10,000 runs × 10,001 primes, 18:29–20:47Z). analyze.py (manifest check passed): integrity failures 0; RATE z = −0.96, R3 z = +0.22, LAG1|C z = +0.63, all as predicted. Output: results/DCM_256.json. Raw runs: data/archive/DCM_256_runs.tar.part* (45 MB parts), per-file hashes in DCM_256_runs.sha256.
 - 2026-11-04T20:47Z: started A37_64 (4,000 × 1,001), then B37_128 (5,000 × 1,001), same seed, 4 workers.
 - 2026-11-04T20:56Z: container reclaimed; generation stopped after 69 A37_64 runs (all 69 files verified complete: 1,000 primes each, loadable). 2026-11-05T20:50Z: resumed with the identical command (gen.py skips existing run files; per-run RNG is seeded by "{SEED}:{arm}:{run}", so resumption does not change any run).
+- 2026-11-06T~00:40Z: container restarted; generation stopped at 2,793 A37_64 runs (all verified complete). Resumed 01:04Z with the identical command.

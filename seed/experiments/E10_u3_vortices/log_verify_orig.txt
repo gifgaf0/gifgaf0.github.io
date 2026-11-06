@@ -1,0 +1,17 @@
+465 original points to regenerate (row 0 up to j=292; 24 columns)
+row0 j=0 E=6.284638692057 rel dE vs orig 0.0e+00
+row0 j=20 E=6.596292546799 rel dE vs orig 0.0e+00
+row0 j=40 E=7.461258652145 rel dE vs orig 0.0e+00
+row0 j=60 E=8.720370054271 rel dE vs orig 0.0e+00
+row0 j=80 E=10.220865648211 rel dE vs orig 0.0e+00
+row0 j=100 E=11.861936938933 rel dE vs orig 0.0e+00
+row0 j=120 E=13.586667843300 rel dE vs orig 0.0e+00
+row0 j=140 E=15.363638312400 rel dE vs orig 0.0e+00
+row0 j=160 E=17.174880476576 rel dE vs orig 0.0e+00
+row0 j=180 E=19.009580675288 rel dE vs orig 0.0e+00
+row0 j=200 E=20.860892852161 rel dE vs orig 0.0e+00
+row0 j=220 E=22.724281963901 rel dE vs orig 0.0e+00
+row0 j=240 E=24.596623973249 rel dE vs orig 0.0e+00
+row0 j=260 E=26.475693786578 rel dE vs orig 0.0e+00
+row0 j=280 E=28.359860902040 rel dE vs orig 0.0e+00
+regenerated 465 points in 3644 s; max |E/E_orig - 1| = 0.00e+00; bitwise-equal E at 465/465

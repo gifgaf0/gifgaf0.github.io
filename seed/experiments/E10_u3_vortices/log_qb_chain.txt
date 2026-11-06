@@ -1,0 +1,13 @@
+{
+ "E": 1589.9110447906742,
+ "E_target": 1589.911,
+ "rel_dev": 2.8171812216370995e-08,
+ "E_B4_unrounded": 1589.911048583391,
+ "rel_dev_unrounded": 2.385489916711947e-09,
+ "passes": true,
+ "iters": 1720,
+ "message": "ftol: relative decrease <= 1e-14 on 5 consecutive iterations"
+}
+GRID DONE
+CHECKS DONE
+CHAIN DONE

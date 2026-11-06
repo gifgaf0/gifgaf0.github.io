@@ -1,0 +1,23 @@
+orig row0 j=0 E=6.284638692057 rel dE vs B3 0.0e+00 (2 s)
+orig row0 j=20 E=6.596292546799 rel dE vs B3 0.0e+00 (101 s)
+orig row0 j=40 E=7.461258652145 rel dE vs B3 0.0e+00 (230 s)
+orig row0 j=60 E=8.720370054271 rel dE vs B3 0.0e+00 (385 s)
+orig row0 j=80 E=10.220865648211 rel dE vs B3 0.0e+00 (567 s)
+orig row0 j=100 E=11.861936938933 rel dE vs B3 0.0e+00 (768 s)
+orig row0 j=120 E=13.586667843300 rel dE vs B3 0.0e+00 (985 s)
+orig row0 j=140 E=15.363638312400 rel dE vs B3 0.0e+00 (1201 s)
+orig row0 j=160 E=17.174880476576 rel dE vs B3 0.0e+00 (1425 s)
+orig row0 j=180 E=19.009580675288 rel dE vs B3 0.0e+00 (1648 s)
+orig row0 j=200 E=20.860892852161 rel dE vs B3 0.0e+00 (1863 s)
+orig row0 j=220 E=22.724281963901 rel dE vs B3 0.0e+00 (2069 s)
+orig row0 j=240 E=24.596623973249 rel dE vs B3 0.0e+00 (2267 s)
+orig row0 j=248 E=25.347546782591 rel dE vs B3 0.0e+00 (2349 s)
+orig (1,248) E=25.380528555710 rel dE vs B3 0.0e+00
+orig (2,248) E=25.479206274143 rel dE vs B3 0.0e+00
+orig (3,248) E=25.642787709732 rel dE vs B3 0.0e+00
+orig (4,248) E=25.869987635833 rel dE vs B3 0.0e+00
+orig (5,248) E=26.159077040831 rel dE vs B3 0.0e+00
+orig (6,248) E=26.507945871201 rel dE vs B3 0.0e+00
+V1b (5,248) E=26.159063190679 rel dE vs V1b record 0.0e+00 nit=3565
+V1b (6,248) E=26.507932103717 rel dE vs V1b record 0.0e+00 nit=3803
+star: E=26.414526647654 (V1b ray u=1: 26.414526647654, rel 0.0e+00) I=12.645587 omega=0.980579 alpha=0.785398 rq=3.40964 T=13.210819202

@@ -1,0 +1,2 @@
+[lam1.2] 1852 solves, 1831 in window, sign changes 0, verdict NONE
+[lam0.8] 2855 solves, 2840 in window, sign changes 0, verdict NONE

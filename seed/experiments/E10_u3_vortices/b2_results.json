@@ -1,0 +1,590 @@
+{
+ "meta": {
+  "label": "Exploration",
+  "prereg": "PREREG_B2B3.md \u00a72",
+  "primary": {
+   "half_width": 20.0,
+   "h": 0.125,
+   "L": 320
+  },
+  "minimizer": {
+   "method": "L-BFGS-B",
+   "maxiter": 30000,
+   "maxfun": 60000,
+   "gtol": 1e-08,
+   "ftol": 1e-15,
+   "maxcor": 20
+  },
+  "omegas": [
+   0.01,
+   0.02,
+   0.05
+  ],
+  "software": {
+   "python": "3.13.18",
+   "numpy": "2.5.3",
+   "scipy": "1.18.1"
+  }
+ },
+ "lambdas": {
+  "0.8": {
+   "radial": {
+    "elementary": {
+     "T_over_2pi": 0.9123482166607195,
+     "flux_TrB": 6.283185307179586,
+     "I_alpha_pi4": 3.4878939081445424,
+     "success": true,
+     "nit": 4917,
+     "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+     "I_over_pi": 1.110231112922626,
+     "decay": {
+      "m_scalar": 0.7972454818506015,
+      "m_magnetic": 0.9961711029020284,
+      "window": [
+       5.0,
+       12.0
+      ]
+     }
+    },
+    "winding2": {
+     "T_over_2pi": 1.7741318067547847,
+     "flux_TrB": 12.566370614359172,
+     "I_alpha_pi4": 7.174098174007668,
+     "success": true,
+     "nit": 5355,
+     "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    "composite": {
+     "T_over_2pi": 2.7370446499822965,
+     "flux_TrB": 18.84955592153876,
+     "I_alpha_pi4": 1.2278178473934531e-11,
+     "success": true,
+     "nit": 4826,
+     "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    }
+   },
+   "lattice": {
+    "elementary": {
+     "T": 5.730524908287549,
+     "T_kin": 3.3986688972579233,
+     "T_mag": 1.1667710712923167,
+     "T_pot": 1.1650849397373086,
+     "flux_TrB": -6.283185182973299,
+     "success": false,
+     "message": "ABNORMAL: ",
+     "nit": 102,
+     "grad_max": 5.3658102801336105e-08,
+     "seconds": 275.4424307346344,
+     "L": 320,
+     "h": 0.125,
+     "half_width": 20.0,
+     "T_over_2pi": 0.9120413656651937
+    },
+    "winding2": {
+     "T": 11.144168221448304,
+     "T_kin": 5.221459439682857,
+     "T_mag": 2.9626635116709963,
+     "T_pot": 2.96004527009445,
+     "flux_TrB": -12.566370311687827,
+     "success": true,
+     "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+     "nit": 113,
+     "grad_max": 2.3167051896777234e-07,
+     "seconds": 376.5475492477417,
+     "L": 320,
+     "h": 0.125,
+     "half_width": 20.0,
+     "T_over_2pi": 1.7736494590911134
+    },
+    "composite": {
+     "T": 17.19157472547186,
+     "T_kin": 10.196005075155483,
+     "T_mag": 3.5003123182016225,
+     "T_pot": 3.495257332114754,
+     "flux_TrB": -18.84955556320184,
+     "success": false,
+     "message": "ABNORMAL: ",
+     "nit": 98,
+     "grad_max": 4.454288514859755e-07,
+     "seconds": 271.81276750564575,
+     "L": 320,
+     "h": 0.125,
+     "half_width": 20.0,
+     "T_over_2pi": 2.73612409709254
+    }
+   },
+   "inertia_2d": {
+    "rows": [
+     {
+      "omega": 0.01,
+      "E_rot": 0.00034852389656300135,
+      "E_rot_over_omega2": 3.4852389656300136,
+      "I": 1.109386018473002,
+      "cg_iters": 281,
+      "rel_res": 9.44601770173922e-13
+     },
+     {
+      "omega": 0.02,
+      "E_rot": 0.0013940955862520054,
+      "E_rot_over_omega2": 3.4852389656300136,
+      "I": 1.109386018473002,
+      "cg_iters": 281,
+      "rel_res": 9.44601770173922e-13
+     },
+     {
+      "omega": 0.05,
+      "E_rot": 0.008713097414075034,
+      "E_rot_over_omega2": 3.485238965630013,
+      "I": 1.109386018473002,
+      "cg_iters": 281,
+      "rel_res": 9.446017708452209e-13
+     }
+    ],
+    "I_extrapolated": 1.1093860184730024,
+    "slope_in_omega2": -4.603138657364933e-15,
+    "T_rotated": 5.730524911204981,
+    "r_charge_rms": 1.5516766645376878
+   },
+   "decay_2d": {
+    "m_scalar": 0.7929621606967162,
+    "m_magnetic": 0.9874090424130445,
+    "window": [
+     4.0,
+     9.0
+    ]
+   },
+   "checks": {
+    "C1": {
+     "value": 0.9120413656651937,
+     "target": 0.91231,
+     "rel_dev": -0.0002944551027680431
+    },
+    "C2": {
+     "value": 1.7736494590911134,
+     "target": 1.77407,
+     "rel_dev": -0.00023704865585161272
+    },
+    "C3": {
+     "value": 0.3333333330807731,
+     "target": 0.3333333333333333,
+     "abs_dev": -2.5256019497987836e-10
+    },
+    "C4": {
+     "value": 1.0000000000354368,
+     "target": 1.0,
+     "rel_dev": 3.543676463380052e-11
+    },
+    "C5C6": {
+     "I": 1.1093860184730024,
+     "target": null
+    }
+   }
+  },
+  "1.0": {
+   "radial": {
+    "elementary": {
+     "T_over_2pi": 1.0000578257874406,
+     "flux_TrB": 6.283185307179586,
+     "I_alpha_pi4": 3.141955923621026,
+     "success": true,
+     "nit": 4869,
+     "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+     "I_over_pi": 1.0001156324422957,
+     "decay": {
+      "m_scalar": 0.9980548472446291,
+      "m_magnetic": 0.9977861242444054,
+      "window": [
+       5.0,
+       12.0
+      ]
+     }
+    },
+    "winding2": {
+     "T_over_2pi": 2.0000939867481167,
+     "flux_TrB": 12.566370614359172,
+     "I_alpha_pi4": 6.283776109972678,
+     "success": true,
+     "nit": 4980,
+     "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    "composite": {
+     "T_over_2pi": 3.00017347736262,
+     "flux_TrB": 18.84955592153876,
+     "I_alpha_pi4": 1.6825651982799172e-11,
+     "success": true,
+     "nit": 4721,
+     "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    }
+   },
+   "lattice": {
+    "elementary": {
+     "T": 6.2809099487206534,
+     "T_kin": 3.6720149317311033,
+     "T_mag": 1.3055869701406095,
+     "T_pot": 1.3033080468489402,
+     "flux_TrB": -6.283185134208226,
+     "success": false,
+     "message": "ABNORMAL: ",
+     "nit": 91,
+     "grad_max": 1.8029056580465956e-07,
+     "seconds": 263.8159284591675,
+     "L": 320,
+     "h": 0.125,
+     "half_width": 20.0,
+     "T_over_2pi": 0.9996378654539549
+    },
+    "winding2": {
+     "T": 12.562671391161663,
+     "T_kin": 5.747074907240477,
+     "T_mag": 3.40965402804909,
+     "T_pot": 3.405942455872095,
+     "flux_TrB": -12.566369961303117,
+     "success": true,
+     "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+     "nit": 99,
+     "grad_max": 7.500667097509931e-08,
+     "seconds": 286.7873718738556,
+     "L": 320,
+     "h": 0.125,
+     "half_width": 20.0,
+     "T_over_2pi": 1.999411250342516
+    },
+    "composite": {
+     "T": 18.84272984685312,
+     "T_kin": 11.01604466420403,
+     "T_mag": 3.9167605931661456,
+     "T_pot": 3.9099245894829475,
+     "flux_TrB": -18.84955538642531,
+     "success": false,
+     "message": "ABNORMAL: ",
+     "nit": 91,
+     "grad_max": 3.936348417031538e-07,
+     "seconds": 274.2624933719635,
+     "L": 320,
+     "h": 0.125,
+     "half_width": 20.0,
+     "T_over_2pi": 2.9989135964718665
+    }
+   },
+   "inertia_2d": {
+    "rows": [
+     {
+      "omega": 0.01,
+      "E_rot": 0.00031393155127068854,
+      "E_rot_over_omega2": 3.1393155127068852,
+      "I": 0.9992751635447372,
+      "cg_iters": 282,
+      "rel_res": 9.820693166130454e-13
+     },
+     {
+      "omega": 0.02,
+      "E_rot": 0.0012557262050827541,
+      "E_rot_over_omega2": 3.1393155127068852,
+      "I": 0.9992751635447372,
+      "cg_iters": 282,
+      "rel_res": 9.820693166130454e-13
+     },
+     {
+      "omega": 0.05,
+      "E_rot": 0.007848288781767215,
+      "E_rot_over_omega2": 3.1393155127068857,
+      "I": 0.9992751635447373,
+      "cg_iters": 282,
+      "rel_res": 9.820693136934515e-13
+     }
+    ],
+    "I_extrapolated": 0.9992751635447374,
+    "slope_in_omega2": -7.829460102856761e-15,
+    "T_rotated": 6.280909951623191,
+    "r_charge_rms": 1.4145834765368048
+   },
+   "decay_2d": {
+    "m_scalar": 0.9939971372529244,
+    "m_magnetic": 0.9927676314525484,
+    "window": [
+     4.0,
+     9.0
+    ]
+   },
+   "checks": {
+    "C1": {
+     "value": 0.9996378654539549,
+     "target": 1.0,
+     "rel_dev": -0.00036213454604505646
+    },
+    "C2": {
+     "value": 1.999411250342516,
+     "target": 2.0,
+     "rel_dev": -0.0002943748287419501
+    },
+    "C3": {
+     "value": 0.3333333336198011,
+     "target": 0.3333333333333333,
+     "abs_dev": 2.864677939307114e-10
+    },
+    "C4": {
+     "value": 1.0000000000366807,
+     "target": 1.0,
+     "rel_dev": 3.668065851059055e-11
+    },
+    "C5C6": {
+     "I": 0.9992751635447374,
+     "target": 1.0
+    }
+   }
+  },
+  "1.2": {
+   "radial": {
+    "elementary": {
+     "T_over_2pi": 1.079297463922414,
+     "flux_TrB": 6.283185307179586,
+     "I_alpha_pi4": 2.9339951323936475,
+     "success": true,
+     "nit": 4856,
+     "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+     "I_over_pi": 0.9339196566560178,
+     "decay": {
+      "m_scalar": 1.1982567165498268,
+      "m_magnetic": 0.9982973051613341,
+      "window": [
+       5.0,
+       12.0
+      ]
+     }
+    },
+    "winding2": {
+     "T_over_2pi": 2.2095632135944197,
+     "flux_TrB": 12.566370614359172,
+     "I_alpha_pi4": 5.734304171151052,
+     "success": true,
+     "nit": 5207,
+     "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    "composite": {
+     "T_over_2pi": 3.2378923917673776,
+     "flux_TrB": 18.84955592153876,
+     "I_alpha_pi4": -4.092726157978177e-12,
+     "success": true,
+     "nit": 4751,
+     "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    }
+   },
+   "lattice": {
+    "elementary": {
+     "T": 6.777983164424429,
+     "T_kin": 3.926764210984489,
+     "T_mag": 1.427081326777568,
+     "T_pot": 1.4241376266623722,
+     "flux_TrB": -6.283185239849397,
+     "success": false,
+     "message": "ABNORMAL: ",
+     "nit": 87,
+     "grad_max": 7.713187860405327e-08,
+     "seconds": 212.24862909317017,
+     "L": 320,
+     "h": 0.125,
+     "half_width": 20.0,
+     "T_over_2pi": 1.0787495248117946
+    },
+    "winding2": {
+     "T": 13.877350645369296,
+     "T_kin": 6.2505072854961234,
+     "T_mag": 3.815911917851963,
+     "T_pot": 3.8109314420212086,
+     "flux_TrB": -12.566370175143188,
+     "success": false,
+     "message": "ABNORMAL: ",
+     "nit": 94,
+     "grad_max": 2.485887023773177e-07,
+     "seconds": 227.6533498764038,
+     "L": 320,
+     "h": 0.125,
+     "half_width": 20.0,
+     "T_over_2pi": 2.2086489522300274
+    },
+    "composite": {
+     "T": 20.333949493916172,
+     "T_kin": 11.780294402236184,
+     "T_mag": 4.28124160216629,
+     "T_pot": 4.272413489513697,
+     "flux_TrB": -18.849555754360207,
+     "success": false,
+     "message": "ABNORMAL: ",
+     "nit": 84,
+     "grad_max": 1.349085320173788e-07,
+     "seconds": 243.12558126449585,
+     "L": 320,
+     "h": 0.125,
+     "half_width": 20.0,
+     "T_over_2pi": 3.2362485745377025
+    }
+   },
+   "inertia_2d": {
+    "rows": [
+     {
+      "omega": 0.01,
+      "E_rot": 0.0002931344864379929,
+      "E_rot_over_omega2": 2.9313448643799287,
+      "I": 0.9330760501462144,
+      "cg_iters": 284,
+      "rel_res": 9.580052155249324e-13
+     },
+     {
+      "omega": 0.02,
+      "E_rot": 0.0011725379457519715,
+      "E_rot_over_omega2": 2.9313448643799287,
+      "I": 0.9330760501462144,
+      "cg_iters": 284,
+      "rel_res": 9.580052155249324e-13
+     },
+     {
+      "omega": 0.05,
+      "E_rot": 0.007328362160949822,
+      "E_rot_over_omega2": 2.9313448643799283,
+      "I": 0.9330760501462143,
+      "cg_iters": 284,
+      "rel_res": 9.580052139814637e-13
+     }
+    ],
+    "I_extrapolated": 0.9330760501462146,
+    "slope_in_omega2": -2.1242486992029037e-14,
+    "T_rotated": 6.777983167308892,
+    "r_charge_rms": 1.3365222894364617
+   },
+   "decay_2d": {
+    "m_scalar": 1.1933685955585749,
+    "m_magnetic": 0.9948395613550275,
+    "window": [
+     4.0,
+     9.0
+    ]
+   },
+   "checks": {
+    "C1": {
+     "value": 1.0787495248117946,
+     "target": 1.07922,
+     "rel_dev": -0.00043594001983415787
+    },
+    "C2": {
+     "value": 2.2086489522300274,
+     "target": 2.20944,
+     "rel_dev": -0.0003580308901678375
+    },
+    "C3": {
+     "value": 0.3333333327177217,
+     "target": 0.3333333333333333,
+     "abs_dev": -6.156116172384429e-10
+    },
+    "C4": {
+     "value": 1.0000000000316163,
+     "target": 1.0,
+     "rel_dev": 3.161626516146043e-11
+    },
+    "C5C6": {
+     "I": 0.9330760501462146,
+     "target": null
+    }
+   }
+  }
+ },
+ "convergence": {
+  "L160_h0.25": {
+   "T": 6.27402859768339,
+   "T_kin": 3.667662735893365,
+   "T_mag": 1.3077983708742664,
+   "T_pot": 1.2985674909157585,
+   "flux_TrB": -6.283185169332375,
+   "success": false,
+   "message": "ABNORMAL: ",
+   "nit": 62,
+   "grad_max": 8.99943651806393e-08,
+   "seconds": 43.01902651786804,
+   "L": 160,
+   "h": 0.25,
+   "half_width": 20.0,
+   "T_over_2pi": 0.998542664421224,
+   "inertia_2d": {
+    "rows": [
+     {
+      "omega": 0.01,
+      "E_rot": 0.0003132398858861647,
+      "E_rot_over_omega2": 3.132398858861647,
+      "I": 0.9970735242464867,
+      "cg_iters": 141,
+      "rel_res": 8.546780319320713e-13
+     },
+     {
+      "omega": 0.02,
+      "E_rot": 0.0012529595435446588,
+      "E_rot_over_omega2": 3.132398858861647,
+      "I": 0.9970735242464867,
+      "cg_iters": 141,
+      "rel_res": 8.546780319320713e-13
+     },
+     {
+      "omega": 0.05,
+      "E_rot": 0.007830997147154116,
+      "E_rot_over_omega2": 3.132398858861646,
+      "I": 0.9970735242464864,
+      "cg_iters": 141,
+      "rel_res": 8.546780314336716e-13
+     }
+    ],
+    "I_extrapolated": 0.997073524246487,
+    "slope_in_omega2": -1.477950438057961e-13,
+    "T_rotated": 6.27402859786735,
+    "r_charge_rms": 1.4156769261514637
+   }
+  },
+  "L480_h0.125": {
+   "T": 6.280909948727684,
+   "T_kin": 3.6720149789339596,
+   "T_mag": 1.3055870572380286,
+   "T_pot": 1.3033079125556957,
+   "flux_TrB": -6.283185279089429,
+   "success": true,
+   "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+   "nit": 89,
+   "grad_max": 1.6176199293895684e-07,
+   "seconds": 1050.651296377182,
+   "L": 480,
+   "h": 0.125,
+   "half_width": 30.0,
+   "T_over_2pi": 0.9996378654550738,
+   "checkpoint_restarts": 0,
+   "inertia_2d": {
+    "rows": [
+     {
+      "omega": 0.01,
+      "E_rot": 0.0003139315402016686,
+      "E_rot_over_omega2": 3.1393154020166856,
+      "I": 0.9992751283109524,
+      "cg_iters": 279,
+      "rel_res": 9.281130137755419e-13
+     },
+     {
+      "omega": 0.02,
+      "E_rot": 0.0012557261608066744,
+      "E_rot_over_omega2": 3.1393154020166856,
+      "I": 0.9992751283109524,
+      "cg_iters": 279,
+      "rel_res": 9.281130137755419e-13
+     },
+     {
+      "omega": 0.05,
+      "E_rot": 0.007848288505041715,
+      "E_rot_over_omega2": 3.1393154020166856,
+      "I": 0.9992751283109523,
+      "cg_iters": 279,
+      "rel_res": 9.281130143848357e-13
+     }
+    ],
+    "I_extrapolated": 0.9992751283109526,
+    "slope_in_omega2": 8.348779545849584e-15,
+    "T_rotated": 6.280909955160199,
+    "r_charge_rms": 1.4145833173993918
+   },
+   "note": "computed in the resumed run after container restarts (checkpointed)"
+  }
+ }
+}

@@ -1,0 +1,24 @@
+--- control_N0.py	2026-10-31 19:12:28.597468324 +0000
++++ control_N0_cell.py	2026-10-31 19:13:04.226113298 +0000
+@@ -1,9 +1,12 @@
+-"""N = 0 control (P1): a composite ring with no twist should shrink. Free relaxation from R0."""
++"""N = 0 control (P1): a composite ring with no twist should shrink. Free relaxation from R0.
++control_N0_cell.py: copy of control_N0.py; only e, eta as arguments and kappa, eta in the output tag differ.
++usage: python3 control_N0_cell.py N R0 E ETA"""
+ import numpy as np, json, sys, time
+ from gl3 import GL3
+ N = int(sys.argv[1]) if len(sys.argv) > 1 else 49
+ R0 = float(sys.argv[2]) if len(sys.argv) > 2 else 6.0
+-g = GL3(N=N, h=0.5, eta=0.1)
++e, eta = float(sys.argv[3]), float(sys.argv[4])
++g = GL3(N=N, h=0.5, e=e, eta=eta)
+ f = g.ring_field((0, 0, 0), (0, 0, 1), R0)
+ psi = np.stack([f, f, f]); A = np.zeros((3, N, N, N))
+ E0 = g.energy_grad(g.pack(psi, A))[0] - g.vacuum_energy()
+@@ -20,5 +23,5 @@
+ out = dict(N=N, h=0.5, R0=R0, E_start=float(E0), E_end=float(E), R_end=g.core_radius(psi[1]),
+            iters=int(r.nit), converged=bool(r.success), msg=str(r.message), seconds=time.time() - t0,
+            history=[x for x in hist if x])
+-json.dump(out, open(f'control_N0_N{N}_R{R0:g}.json', 'w'), indent=1)
++json.dump(out, open(f'control_N0_N{N}_R{R0:g}_k{1 / (e * np.sqrt(3)):.3g}_eta{eta:g}.json', 'w'), indent=1)
+ print('FINAL', json.dumps({k: out[k] for k in ('E_start', 'E_end', 'R_end', 'iters', 'converged', 'seconds')}))

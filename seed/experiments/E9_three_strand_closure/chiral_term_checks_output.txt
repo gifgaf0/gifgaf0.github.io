@@ -1,0 +1,11 @@
+E_c = (-0.2871896611054204+2.6893658029974157e-16j)  |Im|/|Re| = 9.364424167101943e-16
+gauge invariance  rel diff = 5.94183608169132e-16
+parity: E_c(P psi)/E_c(psi) = -1.0000000000000009
+locked proper rotations (of the 24 cube rotations) preserving potential + Josephson: 6
+helix u.curl u: mean psi*.curl psi = -1.9999999999999782  expected -q = -2
+[[1, 0, 0], [0, 1, 0], [0, 0, 1]] E_c inv: True  pot inv: True  Josephson inv: True
+[[-1, 0, 0], [0, 0, -1], [0, -1, 0]] E_c inv: True  pot inv: True  Josephson inv: True
+[[0, -1, 0], [-1, 0, 0], [0, 0, -1]] E_c inv: True  pot inv: True  Josephson inv: True
+[[0, 0, 1], [1, 0, 0], [0, 1, 0]] E_c inv: True  pot inv: True  Josephson inv: True
+[[0, 1, 0], [0, 0, 1], [1, 0, 0]] E_c inv: True  pot inv: True  Josephson inv: True
+[[0, 0, -1], [0, -1, 0], [-1, 0, 0]] E_c inv: True  pot inv: True  Josephson inv: True

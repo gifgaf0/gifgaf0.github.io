@@ -1,0 +1,526 @@
+Python 3.13.18, NumPy 2.5.3, SciPy 1.18.1, 4 cores
+gradient check (full functional, k=0.3, q=1.7, beta=2, mu2=3.6, lam=4), worst relative error: 2.547650593607215e-06
+gradient check (k=0, q=0.5, beta=1, mu2=2.5, lam=2), worst relative error: 3.2266701057349363e-07
+consistency with option4_design functional at q=0 (rel. energy diff, max grad diff): (0.0, 0.0)
+bare string: T0 = 27.7981, converged=True (CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH), r(f^2=(1+eta)/2) = 1.168
+eps0(beta): {1.0: 2.047, 2.0: 3.163, 3.0: 4.025, 5.0: 5.397} (PREREG §1.3: 2.047, 3.163, 4.025, 5.397)
+[b1_d0.25] mu2=2.2967 lam=1.8165 m2_vac=1.0033 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630; beta*S-(1+eta)=+0.1644)
+[b1_d0.5] mu2=2.5467 lam=2.2334 m2_vac=0.7533 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630; beta*S-(1+eta)=+0.0403)
+[b1_d1] mu2=3.0467 lam=3.1965 m2_vac=0.2533 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630; beta*S-(1+eta)=-0.1469)
+[b2_d0.25] mu2=3.4126 lam=4.0102 m2_vac=3.1874 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630; beta*S-(1+eta)=+0.6019)
+[b2_d0.5] mu2=3.6626 lam=4.6193 m2_vac=2.9374 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630; beta*S-(1+eta)=+0.4858)
+[b2_d1] mu2=4.1626 lam=5.9666 m2_vac=2.4374 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630; beta*S-(1+eta)=+0.2953)
+[b3_d0.25] mu2=4.2750 lam=6.2932 m2_vac=5.6250 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630; beta*S-(1+eta)=+0.9379)
+[b3_d0.5] mu2=4.5250 lam=7.0508 m2_vac=5.3750 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630; beta*S-(1+eta)=+0.8253)
+[b3_d1] mu2=5.0250 lam=8.6951 m2_vac=4.8750 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630; beta*S-(1+eta)=+0.6337)
+[b5_d0.25] mu2=5.6473 lam=10.9822 m2_vac=10.8527 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630; beta*S-(1+eta)=+1.4711)
+[b5_d0.5] mu2=5.8973 lam=11.9761 m2_vac=10.6027 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630; beta*S-(1+eta)=+1.3621)
+[b5_d1] mu2=6.3973 lam=14.0929 m2_vac=10.1027 C3 PASS (min: psi_vacuum, polish rho=1.100000 S=0.00e+00, sigma-vac above psi-vac by 0.3630; beta*S-(1+eta)=+1.1697)
+[b1_d1] k=0.00: last q=52.50, in-window q up to 52.25, 281 s
+[b1_d0.5] k=0.00: last q=100.00, in-window q up to 100.0, 540 s
+[b1_d1] k=0.05: last q=52.75, in-window q up to 52.5, 547 s
+[b1_d0.25] k=0.00: last q=100.00, in-window q up to 100.0, 552 s
+[b2_d0.25] k=0.00: last q=100.00, in-window q up to 100.0, 611 s
+[b1_d1] k=0.10: last q=53.75, in-window q up to 53.5, 872 s
+[b1_d0.5] k=0.05: last q=100.00, in-window q up to 100.0, 1026 s
+[b1_d0.25] k=0.05: last q=100.00, in-window q up to 100.0, 1031 s
+[b2_d0.25] k=0.05: last q=100.00, in-window q up to 100.0, 1073 s
+[b1_d1] k=0.15: last q=53.00, in-window q up to 52.75, 1205 s
+[b1_d1] k=0.20: last q=41.50, in-window q up to 41.25, 1478 s
+[b1_d0.25] k=0.10: last q=100.00, in-window q up to 100.0, 1583 s
+[b1_d0.5] k=0.10: last q=100.00, in-window q up to 100.0, 1587 s
+[b2_d0.25] k=0.10: last q=100.00, in-window q up to 100.0, 1624 s
+[b1_d1] k=0.25: last q=32.75, in-window q up to 32.5, 1687 s
+[b1_d1] k=0.30: last q=26.00, in-window q up to 25.75, 1857 s
+[b1_d1] k=0.35: last q=21.25, in-window q up to 21.0, 1996 s
+[b1_d1] k=0.40: last q=17.25, in-window q up to 17.0, 2111 s
+[b1_d0.25] k=0.15: last q=100.00, in-window q up to 100.0, 2165 s
+[b1_d0.5] k=0.15: last q=100.00, in-window q up to 100.0, 2174 s
+[b2_d0.25] k=0.15: last q=100.00, in-window q up to 100.0, 2205 s
+[b1_d1] k=0.45: last q=14.25, in-window q up to 14.0, 2206 s
+[b1_d1] k=0.50: last q=11.75, in-window q up to 11.5, 2285 s
+[b1_d1] k=0.55: last q=9.75, in-window q up to 9.5, 2349 s
+[b1_d1] k=0.60: last q=8.00, in-window q up to 7.75, 2402 s
+[b1_d1] k=0.65: last q=6.75, in-window q up to 6.5, 2446 s
+[b1_d1] k=0.70: last q=5.50, in-window q up to 5.25, 2483 s
+[b1_d1] k=0.75: last q=4.50, in-window q up to 4.25, 2515 s
+[b1_d1] k=0.80: last q=3.75, in-window q up to 3.5, 2542 s
+[b1_d1] k=0.85: last q=2.75, in-window q up to 2.5, 2562 s
+[b1_d1] k=0.90: last q=2.25, in-window q up to 2.0, 2578 s
+[b1_d1] k=0.95: last q=1.75, in-window q up to 1.5, 2593 s
+[b1_d1] k=1.00: last q=0.00, in-window q up to None, 2617 s
+[b1_d1] NOT CONVERGED k=0.00 q=1.75: ABNORMAL:  nit=2747 grad_max=3.82e-06
+[b1_d1] NOT CONVERGED k=0.00 q=9.75: ABNORMAL:  nit=3179 grad_max=6.00e-06
+[b1_d1] NOT CONVERGED k=0.05 q=9.00: ABNORMAL:  nit=2784 grad_max=1.84e-05
+[b1_d1] NOT CONVERGED k=0.05 q=45.25: ABNORMAL:  nit=2805 grad_max=1.72e-05
+[b1_d1] NOT CONVERGED k=0.10 q=19.25: ABNORMAL:  nit=3316 grad_max=3.01e-06
+[b1_d1] NOT CONVERGED k=0.35 q=14.25: ABNORMAL:  nit=3794 grad_max=5.02e-06
+[b1_d1] NOT CONVERGED k=0.35 q=16.00: ABNORMAL:  nit=3837 grad_max=6.15e-06
+[b1_d1] NOT CONVERGED k=0.85 q=0.75: ABNORMAL:  nit=3493 grad_max=4.48e-06
+[b1_d1] beta=1.0 delta=1.0 mu2=3.0467 lam=3.1965 m_vac=0.5032: 1708 solves, 1687 in window, k_max_in=0.9500000000000001, sign changes=0, min(T/E)=0.3771, verdict=NONE, 2617 s
+[b1_d0.25] k=0.20: last q=100.00, in-window q up to 100.0, 2780 s
+[b1_d0.5] k=0.20: last q=100.00, in-window q up to 100.0, 2792 s
+[b2_d0.25] k=0.20: last q=100.00, in-window q up to 100.0, 2818 s
+[b2_d0.5] k=0.00: last q=100.00, in-window q up to 100.0, 594 s
+[b1_d0.25] k=0.25: last q=100.00, in-window q up to 100.0, 3426 s
+[b1_d0.5] k=0.25: last q=100.00, in-window q up to 100.0, 3442 s
+[b2_d0.25] k=0.25: last q=100.00, in-window q up to 100.0, 3474 s
+[b2_d0.5] k=0.05: last q=100.00, in-window q up to 100.0, 1063 s
+[b1_d0.25] k=0.30: last q=100.00, in-window q up to 100.0, 4089 s
+[b1_d0.5] k=0.30: last q=100.00, in-window q up to 100.0, 4110 s
+[b2_d0.25] k=0.30: last q=100.00, in-window q up to 100.0, 4145 s
+[b2_d0.5] k=0.10: last q=100.00, in-window q up to 100.0, 1621 s
+[b1_d0.25] k=0.35: last q=100.00, in-window q up to 100.0, 4752 s
+[b1_d0.5] k=0.35: last q=100.00, in-window q up to 100.0, 4776 s
+[b2_d0.25] k=0.35: last q=100.00, in-window q up to 100.0, 4815 s
+[b2_d0.5] k=0.15: last q=100.00, in-window q up to 100.0, 2225 s
+[b1_d0.25] k=0.40: last q=100.00, in-window q up to 100.0, 5411 s
+[b1_d0.5] k=0.40: last q=100.00, in-window q up to 100.0, 5441 s
+[b2_d0.5] k=0.20: last q=100.00, in-window q up to 100.0, 2851 s
+[b2_d0.25] k=0.40: last q=100.00, in-window q up to 100.0, 5488 s
+[b1_d0.25] k=0.45: last q=100.00, in-window q up to 100.0, 6078 s
+[b1_d0.25] k=0.50: last q=0.00, in-window q up to None, 6103 s
+[b1_d0.5] k=0.45: last q=100.00, in-window q up to 100.0, 6116 s
+[b2_d0.5] k=0.25: last q=100.00, in-window q up to 100.0, 3503 s
+[b1_d0.25] Q_CAP reached at k=0.00
+[b1_d0.25] Q_CAP reached at k=0.05
+[b1_d0.25] NOT CONVERGED k=0.10 q=0.25: ABNORMAL:  nit=4146 grad_max=3.26e-06
+[b1_d0.25] NOT CONVERGED k=0.10 q=5.50: ABNORMAL:  nit=2672 grad_max=9.33e-06
+[b1_d0.25] NOT CONVERGED k=0.10 q=22.75: ABNORMAL:  nit=2924 grad_max=7.45e-06
+[b1_d0.25] Q_CAP reached at k=0.10
+[b1_d0.25] Q_CAP reached at k=0.15
+[b1_d0.25] NOT CONVERGED k=0.20 q=4.75: ABNORMAL:  nit=2989 grad_max=6.64e-06
+[b1_d0.25] NOT CONVERGED k=0.20 q=5.50: ABNORMAL:  nit=2984 grad_max=3.14e-06
+[b1_d0.25] NOT CONVERGED k=0.20 q=35.50: ABNORMAL:  nit=3445 grad_max=1.56e-05
+[b1_d0.25] Q_CAP reached at k=0.20
+[b1_d0.25] Q_CAP reached at k=0.25
+[b1_d0.25] Q_CAP reached at k=0.30
+[b1_d0.25] NOT CONVERGED k=0.35 q=6.75: ABNORMAL:  nit=3304 grad_max=5.96e-06
+[b1_d0.25] Q_CAP reached at k=0.35
+[b1_d0.25] Q_CAP reached at k=0.40
+[b1_d0.25] NOT CONVERGED k=0.45 q=3.00: ABNORMAL:  nit=3346 grad_max=9.29e-06
+[b1_d0.25] NOT CONVERGED k=0.45 q=57.50: ABNORMAL:  nit=3796 grad_max=2.33e-05
+[b1_d0.25] Q_CAP reached at k=0.45
+[b1_d0.25] NOT CONVERGED k=0.50 q=0.00: STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT nit=50000 grad_max=3.78e-05
+[b1_d0.25] beta=1.0 delta=0.25 mu2=2.2967 lam=1.8165 m_vac=1.0016: 4011 solves, 4010 in window, k_max_in=0.45, sign changes=8, min(T/E)=-0.0035, verdict=NONE up to q = 100 (truncated), 6139 s
+[b2_d0.25] k=0.45: last q=100.00, in-window q up to 100.0, 6179 s
+[b2_d0.25] k=0.50: last q=0.00, in-window q up to None, 6204 s
+[b2_d0.25] NOT CONVERGED k=0.00 q=24.25: ABNORMAL:  nit=3062 grad_max=7.17e-06
+[b2_d0.25] NOT CONVERGED k=0.00 q=78.50: ABNORMAL:  nit=3038 grad_max=4.73e-06
+[b2_d0.25] Q_CAP reached at k=0.00
+[b2_d0.25] Q_CAP reached at k=0.05
+[b2_d0.25] NOT CONVERGED k=0.10 q=23.75: ABNORMAL:  nit=2573 grad_max=1.21e-05
+[b2_d0.25] Q_CAP reached at k=0.10
+[b2_d0.25] NOT CONVERGED k=0.15 q=94.00: ABNORMAL:  nit=3587 grad_max=7.02e-06
+[b2_d0.25] Q_CAP reached at k=0.15
+[b2_d0.25] Q_CAP reached at k=0.20
+[b2_d0.25] Q_CAP reached at k=0.25
+[b2_d0.25] NOT CONVERGED k=0.30 q=85.75: ABNORMAL:  nit=3772 grad_max=1.63e-05
+[b2_d0.25] Q_CAP reached at k=0.30
+[b2_d0.25] Q_CAP reached at k=0.35
+[b2_d0.25] Q_CAP reached at k=0.40
+[b2_d0.25] NOT CONVERGED k=0.45 q=0.75: ABNORMAL:  nit=2705 grad_max=1.61e-05
+[b2_d0.25] Q_CAP reached at k=0.45
+[b2_d0.25] NOT CONVERGED k=0.50 q=0.00: STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT nit=50000 grad_max=1.48e-04
+[b2_d0.25] beta=2.0 delta=0.25 mu2=3.4126 lam=4.0102 m_vac=1.7853: 4011 solves, 4010 in window, k_max_in=0.45, sign changes=0, min(T/E)=0.0790, verdict=NONE up to q = 100 (truncated), 6204 s
+[b2_d1] k=0.00: last q=100.00, in-window q up to 100.0, 582 s
+[b2_d0.5] k=0.30: last q=100.00, in-window q up to 100.0, 4166 s
+[b1_d0.5] k=0.50: last q=100.00, in-window q up to 100.0, 6785 s
+[b3_d0.25] k=0.00: last q=100.00, in-window q up to 100.0, 616 s
+[b2_d1] k=0.05: last q=100.00, in-window q up to 100.0, 1049 s
+[b3_d0.25] k=0.05: last q=100.00, in-window q up to 100.0, 1090 s
+[b1_d0.5] k=0.55: last q=100.00, in-window q up to 100.0, 7521 s
+[b2_d0.5] k=0.35: last q=100.00, in-window q up to 100.0, 4914 s
+[b2_d1] k=0.10: last q=100.00, in-window q up to 100.0, 1697 s
+[b1_d0.5] k=0.60: last q=46.00, in-window q up to 45.75, 7862 s
+[b3_d0.25] k=0.10: last q=100.00, in-window q up to 100.0, 1730 s
+[b1_d0.5] k=0.65: last q=30.00, in-window q up to 29.75, 8071 s
+[b1_d0.5] k=0.70: last q=21.50, in-window q up to 21.25, 8231 s
+[b1_d0.5] k=0.75: last q=0.00, in-window q up to None, 8235 s
+[b2_d0.5] k=0.40: last q=100.00, in-window q up to 100.0, 5684 s
+[b2_d1] k=0.15: last q=100.00, in-window q up to 100.0, 2367 s
+[b3_d0.25] k=0.15: last q=100.00, in-window q up to 100.0, 2389 s
+[b1_d0.5] Q_CAP reached at k=0.00
+[b1_d0.5] NOT CONVERGED k=0.05 q=10.50: ABNORMAL:  nit=2352 grad_max=2.25e-06
+[b1_d0.5] Q_CAP reached at k=0.05
+[b1_d0.5] NOT CONVERGED k=0.10 q=29.75: ABNORMAL:  nit=3096 grad_max=1.44e-05
+[b1_d0.5] Q_CAP reached at k=0.10
+[b1_d0.5] Q_CAP reached at k=0.15
+[b1_d0.5] Q_CAP reached at k=0.20
+[b1_d0.5] NOT CONVERGED k=0.25 q=3.50: ABNORMAL:  nit=3247 grad_max=9.11e-06
+[b1_d0.5] NOT CONVERGED k=0.25 q=11.75: ABNORMAL:  nit=3341 grad_max=8.89e-06
+[b1_d0.5] Q_CAP reached at k=0.25
+[b1_d0.5] Q_CAP reached at k=0.30
+[b1_d0.5] NOT CONVERGED k=0.35 q=5.00: ABNORMAL:  nit=3418 grad_max=6.42e-06
+[b1_d0.5] Q_CAP reached at k=0.35
+[b1_d0.5] Q_CAP reached at k=0.40
+[b1_d0.5] Q_CAP reached at k=0.45
+[b1_d0.5] Q_CAP reached at k=0.50
+[b1_d0.5] NOT CONVERGED k=0.55 q=1.75: ABNORMAL:  nit=3302 grad_max=5.44e-06
+[b1_d0.5] NOT CONVERGED k=0.55 q=23.25: ABNORMAL:  nit=3597 grad_max=2.08e-05
+[b1_d0.5] Q_CAP reached at k=0.55
+[b1_d0.5] beta=1.0 delta=0.5 mu2=2.5467 lam=2.2334 m_vac=0.8679: 5206 solves, 5202 in window, k_max_in=0.7000000000000001, sign changes=153, min(T/E)=-0.1239, verdict=WINDOW (q capped at 100 in 12 k rows), 8957 s
+[b2_d0.5] k=0.45: last q=100.00, in-window q up to 100.0, 6432 s
+[b2_d1] k=0.20: last q=100.00, in-window q up to 100.0, 3034 s
+[b3_d0.25] k=0.20: last q=100.00, in-window q up to 100.0, 3049 s
+[b3_d0.5] k=0.00: last q=100.00, in-window q up to 100.0, 688 s
+[b2_d0.5] k=0.50: last q=100.00, in-window q up to 100.0, 7192 s
+[b2_d1] k=0.25: last q=100.00, in-window q up to 100.0, 3748 s
+[b3_d0.25] k=0.25: last q=100.00, in-window q up to 100.0, 3752 s
+[b3_d0.5] k=0.05: last q=100.00, in-window q up to 100.0, 1175 s
+[b2_d0.5] k=0.55: last q=100.00, in-window q up to 100.0, 7945 s
+[b2_d1] k=0.30: last q=100.00, in-window q up to 100.0, 4463 s
+[b3_d0.25] k=0.30: last q=100.00, in-window q up to 100.0, 4455 s
+[b3_d0.5] k=0.10: last q=100.00, in-window q up to 100.0, 1750 s
+[b2_d0.5] k=0.60: last q=100.00, in-window q up to 100.0, 8678 s
+[b2_d1] k=0.35: last q=100.00, in-window q up to 100.0, 5167 s
+[b3_d0.5] k=0.15: last q=100.00, in-window q up to 100.0, 2366 s
+[b3_d0.25] k=0.35: last q=100.00, in-window q up to 100.0, 5163 s
+[b3_d0.5] k=0.20: last q=100.00, in-window q up to 100.0, 3027 s
+[b2_d1] k=0.40: last q=100.00, in-window q up to 100.0, 5895 s
+[b2_d0.5] k=0.65: last q=100.00, in-window q up to 100.0, 9421 s
+[b3_d0.25] k=0.40: last q=100.00, in-window q up to 100.0, 5889 s
+[b3_d0.5] k=0.25: last q=100.00, in-window q up to 100.0, 3688 s
+[b2_d1] k=0.45: last q=100.00, in-window q up to 100.0, 6604 s
+[b2_d0.5] k=0.70: last q=100.00, in-window q up to 100.0, 10152 s
+[b2_d0.5] k=0.75: last q=0.00, in-window q up to None, 10156 s
+[b3_d0.25] k=0.45: last q=100.00, in-window q up to 100.0, 6598 s
+[b3_d0.25] k=0.50: last q=0.00, in-window q up to None, 6617 s
+[b3_d0.25] Q_CAP reached at k=0.00
+[b3_d0.25] Q_CAP reached at k=0.05
+[b3_d0.25] NOT CONVERGED k=0.10 q=19.00: ABNORMAL:  nit=2418 grad_max=3.09e-06
+[b3_d0.25] NOT CONVERGED k=0.10 q=33.75: ABNORMAL:  nit=2674 grad_max=1.18e-05
+[b3_d0.25] Q_CAP reached at k=0.10
+[b3_d0.25] Q_CAP reached at k=0.15
+[b3_d0.25] Q_CAP reached at k=0.20
+[b3_d0.25] Q_CAP reached at k=0.25
+[b3_d0.25] Q_CAP reached at k=0.30
+[b3_d0.25] Q_CAP reached at k=0.35
+[b3_d0.25] NOT CONVERGED k=0.40 q=0.00: ABNORMAL:  nit=6189 grad_max=9.13e-06
+[b3_d0.25] Q_CAP reached at k=0.40
+[b3_d0.25] NOT CONVERGED k=0.45 q=23.50: ABNORMAL:  nit=3128 grad_max=1.33e-05
+[b3_d0.25] Q_CAP reached at k=0.45
+[b3_d0.25] beta=3.0 delta=0.25 mu2=4.2750 lam=6.2932 m_vac=2.3717: 4011 solves, 4010 in window, k_max_in=0.45, sign changes=0, min(T/E)=0.1111, verdict=NONE up to q = 100 (truncated), 6618 s
+[b3_d0.5] k=0.30: last q=100.00, in-window q up to 100.0, 4365 s
+[b2_d1] k=0.50: last q=100.00, in-window q up to 100.0, 7311 s
+[b3_d1] k=0.00: last q=100.00, in-window q up to 100.0, 630 s
+[b2_d0.5] Q_CAP reached at k=0.00
+[b2_d0.5] Q_CAP reached at k=0.05
+[b2_d0.5] NOT CONVERGED k=0.10 q=2.75: ABNORMAL:  nit=2088 grad_max=1.45e-05
+[b2_d0.5] Q_CAP reached at k=0.10
+[b2_d0.5] NOT CONVERGED k=0.15 q=3.25: ABNORMAL:  nit=2361 grad_max=4.20e-06
+[b2_d0.5] NOT CONVERGED k=0.15 q=97.50: ABNORMAL:  nit=3555 grad_max=2.55e-05
+[b2_d0.5] Q_CAP reached at k=0.15
+[b2_d0.5] NOT CONVERGED k=0.20 q=29.25: ABNORMAL:  nit=3183 grad_max=3.52e-06
+[b2_d0.5] Q_CAP reached at k=0.20
+[b2_d0.5] NOT CONVERGED k=0.25 q=12.00: ABNORMAL:  nit=2924 grad_max=2.06e-05
+[b2_d0.5] NOT CONVERGED k=0.25 q=19.50: ABNORMAL:  nit=2963 grad_max=1.73e-05
+[b2_d0.5] Q_CAP reached at k=0.25
+[b2_d0.5] Q_CAP reached at k=0.30
+[b2_d0.5] Q_CAP reached at k=0.35
+[b2_d0.5] NOT CONVERGED k=0.40 q=4.25: ABNORMAL:  nit=2963 grad_max=9.24e-06
+[b2_d0.5] Q_CAP reached at k=0.40
+[b2_d0.5] Q_CAP reached at k=0.45
+[b2_d0.5] Q_CAP reached at k=0.50
+[b2_d0.5] Q_CAP reached at k=0.55
+[b2_d0.5] NOT CONVERGED k=0.60 q=0.25: ABNORMAL:  nit=3271 grad_max=2.54e-06
+[b2_d0.5] NOT CONVERGED k=0.60 q=32.50: ABNORMAL:  nit=3561 grad_max=9.83e-06
+[b2_d0.5] Q_CAP reached at k=0.60
+[b2_d0.5] NOT CONVERGED k=0.65 q=77.25: ABNORMAL:  nit=3849 grad_max=1.70e-05
+[b2_d0.5] Q_CAP reached at k=0.65
+[b2_d0.5] Q_CAP reached at k=0.70
+[b2_d0.5] ray cross-check solve not converged k=0.5721 q=82.0388: ABNORMAL: 
+[b2_d0.5] beta=2.0 delta=0.5 mu2=3.6626 lam=4.6193 m_vac=1.7139: 6016 solves, 6015 in window, k_max_in=0.7000000000000001, sign changes=157, min(T/E)=-0.0957, verdict=WINDOW (q capped at 100 in 15 k rows), 10859 s
+[b3_d1] k=0.05: last q=100.00, in-window q up to 100.0, 1090 s
+[b3_d0.5] k=0.35: last q=100.00, in-window q up to 100.0, 5051 s
+[b5_d0.25] k=0.00: last q=100.00, in-window q up to 100.0, 656 s
+[b2_d1] k=0.55: last q=100.00, in-window q up to 100.0, 8022 s
+[b3_d1] k=0.10: last q=100.00, in-window q up to 100.0, 1664 s
+[b5_d0.25] k=0.05: last q=100.00, in-window q up to 100.0, 1122 s
+[b3_d0.5] k=0.40: last q=100.00, in-window q up to 100.0, 5767 s
+[b2_d1] k=0.60: last q=100.00, in-window q up to 100.0, 8766 s
+[b3_d1] k=0.15: last q=100.00, in-window q up to 100.0, 2297 s
+[b5_d0.25] k=0.10: last q=100.00, in-window q up to 100.0, 1688 s
+[b3_d0.5] k=0.45: last q=100.00, in-window q up to 100.0, 6487 s
+[b2_d1] k=0.65: last q=100.00, in-window q up to 100.0, 9496 s
+[b5_d0.25] k=0.15: last q=100.00, in-window q up to 100.0, 2290 s
+[b3_d1] k=0.20: last q=100.00, in-window q up to 100.0, 2946 s
+[b3_d0.5] k=0.50: last q=100.00, in-window q up to 100.0, 7201 s
+[b2_d1] k=0.70: last q=100.00, in-window q up to 100.0, 10211 s
+[b5_d0.25] k=0.20: last q=100.00, in-window q up to 100.0, 2911 s
+[b3_d1] k=0.25: last q=100.00, in-window q up to 100.0, 3606 s
+[b3_d0.5] k=0.55: last q=100.00, in-window q up to 100.0, 7912 s
+[b5_d0.25] k=0.25: last q=100.00, in-window q up to 100.0, 3559 s
+[b2_d1] k=0.75: last q=100.00, in-window q up to 100.0, 10921 s
+[b3_d1] k=0.30: last q=100.00, in-window q up to 100.0, 4282 s
+[b3_d0.5] k=0.60: last q=100.00, in-window q up to 100.0, 8642 s
+[b5_d0.25] k=0.30: last q=100.00, in-window q up to 100.0, 4230 s
+[b2_d1] k=0.80: last q=100.00, in-window q up to 100.0, 11637 s
+[b3_d1] k=0.35: last q=100.00, in-window q up to 100.0, 4983 s
+[b3_d0.5] k=0.65: last q=100.00, in-window q up to 100.0, 9376 s
+[b5_d0.25] k=0.35: last q=100.00, in-window q up to 100.0, 4922 s
+[b2_d1] k=0.85: last q=100.00, in-window q up to 100.0, 12366 s
+[b3_d1] k=0.40: last q=100.00, in-window q up to 100.0, 5708 s
+[b3_d0.5] k=0.70: last q=100.00, in-window q up to 100.0, 10142 s
+[b3_d0.5] k=0.75: last q=0.00, in-window q up to None, 10146 s
+[b5_d0.25] k=0.40: last q=100.00, in-window q up to 100.0, 5645 s
+[b2_d1] k=0.90: last q=100.00, in-window q up to 100.0, 13103 s
+[b3_d1] k=0.45: last q=100.00, in-window q up to 100.0, 6445 s
+[b3_d0.5] NOT CONVERGED k=0.00 q=12.75: ABNORMAL:  nit=3196 grad_max=1.17e-05
+[b3_d0.5] NOT CONVERGED k=0.00 q=24.50: ABNORMAL:  nit=3194 grad_max=1.03e-05
+[b3_d0.5] NOT CONVERGED k=0.00 q=80.50: ABNORMAL:  nit=3120 grad_max=3.89e-05
+[b3_d0.5] Q_CAP reached at k=0.00
+[b3_d0.5] NOT CONVERGED k=0.05 q=64.50: ABNORMAL:  nit=2455 grad_max=7.67e-06
+[b3_d0.5] Q_CAP reached at k=0.05
+[b3_d0.5] Q_CAP reached at k=0.10
+[b3_d0.5] Q_CAP reached at k=0.15
+[b3_d0.5] Q_CAP reached at k=0.20
+[b3_d0.5] Q_CAP reached at k=0.25
+[b3_d0.5] Q_CAP reached at k=0.30
+[b3_d0.5] Q_CAP reached at k=0.35
+[b3_d0.5] Q_CAP reached at k=0.40
+[b3_d0.5] Q_CAP reached at k=0.45
+[b3_d0.5] Q_CAP reached at k=0.50
+[b3_d0.5] NOT CONVERGED k=0.55 q=19.25: ABNORMAL:  nit=3182 grad_max=7.97e-06
+[b3_d0.5] Q_CAP reached at k=0.55
+[b3_d0.5] NOT CONVERGED k=0.60 q=23.25: ABNORMAL:  nit=3397 grad_max=5.99e-06
+[b3_d0.5] NOT CONVERGED k=0.60 q=67.50: ABNORMAL:  nit=3774 grad_max=2.00e-05
+[b3_d0.5] Q_CAP reached at k=0.60
+[b3_d0.5] NOT CONVERGED k=0.65 q=60.75: ABNORMAL:  nit=3716 grad_max=7.87e-06
+[b3_d0.5] Q_CAP reached at k=0.65
+[b3_d0.5] NOT CONVERGED k=0.70 q=2.50: ABNORMAL:  nit=2690 grad_max=1.25e-05
+[b3_d0.5] Q_CAP reached at k=0.70
+[b3_d0.5] beta=3.0 delta=0.5 mu2=4.5250 lam=7.0508 m_vac=2.3184: 6016 solves, 6015 in window, k_max_in=0.7000000000000001, sign changes=84, min(T/E)=-0.0369, verdict=WINDOW (q capped at 100 in 15 k rows), 10546 s
+[b5_d0.25] k=0.45: last q=100.00, in-window q up to 100.0, 6353 s
+[b5_d0.25] k=0.50: last q=0.00, in-window q up to None, 6373 s
+[b5_d0.25] Q_CAP reached at k=0.00
+[b5_d0.25] NOT CONVERGED k=0.05 q=59.00: ABNORMAL:  nit=2293 grad_max=9.05e-06
+[b5_d0.25] NOT CONVERGED k=0.05 q=73.25: ABNORMAL:  nit=2316 grad_max=7.05e-06
+[b5_d0.25] Q_CAP reached at k=0.05
+[b5_d0.25] NOT CONVERGED k=0.10 q=11.25: ABNORMAL:  nit=2194 grad_max=4.24e-06
+[b5_d0.25] Q_CAP reached at k=0.10
+[b5_d0.25] Q_CAP reached at k=0.15
+[b5_d0.25] Q_CAP reached at k=0.20
+[b5_d0.25] NOT CONVERGED k=0.25 q=19.00: ABNORMAL:  nit=2801 grad_max=6.91e-06
+[b5_d0.25] NOT CONVERGED k=0.25 q=23.50: ABNORMAL:  nit=2934 grad_max=5.61e-06
+[b5_d0.25] Q_CAP reached at k=0.25
+[b5_d0.25] NOT CONVERGED k=0.30 q=23.25: ABNORMAL:  nit=3078 grad_max=2.09e-06
+[b5_d0.25] Q_CAP reached at k=0.30
+[b5_d0.25] NOT CONVERGED k=0.35 q=3.00: ABNORMAL:  nit=2412 grad_max=5.29e-06
+[b5_d0.25] NOT CONVERGED k=0.35 q=18.00: ABNORMAL:  nit=2909 grad_max=2.55e-05
+[b5_d0.25] Q_CAP reached at k=0.35
+[b5_d0.25] NOT CONVERGED k=0.40 q=14.25: ABNORMAL:  nit=2790 grad_max=5.02e-06
+[b5_d0.25] NOT CONVERGED k=0.40 q=21.00: ABNORMAL:  nit=3081 grad_max=5.37e-06
+[b5_d0.25] NOT CONVERGED k=0.40 q=21.75: ABNORMAL:  nit=3018 grad_max=4.78e-06
+[b5_d0.25] Q_CAP reached at k=0.40
+[b5_d0.25] Q_CAP reached at k=0.45
+[b5_d0.25] beta=5.0 delta=0.25 mu2=5.6473 lam=10.9822 m_vac=3.2943: 4011 solves, 4010 in window, k_max_in=0.45, sign changes=0, min(T/E)=0.1402, verdict=NONE up to q = 100 (truncated), 6373 s
+[b2_d1] k=0.95: last q=100.00, in-window q up to 100.0, 13818 s
+[b2_d1] k=1.00: last q=0.00, in-window q up to None, 13844 s
+[b3_d1] k=0.50: last q=100.00, in-window q up to 100.0, 7165 s
+[b5_d0.5] k=0.00: last q=100.00, in-window q up to 100.0, 656 s
+[b5_d1] k=0.00: last q=100.00, in-window q up to 100.0, 644 s
+[b5_d0.5] k=0.05: last q=100.00, in-window q up to 100.0, 1097 s
+[b3_d1] k=0.55: last q=100.00, in-window q up to 100.0, 7876 s
+[b5_d1] k=0.05: last q=100.00, in-window q up to 100.0, 1096 s
+[b2_d1] Q_CAP reached at k=0.00
+[b2_d1] Q_CAP reached at k=0.05
+[b2_d1] NOT CONVERGED k=0.10 q=18.75: ABNORMAL:  nit=2570 grad_max=5.09e-06
+[b2_d1] NOT CONVERGED k=0.10 q=35.25: ABNORMAL:  nit=2825 grad_max=8.84e-06
+[b2_d1] NOT CONVERGED k=0.10 q=41.50: ABNORMAL:  nit=2918 grad_max=1.04e-05
+[b2_d1] Q_CAP reached at k=0.10
+[b2_d1] NOT CONVERGED k=0.15 q=2.25: ABNORMAL:  nit=2537 grad_max=1.52e-05
+[b2_d1] NOT CONVERGED k=0.15 q=29.00: ABNORMAL:  nit=3100 grad_max=2.67e-06
+[b2_d1] Q_CAP reached at k=0.15
+[b2_d1] Q_CAP reached at k=0.20
+[b2_d1] NOT CONVERGED k=0.25 q=9.50: ABNORMAL:  nit=2897 grad_max=5.66e-06
+[b2_d1] NOT CONVERGED k=0.25 q=29.25: ABNORMAL:  nit=3146 grad_max=1.31e-05
+[b2_d1] Q_CAP reached at k=0.25
+[b2_d1] NOT CONVERGED k=0.30 q=95.00: ABNORMAL:  nit=3677 grad_max=1.93e-05
+[b2_d1] Q_CAP reached at k=0.30
+[b2_d1] Q_CAP reached at k=0.35
+[b2_d1] NOT CONVERGED k=0.40 q=86.75: ABNORMAL:  nit=3985 grad_max=7.41e-06
+[b2_d1] Q_CAP reached at k=0.40
+[b2_d1] Q_CAP reached at k=0.45
+[b2_d1] Q_CAP reached at k=0.50
+[b2_d1] NOT CONVERGED k=0.55 q=28.00: ABNORMAL:  nit=3531 grad_max=5.76e-06
+[b2_d1] Q_CAP reached at k=0.55
+[b2_d1] NOT CONVERGED k=0.60 q=3.00: ABNORMAL:  nit=3043 grad_max=1.98e-06
+[b2_d1] Q_CAP reached at k=0.60
+[b2_d1] NOT CONVERGED k=0.65 q=49.75: ABNORMAL:  nit=3801 grad_max=1.07e-05
+[b2_d1] Q_CAP reached at k=0.65
+[b2_d1] Q_CAP reached at k=0.70
+[b2_d1] NOT CONVERGED k=0.75 q=49.75: ABNORMAL:  nit=3764 grad_max=2.78e-05
+[b2_d1] Q_CAP reached at k=0.75
+[b2_d1] NOT CONVERGED k=0.80 q=1.75: ABNORMAL:  nit=2854 grad_max=6.32e-06
+[b2_d1] Q_CAP reached at k=0.80
+[b2_d1] Q_CAP reached at k=0.85
+[b2_d1] NOT CONVERGED k=0.90 q=0.25: ABNORMAL:  nit=3271 grad_max=4.94e-06
+[b2_d1] Q_CAP reached at k=0.90
+[b2_d1] Q_CAP reached at k=0.95
+[b2_d1] NOT CONVERGED k=1.00 q=0.00: STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT nit=50000 grad_max=3.19e-05
+[b2_d1] ray cross-check solve not converged k=0.6295 q=72.6804: ABNORMAL: 
+[b2_d1] beta=2.0 delta=1.0 mu2=4.1626 lam=5.9666 m_vac=1.5612: 8021 solves, 8020 in window, k_max_in=0.9500000000000001, sign changes=270, min(T/E)=-0.2677, verdict=WINDOW (q capped at 100 in 20 k rows), 15031 s
+[b5_d0.5] k=0.10: last q=100.00, in-window q up to 100.0, 1668 s
+[b3_d1] k=0.60: last q=100.00, in-window q up to 100.0, 8623 s
+[b5_d1] k=0.10: last q=100.00, in-window q up to 100.0, 1661 s
+[b5_d0.5] k=0.15: last q=100.00, in-window q up to 100.0, 2298 s
+[b5_d1] k=0.15: last q=100.00, in-window q up to 100.0, 2291 s
+[b3_d1] k=0.65: last q=100.00, in-window q up to 100.0, 9397 s
+[b5_d0.5] k=0.20: last q=100.00, in-window q up to 100.0, 2967 s
+[b5_d1] k=0.20: last q=100.00, in-window q up to 100.0, 2947 s
+[b3_d1] k=0.70: last q=100.00, in-window q up to 100.0, 10155 s
+[b5_d0.5] k=0.25: last q=100.00, in-window q up to 100.0, 3650 s
+[b5_d1] k=0.25: last q=100.00, in-window q up to 100.0, 3623 s
+[b3_d1] k=0.75: last q=100.00, in-window q up to 100.0, 10919 s
+[b5_d0.5] k=0.30: last q=100.00, in-window q up to 100.0, 4355 s
+[b5_d1] k=0.30: last q=100.00, in-window q up to 100.0, 4324 s
+[b3_d1] k=0.80: last q=100.00, in-window q up to 100.0, 11685 s
+[b5_d0.5] k=0.35: last q=100.00, in-window q up to 100.0, 5081 s
+[b5_d1] k=0.35: last q=100.00, in-window q up to 100.0, 5035 s
+[b3_d1] k=0.85: last q=100.00, in-window q up to 100.0, 12465 s
+[b5_d0.5] k=0.40: last q=100.00, in-window q up to 100.0, 5830 s
+[b5_d1] k=0.40: last q=100.00, in-window q up to 100.0, 5808 s
+[b3_d1] k=0.90: last q=100.00, in-window q up to 100.0, 13280 s
+[b5_d0.5] k=0.45: last q=100.00, in-window q up to 100.0, 6622 s
+[b5_d1] k=0.45: last q=100.00, in-window q up to 100.0, 6601 s
+[b3_d1] k=0.95: last q=100.00, in-window q up to 100.0, 14080 s
+[b5_d0.5] k=0.50: last q=100.00, in-window q up to 100.0, 7400 s
+[b3_d1] k=1.00: last q=0.00, in-window q up to None, 14095 s
+[b5_d1] k=0.50: last q=100.00, in-window q up to 100.0, 7346 s
+[b5_d0.5] k=0.55: last q=100.00, in-window q up to 100.0, 8147 s
+[b5_d1] k=0.55: last q=100.00, in-window q up to 100.0, 8093 s
+[b3_d1] Q_CAP reached at k=0.00
+[b3_d1] NOT CONVERGED k=0.05 q=84.75: ABNORMAL:  nit=2620 grad_max=3.59e-06
+[b3_d1] Q_CAP reached at k=0.05
+[b3_d1] NOT CONVERGED k=0.10 q=5.00: ABNORMAL:  nit=2175 grad_max=1.34e-05
+[b3_d1] NOT CONVERGED k=0.10 q=54.50: ABNORMAL:  nit=2939 grad_max=2.81e-05
+[b3_d1] Q_CAP reached at k=0.10
+[b3_d1] Q_CAP reached at k=0.15
+[b3_d1] NOT CONVERGED k=0.20 q=23.00: ABNORMAL:  nit=2815 grad_max=1.48e-05
+[b3_d1] Q_CAP reached at k=0.20
+[b3_d1] NOT CONVERGED k=0.25 q=2.25: ABNORMAL:  nit=2426 grad_max=1.16e-05
+[b3_d1] Q_CAP reached at k=0.25
+[b3_d1] NOT CONVERGED k=0.30 q=3.00: ABNORMAL:  nit=2583 grad_max=3.04e-06
+[b3_d1] NOT CONVERGED k=0.30 q=24.25: ABNORMAL:  nit=3181 grad_max=1.06e-05
+[b3_d1] Q_CAP reached at k=0.30
+[b3_d1] NOT CONVERGED k=0.35 q=39.50: ABNORMAL:  nit=3485 grad_max=4.31e-06
+[b3_d1] Q_CAP reached at k=0.35
+[b3_d1] NOT CONVERGED k=0.40 q=26.25: ABNORMAL:  nit=3202 grad_max=1.50e-05
+[b3_d1] Q_CAP reached at k=0.40
+[b3_d1] NOT CONVERGED k=0.45 q=93.25: ABNORMAL:  nit=3792 grad_max=4.69e-06
+[b3_d1] Q_CAP reached at k=0.45
+[b3_d1] NOT CONVERGED k=0.50 q=17.50: ABNORMAL:  nit=3164 grad_max=4.75e-06
+[b3_d1] Q_CAP reached at k=0.50
+[b3_d1] NOT CONVERGED k=0.55 q=2.75: ABNORMAL:  nit=2778 grad_max=3.13e-06
+[b3_d1] NOT CONVERGED k=0.55 q=3.25: ABNORMAL:  nit=2712 grad_max=1.31e-05
+[b3_d1] Q_CAP reached at k=0.55
+[b3_d1] Q_CAP reached at k=0.60
+[b3_d1] NOT CONVERGED k=0.65 q=3.75: ABNORMAL:  nit=2884 grad_max=9.31e-06
+[b3_d1] Q_CAP reached at k=0.65
+[b3_d1] NOT CONVERGED k=0.70 q=19.00: ABNORMAL:  nit=3162 grad_max=2.12e-05
+[b3_d1] Q_CAP reached at k=0.70
+[b3_d1] NOT CONVERGED k=0.75 q=3.00: ABNORMAL:  nit=2837 grad_max=1.52e-05
+[b3_d1] NOT CONVERGED k=0.75 q=16.25: ABNORMAL:  nit=3250 grad_max=1.16e-05
+[b3_d1] Q_CAP reached at k=0.75
+[b3_d1] NOT CONVERGED k=0.80 q=0.50: ABNORMAL:  nit=2834 grad_max=2.12e-06
+[b3_d1] Q_CAP reached at k=0.80
+[b3_d1] Q_CAP reached at k=0.85
+[b3_d1] Q_CAP reached at k=0.90
+[b3_d1] NOT CONVERGED k=0.95 q=16.50: ABNORMAL:  nit=3165 grad_max=1.63e-05
+[b3_d1] Q_CAP reached at k=0.95
+[b3_d1] ray cross-check solve not converged k=0.7813 q=53.1553: ABNORMAL: 
+[b3_d1] beta=3.0 delta=1.0 mu2=5.0250 lam=8.6951 m_vac=2.2079: 8021 solves, 8020 in window, k_max_in=0.9500000000000001, sign changes=242, min(T/E)=-0.1854, verdict=WINDOW (q capped at 100 in 20 k rows), 15289 s
+[b5_d0.5] k=0.60: last q=100.00, in-window q up to 100.0, 8970 s
+[b5_d1] k=0.60: last q=100.00, in-window q up to 100.0, 8918 s
+[b5_d0.5] k=0.65: last q=100.00, in-window q up to 100.0, 9782 s
+[b5_d0.5] k=0.70: last q=0.00, in-window q up to None, 9791 s
+[b5_d0.5] Q_CAP reached at k=0.00
+[b5_d0.5] NOT CONVERGED k=0.05 q=1.00: ABNORMAL:  nit=1232 grad_max=4.05e-06
+[b5_d0.5] Q_CAP reached at k=0.05
+[b5_d0.5] Q_CAP reached at k=0.10
+[b5_d0.5] Q_CAP reached at k=0.15
+[b5_d0.5] NOT CONVERGED k=0.20 q=25.50: ABNORMAL:  nit=2873 grad_max=1.14e-05
+[b5_d0.5] Q_CAP reached at k=0.20
+[b5_d0.5] Q_CAP reached at k=0.25
+[b5_d0.5] Q_CAP reached at k=0.30
+[b5_d0.5] NOT CONVERGED k=0.35 q=6.00: ABNORMAL:  nit=2406 grad_max=5.27e-06
+[b5_d0.5] Q_CAP reached at k=0.35
+[b5_d0.5] NOT CONVERGED k=0.40 q=0.00: ABNORMAL:  nit=3519 grad_max=1.91e-05
+[b5_d0.5] Q_CAP reached at k=0.40
+[b5_d0.5] NOT CONVERGED k=0.45 q=66.25: ABNORMAL:  nit=3819 grad_max=1.54e-05
+[b5_d0.5] NOT CONVERGED k=0.45 q=97.75: ABNORMAL:  nit=3738 grad_max=9.65e-06
+[b5_d0.5] Q_CAP reached at k=0.45
+[b5_d0.5] NOT CONVERGED k=0.50 q=21.25: ABNORMAL:  nit=3121 grad_max=7.26e-06
+[b5_d0.5] Q_CAP reached at k=0.50
+[b5_d0.5] NOT CONVERGED k=0.55 q=84.50: ABNORMAL:  nit=3911 grad_max=4.57e-06
+[b5_d0.5] Q_CAP reached at k=0.55
+[b5_d0.5] NOT CONVERGED k=0.60 q=66.25: ABNORMAL:  nit=3699 grad_max=1.62e-05
+[b5_d0.5] Q_CAP reached at k=0.60
+[b5_d0.5] Q_CAP reached at k=0.65
+[b5_d0.5] beta=5.0 delta=0.5 mu2=5.8973 lam=11.9761 m_vac=3.2562: 5615 solves, 5614 in window, k_max_in=0.65, sign changes=0, min(T/E)=0.0441, verdict=NONE up to q = 100 (truncated), 9791 s
+[b5_d1] k=0.65: last q=100.00, in-window q up to 100.0, 9708 s
+[b5_d1] k=0.70: last q=100.00, in-window q up to 100.0, 10463 s
+[b5_d1] k=0.75: last q=100.00, in-window q up to 100.0, 11239 s
+[b5_d1] k=0.80: last q=100.00, in-window q up to 100.0, 11984 s
+[b5_d1] k=0.85: last q=100.00, in-window q up to 100.0, 12730 s
+[b5_d1] k=0.90: last q=100.00, in-window q up to 100.0, 13502 s
+[b5_d1] k=0.95: last q=100.00, in-window q up to 100.0, 14247 s
+[b5_d1] k=1.00: last q=0.00, in-window q up to None, 14269 s
+[b5_d1] NOT CONVERGED k=0.00 q=25.75: ABNORMAL:  nit=3369 grad_max=1.03e-05
+[b5_d1] NOT CONVERGED k=0.00 q=26.00: ABNORMAL:  nit=3342 grad_max=9.56e-06
+[b5_d1] NOT CONVERGED k=0.00 q=52.25: ABNORMAL:  nit=3018 grad_max=1.78e-05
+[b5_d1] Q_CAP reached at k=0.00
+[b5_d1] NOT CONVERGED k=0.05 q=14.75: ABNORMAL:  nit=1830 grad_max=1.15e-05
+[b5_d1] Q_CAP reached at k=0.05
+[b5_d1] NOT CONVERGED k=0.10 q=2.25: ABNORMAL:  nit=1892 grad_max=8.80e-06
+[b5_d1] Q_CAP reached at k=0.10
+[b5_d1] Q_CAP reached at k=0.15
+[b5_d1] Q_CAP reached at k=0.20
+[b5_d1] NOT CONVERGED k=0.25 q=15.75: ABNORMAL:  nit=2720 grad_max=1.14e-05
+[b5_d1] Q_CAP reached at k=0.25
+[b5_d1] NOT CONVERGED k=0.30 q=68.50: ABNORMAL:  nit=3610 grad_max=1.32e-05
+[b5_d1] Q_CAP reached at k=0.30
+[b5_d1] Q_CAP reached at k=0.35
+[b5_d1] Q_CAP reached at k=0.40
+[b5_d1] NOT CONVERGED k=0.45 q=20.00: ABNORMAL:  nit=3156 grad_max=3.40e-06
+[b5_d1] NOT CONVERGED k=0.45 q=20.25: ABNORMAL:  nit=3103 grad_max=8.48e-06
+[b5_d1] Q_CAP reached at k=0.45
+[b5_d1] NOT CONVERGED k=0.50 q=40.25: ABNORMAL:  nit=3384 grad_max=1.46e-05
+[b5_d1] Q_CAP reached at k=0.50
+[b5_d1] NOT CONVERGED k=0.55 q=14.00: ABNORMAL:  nit=2936 grad_max=7.23e-06
+[b5_d1] NOT CONVERGED k=0.55 q=22.00: ABNORMAL:  nit=3107 grad_max=8.63e-06
+[b5_d1] Q_CAP reached at k=0.55
+[b5_d1] NOT CONVERGED k=0.60 q=31.75: ABNORMAL:  nit=3427 grad_max=6.65e-06
+[b5_d1] Q_CAP reached at k=0.60
+[b5_d1] NOT CONVERGED k=0.65 q=10.00: ABNORMAL:  nit=2982 grad_max=7.33e-06
+[b5_d1] Q_CAP reached at k=0.65
+[b5_d1] NOT CONVERGED k=0.70 q=21.25: ABNORMAL:  nit=3371 grad_max=9.74e-06
+[b5_d1] Q_CAP reached at k=0.70
+[b5_d1] Q_CAP reached at k=0.75
+[b5_d1] Q_CAP reached at k=0.80
+[b5_d1] NOT CONVERGED k=0.85 q=10.75: ABNORMAL:  nit=2959 grad_max=6.97e-06
+[b5_d1] NOT CONVERGED k=0.85 q=50.00: ABNORMAL:  nit=3579 grad_max=1.08e-05
+[b5_d1] Q_CAP reached at k=0.85
+[b5_d1] NOT CONVERGED k=0.90 q=60.50: ABNORMAL:  nit=3675 grad_max=1.05e-05
+[b5_d1] Q_CAP reached at k=0.90
+[b5_d1] Q_CAP reached at k=0.95
+[b5_d1] beta=5.0 delta=1.0 mu2=6.3973 lam=14.0929 m_vac=3.1785: 8021 solves, 8020 in window, k_max_in=0.9500000000000001, sign changes=191, min(T/E)=-0.1076, verdict=WINDOW (q capped at 100 in 20 k rows), 15166 s
+
+per-point summary
+b1_d0.25: verdict NONE up to q = 100 (truncated), n_in=4010, k_max=0.45, min(T/E)=-0.0035 at {'k': 0.45, 'q': 100.0}, crude T/I_c=11.919 vs limit 2.257, crude sign agreement 647/4010
+b1_d0.5: verdict WINDOW (q capped at 100 in 12 k rows), n_in=5202, k_max=0.7000000000000001, min(T/E)=-0.1239 at {'k': 0.55, 'q': 100.0}, crude T/I_c=5.925 vs limit 2.007, crude sign agreement 1653/5202
+b1_d1: verdict NONE, n_in=1687, k_max=0.9500000000000001, min(T/E)=0.3771 at {'k': 0.15, 'q': 52.75}, crude T/I_c=2.138 vs limit 1.507, crude sign agreement 1341/1684
+b2_d0.25: verdict NONE up to q = 100 (truncated), n_in=4010, k_max=0.45, min(T/E)=0.0790 at {'k': 0.45, 'q': 100.0}, crude T/I_c=54.857 vs limit 6.625, crude sign agreement 300/4010
+b2_d0.5: verdict WINDOW (q capped at 100 in 15 k rows), n_in=6015, k_max=0.7000000000000001, min(T/E)=-0.0957 at {'k': 0.7, 'q': 100.0}, crude T/I_c=29.281 vs limit 6.375, crude sign agreement 973/6015
+b2_d1: verdict WINDOW (q capped at 100 in 20 k rows), n_in=8020, k_max=0.9500000000000001, min(T/E)=-0.2677 at {'k': 0.95, 'q': 100.0}, crude T/I_c=15.882 vs limit 5.875, crude sign agreement 2758/8020
+b3_d0.25: verdict NONE up to q = 100 (truncated), n_in=4010, k_max=0.45, min(T/E)=0.1111 at {'k': 0.45, 'q': 100.0}, crude T/I_c=121.804 vs limit 11.500, crude sign agreement 210/4010
+b3_d0.5: verdict WINDOW (q capped at 100 in 15 k rows), n_in=6015, k_max=0.7000000000000001, min(T/E)=-0.0369 at {'k': 0.7, 'q': 100.0}, crude T/I_c=64.960 vs limit 11.250, crude sign agreement 536/6015
+b3_d1: verdict WINDOW (q capped at 100 in 20 k rows), n_in=8020, k_max=0.9500000000000001, min(T/E)=-0.1854 at {'k': 0.95, 'q': 100.0}, crude T/I_c=36.002 vs limit 10.750, crude sign agreement 1892/8020
+b5_d0.25: verdict NONE up to q = 100 (truncated), n_in=4010, k_max=0.45, min(T/E)=0.1402 at {'k': 0.45, 'q': 100.0}, crude T/I_c=314.321 vs limit 21.955, crude sign agreement 130/4010
+b5_d0.5: verdict NONE up to q = 100 (truncated), n_in=5614, k_max=0.65, min(T/E)=0.0441 at {'k': 0.65, 'q': 100.0}, crude T/I_c=165.942 vs limit 21.705, crude sign agreement 252/5614
+b5_d1: verdict WINDOW (q capped at 100 in 20 k rows), n_in=8020, k_max=0.9500000000000001, min(T/E)=-0.1076 at {'k': 0.95, 'q': 100.0}, crude T/I_c=91.516 vs limit 21.205, crude sign agreement 1091/8020
+
+selection: {"kind": "selected (WINDOW)", "tag": "b5_d1", "k_star": 0.7314346409655788, "q_star": 97.0, "omega_star_over_mvac": 0.46364351745326393, "n": 6, "R_eq": 8.20305692943296, "Q": 4999.508696978173}
+P0 (at least one WINDOW): True
+total 35021 s

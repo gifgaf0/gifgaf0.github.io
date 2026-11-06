@@ -1,0 +1,17 @@
+348 direct solves on rays
+  0 done, 17 s
+  30 done, 141 s
+  60 done, 268 s
+  90 done, 414 s
+  120 done, 547 s
+  150 done, 669 s
+  180 done, 806 s
+  210 done, 922 s
+  240 done, 1049 s
+  270 done, 1158 s
+  300 done, 1270 s
+  330 done, 1400 s
+[lam0.8] 2855 solves, 2840 in window, sign changes 0, verdict NONE
+[lam1] 3606 solves, 3592 in window, sign changes 116, verdict WINDOW
+[lam1.2] 1852 solves, 1831 in window, sign changes 0, verdict NONE
+analysis written

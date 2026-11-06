@@ -1,0 +1,32 @@
+{
+ "small grid 8x9": {
+  "Nr": 8,
+  "Nz": 9,
+  "unknowns": 703,
+  "gl3 definition (order 2, eps 1e-6)": {
+   "full": 3.3807153177000947e-05,
+   "n2_over_rho2_only": 4.232954187859716e-08,
+   "Q2_over_4I_only": 1.0921273381634327e-07
+  },
+  "order 4, eps 1e-3": {
+   "full": 7.207821760538318e-09,
+   "n2_over_rho2_only": 9.27711786714341e-11,
+   "Q2_over_4I_only": 1.4019966338664594e-10
+  }
+ },
+ "full grid": {
+  "Nr": 128,
+  "Nz": 257,
+  "unknowns": 328575,
+  "gl3 definition (order 2, eps 1e-6)": {
+   "full": 0.00045937385206224786,
+   "n2_over_rho2_only": 0.0003218272943209183,
+   "Q2_over_4I_only": 0.00010938924975445658
+  },
+  "order 4, eps 1e-3": {
+   "full": 4.7733472047212e-07,
+   "n2_over_rho2_only": 2.928920372911105e-07,
+   "Q2_over_4I_only": 1.3190030221637718e-07
+  }
+ }
+}

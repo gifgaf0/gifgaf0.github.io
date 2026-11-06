@@ -1,0 +1,166 @@
+{
+ "selection": {
+  "index": 66,
+  "between": [
+   [
+    0.25,
+    24.8
+   ],
+   [
+    0.30000000000000004,
+    24.8
+   ]
+  ],
+  "Tcal_V1b": [
+   0.4909873180746658,
+   -0.16537582831441355
+  ],
+  "rule": "among the 14 central sign changes of S that persist in V1b with central differences: the most negative T-cal at a bracketing point"
+ },
+ "bracket": [
+  {
+   "point": {
+    "i": 5,
+    "j": 248,
+    "k": 0.25,
+    "q": 24.8,
+    "E": 26.15896012798847,
+    "T": 13.323841861004922,
+    "I_q": 12.774235043997697,
+    "omega_over_mbulk": 0.9707039174785232,
+    "alpha": 0.7853981632844519,
+    "leak": 1.7161954405014753e-08,
+    "r_charge_rms": 3.4271578583802773,
+    "Tcal_envelope": 0.4887235940213781,
+    "success": false,
+    "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+    "nit": 1,
+    "grad_max": 3.467687325580353e-06,
+    "cg": {
+     "cg_iters": 0,
+     "rel_res": 9.707396242742485e-13
+    },
+    "seconds": 850.2020800113678,
+    "resumed_from_checkpoint": 1,
+    "finalized_from_checkpoint": true,
+    "L": 480,
+    "h": 0.125,
+    "half_width": 30.0,
+    "max_abs_detH_minus_rot90": 1.0325074129013956e-14
+   },
+   "Tcal_fd_2d": null,
+   "Tcal_fd_2d_flags": null,
+   "V1b": {
+    "E": 26.159063190678896,
+    "Tcal": 0.4909873180746658,
+    "Tcal_envelope": 0.4890728915360345,
+    "I_q": 12.774374988986892,
+    "T": 13.324068041107465,
+    "alpha": 0.7853981632844519
+   },
+   "rel_dE_vs_V1b": -3.939846380474066e-06
+  },
+  {
+   "point": {
+    "i": 6,
+    "j": 248,
+    "k": 0.30000000000000004,
+    "q": 24.8,
+    "E": 26.5078250831221,
+    "T": 13.169776922450486,
+    "I_q": 12.599005719276999,
+    "omega_over_mbulk": 0.9842046488658616,
+    "alpha": 0.7853981634332843,
+    "leak": 1.591778245361297e-08,
+    "r_charge_rms": 3.4036682673800827,
+    "Tcal_envelope": -0.1682712382211271,
+    "success": false,
+    "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+    "nit": 1,
+    "grad_max": 3.343783605604549e-06,
+    "cg": {
+     "cg_iters": 0,
+     "rel_res": 9.485668537758671e-13
+    },
+    "seconds": 845.5592064857483,
+    "resumed_from_checkpoint": 1,
+    "finalized_from_checkpoint": true,
+    "L": 480,
+    "h": 0.125,
+    "half_width": 30.0,
+    "max_abs_detH_minus_rot90": 1.2656542480726785e-14
+   },
+   "Tcal_fd_2d": null,
+   "Tcal_fd_2d_flags": null,
+   "V1b": {
+    "E": 26.507932103717316,
+    "Tcal": -0.16537582831441355,
+    "Tcal_envelope": -0.16792159560410624,
+    "I_q": 12.599143784789703,
+    "T": 13.170005254056603,
+    "alpha": 0.7853981634332843
+   },
+   "rel_dE_vs_V1b": -4.037304562221067e-06
+  }
+ ],
+ "all_points": [
+  {
+   "i": 6,
+   "j": 248,
+   "k": 0.30000000000000004,
+   "q": 24.8,
+   "E": 26.5078250831221,
+   "T": 13.169776922450486,
+   "I_q": 12.599005719276999,
+   "omega_over_mbulk": 0.9842046488658616,
+   "alpha": 0.7853981634332843,
+   "leak": 1.591778245361297e-08,
+   "r_charge_rms": 3.4036682673800827,
+   "Tcal_envelope": -0.1682712382211271,
+   "success": false,
+   "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+   "nit": 1,
+   "grad_max": 3.343783605604549e-06,
+   "cg": {
+    "cg_iters": 0,
+    "rel_res": 9.485668537758671e-13
+   },
+   "seconds": 845.5592064857483,
+   "resumed_from_checkpoint": 1,
+   "finalized_from_checkpoint": true,
+   "L": 480,
+   "h": 0.125,
+   "half_width": 30.0,
+   "max_abs_detH_minus_rot90": 1.2656542480726785e-14
+  },
+  {
+   "i": 5,
+   "j": 248,
+   "k": 0.25,
+   "q": 24.8,
+   "E": 26.15896012798847,
+   "T": 13.323841861004922,
+   "I_q": 12.774235043997697,
+   "omega_over_mbulk": 0.9707039174785232,
+   "alpha": 0.7853981632844519,
+   "leak": 1.7161954405014753e-08,
+   "r_charge_rms": 3.4271578583802773,
+   "Tcal_envelope": 0.4887235940213781,
+   "success": false,
+   "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+   "nit": 1,
+   "grad_max": 3.467687325580353e-06,
+   "cg": {
+    "cg_iters": 0,
+    "rel_res": 9.707396242742485e-13
+   },
+   "seconds": 850.2020800113678,
+   "resumed_from_checkpoint": 1,
+   "finalized_from_checkpoint": true,
+   "L": 480,
+   "h": 0.125,
+   "half_width": 30.0,
+   "max_abs_detH_minus_rot90": 1.0325074129013956e-14
+  }
+ ]
+}

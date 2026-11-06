@@ -1,0 +1,29 @@
+{
+ "i": 5,
+ "j": 248,
+ "k": 0.25,
+ "q": 24.8,
+ "E": 26.15896012798847,
+ "T": 13.323841861004922,
+ "I_q": 12.774235043997697,
+ "omega_over_mbulk": 0.9707039174785232,
+ "alpha": 0.7853981632844519,
+ "leak": 1.7161954405014753e-08,
+ "r_charge_rms": 3.4271578583802773,
+ "Tcal_envelope": 0.4887235940213781,
+ "success": false,
+ "message": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+ "nit": 1,
+ "grad_max": 3.467687325580353e-06,
+ "cg": {
+  "cg_iters": 0,
+  "rel_res": 9.707396242742485e-13
+ },
+ "seconds": 850.2020800113678,
+ "resumed_from_checkpoint": 1,
+ "finalized_from_checkpoint": true,
+ "L": 480,
+ "h": 0.125,
+ "half_width": 30.0,
+ "max_abs_detH_minus_rot90": 1.0325074129013956e-14
+}

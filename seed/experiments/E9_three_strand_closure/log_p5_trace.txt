@@ -1,0 +1,4 @@
+eta0.1_Afree nit 2338 min |psi_k| along path [0.0306 0.8921 0.9819] at iter [89 15  2] winding psi_1 changes at iters [88] [([0.0511, 0.9855, 1.0366], [0.892, 0.015, 0.008])]
+eta0.1_A0 nit 1276 min |psi_k| along path [0.0407 0.8333 0.9626] at iter [37 38 42] winding psi_1 changes at iters [38] [([0.0773, 0.8333, 0.9786], [0.514, 0.036, 0.01])]
+eta0.0_Afree nit 484 min |psi_k| along path [0.9372 0.9931 0.9933] at iter [1 6 6] winding psi_1 changes at iters [] []
+eta0.0_A0 nit 81 min |psi_k| along path [0.9492 0.9998 1.    ] at iter [5 9 0] winding psi_1 changes at iters [] []

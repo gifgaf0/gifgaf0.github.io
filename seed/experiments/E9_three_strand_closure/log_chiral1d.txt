@@ -1,0 +1,264 @@
+== checks
+  check reality_z: {'im_over_re': 1.7540979801617756e-16, 'cplx_vs_code': 1.4319167184994083e-16}
+  check gauge_z: {'chiral_rel': 1.0739375388745563e-15, 'total_rel': 0.0}
+  check mirror_z: 0.0
+  check gradcheck_z_Afree: 1.4405132230238312e-08
+  check Econsistency_z_Afree: 0.0
+  check gradcheck_z_A0: 9.234182086326263e-10
+  check Econsistency_z_A0: 0.0
+  check reality_diag: {'im_over_re': 1.104314283632326e-14, 'cplx_vs_code': 1.0972353459167222e-14}
+  check gauge_diag: {'chiral_rel': 3.207643652377514e-14, 'total_rel': 1.220082095319299e-16}
+  check mirror_diag: 1.2201231681538251e-16
+  check gradcheck_diag_Afree: 1.7705839869045587e-09
+  check Econsistency_diag_Afree: 0.0
+  check gradcheck_diag_A0: 3.402391300743998e-10
+  check Econsistency_diag_A0: 0.0
+  check reality_perp: {'im_over_re': 8.089060591898166e-17, 'cplx_vs_code': 4.567940098954256e-16}
+  check gauge_perp: {'chiral_rel': 5.709925123692821e-16, 'total_rel': 0.0}
+  check mirror_perp: 0.0
+  check gradcheck_perp_Afree: 2.4102992778315063e-09
+  check Econsistency_perp_Afree: 0.0
+  check gradcheck_perp_A0: 6.466939336599102e-10
+  check Econsistency_perp_A0: 0.0
+  check vacuum_eta0.1: {'e_vac': -0.31500000000000006, 'gl3_density': -0.31500000000000006, 'code_E_over_P': np.float64(-0.3150000000000001), 'grad_at_vac': 6.938893903907228e-18, 'from_noise_gain': 3.4416913763379853e-15, 'from_noise_success': True, 'from_noise_nit': 573, 'min_curv_random_dirs': 58.25979032536566}
+  check vacuum_eta0.0: {'e_vac': 0.0, 'gl3_density': 0.0, 'code_E_over_P': np.float64(0.0), 'grad_at_vac': 0.0, 'from_noise_gain': 4.609038625892257e-16, 'from_noise_success': True, 'from_noise_nit': 396, 'min_curv_random_dirs': 58.24586235941909}
+== linear stability of the vacuum (descriptive cross-check)
+  lin z_eta0.1_Afree: {'gamma_lin': 0.37420654296875, 'P': 67.29814379786968, 'm': 1, 'q': np.float64(0.0933634265760905)}
+  lin z_eta0.1_A0: {'gamma_lin': 0.47930908203125, 'P': 80.0, 'm': 1, 'q': np.float64(0.07853981633974483)}
+  lin diag_eta0.1_Afree: {'gamma_lin': 0.35296630859375, 'P': 40.06289991906724, 'm': 1, 'q': np.float64(0.15683301308373868)}
+  lin diag_eta0.1_A0: {'gamma_lin': 0.77471923828125, 'P': 80.0, 'm': 5, 'q': np.float64(0.39269908169872414)}
+  lin perp_eta0.1_Afree: {'gamma_lin': 0.3873291015625, 'P': 1.5, 'm': 0, 'q': np.float64(0.0)}
+  lin perp_eta0.1_A0: {'gamma_lin': 0.39520263671875, 'P': 80.0, 'm': 1, 'q': np.float64(0.07853981633974483)}
+  lin z_eta0.0_Afree: {'gamma_lin': 0.000244140625, 'P': 1.5, 'm': 0, 'q': np.float64(0.0)}
+  lin z_eta0.0_A0: {'gamma_lin': 0.07855224609375, 'P': 80.0, 'm': 1, 'q': np.float64(0.07853981633974483)}
+  lin diag_eta0.0_Afree: {'gamma_lin': 0.000244140625, 'P': 1.5, 'm': 0, 'q': np.float64(0.0)}
+  lin diag_eta0.0_A0: {'gamma_lin': 0.07855224609375, 'P': 80.0, 'm': 1, 'q': np.float64(0.07853981633974483)}
+  lin perp_eta0.0_Afree: {'gamma_lin': 0.000244140625, 'P': 1.5, 'm': 0, 'q': np.float64(0.0)}
+  lin perp_eta0.0_A0: {'gamma_lin': 0.07855224609375, 'P': 80.0, 'm': 1, 'q': np.float64(0.07853981633974483)}
+== gamma_c, A free (Calculation 1)
+  [z_eta0.1_Afree] gamma=0.010000 min gain=+0.000e+00 at P=80.000 seed=R non-converged=0/72
+  [z_eta0.1_Afree] gamma=0.020000 min gain=+0.000e+00 at P=2.995 seed=R non-converged=2/72
+  [z_eta0.1_Afree] gamma=0.050000 min gain=+0.000e+00 at P=80.000 seed=R non-converged=2/72
+  [z_eta0.1_Afree] gamma=0.100000 min gain=-5.551e-17 at P=1.500 seed=L non-converged=0/72
+  [z_eta0.1_Afree] gamma=0.200000 min gain=-1.110e-16 at P=1.500 seed=L non-converged=3/72
+  [z_eta0.1_Afree] gamma=0.500000 min gain=-3.961e-02 at P=56.613 seed=noise non-converged=13/72
+  [z_eta0.1_Afree] gamma=0.350000 min gain=+0.000e+00 at P=2.120 seed=R non-converged=6/72
+  [z_eta0.1_Afree] gamma=0.425000 min gain=-7.359e-03 at P=67.298 seed=noise non-converged=8/72
+  [z_eta0.1_Afree] gamma=0.387500 min gain=-5.495e-04 at P=67.298 seed=noise non-converged=6/72
+  [z_eta0.1_Afree] gamma=0.368750 min gain=+0.000e+00 at P=80.000 seed=R non-converged=10/72
+  [z_eta0.1_Afree] gamma=0.378125 min gain=-4.968e-05 at P=67.298 seed=noise non-converged=6/72
+  [z_eta0.1_Afree] gamma=0.373437 min gain=-1.110e-16 at P=1.500 seed=R non-converged=9/72
+  [z_eta0.1_Afree] gamma=0.375781 min gain=-8.383e-06 at P=67.298 seed=noise non-converged=8/72
+  [z_eta0.1_Afree] gamma=0.374609 min gain=-6.568e-07 at P=67.298 seed=noise non-converged=12/72
+  [z_eta0.1_Afree] gamma=0.374023 min gain=-5.551e-17 at P=1.500 seed=R non-converged=10/72
+  [z_eta0.1_Afree] gamma_c = 0.37461  (bracket [0.37402, 0.37461])
+     elapsed 705 s
+  [diag_eta0.1_Afree] gamma=0.010000 min gain=-5.551e-17 at P=1.500 seed=R non-converged=3/72
+  [diag_eta0.1_Afree] gamma=0.020000 min gain=-5.551e-17 at P=2.120 seed=L non-converged=5/72
+  [diag_eta0.1_Afree] gamma=0.050000 min gain=-5.551e-17 at P=1.500 seed=L non-converged=2/72
+  [diag_eta0.1_Afree] gamma=0.100000 min gain=-5.551e-17 at P=2.120 seed=R non-converged=2/72
+  [diag_eta0.1_Afree] gamma=0.200000 min gain=-1.110e-16 at P=1.500 seed=R non-converged=2/72
+  [diag_eta0.1_Afree] gamma=0.500000 min gain=-5.802e-02 at P=80.000 seed=noise non-converged=3/72
+  [diag_eta0.1_Afree] gamma=0.350000 min gain=-5.551e-17 at P=1.500 seed=R non-converged=2/72
+  [diag_eta0.1_Afree] gamma=0.425000 min gain=-1.590e-02 at P=80.000 seed=noise non-converged=1/72
+  [diag_eta0.1_Afree] gamma=0.387500 min gain=-3.966e-03 at P=40.063 seed=noise non-converged=3/72
+  [diag_eta0.1_Afree] gamma=0.368750 min gain=-8.678e-04 at P=40.063 seed=noise non-converged=0/72
+  [diag_eta0.1_Afree] gamma=0.359375 min gain=-1.469e-04 at P=40.063 seed=noise non-converged=4/72
+  [diag_eta0.1_Afree] gamma=0.354687 min gain=-1.086e-05 at P=40.063 seed=noise non-converged=3/72
+  [diag_eta0.1_Afree] gamma=0.352344 min gain=-5.551e-17 at P=1.500 seed=R non-converged=4/72
+  [diag_eta0.1_Afree] gamma=0.353516 min gain=-1.149e-06 at P=40.063 seed=noise non-converged=0/72
+  [diag_eta0.1_Afree] gamma=0.352930 min gain=-5.551e-17 at P=1.500 seed=R non-converged=1/72
+  [diag_eta0.1_Afree] gamma_c = 0.35352  (bracket [0.35293, 0.35352])
+     elapsed 1135 s
+  [perp_eta0.1_Afree] gamma=0.010000 min gain=+0.000e+00 at P=1.500 seed=R non-converged=2/72
+  [perp_eta0.1_Afree] gamma=0.020000 min gain=-5.551e-17 at P=1.500 seed=L non-converged=1/72
+  [perp_eta0.1_Afree] gamma=0.050000 min gain=+0.000e+00 at P=1.500 seed=L non-converged=2/72
+  [perp_eta0.1_Afree] gamma=0.100000 min gain=+0.000e+00 at P=28.351 seed=L non-converged=1/72
+  [perp_eta0.1_Afree] gamma=0.200000 min gain=+0.000e+00 at P=2.995 seed=L non-converged=6/72
+  [perp_eta0.1_Afree] gamma=0.500000 min gain=-3.064e-02 at P=5.981 seed=noise non-converged=15/72
+  [perp_eta0.1_Afree] gamma=0.350000 min gain=-1.110e-16 at P=2.995 seed=L non-converged=13/72
+  [perp_eta0.1_Afree] gamma=0.425000 min gain=-3.886e-03 at P=20.063 seed=noise non-converged=12/72
+  [perp_eta0.1_Afree] gamma=0.387500 min gain=-1.201e-07 at P=56.613 seed=noise non-converged=12/72
+  [perp_eta0.1_Afree] gamma=0.368750 min gain=-1.110e-16 at P=1.500 seed=L non-converged=8/72
+  [perp_eta0.1_Afree] gamma=0.378125 min gain=-2.220e-16 at P=2.120 seed=L non-converged=12/72
+  [perp_eta0.1_Afree] gamma=0.382812 min gain=-2.776e-16 at P=1.783 seed=L non-converged=9/72
+  [perp_eta0.1_Afree] gamma=0.385156 min gain=-2.776e-16 at P=2.120 seed=R non-converged=13/72
+  [perp_eta0.1_Afree] gamma=0.386328 min gain=-3.886e-16 at P=1.500 seed=R non-converged=14/72
+  [perp_eta0.1_Afree] gamma=0.386914 min gain=-5.551e-17 at P=1.783 seed=L non-converged=10/72
+  [perp_eta0.1_Afree] gamma_c = 0.38750  (bracket [0.38691, 0.38750])
+     elapsed 1541 s
+  [z_eta0.0_Afree] gamma=0.010000 min gain=-7.500e-05 at P=3.561 seed=noise non-converged=17/72
+  [z_eta0.0_Afree] gamma=0.005000 min gain=-1.875e-05 at P=2.520 seed=noise non-converged=18/72
+  [z_eta0.0_Afree] gamma=0.002500 min gain=-4.687e-06 at P=2.995 seed=noise non-converged=13/72
+  [z_eta0.0_Afree] gamma=0.001250 min gain=-1.140e-06 at P=20.063 seed=noise non-converged=2/72
+  [z_eta0.0_Afree] gamma=0.000625 min gain=-3.033e-11 at P=1.783 seed=noise non-converged=0/72
+  [z_eta0.0_Afree] gamma_c = 0.00125  (bracket [0.00063, 0.00125])
+     elapsed 3024 s
+  [diag_eta0.0_Afree] gamma=0.010000 min gain=-7.500e-05 at P=56.613 seed=noise non-converged=13/72
+  [diag_eta0.0_Afree] gamma=0.005000 min gain=-1.875e-05 at P=1.500 seed=noise non-converged=17/72
+  [diag_eta0.0_Afree] gamma=0.002500 min gain=-4.687e-06 at P=2.995 seed=noise non-converged=13/72
+  [diag_eta0.0_Afree] gamma=0.001250 min gain=-1.140e-06 at P=20.063 seed=noise non-converged=3/72
+  [diag_eta0.0_Afree] gamma=0.000625 min gain=-3.025e-11 at P=1.783 seed=noise non-converged=0/72
+  [diag_eta0.0_Afree] gamma_c = 0.00125  (bracket [0.00063, 0.00125])
+     elapsed 4387 s
+  [perp_eta0.0_Afree] gamma=0.010000 min gain=-7.500e-05 at P=56.613 seed=noise non-converged=16/72
+  [perp_eta0.0_Afree] gamma=0.005000 min gain=-1.875e-05 at P=2.995 seed=noise non-converged=18/72
+  [perp_eta0.0_Afree] gamma=0.002500 min gain=-4.687e-06 at P=3.561 seed=noise non-converged=13/72
+  [perp_eta0.0_Afree] gamma=0.001250 min gain=-1.140e-06 at P=20.063 seed=noise non-converged=3/72
+  [perp_eta0.0_Afree] gamma=0.000625 min gain=-3.035e-11 at P=1.783 seed=noise non-converged=0/72
+  [perp_eta0.0_Afree] gamma_c = 0.00125  (bracket [0.00063, 0.00125])
+     elapsed 5836 s
+== gamma_c, A = 0 (Calculation 2a)
+  [z_eta0.1_A0] gamma=0.010000 min gain=+0.000e+00 at P=80.000 seed=R non-converged=0/72
+  [z_eta0.1_A0] gamma=0.020000 min gain=+0.000e+00 at P=2.995 seed=R non-converged=1/72
+  [z_eta0.1_A0] gamma=0.050000 min gain=+0.000e+00 at P=80.000 seed=R non-converged=2/72
+  [z_eta0.1_A0] gamma=0.100000 min gain=-5.551e-17 at P=1.500 seed=L non-converged=1/72
+  [z_eta0.1_A0] gamma=0.200000 min gain=-1.110e-16 at P=1.500 seed=L non-converged=5/72
+  [z_eta0.1_A0] gamma=0.500000 min gain=-4.330e-04 at P=80.000 seed=noise non-converged=14/72
+  [z_eta0.1_A0] gamma=0.350000 min gain=+0.000e+00 at P=2.120 seed=R non-converged=7/72
+  [z_eta0.1_A0] gamma=0.425000 min gain=+0.000e+00 at P=1.500 seed=R non-converged=10/72
+  [z_eta0.1_A0] gamma=0.462500 min gain=-5.551e-17 at P=1.783 seed=R non-converged=7/72
+  [z_eta0.1_A0] gamma=0.481250 min gain=-3.737e-06 at P=80.000 seed=noise non-converged=6/72
+  [z_eta0.1_A0] gamma=0.471875 min gain=+0.000e+00 at P=2.995 seed=R non-converged=10/72
+  [z_eta0.1_A0] gamma=0.476562 min gain=+0.000e+00 at P=80.000 seed=R non-converged=5/72
+  [z_eta0.1_A0] gamma=0.478906 min gain=-1.665e-16 at P=1.783 seed=L non-converged=10/72
+  [z_eta0.1_A0] gamma=0.480078 min gain=-6.041e-07 at P=80.000 seed=noise non-converged=10/72
+  [z_eta0.1_A0] gamma=0.479492 min gain=-1.227e-11 at P=80.000 seed=noise non-converged=6/72
+  [z_eta0.1_A0] gamma_c = 0.48008  (bracket [0.47949, 0.48008])
+     elapsed 6229 s
+  [diag_eta0.1_A0] gamma=0.010000 min gain=-5.551e-17 at P=1.500 seed=R non-converged=3/72
+  [diag_eta0.1_A0] gamma=0.020000 min gain=-5.551e-17 at P=2.120 seed=L non-converged=4/72
+  [diag_eta0.1_A0] gamma=0.050000 min gain=-5.551e-17 at P=1.500 seed=L non-converged=3/72
+  [diag_eta0.1_A0] gamma=0.100000 min gain=-5.551e-17 at P=2.120 seed=R non-converged=2/72
+  [diag_eta0.1_A0] gamma=0.200000 min gain=-1.110e-16 at P=1.500 seed=R non-converged=2/72
+  [diag_eta0.1_A0] gamma=0.500000 min gain=-5.551e-17 at P=1.500 seed=R non-converged=3/72
+  [diag_eta0.1_A0] gamma=1.000000 min gain=-5.653e-02 at P=40.063 seed=noise non-converged=4/72
+  [diag_eta0.1_A0] gamma=0.750000 min gain=-5.551e-17 at P=1.500 seed=L non-converged=1/72
+  [diag_eta0.1_A0] gamma=0.875000 min gain=-1.118e-02 at P=14.198 seed=noise non-converged=1/72
+  [diag_eta0.1_A0] gamma=0.812500 min gain=-1.667e-03 at P=47.624 seed=noise non-converged=6/72
+  [diag_eta0.1_A0] gamma=0.781250 min gain=-5.116e-05 at P=80.000 seed=noise non-converged=3/72
+  [diag_eta0.1_A0] gamma=0.765625 min gain=-5.551e-17 at P=1.500 seed=R non-converged=2/72
+  [diag_eta0.1_A0] gamma=0.773438 min gain=-5.551e-17 at P=2.995 seed=R non-converged=2/72
+  [diag_eta0.1_A0] gamma=0.777344 min gain=-8.334e-06 at P=80.000 seed=noise non-converged=1/72
+  [diag_eta0.1_A0] gamma=0.775391 min gain=-5.599e-07 at P=80.000 seed=noise non-converged=1/72
+  [diag_eta0.1_A0] gamma=0.774414 min gain=-5.551e-17 at P=1.500 seed=R non-converged=3/72
+  [diag_eta0.1_A0] gamma_c = 0.77539  (bracket [0.77441, 0.77539])
+     elapsed 6555 s
+  [perp_eta0.1_A0] gamma=0.010000 min gain=+0.000e+00 at P=1.500 seed=R non-converged=2/72
+  [perp_eta0.1_A0] gamma=0.020000 min gain=-5.551e-17 at P=1.500 seed=L non-converged=2/72
+  [perp_eta0.1_A0] gamma=0.050000 min gain=+0.000e+00 at P=1.500 seed=L non-converged=3/72
+  [perp_eta0.1_A0] gamma=0.100000 min gain=+0.000e+00 at P=28.351 seed=L non-converged=2/72
+  [perp_eta0.1_A0] gamma=0.200000 min gain=+0.000e+00 at P=2.995 seed=L non-converged=8/72
+  [perp_eta0.1_A0] gamma=0.500000 min gain=-2.098e-02 at P=80.000 seed=noise non-converged=11/72
+  [perp_eta0.1_A0] gamma=0.350000 min gain=-1.110e-16 at P=2.995 seed=L non-converged=12/72
+  [perp_eta0.1_A0] gamma=0.425000 min gain=-1.775e-03 at P=80.000 seed=noise non-converged=16/72
+  [perp_eta0.1_A0] gamma=0.387500 min gain=-3.886e-16 at P=2.120 seed=L non-converged=15/72
+  [perp_eta0.1_A0] gamma=0.406250 min gain=-2.435e-04 at P=80.000 seed=noise non-converged=17/72
+  [perp_eta0.1_A0] gamma=0.396875 min gain=-5.653e-06 at P=80.000 seed=noise non-converged=8/72
+  [perp_eta0.1_A0] gamma=0.392187 min gain=-4.441e-16 at P=2.120 seed=L non-converged=13/72
+  [perp_eta0.1_A0] gamma=0.394531 min gain=-2.776e-16 at P=1.500 seed=R non-converged=14/72
+  [perp_eta0.1_A0] gamma=0.395703 min gain=-1.480e-11 at P=80.000 seed=noise non-converged=13/72
+  [perp_eta0.1_A0] gamma=0.396289 min gain=-2.415e-06 at P=80.000 seed=noise non-converged=12/72
+  [perp_eta0.1_A0] gamma_c = 0.39629  (bracket [0.39570, 0.39629])
+     elapsed 6992 s
+  [z_eta0.0_A0] gamma=0.010000 min gain=-7.788e-19 at P=2.120 seed=L non-converged=0/72
+  [z_eta0.0_A0] gamma=0.020000 min gain=-3.778e-18 at P=1.500 seed=L non-converged=0/72
+  [z_eta0.0_A0] gamma=0.050000 min gain=+3.916e-19 at P=2.520 seed=R non-converged=2/72
+  [z_eta0.0_A0] gamma=0.100000 min gain=-4.162e-04 at P=80.000 seed=noise non-converged=1/72
+  [z_eta0.0_A0] gamma=0.075000 min gain=-1.330e-17 at P=1.783 seed=L non-converged=1/72
+  [z_eta0.0_A0] gamma=0.087500 min gain=-7.729e-05 at P=80.000 seed=noise non-converged=1/72
+  [z_eta0.0_A0] gamma=0.081250 min gain=-7.333e-06 at P=80.000 seed=noise non-converged=1/72
+  [z_eta0.0_A0] gamma=0.078125 min gain=-7.194e-18 at P=2.520 seed=R non-converged=0/72
+  [z_eta0.0_A0] gamma=0.079688 min gain=-1.328e-06 at P=80.000 seed=noise non-converged=0/72
+  [z_eta0.0_A0] gamma=0.078906 min gain=-1.359e-07 at P=80.000 seed=noise non-converged=0/72
+  [z_eta0.0_A0] gamma_c = 0.07891  (bracket [0.07813, 0.07891])
+     elapsed 7274 s
+  [diag_eta0.0_A0] gamma=0.010000 min gain=+1.771e-20 at P=2.520 seed=R non-converged=0/72
+  [diag_eta0.0_A0] gamma=0.020000 min gain=+2.359e-20 at P=2.520 seed=R non-converged=0/72
+  [diag_eta0.0_A0] gamma=0.050000 min gain=+1.957e-20 at P=1.500 seed=R non-converged=0/72
+  [diag_eta0.0_A0] gamma=0.100000 min gain=-3.893e-04 at P=80.000 seed=noise non-converged=0/72
+  [diag_eta0.0_A0] gamma=0.075000 min gain=+9.984e-21 at P=2.120 seed=R non-converged=0/72
+  [diag_eta0.0_A0] gamma=0.087500 min gain=-7.522e-05 at P=80.000 seed=noise non-converged=0/72
+  [diag_eta0.0_A0] gamma=0.081250 min gain=-7.287e-06 at P=80.000 seed=noise non-converged=0/72
+  [diag_eta0.0_A0] gamma=0.078125 min gain=+1.562e-20 at P=1.500 seed=R non-converged=0/72
+  [diag_eta0.0_A0] gamma=0.079688 min gain=-1.326e-06 at P=80.000 seed=noise non-converged=0/72
+  [diag_eta0.0_A0] gamma=0.078906 min gain=-1.362e-07 at P=80.000 seed=noise non-converged=0/72
+  [diag_eta0.0_A0] gamma_c = 0.07891  (bracket [0.07813, 0.07891])
+     elapsed 7559 s
+  [perp_eta0.0_A0] gamma=0.010000 min gain=+1.170e-18 at P=80.000 seed=L non-converged=0/72
+  [perp_eta0.0_A0] gamma=0.020000 min gain=+1.825e-18 at P=80.000 seed=R non-converged=0/72
+  [perp_eta0.0_A0] gamma=0.050000 min gain=-2.250e-18 at P=80.000 seed=R non-converged=2/72
+  [perp_eta0.0_A0] gamma=0.100000 min gain=-5.549e-04 at P=80.000 seed=noise non-converged=0/72
+  [perp_eta0.0_A0] gamma=0.075000 min gain=-4.215e-18 at P=40.063 seed=R non-converged=0/72
+  [perp_eta0.0_A0] gamma=0.087500 min gain=-1.031e-04 at P=80.000 seed=noise non-converged=3/72
+  [perp_eta0.0_A0] gamma=0.081250 min gain=-9.777e-06 at P=80.000 seed=noise non-converged=2/72
+  [perp_eta0.0_A0] gamma=0.078125 min gain=-8.166e-18 at P=80.000 seed=R non-converged=1/72
+  [perp_eta0.0_A0] gamma=0.079688 min gain=-1.770e-06 at P=80.000 seed=noise non-converged=1/72
+  [perp_eta0.0_A0] gamma=0.078906 min gain=-1.813e-07 at P=80.000 seed=noise non-converged=1/72
+  [perp_eta0.0_A0] gamma_c = 0.07891  (bracket [0.07813, 0.07891])
+     elapsed 7838 s
+== optimum z_eta0.1_Afree at 1.1 gamma_c = 0.41207
+  P*=67.298 q*=0.0934 gain=-4.203e-03 hand=R seed=noise |S|/rho=0.5430 cone=54.71 turn=-0.3 spread=0.0020
+  mirror z_eta0.1_Afree: {"-0.374023": {"min_gain": 0.0, "unstable": false, "P": 2.1196544220719384, "seed": "L"}, "-0.374609": {"min_gain": -6.567775927557307e-07, "unstable": true, "P": 67.29814379786968, "seed": "noise"}, "at_-1.1gc": {"gain": -0.004203025084336565, "P_star": 67.29814379786968, "handedness": "R", "chiral": -0.08769693237679395, "director_turn_deg": 0.34682269611066874, "S_over_rho_mean": 0.5429827819803529, "seed": "noise"}}
+== optimum diag_eta0.1_Afree at 1.1 gamma_c = 0.38887
+  P*=40.063 q*=0.1568 gain=-4.272e-03 hand=R seed=noise |S|/rho=0.5498 cone=1.62 turn=-0.6 spread=0.0000
+  mirror diag_eta0.1_Afree: {"-0.352930": {"min_gain": -1.6653345369377348e-16, "unstable": false, "P": 1.5, "seed": "R"}, "-0.353516": {"min_gain": -1.1491248505524077e-06, "unstable": true, "P": 40.06289991906724, "seed": "noise"}, "at_-1.1gc": {"gain": -0.004272408567337627, "P_star": 40.06289991906724, "handedness": "R", "chiral": -0.08866494424889938, "director_turn_deg": 0.5679645223641755, "S_over_rho_mean": 0.5498059830023909, "seed": "noise"}}
+== optimum perp_eta0.1_Afree at 1.1 gamma_c = 0.42625
+  P*=47.624 q*=0.1319 gain=-4.138e-03 hand=R seed=noise |S|/rho=0.5391 cone=90.00 turn=-0.0 spread=0.0079
+  mirror perp_eta0.1_Afree: {"-0.386914": {"min_gain": -3.3306690738754696e-16, "unstable": false, "P": 1.5, "seed": "L"}, "-0.387500": {"min_gain": -1.200929835576403e-07, "unstable": true, "P": 1.5, "seed": "noise"}, "at_-1.1gc": {"gain": -0.0041381770149306885, "P_star": 56.613001982984294, "handedness": "R", "chiral": -0.08721871016474479, "director_turn_deg": -4.497983603160734e-14, "S_over_rho_mean": 0.5390793886585351, "seed": "noise"}}
+== optimum z_eta0.0_Afree at 1.1 gamma_c = 0.00138
+  P*=20.063 q*=0.3132 gain=-1.380e-06 hand=R seed=noise |S|/rho=0.9865 cone=85.76 turn=0.0 spread=0.0000
+  mirror z_eta0.0_Afree: {"-0.000625": {"min_gain": -3.035033496499202e-11, "unstable": false, "P": 1.7831101012298451, "seed": "noise"}, "-0.001250": {"min_gain": -1.0646405820435082e-06, "unstable": true, "P": 28.351012907028178, "seed": "noise"}, "at_-1.1gc": {"gain": -1.3793624348421703e-06, "P_star": 20.062949374064985, "handedness": "R", "chiral": -2.7589861421244716e-06, "director_turn_deg": -9.697511223782262e-12, "S_over_rho_mean": 0.9862928064054943, "seed": "noise"}}
+== optimum diag_eta0.0_Afree at 1.1 gamma_c = 0.00138
+  P*=20.063 q*=0.3132 gain=-1.380e-06 hand=R seed=noise |S|/rho=0.9864 cone=85.75 turn=0.0 spread=0.0000
+  mirror diag_eta0.0_Afree: {"-0.000625": {"min_gain": -3.043331969835957e-11, "unstable": false, "P": 1.7831101012298451, "seed": "noise"}, "-0.001250": {"min_gain": -1.1401233860090762e-06, "unstable": true, "P": 20.062949374064985, "seed": "noise"}, "at_-1.1gc": {"gain": -1.379386696179852e-06, "P_star": 20.062949374064985, "handedness": "R", "chiral": -2.7588945900739943e-06, "director_turn_deg": 2.1828487178214802e-11, "S_over_rho_mean": 0.9863017229301347, "seed": "noise"}}
+== optimum perp_eta0.0_Afree at 1.1 gamma_c = 0.00138
+  P*=20.063 q*=0.3132 gain=-1.380e-06 hand=R seed=noise |S|/rho=0.9866 cone=3.88 turn=0.0 spread=0.0000
+  mirror perp_eta0.0_Afree: {"-0.000625": {"min_gain": -3.0335852911427897e-11, "unstable": false, "P": 1.7831101012298451, "seed": "noise"}, "-0.001250": {"min_gain": -1.1396397326140544e-06, "unstable": true, "P": 20.062949374064985, "seed": "noise"}, "at_-1.1gc": {"gain": -1.3788945916890181e-06, "P_star": 20.062949374064985, "handedness": "R", "chiral": -2.7577044199674115e-06, "director_turn_deg": -5.606736514817946e-12, "S_over_rho_mean": 0.986125466557264, "seed": "noise"}}
+== optimum z_eta0.1_A0 at 1.1 gamma_c = 0.52809
+  P*=80.000 q*=0.0785 gain=-2.451e-03 hand=R seed=noise |S|/rho=0.4080 cone=53.99 turn=-0.0 spread=0.0148
+  mirror z_eta0.1_A0: {"-0.479492": {"min_gain": -3.684219596067351e-12, "unstable": false, "P": 80.0, "seed": "noise"}, "-0.480078": {"min_gain": -6.040819975350331e-07, "unstable": true, "P": 80.0, "seed": "noise"}, "at_-1.1gc": {"gain": -0.0024509209081963745, "P_star": 80.0, "handedness": "R", "chiral": -0.05334526970837068, "director_turn_deg": 0.011004980262128957, "S_over_rho_mean": 0.4080405843378682, "seed": "noise"}}
+== optimum diag_eta0.1_A0 at 1.1 gamma_c = 0.85293
+  P*=47.624 q*=0.1319 gain=-6.926e-03 hand=R seed=noise |S|/rho=0.6786 cone=2.00 turn=-2.5 spread=0.0000
+  mirror diag_eta0.1_A0: {"-0.774414": {"min_gain": -5.551115123125783e-17, "unstable": false, "P": 1.5, "seed": "R"}, "-0.775391": {"min_gain": -5.598848486498831e-07, "unstable": true, "P": 80.0, "seed": "noise"}, "at_-1.1gc": {"gain": -0.0069263069262183175, "P_star": 47.62437435349946, "handedness": "R", "chiral": -0.14657388397337004, "director_turn_deg": 2.53991710266402, "S_over_rho_mean": 0.678557019333743, "seed": "noise"}}
+== optimum perp_eta0.1_A0 at 1.1 gamma_c = 0.43592
+  P*=80.000 q*=0.0785 gain=-3.305e-03 hand=R seed=noise |S|/rho=0.4452 cone=90.00 turn=-0.0 spread=0.0070
+  mirror perp_eta0.1_A0: {"-0.395703": {"min_gain": -5.344132894546938e-07, "unstable": true, "P": 80.0, "seed": "noise"}, "-0.396289": {"min_gain": -2.415130283817124e-06, "unstable": true, "P": 80.0, "seed": "noise"}, "at_-1.1gc": {"gain": -0.0033049099788783898, "P_star": 80.0, "handedness": "R", "chiral": -0.0702641009370884, "director_turn_deg": 9.680813311704579e-14, "S_over_rho_mean": 0.4452384012086933, "seed": "noise"}}
+== optimum z_eta0.0_A0 at 1.1 gamma_c = 0.08680
+  P*=80.000 q*=0.0785 gain=-6.590e-05 hand=R seed=noise |S|/rho=0.4049 cone=54.30 turn=-0.1 spread=0.0000
+  mirror z_eta0.0_A0: {"-0.078125": {"min_gain": -4.637680620594596e-18, "unstable": false, "P": 5.031524219828675, "seed": "L"}, "-0.078906": {"min_gain": -1.359488066952452e-07, "unstable": true, "P": 80.0, "seed": "noise"}, "at_-1.1gc": {"gain": -6.58959014254959e-05, "P_star": 80.0, "handedness": "R", "chiral": -0.0013533550285657497, "director_turn_deg": 0.0996747903359272, "S_over_rho_mean": 0.4048905752766588, "seed": "noise"}}
+== optimum diag_eta0.0_A0 at 1.1 gamma_c = 0.08680
+  P*=80.000 q*=0.0785 gain=-6.428e-05 hand=R seed=noise |S|/rho=0.4918 cone=1.43 turn=-0.4 spread=0.0000
+  mirror diag_eta0.0_A0: {"-0.078125": {"min_gain": 1.5619590227646278e-20, "unstable": false, "P": 1.5, "seed": "L"}, "-0.078906": {"min_gain": -1.3619322821737313e-07, "unstable": true, "P": 80.0, "seed": "noise"}, "at_-1.1gc": {"gain": -6.42809611689811e-05, "P_star": 80.0, "handedness": "R", "chiral": -0.001301795883962496, "director_turn_deg": 0.44344121786711144, "S_over_rho_mean": 0.49175691749581146, "seed": "noise"}}
+== optimum perp_eta0.0_A0 at 1.1 gamma_c = 0.08680
+  P*=80.000 q*=0.0785 gain=-8.786e-05 hand=R seed=noise |S|/rho=0.3625 cone=90.00 turn=-0.0 spread=0.0000
+  mirror perp_eta0.0_A0: {"-0.078125": {"min_gain": 1.1197675908656684e-18, "unstable": false, "P": 80.0, "seed": "L"}, "-0.078906": {"min_gain": -1.8126488399236453e-07, "unstable": true, "P": 80.0, "seed": "noise"}, "at_-1.1gc": {"gain": -8.786192014594019e-05, "P_star": 80.0, "handedness": "R", "chiral": -0.0018044940566743928, "director_turn_deg": -1.9580289757759776e-14, "S_over_rho_mean": 0.3624619791853781, "seed": "noise"}}
+== 2b z_eta0.1_0.5gc_Afree: gamma=0.18730 gain=+1.110e-16 P*=20.063 chiral=-2.280e-17 AS=+0.000e+00 AperpS=+0.000e+00 |S|=0.0000 mag=0.000e+00
+== 2b z_eta0.1_0.5gc_A0: gamma=0.18730 gain=+1.110e-16 P*=20.063 chiral=-2.280e-17 AS=+0.000e+00 AperpS=+0.000e+00 |S|=0.0000 mag=0.000e+00
+== 2b z_eta0.1_1.5gc_Afree: gamma=0.56191 gain=-8.074e-02 P*=47.624 chiral=-4.314e-01 AS=-2.601e-01 AperpS=-2.601e-01 |S|=2.9340 mag=3.984e-03
+== 2b z_eta0.1_1.5gc_A0: gamma=0.56191 gain=-5.984e-03 P*=56.613 chiral=-8.592e-02 AS=+0.000e+00 AperpS=+0.000e+00 |S|=1.6262 mag=0.000e+00
+== 2b diag_eta0.1_0.5gc_Afree: gamma=0.17676 gain=+0.000e+00 P*=1.500 chiral=-8.003e-22 AS=+0.000e+00 AperpS=+0.000e+00 |S|=0.0000 mag=0.000e+00
+== 2b diag_eta0.1_0.5gc_A0: gamma=0.17676 gain=+0.000e+00 P*=1.500 chiral=-8.003e-22 AS=+0.000e+00 AperpS=+0.000e+00 |S|=0.0000 mag=0.000e+00
+== 2b diag_eta0.1_1.5gc_Afree: gamma=0.53027 gain=-8.102e-02 P*=33.702 chiral=-4.302e-01 AS=-3.443e-01 AperpS=-3.443e-01 |S|=2.9709 mag=1.001e-02
+== 2b diag_eta0.1_1.5gc_A0: gamma=0.53027 gain=-5.551e-17 P*=1.500 chiral=-3.187e-22 AS=+0.000e+00 AperpS=+0.000e+00 |S|=0.0000 mag=0.000e+00
+== 2b perp_eta0.1_0.5gc_Afree: gamma=0.19375 gain=-2.776e-16 P*=1.500 chiral=-1.721e-16 AS=+0.000e+00 AperpS=+0.000e+00 |S|=0.0000 mag=0.000e+00
+== 2b perp_eta0.1_0.5gc_A0: gamma=0.19375 gain=-2.776e-16 P*=1.500 chiral=-1.721e-16 AS=+0.000e+00 AperpS=+0.000e+00 |S|=0.0000 mag=0.000e+00
+== 2b perp_eta0.1_1.5gc_Afree: gamma=0.58125 gain=-8.183e-02 P*=20.063 chiral=-4.375e-01 AS=-4.375e-01 AperpS=-4.375e-01 |S|=2.9557 mag=3.755e-16
+== 2b perp_eta0.1_1.5gc_A0: gamma=0.58125 gain=-6.184e-02 P*=80.000 chiral=-3.581e-01 AS=+0.000e+00 AperpS=+0.000e+00 |S|=2.5926 mag=0.000e+00
+== 2b z_eta0.0_0.5gc_Afree: gamma=0.00063 gain=-3.033e-11 P*=1.783 chiral=-6.069e-11 AS=-6.069e-11 AperpS=-2.091e-11 |S|=0.0305 mag=1.596e-17
+== 2b z_eta0.0_0.5gc_A0: gamma=0.00063 gain=-2.068e-20 P*=1.500 chiral=-4.626e-20 AS=+0.000e+00 AperpS=+0.000e+00 |S|=0.0000 mag=0.000e+00
+== 2b z_eta0.0_1.5gc_Afree: gamma=0.00187 gain=-2.603e-06 P*=33.702 chiral=-5.207e-06 AS=-5.207e-06 AperpS=-3.458e-06 |S|=2.9809 mag=1.239e-13
+== 2b z_eta0.0_1.5gc_A0: gamma=0.00187 gain=+2.651e-19 P*=2.120 chiral=+1.964e-19 AS=+0.000e+00 AperpS=+0.000e+00 |S|=0.0000 mag=0.000e+00
+== 2b diag_eta0.0_0.5gc_Afree: gamma=0.00063 gain=-3.025e-11 P*=1.783 chiral=-6.058e-11 AS=-6.058e-11 AperpS=-6.058e-11 |S|=0.0305 mag=1.746e-16
+== 2b diag_eta0.0_0.5gc_A0: gamma=0.00063 gain=+2.047e-20 P*=2.520 chiral=+6.399e-26 AS=+0.000e+00 AperpS=+0.000e+00 |S|=0.0000 mag=0.000e+00
+== 2b diag_eta0.0_1.5gc_Afree: gamma=0.00187 gain=-2.637e-06 P*=4.233 chiral=-5.273e-06 AS=-5.273e-06 AperpS=-4.671e-06 |S|=2.9999 mag=2.941e-16
+== 2b diag_eta0.0_1.5gc_A0: gamma=0.00187 gain=+4.279e-19 P*=2.120 chiral=+1.304e-24 AS=+0.000e+00 AperpS=+0.000e+00 |S|=0.0000 mag=0.000e+00
+== 2b perp_eta0.0_0.5gc_Afree: gamma=0.00063 gain=-3.035e-11 P*=1.783 chiral=-6.070e-11 AS=-6.070e-11 AperpS=-5.977e-11 |S|=0.0305 mag=5.673e-17
+== 2b perp_eta0.0_0.5gc_A0: gamma=0.00063 gain=+1.403e-18 P*=80.000 chiral=-5.204e-21 AS=+0.000e+00 AperpS=+0.000e+00 |S|=0.0000 mag=0.000e+00
+== 2b perp_eta0.0_1.5gc_Afree: gamma=0.00187 gain=-2.636e-06 P*=4.233 chiral=-5.273e-06 AS=-5.273e-06 AperpS=-5.273e-06 |S|=2.9999 mag=8.175e-17
+== 2b perp_eta0.0_1.5gc_A0: gamma=0.00187 gain=+1.398e-18 P*=80.000 chiral=-2.602e-20 AS=+0.000e+00 AperpS=+0.000e+00 |S|=0.0000 mag=0.000e+00
+== P5 eta0.1_Afree: gamma=0.37461 unrelaxed chiral=+0.000e+00 (grad 1.0856e-01); relaxed chiral=-5.295e-14 grad=2.7846e-14 ratio=-1.902e+00 wind_k=[-0.0, -0.0, 0.0] rel12=+0.000 amp_min=[1.0488, 1.0488, 1.0488] gain=+6.328e-15 CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
+== P5 eta0.1_A0: gamma=0.37461 unrelaxed chiral=+0.000e+00 (grad 1.0856e-01); relaxed chiral=-4.991e-17 grad=7.9071e-16 ratio=-6.312e-02 wind_k=[-0.0, 0.0, -0.0] rel12=+0.000 amp_min=[1.0488, 1.0488, 1.0488] gain=+1.332e-15 CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
+== P5 eta0.0_Afree: gamma=0.00125 unrelaxed chiral=+0.000e+00 (grad 9.8694e-02); relaxed chiral=-1.400e-06 grad=6.3581e-02 ratio=-2.202e-05 wind_k=[1.0, 0.0, 0.0] rel12=+1.000 amp_min=[0.9771, 0.9945, 0.9948] gain=+6.470e-02 CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
+== P5 eta0.0_A0: gamma=0.00125 unrelaxed chiral=+0.000e+00 (grad 9.8694e-02); relaxed chiral=-1.474e-06 grad=8.8954e-02 ratio=-1.658e-05 wind_k=[1.0, -0.0, 0.0] rel12=+1.000 amp_min=[0.9494, 0.9998, 1.0] gain=+9.382e-02 CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
+done, 12579 s

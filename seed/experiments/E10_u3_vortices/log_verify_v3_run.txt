@@ -1,0 +1,28 @@
+orig lam0.8 (0.00, 30): E=25.141254369187 rel dE vs b3_results 0.0e+00
+orig lam0.8 (0.05, 30): E=25.190865456786 rel dE vs b3_results 0.0e+00
+orig lam0.8 (0.10, 30): E=25.339068303444 rel dE vs b3_results 0.0e+00
+orig lam0.8 (0.15, 30): E=25.584011234577 rel dE vs b3_results 0.0e+00
+orig lam0.8 (0.20, 30): E=25.922734393082 rel dE vs b3_results 0.0e+00
+orig lam0.8 (0.25, 30): E=26.351340631385 rel dE vs b3_results 0.0e+00
+[V3a_lam0.9] k=0.20: cap reached (in window) at q=40.00 (omega/m=0.9740, leak=3.60e-09), 11141 s
+[V3a_lam0.9] k=0.30: closed at q=29.40 (omega/m=1.0000, leak=8.99e-10), 11185 s
+[V3a_lam0.9] k=0.25: cap reached (in window) at q=40.00 (omega/m=0.9881, leak=3.69e-09), 14899 s
+[V3a_lam0.9] k=0.40: closed at q=14.90 (omega/m=1.0004, leak=7.25e-14), 5528 s
+[V3a_lam0.9] k=0.35: closed at q=19.00 (omega/m=1.0001, leak=1.87e-11), 7238 s
+[V3a_lam0.9] k=0.45: closed at q=12.50 (omega/m=1.0009, leak=1.11e-13), 4424 s
+[V3a_lam0.9] k=0.50: closed at q=10.90 (omega/m=1.0016, leak=6.09e-14), 3662 s
+[V3a_lam1.1] k=0.20: closed at q=15.20 (omega/m=1.0001, leak=1.21e-07), 7475 s
+[V3a_lam1.1] k=0.25: closed at q=14.10 (omega/m=1.0008, leak=7.47e-09), 6571 s
+[V3a_lam1.1] k=0.30: closed at q=13.00 (omega/m=1.0006, leak=3.42e-10), 5841 s
+[V3a_lam1.1] k=0.45: closed at q=10.40 (omega/m=1.0002, leak=8.07e-14), 3836 s
+[V3a_lam1.1] k=0.40: closed at q=11.20 (omega/m=1.0011, leak=1.04e-12), 4462 s
+[V3a_lam1.1] k=0.35: closed at q=12.00 (omega/m=1.0001, leak=1.50e-11), 4974 s
+[V3a_lam1.1] k=0.50: closed at q=9.80 (omega/m=1.0021, leak=3.27e-14), 3377 s
+=== container restart; resumed from checkpoints Wed Nov  4 01:39:00 UTC 2026 ===
+[V3b_lam0.8] k=0.00: cap reached (in window) at q=60.00 (omega/m=0.9487, leak=5.07e-08), 1607 s
+[V3b_lam0.8] k=0.05: cap reached (in window) at q=60.00 (omega/m=0.9508, leak=4.93e-08), 1667 s
+[V3b_lam0.8] k=0.10: cap reached (in window) at q=60.00 (omega/m=0.9569, leak=5.12e-08), 5255 s
+[V3b_lam0.8] k=0.15: cap reached (in window) at q=60.00 (omega/m=0.9671, leak=4.98e-08), 6148 s
+[V3b_lam0.8] k=0.20: cap reached (in window) at q=60.00 (omega/m=0.9812, leak=4.80e-08), 6554 s
+[V3b_lam0.8] k=0.25: cap reached (in window) at q=60.00 (omega/m=0.9991, leak=4.71e-08), 6927 s
+V3 run done

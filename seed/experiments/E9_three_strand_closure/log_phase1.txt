@@ -1,0 +1,208 @@
+Python 3.13.18, NumPy 2.5.3, SciPy 1.18.1, 4 cores
+selection (§9.2 rule on phase0_results.json): {"tag": "b3_d1", "beta": 3.0, "mu2": 5.02498614657458, "lam": 8.695070858562827, "m_vac": 2.2079433537628224, "k_star": 0.8144323693283151, "q_star": 53.5, "omega_star_over_mvac": 0.6463286417056138, "r_sigma_star": 2.798606910850149}
+run spec: {"name": "main_n7_R1.0", "n": 7, "Q": 2889.1937331510817, "kind": "wound", "R0": 8.594943255721889, "role": "main"}
+run spec: {"name": "main_n7_R1.5", "n": 7, "Q": 2889.1937331510817, "kind": "wound", "R0": 12.892414883582834, "role": "main"}
+run spec: {"name": "main_n10_R1.0", "n": 10, "Q": 4127.419618787259, "kind": "wound", "R0": 12.278490365316983, "role": "main"}
+run spec: {"name": "main_n10_R1.5", "n": 10, "Q": 4127.419618787259, "kind": "wound", "R0": 18.417735547975475, "role": "main"}
+run spec: {"name": "Ca_n0_Q0", "n": 0, "Q": 0.0, "kind": "wound", "R0": 8.594943255721889, "role": "C-a"}
+run spec: {"name": "Cb_n7_Q0", "n": 7, "Q": 0.0, "kind": "wound", "R0": 8.594943255721889, "role": "C-b"}
+run spec: {"name": "Cc_n0_Q7", "n": 0, "Q": 2889.1937331510817, "kind": "wound", "R0": 8.594943255721889, "role": "C-c"}
+run spec: {"name": "Cd_n7", "n": 7, "Q": 2889.1937331510817, "kind": "unwound", "R0": 8.594943255721889, "role": "C-d"}
+run spec: {"name": "Cd_n10", "n": 10, "Q": 4127.419618787259, "kind": "unwound", "R0": 12.278490365316983, "role": "C-d"}
+run spec: {"name": "Ce_Q7", "n": 0, "Q": 2889.1937331510817, "kind": "ball", "R0": null, "role": "C-e"}
+run spec: {"name": "Ce_Q10", "n": 0, "Q": 4127.419618787259, "kind": "ball", "R0": null, "role": "C-e"}
+[main_n10_R1.5] it=50 E=8158.5178 R_core=18.0000 R_sig=18.1657 I=1549.563 w/m=0.6032 leak=0.0000 net=[1, 1, 1] |g|=1.65e+00 t=3s
+[main_n10_R1.0] it=50 E=7804.9573 R_core=12.2500 R_sig=12.7355 I=1447.338 w/m=0.6458 leak=0.0000 net=[1, 1, 1] |g|=1.43e-01 t=3s
+[main_n7_R1.0] it=50 E=5463.7292 R_core=8.5000 R_sig=9.2098 I=1013.349 w/m=0.6457 leak=0.0000 net=[1, 1, 1] |g|=2.34e-01 t=4s
+[main_n7_R1.5] it=50 E=5697.9993 R_core=12.2500 R_sig=12.6444 I=1064.437 w/m=0.6147 leak=0.0000 net=[1, 1, 1] |g|=1.63e+00 t=4s
+[main_n10_R1.5] it=100 E=8010.9882 R_core=16.2500 R_sig=16.4332 I=1541.659 w/m=0.6063 leak=0.0000 net=[1, 1, 1] |g|=2.41e+00 t=6s
+[main_n10_R1.0] it=100 E=7804.7439 R_core=12.2500 R_sig=12.7287 I=1446.982 w/m=0.6459 leak=0.0000 net=[1, 1, 1] |g|=4.32e-02 t=6s
+[main_n7_R1.0] it=100 E=5462.8747 R_core=8.5000 R_sig=9.2175 I=1012.146 w/m=0.6464 leak=0.0000 net=[1, 1, 1] |g|=1.92e-01 t=7s
+[main_n7_R1.5] it=100 E=5587.4329 R_core=10.7500 R_sig=11.2159 I=1062.933 w/m=0.6155 leak=0.0000 net=[1, 1, 1] |g|=1.96e+00 t=7s
+[main_n10_R1.0] it=150 E=7804.6038 R_core=12.2500 R_sig=12.6703 I=1444.584 w/m=0.6470 leak=0.0000 net=[1, 1, 1] |g|=6.32e-02 t=9s
+[main_n10_R1.5] it=150 E=7887.3685 R_core=14.5000 R_sig=14.7783 I=1506.648 w/m=0.6204 leak=0.0000 net=[1, 1, 1] |g|=2.37e+00 t=9s
+[main_n7_R1.0] it=150 E=5462.3714 R_core=8.5000 R_sig=9.1433 I=1009.523 w/m=0.6481 leak=0.0000 net=[1, 1, 1] |g|=1.32e-01 t=9s
+[main_n7_R1.5] it=150 E=5496.0302 R_core=9.2500 R_sig=9.9635 I=1044.017 w/m=0.6267 leak=0.0000 net=[1, 1, 1] |g|=3.00e+00 t=10s
+[main_n10_R1.0] it=200 E=7804.5146 R_core=12.0000 R_sig=12.6236 I=1443.409 w/m=0.6475 leak=0.0000 net=[1, 1, 1] |g|=1.36e-02 t=12s
+[main_n10_R1.5] it=200 E=7825.2389 R_core=13.2500 R_sig=13.5529 I=1467.180 w/m=0.6371 leak=0.0000 net=[1, 1, 1] |g|=1.08e+00 t=12s
+[main_n7_R1.0] it=200 E=5462.0564 R_core=8.2500 R_sig=9.0671 I=1007.527 w/m=0.6494 leak=0.0000 net=[1, 1, 1] |g|=4.57e-02 t=13s
+[main_n7_R1.5] it=200 E=5465.6511 R_core=8.5000 R_sig=9.2474 I=1013.646 w/m=0.6455 leak=0.0000 net=[1, 1, 1] |g|=3.37e-01 t=13s
+[main_n10_R1.0] it=250 E=7804.5105 R_core=12.0000 R_sig=12.6217 I=1443.182 w/m=0.6476 leak=0.0000 net=[1, 1, 1] |g|=4.87e-03 t=15s
+[main_n10_R1.5] it=250 E=7807.3647 R_core=12.5000 R_sig=12.9358 I=1456.611 w/m=0.6417 leak=0.0000 net=[1, 1, 1] |g|=2.19e-01 t=15s
+[main_n7_R1.0] it=250 E=5462.0251 R_core=8.2500 R_sig=9.0596 I=1007.481 w/m=0.6494 leak=0.0000 net=[1, 1, 1] |g|=1.23e-02 t=15s
+[main_n7_R1.5] it=250 E=5462.3897 R_core=8.2500 R_sig=9.0923 I=1006.928 w/m=0.6498 leak=0.0000 net=[1, 1, 1] |g|=1.56e-01 t=16s
+[main_n10_R1.0] it=300 E=7804.5102 R_core=12.0000 R_sig=12.6213 I=1443.202 w/m=0.6476 leak=0.0000 net=[1, 1, 1] |g|=1.05e-03 t=18s
+[main_n7_R1.0] it=300 E=5462.0219 R_core=8.2500 R_sig=9.0588 I=1007.363 w/m=0.6495 leak=0.0000 net=[1, 1, 1] |g|=4.09e-03 t=18s
+[main_n10_R1.5] it=300 E=7804.8251 R_core=12.2500 R_sig=12.7416 I=1446.892 w/m=0.6460 leak=0.0000 net=[1, 1, 1] |g|=4.53e-02 t=18s
+[main_n7_R1.5] it=300 E=5462.0930 R_core=8.2500 R_sig=9.0879 I=1008.873 w/m=0.6485 leak=0.0000 net=[1, 1, 1] |g|=2.27e-02 t=19s
+[main_n10_R1.0] it=350 E=7804.5101 R_core=12.0000 R_sig=12.6211 I=1443.188 w/m=0.6476 leak=0.0000 net=[1, 1, 1] |g|=4.63e-04 t=21s
+[main_n7_R1.0] it=350 E=5462.0215 R_core=8.2500 R_sig=9.0583 I=1007.371 w/m=0.6495 leak=0.0000 net=[1, 1, 1] |g|=5.58e-03 t=21s
+[main_n10_R1.5] it=350 E=7804.6783 R_core=12.2500 R_sig=12.7028 I=1446.239 w/m=0.6463 leak=0.0000 net=[1, 1, 1] |g|=1.57e-01 t=21s
+[main_n7_R1.5] it=350 E=5462.0498 R_core=8.2500 R_sig=9.0797 I=1007.901 w/m=0.6491 leak=0.0000 net=[1, 1, 1] |g|=6.94e-02 t=22s
+[main_n10_R1.0] it=400 E=7804.5101 R_core=12.0000 R_sig=12.6207 I=1443.173 w/m=0.6477 leak=0.0000 net=[1, 1, 1] |g|=4.32e-04 t=24s
+[main_n7_R1.0] it=400 E=5462.0213 R_core=8.2500 R_sig=9.0577 I=1007.347 w/m=0.6495 leak=0.0000 net=[1, 1, 1] |g|=9.68e-04 t=24s
+[main_n10_R1.5] it=400 E=7804.5341 R_core=12.0000 R_sig=12.6353 I=1443.706 w/m=0.6474 leak=0.0000 net=[1, 1, 1] |g|=2.61e-02 t=24s
+[main_n7_R1.5] it=400 E=5462.0291 R_core=8.2500 R_sig=9.0681 I=1007.857 w/m=0.6492 leak=0.0000 net=[1, 1, 1] |g|=1.58e-02 t=25s
+[main_n10_R1.0] it=450 E=7804.5101 R_core=12.0000 R_sig=12.6205 I=1443.169 w/m=0.6477 leak=0.0000 net=[1, 1, 1] |g|=4.51e-04 t=27s
+[main_n7_R1.0] it=450 E=5462.0212 R_core=8.2500 R_sig=9.0576 I=1007.348 w/m=0.6495 leak=0.0000 net=[1, 1, 1] |g|=2.74e-04 t=27s
+[main_n10_R1.5] it=450 E=7804.5113 R_core=12.0000 R_sig=12.6238 I=1443.260 w/m=0.6476 leak=0.0000 net=[1, 1, 1] |g|=6.76e-03 t=27s
+[main_n7_R1.5] it=450 E=5462.0235 R_core=8.2500 R_sig=9.0638 I=1007.488 w/m=0.6494 leak=0.0000 net=[1, 1, 1] |g|=4.76e-03 t=29s
+[main_n10_R1.0] it=500 E=7804.5101 R_core=12.0000 R_sig=12.6203 I=1443.161 w/m=0.6477 leak=0.0000 net=[1, 1, 1] |g|=1.88e-04 t=30s
+[main_n7_R1.0] it=500 E=5462.0212 R_core=8.2500 R_sig=9.0575 I=1007.340 w/m=0.6495 leak=0.0000 net=[1, 1, 1] |g|=1.03e-03 t=31s
+[main_n10_R1.5] it=500 E=7804.5103 R_core=12.0000 R_sig=12.6231 I=1443.267 w/m=0.6476 leak=0.0000 net=[1, 1, 1] |g|=1.96e-03 t=31s
+[main_n7_R1.5] it=500 E=5462.0222 R_core=8.2500 R_sig=9.0615 I=1007.541 w/m=0.6494 leak=0.0000 net=[1, 1, 1] |g|=5.49e-03 t=31s
+[main_n10_R1.0] it=550 E=7804.5101 R_core=12.0000 R_sig=12.6202 I=1443.157 w/m=0.6477 leak=0.0000 net=[1, 1, 1] |g|=1.13e-04 t=33s
+[main_n7_R1.0] it=550 E=5462.0212 R_core=8.2500 R_sig=9.0573 I=1007.337 w/m=0.6495 leak=0.0000 net=[1, 1, 1] |g|=9.58e-05 t=33s
+[main_n10_R1.5] it=550 E=7804.5102 R_core=12.0000 R_sig=12.6222 I=1443.223 w/m=0.6476 leak=0.0000 net=[1, 1, 1] |g|=1.10e-03 t=34s
+[main_n7_R1.5] it=550 E=5462.0214 R_core=8.2500 R_sig=9.0584 I=1007.335 w/m=0.6495 leak=0.0000 net=[1, 1, 1] |g|=1.40e-03 t=34s
+[main_n10_R1.0] it=600 E=7804.5101 R_core=12.0000 R_sig=12.6201 I=1443.156 w/m=0.6477 leak=0.0000 net=[1, 1, 1] |g|=1.86e-05 t=36s
+[main_n10_R1.0] done: nit=606 nfev=627 msg=CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH E=7804.5101 R_core=12.0000 zeros=[1, 1, 1] R_sig=12.6201 w/m=0.6477 leak=0.0000 36s
+[main_n7_R1.0] it=600 E=5462.0212 R_core=8.2500 R_sig=9.0572 I=1007.333 w/m=0.6495 leak=0.0000 net=[1, 1, 1] |g|=8.92e-05 t=36s
+[main_n10_R1.5] it=600 E=7804.5101 R_core=12.0000 R_sig=12.6213 I=1443.199 w/m=0.6476 leak=0.0000 net=[1, 1, 1] |g|=6.38e-04 t=36s
+[main_n7_R1.5] it=600 E=5462.0213 R_core=8.2500 R_sig=9.0577 I=1007.360 w/m=0.6495 leak=0.0000 net=[1, 1, 1] |g|=1.04e-03 t=37s
+[main_n7_R1.0] it=650 E=5462.0212 R_core=8.2500 R_sig=9.0572 I=1007.332 w/m=0.6495 leak=0.0000 net=[1, 1, 1] |g|=3.09e-05 t=39s
+[Ca_n0_Q0] it=50 E=1388.2801 R_core=7.7500 R_sig=7.8411 I=25.077 w/m=0.0000 leak=0.0000 net=[1, 1, 1] |g|=4.90e+00 t=3s
+[main_n10_R1.5] it=650 E=7804.5101 R_core=12.0000 R_sig=12.6206 I=1443.173 w/m=0.6477 leak=0.0000 net=[1, 1, 1] |g|=2.98e-04 t=39s
+[main_n7_R1.5] it=650 E=5462.0212 R_core=8.2500 R_sig=9.0576 I=1007.344 w/m=0.6495 leak=0.0000 net=[1, 1, 1] |g|=4.12e-04 t=40s
+[main_n7_R1.0] done: nit=689 nfev=706 msg=CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH E=5462.0212 R_core=8.2500 zeros=[1, 1, 1] R_sig=9.0572 w/m=0.6495 leak=0.0000 41s
+[main_n10_R1.5] it=700 E=7804.5101 R_core=12.0000 R_sig=12.6204 I=1443.163 w/m=0.6477 leak=0.0000 net=[1, 1, 1] |g|=5.79e-04 t=42s
+[Ca_n0_Q0] it=100 E=1229.0448 R_core=6.7500 R_sig=7.0105 I=41.698 w/m=0.0000 leak=0.0000 net=[1, 1, 1] |g|=6.10e+00 t=6s
+[main_n7_R1.5] it=700 E=5462.0212 R_core=8.2500 R_sig=9.0574 I=1007.343 w/m=0.6495 leak=0.0000 net=[1, 1, 1] |g|=1.33e-03 t=43s
+[Cb_n7_Q0] it=50 E=1432.8518 R_core=8.0000 R_sig=8.2829 I=2.479 w/m=0.0000 leak=0.0007 net=[1, 1, 1] |g|=4.78e+00 t=3s
+[Ca_n0_Q0] it=150 E=930.8035 R_core=5.0000 R_sig=5.2251 I=16.774 w/m=0.0000 leak=0.0001 net=[1, 1, 1] |g|=3.70e+00 t=9s
+[main_n10_R1.5] it=750 E=7804.5101 R_core=12.0000 R_sig=12.6202 I=1443.160 w/m=0.6477 leak=0.0000 net=[1, 1, 1] |g|=1.46e-04 t=45s
+[main_n7_R1.5] it=750 E=5462.0212 R_core=8.2500 R_sig=9.0573 I=1007.335 w/m=0.6495 leak=0.0000 net=[1, 1, 1] |g|=2.62e-04 t=46s
+[Cb_n7_Q0] it=100 E=1277.2503 R_core=7.0000 R_sig=7.2052 I=14.488 w/m=0.0000 leak=0.0000 net=[1, 1, 1] |g|=6.60e+00 t=6s
+[Ca_n0_Q0] it=200 E=635.8938 R_core=3.2500 R_sig=3.6287 I=10.002 w/m=0.0000 leak=0.0008 net=[1, 1, 1] |g|=3.53e+00 t=12s
+[main_n10_R1.5] it=800 E=7804.5101 R_core=12.0000 R_sig=12.6202 I=1443.157 w/m=0.6477 leak=0.0000 net=[1, 1, 1] |g|=9.05e-05 t=48s
+[main_n7_R1.5] it=800 E=5462.0212 R_core=8.2500 R_sig=9.0572 I=1007.336 w/m=0.6495 leak=0.0000 net=[1, 1, 1] |g|=3.83e-04 t=49s
+[Cb_n7_Q0] it=150 E=977.5558 R_core=5.2500 R_sig=5.9041 I=5.398 w/m=0.0000 leak=0.0007 net=[1, 1, 1] |g|=4.61e+00 t=8s
+[Ca_n0_Q0] it=250 E=372.8953 R_core=1.7500 R_sig=2.4890 I=4.984 w/m=0.0000 leak=0.0063 net=[1, 1, 1] |g|=2.56e+00 t=15s
+[main_n10_R1.5] it=850 E=7804.5101 R_core=12.0000 R_sig=12.6201 I=1443.156 w/m=0.6477 leak=0.0000 net=[1, 1, 1] |g|=2.91e-05 t=51s
+[main_n10_R1.5] done: nit=854 nfev=881 msg=CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH E=7804.5101 R_core=12.0000 zeros=[1, 1, 1] R_sig=12.6201 w/m=0.6477 leak=0.0000 52s
+[main_n7_R1.5] it=850 E=5462.0212 R_core=8.2500 R_sig=9.0572 I=1007.332 w/m=0.6495 leak=0.0000 net=[1, 1, 1] |g|=6.33e-05 t=52s
+[Cb_n7_Q0] it=200 E=681.9377 R_core=3.5000 R_sig=5.2283 I=1.994 w/m=0.0000 leak=0.0028 net=[1, 1, 1] |g|=4.57e+00 t=11s
+[main_n7_R1.5] done: nit=883 nfev=917 msg=CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH E=5462.0212 R_core=8.2500 zeros=[1, 1, 1] R_sig=9.0572 w/m=0.6495 leak=0.0000 54s
+[Ca_n0_Q0] it=300 E=155.2426 R_core=0.2500 R_sig=2.9210 I=1.244 w/m=0.0000 leak=0.0170 net=[1, 1, 1] |g|=2.77e+00 t=18s
+[Cc_n0_Q7] it=50 E=4567.4267 R_core=8.0000 R_sig=7.8256 I=1296.072 w/m=0.5048 leak=0.0000 net=[1, 1, 1] |g|=3.21e+00 t=3s
+[Cb_n7_Q0] it=250 E=413.4955 R_core=2.0000 R_sig=8.0987 I=0.557 w/m=0.0000 leak=0.0689 net=[1, 1, 1] |g|=4.74e+00 t=15s
+[Cd_n7] it=50 E=5195.0395 R_core=None R_sig=9.2849 I=940.052 w/m=0.6960 leak=0.0000 net=[0, 0, 0] |g|=1.51e+00 t=3s
+[Ca_n0_Q0] it=350 E=29.9799 R_core=None R_sig=7.8084 I=0.116 w/m=0.0000 leak=0.0352 net=[0, 0, 0] |g|=2.12e+00 t=20s
+[Cc_n0_Q7] it=100 E=4295.1038 R_core=5.0000 R_sig=6.2579 I=1208.778 w/m=0.5413 leak=0.0000 net=[1, 1, 1] |g|=5.72e+00 t=6s
+[Cb_n7_Q0] it=300 E=200.5446 R_core=0.5000 R_sig=13.9105 I=0.189 w/m=0.0000 leak=0.1935 net=[1, 1, 1] |g|=6.07e+00 t=18s
+[Ca_n0_Q0] it=400 E=4.9034 R_core=None R_sig=3.5849 I=0.040 w/m=0.0000 leak=0.0210 net=[0, 0, 0] |g|=7.31e-01 t=24s
+[Cd_n7] it=100 E=5171.6432 R_core=None R_sig=10.1636 I=996.230 w/m=0.6567 leak=0.0000 net=[0, 0, 0] |g|=9.52e-01 t=6s
+[Cc_n0_Q7] it=150 E=4067.1232 R_core=3.2500 R_sig=5.2659 I=1192.364 w/m=0.5487 leak=0.0000 net=[1, 1, 1] |g|=5.67e+00 t=9s
+[Cb_n7_Q0] it=350 E=42.5852 R_core=None R_sig=11.6387 I=0.076 w/m=0.0000 leak=0.1361 net=[0, 0, 0] |g|=2.83e+00 t=21s
+[Ca_n0_Q0] it=450 E=0.7826 R_core=None R_sig=3.8917 I=0.006 w/m=0.0000 leak=0.0197 net=[0, 0, 0] |g|=1.79e-01 t=26s
+[Cd_n7] it=150 E=5164.8660 R_core=None R_sig=10.4861 I=972.488 w/m=0.6728 leak=0.0000 net=[0, 0, 0] |g|=1.86e-01 t=9s
+[Cc_n0_Q7] it=200 E=3905.0039 R_core=2.0000 R_sig=4.9702 I=1229.052 w/m=0.5323 leak=0.0000 net=[0, 0, 0] |g|=1.43e+00 t=12s
+[Cb_n7_Q0] it=400 E=7.0328 R_core=None R_sig=11.1317 I=0.006 w/m=0.0000 leak=0.1449 net=[0, 0, 0] |g|=7.96e-01 t=24s
+[Ca_n0_Q0] it=500 E=0.1468 R_core=None R_sig=6.3125 I=0.001 w/m=0.0000 leak=0.0273 net=[0, 0, 0] |g|=8.49e-02 t=29s
+[Cd_n7] it=200 E=5164.2759 R_core=None R_sig=10.6251 I=977.656 w/m=0.6692 leak=0.0000 net=[0, 0, 0] |g|=7.97e-02 t=12s
+[Cc_n0_Q7] it=250 E=3853.4853 R_core=None R_sig=4.8421 I=1234.680 w/m=0.5299 leak=0.0000 net=[0, 0, 0] |g|=7.50e-01 t=15s
+[Cb_n7_Q0] it=450 E=1.7477 R_core=None R_sig=10.4110 I=0.002 w/m=0.0000 leak=0.0993 net=[0, 0, 0] |g|=2.03e-01 t=27s
+[Ca_n0_Q0] it=550 E=0.0247 R_core=None R_sig=5.8576 I=0.000 w/m=0.0000 leak=0.0240 net=[0, 0, 0] |g|=2.64e-02 t=32s
+[Cd_n7] it=250 E=5164.0516 R_core=None R_sig=10.7081 I=976.985 w/m=0.6697 leak=0.0000 net=[0, 0, 0] |g|=6.14e-02 t=15s
+[Cc_n0_Q7] it=300 E=3824.5026 R_core=0.2500 R_sig=4.6939 I=1235.382 w/m=0.5296 leak=0.0000 net=[1, 1, 1] |g|=8.18e-01 t=18s
+[Cb_n7_Q0] it=500 E=0.2786 R_core=None R_sig=11.5399 I=0.001 w/m=0.0000 leak=0.0943 net=[0, 0, 0] |g|=1.16e-01 t=30s
+[Ca_n0_Q0] it=600 E=0.0053 R_core=None R_sig=5.0391 I=0.000 w/m=0.0000 leak=0.0247 net=[0, 0, 0] |g|=1.63e-02 t=35s
+[Cd_n7] it=300 E=5164.0396 R_core=None R_sig=10.7234 I=976.936 w/m=0.6697 leak=0.0000 net=[0, 0, 0] |g|=2.52e-02 t=18s
+[Cc_n0_Q7] it=350 E=3806.7425 R_core=2.7500 R_sig=4.5822 I=1245.306 w/m=0.5254 leak=0.0000 net=[1, 1, 1] |g|=6.44e-01 t=21s
+[Ca_n0_Q0] it=650 E=0.0009 R_core=None R_sig=6.3166 I=0.000 w/m=0.0000 leak=0.0217 net=[0, 0, 0] |g|=4.03e-03 t=38s
+[Cb_n7_Q0] it=550 E=0.0370 R_core=None R_sig=11.3690 I=0.000 w/m=0.0000 leak=0.0844 net=[0, 0, 0] |g|=3.47e-02 t=33s
+[Cd_n7] it=350 E=5164.0343 R_core=None R_sig=10.7397 I=977.208 w/m=0.6695 leak=0.0000 net=[0, 0, 0] |g|=9.82e-03 t=21s
+[Cc_n0_Q7] it=400 E=3798.9515 R_core=0.7500 R_sig=4.5055 I=1249.861 w/m=0.5235 leak=0.0000 net=[1, 1, 1] |g|=2.92e-01 t=24s
+[Ca_n0_Q0] it=700 E=0.0001 R_core=None R_sig=5.7690 I=0.000 w/m=0.0000 leak=0.0416 net=[0, 0, 0] |g|=6.95e-03 t=41s
+[Cb_n7_Q0] it=600 E=0.0077 R_core=None R_sig=11.5859 I=0.000 w/m=0.0000 leak=0.0678 net=[0, 0, 0] |g|=1.83e-02 t=36s
+[Cd_n7] it=400 E=5164.0342 R_core=None R_sig=10.7413 I=977.223 w/m=0.6695 leak=0.0000 net=[0, 0, 0] |g|=7.08e-04 t=24s
+[Cc_n0_Q7] it=450 E=3795.7840 R_core=None R_sig=4.4481 I=1251.454 w/m=0.5228 leak=0.0000 net=[0, 0, 0] |g|=2.35e-01 t=27s
+[Cb_n7_Q0] it=650 E=0.0014 R_core=None R_sig=11.9105 I=0.000 w/m=0.0000 leak=0.0918 net=[0, 0, 0] |g|=1.48e-02 t=39s
+[Ca_n0_Q0] it=750 E=0.0000 R_core=None R_sig=8.2260 I=0.000 w/m=0.0000 leak=0.0534 net=[0, 0, 0] |g|=9.22e-04 t=44s
+[Cd_n7] it=450 E=5164.0341 R_core=None R_sig=10.7416 I=977.232 w/m=0.6695 leak=0.0000 net=[0, 0, 0] |g|=2.93e-04 t=27s
+[Cc_n0_Q7] it=500 E=3794.9169 R_core=None R_sig=4.4393 I=1251.184 w/m=0.5229 leak=0.0000 net=[0, 0, 0] |g|=1.31e-01 t=30s
+[Ca_n0_Q0] it=800 E=0.0000 R_core=None R_sig=8.7458 I=0.000 w/m=0.0000 leak=0.0789 net=[0, 0, 0] |g|=8.12e-04 t=47s
+[Cd_n7] it=500 E=5164.0341 R_core=None R_sig=10.7421 I=977.226 w/m=0.6695 leak=0.0000 net=[0, 0, 0] |g|=2.73e-04 t=30s
+[Cb_n7_Q0] it=700 E=0.0002 R_core=None R_sig=11.3180 I=0.000 w/m=0.0000 leak=0.1095 net=[0, 0, 0] |g|=6.36e-03 t=42s
+[Cc_n0_Q7] it=550 E=3794.6685 R_core=0.5000 R_sig=4.4430 I=1251.537 w/m=0.5228 leak=0.0000 net=[1, 1, 1] |g|=5.63e-02 t=33s
+[Ca_n0_Q0] it=850 E=0.0000 R_core=None R_sig=5.6032 I=0.000 w/m=0.0000 leak=0.0505 net=[0, 0, 0] |g|=1.11e-04 t=50s
+[Cd_n7] it=550 E=5164.0341 R_core=None R_sig=10.7423 I=977.231 w/m=0.6695 leak=0.0000 net=[0, 0, 0] |g|=1.79e-04 t=33s
+[Cb_n7_Q0] it=750 E=0.0000 R_core=None R_sig=10.5158 I=0.000 w/m=0.0000 leak=0.0597 net=[0, 0, 0] |g|=1.60e-03 t=46s
+[Cc_n0_Q7] it=600 E=3794.4551 R_core=1.2500 R_sig=4.4531 I=1251.118 w/m=0.5230 leak=0.0000 net=[1, 1, 1] |g|=4.85e-02 t=36s
+[Cd_n7] done: nit=590 nfev=606 msg=CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH E=5164.0341 R_core=None zeros=[0, 0, 0] R_sig=10.7424 w/m=0.6695 leak=0.0000 36s
+[Ca_n0_Q0] it=900 E=0.0000 R_core=None R_sig=6.4553 I=0.000 w/m=0.0000 leak=0.0567 net=[0, 0, 0] |g|=5.69e-05 t=53s
+[Cb_n7_Q0] it=800 E=0.0000 R_core=None R_sig=13.8859 I=0.000 w/m=0.0000 leak=0.0836 net=[0, 0, 0] |g|=4.72e-04 t=49s
+[Cc_n0_Q7] it=650 E=3794.3356 R_core=None R_sig=4.4619 I=1250.214 w/m=0.5233 leak=0.0000 net=[0, 0, 0] |g|=4.26e-02 t=39s
+[Cd_n10] it=50 E=7420.6161 R_core=None R_sig=12.8237 I=1352.397 w/m=0.6911 leak=0.0000 net=[0, 0, 0] |g|=8.72e-01 t=3s
+[Ca_n0_Q0] it=950 E=0.0000 R_core=None R_sig=7.8748 I=0.000 w/m=0.0000 leak=0.0542 net=[0, 0, 0] |g|=2.65e-05 t=56s
+[Cb_n7_Q0] it=850 E=0.0000 R_core=None R_sig=11.7990 I=0.000 w/m=0.0000 leak=0.1012 net=[0, 0, 0] |g|=2.04e-04 t=52s
+[Cc_n0_Q7] it=700 E=3794.3157 R_core=None R_sig=4.4638 I=1249.937 w/m=0.5234 leak=0.0000 net=[0, 0, 0] |g|=8.93e-03 t=42s
+[Cd_n10] it=100 E=7383.4883 R_core=None R_sig=14.0171 I=1398.103 w/m=0.6685 leak=0.0000 net=[0, 0, 0] |g|=1.27e+00 t=6s
+[Ca_n0_Q0] it=1000 E=0.0000 R_core=None R_sig=5.8540 I=0.000 w/m=0.0000 leak=0.0473 net=[0, 0, 0] |g|=2.25e-05 t=59s
+[Ca_n0_Q0] done: nit=1007 nfev=1041 msg=CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL E=0.0000 R_core=None zeros=[0, 0, 0] R_sig=6.3479 w/m=0.0000 leak=0.0463 60s
+[Cc_n0_Q7] it=750 E=3794.3126 R_core=None R_sig=4.4644 I=1249.947 w/m=0.5234 leak=0.0000 net=[0, 0, 0] |g|=9.63e-03 t=45s
+[Cb_n7_Q0] it=900 E=0.0000 R_core=None R_sig=12.7474 I=0.000 w/m=0.0000 leak=0.1345 net=[0, 0, 0] |g|=3.10e-04 t=55s
+[Cd_n10] it=150 E=7372.7311 R_core=None R_sig=14.7933 I=1397.856 w/m=0.6686 leak=0.0000 net=[0, 0, 0] |g|=2.49e-01 t=9s
+[Ce_Q7] it=50 E=3852.3961 R_core=None R_sig=5.0425 I=1218.051 w/m=0.5371 leak=0.0000 net=[0, 0, 0] |g|=2.28e+00 t=3s
+[Cc_n0_Q7] it=800 E=3794.3117 R_core=None R_sig=4.4649 I=1249.957 w/m=0.5234 leak=0.0000 net=[0, 0, 0] |g|=4.65e-03 t=48s
+[Cb_n7_Q0] it=950 E=0.0000 R_core=None R_sig=12.0047 I=0.000 w/m=0.0000 leak=0.1002 net=[0, 0, 0] |g|=8.98e-05 t=58s
+[Cd_n10] it=200 E=7372.0618 R_core=None R_sig=14.9680 I=1396.160 w/m=0.6695 leak=0.0000 net=[0, 0, 0] |g|=1.04e-01 t=12s
+[Ce_Q7] it=100 E=3815.8870 R_core=None R_sig=4.8698 I=1257.218 w/m=0.5204 leak=0.0000 net=[0, 0, 0] |g|=1.19e+00 t=6s
+[Cb_n7_Q0] it=1000 E=0.0000 R_core=None R_sig=11.9779 I=0.000 w/m=0.0000 leak=0.1125 net=[0, 0, 0] |g|=1.63e-05 t=61s
+[Cc_n0_Q7] it=850 E=3794.3115 R_core=None R_sig=4.4650 I=1249.933 w/m=0.5234 leak=0.0000 net=[0, 0, 0] |g|=1.18e-03 t=51s
+[Cb_n7_Q0] done: nit=1014 nfev=1043 msg=CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL E=0.0000 R_core=None zeros=[0, 0, 0] R_sig=10.6501 w/m=0.0000 leak=0.0942 62s
+[Cd_n10] it=250 E=7371.9845 R_core=None R_sig=15.0329 I=1397.969 w/m=0.6686 leak=0.0000 net=[0, 0, 0] |g|=2.95e-02 t=15s
+[Ce_Q7] it=150 E=3803.0493 R_core=None R_sig=4.6142 I=1219.319 w/m=0.5366 leak=0.0000 net=[0, 0, 0] |g|=1.47e+00 t=9s
+[Cc_n0_Q7] it=900 E=3794.3114 R_core=None R_sig=4.4651 I=1249.911 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=7.66e-04 t=54s
+[Ce_Q10] it=50 E=5307.3493 R_core=None R_sig=5.6447 I=1722.247 w/m=0.5427 leak=0.0000 net=[0, 0, 0] |g|=8.05e+00 t=3s
+[Cd_n10] it=300 E=7371.9766 R_core=None R_sig=15.0495 I=1397.260 w/m=0.6689 leak=0.0000 net=[0, 0, 0] |g|=1.14e-02 t=18s
+[Ce_Q7] it=200 E=3796.7501 R_core=None R_sig=4.5156 I=1236.742 w/m=0.5290 leak=0.0000 net=[0, 0, 0] |g|=5.84e-01 t=12s
+[Cc_n0_Q7] it=950 E=3794.3113 R_core=None R_sig=4.4653 I=1249.897 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=2.33e-03 t=57s
+[Ce_Q10] it=100 E=5235.9402 R_core=None R_sig=5.6145 I=1858.087 w/m=0.5030 leak=0.0000 net=[0, 0, 0] |g|=1.53e+00 t=6s
+[Cd_n10] it=350 E=7371.9744 R_core=None R_sig=15.0610 I=1397.859 w/m=0.6686 leak=0.0000 net=[0, 0, 0] |g|=1.92e-03 t=20s
+[Ce_Q7] it=250 E=3794.7527 R_core=None R_sig=4.5022 I=1251.653 w/m=0.5227 leak=0.0000 net=[0, 0, 0] |g|=2.89e-01 t=15s
+[Cc_n0_Q7] it=1000 E=3794.3113 R_core=None R_sig=4.4654 I=1249.900 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=2.97e-04 t=60s
+[Ce_Q10] it=150 E=5215.5144 R_core=None R_sig=5.3618 I=1819.996 w/m=0.5136 leak=0.0000 net=[0, 0, 0] |g|=1.64e+00 t=9s
+[Cd_n10] it=400 E=7371.9743 R_core=None R_sig=15.0624 I=1397.700 w/m=0.6687 leak=0.0000 net=[0, 0, 0] |g|=2.56e-03 t=23s
+[Ce_Q7] it=300 E=3794.3862 R_core=None R_sig=4.4868 I=1251.042 w/m=0.5230 leak=0.0000 net=[0, 0, 0] |g|=9.09e-02 t=18s
+[Cc_n0_Q7] it=1050 E=3794.3113 R_core=None R_sig=4.4654 I=1249.898 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=1.26e-03 t=63s
+[Ce_Q10] it=200 E=5204.4568 R_core=None R_sig=5.2005 I=1818.592 w/m=0.5140 leak=0.0000 net=[0, 0, 0] |g|=8.92e-01 t=12s
+[Cd_n10] it=450 E=7371.9742 R_core=None R_sig=15.0653 I=1397.752 w/m=0.6687 leak=0.0000 net=[0, 0, 0] |g|=5.10e-04 t=27s
+[Ce_Q7] it=350 E=3794.3409 R_core=None R_sig=4.4776 I=1248.771 w/m=0.5239 leak=0.0000 net=[0, 0, 0] |g|=4.40e-02 t=21s
+[Cc_n0_Q7] it=1100 E=3794.3113 R_core=None R_sig=4.4654 I=1249.897 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=3.13e-04 t=66s
+[Ce_Q10] it=250 E=5200.3132 R_core=None R_sig=5.1817 I=1846.728 w/m=0.5061 leak=0.0000 net=[0, 0, 0] |g|=9.86e-01 t=15s
+[Cd_n10] it=500 E=7371.9742 R_core=None R_sig=15.0656 I=1397.748 w/m=0.6687 leak=0.0000 net=[0, 0, 0] |g|=5.28e-05 t=30s
+[Ce_Q7] it=400 E=3794.3248 R_core=None R_sig=4.4716 I=1248.788 w/m=0.5239 leak=0.0000 net=[0, 0, 0] |g|=3.08e-02 t=24s
+[Cc_n0_Q7] it=1150 E=3794.3113 R_core=None R_sig=4.4654 I=1249.898 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=1.13e-04 t=69s
+[Ce_Q10] it=300 E=5199.2539 R_core=None R_sig=5.1568 I=1849.442 w/m=0.5054 leak=0.0000 net=[0, 0, 0] |g|=4.68e-01 t=18s
+[Cd_n10] it=550 E=7371.9742 R_core=None R_sig=15.0657 I=1397.748 w/m=0.6687 leak=0.0000 net=[0, 0, 0] |g|=4.68e-05 t=33s
+[Ce_Q7] it=450 E=3794.3143 R_core=None R_sig=4.4687 I=1249.826 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=2.19e-02 t=27s
+[Cc_n0_Q7] it=1200 E=3794.3113 R_core=None R_sig=4.4654 I=1249.900 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=1.16e-04 t=72s
+[Cd_n10] done: nit=575 nfev=600 msg=CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH E=7371.9742 R_core=None zeros=[0, 0, 0] R_sig=15.0658 w/m=0.6687 leak=0.0000 35s
+[Ce_Q10] it=350 E=5198.7711 R_core=None R_sig=5.1214 I=1846.217 w/m=0.5063 leak=0.0000 net=[0, 0, 0] |g|=2.11e-01 t=21s
+[Ce_Q7] it=500 E=3794.3120 R_core=None R_sig=4.4674 I=1249.942 w/m=0.5234 leak=0.0000 net=[0, 0, 0] |g|=6.92e-03 t=30s
+[Cc_n0_Q7] it=1250 E=3794.3113 R_core=None R_sig=4.4654 I=1249.902 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=3.42e-05 t=75s
+[Ce_Q10] it=400 E=5198.5990 R_core=None R_sig=5.1026 I=1847.293 w/m=0.5060 leak=0.0000 net=[0, 0, 0] |g|=9.89e-02 t=24s
+[Cc_n0_Q7] done: nit=1272 nfev=1306 msg=CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH E=3794.3113 R_core=None zeros=[0, 0, 0] R_sig=4.4654 w/m=0.5235 leak=0.0000 77s
+[Ce_Q7] it=550 E=3794.3116 R_core=None R_sig=4.4665 I=1249.793 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=3.84e-03 t=33s
+[Ce_Q10] it=450 E=5198.5432 R_core=None R_sig=5.0929 I=1849.834 w/m=0.5053 leak=0.0000 net=[0, 0, 0] |g|=6.08e-02 t=27s
+[Ce_Q7] it=600 E=3794.3114 R_core=None R_sig=4.4659 I=1249.790 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=9.79e-03 t=36s
+[Ce_Q10] it=500 E=5198.5333 R_core=None R_sig=5.0910 I=1850.081 w/m=0.5052 leak=0.0000 net=[0, 0, 0] |g|=2.39e-02 t=29s
+[Ce_Q7] it=650 E=3794.3113 R_core=None R_sig=4.4657 I=1249.892 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=9.42e-04 t=39s
+[Ce_Q10] it=550 E=5198.5318 R_core=None R_sig=5.0900 I=1849.955 w/m=0.5052 leak=0.0000 net=[0, 0, 0] |g|=5.80e-03 t=32s
+[Ce_Q7] it=700 E=3794.3113 R_core=None R_sig=4.4656 I=1249.904 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=6.31e-04 t=41s
+[Ce_Q10] it=600 E=5198.5311 R_core=None R_sig=5.0892 I=1849.918 w/m=0.5053 leak=0.0000 net=[0, 0, 0] |g|=8.02e-03 t=35s
+[Ce_Q7] it=750 E=3794.3113 R_core=None R_sig=4.4655 I=1249.892 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=2.07e-04 t=44s
+[Ce_Q10] it=650 E=5198.5308 R_core=None R_sig=5.0886 I=1850.105 w/m=0.5052 leak=0.0000 net=[0, 0, 0] |g|=3.33e-03 t=37s
+[Ce_Q7] it=800 E=3794.3113 R_core=None R_sig=4.4654 I=1249.892 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=6.96e-04 t=47s
+[Ce_Q10] it=700 E=5198.5307 R_core=None R_sig=5.0882 I=1850.162 w/m=0.5052 leak=0.0000 net=[0, 0, 0] |g|=1.55e-03 t=40s
+[Ce_Q7] it=850 E=3794.3113 R_core=None R_sig=4.4654 I=1249.901 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=1.10e-04 t=50s
+[Ce_Q10] it=750 E=5198.5306 R_core=None R_sig=5.0880 I=1850.129 w/m=0.5052 leak=0.0000 net=[0, 0, 0] |g|=1.56e-03 t=43s
+[Ce_Q10] it=800 E=5198.5306 R_core=None R_sig=5.0879 I=1850.120 w/m=0.5052 leak=0.0000 net=[0, 0, 0] |g|=4.42e-04 t=45s
+[Ce_Q7] it=900 E=3794.3113 R_core=None R_sig=4.4654 I=1249.902 w/m=0.5235 leak=0.0000 net=[0, 0, 0] |g|=5.52e-05 t=52s
+[Ce_Q7] done: nit=901 nfev=932 msg=CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH E=3794.3113 R_core=None zeros=[0, 0, 0] R_sig=4.4654 w/m=0.5235 leak=0.0000 52s
+[Ce_Q10] it=850 E=5198.5306 R_core=None R_sig=5.0878 I=1850.138 w/m=0.5052 leak=0.0000 net=[0, 0, 0] |g|=2.62e-04 t=47s
+[Ce_Q10] it=900 E=5198.5306 R_core=None R_sig=5.0878 I=1850.148 w/m=0.5052 leak=0.0000 net=[0, 0, 0] |g|=1.97e-04 t=50s
+[Ce_Q10] it=950 E=5198.5306 R_core=None R_sig=5.0878 I=1850.143 w/m=0.5052 leak=0.0000 net=[0, 0, 0] |g|=1.59e-04 t=52s
+[Ce_Q10] done: nit=984 nfev=1005 msg=CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH E=5198.5306 R_core=None zeros=[0, 0, 0] R_sig=5.0877 w/m=0.5052 leak=0.0000 54s
+total 157 s

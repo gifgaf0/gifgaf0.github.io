@@ -1,0 +1,28 @@
+{
+ "start": "A",
+ "N": 49,
+ "R0": 6.0,
+ "history": [
+  {
+   "it": 100,
+   "E": 0.0006347591433950583,
+   "R23": 0.0,
+   "n_core1": 0,
+   "core1_rmean": 0.0,
+   "core1_zrms": 0.0,
+   "t": 22.22476840019226
+  }
+ ],
+ "final": {
+  "it": 133,
+  "E": 5.451611286844127e-07,
+  "R23": 0.0,
+  "n_core1": 0,
+  "core1_rmean": 0.0,
+  "core1_zrms": 0.0,
+  "t": 29.173407793045044,
+  "converged": true,
+  "msg": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+  "iters": 133
+ }
+}

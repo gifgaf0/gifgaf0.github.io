@@ -1,0 +1,6 @@
+Python 3.13.18, NumPy 2.5.3, SciPy 1.18.1, 4 cores
+selection (§9.2 rule on phase0_results.json): {"tag": "b3_d1", "beta": 3.0, "mu2": 5.02498614657458, "lam": 8.695070858562827, "m_vac": 2.2079433537628224, "k_star": 0.8144323693283151, "q_star": 53.5, "omega_star_over_mvac": 0.6463286417056138, "r_sigma_star": 2.798606910850149}
+gradient check [small grid 8x9, Nr=8, Nz=9, 703 unknowns, n=7, Q=2889, gl3 definition (order 2, eps 1e-6)]: full functional worst rel err 3.381e-05; n^2/rho^2 term only 4.233e-08; Q^2/(4I) term only 1.092e-07
+gradient check [small grid 8x9, Nr=8, Nz=9, 703 unknowns, n=7, Q=2889, order 4, eps 1e-3]: full functional worst rel err 7.208e-09; n^2/rho^2 term only 9.277e-11; Q^2/(4I) term only 1.402e-10
+gradient check [full grid, Nr=128, Nz=257, 328575 unknowns, n=7, Q=2889, gl3 definition (order 2, eps 1e-6)]: full functional worst rel err 4.594e-04; n^2/rho^2 term only 3.218e-04; Q^2/(4I) term only 1.094e-04
+gradient check [full grid, Nr=128, Nz=257, 328575 unknowns, n=7, Q=2889, order 4, eps 1e-3]: full functional worst rel err 4.773e-07; n^2/rho^2 term only 2.929e-07; Q^2/(4I) term only 1.319e-07

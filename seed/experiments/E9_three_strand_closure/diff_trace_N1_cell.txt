@@ -1,0 +1,35 @@
+--- trace_N1.py	2026-10-31 19:12:29.140274775 +0000
++++ trace_N1_cell.py	2026-10-31 19:13:04.225909307 +0000
+@@ -1,6 +1,7 @@
+ """Diagnostic re-run of run_N1.py with fine-grained history. Same model, same start, same minimizer call
+ (L-BFGS-B is deterministic, so the trajectory is the one run_N1.py follows); only the callback differs.
+-usage: python3 trace_N1.py START N R0 MAXITER EVERY
++usage: python3 trace_N1_cell.py START N R0 MAXITER EVERY E ETA [SAVEDIR]
++(trace_N1_cell.py: copy of trace_N1.py; only e, eta as arguments and kappa, eta in the output tag differ.)
+ Records every EVERY iterations: energy above vacuum, composite ring radius, strand 1 loop geometry,
+ linking number of strand 1's vortex lines with strand 2's and strand 3's (linking.py), and the closest
+ approach of any vortex line to the box faces. Prints no verdict.
+@@ -9,11 +10,12 @@
+ from gl3 import GL3
+ from linking import vortex_segments, linking
+ start, N, R0, maxiter, every = sys.argv[1], int(sys.argv[2]), float(sys.argv[3]), int(sys.argv[4]), int(sys.argv[5])
+-g = GL3(N=N, h=0.5, eta=0.1)
++e, eta = float(sys.argv[6]), float(sys.argv[7])
++g = GL3(N=N, h=0.5, e=e, eta=eta)
+ from starts import start_fields   # Amendment B: corrected starts
+ psi = start_fields(g, start, R0); A = np.zeros((3, N, N, N))
+ half = (N // 2) * g.h; ax0 = -half
+-tag = f'trace_N1_{start}_N{N}_R{R0:g}'
++tag = f'trace_N1_{start}_N{N}_R{R0:g}_k{1 / (e * np.sqrt(3)):.3g}_eta{eta:g}'
+ hist = []; t0 = time.time(); it = [0]
+ 
+ def diag(v):
+@@ -48,7 +50,7 @@
+     d['R23_gl3'] = g.core_radius(p[1]); d['t'] = time.time() - t0
+     return d
+ 
+-save = sys.argv[6] if len(sys.argv) > 6 else None
++save = sys.argv[8] if len(sys.argv) > 8 else None
+ def cb(v):
+     it[0] += 1
+     if save and it[0] % every == 0 and it[0] <= 60:

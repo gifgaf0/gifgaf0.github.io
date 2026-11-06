@@ -1,0 +1,23 @@
+Python 3.13.18, NumPy 2.5.3, SciPy 1.18.1
+lam=0.8 elementary: lattice T/2pi=0.912041 flux=-6.28318518 (ABNORMAL: , nit=102, grad_max=5.4e-08, 275 s); radial T/2pi=0.912348
+lam=0.8 I (2D): omega=0.01: E_rot/omega^2=3.485239, I=1.109386 (CG 281, res 9.4e-13), omega=0.02: E_rot/omega^2=3.485239, I=1.109386 (CG 281, res 9.4e-13), omega=0.05: E_rot/omega^2=3.485239, I=1.109386 (CG 281, res 9.4e-13); extrapolated I=1.109386; radial I=1.110231
+lam=0.8 decay (2D): {'m_scalar': 0.7929621606967162, 'm_magnetic': 0.9874090424130445, 'window': [4.0, 9.0]}; (radial): {'m_scalar': 0.7972454818506015, 'm_magnetic': 0.9961711029020284, 'window': [5.0, 12.0]}
+lam=0.8 winding2: lattice T/2pi=1.773649 flux=-12.56637031 (CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH, nit=113, grad_max=2.3e-07, 377 s); radial T/2pi=1.774132
+lam=0.8 composite: lattice T/2pi=2.736124 flux=-18.84955556 (ABNORMAL: , nit=98, grad_max=4.5e-07, 272 s); radial T/2pi=2.737045
+lam=0.8 checks: {"C1": {"value": 0.9120413656651937, "target": 0.91231, "rel_dev": -0.0002944551027680431}, "C2": {"value": 1.7736494590911134, "target": 1.77407, "rel_dev": -0.00023704865585161272}, "C3": {"value": 0.3333333330807731, "target": 0.3333333333333333, "abs_dev": -2.5256019497987836e-10}, "C4": {"value": 1.0000000000354368, "target": 1.0, "rel_dev": 3.543676463380052e-11}, "C5C6": {"I": 1.1093860184730024, "target": null}}
+lam=1.0 elementary: lattice T/2pi=0.999638 flux=-6.28318513 (ABNORMAL: , nit=91, grad_max=1.8e-07, 264 s); radial T/2pi=1.000058
+lam=1.0 I (2D): omega=0.01: E_rot/omega^2=3.139316, I=0.999275 (CG 282, res 9.8e-13), omega=0.02: E_rot/omega^2=3.139316, I=0.999275 (CG 282, res 9.8e-13), omega=0.05: E_rot/omega^2=3.139316, I=0.999275 (CG 282, res 9.8e-13); extrapolated I=0.999275; radial I=1.000116
+lam=1.0 decay (2D): {'m_scalar': 0.9939971372529244, 'm_magnetic': 0.9927676314525484, 'window': [4.0, 9.0]}; (radial): {'m_scalar': 0.9980548472446291, 'm_magnetic': 0.9977861242444054, 'window': [5.0, 12.0]}
+lam=1.0 winding2: lattice T/2pi=1.999411 flux=-12.56636996 (CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH, nit=99, grad_max=7.5e-08, 287 s); radial T/2pi=2.000094
+lam=1.0 composite: lattice T/2pi=2.998914 flux=-18.84955539 (ABNORMAL: , nit=91, grad_max=3.9e-07, 274 s); radial T/2pi=3.000173
+lam=1.0 checks: {"C1": {"value": 0.9996378654539549, "target": 1.0, "rel_dev": -0.00036213454604505646}, "C2": {"value": 1.999411250342516, "target": 2.0, "rel_dev": -0.0002943748287419501}, "C3": {"value": 0.3333333336198011, "target": 0.3333333333333333, "abs_dev": 2.864677939307114e-10}, "C4": {"value": 1.0000000000366807, "target": 1.0, "rel_dev": 3.668065851059055e-11}, "C5C6": {"I": 0.9992751635447374, "target": 1.0}}
+lam=1.2 elementary: lattice T/2pi=1.078750 flux=-6.28318524 (ABNORMAL: , nit=87, grad_max=7.7e-08, 212 s); radial T/2pi=1.079297
+lam=1.2 I (2D): omega=0.01: E_rot/omega^2=2.931345, I=0.933076 (CG 284, res 9.6e-13), omega=0.02: E_rot/omega^2=2.931345, I=0.933076 (CG 284, res 9.6e-13), omega=0.05: E_rot/omega^2=2.931345, I=0.933076 (CG 284, res 9.6e-13); extrapolated I=0.933076; radial I=0.933920
+lam=1.2 decay (2D): {'m_scalar': 1.1933685955585749, 'm_magnetic': 0.9948395613550275, 'window': [4.0, 9.0]}; (radial): {'m_scalar': 1.1982567165498268, 'm_magnetic': 0.9982973051613341, 'window': [5.0, 12.0]}
+lam=1.2 winding2: lattice T/2pi=2.208649 flux=-12.56637018 (ABNORMAL: , nit=94, grad_max=2.5e-07, 228 s); radial T/2pi=2.209563
+lam=1.2 composite: lattice T/2pi=3.236249 flux=-18.84955575 (ABNORMAL: , nit=84, grad_max=1.3e-07, 243 s); radial T/2pi=3.237892
+lam=1.2 checks: {"C1": {"value": 1.0787495248117946, "target": 1.07922, "rel_dev": -0.00043594001983415787}, "C2": {"value": 2.2086489522300274, "target": 2.20944, "rel_dev": -0.0003580308901678375}, "C3": {"value": 0.3333333327177217, "target": 0.3333333333333333, "abs_dev": -6.156116172384429e-10}, "C4": {"value": 1.0000000000316163, "target": 1.0, "rel_dev": 3.161626516146043e-11}, "C5C6": {"I": 0.9330760501462146, "target": null}}
+convergence lam=1: L=160 h=0.25 half-width=20.0: T/2pi=0.9985427 (ABNORMAL: , nit=62, 43 s); I=0.997074
+convergence lam=1: L=640 h=0.0625 dropped (see REPORT_B2B3.md §7)
+convergence lam=1: L=480 h=0.125 half-width=30.0: T/2pi=0.9996379 (CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH, nit=89, 1051 s); I=0.999275
+convergence done

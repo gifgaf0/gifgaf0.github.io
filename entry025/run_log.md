@@ -19,3 +19,4 @@
 - 2026-11-04T20:47Z: started A37_64 (4,000 × 1,001), then B37_128 (5,000 × 1,001), same seed, 4 workers.
 - 2026-11-04T20:56Z: container reclaimed; generation stopped after 69 A37_64 runs (all 69 files verified complete: 1,000 primes each, loadable). 2026-11-05T20:50Z: resumed with the identical command (gen.py skips existing run files; per-run RNG is seeded by "{SEED}:{arm}:{run}", so resumption does not change any run).
 - 2026-11-06T~00:40Z: container restarted; generation stopped at 2,793 A37_64 runs (all verified complete). Resumed 01:04Z with the identical command.
+- 2026-11-06T02:36Z: A37_64 complete (4,000 runs × 1,001 primes). analyze.py (manifest check passed): integrity failures 0; RATE z = −1.01, R3 z = −0.08, LAG1|C z = −0.59, all as predicted. Output: results/A37_64.json. Raw runs: data/archive/A37_64_chunk*.tar (extract all), per-file hashes in A37_64_runs.sha256 (4,000 entries, verified against the files on disk).

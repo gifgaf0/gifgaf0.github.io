@@ -1,0 +1,2 @@
+'split_one_mod_eight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'split_five_mod_eight' depends on axioms: [propext, Classical.choice, Quot.sound]

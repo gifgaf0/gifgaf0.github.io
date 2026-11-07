@@ -41,3 +41,4 @@
   - CMTwoAdic.lean added (MD5 e7628bd23313eb78d12cbe82d4355589; SHA-256 bb2069a1…cf06).
 
   Before publication the draft was compared with v1: 70 files; 1 added (CMTwoAdic.lean); 1 changed (run_log.md); the other 68 identical by MD5. This entry is therefore not in the v2 copy of the run log.
+- 2026-11-07: plan evidence for the Pages argument. provenance/github_billing_plan_2026-11-07.png is a screenshot of github.com/settings/billing for account gifgaf0, supplied by the owner. Under Subscriptions it shows "GitHub Free $0.00 per month" (and Copilot Free). It shows the plan on 2026-11-07, not on 2026-11-04; the owner states the plan was unchanged in between. On GitHub Free, Pages builds only from public repositories, so Pages run 59 (2026-11-04T05:36:37Z, success) implies the repository was public at the freeze.

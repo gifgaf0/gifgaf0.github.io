@@ -2,7 +2,8 @@
 
 The raw run files are deposited on Zenodo, not in this tree:
 
-- **This version:** https://doi.org/10.5281/zenodo.24026058 (https://zenodo.org/records/24026058)
+- **Version 2 (current):** https://doi.org/10.5281/zenodo.24028529. It is v1 plus `CMTwoAdic.lean`, with `run_log.md` updated to commit 9ef743e.
+- **Version 1:** https://doi.org/10.5281/zenodo.24026058 (https://zenodo.org/records/24026058)
 - **All versions (concept DOI):** https://doi.org/10.5281/zenodo.24026057
 
 The deposit holds:

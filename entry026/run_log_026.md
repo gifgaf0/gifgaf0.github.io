@@ -16,3 +16,13 @@
     gen_E_026 1000000000000 1020000000000 100000000 E.bin ; python3 check_E_026.py 1e12 1.02e12 1e8 E_check.npz
     python3 gen_R_026.py 64  SEED R64  0 10000
     python3 gen_R_026.py 128 SEED R128 0 10000   &   python3 gen_R_026.py 128 SEED R128 10000 20000
+- 2026-11-12T18:56:53Z: generation complete, no interruption or resume. Arm E: 723,550,335 primes in [1e12, 1.02e12) (generator and independent sieve agree). R64: 10,000 runs (100 chunks, finished ~17:16Z). R128: 20,000 runs (200 chunks; worker 1 runs 0-9,999 done 18:43:33Z, worker 2 runs 10,000-19,999 done 18:56:53Z). One generator process per run range; no duplicates.
+- 2026-11-12T18:59:59Z: build_026.py: 22 of 22 integrity checks pass, 0 failures (build_026.log). Data hashes: data26_sha256.txt (602 files), its sha256 1a447b51be03634863236dbe4c3347e7bfb7af14611d225015575bd70886677b.
+- 2026-11-12T18:59:59Z: running the frozen analysis once: python3 analyze_026.py manifest26.json provenance/drand_round_6635716.json /home/claude/run026/E.bin /home/claude/run026/R64 /home/claude/run026/R128
+- 2026-11-12T19:00:23Z: analysis finished (exit 0), run once, no resume. Manifest check passed (34 files), beacon and seed checks passed. Output entry_026_result.txt, sha256 a340b0c9b6f7236e6ba8358239a306646802b31cba24c3ac721a3429cde0d875.
+  - **VERDICT: 21 of 21 decisive tests as predicted.**
+  - T-216 (observed more negative than (2.16)): z from -7.32 (R128 chi_-4) to -165.98 (E (./5)), all below -3.304.
+  - T-full (within tau + 3.494 s.e. of full HL): all 9 pass. obs/full: E 0.9990, 0.9991, 0.9992; R64 1.0002, 0.9966, 0.9964; R128 0.9984, 0.9997, 0.9945 (chi_-3, chi_-4, (./5)). Largest |z| without tau: +2.36 (E chi_-3), +2.13 (R128 (./5)).
+  - T-height (ratio to (2.16) falls from E to R128): D = +0.0237, +0.0296, +0.0636 (predicted +0.0232, +0.0302, +0.0589); z = +9.94, +11.80, +23.67.
+  - Report-only: chi^2 of the 9 full-HL misfits with tau = 6.91 on 9 df (p = 0.647). The three arm-E cells all sit slightly above full HL (less negative), by 0.08-0.10% of the correlation (z +1.7 to +2.4 without tau), the direction in which the arm-E ladder steps were still moving at 19; noted, not interpreted.
+- Data archive: data/data026.tar.gz (E.bin, E_check.npz, R64/, R128/, SEED), sha256 e46fd6c6e6a6099083f28efaa25ed3eb3e1e5f7b287216ab77298a5ab49bde6a. Per-file hashes in data26_sha256.txt.

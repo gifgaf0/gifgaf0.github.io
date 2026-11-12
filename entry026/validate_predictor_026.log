@@ -1,0 +1,4 @@
+mod-4 eps at 2^127.5: 0.0071637 (frozen 0.007164)
+mod-4 eps at 1e9-2e9: 0.0227317 (frozen 0.022729)
+q=5 same-residue share at 2^255.5: 0.238474 (frozen 0.23847)
+mod-4 ladder ratios at 2^127.5: [np.float64(1.013), np.float64(1.0172), np.float64(1.0182)] (archived 1.0130, 1.0172, 1.0182)

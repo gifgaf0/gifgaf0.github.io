@@ -1,0 +1,14 @@
+# TEST of beacon_round_026.py and verify_beacon_026.py on Entry 025-K's seed round (files from gifgaf0.github.io/entry025/provenance). Push 2026-11-04T05:34:50Z.
+{
+ "chain_hash_is_mainnet_default": true,
+ "scheme": "pedersen-bls-chained",
+ "round": 6611336,
+ "round_is_expected": true,
+ "bls_valid": true,
+ "randomness_eq_sha256_sig": true,
+ "previous_signature_eq_previous_round": true,
+ "control_wrong_round_rejected": true,
+ "control_tampered_sig_rejected": true,
+ "randomness": "3ffa707eb1d3c2a115be7fa81c3af89618a7097e35632d140d8801224bda98da",
+ "ALL_OK": true
+}

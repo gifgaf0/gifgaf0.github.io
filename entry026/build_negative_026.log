@@ -1,0 +1,11 @@
+FAIL  E header range  [998000000000, 998200000000)
+FAIL  E first and last prime of every block = PARI nextprime / precprime  2 blocks, 2 mismatches
+FAIL  R64 every chunk generated with the beacon seed  1 chunks
+FAIL  R64 run indices exactly 0..9999  3 runs
+FAIL  R64 first kept prime of every run = PARI nextprime from the seeded start  3 mismatches
+PASS  R64 sampled pair per run proven prime and consecutive (PARI isprime, nextprime)  3 pairs, 0 failures
+FAIL  R128 every chunk generated with the beacon seed  1 chunks
+FAIL  R128 run indices exactly 0..19999  3 runs
+FAIL  R128 first kept prime of every run = PARI nextprime from the seeded start  3 mismatches
+PASS  R128 sampled pair per run proven prime and consecutive (PARI isprime, nextprime)  3 pairs, 0 failures
+integrity failures: 8

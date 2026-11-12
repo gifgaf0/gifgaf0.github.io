@@ -1,0 +1,7 @@
+E q=3 through 13: 1 node -0.082674728  2 nodes -0.082674652  4 nodes -0.082674652  |2-4| 2.7e-13
+E q=4 through 13: 1 node -0.077021715  2 nodes -0.077021645  4 nodes -0.077021645  |2-4| 2.8e-13
+E q=5 through 13: 1 node -0.071534736  2 nodes -0.071534670  4 nodes -0.071534670  |2-4| 2.5e-13
+R64 q=3 through 13: local at 2^63.5 -0.055839792  uniform-y average -0.055798030  diff +4.2e-05
+R64 q=4 through 13: local at 2^63.5 -0.052281846  uniform-y average -0.052243311  diff +3.9e-05
+R64 q=5 through 13: local at 2^63.5 -0.048680858  uniform-y average -0.048645709  diff +3.5e-05
+R128 q=3 through 13: local at 2^127.5 -0.030926995  uniform-y average -0.030915337  diff +1.2e-05

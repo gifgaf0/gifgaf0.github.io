@@ -1,0 +1,5 @@
+nodes  6: eps with 1/(log y)^2 (true pair density) 0.0227317039   without (pair_absorb's range weight) 0.0227285421
+nodes  8: eps with 1/(log y)^2 (true pair density) 0.0227317039   without (pair_absorb's range weight) 0.0227285421
+nodes 24: eps with 1/(log y)^2 (true pair density) 0.0227317039   without (pair_absorb's range weight) 0.0227285421
+predict_026 (6 nodes, with 1/L^2): 0.0227317037;  pair_absorb / archived json: 0.0227285421;  frozen Entry 024 value: 0.022729
+024-A ratio full(3,5,7,11)/(2.16): archived weighting 1.06011, with 1/(log y)^2 1.06011

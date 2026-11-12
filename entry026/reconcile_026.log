@@ -1,0 +1,59 @@
+los216.py: sha256 6bfd6a69b9c434614ff9bc9e6185f6889fc3429d9feb5fea3c9349a342405214 == archived
+pair_absorb.py: sha256 c6c39225c0ce6a9e6923557c723c946650dd96e599222d931d3b26da5698236d == archived
+
+Part A. Frozen (2.16) values: predict_026 (pred_026.json) vs archived los216, same conventions
+  E    q=3: predict_026 -0.0788858693  los216 -0.0788858699  diff +5.79e-10  rel -7.3e-09
+  E    q=4: predict_026 -0.0734208250  los216 -0.0734208255  diff +5.49e-10  rel -7.5e-09
+  E    q=5: predict_026 -0.0657956405  los216 -0.0657956409  diff +4.72e-10  rel -7.2e-09
+  R64  q=3: predict_026 -0.0537531288  los216 -0.0537531292  diff +3.91e-10  rel -7.3e-09
+  R64  q=4: predict_026 -0.0505385916  los216 -0.0505385919  diff +3.71e-10  rel -7.3e-09
+  R64  q=5: predict_026 -0.0462401598  los216 -0.0462401602  diff +3.32e-10  rel -7.2e-09
+  R128 q=3: predict_026 -0.0301982791  los216 -0.0301982793  diff +2.18e-10  rel -7.2e-09
+  R128 q=4: predict_026 -0.0286442552  los216 -0.0286442554  diff +2.08e-10  rel -7.3e-09
+  R128 q=5: predict_026 -0.0268465485  los216 -0.0268465487  diff +1.93e-10  rel -7.2e-09
+  max |diff| = 5.79e-10
+
+Part B. Mod-4 absorption ladder (same-residue deficit eps): archived pair_absorb vs predict_026 vs archived mod4_result.json
+  024-A  P=none      pair_absorb 0.0227285421  predict_026 0.0227317037  diff +3.16e-06  | archived json 0.0227285421 (pair_absorb rerun - json +0.0e+00)
+  024-A  P=3         pair_absorb 0.0236487690  predict_026 0.0236521980  diff +3.43e-06  | archived json 0.0236487690 (pair_absorb rerun - json +0.0e+00)
+  024-A  P=3x5       pair_absorb 0.0240312143  predict_026 0.0240347390  diff +3.52e-06  | archived json 0.0240312143 (pair_absorb rerun - json +0.0e+00)
+  024-A  P=3x5x7     pair_absorb 0.0240883255  predict_026 0.0240918494  diff +3.52e-06  | archived json 0.0240883255 (pair_absorb rerun - json +0.0e+00)
+  024-A  P=3x5x7x11  pair_absorb 0.0240946898  predict_026 0.0240982067  diff +3.52e-06  | archived json 0.0240946898 (pair_absorb rerun - json +0.0e+00)
+  2^64   P=none      pair_absorb 0.0126436656  predict_026 0.0126436656  diff -9.29e-11  | archived json 0.0126436656 (pair_absorb rerun - json +0.0e+00)
+  2^64   P=3         pair_absorb 0.0129277577  predict_026 0.0129277576  diff -9.22e-11  | archived json 0.0129277577 (pair_absorb rerun - json +0.0e+00)
+  2^64   P=3x5       pair_absorb 0.0130359262  predict_026 0.0130359261  diff -9.24e-11  | archived json 0.0130359262 (pair_absorb rerun - json +0.0e+00)
+  2^64   P=3x5x7     pair_absorb 0.0130646773  predict_026 0.0130646772  diff -8.62e-11  | archived json 0.0130646773 (pair_absorb rerun - json +0.0e+00)
+  2^64   P=3x5x7x11  pair_absorb 0.0130743181  predict_026 0.0130743180  diff -8.32e-11  | archived json 0.0130743181 (pair_absorb rerun - json +0.0e+00)
+  2^128  P=none      pair_absorb 0.0071636845  predict_026 0.0071636844  diff -5.20e-11  | archived json 0.0071636845 (pair_absorb rerun - json +0.0e+00)
+  2^128  P=3         pair_absorb 0.0072567622  predict_026 0.0072567622  diff -5.21e-11  | archived json 0.0072567622 (pair_absorb rerun - json +0.0e+00)
+  2^128  P=3x5       pair_absorb 0.0072869477  predict_026 0.0072869477  diff -5.23e-11  | archived json 0.0072869477 (pair_absorb rerun - json +0.0e+00)
+  2^128  P=3x5x7     pair_absorb 0.0072940918  predict_026 0.0072940918  diff -5.00e-11  | archived json 0.0072940918 (pair_absorb rerun - json +0.0e+00)
+  2^128  P=3x5x7x11  pair_absorb 0.0072977717  predict_026 0.0072977717  diff -4.85e-11  | archived json 0.0072977717 (pair_absorb rerun - json +0.0e+00)
+  max |predict_026 - pair_absorb| = 3.52e-06;  max |pair_absorb rerun - archived json| = 0.00e+00
+
+Part C. Absorbed q = 3, 5 cells: archived los216 at composite modulus vs predict_026 (local density, single node)
+  1.01e12  q=3 absorb [2]            los216 -0.0822707384  predict_026 -0.0822707377  diff +6.41e-10  [1s]
+  1.01e12  q=3 absorb [2, 5]         los216 -0.0831165516  predict_026 -0.0831165510  diff +6.01e-10  [1s]
+  1.01e12  q=3 absorb [2, 5, 7]      los216 -0.0828498821  predict_026 -0.0828498816  diff +5.52e-10  [1s]
+  1.01e12  q=3 absorb [2, 5, 7, 11]  los216 -0.0827594651  predict_026 -0.0827594646  diff +5.23e-10  [30s]
+  1.01e12  q=5 absorb [2]            los216 -0.0714618961  predict_026 -0.0714618956  diff +5.06e-10  [0s]
+  1.01e12  q=5 absorb [2, 3]         los216 -0.0722893360  predict_026 -0.0722893355  diff +5.00e-10  [1s]
+  1.01e12  q=5 absorb [2, 3, 7]      los216 -0.0717724701  predict_026 -0.0717724696  diff +4.56e-10  [0s]
+  1.01e12  q=5 absorb [2, 3, 7, 11]  los216 -0.0716179130  predict_026 -0.0716179126  diff +4.35e-10  [30s]
+  2^63.5   q=3 absorb [2]            los216 -0.0554253299  predict_026 -0.0554253295  diff +4.17e-10  [0s]
+  2^63.5   q=3 absorb [2, 5]         los216 -0.0559771039  predict_026 -0.0559771035  diff +4.06e-10  [0s]
+  2^63.5   q=3 absorb [2, 5, 7]      los216 -0.0558918938  predict_026 -0.0558918934  diff +3.84e-10  [1s]
+  2^63.5   q=3 absorb [2, 5, 7, 11]  los216 -0.0558641922  predict_026 -0.0558641918  diff +3.71e-10  [29s]
+  2^63.5   q=5 absorb [2]            los216 -0.0486357077  predict_026 -0.0486357074  diff +3.48e-10  [0s]
+  2^63.5   q=5 absorb [2, 3]         los216 -0.0490575781  predict_026 -0.0490575778  diff +3.48e-10  [0s]
+  2^63.5   q=5 absorb [2, 3, 7]      los216 -0.0488217197  predict_026 -0.0488217194  diff +3.17e-10  [1s]
+  2^63.5   q=5 absorb [2, 3, 7, 11]  los216 -0.0487415647  predict_026 -0.0487415644  diff +2.99e-10  [29s]
+  2^127.5  q=3 absorb [2]            los216 -0.0307284674  predict_026 -0.0307284671  diff +2.25e-10  [0s]
+  2^127.5  q=3 absorb [2, 5]         los216 -0.0309339474  predict_026 -0.0309339471  diff +2.24e-10  [0s]
+  2^127.5  q=3 absorb [2, 5, 7]      los216 -0.0309273472  predict_026 -0.0309273469  diff +2.17e-10  [1s]
+  2^127.5  q=3 absorb [2, 5, 7, 11]  los216 -0.0309283169  predict_026 -0.0309283167  diff +2.11e-10  [31s]
+  2^127.5  q=5 absorb [2]            los216 -0.0275179903  predict_026 -0.0275179901  diff +1.98e-10  [0s]
+  2^127.5  q=5 absorb [2, 3]         los216 -0.0276904879  predict_026 -0.0276904877  diff +1.99e-10  [0s]
+  2^127.5  q=5 absorb [2, 3, 7]      los216 -0.0276592794  predict_026 -0.0276592792  diff +1.84e-10  [1s]
+  2^127.5  q=5 absorb [2, 3, 7, 11]  los216 -0.0276413639  predict_026 -0.0276413638  diff +1.75e-10  [32s]
+  max |diff| = 6.41e-10

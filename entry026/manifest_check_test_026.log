@@ -1,0 +1,17 @@
+# TEST of analyze_026.py startup checks (synthetic data; 025-K's round 6611336 as a stand-in beacon; test manifest with 2 runs per arm).
+(a) all consistent:
+manifest manifest26.json sha256 55676478268d37ef1cf7edf89c8c2f376a304a128b906743b5c776ce8b498ae4: 34 files verified
+beacon round 6611336: randomness 3ffa707eb1d3c2a115be7fa81c3af89618a7097e35632d140d8801224bda98da (= sha256(signature))
+seed and run counts verified against the beacon and the manifest
+(b) entry edited:
+REFUSED: manifest mismatch: entry_026.md
+(c) analysis edited:
+REFUSED: manifest mismatch: analyze_026.py
+(c2) archived script edited:
+REFUSED: manifest mismatch: archive/los216.py
+(d) other beacon round than the one the data were seeded with:
+REFUSED: R64 chunks were not all generated with the beacon seed: ['3ffa707eb1d3c2a115be7fa81c3af89618a7097e35632d140d8801224bda98da']
+(e) tampered beacon randomness:
+REFUSED: beacon round file: randomness != sha256(signature)
+(f) run count differs from manifest:
+REFUSED: R64 run indices are not exactly 0..2

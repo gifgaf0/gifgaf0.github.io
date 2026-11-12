@@ -1,0 +1,37 @@
+# Additivity check (additivity_check.py), arm-E local density at 1.01e12.
+q=3 E1e12 (2.16) -0.0788858
+  exact through  2: -0.0822707  step -3.385e-03  [1s]
+  exact through  5: -0.0831166  step -8.458e-04  [1s]
+  exact through  7: -0.0828499  step +2.667e-04  [2s]
+  exact through 11: -0.0827595  step +9.042e-05  [2s]
+  exact through 13: -0.0826746  step +8.486e-05  [3s]
+  exact through 17: -0.0826108  step +6.376e-05  [10s]
+  step for  5 against base [2]: -8.458e-04
+  step for  7 against base [2]: -7.681e-04
+  step for 11 against base [2]: -1.706e-04
+  step for 13 against base [2]: -3.329e-04
+  step for 17 against base [2]: -2.294e-05
+  step for 19 against base [2]: -9.110e-05
+  step for  7 against base [2, 5]: +2.667e-04
+  step for 11 against base [2, 5]: +4.247e-05
+  step for 13 against base [2, 5]: -5.287e-06
+  step for 17 against base [2, 5]: -8.302e-05
+  step for 19 against base [2, 5]: -7.605e-05
+q=5 E1e12 (2.16) -0.0657956
+  exact through  2: -0.0714619  step -5.666e-03  [1s]
+  exact through  3: -0.0722893  step -8.274e-04  [1s]
+  exact through  7: -0.0717725  step +5.169e-04  [2s]
+  exact through 11: -0.0716179  step +1.546e-04  [2s]
+  exact through 13: -0.0715346  step +8.328e-05  [3s]
+  exact through 17: -0.0714932  step +4.138e-05  [10s]
+  step for  3 against base [2]: -8.274e-04
+  step for  7 against base [2]: -2.302e-04
+  step for 11 against base [2]: +8.061e-05
+  step for 13 against base [2]: +9.161e-07
+  step for 17 against base [2]: -1.667e-04
+  step for 19 against base [2]: -1.800e-05
+  step for  7 against base [2, 3]: +5.169e-04
+  step for 11 against base [2, 3]: +1.113e-04
+  step for 13 against base [2, 3]: +1.753e-05
+  step for 17 against base [2, 3]: -7.864e-06
+  step for 19 against base [2, 3]: +1.655e-05

@@ -1,0 +1,53 @@
+{
+ "entry": "026",
+ "written_utc": "2026-11-12T16:44:45Z",
+ "approved_by": "Matthew Gifford",
+ "sha256": {
+  "entry_026.md": "2863e4b3bef7f768a909b911654525e7e6166b888f573705ed7d6688bac865eb",
+  "predict_026.py": "dcf9eab3d7405708f5c8f5cb09a871c72bc47fa994d8fd1857db765f27d9ef60",
+  "ladder_026.py": "2ac70b0cee325f5b2dcb30847e190d6555a273a47d20fc7811a44bf85de4800c",
+  "uniform_shift_026.py": "dc85a3883916700c2aef2f1e1f95a046a3bdb7a9fa37210b1fb417a36c89776d",
+  "make_pred_026.py": "ac3550d7264f7f5d6cd5ace4ba1d3397b6b363d559b81c3d9f5d85d3251decf7",
+  "pred_026.json": "9befe37ccd0e41362ebdb3008b37abe50c443e6a263ab88a2fabeb35c7201bdf",
+  "gen_E_026.c": "3599abb8dd169cca3bc23d481c64c2d92d217bc4d20779fef3c4bb0b6e2c769f",
+  "check_E_026.py": "7b14fc4ef3723fc5cc866d96b7ff8f9625a003a558b80d8c39c91a76994bb8d1",
+  "gen_R_026.py": "c39e8489b1f56f4144a2b25da2230ee1f710797756550770a13752c2afb34f6e",
+  "build_026.py": "f6286ee171c0f778446881f4af05740cfd5e97f2da489728104faf55937f3636",
+  "analyze_026.py": "920990ba9750e6bdec94bd5bb649898944ea0d109b1a9da1e724cebb79c27ee8",
+  "make_dry_026.py": "cac36a89283bc7ce851e88fc2c765c4a76c1e3f327b2fa7019f5e035b729cfa8",
+  "beacon_round_026.py": "ded9a528e08c2da80b721e039f7fb89c2ccf47b23114f87d3ce85fa2500774b9",
+  "verify_beacon_026.py": "a24a1cf1665b643e7457c626cb34bbf624b72ef73d19a9c10905f4b86e4f0c1d",
+  "ladders_026.log": "27b55f5980c999060ebccbbdf9a5305b8132a32de4e21c7381f60d24945a27c7",
+  "ushift_026.log": "9f0f696efef81b961c1b7c544f83e221c23cc8e0109f8c7cb2a27fcfe8a06f57",
+  "pred_026.log": "c777cdb1769ef75c5999983968a37057f012de6f3f3a67e9b5ce33ea9ed5f66a",
+  "additivity_026.log": "9dfb085f5fd331211101a979f4bf7f09581cf6d6249d7513e68f5fc8d9e560c2",
+  "conventions_check_026.log": "880bdcfd836ff53c96e98985ff9ddd702bb23cc8c8ce38518389059e988dd7ca",
+  "validate_predictor_026.log": "e432185a747f918f77a87b75cb853d1b9321204f0eecb4c23ab896056b1e6786",
+  "dryrun_null_026.log": "e91644813855393afd40aa31b6ee1afc98c22f8251f4389381ff71e6f6296d50",
+  "dryrun_effect_026.log": "f25afb8aef9b1ec0d9d5da60254a4c9c9d9e4c718b1398a221570b5a7a7507f3",
+  "beacon_tools_test_026.log": "48e5407d5f8a0d8514c22c69ac6380f1d53547a435edbf540013fe916bfd8109",
+  "drift_check_026.log": "50f0f3aea8577447ac509a98f245a694aaacfdefa6c6b9239cc0ff79ec8bf5cb",
+  "manifest_check_test_026.log": "2d676a909babc2908f46c20a63b2357f13e03f90b9356ac0da67b105ecacdc65",
+  "build_smoke_026.log": "12a2b083f3c9ba3cbad14250a00f5fb42db2e20d08fe17d6ee454e11070a32b5",
+  "build_negative_026.log": "0c30eec73cbbc088a29c87f04c0ac62f0bd3fa6f1508cff8bbf13a547c1b01ee",
+  "make_manifest_026.py": "152930952acc1bcb13fcc30cfe54dad70bcbadb6e52a76c8e745e259ce37dd48",
+  "reconcile_026.py": "67ae889ce72bf006b8e34cddb51e3217d9a5d000bea2414eb834b2be26cc9d9f",
+  "reconcile_026.log": "21f27ac00a4835a65d3529cf50f97cd73a7cd2b4241a167df740143191eed804",
+  "range_weight_check_026.py": "56f131e777547bbc5453fe27a27e563f987dbe7e05675b306c07a3a81ada6977",
+  "range_weight_check_026.log": "782d3db3bb1aa3372e10b68358c44213476fedf3e6f1824e83e791445dde9c5e",
+  "archive/los216.py": "6bfd6a69b9c434614ff9bc9e6185f6889fc3429d9feb5fea3c9349a342405214",
+  "archive/pair_absorb.py": "c6c39225c0ce6a9e6923557c723c946650dd96e599222d931d3b26da5698236d"
+ },
+ "ranges": {
+  "E": "all primes 1e12 <= p < 1.02e12, blocks of 1e8",
+  "R64": "runs 0..9999, 64-bit starts",
+  "R128": "runs 0..19999, 128-bit starts"
+ },
+ "runs": {
+  "R64": 10000,
+  "R128": 20000
+ },
+ "seed_rule": "SEED = randomness of drand mainnet default-chain round R (chain 8990e7a9...b2ce, genesis 1595431050, period 30 s), R = first round published >= 10 min after the push of the commit adding this manifest; run r of arm R{b} uses random.Random(f'{SEED}:R{b}:{r}')",
+ "alpha_prime": 0.0004761904761904762,
+ "decisive_tests": 21
+}

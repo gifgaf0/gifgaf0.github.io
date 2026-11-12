@@ -1,0 +1,25 @@
+# Uniform-in-y shift for the random arms (uniform_shift_026.py).
+R64 q=3 through  -: local -0.053792336 uniform -0.053753129 shift +3.921e-05
+R64 q=3 through 11: local -0.055864192 uniform -0.055822367 shift +4.182e-05
+R64 q=3 through 13: local -0.055839792 uniform -0.055798030 shift +4.176e-05
+R64 q=3 through 17: local -0.055812793 uniform -0.055771080 shift +4.171e-05
+R64 q=4 through  -: local -0.050574662 uniform -0.050538592 shift +3.607e-05
+R64 q=4 through 11: local -0.052297272 uniform -0.052258719 shift +3.855e-05
+R64 q=4 through 13: local -0.052281846 uniform -0.052243311 shift +3.854e-05
+R64 q=4 through 17: local -0.052278470 uniform -0.052239945 shift +3.852e-05
+R64 q=5 through  -: local -0.046271590 uniform -0.046240160 shift +3.143e-05
+R64 q=5 through 11: local -0.048741564 uniform -0.048706358 shift +3.521e-05
+R64 q=5 through 13: local -0.048680858 uniform -0.048645709 shift +3.515e-05
+R64 q=5 through 17: local -0.048644469 uniform -0.048609340 shift +3.513e-05
+R128 q=3 through  -: local -0.030209441 uniform -0.030198279 shift +1.116e-05
+R128 q=3 through 11: local -0.030928317 uniform -0.030916653 shift +1.166e-05
+R128 q=3 through 13: local -0.030926995 uniform -0.030915337 shift +1.166e-05
+R128 q=3 through 17: local -0.030921653 uniform -0.030910001 shift +1.165e-05
+R128 q=4 through  -: local -0.028654738 uniform -0.028644255 shift +1.048e-05
+R128 q=4 through 11: local -0.029191087 uniform -0.029180207 shift +1.088e-05
+R128 q=4 through 13: local -0.029183538 uniform -0.029172661 shift +1.088e-05
+R128 q=4 through 17: local -0.029181895 uniform -0.029171017 shift +1.088e-05
+R128 q=5 through  -: local -0.026856020 uniform -0.026846548 shift +9.471e-06
+R128 q=5 through 11: local -0.027641364 uniform -0.027631345 shift +1.002e-05
+R128 q=5 through 13: local -0.027619962 uniform -0.027609961 shift +1.000e-05
+R128 q=5 through 17: local -0.027602972 uniform -0.027592983 shift +9.989e-06

@@ -1,0 +1,24 @@
+PASS  E header range  [1000000000000, 1020000000000)
+PASS  E prime count = independent sieve  723,550,335 vs 723,550,335
+PASS  E sum and xor of primes = independent sieve  
+PASS  E per-block counts, first, last = independent sieve  
+PASS  E lag-1 and lag-2 tables = independent sieve  
+PASS  E lag-1 total = primes - 1, lag-2 total = primes - 2  
+PASS  E block counts sum to prime count  
+PASS  E first and last prime of every block = PARI nextprime / precprime  200 blocks, 0 mismatches
+PASS  R64 every chunk generated with the beacon seed  100 chunks
+PASS  R64 run indices exactly 0..9999  10000 runs
+PASS  R64 every run has 9,999 lag-1 and 9,998 lag-2 pairs  
+PASS  R64 first kept prime of every run = PARI nextprime from the seeded start  0 mismatches
+PASS  R64 first and last kept primes have 64 bits  
+PASS  R64 sampled pair per run proven prime and consecutive (PARI isprime, nextprime)  10000 pairs, 0 failures
+PASS  R64 distinct starts  
+PASS  R128 every chunk generated with the beacon seed  200 chunks
+PASS  R128 run indices exactly 0..19999  20000 runs
+PASS  R128 every run has 9,999 lag-1 and 9,998 lag-2 pairs  
+PASS  R128 first kept prime of every run = PARI nextprime from the seeded start  0 mismatches
+PASS  R128 first and last kept primes have 128 bits  
+PASS  R128 sampled pair per run proven prime and consecutive (PARI isprime, nextprime)  20000 pairs, 0 failures
+PASS  R128 distinct starts  
+
+integrity failures: 0

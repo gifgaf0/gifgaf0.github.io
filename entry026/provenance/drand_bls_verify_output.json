@@ -1,0 +1,13 @@
+{
+ "chain_hash_is_mainnet_default": true,
+ "scheme": "pedersen-bls-chained",
+ "round": 6635716,
+ "round_is_expected": true,
+ "bls_valid": true,
+ "randomness_eq_sha256_sig": true,
+ "previous_signature_eq_previous_round": true,
+ "control_wrong_round_rejected": true,
+ "control_tampered_sig_rejected": true,
+ "randomness": "18e802197c723ed7063b4bc3d19f7a654370f965174cf106eace585ec646f000",
+ "ALL_OK": true
+}

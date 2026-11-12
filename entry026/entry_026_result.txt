@@ -1,0 +1,71 @@
+manifest manifest26.json sha256 0b94a92ded203c65375a6f136bc901f28373955da4cde918ede7d9c88dc309fa: 34 files verified
+beacon round 6635716: randomness 18e802197c723ed7063b4bc3d19f7a654370f965174cf106eace585ec646f000 (= sha256(signature))
+seed and run counts verified against the beacon and the manifest
+Entry 026 analysis. alpha' = 4.762e-04; one-sided z 3.304, two-sided z 3.494
+arm E: units 200, lag-1 pairs 723,550,334
+arm R64: units 10000, lag-1 pairs 99,990,000
+arm R128: units 20000, lag-1 pairs 199,980,000
+
+Per cell: observed, s.e. (units), s.e. (binomial), (2.16), full HL, tau
+  E    chi_-3  -0.082466  3.62e-05  3.70e-05  -0.078886  -0.082552  2.5e-04
+  E    chi_-4  -0.076916  3.41e-05  3.71e-05  -0.073421  -0.076983  9.2e-05
+  E    (./5)   -0.071404  3.38e-05  3.71e-05  -0.065796  -0.071462  2.5e-04
+  R64  chi_-3  -0.055754  9.84e-05  9.98e-05  -0.053753  -0.055741  9.1e-05
+  R64  chi_-4  -0.052056  9.91e-05  9.99e-05  -0.050539  -0.052234  4.6e-05
+  R64  (./5)   -0.048403  9.80e-05  9.99e-05  -0.046240  -0.048580  1.8e-04
+  R128 chi_-3  -0.030853  7.06e-05  7.07e-05  -0.030198  -0.030901  2.6e-05
+  R128 chi_-4  -0.029161  7.06e-05  7.07e-05  -0.028644  -0.029169  2.3e-05
+  R128 (./5)   -0.027427  7.08e-05  7.07e-05  -0.026847  -0.027578  6.4e-05
+
+T-216: observed more negative than (2.16) (one-sided, decisive where listed)
+  T216 E    chi_-3  z   -98.79  PASS
+  T216 E    chi_-4  z  -102.45  PASS
+  T216 E    (./5)   z  -165.98  PASS
+  T216 R64  chi_-3  z   -20.32  PASS
+  T216 R64  chi_-4  z   -15.31  PASS
+  T216 R64  (./5)   z   -22.06  PASS
+  T216 R128 chi_-3  z    -9.27  PASS
+  T216 R128 chi_-4  z    -7.32  PASS
+  T216 R128 (./5)   z    -8.20  PASS
+
+T-full: |observed - full HL| <= tau + z2 * s.e. (consistency)
+  Tfull E    chi_-3  obs-full +8.54e-05  band 3.81e-04  z(no tau)  +2.36  obs/full 0.9990  PASS
+  Tfull E    chi_-4  obs-full +6.62e-05  band 2.11e-04  z(no tau)  +1.94  obs/full 0.9991  PASS
+  Tfull E    (./5)   obs-full +5.82e-05  band 3.68e-04  z(no tau)  +1.72  obs/full 0.9992  PASS
+  Tfull R64  chi_-3  obs-full -1.27e-05  band 4.35e-04  z(no tau)  -0.13  obs/full 1.0002  PASS
+  Tfull R64  chi_-4  obs-full +1.78e-04  band 3.93e-04  z(no tau)  +1.79  obs/full 0.9966  PASS
+  Tfull R64  (./5)   obs-full +1.77e-04  band 5.25e-04  z(no tau)  +1.81  obs/full 0.9964  PASS
+  Tfull R128 chi_-3  obs-full +4.81e-05  band 2.73e-04  z(no tau)  +0.68  obs/full 0.9984  PASS
+  Tfull R128 chi_-4  obs-full +8.69e-06  band 2.69e-04  z(no tau)  +0.12  obs/full 0.9997  PASS
+  Tfull R128 (./5)   obs-full +1.51e-04  band 3.12e-04  z(no tau)  +2.13  obs/full 0.9945  PASS
+
+T-height: ratio to (2.16) falls from E to R128, D = R_E - R_128 > 0 (one-sided)
+  Theight chi_-3  R_E 1.0454  R_64 1.0372  R_128 1.0217  D +0.0237 (pred +0.0232)  z +9.94  PASS
+  Theight chi_-4  R_E 1.0476  R_64 1.0300  R_128 1.0180  D +0.0296 (pred +0.0302)  z +11.80  PASS
+  Theight (./5)   R_E 1.0852  R_64 1.0468  R_128 1.0216  D +0.0636 (pred +0.0589)  z +23.67  PASS
+
+Report-only:
+  chi^2 of (obs - full HL)/sqrt(se^2 + tau^2) over 9 cells: 6.91 on 9 df, p = 0.647
+  E    chi_-3  ladder value nearest the data: through 19 (-0.082552); obs -0.082466
+  E    chi_-4  ladder value nearest the data: through 19 (-0.076983); obs -0.076916
+  E    (./5)   ladder value nearest the data: through 2 (-0.071462); obs -0.071404
+  R64  chi_-3  ladder value nearest the data: through 19 (-0.055741); obs -0.055754
+  R64  chi_-4  ladder value nearest the data: through 5 (-0.052105); obs -0.052056
+  R64  (./5)   ladder value nearest the data: through 19 (-0.048580); obs -0.048403
+  R128 chi_-3  ladder value nearest the data: through 19 (-0.030901); obs -0.030853
+  R128 chi_-4  ladder value nearest the data: through 7 (-0.029165); obs -0.029161
+  R128 (./5)   ladder value nearest the data: through 2 (-0.027508); obs -0.027427
+  lag 2, E: chi_-3 -0.013298 ± 3.4e-05;  chi_-4 -0.013063 ± 3.8e-05;  (./5) -0.011430 ± 3.8e-05
+  lag 2, R64: chi_-3 -0.008589 ± 1.0e-04;  chi_-4 -0.008727 ± 1.0e-04;  (./5) -0.008847 ± 9.9e-05
+  lag 2, R128: chi_-3 -0.004696 ± 7.1e-05;  chi_-4 -0.004729 ± 7.1e-05;  (./5) -0.005081 ± 7.1e-05
+  E    pair shares mod 3: 0.229377 0.270617 0.270617 0.229390
+  E    pair shares mod 4: 0.230787 0.269229 0.269229 0.230755
+  E    pair shares mod 5: 0.049544 0.071490 0.071619 0.057341 0.063412 0.048648 0.066318 0.071619 0.061317 0.068535 0.048652 0.071504 0.075722 0.061323 0.063419 0.049538
+  R64  pair shares mod 3: 0.236068 0.263938 0.263939 0.236055
+  R64  pair shares mod 4: 0.236956 0.263014 0.263014 0.237016
+  R64  pair shares mod 5: 0.053484 0.068127 0.068587 0.059779 0.063170 0.053153 0.065052 0.068647 0.062174 0.066535 0.053176 0.068110 0.071150 0.062207 0.063178 0.053469
+  R128 pair shares mod 3: 0.242253 0.257713 0.257713 0.242321
+  R128 pair shares mod 4: 0.242713 0.257290 0.257290 0.242707
+  R128 pair shares mod 5: 0.057340 0.065420 0.065809 0.061429 0.063018 0.057278 0.063913 0.065772 0.062614 0.064684 0.057300 0.065452 0.067025 0.062598 0.063030 0.057318
+
+Decisive tests: 21; failures: 0

@@ -1,0 +1,64 @@
+19,20c19,20
+< STATUS: written without access to a Lean toolchain; to be compiled and repaired in the Lean
+< session. The places most likely to need adjustment are marked `-- CHECK`.
+---
+> STATUS: compiled against Mathlib `64fa0ec` (Lean v4.36.0-rc1); every theorem depends only on
+> `propext`, `Classical.choice`, `Quot.sound`.
+43,44c43,44
+<       have := (hf (w + s)).hasDerivAt.comp s ((hasDerivAt_id s).const_add w)
+<       simpa using this
+---
+>       have := (hf (w + s)).hasDerivAt.scomp s ((hasDerivAt_id' (x := s)).const_add w)
+>       simpa [Function.comp_def] using this
+46,47c46,47
+<       have := (hf (w - s)).hasDerivAt.comp s ((hasDerivAt_id s).const_sub w)
+<       simpa using this
+---
+>       have := (hf (w - s)).hasDerivAt.scomp s ((hasDerivAt_id' (x := s)).const_sub w)
+>       simpa [Function.comp_def] using this
+93,95c93
+< -- CHECK: the name and explicit arguments of `SchwartzMap.derivCLM` / `derivCLM_apply` at Mathlib
+< -- `64fa0ec` (older: `SchwartzMap.derivCLM 𝕜`; newer versions may take the codomain explicitly).
+< lemma deriv_JS : deriv (JS hΦ ha hΦs : ℝ → ℂ) = (SchwartzMap.derivCLM ℝ (JS hΦ ha hΦs) : ℝ → ℂ) := by
+---
+> lemma deriv_JS : deriv (JS hΦ ha hΦs : ℝ → ℂ) = (SchwartzMap.derivCLM ℝ ℂ (JS hΦ ha hΦs) : ℝ → ℂ) := by
+99c97
+<     (SchwartzMap.derivCLM ℝ (SchwartzMap.derivCLM ℝ (JS hΦ ha hΦs)) : ℝ → ℂ) := by
+---
+>     (SchwartzMap.derivCLM ℝ ℂ (SchwartzMap.derivCLM ℝ ℂ (JS hΦ ha hΦs)) : ℝ → ℂ) := by
+105c103
+<   set F2 := SchwartzMap.derivCLM ℝ (SchwartzMap.derivCLM ℝ (JS hΦ ha hΦs))
+---
+>   set F2 := SchwartzMap.derivCLM ℝ ℂ (SchwartzMap.derivCLM ℝ ℂ (JS hΦ ha hΦs))
+112c110
+<   rw [Real.norm_eq_abs, show |u| ^ 4 = (u ^ 2) ^ 2 by rw [pow_mul_comm, sq_abs]; ring] at h4
+---
+>   rw [Real.norm_eq_abs, show |u| ^ 4 = (u ^ 2) ^ 2 by rw [← sq_abs u]; ring] at h4
+161c159
+<     rw [deriv_JS]; exact (SchwartzMap.derivCLM ℝ (JS hΦ ha hΦs)).differentiable
+---
+>     rw [deriv_JS]; exact (SchwartzMap.derivCLM ℝ ℂ (JS hΦ ha hΦs)).differentiable
+168c166
+<     rw [hFJ, hFJ, hFJ]; push_cast; rw [Complex.norm_real, Real.norm_eq_abs]
+---
+>     rw [hFJ, hFJ, hFJ, ← Real.norm_eq_abs, ← Complex.norm_real]; congr 1; push_cast; ring
+186d183
+<     -- CHECK: continuity of `J1` (it is the real part of the Schwartz function `JS`)
+219c216
+<       nlinarith [sq_nonneg κ, sq_nonneg Real.pi]
+---
+>       nlinarith [mul_le_mul_of_nonneg_left this (by positivity : (0 : ℝ) ≤ κ ^ 2 * (4 * Real.pi ^ 2))]
+273c270
+<   rw [← tsum_mul_left, ← tsum_sub hs1 (hs2.mul_left _)]
+---
+>   rw [← tsum_mul_left, ← hs1.tsum_sub (hs2.mul_left _)]
+311,313d307
+<     ring
+<   -- CHECK: the casts `((3 / (π² I0) : ℝ) : ℂ)` vs `(3 / (π² · I0) : ℂ)` may need a `push_cast`
+<   push_cast at e ⊢
+320,321c314,315
+<   rw [hn, mul_assoc]
+<   exact mul_le_mul_of_nonneg_left (hrate κ hκ) (by positivity)
+---
+>   rw [hn]
+>   refine (mul_le_mul_of_nonneg_left (hrate κ hκ) (by positivity)).trans (le_of_eq (by ring))

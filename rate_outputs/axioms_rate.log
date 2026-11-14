@@ -1,0 +1,25 @@
+'CubeMurmurations.sym_diff_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CubeMurmurations.Jdd_decay' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CubeMurmurations.J1_sym_diff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CubeMurmurations.JK_sub_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CubeMurmurations.mainTerm_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CubeMurmurations.theoremA_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+@theoremA_rate : ∀ {Φ : ℝ → ℝ},
+  ContDiff ℝ (↑⊤) Φ →
+    ∀ {a b : ℝ},
+      0 < a →
+        a ≤ b →
+          (∀ (y : ℝ), Φ y ≠ 0 → a ≤ y ∧ y ≤ b) →
+            Jphi Φ 0 ≠ 0 →
+              ∀ {H0 : ℝ → ℝ},
+                IsBump H0 →
+                  (∀ (v : ℝ), H0 (-v) = H0 v) →
+                    ∫ (v : ℝ), H0 v ≠ 0 →
+                      ∃ C,
+                        0 ≤ C ∧
+                          ∀ (κ : ℝ),
+                            |κ| ≤ Real.pi →
+                              ‖3 / (↑Real.pi ^ 2 * ↑(∫ (v : ℝ), H0 v)) *
+                                      ∑' (t : ℤ), f3 t * ↑(JK Φ H0 a b κ t) / ↑(Jphi Φ 0) -
+                                    3 / ↑Real.pi ^ 2 * ∑' (t : ℤ), f3 t * ↑(Jphi Φ ↑t) / ↑(Jphi Φ 0)‖ ≤
+                                C * κ ^ 2

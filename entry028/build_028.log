@@ -1,0 +1,13 @@
+build_028: 40 chunks, expected seed '53713b77123d76fa0f4d20fe80fafb15608157fdb1c692ba1fdd552ec9067355', y0 1.0500e+12, M 2000
+  2000 strata records
+  C10 generator: ok ['6da0c49ff5275676d59c6b342b7ccfd1ffec98a1675ef06bebe1d3e392f8df16'] vs 6da0c49ff527
+  C1 seed: ok chunk seeds ['53713b77123d76fa0f4d20fe80fafb15608157fdb1c692ba1fdd552ec9067355']
+  C2 indices: ok 2000 records, range 0..1999
+  C3 seeded starts: ok 0 mismatched fields
+  C4 counts: ok 
+  C5 boundary: ok max last - y_r = 453,573,151 < 500,000,000; max run span last - s_r = 354,426,251 (+ offset window 100,000,000 must stay < 500,000,000)
+  C6 PARI first kept: ok 0 of 2000 differ
+  C7 PARI sampled pair: ok 0 of 2000 fail
+  C8 independent sieve: ok 20 strata [59, 170, 329, 332, 377, 849, 895, 902, 944, 1039, 1127, 1130, 1164, 1371, 1539, 1578, 1616, 1619, 1826, 1908]; mismatched []
+  wrote 80 chunk hashes to /home/claude/run028/data28_sha256.json
+build_028: 0 failures

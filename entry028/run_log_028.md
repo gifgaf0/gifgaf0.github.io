@@ -26,3 +26,7 @@
   - T-lad (above the inflated-lambda ladder, z > 2.9352): z = +15.91 (chi_-3), +11.52 (chi_-4), +7.00 ((./5)).
   - T-hyb (within tau_hyb + 3.144 se_pair of the fixed-lambda hybrid): c_hat - c_hyb = -3.0e-6, +6.7e-6, +4.4e-6 against bands 2.38e-5, 2.29e-5, 2.38e-5; z without tau -0.52, +1.15, +0.74.
   - Report-only: se_pair/se_binomial 0.925, 0.928, 0.934; c_hat/c_hyb 1.00004, 0.99991, 0.99994; lag 2 -0.013102, -0.012896, -0.011339; half-band values within 1.2e-5 of the hybrid's.
+- 2026-11-25T05:46:03Z: Zenodo packaging. All 80 data files re-verified against data28_sha256.json (sha256 c27a9ea4...86ff) and all 70 manifest files against manifest28.json (70/70) before packing.
+  - data28.tar.gz: 2,808,408 bytes, sha256 13f1882dd078ae696c8489e65bba6a5ae4f5a844858209271c21019766287d8f (top folder data28/, 80 files; tar --sort=name, fixed mtime 2026-11-25 04:38:00Z, owner 0, gzip -n -9; gzip -t ok, extraction re-verified 80/80, repack byte-identical).
+  - entry028_frozen_code.zip: 141,770 bytes, sha256 de8346dc251099fcd47349b5c0644f9a388a19bf85ddc1f0a377aea153fb45cd (top folder entry028/, the 70 manifest files plus manifest28.json; zip -X -D, sorted, fixed mtime 2026-11-25 04:07:00Z; unzip -t ok, extraction re-verified 70/70, rebuild byte-identical).
+  - Neither archive is committed to git; they are deposited on Zenodo with SHA256SUMS.txt.

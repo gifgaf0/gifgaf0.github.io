@@ -1,0 +1,19 @@
+stand-in round 6668266 for push 2026-11-24T00:00:00Z; manifest sha 9f6c697d58ca3e34...  (consistent case is expected to RUN; its
+  synthetic tables are uniform, so its test verdicts are meaningless and only show the checks let it through)
+  ok   consistent                                    -> RAN: Decisive tests: 6; failures: 3: T-hyb chi_-3, T-hyb chi_-4, T-hyb (./5)
+  ok   wrong manifest sha256                         -> REFUSED: manifest sha256 9f6c697d58ca3e343945800d9a1a6c809ead23da61c706e699cce8dbd4d83477 != recorded 0000000000000000000000000000000000000000000000000000000000000000
+  ok   edited entry                                  -> REFUSED: manifest mismatch: entry_028.md
+  ok   edited analysis                               -> REFUSED: manifest mismatch: analyze_028.py
+  ok   edited archived script                        -> REFUSED: manifest mismatch: predict_026.py
+  ok   mainnet constants (unpatched) on test chain   -> REFUSED: beacon /info is not the frozen drand chain (hash, genesis, period, pinned public key)
+  ok   wrong round for push time                     -> REFUSED: beacon round 6668266 is not the rule's round 6668286
+  ok   tampered signature                            -> REFUSED: beacon BLS signature does not verify
+  ok   tampered randomness                           -> REFUSED: beacon randomness != sha256(signature)
+  ok   broken chain link                             -> REFUSED: beacon previous_signature is not the signature of round R - 1
+  ok   chunk seed mismatch                           -> REFUSED: data chunks not all generated with the beacon seed: ['8bf51be197721a1b711295480a1571a0838ae47deac19849b6ca480c162ca019', 'dry-1']
+  ok   missing stratum chunk                         -> REFUSED: stratum indices are not exactly 0..1999 (1950 records)
+  ok   duplicate strata                              -> REFUSED: stratum indices are not exactly 0..1999 (2050 records)
+  ok   wrong pair count                              -> REFUSED: a stratum has wrong magic, flags or pair counts
+  ok   real drand round 6635716 (Entry 026), unpatched -> REFUSED: data chunks not all generated with the beacon seed: ['8bf51be197721a1b711295480a1571a0838ae47deac19849b6ca480c162ca019']
+  ok   wrong public key in /info, unpatched          -> REFUSED: beacon /info is not the frozen drand chain (hash, genesis, period, pinned public key)
+ALL REFUSAL PATHS BEHAVE AS DESIGNED

@@ -1,0 +1,2 @@
+2 processes x 20 strata: wall 12.9 s -> 0.647 s per stratum per process; projected 2,000 strata on 2 cores: 10.8 min
+independent numpy check, one stratum at 5e11: 2.3 s

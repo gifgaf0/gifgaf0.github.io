@@ -1,0 +1,29 @@
+Entry 028 analysis (DRY RUN): 2000 strata, 25,000,000,000 lag-1 pairs; alpha' = 1.667e-03, z1 = 2.9352, z2 = 3.144
+
+Per character: c_hat, se_pair, se_binomial, se_units, se_pair/se_binomial | c_216, c_full, c_hyb, tau_hyb
+  chi_-3  -0.0814428  6.168e-06  6.304e-06  1.190e-05  0.9785 | -0.0779402  -0.0815412  -0.0814454  5.49e-06
+  chi_-4  -0.0759856  6.300e-06  6.306e-06  1.123e-05  0.9990 | -0.0725671  -0.0760493  -0.0759886  4.54e-06
+  (./5)   -0.0705598  6.387e-06  6.309e-06  1.012e-05  1.0123 | -0.0650811  -0.0705866  -0.0705498  5.25e-06
+
+T-lad: (c_hat - c_full)/se_pair > 2.9352 (one-sided; data above the inflated-lambda ladder)
+  T-lad chi_-3  c_hat - c_full +9.836e-05  z  +15.95  PASS
+  T-lad chi_-4  c_hat - c_full +6.375e-05  z  +10.12  PASS
+  T-lad (./5)   c_hat - c_full +2.685e-05  z   +4.20  PASS
+
+T-hyb: |c_hat - c_hyb| <= tau_hyb + 3.144 * se_pair (consistency with the fixed-lambda hybrid)
+  T-hyb chi_-3  c_hat - c_hyb +2.585e-06  band 2.488e-05  z(no tau)  +0.42  PASS
+  T-hyb chi_-4  c_hat - c_hyb +3.075e-06  band 2.435e-05  z(no tau)  +0.49  PASS
+  T-hyb (./5)   c_hat - c_hyb -1.003e-05  band 2.533e-05  z(no tau)  -1.57  PASS
+
+Report-only:
+  chi_-3  (c_hat - c_216)/se  -567.90;  c_hat/c_hyb 0.99997;  c_hat/c_full 0.99879
+  chi_-4  (c_hat - c_216)/se  -542.63;  c_hat/c_hyb 0.99996;  c_hat/c_full 0.99916
+  (./5)   (c_hat - c_216)/se  -857.84;  c_hat/c_hyb 1.00014;  c_hat/c_full 0.99962
+  lag 2 chi_-3  -0.013298 ± 6.6e-06
+  lag 2 chi_-4  -0.013054 ± 6.1e-06
+  lag 2 (./5)   -0.011422 ± 6.1e-06
+  chi_-3  lower half -0.081833, upper half -0.081052 (pred -0.081846, -0.081045)
+  chi_-4  lower half -0.076345, upper half -0.075626 (pred -0.076359, -0.075619)
+  (./5)   lower half -0.070862, upper half -0.070258 (pred -0.070896, -0.070203)
+
+Decisive tests: 6; failures: 0

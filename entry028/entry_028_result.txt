@@ -1,0 +1,32 @@
+manifest manifest28.json sha256 770e7f375611f8ca5bad2e27ebb283452d7fbce8ca5d03191ead4ddf85490dd4: 70 files verified
+beacon round 6671641: BLS valid, chain link to 6671640 valid, randomness 53713b77123d76fa0f4d20fe80fafb15608157fdb1c692ba1fdd552ec9067355 (= sha256(signature))
+seed and strata verified: 2000 strata, seed = beacon randomness
+Entry 028 analysis: 2000 strata, 25,000,000,000 lag-1 pairs; alpha' = 1.667e-03, z1 = 2.9352, z2 = 3.144
+
+Per character: c_hat, se_pair, se_binomial, se_units, se_pair/se_binomial | c_216, c_full, c_hyb, tau_hyb
+  chi_-3  -0.0814484  5.832e-06  6.304e-06  1.171e-05  0.9252 | -0.0779402  -0.0815412  -0.0814454  5.49e-06
+  chi_-4  -0.0759819  5.850e-06  6.306e-06  1.129e-05  0.9277 | -0.0725671  -0.0760493  -0.0759886  4.54e-06
+  (./5)   -0.0705454  5.895e-06  6.309e-06  1.054e-05  0.9344 | -0.0650811  -0.0705866  -0.0705498  5.25e-06
+
+T-lad: (c_hat - c_full)/se_pair > 2.9352 (one-sided; data above the inflated-lambda ladder)
+  T-lad chi_-3  c_hat - c_full +9.276e-05  z  +15.91  PASS
+  T-lad chi_-4  c_hat - c_full +6.741e-05  z  +11.52  PASS
+  T-lad (./5)   c_hat - c_full +4.125e-05  z   +7.00  PASS
+
+T-hyb: |c_hat - c_hyb| <= tau_hyb + 3.144 * se_pair (consistency with the fixed-lambda hybrid)
+  T-hyb chi_-3  c_hat - c_hyb -3.011e-06  band 2.382e-05  z(no tau)  -0.52  PASS
+  T-hyb chi_-4  c_hat - c_hyb +6.732e-06  band 2.294e-05  z(no tau)  +1.15  PASS
+  T-hyb (./5)   c_hat - c_hyb +4.373e-06  band 2.378e-05  z(no tau)  +0.74  PASS
+
+Report-only:
+  chi_-3  (c_hat - c_216)/se  -601.57;  c_hat/c_hyb 1.00004;  c_hat/c_full 0.99886
+  chi_-4  (c_hat - c_216)/se  -583.71;  c_hat/c_hyb 0.99991;  c_hat/c_full 0.99911
+  (./5)   (c_hat - c_216)/se  -926.96;  c_hat/c_hyb 0.99994;  c_hat/c_full 0.99942
+  lag 2 chi_-3  -0.013102 ± 6.3e-06
+  lag 2 chi_-4  -0.012896 ± 6.2e-06
+  lag 2 (./5)   -0.011339 ± 6.2e-06
+  chi_-3  lower half -0.081840, upper half -0.081057 (pred -0.081846, -0.081045)
+  chi_-4  lower half -0.076352, upper half -0.075612 (pred -0.076359, -0.075619)
+  (./5)   lower half -0.070891, upper half -0.070200 (pred -0.070896, -0.070203)
+
+Decisive tests: 6; failures: 0

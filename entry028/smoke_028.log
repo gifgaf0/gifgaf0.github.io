@@ -1,0 +1,99 @@
+== generate 10 smoke strata at y0 = 5e11 (one process)
+chunk 0: 5 strata in 4.2s
+chunk 5: 5 strata in 4.1s
+wall 8.4 s for 10 strata
+== build (expect 0 failures)
+build_028: 2 chunks, expected seed 'smoke-028', y0 5.0000e+11, M 10
+  10 strata records
+  C10 generator: ok ['6da0c49ff5275676d59c6b342b7ccfd1ffec98a1675ef06bebe1d3e392f8df16'] vs 6da0c49ff527
+  C1 seed: ok chunk seeds ['smoke-028']
+  C2 indices: ok 10 records, range 0..9
+  C3 seeded starts: ok 0 mismatched fields
+  C4 counts: ok 
+  C5 boundary: ok max last - y_r = 417,674,007 < 500,000,000; max run span last - s_r = 336,840,135 (+ offset window 100,000,000 must stay < 500,000,000)
+  C6 PARI first kept: ok 0 of 10 differ
+  C7 PARI sampled pair: ok 0 of 10 fail
+  C8 independent sieve: ok 10 strata [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; mismatched []
+  wrote 4 chunk hashes to /home/claude/smoke028/hashes.json
+build_028: 0 failures
+exit 0
+== build again against the recorded hashes (expect 0 failures)
+build_028: 2 chunks, expected seed 'smoke-028', y0 5.0000e+11, M 10
+  10 strata records
+  C9 chunk sha256: ok 4 files
+  C10 generator: ok ['6da0c49ff5275676d59c6b342b7ccfd1ffec98a1675ef06bebe1d3e392f8df16'] vs 6da0c49ff527
+  C1 seed: ok chunk seeds ['smoke-028']
+  C2 indices: ok 10 records, range 0..9
+  C3 seeded starts: ok 0 mismatched fields
+  C4 counts: ok 
+  C5 boundary: ok max last - y_r = 417,674,007 < 500,000,000; max run span last - s_r = 336,840,135 (+ offset window 100,000,000 must stay < 500,000,000)
+  C6 PARI first kept: ok 0 of 10 differ
+  C7 PARI sampled pair: ok 0 of 10 fail
+  C8 independent sieve: ok 0 strata []; mismatched []
+build_028: 0 failures
+exit 0
+== NEGATIVE: wrong seed (expect failures)
+build_028: 2 chunks, expected seed 'smoke-028-wrong', y0 5.0000e+11, M 10
+  10 strata records
+  C10 generator: ok ['6da0c49ff5275676d59c6b342b7ccfd1ffec98a1675ef06bebe1d3e392f8df16'] vs 6da0c49ff527
+  C1 seed: FAIL chunk seeds ['smoke-028']
+  C2 indices: ok 10 records, range 0..9
+  C3 seeded starts: FAIL 20 mismatched fields
+  C4 counts: ok 
+  C5 boundary: ok max last - y_r = 417,674,007 < 500,000,000; max run span last - s_r = 336,840,135 (+ offset window 100,000,000 must stay < 500,000,000)
+  C6 PARI first kept: ok 0 of 10 differ
+  C7 PARI sampled pair: ok 0 of 10 fail
+  C8 independent sieve: ok 0 strata []; mismatched []
+build_028: 2 failures: C1 seed, C3 seeded starts
+exit 1
+== NEGATIVE: missing data directory (expect failure)
+build_028: 0 chunks, expected seed 'smoke-028', y0 5.0000e+11, M 10
+  C0 data present: FAIL no chunk files in /home/claude/smoke028/nonexistent
+build_028: 1 failures: C0 data present
+exit 1
+== NEGATIVE: wrong range (decisive band y0 = 1.05e12, M = 2000) (expect failures)
+build_028: 2 chunks, expected seed 'smoke-028', y0 1.0500e+12, M 2000
+  10 strata records
+  C10 generator: ok ['6da0c49ff5275676d59c6b342b7ccfd1ffec98a1675ef06bebe1d3e392f8df16'] vs 6da0c49ff527
+  C1 seed: ok chunk seeds ['smoke-028']
+  C2 indices: FAIL 10 records, range 0..9
+  C3 seeded starts: FAIL 20 mismatched fields
+  C4 counts: ok 
+  C5 boundary: ok max last - y_r = 417,674,007 < 500,000,000; max run span last - s_r = 336,840,135 (+ offset window 100,000,000 must stay < 500,000,000)
+  C6 PARI first kept: ok 0 of 10 differ
+  C7 PARI sampled pair: ok 0 of 10 fail
+  C8 independent sieve: ok 0 strata []; mismatched []
+build_028: 2 failures: C2 indices, C3 seeded starts
+exit 1
+== NEGATIVE: corrupted chunk vs recorded hashes (expect failures)
+build_028: 2 chunks, expected seed 'smoke-028', y0 5.0000e+11, M 10
+  10 strata records
+  C9 chunk sha256: FAIL mismatched: ['chunk_0005.bin']
+  C10 generator: ok ['6da0c49ff5275676d59c6b342b7ccfd1ffec98a1675ef06bebe1d3e392f8df16'] vs 6da0c49ff527
+  C1 seed: ok chunk seeds ['smoke-028']
+  C2 indices: ok 10 records, range 0..9
+  C3 seeded starts: ok 0 mismatched fields
+  C4 counts: FAIL 
+  C5 boundary: ok max last - y_r = 417,674,007 < 500,000,000; max run span last - s_r = 336,840,135 (+ offset window 100,000,000 must stay < 500,000,000)
+  C6 PARI first kept: ok 0 of 10 differ
+  C7 PARI sampled pair: ok 0 of 10 fail
+  C8 independent sieve: FAIL 10 strata [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; mismatched [5]
+build_028: 3 failures: C9 chunk sha256, C4 counts, C8 independent sieve
+exit 1
+== BOUNDARY smoke: 20 strata at y0 = 2.1e12 (above the band; worst-case density), two processes
+chunk 10: 10 strata in 8.3s
+chunk 0: 10 strata in 8.3s
+boundary smoke wall 8.3 s for 2 x 10 strata (0.833 s per stratum per process)
+build_028: 2 chunks, expected seed 'smoke-028-top', y0 2.1000e+12, M 20
+  20 strata records
+  C10 generator: ok ['6da0c49ff5275676d59c6b342b7ccfd1ffec98a1675ef06bebe1d3e392f8df16'] vs 6da0c49ff527
+  C1 seed: ok chunk seeds ['smoke-028-top']
+  C2 indices: ok 20 records, range 0..19
+  C3 seeded starts: ok 0 mismatched fields
+  C4 counts: ok 
+  C5 boundary: ok max last - y_r = 450,293,389 < 500,000,000; max run span last - s_r = 354,821,422 (+ offset window 100,000,000 must stay < 500,000,000)
+  C6 PARI first kept: ok 0 of 20 differ
+  C7 PARI sampled pair: ok 0 of 20 fail
+  C8 independent sieve: ok 3 strata [4, 5, 17]; mismatched []
+build_028: 0 failures
+exit 0

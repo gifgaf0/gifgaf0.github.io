@@ -1,0 +1,31 @@
+Entry 028 predictions. alpha' = 1.6667e-03; z1 = 2.9352, z2 = 3.144; N = 2.500e+10 pairs
+
+Quadrature checks (4-node vs 2-node GL in log y, dy weight; discrete 2,000-stratum mean for c_216):
+  chi-3: c216 4-2 +3.8e-07, 4-discrete +3.0e-08; through-7 4-2 +4.1e-07; hybrid K5 4-2 +nan
+  chi-4: c216 4-2 +3.4e-07, 4-discrete +2.7e-08; through-7 4-2 +3.7e-07; hybrid K5 4-2 +nan
+  leg5: c216 4-2 +2.9e-07, 4-discrete +2.2e-08; through-7 4-2 +3.5e-07; hybrid K5 4-2 +nan
+
+Discrete-stratum weights [0.12829, 0.285447, 0.358311, 0.227951] (sum 1.000000000000); GL4 weights [0.128016, 0.285683, 0.358608, 0.227693]
+  chi-3: c216 via discrete weights -0.077940168252 vs exact 2,000-stratum mean -0.077940168252: +1.2e-13
+  chi-4: c216 via discrete weights -0.072567090709 vs exact 2,000-stratum mean -0.072567090709: +1.1e-13
+  leg5: c216 via discrete weights -0.065081143520 vs exact 2,000-stratum mean -0.065081143520: +6.2e-14
+
+Predictions (frozen = exact discrete 2,000-stratum mean; GL4 over the spec range in brackets):
+  chi-3: [GL4: c216 -0.077940139, c_full -0.081541157, c_hyb -0.081445385]
+  chi-3: c216 -0.07794017  c_full -0.08154119  c_hyb(K=5) -0.08143718  T6 -8.242e-06 ± 1.8e-07 (node max 3.4e-07)  c_hyb -0.08144542  tau_hyb 5.489e-06  c_full - c_hyb -9.577e-05
+  chi-4: [GL4: c216 -0.072567064, c_full -0.076049293, c_hyb -0.075988618]
+  chi-4: c216 -0.07256709  c_full -0.07604932  c_hyb(K=5) -0.07598228  T6 -6.372e-06 ± 1.8e-07 (node max 3.4e-07)  c_hyb -0.07598865  tau_hyb 4.544e-06  c_full - c_hyb -6.068e-05
+  leg5: [GL4: c216 -0.065081121, c_full -0.070586607, c_hyb -0.070549730]
+  leg5: c216 -0.06508114  c_full -0.07058663  c_hyb(K=5) -0.07054190  T6 -7.857e-06 ± 1.8e-07 (node max 3.4e-07)  c_hyb -0.07054976  tau_hyb 5.248e-06  c_full - c_hyb -3.688e-05
+
+Power and separation (planned s.e. = binomial sqrt((1 - c^2)/N); the paired-strata s.e. is the test statistic):
+  n = 1.25e+07 per stratum (N = 2.5e+10):
+    chi-3: se 6.304e-06; gap c_hyb - c_full +9.577e-05; T-lad power nominal 1.0000, worst-case 1.0000; T-hyb band 2.531e-05, 80% detectable miss 3.061e-05, worst-case null pass 0.99917; c_full outside band: True (margin +7.05e-05); P(T-hyb fails | ladder true) 1.0000
+    chi-4: se 6.306e-06; gap c_hyb - c_full +6.068e-05; T-lad power nominal 1.0000, worst-case 1.0000; T-hyb band 2.437e-05, 80% detectable miss 2.968e-05, worst-case null pass 0.99916; c_full outside band: True (margin +3.63e-05); P(T-hyb fails | ladder true) 1.0000
+    leg5: se 6.309e-06; gap c_hyb - c_full +3.688e-05; T-lad power nominal 0.9982, worst-case 0.9812; T-hyb band 2.508e-05, 80% detectable miss 3.039e-05, worst-case null pass 0.99917; c_full outside band: True (margin +1.18e-05); P(T-hyb fails | ladder true) 0.9692
+  n = 1e+07 per stratum (N = 2e+10):
+    chi-3: se 7.048e-06; gap c_hyb - c_full +9.577e-05; T-lad power nominal 1.0000, worst-case 1.0000; T-hyb band 2.765e-05, 80% detectable miss 3.358e-05, worst-case null pass 0.99917; c_full outside band: True (margin +6.81e-05); P(T-hyb fails | ladder true) 1.0000
+    chi-4: se 7.051e-06; gap c_hyb - c_full +6.068e-05; T-lad power nominal 1.0000, worst-case 1.0000; T-hyb band 2.671e-05, 80% detectable miss 3.265e-05, worst-case null pass 0.99916; c_full outside band: True (margin +3.40e-05); P(T-hyb fails | ladder true) 1.0000
+    leg5: se 7.053e-06; gap c_hyb - c_full +3.688e-05; T-lad power nominal 0.9891, worst-case 0.9393; T-hyb band 2.742e-05, 80% detectable miss 3.336e-05, worst-case null pass 0.99916; c_full outside band: True (margin +9.45e-06); P(T-hyb fails | ladder true) 0.9099
+
+wrote pred_028.json
